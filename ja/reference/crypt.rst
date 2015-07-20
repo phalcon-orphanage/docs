@@ -102,7 +102,7 @@ You can set up the encryption component in the services container in order to us
 
     <?php
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
 
         $crypt = new Phalcon\Crypt();
 

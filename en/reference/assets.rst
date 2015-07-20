@@ -103,13 +103,13 @@ You can create additional collections to group specific resources for ease of pl
 
     <?php
 
-    //Javascripts in the header
+    // Javascripts in the header
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    //Javascripts in the footer
+    // Javascripts in the footer
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -255,10 +255,10 @@ in the same order as filters were registered:
 
     <?php
 
-    //Use the built-in Jsmin filter
+    // Use the built-in Jsmin filter
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //Use a custom filter
+    // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 Note that both built-in and custom filters can be transparently applied to collections.
@@ -272,10 +272,10 @@ individually. To tell the collection that all resources must be joined you can u
     // This a remote resource that does not need filtering
     $js->join(true);
 
-    //The name of the final file path
+    // The name of the final file path
     $js->setTargetPath('public/production/final.js');
 
-    //The script html tag is generated with this URI
+    // The script html tag is generated with this URI
     $js->setTargetUri('production/final.js');
 
 If resources are going to be joined, we need also to define which file will be used to store the resources
@@ -335,7 +335,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
         public function filter($contents)
         {
 
-            //Write the string contents into a temporal file
+            // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -348,7 +348,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //Return the contents of file
+            // Return the contents of file
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }

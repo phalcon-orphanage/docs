@@ -27,13 +27,13 @@ is recommended setting up it manually:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Setting a relative base URI
+    // Setting a relative base URI
     $url->setBaseUri('/invo/');
 
-    //Setting a full domain as base URI
+    // Setting a full domain as base URI
     $url->setBaseUri('//my.domain.com/');
 
-    //Setting a full domain as base URI
+    // Setting a full domain as base URI
     $url->setBaseUri('http://my.domain.com/my-app/');
 
 Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
@@ -42,7 +42,7 @@ Usually, this component must be registered in the Dependency Injector container,
 
     <?php
 
-    $di->set('url', function(){
+    $di->set('url', function () {
         $url = new Phalcon\Mvc\Url();
         $url->setBaseUri('/invo/');
         return $url;
@@ -76,7 +76,7 @@ A URL can be generated in the following way:
 
     <?php
 
-    //This produces: /blog/2012/01/some-blog-post
+    // This produces: /blog/2012/01/some-blog-post
     $url->get(array(
         'for' => 'show-post',
         'year' => 2012,
@@ -94,10 +94,10 @@ You can use this component also to create URLs without mod-rewrite:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI in $_GET["_url"]
+    // Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //This produce: /invo/index.php?_url=/products/save
+    // This produce: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
 
 You can also use $_SERVER["REQUEST_URI"]:
@@ -108,10 +108,10 @@ You can also use $_SERVER["REQUEST_URI"]:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI in $_GET["_url"]
+    // Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //Pass the URI using $_SERVER["REQUEST_URI"]
+    // Pass the URI using $_SERVER["REQUEST_URI"]
     $url->setBaseUri('/invo/index.php/');
 
 In this case, it's necessary to manually handle the required URI in the Router:
@@ -133,7 +133,7 @@ The produced routes would look like:
 
     <?php
 
-    //This produce: /invo/index.php/products/save
+    // This produce: /invo/index.php/products/save
     echo $url->get("products/save");
 
 Producing URLs from Volt
@@ -160,10 +160,10 @@ This component allow you to set up a different base URI for static resources in 
 
     $url = new Phalcon\Mvc\Url();
 
-    //Dynamic URIs are
+    // Dynamic URIs are
     $url->setBaseUri('/');
 
-    //Static resources go through a CDN
+    // Static resources go through a CDN
     $url->setStaticBaseUri('http://static.mywebsite.com/');
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.

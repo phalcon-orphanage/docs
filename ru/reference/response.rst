@@ -34,7 +34,7 @@
             // Получение экземпляра Response
             $response = new \Phalcon\Http\Response();
 
-            $feed = //.. тут данные
+            $feed = // .. тут данные
 
             // Установка содержимого ответа
             $response->setContent($feed->asString());

@@ -138,8 +138,8 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
   use Phalcon\DI,
       \Phalcon\Test\UnitTestCase as PhalconTestCase;
   
-  abstract class UnitTestCase extends PhalconTestCase {
-  
+  abstract class UnitTestCase extends PhalconTestCase
+  {
       /**
        * @var \Voice\Cache
        */
@@ -155,8 +155,8 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
        */
       private $_loaded = false;
   
-      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
-  
+      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+      {
           // テスト中に必要になる追加のサービスを読み込み
           $di = DI::getDefault();
   
@@ -171,8 +171,9 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
        * Check if the test case is setup properly
        * @throws \PHPUnit_Framework_IncompleteTestError;
        */
-      public function __destruct() {
-          if(!$this->_loaded) {
+      public function __destruct()
+      {
+          if (!$this->_loaded) {
               throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
           }
       }
@@ -187,13 +188,11 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
   /**
    * Class UnitTest
    */
-  class UnitTest extends \UnitTestCase {
-  
-  
-  
-      public function testTestCase() {
-  
-          $this->assertEquals('works',
+  class UnitTest extends \UnitTestCase
+  {
+      public function testTestCase()
+      {
+            $this->assertEquals('works',
               'works',
               'This is OK'
           );

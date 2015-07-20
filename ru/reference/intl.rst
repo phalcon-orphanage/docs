@@ -62,7 +62,7 @@ API класса Locale.
 
     <?php
 
-    //Устанавливаем параметры
+    // Устанавливаем параметры
     $time   = time();
     $values = array(7, $time, $time);
 

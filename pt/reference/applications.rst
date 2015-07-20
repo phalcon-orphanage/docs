@@ -49,7 +49,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
     $di = new FactoryDefault();
 
     // Registering the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -90,14 +90,14 @@ If namespaces are used, the following bootstrap can be used:
     $di = new FactoryDefault();
 
     // Register the dispatcher setting a Namespace for controllers
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Registering the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -109,7 +109,7 @@ If namespaces are used, the following bootstrap can be used:
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -177,15 +177,15 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         public function registerServices($di)
         {
 
-            //Registering a dispatcher
-            $di->set('dispatcher', function() {
+            // Registering a dispatcher
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
-            $di->set('view', function() {
+            // Registering the view component
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
@@ -206,7 +206,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     $di = new FactoryDefault();
 
-    //Specify routes for modules
+    // Specify routes for modules
     $di->set('router', function () {
 
         $router = new Router();
@@ -235,7 +235,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     try {
 
-        //Create an application
+        // Create an application
         $application = new Application($di);
 
         // Register the installed modules
@@ -252,10 +252,10 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             )
         );
 
-        //Handle the request
+        // Handle the request
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -266,23 +266,23 @@ module:
 
     <?php
 
-    //Creating a view component
+    // Creating a view component
     $view = new \Phalcon\Mvc\View();
 
-    //Set options to view component
-    //...
+    // Set options to view component
+    // ...
 
     // Register the installed modules
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -308,10 +308,10 @@ you may recognize the following bootstrap file:
     try {
 
         // Register autoloaders
-        //...
+        // ...
 
         // Register services
-        //...
+        // ...
 
         // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
@@ -401,13 +401,13 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //Get the returned value by the lastest executed action
+    // Get the returned value by the lastest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the request
         $response->send();
     }
 
@@ -436,7 +436,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        //An exception has ocurred, dispatch some controller/action aimed for that
+        // An exception has ocurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -447,13 +447,13 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     }
 
-    //Get the returned value by the lastest executed action
+    // Get the returned value by the lastest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the request
         $response->send();
     }
 
@@ -494,7 +494,7 @@ The following example demonstrates how to attach listeners to this component:
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );

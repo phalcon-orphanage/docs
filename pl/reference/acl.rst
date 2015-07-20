@@ -83,9 +83,9 @@ Once the list has been completely defined. We can query it to check if a role ha
     <?php
 
     // Check whether role has access to the operations
-    $acl->isAllowed("Guests", "Customers", "edit");   //Returns 0
-    $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
-    $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
+    $acl->isAllowed("Guests", "Customers", "edit");   // Returns 0
+    $acl->isAllowed("Guests", "Customers", "search"); // Returns 1
+    $acl->isAllowed("Guests", "Customers", "create"); // Returns 1
 
 Roles Inheritance
 -----------------
@@ -114,19 +114,19 @@ so that they can be loaded at will without having to redefine the whole list. Yo
 
     <?php
 
-    //Check whether acl data already exist
+    // Check whether acl data already exist
     if (!is_file("app/security/acl.data")) {
 
         $acl = new \Phalcon\Acl\Adapter\Memory();
 
-        //... Define roles, resources, access, etc
+        // ... Define roles, resources, access, etc
 
         // Store serialized list into plain file
         file_put_contents("app/security/acl.data", serialize($acl));
 
     } else {
 
-         //Restore acl object from serialized file
+         // Restore acl object from serialized file
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
@@ -156,11 +156,11 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    //Create an event manager
+    // Create an event manager
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Attach a listener for type "acl"
-    $eventsManager->attach("acl", function($event, $acl) {
+    // Attach a listener for type "acl"
+    $eventsManager->attach("acl", function ($event, $acl) {
         if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
@@ -170,10 +170,10 @@ The following example demonstrates how to attach listeners to this component:
 
     $acl = new \Phalcon\Acl\Adapter\Memory();
 
-    //Setup the $acl
-    //...
+    // Setup the $acl
+    // ...
 
-    //Bind the eventsManager to the acl component
+    // Bind the eventsManager to the acl component
     $acl->setEventsManager($eventManagers);
 
 Implementing your own adapters

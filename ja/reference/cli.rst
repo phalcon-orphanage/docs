@@ -45,7 +45,7 @@ Below is a sample bootstrap that is being used for this example.
     $loader->register();
 
     // Load the configuration file (if any)
-    if(is_readable(APPLICATION_PATH . '/config/config.php')) {
+    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
     }
@@ -58,8 +58,8 @@ Below is a sample bootstrap that is being used for this example.
      * Process the console arguments
      */
     $arguments = array();
-    foreach($argv as $k => $arg) {
-        if($k == 1) {
+    foreach ($argv as $k => $arg) {
+        if ($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;

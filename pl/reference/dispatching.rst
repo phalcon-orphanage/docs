@@ -14,14 +14,14 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
     <?php
 
-    //Dispatch loop
+    // Dispatch loop
     while (!$finished) {
 
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
 
-        //Instantiating the controller class via autoloaders
+        // Instantiating the controller class via autoloaders
         $controller = new $controllerClass();
 
         // Execute the action
@@ -71,19 +71,19 @@ The following example demonstrates how to attach listeners to this component:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function(){
+    $di->set('dispatcher', function () {
 
-        //Create an event manager
+        // Create an event manager
         $eventsManager = new EventsManager();
 
-        //Attach a listener for type "dispatch"
-        $eventsManager->attach("dispatch", function($event, $dispatcher) {
-            //...
+        // Attach a listener for type "dispatch"
+        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+            // ...
         });
 
         $dispatcher = new MvcDispatcher();
 
-        //Bind the eventsManager to the view component
+        // Bind the eventsManager to the view component
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -196,25 +196,25 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Use odd parameters as keys and even as values
+            // Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
                 if ($number & 1) {
                     $keyParams[$params[$number - 1]] = $value;
                 }
             }
 
-            //Override parameters
+            // Override parameters
             $dispatcher->setParams($keyParams);
         });
 
@@ -234,24 +234,24 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Explode each parameter as key,value pairs
+            // Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
-            //Override parameters
+            // Override parameters
             $dispatcher->setParams($keyParams);
         });
 
@@ -310,13 +310,13 @@ the following code is required:
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Camelize actions
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Camelize actions
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
             $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
         });
 
@@ -342,18 +342,18 @@ You can remove it before dispatch the controller/action combination:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Remove extension before dispatch
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Remove extension before dispatch
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            //Remove extension
+            // Remove extension
             $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
 
-            //Override action
+            // Override action
             $dispatcher->setActionName($action);
         });
 
@@ -398,42 +398,42 @@ before dispatch the action preparing the parameter accordingly:
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            //Possible controller class name
+            // Possible controller class name
             $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
 
-            //Possible method name
+            // Possible method name
             $actionName = $dispatcher->getActionName() . 'Action';
 
             try {
 
-                //Get the reflection for the method to be executed
+                // Get the reflection for the method to be executed
                 $reflection = new \ReflectionMethod($controllerName, $actionName);
 
-                //Check parameters
+                // Check parameters
                 foreach ($reflection->getParameters() as $parameter) {
 
-                    //Get the expected model name
+                    // Get the expected model name
                     $className = $parameter->getClass()->name;
 
-                    //Check if the parameter expects a model instance
+                    // Check if the parameter expects a model instance
                     if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
-                        //Override the parameters by the model instance
+                        // Override the parameters by the model instance
                         $dispatcher->setParams(array($model));
                     }
                 }
 
             } catch (\Exception $e) {
-                //An exception has occurred, maybe the class or action does not exist?
+                // An exception has occurred, maybe the class or action does not exist?
             }
 
         });
@@ -461,15 +461,15 @@ when the controller/action combination wasn't found:
         Phalcon\Events\Manager as EventsManager,
         Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
 
-            //Handle 404 exceptions
+            // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -478,7 +478,7 @@ when the controller/action combination wasn't found:
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exist
+            // Alternative way, controller or action doesn't exist
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()) {
                     case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -494,7 +494,7 @@ when the controller/action combination wasn't found:
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the dispatcher
+        // Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -518,7 +518,7 @@ take actions when an exception is produced in the dispatch loop:
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
 
-            //Handle 404 exceptions
+            // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -527,7 +527,7 @@ take actions when an exception is produced in the dispatch loop:
                 return false;
             }
 
-            //Handle other exceptions
+            // Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
                 'action' => 'show503'

@@ -28,9 +28,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Регистрация сервиса кэша моделей 
-    $di->set('modelsCache', function() {
+    $di->set('modelsCache', function () {
 
-        //По умолчанию данные кэша хранятся один день
+        // По умолчанию данные кэша хранятся один день
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
@@ -196,30 +196,30 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         if (!isset(self::$_cache[$key])) {
 
-            //Мы используем APC как кэш второго уровня
+            // Мы используем APC как кэш второго уровня
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Сохраните результат в кэш памяти
+                // Сохраните результат в кэш памяти
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //Если нет кэша в памяти или в APC
+            // Если нет кэша в памяти или в APC
             $data = parent::find($parameters);
 
-            //Сохраните результат в кэш памяти
+            // Сохраните результат в кэш памяти
             self::$_cache[$key] = $data;
 
-            //Сохраните результат в APC
+            // Сохраните результат в APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Вернуть результат в кэше
+        // Вернуть результат в кэше
         return self::$_cache[$key];
     }
 
@@ -303,7 +303,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             }
 
             // Проверяем, что ключ кэша не был передан
-            //и создаем параметры кэша
+            // и создаем параметры кэша
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
                     "key" => self::_createKey($parameters),
@@ -316,7 +316,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         public static function findFirst($parameters=null)
         {
-            //...
+            // ...
         }
 
     }
@@ -439,10 +439,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
          * @param string $key
          * @return object
          */
-        public function getReusableRecords($modelName, $key){
-
+        public function getReusableRecords($modelName, $key)
+        {
             // Если модель Products использует кэш APC
-            if ($modelName == 'Products'){
+            if ($modelName == 'Products') {
                 return apc_fetch($key);
             }
 
@@ -457,10 +457,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
          * @param string $key
          * @param mixed $records
          */
-        public function setReusableRecords($modelName, $key, $records){
-
+        public function setReusableRecords($modelName, $key, $records)
+        {
             // Если модель Products использует кэш APC
-            if ($modelName == 'Products'){
+            if ($modelName == 'Products') {
                 apc_store($key, $records);
                 return;
             }
@@ -476,7 +476,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    $di->setShared('modelsManager', function() {
+    $di->setShared('modelsManager', function () {
         return new CustomModelsManager();
     });
 
@@ -525,7 +525,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         public static function findFirst($parameters=null)
         {
-            //.. здесь реализуем кэширование данных
+            // .. здесь реализуем кэширование данных
         }
     }
 
@@ -763,10 +763,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                 $final = $visitor->getFinal();
 
                 // Выбираем кэш в зависимости от диапазона
-                //...
+                // ...
 
                 // Проверяем, что кэш имеет данные
-                //...
+                // ...
             }
 
             // Выполняем запрос
@@ -774,7 +774,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
             // Сохраняем результат в кэш
 
-            //...
+            // ...
 
             return $result;
         }
@@ -897,7 +897,7 @@ build all your SQL statements passing variable parameters as bound parameters:
         $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
-        //...
+        // ...
     }
 
 In the above example, ten plans were generated increasing the memory usage and processing in the application.
@@ -913,7 +913,7 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
 
         $robots = $this->modelsManager->executeQuery($phql, array($i));
 
-        //...
+        // ...
     }
 
 Performance can be also improved reusing the PHQL query:
@@ -929,7 +929,7 @@ Performance can be also improved reusing the PHQL query:
 
         $robots = $query->execute($phql, array($i));
 
-        //...
+        // ...
     }
 
 Execution plans for queries involving `prepared statements`_ are also cached by most database systems

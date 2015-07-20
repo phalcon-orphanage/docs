@@ -281,7 +281,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        "robots",
        array("name"),
        array("New Astro Boy"),
-       "id = 101" //Warning! In this case values are not escaped
+       "id = 101" // Warning! In this case values are not escaped
     );
 
     // 更新数据的另外一种方法
@@ -290,7 +290,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array(
           "name" => "New Astro Boy"
        ),
-       "id = 101" //Warning! In this case values are not escaped
+       "id = 101" // Warning! In this case values are not escaped
     );
 
     // With escaping conditions
@@ -301,7 +301,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
        )
     );
     $success = $connection->updateAsDict(
@@ -312,7 +312,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
        )
     );
 
@@ -348,7 +348,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         // 提交操作，如果一切正常
         $connection->commit();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         // 如果发现异常，回滚操作
         $connection->rollback();
     }
@@ -380,7 +380,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
             // 创建一个保存的点
             $connection->commit();
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // 发生错误，释放嵌套的事务
             $connection->rollback();
         }
@@ -391,7 +391,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         // 如果一切正常，提交
         $connection->commit();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         // 发生错误，回滚操作
         $connection->rollback();
     }
@@ -449,7 +449,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function($event, $connection) {
+    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
 
         // 检查是否有恶意关键词
         if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
@@ -479,7 +479,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $profiler = new DbProfiler();
 
     // 监听所有数据库的事件
-    $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
             // 操作前启动分析
             $profiler->startProfile($connection->getSQLStatement());
@@ -539,13 +539,13 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     }
 
-    //创建一个事件管理器
+    // 创建一个事件管理器
     $eventsManager = new EventsManager();
 
-    //创建一个监听器
+    // 创建一个监听器
     $dbProfiler = new DbProfiler();
 
-    //设置监听器监听所有的数据库事件
+    // 设置监听器监听所有的数据库事件
     $eventsManager->attach('db', $dbProfiler);
 
 记录 SQL 语句（Logging SQL Statements）
@@ -565,7 +565,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $logger = new FileLogger("app/logs/db.log");
 
     // 监听所有数据库事件
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
+    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), Logger::INFO);
         }

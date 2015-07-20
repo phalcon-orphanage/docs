@@ -110,14 +110,14 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         $di = new FactoryDefault();
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
@@ -128,7 +128,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -187,7 +187,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -205,7 +205,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    $di->set('url', function () {
         $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
@@ -442,7 +442,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
         $di = new FactoryDefault();
 
         // Setup the database service
-        $di->set('db', function(){
+        $di->set('db', function () {
             return new DbAdapter(array(
                 "host"     => "localhost",
                 "username" => "root",
@@ -452,25 +452,25 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
         });
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
-        //Handle the request
+        // Handle the request
         $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
     }
 
@@ -499,7 +499,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
             $user = new Users();
 
-            //Store and check for errors
+            // Store and check for errors
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {

@@ -107,11 +107,11 @@ an object-oriented way to achieve this task:
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
 
-                    //Print file details
+                    // Print file details
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
 
-                    //Move the file into the application
+                    // Move the file into the application
                     $file->moveTo('files/');
                 }
             }

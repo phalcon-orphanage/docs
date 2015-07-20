@@ -19,8 +19,8 @@ Thanks to the service container, we can ensure that the session is accessed only
 
     use Phalcon\Session\Adapter\Files as Session;
 
-    //Start the session the first time when some component request the session service
-    $di->setShared('session', function() {
+    // Start the session the first time when some component request the session service
+    $di->setShared('session', function () {
         $session = new Session();
         $session->start();
         return $session;
@@ -42,17 +42,17 @@ and store items and retrieve them in the following way:
 
         public function indexAction()
         {
-            //Set a session variable
+            // Set a session variable
             $this->session->set("user-name", "Michael");
         }
 
         public function welcomeAction()
         {
 
-            //Check if the variable is defined
+            // Check if the variable is defined
             if ($this->session->has("user-name")) {
 
-                //Retrieve its value
+                // Retrieve its value
                 $name = $this->session->get("user-name");
             }
         }
@@ -74,13 +74,13 @@ It's also possible remove specific variables or destroy the whole session:
 
         public function removeAction()
         {
-            //Remove a session variable
+            // Remove a session variable
             $this->session->remove("user-name");
         }
 
         public function logoutAction()
         {
-            //Destroy the whole session
+            // Destroy the whole session
             $this->session->destroy();
         }
 
@@ -98,10 +98,10 @@ prefix for every session variable created in a certain application:
 
     use Phalcon\Session\Adapter\Files as Session;
 
-    //Isolating the session data
-    $di->set('session', function(){
+    // Isolating the session data
+    $di->set('session', function () {
 
-        //All variables created will prefixed with "my-app-1"
+        // All variables created will prefixed with "my-app-1"
         $session = new Session(
             array(
                 'uniqueId' => 'my-app-1'

@@ -48,7 +48,7 @@ INVO имеет конфигурационный файл, который уст
 
     <?php
 
-    //Read the configuration
+    // Read the configuration
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:'Phalcon\\Config <config>' позволяет нам манипулировать файлами в объектно-ориентированного подхода. Файл конфигурации
@@ -127,8 +127,8 @@ Phalcon не имеет каких-либо предопределенных с�
 
     <?php
 
-    //Начать сессию в первый раз, когда какой нибудь компонент запросит сервис сессий.
-    $di->set('session', function() {
+    // Начать сессию в первый раз, когда какой нибудь компонент запросит сервис сессий.
+    $di->set('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -167,7 +167,7 @@ Phalcon не имеет каких-либо предопределенных с�
     <?php
 
     // Коннект к базе данных создается соответственно параметрам в конфигурационном файле
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -304,7 +304,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
         $dispatcher = new Phalcon\Mvc\Dispatcher();
         return $dispatcher;
     });
@@ -323,7 +323,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
 
         // Получаем стандартный менеджер событий с помощью DI
         $eventsManager = $di->getShared('eventsManager');
@@ -520,12 +520,12 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -538,7 +538,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
     <?php
 
     // Регистрируем пользовательский компонент
-    $di->set('elements', function(){
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -608,7 +608,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -617,7 +617,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -625,7 +625,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -633,7 +633,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -641,7 +641,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -649,7 +649,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -657,7 +657,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -724,7 +724,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
             // создаем страницу соответственно существующим условиям
         }
 
-        //...
+        // ...
 
     }
 
@@ -834,7 +834,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
         $products->price = $this->request->getPost("price", "double");
         $products->active = $this->request->getPost("active");
 
-        //...
+        // ...
 
     }
 
@@ -854,7 +854,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
     public function createAction()
     {
 
-        //...
+        // ...
 
         if (!$products->create()) {
 
@@ -883,7 +883,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
     public function editAction($id)
     {
 
-        //...
+        // ...
 
         $product = Products::findFirstById($id);
 
@@ -908,7 +908,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
     public function saveAction()
     {
 
-        //...
+        // ...
 
         // Находим изменяемый продукт
         $id = $this->request->getPost("id");
@@ -918,7 +918,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
             return $this->forward("products/index");
         }
 
-        //... назначаем объекту значения и сохраняем его
+        // ... назначаем объекту значения и сохраняем его
 
     }
 
@@ -941,7 +941,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -960,7 +960,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
             $this->tag->prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Вот так этот заголовок выводится в главном представлении (app/views/index.phtml):

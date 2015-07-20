@@ -14,14 +14,14 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
     <?php
 
-    //Dispatch loop
+    // Dispatch loop
     while (!$finished) {
 
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
 
-        //Instantiating the controller class via autoloaders
+        // Instantiating the controller class via autoloaders
         $controller = new $controllerClass();
 
         // Execute the action
@@ -71,19 +71,19 @@ The following example demonstrates how to attach listeners to this component:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function(){
+    $di->set('dispatcher', function () {
 
-        //Create an event manager
+        // Create an event manager
         $eventsManager = new EventsManager();
 
-        //Attach a listener for type "dispatch"
-        $eventsManager->attach("dispatch", function($event, $dispatcher) {
-            //...
+        // Attach a listener for type "dispatch"
+        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+            // ...
         });
 
         $dispatcher = new MvcDispatcher();
 
-        //Bind the eventsManager to the view component
+        // Bind the eventsManager to the view component
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -196,25 +196,25 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Use odd parameters as keys and even as values
+            // Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
                 if ($number & 1) {
                     $keyParams[$params[$number - 1]] = $value;
                 }
             }
 
-            //Override parameters
+            // Override parameters
             $dispatcher->setParams($keyParams);
         });
 
@@ -234,24 +234,24 @@ If the desired schema is: http://mywebsite.com/controller/key1:value1/key2:value
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Explode each parameter as key,value pairs
+            // Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value)
                 $keyParams[$parts[0]] = $parts[1];
             }
 
-            //Override parameters
+            // Override parameters
             $dispatcher->setParams($keyParams);
         });
 
@@ -307,13 +307,13 @@ the following code is required:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Camelize actions
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Camelize actions
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
             $dispatcher->setActionName(Phalcon\Text::camelize($dispatcher->getActionName()));
         });
 
@@ -337,18 +337,18 @@ You can remove it before dispatch the controller/action combination:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Camelize actions
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+        // Camelize actions
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            //Remove extension
+            // Remove extension
             $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
 
-            //Override action
+            // Override action
             $dispatcher->setActionName($action);
         });
 
@@ -371,13 +371,13 @@ when the controller/action combination wasn't found:
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
+        // Attach a listener
+        $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
 
             switch ($exception->getCode()) {
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -393,7 +393,7 @@ when the controller/action combination wasn't found:
 
         $dispatcher = new MvcDispatcher();
 
-        //Bind the EventsManager to the dispatcher
+        // Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;

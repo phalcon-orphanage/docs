@@ -34,7 +34,7 @@
 
                 $user->login = $login;
 
-                //Сохраняем пароль хешированным
+                // Сохраняем пароль хешированным
                 $user->password = $this->security->hash($password);
 
                 $user->save();
@@ -47,7 +47,7 @@
 
 .. code-block:: php
 
-	<?php
+    <?php
 
     use Phalcon\Mvc\Controller;
 
@@ -66,11 +66,11 @@
                 ));
                 if ($user) {
                     if ($this->security->checkHash($password, $user->password)) {
-                        //Пароль верный
+                        // Пароль верный
                     }
                 }
 
-                //неудачная проверка
+                // неудачная проверка
             }
 
         }
@@ -112,7 +112,7 @@
             {
                 if ($this->request->isPost()) {
                     if ($this->security->checkToken()) {
-                        //Токен верный
+                        // Токен верный
                     }
                 }
             }
@@ -130,11 +130,11 @@
 
         <?php
 
-        $di->set('security', function(){
+        $di->set('security', function () {
 
             $security = new Phalcon\Security();
 
-            //Устанавливаем фактор хеширования в 12 раундов
+            // Устанавливаем фактор хеширования в 12 раундов
             $security->setWorkFactor(12);
 
             return $security;

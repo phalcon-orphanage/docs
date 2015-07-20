@@ -82,7 +82,7 @@
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
 
     }
@@ -146,7 +146,7 @@
 
         public function getPrice()
         {
-            //Преобразование значение в double (формат числа с плавающей запятой), прежде чем использовать
+            // Преобразование значение в double (формат числа с плавающей запятой), прежде чем использовать
             return (double) $this->price;
         }
     }
@@ -477,13 +477,13 @@
     // Запрос роботов с  связывающими параметрами с строковыми заполнителями
     $conditions = "name = :name: AND type = :type:";
 
-    //Параметры с ключом, названия которого идентично заполнителю
+    // Параметры с ключом, названия которого идентично заполнителю
     $parameters = array(
         "name" => "Robotina",
         "type" => "maid"
     );
 
-    //Выполнение запроса
+    // Выполнение запроса
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -500,13 +500,13 @@
     // Запрос роботов с  связывающими параметрами с строковыми и числовыми заполнителями
     $conditions = "name = :name: AND type = ?1";
 
-    //Параметры с ключом, номер или название которого идентично заполнителям
+    // Параметры с ключом, номер или название которого идентично заполнителям
     $parameters = array(
         "name" => "Robotina",
         1 => "maid"
     );
 
-    //Выполнение запроса
+    // Выполнение запроса
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -524,13 +524,13 @@
 
     use \Phalcon\Db\Column;
 
-    //Привязка параметров
+    // Привязка параметров
     $parameters = array(
         "name" => "Robotina",
         "year" => 2008
     );
 
-    //Привязка типов параметров
+    // Привязка типов параметров
     $types = array(
         "name" => Column::BIND_PARAM_STR,
         "year" => Column::BIND_PARAM_INT
@@ -569,13 +569,13 @@
 
         public function beforeSave()
         {
-            //Convert the array into a string
+            // Convert the array into a string
             $this->status = join(',', $this->status);
         }
 
         public function afterFetch()
         {
-            //Convert the string to an array
+            // Convert the string to an array
             $this->status = explode(',', $this->status);
         }
     }
@@ -916,13 +916,13 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Возвращает связанную запись на основе столбца (robots_id)
-    //Потому как имеет отношение belongsTo , это только возвращение одной записи
+    // Возвращает связанную запись на основе столбца (robots_id)
+    // Потому как имеет отношение belongsTo , это только возвращение одной записи
     // но 'getRobots', кажется, подразумевает, что вернётся больше, чем одина запись
     $robot = $robotsSimilar->getRobots();
 
-    //но, как получить соответствующую запись на основании столбца (similar_robots_id)
-    //если оба отношения имеют одно и то же имя?
+    // но, как получить соответствующую запись на основании столбца (similar_robots_id)
+    // если оба отношения имеют одно и то же имя?
 
 Алиасы позволяют переименовать оба отношения для решения этих проблем:
 
@@ -953,11 +953,11 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Возвращает связанную запись на основе столбца (robots_id)
+    // Возвращает связанную запись на основе столбца (robots_id)
     $robot = $robotsSimilar->getRobot();
     $robot = $robotsSimilar->robot;
 
-    //Возвращает связанную запись основанную на колонке (similar_robots_id)
+    // Возвращает связанную запись основанную на колонке (similar_robots_id)
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
@@ -1219,21 +1219,21 @@ Cascade/Ограничить действия
 
     $robots = Robots::find();
 
-    //Вернёт каждого робота в виде массива
+    // Вернёт каждого робота в виде массива
     $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
-    //Вернёт каждого робота в stdClass
+    // Вернёт каждого робота в stdClass
     $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-    //Вернёт каждого робота как экземпляр объекта Robots
+    // Вернёт каждого робота как экземпляр объекта Robots
     $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
@@ -1334,7 +1334,7 @@ Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры,
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    //Эта запись только должна быть создана 
+    // Эта запись только должна быть создана 
     if ($robot->create() == false) {
         echo "Хм, мы не можем хранить роботов прямо сейчас: \n";
         foreach ($robot->getMessages() as $message) {
@@ -1398,7 +1398,7 @@ Phalcon пытается получить сгенерированное зна�
     // Создать альбом
     $album = new Albums();
     $album->name = 'The One';
-    $album->artist = $artist; //Назначить артиста
+    $album->artist = $artist; // Назначить артиста
     $album->year = 2008;
 
     // Сохранить обе записи
@@ -1571,13 +1571,13 @@ Phalcon пытается получить сгенерированное зна�
 
         public function beforeCreate()
         {
-            //Установить дату создания
+            // Установить дату создания
             $this->created_at = date('Y-m-d H:i:s');
         }
 
         public function beforeUpdate()
         {
-            //Установить дату модификации
+            // Установить дату модификации
             $this->modified_in = date('Y-m-d H:i:s');
         }
 
@@ -1603,8 +1603,8 @@ Phalcon пытается получить сгенерированное зна�
 
             $eventsManager = new EventsManager();
 
-            //Прикрепить анонимную функцию в качестве слушателя для событий "model"
-            $eventsManager->attach('model', function($event, $robot) {
+            // Прикрепить анонимную функцию в качестве слушателя для событий "model"
+            $eventsManager->attach('model', function ($event, $robot) {
                 if ($event->getType() == 'beforeSave') {
                     if ($robot->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
@@ -1614,7 +1614,7 @@ Phalcon пытается получить сгенерированное зна�
                 return true;
             });
 
-            //Прикрепите менеджер событий для события
+            // Прикрепите менеджер событий для события
             $this->setEventsManager($eventsManager);
         }
 
@@ -1639,15 +1639,15 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    //Регистрация сервиса modelsManager
-    $di->setShared('modelsManager', function() {
+    // Регистрация сервиса modelsManager
+    $di->setShared('modelsManager', function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Прикрепить анонимную функцию в качестве слушателя для событий "model"
-        $eventsManager->attach('model', function($event, $model){
+        // Прикрепить анонимную функцию в качестве слушателя для событий "model"
+        $eventsManager->attach('model', function ($event, $model) {
 
-            //Перехватывать события, производимые моделью Robots
+            // Перехватывать события, производимые моделью Robots
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
@@ -1661,7 +1661,7 @@ Phalcon пытается получить сгенерированное зна�
             return true;
         });
 
-        //Установки EventsManager по умолчанию
+        // Установки EventsManager по умолчанию
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
@@ -1923,13 +1923,13 @@ Phalcon использует внутреннее `связывание пара
 
         public function initialize()
         {
-            //Пропуск поля.столбца при всех INSERT/UPDATE операциях
+            // Пропуск поля.столбца при всех INSERT/UPDATE операциях
             $this->skipAttributes(array('year', 'price'));
 
-            //Пропуск только при вставке
+            // Пропуск только при вставке
             $this->skipAttributesOnCreate(array('created_at'));
 
-            //Пропуск только при обновлении
+            // Пропуск только при обновлении
             $this->skipAttributesOnUpdate(array('modified_in'));
         }
 
@@ -2156,7 +2156,7 @@ format  может быть анонимной функцией, позволя�
             array(
                 'beforeCreate' => array(
                     'field' => 'created_at',
-                    'format' => function() {
+                    'format' => function () {
                         $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
                         return $datetime->format('Y-m-d H:i:sP');
                     }
@@ -2272,7 +2272,7 @@ ORM предоставляет API для создания собственны�
 
                     $userName = // ... получить текущего пользователя из сессии
 
-                    //Сохранить в журнале Новости - тип события и первичного ключа
+                    // Сохранить в журнале Новости - тип события и первичного ключа
                     file_put_contents(
                         'logs/blamable-log.txt',
                         $userName . ' ' . $eventType . ' ' . $model->id
@@ -2476,7 +2476,7 @@ ORM предоставляет API для создания собственны�
         // Все идет хорошо, совершить транзакцию
         $transaction->commit();
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Не удалось, причина: ", $e->getMessage();
     }
 
@@ -2513,7 +2513,7 @@ ORM предоставляет API для создания собственны�
 
         echo "Роботы успешно удалены!";
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Не удалось, причина: ", $e->getMessage();
     }
 
@@ -2526,7 +2526,7 @@ ORM предоставляет API для создания собственны�
 
     <?php
 
-    $di->setShared('transactions', function(){
+    $di->setShared('transactions', function () {
         return new \Phalcon\Mvc\Model\Transaction\Manager();
     });
 
@@ -2551,7 +2551,7 @@ ORM предоставляет API для создания собственны�
             // Запрос транзакции
             $transaction = $manager->get();
 
-            //...
+            // ...
         }
 
     }
@@ -2668,7 +2668,7 @@ Phalcon сделает за вас все остальное. Например:
     );
 
     // Обновить все части, кроме тех, чей тип базовый
-    $robots->getParts()->update($data, function($part) {
+    $robots->getParts()->update($data, function ($part) {
         if ($part->type == Part::TYPE_BASIC) {
             return false;
         }
@@ -2707,7 +2707,7 @@ Phalcon сделает за вас все остальное. Например:
     <?php
 
     // Удалить только чьи акции больше или равно нулю
-    $robots->getParts()->delete(function($part) {
+    $robots->getParts()->delete(function ($part) {
         if ($part->stock < 0) {
             return false;
         }
@@ -2802,7 +2802,7 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Создать менеджер мета-данных с APC
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
@@ -2825,7 +2825,7 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Создание экземпляра адаптера мета-данных
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
@@ -2915,7 +2915,7 @@ Phalcon сделает за вас все остальное. Например:
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData,
         Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Создание экземпляра адаптера мета-данных
         $metaData = new ApcMetaData(array(
@@ -3055,7 +3055,7 @@ Phalcon может получить метаданные для каждой м�
     <?php
 
     // Этот сервис возвращает базу данных MySQL
-    $di->set('dbMysql', function() {
+    $di->set('dbMysql', function () {
          return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
             "username" => "root",
@@ -3065,7 +3065,7 @@ Phalcon может получить метаданные для каждой м�
     });
 
     // Этот сервис возвращает базу данных PostgreSQL
-    $di->set('dbPostgres', function() {
+    $di->set('dbPostgres', function () {
          return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
             "host" => "localhost",
             "username" => "postgres",
@@ -3144,7 +3144,7 @@ ORM так же обеспечивает  устройство горизонт�
                 }
             }
 
-            //Использовать осколок умолчанию
+            // Использовать осколок умолчанию
             return $this->getDI()->get('dbShard0');
         }
 
@@ -3177,14 +3177,14 @@ ORM так же обеспечивает  устройство горизонт�
         Phalcon\Events\Manager,
         Phalcon\Logger\Adapter\File;
 
-    $di->set('db', function() {
+    $di->set('db', function () {
 
         $eventsManager = new EventsManager();
 
         $logger = new Logger("app/logs/debug.log");
 
         // Слушать все события базы данных
-        $eventsManager->attach('db', function($event, $connection) use ($logger) {
+        $eventsManager->attach('db', function ($event, $connection) use ($logger) {
             if ($event->getType() == 'beforeQuery') {
                 $logger->log($connection->getSQLStatement(), Logger::INFO);
             }
@@ -3234,11 +3234,11 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    $di->set('profiler', function(){
+    $di->set('profiler', function () {
         return new \Phalcon\Db\Profiler();
     }, true);
 
-    $di->set('db', function() use ($di) {
+    $di->set('db', function () use ($di) {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
@@ -3246,7 +3246,7 @@ ORM так же обеспечивает  устройство горизонт�
         $profiler = $di->getProfiler();
 
         // Слушать все события базы данных
-        $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+        $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
             if ($event->getType() == 'beforeQuery') {
                 $profiler->startProfile($connection->getSQLStatement());
             }

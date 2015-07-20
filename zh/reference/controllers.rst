@@ -183,7 +183,7 @@
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
 
@@ -207,7 +207,7 @@
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -229,7 +229,7 @@
 
     $di = new DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -362,16 +362,16 @@
     <?php
 
     // 将一个控制器作为服务进行注册
-    $di->set('IndexController', function() {
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-	    // 将一个命名空间下的控制器作为服务进行注册
-	    $di->set('Backend\Controllers\IndexController', function() {
-	        $component = new Component();
-	        return $component;
-	    });
+        // 将一个命名空间下的控制器作为服务进行注册
+        $di->set('Backend\Controllers\IndexController', function () {
+            $component = new Component();
+            return $component;
+        });
 
 创建基控制器（Creating a Base Controller）
 --------------------------

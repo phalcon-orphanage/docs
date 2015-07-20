@@ -31,7 +31,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 
             $user->login = $login;
 
-            //Store the password hashed
+            // Store the password hashed
             $user->password = $this->security->hash($password);
 
             $user->save();
@@ -59,11 +59,11 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
             $user = Users::findFirstByLogin($login);
             if ($user) {
                 if ($this->security->checkHash($password, $user->password)) {
-                    //The password is valid
+                    // The password is valid
                 }
             }
 
-            //The validation has failed
+            // The validation has failed
         }
 
     }
@@ -103,7 +103,7 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
         {
             if ($this->request->isPost()) {
                 if ($this->security->checkToken()) {
-                    //The token is ok
+                    // The token is ok
                 }
             }
         }
@@ -114,7 +114,7 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
 .. code-block:: php
 
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -132,11 +132,11 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
     use Phalcon\Security;
 
-    $di->set('security', function(){
+    $di->set('security', function () {
 
         $security = new Security();
 
-        //Set the password hashing factor to 12 rounds
+        // Set the password hashing factor to 12 rounds
         $security->setWorkFactor(12);
 
         return $security;

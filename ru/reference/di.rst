@@ -165,7 +165,7 @@
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null){
+            if (self::$_connection===null) {
                 $connection = self::_createConnection();
                 self::$_connection = $connection;
             }
@@ -333,7 +333,7 @@
     $di = new Phalcon\DI();
 
     // Регистрация в контейнере сервиса "db"
-    $di->set('db', function() {
+    $di->set('db', function () {
         return new Connection(array(
             "host" => "localhost",
             "username" => "root",
@@ -343,12 +343,12 @@
     });
 
     // Регистрация в контейнере сервиса "filter"
-    $di->set('filter', function() {
+    $di->set('filter', function () {
         return new Filter();
     });
 
     // Регистрация в контейнере сервиса "session"
-    $di->set('session', function() {
+    $di->set('session', function () {
         return new Session();
     });
 
@@ -397,7 +397,7 @@ Phalcon\\DI — это компонент, реализующий Dependency Inj
     $di->set("request", 'Phalcon\Http\Request');
 
     // С использованием анонимной функции для отложенной загрузки
-    $di->set("request", function() {
+    $di->set("request", function () {
         return new Phalcon\Http\Request();
     });
 
@@ -422,7 +422,7 @@ Phalcon\\DI — это компонент, реализующий Dependency Inj
     $di["request"] = 'Phalcon\Http\Request';
 
     // С использованием анонимной функции для отложенной загрузки
-    $di["request"] = function() {
+    $di["request"] = function () {
         return new Phalcon\Http\Request();
     };
 
@@ -485,7 +485,7 @@ Phalcon\\DI предоставляет отложенную загрузку д�
 
     <?php
 
-    $di->set("db", function() {
+    $di->set("db", function () {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => "localhost",
              "username" => "root",
@@ -500,8 +500,8 @@ Phalcon\\DI предоставляет отложенную загрузку д�
 
     <?php
 
-    //Using the $config variable in the current scope
-    $di->set("db", function() use ($config) {
+    // Using the $config variable in the current scope
+    $di->set("db", function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => $config->host,
              "username" => $config->username,
@@ -531,7 +531,7 @@ Phalcon\\DI предоставляет отложенную загрузку д�
     ));
 
     // Или в виде анонимной функции
-    $di->set('logger', function() {
+    $di->set('logger', function () {
         return new \Phalcon\Logger\Adapter\File('../apps/logs/error.log');
     });
 
@@ -767,7 +767,7 @@ Properties Injection
     <?php
 
     // Регистрация сервиса сессий, как "always shared"
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -783,8 +783,8 @@ Properties Injection
     <?php
 
     // Регистрация сервиса сессий, как "always shared"
-    $di->set('session', function() {
-        //...
+    $di->set('session', function () {
+        // ...
     }, true);
 
 Если сервис не был зарегистрирован для общего доступа и вы хотите всё же получать один и тот же экземпляр каждый раз,
@@ -811,14 +811,14 @@ Properties Injection
     $requestService = $di->getService('request');
 
     // Изменение его определение
-    $requestService->setDefinition(function() {
+    $requestService->setDefinition(function () {
         return new Phalcon\Http\Request();
     });
 
     // Назначение его как "always shared"
     $requestService->setShared(true);
 
-    //Получение сервиса (возвращает экземпляр Phalcon\Http\Request)
+    // Получение сервиса (возвращает экземпляр Phalcon\Http\Request)
     $request = $requestService->resolve();
 
 Создание экземпляров классов через контейнер сервисов
@@ -831,14 +831,14 @@ Properties Injection
     <?php
 
     // Регистрация контроллера как сервиса
-    $di->set('IndexController', function() {
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     }, true);
 
     // Регистрация компонента как сервиса
-    $di->set('MyOtherComponent', function() {
-        //Actually returns another component
+    $di->set('MyOtherComponent', function () {
+        // Actually returns another component
         $component = new AnotherComponent();
         return $component;
     });
@@ -912,7 +912,7 @@ DI будет запускать правильный автозагрузчик
 
     <?php
 
-    $di->set('router', function() {
+    $di->set('router', function () {
         return include "../app/config/routes.php";
     });
 

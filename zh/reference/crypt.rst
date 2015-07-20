@@ -111,7 +111,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
 
         $crypt = new Crypt();
 

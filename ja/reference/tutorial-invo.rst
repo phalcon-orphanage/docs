@@ -47,7 +47,7 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
 
     <?php
 
-    //設定の読み込み
+    // 設定の読み込み
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
@@ -121,8 +121,8 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     <?php
 
-    //コンポーネントがsessionサービスを最初に要求した時に、セッションを開始する
-    $di->set('session', function() {
+    // コンポーネントがsessionサービスを最初に要求した時に、セッションを開始する
+    $di->set('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -155,7 +155,7 @@ FactoryDefault はフレームワークが標準的に提供しているコン�
     <?php
 
     // 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -205,13 +205,13 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
         {
             if ($this->request->isPost()) {
 
-                //POSTで送信された変数を受け取る
+                // POSTで送信された変数を受け取る
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //データベースからユーザーを検索
+                // データベースからユーザーを検索
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -222,7 +222,7 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
 
                     $this->flash->success('Welcome ' . $user->name);
 
-                    //ユーザーが有効なら、'invoices' コントローラーに転送する
+                    // ユーザーが有効なら、'invoices' コントローラーに転送する
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -232,7 +232,7 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
                 $this->flash->error('Wrong email/password');
             }
 
-            //ログインフォームへ再度転送
+            // ログインフォームへ再度転送
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -276,7 +276,7 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
         $dispatcher = new Phalcon\Mvc\Dispatcher();
         return $dispatcher;
     });
@@ -291,20 +291,20 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
 
-        //標準のイベントマネージャーをDIから取得
+        // 標準のイベントマネージャーをDIから取得
         $eventsManager = $di->getShared('eventsManager');
 
-        //Securityプラグインをインスタンス化
+        // Securityプラグインをインスタンス化
         $security = new Security($di);
 
-        //Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
+        // Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //イベントマネージャーをディスパッチャに束縛する
+        // イベントマネージャーをディスパッチャに束縛する
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -317,9 +317,9 @@ Securityプラグインは (app/plugins/Security.php) にあるクラスです�
     <?php
 
     use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+        Phalcon\Mvc\User\Plugin,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Acl;
 
     class Security extends Plugin
     {
@@ -342,9 +342,9 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
     <?php
 
     use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+        Phalcon\Mvc\User\Plugin,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Acl;
 
     class Security extends Plugin
     {
@@ -354,7 +354,7 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //ロールを定義するため、セッションに "auth" 変数があるかチェックする
+            // ロールを定義するため、セッションに "auth" 変数があるかチェックする
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -362,18 +362,18 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
                 $role = 'Users';
             }
 
-            //ディスパッチャからアクティブなコントローラー名とアクション名を取得する
+            // ディスパッチャからアクティブなコントローラー名とアクション名を取得する
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //ACLリストを取得
+            // ACLリストを取得
             $acl = $this->getAcl();
 
-            //ロールがコントローラー (又はリソース) にアクセス可能かチェックする
+            // ロールがコントローラー (又はリソース) にアクセス可能かチェックする
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Acl::ALLOW) {
 
-                //アクセス権が無い場合、indexコントローラーに転送する
+                // アクセス権が無い場合、indexコントローラーに転送する
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -382,7 +382,7 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
                     )
                 );
 
-                //"false" を返し、ディスパッチャーに現在の処理を停止させる
+                // "false" を返し、ディスパッチャーに現在の処理を停止させる
                 return false;
             }
 
@@ -398,14 +398,14 @@ ACLリストの提供
 
     <?php
 
-    //ACLオブジェクトを作る
+    // ACLオブジェクトを作る
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //デフォルトの挙動はDENY（拒否）
+    // デフォルトの挙動はDENY（拒否）
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //2つのロールを登録する
-    //ユーザーは登録済みユーザー、ゲストは未登録ユーザー
+    // 2つのロールを登録する
+    // ユーザーは登録済みユーザー、ゲストは未登録ユーザー
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -420,7 +420,7 @@ ACLリストの提供
 
     <?php
 
-    //プライベートエリアのリソース (バックエンド)
+    // プライベートエリアのリソース (バックエンド)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -431,7 +431,7 @@ ACLリストの提供
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //公開エリアのリソース (フロントエンド)
+    // 公開エリアのリソース (フロントエンド)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -448,14 +448,14 @@ ACLリストの提供
 
     <?php
 
-    //公開エリアのアクセス権をユーザーとゲストの双方に与える
+    // 公開エリアのアクセス権をユーザーとゲストの双方に与える
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //ユーザーにだけ、プライベートエリアへのアクセス権を与える
+    // ユーザーにだけ、プライベートエリアへのアクセス権を与える
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
@@ -481,12 +481,12 @@ ACLリストの提供
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -497,8 +497,8 @@ ACLリストの提供
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    // Register an user component
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -569,7 +569,7 @@ Each controller has the following actions:
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -578,7 +578,7 @@ Each controller has the following actions:
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -586,7 +586,7 @@ Each controller has the following actions:
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -594,7 +594,7 @@ Each controller has the following actions:
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -602,7 +602,7 @@ Each controller has the following actions:
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -610,7 +610,7 @@ Each controller has the following actions:
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -618,7 +618,7 @@ Each controller has the following actions:
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -679,12 +679,12 @@ we check it using the :doc:`Request <request>` component:
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            // create the query conditions
         } else {
-            //paginate using the existing conditions
+            // paginate using the existing conditions
         }
 
-        //...
+        // ...
 
     }
 
@@ -737,12 +737,12 @@ search returned results, then we create a paginator to navigate easily through t
     <?php
 
     $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    //Data to paginate
-        "limit" => 5,           //Rows per page
-        "page" => $numberPage   //Active page
+        "data" => $products,    // Data to paginate
+        "limit" => 5,           // Rows per page
+        "page" => $numberPage   // Active page
     ));
 
-    //Get active page in the paginator
+    // Get active page in the paginator
     $page = $paginator->getPaginate();
 
 Finally we pass the returned page to view:
@@ -794,7 +794,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
         $products->price = $this->request->getPost("price", "double");
         $products->active = $this->request->getPost("active");
 
-        //...
+        // ...
 
     }
 
@@ -813,11 +813,11 @@ When saving we'll know whether the data conforms to the business rules and valid
     public function createAction()
     {
 
-        //...
+        // ...
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            // The store failed, the following messages were produced
             foreach ($products->getMessages() as $message) {
                 $this->flash->error((string) $message);
             }
@@ -842,7 +842,7 @@ Now, in the case of product updating, first we must present to the user the data
     public function editAction($id)
     {
 
-        //...
+        // ...
 
         $product = Products::findFirstById($id);
 
@@ -867,9 +867,9 @@ the user can change any value and then sent it back to the database through to t
     public function saveAction()
     {
 
-        //...
+        // ...
 
-        //Find the product to update
+        // Find the product to update
         $id = $this->request->getPost("id");
         $product = Products::findFirstById($id);
         if (!$product) {
@@ -877,7 +877,7 @@ the user can change any value and then sent it back to the database through to t
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        // ... assign the values to the object and store it
 
     }
 
@@ -895,12 +895,12 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            // Set the document title
             $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -915,11 +915,11 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Prepend the application name to the title
             $this->tag->prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Finally, the title is printed in the main view (app/views/index.phtml):

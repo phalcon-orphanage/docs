@@ -237,7 +237,7 @@
 
         public function up()
         {
-            //...
+            // ...
             self::$_connection->insert(
                 "products",
                 array("Malabar spinach", 14.50),

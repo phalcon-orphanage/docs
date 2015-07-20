@@ -53,7 +53,7 @@ INVO a un fichier de configuration qui définit les paramètres génèraux de l'
 
     <?php
 
-    //Read the configuration
+    // Read the configuration
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` nous permet de manipuler le fichier comme un objet. Le fichier de configuration contient les paramètres suivants :
@@ -100,7 +100,7 @@ L'autoloader enregistre un ensemble de dossies où l'application va chercher les
             $config->application->modelsDir,
         )
     )->register();
-	
+    
 Notez que ce qu'il fait est d'enregistrer les dossiers qui sont définis dans le fichier de configuration.
 Le seul dossier qui n'est pas enregistré est viewsDir parce qu'il ne contient pas de classes mais des fichiers de type HTML + PHP.
 
@@ -117,7 +117,7 @@ cette classe initialise et exécute tous ce qui est nécessaire pour faire tourn
 
     echo $app->handle()->getContent();
 
-	
+    
 Injection de dépendances
 --------------------
 Regardez à la premiére ligne du code juste au dessus, la variable $app reçoit une autre variable $di dans son constructeur.
@@ -134,8 +134,8 @@ Par exemple, dans l'extrait suivant, le service de session est enregistré, la f
 
     <?php
 
-    //Start the session the first time when some component request the session service
-    $di->set('session', function() {
+    // Start the session the first time when some component request the session service
+    $di->set('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -174,7 +174,7 @@ Pour ce qui est de l'autoloader, on prends en paramètres les informations du fi
     <?php
 
     // Database connection is created based on the parameters defined in the configuration file
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -227,13 +227,13 @@ Le SessionController::startAction (app/controllers/SessionController.phtml) a po
         {
             if ($this->request->isPost()) {
 
-                //Receiving the variables sent by POST
+                // Receiving the variables sent by POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find for the user in the database
+                // Find for the user in the database
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -244,7 +244,7 @@ Le SessionController::startAction (app/controllers/SessionController.phtml) a po
 
                     $this->flash->success('Welcome ' . $user->name);
 
-                    //Forward to the 'invoices' controller if the user is valid
+                    // Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -254,7 +254,7 @@ Le SessionController::startAction (app/controllers/SessionController.phtml) a po
                 $this->flash->error('Wrong email/password');
             }
 
-            //Forward to the login form again
+            // Forward to the login form again
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -304,7 +304,7 @@ vérifier si l'utilisateur y a accès ou pas. Pour faire cela, nous avons rempla
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
         $dispatcher = new Phalcon\Mvc\Dispatcher();
         return $dispatcher;
     });
@@ -325,20 +325,20 @@ Le type d'évènement qui nous intéresse actuellement est le "dispatch", la cod
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
 
-        //Obtain the standard eventsManager from the DI
+        // Obtain the standard eventsManager from the DI
         $eventsManager = $di->getShared('eventsManager');
 
-        //Instantiate the Security plugin
+        // Instantiate the Security plugin
         $security = new Security($di);
 
-        //Listen for events produced in the dispatcher using the Security plugin
+        // Listen for events produced in the dispatcher using the Security plugin
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the Dispatcher
+        // Bind the EventsManager to the Dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -392,7 +392,7 @@ S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            // Check whether the "auth" variable exists in session to define the active role
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -400,18 +400,18 @@ S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            // Take the active controller/action from the dispatcher
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            // Obtain the ACL list
             $acl = $this->_getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            // Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Phalcon\Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                // If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -420,7 +420,7 @@ S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                // Returning "false" we tell to the dispatcher to stop the current operation
                 return false;
             }
 
@@ -438,14 +438,14 @@ implémentée dans Plugin. Maintenant nous allons expliquer étape par étape co
 
     <?php
 
-    //Create the ACL
+    // Create the ACL
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //The default action is DENY access
+    // The default action is DENY access
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Register two roles, Users is registered users
-    //and guests are users without a defined identity
+    // Register two roles, Users is registered users
+    // and guests are users without a defined identity
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -461,7 +461,7 @@ On défini les ressources pour chaque zone. Le nom des contrôleurs sont des res
 
     <?php
 
-    //Private area resources (backend)
+    // Private area resources (backend)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -472,7 +472,7 @@ On défini les ressources pour chaque zone. Le nom des contrôleurs sont des res
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    // Public area resources (frontend)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -491,14 +491,14 @@ backend et du frontend. Le rôle "Guest" en revanche n'a accès qu'à la partie 
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    // Grant access to public areas to both users and guests
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    // Grant access to private area only to role Users
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
@@ -527,12 +527,12 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -545,8 +545,8 @@ Maintenant enregistrons cette classe au conteneur de service :
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    // Register an user component
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -617,7 +617,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -626,7 +626,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -634,7 +634,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -642,7 +642,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -650,7 +650,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -658,7 +658,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -666,7 +666,7 @@ Chaque contrôleur a les actions suivantes :
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -730,12 +730,12 @@ Pour différencier la méthode (GET ou POST), nous utilisons le composant :doc:`
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            // create the query conditions
         } else {
-            //paginate using the existing conditions
+            // paginate using the existing conditions
         }
 
-        //...
+        // ...
 
     }
 
@@ -786,12 +786,12 @@ on créé un paginateur pour se déplacer à travers les pages facilement :
     <?php
 
     $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    //Data to paginate
-        "limit" => 5,           //Rows per page
-        "page" => $numberPage   //Active page
+        "data" => $products,    // Data to paginate
+        "limit" => 5,           // Rows per page
+        "page" => $numberPage   // Active page
     ));
 
-    //Get active page in the paginator
+    // Get active page in the paginator
     $page = $paginator->getPaginate();
 
 Enfin, on passe la page retournée à la vue:
@@ -843,7 +843,7 @@ Dans la page de création, on récupère les données envoyés et on leur assign
         $products->price = $this->request->getPost("price", "double");
         $products->active = $this->request->getPost("active");
 
-        //...
+        // ...
 
     }
 
@@ -862,11 +862,11 @@ Quand on sauvegarde, nous saurons si la donnée est conforme aux règles et vali
     public function createAction()
     {
 
-        //...
+        // ...
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            // The store failed, the following messages were produced
             foreach ($products->getMessages() as $message) {
                 $this->flash->error((string) $message);
             }
@@ -891,7 +891,7 @@ Maintenant, dans le cas de la modification de produit, on doit présenter les do
     public function editAction($id)
     {
 
-        //...
+        // ...
 
         $product = Products::findFirstById($id);
 
@@ -916,16 +916,16 @@ Grace à cela, l'utilisateur peut changer n'importe quelle valeur et ensuite env
     public function saveAction()
     {
 
-        //...
+        // ...
 
-        //Find the product to update
+        // Find the product to update
         $product = Products::findFirstById($this->request->getPost("id"));
         if (!$product) {
             $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        // ... assign the values to the object and store it
 
     }
 
@@ -943,12 +943,12 @@ Cela est réalisé dans l'"initializer" de chaque contrôleur.
 
         public function initialize()
         {
-            //Set the document title
+            // Set the document title
             Tag::setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -963,11 +963,11 @@ Notez que la méthode parent::initialize() est aussi appelée, cela ajoute plus 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Prepend the application name to the title
             Phalcon\Tag::prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Enfin, le titre est affiché dans la vue principale (app/views/index.phtml) :

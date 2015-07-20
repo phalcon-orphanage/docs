@@ -226,7 +226,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
     $success = $connection->execute($sql, array('Astroy Boy', 1952));
 
@@ -241,7 +241,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
     $success = $connection->execute($sql, array('Astroy Boy', 101));
 
@@ -257,7 +257,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "DELETE `robots` WHERE `id` = ?";
     $success = $connection->execute($sql, array(101));
 
@@ -288,7 +288,7 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Listen all the database events
+    // Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
@@ -298,7 +298,7 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
         "dbname" => "invo"
     ));
 
-    //Assign the eventsManager to the db adapter instance
+    // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
 
 Profiling SQL Statements
@@ -315,19 +315,19 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     $profiler = new \Phalcon\Db\Profiler();
 
-    //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+    // Listen all the database events
+    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
-            //Start a profile with the active connection
+            // Start a profile with the active connection
             $profiler->startProfile($connection->getSQLStatement());
         }
         if ($event->getType() == 'afterQuery') {
-            //Stop the active profile
+            // Stop the active profile
             $profiler->stopProfile();
         }
     });
 
-    //Assign the events manager to the connection
+    // Assign the events manager to the connection
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
@@ -375,13 +375,13 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
-    //Create a EventsManager
+    // Create a EventsManager
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Create a listener
+    // Create a listener
     $dbProfiler = new DbProfiler();
 
-    //Attach the listener listening for all database events
+    // Attach the listener listening for all database events
     $eventsManager->attach('db', $dbProfiler);
 
 
@@ -397,17 +397,17 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new \Phalcon\Logger\Adapter\File("app/logs/db.log");
 
-    //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
+    // Listen all the database events
+    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
         }
     });
 
-    //Assign the eventsManager to the db adapter instance
+    // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
 
-    //Execute some SQL statement
+    // Execute some SQL statement
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
@@ -634,7 +634,7 @@ Examples on dropping tables:
     // Drop table robot from active database
     $connection->dropTable("robots");
 
-    //Drop table robot from database "machines"
+    // Drop table robot from database "machines"
     $connection->dropTable("robots", "machines");
 
 .. _PDO: http://www.php.net/manual/en/book.pdo.php

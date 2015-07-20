@@ -172,7 +172,7 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
 
@@ -195,7 +195,7 @@ method 'onConstruct':
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -216,7 +216,7 @@ container in application. For example, if we have registered a service like this
 
     $di = new Phalcon\DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -232,19 +232,19 @@ Then, we can access to that service in several ways:
         public function saveAction()
         {
 
-            //Injecting the service by just accessing the property with the same name
+            // Injecting the service by just accessing the property with the same name
             $this->storage->save('/some/file');
 
-            //Accessing the service from the DI
+            // Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->getDi()->getStorage()->save('/some/file');
 
-            //Using the array-syntax
+            // Using the array-syntax
             $this->di['storage']->save('/some/file');
         }
 
@@ -340,14 +340,14 @@ any other class registered with its name can easily replace a controller:
 
     <?php
 
-    //Register a controller as a service
-    $di->set('IndexController', function() {
+    // Register a controller as a service
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-    //Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function() {
+    // Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });

@@ -120,13 +120,13 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient();
         return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
         return $mongo->selectDB("store");
     }, true);
@@ -384,8 +384,8 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     $eventsManager = new EventsManager();
 
-    //Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function($event, $robot) {
+    // Attach an anonymous function as a listener for "model" events
+    $eventsManager->attach('collection', function ($event, $robot) {
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
@@ -408,13 +408,13 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    //Registering the collectionManager service
-    $di->set('collectionManager', function() {
+    // Registering the collectionManager service
+    $di->set('collectionManager', function () {
 
         $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('collection', function($event, $model) {
+        $eventsManager->attach('collection', function ($event, $model) {
             if (get_class($model) == 'Robots') {
                 if ($event->getType() == 'beforeSave') {
                     if ($model->name == 'Scooby Doo') {
@@ -687,13 +687,13 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
     <?php
 
     // This service returns a mongo database at 192.168.1.100
-    $di->set('mongo1', function() {
+    $di->set('mongo1', function () {
         $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
         return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
-    $di->set('mongo2', function() {
+    $di->set('mongo2', function () {
         $mongo = new MongoClient("mongodb://localhost");
         return $mongo->selectDB("invoicing");
     }, true);
@@ -735,7 +735,7 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
             $flash = $this->getDI()->getShared('flash');
 
             // Show validation messages
-            foreach ($this->getMessages() as $message){
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

@@ -18,13 +18,13 @@ accessed:
     {
         public function loginAction()
         {
-            //Check if the cookie has previously set
+            // Check if the cookie has previously set
             if ($this->cookies->has('remember-me')) {
 
-                //Get the cookie
+                // Get the cookie
                 $rememberMe = $this->cookies->get('remember-me');
 
-                //Get the cookie's value
+                // Get the cookie's value
                 $value = $rememberMe->getValue();
 
             }
@@ -54,7 +54,7 @@ You can disable encryption in the following way:
 
     <?php
 
-    $di->set('cookies', function() {
+    $di->set('cookies', function () {
         $cookies = new Phalcon\Http\Response\Cookies();
         $cookies->useEncryption(false);
         return $cookies;
@@ -66,9 +66,9 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
     <?php
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
         $crypt = new Phalcon\Crypt();
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); //Use your own key!
+        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
         return $crypt;
     });
 

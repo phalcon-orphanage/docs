@@ -93,22 +93,22 @@ A reflector is implemented to easily get the annotations defined on a class usin
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //Reflect the annotations in the class Example
+    // Reflect the annotations in the class Example
     $reflector = $reader->get('Example');
 
-    //Read the annotations in the class' docblock
+    // Read the annotations in the class' docblock
     $annotations = $reflector->getClassAnnotations();
 
-    //Traverse the annotations
+    // Traverse the annotations
     foreach ($annotations as $annotation) {
 
-        //Print the annotation name
+        // Print the annotation name
         echo $annotation->getName(), PHP_EOL;
 
-        //Print the number of arguments
+        // Print the number of arguments
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //Print the arguments
+        // Print the arguments
         print_r($annotation->getArguments());
     }
 
@@ -186,11 +186,11 @@ to be notified when a route is executed:
 
     <?php
 
-    $di['dispatcher'] = function() {
+    $di['dispatcher'] = function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach the plugin to 'dispatch' events
+        // Attach the plugin to 'dispatch' events
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -218,29 +218,29 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //Parse the annotations in the method currently executed
+            // Parse the annotations in the method currently executed
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //Check if the method has an annotation 'Cache'
+            // Check if the method has an annotation 'Cache'
             if ($annotations->has('Cache')) {
 
-                //The method has the annotation 'Cache'
+                // The method has the annotation 'Cache'
                 $annotation = $annotations->get('Cache');
 
-                //Get the lifetime
+                // Get the lifetime
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //Check if there is an user defined cache key
+                // Check if there is an user defined cache key
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //Enable the cache for the current method
+                // Enable the cache for the current method
                 $this->view->cache($options);
             }
 

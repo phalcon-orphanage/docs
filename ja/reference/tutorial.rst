@@ -93,36 +93,36 @@ tutorial/public/index.php は次のようになります。
 
     try {
 
-        //オートローダにディレクトリを登録する
+        // オートローダにディレクトリを登録する
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //DIコンテナを作る
+        // DIコンテナを作る
         $di = new Phalcon\DI\FactoryDefault();
 
-        //ビューのコンポーネントの組み立て
-        $di->set('view', function(){
+        // ビューのコンポーネントの組み立て
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
         
-        //ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
-        $di->set('url', function(){
+        // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });        
 
-        //リクエストを処理する
+        // リクエストを処理する
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -154,7 +154,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    //Create a DI
+    // Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` は Phalcon\\DI の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
@@ -167,8 +167,8 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    //Setup the view component
-    $di->set('view', function(){
+    // Setup the view component
+    $di->set('view', function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -180,8 +180,8 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set('url', function () {
         $url = new \Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
@@ -387,18 +387,18 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
     try {
 
-        //Register an autoloader
+        // Register an autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //データベースサービスのセットアップ
-        $di->set('db', function(){
+        // データベースサービスのセットアップ
+        $di->set('db', function () {
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
@@ -407,26 +407,26 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
             ));
         });
 
-        //Setup the view component
-        $di->set('view', function(){
+        // Setup the view component
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
         
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });       
 
-        //Handle the request
+        // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -453,7 +453,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
             $user = new Users();
 
-            //データを保存し、エラーをチェックする
+            // データを保存し、エラーをチェックする
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {

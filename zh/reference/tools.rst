@@ -74,7 +74,7 @@ Usage:
   project [name] [type] [directory] [enable-webtools]
 
 Arguments: 参数
-  help	Shows this help text  显示此帮助信息
+  help    Shows this help text  显示此帮助信息
 
 Example 例子
   phalcon project store simple

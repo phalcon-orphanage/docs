@@ -39,7 +39,7 @@ call whenever this piece of code is called.
 
     <?php
 
-    //Create an Output frontend. Cache the files for 2 days
+    // Create an Output frontend. Cache the files for 2 days
     $frontCache = new Phalcon\Cache\Frontend\Output(array(
         "lifetime" => 172800
     ));
@@ -57,10 +57,10 @@ call whenever this piece of code is called.
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
 
-        //Print date and time
+        // Print date and time
         echo date("r");
 
-        //Generate a link to the sign-up action
+        // Generate a link to the sign-up action
         echo Phalcon\Tag::linkTo(
             array(
                 "user/signup",
@@ -134,7 +134,7 @@ The above example changes slightly (especially in terms of configuration) when w
 
     <?php
 
-    //Cache data for one hour
+    // Cache data for one hour
     $frontCache = new Phalcon\Cache\Frontend\Data(array(
         "lifetime" => 3600
     ));
@@ -142,13 +142,13 @@ The above example changes slightly (especially in terms of configuration) when w
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new Phalcon\Cache\Backend\Libmemcached($frontCache, array(
-	"servers" => array(
-		array(
-			"host" => "127.0.0.1",
-			"port" => "11211",
-			"weight" => "1"
-		)
-	)
+    "servers" => array(
+        array(
+            "host" => "127.0.0.1",
+            "port" => "11211",
+            "weight" => "1"
+        )
+    )
     ));
 
     // Try to get cached records
@@ -195,7 +195,7 @@ If you want to know which keys are stored in the cache you could call the queryK
         echo "Key=", $key, " Data=", $data;
     }
 
-    //Query keys in the cache that begins with "my-prefix"
+    // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
 
 
@@ -245,7 +245,7 @@ Setting the lifetime when retrieving:
 
     $cacheKey = 'my.cache';
 
-    //Setting the cache when getting a result
+    // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
     if ($robots === null) {
 
@@ -268,7 +268,7 @@ Setting the lifetime when saving:
 
         $robots = "some robots";
 
-        //Setting the cache when saving data
+        // Setting the cache when saving data
         $cache->save($cacheKey, $robots, 3600);
     }
 
@@ -300,7 +300,7 @@ the faster adapter and ending with the slowest one until the data expire​s​:
         "lifetime" => 604800
     ));
 
-    //Backends are registered from the fastest to the slower
+    // Backends are registered from the fastest to the slower
     $cache = new Multiple(array(
         new ApcCache($ultraFastFrontend, array(
             "prefix" => 'cache',
@@ -316,7 +316,7 @@ the faster adapter and ending with the slowest one until the data expire​s​:
         ))
     ));
 
-    //Save, saves in every backend
+    // Save, saves in every backend
     $cache->save('my-key', $data);
 
 Frontend Adapters

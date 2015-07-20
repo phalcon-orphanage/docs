@@ -169,7 +169,7 @@
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
 
@@ -192,7 +192,7 @@
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -212,7 +212,7 @@
 
     $di = new Phalcon\DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -337,13 +337,13 @@
     <?php
 
     // Регистрация контроллера как сервиса
-    $di->set('IndexController', function() {
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
     // Регистрация контроллера из пространства имен в качестве сервиса
-    $di->set('Backend\Controllers\IndexController', function() {
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });

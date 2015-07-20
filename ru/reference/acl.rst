@@ -132,7 +132,7 @@
 
         $acl = new \Phalcon\Acl\Adapter\Memory();
 
-        //... Определяем роли, ресурсы, доступ и т.д.
+        // ... Определяем роли, ресурсы, доступ и т.д.
 
         // Сохраняем сериализованный объект в файл
         file_put_contents("app/security/acl.data", serialize($acl));
@@ -174,7 +174,7 @@
     $eventsManager = new Phalcon\Events\Manager();
 
     // Прикрепляем слушателя (функцию/callback) к типу "acl"
-    $eventsManager->attach("acl", function($event, $acl) {
+    $eventsManager->attach("acl", function ($event, $acl) {
         if ($event->getType() == 'beforeCheckAccess') {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
@@ -185,7 +185,7 @@
     $acl = new \Phalcon\Acl\Adapter\Memory();
 
     // Настраиваем $acl
-    //...
+    // ...
 
     // Присваиваем менеджера событий к компоненту ACL
     $acl->setEventsManager($eventManagers);

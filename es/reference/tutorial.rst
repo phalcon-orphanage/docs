@@ -99,29 +99,29 @@ El archivo public/index.php debería verse así:
 
     try {
 
-        //Registrar un autocargador
+        // Registrar un autocargador
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Crear un Inyector de dependencias
+        // Crear un Inyector de dependencias
         $di = new \Phalcon\DI\FactoryDefault();
 
-        //Configurar el componente de vistas
-        $di->set('view', function(){
+        // Configurar el componente de vistas
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
-        //Atender la petición
+        // Atender la petición
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -159,7 +159,7 @@ de los diferentes componentes logrando que trabajen juntos de manera transparent
 
     <?php
 
-    //Crear un DI
+    // Crear un DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` es una variante de Phalcon\\DI.
@@ -175,8 +175,8 @@ Los servicios pueden ser registrados de muchas maneras, para nuestro tutorial us
 
     <?php
 
-    //Configurar el componente de vistas
-    $di->set('view', function(){
+    // Configurar el componente de vistas
+    $di->set('view', function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -403,18 +403,18 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
 
     try {
 
-        //Registrar un autoloader
+        // Registrar un autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Crear un DI
+        // Crear un DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Establecer el servicio de base de datos
-        $di->set('db', function(){
+        // Establecer el servicio de base de datos
+        $di->set('db', function () {
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
@@ -423,19 +423,19 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
             ));
         });
 
-        //Establecer el servicio de vistas
-        $di->set('view', function(){
+        // Establecer el servicio de vistas
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
-        //Atender la petición
+        // Atender la petición
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
          echo "Phalcon Exception: ", $e->getMessage();
     }
 
@@ -462,7 +462,7 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
             $user = new Users();
 
-            //Almacenar y verificar errores de validación
+            // Almacenar y verificar errores de validación
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {

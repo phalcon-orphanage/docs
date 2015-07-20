@@ -40,7 +40,7 @@ Each controller has the following actions:
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -49,7 +49,7 @@ Each controller has the following actions:
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -57,7 +57,7 @@ Each controller has the following actions:
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -65,7 +65,7 @@ Each controller has the following actions:
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -73,7 +73,7 @@ Each controller has the following actions:
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -81,7 +81,7 @@ Each controller has the following actions:
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -89,7 +89,7 @@ Each controller has the following actions:
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -312,12 +312,12 @@ we check it using the :doc:`Request <request>` component:
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            // create the query conditions
         } else {
-            //paginate using the existing conditions
+            // paginate using the existing conditions
         }
 
-        //...
+        // ...
 
     }
 

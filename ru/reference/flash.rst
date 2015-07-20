@@ -26,7 +26,7 @@
     <?php
 
     // Устанавливаем сервис
-    $di->set('flash', function() {
+    $di->set('flash', function () {
         return new \Phalcon\Flash\Direct();
     });
 
@@ -89,7 +89,7 @@
     <?php
 
     // Регистрируем компонент сообщений с CSS классами
-    $di->set('flash', function(){
+    $di->set('flash', function () {
         $flash = new \Phalcon\Flash\Direct(array(
             'error' => 'alert alert-error',
             'success' => 'alert alert-success',

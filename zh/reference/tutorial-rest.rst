@@ -63,7 +63,7 @@ Then, in the index.php file we create the following:
 
     $app = new Micro();
 
-    //define the routes here
+    // define the routes here
 
     $app->handle();
 
@@ -77,33 +77,33 @@ Now we will create the routes as we defined above:
 
     $app = new Micro();
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() {
+    // Retrieves all robots
+    $app->get('/api/robots', function () {
 
     });
 
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
-    //Adds a new robot
-    $app->post('/api/robots', function() {
+    // Adds a new robot
+    $app->post('/api/robots', function () {
 
     });
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function () {
 
     });
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -136,7 +136,7 @@ application:
 
         public function validation()
         {
-            //Type must be: droid, mechanical or virtual
+            // Type must be: droid, mechanical or virtual
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
@@ -144,7 +144,7 @@ application:
                 )
             ));
 
-            //Robot name must be unique
+            // Robot name must be unique
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
@@ -152,12 +152,12 @@ application:
                 )
             ));
 
-            //Year cannot be less than zero
+            // Year cannot be less than zero
             if ($this->year < 0) {
                 $this->appendMessage(new Message("The year cannot be less than zero"));
             }
 
-            //Check if any messages have been produced
+            // Check if any messages have been produced
             if ($this->validationHasFailed() == true) {
                 return false;
             }
@@ -185,8 +185,8 @@ Now, we must set up a connection to be used by this model and load it within our
 
     $di = new FactoryDefault();
 
-    //Set up the database service
-    $di->set('db', function(){
+    // Set up the database service
+    $di->set('db', function () {
         return new PdoMysql(array(
             "host"      => "localhost",
             "username"  => "asimov",
@@ -195,7 +195,7 @@ Now, we must set up a connection to be used by this model and load it within our
         ));
     });
 
-    //Create and bind the DI to the application
+    // Create and bind the DI to the application
     $app = new Micro($di);
 
 检索数据（Retrieving Data）
@@ -207,8 +207,8 @@ perform this simple query returning the results as JSON:
 
     <?php
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() use ($app) {
+    // Retrieves all robots
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
@@ -234,8 +234,8 @@ The searching by name handler would look like:
 
     <?php
 
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
@@ -262,15 +262,15 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
 
     use Phalcon\Http\Response;
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ))->getFirst();
 
-        //Create a response
+        // Create a response
         $response = new Response();
 
         if ($robot == false) {
@@ -298,8 +298,8 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
     use Phalcon\Http\Response;
 
-    //Adds a new robot
-    $app->post('/api/robots', function() use ($app) {
+    // Adds a new robot
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -311,13 +311,13 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
-        //Create a response
+        // Create a response
         $response = new Response();
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(201, "Created");
 
             $robot->id = $status->getModel()->id;
@@ -326,10 +326,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
-            //Send errors to the client
+            // Send errors to the client
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
@@ -351,8 +351,8 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
     use Phalcon\Http\Response;
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -364,15 +364,15 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
-        //Create a response
+        // Create a response
         $response = new Response();
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -396,22 +396,22 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
     use Phalcon\Http\Response;
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
 
-        //Create a response
+        // Create a response
         $response = new Response();
 
         if ($status->success() == true) {
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();

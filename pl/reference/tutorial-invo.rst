@@ -56,7 +56,7 @@ of the bootstrap file (public/index.php):
 
     <?php
 
-    //Read the configuration
+    // Read the configuration
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
@@ -140,8 +140,8 @@ called when the application requires access to the session data:
 
     <?php
 
-    //Start the session the first time a component requests the session service
-    $di->set('session', function() {
+    // Start the session the first time a component requests the session service
+    $di->set('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -184,7 +184,7 @@ again taking parameters from the configuration file in order to configure a serv
     <?php
 
     // Database connection is created based on parameters defined in the configuration file
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -237,13 +237,13 @@ data entered in the form including checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Receiving the variables sent by POST
+                // Receiving the variables sent by POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find the user in the database
+                // Find the user in the database
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -254,7 +254,7 @@ data entered in the form including checking for a valid user in the database:
 
                     $this->flash->success('Welcome ' . $user->name);
 
-                    //Forward to the 'invoices' controller if the user is valid
+                    // Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -264,7 +264,7 @@ data entered in the form including checking for a valid user in the database:
                 $this->flash->error('Wrong email/password');
             }
 
-            //Forward to the login form again
+            // Forward to the login form again
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -319,7 +319,7 @@ replaced the component by creating a function in the bootstrap:
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
         $dispatcher = new Phalcon\Mvc\Dispatcher();
         return $dispatcher;
     });
@@ -338,20 +338,20 @@ interests us now is "dispatch". The following code filters all events produced b
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
 
-        //Obtain the standard eventsManager from the DI
+        // Obtain the standard eventsManager from the DI
         $eventsManager = $di->getShared('eventsManager');
 
-        //Instantiate the Security plugin
+        // Instantiate the Security plugin
         $security = new Security($di);
 
-        //Listen for events produced in the dispatcher using the Security plugin
+        // Listen for events produced in the dispatcher using the Security plugin
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the Dispatcher
+        // Bind the EventsManager to the Dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -365,9 +365,9 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
     <?php
 
     use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+        Phalcon\Mvc\User\Plugin,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Acl;
 
     class Security extends Plugin
     {
@@ -394,9 +394,9 @@ If the user does not have access we redirect to the home screen as explained bef
     <?php
 
     use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+        Phalcon\Mvc\User\Plugin,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Acl;
 
     class Security extends Plugin
     {
@@ -406,7 +406,7 @@ If the user does not have access we redirect to the home screen as explained bef
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            // Check whether the "auth" variable exists in session to define the active role
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -414,18 +414,18 @@ If the user does not have access we redirect to the home screen as explained bef
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            // Take the active controller/action from the dispatcher
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            // Obtain the ACL list
             $acl = $this->getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            // Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                // If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -434,7 +434,7 @@ If the user does not have access we redirect to the home screen as explained bef
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                // Returning "false" we tell to the dispatcher to stop the current operation
                 return false;
             }
 
@@ -451,14 +451,14 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
 
     <?php
 
-    //Create the ACL
+    // Create the ACL
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //The default action is DENY access
+    // The default action is DENY access
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Register two roles, Users is registered users
-    //and guests are users without a defined identity
+    // Register two roles, Users is registered users
+    // and guests are users without a defined identity
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -474,7 +474,7 @@ accesses for the resources:
 
     <?php
 
-    //Private area resources (backend)
+    // Private area resources (backend)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -485,7 +485,7 @@ accesses for the resources:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    // Public area resources (frontend)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -503,14 +503,14 @@ all the resources of both frontend and backend. The role "Guests" only has acces
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    // Grant access to public areas to both users and guests
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    // Grant access to private area only to role Users
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
@@ -538,12 +538,12 @@ This part of the application is implemented in the component "Elements" (app/lib
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -555,8 +555,8 @@ it helps to get access more quickly to the application services. Now, we registe
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    // Register an user component
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -627,7 +627,7 @@ Each controller has the following actions:
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -636,7 +636,7 @@ Each controller has the following actions:
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -644,7 +644,7 @@ Each controller has the following actions:
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -652,7 +652,7 @@ Each controller has the following actions:
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -660,7 +660,7 @@ Each controller has the following actions:
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -668,7 +668,7 @@ Each controller has the following actions:
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -676,7 +676,7 @@ Each controller has the following actions:
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -737,12 +737,12 @@ we check it using the :doc:`Request <request>` component:
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            // create the query conditions
         } else {
-            //paginate using the existing conditions
+            // paginate using the existing conditions
         }
 
-        //...
+        // ...
 
     }
 
@@ -795,12 +795,12 @@ search returned results, then we create a paginator to navigate easily through t
     <?php
 
     $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    //Data to paginate
-        "limit" => 5,           //Rows per page
-        "page" => $numberPage   //Active page
+        "data" => $products,    // Data to paginate
+        "limit" => 5,           // Rows per page
+        "page" => $numberPage   // Active page
     ));
 
-    //Get active page in the paginator
+    // Get active page in the paginator
     $page = $paginator->getPaginate();
 
 Finally we pass the returned page to view:
@@ -852,7 +852,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
         $products->price = $this->request->getPost("price", "double");
         $products->active = $this->request->getPost("active");
 
-        //...
+        // ...
 
     }
 
@@ -871,11 +871,11 @@ When saving we'll know whether the data conforms to the business rules and valid
     public function createAction()
     {
 
-        //...
+        // ...
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            // The store failed, the following messages were produced
             foreach ($products->getMessages() as $message) {
                 $this->flash->error((string) $message);
             }
@@ -900,7 +900,7 @@ Now, in the case of product updating, first we must present to the user the data
     public function editAction($id)
     {
 
-        //...
+        // ...
 
         $product = Products::findFirstById($id);
 
@@ -925,9 +925,9 @@ the user can change any value and then sent it back to the database through to t
     public function saveAction()
     {
 
-        //...
+        // ...
 
-        //Find the product to update
+        // Find the product to update
         $id = $this->request->getPost("id");
         $product = Products::findFirstById($id);
         if (!$product) {
@@ -935,7 +935,7 @@ the user can change any value and then sent it back to the database through to t
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        // ... assign the values to the object and store it
 
     }
 
@@ -953,12 +953,12 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            // Set the document title
             $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -973,11 +973,11 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Prepend the application name to the title
             $this->tag->prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Finally, the title is printed in the main view (app/views/index.phtml):

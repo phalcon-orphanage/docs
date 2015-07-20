@@ -554,18 +554,18 @@ Javascript
 
     class MyTags extends \Phalcon\Tag
     {
-        //...
+        // ...
 
         // Создаем новый хелпер
         static public function myAmazingHelper($parameters)
         {
-            //...
+            // ...
         }
 
         // Переопределяем уже существующий метод
         static public function textField($parameters)
         {
-            //...
+            // ...
         }
     }
 
@@ -575,7 +575,7 @@ Javascript
 
     <?php
 
-    $di['tag'] = function() {
+    $di['tag'] = function () {
         return new MyTags();
     };
 

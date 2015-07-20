@@ -20,9 +20,9 @@ Phalcon主要使用这个异常类来包装这些功能，以方便开发者或�
 
     try {
 
-        //... some phalcon/php code
+        // ... some phalcon/php code
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -64,9 +64,9 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
 
     try {
 
-        //... app code ...
+        // ... app code ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";

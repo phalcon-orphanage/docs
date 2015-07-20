@@ -28,7 +28,7 @@ the end of the paths.
     // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
-    //Register some namespaces
+    // Register some namespaces
     $loader->registerNamespaces(
         array(
            "Example\Base"    => "vendor/example/base/",
@@ -57,7 +57,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
     // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
-    //Register some prefixes
+    // Register some prefixes
     $loader->registerPrefixes(
         array(
            "Example_Base"    => "vendor/example/base/",
@@ -146,7 +146,7 @@ are using additional extensions you could set it with the method "setExtensions"
      // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
-    //Set file extensions to check
+    // Set file extensions to check
     $loader->setExtensions(array("php", "inc", "phb"));
 
 Modifying current strategies
@@ -186,8 +186,8 @@ In the following example, the EventsManager is working with the class loader, al
        'Example' => 'vendor/example/'
     ));
 
-    //Listen all the loader events
-    $eventsManager->attach('loader', function($event, $loader) {
+    // Listen all the loader events
+    $eventsManager->attach('loader', function ($event, $loader) {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();
         }

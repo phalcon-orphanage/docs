@@ -28,7 +28,7 @@
     use Phalcon\Flash\Direct as FlashDirect;
 
     // 建立flash服务
-    $di->set('flash', function() {
+    $di->set('flash', function () {
         return new FlashDirect();
     });
 
@@ -92,8 +92,8 @@
 
     <?php
 
-    //利用自定义的CSS类来注册flash服务
-    $di->set('flash', function(){
+    // 利用自定义的CSS类来注册flash服务
+    $di->set('flash', function () {
         $flash = new FlashDirect(array(
             'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',

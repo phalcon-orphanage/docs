@@ -52,7 +52,7 @@ Additional options as time to run, priority and delay could be passed as second 
 
     <?php
 
-    //Insert the job in the queue with options
+    // Insert the job in the queue with options
     $queue->put(
         array('processVideo' => 4871),
         array('priority' => 250, 'delay' => 10, 'ttr' => 3600)
