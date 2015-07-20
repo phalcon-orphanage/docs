@@ -6,7 +6,7 @@ capable of produce independent URLs based on routes.
 
 Setting a base URI
 ------------------
-Dependending of which directory of your document root your application is installed, it may have a base URI or not.
+Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
 For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
 baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
