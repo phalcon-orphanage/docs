@@ -907,7 +907,7 @@ URIのソース
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Name         | Description                                                                                       | Usage                                                              |
 +==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+

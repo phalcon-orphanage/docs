@@ -279,7 +279,7 @@ individually. To tell the collection that all resources must be joined you can u
     $js->setTargetUri('production/final.js');
 
 If resources are going to be joined, we need also to define which file will be used to store the resources
-and which uri will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
+and which URI will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
 
 Built-In Filters
 ^^^^^^^^^^^^^^^^

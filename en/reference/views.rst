@@ -862,7 +862,7 @@ Injecting services in View
 Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
 to the application's service container.
 
-The following example shows how to write a jQuery `ajax request`_ using a url with the framework conventions.
+The following example shows how to write a jQuery `ajax request`_ using a URL with the framework conventions.
 The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
 
 .. code-block:: html+php

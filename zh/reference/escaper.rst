@@ -128,7 +128,7 @@ CSS标识/值也可以进行转义:
 
 .. code-block:: html
 
-    <a style="color: Escape unstrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">Some link</a>
 
 这里我们使用escapeCss方法进行转义：
 

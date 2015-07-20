@@ -2225,7 +2225,7 @@ Note that you need to specify the deleted condition in your queries to effective
 Creating your own behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+Also, Phalcon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blamable behavior which helps identify the user
 that is performed operations over a model:
@@ -3264,7 +3264,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getFlash();
 
             //Show validation messages
-            foreach ($this->getMesages() as $message) {
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

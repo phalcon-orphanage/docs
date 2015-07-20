@@ -165,7 +165,7 @@ the required components:
     // ...
 
     /**
-     * The URL component is used to generate all kind of urls in the application
+     * The URL component is used to generate all kind of URLs in the application
      */
     $di->set('url', function() use ($config){
         $url = new UrlProvider();

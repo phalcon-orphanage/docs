@@ -704,7 +704,7 @@ this class looks like:
     {
 
         /**
-         * The execute method is overrided
+         * The execute method is overridden
          */
         public function execute($params=null, $types=null)
         {

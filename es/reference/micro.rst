@@ -222,7 +222,7 @@ by this way the "url" service can produce the corresponding URL:
 
     })->setName('show-post');
 
-    //produce a url somewhere
+    //produce a URL somewhere
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(

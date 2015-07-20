@@ -96,7 +96,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 .. code-block:: bash
 
-    cd cphalon/build
+    cd cphalcon/build
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe

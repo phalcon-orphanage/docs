@@ -242,7 +242,7 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     })->setName('show-post');
 
-    //produce an URL somewhere
+    //produce a URL somewhere
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(

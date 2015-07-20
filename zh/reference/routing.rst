@@ -928,7 +928,7 @@ you can write the routes directly in the controllers instead of adding them in t
         //Use the annotations router
         $router = new RouterAnnotations(false);
 
-        //Read the annotations from ProductsController if the uri starts with /api/products
+        //Read the annotations from ProductsController if the URI starts with /api/products
         $router->addResource('Products', '/api/products');
 
         return $router;
@@ -991,7 +991,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Name         | Description                                                                                       | Usage                                                              |
 +==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -1033,7 +1033,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
         //Use the annotations router
         $router = new RouterAnnotations(false);
 
-        //Read the annotations from Backend\Controllers\ProductsController if the uri starts with /api/products
+        //Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;

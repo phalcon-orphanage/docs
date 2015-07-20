@@ -129,7 +129,7 @@ CSS identifiers/values can be escaped too:
 
 .. code-block:: html
 
-    <a style="color: Escape unstrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">Some link</a>
 
 You can escape an HTML attribute by using the escapeCss method:
 
