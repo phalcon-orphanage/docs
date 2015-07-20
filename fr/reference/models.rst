@@ -3264,7 +3264,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getFlash();
 
             //Show validation messages
-            foreach ($this->getMesages() as $message) {
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

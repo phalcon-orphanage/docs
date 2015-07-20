@@ -3309,7 +3309,7 @@ ORM так же обеспечивает  устройство горизонт�
             $flash = $this->getDI()->getFlash();
 
             // Показать сообщения проверки
-            foreach ($this->getMesages() as $message) {
+            foreach ($this->getMessages() as $message) {
                 $flash->error($message);
             }
         }
