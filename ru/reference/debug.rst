@@ -22,9 +22,9 @@ PHP предлагает набор инструментов для отладк
 
     try {
 
-        //... какой-то код phalcon/php
+        // ... какой-то код phalcon/php
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -68,9 +68,9 @@ PHP класса `Exception class`_ и используется, чтобы по
 
     try {
 
-        //... код приложения ...
+        // ... код приложения ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";

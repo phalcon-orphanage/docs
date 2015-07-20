@@ -35,7 +35,7 @@ This component gives you the ability to use this algorithm in a simple way:
 
             $user->login = $login;
 
-            //Store the password hashed
+            // Store the password hashed
             $user->password = $this->security->hash($password);
 
             $user->save();
@@ -64,11 +64,11 @@ its encryption will be slow. We can check if the password is correct as follows:
             $user = Users::findFirstByLogin($login);
             if ($user) {
                 if ($this->security->checkHash($password, $user->password)) {
-                    //The password is valid
+                    // The password is valid
                 }
             }
 
-            //The validation has failed
+            // The validation has failed
         }
 
     }
@@ -110,7 +110,7 @@ Then in the controller's action you can check if the CSRF token is valid:
         {
             if ($this->request->isPost()) {
                 if ($this->security->checkToken()) {
-                    //The token is ok
+                    // The token is ok
                 }
             }
         }
@@ -121,7 +121,7 @@ Remember to add a session adapter to your Dependency Injector, otherwise the tok
 
 .. code-block:: php
 
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -138,11 +138,11 @@ to setup it's options:
 
     <?php
 
-    $di->set('security', function(){
+    $di->set('security', function () {
 
         $security = new Phalcon\Security();
 
-        //Set the password hashing factor to 12 rounds
+        // Set the password hashing factor to 12 rounds
         $security->setWorkFactor(12);
 
         return $security;

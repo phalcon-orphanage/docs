@@ -116,14 +116,14 @@ The tutorial/public/index.php file should look like:
         $di = new FactoryDefault();
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
@@ -195,7 +195,7 @@ Services can be registered in several ways, but for our tutorial we'll use an `a
     // ...
 
     // Setup the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -214,7 +214,7 @@ to generate a hyperlink.
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    $di->set('url', function () {
         $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
@@ -459,7 +459,7 @@ In order to be able to use a database connection and subsequently access data th
         $di = new FactoryDefault();
 
         // Setup the database service
-        $di->set('db', function(){
+        $di->set('db', function () {
             return new DbAdapter(array(
                 "host"     => "localhost",
                 "username" => "root",
@@ -469,20 +469,20 @@ In order to be able to use a database connection and subsequently access data th
         });
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
-        //Handle the request
+        // Handle the request
         $application = new Application($di);
 
         echo $application->handle()->getContent();
@@ -516,7 +516,7 @@ Receiving data from the form and storing them in the table is the next step.
 
             $user = new Users();
 
-            //Store and check for errors
+            // Store and check for errors
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {

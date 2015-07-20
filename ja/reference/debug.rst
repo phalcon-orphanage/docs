@@ -21,9 +21,9 @@ Throughout the tutorials and examples of the Phalcon documentation, there is a c
 
     try {
 
-        //... some phalcon/php code
+        // ... some phalcon/php code
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -67,9 +67,9 @@ Retrieving information from :doc:`Phalcon\\Exception <../api/Phalcon_Exception>`
 
     try {
 
-        //... app code ...
+        // ... app code ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";

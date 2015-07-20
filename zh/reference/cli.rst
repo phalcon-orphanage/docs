@@ -45,7 +45,7 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
     $loader->register();
 
     // 加载配置文件（如果存在）
-    if(is_readable(APPLICATION_PATH . '/config/config.php')) {
+    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
     }
@@ -58,8 +58,8 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
      * 处理console应用参数
      */
     $arguments = array();
-    foreach($argv as $k => $arg) {
-        if($k == 1) {
+    foreach ($argv as $k => $arg) {
+        if ($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;

@@ -110,11 +110,11 @@ From a controller or a view, it's easy create/execute them using a injected :doc
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars = $query->execute();
 
-    //With bound parameters
+    // With bound parameters
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars = $query->execute(array(
         'name' => 'Audi'
@@ -126,10 +126,10 @@ Or simply execute it:
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Executing with bound parameters
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
@@ -550,7 +550,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {

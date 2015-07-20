@@ -19,12 +19,12 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         public function index()
         {
 
-            //CSSのローカルリソースを追加します
+            // CSSのローカルリソースを追加します
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            //JavaScriptのローカルリソースを追加します
+            // JavaScriptのローカルリソースを追加します
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -59,7 +59,7 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     <?php
 
-    //Add some local CSS resources
+    // Add some local CSS resources
     $this->assets
         ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
         ->addCss('css/style.css', true);
@@ -72,13 +72,13 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     <?php
 
-    //ヘッダーのJavaScript
+    // ヘッダーのJavaScript
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    //フッターのJavaScript
+    // フッターのJavaScript
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -145,29 +145,29 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
     $manager
 
-        //これらのJavaScriptはページ下部に配置されます
+        // これらのJavaScriptはページ下部に配置されます
         ->collection('jsFooter')
 
-        //最終的に出力されるファイル名
+        // 最終的に出力されるファイル名
         ->setTargetPath('final.js')
 
-        //このURIで生成されたscriptタグ
+        // このURIで生成されたscriptタグ
         ->setTargetUri('production/final.js')
 
-        //これはフィルタリングを必要としないリモートリソースです
+        // これはフィルタリングを必要としないリモートリソースです
         ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
 
-        //これらはフィルタリングを必要とするローカルリソースです
+        // これらはフィルタリングを必要とするローカルリソースです
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //全てのリソースを1つのファイルに結合します
+        // 全てのリソースを1つのファイルに結合します
         ->join(true)
 
-        //組み込みのJsminフィルターを使います
+        // 組み込みのJsminフィルターを使います
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //カスタムフィルターを使います
+        // カスタムフィルターを使います
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 これは、アセットマネージャーからリソースのコレクションの取得を始めます。javascript や css のリソースを含むことができるコレクションですが、両方を含むことはできません。いくつかのリソースはリモートにあるかもしれません、すなわち、それらはさらなるフィルタリングのためにリモートのソースからHTTPを介して取得されます。取得のオーバーヘッドを排除するため、外部のリソースをローカルに変換することが推奨されています。
@@ -176,7 +176,7 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
     <?php
 
-    //These Javascripts are located in the page's bottom
+    // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
 
 上記で示すように、addJsメソッドがコレクションにリソースを追加するのに使われます。2番目のパラメータはリソースが外部のものかそうでないかを指定し、3番目のパラメータはリソースがフィルタされるべきかそのままにすべきかを指定します:
@@ -198,10 +198,10 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
     <?php
 
-    //Use the built-in Jsmin filter
+    // Use the built-in Jsmin filter
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //Use a custom filter
+    // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「join」メソッドを利用できます:
@@ -213,10 +213,10 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     // This a remote resource that does not need filtering
     $js->join(true);
 
-    //最後のファイルパスの名前です
+    // 最後のファイルパスの名前です
     $js->setTargetPath('public/production/final.js');
 
-    //このスクリプトのhtmlタグがこのURIで生成されます
+    // このスクリプトのhtmlタグがこのURIで生成されます
     $js->setTargetUri('production/final.js');
 
 もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、setTargetPath() と setTargetUri() で設定できます。
@@ -273,7 +273,7 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
         public function filter($contents)
         {
 
-            //文字列のコンテンツを一時ファイルに書き出す
+            // 文字列のコンテンツを一時ファイルに書き出す
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -286,7 +286,7 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //ファイルのコンテンツを返す
+            // ファイルのコンテンツを返す
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }
@@ -297,10 +297,10 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
 
     <?php
 
-    //CSSコレクションを取得する
+    // CSSコレクションを取得する
     $css = $this->assets->get('head');
 
-    //コレクションにYUIコンプレッサーフィルタを追加/有効にする
+    // コレクションにYUIコンプレッサーフィルタを追加/有効にする
     $css->addFilter(new CssYUICompressor(array(
          'java-bin' => '/usr/local/bin/java',
          'yui' => '/some/path/yuicompressor-x.y.z.jar',

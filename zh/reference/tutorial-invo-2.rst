@@ -25,7 +25,7 @@ again taking parameters from the configuration file in order to configure a serv
     // ...
 
     // Database connection is created based on parameters defined in the configuration file
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new DbAdapter(array(
             "host"     => $config->database->host,
             "username" => $config->database->username,
@@ -223,7 +223,7 @@ replaced the component by creating a function in the bootstrap:
     /**
      * MVC dispatcher
      */
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
         // ...
 
@@ -249,7 +249,7 @@ interests us now is "dispatch". The following code filters all events produced b
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
         $eventsManager = new EventsManager;
 
@@ -340,7 +340,7 @@ If the user does not have access we redirect to the home screen as explained bef
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            // Check whether the "auth" variable exists in session to define the active role
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -348,18 +348,18 @@ If the user does not have access we redirect to the home screen as explained bef
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            // Take the active controller/action from the dispatcher
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            // Obtain the ACL list
             $acl = $this->getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            // Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                // If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -368,7 +368,7 @@ If the user does not have access we redirect to the home screen as explained bef
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                // Returning "false" we tell to the dispatcher to stop the current operation
                 return false;
             }
 

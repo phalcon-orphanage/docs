@@ -161,7 +161,7 @@ Phalcon\Assets предоставляет встроенную возможно�
         // Этот javascript расположен внизу страницы
         ->collection('jsFooter')
 
-        //Название получаемого файла
+        // Название получаемого файла
         ->setTargetPath('final.js')
 
         // С таким URI генерируется тэг html
@@ -299,7 +299,7 @@ Phalcon имеет два встроенных фильтра минимизац
         public function filter($contents)
         {
 
-            //Write the string contents into a temporal file
+            // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -312,7 +312,7 @@ Phalcon имеет два встроенных фильтра минимизац
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //Return the contents of file
+            // Return the contents of file
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }
@@ -323,10 +323,10 @@ Phalcon имеет два встроенных фильтра минимизац
 
     <?php
 
-    //Get some CSS collection
+    // Get some CSS collection
     $css = $this->assets->get('head');
 
-    //Add/Enable the YUI compressor filter in the collection
+    // Add/Enable the YUI compressor filter in the collection
     $css->addFilter(new CssYUICompressor(array(
          'java-bin' => '/usr/local/bin/java',
          'yui' => '/some/path/yuicompressor-x.y.z.jar',

@@ -14,14 +14,14 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
     <?php
 
-    //Dispatch loop
+    // Dispatch loop
     while (!$finished) {
 
         $finished = true;
 
         $controllerClass = $controllerName."Controller";
 
-        //Instantiating the controller class via autoloaders
+        // Instantiating the controller class via autoloaders
         $controller = new $controllerClass();
 
         // Execute the action
@@ -66,19 +66,19 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    $di->set('dispatcher', function(){
+    $di->set('dispatcher', function () {
 
-        //Create an event manager
+        // Create an event manager
         $eventsManager = new Phalcon\Events\Manager();
 
-        //Attach a listener for type "dispatch"
-        $eventsManager->attach("dispatch", function($event, $dispatcher) {
-            //...
+        // Attach a listener for type "dispatch"
+        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+            // ...
         });
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
-        //Bind the eventsManager to the view component
+        // Bind the eventsManager to the view component
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -212,15 +212,15 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
     <?php
 
-    $di->setShared('dispatcher', function() {
+    $di->setShared('dispatcher', function () {
 
-        //Create/Get an EventManager
+        // Create/Get an EventManager
         $eventsManager = new Phalcon\Events\Manager();
 
-        //Attach a listener
-        $eventsManager->attach("dispatch", function($event, $dispatcher, $exception) {
+        // Attach a listener
+        $eventsManager->attach("dispatch", function ($event, $dispatcher, $exception) {
 
-            //The controller exists but the action not
+            // The controller exists but the action not
             if ($event->getType() == 'beforeNotFoundAction') {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -229,7 +229,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exist
+            // Alternative way, controller or action doesn't exist
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()) {
                     case Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -245,7 +245,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the dispatcher
+        // Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;

@@ -92,22 +92,22 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //Exampleクラスのアノテーションをリフレクションする
+    // Exampleクラスのアノテーションをリフレクションする
     $reflector = $reader->get('Example');
 
-    //クラスのコメントブロックのアノテーションを読み取り
+    // クラスのコメントブロックのアノテーションを読み取り
     $annotations = $reflector->getClassAnnotations();
 
-    //アノテーションをトラバースする
+    // アノテーションをトラバースする
     foreach ($annotations as $annotation) {
 
-        //アノテーション名を表示する
+        // アノテーション名を表示する
         echo $annotation->getName(), PHP_EOL;
 
-        //引数の数を表示する
+        // 引数の数を表示する
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //引数を表示する
+        // 引数を表示する
         print_r($annotation->getArguments());
     }
 
@@ -184,11 +184,11 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
 
     <?php
 
-    $di['dispatcher'] = function() {
+    $di['dispatcher'] = function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //プラグインを「dispatch」イベントに紐付け
+        // プラグインを「dispatch」イベントに紐付け
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -216,29 +216,29 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //現在実行中のメソッドのアノテーションをパースする
+            // 現在実行中のメソッドのアノテーションをパースする
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //メソッドに「Cache」というアノテーションがあるか確認する
+            // メソッドに「Cache」というアノテーションがあるか確認する
             if ($annotations->has('Cache')) {
 
-                //メソッドに「Cache」というアノテーションがある場合
+                // メソッドに「Cache」というアノテーションがある場合
                 $annotation = $annotations->get('Cache');
 
-                //キャッシュの有効期限を取得
+                // キャッシュの有効期限を取得
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //ユーザーが定義したキャッシュのキーがあるか確認する
+                // ユーザーが定義したキャッシュのキーがあるか確認する
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //現在のメソッドのキャッシュを有効にする
+                // 現在のメソッドのキャッシュを有効にする
                 $this->view->cache($options);
             }
 

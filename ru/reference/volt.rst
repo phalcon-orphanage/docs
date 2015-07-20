@@ -35,8 +35,8 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     <?php
 
-    //Registering Volt as template engine
-    $di->set('view', function() {
+    // Registering Volt as template engine
+    $di->set('view', function () {
 
         $view = new \Phalcon\Mvc\View();
 
@@ -1102,8 +1102,8 @@ Volt можно настроить так, чтобы изменить его п
     use Phalcon\Mvc\View,
         Phalcon\Mvc\View\Engine\Volt;
 
-    //Register Volt as a service
-    $di->set('voltService', function($view, $di) {
+    // Register Volt as a service
+    $di->set('voltService', function ($view, $di) {
 
         $volt = new Volt($view, $di);
 
@@ -1115,8 +1115,8 @@ Volt можно настроить так, чтобы изменить его п
         return $volt;
     });
 
-    //Register Volt as template engine
-    $di->set('view', function() {
+    // Register Volt as template engine
+    $di->set('view', function () {
 
         $view = new View();
 
@@ -1136,14 +1136,14 @@ Volt можно настроить так, чтобы изменить его п
     <?php
 
     // Регистрация Volt в качестве шаблонизатора с анонимной функцией
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new \Phalcon\Mvc\View();
 
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
-            ".volt" => function($view, $di) {
+            ".volt" => function ($view, $di) {
                 $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
 
                 // тут установка каких-то настроек
@@ -1184,14 +1184,14 @@ views directory. The following examples show how to change the compilation path 
     // Just append the .php extension to the template path
     // leaving the compiled templates in the same directory
     $volt->setOptions(array(
-        'compiledPath' => function($templatePath) {
+        'compiledPath' => function ($templatePath) {
             return $templatePath . '.php';
         }
     ));
 
     // ​​Recursively create the same structure in another directory
     $volt->setOptions(array(
-        'compiledPath' => function($templatePath) {
+        'compiledPath' => function ($templatePath) {
             $dirName = dirname($templatePath);
             if (!is_dir('cache/' . $dirName)) {
                 mkdir('cache/' . $dirName);
@@ -1227,7 +1227,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('widget', function($resolvedArgs, $exprArgs) {
+    $compiler->addFunction('widget', function ($resolvedArgs, $exprArgs) {
         return 'MyLibrary\Widgets::get('.$resolvedArgs.')';
     });
 
@@ -1237,7 +1237,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('repeat', function($resolvedArgs, $exprArgs) use ($compiler) {
+    $compiler->addFunction('repeat', function ($resolvedArgs, $exprArgs) use ($compiler) {
 
         // Получение первого параметра
         $firstArgument = $compiler->expression($exprArgs[0]['expr']);
@@ -1259,7 +1259,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('contains_text', function($resolvedArgs, $exprArgs) {
+    $compiler->addFunction('contains_text', function ($resolvedArgs, $exprArgs) {
         if (function_exists('mb_stripos')) {
             return 'mb_stripos(' . $resolvedArgs . ')';
         } else {
@@ -1291,7 +1291,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFilter('int', function($resolvedArgs, $exprArgs) {
+    $compiler->addFilter('int', function ($resolvedArgs, $exprArgs) {
         return 'intval(' . $resolvedArgs . ')';
     });
 
@@ -1301,7 +1301,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    //Replace built-in filter 'capitalize'
+    // Replace built-in filter 'capitalize'
     $compiler->addFilter('capitalize', 'lcfirst');
 
 Расширения
@@ -1352,7 +1352,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    //Register the extension in the compiler
+    // Register the extension in the compiler
     $compiler->addExtension(new PhpFunctionExtension());
 
 Кэширование частей представления
@@ -1413,7 +1413,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     // Добавление каких-то опций
     $compiler->setOptions(array(
-        //...
+        // ...
     ));
 
     // Компиляция шаблона-строки, возвращающая PHP-код

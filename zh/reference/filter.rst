@@ -151,7 +151,7 @@
     $filter = new Filter();
 
     // 使用匿名函数
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 

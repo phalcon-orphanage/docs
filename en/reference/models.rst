@@ -91,7 +91,7 @@ created you can 'onConstruct':
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -504,7 +504,7 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
     <?php
 
-    $customers = Customers::find()->filter(function($customer) {
+    $customers = Customers::find()->filter(function ($customer) {
 
         // Return only customers with a valid e-mail
         if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
@@ -575,13 +575,13 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     use Phalcon\Db\Column;
 
-    //Bind parameters
+    // Bind parameters
     $parameters = array(
         "name" => "Robotina",
         "year" => 2008
     );
 
-    //Casting Types
+    // Casting Types
     $types = array(
         "name" => Column::BIND_PARAM_STR,
         "year" => Column::BIND_PARAM_INT
@@ -661,13 +661,13 @@ will be executed just after create the instance and assign the data to it:
 
         public function beforeSave()
         {
-            //Convert the array into a string
+            // Convert the array into a string
             $this->status = join(',', $this->status);
         }
 
         public function afterFetch()
         {
-            //Convert the string to an array
+            // Convert the string to an array
             $this->status = explode(',', $this->status);
         }
     }
@@ -1015,13 +1015,13 @@ Since both relations point to the same model (Robots), obtain the records relate
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Returns the related record based on the column (robots_id)
-    //Also as is a belongsTo it's only returning one record
-    //but the name 'getRobots' seems to imply that return more than one
+    // Returns the related record based on the column (robots_id)
+    // Also as is a belongsTo it's only returning one record
+    // but the name 'getRobots' seems to imply that return more than one
     $robot = $robotsSimilar->getRobots();
 
-    //but, how to get the related record based on the column (similar_robots_id)
-    //if both relationships have the same name?
+    // but, how to get the related record based on the column (similar_robots_id)
+    // if both relationships have the same name?
 
 The aliases allow us to rename both relationships to solve these problems:
 
@@ -1053,11 +1053,11 @@ With the aliasing we can get the related records easily:
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Returns the related record based on the column (robots_id)
+    // Returns the related record based on the column (robots_id)
     $robot = $robotsSimilar->getRobot();
     $robot = $robotsSimilar->robot;
 
-    //Returns the related record based on the column (similar_robots_id)
+    // Returns the related record based on the column (similar_robots_id)
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
@@ -1360,21 +1360,21 @@ returned in a resultset is called 'hydration mode':
 
     $robots = Robots::find();
 
-    //Return every robot as an array
+    // Return every robot as an array
     $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
-    //Return every robot as an stdClass
+    // Return every robot as an stdClass
     $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-    //Return every robot as a Robots instance
+    // Return every robot as a Robots instance
     $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
@@ -1478,7 +1478,7 @@ sure that a record is created or updated, we can change the save() call with cre
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    //This record only must be created
+    // This record only must be created
     if ($robot->create() == false) {
         echo "Umh, We can't store robots right now: \n";
         foreach ($robot->getMessages() as $message) {
@@ -1541,10 +1541,10 @@ Magic properties can be used to store a records and its related properties:
     // Create an album
     $album          = new Albums();
     $album->name    = 'The One';
-    $album->artist  = $artist; //Assign the artist
+    $album->artist  = $artist; // Assign the artist
     $album->year    = 2008;
 
-    //Save both records
+    // Save both records
     $album->save();
 
 Saving a record and its related records in a has-many relation:
@@ -1725,13 +1725,13 @@ Events can be useful to assign values before performing an operation, for exampl
 
         public function beforeCreate()
         {
-            //Set the creation date
+            // Set the creation date
             $this->created_at = date('Y-m-d H:i:s');
         }
 
         public function beforeUpdate()
         {
-            //Set the modification date
+            // Set the modification date
             $this->modified_in = date('Y-m-d H:i:s');
         }
     }
@@ -1756,8 +1756,8 @@ this means we can create listeners that run when an event is triggered.
 
             $eventsManager = new EventsManager();
 
-            //Attach an anonymous function as a listener for "model" events
-            $eventsManager->attach('model', function($event, $robot) {
+            // Attach an anonymous function as a listener for "model" events
+            $eventsManager->attach('model', function ($event, $robot) {
                 if ($event->getType() == 'beforeSave') {
                     if ($robot->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
@@ -1767,7 +1767,7 @@ this means we can create listeners that run when an event is triggered.
                 return true;
             });
 
-            //Attach the events manager to the event
+            // Attach the events manager to the event
             $this->setEventsManager($eventsManager);
         }
     }
@@ -1790,15 +1790,15 @@ If we want all objects created in our application use the same EventsManager, th
 
     <?php
 
-    //Registering the modelsManager service
-    $di->setShared('modelsManager', function() {
+    // Registering the modelsManager service
+    $di->setShared('modelsManager', function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('model', function($event, $model){
+        // Attach an anonymous function as a listener for "model" events
+        $eventsManager->attach('model', function ($event, $model) {
 
-            //Catch events produced by the Robots model
+            // Catch events produced by the Robots model
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
@@ -1812,7 +1812,7 @@ If we want all objects created in our application use the same EventsManager, th
             return true;
         });
 
-        //Setting a default EventsManager
+        // Setting a default EventsManager
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
@@ -2077,13 +2077,13 @@ to delegate the database system the assignation of the values by a trigger or a 
 
         public function initialize()
         {
-            //Skips fields/columns on both INSERT/UPDATE operations
+            // Skips fields/columns on both INSERT/UPDATE operations
             $this->skipAttributes(array('year', 'price'));
 
-            //Skips only when inserting
+            // Skips only when inserting
             $this->skipAttributesOnCreate(array('created_at'));
 
-            //Skips only when updating
+            // Skips only when updating
             $this->skipAttributesOnUpdate(array('modified_in'));
         }
     }
@@ -2315,7 +2315,7 @@ as format of the PHP's function date_, format can also be an anonymous function 
             array(
                 'beforeCreate' => array(
                     'field'  => 'created_at',
-                    'format' => function() {
+                    'format' => function () {
                         $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
                         return $datetime->format('Y-m-d H:i:sP');
                     }
@@ -2427,7 +2427,7 @@ that is performed operations over a model:
 
                     $userName = // ... get the current user from session
 
-                    //Store in a log the username - event type and primary key
+                    // Store in a log the username - event type and primary key
                     file_put_contents(
                         'logs/blamable-log.txt',
                         $userName . ' ' . $eventType . ' ' . $model->id
@@ -2590,7 +2590,7 @@ implicitly creates a transaction to ensure that data are correctly stored:
     $robot->created_at  = date("Y-m-d");
     $robot->robotPart   = $robotPart;
 
-    $robot->save(); //Creates an implicit transaction to store both records
+    $robot->save(); // Creates an implicit transaction to store both records
 
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2608,7 +2608,7 @@ transaction created ensuring that they are correctly rolled back/committed befor
 
     try {
 
-        //Create a transaction manager
+        // Create a transaction manager
         $manager     = new TxManager();
 
         // Request a transaction
@@ -2630,10 +2630,10 @@ transaction created ensuring that they are correctly rolled back/committed befor
             $transaction->rollback("Cannot save robot part");
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Everything goes fine, let's commit the transaction
         $transaction->commit();
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -2648,29 +2648,29 @@ Transactions can be used to delete many records in a consistent way:
 
     try {
 
-        //Create a transaction manager
+        // Create a transaction manager
         $manager     = new TxManager();
 
-        //Request a transaction
+        // Request a transaction
         $transaction = $manager->get();
 
-        //Get the robots will be deleted
+        // Get the robots will be deleted
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
-                //Something goes wrong, we should to rollback the transaction
+                // Something goes wrong, we should to rollback the transaction
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
                 }
             }
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Everything goes fine, let's commit the transaction
         $transaction->commit();
 
         echo "Robots were deleted successfully!";
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -2683,7 +2683,7 @@ is performed. You can use the service container to create the global transaction
 
     use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager
 
-    $di->setShared('transactions', function(){
+    $di->setShared('transactions', function () {
         return new TransactionManager();
     });
 
@@ -2701,16 +2701,16 @@ Then access it from a controller or view:
         public function saveAction()
         {
 
-            //Obtain the TransactionsManager from the services container
+            // Obtain the TransactionsManager from the services container
             $manager     = $this->di->getTransactions();
 
-            //Or
+            // Or
             $manager     = $this->transactions;
 
-            //Request a transaction
+            // Request a transaction
             $transaction = $manager->get();
 
-            //...
+            // ...
         }
     }
 
@@ -2732,13 +2732,13 @@ in the code. A change in the column map in the model will take care of the rest.
     class Robots extends Model
     {
 
-	public $code;
+    public $code;
 
-	public $theName;
+    public $theName;
 
-	public $theType;
+    public $theType;
 
-	public $theYear;
+    public $theYear;
 
         public function columnMap()
         {
@@ -2833,8 +2833,8 @@ you can do this:
         'updated_at' => time()
     );
 
-    //Update all the parts except these whose type is basic
-    $robots->getParts()->update($data, function($part) {
+    // Update all the parts except these whose type is basic
+    $robots->getParts()->update($data, function ($part) {
         if ($part->type == Part::TYPE_BASIC) {
             return false;
         }
@@ -2872,8 +2872,8 @@ you can do this:
 
     <?php
 
-    //Delete only whose stock is greater or equal than zero
-    $robots->getParts()->delete(function($part) {
+    // Delete only whose stock is greater or equal than zero
+    $robots->getParts()->delete(function ($part) {
         if ($part->stock < 0) {
             return false;
         }
@@ -2907,10 +2907,10 @@ In models that have this feature activated you can check what fields changed:
 
     <?php
 
-    //Get a record from the database
+    // Get a record from the database
     $robot = Robots::findFirst();
 
-    //Change a column
+    // Change a column
     $robot->name = 'Other name';
 
     var_dump($robot->getChangedFields()); // ['name']
@@ -2969,7 +2969,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Create a meta-data manager with APC
         $metaData = new ApcMetaData(array(
@@ -2993,7 +2993,7 @@ You can change the default meta-data introspection in the following way:
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Instantiate a meta-data adapter
         $metaData = new ApcMetaData(array(
@@ -3001,7 +3001,7 @@ You can change the default meta-data introspection in the following way:
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data introspection strategy
+        // Set a custom meta-data introspection strategy
         $metaData->setStrategy(new MyInstrospectionStrategy());
 
         return $metaData;
@@ -3083,7 +3083,7 @@ The annotations strategy could be set up this way:
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
     use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
-    $di['modelsMetadata'] = function() {
+    $di['modelsMetadata'] = function () {
 
         // Instantiate a meta-data adapter
         $metaData = new ApcMetaData(array(
@@ -3091,7 +3091,7 @@ The annotations strategy could be set up this way:
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data database introspection
+        // Set a custom meta-data database introspection
         $metaData->setStrategy(new StrategyAnnotations());
 
         return $metaData;
@@ -3224,8 +3224,8 @@ in the application's services container. You can overwrite this service setting 
     use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
     use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
-    //This service returns a MySQL database
-    $di->set('dbMysql', function() {
+    // This service returns a MySQL database
+    $di->set('dbMysql', function () {
          return new MysqlPdo(array(
             "host"     => "localhost",
             "username" => "root",
@@ -3234,8 +3234,8 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-    //This service returns a PostgreSQL database
-    $di->set('dbPostgres', function() {
+    // This service returns a PostgreSQL database
+    $di->set('dbPostgres', function () {
          return new PostgreSQLPdo(array(
             "host"     => "localhost",
             "username" => "postgres",
@@ -3300,12 +3300,12 @@ according to the current query conditions:
          */
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
-            //Check if there is a 'where' clause in the select
+            // Check if there is a 'where' clause in the select
             if (isset($intermediate['where'])) {
 
                 $conditions = $intermediate['where'];
 
-                //Choose the possible shard according to the conditions
+                // Choose the possible shard according to the conditions
                 if ($conditions['left']['name'] == 'id') {
                     $id = $conditions['right']['value'];
                     if ($id > 0 && $id < 10000) {
@@ -3317,7 +3317,7 @@ according to the current query conditions:
                 }
             }
 
-            //Use a default shard
+            // Use a default shard
             return $this->getDI()->get('dbShard0');
         }
     }
@@ -3348,14 +3348,14 @@ statements as they happen.
     use Phalcon\Logger\Adapter\File as FileLogger;
     use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
-    $di->set('db', function() {
+    $di->set('db', function () {
 
         $eventsManager = new EventsManager();
 
         $logger = new FileLogger("app/logs/debug.log");
 
-        //Listen all the database events
-        $eventsManager->attach('db', function($event, $connection) use ($logger) {
+        // Listen all the database events
+        $eventsManager->attach('db', function ($event, $connection) use ($logger) {
             if ($event->getType() == 'beforeQuery') {
                 $logger->log($connection->getSQLStatement(), Logger::INFO);
             }
@@ -3368,7 +3368,7 @@ statements as they happen.
             "dbname"    => "invo"
         ));
 
-        //Assign the eventsManager to the db adapter instance
+        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -3408,19 +3408,19 @@ this you can diagnose performance problems and to discover bottlenecks.
     use Phalcon\Events\Manager as ManagerEvent;
     use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
 
-    $di->set('profiler', function(){
+    $di->set('profiler', function () {
         return new ProfilerDb();
     }, true);
 
-    $di->set('db', function() use ($di) {
+    $di->set('db', function () use ($di) {
 
         $eventsManager = new ManagerEvent();
 
-        //Get a shared instance of the DbProfiler
+        // Get a shared instance of the DbProfiler
         $profiler      = $di->getProfiler();
 
-        //Listen all the database events
-        $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+        // Listen all the database events
+        $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
             if ($event->getType() == 'beforeQuery') {
                 $profiler->startProfile($connection->getSQLStatement());
             }
@@ -3436,7 +3436,7 @@ this you can diagnose performance problems and to discover bottlenecks.
             "dbname"    => "invo"
         ));
 
-        //Assign the eventsManager to the db adapter instance
+        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -3453,7 +3453,7 @@ Profiling some queries:
     Robots::find(array("order" => "name"));
     Robots::find(array("limit" => 30));
 
-    //Get the generated profiles from the profiler
+    // Get the generated profiles from the profiler
     $profiles = $di->get('profiler')->getProfiles();
 
     foreach ($profiles as $profile) {
@@ -3480,10 +3480,10 @@ You may be required to access the application services within a model, the follo
 
         public function notSaved()
         {
-            //Obtain the flash service from the DI container
+            // Obtain the flash service from the DI container
             $flash = $this->getDI()->getFlash();
 
-            //Show validation messages
+            // Show validation messages
             foreach ($this->getMessages() as $message) {
                 $flash->error($message);
             }
@@ -3543,24 +3543,24 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     $di = new DI();
 
-    //Setup a connection
+    // Setup a connection
     $di->set('db', new Connection(array(
         "dbname" => "sample.db"
     )));
 
-    //Set a models manager
+    // Set a models manager
     $di->set('modelsManager', new ModelsManager());
 
-    //Use the memory meta-data adapter or other
+    // Use the memory meta-data adapter or other
     $di->set('modelsMetadata', new MetaData());
 
-    //Create a model
+    // Create a model
     class Robots extends Model
     {
 
     }
 
-    //Use the model
+    // Use the model
     echo Robots::count();
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php

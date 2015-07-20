@@ -152,7 +152,7 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
     $filter = new Filter();
 
     // Using an anonymous function
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 

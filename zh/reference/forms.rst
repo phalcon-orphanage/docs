@@ -124,13 +124,13 @@ html的属性也可以在创建时指定：
         public function initialize()
         {
 
-            //Set the same form as entity
+            // Set the same form as entity
             $this->setEntity($this);
 
-            //Add a text element to capture the 'email'
+            // Add a text element to capture the 'email'
             $this->add(new Text("email"));
 
-            //Add a text element to put a hidden csrf
+            // Add a text element to put a hidden csrf
             $this->add(new Hidden("csrf"));
         }
     }
@@ -274,10 +274,10 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     $form->bind($_POST, $robot);
 
-    //Check if the form is valid
+    // Check if the form is valid
     if ($form->isValid()) {
 
-        //Save the entity
+        // Save the entity
         $robot->save();
     }
 
@@ -398,14 +398,14 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     <form method="post">
         <?php
-            //Traverse the form
+            // Traverse the form
             foreach ($form as $element) {
 
-                //Get any generated messages for the current element
+                // Get any generated messages for the current element
                 $messages = $form->getMessagesFor($element->getName());
 
                 if (count($messages)) {
-                    //Print each element
+                    // Print each element
                     echo '<div class="messages">';
                     foreach ($messages as $message) {
                         echo $message;
@@ -435,18 +435,18 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
     {
         public function initialize()
         {
-            //...
+            // ...
         }
 
         public function renderDecorated($name)
         {
             $element = $this->get($name);
 
-            //Get any generated messages for the current element
+            // Get any generated messages for the current element
             $messages = $this->getMessagesFor($element->getName());
 
             if (count($messages)) {
-                //Print each element
+                // Print each element
                 echo '<div class="messages">';
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
@@ -487,7 +487,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
     {
         public function render($attributes=null)
         {
-            $html = //... produce some html
+            $html = // ... produce some html
             return $html;
         }
     }
@@ -503,7 +503,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     use Phalcon\Forms\Manager as FormsManager;
 
-    $di['forms'] = function() {
+    $di['forms'] = function () {
         return new FormsManager();
     };
 

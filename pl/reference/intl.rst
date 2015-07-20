@@ -59,7 +59,7 @@ Message formatting using time and date patterns:
 
     <?php
 
-    //Setting parameters
+    // Setting parameters
     $time   = time();
     $values = array(7, $time, $time);
 

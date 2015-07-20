@@ -18,7 +18,7 @@
     <?php
 
     // Сессии запустятся один раз, при первом обращении к объекту
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -91,7 +91,7 @@
     <?php
 
     // Изоляция данных сессий
-    $di->set('session', function(){
+    $di->set('session', function () {
 
         // Все переменные этого приложения будет иметь префикс "my-app-1"
         $session = new Phalcon\Session\Adapter\Files(

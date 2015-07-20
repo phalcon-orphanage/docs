@@ -97,13 +97,13 @@ Volt语法：
 
     <?php
 
-    //html头部的js资源
+    // html头部的js资源
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    //html尾部的js资源 
+    // html尾部的js资源 
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -318,7 +318,7 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
         public function filter($contents)
         {
 
-            //保存字符吕内容到临时文件中
+            // 保存字符吕内容到临时文件中
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -331,7 +331,7 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //返回文件内容
+            // 返回文件内容
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }

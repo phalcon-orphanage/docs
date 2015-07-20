@@ -42,10 +42,10 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
-    //添加 "Guests" 角色到acl
+    // 添加 "Guests" 角色到acl
     $acl->addRole($roleGuests);
 
-    //添加"Designers"到acl, 仅使用此字符串。
+    // 添加"Designers"到acl, 仅使用此字符串。
     $acl->addRole("Designers");
 
 上面我们看到，我们可以直接使用字符串来定义角色。
@@ -93,9 +93,9 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
     <?php
 
     // 查询角色是否有访问权限
-    $acl->isAllowed("Guests", "Customers", "edit");   //Returns 0
-    $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
-    $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
+    $acl->isAllowed("Guests", "Customers", "edit");   // Returns 0
+    $acl->isAllowed("Guests", "Customers", "search"); // Returns 1
+    $acl->isAllowed("Guests", "Customers", "create"); // Returns 1
 
 角色继承（Roles Inheritance）
 -----------------------------
@@ -137,7 +137,7 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
         $acl = new AclList();
 
-        //... Define roles, resources, access, etc
+        // ... Define roles, resources, access, etc
 
         // 保存实例化的数据到文本文件中
         file_put_contents("app/security/acl.data", serialize($acl));
@@ -179,11 +179,11 @@ ACL 事件（ACL Events）
     use Phalcon\Acl\Adapter\Memory as AclList;
     use Phalcon\Events\Manager as EventsManager;
 
-    //创建事件管理器
+    // 创建事件管理器
     $eventsManager = new EventsManager();
 
     // 绑定事件类型为acl 
-    $eventsManager->attach("acl", function($event, $acl) {
+    $eventsManager->attach("acl", function ($event, $acl) {
         if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
@@ -193,8 +193,8 @@ ACL 事件（ACL Events）
 
     $acl = new AclList();
 
-    //Setup the $acl
-    //...
+    // Setup the $acl
+    // ...
 
     // 绑定eventsManager到acl组件
     $acl->setEventsManager($eventManagers);

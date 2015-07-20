@@ -266,7 +266,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Ajax-ответ, генерация представления не нужна
             $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
-            //...
+            // ...
         }
 
         public function showAction($postId)
@@ -305,7 +305,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     use Phalcon\Mvc\View;
 
-    $di->set('view', function(){
+    $di->set('view', function () {
 
         $view = new View();
 
@@ -383,7 +383,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
         public function closeSessionAction()
         {
             // Тут завершилась сессия
-            //...
+            // ...
 
             // HTTP редирект
             $this->response->redirect('index/index');
@@ -405,10 +405,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
         public function closeSessionAction()
         {
-            //Close session
-            //...
+            // Close session
+            // ...
 
-            //An HTTP Redirect
+            // An HTTP Redirect
             return $this->response->redirect('index/index');
         }
 
@@ -427,7 +427,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new Phalcon\Mvc\View\Simple();
 
@@ -466,16 +466,16 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
         public function indexAction()
         {
-            //Render 'views-dir/index.phtml'
+            // Render 'views-dir/index.phtml'
             echo $this->view->render('index');
 
-            //Render 'views-dir/posts/show.phtml'
+            // Render 'views-dir/posts/show.phtml'
             echo $this->view->render('posts/show');
 
-            //Render 'views-dir/index.phtml' passing variables
+            // Render 'views-dir/index.phtml' passing variables
             echo $this->view->render('index', array('posts' => Posts::find()));
 
-            //Render 'views-dir/posts/show.phtml' passing variables
+            // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render('posts/show', array('posts' => Posts::find()));
         }
 
@@ -639,7 +639,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
         Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
     // Назначение сервиса кэширования представлений
-    $di->set('viewCache', function() {
+    $di->set('viewCache', function () {
 
         // Кэширование данных на сутки по умолчанию
         $frontCache = new OutputFrontend(array(
@@ -747,8 +747,8 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Доступ к настройкам
             $options = $this->_options;
 
-            //Render the view
-            //...
+            // Render the view
+            // ...
         }
 
     }
@@ -798,7 +798,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <?php
 
     // Настройка компонента представления
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new \Phalcon\Mvc\View();
 
@@ -829,7 +829,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
     $.ajax({
         url: "<?php echo $this->url->get("cities/get") ?>"
     })
-    .done(function() {
+    .done(function () {
         alert("Done!");
     });
 
@@ -849,7 +849,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     $view = new \Phalcon\Mvc\View();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Передача переменных в представление
@@ -880,7 +880,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
             "someProducts" => $products,
             "someFeatureEnabled" => true
         ),
-        function($view) {
+        function ($view) {
             // Установка дополнительных опций
             $view->setViewsDir("../app/views/");
             $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
@@ -934,13 +934,13 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         // Создание обработчика событий
         $eventsManager = new Phalcon\Events\Manager();
 
         // Назначение слушателя для событий типа "view"
-        $eventsManager->attach("view", function($event, $view) {
+        $eventsManager->attach("view", function ($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
 

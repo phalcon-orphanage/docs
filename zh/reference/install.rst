@@ -3,10 +3,10 @@
 作为PHP C拓展形式的Phalcon，需要一个略微不同于传统php的库或框架的安装方法。你可以选择一个当前系统的一个二进制包下载，或者使用源代码构建它。
 
 .. highlights::
-	Phalcon 可编译在PHP 5.3.1及以上版本，但是因为老PHP版本错误导致内存泄漏，我们强烈推荐你使用PHP 5.3.11或更高版本。
+    Phalcon 可编译在PHP 5.3.1及以上版本，但是因为老PHP版本错误导致内存泄漏，我们强烈推荐你使用PHP 5.3.11或更高版本。
 
 .. highlights::
-	PHP 5.3.9版本以前有几个安全漏洞，不建议在生产网站中使用。`学习更多 <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+    PHP 5.3.9版本以前有几个安全漏洞，不建议在生产网站中使用。`学习更多 <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------

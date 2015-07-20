@@ -48,7 +48,7 @@ MVC 应用（MVC Applications）
     $di = new FactoryDefault();
 
     // 注册视图组件
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -90,14 +90,14 @@ MVC 应用（MVC Applications）
     $di = new FactoryDefault();
 
     // 注册调度器，并设置控制器的默认命名空间
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // 注册视图组件
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -109,7 +109,7 @@ MVC 应用（MVC Applications）
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -178,15 +178,15 @@ MVC 应用（MVC Applications）
         public function registerServices($di)
         {
 
-            //Registering a dispatcher
-            $di->set('dispatcher', function() {
+            // Registering a dispatcher
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
-            $di->set('view', function() {
+            // Registering the view component
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
@@ -257,7 +257,7 @@ MVC 应用（MVC Applications）
         // 处理请求
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -273,19 +273,19 @@ MVC 应用（MVC Applications）
     $view = new View();
 
     // 设置视图组件相关选项
-    //...
+    // ...
 
     // Register the installed modules
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -309,10 +309,10 @@ MVC 应用（MVC Applications）
     try {
 
         // 注册自动加载器
-        //...
+        // ...
 
         // 注册服务
-        //...
+        // ...
 
         // 处理请求
         $application = new \Phalcon\Mvc\Application($di);
@@ -437,7 +437,7 @@ MVC 应用（MVC Applications）
 
     } catch (Exception $e) {
 
-        //An exception has occurred, dispatch some controller/action aimed for that
+        // An exception has occurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -495,7 +495,7 @@ MVC 应用（MVC Applications）
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );

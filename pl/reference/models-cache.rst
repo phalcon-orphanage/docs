@@ -25,15 +25,15 @@ First, you must register it as a service in the services container:
 
     <?php
 
-    //Set the models cache service
-    $di->set('modelsCache', function() {
+    // Set the models cache service
+    $di->set('modelsCache', function () {
 
-        //Cache data for one day by default
+        // Cache data for one day by default
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Memcached connection settings
         $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -150,15 +150,15 @@ a static property to avoid that a record would be queried several times in a sam
         public static function find($parameters=null)
         {
 
-            //Create an unique key based on the parameters
+            // Create an unique key based on the parameters
             $key = self::_createKey($parameters);
 
             if (!isset(self::$_cache[$key])) {
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = parent::find($parameters);
             }
 
-            //Return the result in the cache
+            // Return the result in the cache
             return self::$_cache[$key];
         }
 
@@ -183,35 +183,35 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
     public static function find($parameters=null)
     {
 
-        //Create an unique key based on the parameters
+        // Create an unique key based on the parameters
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
 
-            //We're using APC as second cache
+            // We're using APC as second cache
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //There are no memory or apc cache
+            // There are no memory or apc cache
             $data = parent::find($parameters);
 
-            //Store the result in the memory cache
+            // Store the result in the memory cache
             self::$_cache[$key] = $data;
 
-            //Store the result in APC
+            // Store the result in APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Return the result in the cache
+        // Return the result in the cache
         return self::$_cache[$key];
     }
 
@@ -232,12 +232,12 @@ you can create a base class for all of them:
 
         public static function find($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
 
         public static function findFirst($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
     }
 
@@ -284,13 +284,13 @@ we can override the find/findFirst method to force every query to be cached:
         public static function find($parameters=null)
         {
 
-            //Convert the parameters to an array
+            // Convert the parameters to an array
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
 
-            //Check if a cache key wasn't passed
-            //and create the cache parameters
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
                     "key" => self::_createKey($parameters),
@@ -303,7 +303,7 @@ we can override the find/findFirst method to force every query to be cached:
 
         public static function findFirst($parameters=null)
         {
-            //...
+            // ...
         }
 
     }
@@ -352,13 +352,13 @@ Some models may have relationships to other models. This allows us to easily che
 
     <?php
 
-    //Get some invoice
+    // Get some invoice
     $invoice = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer;
 
-    //Print his/her name
+    // Print his/her name
     echo $customer->name, "\n";
 
 This example is very simple, a customer is queried and can be used as required, for example, to show its name.
@@ -368,15 +368,15 @@ This also applies if we retrieve a set of invoices to show customers that corres
 
     <?php
 
-    //Get a set of invoices
+    // Get a set of invoices
     // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
-        //Get the customer related to the invoice
+        // Get the customer related to the invoice
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
-        //Print his/her name
+        // Print his/her name
         echo $customer->name, "\n";
     }
 
@@ -417,14 +417,14 @@ add a more sophisticated cache for this scenario overriding the models manager:
          * @param string $key
          * @return object
          */
-        public function getReusableRecords($modelName, $key){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function getReusableRecords($modelName, $key)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 return apc_fetch($key);
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             return parent::getReusableRecords($modelName, $key);
         }
 
@@ -435,15 +435,15 @@ add a more sophisticated cache for this scenario overriding the models manager:
          * @param string $key
          * @param mixed $records
          */
-        public function setReusableRecords($modelName, $key, $records){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function setReusableRecords($modelName, $key, $records)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 apc_store($key, $records);
                 return;
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             parent::setReusableRecords($modelName, $key, $records);
         }
     }
@@ -454,7 +454,7 @@ Do not forget to register the custom models manager in the DI:
 
     <?php
 
-    $di->setShared('modelsManager', function() {
+    $di->setShared('modelsManager', function () {
         return new CustomModelsManager();
     });
 
@@ -479,13 +479,13 @@ This means that when you get a related record you could intercept how these data
 
     <?php
 
-    //Get some invoice
+    // Get some invoice
     $invoice = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
 
-    //Same as above
+    // Same as above
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
 Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
@@ -499,7 +499,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
         public static function findFirst($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
     }
 
@@ -533,10 +533,10 @@ to obtain all entities:
 
         public static function find($parameters=null)
         {
-            //Create a unique key
+            // Create a unique key
             $key = self::_createKey($parameters);
 
-            //Check if there are data in the cache
+            // Check if there are data in the cache
             $results = self::_getCache($key);
 
             // Valid data is an object
@@ -549,16 +549,16 @@ to obtain all entities:
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
 
-                //Query the related customer
+                // Query the related customer
                 $customer = $invoice->customer;
 
-                //Assign it to the record
+                // Assign it to the record
                 $invoice->customer = $customer;
 
                 $results[] = $invoice;
             }
 
-            //Store the invoices in the cache + their customers
+            // Store the invoices in the cache + their customers
             self::_setCache($key, $results);
 
             return $results;
@@ -708,35 +708,35 @@ this class looks like:
          */
         public function execute($params=null, $types=null)
         {
-            //Parse the intermediate representation for the SELECT
+            // Parse the intermediate representation for the SELECT
             $ir = $this->parse();
 
-            //Check if the query has conditions
+            // Check if the query has conditions
             if (isset($ir['where'])) {
 
-                //The fields in the conditions can have any order
-                //We need to recursively check the conditions tree
-                //to find the info we're looking for
+                // The fields in the conditions can have any order
+                // We need to recursively check the conditions tree
+                // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
-                //Recursively visits the nodes
+                // Recursively visits the nodes
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
                 $final = $visitor->getFinal();
 
-                //Select the cache according to the range
-                //...
+                // Select the cache according to the range
+                // ...
 
-                //Check if the cache has data
-                //...
+                // Check if the cache has data
+                // ...
             }
 
-            //Execute the query
+            // Execute the query
             $result = $this->_executeSelect($ir, $params, $types);
 
-            //cache the result
-            //...
+            // cache the result
+            // ...
 
             return $result;
         }
@@ -856,7 +856,7 @@ build all your SQL statements passing variable parameters as bound parameters:
         $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
-        //...
+        // ...
     }
 
 In the above example, ten plans were generated increasing the memory usage and processing in the application.
@@ -872,7 +872,7 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
 
         $robots = $this->modelsManager->executeQuery($phql, array($i));
 
-        //...
+        // ...
     }
 
 Performance can be also improved reusing the PHQL query:
@@ -888,7 +888,7 @@ Performance can be also improved reusing the PHQL query:
 
         $robots = $query->execute($phql, array($i));
 
-        //...
+        // ...
     }
 
 Execution plans for queries involving `prepared statements`_ are also cached by most database systems

@@ -53,7 +53,7 @@
 
     <?php
 
-    $di->set('cookies', function() {
+    $di->set('cookies', function () {
         $cookies = new Phalcon\Http\Response\Cookies();
         $cookies->useEncryption(false);
         return $cookies;
@@ -65,7 +65,7 @@
 
     <?php
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
         $crypt = new Phalcon\Crypt();
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Используйте свой собственный ключ!
         return $crypt;

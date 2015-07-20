@@ -74,7 +74,7 @@ Usage:
   project [name] [type] [directory] [enable-webtools]
 
 Arguments:
-  help	Shows this help text
+  help    Shows this help text
 
 Example
   phalcon project store simple

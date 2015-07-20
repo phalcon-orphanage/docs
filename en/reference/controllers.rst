@@ -179,7 +179,7 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
     }
@@ -203,7 +203,7 @@ method 'onConstruct':
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -226,7 +226,7 @@ container in application. For example, if we have registered a service like this
 
     $di = new DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -354,14 +354,14 @@ any other class registered with its name can easily replace a controller:
 
     <?php
 
-    //Register a controller as a service
-    $di->set('IndexController', function() {
+    // Register a controller as a service
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-    //Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function() {
+    // Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });

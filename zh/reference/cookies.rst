@@ -56,7 +56,7 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function() {
+    $di->set('cookies', function () {
         $cookies = new Cookies();
         $cookies->useEncryption(false);
         return $cookies;
@@ -70,7 +70,7 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
         $crypt = new Crypt();
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // 使用你自己的key！
         return $crypt;

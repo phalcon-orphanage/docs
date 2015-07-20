@@ -144,8 +144,8 @@ PHPUnit для выполнения тестов.
   use Phalcon\DI,
       \Phalcon\Test\UnitTestCase as PhalconTestCase;
 
-  abstract class UnitTestCase extends PhalconTestCase {
-
+  abstract class UnitTestCase extends PhalconTestCase
+  {
       /**
        * @var \Voice\Cache
        */
@@ -161,8 +161,8 @@ PHPUnit для выполнения тестов.
        */
       private $_loaded = false;
 
-      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
-
+      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+      {
           // Загрузка дополнительных сервисов, которые могут потребоваться во время тестирования
           $di = DI::getDefault();
 
@@ -177,8 +177,9 @@ PHPUnit для выполнения тестов.
        * Проверка на то, что тест правильно настроен
        * @throws \PHPUnit_Framework_IncompleteTestError;
        */
-      public function __destruct() {
-          if(!$this->_loaded) {
+      public function __destruct()
+      {
+          if (!$this->_loaded) {
               throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
           }
       }
@@ -194,12 +195,10 @@ PHPUnit для выполнения тестов.
   /**
    * Class UnitTest
    */
-  class UnitTest extends \UnitTestCase {
-
-
-
-      public function testTestCase() {
-
+  class UnitTest extends \UnitTestCase
+  {
+      public function testTestCase()
+      {
           $this->assertEquals('works',
               'works',
               'This is OK'

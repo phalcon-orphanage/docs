@@ -103,7 +103,7 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
 
         $crypt = new Phalcon\Crypt();
 

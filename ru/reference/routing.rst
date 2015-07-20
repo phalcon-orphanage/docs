@@ -344,7 +344,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
             'controller' => 'products',
             'action' => 'show'
         ))
-        ->convert('slug', function($slug) {
+        ->convert('slug', function ($slug) {
             // Удаляем тире из выбранного параметра
             return str_replace('-', '', $slug);
         });
@@ -709,7 +709,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router->add('/login', array(
         'module' => 'admin',
         'controller' => 'session'
-    ))->beforeMatch(function($uri, $route) {
+    ))->beforeMatch(function ($uri, $route) {
         // Проверим, что это был Ajax-запрос
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
@@ -848,7 +848,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router = new Phalcon\Mvc\Router();
     $router->setDI(new Phalcon\DI\FactoryDefault());
     // Тут необходимо установить правила маршрутизации
-    //...
+    // ...
 
     // Цикл проверки маршрутов
     foreach ($testRoutes as $testRoute) {
@@ -880,7 +880,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);
@@ -983,7 +983,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);

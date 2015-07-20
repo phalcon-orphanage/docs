@@ -34,7 +34,7 @@ You can use the same instance to encrypt/decrypt several times:
 
     use Phalcon\Crypt;
 
-    //Create an instance
+    // Create an instance
     $crypt = new Crypt();
 
     $texts = array(
@@ -112,7 +112,7 @@ You can set up the encryption component in the services container in order to us
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
 
         $crypt = new Crypt();
 

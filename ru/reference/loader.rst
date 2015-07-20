@@ -180,7 +180,7 @@ Phalcon будет вынужден обрабатывать данные по �
     ));
 
     // Прослушивание всех событий загрузчика
-    $eventsManager->attach('loader', function($event, $loader) {
+    $eventsManager->attach('loader', function ($event, $loader) {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();
         }

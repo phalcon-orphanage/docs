@@ -132,7 +132,7 @@ The example below shows how to change the log format:
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    //Changing the logger format
+    // Changing the logger format
     $formatter = new LineFormatter("%date% - %message%");
     $logger->setFormatter($formatter);
 
@@ -208,9 +208,9 @@ This logger sends messages to the FirePHP.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
- 	$logger->log("This is a message");
- 	$logger->log("This is an error", \Phalcon\Logger::ERROR);
- 	$logger->error("This is another error");
+     $logger->log("This is a message");
+     $logger->log("This is an error", \Phalcon\Logger::ERROR);
+     $logger->error("This is another error");
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

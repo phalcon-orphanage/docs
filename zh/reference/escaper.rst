@@ -14,19 +14,19 @@ Phalcon的上下文转义组件基于 OWASP_ 提供的`XSS (Cross Site Scripting
 
     <?php
 
-        //带有额外的html标签的恶意的文档标题
+        // 带有额外的html标签的恶意的文档标题
         $maliciousTitle = '</title><script>alert(1)</script>';
 
-        //恶意的css类名
+        // 恶意的css类名
         $className = ';`(';
 
-        //恶意的css字体名
+        // 恶意的css字体名
         $fontName = 'Verdana"</style>';
 
-        //恶意的Javascript文本
+        // 恶意的Javascript文本
         $javascriptText = "';</script>Hello";
 
-        //创建转义实例对象
+        // 创建转义实例对象
         $e = new Phalcon\Escaper();
 
     ?>

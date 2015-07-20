@@ -89,7 +89,7 @@ An example of the source data that must be used for each adapter:
     use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
     use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-    //Passing a resultset as data
+    // Passing a resultset as data
     $paginator = new PaginatorModel(
         array(
             "data"  => Products::find(),
@@ -98,7 +98,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing an array as data
+    // Passing an array as data
     $paginator = new PaginatorArray(
         array(
             "data"  => array(
@@ -113,7 +113,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing a querybuilder as data
+    // Passing a querybuilder as data
 
     $builder = $this->modelsManager->createBuilder()
         ->columns('id, name')

@@ -533,7 +533,7 @@ UPDATE выполняет изменение в два этапа:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {

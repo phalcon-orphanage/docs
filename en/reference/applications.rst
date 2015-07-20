@@ -49,7 +49,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
     $di = new FactoryDefault();
 
     // Registering the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -90,14 +90,14 @@ If namespaces are used, the following bootstrap can be used:
     $di = new FactoryDefault();
 
     // Register the dispatcher setting a Namespace for controllers
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Registering the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -109,7 +109,7 @@ If namespaces are used, the following bootstrap can be used:
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -178,14 +178,14 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         public function registerServices(DiInterface $di)
         {
             // Registering a dispatcher
-            $di->set('dispatcher', function() {
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
             // Registering the view component
-            $di->set('view', function() {
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
@@ -271,19 +271,19 @@ module:
     $view = new View();
 
     // Set options to view component
-    //...
+    // ...
 
     // Register the installed modules
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -311,10 +311,10 @@ you may recognize the following bootstrap file:
     try {
 
         // Register autoloaders
-        //...
+        // ...
 
         // Register services
-        //...
+        // ...
 
         // Handle the request
         $application = new Application($di);
@@ -496,7 +496,7 @@ The following example demonstrates how to attach listeners to this component:
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );

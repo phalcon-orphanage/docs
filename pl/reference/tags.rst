@@ -549,18 +549,18 @@ You can easily add new helpers to a custom component replacing the service 'tag'
 
     class MyTags extends \Phalcon\Tag
     {
-        //...
+        // ...
 
-        //Create a new helper
+        // Create a new helper
         static public function myAmazingHelper($parameters)
         {
-            //...
+            // ...
         }
 
-        //Override an existing method
+        // Override an existing method
         static public function textField($parameters)
         {
-            //...
+            // ...
         }
     }
 
@@ -570,7 +570,7 @@ Then change the definition of the service 'tag':
 
     <?php
 
-    $di['tag'] = function() {
+    $di['tag'] = function () {
         return new MyTags();
     };
 
@@ -654,7 +654,7 @@ After creating our custom helper, we will autoload the new directory that contai
         $di = new Phalcon\DI\FactoryDefault();
 
         // Assign our new tag a definition so we can call it
-        $di->set('MyTags',  function()
+        $di->set('MyTags',  function ()
         {
             return new MyTags();
         });
@@ -662,7 +662,7 @@ After creating our custom helper, we will autoload the new directory that contai
         $application = new \Phalcon\Mvc\Application($di);
         echo $application->handle()->getContent();
 
-        } catch(\Phalcon\Exception $e) {
+        } catch (\Phalcon\Exception $e) {
              echo "PhalconException: ", $e->getMessage();
         }
 

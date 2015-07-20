@@ -72,10 +72,10 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
       protected function getTranslation()
       {
 
-        //Ask browser what is the best language
+        // Ask browser what is the best language
         $language = $this->request->getBestLanguage();
 
-        //Check if we have a translation file for that lang
+        // Check if we have a translation file for that lang
         if (file_exists("app/messages/" . $language . ".php")) {
            require "app/messages/" . $language . ".php";
         } else {
@@ -83,7 +83,7 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
            require "app/messages/en.php";
         }
 
-        //Return a translation object
+        // Return a translation object
         return new NativeArray(array(
            "content" => $messages
         ));

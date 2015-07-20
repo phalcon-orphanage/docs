@@ -16,7 +16,7 @@ you can define routes and map them to controllers/actions that you require. A ro
     // Create the router
     $router = new \Phalcon\Mvc\Router();
 
-    //Define a route
+    // Define a route
     $router->add(
         "/admin/users/my-profile",
         array(
@@ -25,7 +25,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         )
     );
 
-    //Another route
+    // Another route
     $router->add(
         "/admin/users/change-password",
         array(
@@ -52,7 +52,7 @@ create more flexible routes:
     // Create the router
     $router = new \Phalcon\Mvc\Router();
 
-    //Define a route
+    // Define a route
     $router->add(
         "/admin/:controller/a/:action/:params",
         array(
@@ -122,12 +122,12 @@ The example below demonstrates how to define names to route parameters:
     $router->add(
         "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params",
         array(
-        	"controller" => "posts",
-        	"action"     => "show",
-        	"year"       => 1, // ([0-9]{4})
-        	"month"      => 2, // ([0-9]{2})
-        	"day"        => 3, // ([0-9]{2})
-        	"params"     => 4, // :params
+            "controller" => "posts",
+            "action"     => "show",
+            "year"       => 1, // ([0-9]{4})
+            "month"      => 2, // ([0-9]{2})
+            "day"        => 3, // ([0-9]{2})
+            "params"     => 4, // :params
         )
     );
 
@@ -233,11 +233,11 @@ are added to the route paths according to the position on which they were define
 
     <?php
 
-    //First position must be skipped because it is used for
-    //the named parameter 'country'
+    // First position must be skipped because it is used for
+    // the named parameter 'country'
     $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
         array(
-            'section' => 2, //Positions start with 2
+            'section' => 2, // Positions start with 2
             'article' => 3
         )
     );
@@ -341,14 +341,14 @@ Convertions allow to freely transform the route's parameters before passing them
 
     <?php
 
-    //The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    // The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
             'action' => 'show'
         ))
-        ->convert('slug', function($slug) {
-            //Transform the slug removing the dashes
+        ->convert('slug', function ($slug) {
+            // Transform the slug removing the dashes
             return str_replace('-', '', $slug);
         });
 
@@ -362,32 +362,32 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     $router = new \Phalcon\Mvc\Router();
 
-    //Create a group with a common module and controller
+    // Create a group with a common module and controller
     $blog = new \Phalcon\Mvc\Router\Group(array(
         'module' => 'blog',
         'controller' => 'index'
     ));
 
-    //All the routes start with /blog
+    // All the routes start with /blog
     $blog->setPrefix('/blog');
 
-    //Add a route to the group
+    // Add a route to the group
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Add another route to the group
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //This route maps to a controller different than the default
+    // This route maps to a controller different than the default
     $blog->add('/blog', array(
         'controller' => 'about',
         'action' => 'index'
     ));
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount($blog);
 
 Matching Routes
@@ -427,7 +427,7 @@ The following example shows how to use this component in stand-alone mode:
     // Getting the processed action
     echo $router->getActionName();
 
-    //Get the matched route
+    // Get the matched route
     $route = $router->getMatchedRoute();
 
 Naming Routes
@@ -444,7 +444,7 @@ This is especially useful if you want to create URLs from it.
 
     $route->setName("show-posts");
 
-    //or just
+    // or just
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
@@ -595,7 +595,7 @@ If none of the routes specified in the router are matched, you can define a grou
 
     <?php
 
-    //Set 404 paths
+    // Set 404 paths
     $router->notFound(array(
         "controller" => "index",
         "action" => "route404"
@@ -610,13 +610,13 @@ those paths they can be automatically filled by the router:
 
     <?php
 
-    //Individually
+    // Individually
     $router->setDefaultModule("backend");
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController("index");
     $router->setDefaultAction("index");
 
-    //Using an array
+    // Using an array
     $router->setDefaults(array(
         "controller" => "index",
         "action" => "index"
@@ -633,7 +633,7 @@ a not-found status in the dispatcher. You can set up the router to automatically
 
     $router = new \Phalcon\Mvc\Router();
 
-    //Remove trailing slashes automatically
+    // Remove trailing slashes automatically
     $router->removeExtraSlashes(true);
 
 Or, you can modify specific routes to optionally accept trailing slashes:
@@ -678,7 +678,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
     <?php
 
-    //These routes simulate real URIs
+    // These routes simulate real URIs
     $testRoutes = array(
         '/',
         '/index',
@@ -691,18 +691,18 @@ Since this component has no dependencies, you can create a file as shown below t
 
     $router = new Phalcon\Mvc\Router();
 
-    //Add here your custom routes
-    //...
+    // Add here your custom routes
+    // ...
 
-    //Testing each route
+    // Testing each route
     foreach ($testRoutes as $testRoute) {
 
-        //Handle the route
+        // Handle the route
         $router->handle($testRoute);
 
         echo 'Testing ', $testRoute, '<br>';
 
-        //Check if some route was matched
+        // Check if some route was matched
         if ($router->wasMatched()) {
             echo 'Controller: ', $router->getControllerName(), '<br>';
             echo 'Action: ', $router->getActionName(), '<br>';
@@ -722,12 +722,12 @@ you can write the routes directly in the controllers instead of adding them in t
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //Use the annotations router
+        // Use the annotations router
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //Read the annotations from ProductsController if the URI starts with /api/products
+        // Read the annotations from ProductsController if the URI starts with /api/products
         $router->addResource('Products', '/api/products');
 
         return $router;
@@ -825,12 +825,12 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //Use the annotations router
+        // Use the annotations router
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
+        // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;

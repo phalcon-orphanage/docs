@@ -61,7 +61,7 @@ Este archivo es leído en las primeras líneas del bootstrap (public/index.php):
 
     <?php
 
-    //Leer la configuración
+    // Leer la configuración
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` nos permite manipular el archivo usando programación orientada a objetos.
@@ -146,8 +146,8 @@ si la aplicación requiere acceder a datos de sessión:
 
     <?php
 
-    //Iniciar la sesión solamente la primera vez que un componente requiera el servicio de sesión
-    $di->set('session', function() {
+    // Iniciar la sesión solamente la primera vez que un componente requiera el servicio de sesión
+    $di->set('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -191,7 +191,7 @@ autocargador también vamos a tomar los parámetros del archivo de configuració
     <?php
 
     // La conexión a la base de datos es creada basada en los parámetros definidos en el archivo de configuración
-    $di->set('db', function() use ($config) {
+    $di->set('db', function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
             "username" => $config->database->username,
@@ -244,13 +244,13 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
         {
             if ($this->request->isPost()) {
 
-                //Recibir los datos ingresados por el usuario
+                // Recibir los datos ingresados por el usuario
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Buscar el usuario en la base de datos
+                // Buscar el usuario en la base de datos
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -260,7 +260,7 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
                     $this->_registerSession($user);
 
                     $this->flash->success('Welcome ' . $user->name);
-                    //Redireccionar la ejecución si el usuario es valido
+                    // Redireccionar la ejecución si el usuario es valido
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -270,7 +270,7 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
                 $this->flash->error('Wrong email/password');
             }
 
-            //Redireccionar a el forma de login nuevamente
+            // Redireccionar a el forma de login nuevamente
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -325,7 +325,7 @@ la creación automática y crearemos una función en el bootstrap.
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
         $dispatcher = new Phalcon\Mvc\Dispatcher();
         return $dispatcher;
     });
@@ -344,20 +344,20 @@ nos interesa ahora es "dispatch", el siguiente código filtra todos los eventos 
 
     <?php
 
-    $di->set('dispatcher', function() use ($di) {
+    $di->set('dispatcher', function () use ($di) {
 
-        //Crear un administrador de eventos
+        // Crear un administrador de eventos
         $eventsManager = new Phalcon\Events\Manager();
 
-        //Instanciar el plugin de seguridad
+        // Instanciar el plugin de seguridad
         $security = new Security($di);
 
-        //Enviar todos los eventos producidos en el Dispatcher al plugin Security
+        // Enviar todos los eventos producidos en el Dispatcher al plugin Security
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Asignar el administrador de eventos al dispatcher
+        // Asignar el administrador de eventos al dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -410,7 +410,7 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Verificar si la variable de sesión 'auth' está definida, esto indica si hay un usuario autenticado
+            // Verificar si la variable de sesión 'auth' está definida, esto indica si hay un usuario autenticado
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -418,18 +418,18 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
                 $role = 'Users';
             }
 
-            //Obtener el controlador y acción actual desde el Dispatcher
+            // Obtener el controlador y acción actual desde el Dispatcher
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtener la lista ACL
+            // Obtener la lista ACL
             $acl = $this->_getAcl();
 
-            //Verificar si el pérfil (role) tiene acceso al controlador/acción
+            // Verificar si el pérfil (role) tiene acceso al controlador/acción
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Phalcon\Acl::ALLOW) {
 
-                //Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
+                // Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
                 $this->flash->error("No tienes acceso a este módulo.");
                 $dispatcher->forward(
                     array(
@@ -438,8 +438,8 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
                     )
                 );
 
-                //Devolver "false" le indica al Dispatcher que debe detener la operación
-                //y evitar que la acción se ejecute
+                // Devolver "false" le indica al Dispatcher que debe detener la operación
+                // y evitar que la acción se ejecute
                 return false;
             }
 
@@ -456,14 +456,14 @@ también es implementado en el plugin. Ahora, explicaremos paso a paso como cons
 
     <?php
 
-    //Crear el ACL
+    // Crear el ACL
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //La acción por defecto es denegar (DENY)
+    // La acción por defecto es denegar (DENY)
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Registrar dos roles, 'users' son usuarios registrados
-    //y 'guests' son los usuarios sin un pérfil definido (invitados)
+    // Registrar dos roles, 'users' son usuarios registrados
+    // y 'guests' son los usuarios sin un pérfil definido (invitados)
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -479,7 +479,7 @@ sus acciones son accesos a los recursos:
 
     <?php
 
-    //Recursos del área privada (backend)
+    // Recursos del área privada (backend)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -490,7 +490,7 @@ sus acciones son accesos a los recursos:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Recursos del área pública (frontend)
+    // Recursos del área pública (frontend)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -508,14 +508,14 @@ tiene acceso tanto al backend y al frontend. El perfil "Guests" solo tiene acces
 
     <?php
 
-    //Permitir acceso al área pública tanto a usuarios como a invitados
+    // Permitir acceso al área pública tanto a usuarios como a invitados
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Permitir acceso al área privada solo al pérfil "Users"
+    // Permitir acceso al área privada solo al pérfil "Users"
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
@@ -544,12 +544,12 @@ Esta parte de la aplicación es implementada en el componente de usuario "Elemen
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -562,8 +562,8 @@ esta clase en el contenedor de servicios:
 
     <?php
 
-    //Registrar un componente de usuario
-    $di->set('elements', function() {
+    // Registrar un componente de usuario
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -635,7 +635,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function indexAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -644,7 +644,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function searchAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -652,7 +652,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function newAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -660,7 +660,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function editAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -668,7 +668,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function createAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -676,7 +676,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function saveAction()
         {
-            //...
+            // ...
         }
 
         /**
@@ -684,7 +684,7 @@ Cada controlador implementa las siguientes acciones:
          */
         public function deleteAction($id)
         {
-            //...
+            // ...
         }
 
     }
@@ -701,8 +701,8 @@ su búsqueda por este campo.
     <?php
 
     /**
-	 * La acción de inicio, permite buscar productos
-	 */
+     * La acción de inicio, permite buscar productos
+     */
     public function indexAction()
     {
         $this->persistent->searchParams = null;
@@ -746,12 +746,12 @@ otro usamos el componente :doc:`Request <request>`:
     {
 
         if ($this->request->isPost()) {
-            //crear las condiciones de búsqueda
+            // crear las condiciones de búsqueda
         } else {
-            //paginar usando las condiciones existentes
+            // paginar usando las condiciones existentes
         }
 
-        //...
+        // ...
 
     }
 
@@ -805,12 +805,12 @@ Supongamos que retornó registros, entonces creamos un páginador para navegar f
     <?php
 
     $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    //Data to paginate
-        "limit" => 5,           //Rows per page
-        "page" => $numberPage   //Active page
+        "data" => $products,    // Data to paginate
+        "limit" => 5,           // Rows per page
+        "page" => $numberPage   // Active page
     ));
 
-    //Obtener la página activa
+    // Obtener la página activa
     $page = $paginator->getPaginate();
 
 Finalmente pasamos la página devuelta a la vista:
@@ -863,7 +863,7 @@ En el caso de creación, recuperamos los datos enviados y los asignamos a una nu
         $products->price = $this->request->getPost("price", "double");
         $products->active = $this->request->getPost("active");
 
-        //...
+        // ...
 
     }
 
@@ -883,11 +883,11 @@ Al guardar, sabremos si los datos cumplen con las reglas de negocio y validacion
     public function createAction()
     {
 
-        //...
+        // ...
 
         if (!$products->create()) {
 
-            //Guardar falló, mostrar los mensajes
+            // Guardar falló, mostrar los mensajes
             foreach ($products->getMessages() as $message) {
                 $this->flash->error($message);
             }
@@ -912,7 +912,7 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
     public function editAction($id)
     {
 
-        //...
+        // ...
 
         $product = Products::findFirstById($id);
 
@@ -937,16 +937,16 @@ Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vue
     public function saveAction()
     {
 
-        //...
+        // ...
 
-        //Buscar el producto a actualizar
+        // Buscar el producto a actualizar
         $product = Products::findFirstById($this->request->getPost("id"));
         if (!$product) {
             $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 
-        //... asignar los valores al objeto y guardar
+        // ... asignar los valores al objeto y guardar
 
     }
 
@@ -964,12 +964,12 @@ donde estamos trabajando actualmente. Esto se logra en el método inicializador 
 
         public function initialize()
         {
-            //Establecer el título de la página
+            // Establecer el título de la página
             Tag::setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -984,11 +984,11 @@ El método parent::initialize() en la clase padre se llama igualmente, esté agr
 
         protected function initialize()
         {
-            //Agregar el nombre de la aplicación al principio del título
+            // Agregar el nombre de la aplicación al principio del título
             Phalcon\Tag::prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Finalmente, el título se imprime en la vista principal (app/views/index.phtml):

@@ -144,7 +144,7 @@
     $filter = new \Phalcon\Filter();
 
     // Используем анонимную функцию
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 

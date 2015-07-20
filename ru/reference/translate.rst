@@ -32,7 +32,7 @@
 
     <?php
 
-    //app/messages/en.php
+    // app/messages/en.php
     $messages = array(
         "hi"      => "Hello",
         "bye"     => "Good Bye",
@@ -44,7 +44,7 @@
 
     <?php
 
-    //app/messages/ru.php
+    // app/messages/ru.php
     $messages = array(
         "hi"      => "Здарова",
         "bye"     => "Прощай",

@@ -22,12 +22,12 @@ This part of the application is implemented in the component "Elements" (app/lib
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -40,8 +40,8 @@ our first user component in the services container:
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    // Register an user component
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -93,12 +93,12 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            // Set the document title
             $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -115,11 +115,11 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Prepend the application name to the title
             $this->tag->prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Finally, the title is printed in the main view (app/views/index.phtml):

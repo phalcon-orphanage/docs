@@ -46,7 +46,7 @@ index.php, как в веб-приложениях, мы используем cl
     $loader->register();
 
     // Загружаем файл конфигурации, если он есть
-    if(is_readable(APPLICATION_PATH . '/config/config.php')) {
+    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
     }
@@ -59,8 +59,8 @@ index.php, как в веб-приложениях, мы используем cl
      * Определяем консольные аргументы
      */
     $arguments = array();
-    foreach($argv as $k => $arg) {
-        if($k == 1) {
+    foreach ($argv as $k => $arg) {
+        if ($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;

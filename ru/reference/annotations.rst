@@ -95,22 +95,22 @@
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //Отразить аннотации в классе Example
+    // Отразить аннотации в классе Example
     $reflector = $reader->get('Example');
 
-    //Прочесть аннотации в блоке документации класса
+    // Прочесть аннотации в блоке документации класса
     $annotations = $reflector->getClassAnnotations();
 
-    //Произвести обход всех аннотаций
+    // Произвести обход всех аннотаций
     foreach ($annotations as $annotation) {
 
-        //Вывести название аннотации
+        // Вывести название аннотации
         echo $annotation->getName(), PHP_EOL;
 
-        //Вывести количество аргументов
+        // Вывести количество аргументов
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //Вывести аргументы
+        // Вывести аргументы
         print_r($annotation->getArguments());
     }
 
@@ -192,11 +192,11 @@
 
     <?php
 
-    $di['dispatcher'] = function() {
+    $di['dispatcher'] = function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Привязать плагин к событию 'dispatch'
+        // Привязать плагин к событию 'dispatch'
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -224,29 +224,29 @@ CacheEnablerPlugin это плагин, который перехватывае�
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //Разбор аннотаций в текущем запущенном методе
+            // Разбор аннотаций в текущем запущенном методе
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //Проверить, имеет ли метод аннотацию 'Cache'
+            // Проверить, имеет ли метод аннотацию 'Cache'
             if ($annotations->has('Cache')) {
 
-                //Метод имеет аннотацию 'Cache'
+                // Метод имеет аннотацию 'Cache'
                 $annotation = $annotations->get('Cache');
 
-                //Получить время жизни кэша
+                // Получить время жизни кэша
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //Проверить, есть ли определенный пользователем ключ кэша
+                // Проверить, есть ли определенный пользователем ключ кэша
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //Включить кэш для текущего метода
+                // Включить кэш для текущего метода
                 $this->view->cache($options);
             }
 

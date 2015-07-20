@@ -147,8 +147,8 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
   use Phalcon\DI,
       \Phalcon\Test\UnitTestCase as PhalconTestCase;
 
-  abstract class UnitTestCase extends PhalconTestCase {
-
+  abstract class UnitTestCase extends PhalconTestCase
+  {
       /**
        * @var \Voice\Cache
        */
@@ -164,8 +164,8 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
        */
       private $_loaded = false;
 
-      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
-
+      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+      {
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
 
@@ -179,8 +179,9 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
        * Check if the test case is setup properly
        * @throws \PHPUnit_Framework_IncompleteTestError;
        */
-      public function __destruct() {
-          if(!$this->_loaded) {
+      public function __destruct()
+      {
+          if (!$this->_loaded) {
               throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
           }
       }
@@ -198,10 +199,10 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
   /**
    * Class UnitTest
    */
-  class UnitTest extends \UnitTestCase {
-
-      public function testTestCase() {
-
+  class UnitTest extends \UnitTestCase
+  {
+      public function testTestCase()
+      {
           $this->assertEquals('works',
               'works',
               'This is OK'

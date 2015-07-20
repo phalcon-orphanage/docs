@@ -75,32 +75,32 @@
     $app = new Phalcon\Mvc\Micro();
 
     // Получение списка всех роботов
-    $app->get('/api/robots', function() {
+    $app->get('/api/robots', function () {
 
     });
 
     // Поиск роботов с $name в названии
-    $app->get('/api/robots/search/{name}', function($name) {
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
     // Получение робота по указанному ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
     // Добавление нового робота
-    $app->post('/api/robots', function() {
+    $app->post('/api/robots', function () {
 
     });
 
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    $app->put('/api/robots/{id:[0-9]+}', function () {
 
     });
 
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -168,7 +168,7 @@
     $di = new \Phalcon\DI\FactoryDefault();
 
     // Настройка сервиса базы данных
-    $di->set('db', function(){
+    $di->set('db', function () {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
             "username" => "asimov",
@@ -189,13 +189,13 @@
     <?php
 
     // Получение всех роботов
-    $app->get('/api/robots', function() use ($app) {
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach( $robots as $robot){
+        foreach ( $robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -216,7 +216,7 @@
     <?php
 
     // Поиск роботов, в названии которых содержится $name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
@@ -225,7 +225,7 @@
 
         $data = array();
 
-        foreach ($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -243,14 +243,14 @@
     <?php
 
     // Получение робота по ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ))->getFirst();
 
-        //Create a response
+        // Create a response
         $response = new Phalcon\Http\Response();
 
         if ($robot == false) {
@@ -277,7 +277,7 @@
     <?php
 
     // Добавление нового робота
-    $app->post('/api/robots', function() use ($app) {
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -292,7 +292,7 @@
         // Формируем ответ
         $response = new Phalcon\Http\Response();
 
-        //Проверка, что вставка произведена успешно
+        // Проверка, что вставка произведена успешно
         if ($status->success() == true) {
 
             // Изменение HTML статуса
@@ -307,7 +307,7 @@
             // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
-            //Отправляем сообщение об ошибке клиенту
+            // Отправляем сообщение об ошибке клиенту
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
@@ -328,7 +328,7 @@
     <?php
 
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -348,7 +348,7 @@
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Изменение HTML статуса
+            // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -371,7 +371,7 @@
     <?php
 
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(

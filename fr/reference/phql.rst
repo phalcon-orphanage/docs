@@ -106,11 +106,11 @@ From a controller or a view, it's easy create/execute them using an injected :do
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars = $query->execute();
 
-    //With bound parameters
+    // With bound parameters
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars = $query->execute(array(
         'name' => 'Audi'
@@ -122,10 +122,10 @@ Or simply execute it:
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Executing with bound parameters
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
@@ -547,7 +547,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -596,7 +596,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    //Getting a whole set
+    // Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -604,7 +604,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
         ->getQuery()
         ->execute();
 
-    //Getting the first row
+    // Getting the first row
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -750,7 +750,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
 
     <?php
 
-    //Passing parameters in the query construction
+    // Passing parameters in the query construction
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:', array('name' => $name))
@@ -758,7 +758,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute();
 
-    //Passing parameters in query execution
+    // Passing parameters in query execution
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:')

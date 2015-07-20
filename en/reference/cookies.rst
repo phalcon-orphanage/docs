@@ -58,7 +58,7 @@ You can disable encryption in the following way:
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function() {
+    $di->set('cookies', function () {
         $cookies = new Cookies();
         $cookies->useEncryption(false);
         return $cookies;
@@ -72,7 +72,7 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
         $crypt = new Crypt();
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
         return $crypt;
