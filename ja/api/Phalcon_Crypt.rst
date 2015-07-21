@@ -40,9 +40,9 @@ Constants
 Methods
 -------
 
-public  **setPadding** (*unknown* $scheme)
+public  **setPadding** (*int* $scheme)
 
-
+Changes the padding scheme used
 
 
 
@@ -84,7 +84,7 @@ Returns the encryption key
 
 protected  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
 
-
+Pads texts before encryption
 
 
 

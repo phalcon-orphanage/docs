@@ -299,7 +299,7 @@ Appends a customized message on the validation process
 
 public  **save** ()
 
-Creates/Updates a collection based on the values in the atributes
+Creates/Updates a collection based on the values in the attributes
 
 
 

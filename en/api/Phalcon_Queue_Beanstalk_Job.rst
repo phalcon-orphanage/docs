@@ -1,7 +1,7 @@
 Class **Phalcon\\Queue\\Beanstalk\\Job**
 ========================================
 
-* Phalcon\\Queue\\Beanstalk\\Job * * Represents a job in a beanstalk queue
+Represents a job in a beanstalk queue
 
 
 Methods
