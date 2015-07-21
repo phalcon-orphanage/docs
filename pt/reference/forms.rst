@@ -265,7 +265,7 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
@@ -394,7 +394,7 @@ in the form's class to perform pre-validations and post-validations:
 
 Rendering Forms
 ---------------
-You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 .. code-block:: html+php
 

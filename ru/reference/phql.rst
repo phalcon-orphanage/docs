@@ -472,7 +472,7 @@ Phalcon не только преобразует PHQL выражения в SQL.
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false)
     {

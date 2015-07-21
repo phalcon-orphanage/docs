@@ -248,7 +248,7 @@ URisのrewriteは、以下のようにApacheで制限します。
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });

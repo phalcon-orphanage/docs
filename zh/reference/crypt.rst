@@ -120,7 +120,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
         return $crypt;
     }, true);
-    
+
 然后，例如，我们可以在控制器中使用它了：
 
 .. code-block:: php

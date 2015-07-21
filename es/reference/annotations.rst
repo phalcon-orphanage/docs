@@ -263,7 +263,7 @@ Now, we can use the annotation in a controller:
         }
 
         /**
-         * This is comment
+         * This is a comment
          *
          * @Cache(lifetime=86400)
          */

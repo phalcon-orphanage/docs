@@ -138,7 +138,7 @@ The resulting profile data can be obtained from the listener:
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-In a similar manner we can register an lambda function to perform the task instead of a separate listener class (as seen above):
+In a similar manner we can register a lambda function to perform the task instead of a separate listener class (as seen above):
 
 .. code-block:: php
 

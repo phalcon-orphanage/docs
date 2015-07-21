@@ -87,7 +87,7 @@ data entered in the form including checking for a valid user in the database:
         }
 
         /**
-         * This action authenticate and logs an user into the application
+         * This action authenticate and logs a user into the application
          *
          */
         public function startAction()

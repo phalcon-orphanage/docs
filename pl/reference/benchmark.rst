@@ -1,14 +1,14 @@
 Porównanie Frameworków
 ====================
 W przeszłości, wydajność nie była jednym z głównych priorytetów podczas tworzenia aplikacji internetowych. Rozsądny sprzęt był ją w stanie zrekompensować.
-Jednak, gdy Google  decided_ to, że czas ładowania strony będzie miał wpływ na jej pozycję w rankingach wyszukiwań, wydajność stała się jednym z głównych priorytetów, tuż obok funkcjonalności. 
+Jednak, gdy Google  decided_ to, że czas ładowania strony będzie miał wpływ na jej pozycję w rankingach wyszukiwań, wydajność stała się jednym z głównych priorytetów, tuż obok funkcjonalności.
 Jest to kolejny sposób, w którym poprawa wydajności strony ma pozytywny wpływ na stronę internetową.
 
-Benchmarki poniżej pokazują jak efektywny jest Phalcon w porównaniu z innymi, tradycyjnymi frameworkami PHP. 
+Benchmarki poniżej pokazują jak efektywny jest Phalcon w porównaniu z innymi, tradycyjnymi frameworkami PHP.
 Benchmarki te są aktualizowane, gdy  tylko wydawane są stabilne wersje wspomnianych frameworków lub Phalcona.
 
 
-Zachęcamy programistów do klonowania pakietów testowych, których używamy do naszych benchmarków. 
+Zachęcamy programistów do klonowania pakietów testowych, których używamy do naszych benchmarków.
 Jeżeli masz jakiekolwiek dodatkowe optymalizacje lub komentarze, prosimy  `write us`_. `Check out source at Github`_
 
 Jakie było środowisko testowe?

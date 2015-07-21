@@ -82,7 +82,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
 .. code-block:: php
 
     <?php
-    
+
     public function indexAction()
     {
 
@@ -91,7 +91,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
             ->addCss('css/style.css', true);
     }
-    
+
 Collections
 -----------
 Collections groups resources of the same type, the assets manager implicitly creates two collections: css and js.
@@ -146,7 +146,7 @@ Volt syntax:
               {{ assets.outputJs('footer') }}
         </body>
     <html>
-    
+
 Prefixes
 --------
 Collections can be URL-prefixed, this allows to easily change from a server to other at any moment:

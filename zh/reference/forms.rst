@@ -52,7 +52,7 @@ Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用�
 
 
 开发者可根据需要渲染html组件。 当使用render()函数时， phalcon内部会使用 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 生成相应的html项，
-第二个参数中可以对一些属性进行设置。 
+第二个参数中可以对一些属性进行设置。
 
 .. code-block:: html+php
 
@@ -315,7 +315,7 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
         'Yes' => 'Yes, please!',
         'No' => 'No, thanks'
     )));
-    
+
 实体中也可以使用getters, 这样可以给开发者更多的自由， 当然也会洽使开发稍麻烦一些，不过这是值得的：
 
 .. code-block:: php

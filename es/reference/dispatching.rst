@@ -137,7 +137,7 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     }
 
-Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
+Keep in mind that making a "forward" is not the same as making a HTTP redirect. Although they apparently got the same result.
 The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
 to complete the process.
 

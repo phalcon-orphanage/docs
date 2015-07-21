@@ -36,7 +36,7 @@
 
     如果使用 PHP 5.4/5.5 建议在模型中预先定义好所有的列，这样可以减少模型内存的开销以及内存分配。
 
-默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 getSource() 方法： 
+默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 getSource() 方法：
 
 .. code-block:: php
 
@@ -440,7 +440,7 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 将大数据量的查询结果存储在内存会消耗很多资源，正因为如此，分成每32行一块从数据库中获得结果集，以减少重复执行查询请求的次数，在一些情况下也节省内存。
 
-注意结果集可以序列化后保存在一个后端缓存里面。 :doc:`Phalcon\\Cache <cache>` 可以用来实现这个。但是，序列化数据会导致 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 
+注意结果集可以序列化后保存在一个后端缓存里面。 :doc:`Phalcon\\Cache <cache>` 可以用来实现这个。但是，序列化数据会导致 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 将从数据库检索到的所有数据以一个数组的方式保存，因此在这样执行的地方会消耗更多的内存。
 
 .. code-block:: php
@@ -844,12 +844,12 @@ and without:
     $robotsParts = $robot->robotsParts;
 
     // Only parts that match conditions
-    $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
+    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
-        "bind" => array("date" => "2012-03-15")
+        "bind" => array("date" => "2015-03-15")
     ));
 
     $robotPart   = RobotsParts::findFirst(1);
@@ -872,7 +872,7 @@ Getting related records manually:
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
+        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
     $robotPart   = RobotsParts::findFirst(1);
@@ -2326,7 +2326,7 @@ Note that you need to specify the deleted condition in your queries to effective
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
 Also, Phalcon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
-The following behavior is an example, it implements the Blamable behavior which helps identify the user
+The following behavior is an example, it implements the Blameable behavior which helps identify the user
 that is performed operations over a model:
 
 .. code-block:: php
@@ -2336,7 +2336,7 @@ that is performed operations over a model:
     use Phalcon\Mvc\Model\Behavior;
     use Phalcon\Mvc\Model\BehaviorInterface;
 
-    class Blamable extends Behavior implements BehaviorInterface
+    class Blameable extends Behavior implements BehaviorInterface
     {
 
         public function notify($eventType, $model)
@@ -2378,7 +2378,7 @@ The former is a very simple behavior, but it illustrates how to create a behavio
 
         public function initialize()
         {
-            $this->addBehavior(new Blamable());
+            $this->addBehavior(new Blameable());
         }
 
     }
@@ -2923,7 +2923,7 @@ You can change the default meta-data introspection in the following way:
         ));
 
         // Set a custom meta-data introspection strategy
-        $metaData->setStrategy(new MyInstrospectionStrategy());
+        $metaData->setStrategy(new MyIntrospectionStrategy());
 
         return $metaData;
     };

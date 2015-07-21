@@ -3,11 +3,11 @@
 
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center
-    
-Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。 
+
+Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。
 Phalcon主要使用这个异常类来包装这些功能，以方便开发者或用户使用。
 
-尽管Phalcon是使用C语言书写的，但其依然如其它的PHP框架般提供了一些必须的调试工具，PHP本身提供的调试工具亦然可以正常使用。 
+尽管Phalcon是使用C语言书写的，但其依然如其它的PHP框架般提供了一些必须的调试工具，PHP本身提供的调试工具亦然可以正常使用。
 
 捕获异常（Catching Exceptions）
 ----------------------------------
@@ -56,7 +56,7 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
 
     }
 
-如从 `Exception class`_ 中取得异常信息一样， 我也可以从 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` 中取异常信息。 
+如从 `Exception class`_ 中取得异常信息一样， 我也可以从 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` 中取异常信息。
 
 .. code-block:: php
 
@@ -100,7 +100,7 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-从上面我们可以看到异常信息中有Phalcon的类及方法，甚至调用时的参数也显示了出来。 如果需要可以使用 `Exception::getTrace`_ 获取更多的信息。 
+从上面我们可以看到异常信息中有Phalcon的类及方法，甚至调用时的参数也显示了出来。 如果需要可以使用 `Exception::getTrace`_ 获取更多的信息。
 
 调试组件（Debug component）
 -----------------------------
@@ -209,7 +209,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 .. highlights::
 
 
-我们强烈推荐至少使用XDebug 2.2.3 以提供与Phalcon最佳的兼容性。下面的例子中调用了 xdebug_print_function_stack_ 方法， 
+我们强烈推荐至少使用XDebug 2.2.3 以提供与Phalcon最佳的兼容性。下面的例子中调用了 xdebug_print_function_stack_ 方法，
 并返回了该方法产生的代码跟踪结果.
 
 .. code-block:: php
@@ -243,7 +243,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
         }
 
     }
-    
+
 这个例子中， XDebug显示出了局部变量和代码的跟踪信息：
 
 .. code-block:: html

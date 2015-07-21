@@ -194,9 +194,9 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     $logger = new SyslogAdapter("ident-name", array(
         'option' => LOG_NDELAY,
         'facility' => LOG_MAIL
-    ));    
-    
-    
+    ));
+
+
 FirePHP Logger
 ^^^^^^^^^^^^^^
 This logger sends messages to the FirePHP.

@@ -127,7 +127,7 @@ Une fois l'extension installé, utilisez la ligne suivante pour le mettre en pla
 .. code-block:: ini
 
     apc.enabled = On
-    
+
 PHP 5.5 inclus un cache bytecode intégré appelé ZendOptimizer+, cette extension est aussi disponible pour PHP 5.3 et 5.4.
 
 Mettez le travail lent en tâche de fond

@@ -265,7 +265,7 @@
 
 获取参数（Getting Parameters）
 ------------------
-当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了 
+当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了
 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获得这些参数。
 
 .. code-block:: php

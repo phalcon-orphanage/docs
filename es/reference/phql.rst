@@ -487,7 +487,7 @@ because the price does not meet the business rule that we implemented:
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false)
     {
@@ -748,7 +748,7 @@ The following is the life cycle of each PHQL statement executed:
 
 Using Raw SQL
 -------------
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 .. code-block:: php
 

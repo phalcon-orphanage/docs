@@ -68,19 +68,19 @@ You could add the parameter *--help* to get help on the usage of a certain scrip
     $ phalcon project --help
 
     Phalcon DevTools (1.2.3)
-    
+
     Help:
       Creates a project
-    
+
     Usage:
       project [name] [type] [directory] [enable-webtools]
-    
+
     Arguments:
       help    Shows this help text
-    
+
     Example
       phalcon project store simple
-    
+
     Options:
      --name               Name of the new project
      --enable-webtools    Determines if webtools should be enabled [optional]

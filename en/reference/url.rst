@@ -82,10 +82,10 @@ A URL can be generated in the following way:
 
     <?php
 
-    // This produces: /blog/2012/01/some-blog-post
+    // This produces: /blog/2015/01/some-blog-post
     $url->get(array(
         'for'   => 'show-post',
-        'year'  => 2012,
+        'year'  => 2015,
         'month' => '01',
         'title' => 'some-blog-post'
     ));

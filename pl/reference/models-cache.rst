@@ -622,7 +622,7 @@ According to the range where the primary key is located we choose a different ca
 | > 20000             | mongo3             |
 +---------------------+--------------------+
 
-The easiest way is adding an static method to the model that chooses the right cache to be used:
+The easiest way is adding a static method to the model that chooses the right cache to be used:
 
 .. code-block:: php
 

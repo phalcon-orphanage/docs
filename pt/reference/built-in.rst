@@ -19,7 +19,7 @@ Se você quer reescrever as URIs para o index.php, utilize o seguinte arquivo de
     }
     return false;
 
- 
+
 E inicie o servidor com o seguinte o comando:
 
 .. code-block:: bash
@@ -28,4 +28,4 @@ E inicie o servidor com o seguinte o comando:
 
 Em seguida navegue com o seu browser para o endereço http://localhost:8000/ e verifique se tudo esta funcionando.
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
+.. _built-in: http://php.net/manual/en/features.commandline.webserver.php

@@ -185,7 +185,7 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
 .. code-block:: php
 
     <?php
-    
+
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // Basic Usage

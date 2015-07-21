@@ -235,7 +235,7 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
 
                 $options = array('lifetime' => $lifetime);
 
-                // Check if there is an user defined cache key
+                // Check if there is a user defined cache key
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }

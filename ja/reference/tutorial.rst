@@ -109,13 +109,13 @@ tutorial/public/index.php は次のようになります。
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
+
         // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
         $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });        
+        });
 
         // リクエストを処理する
         $application = new \Phalcon\Mvc\Application($di);
@@ -130,7 +130,7 @@ tutorial/public/index.php は次のようになります。
 ^^^^^^^^^^^
 bootstrapの最初の部分では、オートローダを登録しています。これは、アプリケーション内のコントローラやモデルなどのクラスをロードするために使用されます。例えば、アプリケーションの柔軟性を増加させる、コントローラの1つまたは複数のディレクトリを登録することができます。この例では、Phalcon\\ Loaderコンポーネントを使用しています。
 
-これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。 
+これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。
 
 .. code-block:: php
 
@@ -173,7 +173,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
         $view->setViewsDir('../app/views/');
         return $view;
     });
-    
+
 次に、Phalconにより生成されるすべてのURI に "/tutorial/" が含まれるように、base URIを登録します。 これは、このチュートリアルで、ハイパーリンクを生成するために、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用する際に重要になってきます。
 
 .. code-block:: php
@@ -185,7 +185,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
         $url = new \Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
-    });   
+    });
 
 このファイルの最後のパートで、:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を見つけるでしょう。この目的は、リクエスト環境を初期化し、リクエストのルートを決め、発見したアクションを起動することであり、処理が完了した際にレスポンスを集約し、返却することです。
 
@@ -413,13 +413,13 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
+
         // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });       
+        });
 
         // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
@@ -464,7 +464,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
                     echo $message->getMessage(), "<br/>";
                 }
             }
-            
+
             $this->view->disable();
         }
 

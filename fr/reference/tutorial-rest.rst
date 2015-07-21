@@ -414,7 +414,7 @@ Récupérer tous les robots :
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Tue, 21 Jul 2015 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -428,7 +428,7 @@ Chercher un robot par son nom :
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Tue, 21 Jul 2015 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -442,7 +442,7 @@ Récupérer un robot par son ID :
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Tue, 21 Jul 2015 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -457,7 +457,7 @@ Insérer un nouveau robot :
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Tue, 21 Jul 2015 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -472,7 +472,7 @@ Essayer d'insérer un nouveau robot avec le nom d'un robot existant :
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Tue, 21 Jul 2015 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -487,7 +487,7 @@ Modifier un robot avec un type inconnu :
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Tue, 21 Jul 2015 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -502,7 +502,7 @@ Enfin, la suppresion de robots :
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Tue, 21 Jul 2015 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

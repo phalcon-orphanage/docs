@@ -552,7 +552,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
         )
     );
 
-    // пример - "/posts/2010/02/some-cool-content"
+    // пример - "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(

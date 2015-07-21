@@ -220,7 +220,7 @@
 
     $di->set('dispatcher', function () {
 
-        // Создаем менеджер событий 
+        // Создаем менеджер событий
         $eventsManager = new EventsManager();
 
         // Прикрепляем слушателя

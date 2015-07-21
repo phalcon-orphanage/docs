@@ -133,7 +133,7 @@ Instância Dedicada
         }
     }
 
-Configuração por Host 
+Configuração por Host
 ^^^^^^^^^^^^^^^^^^^^^
 Esta segunda configuração permite você ter diferentes configurações por host:
 

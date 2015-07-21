@@ -25,7 +25,7 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
     <?php
 
     use Phalcon\Mvc\Micro;
-    
+
     $app = new Micro();
 
 定义路由（Defining routes）
@@ -43,7 +43,7 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
 
 get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} 中含有一个参数 {$name}, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
 处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：
- 
+
 .. code-block:: php
 
     <?php
@@ -58,7 +58,7 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     //  静态方法
     $app->get('/say/hello/{name}', "SomeClass::someSayMethod");
 
-    //  对象内的方法 
+    //  对象内的方法
     $myController = new MyController();
     $app->get('/say/hello/{name}', array($myController, "someAction"));
 
@@ -232,17 +232,17 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     // 设置名为 "show-post"的路由
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        // .. show the post here 
+        // .. show the post here
 
     })->setName('show-post');
 
-    // 产生url 
+    // 产生url
     $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });
@@ -348,7 +348,7 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
 微应用中的事件（Micro Application Events）
 ----------------------------------------
-当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件： 
+当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件：
 
 +---------------------+-------------------------------------------------------------------+----------------------+
 | 事件名              |  如何触发                                                         | 是否可中断执行       |
