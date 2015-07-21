@@ -127,7 +127,7 @@ if you make a "forward" is not necessary to store the messages in session, but i
         public function saveAction()
         {
 
-            // store the post
+            // Store the post
 
             // Using direct flash
             $this->flash->success("Your information was stored correctly!");
@@ -155,7 +155,7 @@ Or using a HTTP redirection:
         public function saveAction()
         {
 
-            // store the post
+            // Store the post
 
             // Using session flash
             $this->flashSession->success("Your information was stored correctly!");

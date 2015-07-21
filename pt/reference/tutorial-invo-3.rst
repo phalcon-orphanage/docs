@@ -312,9 +312,9 @@ we check it using the :doc:`Request <request>` component:
     {
 
         if ($this->request->isPost()) {
-            // create the query conditions
+            // Create the query conditions
         } else {
-            // paginate using the existing conditions
+            // Paginate using the existing conditions
         }
 
         // ...

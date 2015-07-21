@@ -523,12 +523,12 @@ to obtain all entities:
 
         protected static function _getCache($key)
         {
-            // returns data from a cache
+            // Returns data from a cache
         }
 
         protected static function _setCache($key)
         {
-            // stores data in the cache
+            // Stores data in the cache
         }
 
         public static function find($parameters=null)
@@ -566,7 +566,7 @@ to obtain all entities:
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
     }
 
@@ -582,7 +582,7 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
 
         protected static function _createKey($conditions, $params)
@@ -735,7 +735,7 @@ this class looks like:
             // Execute the query
             $result = $this->_executeSelect($ir, $params, $types);
 
-            // cache the result
+            // Cache the result
             // ...
 
             return $result;

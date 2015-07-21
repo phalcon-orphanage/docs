@@ -75,7 +75,7 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
         if (file_exists("app/messages/".$language.".php")) {
            require "app/messages/".$language.".php";
         } else {
-           // fallback to some default
+           // Fallback to some default
            require "app/messages/en.php";
         }
 

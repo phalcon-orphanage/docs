@@ -31,7 +31,7 @@ You can easily add resources to these collections like follows:
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            // and some local javascript resources
+            // And some local javascript resources
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');

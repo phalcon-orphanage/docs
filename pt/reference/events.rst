@@ -199,7 +199,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
         {
             $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
 
-            // do some task
+            // Do some task
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }

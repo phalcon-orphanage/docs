@@ -761,7 +761,7 @@ By accessing an attribute with the same name as the relationship will retrieve a
     <?php
 
     $robot = Robots::findFirst();
-    $robotsParts = $robot->robotsParts; // all the related records in RobotsParts
+    $robotsParts = $robot->robotsParts; // All the related records in RobotsParts
 
 Also, you can use a magic getter:
 
@@ -770,8 +770,8 @@ Also, you can use a magic getter:
     <?php
 
     $robot = Robots::findFirst();
-    $robotsParts = $robot->getRobotsParts(); // all the related records in RobotsParts
-    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // passing parameters
+    $robotsParts = $robot->getRobotsParts(); // All the related records in RobotsParts
+    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Passing parameters
 
 If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
 findFirst()/find() result. The following example compares retrieving related results with using magic methods
@@ -2296,7 +2296,7 @@ A behavior is also capable of intercept missing methods on your models:
 
         public function missingMethod($model, $method, $arguments=array())
         {
-            // if the method is 'getSlug' convert the title
+            // If the method is 'getSlug' convert the title
             if ($method == 'getSlug') {
                 return Phalcon\Tag::friendlyTitle($model->title);
             }

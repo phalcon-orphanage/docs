@@ -491,7 +491,7 @@ The following example shows how to use this component in stand-alone mode:
     // Taking URI from $_GET["_url"]
     $router->handle();
 
-    // or Setting the URI value directly
+    // Or Setting the URI value directly
     $router->handle("/employees/edit/17");
 
     // Getting the processed controller
@@ -517,7 +517,7 @@ This is especially useful if you want to create URLs from it.
 
     $route->setName("show-posts");
 
-    // or just
+    // Or just
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
@@ -527,7 +527,7 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
 
     <?php
 
-    // returns /posts/2012/phalcon-1-0-released
+    // Returns /posts/2012/phalcon-1-0-released
     echo $url->get(array(
         "for"   => "show-posts",
         "year"  => "2012",
@@ -542,7 +542,7 @@ The following are examples of custom routes:
 
     <?php
 
-    // matches "/system/admin/a/edit/7001"
+    // Matches "/system/admin/a/edit/7001"
     $router->add(
         "/system/:controller/a/:action/:params",
         array(
@@ -552,7 +552,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/es/news"
+    // Matches "/es/news"
     $router->add(
         "/([a-z]{2})/:controller",
         array(
@@ -562,7 +562,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/es/news"
+    // Matches "/es/news"
     $router->add(
         "/{language:[a-z]{2}}/:controller",
         array(
@@ -571,7 +571,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/admin/posts/edit/100"
+    // Matches "/admin/posts/edit/100"
     $router->add(
         "/admin/:controller/:action/:int",
         array(
@@ -581,7 +581,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/posts/2015/02/some-cool-content"
+    // Matches "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -593,7 +593,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/manual/en/translate.adapter.html"
+    // Matches "/manual/en/translate.adapter.html"
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
         array(
@@ -604,13 +604,13 @@ The following are examples of custom routes:
         )
     );
 
-    // matches /feed/fr/le-robots-hot-news.atom
+    // Matches /feed/fr/le-robots-hot-news.atom
     $router->add(
         "/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}",
         "Feed::get"
     );
 
-    // matches /api/v1/users/peter.json
+    // Matches /api/v1/users/peter.json
     $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
@@ -856,8 +856,8 @@ Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
     ...
 
-    $router->setUriSource(Router::URI_SOURCE_GET_URL); // use $_GET['_url'] (default)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // use $_SERVER['REQUEST_URI'] (default)
+    $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI'] (default)
 
 Or you can manually pass a URI to the 'handle' method:
 

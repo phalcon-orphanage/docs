@@ -62,7 +62,7 @@ Then, in the index.php file we create the following:
 
     $app = new \Phalcon\Mvc\Micro();
 
-    // define the routes here
+    // Define the routes here
 
     $app->handle();
 

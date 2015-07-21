@@ -148,9 +148,9 @@ Pour différencier la méthode (GET ou POST), nous utilisons le composant :doc:`
     {
 
         if ($this->request->isPost()) {
-            // create the query conditions
+            // Create the query conditions
         } else {
-            // paginate using the existing conditions
+            // Paginate using the existing conditions
         }
 
         // ...
