@@ -623,7 +623,7 @@ Volt Syntax:
 
 
 
-public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase], [*mixed* $replace])
+public static *string*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase], [*mixed* $replace])
 
 Converts texts into URL-friendly titles 
 

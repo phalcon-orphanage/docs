@@ -376,7 +376,7 @@ Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 
 public  **getLastQuery** ()
 
-Returns the lastest query created or executed in the models manager
+Returns the last query created or executed in the models manager
 
 
 

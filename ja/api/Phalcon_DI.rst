@@ -58,7 +58,7 @@ Registers an "always shared" service in the services container
 
 public  **remove** (*unknown* $name)
 
-Removes a service in the services container
+Removes a service in the services container It also removes any shared instance created for the service
 
 
 

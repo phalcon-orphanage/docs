@@ -71,7 +71,7 @@ Internal handler to call a queue of events
 
 public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
-Fires an event in the events manager causing that active listeners be notified about it 
+Fires an event in the events manager causing the active listeners to be notified about it 
 
 .. code-block:: php
 
