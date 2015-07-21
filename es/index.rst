@@ -30,6 +30,7 @@ Table of Contents
    reference/tutorial
    reference/tutorial-invo
    reference/tutorial-rest
+   reference/samples
    reference/di
    reference/mvc
    reference/controllers
@@ -39,6 +40,7 @@ Table of Contents
    reference/odm
    reference/views
    reference/tags
+   reference/assets
    reference/volt
    reference/applications
    reference/routing
@@ -48,6 +50,7 @@ Table of Contents
    reference/events
    reference/request
    reference/response
+   reference/cookies
    reference/url
    reference/flash
    reference/session
