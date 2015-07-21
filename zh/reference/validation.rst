@@ -31,7 +31,7 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
             echo $message, '<br>';
         }
     }
-    
+
 由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：
 
 初始化验证（Initializing Validation）

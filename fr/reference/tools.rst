@@ -1,6 +1,6 @@
 Outils pour développeurs Phalcon
 =======================
-Ces outils sont une collection de scripts utiles pour générer un squelette de code. 
+Ces outils sont une collection de scripts utiles pour générer un squelette de code.
 Des composants principaux de votre application peuvent être générés avec une simple commande, vous permettant de développer des applications facilement avec phalcon.
 
 .. highlights::
@@ -32,7 +32,7 @@ Générer un squelette de Project
 -----------------------------
 Vous pouvez utiliser les outils Phalcon pour générer un squelette de projet prédéfini pour vos applications.
 Par défaut le générateur de squelette de projet utilise le module d'url rewriting (mod_rewrite) d'Apache.
-Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votre projet : 
+Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votre projet :
 
 .. figure:: ../_static/img/tools-1.png
    :align: center
@@ -54,7 +54,7 @@ Accédez à l'url de votre projet et vous obtiendrez ceci :
 
 Générer des controlleurs
 ----------------------
-La commande "create-controller" génère un controlleur type. 
+La commande "create-controller" génère un controlleur type.
 Il est important de faire cette commande à l'intérieur du dossier qui contient le projet Phalcon.
 
 .. figure:: ../_static/img/tools-5.png
@@ -233,7 +233,7 @@ L'échaffaudage d'un CRUD
 "L'échaffaudage" est un moyen rapide de générer la plupart des parties importante d'une application.
 Si vous voulez créer les models, vues et les controlleurs pour une nouvelle ressource en une seule action, l'échaffaudage est l'outil qu'il vous faut.
 
-Une fois le code généré, il lui faudra être modifié pour répondre à vos besoins. Beaucoup de développeurs évitent l'échaffaudage complètement, 
+Une fois le code généré, il lui faudra être modifié pour répondre à vos besoins. Beaucoup de développeurs évitent l'échaffaudage complètement,
 choisissant de tout écrire eux-même. La génération de code peux servir de guide pour mieux comprendre comment le framework fonctionne.
 La capture d'écran suivante montre un échaffaudage basé sur la table "products" :
 
@@ -287,7 +287,7 @@ Regardez la vidéo suivante pour voir comment faire :
 
 Intégrer les outils sur PhpStorm
 -----------------------------------
-La vidéo suivante vous montre comment intégrer les outils de développeur avec  `PhpStorm IDE`_. 
+La vidéo suivante vous montre comment intégrer les outils de développeur avec  `PhpStorm IDE`_.
 La configuration peut facilement être adaptée à d'autres IDE pour PHP.
 
 .. raw:: html
@@ -296,7 +296,7 @@ La configuration peut facilement être adaptée à d'autres IDE pour PHP.
 
 Conclusion
 ----------
-Les outils pour développeurs Phalcon fournissent un moyen simple de générer du code pour votre application. 
+Les outils pour développeurs Phalcon fournissent un moyen simple de générer du code pour votre application.
 Cela réduit le temps de développement et diminue le nombre potentiel d'erreur de code.
 
 

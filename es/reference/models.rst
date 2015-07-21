@@ -1679,7 +1679,7 @@ A callback also can be used to create a conditional assigment of automatic defau
 
 Dynamic Update
 ^^^^^^^^^^^^^^
-SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update). 
+SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update).
 You can change specific models to make dynamic updates, in this case, just the fields that had changed
 are used to create the final SQL statement.
 
@@ -1951,7 +1951,7 @@ that is performed operations over a model:
 
     <?php
 
-    use Phalcon\Mvc\ModelInterface,        
+    use Phalcon\Mvc\ModelInterface,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
@@ -2407,7 +2407,7 @@ you can do this:
 
 Record Snapshots
 ----------------
-Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what 
+Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what
 fields are changed according to the data queried from the persistence:
 
 .. code-block:: php
@@ -2439,7 +2439,7 @@ In models that have this feature activated you can check what fields changed:
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
 
-    
+
 
 Models Meta-Data
 ----------------
@@ -2713,7 +2713,7 @@ If a model is mapped to a table that is in a different schemas/databases than th
             return "toys";
         }
 
-    }    
+    }
 
 Setting multiple databases
 --------------------------

@@ -37,7 +37,7 @@ Una vez abres la aplicación en tu navegador: http://localhost/invo verás algo 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-La aplicación está dividida en dos partes, un frontend, que es la parte pública donde los visitante pueden recivir 
+La aplicación está dividida en dos partes, un frontend, que es la parte pública donde los visitante pueden recivir
 información además de solicitar información de contácto.
 
 La segunda parte es el backend, un área administrativa donde un usuario registrado puede administrar

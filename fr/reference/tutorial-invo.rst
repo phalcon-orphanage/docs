@@ -100,7 +100,7 @@ L'autoloader enregistre un ensemble de dossies où l'application va chercher les
             $config->application->modelsDir,
         )
     )->register();
-    
+
 Notez que ce qu'il fait est d'enregistrer les dossiers qui sont définis dans le fichier de configuration.
 Le seul dossier qui n'est pas enregistré est viewsDir parce qu'il ne contient pas de classes mais des fichiers de type HTML + PHP.
 
@@ -117,7 +117,7 @@ cette classe initialise et exécute tous ce qui est nécessaire pour faire tourn
 
     echo $app->handle()->getContent();
 
-    
+
 Injection de dépendances
 --------------------
 Regardez à la premiére ligne du code juste au dessus, la variable $app reçoit une autre variable $di dans son constructeur.

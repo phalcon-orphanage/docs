@@ -71,7 +71,7 @@ Linux/Solaris/Mac
 添加扩展到你的php配置文件:
 
 .. code-block:: bash
-    
+
     # Suse: Add this line in your php.ini
     extension=phalcon.so
 

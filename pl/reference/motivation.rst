@@ -13,7 +13,7 @@ Dlaczego nie możemy mieć solidnego frameworka ze wszystkimi jego zaletami, ale
 
 To dlatego narodził się Phalcon!
 
-W ciągu ostatnich kilku miesięcy, szeroko badaliśmy zachowanie PHP, szukaliśmy obszarów dla znaczących optymalizacji (małych i dużych). 
+W ciągu ostatnich kilku miesięcy, szeroko badaliśmy zachowanie PHP, szukaliśmy obszarów dla znaczących optymalizacji (małych i dużych).
 Poprzez tego zrozumienie, udało nam się usunąć niepotrzebne walidacje, ubito kod, przeprowadzono optymalizacje i wygenerowano rozwiązania
 na niskim poziomie w celu osiągnięcia maksymalnej wydajności z Phalconem.
 
@@ -53,15 +53,15 @@ Jak działa Phalcon?
 
 Dlaczego potrzebuję Phalcona?
 ----------------------
-Każde wymagania aplikacji i zadania różnią się od siebie. Niektóre na przykład są zaprojektowane do robienia zestawu zadań i generowania treści, które rzadko się zmieniają. 
-Aplikacje te mogą być tworzone w dowolnym języku programowania lub frameworku. Korzystanie z pamięci podręcznej front-endu zazwyczaj sprawia, że bez względu na to, jak źle 
+Każde wymagania aplikacji i zadania różnią się od siebie. Niektóre na przykład są zaprojektowane do robienia zestawu zadań i generowania treści, które rzadko się zmieniają.
+Aplikacje te mogą być tworzone w dowolnym języku programowania lub frameworku. Korzystanie z pamięci podręcznej front-endu zazwyczaj sprawia, że bez względu na to, jak źle
 zaprojektowane lub powolne to może być, wykonuje się bardzo szybko.
 
-Inne aplikacje generują treści niemal natychmiast, kiedy powstały zmiany od żądania do żądania. W tym przypadku, PHP służy do adresowania wszystkich żądań i wytwarzania materiałów. 
-Aplikacjami tymi mogą być API, fora dyskusyjne z dużym obciążeniem ruchu, blogi z dużą liczbą komentarzy i użytkowników, aplikacje statystyczne, kokpity administratorów, systemy planowania 
+Inne aplikacje generują treści niemal natychmiast, kiedy powstały zmiany od żądania do żądania. W tym przypadku, PHP służy do adresowania wszystkich żądań i wytwarzania materiałów.
+Aplikacjami tymi mogą być API, fora dyskusyjne z dużym obciążeniem ruchu, blogi z dużą liczbą komentarzy i użytkowników, aplikacje statystyczne, kokpity administratorów, systemy planowania
 zasobami przedsiębiorstwa (ERP), oprogramowanie inteligentnego biznesu pracującego z danymi czasu rzeczywistego i więcej.
 
-Aplikacja będzie tak wolna, jak jej najwolniejsze części/procesy. Phalcon oferuje bardzo szybki, bogaty framework, który pozwala programistom skupić się na tworzeniu swoich aplikacji/szybkim programowaniu. 
+Aplikacja będzie tak wolna, jak jej najwolniejsze części/procesy. Phalcon oferuje bardzo szybki, bogaty framework, który pozwala programistom skupić się na tworzeniu swoich aplikacji/szybkim programowaniu.
 W następstwie odpowiednich procesów kodowania, Phalcon może dostarczyć dużo więcej funkcjonalności/żądań z mniejszą konsumpcją pamięci i przetwarzaniem cykli.
 
 Wnioski

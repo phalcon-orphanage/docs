@@ -328,7 +328,7 @@
 
 会话数据（Session Data）
 ------------
-会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 
+会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 以便封装需要进行持久化的数据。
 
 .. code-block:: php

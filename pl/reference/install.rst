@@ -1,6 +1,6 @@
 Instalacja
 ============
-Rozszerzenia PHP wymagają nieco innej metody instalacji niż tradycyjna biblioteka PHP lub framework. 
+Rozszerzenia PHP wymagają nieco innej metody instalacji niż tradycyjna biblioteka PHP lub framework.
 Możesz pobrać pakiet binarny dla wybranego przez siebie systemu lub skompilować go ze źródeł.
 
 Windows

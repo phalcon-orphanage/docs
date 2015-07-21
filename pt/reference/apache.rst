@@ -2,7 +2,7 @@
 =========================
 Apache_ é um popular e bem conhecido servidor web, disponível para muitas plataformas.
 
-Configurando o Apache para o Phalcon 
+Configurando o Apache para o Phalcon
 ------------------------------
 A seguir existem potenciais configurações que você pode usar para configurar o Apache com o Phalcon. Essas notas são primariamente focadas na configuração do modulo mod-rewrite, permitindo utilizar ulrs amigáveis e o :doc:`componente de rotas <routing>`. Normalmente  uma aplicação terá a seguinte estrutura:
 
@@ -21,7 +21,7 @@ A seguir existem potenciais configurações que você pode usar para configurar 
 
 Diretório principal sob o Documento Raiz (DocumentRoot)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob a raiz do documento. Neste caso, utilizamos dois .htaccess, o primeiro para esconder o código da aplicação enviando todas as requisições para o documento raiz (DocumentRoot) da aplicação (public/). 
+Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob a raiz do documento. Neste caso, utilizamos dois .htaccess, o primeiro para esconder o código da aplicação enviando todas as requisições para o documento raiz (DocumentRoot) da aplicação (public/).
 
 .. code-block:: apacheconf
 

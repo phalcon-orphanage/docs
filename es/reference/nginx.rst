@@ -9,7 +9,7 @@ paquetes de cualquier distribución Unix PHP. Phalcon + Nginx_ + `PHP-FPM`_ prov
 
 Configurando Nginx para Phalcon
 -----------------------------
-Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación. 
+Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación.
 
 Configuración básica
 ^^^^^^^^^^^^^^^^^^^

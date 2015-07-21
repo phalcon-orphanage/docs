@@ -29,9 +29,9 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 .. code-block:: sh
 
    $ phalcon commands
-   
+
    Phalcon DevTools (1.2.3)
-   
+
    Available commands:
      commands (alias of: list, enumerate)
      controller (alias of: create-controller)
@@ -51,9 +51,9 @@ web服务器根目录下输入如下命令：
 .. code-block:: sh
 
       $ pwd
-      
+
       /Applications/MAMP/htdocs
-      
+
       $ phalcon create-project store
 
 执行命令后会生成如下的文档结构的项目：
@@ -78,7 +78,7 @@ Arguments: 参数
 
 Example 例子
   phalcon project store simple
-  
+
 Options: 选项
  --name               Name of the new project 新项目的名字
  --enable-webtools    Determines if webtools should be enabled [optional] 此选项决定了新的项目中是否使用webtools开发辅助组件
@@ -99,7 +99,7 @@ Options: 选项
 我们可以使用phalcon create-controller --name test或phalcon controller --name test来生成名为test的控制器. 当然要使用此命令当前的执行命令目录必须为已存在的phalcon项目内.
 
 .. code-block:: sh
-         
+
          $ phalcon create-controller --name test
 
 上面的命令会生成如下代码：
@@ -157,7 +157,7 @@ Options:
 最简单的生成模型的方式：
 
 .. code-block:: sh
-         
+
          $ phalcon model products
 
 .. code-block:: sh
@@ -204,7 +204,7 @@ Options:
         public $status;
 
     }
-    
+
 我们可以在生成模型时指定 *--get-set* 参数以实现对字面的保护， 这样我们可以在setter/getter方法里执行一些业务逻辑。
 
 .. code-block:: php
@@ -289,7 +289,7 @@ Options:
 
 代码生成后，你可以根据自己的需要修改生成的代码。很多开发者可能不会去使用这个功能，其实这东西有时不是太好用，很多时候开发者往往会手动的书写相关代码。使用scaffold产生的代码可以
 帮助我们理解框架是如何工作的当然也可以帮助我们制作出快速原型来。 下面的截图展示了基于products表的scaffold:
- 
+
 
 .. code-block:: sh
 

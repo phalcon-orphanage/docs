@@ -16,7 +16,7 @@ Através desse entendimento, removemos validações desnecessárias, compactando
 Por que?
 ----
 * O uso do framework tornou-se mandatório para um profissional de desenvolvimento em PHP.
-* Frameworks oferecem um conjunto de princípios estruturados que facilitam a manutenção do projeto, escrevendo menos código e tornando o trabalho mais divertido. 
+* Frameworks oferecem um conjunto de princípios estruturados que facilitam a manutenção do projeto, escrevendo menos código e tornando o trabalho mais divertido.
 * Nós adoramos PHP e consideramos que o mesmo pode ser utilizado na criação de grandes e ambiciosos projetos.
 
 Como é o funcionamento interno do PHP?
@@ -28,23 +28,23 @@ Como é o funcionamento interno do PHP?
 
 Como os tradicionais frameworks em PHP funcionam?
 ------------------------------------
-* Muitos arquivos com definição de classes e métodos são lidos a cada requisição. A leitura em disco onera em termos de performance, especialmente quando os arquivos são estruturados em profundas hierarquias de diretórios. 
+* Muitos arquivos com definição de classes e métodos são lidos a cada requisição. A leitura em disco onera em termos de performance, especialmente quando os arquivos são estruturados em profundas hierarquias de diretórios.
 * Frameworks modernos possuem inclusão automática de arquivos (autoload,lazy loading) para melhorar a performance, executando os arquivos sob demanda.
-* Algumas dessas classes contêm métodos que não são utilizados a toda requisição, todavia a toda requisição tais métodos são interpretados e sempre consumindo memória 
-* O carregamento continuo e a interpretação dos códigos onera e impacta na performance 
+* Algumas dessas classes contêm métodos que não são utilizados a toda requisição, todavia a toda requisição tais métodos são interpretados e sempre consumindo memória
+* O carregamento continuo e a interpretação dos códigos onera e impacta na performance
 * O código de um framework não é alterado com frequência, entretanto uma aplicação precisa carregar e interpretar esse código a toda requisição.
 
 Como uma extensão em C funciona no PHP?
 --------------------------------
 * Extensões em C são carregadas junto com o PHP uma única vez quando o daemon do servidor web é startado.
 * Classes e funções fornecidas pela extensão ficam prontas para uso por qualquer aplicação no servidor.
-* O código não é interpretado, pois já foi compilado para a plataforma e processador específicos 
+* O código não é interpretado, pois já foi compilado para a plataforma e processador específicos
 
 Como o Phalcon funciona?
 ----------------------
-* Componentes possuem baixo acoplamento. Com o Phalcon, nada é imposto a você (desenvolvedor): você é livre para utilizar o framework completo, ou somente algumas partes, utilizando os componentes do frameworks de forma independente. 
-* As otimizações de baixo nível fornecem menos overhead para aplicações baseadas em MVC. 
-* Utilizando ORM para PHP com a linguagem em C, interage com banco de dados com o máximo de desempenho 
+* Componentes possuem baixo acoplamento. Com o Phalcon, nada é imposto a você (desenvolvedor): você é livre para utilizar o framework completo, ou somente algumas partes, utilizando os componentes do frameworks de forma independente.
+* As otimizações de baixo nível fornecem menos overhead para aplicações baseadas em MVC.
+* Utilizando ORM para PHP com a linguagem em C, interage com banco de dados com o máximo de desempenho
 * Phalcon acessa diretamente as estruturas internas do PHP, otimizando a execução da melhor forma.
 
 Por que preciso do Phalcon?
