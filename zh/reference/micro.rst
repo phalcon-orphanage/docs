@@ -242,7 +242,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });

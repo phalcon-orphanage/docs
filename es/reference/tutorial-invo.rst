@@ -591,7 +591,7 @@ servicio previamente registrado:
         <?php echo $this->getContent() ?>
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 

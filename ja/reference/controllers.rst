@@ -5,7 +5,7 @@ The controllers provide a number of methods that are called actions. Actions are
 public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
@@ -15,7 +15,7 @@ part like this:
 +------------------------+----------------+
 | **Action**             | show           |
 +------------------------+----------------+
-| **Parameter**          | 2012           |
+| **Parameter**          | 2015           |
 +------------------------+----------------+
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
@@ -62,7 +62,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year=2012, $postTitle='some default title')
+        public function showAction($year=2015, $postTitle='some default title')
         {
 
         }

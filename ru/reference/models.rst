@@ -807,12 +807,12 @@ Phalcon использует магические методы __set/__get/__cal
     $robotsParts = $robot->robotsParts;
 
     // Только которые соответствуют условию
-    $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
+    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
     // Или используя связанные параметры
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
-        "bind" => array("date" => "2012-03-15")
+        "bind" => array("date" => "2015-03-15")
     ));
 
     $robotPart = RobotsParts::findFirst(1);
@@ -835,7 +835,7 @@ Phalcon использует магические методы __set/__get/__cal
 
     // Только которые соответствуют условиям
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
+        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
     $robotPart = RobotsParts::findFirst(1);

@@ -525,7 +525,7 @@ in the container and by just accessing an attribute with the same name as a prev
         <?php echo $this->getContent() ?>
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 

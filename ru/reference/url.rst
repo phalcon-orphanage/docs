@@ -75,10 +75,10 @@
 
     <?php
 
-    // Получится: /blog/2012/01/some-blog-post
+    // Получится: /blog/2015/01/some-blog-post
     $url->get(array(
         'for' => 'show-post',
-        'year' => 2012,
+        'year' => 2015,
         'month' => '01',
         'title' => 'some-blog-post'
     ));

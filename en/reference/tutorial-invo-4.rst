@@ -68,7 +68,7 @@ in the container and by just accessing an attribute with the same name as a prev
         {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2014</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 

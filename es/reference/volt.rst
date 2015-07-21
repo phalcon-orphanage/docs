@@ -849,7 +849,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
             <div id="footer">
-                {% block footer %}&copy; Copyright 2012, All rights reserved.{% endblock %}
+                {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
             </div>
         </body>
     </html>
@@ -885,7 +885,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
                 <p class="important">Welcome on my awesome homepage.</p>
             </div>
             <div id="footer">
-                &copy; Copyright 2012, All rights reserved.
+                &copy; Copyright 2015, All rights reserved.
             </div>
         </body>
     </html>

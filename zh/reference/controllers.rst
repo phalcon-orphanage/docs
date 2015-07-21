@@ -5,7 +5,7 @@
 控制器public的方法都会映射到action并且可以通过URL访问。action负责解释请求和创建响应。
 通常，响应是以渲染的视图格式被创建，但也存在其他的方式来创建（译者注：如AJAX请求返回JSON格式的数据）。
 
-例如，当你访问一个类似这样的URL时：http://localhost/blog/posts/show/2012/the-post-title，Phalcon默认会这样分解各个部分：
+例如，当你访问一个类似这样的URL时：http://localhost/blog/posts/show/2015/the-post-title，Phalcon默认会这样分解各个部分：
 
 +------------------------+----------------+
 | **Phalcon目录**        | blog           |
@@ -14,7 +14,7 @@
 +------------------------+----------------+
 | **Action**             | show           |
 +------------------------+----------------+
-| **参数**               | 2012           |
+| **参数**               | 2015           |
 +------------------------+----------------+
 | **参数**               | the-post-title |
 +------------------------+----------------+
@@ -65,7 +65,7 @@
 
         }
 
-        public function showAction($year=2012, $postTitle='some default title')
+        public function showAction($year=2015, $postTitle='some default title')
         {
 
         }

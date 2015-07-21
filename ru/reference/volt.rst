@@ -958,7 +958,7 @@ template where it's included. Templates aren't inlined if the 'include' have var
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
             <div id="footer">
-                {% block footer %}&copy; Copyright 2012, All rights reserved.{% endblock %}
+                {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
             </div>
         </body>
     </html>
@@ -994,7 +994,7 @@ template where it's included. Templates aren't inlined if the 'include' have var
                 <p class="important">Welcome on my awesome homepage.</p>
             </div>
             <div id="footer">
-                &copy; Copyright 2012, All rights reserved.
+                &copy; Copyright 2015, All rights reserved.
             </div>
         </body>
     </html>

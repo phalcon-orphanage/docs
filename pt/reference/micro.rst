@@ -249,7 +249,7 @@ by this way the "url" service can produce the corresponding URL:
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });

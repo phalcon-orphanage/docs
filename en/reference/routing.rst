@@ -572,7 +572,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/posts/2010/02/some-cool-content"
+    // matches "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(

@@ -767,12 +767,12 @@ and without:
     $robotsParts = $robot->robotsParts;
 
     // Only parts that match conditions
-    $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
+    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
-        "bind" => array("date" => "2012-03-15")
+        "bind" => array("date" => "2015-03-15")
     ));
 
     $robotPart = RobotsParts::findFirst(1);
@@ -795,7 +795,7 @@ Getting related records manually:
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
+        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
     $robotPart = RobotsParts::findFirst(1);
