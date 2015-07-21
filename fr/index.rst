@@ -68,6 +68,7 @@ table des matières
    reference/debug
    reference/tools
    reference/whats-next
+   reference/unit-testing
    api/index
    reference/license
 
