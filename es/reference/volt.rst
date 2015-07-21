@@ -1186,7 +1186,7 @@ that the contents of a block is executed by PHP each time the view is displayed:
         <!-- generate this content is slow so we are going to cache it -->
     {% endcache %}
 
-Setting an specific number of seconds:
+Setting a specific number of seconds:
 
 .. code-block:: html+jinja
 

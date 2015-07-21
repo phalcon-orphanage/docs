@@ -133,7 +133,7 @@ The following are the built-in filters provided by this component:
 
 独自フィルタの作成
 -------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonymous function:
 
 .. code-block:: php
 

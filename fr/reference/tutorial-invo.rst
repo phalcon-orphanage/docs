@@ -545,7 +545,7 @@ Maintenant enregistrons cette classe au conteneur de service :
 
     <?php
 
-    // Register an user component
+    // Register a user component
     $di->set('elements', function () {
         return new Elements();
     });

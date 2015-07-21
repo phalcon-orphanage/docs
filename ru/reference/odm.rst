@@ -520,7 +520,7 @@ the value is not included in the method, then the validator will fail and return
 | StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+In addition to the built-in validators, you can create your own validators:
 
 .. code-block:: php
 

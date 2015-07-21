@@ -7,7 +7,7 @@ User Components
 ---------------
 All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
+upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
 
 This part of the application is implemented in the component "Elements" (app/library/Elements.php).
 
@@ -40,7 +40,7 @@ our first user component in the services container:
 
     <?php
 
-    // Register an user component
+    // Register a user component
     $di->set('elements', function () {
         return new Elements();
     });

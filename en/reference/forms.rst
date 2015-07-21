@@ -394,7 +394,7 @@ in the form's class to perform pre-validations and post-validations:
 
 Rendering Forms
 ---------------
-You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 .. code-block:: html+php
 

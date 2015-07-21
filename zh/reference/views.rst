@@ -391,7 +391,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Close session
             // ...
 
-            // An HTTP Redirect
+            // A HTTP Redirect
             $this->response->redirect('index/index');
 
             // Disable the view to avoid rendering
@@ -416,7 +416,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Close session
             // ...
 
-            // An HTTP Redirect
+            // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
 

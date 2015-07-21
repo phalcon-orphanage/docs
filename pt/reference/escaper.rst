@@ -91,7 +91,7 @@ character to the form. This kind of escaping is intended to most simpler attribu
 
     <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-You can escape an HTML attribute by using the escapeHtmlAttr method:
+You can escape a HTML attribute by using the escapeHtmlAttr method:
 
 .. code-block:: html+php
 
@@ -111,7 +111,7 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
     <a href="Escape untrusted data here!">Some link</a>
 
-You can escape an HTML attribute by using the escapeUrl method:
+You can escape a HTML attribute by using the escapeUrl method:
 
 .. code-block:: html+php
 
@@ -131,7 +131,7 @@ CSS identifiers/values can be escaped too:
 
     <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape an HTML attribute by using the escapeCss method:
+You can escape a HTML attribute by using the escapeCss method:
 
 .. code-block:: html+php
 
@@ -151,7 +151,7 @@ Strings to be inserted into javascript code also must be properly escaped:
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape an HTML attribute by using the escapeJs method:
+You can escape a HTML attribute by using the escapeJs method:
 
 .. code-block:: html+php
 

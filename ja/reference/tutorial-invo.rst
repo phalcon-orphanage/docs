@@ -497,7 +497,7 @@ ACLリストの提供
 
     <?php
 
-    // Register an user component
+    // Register a user component
     $di->set('elements', function () {
         return new Elements();
     });

@@ -408,7 +408,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Close session
             // ...
 
-            // An HTTP Redirect
+            // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
 

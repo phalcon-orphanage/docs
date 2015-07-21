@@ -112,8 +112,8 @@ By installing the '`Pretty Exceptions`_' utility in your appplication you can pr
 .. figure:: ../_static/img/pretty.jpg
     :align: center
 
-Reflection and Instrospection
------------------------------
+Reflection and Introspection
+----------------------------
 Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It's possible to use the
 `Reflection API`_ or simply print any object to show how is its internal state:
 

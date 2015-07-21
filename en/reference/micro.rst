@@ -321,7 +321,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
 Not-Found Handler
 -----------------
-When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
+When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
 An example of that behavior is below:
 
 .. code-block:: php

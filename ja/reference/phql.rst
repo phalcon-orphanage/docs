@@ -844,7 +844,7 @@ The following is the life cycle of each PHQL statement executed:
 
 生SQLの使用
 -------------
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 .. code-block:: php
 

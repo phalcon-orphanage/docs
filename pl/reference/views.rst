@@ -395,7 +395,7 @@ avoiding unnecessary processing:
             // Close session
             // ...
 
-            // An HTTP Redirect
+            // A HTTP Redirect
             $this->response->redirect('index/index');
 
             // Disable the view to avoid rendering
@@ -418,7 +418,7 @@ You can return a 'response' object to avoid disable the view manually:
             // Close session
             // ...
 
-            // An HTTP Redirect
+            // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
 

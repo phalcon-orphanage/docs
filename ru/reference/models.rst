@@ -1390,7 +1390,7 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    // Создать робота
+    // Создать артиста
     $artist = new Artists();
     $artist->name = 'Shinichi Osawa';
     $artist->country = 'Japan';
@@ -1651,7 +1651,7 @@ Phalcon пытается получить сгенерированное зна�
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
-                    if ($modle->name == 'Scooby Doo') {
+                    if ($model->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
@@ -2299,7 +2299,7 @@ ORM предоставляет API для создания собственны�
 
         public function initialize()
         {
-            $this->addBehavior(new Blamable());
+            $this->addBehavior(new Blameable());
         }
 
     }
@@ -2834,7 +2834,7 @@ Phalcon сделает за вас все остальное. Например:
         ));
 
         // Установка пользовательской стратегии интроспекции мета-данных
-        $metaData->setStrategy(new MyInstrospectionStrategy());
+        $metaData->setStrategy(new MyIntrospectionStrategy());
 
         return $metaData;
     };

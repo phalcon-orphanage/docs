@@ -754,7 +754,7 @@ When explicitly defining the relationships between models, it is easy to find re
 
 Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
 
-By accesing an attribute with the same name as the relationship will retrieve all its related record(s).
+By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
 .. code-block:: php
 
@@ -1384,7 +1384,7 @@ Magic properties can be used to store a records and its related properties:
 
     <?php
 
-    // Create a robot
+    // Create an artist
     $artist = new Artists();
     $artist->name = 'Shinichi Osawa';
     $artist->country = 'Japan';
@@ -1642,7 +1642,7 @@ If we want all objects created in our application use the same EventsManager, th
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
-                    if ($modle->name == 'Scooby Doo') {
+                    if ($model->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
@@ -1754,7 +1754,7 @@ the value is not included in the method then the validator will fail and return 
 | Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+In addition to the built-in validators, you can create your own validators:
 
 .. code-block:: php
 
@@ -2227,7 +2227,7 @@ Creating your own behaviors
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
 Also, Phalcon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
-The following behavior is an example, it implements the Blamable behavior which helps identify the user
+The following behavior is an example, it implements the Blameable behavior which helps identify the user
 that is performed operations over a model:
 
 .. code-block:: php
@@ -2277,7 +2277,7 @@ The former is a very simple behavior, but it illustrates how to create a behavio
 
         public function initialize()
         {
-            $this->addBehavior(new Blamable());
+            $this->addBehavior(new Blameable());
         }
 
     }
@@ -2804,7 +2804,7 @@ You can change the default meta-data introspection in the following way:
         ));
 
         // Set a custom meta-data introspection strategy
-        $metaData->setStrategy(new MyInstrospectionStrategy());
+        $metaData->setStrategy(new MyIntrospectionStrategy());
 
         return $metaData;
     };
