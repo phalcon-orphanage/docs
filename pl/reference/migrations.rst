@@ -1,9 +1,11 @@
 Database Migrations
 ===================
+
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
 .. highlights::
-    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.3.11 or greater installed.
+
+    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also, it is recommended to have PHP 5.4 or greater installed.
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -54,7 +56,6 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
 
     class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
     {
-
         public function up()
         {
             $this->morphTable(
@@ -69,7 +70,7 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
                                 "unsigned"      => true,
                                 "notNull"       => true,
                                 "autoIncrement" => true,
-                                "first"         => true,
+                                "first"         => true
                             )
                         ),
                         new Column(
@@ -79,7 +80,7 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
                                 "size"     => 10,
                                 "unsigned" => true,
                                 "notNull"  => true,
-                                "after"    => "id",
+                                "after"    => "id"
                             )
                         ),
                         new Column(
@@ -88,7 +89,7 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
                                 "type"    => Column::TYPE_VARCHAR,
                                 "size"    => 70,
                                 "notNull" => true,
-                                "after"   => "product_types_id",
+                                "after"   => "product_types_id"
                             )
                         ),
                         new Column(
@@ -98,7 +99,7 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
                                 "size"    => 16,
                                 "scale"   => 2,
                                 "notNull" => true,
-                                "after"   => "name",
+                                "after"   => "name"
                             )
                         ),
                     ),
@@ -119,19 +120,18 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
                                 "referencedSchema"  => "invo",
                                 "referencedTable"   => "product_types",
                                 "columns"           => array("product_types_id"),
-                                "referencedColumns" => array("id"),
+                                "referencedColumns" => array("id")
                             )
                         )
                     ),
                     "options" => array(
                         "TABLE_TYPE"      => "BASE TABLE",
                         "ENGINE"          => "InnoDB",
-                        "TABLE_COLLATION" => "utf8_general_ci",
+                        "TABLE_COLLATION" => "utf8_general_ci"
                     )
                 )
             );
         }
-
     }
 
 The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.0.0. morphTable() receives an associative array with 4 possible sections:
@@ -212,7 +212,6 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
     {
-
         public function up()
         {
             // ...
@@ -222,7 +221,6 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
                 array("name", "price")
             );
         }
-
     }
 
 Running Migrations
@@ -236,4 +234,3 @@ Once the generated migrations are uploaded on the target server, you can easily 
    :align: center
 
 Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.
-
