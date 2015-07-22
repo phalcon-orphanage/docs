@@ -4,9 +4,8 @@
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center
 
-PHP предлагает набор инструментов для отладки приложений с выводом уведомлений, предупреждений, ошибок и исключений.
-Класс `Exception class`_ передает различную информацию о том, где было сгенерировано исключение: файл, строку, сообщение, код ошибки, список вызовов и т.п.
-ООП системы, такие как Phalcon, в основном используют этот класс в качестве родительского для добавления различного функционала и предоставления
+PHP предлагает набор инструментов для отладки приложений с выводом уведомлений, предупреждений, ошибок и исключений. Класс `Exception class`_ передает различную информацию о том,
+где было сгенерировано исключение: файл, строку, сообщение, код ошибки, список вызовов и т.п. ООП системы, такие как Phalcon, в основном используют этот класс в качестве родительского для добавления различного функционала и предоставления
 информации разработчику или пользователю.
 
 Несмотря на то, что Phalcon написан на языке C, он вызывает методы из пользовательского уровня PHP, обеспечивая возможность
@@ -57,7 +56,6 @@ PHP класса `Exception class`_ и используется, чтобы по
         final public string getTraceAsString ( void )
         public string __toString ( void )
         final private void __clone ( void )
-
     }
 
 Получить информацию из :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` можно таким же способом, как из `Exception class`_:
@@ -117,7 +115,7 @@ Phalcon предоставляет компонент отладки, котор
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 Чтобы включить его, вставьте следующие строки в файл загрузки приложения:
@@ -129,8 +127,7 @@ Phalcon предоставляет компонент отладки, котор
     $debug = new \Phalcon\Debug();
     $debug->listen();
 
-Остальные обработчики исключений (try/catch) должны быть удалены или заблокированы, чтобы позволить этому компоненту самому
-перехватывать срабатывающие исключения.
+Остальные обработчики исключений (try/catch) должны быть удалены или заблокированы, чтобы позволить этому компоненту самому перехватывать срабатывающие исключения.
 
 Рефлексия (Reflection)
 ----------------------
@@ -199,7 +196,6 @@ Phalcon предоставляет компонент отладки, котор
             )
     )
 
-
 Использование XDebug
 --------------------
 XDebug_ великолепный инструмент для отладки PHP приложений. Он так же является дополнением, написанным на языке C, и вы можете использовать
@@ -210,11 +206,11 @@ XDebug_ великолепный инструмент для отладки PHP 
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-После того, как вы установите Xdebug, вы сможете использовать свой API, чтобы получить более подробные
-сведения об исключениях и сообщениях.
+После того, как вы установите Xdebug, вы сможете использовать свой API, чтобы получить более подробные сведения об исключениях и сообщениях.
+
 .. highlights::
 
     Мы настоятельно рекомендуем использовать по крайней мере XDebug версии 2.2.3 для лучшей совместимости с Phalcon
@@ -225,9 +221,10 @@ XDebug_ великолепный инструмент для отладки PHP 
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class SignupController extends Controller
+    {
         public function indexAction()
         {
 
@@ -235,7 +232,6 @@ XDebug_ великолепный инструмент для отладки PHP 
 
         public function registerAction()
         {
-
             // Запрос переменных из HTML формы
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
@@ -250,7 +246,6 @@ XDebug_ великолепный инструмент для отладки PHP 
             // Сохраняем и проверяем на ощибки
             $user->save();
         }
-
     }
 
 Xdebug так же покажет локальные переменные в этом экземпляре:

@@ -66,7 +66,7 @@ Retrieving information from :doc:`Phalcon\\Exception <../api/Phalcon_Exception>`
 
     try {
 
-        // ... app code ...
+        // ... App code ...
 
     } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
@@ -197,7 +197,6 @@ It's easy to know the internal state of any object. The above example prints the
             )
     )
 
-
 Using XDebug
 ------------
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together
@@ -217,7 +216,7 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
     We highly recommend use at least XDebug 2.2.3 for a better compatibility with Phalcon
 
-The following example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace
+The following example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace:
 
 .. code-block:: php
 
@@ -227,7 +226,6 @@ The following example implements xdebug_print_function_stack_ to stop the execut
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -235,7 +233,6 @@ The following example implements xdebug_print_function_stack_ to stop the execut
 
         public function registerAction()
         {
-
             // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
