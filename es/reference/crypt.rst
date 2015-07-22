@@ -14,10 +14,8 @@ This component is designed to provide a very simple usage:
 
     <?php
 
-    use Phalcon\Crypt;
-
     // Create an instance
-    $crypt     = new Crypt();
+    $crypt     = new \Phalcon\Crypt();
 
     $key       = 'le password';
     $text      = 'This is a secret text';
@@ -32,10 +30,8 @@ You can use the same instance to encrypt/decrypt several times:
 
     <?php
 
-    use Phalcon\Crypt;
-
     // Create an instance
-    $crypt = new Crypt();
+    $crypt = new \Phalcon\Crypt();
 
     $texts = array(
         'my-key'    => 'This is a secret text',
@@ -69,10 +65,8 @@ Example:
 
     <?php
 
-    use Phalcon\Crypt;
-
     // Create an instance
-    $crypt = new Crypt();
+    $crypt = new \Phalcon\Crypt();
 
     // Use blowfish
     $crypt->setCipher('blowfish');
@@ -90,10 +84,8 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     <?php
 
-    use Phalcon\Crypt;
-
     // Create an instance
-    $crypt   = new Crypt();
+    $crypt   = new \Phalcon\Crypt();
 
     $key     = 'le password';
     $text    = 'This is a secret text';
@@ -110,11 +102,9 @@ You can set up the encryption component in the services container in order to us
 
     <?php
 
-    use Phalcon\Crypt;
-
     $di->set('crypt', function () {
 
-        $crypt = new Crypt();
+        $crypt = new \Phalcon\Crypt();
 
         // Set a global encryption key
         $crypt->setKey('%31.1e$i86e$f!8jz');

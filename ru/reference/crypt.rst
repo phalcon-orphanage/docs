@@ -15,10 +15,10 @@ Phalcon предоставляет средства шифрования с по
     <?php
 
     // Создание экземпляра
-    $crypt = new Phalcon\Crypt();
+    $crypt     = new \Phalcon\Crypt();
 
-    $key  = 'это пароль';
-    $text = 'Это секретный текст';
+    $key       = 'это пароль';
+    $text      = 'Это секретный текст';
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -31,7 +31,7 @@ Phalcon предоставляет средства шифрования с по
     <?php
 
     // Создание экземпляра
-    $crypt = new Phalcon\Crypt();
+    $crypt = new \Phalcon\Crypt();
 
     $texts = array(
         'my-key'    => 'Это секретный текст',
@@ -66,13 +66,13 @@ Phalcon предоставляет средства шифрования с по
     <?php
 
     // Создаем экземпляр
-    $crypt = new Phalcon\Crypt();
+    $crypt = new \Phalcon\Crypt();
 
     // Используем алгоритм blowfish
     $crypt->setCipher('blowfish');
 
-    $key  = 'это пароль';
-    $text = 'Это секретный текст';
+    $key   = 'это пароль';
+    $text  = 'Это секретный текст';
 
     echo $crypt->encrypt($text, $key);
 
@@ -86,10 +86,10 @@ Phalcon предоставляет средства шифрования с по
     <?php
 
     // Создаем экземпляр
-    $crypt = new Phalcon\Crypt();
+    $crypt   = new \Phalcon\Crypt();
 
-    $key  = 'это пароль';
-    $text = 'Это секретный текст';
+    $key     = 'это пароль';
+    $text    = 'Это секретный текст';
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -105,7 +105,7 @@ Phalcon предоставляет средства шифрования с по
 
     $di->set('crypt', function () {
 
-        $crypt = new Phalcon\Crypt();
+        $crypt = new \Phalcon\Crypt();
 
         // Устанавливаем глобальный ключ шифрования
         $crypt->setKey('%31.1e$i86e$f!8jz');
