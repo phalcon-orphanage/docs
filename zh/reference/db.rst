@@ -1,10 +1,12 @@
 数据库抽象层（Database Abstraction Layer）
 ==========================
+
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 是 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。
 
 这个组件提供了比传统模式的更容易上手的数据库操作。
 
 .. highlights::
+
     这个指引不是一个完整的包含所有方法和它们的参数的文档。
     查看完整的文档参考，请访问 :doc:`API <../api/index>`
 
@@ -60,10 +62,10 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
     // 必要参数
     $config = array(
-        "host" => "127.0.0.1",
+        "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname" => "test_db"
+        "dbname"   => "test_db"
     );
 
     // 可选参数
@@ -78,10 +80,10 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
     // 必要参数
     $config = array(
-        "host" => "localhost",
+        "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname" => "template"
+        "dbname"   => "template"
     );
 
     // 可选参数
@@ -110,15 +112,15 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     $config = array(
         'username' => 'scott',
         'password' => 'tiger',
-        'dbname' => '192.168.10.145/orcl',
+        'dbname'   => '192.168.10.145/orcl'
     );
 
     // 高级配置信息
     $config = array(
-        'dbname' => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
+        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
         'username' => 'scott',
         'password' => 'tiger',
-        'charset' => 'AL32UTF8',
+        'charset'  => 'AL32UTF8'
     );
 
     // 创建连接
@@ -133,16 +135,18 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     <?php
 
     // 带PDO options参数的创建连接
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "sigma",
-        "dbname" => "test_db",
-        "options" => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-            PDO::ATTR_CASE => PDO::CASE_LOWER
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "sigma",
+            "dbname"   => "test_db",
+            "options"  => array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER
+            )
         )
-    ));
+    );
 
 查找行（Finding Rows）
 ------------
@@ -236,6 +240,25 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
+are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
+data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
+
+This function takes into account the connection charset, so its recommended to define the correct charset
+in the connection parameters or in your database server configuration, as a wrong
+charset will produce undesired effects when storing or retrieving data.
+
+Also, you can pass your parameterers directly to the execute/query methods. In this case
+bound parameters are directly passed to PDO:
+
+.. code-block:: php
+
+    <?php
+
+    // Binding with PDO placeholders
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array(1 => "Wall-E"));
+
 插入、更新、删除行（Inserting/Updating/Deleting Rows）
 --------------------------------
 去插入，更新或者删除行，你可以使用原生SQL操作，或者使用类中预设的方法
@@ -325,7 +348,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     $success = $connection->execute($sql, array(101));
 
     // 使用类中预设的方法删除行
-    $success = $connection->delete("robots", "id = 101");
+    $success = $connection->delete("robots", "id = ?", array(101));
 
 事务与嵌套事务（Transactions and Nested Transactions）
 ------------------------------------
@@ -425,20 +448,22 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        \Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
     $eventsManager = new EventsManager();
 
     // 监听所有数据库事件
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new Connection(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection = new Connection(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // 把eventsManager分配给适配器实例
     $connection->setEventsManager($eventsManager);
@@ -471,8 +496,8 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as DbProfiler;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as DbProfiler;
 
     $eventsManager = new EventsManager();
 
@@ -514,13 +539,12 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as Profiler,
-        Phalcon\Db\Profiler\Item as Item;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as Profiler;
+    use Phalcon\Db\Profiler\Item as Item;
 
     class DbProfiler extends Profiler
     {
-
         /**
          * 在SQL语句将要发送给数据库前执行
          */
@@ -536,7 +560,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         {
             echo $profile->getTotalElapsedSeconds();
         }
-
     }
 
     // 创建一个事件管理器
@@ -556,9 +579,9 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Logger;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Logger\Adapter\File as FileLogger;
 
     $eventsManager = new EventsManager();
 
@@ -674,7 +697,8 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         null,
         array(
            "columns" => array(
-                new Column("id",
+                new Column(
+                    "id",
                     array(
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
@@ -682,14 +706,16 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
                         "autoIncrement" => true,
                     )
                 ),
-                new Column("name",
+                new Column(
+                    "name",
                     array(
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
                     )
                 ),
-                new Column("year",
+                new Column(
+                    "year",
                     array(
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
@@ -764,25 +790,40 @@ Phalcon\\Db 支持下面的数据库字段类型:
     use Phalcon\Db\Column as Column;
 
     // 添加一个新的字段
-    $connection->addColumn("robots", null,
-        new Column("robot_type", array(
-            "type"    => Column::TYPE_VARCHAR,
-            "size"    => 32,
-            "notNull" => true,
-            "after"   => "name"
-        ))
+    $connection->addColumn(
+        "robots",
+        null,
+        new Column(
+            "robot_type",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 32,
+                "notNull" => true,
+                "after"   => "name"
+            )
+        )
     );
 
     // 修改一个已存在的字段
-    $connection->modifyColumn("robots", null, new Column("name", array(
-        "type" => Column::TYPE_VARCHAR,
-        "size" => 40,
-        "notNull" => true,
-    )));
+    $connection->modifyColumn(
+        "robots",
+        null,
+        new Column(
+            "name",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 40,
+                "notNull" => true
+            )
+        )
+    );
 
     // 删除名为"name"的字段
-    $connection->dropColumn("robots", null, "name");
-
+    $connection->dropColumn(
+        "robots",
+        null,
+        "name"
+    );
 
 删除数据库表（Dropping Tables）
 ^^^^^^^^^^^^^^^

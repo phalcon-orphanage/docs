@@ -1,5 +1,6 @@
 Уровень абстракции баз данных
 =============================
+
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` является компонентом, располагающимся под :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`,
 который обеспечивает уровень моделей во фреймворке. Он состоит из независимых абстракций высокого уровня для баз данных,
 полностью написанных на C.
@@ -7,6 +8,7 @@
 Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.
 
 .. highlights::
+
     Данное руководство не претендует на полную документацию доступных методов и аргументов. Пожалуйста, посетите: :doc:`API <../api/index>`
     для подробного изучения.
 
@@ -62,10 +64,10 @@
 
     // Обязательные
     $config = array(
-        "host" => "127.0.0.1",
+        "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname" => "test_db"
+        "dbname"   => "test_db"
     );
 
     // Необязательные
@@ -80,10 +82,10 @@
 
     // Обязательные
     $config = array(
-        "host" => "localhost",
+        "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname" => "template"
+        "dbname"   => "template"
     );
 
     // Необязательные
@@ -101,7 +103,7 @@
         "dbname" => "/path/to/database.db"
     );
 
-    //  Создаем соединение
+    // Создаем соединение
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 .. code-block:: php
@@ -112,15 +114,15 @@
     $config = array(
         'username' => 'scott',
         'password' => 'tiger',
-        'dbname' => '192.168.10.145/orcl',
+        'dbname'   => '192.168.10.145/orcl'
     );
 
     // Расширенная конфигурация
     $config = array(
-        'dbname' => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
+        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
         'username' => 'scott',
         'password' => 'tiger',
-        'charset' => 'AL32UTF8',
+        'charset'  => 'AL32UTF8'
     );
 
     // Создаем соединение
@@ -128,23 +130,25 @@
 
 Настройка дополнительных параметров PDO
 ---------------------------------------
-Вы можете установить опции  PDO во время соединения, передавая параметры ‘options’:
+Вы можете установить опции PDO во время соединения, передавая параметры ‘options’:
 
 .. code-block:: php
 
     <?php
 
     // Создаем соединение с настройками PDO
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "sigma",
-        "dbname" => "test_db",
-        "options" => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-            PDO::ATTR_CASE => PDO::CASE_LOWER
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "sigma",
+            "dbname"   => "test_db",
+            "options"  => array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER
+            )
         )
-    ));
+    );
 
 Извлечение строк
 ----------------
@@ -244,10 +248,28 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
+are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
+data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
+
+This function takes into account the connection charset, so its recommended to define the correct charset
+in the connection parameters or in your database server configuration, as a wrong
+charset will produce undesired effects when storing or retrieving data.
+
+Also, you can pass your parameterers directly to the execute/query methods. In this case
+bound parameters are directly passed to PDO:
+
+.. code-block:: php
+
+    <?php
+
+    // Binding with PDO placeholders
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array(1 => "Wall-E"));
+
 Вставка/Обновление/Удаление строк
 ---------------------------------
-Вставлять, обновлять и удалять строки вы можете с помощью стандартного SQL запроса или использовать методы,
-предоставляемые классом:
+Вставлять, обновлять и удалять строки вы можете с помощью стандартного SQL запроса или использовать методы, предоставляемые классом:
 
 .. code-block:: php
 
@@ -268,13 +290,22 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
        array("name", "year")
     );
 
+    // Generating dynamically the necessary SQL (another syntax)
+    $success = $connection->insertAsDict(
+       "robots",
+       array(
+          "name" => "Astro Boy",
+          "year" => 1952
+       )
+    );
+
     // Обновление с помощью стандартного SQL запроса
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
 
     // с помощью подготовленного запроса
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astroy Boy', 101));
+    $success = $connection->execute($sql, array('Astro Boy', 101));
 
     // Динамическое создание запроса с помощью метода класса
     $success = $connection->update(
@@ -421,27 +452,28 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 | commitTransaction   | Перед фиксацией транзакции                                | Нет                     |
 +---------------------+-----------------------------------------------------------+-------------------------+
 
-Привязать менеджер событий к соединению просто, :doc:`Phalcon\\Db <../api/Phalcon_Db>` будет вызывать событие с
-именем “db”:
+Привязать менеджер событий к соединению просто, :doc:`Phalcon\\Db <../api/Phalcon_Db>` будет вызывать событие с именем “db”:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        \Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
     $eventsManager = new EventsManager();
 
     // Прослушать все события базы данных
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new Connection(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection = new Connection(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // Назначаем менеджер событий экземпляру адаптера БД
     $connection->setEventsManager($eventsManager);
@@ -478,8 +510,8 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as DbProfiler;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as DbProfiler;
 
     $eventsManager = new EventsManager();
 
@@ -522,13 +554,12 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as Profiler,
-        Phalcon\Db\Profiler\Item as Item;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as Profiler;
+    use Phalcon\Db\Profiler\Item as Item;
 
     class DbProfiler extends Profiler
     {
-
         /**
          * Выполняется перед отправкой SQL запроса на сервер БД
          */
@@ -544,7 +575,6 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
         {
             echo $profile->getTotalElapsedSeconds();
         }
-
     }
 
     // Создание менеджера событий
@@ -567,9 +597,9 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Logger;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Logger\Adapter\File as FileLogger;
 
     $eventsManager = new EventsManager();
 
@@ -609,8 +639,7 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 
 Описание Таблиц / Представлений
 -------------------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` также предоставляет методы для получения подробной информации о таблицах и
-представлениях:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` также предоставляет методы для получения подробной информации о таблицах и представлениях:
 
 .. code-block:: php
 
@@ -690,7 +719,8 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
         null,
         array(
            "columns" => array(
-                new Column("id",
+                new Column(
+                    "id",
                     array(
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
@@ -698,14 +728,16 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
                         "autoIncrement" => true,
                     )
                 ),
-                new Column("name",
+                new Column(
+                    "name",
                     array(
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
                     )
                 ),
-                new Column("year",
+                new Column(
+                    "year",
                     array(
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
@@ -781,29 +813,43 @@ Phalcon\\Db поддерживает следующие типы столбцо�
     use Phalcon\Db\Column as Column;
 
     // Добавляем новый столбец
-    $connection->addColumn("robots", null,
-        new Column("robot_type", array(
-            "type"    => Column::TYPE_VARCHAR,
-            "size"    => 32,
-            "notNull" => true,
-            "after"   => "name"
-        ))
+    $connection->addColumn(
+        "robots",
+        null,
+        new Column(
+            "robot_type",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 32,
+                "notNull" => true,
+                "after"   => "name"
+            )
+        )
     );
 
     // Изменение существующего столбца
-    $connection->modifyColumn("robots", null, new Column("name", array(
-        "type" => Column::TYPE_VARCHAR,
-        "size" => 40,
-        "notNull" => true,
-    )));
+    $connection->modifyColumn(
+        "robots",
+        null,
+        new Column(
+            "name",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 40,
+                "notNull" => true
+            )
+        )
+    );
 
-    // Удаление столбца “name”
-    $connection->dropColumn("robots", null, "name");
-
+    // Удаление столбца "name"
+    $connection->dropColumn(
+        "robots",
+        null,
+        "name"
+    );
 
 Удаление таблицы
 ^^^^^^^^^^^^^^^^
-
 Пример удаления таблицы:
 
 .. code-block:: php

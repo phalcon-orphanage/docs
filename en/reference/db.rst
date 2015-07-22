@@ -1,11 +1,13 @@
 Database Abstraction Layer
 ==========================
+
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that powers the model layer
 in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
 This component allows for a lower level database manipulation than using traditional models.
 
 .. highlights::
+
     This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>`
     for a complete reference.
 
@@ -62,10 +64,10 @@ below shows how to create a connection passing both required and optional parame
 
     // Required
     $config = array(
-        "host" => "127.0.0.1",
+        "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname" => "test_db"
+        "dbname"   => "test_db"
     );
 
     // Optional
@@ -80,10 +82,10 @@ below shows how to create a connection passing both required and optional parame
 
     // Required
     $config = array(
-        "host" => "localhost",
+        "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname" => "template"
+        "dbname"   => "template"
     );
 
     // Optional
@@ -112,15 +114,15 @@ below shows how to create a connection passing both required and optional parame
     $config = array(
         'username' => 'scott',
         'password' => 'tiger',
-        'dbname' => '192.168.10.145/orcl',
+        'dbname'   => '192.168.10.145/orcl'
     );
 
     // Advanced configuration
     $config = array(
-        'dbname' => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
+        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
         'username' => 'scott',
         'password' => 'tiger',
-        'charset' => 'AL32UTF8',
+        'charset'  => 'AL32UTF8'
     );
 
     // Create a connection
@@ -135,16 +137,18 @@ You can set PDO options at connection time by passing the parameters 'options':
     <?php
 
     // Create a connection with PDO options
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "sigma",
-        "dbname" => "test_db",
-        "options" => array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-            PDO::ATTR_CASE => PDO::CASE_LOWER
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "sigma",
+            "dbname"   => "test_db",
+            "options"  => array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER
+            )
         )
-    ));
+    );
 
 Finding Rows
 ------------
@@ -237,6 +241,25 @@ injection attacks. Both string and positional placeholders are supported. Bindin
     // Binding with named placeholders
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
+are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
+data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
+
+This function takes into account the connection charset, so its recommended to define the correct charset
+in the connection parameters or in your database server configuration, as a wrong
+charset will produce undesired effects when storing or retrieving data.
+
+Also, you can pass your parameterers directly to the execute/query methods. In this case
+bound parameters are directly passed to PDO:
+
+.. code-block:: php
+
+    <?php
+
+    // Binding with PDO placeholders
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array(1 => "Wall-E"));
 
 Inserting/Updating/Deleting Rows
 --------------------------------
@@ -402,8 +425,7 @@ is created:
 
 Database Events
 ---------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present.
-Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +---------------------+-----------------------------------------------------------+---------------------+
 | Event Name          | Triggered                                                 | Can stop operation? |
@@ -421,7 +443,7 @@ Some events when returning boolean false could stop the active operation. The fo
 | rollbackTransaction | Before a transaction is rollbacked                        | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
 | commitTransaction   | Before a transaction is committed                         | No                  |
-+---------------------+------------------------------------------------------------+--------------------+
++---------------------+-----------------------------------------------------------+---------------------+
 
 Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
 
@@ -429,20 +451,22 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        \Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
     $eventsManager = new EventsManager();
 
     // Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new Connection(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection = new Connection(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
@@ -458,11 +482,11 @@ Stop SQL operations are very useful if for example you want to implement some la
         // Check for malicious words in SQL statements
         if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
             // DROP/ALTER operations aren't allowed in the application,
-            // This must be a SQL injection!
+            // this must be a SQL injection!
             return false;
         }
 
-        // It's ok
+        // It's OK
         return true;
     });
 
@@ -476,8 +500,8 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as DbProfiler;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as DbProfiler;
 
     $eventsManager = new EventsManager();
 
@@ -519,13 +543,12 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Profiler as Profiler,
-        Phalcon\Db\Profiler\Item as Item;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Profiler as Profiler;
+    use Phalcon\Db\Profiler\Item as Item;
 
     class DbProfiler extends Profiler
     {
-
         /**
          * Executed before the SQL statement will sent to the db server
          */
@@ -541,10 +564,9 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
         {
             echo $profile->getTotalElapsedSeconds();
         }
-
     }
 
-    // Create an EventsManager
+    // Create an Events Manager
     $eventsManager = new EventsManager();
 
     // Create a listener
@@ -561,9 +583,9 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Logger;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Logger\Adapter\File as FileLogger;
 
     $eventsManager = new EventsManager();
 
@@ -681,7 +703,8 @@ The following example shows how to create a table:
         null,
         array(
            "columns" => array(
-                new Column("id",
+                new Column(
+                    "id",
                     array(
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
@@ -689,14 +712,16 @@ The following example shows how to create a table:
                         "autoIncrement" => true,
                     )
                 ),
-                new Column("name",
+                new Column(
+                    "name",
                     array(
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
                     )
                 ),
-                new Column("year",
+                new Column(
+                    "year",
                     array(
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
@@ -715,7 +740,7 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 +=================+============================================================================================================================================+==========+
 | "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the column is part of the table's primary                                                                                          | Yes      |
+| "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -771,25 +796,40 @@ is limited by these constraints.
     use Phalcon\Db\Column as Column;
 
     // Adding a new column
-    $connection->addColumn("robots", null,
-        new Column("robot_type", array(
-            "type"    => Column::TYPE_VARCHAR,
-            "size"    => 32,
-            "notNull" => true,
-            "after"   => "name"
-        ))
+    $connection->addColumn(
+        "robots",
+        null,
+        new Column(
+            "robot_type",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 32,
+                "notNull" => true,
+                "after"   => "name"
+            )
+        )
     );
 
     // Modifying an existing column
-    $connection->modifyColumn("robots", null, new Column("name", array(
-        "type" => Column::TYPE_VARCHAR,
-        "size" => 40,
-        "notNull" => true,
-    )));
+    $connection->modifyColumn(
+        "robots",
+        null,
+        new Column(
+            "name",
+            array(
+                "type"    => Column::TYPE_VARCHAR,
+                "size"    => 40,
+                "notNull" => true
+            )
+        )
+    );
 
     // Deleting the column "name"
-    $connection->dropColumn("robots", null, "name");
-
+    $connection->dropColumn(
+        "robots",
+        null,
+        "name"
+    );
 
 Dropping Tables
 ^^^^^^^^^^^^^^^
