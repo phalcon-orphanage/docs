@@ -1,5 +1,6 @@
 Instalacja na serwerach Cherokee
-===========================
+================================
+
 Cherokee_  jest wysoce wydajnym serwerem WWW. Jest bardzo szybki, elastyczny i prosty w konfiguracji.
 
 Configuring Cherokee for Phalcon
