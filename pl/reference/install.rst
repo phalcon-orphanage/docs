@@ -68,7 +68,7 @@ Tworzenie rozszerzenia:
     cd cphalcon/build
     sudo ./install
 
-Dodaj rozszerzenie do swojej konfiguracji php:
+Dodaj rozszerzenie do swojej konfiguracji PHP:
 
 .. code-block:: bash
 
@@ -124,7 +124,7 @@ Wstępnie wymagane pakiety:
     sudo port install php54-phalcon
     sudo port install php55-phalcon
 
-Dodaj rozszerzenie do swojej konfiguracji php:
+Dodaj rozszerzenie do swojej konfiguracji PHP:
 
 
 FreeBSD

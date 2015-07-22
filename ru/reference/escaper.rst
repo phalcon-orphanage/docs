@@ -55,7 +55,7 @@
     </body>
     </html>
 
-В итоге получим такой html документ:
+В итоге получим такой HTML документ:
 
 .. figure:: ../_static/img/escape.jpeg
     :align: center

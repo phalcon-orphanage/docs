@@ -296,7 +296,7 @@ Now, we can use the annotation in a controller:
 
 Private/Public areas with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the acl what areas belongs to the admnistrative areas or not using annotations
+You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
 
 .. code-block:: php
 

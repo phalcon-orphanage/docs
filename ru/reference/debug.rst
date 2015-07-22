@@ -22,7 +22,7 @@ PHP предлагает набор инструментов для отладк
 
     try {
 
-        // ... какой-то код phalcon/php
+        // ... какой-то код Phalcon/PHP
 
     } catch (\Exception $e) {
 
@@ -236,7 +236,7 @@ XDebug_ великолепный инструмент для отладки PHP 
         public function registerAction()
         {
 
-            // Запрос переменных из html формы
+            // Запрос переменных из HTML формы
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 

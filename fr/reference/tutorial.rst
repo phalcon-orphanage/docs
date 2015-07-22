@@ -253,7 +253,7 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
 
-The generated HTML code displays an "A" html tag linking to a new controller:
+The generated HTML code displays an "A" HTML tag linking to a new controller:
 
 .. code-block:: html
 

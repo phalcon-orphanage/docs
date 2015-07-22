@@ -21,7 +21,7 @@ Throughout the tutorials and examples of the Phalcon documentation, there is a c
 
     try {
 
-        // ... some phalcon/php code
+        // ... Some Phalcon/PHP code
 
     } catch (\Exception $e) {
 
@@ -236,7 +236,7 @@ The following example implements xdebug_print_function_stack_ to stop the execut
         public function registerAction()
         {
 
-            // Request variables from html form
+            // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 
