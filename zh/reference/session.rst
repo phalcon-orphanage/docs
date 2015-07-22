@@ -1,5 +1,6 @@
 使用 Session 存储数据（Storing data in Session）
 ================================================
+
 The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
 Reasons to use this component instead of raw-sessions:
@@ -39,7 +40,6 @@ and store items and retrieve them in the following way:
 
     class UserController extends Controller
     {
-
         public function indexAction()
         {
             // Set a session variable
@@ -48,7 +48,6 @@ and store items and retrieve them in the following way:
 
         public function welcomeAction()
         {
-
             // Check if the variable is defined
             if ($this->session->has("user-name")) {
 
@@ -71,7 +70,6 @@ It's also possible remove specific variables or destroy the whole session:
 
     class UserController extends Controller
     {
-
         public function removeAction()
         {
             // Remove a session variable
@@ -83,7 +81,6 @@ It's also possible remove specific variables or destroy the whole session:
             // Destroy the whole session
             $this->session->destroy();
         }
-
     }
 
 隔离不同应用的会话数据（Isolating Session Data between Applications）
@@ -112,6 +109,8 @@ prefix for every session variable created in a certain application:
 
         return $session;
     });
+
+Adding a unique ID is not necessary.
 
 会话袋（Session Bags）
 ----------------------
@@ -145,7 +144,6 @@ Thanks to this you can persist data between requests in every class in an indepe
 
     class UserController extends Controller
     {
-
         public function indexAction()
         {
             // Create a persistent variable "name"
@@ -154,12 +152,10 @@ Thanks to this you can persist data between requests in every class in an indepe
 
         public function welcomeAction()
         {
-            if (isset($this->persistent->name))
-            {
+            if (isset($this->persistent->name)) {
                 echo "Welcome, ", $this->persistent->name;
             }
         }
-
     }
 
 In a component:
@@ -172,7 +168,6 @@ In a component:
 
     class Security extends Component
     {
-
         public function auth()
         {
             // Create a persistent variable "name"
@@ -183,7 +178,6 @@ In a component:
         {
             return $this->persistent->name;
         }
-
     }
 
 The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
