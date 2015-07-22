@@ -1,5 +1,6 @@
 Validation
 ==========
+
 Phalcon\\Validation is an independent validation component that validates an arbitrary set of data.
 This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -15,17 +16,32 @@ The following example shows its basic usage:
 
     $validation = new Validation();
 
-    $validation->add('name', new PresenceOf(array(
-        'message' => 'The name is required'
-    )));
+    $validation->add(
+        'name',
+        new PresenceOf(
+            array(
+                'message' => 'The name is required'
+            )
+        )
+    );
 
-    $validation->add('email', new PresenceOf(array(
-        'message' => 'The e-mail is required'
-    )));
+    $validation->add(
+        'email',
+        new PresenceOf(
+            array(
+                'message' => 'The e-mail is required'
+            )
+        )
+    );
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
     $messages = $validation->validate($_POST);
     if (count($messages)) {
@@ -53,17 +69,32 @@ You can put your validations in a separate file for better re-use code and organ
     {
         public function initialize()
         {
-            $this->add('name', new PresenceOf(array(
-                'message' => 'The name is required'
-            )));
+            $this->add(
+                'name',
+                new PresenceOf(
+                    array(
+                        'message' => 'The name is required'
+                    )
+                )
+            );
 
-            $this->add('email', new PresenceOf(array(
-                'message' => 'The e-mail is required'
-            )));
+            $this->add(
+                'email',
+                new PresenceOf(
+                    array(
+                        'message' => 'The e-mail is required'
+                    )
+                )
+            );
 
-            $this->add('email', new Email(array(
-                'message' => 'The e-mail is not valid'
-            )));
+            $this->add(
+                'email',
+                new Email(
+                    array(
+                        'message' => 'The e-mail is not valid'
+                    )
+                )
+            );
         }
     }
 
@@ -122,7 +153,6 @@ The following example explains how to create additional validators for this comp
 
     class IpValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * Executes the validation
          *
@@ -184,7 +214,6 @@ The getMessages() method can be overridden in a validation class to replace/tran
 
     class MyValidation extends Validation
     {
-
         public function initialize()
         {
             // ...
@@ -200,6 +229,7 @@ The getMessages() method can be overridden in a validation class to replace/tran
                         break;
                 }
             }
+
             return $messages;
         }
     }
@@ -212,9 +242,14 @@ Or you can pass a 'message' parameter to change the default message in each vali
 
     use Phalcon\Validation\Validator\Email;
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
 By default, 'getMessages' returns all the messages generated during validation. You can filter messages
 for a specific field using the 'filter' method:
@@ -261,7 +296,7 @@ component or use the built-in ones.
 Validation Events
 -----------------
 When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
-perform additional checks, filters, clean-up, etc. If 'beforeValidation' method returns false the validation is automatically
+perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
 cancelled:
 
 .. code-block:: php
@@ -272,7 +307,6 @@ cancelled:
 
     class LoginValidation extends Validation
     {
-
         public function initialize()
         {
             // ...
@@ -290,8 +324,10 @@ cancelled:
         {
             if ($this->request->getHttpHost() != 'admin.mydomain.com') {
                 $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+
                 return false;
             }
+
             return true;
         }
 
@@ -304,7 +340,7 @@ cancelled:
          */
         public function afterValidation($data, $entity, $messages)
         {
-            // ... add additional messages or perform more validations
+            // ... Add additional messages or perform more validations
         }
     }
 
@@ -334,7 +370,7 @@ this behavior by telling the validation component which validator may stop the v
         )))
         ->add('telephone', new StringLength(array(
             'messageMinimum' => 'The telephone is too short',
-            'min' => 2
+            'min'            => 2
         )));
 
 The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
@@ -353,7 +389,6 @@ If you are creating custom validators you can dynamically stop the validation ch
 
     class MyValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * Executes the validation
          *
