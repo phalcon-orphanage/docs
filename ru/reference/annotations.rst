@@ -1,10 +1,10 @@
 Парсер аннотаций
 ================
+
 Это первый прецедент для мира PHP, когда компонент парсера аннотаций написан на C. Phalcon\\Annotations - компонент
 общего назначения, обеспечивающий простоту анализа и кэширования аннотаций для PHP классов используемых в приложениях.
 
-Аннотации читаются из блоков комментариев docblock в классах, его методах и свойствах. Аннотации могут быть помещены
-в любое место блока документации docblock.
+Аннотации читаются из блоков комментариев docblock в классах, его методах и свойствах. Аннотации могут быть помещены в любое место блока документации docblock:
 
 .. code-block:: php
 
@@ -17,7 +17,6 @@
      */
     class Example
     {
-
         /**
          * Это свойство с особенностью
          *
@@ -34,7 +33,6 @@
         {
             // ...
         }
-
     }
 
 В примере выше мы показали аннотации в комментариях, имеющие следующий синтаксис:
@@ -70,8 +68,7 @@
      })  Еще комментарии @AnotherSpecialFeature(true) @MoreAnnotations
      **/
 
-Тем не менее, рекомендуется помещать аннотации в конце блоков документации, чтобы сделать код более понятным
-и удобным для поддержки:
+Тем не менее, рекомендуется помещать аннотации в конце блоков документации, чтобы сделать код более понятным и удобным для поддержки:
 
 .. code-block:: php
 
@@ -93,7 +90,9 @@
 
     <?php
 
-    $reader = new \Phalcon\Annotations\Adapter\Memory();
+    use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+    $reader = new MemoryAdapter();
 
     // Отразить аннотации в классе Example
     $reflector = $reader->get('Example');
@@ -168,7 +167,7 @@
      * Вложенные массивы/хеши
      *
      * @SomeAnnotation({"name"="SomeName", "other"={
-     *        "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
+     *     "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
      * }})
      */
 
@@ -192,14 +191,17 @@
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+
     $di['dispatcher'] = function () {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Привязать плагин к событию 'dispatch'
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
         $dispatcher->setEventsManager($eventsManager);
         return $dispatcher;
     };
@@ -210,23 +212,22 @@ CacheEnablerPlugin это плагин, который перехватывае�
 
     <?php
 
+    use Phalcon\Mvc\User\Plugin;
+
     /**
      * Включение кэша для представления, если
      * последнее запущенное действие имело аннотацию @Cache
      */
-    class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
+    class CacheEnablerPlugin extends Plugin
     {
-
         /**
          * Это событие запускается перед запуском каждого маршрута в диспетчере
-         *
          */
         public function beforeExecuteRoute($event, $dispatcher)
         {
-
             // Разбор аннотаций в текущем запущенном методе
             $annotations = $this->annotations->getMethod(
-                $dispatcher->getActiveController(),
+                $dispatcher->getControllerClass(),
                 $dispatcher->getActiveMethod()
             );
 
@@ -249,9 +250,7 @@ CacheEnablerPlugin это плагин, который перехватывае�
                 // Включить кэш для текущего метода
                 $this->view->cache($options);
             }
-
         }
-
     }
 
 Теперь мы можем использовать аннотации в контроллере:
@@ -260,9 +259,10 @@ CacheEnablerPlugin это плагин, который перехватывае�
 
     <?php
 
-    class NewsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class NewsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -287,13 +287,74 @@ CacheEnablerPlugin это плагин, который перехватывае�
         {
             $this->view->article = Articles::findFirstByTitle($slug);
         }
+    }
 
+Private/Public areas with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl;
+    use Phalcon\Acl\Role;
+    use Phalcon\Acl\Resource;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    /**
+     * SecurityAnnotationsPlugin
+     *
+     * This is the security plugin which controls that users only have access to the modules they're assigned to
+     */
+    class SecurityAnnotationsPlugin extends Plugin
+    {
+        /**
+         * This action is executed before execute any action in the application
+         *
+         * @param Event $event
+         * @param Dispatcher $dispatcher
+         */
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        {
+            // Possible controller class name
+            $controllerName = $dispatcher->getControllerClass();
+
+            // Possible method name
+            $actionName = $dispatcher->getActiveMethod();
+
+            // Get annotations in the controller class
+            $annotations = $this->annotations->get($controllerName);
+
+            // The controller is private?
+            if ($annotations->getClassAnnotations()->has('Private')) {
+
+                // Check if the session variable is active?
+                if (!$this->session->get('auth')) {
+
+                    // The user is no logged redirect to login
+                    $dispatcher->forward(
+                        array(
+                            'controller' => 'session',
+                            'action'     => 'login'
+                        )
+                    );
+
+                    return false;
+                }
+            }
+
+            // Continue normally
+            return true;
+        }
     }
 
 Выбор шаблона для отображения
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 В данном примере мы будем использовать аннотации для того, чтобы сказать объекту класса :doc:`Phalcon\\Mvc\\View\\Simple <views>`, что шаблон должен быть отображен, как только закончится выполнение текущего действия.
-
 
 Адаптеры аннотация
 ------------------
@@ -318,4 +379,4 @@ CacheEnablerPlugin это плагин, который перехватывае�
 
 Внешние источники
 -----------------
-* `Обучение: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+* `Обучение: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_

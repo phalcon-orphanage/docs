@@ -1,5 +1,6 @@
 Annotations Parser
 ==================
+
 It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\\Annotations is
 a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
@@ -16,7 +17,6 @@ Annotations are read from docblocks in classes, methods and properties. An annot
      */
     class Example
     {
-
         /**
          * This a property with a special feature
          *
@@ -33,7 +33,6 @@ Annotations are read from docblocks in classes, methods and properties. An annot
         {
             // ...
         }
-
     }
 
 In the above example we find some annotations in the comments, an annotation has the following syntax:
@@ -168,7 +167,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      * Nested arrays/hashes
      *
      * @SomeAnnotation({"name"="SomeName", "other"={
-     *      "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
+     *     "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
      * }})
      */
 
@@ -184,7 +183,7 @@ Next we will explain some practical examples of annotations in PHP applications:
 
 Cache Enabler with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
+Let's pretend we've the following controller and the developer wants to create a plugin that automatically starts the
 cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
 to be notified when a route is executed:
 
@@ -207,7 +206,7 @@ to be notified when a route is executed:
         return $dispatcher;
     };
 
-CacheEnablerPlugin is a plugin that intercept every action executed in the dispatcher enabling the cache if needed:
+CacheEnablerPlugin is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
 
 .. code-block:: php
 
@@ -221,14 +220,11 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
      */
     class CacheEnablerPlugin extends Plugin
     {
-
         /**
          * This event is executed before every route is executed in the dispatcher
-         *
          */
         public function beforeExecuteRoute($event, $dispatcher)
         {
-
             // Parse the annotations in the method currently executed
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getControllerClass(),
@@ -267,7 +263,6 @@ Now, we can use the annotation in a controller:
 
     class NewsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -317,7 +312,6 @@ You can use annotations to tell the ACL what areas belongs to the admnistrative 
      */
     class SecurityAnnotationsPlugin extends Plugin
     {
-
         /**
          * This action is executed before execute any action in the application
          *
@@ -342,10 +336,13 @@ You can use annotations to tell the ACL what areas belongs to the admnistrative 
                 if (!$this->session->get('auth')) {
 
                     // The user is no logged redirect to login
-                    $dispatcher->forward(array(
-                        'controller' => 'session',
-                        'action' => 'login'
-                    ));
+                    $dispatcher->forward(
+                        array(
+                            'controller' => 'session',
+                            'action'     => 'login'
+                        )
+                    );
+
                     return false;
                 }
             }
@@ -359,9 +356,6 @@ Choose the template to render
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must be rendered
 once the action has been executed:
-
-
-
 
 Annotations Adapters
 --------------------
@@ -386,4 +380,4 @@ annotations adapters or extend the existing ones.
 
 External Resources
 ------------------
-* `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+* `Tutorial: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_

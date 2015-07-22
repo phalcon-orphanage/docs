@@ -1,5 +1,6 @@
 アノテーション パーサー
 ==================
+
 アノテーションのパーサーがCで実装されたのは、PHPの世界では初めてのことです。Phalcon\\Annotations は、汎用的なコンポーネントで、アプリケーションで使われるPHPのクラスのアノテーションをパースしてキャッシュしておくことが、簡単にできます。
 
 アノテーションはクラス、メソッド、プロパティのコメントブロックから読み込まれます。アノテーションはコメントブロック内のどこにでも配置することができます：
@@ -15,7 +16,6 @@
      */
     class Example
     {
-
         /**
          * This a property with a special feature
          *
@@ -32,7 +32,6 @@
         {
             // ...
         }
-
     }
 
 上記サンプルのコメント内にいくつかのアノテーションが見られます。アノテーションのシンタックスは以下のようになります :
@@ -90,7 +89,9 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
 
     <?php
 
-    $reader = new \Phalcon\Annotations\Adapter\Memory();
+    use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+    $reader = new MemoryAdapter();
 
     // Exampleクラスのアノテーションをリフレクションする
     $reflector = $reader->get('Example');
@@ -162,7 +163,7 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
      * Nested arrays/hashes
      *
      * @SomeAnnotation({"name"="SomeName", "other"={
-     *      "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
+     *     "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
      * }})
      */
 
@@ -184,14 +185,17 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+
     $di['dispatcher'] = function () {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // プラグインを「dispatch」イベントに紐付け
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
         $dispatcher->setEventsManager($eventsManager);
         return $dispatcher;
     };
@@ -202,23 +206,22 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
 
     <?php
 
+    use Phalcon\Mvc\User\Plugin;
+
     /**
      * Enables the cache for a view if the latest
      * executed action has the annotation @Cache
      */
-    class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
+    class CacheEnablerPlugin extends Plugin
     {
-
         /**
          * This event is executed before every route is executed in the dispatcher
-         *
          */
         public function beforeExecuteRoute($event, $dispatcher)
         {
-
             // 現在実行中のメソッドのアノテーションをパースする
             $annotations = $this->annotations->getMethod(
-                $dispatcher->getActiveController(),
+                $dispatcher->getControllerClass(),
                 $dispatcher->getActiveMethod()
             );
 
@@ -241,9 +244,7 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
                 // 現在のメソッドのキャッシュを有効にする
                 $this->view->cache($options);
             }
-
         }
-
     }
 
 これで、コントローラーでアノテーションを使えるようになりました:
@@ -252,9 +253,10 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
 
     <?php
 
-    class NewsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class NewsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -279,15 +281,74 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
         {
             $this->view->article = Articles::findFirstByTitle($slug);
         }
+    }
 
+Private/Public areas with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl;
+    use Phalcon\Acl\Role;
+    use Phalcon\Acl\Resource;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    /**
+     * SecurityAnnotationsPlugin
+     *
+     * This is the security plugin which controls that users only have access to the modules they're assigned to
+     */
+    class SecurityAnnotationsPlugin extends Plugin
+    {
+        /**
+         * This action is executed before execute any action in the application
+         *
+         * @param Event $event
+         * @param Dispatcher $dispatcher
+         */
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        {
+            // Possible controller class name
+            $controllerName = $dispatcher->getControllerClass();
+
+            // Possible method name
+            $actionName = $dispatcher->getActiveMethod();
+
+            // Get annotations in the controller class
+            $annotations = $this->annotations->get($controllerName);
+
+            // The controller is private?
+            if ($annotations->getClassAnnotations()->has('Private')) {
+
+                // Check if the session variable is active?
+                if (!$this->session->get('auth')) {
+
+                    // The user is no logged redirect to login
+                    $dispatcher->forward(
+                        array(
+                            'controller' => 'session',
+                            'action'     => 'login'
+                        )
+                    );
+
+                    return false;
+                }
+            }
+
+            // Continue normally
+            return true;
+        }
     }
 
 レンダリングするテンプレートの選択
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 この例では、アノテーションを使って、 :doc:`Phalcon\\Mvc\\View\\Simple <views>` にどのテンプレートをレンダリングすべきか伝えます:
-
-
-
 
 アノテーションアダプタ
 --------------------
@@ -311,4 +372,4 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
 
 外部資料
 ------------------
-* `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+* `Tutorial: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
