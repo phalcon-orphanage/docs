@@ -13,7 +13,6 @@
 
 Кэширование наборов данных
 --------------------------
-
 Существует методика, позволяющая избежать постоянного обращения к базе данных. Это - кэширование редко изменяемых
 наборов данных, используя систему с более быстрым доступом (обычно это память).
 
@@ -27,19 +26,27 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontendData;
+    use Phalcon\Cache\Backend\Memcache as BackendMemcache;
+
     // Регистрация сервиса кэша моделей
     $di->set('modelsCache', function () {
 
         // По умолчанию данные кэша хранятся один день
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-            "lifetime" => 86400
-        ));
+        $frontCache = new FrontendData(
+            array(
+                "lifetime" => 86400
+            )
+        );
 
         // Настройки соединения с memcached
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
+        $cache = new BackendMemcache(
+            $frontCache,
+            array(
+                "host" => "localhost",
+                "port" => "11211"
+            )
+        );
 
         return $cache;
     });
@@ -55,17 +62,30 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $products = Products::find();
 
     // Используем кэширование наборов данных. Кэш остается в памяти в течении 1 часа (3600 секунд).
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache")
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key" => "my-cache"
+            )
+        )
+    );
 
     // Кэш набора данных хранится всего 5 минут
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key"      => "my-cache",
+                "lifetime" => 300
+            )
+        )
+    );
 
     // Использование пользовательского кэша
-    $products = Products::find(array("cache" => $myCache));
+    $products = Products::find(
+        array(
+            "cache" => $myCache
+        )
+    );
 
 Кэш может быть также применен к набору данных, генерируемых с помощью отношений:
 
@@ -74,17 +94,26 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Запрос некоторого сообщения
-    $post = Post::findFirst();
+    $post     = Post::findFirst();
 
     // Получаем комментарии, относящиеся к сообщению, и кэшируем их
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key")
-    ));
+    $comments = $post->getComments(
+        array(
+            "cache" => array(
+                "key" => "my-key"
+            )
+        )
+    );
 
     // Получаем комментарии, относящиеся к сообщению и устанавливаем срок их хранения
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key", "lifetime" => 3600)
-    ));
+    $comments = $post->getComments(
+        array(
+            "cache" => array(
+                "key"      => "my-key",
+                "lifetime" => 3600
+            )
+        )
+    );
 
 Когда кэшируемые наборы данных должны быть признаны недействительными, вы можете просто удалить их из кэша с
 использованием ранее указанного ключа.
@@ -98,26 +127,25 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
 Переопределение find/findFirst
 ------------------------------
-
 Как показано выше, эти методы доступны в моделях, которые наследуют :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
-        public static function find($parameters=null)
+    class Robots extends Model
+    {
+        public static function find($parameters = null)
         {
             return parent::find($parameters);
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
             return parent::findFirst($parameters);
         }
-
     }
 
 Сделав это, вы будите перехватывать все вызовы этих методов. Таким образом, вы можете добавить
@@ -129,9 +157,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         protected static $_cache = array();
 
         /**
@@ -141,6 +170,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         protected static function _createKey($parameters)
         {
             $uniqueKey = array();
+
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
                     $uniqueKey[] = $key . ':' . $value;
@@ -150,12 +180,12 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                     }
                 }
             }
+
             return join(',', $uniqueKey);
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-
             // Создание уникального ключа на основе параметров
             $key = self::_createKey($parameters);
 
@@ -168,11 +198,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             return self::$_cache[$key];
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
             // ...
         }
-
     }
 
 Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша, вы свободны в
@@ -188,9 +217,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    public static function find($parameters=null)
+    public static function find($parameters = null)
     {
-
         // Создание уникального ключа на основе параметров
         $key = self::_createKey($parameters);
 
@@ -227,27 +255,27 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 каждой модели, эта стратегия может быть общей для нескольких моделей,
 которую можно вынести в отдельный базовый класс для всех подобных классов:
 
-
 .. code-block:: php
 
     <?php
 
-    class CacheableModel extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class CacheableModel extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. создание ключа кэширования на основе параметров
+            // ... создание ключа кэширования на основе параметров
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-            // .. какая-то стратегия кэширования
+            // ... какая-то стратегия кэширования
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
-            // .. какая-то стратегия кэширования
+            // ... какая-то стратегия кэширования
         }
     }
 
@@ -264,7 +292,6 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
 Форсирование кэша
 -----------------
-
 Ранее мы видели, как Phalcon\\Mvc\\Model имеет встроенную интеграцию с компонентом
 кэширования, предоставленного фреймворком. Чтобы сделать запись/результирующий набор кэшируемым,
 мы передаем ключ 'cache' в массиве параметров:
@@ -274,9 +301,14 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Кэшируем результирующий набор всего на 5 минут
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key"      => "my-cache",
+                "lifetime" => 300
+            )
+        )
+    );
 
 Это дает нам свободу для кэширования конкретных запросов, поэтому, если мы хотим кэшировать
 глобально все запросы, выполняемые моделью, мы можем переопределить метод find/findFirst,
@@ -286,17 +318,17 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. создаем ключ кэша на основе параметров
+            // ... создаем ключ кэша на основе параметров
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-
             // Преобразование параметров в массив
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
@@ -306,7 +338,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             // и создаем параметры кэша
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
-                    "key" => self::_createKey($parameters),
+                    "key"      => self::_createKey($parameters),
                     "lifetime" => 300
                 );
             }
@@ -314,7 +346,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             return parent::find($parameters);
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
             // ...
         }
@@ -323,7 +355,6 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
 Кэширование PHQL запросов
 -------------------------
-
 Все запросы в ORM, независимо от того, насколько высокоуровневый синтаксис
 мы использовали для их создания, обрабатываются внутри с помощью PHQL. Этот
 язык дает гораздо больше свободы для создания запросов всех видов. Конечно,
@@ -337,17 +368,20 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     $query = $this->modelsManager->createQuery($phql);
 
-    $query->setCache(array(
-        "key" => "cars-by-name",
-        "lifetime" => 300
-    ));
+    $query->cache(
+        array(
+            "key"      => "cars-by-name",
+            "lifetime" => 300
+        )
+    );
 
-    $cars = $query->execute(array(
-        'name' => 'Audi'
-    ));
+    $cars = $query->execute(
+        array(
+            'name' => 'Audi'
+        )
+    );
 
-Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор
-в предпочтительный для вас серверный кэш:
+Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор в предпочтительный для вас серверный кэш:
 
 .. code-block:: php
 
@@ -355,15 +389,17 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     $phql = "SELECT * FROM Cars WHERE name = :name:";
 
-    $cars = $this->modelsManager->executeQuery($phql, array(
-        'name' => 'Audi'
-    ));
+    $cars = $this->modelsManager->executeQuery(
+        $phql,
+        array(
+            'name' => 'Audi'
+        )
+    );
 
     apc_store('my-cars', $cars);
 
 Многократное использование связанных записей
 --------------------------------------------
-
 Некоторые модели могут иметь связи с другими моделями. Это позволяет нам легко проверить записи,
 которые относятся к экземплярам в памяти:
 
@@ -372,7 +408,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Получаем некоторый счет
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     // Получаем клиента, связанного со счетом
     $customer = $invoice->customer;
@@ -389,11 +425,11 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Получаем набор счетов
-    // SELECT * FROM invoices
+    // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
         // Получаем клиента связанного с заказом
-        // SELECT * FROM customers WHERE id = ?
+        // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
         // Выводим его/ее имя
@@ -409,16 +445,21 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         public function initialize()
         {
-            $this->belongsTo("customers_id", "Customer", "id", array(
-                'reusable' => true
-            ));
+            $this->belongsTo(
+                "customers_id",
+                "Customer",
+                "id",
+                array(
+                    'reusable' => true
+                )
+            );
         }
-
     }
 
 Этот кэш работает только в памяти, это означает, что кэшированные данные
@@ -429,9 +470,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class CustomModelsManager extends \Phalcon\Mvc\Model\Manager
-    {
+    use Phalcon\Mvc\Model\Manager as ModelManager;
 
+    class CustomModelsManager extends ModelManager
+    {
         /**
          * Возвращает многократно используемый объект из кэша
          *
@@ -482,7 +524,6 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
 Кэширование связанных записей
 -----------------------------
-
 Когда запрашиваются связанные запись, внутри ORM строится соответствующие состояние,
 и передаются необходимые записи с помощью Find / FindFirst в целевую модель в
 соответствии со следующей таблицей:
@@ -505,7 +546,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Получаем счет
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     // Получаем владельца счета
     $customer = $invoice->customer; // Invoices::findFirst('...');
@@ -513,25 +554,24 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     // То же самое
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
-Соответственно, мы могли бы заменить метод FindFirst в моделе счетов и осуществлять
-кэширование наиболее подходящим способом:
+Соответственно, мы могли бы заменить метод FindFirst в моделе счетов и осуществлять кэширование наиболее подходящим способом:
 
 .. code-block:: php
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
-        public static function findFirst($parameters=null)
+    class Invoices extends Model
+    {
+        public static function findFirst($parameters = null)
         {
-            // .. здесь реализуем кэширование данных
+            // ... здесь реализуем кэширование данных
         }
     }
 
 Рекурсивное кэшировоние связанных записей
 -----------------------------------------
-
 В этом сценарии мы предполагаем, что каждый раз, когда мы запрашиваем набор данных, мы также получаем
 все связанные записи для данного набора. Если мы будем хранить записи, найденные вместе с их связанными
 сущностями, возможно, мы сможем немного уменьшить накладные расходы для получения всех сущностей:
@@ -540,28 +580,29 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. создаем ключ кэша на основе параметров
+            // ... создаем ключ кэша на основе параметров
         }
 
         protected static function _getCache($key)
         {
-            // .. возвращаем данные из кэша
+            // ... возвращаем данные из кэша
         }
 
         protected static function _setCache($key)
         {
-            // .. сохраняет данные в кэше
+            // ... сохраняет данные в кэше
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
             // Создать уникальный ключ
-            $key = self::_createKey($parameters);
+            $key     = self::_createKey($parameters);
 
             // Проверяем наличие данных в кэше
             $results = self::_getCache($key);
@@ -593,7 +634,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         public function initialize()
         {
-            // .. добавляем связи и инициализируем другие вещи
+            // ... добавляем связи и инициализируем другие вещи
         }
     }
 
@@ -605,30 +646,33 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         public function initialize()
         {
-            // .. добавляем связи и инициализируем другие вещи
+            // ... добавляем связи и инициализируем другие вещи
         }
 
         protected static function _createKey($conditions, $params)
         {
-            // .. создаем ключ кэша на основе параметров
+            // ... создаем ключ кэша на основе параметров
         }
 
-        public function getInvoicesCustomers($conditions, $params=null)
+        public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql = "SELECT Invoices.*, Customers.*
+            $phql  = "SELECT Invoices.*, Customers.*
             FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
-            $query->setCache(array(
-                "key" => self::_createKey($conditions, $params),
-                "lifetime" => 300
-            ));
+            $query->cache(
+                array(
+                    "key"      => self::_createKey($conditions, $params),
+                    "lifetime" => 300
+                )
+            );
 
             return $query->execute($params);
         }
@@ -637,10 +681,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
 Кэширование на основе условий
 -----------------------------
-
 В этом случае, кэш реализуется  в соответствии с текущими полученными условиями.
 В соответствии с областью, куда попадает первичный ключ, выбирается соответствующий способ кэширования.
-
 
 +---------------------+--------------------+
 | Значение            | Способ кэширования |
@@ -652,38 +694,51 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 | > 20000             | mongo3             |
 +---------------------+--------------------+
 
-Самый простой способ - это добавление статического метода к модели,
-который выбирает правильный кэш для использования:
+Самый простой способ - это добавление статического метода к модели, который выбирает правильный кэш для использования:
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public static function queryCache($initial, $final)
         {
             if ($initial >= 1 && $final < 10000) {
-                return self::find(array(
-                    'id >= ' . $initial . ' AND id <= '.$final,
-                    'cache' => array('service' => 'mongo1')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial . ' AND id <= '.$final,
+                        'cache' => array(
+                            'service' => 'mongo1'
+                        )
+                    )
+                );
             }
+
             if ($initial >= 10000 && $final <= 20000) {
-                return self::find(array(
-                    'id >= ' . $initial . ' AND id <= '.$final,
-                    'cache' => array('service' => 'mongo2')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial . ' AND id <= '.$final,
+                        'cache' => array(
+                            'service' => 'mongo2'
+                        )
+                    )
+                );
             }
+
             if ($initial > 20000) {
-                return self::find(array(
-                    'id >= ' . $initial,
-                    'cache' => array('service' => 'mongo3')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial,
+                        'cache' => array(
+                            'service' => 'mongo3'
+                        )
+                    )
+                );
             }
         }
-
     }
 
 Такой подход решает проблему, однако, если мы хотим добавить другие параметры,
@@ -699,16 +754,17 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $robots = Robots::find('id > 100 AND type = "A"');
     $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
 
-    $robots = Robots::find(array(
-        '(id > ?0 AND type = "A") AND id < ?1',
-        'bind' => array(100, 2000),
-        'order' => 'type'
-    ));
+    $robots = Robots::find(
+        array(
+            '(id > ?0 AND type = "A") AND id < ?1',
+            'bind'  => array(100, 2000),
+            'order' => 'type'
+        )
+    );
 
 Для достижения этой цели мы должны перехватить промежуточное представление (IR),
 порожденную PHQL анализатором и таким образом получить возможность настроить
 способы кэширования:
-
 
 Для начала, необходимо реализовать пользовательский конструктор запросов,
 в котором мы сможем генерировать полностью настраиваемые запросы к базе данных:
@@ -717,16 +773,16 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class CustomQueryBuilder extends Phalcon\Mvc\Model\Query\Builder
-    {
+    use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
 
+    class CustomQueryBuilder extends QueryBuilder
+    {
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
             $query->setDI($this->getDI());
             return $query;
         }
-
     }
 
 Вместо того, чтобы непосредственно возвращать Phalcon\\Mvc\\Model\\Query,
@@ -737,13 +793,14 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    class CustomQuery extends Phalcon\Mvc\Model\Query
-    {
+    use Phalcon\Mvc\Model\Query as ModelQuery;
 
+    class CustomQuery extends ModelQuery
+    {
         /**
          * Переопределение метода execute
          */
-        public function execute($params=null, $types=null)
+        public function execute($params = null, $types = null)
         {
             // Разбор промежуточных представлений для SELECT
             $ir = $this->parse();
@@ -760,7 +817,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
-                $final = $visitor->getFinal();
+                $final   = $visitor->getFinal();
 
                 // Выбираем кэш в зависимости от диапазона
                 // ...
@@ -773,12 +830,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             $result = $this->_executeSelect($ir, $params, $types);
 
             // Сохраняем результат в кэш
-
             // ...
 
             return $result;
         }
-
     }
 
 Реализация помощника (CustomNodeVisitor), который рекурсивно проверяет
@@ -791,7 +846,6 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     class CustomNodeVisitor
     {
-
         protected $_initial = 0;
 
         protected $_final = 25000;
@@ -802,7 +856,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
                 case 'binary-op':
 
-                    $left = $this->visit($node['left']);
+                    $left  = $this->visit($node['left']);
                     $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
@@ -852,18 +906,18 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         }
     }
 
-Наконец, мы можем заменить поисковый метод в модели Robots
-и использовать пользовательские классы, которые мы создали:
+Наконец, мы можем заменить поисковый метод в модели Robots и использовать пользовательские классы, которые мы создали:
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
-        public static function find($parameters=null)
-        {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
+        public static function find($parameters = null)
+        {
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
@@ -876,10 +930,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             } else {
                 return $builder->getQuery()->execute();
             }
-
         }
     }
-
 
 Caching of PHQL planning
 ------------------------
@@ -894,7 +946,7 @@ build all your SQL statements passing variable parameters as bound parameters:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         // ...
@@ -922,7 +974,7 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
