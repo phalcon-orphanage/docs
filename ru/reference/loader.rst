@@ -1,5 +1,6 @@
 Универсальный загрузчик классов
 ===============================
+
 Компонент :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` позволяет осуществлять автоматическую загрузку классов, основываясь
 на установленных правилах. Компонент написан на Си и обеспечивает очень низкие накладные расходы на чтение и интерпретацию PHP-файлов.
 
@@ -23,15 +24,17 @@
 
     <?php
 
+    use Phalcon\Loader;
+
     // Создание загрузчика
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Регистрация пространств имён
     $loader->registerNamespaces(
         array(
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
-           "Example"         => "vendor/example/",
+           "Example"         => "vendor/example/"
         )
     );
 
@@ -51,15 +54,17 @@
 
     <?php
 
+    use Phalcon\Loader;
+
     // Создание загрузчика
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Регистрация некоторых префиксов
     $loader->registerPrefixes(
         array(
-           "Example_Base"    => "vendor/example/base/",
-           "Example_Adapter" => "vendor/example/adapter/",
-           "Example_"         => "vendor/example/",
+            "Example_Base"    => "vendor/example/base/",
+            "Example_Adapter" => "vendor/example/adapter/",
+            "Example_"        => "vendor/example/"
         )
     );
 
@@ -79,8 +84,10 @@ Phalcon будет вынужден обрабатывать данные по �
 
     <?php
 
+    use Phalcon\Loader;
+
     // Создание загрузчика
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Регистрация каталогов
     $loader->registerDirs(
@@ -109,14 +116,16 @@ Phalcon будет вынужден обрабатывать данные по �
 
     <?php
 
+    use Phalcon\Loader;
+
     // Создание загрузчика
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Регистрация классов
     $loader->registerClasses(
         array(
             "Some"         => "library/OtherComponent/Other/Some.php",
-            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php",
+            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
         )
     );
 
@@ -136,7 +145,7 @@ Phalcon будет вынужден обрабатывать данные по �
 
     <?php
 
-     // Создание загрузчика
+    // Создание загрузчика
     $loader = new \Phalcon\Loader();
 
     // Установка расширений файлов для поиска классов
@@ -161,6 +170,43 @@ Phalcon будет вынужден обрабатывать данные по �
 
 Использование "true" в качестве второго параметра позволит добавить новые значения к уже имеющимся.
 
+Security Layer
+--------------
+Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+Consider the following example:
+
+.. code-block:: php
+
+    <?php
+
+    // Basic autoloader
+    spl_autoload_register(function ($className) {
+        if (file_exists($className . '.php')) {
+            require $className . '.php';
+        }
+    });
+
+The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
+
+.. code-block:: php
+
+    <?php
+
+    // This variable is not filtered and comes from an insecure source
+    $className = '../processes/important-process';
+
+    // Check if the class exists triggering the auto-loader
+    if (class_exists($className)) {
+        // ...
+    }
+
+If '../processes/important-process.php' is a valid file, an external user could execute the file without
+authorization.
+
+To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invalid character from the class name
+reducing the possibility of being attacked.
+
 События автозагрузки классов
 ----------------------------
 В следующем примере, EventsManager работает с загрузчиком класса, что позволяет нам получать отладочную информацию о выполнении работы:
@@ -173,11 +219,13 @@ Phalcon будет вынужден обрабатывать данные по �
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerNamespaces(array(
-       'Example\\Base' => 'vendor/example/base/',
-       'Example\\Adapter' => 'vendor/example/adapter/',
-       'Example' => 'vendor/example/'
-    ));
+    $loader->registerNamespaces(
+        array(
+            'Example\\Base'    => 'vendor/example/base/',
+            'Example\\Adapter' => 'vendor/example/adapter/',
+            'Example'          => 'vendor/example/'
+        )
+    );
 
     // Прослушивание всех событий загрузчика
     $eventsManager->attach('loader', function ($event, $loader) {
