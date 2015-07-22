@@ -1,5 +1,6 @@
 MVC Applications
 ================
+
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
 operations required in the background, instantiating every component needed and integrating it with the
@@ -32,10 +33,10 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Application,
-        Phalcon\Mvc\View;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -71,11 +72,11 @@ If namespaces are used, the following bootstrap can be used:
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\View,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\Application;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -113,7 +114,6 @@ If namespaces are used, the following bootstrap can be used:
         echo $e->getMessage();
     }
 
-
 Multi Module
 ^^^^^^^^^^^^
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
@@ -145,20 +145,19 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\View,
-        Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\ModuleDefinitionInterface;
 
     class Module implements ModuleDefinitionInterface
     {
-
         /**
          * Register a specific autoloader for the module
          */
         public function registerAutoloaders()
         {
-
             $loader = new Loader();
 
             $loader->registerNamespaces(
@@ -174,9 +173,8 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         /**
          * Register specific services for the module
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
             // Registering a dispatcher
             $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
@@ -191,7 +189,6 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
                 return $view;
             });
         }
-
     }
 
 A special bootstrap file is required to load the a multi-module MVC architecture:
@@ -200,9 +197,9 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     <?php
 
-    use Phalcon\Mvc\Router,
-        Phalcon\Mvc\Application,
-        Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $di = new FactoryDefault();
 
@@ -213,22 +210,31 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
         $router->setDefaultModule("frontend");
 
-        $router->add("/login", array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ));
+        $router->add(
+            "/login",
+            array(
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index'
+            )
+        );
 
-        $router->add("/admin/products/:action", array(
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/admin/products/:action",
+            array(
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
-        $router->add("/products/:action", array(
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/products/:action",
+            array(
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
         return $router;
     });
@@ -259,15 +265,16 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the module:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     // Creating a view component
-    $view = new \Phalcon\Mvc\View();
+    $view = new View();
 
     // Set options to view component
     // ...
@@ -305,6 +312,8 @@ you may recognize the following bootstrap file:
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
         // Register autoloaders
@@ -314,7 +323,7 @@ you may recognize the following bootstrap file:
         // ...
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
@@ -330,8 +339,8 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     echo $application->handle()->getContent();
 
-Manual bootstraping
--------------------
+Manual bootstrapping
+--------------------
 If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
 .. code-block:: php
@@ -373,14 +382,13 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
 
-    // Send the request headers
+    // Send the response headers
     $response->sendHeaders();
 
     // Print the response
     echo $response->getContent();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
-it suitable for Rest APIs:
+The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
 
 .. code-block:: php
 
@@ -401,13 +409,13 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    // Get the returned value by the lastest executed action
+    // Get the returned value by the last executed action
     $response = $dispatcher->getReturnedValue();
 
     // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        // Send the request
+        // Send the response
         $response->send();
     }
 
@@ -444,21 +452,20 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
-    // Get the returned value by the lastest executed action
+    // Get the returned value by the last executed action
     $response = $dispatcher->getReturnedValue();
 
     // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        // Send the request
+        // Send the response
         $response->send();
     }
 
 Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
+it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
 should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 Application Events

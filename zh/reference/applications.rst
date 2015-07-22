@@ -1,5 +1,6 @@
 MVC 应用（MVC Applications）
 ================
+
 在Phalcon，策划MVC操作背后的全部困难工作通常都可以
 通过 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 做到。这个组件封装了全部后端所需要的复杂
 操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
@@ -76,7 +77,6 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
 
-
     $loader = new Loader();
 
     // 根据命名空间前缀加载
@@ -113,7 +113,6 @@ MVC 应用（MVC Applications）
         echo $e->getMessage();
     }
 
-
 多模块（Multi Module）
 ^^^^^^^^^^^^
 多模块的应用使用了相同的文档根目录但拥有多个模块。在这种情况下，可以使用以下的文件目录结构：
@@ -147,19 +146,17 @@ MVC 应用（MVC Applications）
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\ModuleDefinitionInterface;
 
-
     class Module implements ModuleDefinitionInterface
     {
-
         /**
          * 注册自定义加载器
          */
         public function registerAutoloaders()
         {
-
             $loader = new Loader();
 
             $loader->registerNamespaces(
@@ -175,9 +172,8 @@ MVC 应用（MVC Applications）
         /**
          * 注册自定义服务
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
             // Registering a dispatcher
             $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
@@ -192,7 +188,6 @@ MVC 应用（MVC Applications）
                 return $view;
             });
         }
-
     }
 
 还需要一个指定的启动文件来加载多模块的MVC架构：
@@ -205,7 +200,6 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
 
-
     $di = new FactoryDefault();
 
     // 自定义路由
@@ -215,22 +209,31 @@ MVC 应用（MVC Applications）
 
         $router->setDefaultModule("frontend");
 
-        $router->add("/login", array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ));
+        $router->add(
+            "/login",
+            array(
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index'
+            )
+        );
 
-        $router->add("/admin/products/:action", array(
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/admin/products/:action",
+            array(
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
-        $router->add("/products/:action", array(
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/products/:action",
+            array(
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
         return $router;
     });
@@ -306,6 +309,8 @@ MVC 应用（MVC Applications）
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
         // 注册自动加载器
@@ -315,7 +320,7 @@ MVC 应用（MVC Applications）
         // ...
 
         // 处理请求
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
@@ -445,7 +450,6 @@ MVC 应用（MVC Applications）
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
     // 获取最后的返回结果

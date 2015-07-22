@@ -1,5 +1,6 @@
 MVC Applications
 ================
+
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
 operations required in the background, instantiating every component needed and integrating it with the
@@ -113,7 +114,6 @@ If namespaces are used, the following bootstrap can be used:
         echo $e->getMessage();
     }
 
-
 Multi Module
 ^^^^^^^^^^^^
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
@@ -153,13 +153,11 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     class Module implements ModuleDefinitionInterface
     {
-
         /**
          * Register a specific autoloader for the module
          */
         public function registerAutoloaders()
         {
-
             $loader = new Loader();
 
             $loader->registerNamespaces(
@@ -212,22 +210,31 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
         $router->setDefaultModule("frontend");
 
-        $router->add("/login", array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ));
+        $router->add(
+            "/login",
+            array(
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index'
+            )
+        );
 
-        $router->add("/admin/products/:action", array(
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/admin/products/:action",
+            array(
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
-        $router->add("/products/:action", array(
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/products/:action",
+            array(
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
         return $router;
     });
@@ -258,8 +265,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the module:
 
 .. code-block:: php
 
@@ -382,8 +388,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
-it suitable for Rest APIs:
+The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
 
 .. code-block:: php
 
@@ -404,7 +409,7 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    // Get the returned value by the latest executed action
+    // Get the returned value by the last executed action
     $response = $dispatcher->getReturnedValue();
 
     // Check if the action returned is a 'response' object
@@ -449,7 +454,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
         $dispatcher->dispatch();
     }
 
-    // Get the returned value by the latest executed action
+    // Get the returned value by the last executed action
     $response = $dispatcher->getReturnedValue();
 
     // Check if the action returned is a 'response' object
