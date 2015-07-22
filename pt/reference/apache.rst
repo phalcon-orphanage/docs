@@ -1,5 +1,6 @@
 ﻿Notas de Instalação do Apache
 =========================
+
 Apache_ é um popular e bem conhecido servidor web, disponível para muitas plataformas.
 
 Configurando o Apache para o Phalcon
