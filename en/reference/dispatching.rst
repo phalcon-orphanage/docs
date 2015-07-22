@@ -1,5 +1,6 @@
 Dispatching Controllers
 =======================
+
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
 on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
@@ -27,8 +28,7 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
         // Execute the action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
-        // '$finished' should be reloaded to check if the flow
-        // was forwarded to another controller
+        // '$finished' should be reloaded to check if the flow was forwarded to another controller
         $finished = true;
     }
 
@@ -100,7 +100,6 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
     class PostsController extends Controller
     {
-
         public function beforeExecuteRoute($dispatcher)
         {
             // Executed before every found action
@@ -125,7 +124,6 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -133,14 +131,15 @@ access to certain options, redirect users to other screens or simply reuse code.
 
         public function saveAction($year, $postTitle)
         {
-
-            // .. store some product and forward the user
+            // ... Store some product and forward the user
 
             // Forward flow to the index action
-            $this->dispatcher->forward(array(
-                "controller" => "post",
-                "action" => "index"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "post",
+                    "action"     => "index"
+                )
+            );
         }
     }
 
@@ -155,16 +154,20 @@ More forwarding examples:
     <?php
 
     // Forward flow to another action in the current controller
-    $this->dispatcher->forward(array(
-        "action" => "search"
-    ));
+    $this->dispatcher->forward(
+        array(
+            "action" => "search"
+        )
+    );
 
     // Forward flow to another action in the current controller
     // passing parameters
-    $this->dispatcher->forward(array(
-        "action" => "search",
-        "params" => array(1, 2, 3)
-    ));
+    $this->dispatcher->forward(
+        array(
+            "action" => "search",
+            "params" => array(1, 2, 3)
+        )
+    );
 
 A forward action accepts the following parameters:
 
@@ -275,7 +278,6 @@ When a route provides named parameters you can receive them in a controller, a v
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -283,7 +285,6 @@ When a route provides named parameters you can receive them in a controller, a v
 
         public function saveAction()
         {
-
             // Get the post's title passed in the URL as parameter
             // or prepared in an event
             $title = $this->dispatcher->getParam("title");
@@ -455,8 +456,7 @@ A developer can improve it to inject any kind of dependency or model in actions 
 
 Handling Not-Found Exceptions
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
-when the controller/action combination wasn't found:
+Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 .. code-block:: php
 
@@ -467,7 +467,7 @@ when the controller/action combination wasn't found:
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
-    $di->set('dispatcher', function () {
+    $di->setShared('dispatcher', function () {
 
         // Create an EventsManager
         $eventsManager = new EventsManager();
@@ -477,24 +477,28 @@ when the controller/action combination wasn't found:
 
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
-                    'controller' => 'index',
-                    'action'     => 'show404'
-                ));
+                $dispatcher->forward(
+                    array(
+                        'controller' => 'index',
+                        'action'     => 'show404'
+                    )
+                );
+
                 return false;
             }
 
             // Alternative way, controller or action doesn't exist
-            if ($event->getType() == 'beforeException') {
-                switch ($exception->getCode()) {
-                    case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                        $dispatcher->forward(array(
+            switch ($exception->getCode()) {
+                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    $dispatcher->forward(
+                        array(
                             'controller' => 'index',
                             'action'     => 'show404'
-                        ));
-                        return false;
-                }
+                        )
+                    );
+
+                    return false;
             }
         });
 
@@ -522,7 +526,6 @@ take actions when an exception is produced in the dispatch loop:
     {
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
-
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(

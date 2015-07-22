@@ -1,5 +1,6 @@
 调度控制器（Dispatching Controllers）
 =======================
+
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
 控制器和执行在这些控制器上必要动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务。
 
@@ -31,7 +32,6 @@
         // 是否转发给了另一个控制器
         $finished = true;
     }
-
 
 上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。
 
@@ -70,8 +70,8 @@
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -98,9 +98,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function beforeExecuteRoute($dispatcher)
         {
             // 在每一个找到的动作前执行
@@ -110,7 +111,6 @@
         {
             // 在每一个找到的动作后执行
         }
-
     }
 
 转发到其他动作（Forwarding to other actions）
@@ -122,9 +122,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -132,16 +133,16 @@
 
         public function saveAction($year, $postTitle)
         {
-
-            // .. 储存一些产品并且转发用户
+            // ... 储存一些产品并且转发用户
 
             // 将流转发到index动作
-            $this->dispatcher->forward(array(
-                "controller" => "post",
-                "action" => "index"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "post",
+                    "action"     => "index"
+                )
+            );
         }
-
     }
 
 请注意制造一个“forward”并不等同于制造一个HTTP的重定向。尽管这两者表面上最终效果都一样。
@@ -155,17 +156,20 @@
     <?php
 
     // 将流转发到当前控制器的另一个动作
-    $this->dispatcher->forward(array(
-        "action" => "search"
-    ));
+    $this->dispatcher->forward(
+        array(
+            "action" => "search"
+        )
+    );
 
     // 将流转发到当前控制器的另一个动作
     // 传递参数
-    $this->dispatcher->forward(array(
-        "action" => "search",
-        "params" => array(1, 2, 3)
-    ));
-
+    $this->dispatcher->forward(
+        array(
+            "action" => "search",
+            "params" => array(1, 2, 3)
+        )
+    );
 
 一个转发的动作可以接受以下参数：
 
@@ -194,9 +198,9 @@
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -207,7 +211,7 @@
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             // 用奇数参数作key，用偶数作值
             foreach ($params as $number => $value) {
@@ -232,9 +236,9 @@
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -245,11 +249,11 @@
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             // 将每一个参数分解成key、值 对
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value);
+                $parts                = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
@@ -272,9 +276,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -282,7 +287,6 @@
 
         public function saveAction()
         {
-
             // 从URL传递过来的参数中获取title
             // 或者在一个事件中准备
             $title = $this->dispatcher->getParam("title");
@@ -290,8 +294,9 @@
             // 从URL传递过来的参数中获取year
             // 或者在一个事件中准备并且进行过滤
             $year = $this->dispatcher->getParam("year", "int");
-        }
 
+            // ...
+        }
     }
 
 准备行动（Preparing actions）
@@ -308,9 +313,9 @@
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Text;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -341,8 +346,8 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -375,7 +380,9 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         /**
          * 显示$post
@@ -395,9 +402,9 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -407,10 +414,10 @@ http://example.com/admin/products/index.php
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             // 可能的控制器类名
-            $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
+            $controllerName = $dispatcher->getControllerClass();
 
             // 可能的方法名
-            $actionName = $dispatcher->getActionName() . 'Action';
+            $actionName = $dispatcher->getActiveMethod();
 
             try {
 
@@ -424,7 +431,7 @@ http://example.com/admin/products/index.php
                     $className = $parameter->getClass()->name;
 
                     // 检查参数是否为模型的实例
-                    if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
+                    if (is_subclass_of($className, Model::class)) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
@@ -456,10 +463,10 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     $di->set('dispatcher', function () {
 
@@ -471,28 +478,32 @@ http://example.com/admin/products/index.php
 
             // 处理404异常
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
-                    'controller' => 'index',
-                    'action' => 'show404'
-                ));
+                $dispatcher->forward(
+                    array(
+                        'controller' => 'index',
+                        'action'     => 'show404'
+                    )
+                );
+
                 return false;
             }
 
             // 代替控制器或者动作不存在时的路径
-            if ($event->getType() == 'beforeException') {
-                switch ($exception->getCode()) {
-                    case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                        $dispatcher->forward(array(
+            switch ($exception->getCode()) {
+                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    $dispatcher->forward(
+                        array(
                             'controller' => 'index',
-                            'action' => 'show404'
-                        ));
-                        return false;
-                }
+                            'action'     => 'show404'
+                        )
+                    );
+
+                    return false;
             }
         });
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
 
         // 将EventsManager绑定到调度器
         $dispatcher->setEventsManager($eventsManager);
@@ -507,20 +518,19 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher,
-        Phalcon\Events\Event,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     class ExceptionsPlugin
     {
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
-
             // 处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -528,7 +538,7 @@ http://example.com/admin/products/index.php
             // 处理其他异常
             $dispatcher->forward(array(
                 'controller' => 'index',
-                'action' => 'show503'
+                'action'     => 'show503'
             ));
 
             return false;

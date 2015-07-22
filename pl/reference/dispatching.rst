@@ -1,5 +1,6 @@
 Dispatching Controllers
 =======================
+
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
 on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
@@ -27,8 +28,7 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
         // Execute the action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
-        // '$finished' should be reloaded to check if the flow
-        // was forwarded to another controller
+        // '$finished' should be reloaded to check if the flow was forwarded to another controller
         $finished = true;
     }
 
@@ -39,7 +39,7 @@ Dispatch Loop Events
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Срабатывает для       |
+| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
 +======================+================================================================================================================================================================================================================+=====================+=======================+
 | beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
@@ -68,8 +68,8 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -96,9 +96,10 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function beforeExecuteRoute($dispatcher)
         {
             // Executed before every found action
@@ -108,7 +109,6 @@ An instantiated controller automatically acts as a listener for dispatch events,
         {
             // Executed after every found action
         }
-
     }
 
 Forwarding to other actions
@@ -120,9 +120,10 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -130,16 +131,16 @@ access to certain options, redirect users to other screens or simply reuse code.
 
         public function saveAction($year, $postTitle)
         {
-
-            // .. store some product and forward the user
+            // ... Store some product and forward the user
 
             // Forward flow to the index action
-            $this->dispatcher->forward(array(
-                "controller" => "post",
-                "action" => "index"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "post",
+                    "action"     => "index"
+                )
+            );
         }
-
     }
 
 Keep in mind that making a "forward" is not the same as making a HTTP redirect. Although they apparently got the same result.
@@ -153,17 +154,20 @@ More forwarding examples:
     <?php
 
     // Forward flow to another action in the current controller
-    $this->dispatcher->forward(array(
-        "action" => "search"
-    ));
+    $this->dispatcher->forward(
+        array(
+            "action" => "search"
+        )
+    );
 
     // Forward flow to another action in the current controller
     // passing parameters
-    $this->dispatcher->forward(array(
-        "action" => "search",
-        "params" => array(1, 2, 3)
-    ));
-
+    $this->dispatcher->forward(
+        array(
+            "action" => "search",
+            "params" => array(1, 2, 3)
+        )
+    );
 
 A forward action accepts the following parameters:
 
@@ -192,9 +196,9 @@ Parameters by default are passed as they come in the URL to actions, you can tra
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -205,7 +209,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             // Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
@@ -230,9 +234,9 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -243,11 +247,11 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             // Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value);
+                $parts                = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
@@ -270,9 +274,10 @@ When a route provides named parameters you can receive them in a controller, a v
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -280,7 +285,6 @@ When a route provides named parameters you can receive them in a controller, a v
 
         public function saveAction()
         {
-
             // Get the post's title passed in the URL as parameter
             // or prepared in an event
             $title = $this->dispatcher->getParam("title");
@@ -288,8 +292,9 @@ When a route provides named parameters you can receive them in a controller, a v
             // Get the post's year passed in the URL as parameter
             // or prepared in an event also filtering it
             $year = $this->dispatcher->getParam("year", "int");
-        }
 
+            // ...
+        }
     }
 
 Preparing actions
@@ -306,9 +311,9 @@ the following code is required:
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Text;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -339,8 +344,8 @@ You can remove it before dispatch the controller/action combination:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -374,7 +379,9 @@ The controller looks like:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         /**
          * Shows posts
@@ -394,9 +401,9 @@ before dispatch the action preparing the parameter accordingly:
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
 
@@ -406,10 +413,10 @@ before dispatch the action preparing the parameter accordingly:
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
             // Possible controller class name
-            $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
+            $controllerName = $dispatcher->getControllerClass();
 
             // Possible method name
-            $actionName = $dispatcher->getActionName() . 'Action';
+            $actionName = $dispatcher->getActiveMethod();
 
             try {
 
@@ -423,7 +430,7 @@ before dispatch the action preparing the parameter accordingly:
                     $className = $parameter->getClass()->name;
 
                     // Check if the parameter expects a model instance
-                    if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
+                    if (is_subclass_of($className, Model::class)) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
@@ -449,19 +456,18 @@ A developer can improve it to inject any kind of dependency or model in actions 
 
 Handling Not-Found Exceptions
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
-when the controller/action combination wasn't found:
+Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
-    $di->set('dispatcher', function () {
+    $di->setShared('dispatcher', function () {
 
         // Create an EventsManager
         $eventsManager = new EventsManager();
@@ -471,28 +477,32 @@ when the controller/action combination wasn't found:
 
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
-                    'controller' => 'index',
-                    'action' => 'show404'
-                ));
+                $dispatcher->forward(
+                    array(
+                        'controller' => 'index',
+                        'action'     => 'show404'
+                    )
+                );
+
                 return false;
             }
 
             // Alternative way, controller or action doesn't exist
-            if ($event->getType() == 'beforeException') {
-                switch ($exception->getCode()) {
-                    case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                        $dispatcher->forward(array(
+            switch ($exception->getCode()) {
+                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    $dispatcher->forward(
+                        array(
                             'controller' => 'index',
-                            'action' => 'show404'
-                        ));
-                        return false;
-                }
+                            'action'     => 'show404'
+                        )
+                    );
+
+                    return false;
             }
         });
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
 
         // Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
@@ -504,25 +514,23 @@ when the controller/action combination wasn't found:
 Of course, this method can be moved onto independent plugin classes, allowing more than one class
 take actions when an exception is produced in the dispatch loop:
 
-
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher,
-        Phalcon\Events\Event,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     class ExceptionsPlugin
     {
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
-
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -530,7 +538,7 @@ take actions when an exception is produced in the dispatch loop:
             // Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
-                'action' => 'show503'
+                'action'     => 'show503'
             ));
 
             return false;
