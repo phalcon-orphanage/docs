@@ -1,7 +1,8 @@
 Internationalization
 ====================
+
 Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
-Starting from PHP 5.4 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
+Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
 
 Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
 
@@ -24,9 +25,11 @@ There are several ways to find out the best available locale using intl_. One of
     echo $locale;
 
 Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
+
 Examples of identifiers include:
 
 * en-US (English, United States)
+* ru-RU (Russian, Russia)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
@@ -87,11 +90,25 @@ examples below on the usage of this class:
 
     // Returns that the strings are equal, in spite of the emphasis on the "o"
     $collator->setStrength(Collator::PRIMARY);
-    $collator->compare("una canción", "una cancion");
+    var_dump($collator->compare("una canción", "una cancion"));
 
     // Returns that the strings are not equal
-    $collator->setStrength(Collator::DEFAULT);
-    $collator->compare("una canción", "una cancion");
+    $collator->setStrength(Collator::DEFAULT_VALUE);
+    var_dump($collator->compare("una canción", "una cancion"));
+
+Transliteration
+---------------
+Transliterator_ provides transliteration of strings:
+
+.. code-block:: php
+
+    <?php
+
+    $id = "Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();";
+    $transliterator = Transliterator::create($id);
+
+    $string = "garçon-étudiant-où-L'école";
+    echo $transliterator->transliterate($string); // garconetudiantoulecole
 
 .. _PECL: http://pecl.php.net/package/intl
 .. _intl: http://pecl.php.net/package/intl
@@ -99,3 +116,4 @@ examples below on the usage of this class:
 .. _documentation: http://www.php.net/manual/en/book.intl.php
 .. _MessageFormatter: http://www.php.net/manual/en/class.messageformatter.php
 .. _Collator: http://www.php.net/manual/en/class.collator.php
+.. _Transliterator: http://www.php.net/manual/en/class.transliterator.php
