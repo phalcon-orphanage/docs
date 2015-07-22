@@ -1,5 +1,6 @@
 提高性能：下一步该做什么？（Increasing Performance: What's next?）
 ========================================================================
+
 要开发出高性能的应用程序需要考虑多方面的因素： 服务器， 客户端， 网络， 数据库， web服务器，静态资源等。 本章中我集中分析在如何提升系统的性能及
 如何检测应用的瓶颈。
 
@@ -125,7 +126,7 @@ PHP5.5中包含了一个内置的字节码缓存器，即 ZendOptimizer+, 这个
 
 Google Page Speed
 -----------------
-mod_pagespeed_ 可以加速网站的运行速度及减少网站的加载时间。 这个开源的apache web服务器模块（nginx下为ngx_pagespeed）会
+mod_pagespeed_ 可以加速网站的运行速度及减少网站的加载时间。 这个开源的apache web服务器模块（nginx下为ngx_pagespeed_）会
 自动对网页，静态资源（CSS, JavaScript, images）等进行性能相关的优化，而无需开发者修改已存在的代码，内容，及工作流等。
 
 注： 更多的性能相关的配置或建议可以查看具体的web服务器, 如apache中提供了mod_cache, mod_disk_cache等.
@@ -140,4 +141,3 @@ mod_pagespeed_ 可以加速网站的运行速度及减少网站的加载时间�
 .. _APC: http://php.net/manual/en/book.apc.php
 .. _mod_pagespeed: https://developers.google.com/speed/pagespeed/mod
 .. _ngx_pagespeed: https://developers.google.com/speed/pagespeed/ngx
-

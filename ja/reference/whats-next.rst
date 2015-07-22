@@ -1,8 +1,8 @@
 パフォーマンス改善: 次なる手は？
 ====================================
+
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
-In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
-your application.
+In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
 
 サーバー側でのプロファイリング
 ---------------------
@@ -50,7 +50,7 @@ Then at the end of the file save the profiled data:
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in HTML viewer to analize the profiled data:
+Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center
@@ -111,8 +111,8 @@ PHP is faster every day, using the latest version improves the performance of yo
 
 PHPバイトコードキャッシュの利用
 ------------------------
-APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
-in each request. Once the extension is installed use the following setting to enable APC:
+APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request.
+Once the extension is installed use the following setting to enable APC:
 
 .. code-block:: ini
 
@@ -135,7 +135,7 @@ There are a variety of tools that provide queuing or messaging systems that work
 Google Page Speed
 -----------------
 mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available
-for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets
+for nginx as ngx_pagespeed_) automatically applies web performance best practices to pages, and associated assets
 (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
 
 .. _firebug: http://getfirebug.com/
