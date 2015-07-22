@@ -1,5 +1,6 @@
 Информационные сообщения
 ========================
+
 Информационные сообщения используются для уведомления пользователей о состоянии выполненных действий или просто
 показывают необходимую информацию.
 Такой тип сообщений может быть сгенерирован с помощью этого компонента.
@@ -25,9 +26,11 @@
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     // Устанавливаем сервис
     $di->set('flash', function () {
-        return new \Phalcon\Flash\Direct();
+        return new FlashDirect();
     });
 
 Таким образом, вы можете использовать его в контроллерах или в представлениях (view):
@@ -36,9 +39,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -48,7 +52,6 @@
         {
             $this->flash->success("The post was correctly saved!");
         }
-
     }
 
 Существует четыре типа встроенных сообщений:
@@ -88,13 +91,19 @@
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     // Регистрируем компонент сообщений с CSS классами
     $di->set('flash', function () {
-        $flash = new \Phalcon\Flash\Direct(array(
-            'error' => 'alert alert-error',
-            'success' => 'alert alert-success',
-            'notice' => 'alert alert-info',
-        ));
+        $flash = new FlashDirect(
+            array(
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning'
+            )
+        );
+
         return $flash;
     });
 
@@ -102,9 +111,10 @@
 
 .. code-block:: html
 
-    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Понимание разницы между адаптерами Direct и Session
 ---------------------------------------------------
@@ -117,9 +127,10 @@
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ContactController extends Controller
+    {
         public function indexAction()
         {
 
@@ -127,16 +138,18 @@
 
         public function saveAction()
         {
-
             // Сохраняем объект в БД
 
             // Выводим прямое сообщение
-            $this->flash->success("Your information were stored correctly!");
+            $this->flash->success("Your information was stored correctly!");
 
             // Делаем внутреннее перенаправление на другое действие
-            return $this->dispatcher->forward(array("action" => "index"));
+            return $this->dispatcher->forward(
+                array(
+                    "action" => "index"
+                )
+            );
         }
-
     }
 
 Или используя HTTP-перенаправление:
@@ -145,9 +158,10 @@
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ContactController extends Controller
+    {
         public function indexAction()
         {
 
@@ -155,16 +169,14 @@
 
         public function saveAction()
         {
-
             // Сохраняем объект в БД
 
             // Отправляем сообщение в сессию
-            $this->flashSession->success("Your information were stored correctly!");
+            $this->flashSession->success("Your information was stored correctly!");
 
             // Делаем полное HTTP-перенаправление
             return $this->response->redirect("contact/index");
         }
-
     }
 
 В таком случае вам необходимо вручную вывести сообщение в соответствующем представлении:

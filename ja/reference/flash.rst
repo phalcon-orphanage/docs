@@ -1,7 +1,8 @@
 メッセージのフラッシュ
 =================
+
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
-These kind of messages can be generated using this component.
+These kinds of messages can be generated using this component.
 
 アダプタ
 --------
@@ -25,9 +26,11 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     // Set up the flash service
     $di->set('flash', function () {
-        return new \Phalcon\Flash\Direct();
+        return new FlashDirect();
     });
 
 This way, you can use it in controllers or views by injecting the service in the required scope:
@@ -36,9 +39,10 @@ This way, you can use it in controllers or views by injecting the service in the
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -48,7 +52,6 @@ This way, you can use it in controllers or views by injecting the service in the
         {
             $this->flash->success("The post was correctly saved!");
         }
-
     }
 
 There are four built-in message types supported:
@@ -72,7 +75,7 @@ You can add messages with your own types:
 
 メッセージの出力
 -----------------
-Messages sent to the flasher are automatically formatted with html:
+Messages sent to the flash service are automatically formatted with HTML:
 
 .. code-block:: html
 
@@ -81,20 +84,26 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="noticeMessage">this a very important information</div>
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
+As you can see, CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
 of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootstrap, classes can be configured as:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     // Register the flash service with custom CSS classes
     $di->set('flash', function () {
-        $flash = new \Phalcon\Flash\Direct(array(
-            'error' => 'alert alert-error',
-            'success' => 'alert alert-success',
-            'notice' => 'alert alert-info',
-        ));
+        $flash = new FlashDirect(
+            array(
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning'
+            )
+        );
+
         return $flash;
     });
 
@@ -102,9 +111,10 @@ Then the messages would be printed as follows:
 
 .. code-block:: html
 
-    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Implicit Flush vs. Session
 --------------------------
@@ -116,9 +126,10 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ContactController extends Controller
+    {
         public function indexAction()
         {
 
@@ -126,16 +137,18 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
         public function saveAction()
         {
-
             // Store the post
 
             // Using direct flash
-            $this->flash->success("Your information were stored correctly!");
+            $this->flash->success("Your information was stored correctly!");
 
             // Forward to the index action
-            return $this->dispatcher->forward(array("action" => "index"));
+            return $this->dispatcher->forward(
+                array(
+                    "action" => "index"
+                )
+            );
         }
-
     }
 
 Or using a HTTP redirection:
@@ -144,9 +157,10 @@ Or using a HTTP redirection:
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ContactController extends Controller
+    {
         public function indexAction()
         {
 
@@ -154,19 +168,17 @@ Or using a HTTP redirection:
 
         public function saveAction()
         {
-
             // Store the post
 
             // Using session flash
-            $this->flashSession->success("Your information were stored correctly!");
+            $this->flashSession->success("Your information was stored correctly!");
 
             // Make a full HTTP redirection
             return $this->response->redirect("contact/index");
         }
-
     }
 
-In this case you need to print manually the messages in the corresponding view:
+In this case you need to manually print the messages in the corresponding view:
 
 .. code-block:: html+php
 

@@ -1,7 +1,8 @@
 Flashing Messages
 =================
+
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
-These kind of messages can be generated using this component.
+These kinds of messages can be generated using this component.
 
 Adapters
 --------
@@ -42,7 +43,6 @@ This way, you can use it in controllers or views by injecting the service in the
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -52,7 +52,6 @@ This way, you can use it in controllers or views by injecting the service in the
         {
             $this->flash->success("The post was correctly saved!");
         }
-
     }
 
 There are four built-in message types supported:
@@ -76,7 +75,7 @@ You can add messages with your own types:
 
 Printing Messages
 -----------------
-Messages sent to the flash service are automatically formatted with html:
+Messages sent to the flash service are automatically formatted with HTML:
 
 .. code-block:: html
 
@@ -96,12 +95,15 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
 
     // Register the flash service with custom CSS classes
     $di->set('flash', function () {
-        $flash = new FlashDirect(array(
-            'error'   => 'alert alert-danger',
-            'success' => 'alert alert-success',
-            'notice'  => 'alert alert-info',
-            'warning' => 'alert alert-warning'
-        ));
+        $flash = new FlashDirect(
+            array(
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning'
+            )
+        );
+
         return $flash;
     });
 
@@ -128,7 +130,6 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
     class ContactController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -136,16 +137,18 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
         public function saveAction()
         {
-
             // Store the post
 
             // Using direct flash
             $this->flash->success("Your information was stored correctly!");
 
             // Forward to the index action
-            return $this->dispatcher->forward(array("action" => "index"));
+            return $this->dispatcher->forward(
+                array(
+                    "action" => "index"
+                )
+            );
         }
-
     }
 
 Or using a HTTP redirection:
@@ -158,7 +161,6 @@ Or using a HTTP redirection:
 
     class ContactController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -166,7 +168,6 @@ Or using a HTTP redirection:
 
         public function saveAction()
         {
-
             // Store the post
 
             // Using session flash

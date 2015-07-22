@@ -1,5 +1,6 @@
 闪存消息（Flashing Messages）
 =================
+
 闪存消息用于通知用户关于他/她产生的动作状态，或者简单地为用户显示一此信息。
 这类消息可以使用这个组件来生成。
 
@@ -42,7 +43,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -52,7 +52,6 @@
         {
             $this->flash->success("The post was correctly saved!");
         }
-
     }
 
 目前已支持的有四种内置消息类型：
@@ -92,14 +91,19 @@
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     // 利用自定义的CSS类来注册flash服务
     $di->set('flash', function () {
-        $flash = new FlashDirect(array(
-            'error'   => 'alert alert-danger',
-            'success' => 'alert alert-success',
-            'notice'  => 'alert alert-info',
-            'warning' => 'alert alert-warning'
-        ));
+        $flash = new FlashDirect(
+            array(
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning'
+            )
+        );
+
         return $flash;
     });
 
@@ -110,6 +114,7 @@
     <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 绝对刷送与会话（Implicit Flush vs. Session）
 --------------------------
@@ -125,7 +130,6 @@
 
     class ContactController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -133,16 +137,18 @@
 
         public function saveAction()
         {
-
             // 存储POST
 
             // 使用直接闪存
             $this->flash->success("Your information was stored correctly!");
 
             // 转发到index动作
-            return $this->dispatcher->forward(array("action" => "index"));
+            return $this->dispatcher->forward(
+                array(
+                    "action" => "index"
+                )
+            );
         }
-
     }
 
 或者使用一个HTTP重定向：
@@ -155,7 +161,6 @@
 
     class ContactController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -163,7 +168,6 @@
 
         public function saveAction()
         {
-
             // 存储POST
 
             // 使用会话闪存
@@ -172,7 +176,6 @@
             // 返回一个完整的HTTP重定向
             return $this->response->redirect("contact/index");
         }
-
     }
 
 在这种情况下，你需要手动在交互的视图上打印消息：
