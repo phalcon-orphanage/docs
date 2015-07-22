@@ -1,5 +1,6 @@
 访问控制列表 ACL（Access Control Lists ACL）
-============================================
+==========================================
+
 Phalcon在权限方面通过 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 提供了一个轻量级的 ACL(访问控制列表). `Access Control Lists`_ (ACL)
 允许系统对用户的访问权限进行控制，比如允许访问某些资源而不允许访问其它资源等。 这里我们建议开发者了解一些关于ACL的技术。
 
@@ -7,7 +8,6 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
 创建 ACL（Creating an ACL）
 ---------------------------
-
 这个组件起先是设计工作在内存中的， 这样做提供了更高的访问速度。 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 构造器的第一个参数用于设置取得ACL的方式。 下面是使用内存适配器的例子：
 
 .. code-block:: php
@@ -42,10 +42,10 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
-    // 添加 "Guests" 角色到acl
+    // 添加 "Guests" 角色到ACL
     $acl->addRole($roleGuests);
 
-    // 添加"Designers"到acl, 仅使用此字符串。
+    // 添加"Designers"到ACL, 仅使用此字符串。
     $acl->addRole("Designers");
 
 上面我们看到，我们可以直接使用字符串来定义角色。
@@ -70,7 +70,6 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
 定义访问控制（Defining Access Controls）
 ---------------------------------------
-
 至此我们定义了角色及资源， 现在是定义ACL的时候了，即是定义角色对资源的访问。 这个部分是极其重要的，特别是在我们设定了默认的访问级别后。
 
 .. code-block:: php
@@ -99,7 +98,6 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
 角色继承（Roles Inheritance）
 -----------------------------
-
 我们可以使用 :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` 提供的继承机制来构造更复杂的角色。 Phalcon中的角色可以继承来自其它角色的
 权限, 这样就可以实现更巧妙的资源访问控制。 如果要继承权限用户， 我们需要在添加角色函数的第二个参数中写上要继承的那个角色实例。
 
@@ -109,11 +107,13 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
     use Phalcon\Acl\Role;
 
+    // ...
+
     // 创建角色
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
-    // 添加 "Guests" 到 acl.
+    // 添加 "Guests" 到 ACL
     $acl->addRole($roleGuests);
 
     // 使Administrators继承Guests的访问权限
@@ -121,10 +121,8 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
 序列化 ACL 列表（Serializing ACL lists）
 ------------------------------------------
-
 为了提高性能， :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 的实例可以被实例化到APC, session， 文本或数据库中， 这样开发者就不需要重复的
 定义acl了。 下面展示了如何去做：
-
 
 .. code-block:: php
 
@@ -132,7 +130,9 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
     use Phalcon\Acl\Adapter\Memory as AclList;
 
-    // 检查acl数据是否存在
+    // ...
+
+    // 检查ACL数据是否存在
     if (!is_file("app/security/acl.data")) {
 
         $acl = new AclList();
@@ -141,14 +141,13 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
         // 保存实例化的数据到文本文件中
         file_put_contents("app/security/acl.data", serialize($acl));
-
     } else {
 
          // 返序列化
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
-    // 使用acl
+    // 使用ACL
     if ($acl->isAllowed("Guests", "Customers", "edit")) {
         echo "Access granted!";
     } else {
@@ -157,18 +156,17 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
 ACL 事件（ACL Events）
 ----------------------
-
 如果需要的话 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 可以发送事件到 :doc:`EventsManager <events>` 。 这里我们为acl绑定事件。
 其中一些事件的处理结果如果返回了false则表示正在处理的操作会被中止。
 支持如下的事件：
 
-+----------------------+------------------------------------------------------------+---------------------+
-| 事件名               | 触发条件                                                   | 能否中止操作        |
-+======================+============================================================+=====================+
-| beforeCheckAccess    | 在权限检查之前触发                                         | Yes                 |
-+----------------------+------------------------------------------------------------+---------------------+
-| afterCheckAccess     | 在权限检查之后触发                                         | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
++-------------------+--------------------+--------------+
+| 事件名            | 触发条件           | 能否中止操作 |
++===================+====================+==============+
+| beforeCheckAccess | 在权限检查之前触发 | Yes          |
++-------------------+--------------------+--------------+
+| afterCheckAccess  | 在权限检查之后触发 | No           |
++-------------------+--------------------+--------------+
 
 下面的例子中展示了如何绑定事件到此组件：
 
@@ -178,6 +176,8 @@ ACL 事件（ACL Events）
 
     use Phalcon\Acl\Adapter\Memory as AclList;
     use Phalcon\Events\Manager as EventsManager;
+
+    // ...
 
     // 创建事件管理器
     $eventsManager = new EventsManager();
@@ -196,7 +196,7 @@ ACL 事件（ACL Events）
     // Setup the $acl
     // ...
 
-    // 绑定eventsManager到acl组件
+    // 绑定eventsManager到ACL组件
     $acl->setEventsManager($eventManagers);
 
 自定义适配器（Implementing your own adapters）
@@ -204,4 +204,3 @@ ACL 事件（ACL Events）
 开发者要创建自己的扩展或已存在适配器则需要实现此 :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` 接口。
 
 .. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list
-
