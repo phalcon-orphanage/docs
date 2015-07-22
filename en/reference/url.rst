@@ -1,5 +1,6 @@
 Generating URLs and Paths
 =========================
+
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate URLs in a Phalcon application. It's
 capable of produce independent URLs based on routes.
 
@@ -62,7 +63,7 @@ pattern defined in the router) passing a string to the method "get":
 
 .. code-block:: php
 
-    <?php echo $url->get("products/save") ?>
+    <?php echo $url->get("products/save"); ?>
 
 Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically.
 For Example if you have the following route:
@@ -71,10 +72,13 @@ For Example if you have the following route:
 
     <?php
 
-    $route->add('/blog/{year}/{month}/{title}', array(
-        'controller' => 'posts',
-        'action'     => 'show'
-    ))->setName('show-post');
+    $route->add(
+        "/blog/{year}/{month}/{title}",
+        array(
+            'controller' => 'posts',
+            'action'     => 'show'
+        )
+    )->setName('show-post');
 
 A URL can be generated in the following way:
 
@@ -83,12 +87,14 @@ A URL can be generated in the following way:
     <?php
 
     // This produces: /blog/2015/01/some-blog-post
-    $url->get(array(
-        'for'   => 'show-post',
-        'year'  => 2015,
-        'month' => '01',
-        'title' => 'some-blog-post'
-    ));
+    $url->get(
+        array(
+            'for'   => 'show-post',
+            'year'  => 2015,
+            'month' => '01',
+            'title' => 'some-blog-post'
+        )
+    );
 
 Producing URLs without Mod-Rewrite
 ----------------------------------
@@ -134,7 +140,7 @@ In this case, it's necessary to manually handle the required URI in the Router:
 
     $router = new Router();
 
-    // ... define routes
+    // ... Define routes
 
     $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
     $router->handle($uri);
@@ -162,7 +168,7 @@ Generate static routes:
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-Static vs. Dynamic Uris
+Static vs. Dynamic URIs
 -----------------------
 This component allow you to set up a different base URI for static resources in the application:
 
@@ -182,7 +188,7 @@ This component allow you to set up a different base URI for static resources in 
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
-Implementing your own Url Generator
+Implementing your own URL Generator
 -----------------------------------
 The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL
 generator replacing the one provided by Phalcon.
