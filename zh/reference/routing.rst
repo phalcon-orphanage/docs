@@ -1,13 +1,12 @@
 路由（Routing）
 ===============
+
 The router component allows defining routes that are mapped to controllers or handlers that should receive
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
-
 路由器组件用来定义处理接收到的请求的路由，指向相应的控制器或者处理程序。路由器只是简单解析一个URI获取这些信息。
 路由器有两种模式：MVC模式以及匹配模式。第一种模式主要适合MVC应用。
-
 
 定义路由（Defining Routes）
 ---------------------------
@@ -16,7 +15,6 @@ you can define routes and map them to controllers/actions that you require. A ro
 
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供高级路由支持。在MVC模式下，你可以定义路由并映射向需要的控制器/动作。
 一个路由定义方法如下所示：
-
 
 .. code-block:: php
 
@@ -32,7 +30,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         "/admin/users/my-profile",
         array(
             "controller" => "users",
-            "action"     => "profile",
+            "action"     => "profile"
         )
     );
 
@@ -41,7 +39,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         "/admin/users/change-password",
         array(
             "controller" => "users",
-            "action"     => "changePassword",
+            "action"     => "changePassword"
         )
     );
 
@@ -68,10 +66,9 @@ add() 方法接受一个匹配模式作为第一个参数，一组可选的路�
         array(
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3,
+            "params"     => 3
         )
     );
-
 
 在上面的例子中我们通过使用通配符定义了一个可以匹配多个URI的路由，比如，访问这个URL（/admin/users/a/delete/dave/301），那么：
 
@@ -137,7 +134,7 @@ The example below demonstrates how to define names to route parameters:
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4, // :params
+            "params"     => 4  // :params
         )
     );
 
@@ -153,7 +150,6 @@ by the request. Inside the controller, those named parameters can be accessed as
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -161,7 +157,6 @@ by the request. Inside the controller, those named parameters can be accessed as
 
         public function showAction()
         {
-
             // Return "year" parameter
             $year = $this->dispatcher->getParam("year");
 
@@ -170,9 +165,7 @@ by the request. Inside the controller, those named parameters can be accessed as
 
             // Return "day" parameter
             $day = $this->dispatcher->getParam("day");
-
         }
-
     }
 
 Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
@@ -201,18 +194,14 @@ You can access their values in the same way as before:
 
     class DocumentationController extends Controller
     {
-
         public function showAction()
         {
-
             // Returns "name" parameter
             $name = $this->dispatcher->getParam("name");
 
             // Returns "type" parameter
             $type = $this->dispatcher->getParam("type");
-
         }
-
     }
 
 短语法（Short Syntax）
@@ -234,7 +223,7 @@ The following examples produce the same result:
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2,
+           "title"      => 2
         )
     );
 
@@ -295,17 +284,23 @@ Or you can bind specific routes to specific modules:
 
     <?php
 
-    $router->add("/login", array(
-        'module'     => 'backend',
-        'controller' => 'login',
-        'action'     => 'index',
-    ));
+    $router->add(
+        "/login",
+        array(
+            'module'     => 'backend',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
-    $router->add("/products/:action", array(
-        'module'     => 'frontend',
-        'controller' => 'products',
-        'action'     => 1,
-    ));
+    $router->add(
+        "/products/:action",
+        array(
+            'module'     => 'frontend',
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
 Or bind them to specific namespaces:
 
@@ -313,11 +308,14 @@ Or bind them to specific namespaces:
 
     <?php
 
-    $router->add("/:namespace/login", array(
-        'namespace'  => 1,
-        'controller' => 'login',
-        'action'     => 'index'
-    ));
+    $router->add(
+        "/:namespace/login",
+        array(
+            'namespace'  => 1,
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 Namespaces/class names must be passed separated:
 
@@ -325,11 +323,14 @@ Namespaces/class names must be passed separated:
 
     <?php
 
-    $router->add("/login", array(
-        'namespace'  => 'Backend\Controllers',
-        'controller' => 'login',
-        'action'     => 'index'
-    ));
+    $router->add(
+        "/login",
+        array(
+            'namespace'  => 'Backend\Controllers',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 限制 HTTP 请求传入方式（HTTP Method Restrictions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,7 +348,7 @@ this is especially useful when creating RESTful applications:
     $router->addPost("/products/save", "Products::save");
 
     // This route will be matched if the HTTP method is POST or PUT
-    $router->add("/products/update")->via(array("POST", "PUT"));
+    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
 
 使用转换（Using convertions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -382,10 +383,12 @@ If a set of routes have common paths they can be grouped to easily maintain them
     $router = new Router();
 
     // Create a group with a common module and controller
-    $blog = new RouterGroup(array(
-        'module'     => 'blog',
-        'controller' => 'index'
-    ));
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'index'
+        )
+    );
 
     // All the routes start with /blog
     $blog->setPrefix('/blog');
@@ -422,30 +425,40 @@ You can move groups of routes to separate files in order to improve the organiza
         public function initialize()
         {
             // Default paths
-            $this->setPaths(array(
-                'module'    => 'blog',
-                'namespace' => 'Blog\Controllers'
-            ));
+            $this->setPaths(
+                array(
+                    'module'    => 'blog',
+                    'namespace' => 'Blog\Controllers'
+                )
+            );
 
             // All the routes start with /blog
             $this->setPrefix('/blog');
 
             // Add a route to the group
-            $this->add('/save', array(
-                'action' => 'save'
-            ));
+            $this->add(
+                '/save',
+                array(
+                    'action' => 'save'
+                )
+            );
 
             // Add another route to the group
-            $this->add('/edit/{id}', array(
-                'action' => 'edit'
-            ));
+            $this->add(
+                '/edit/{id}',
+                array(
+                    'action' => 'edit'
+                )
+            );
 
             // This route maps to a controller different than the default
-            $this->add('/blog', array(
-                'controller' => 'blog',
-                'action'     => 'index'
-            ));
-
+            $this->add(
+                '/blog',
+                array(
+                    'controller' => 'blog',
+                    'action'     => 'index'
+                )
+            );
         }
     }
 
@@ -525,11 +538,13 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
     <?php
 
     // Returns /posts/2012/phalcon-1-0-released
-    echo $url->get(array(
-        "for"   => "show-posts",
-        "year"  => "2012",
-        "title" => "phalcon-1-0-released"
-    ));
+    echo $url->get(
+        array(
+            "for"   => "show-posts",
+            "year"  => "2012",
+            "title" => "phalcon-1-0-released"
+        )
+    );
 
 范例（Usage Examples）
 ----------------------
@@ -608,7 +623,8 @@ The following are examples of custom routes:
     );
 
     // Matches /api/v1/users/peter.json
-    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
+    $router->add(
+        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
             'version'    => 1,
@@ -645,7 +661,7 @@ If you don't want use this routes as default in your application, you must creat
     use Phalcon\Mvc\Router;
 
     // Create the router without default routes
-    $router = new \Phalcon\Mvc\Router(false);
+    $router = new Router(false);
 
 设置默认路由（Setting the default route）
 -----------------------------------------
@@ -656,10 +672,13 @@ in your website/application:
 
     <?php
 
-    $router->add("/", array(
-        'controller' => 'index',
-        'action'     => 'index'
-    ));
+    $router->add(
+        "/",
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 没有找到路径（Not Found Paths）
 -------------------------------
@@ -670,19 +689,19 @@ If none of the routes specified in the router are matched, you can define a grou
     <?php
 
     // Set 404 paths
-    $router->notFound(array(
-        "controller" => "index",
-        "action"     => "route404"
-    ));
+    $router->notFound(
+        array(
+            "controller" => "index",
+            "action"     => "route404"
+        )
+    );
 
 设置默认路径（Setting default paths）
 -------------------------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:
 
-
 可以为通用路径中的 module, controller, action 定义默认值。当一个路由缺少其中任何一项时，路由器可以自动用默认值填充：
-
 
 .. code-block:: php
 
@@ -695,10 +714,12 @@ those paths they can be automatically filled by the router:
     $router->setDefaultAction('index');
 
     // Using an array
-    $router->setDefaults(array(
-        'controller' => 'index',
-        'action'     => 'index'
-    ));
+    $router->setDefaults(
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 处理结尾额外的斜杆（Dealing with extra/trailing slashes）
 ---------------------------------------------------------
@@ -811,10 +832,12 @@ In groups of routes you can set up a hostname constraint that apply for every ro
     use Phalcon\Mvc\Router\Group as RouterGroup;
 
     // Create a group with a common module and controller
-    $blog = new RouterGroup(array(
-        'module'     => 'blog',
-        'controller' => 'posts'
-    ));
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'posts'
+        )
+    );
 
     // Hostname restriction
     $blog->setHostName('blog.mycompany.com');
@@ -851,7 +874,7 @@ Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
     use Phalcon\Mvc\Router;
 
-    ...
+    // ...
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI'] (default)
@@ -905,8 +928,8 @@ Since this component has no dependencies, you can create a file as shown below t
         } else {
             echo 'The route wasn\'t matched by any route<br>';
         }
-        echo '<br>';
 
+        echo '<br>';
     }
 
 注解路由（Annotations Router）
@@ -942,7 +965,6 @@ Since this component has no dependencies, you can create a file as shown below t
      */
     class ProductsController
     {
-
         /**
          * @Get("/")
          */
@@ -980,7 +1002,6 @@ Since this component has no dependencies, you can create a file as shown below t
         {
 
         }
-
     }
 
 只有标记了格式正确的注解的方法才能被用作路由。Phalcon支持如下注解：
@@ -1047,8 +1068,8 @@ You need to add code below in your bootstrap file (for example index.php or app/
     <?php
 
     /**
-    * add routing capabilities
-    */
+     * Add routing capabilities
+     */
     $di->set('router', function () {
         require __DIR__.'/../app/config/routes.php';
         return $router;
@@ -1066,16 +1087,15 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router->add("/login", array(
         'controller' => 'login',
-        'action'     => 'index',
+        'action'     => 'index'
     ));
 
     $router->add("/products/:action", array(
         'controller' => 'products',
-        'action'     => 1,
+        'action'     => 1
     ));
 
     return $router;
-
 
 自定义路由（Implementing your own Router）
 ------------------------------------------

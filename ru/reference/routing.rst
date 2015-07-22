@@ -1,5 +1,6 @@
 Маршрутизация (Routing, Роутинг)
 ================================
+
 Компонент маршрутизации позволяет определять маршруты, которые будут привязаны к контроллерам, или обработчикам для получения
 запроса. Маршрутизатор просто разбирает URI для определения информации. Маршрутизатор имеет два режима: MVC
 режим и режим совпадения. Первый режим идеально подходит для работы с MVC приложениями.
@@ -13,15 +14,17 @@
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Создание маршрутизатора
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     // Определение правила маршрутизации
     $router->add(
         "/admin/users/my-profile",
         array(
             "controller" => "users",
-            "action"     => "profile",
+            "action"     => "profile"
         )
     );
 
@@ -30,7 +33,7 @@
         "/admin/users/change-password",
         array(
             "controller" => "users",
-            "action"     => "changePassword",
+            "action"     => "changePassword"
         )
     );
 
@@ -48,8 +51,10 @@
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Создание маршрутизатора
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     // Определение правила маршрутизации
     $router->add(
@@ -57,7 +62,7 @@
         array(
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3,
+            "params"     => 3
         )
     );
 
@@ -125,7 +130,7 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4, // :params
+            "params"     => 4  // :params
         )
     );
 
@@ -137,9 +142,10 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -147,7 +153,6 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
         public function showAction()
         {
-
             // Возвращает параметр "year"
             $year = $this->dispatcher->getParam("year");
 
@@ -156,9 +161,7 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
             // Возвращает параметр "day"
             $day = $this->dispatcher->getParam("day");
-
         }
-
     }
 
 Обратите внимание, что значения параметров получаются из диспетчера. Это происходит потому, что это
@@ -183,20 +186,18 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
     <?php
 
-    class DocumentationController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class DocumentationController extends Controller
+    {
         public function showAction()
         {
-
             // Возвращает параметр "name"
             $name = $this->dispatcher->getParam("name");
 
             // Возвращает параметр "type"
             $type = $this->dispatcher->getParam("type");
-
         }
-
     }
 
 Краткий синтаксис
@@ -218,7 +219,7 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2,
+           "title"      => 2
         )
     );
 
@@ -248,13 +249,15 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
     <?php
 
-    $router = new Phalcon\Mvc\Router(false);
+    use Phalcon\Mvc\Router;
+
+    $router = new Router(false);
 
     $router->add('/:module/:controller/:action/:params', array(
-        'module' => 1,
+        'module'     => 1,
         'controller' => 2,
-        'action' => 3,
-        'params' => 4
+        'action'     => 3,
+        'params'     => 4
     ));
 
 В этом случае маршрут всегда должен иметь имя модуля в качестве части URL-адреса. Например, в следующем
@@ -276,17 +279,23 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router->add("/login", array(
-        'module' => 'backend',
-        'controller' => 'login',
-        'action' => 'index',
-    ));
+    $router->add(
+        "/login",
+        array(
+            'module'     => 'backend',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
-    $router->add("/products/:action", array(
-        'module' => 'frontend',
-        'controller' => 'products',
-        'action' => 1,
-    ));
+    $router->add(
+        "/products/:action",
+        array(
+            'module'     => 'frontend',
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
 Или привязать к конкретному пространству имен:
 
@@ -294,11 +303,14 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router->add("/:namespace/login", array(
-        'namespace' => 1,
-        'controller' => 'login',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/:namespace/login",
+        array(
+            'namespace'  => 1,
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 Пространства имён и названия классов должны передаваться раздельно:
 
@@ -306,11 +318,14 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router->add("/login", array(
-        'namespace' => 'Backend\Controllers',
-        'controller' => 'login',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/login",
+        array(
+            'namespace'  => 'Backend\Controllers',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 Разделение по HTTP методам
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -328,7 +343,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router->addPost("/products/save", "Products::save");
 
     // Маршрут соответствует сразу двум HTTP методам POST и PUT
-    $router->add("/products/update")->via(array("POST", "PUT"));
+    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
 
 Использование преобразований
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -342,7 +357,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
-            'action' => 'show'
+            'action'     => 'show'
         ))
         ->convert('slug', function ($slug) {
             // Удаляем тире из выбранного параметра
@@ -357,13 +372,18 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
+    $router = new Router();
 
     // Создаётся группа с общим модулем и контроллером
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
-        'controller' => 'index'
-    ));
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'index'
+        )
+    );
 
     // Маршруты начинаются с /blog
     $blog->setPrefix('/blog');
@@ -381,7 +401,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     // Маршрут для действия по умолчанию
     $blog->add('/blog', array(
         'controller' => 'blog',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
     // Добавление группы в общие правила маршрутизации
@@ -393,35 +413,47 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    class BlogRoutes extends Phalcon\Mvc\Router\Group
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
+    class BlogRoutes extends RouterGroup
     {
         public function initialize()
         {
             // Параметры по умолчанию
-            $this->setPaths(array(
-                'module' => 'blog',
-                'namespace' => 'Blog\Controllers'
-            ));
+            $this->setPaths(
+                array(
+                    'module'    => 'blog',
+                    'namespace' => 'Blog\Controllers'
+                )
+            );
 
             // Маршруты начинаются с преффикса /blog
             $this->setPrefix('/blog');
 
             // Добавляем маршрут
-            $this->add('/save', array(
-                'action' => 'save'
-            ));
+            $this->add(
+                '/save',
+                array(
+                    'action' => 'save'
+                )
+            );
 
             // Еще маршрут
-            $this->add('/edit/{id}', array(
-                'action' => 'edit'
-            ));
+            $this->add(
+                '/edit/{id}',
+                array(
+                    'action' => 'edit'
+                )
+            );
 
             // Данные для маршрута по умолчанию
-            $this->add('/blog', array(
-                'controller' => 'blog',
-                'action' => 'index'
-            ));
-
+            $this->add(
+                '/blog',
+                array(
+                    'controller' => 'blog',
+                    'action'     => 'index'
+                )
+            );
         }
     }
 
@@ -453,8 +485,10 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Создание маршрутизатора
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     // Тут устанавливаются правила маршрутизации
     // ...
@@ -499,11 +533,13 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     // возвратит /posts/2012/phalcon-1-0-released
-    echo $url->get(array(
-        "for" => "show-posts",
-        "year" => "2012",
-        "title" => "phalcon-1-0-released"
-    ));
+    echo $url->get(
+        array(
+            "for"   => "show-posts",
+            "year"  => "2012",
+            "title" => "phalcon-1-0-released"
+        )
+    );
 
 Примеры использования
 ---------------------
@@ -582,11 +618,12 @@ URL: /admin/users/edit/sonny, будут обработан как:
     );
 
     // пример - /api/v1/users/peter.json
-    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
+    $router->add(
+        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
-            'version' => 1,
-            'format' => 4
+            'version'    => 1,
+            'format'     => 4
         )
     );
 
@@ -616,8 +653,10 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Создания маршрутизатора без поддержки стандартной маршрутизации
-    $router = new \Phalcon\Mvc\Router(false);
+    $router = new Router(false);
 
 Указание маршрута по умолчанию
 ------------------------------
@@ -627,10 +666,13 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router->add("/", array(
-        'controller' => 'index',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/",
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 404 страница
 ------------
@@ -641,10 +683,12 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     // Указание действия для 404 страницы
-    $router->notFound(array(
-        "controller" => "index",
-        "action" => "route404"
-    ));
+    $router->notFound(
+        array(
+            "controller" => "index",
+            "action"     => "route404"
+        )
+    );
 
 Установка параметров по умолчанию
 ---------------------------------
@@ -662,10 +706,12 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router->setDefaultAction('index');
 
     // Используя значения массива
-    $router->setDefaults(array(
-        'controller' => 'index',
-        'action' => 'index'
-    ));
+    $router->setDefaults(
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 Использование конечного /
 -------------------------
@@ -676,7 +722,9 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
 
     // Конечные косые черты будут автоматически удалены
     $router->removeExtraSlashes(true);
@@ -707,7 +755,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // Проверим, что это был Ajax-запрос
@@ -739,7 +787,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     $router->add('/get/info/{id}', array(
         'controller' => 'products',
-        'action' => 'info'
+        'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 Ограничение по имени хоста
@@ -752,9 +800,9 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('admin.company.com');
 
 Имя хоста так же может быть регулярным выражением:
@@ -764,9 +812,9 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('([a-z+]).company.com');
 
 В группах маршрутов вы можете установить ограничение по имени хоста, которое будет
@@ -776,11 +824,15 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
     // Создаём группу с общим модулем и контроллером
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
-        'controller' => 'posts'
-    ));
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'posts'
+        )
+    );
 
     // Ограничиваем по имени хоста
     $blog->setHostName('blog.mycompany.com');
@@ -815,6 +867,10 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
+    // ...
+
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // использование $_GET['_url'] (по умолчанию)
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // использование $_SERVER['REQUEST_URI'] (по умолчанию)
 
@@ -834,6 +890,8 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Маршруты для проверки
     $testRoutes = array(
         '/',
@@ -845,8 +903,9 @@ URL: /admin/users/edit/sonny, будут обработан как:
         '/products/show/101',
     );
 
-    $router = new Phalcon\Mvc\Router();
+    $router = new Router();
     $router->setDI(new Phalcon\DI\FactoryDefault());
+
     // Тут необходимо установить правила маршрутизации
     // ...
 
@@ -865,8 +924,8 @@ URL: /admin/users/edit/sonny, будут обработан как:
         } else {
             echo 'Маршрут не поддерживается<br>';
         }
-        echo '<br>';
 
+        echo '<br>';
     }
 
 Маршруты на аннотациях
@@ -880,10 +939,12 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
+
     $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+        $router = new RouterAnnotations(false);
 
         // Чтение аннотаций из контроллера ProductsController для ссылок начинающихся на /api/products
         $router->addResource('Products', '/api/products');
@@ -902,7 +963,6 @@ URL: /admin/users/edit/sonny, будут обработан как:
      */
     class ProductsController
     {
-
         /**
          * @Get("/")
          */
@@ -940,7 +1000,6 @@ URL: /admin/users/edit/sonny, будут обработан как:
         {
 
         }
-
     }
 
 Маршрутизатор поддерживает только строго определённые методы, вот список текущих поддерживаемых аннотации:
@@ -983,16 +1042,58 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
+
     $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+        $router = new RouterAnnotations(false);
 
         // Чтение аннотаций из контроллера Backend\Controllers\ProductsController для ссылок начинающихся на /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;
     };
+
+Registering Router instance
+---------------------------
+You can register router during service registration with Phalcon dependency injector to make it available inside controller.
+
+You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Add routing capabilities
+     */
+    $di->set('router', function () {
+        require __DIR__.'/../app/config/routes.php';
+        return $router;
+    });
+
+You need to create app/config/routes.php and add router initialization code, for example:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
+
+    $router->add("/login", array(
+        'controller' => 'login',
+        'action'     => 'index'
+    ));
+
+    $router->add("/products/:action", array(
+        'controller' => 'products',
+        'action'     => 1
+    ));
+
+    return $router;
 
 Создание собственного маршрутизатора
 ------------------------------------
