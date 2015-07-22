@@ -1,5 +1,6 @@
 Licença
 =======
+
 Phalcon é trazido a você pela Equipe Phalcon [`Twitter`_ - `Google Plus`_ - `Github`_]
 
 O Phalcon Framework PHP é liberado pela `new BSD license`_. Exceto quando indicado, o conteúdo deste site é licenciado pela `Creative Commons Attribution 3.0 License`_.

@@ -1,5 +1,6 @@
 Лицензия
 ========
+
 Phalcon создан в Phalcon Team! [`Twitter`_ - `Google Plus`_ - `Github`_]
 
 Фреймворк Phalcon PHP Framework распостраняется под лицензией `new BSD license`_. в случаях, когда не указано иное,
