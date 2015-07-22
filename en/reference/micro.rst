@@ -1,5 +1,6 @@
 Micro Applications
 ==================
+
 With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of
 code to create a PHP application. Micro applications are suitable to implement small applications, APIs and
 prototypes in a practical way.
@@ -98,7 +99,7 @@ which the route is constrained for:
     $app->patch('/api/products/update/{id}', "info_product");
 
     // Matches if the HTTP method is GET or POST
-    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
 To access the HTTP method data `$app` needs to be passed into the closure:
 
@@ -171,9 +172,15 @@ return a json, etc.:
         require 'views/results.php';
     });
 
-    // Returning a JSON
+    // Returning JSON
     $app->get('/get/some-json', function () {
-        echo json_encode(array("some", "important", "data"));
+        echo json_encode(
+            array(
+                "some",
+                "important",
+                "data"
+            )
+        );
     });
 
 In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the
@@ -190,7 +197,6 @@ response:
 
         // Print a file
         readfile("data.txt");
-
     });
 
 Or create a response object and return it from the handler:
@@ -243,21 +249,22 @@ by this way the "url" service can produce the corresponding URL:
     // Set a route with the name "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        // .. show the post here
+        // ... Show the post here
 
     })->setName('show-post');
 
     // Produce a URL somewhere
     $app->get('/', function () use ($app) {
 
-        echo '<a href="', $app->url->get(array(
-            'for'   => 'show-post',
-            'title' => 'php-is-a-great-framework',
-            'year'  => 2015
-        )), '">Show the post</a>';
+        echo '<a href="', $app->url->get(
+            array(
+                'for'   => 'show-post',
+                'title' => 'php-is-a-great-framework',
+                'year'  => 2015
+            )
+        ), '">Show the post</a>';
 
     });
-
 
 Interacting with the Dependency Injector
 ----------------------------------------
@@ -304,12 +311,14 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     // Setup the database service
     $app['db'] = function () {
-        return new MysqlAdapter(array(
-            "host"     => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname"   => "test_db"
-        ));
+        return new MysqlAdapter(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "test_db"
+            )
+        );
     };
 
     $app->get('/blog', function () use ($app) {
@@ -343,9 +352,11 @@ Models in Micro Applications
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
@@ -388,10 +399,10 @@ In the following example, we explain how to control the application security usi
         Phalcon\Events\Manager as EventsManager;
 
     // Create a events manager
-    $eventManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // Listen all the application events
-    $eventManager->attach('micro', function ($event, $app) {
+    $eventsManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -403,13 +414,12 @@ In the following example, we explain how to control the application security usi
                 return false;
             }
         }
-
     });
 
     $app = new Micro();
 
     // Bind the events manager to the app
-    $app->setEventsManager($eventManager);
+    $app->setEventsManager($eventsManager);
 
 Middleware events
 -----------------
@@ -425,8 +435,14 @@ In addition to the events manager, events can be added using the methods 'before
     // Return false cancels the route execution
     $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            // Return false stops the normal execution
             return false;
         }
+
         return true;
     });
 
@@ -437,7 +453,7 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->after(function () use ($app) {
-        // This is executed after the route was executed
+        // This is executed after the route is executed
         echo json_encode($app->getReturnedValue());
     });
 
@@ -476,7 +492,6 @@ Code for middlewares can be reused using separate classes:
     {
         public function call($application)
         {
-
             $cache  = $application['cache'];
             $router = $application['router'];
 
@@ -485,6 +500,7 @@ Code for middlewares can be reused using separate classes:
             // Check if the request is cached
             if ($cache->exists($key)) {
                 echo $cache->get($key);
+
                 return false;
             }
 
@@ -549,7 +565,6 @@ The controller 'PostsController' might look like this:
 
     class PostsController extends Controller
     {
-
         public function index()
         {
             // ...
@@ -638,9 +653,11 @@ A proper response can be generated if an exception is raised in a micro handler:
         throw new \Exception("An error");
     });
 
-    $app->error(function ($exception) {
-        echo "An error has occurred";
-    });
+    $app->error(
+        function ($exception) {
+            echo "An error has occurred";
+        }
+    );
 
 If the handler returns "false" the exception is stopped.
 

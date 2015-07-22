@@ -1,5 +1,6 @@
-微应用（Micro Applications）
-==========================
+Micro Applications
+==================
+
 使用Phalcon框架开发者可以创建微框架应用。 这样开发者只需要书写极少的代码即可创建一个PHP应用。 微应用适用于书写小的应用， API或原型等
 
 .. code-block:: php
@@ -73,26 +74,26 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
 
     <?php
 
-    // 匹配http get 方法：
+    // 匹配HTTP GET 方法：
     $app->get('/api/products', "get_products");
 
-    // 匹配HTTP post方法
+    // 匹配HTTP POST方法
     $app->post('/api/products/add', "add_product");
 
-    // 匹配http put 方法
+    // 匹配HTTP PUT 方法
     $app->put('/api/products/update/{id}', "update_product");
 
-    // 匹配http delete方法
+    // 匹配HTTP DELETE方法
     $app->delete('/api/products/remove/{id}', "delete_product");
 
-    // 匹配http options方法
+    // 匹配HTTP OPTIONS方法
     $app->options('/api/products/info/{id}', "info_product");
 
-    // 匹配http patch方法
+    // 匹配HTTP PATCH方法
     $app->patch('/api/products/update/{id}', "info_product");
 
-    // 匹配http get 或 post方法
-    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
+    // 匹配HTTP GET 或 POST方法
+    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
 To access the HTTP method data `$app` needs to be passed into the closure:
 
@@ -164,7 +165,13 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     // 返回JSON
     $app->get('/get/some-json', function () {
-        echo json_encode(array("some", "important", "data"));
+        echo json_encode(
+            array(
+                "some",
+                "important",
+                "data"
+            )
+        );
     });
 
 另外开发者还可以使用 :doc:`"response" <response>` ， 这样开发者可以更好的处理结果：
@@ -180,7 +187,6 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
         // 输出文件内容
         readfile("data.txt");
-
     });
 
 或回复response对象：
@@ -232,21 +238,22 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     // 设置名为 "show-post"的路由
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        // .. show the post here
+        // ... Show the post here
 
     })->setName('show-post');
 
-    // 产生url
+    // 产生URL
     $app->get('/', function () use ($app) {
 
-        echo '<a href="', $app->url->get(array(
-            'for' => 'show-post',
-            'title' => 'php-is-a-great-framework',
-            'year' => 2015
-        )), '">Show the post</a>';
+        echo '<a href="', $app->url->get(
+            array(
+                'for'   => 'show-post',
+                'title' => 'php-is-a-great-framework',
+                'year'  => 2015
+            )
+        ), '">Show the post</a>';
 
     });
-
 
 与依赖注入的交互（Interacting with the Dependency Injector）
 -------------------------------------------------------------
@@ -292,12 +299,14 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     // 设置数据库服务实例
     $app['db'] = function () {
-        return new MysqlAdapter(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "test_db"
-        ));
+        return new MysqlAdapter(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "test_db"
+            )
+        );
     };
 
     $app->get('/blog', function () use ($app) {
@@ -330,9 +339,11 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
@@ -374,10 +385,10 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
         Phalcon\Events\Manager as EventsManager;
 
     // 创建事件监听器
-    $eventManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // 监听应用的所有事件
-    $eventManager->attach('micro', function ($event, $app) {
+    $eventsManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -389,13 +400,12 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
                 return false;
             }
         }
-
     });
 
     $app = new Micro();
 
     // 绑定事件管理器到应用
-    $app->setEventsManager($eventManager);
+    $app->setEventsManager($eventsManager);
 
 中间件事件（Middleware events）
 -----------------------------
@@ -411,8 +421,14 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     // 返回false来中止程序执行
     $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            // Return false stops the normal execution
             return false;
         }
+
         return true;
     });
 
@@ -462,15 +478,15 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     {
         public function call($application)
         {
-
-            $cache = $application['cache'];
+            $cache  = $application['cache'];
             $router = $application['router'];
 
-            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
             // 检查请示是否被处理了
             if ($cache->exists($key)) {
                 echo $cache->get($key);
+
                 return false;
             }
 
@@ -530,9 +546,10 @@ PostsController形如下：
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function index()
         {
             // ...
@@ -599,7 +616,7 @@ PostsController形如下：
 
         // 渲染视图时传递参数
         echo $app['view']->render('products/show', array(
-            'id' => 100,
+            'id'   => 100,
             'name' => 'Artichoke'
         ));
 
@@ -619,9 +636,11 @@ A proper response can be generated if an exception is raised in a micro handler:
         throw new \Exception("An error");
     });
 
-    $app->error(function ($exception) {
-        echo "An error has occurred";
-    });
+    $app->error(
+        function ($exception) {
+            echo "An error has occurred";
+        }
+    );
 
 If the handler returns "false" the exception is stopped.
 

@@ -1,5 +1,6 @@
-Микроприложения
-===============
+Micro Applications
+==================
+
 С помощью Phalcon можно создавать приложения по типу "Микрофреймворк".
 Для этого, необходимо написать всего лишь несколько строк кода. Микроприложения подходят для реализации
 небольших приложений, различныx API и прототипов на практике.
@@ -8,7 +9,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -24,7 +27,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
 Создание путей
 --------------
@@ -95,7 +100,7 @@ HTTP используется, чтобы запросы путей соотве
     $app->patch('/api/products/update/{id}', "info_product");
 
     // Совпадет, если HTTP-метод - GET или POST
-    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
 To access the HTTP method data `$app` needs to be passed into the closure:
 
@@ -171,7 +176,13 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     // Возврат JSON
     $app->get('/get/some-json', function () {
-        echo json_encode(array("some", "important", "data"));
+        echo json_encode(
+            array(
+                "some",
+                "important",
+                "data"
+            )
+        );
     });
 
 В дополнение к этому, у вас есть доступ к сервису :doc:`"response" <response>`, благодаря которому вы
@@ -188,7 +199,6 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
         // Вывод содержимого файла
         readfile("data.txt");
-
     });
 
 Или создайте объект класса Response и верните его из обработчика:
@@ -211,7 +221,6 @@ To access the HTTP method data `$app` needs to be passed into the closure:
         // Возвращаем объект Response
         return $response;
     });
-
 
 Создание перенаправлений (Redirects)
 ------------------------------------
@@ -243,21 +252,22 @@ To access the HTTP method data `$app` needs to be passed into the closure:
     // Установка маршрута с именем "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        // .. здесь показываем текст статьи
+        // ... здесь показываем текст статьи
 
     })->setName('show-post');
 
     // Где-нибудь используем наш новый адрес
     $app->get('/', function () use ($app) {
 
-        echo '<a href="', $app->url->get(array(
-            'for' => 'show-post',
-            'title' => 'php-is-a-great-framework',
-            'year' => 2015
-        )), '">Show the post</a>';
+        echo '<a href="', $app->url->get(
+            array(
+                'for'   => 'show-post',
+                'title' => 'php-is-a-great-framework',
+                'year'  => 2015
+            )
+        ), '">Show the post</a>';
 
     });
-
 
 Работа с Внедрением зависимостей (Dependency Injector)
 ------------------------------------------------------
@@ -269,9 +279,9 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     <?php
 
-    use Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Micro,
-        Phalcon\Config\Adapter\Ini as IniConfig;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
 
@@ -298,19 +308,21 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
     $app = new Micro();
 
     // Установка сервиса базы данных
     $app['db'] = function () {
-        return new MysqlAdapter(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "test_db"
-        ));
+        return new MysqlAdapter(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "test_db"
+            )
+        );
     };
 
     $app->get('/blog', function () use ($app) {
@@ -344,9 +356,11 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
@@ -389,10 +403,10 @@ To access the HTTP method data `$app` needs to be passed into the closure:
         Phalcon\Events\Manager as EventsManager;
 
     // Создаём менеджер событий
-    $eventManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // Слушаем все события приложения
-    $eventManager->attach('micro', function ($event, $app) {
+    $eventsManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -404,13 +418,12 @@ To access the HTTP method data `$app` needs to be passed into the closure:
                 return false;
             }
         }
-
     });
 
     $app = new Micro();
 
     // Привязываем менеджер событий к приложению
-    $app->setEventsManager($eventManager);
+    $app->setEventsManager($eventsManager);
 
 Промежуточные события
 ---------------------
@@ -426,8 +439,14 @@ To access the HTTP method data `$app` needs to be passed into the closure:
     // Возврат false отменит выполнение маршрута
     $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            // Return false stops the normal execution
             return false;
         }
+
         return true;
     });
 
@@ -477,15 +496,15 @@ To access the HTTP method data `$app` needs to be passed into the closure:
     {
         public function call($application)
         {
-
-            $cache = $application['cache'];
+            $cache  = $application['cache'];
             $router = $application['router'];
 
-            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
             // Проверяем, закэширован ли запрос
             if ($cache->exists($key)) {
                 echo $cache->get($key);
+
                 return false;
             }
 
@@ -546,9 +565,10 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function index()
         {
             // ...
@@ -578,8 +598,8 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Http\Response;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
@@ -607,7 +627,7 @@ To access the HTTP method data `$app` needs to be passed into the closure:
     $app = new Phalcon\Mvc\Micro();
 
     $app['view'] = function () {
-        $view = new \Phalcon\Mvc\View();
+        $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
@@ -617,11 +637,33 @@ To access the HTTP method data `$app` needs to be passed into the closure:
 
         // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
         echo $app['view']->render('products/show', array(
-            'id' => 100,
+            'id'   => 100,
             'name' => 'Artichoke'
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function () {
+        throw new \Exception("An error");
+    });
+
+    $app->error(
+        function ($exception) {
+            echo "An error has occurred";
+        }
+    );
+
+If the handler returns "false" the exception is stopped.
 
 Внешние источники
 -----------------
