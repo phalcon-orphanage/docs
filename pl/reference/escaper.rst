@@ -1,5 +1,6 @@
 Contextual Escaping
 ===================
+
 Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
 those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
 the minimal overhead when escaping different kinds of texts.
@@ -18,16 +19,16 @@ To illustrate how this component works and why it is important, consider the fol
         $maliciousTitle = '</title><script>alert(1)</script>';
 
         // Malicious CSS class name
-        $className = ';`(';
+        $className      = ';`(';
 
         // Malicious CSS font name
-        $fontName = 'Verdana"</style>';
+        $fontName       = 'Verdana"</style>';
 
         // Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
         // Create an escaper
-        $e = new Phalcon\Escaper();
+        $e              = new Phalcon\Escaper();
 
     ?>
 

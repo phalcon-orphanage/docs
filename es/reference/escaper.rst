@@ -19,16 +19,16 @@ To illustrate how this component works and why it is important, consider the fol
         $maliciousTitle = '</title><script>alert(1)</script>';
 
         // Malicious CSS class name
-        $className = ';`(';
+        $className      = ';`(';
 
         // Malicious CSS font name
-        $fontName = 'Verdana"</style>';
+        $fontName       = 'Verdana"</style>';
 
         // Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        // Create a escaper
-        $e = new Phalcon\Escaper();
+        // Create an escaper
+        $e              = new Phalcon\Escaper();
 
     ?>
 
@@ -160,7 +160,7 @@ You can escape a HTML attribute by using the escapeJs method:
 
 .. code-block:: html
 
-    <script>alert('\x27\x3b\x20alert\x28100\x29\x3b\x20var\x20x\x3d\x27')</script>
+    <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
 
 .. _OWASP : https://www.owasp.org
 .. _XSS : https://www.owasp.org/index.php/XSS
