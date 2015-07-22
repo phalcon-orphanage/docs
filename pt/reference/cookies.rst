@@ -1,5 +1,6 @@
 Cookies Management
 ==================
+
 Cookies_ are very useful way to store small pieces of data in the client that can be retrieved even
 if the user closes his/her browser. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
 acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent
@@ -14,7 +15,9 @@ accessed:
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
         public function loginAction()
         {
@@ -25,8 +28,7 @@ accessed:
                 $rememberMe = $this->cookies->get('remember-me');
 
                 // Get the cookie's value
-                $value = $rememberMe->getValue();
-
+                $value      = $rememberMe->getValue();
             }
         }
 
@@ -46,7 +48,7 @@ Encryption/Decryption of Cookies
 --------------------------------
 By default, cookies are automatically encrypted before be sent to the client and decrypted when retrieved.
 This protection allow unauthorized users to see the cookies' contents in the client (browser).
-Although this protection sensitive data should not be stored on cookies.
+Despite this protection, sensitive data should not be stored in cookies.
 
 You can disable encryption in the following way:
 
@@ -54,9 +56,11 @@ You can disable encryption in the following way:
 
     <?php
 
+    use Phalcon\Http\Response\Cookies;
+
     $di->set('cookies', function () {
-        $cookies = new Phalcon\Http\Response\Cookies();
-        $cookies->setEncryption(false);
+        $cookies = new Cookies();
+        $cookies->useEncryption(false);
         return $cookies;
     });
 
@@ -66,11 +70,19 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function () {
-        $crypt = new Phalcon\Crypt();
+        $crypt = new Crypt();
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
         return $crypt;
     });
 
+.. highlights::
+
+    Send cookies data without encryption to clients including complex objects structures, resultsets,
+    service information, etc. could expose internal application details that could be used by an attacker
+    to attack the application. If you do not want to use encryption, we highly recommend you only send very
+    basic cookie data like numbers or small string literals.
 
 .. _Cookies : http://en.wikipedia.org/wiki/HTTP_cookie
