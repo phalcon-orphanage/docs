@@ -1,5 +1,6 @@
 XAMPPへのインストール
 =====================
+
 XAMPP_はApache、MySQL、PHP、Perlを簡単にインストールできます。
 まず、XAMPPをダウンロードし、解凍を行い、起動させます。
 以下では、Windows版XAMPPを使用する場合のPhalconのインストール方法を記載しています。
