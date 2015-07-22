@@ -1,5 +1,6 @@
 Pagination
 ==========
+
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data browsable pages.
 
@@ -122,12 +123,13 @@ An example of the source data that must be used for each adapter:
         ->from('Robots')
         ->orderBy('name');
 
-    $paginator = new PaginatorQueryBuilder(array(
-        "builder" => $builder,
-        "limit"   => 20,
-        "page"    => 1
-    ));
-
+    $paginator = new PaginatorQueryBuilder(
+        array(
+            "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1
+        )
+    );
 
 Page Attributes
 ---------------
@@ -163,7 +165,6 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     class MyPaginator implements PaginatorInterface
     {
-
         /**
          * Adapter constructor
          *
@@ -184,5 +185,4 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
          * @return stdClass
          */
         public function getPaginate();
-
     }
