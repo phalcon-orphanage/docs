@@ -1,5 +1,6 @@
 Volt: Template Engine
 =====================
+
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
 helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
 just as you can use it as a stand-alone component in your applications.
@@ -8,7 +9,7 @@ just as you can use it as a stand-alone component in your applications.
    :align: center
 
 Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
-territory using the same syntax they have been using with similar template engines. Volt’s syntax and features
+territory using the same syntax they have been using with similar template engines. Volt's syntax and features
 have been enhanced with more elements and of course with the performance that developers have been
 accustomed to while working with Phalcon.
 
@@ -49,9 +50,11 @@ reusing the standard .phtml:
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-        ));
+        $view->registerEngines(
+            array(
+                ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
+            )
+        );
 
         return $view;
     });
@@ -62,9 +65,11 @@ Use the standard ".phtml" extension:
 
     <?php
 
-    $view->registerEngines(array(
-        ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
-    ));
+    $view->registerEngines(
+        array(
+            ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
+        )
+    );
 
 Basic Usage
 -----------
@@ -112,16 +117,21 @@ In the above example, three variables were passed to the view: title, menu and p
 
     class PostsController extends Controller
     {
-
         public function showAction()
         {
-
             $post = Post::findFirst();
 
             $this->view->title           = $post->title;
             $this->view->post            = $post;
             $this->view->menu            = Menu::find();
             $this->view->show_navigation = true;
+
+            // Or...
+
+            $this->view->setVar("title",           $post->title);
+            $this->view->setVar("post",            $post);
+            $this->view->setVar("menu",            Menu::find());
+            $this->view->setVar("show_navigation", true);
         }
     }
 
@@ -242,28 +252,28 @@ Examples:
     {{ "some\ntext"|nl2br }}
 
     {# sort filter #}
-    {% set sorted=[3, 1, 2]|sort %}
+    {% set sorted = [3, 1, 2]|sort %}
 
     {# keys filter #}
-    {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
+    {% set keys = ['first': 1, 'second': 2, 'third': 3]|keys %}
 
     {# join filter #}
-    {% "a".."z"|join(",") %}
+    {% set joined = "a".."z"|join(",") %}
 
     {# format filter #}
-    {% "My real name is %s"|format(name) %}
+    {{ "My real name is %s"|format(name) }}
 
     {# json_encode filter #}
-    {% robots|json_encode %}
+    {% set encoded = robots|json_encode %}
 
     {# json_decode filter #}
-    {% set decoded='{"one":1,"two":2,"three":3}'|json_decode %}
+    {% set decoded = '{"one":1,"two":2,"three":3}'|json_decode %}
 
     {# url_encode filter #}
     {{ post.permanent_link|url_encode }}
 
     {# convert_encoding filter #}
-    {{ "désolé"|convert_encoding('utf8', 'latin1') }}
+    {{ "d�sol�"|convert_encoding('utf8', 'latin1') }}
 
 Comments
 --------
@@ -442,17 +452,17 @@ A special variable is available inside 'for' loops providing you information abo
     {% for robot in robots %}
         {% if loop.first %}
             <table>
-            <tr>
-                <th>#</th>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
         {% endif %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ robot.id }}</td>
-                <td>{{ robot.name }}</td>
-            </tr>
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ robot.id }}</td>
+                    <td>{{ robot.name }}</td>
+                </tr>
         {% if loop.last %}
             </table>
         {% endif %}
@@ -519,7 +529,7 @@ The following literals are supported:
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
 +======================+==============================================================================+
-| “this is a string”   | Text between double quotes or single quotes are handled as strings           |
+| "this is a string"   | Text between double quotes or single quotes are handled as strings           |
 +----------------------+------------------------------------------------------------------------------+
 | 100.25               | Numbers with a decimal part are handled as doubles/floats                    |
 +----------------------+------------------------------------------------------------------------------+
@@ -750,7 +760,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 
     {%- macro related_bar(related_links) %}
         <ul>
-            {%- for rellink in related_links %}
+            {%- for link in related_links %}
                 <li><a href="{{ url(link.url) }}" title="{{ link.title|striptags }}">{{ link.text }}</a></li>
             {%- endfor %}
         </ul>
@@ -913,14 +923,14 @@ The following built-in functions are available in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | constant             | Reads a PHP constant                                                         |
 +----------------------+------------------------------------------------------------------------------+
-| url                  | Generate a URL using the 'url' service                                       |
+| URL                  | Generate a URL using the 'url' service                                       |
 +----------------------+------------------------------------------------------------------------------+
 
 View Integration
 ----------------
 Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     {{ content() }}
 
@@ -951,6 +961,18 @@ template where it's included. Templates aren't inlined if the 'include' have var
 
     {# The contents of 'partials/footer.volt' is compiled and inlined #}
     <div id="footer">{% include "partials/footer.volt" %}</div>
+
+Partial vs Include
+^^^^^^^^^^^^^^^^^^
+Keep the following points in mind when choosing to use the "partial" function or "include":
+
+* 'Partial' allows you to include templates made in Volt and in other template engines as well
+* 'Partial' allows you to pass an expression like a variable allowing to include the content of other view dynamically
+* 'Partial' is better if the content that you have to include changes frequently
+
+* 'Include' copies the compiled content into the view which improves the performance
+* 'Include' only allows to include templates made with Volt
+* 'Include' requires an existing template at compile time
 
 Template Inheritance
 --------------------
@@ -1123,10 +1145,12 @@ Volt can be configured to alter its default behavior, the following example expl
 
         $volt = new Volt($view, $di);
 
-        $volt->setOptions(array(
-            "compiledPath" => "../app/compiled-templates/",
-            "compiledExtension" => ".compiled"
-        ));
+        $volt->setOptions(
+            array(
+                "compiledPath"      => "../app/compiled-templates/",
+                "compiledExtension" => ".compiled"
+            )
+        );
 
         return $volt;
     });
@@ -1138,9 +1162,11 @@ Volt can be configured to alter its default behavior, the following example expl
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => 'voltService'
-        ));
+        $view->registerEngines(
+            array(
+                ".volt" => 'voltService'
+            )
+        );
 
         return $view;
     });
@@ -1157,19 +1183,21 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
     // Register Volt as template engine with an anonymous function
     $di->set('view', function () {
 
-        $view = new View();
+        $view = new \Phalcon\Mvc\View();
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => function ($view, $di) {
-                $volt = new Volt($view, $di);
+        $view->registerEngines(
+            array(
+                ".volt" => function ($view, $di) {
+                    $volt = new Volt($view, $di);
 
-                // Set some options here
+                    // Set some options here
 
-                return $volt;
-            }
-        ));
+                    return $volt;
+                }
+            )
+        );
 
         return $view;
     });
@@ -1191,7 +1219,7 @@ The following options are available in Volt:
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 | prefix            | Allows to prepend a prefix to the templates in the compilation path                                                            | null    |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| autoescape        | Enables globally autoescape of HTML                                                                                            | false    |
+| autoescape        | Enables globally autoescape of HTML                                                                                            | false   |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
@@ -1204,22 +1232,28 @@ views directory. The following examples show how to change the compilation path 
 
     // Just append the .php extension to the template path
     // leaving the compiled templates in the same directory
-    $volt->setOptions(array(
-        'compiledPath' => function ($templatePath) {
-            return $templatePath . '.php';
-        }
-    ));
-
-    // ​​Recursively create the same structure in another directory
-    $volt->setOptions(array(
-        'compiledPath' => function ($templatePath) {
-            $dirName = dirname($templatePath);
-            if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName);
+    $volt->setOptions(
+        array(
+            'compiledPath' => function ($templatePath) {
+                return $templatePath . '.php';
             }
-            return 'cache/' . $dirName . '/'. $templatePath . '.php';
-        }
-    ));
+        )
+    );
+
+    // Recursively create the same structure in another directory
+    $volt->setOptions(
+        array(
+            'compiledPath' => function ($templatePath) {
+                $dirName = dirname($templatePath);
+
+                if (!is_dir('cache/' . $dirName)) {
+                    mkdir('cache/' . $dirName);
+                }
+
+                return 'cache/' . $dirName . '/'. $templatePath . '.php';
+            }
+        )
+    );
 
 Extending Volt
 --------------
@@ -1336,7 +1370,7 @@ Built-in filters can be overridden adding a function with its name:
 Extensions
 ^^^^^^^^^^
 With extensions the developer has more flexibility to extend the template engine, and override the compilation
-of ​a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
+of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
 An extension is a class that implements the events triggered by Volt as a method of itself.
 
@@ -1449,9 +1483,11 @@ Using Volt in a stand-alone mode can be demonstrated below:
     $compiler = new VoltCompiler();
 
     // Optionally add some options
-    $compiler->setOptions(array(
-        // ...
-    ));
+    $compiler->setOptions(
+        array(
+            // ...
+        )
+    );
 
     // Compile a template string returning PHP code
     echo $compiler->compileString('{{ "hello" }}');
@@ -1471,7 +1507,7 @@ External Resources
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
 * `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
-* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
+* `V�kur� <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
