@@ -1,5 +1,6 @@
 Request Environment
 ===================
+
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
 files, variables, etc. A web based application needs to parse that information so as to provide the correct
 response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
@@ -14,7 +15,6 @@ information of the request, allowing you to access it in an object-oriented way.
 
     // Check whether the request was made with method POST
     if ($request->isPost()) {
-
         // Check whether the request was made with Ajax
         if ($request->isAjax()) {
             echo "Request was made using POST and AJAX";
@@ -37,12 +37,11 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
     <?php
 
     // Manually applying the filter
-    $filter = new Phalcon\Filter();
-
+    $filter = new \Phalcon\Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new Phalcon\Filter();
+    $filter = new \Phalcon\Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
@@ -65,11 +64,8 @@ the $this->request public property of the controller:
 
     <?php
 
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
-
         public function indexAction()
         {
 
@@ -77,7 +73,6 @@ the $this->request public property of the controller:
 
         public function saveAction()
         {
-
             // Check if request has made with POST
             if ($this->request->isPost()) {
 
@@ -86,9 +81,7 @@ the $this->request public property of the controller:
                 $customerBorn = $this->request->getPost("born");
 
             }
-
         }
-
     }
 
 Uploading Files
@@ -100,11 +93,8 @@ an object-oriented way to achieve this task:
 
     <?php
 
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
-
         public function uploadAction()
         {
             // Check if the user has uploaded files
@@ -121,7 +111,6 @@ an object-oriented way to achieve this task:
                 }
             }
         }
-
     }
 
 Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instance of the
@@ -139,7 +128,7 @@ the user. The following examples show usages of that information:
     <?php
 
     // Get the Http-X-Requested-With header
-    $requestedWith = $response->getHeader("HTTP_X_REQUESTED_WITH");
+    $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "The request was made with Ajax";
     }
@@ -154,23 +143,23 @@ the user. The following examples show usages of that information:
         echo "The request was made using a secure layer";
     }
 
-    // Get the servers's ip address. ie. 192.168.0.100
-    $ipAddress = $request->getServerAddress();
+    // Get the servers's IP address. ie. 192.168.0.100
+    $ipAddress   = $request->getServerAddress();
 
-    // Get the client's ip address ie. 201.245.53.51
-    $ipAddress = $request->getClientAddress();
+    // Get the client's IP address ie. 201.245.53.51
+    $ipAddress   = $request->getClientAddress();
 
     // Get the User Agent (HTTP_USER_AGENT)
-    $userAgent = $request->getUserAgent();
+    $userAgent   = $request->getUserAgent();
 
     // Get the best acceptable content by the browser. ie text/xml
     $contentType = $request->getAcceptableContent();
 
     // Get the best charset accepted by the browser. ie. utf-8
-    $charset = $request->getBestCharset();
+    $charset     = $request->getBestCharset();
 
     // Get the best language accepted configured in the browser. ie. en-us
-    $language = $request->getBestLanguage();
+    $language    = $request->getBestLanguage();
 
 
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection

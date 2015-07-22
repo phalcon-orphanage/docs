@@ -1,5 +1,6 @@
 Заголовки запроса (Request)
 ===========================
+
 Каждый HTTP-запрос (исходящий, как правило, из браузера) содержит дополнительную относящуюся к запросу информацию: заголовки,
 файлы, переменные и т.д. Веб-приложению требуется разобрать и проанализировать эту информацию, чтобы возвратить
 правильный ответ. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` инкапсулирует информацию запроса,
@@ -14,7 +15,6 @@
 
     // Проверка что данные пришли методом POST
     if ($request->isPost()) {
-
         // Проверка что request создан через Ajax
         if ($request->isAjax()) {
             echo "Request создан используя POST и AJAX";
@@ -37,7 +37,6 @@ $_GET и $_POST массивам и обезопасивает или фильт
 
     // Ручная фильтрация
     $filter = new Phalcon\Filter();
-
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Ручная фильтрация значения
@@ -57,7 +56,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
 Доступ к Request из Контроллера
 -------------------------------
 Доступ к Request чаще всего требуется в действиях контроллера. Для доступа к объекту
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` из контроллера, необходимо обратиться к публичному свойству $this->request:
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` из контроллера, необходимо обратиться к публичному свойству $this->request:
 
 .. code-block:: php
 
@@ -67,7 +66,6 @@ $_GET и $_POST массивам и обезопасивает или фильт
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -75,7 +73,6 @@ $_GET и $_POST массивам и обезопасивает или фильт
 
         public function saveAction()
         {
-
             // Проверка что данные пришли методом POST
             if ($this->request->isPost()) {
 
@@ -84,9 +81,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
                 $customerBorn = $this->request->getPost("born");
 
             }
-
         }
-
     }
 
 Загрузка файлов
@@ -102,7 +97,6 @@ $_GET и $_POST массивам и обезопасивает или фильт
 
     class PostsController extends Controller
     {
-
         public function uploadAction()
         {
             // Проверяем что файл загрузился
@@ -119,7 +113,6 @@ $_GET и $_POST массивам и обезопасивает или фильт
                 }
             }
         }
-
     }
 
 Каждый объект, возвращаемый Phalcon\\Http\\Request::getUploadedFiles() является экземпляром
@@ -137,7 +130,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
     <?php
 
     // Получение заголовка Http-X-Requested-With
-    $requestedWith = $response->getHeader("HTTP_X_REQUESTED_WITH");
+    $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "Запрос отправлен через Ajax";
     }
@@ -153,22 +146,22 @@ $_GET и $_POST массивам и обезопасивает или фильт
     }
 
     // Получение IP сервера, например 192.168.0.100
-    $ipAddress = $request->getServerAddress();
+    $ipAddress   = $request->getServerAddress();
 
     // Получение IP клиента, например 201.245.53.51
-    $ipAddress = $request->getClientAddress();
+    $ipAddress   = $request->getClientAddress();
 
     // Получение строки User Agent (HTTP_USER_AGENT)
-    $userAgent = $request->getUserAgent();
+    $userAgent   = $request->getUserAgent();
 
     // Получение оптимального типа контента для браузера, например text/xml
     $contentType = $request->getAcceptableContent();
 
     // Получение лучшей кодировки для браузера, например utf-8
-    $charset = $request->getBestCharset();
+    $charset     = $request->getBestCharset();
 
     // Получение лучшего языка на который настроен браузер, например en-us
-    $language = $request->getBestLanguage();
+    $language    = $request->getBestLanguage();
 
 
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
