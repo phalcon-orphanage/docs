@@ -1,5 +1,6 @@
 レスポンスの返却
 ===================
+
 Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -28,13 +29,12 @@ directly from a controller's action follow this example:
 
     class FeedController extends Phalcon\Mvc\Controller
     {
-
         public function getAction()
         {
             // Getting a response instance
             $response = new \Phalcon\Http\Response();
 
-            $feed = // .. load here the feed
+            $feed     = // ... Load here the feed
 
             // Set the content of the response
             $response->setContent($feed->asString());
@@ -42,7 +42,6 @@ directly from a controller's action follow this example:
             // Return the response
             return $response;
         }
-
     }
 
 Working with Headers
@@ -56,7 +55,7 @@ You can set headers in the following way:
 
     <?php
 
-    // Setting a header by it's name
+    // Setting a header by its name
     $response->setHeader("Content-Type", "application/pdf");
     $response->setHeader("Content-Disposition", 'attachment; filename="downloaded.pdf"');
 
@@ -93,7 +92,7 @@ With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also 
     // Redirect to an external URL
     $response->redirect("http://en.wikipedia.org", true);
 
-    // Redirect specifyng the HTTP status code
+    // Redirect specifying the HTTP status code
     $response->redirect("http://www.example.com/new-location", true, 301);
 
 All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`). This example demonstrates
@@ -104,19 +103,21 @@ how you can redirect using a route you have defined in your application:
     <?php
 
     // Redirect based on a named route
-    return $response->redirect(array(
-        "for" => "index-lang",
-        "lang" => "jp",
-        "controller" => "index"
-    ));
+    return $response->redirect(
+        array(
+            "for"        => "index-lang",
+            "lang"       => "jp",
+            "controller" => "index"
+        )
+    );
 
-Note that a redirection doesn't disable the view component, so if there is a view asociated with the current action it
+Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTPキャッシュ
 ----------
-One of the easiest ways to improve the performance in your applications and reduce the server traffic is using HTTP Cache.
-Most modern browsers support HTTP caching. HTTP Cache is one of the reasons many websites are currently fast.
+One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache.
+Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
 HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
@@ -188,8 +189,7 @@ The identifier must be calculated taking into account that this must change if t
 
     // Calculate the E-Tag based on the modification time of the latest news
     $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag = md5($recentDate);
+    $eTag       = md5($recentDate);
 
     // Send an E-Tag header
     $response->setHeader('E-Tag', $eTag);
-

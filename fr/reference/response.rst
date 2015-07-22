@@ -1,7 +1,8 @@
 Returning Responses
 ===================
-Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
-component designed to achieve this task. HTTP responses are usually composed by headers and body. The basic usage is the following:
+
+Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
+component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
 .. code-block:: php
 
@@ -19,7 +20,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
     // Send response to the client
     $response->send();
 
-Keep in mind that if you're using the full MVC stack there is no need to create responses manually. However, if you need to return a responde
+If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response
 directly from a controller's action follow this example:
 
 .. code-block:: php
@@ -28,13 +29,12 @@ directly from a controller's action follow this example:
 
     class FeedController extends Phalcon\Mvc\Controller
     {
-
         public function getAction()
         {
             // Getting a response instance
             $response = new \Phalcon\Http\Response();
 
-            $feed = // .. load here the feed
+            $feed     = // ... Load here the feed
 
             // Set the content of the response
             $response->setContent($feed->asString());
@@ -42,12 +42,11 @@ directly from a controller's action follow this example:
             // Return the response
             return $response;
         }
-
     }
 
 Working with Headers
 --------------------
-Headers are an important part of the whole HTTP response. It contains useful information about the response state like the HTTP status,
+Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
 type of response and much more.
 
 You can set headers in the following way:
@@ -56,7 +55,7 @@ You can set headers in the following way:
 
     <?php
 
-    // Setting it by its name
+    // Setting a header by its name
     $response->setHeader("Content-Type", "application/pdf");
     $response->setHeader("Content-Disposition", 'attachment; filename="downloaded.pdf"');
 
@@ -64,7 +63,7 @@ You can set headers in the following way:
     $response->setRawHeader("HTTP/1.1 200 OK");
 
 A :doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
-allows to manage headers before sending it to client:
+retrieves the headers before sending it to client:
 
 .. code-block:: php
 
@@ -78,47 +77,49 @@ allows to manage headers before sending it to client:
 
 Making Redirections
 -------------------
-With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also make HTTP redirections:
+With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also execute HTTP redirections:
 
 .. code-block:: php
 
     <?php
 
-    // Making a redirection to the default URI
+    // Redirect to the default URI
     $response->redirect();
 
-    // Making a redirection using the local base URI
+    // Redirect to the local base URI
     $response->redirect("posts/index");
 
-    // Making a redirection to an external URL
+    // Redirect to an external URL
     $response->redirect("http://en.wikipedia.org", true);
 
-    // Making a redirection specifyng the HTTP status code
+    // Redirect specifying the HTTP status code
     $response->redirect("http://www.example.com/new-location", true, 301);
 
-All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`), in this way you can make redirections
-based on the routes you've currently defined in the application:
+All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`). This example demonstrates
+how you can redirect using a route you have defined in your application:
 
 .. code-block:: php
 
     <?php
 
-    // Making a redirection based on a named route
-    return $response->redirect(array(
-        "for" => "index-lang",
-        "lang" => "jp",
-        "controller" => "index"
-    ));
+    // Redirect based on a named route
+    return $response->redirect(
+        array(
+            "for"        => "index-lang",
+            "lang"       => "jp",
+            "controller" => "index"
+        )
+    );
 
-Note that making a redirection doesn't disable the view component, so if there is a view asociated with the current action it
+Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTP Cache
 ----------
-One of the easiest ways to improve the performance in your applications also reducing the traffic is the HTTP Cache.
+One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache.
 Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
-The secret are the headers sent by the application when serving a page for the first time, these headers are:
+HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
 * *Expires:* With this header the application can set a date in the future or the past telling the browser when the page must expire.
 * *Cache-Control:* This header allows to specify how much time a page should be considered fresh in the browser.
@@ -127,9 +128,9 @@ The secret are the headers sent by the application when serving a page for the f
 
 Setting an Expiration Time
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The expiration date is one of the most easy and effective ways to cache a page in the client (browser).
-Starting from the current date we add over time, then, this will maintain the page stored
-in the browser cache until this date expires without requesting the content to the server again:
+The expiration date is one of the easiest and most effective ways to cache a page in the client (browser).
+Starting from the current date we add the amount of time the page will be stored
+in the browser cache. Until this date expires no new content will be requested from the server:
 
 .. code-block:: php
 
@@ -140,9 +141,9 @@ in the browser cache until this date expires without requesting the content to t
 
     $response->setExpires($expireDate);
 
-The Response component automatically shows the date in GMT timezone in order as is expected in an Expires header.
+The Response component automatically shows the date in GMT timezone as expected in an Expires header.
 
-Moreover if we set a date in the past this will tell the browser to always refresh the requested page:
+If we set this value to a date in the past the browser will always refresh the requested page:
 
 .. code-block:: php
 
@@ -153,13 +154,13 @@ Moreover if we set a date in the past this will tell the browser to always refre
 
     $response->setExpires($expireDate);
 
-Browsers relies on the client's clock to assess if this date has passed or not, the client clock can be modified to
-make pages expire, this may represent a limitation for this cache mechanism.
+Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to
+make pages expire and this may represent a limitation for this cache mechanism.
 
 Cache-Control
 ^^^^^^^^^^^^^
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
-how much time it must keep the page in its cache:
+how long it must keep the page in its cache:
 
 .. code-block:: php
 
@@ -179,8 +180,8 @@ The opposite effect (avoid page caching) is achieved in this way:
 
 E-Tag
 ^^^^^
-A "entity-tag" or "E-tag" is a unique identifier that helps the browser to realize if the page has changed or not between two requests.
-The identifier must be calculated taking into account that this must change if the content has changed previously served:
+An "entity-tag" or "E-tag" is a unique identifier that helps the browser realize if the page has changed or not between two requests.
+The identifier must be calculated taking into account that this must change if the previously served content has changed:
 
 .. code-block:: php
 
@@ -188,8 +189,7 @@ The identifier must be calculated taking into account that this must change if t
 
     // Calculate the E-Tag based on the modification time of the latest news
     $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag = md5($recentDate);
+    $eTag       = md5($recentDate);
 
     // Send an E-Tag header
     $response->setHeader('E-Tag', $eTag);
-

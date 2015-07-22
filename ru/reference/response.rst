@@ -1,5 +1,6 @@
 Заголовки ответа (Response)
-============================
+===========================
+
 Одной из частей работы HTTP-протокола является возвращение ответа клиенту. В Phalcon существует компонент :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`
 для реализации этой задачи. Чаще всего HTTP-ответ состоит из заголовков и тела ответа. Типичное использование Response выглядит следующим образом:
 
@@ -28,13 +29,12 @@
 
     class FeedController extends Phalcon\Mvc\Controller
     {
-
         public function getAction()
         {
             // Получение экземпляра Response
             $response = new \Phalcon\Http\Response();
 
-            $feed = // .. тут данные
+            $feed     = // .. тут данные
 
             // Установка содержимого ответа
             $response->setContent($feed->asString());
@@ -42,7 +42,6 @@
             // Возврат Response ответа
             return $response;
         }
-
     }
 
 Работа с заголовками
@@ -103,11 +102,13 @@
     <?php
 
     // Переадресация по именованному правилу роутинга
-    return $response->redirect(array(
-        "for" => "index-lang",
-        "lang" => "jp",
-        "controller" => "index"
-    ));
+    return $response->redirect(
+        array(
+            "for"        => "index-lang",
+            "lang"       => "jp",
+            "controller" => "index"
+        )
+    );
 
 Обратите внимание, что при создании перенаправления не отключается компонент отображения (Views), так что действие, в котором
 оно вызывается, всё равно будет выполнено. Вы можете отключить отображение из контроллера, выполнив $this->view->disable();
@@ -188,7 +189,7 @@ E-Tag
 
     // Формирование значения E-Tag основанное на последнем времени изменения новости
     $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag = md5($recentDate);
+    $eTag       = md5($recentDate);
 
     // Отправка E-Tag
     $response->setHeader('E-Tag', $eTag);
