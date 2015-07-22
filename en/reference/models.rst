@@ -1177,7 +1177,7 @@ A virtual foreign key can be set up to allow null values as follows:
         {
             $this->belongsTo("parts_id", "Parts", "id", array(
                 "foreignKey" => array(
-                    "allowNull" => true,
+                    "allowNulls" => true,
                     "message" => "The part_id does not exist on the Parts model"
                 )
             ));
