@@ -1,8 +1,8 @@
 Multi-lingual Support
 =====================
+
 The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications.
-Applications using this component, display content in different languages, based on the user's chosen
-language supported by the application.
+Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 Adapters
 --------
@@ -68,32 +68,32 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
 
     class UserController extends Controller
     {
+        protected function getTranslation()
+        {
+            // Ask browser what is the best language
+            $language = $this->request->getBestLanguage();
 
-      protected function getTranslation()
-      {
+            // Check if we have a translation file for that lang
+            if (file_exists("app/messages/" . $language . ".php")) {
+                require "app/messages/" . $language . ".php";
+            } else {
+                // Fallback to some default
+                require "app/messages/en.php";
+            }
 
-        // Ask browser what is the best language
-        $language = $this->request->getBestLanguage();
-
-        // Check if we have a translation file for that lang
-        if (file_exists("app/messages/" . $language . ".php")) {
-           require "app/messages/" . $language . ".php";
-        } else {
-           // Fallback to some default
-           require "app/messages/en.php";
+            // Return a translation object
+            return new NativeArray(
+                array(
+                    "content" => $messages
+                )
+            );
         }
 
-        // Return a translation object
-        return new NativeArray(array(
-           "content" => $messages
-        ));
-      }
-
-      public function indexAction()
-      {
-        $this->view->name = "Mike";
-        $this->view->t = $this->getTranslation();
-      }
+        public function indexAction()
+        {
+            $this->view->name = "Mike";
+            $this->view->t    = $this->getTranslation();
+        }
     }
 
 The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it,
@@ -131,7 +131,6 @@ in order to create your own translate adapters or extend the existing ones:
 
     class MyTranslateAdapter implements AdapterInterface
     {
-
         /**
          * Adapter constructor
          *

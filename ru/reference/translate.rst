@@ -1,5 +1,6 @@
 Поддержка многоязычности
 ========================
+
 Компонент :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` поможет в создании многоязычных приложений. Приложения, использующие
 этот компонент, отображают контент на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.
 
@@ -62,36 +63,37 @@
 
     <?php
 
-    class UserController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+    use Phalcon\Translate\Adapter\NativeArray;
+
+    class UserController extends Controller
     {
+        protected function getTranslation()
+        {
+            // Получение оптимального языка из браузера
+            $language = $this->request->getBestLanguage();
 
-      protected function _getTranslation()
-      {
+            // Проверка существования перевода для полученного языка
+            if (file_exists("app/messages/" . $language . ".php")) {
+                require "app/messages/" . $language . ".php";
+            } else {
+                // Переключение на язык по умолчанию
+                require "app/messages/en.php";
+            }
 
-        // Получение оптимального языка из браузера
-        $language = $this->request->getBestLanguage();
-
-        // Проверка существования перевода для полученного языка
-        if (file_exists("app/messages/".$language.".php")) {
-           require "app/messages/".$language.".php";
-        } else {
-           // Переключение на язык по умолчанию
-           require "app/messages/en.php";
+            // Возвращение объекта работы с переводом
+            return new NativeArray(
+                array(
+                    "content" => $messages
+                )
+            );
         }
 
-        // Возвращение объекта работы с переводом
-        return new \Phalcon\Translate\Adapter\NativeArray(array(
-           "content" => $messages
-        ));
-
-      }
-
-      public function indexAction()
-      {
-        $this->view->setVar("name", "Mike");
-        $this->view->setVar("t", $this->_getTranslation());
-      }
-
+        public function indexAction()
+        {
+            $this->view->name = "Mike";
+            $this->view->t    = $this->getTranslation();
+        }
     }
 
 Метод _getTranslation в этом примере доступен для всех действий требующих перевода. Переменная $t передается в представление и позволяет
@@ -110,8 +112,8 @@
 .. code-block:: html+php
 
     <!-- welcome -->
-    <!-- String: hi-user => 'Hello %name%' -->
-    <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
+    <!-- String: hi-name => 'Hello %name%' -->
+    <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
 
 Существуют так же приложения с многоязычностью основанной на параметрах в URL, например как http://www.mozilla.org/**es-ES**/firefox/.
 Реализовать такую схему на Phalcon можно используя компонент :doc:`Router <routing>`.
@@ -124,9 +126,10 @@
 
     <?php
 
-    class MyTranslateAdapter implements Phalcon\Translate\AdapterInterface
-    {
+    use Phalcon\Translate\AdapterInterface;
 
+    class MyTranslateAdapter implements AdapterInterface
+    {
         /**
          * Adapter constructor
          *
@@ -141,7 +144,7 @@
          * @param   array $placeholders
          * @return  string
          */
-        public function _($translateKey, $placeholders=null);
+        public function _($translateKey, $placeholders = null);
 
         /**
          * Возвращает перевод, связанный с заданным ключом
@@ -150,7 +153,7 @@
          * @param   array $placeholders
          * @return  string
          */
-        public function query($index, $placeholders=null);
+        public function query($index, $placeholders = null);
 
         /**
          * Проверяет существование перевода ключа во внутреннем массиве
@@ -159,7 +162,6 @@
          * @return  bool
          */
         public function exists($index);
-
     }
 
 Больше адаптеров перевода можно найти в `Инкубаторе Phalcon <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_
