@@ -1,5 +1,6 @@
 Менеджер событий EventsManager
 ==============================
+
 Цель данного компонента состоит в добавлении возможности перехватывать процесс выполнения большинства компонентов системы путём создания
 специальных "ключевых точек". Эти ключевые точки позволяют разработчику получить информацию о состоянии, манипулировать данными и изменять
 процесс работы компонента.
@@ -15,7 +16,6 @@
 
     class MyDbListener
     {
-
         public function afterConnect()
         {
 
@@ -30,7 +30,6 @@
         {
 
         }
-
     }
 
 Такой класс может реализовывать необходимые нам события. Менеджер событий будет взаимодействовать между компонентом и нашим классом,
@@ -40,23 +39,25 @@
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
     // Создание слушателя базы данных
-    $dbListener = new MyDbListener();
+    $dbListener    = new MyDbListener();
 
     // Слушать все события базы данных
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new DbAdapter(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection    = new DbAdapter(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // Совмещение менеджера событий с адаптером базы данных
     $connection->setEventsManager($eventsManager);
@@ -75,7 +76,6 @@
 
     class MyDbListener
     {
-
         protected $_logger;
 
         public function __construct()
@@ -87,7 +87,6 @@
         {
             $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
         }
-
     }
 
 В рамках этого примера, мы будем также использовать профайлер Phalcon\\Db\\Profiler для обнаружения SQL-запросов с длительным временем выполнения:
@@ -96,13 +95,12 @@
 
     <?php
 
-    use Phalcon\Db\Profiler,
-        Phalcon\Logger,
-        Phalcon\Logger\Adapter\File;
+    use Phalcon\Db\Profiler;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File;
 
     class MyDbListener
     {
-
         protected $_profiler;
 
         protected $_logger;
@@ -113,7 +111,7 @@
         public function __construct()
         {
             $this->_profiler = new Profiler();
-            $this->_logger = new Logger("../apps/logs/db.log");
+            $this->_logger   = new Logger("../apps/logs/db.log");
         }
 
         /**
@@ -137,7 +135,6 @@
         {
             return $this->_profiler;
         }
-
     }
 
 Результирующие данные о работе профайлера могут быть получены из слушателя:
@@ -179,11 +176,10 @@
 
     <?php
 
-    use Phalcon\Events\EventsAwareInterface
+    use Phalcon\Events\EventsAwareInterface;
 
     class MyComponent implements EventsAwareInterface
     {
-
         protected $_eventsManager;
 
         public function setEventsManager($eventsManager)
@@ -204,7 +200,6 @@
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
-
     }
 
 Обратите внимание, что события, создаваемые нашим компонентом, имеют префикс "my-component". Это уникальное слово для разделения событий,
@@ -217,7 +212,6 @@
 
     class SomeListener
     {
-
         public function beforeSomeTask($event, $myComponent)
         {
             echo "Выполняется beforeSomeTask\n";
@@ -227,7 +221,6 @@
         {
             echo "Выполняется afterSomeTask\n";
         }
-
     }
 
 Слушатель - это просто класс, который реализует все события, вызываемые в компоненте. Давайте заставим их работать вместе:
@@ -236,11 +229,13 @@
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+
     // Создаём менеджер событий
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     // Создаём экземпляр MyComponent
-    $myComponent = new MyComponent();
+    $myComponent   = new MyComponent();
 
     // Связываем компонент и менеджер событий
     $myComponent->setEventsManager($eventsManager);
@@ -337,7 +332,7 @@
 
     $evManager->attach('db', new DbListener(), 150); // Высокий приоритет
     $evManager->attach('db', new DbListener(), 100); // Нормальный приоритет
-    $evManager->attach('db', new DbListener(), 50); // Низкий приоритет
+    $evManager->attach('db', new DbListener(), 50);  // Низкий приоритет
 
 Сбор ответов
 ------------

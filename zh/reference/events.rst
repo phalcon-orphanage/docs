@@ -1,5 +1,6 @@
 事件管理器（Events Manager）
 ==============
+
 此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。
 这些钩子允许开发者获得状态信息，操纵数据或者改变某个组件进程中的执行流向。
 
@@ -14,7 +15,6 @@
 
     class MyDbListener
     {
-
         public function afterConnect()
         {
 
@@ -29,7 +29,6 @@
         {
 
         }
-
     }
 
 这个新的类可能有点啰嗦，但我们需要这样做。
@@ -39,23 +38,25 @@
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
     // 创建一个数据库侦听
-    $dbListener = new MyDbListener();
+    $dbListener    = new MyDbListener();
 
     // 侦听全部数据库事件
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new DbAdapter(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection    = new DbAdapter(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // 将$eventsManager赋值给数据库甜适配器
     $connection->setEventsManager($eventsManager);
@@ -74,7 +75,6 @@
 
     class MyDbListener
     {
-
         protected $_logger;
 
         public function __construct()
@@ -86,7 +86,6 @@
         {
             $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
         }
-
     }
 
 作为些示例的一部分，我们同样实现了 Phalcon\\Db\\Profiler 来检测SQL语句是否超出了期望的执行时间：
@@ -95,13 +94,12 @@
 
     <?php
 
-    use Phalcon\Db\Profiler,
-        Phalcon\Logger,
-        Phalcon\Logger\Adapter\File;
+    use Phalcon\Db\Profiler;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File;
 
     class MyDbListener
     {
-
         protected $_profiler;
 
         protected $_logger;
@@ -112,7 +110,7 @@
         public function __construct()
         {
             $this->_profiler = new Profiler();
-            $this->_logger = new Logger("../apps/logs/db.log");
+            $this->_logger   = new Logger("../apps/logs/db.log");
         }
 
         /**
@@ -136,7 +134,6 @@
         {
             return $this->_profiler;
         }
-
     }
 
 可以从侦听者中获取结果分析数据：
@@ -182,7 +179,6 @@
 
     class MyComponent implements EventsAwareInterface
     {
-
         protected $_eventsManager;
 
         public function setEventsManager($eventsManager)
@@ -203,7 +199,6 @@
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
-
     }
 
 注意到这个组件产生的事件都以“my-component”为前缀。这是一个唯一的关键词，可以帮助我们区分各个组件产生的事件。
@@ -215,7 +210,6 @@
 
     class SomeListener
     {
-
         public function beforeSomeTask($event, $myComponent)
         {
             echo "这里, beforeSomeTask\n";
@@ -225,7 +219,6 @@
         {
             echo "这里, afterSomeTask\n";
         }
-
     }
 
 侦听者可以是简单的一个实现了全部组件触发事件的类。现在让我们把全部的东西整合起来：
@@ -234,11 +227,13 @@
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+
     // 创建一个事件管理器
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     // 创建MyComponent实例
-    $myComponent = new MyComponent();
+    $myComponent   = new MyComponent();
 
     // 将事件管理器绑定到创建MyComponent实例实例
     $myComponent->setEventsManager($eventsManager);
@@ -333,7 +328,7 @@
 
     $evManager->attach('db', new DbListener(), 150); // 高优先级
     $evManager->attach('db', new DbListener(), 100); // 正常优先级
-    $evManager->attach('db', new DbListener(), 50); // 低优先级
+    $evManager->attach('db', new DbListener(), 50);  // 低优先级
 
 收集响应（Collecting Responses）
 --------------------

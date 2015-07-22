@@ -1,5 +1,6 @@
 イベントマネージャ
 ==============
+
 The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
@@ -14,7 +15,6 @@ First, we need a listener object to do this. We created a class whose methods ar
 
     class MyDbListener
     {
-
         public function afterConnect()
         {
 
@@ -29,7 +29,6 @@ First, we need a listener object to do this. We created a class whose methods ar
         {
 
         }
-
     }
 
 This new class can be as verbose as we need it to. The EventsManager will interface between the component and our listener class,
@@ -39,23 +38,25 @@ offering hook points based on the methods we defined in our listener class:
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
     // Create a database listener
-    $dbListener = new MyDbListener();
+    $dbListener    = new MyDbListener();
 
     // Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new DbAdapter(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
-    ));
+    $connection    = new DbAdapter(
+        array(
+            "host"     => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname"   => "invo"
+        )
+    );
 
     // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
@@ -74,7 +75,6 @@ the event listener contains contextual information about the event that is runni
 
     class MyDbListener
     {
-
         protected $_logger;
 
         public function __construct()
@@ -86,7 +86,6 @@ the event listener contains contextual information about the event that is runni
         {
             $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
         }
-
     }
 
 As part of this example, we will also implement the Phalcon\\Db\\Profiler to detect the SQL statements that are taking longer to execute than expected:
@@ -95,13 +94,12 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
     <?php
 
-    use Phalcon\Db\Profiler,
-        Phalcon\Logger,
-        Phalcon\Logger\Adapter\File;
+    use Phalcon\Db\Profiler;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File;
 
     class MyDbListener
     {
-
         protected $_profiler;
 
         protected $_logger;
@@ -112,7 +110,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         public function __construct()
         {
             $this->_profiler = new Profiler();
-            $this->_logger = new Logger("../apps/logs/db.log");
+            $this->_logger   = new Logger("../apps/logs/db.log");
         }
 
         /**
@@ -136,7 +134,6 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         {
             return $this->_profiler;
         }
-
     }
 
 The resulting profile data can be obtained from the listener:
@@ -182,7 +179,6 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     class MyComponent implements EventsAwareInterface
     {
-
         protected $_eventsManager;
 
         public function setEventsManager($eventsManager)
@@ -203,7 +199,6 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
-
     }
 
 Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us
@@ -216,7 +211,6 @@ the same name. Now let's create a listener to this component:
 
     class SomeListener
     {
-
         public function beforeSomeTask($event, $myComponent)
         {
             echo "Here, beforeSomeTask\n";
@@ -226,7 +220,6 @@ the same name. Now let's create a listener to this component:
         {
             echo "Here, afterSomeTask\n";
         }
-
     }
 
 A listener is simply a class that implements any of all the events triggered by the component. Now let's make everything work together:
@@ -235,11 +228,13 @@ A listener is simply a class that implements any of all the events triggered by 
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+
     // Create an Events Manager
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     // Create the MyComponent instance
-    $myComponent = new MyComponent();
+    $myComponent   = new MyComponent();
 
     // Bind the eventsManager to the instance
     $myComponent->setEventsManager($eventsManager);
@@ -336,7 +331,7 @@ in which they must be called:
 
     $evManager->attach('db', new DbListener(), 150); // More priority
     $evManager->attach('db', new DbListener(), 100); // Normal priority
-    $evManager->attach('db', new DbListener(), 50); // Less priority
+    $evManager->attach('db', new DbListener(), 50);  // Less priority
 
 レスポンスの収集
 --------------------
