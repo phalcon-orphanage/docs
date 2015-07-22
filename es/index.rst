@@ -29,6 +29,9 @@ Table of Contents
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-invo-2
+   reference/tutorial-invo-3
+   reference/tutorial-invo-4
    reference/tutorial-rest
    reference/di
    reference/mvc

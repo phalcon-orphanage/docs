@@ -1,4 +1,4 @@
-教程 2：INVO 项目讲解（Tutorial 2: Explaining INVO）
+教程 2：Introducing INVO（Tutorial 2: Introducing INVO）
 ===========================
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
