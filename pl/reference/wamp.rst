@@ -1,12 +1,12 @@
 Instalacja na WAMP
-====================
-WampServer_ to darmowy, zintegrowany pakiet webowy, z pomocą którego łatwo uruchomimy na swoim komputerze własny serwer WWW. Z powodzeniem posłużyć ono może do testowania skryptów PHP, jak również hostowania niewielkich stron internetowych oraz aplikacji webowych.
-Poniżej przedstawiamy szczegółową instrukcję instalacji  Phalcona na WampServer. Korzystanie z najnowszej wersji WampServer jest wysoce zalecane.
+==================
+
+WampServer_ to darmowy, zintegrowany pakiet webowy, z pomocą którego łatwo uruchomimy na swoim komputerze własny serwer WWW. Z powodzeniem posłużyć ono może do testowania skryptów PHP, jak również hostowania niewielkich stron internetowych oraz aplikacji webowych. Poniżej przedstawiamy szczegółową instrukcję instalacji Phalcona na WampServer. Korzystanie z najnowszej wersji WampServer jest wysoce zalecane.
 
 Pobierz właściwą wersję Phalcona
--------------------------------------
-WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.
+--------------------------------
 WAMP ma zarówno wersje 32 jak i 64 bitowe. Z sekcji Download możesz wybrać wersje Phalcona odpowiednią dla swojej architektury.
+
 Po pobraniu biblioteki Phalcon, będziesz miał plik zip jak na obrazku poniżej:
 
 .. figure:: ../_static/img/xampp-1.png
@@ -17,7 +17,7 @@ Wypakuj bibliotekę z archiwum, aby otrzymać Phalcon DLL:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze c:\\wamp, rozszerzenie musi być w ﻿C:\\wamp\\bin\\php\\php5.3.10\\ext
+Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze C:\\wamp, rozszerzenie musi być w C:\\wamp\\bin\\php\\php5.3.10\\ext
 
 .. figure:: ../_static/img/wamp-1.png
     :align: center
@@ -29,7 +29,7 @@ Edytuj plik php.ini, jest zlokalizowany w C:\\wamp\\bin\\php\\php5.3.10\\php.ini
 
 Edytuj jeszcze jeden plik php.ini, który zlokalizowany jest w C:\\wamp\\bin\\apache\\Apache2.2.21\\bin\\php.ini. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
 
-Zrestartuj serwer Apache. Kliknij pojedyńczo na ikonie WampServer w prawym dolnym rogu paska zadań. Z menu podręcznego wybierz "Restart All Services".  Ikona na pasku zadań będzie znowu  zielona.
+Zrestartuj serwer Apache. Kliknij pojedyńczo na ikonie WampServer w prawym dolnym rogu paska zadań. Z menu podręcznego wybierz "Restart All Services". Ikona na pasku zadań będzie znowu  zielona.
 
 .. figure:: ../_static/img/wamp-3.png
     :align: center
