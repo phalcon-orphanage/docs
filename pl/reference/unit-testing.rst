@@ -58,7 +58,7 @@ file in your tests/ directory as TestHelper.php.
       ROOT_PATH . PATH_SEPARATOR . get_include_path()
   );
 
-  // required for phalcon/incubator
+  // Required for phalcon/incubator
   include __DIR__ . "/../vendor/autoload.php";
 
   // use the application autoloader to autoload the classes
@@ -74,7 +74,7 @@ file in your tests/ directory as TestHelper.php.
   $di = new FactoryDefault();
   DI::reset();
 
-  // add any needed services to the DI here
+  // Add any needed services to the DI here
 
   DI::setDefault($di);
 
@@ -168,7 +168,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
 
-          // get any DI components here. If you have a config, be sure to pass it to the parent
+          // Get any DI components here. If you have a config, be sure to pass it to the parent
           parent::setUp($di);
 
           $this->_loaded = true;

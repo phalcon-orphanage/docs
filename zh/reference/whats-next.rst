@@ -16,7 +16,7 @@ Xdebug_ 提供了简易的性能测试的方式， 安装后可在php.ini中 进
 
     xdebug.profiler_enable = On
 
-使用 Webgrid_ 可以分析出哪些函数或方法比其它的要慢：
+使用 Webgrind_ 可以分析出哪些函数或方法比其它的要慢：
 
 .. figure:: ../_static/img/webgrind.jpg
     :align: center
@@ -48,7 +48,7 @@ Xhprof_ 也是一个非常有意思的扩展。 开发者可以添加如下的�
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof 提供了一个内置的html视图用来对性能分析的数据进行展示：
+Xhprof 提供了一个内置的HTML视图用来对性能分析的数据进行展示：
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center
@@ -58,7 +58,7 @@ Xhprof 提供了一个内置的html视图用来对性能分析的数据进行展
 
 关于 SQL 语句（Profiling SQL Statements）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-几乎所有的数据库系统都提供了相关的工具以找出哪些执行缓慢的sql语句。 检测及修复那些执行缓慢的查询对提高服务器端系统的性能来说是非常重要的。
+几乎所有的数据库系统都提供了相关的工具以找出哪些执行缓慢的SQL语句。 检测及修复那些执行缓慢的查询对提高服务器端系统的性能来说是非常重要的。
 在Mysql数据库中， 开发者可以启用慢查询日志来记录执行缓慢的查询：
 
 .. code-block:: ini
@@ -68,7 +68,7 @@ Xhprof 提供了一个内置的html视图用来对性能分析的数据进行展
 
 关于客户端（Profile on the Client）
 ------------------------------------------
-有时开发者需要提升静态资源加载的速度， 比如图片， javascript, css等。 下面的工具可以让开发者从客户端检测静态资源加载的瓶颈：
+有时开发者需要提升静态资源加载的速度， 比如图片， javascript, CSS等。 下面的工具可以让开发者从客户端检测静态资源加载的瓶颈：
 
 （使用Chrome/Firefox进行性能分析）Profile with Chrome/Firefox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,11 +100,11 @@ Yahoo! YSlow
 
 使用最新的 PHP 版本（Use a recent PHP version）
 ------------------------------------------------
-PHP本身的执行速度已经越来越快了， 使用最新版本的php及phalcon可以更高的提升web应用的执行速度。
+PHP本身的执行速度已经越来越快了， 使用最新版本的PHP及Phalcon可以更高的提升web应用的执行速度。
 
 使用 PHP 字节码缓存（Use a PHP Bytecode Cache）
 ------------------------------------------------
-APC_ 像其它的字节码缓存工具一样可以帮助web应用程序减少读取及解析php文件解析所花的时间。 安装完apc之后在php.ini中添加如何配置：
+APC_ 像其它的字节码缓存工具一样可以帮助web应用程序减少读取及解析php文件解析所花的时间。 安装完APC之后在php.ini中添加如何配置：
 
 .. code-block:: ini
 

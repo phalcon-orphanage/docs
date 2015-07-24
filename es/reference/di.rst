@@ -469,7 +469,7 @@ se usará un auto-loader. Este tipo de definición no permite indicar parámetro
 
     <?php
 
-    // devuelve new Phalcon\Http\Request();
+    // Devuelve new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
 Objetos
@@ -481,7 +481,7 @@ resolverse nuevamente. Es útil cuando queremos forzar el objeto sea el mismo y 
 
     <?php
 
-    // devuelve new Phalcon\Http\Request();
+    // Devuelve new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
 Funciones anónimas

@@ -23,16 +23,16 @@ By sanitizing input we ensure that application integrity will be intact.
 
     $filter = new Filter();
 
-    // returns "someone@example.com"
+    // Returns "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
 
-    // returns "hello"
+    // Returns "hello"
     $filter->sanitize("hello<<", "string");
 
-    // returns "100019"
+    // Returns "100019"
     $filter->sanitize("!100a019", "int");
 
-    // returns "100019.01"
+    // Returns "100019.01"
     $filter->sanitize("!100a019.01a", "float");
 
 
@@ -106,10 +106,10 @@ the format we expect.
 
     $filter = new Filter();
 
-    // returns "Hello"
+    // Returns "Hello"
     $filter->sanitize("<h1>Hello</h1>", "striptags");
 
-    // returns "Hello"
+    // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
 

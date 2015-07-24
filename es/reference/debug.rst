@@ -203,7 +203,7 @@ example implements xdebug_print_function_stack_ to stop the execution and genera
         public function registerAction()
         {
 
-            // Request variables from html form
+            // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 

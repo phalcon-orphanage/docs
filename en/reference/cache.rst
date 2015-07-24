@@ -50,7 +50,7 @@ call whenever this piece of code is called.
 
     // Create the component that will cache from the "Output" to a "File" backend
     // Set the cache file directory - it's important to keep the "/" at the end of
-    // the value for the folder
+    // The value for the folder
     $cache = new BackFile($frontCache, array(
         "cacheDir" => "../app/cache/"
     ));
@@ -110,7 +110,7 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
 
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
-    // of the value for the folder
+    // Of the value for the folder
     $cache = new BackFile($frontCache, array(
         "cacheDir" => "../app/cache/"
     ));

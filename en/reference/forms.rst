@@ -54,7 +54,7 @@ Forms can be rendered based on the form definition:
 
 Each element in the form can be rendered as required by the developer. Internally,
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the right HTML for each element,
-you can pass additional html attributes as second parameter for render:
+you can pass additional HTML attributes as second parameter for render:
 
 .. code-block:: html+php
 

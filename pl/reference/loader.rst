@@ -37,7 +37,7 @@ the end of the paths.
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the
@@ -66,7 +66,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the
@@ -96,7 +96,7 @@ It's important to register the directories in relevance order. Remember always a
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the file from
@@ -126,7 +126,7 @@ maintenance of the class list very cumbersome and it is not recommended.
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // Requiring a class will automatically include the file it references

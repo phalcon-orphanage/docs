@@ -29,7 +29,7 @@ You can easily add resources to these collections like follows:
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            // and some local javascript resources
+            // And some local javascript resources
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -235,7 +235,7 @@ individually. To tell the collection that all resources must be joined you can u
     // The name of the final file path
     $js->setTargetPath('public/production/final.js');
 
-    // The script html tag is generated with this URI
+    // The script HTML tag is generated with this URI
     $js->setTargetUri('production/final.js');
 
 If resources are going to be joined, we need also to define which file will be used to store the resources

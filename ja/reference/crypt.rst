@@ -2,7 +2,7 @@
 =====================
 
 Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
-This class offers simple object-oriented wrappers to the mcrypt_ php's encryption library.
+This class offers simple object-oriented wrappers to the mcrypt_ PHP's encryption library.
 
 By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
 

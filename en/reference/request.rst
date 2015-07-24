@@ -141,7 +141,7 @@ the user. The following examples show usages of that information:
 
     <?php
 
-    // get the Http-X-Requested-With header
+    // Get the Http-X-Requested-With header
     $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "The request was made with Ajax";

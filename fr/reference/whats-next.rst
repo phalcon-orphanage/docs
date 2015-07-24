@@ -18,7 +18,7 @@ il est important de faire assez de mesures pour obtenir des conclusions efficace
 
 Profilage avec XDebug
 ^^^^^^^^^^^^^^^^^^^^^
-Xdebug_ nous fournit un moyen simple d'analyser des applications php, il suffit d'installer l'extension et d'autoriser le profilage dans php.ini :
+Xdebug_ nous fournit un moyen simple d'analyser des applications PHP, il suffit d'installer l'extension et d'autoriser le profilage dans php.ini :
 
 .. code-block:: ini
 
@@ -31,7 +31,7 @@ En utilisant un outils comme Webgrind_ on peux voir quelles fonctions/méthodes 
 
 Profilage avec Xhprof
 ^^^^^^^^^^^^^^^^^^^^^
-Xhprof_ est une autre extension intéressante pour l'analyse d'applications php.
+Xhprof_ est une autre extension intéressante pour l'analyse d'applications PHP.
 Ajoutez le code suivant au début du fichier index.php (le fichier bootstrap qui se trouve normalement dans public/) :
 
 .. code-block:: php
@@ -57,7 +57,7 @@ Puis à la fin de ce même fichier, ajoutez ceci :
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof fournit un aperçu en html pour analyser les données récupérés :
+Xhprof fournit un aperçu en HTML pour analyser les données récupérés :
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center

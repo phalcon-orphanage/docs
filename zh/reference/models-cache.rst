@@ -524,12 +524,12 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         protected static function _getCache($key)
         {
-            // returns data from a cache
+            // Returns data from a cache
         }
 
         protected static function _setCache($key)
         {
-            // stores data in the cache
+            // Stores data in the cache
         }
 
         public static function find($parameters=null)
@@ -567,7 +567,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
     }
 从已经缓存的订单中取得用户信息，可以减少系统的负载。注意我们也可以使用PHQL来实现这个，下面使用了PHQL来实现：
@@ -583,7 +583,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
 
         protected static function _createKey($conditions, $params)
@@ -736,7 +736,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
             // Execute the query
             $result = $this->_executeSelect($ir, $params, $types);
 
-            // cache the result
+            // Cache the result
             // ...
 
             return $result;

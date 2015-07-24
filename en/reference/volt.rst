@@ -1165,7 +1165,7 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
             ".volt" => function ($view, $di) {
                 $volt = new Volt($view, $di);
 
-                // set some options here
+                // Set some options here
 
                 return $volt;
             }

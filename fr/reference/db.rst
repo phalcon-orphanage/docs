@@ -311,7 +311,7 @@ often increase the performance on most database systems:
         $connection->commit();
 
     } catch (Exception $e) {
-        // An exception has ocurred rollback the transaction
+        // An exception has occurred rollback the transaction
         $connection->rollback();
     }
 
@@ -344,7 +344,7 @@ is created:
             $connection->commit();
 
         } catch (Exception $e) {
-            // An error has ocurred, release the nested transaction
+            // An error has occurred, release the nested transaction
             $connection->rollback();
         }
 
@@ -355,7 +355,7 @@ is created:
         $connection->commit();
 
     } catch (Exception $e) {
-        // An exception has ocurred rollback the transaction
+        // An exception has occurred rollback the transaction
         $connection->rollback();
     }
 

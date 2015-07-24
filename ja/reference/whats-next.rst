@@ -50,7 +50,7 @@ Then at the end of the file save the profiled data:
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in html viewer to analize the profiled data:
+Xhprof provides a built-in HTML viewer to analize the profiled data:
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center

@@ -45,7 +45,7 @@ A role is an object that can or cannot access certain resources in the access li
     // Add "Guests" role to acl
     $acl->addRole($roleGuests);
 
-    // Add "Designers" role to acl without a Phalcon\Acl\Role
+    // Add "Designers" role to ACL without a Phalcon\Acl\Role
     $acl->addRole("Designers");
 
 As you can see, roles are defined directly without using an instance.
@@ -130,7 +130,7 @@ so that they can be loaded at will without having to redefine the whole list. Yo
 
     // ...
 
-    // Check whether acl data already exist
+    // Check whether ACL data already exist
     if (!is_file("app/security/acl.data")) {
 
         $acl = new AclList();
@@ -141,11 +141,11 @@ so that they can be loaded at will without having to redefine the whole list. Yo
         file_put_contents("app/security/acl.data", serialize($acl));
     } else {
 
-         // Restore acl object from serialized file
+         // Restore ACL object from serialized file
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
-    // Use acl list as needed
+    // Use ACL list as needed
     if ($acl->isAllowed("Guests", "Customers", "edit")) {
         echo "Access granted!";
     } else {
@@ -193,7 +193,7 @@ The following example demonstrates how to attach listeners to this component:
     // Setup the $acl
     // ...
 
-    // Bind the eventsManager to the acl component
+    // Bind the eventsManager to the ACL component
     $acl->setEventsManager($eventManagers);
 
 Implementing your own adapters

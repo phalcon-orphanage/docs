@@ -436,7 +436,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        // An exception has ocurred, dispatch some controller/action aimed for that
+        // An exception has occurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');

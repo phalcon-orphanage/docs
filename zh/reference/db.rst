@@ -301,7 +301,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
        )
     );
     $success = $connection->updateAsDict(
@@ -312,7 +312,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
        )
     );
 

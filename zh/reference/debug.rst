@@ -20,7 +20,7 @@ Phalcon主要使用这个异常类来包装这些功能，以方便开发者或�
 
     try {
 
-        // ... some phalcon/php code
+        // ... Some Phalcon/PHP code
 
     } catch (\Exception $e) {
 
@@ -227,7 +227,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
         public function registerAction()
         {
 
-            // Request variables from html form
+            // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 

@@ -303,7 +303,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
        )
     );
     $success = $connection->updateAsDict(
@@ -314,7 +314,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
        array(
           'conditions' => 'id = ?',
           'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // optional parameter
+          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
        )
     );
 
@@ -458,7 +458,7 @@ Stop SQL operations are very useful if for example you want to implement some la
         // Check for malicious words in SQL statements
         if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
             // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
+            // This must be a SQL injection!
             return false;
         }
 

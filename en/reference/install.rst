@@ -1,6 +1,6 @@
 Installation
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework.
+PHP extensions require a slightly different installation method to a traditional PHP-based library or framework.
 You can either download a binary package for the system of your choice or build it from the sources.
 
 Windows
@@ -68,7 +68,7 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php configuration:
+Add extension to your PHP configuration:
 
 .. code-block:: bash
 
@@ -134,7 +134,7 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your php configuration:
+Add extension to your PHP configuration:
 
 
 FreeBSD

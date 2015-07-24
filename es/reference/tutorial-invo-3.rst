@@ -330,9 +330,9 @@ otro usamos el componente :doc:`Request <request>`:
     {
 
         if ($this->request->isPost()) {
-            // crear las condiciones de búsqueda
+            // Crear las condiciones de búsqueda
         } else {
-            // paginar usando las condiciones existentes
+            // Paginar usando las condiciones existentes
         }
 
         // ...
