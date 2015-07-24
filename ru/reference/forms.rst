@@ -440,7 +440,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
     {
         public function initialize()
         {
-            //...
+            // ...
         }
 
         public function renderDecorated($name)
@@ -491,7 +491,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
     {
         public function render($attributes=null)
         {
-            $html = //... немного html-кода
+            $html = // ... немного html-кода
             return $html;
         }
     }
@@ -505,7 +505,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    $di['forms'] = function() {
+    $di['forms'] = function () {
         return new Phalcon\Forms\Manager();
     }
 

@@ -20,7 +20,7 @@ L'essentiel de la logique de votre application sera concentrée sur les models. 
 
 Les vues
 -----
-Les vues représentent l'interface utilisateur. 
+Les vues représentent l'interface utilisateur.
 Elles sont souvent en HTML, avec du PHP intégré pour exécuter certaines tâches lié principalement à la représentation des données.
 Les vues s'occupent de retranscrire les données de manière visible sur un navigateur ou tout autre support visuel. :doc:`En savoir plus <views>`
 

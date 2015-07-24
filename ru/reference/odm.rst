@@ -1,6 +1,6 @@
 ODM (Object-Document Mapper)
 ============================
-В дополнение к его способности :doc:`отображать таблицы <models>` в реляционных базах данных, Phalcon может отображать документы из баз данных NoSQL. 
+В дополнение к его способности :doc:`отображать таблицы <models>` в реляционных базах данных, Phalcon может отображать документы из баз данных NoSQL.
 ODM предлагает функциональность CRUD, события, валидацию и другие сервисы.
 
 Из-за отсутствия запросов SQL и проектировщиков в базах данных NoSQL, вы можете увидеть реальные улучшения в
@@ -53,7 +53,7 @@ ODM предлагает функциональность CRUD, события, 
 Понимание Документов как Объектов
 ----------------------------------
 
-Каждый экземпляр модели представляет документ в коллекции. Вы можете легко получить доступ к коллекции данных путем считывания свойств объекта. 
+Каждый экземпляр модели представляет документ в коллекции. Вы можете легко получить доступ к коллекции данных путем считывания свойств объекта.
 Например, для коллекции "robots" с документами:
 
 .. code-block:: bash
@@ -71,7 +71,7 @@ ODM предлагает функциональность CRUD, события, 
 
 Модели в пространствах имен
 ---------------------------
-Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов. 
+Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов.
 В этом случае необходимо указать имя соответствующей колекции, используя getSource:
 
 .. code-block:: php
@@ -123,13 +123,13 @@ Connections are retrieved from the services container. By default, Phalcon tries
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new Mongo();
         return $mongo->selectDb("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
         return $mongo->selectDb("store");
     }, true);
@@ -384,8 +384,8 @@ listeners that run when an event is triggered.
 
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function($event, $robot) {
+    // Attach an anonymous function as a listener for "model" events
+    $eventsManager->attach('collection', function ($event, $robot) {
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
@@ -408,13 +408,13 @@ objects created in our application use the same EventsManager, then we need to a
 
     <?php
 
-    //Registering the collectionManager service
-    $di->set('collectionManager', function() {
+    // Registering the collectionManager service
+    $di->set('collectionManager', function () {
 
         $eventsManager = new Phalcon\Events\Manager();
 
         // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('collection', function($event, $model) {
+        $eventsManager->attach('collection', function ($event, $model) {
             if (get_class($model) == 'Robots') {
                 if ($event->getType() == 'beforeSave') {
                     if ($model->name == 'Scooby Doo') {
@@ -520,7 +520,7 @@ the value is not included in the method, then the validator will fail and return
 | StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+In addition to the built-in validators, you can create your own validators:
 
 .. code-block:: php
 
@@ -680,13 +680,13 @@ in the application's services container. You can overwrite this service setting 
     <?php
 
     // This service returns a mongo database at 192.168.1.100
-    $di->set('mongo1', function() {
+    $di->set('mongo1', function () {
         $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
         return $mongo->selectDb("management");
     }, true);
 
     // This service returns a mongo database at localhost
-    $di->set('mongo2', function() {
+    $di->set('mongo2', function () {
         $mongo = new Mongo("mongodb://localhost");
         return $mongo->selectDb("invoicing");
     }, true);
@@ -723,7 +723,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getShared('flash');
 
             // Show validation messages
-            foreach ($this->getMesages() as $message){
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

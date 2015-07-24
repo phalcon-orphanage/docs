@@ -15,7 +15,7 @@ Change the base URI for static resources
 
 public  **setShowBackTrace** (*unknown* $showBackTrace)
 
-Sets if files the exception"s backtrace must be showed
+Sets if files the exception's backtrace must be showed
 
 
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Annotation**
 ==========================================
 
-* Phalcon\\Annotations\\Annotation * * Represents a single annotation in an annotations collection
+Represents a single annotation in an annotations collection
 
 
 Methods
@@ -13,13 +13,13 @@ Phalcon\\Annotations\\Annotation constructor
 
 
 
-public *string*  **getName** ()
+public  **getName** ()
 
 Returns the annotation's name
 
 
 
-public *mixed*  **getExpression** (*unknown* $expr)
+public *mixed*  **getExpression** (*array* $expr)
 
 Resolves an annotation expression
 
@@ -37,31 +37,31 @@ Returns the expression arguments
 
 
 
-public *int*  **numberArguments** ()
+public  **numberArguments** ()
 
 Returns the number of arguments that the annotation has
 
 
 
-public *mixed*  **getArgument** (*unknown* $position)
+public *mixed*  **getArgument** (*int|string* $position)
 
 Returns an argument in a specific position
 
 
 
-public *boolean*  **hasArgument** (*unknown* $position)
+public *boolean*  **hasArgument** (*int|string* $position)
 
 Returns an argument in a specific position
 
 
 
-public *mixed*  **getNamedArgument** (*unknown* $name)
+public *mixed*  **getNamedArgument** (*string* $name)
 
 Returns a named argument
 
 
 
-public *mixed*  **getNamedParameter** (*unknown* $name)
+public *mixed*  **getNamedParameter** (*string* $name)
 
 Returns a named parameter
 

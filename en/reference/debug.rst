@@ -21,9 +21,9 @@ Throughout the tutorials and examples of the Phalcon documentation, there is a c
 
     try {
 
-        //... some phalcon/php code
+        // ... some phalcon/php code
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -66,9 +66,9 @@ Retrieving information from :doc:`Phalcon\\Exception <../api/Phalcon_Exception>`
 
     try {
 
-        //... app code ...
+        // ... app code ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";
@@ -116,7 +116,7 @@ The following screencast explains how it works:
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 To enable it, add the following to your bootstrap:
@@ -208,7 +208,7 @@ The following screencast shows a Xdebug session with Phalcon:
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.

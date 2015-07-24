@@ -9,7 +9,7 @@ Represents Javascript resources
 Methods
 -------
 
-public  **__construct** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 
 
@@ -55,73 +55,73 @@ public  **getTargetUri** () inherited from Phalcon\\Assets\\Resource
 ...
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setType** (*unknown* $type) inherited from Phalcon\\Assets\\Resource
+public  **setType** (*unknown* $type) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's type
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setPath** (*unknown* $path) inherited from Phalcon\\Assets\\Resource
+public  **setPath** (*unknown* $path) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's path
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setLocal** (*unknown* $local) inherited from Phalcon\\Assets\\Resource
+public  **setLocal** (*unknown* $local) inherited from Phalcon\\Assets\\Resource
 
 Sets if the resource is local or external
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setFilter** (*unknown* $filter) inherited from Phalcon\\Assets\\Resource
+public  **setFilter** (*unknown* $filter) inherited from Phalcon\\Assets\\Resource
 
 Sets if the resource must be filtered or not
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Assets\\Resource
+public  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Assets\\Resource
 
 Sets extra HTML attributes
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setTargetUri** (*unknown* $targetUri) inherited from Phalcon\\Assets\\Resource
+public  **setTargetUri** (*unknown* $targetUri) inherited from Phalcon\\Assets\\Resource
 
 Sets a target uri for the generated HTML
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setSourcePath** (*unknown* $sourcePath) inherited from Phalcon\\Assets\\Resource
+public  **setSourcePath** (*unknown* $sourcePath) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's source path
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setTargetPath** (*unknown* $targetPath) inherited from Phalcon\\Assets\\Resource
+public  **setTargetPath** (*unknown* $targetPath) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's target path
 
 
 
-public *string*  **getContent** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getContent** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the content of the resource as an string Optionally a base path where the resource is located can be set
 
 
 
-public *string*  **getRealTargetUri** () inherited from Phalcon\\Assets\\Resource
+public  **getRealTargetUri** () inherited from Phalcon\\Assets\\Resource
 
 Returns the real target uri for the generated HTML
 
 
 
-public *string*  **getRealSourcePath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getRealSourcePath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the complete location where the resource is located
 
 
 
-public *string*  **getRealTargetPath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getRealTargetPath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the complete location where the resource must be written
 

@@ -11,13 +11,13 @@ Component TEXTAREA for forms
 Methods
 -------
 
-public *string*  **render** ([*unknown* $attributes])
+public *string*  **render** ([*array* $attributes])
 
 Renders the element widget
 
 
 
-public  **__construct** (*unknown* $name, [*unknown* $attributes]) inherited from Phalcon\\Forms\\Element
+public  **__construct** (*string* $name, [*array* $attributes]) inherited from Phalcon\\Forms\\Element
 
 Phalcon\\Forms\\Element constructor
 
@@ -47,7 +47,7 @@ Returns the element name
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*unknown* $filters) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*array|string* $filters) inherited from Phalcon\\Forms\\Element
 
 Sets the element filters
 
@@ -83,19 +83,19 @@ Returns the validators registered for the element
 
 
 
-public *array*  **prepareAttributes** ([*unknown* $attributes], [*unknown* $useChecked]) inherited from Phalcon\\Forms\\Element
+public *array*  **prepareAttributes** ([*array* $attributes], [*boolean* $useChecked]) inherited from Phalcon\\Forms\\Element
 
 Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element parameters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*unknown* $attribute, *unknown* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*string* $attribute, *mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets a default attribute for the element
 
 
 
-public *mixed*  **getAttribute** (*unknown* $attribute, [*unknown* $defaultValue]) inherited from Phalcon\\Forms\\Element
+public *mixed*  **getAttribute** (*string* $attribute, [*mixed* $defaultValue]) inherited from Phalcon\\Forms\\Element
 
 Returns the value of an attribute if present
 
@@ -113,19 +113,19 @@ Returns the default attributes for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*unknown* $option, *unknown* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*string* $option, *mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets an option for the element
 
 
 
-public *mixed*  **getUserOption** (*unknown* $option, [*unknown* $defaultValue]) inherited from Phalcon\\Forms\\Element
+public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue]) inherited from Phalcon\\Forms\\Element
 
 Returns the value of an option if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*unknown* $options) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options) inherited from Phalcon\\Forms\\Element
 
 Sets options for the element
 
@@ -149,13 +149,13 @@ Returns the element label
 
 
 
-public *string*  **label** ([*unknown* $attributes]) inherited from Phalcon\\Forms\\Element
+public *string*  **label** ([*array* $attributes]) inherited from Phalcon\\Forms\\Element
 
 Generate the HTML to label the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*unknown* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 

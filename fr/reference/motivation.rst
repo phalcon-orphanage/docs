@@ -2,10 +2,10 @@ Nos Motivations
 ==============
 Aujourd'hui il existe une multitude de framework PHP, mais aucun d'eux ne ressemble à Phalcon (faites-nous confiance sur ce point).
 
-La plupart des programmeurs préfèreront utiliser un framework. 
-C'est tout d'abord  un apport de fonctionnalités déjà testées et prêtes à l'utilisation, 
+La plupart des programmeurs préfèreront utiliser un framework.
+C'est tout d'abord  un apport de fonctionnalités déjà testées et prêtes à l'utilisation,
 ce qui permet de garder un code DRY ("Don't Repeat Yourself" - ne vous répétez pas).
-Cependant, l'utilisation du framework demande l'inclusion de beaucoup de fichiers et de centaines de lignes de code 
+Cependant, l'utilisation du framework demande l'inclusion de beaucoup de fichiers et de centaines de lignes de code
 qui seront interprétées et exécutées lors de chaque accès à l'application. Les framework orientés objets ajoutent
 également ennormément de tâches à exécuter, ce qui peut ralentir les applications complexes.
 Toutes ces opérations ralentissants l'application peuvent avoir un impacte négatif sur l'utilisateur.
@@ -17,7 +17,7 @@ Pourquoi ne pouvons-nous pas avoir un framework complet avec tous ces avantages 
 
 C'est pour ça que Phalcon est né !
 
-Durant ces derniers mois, nous avons longuement étudié les comportements de PHP, déterminant les optimisations nécessaires (mineures ou majeures). 
+Durant ces derniers mois, nous avons longuement étudié les comportements de PHP, déterminant les optimisations nécessaires (mineures ou majeures).
 Grâce à la compréhension du Zend Engine, nous avons réussi à éliminer les validations inutiles, à réaliser des optimisations
 et à générer des solutions bas niveau pour arriver à atteindre le meilleur taux de performances pour Phalcon.
 
@@ -67,10 +67,10 @@ L'utilisation d'un cache rendra généralement l'application très rapide même 
 D'autres applications génèrent un contenu qui changera à chaque requête. Dans ce cas PHP est utilisé pour génèrer ce contenu.
 De telles applications peuvent être des APIs, des forums à fort trafic, des blogs avec beaucoup de commentaires et de contributeurs,
 des applications de statistiques, des interfaces d'administration, des progiciels de gestion intégré (ou "ERP"),
- des logiciels d'informatique décisionnelle ("BI", ou  "business-intelligence" en anglais) qui traitent des données en temps réel, et bien d'autres... 
+ des logiciels d'informatique décisionnelle ("BI", ou  "business-intelligence" en anglais) qui traitent des données en temps réel, et bien d'autres...
 
-Une application sera aussi lente que le plus lent de ses composants/processus. 
-Phalcon offre des fonctionnalités riches et très rapides qui permettent aux développeurs de se concentrer sur la création de leurs applications. 
+Une application sera aussi lente que le plus lent de ses composants/processus.
+Phalcon offre des fonctionnalités riches et très rapides qui permettent aux développeurs de se concentrer sur la création de leurs applications.
 En suivant les bonnes méthodes, Phalcon peut effectuer beaucoup plus de tâches par requête en consommant moins de mémoire et de processeur que n'importe quel autre framework.
 
 

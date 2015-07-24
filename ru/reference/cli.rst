@@ -1,5 +1,6 @@
 Консольные приложения
 =====================
+
 CLI приложения выполняются в командной строке. Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
 
 Структура
@@ -19,14 +20,14 @@ index.php, как в веб-приложениях, мы используем cl
 
 .. code-block:: php
 
-   <?php
+    <?php
 
     use Phalcon\DI\FactoryDefault\CLI as CliDI,
         Phalcon\CLI\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
-    //Используем стандартный для CLI контейнер зависимостей
+    // Используем стандартный для CLI контейнер зависимостей
     $di = new CliDI();
 
     // Определяем путь к каталогу приложений
@@ -45,43 +46,37 @@ index.php, как в веб-приложениях, мы используем cl
     $loader->register();
 
     // Загружаем файл конфигурации, если он есть
-    if(is_readable(APPLICATION_PATH . '/config/config.php')) {
+    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
     }
 
-    //Создаем консольное приложение
+    // Создаем консольное приложение
     $console = new ConsoleApp();
     $console->setDI($di);
 
     /**
-    * Определяем консольные аргументы
-    */
+     * Определяем консольные аргументы
+     */
     $arguments = array();
-    $params = array();
-
-    foreach($argv as $k => $arg) {
-        if($k == 1) {
+    foreach ($argv as $k => $arg) {
+        if ($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;
         } elseif($k >= 3) {
-           $params[] = $arg;
+            $arguments['params'][] = $arg;
         }
-    }
-    if(count($params) > 0) {
-        $arguments['params'] = $params;
     }
 
     // определяем глобальные константы для текущей задачи и действия
-    define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));
+    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
     define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
 
     try {
         // обрабатываем входящие аргументы
         $console->handle($arguments);
-    }
-    catch (\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
         exit(255);
     }
@@ -107,13 +102,12 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class mainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\CLI\Task
     {
-
-        public function mainAction() {
-             echo "\nThis is the default task and the default action \n";
+        public function mainAction()
+        {
+            echo "\nThis is the default task and the default action \n";
         }
-
     }
 
 
@@ -123,25 +117,25 @@ index.php, как в веб-приложениях, мы используем cl
 
 Если вы запустите приложение со следующими параметрами и Action:
 
-
 .. code-block:: php
 
     <?php
 
-    class mainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\CLI\Task
     {
-
-        public function mainAction() {
-             echo "\nThis is the default task and the default action \n";
+        public function mainAction()
+        {
+            echo "\nThis is the default task and the default action \n";
         }
 
         /**
-        * @param array $params
-        */
-       public function testAction(array $params) {
-           echo sprintf('hello %s', $params[0]) . PHP_EOL;
-           echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
-       }
+         * @param array $params
+         */
+        public function testAction(array $params)
+        {
+            echo sprintf('hello %s', $params[0]) . PHP_EOL;
+            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+        }
     }
 
 .. code-block:: bash
@@ -151,7 +145,6 @@ index.php, как в веб-приложениях, мы используем cl
    hello world
    best regards, universe
 
-
 Запуск цепочки команд
 ---------------------
 Вы также можете запустить цепочку задач, для этого вы должны добавить саму консоль в контейнер зависимостей:
@@ -160,11 +153,14 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-     $di->setShared('console', $console);
+    $di->setShared('console', $console);
 
-     try {
+    try {
         // обрабатываем входящие аргументы
         $console->handle($arguments);
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+        exit(255);
     }
 
 Затем, вы сможете использовать консоль внутри любой задачи. Ниже приведен пример модифицированного MainTask.php:
@@ -173,21 +169,24 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task {
-
-        public function mainAction() {
+    class MainTask extends \Phalcon\CLI\Task
+    {
+        public function mainAction()
+        {
             echo "\nThis is the default task and the default action \n";
 
-            $this->console->handle(array(
-               'task' => 'main',
-               'action' => 'test'
-            ));
+            $this->console->handle(
+                array(
+                    'task'   => 'main',
+                    'action' => 'test'
+                )
+            );
         }
 
-        public function testAction() {
-            echo '\nI will get printed too!\n';
+        public function testAction()
+        {
+            echo "\nI will get printed too!\n";
         }
-
     }
 
-Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий \Phalcon\CLI\Task, и реализовать такую логику там.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>`, и реализовать такую логику там.

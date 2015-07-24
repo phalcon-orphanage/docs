@@ -71,14 +71,14 @@
     use Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function(){
+    $di->set('dispatcher', function () {
 
         // Создание менеджера событий
         $eventsManager = new EventsManager();
 
         // Прикрепление функции-слушателя для событий типа "dispatch"
-        $eventsManager->attach("dispatch", function($event, $dispatcher) {
-            //...
+        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+            // ...
         });
 
         $dispatcher = new MvcDispatcher();
@@ -218,13 +218,13 @@
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
 
-        // Создаем менеджер событий 
+        // Создаем менеджер событий
         $eventsManager = new EventsManager();
 
         // Прикрепляем слушателя
-        $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
+        $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
 
             switch ($exception->getCode()) {
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -239,7 +239,7 @@
 
         $dispatcher = new MvcDispatcher();
 
-        //Прикрепляем менеджер событий к диспетчеру
+        // Прикрепляем менеджер событий к диспетчеру
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;

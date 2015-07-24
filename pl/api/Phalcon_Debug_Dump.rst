@@ -99,7 +99,7 @@ Returns an HTML string of debugging information about any number of variables, e
 
 
 
-public  **toJson** (*unknown* $variable)
+public  **toJson** (*mixed* $variable)
 
 Returns an JSON string of information about a single variable. 
 

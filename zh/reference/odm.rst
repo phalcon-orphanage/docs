@@ -31,9 +31,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 .. highlights::
 
     如果PHP版本为5.4/5.5或更高版本，为了提高性能节省内存开销，最好在模型类文件中定义每个字段。
-    
+
     模型Robots默认和数据库中的robots表格映射。如果想使用别的名字映射数据库中的表格则只需要重写getSource()方法即可：
-    
+
 .. code-block:: php
 
     <?php
@@ -86,7 +86,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
         }
 
     }
-    
+
 我们可以通过对象的ID查找到对象然后打印出其名字：
 
 .. code-block:: php
@@ -98,7 +98,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // Prints "Bender"
     echo $robot->name;
-    
+
 一旦记录被加载到内存中，我们就可以对这些数据进行修改了，修改之后还可以保存：
 
 .. code-block:: php
@@ -120,13 +120,13 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient();
         return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
         return $mongo->selectDB("store");
     }, true);
@@ -372,8 +372,8 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
         }
 
     }
-    
-    
+
+
 另外，这个组件也可以和 :doc:`Phalcon\\Events\\Manager <events>` 进行集成，这就意味着我们在事件触发创建监听器。
 
 .. code-block:: php
@@ -384,8 +384,8 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     $eventsManager = new EventsManager();
 
-    //Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function($event, $robot) {
+    // Attach an anonymous function as a listener for "model" events
+    $eventsManager->attach('collection', function ($event, $robot) {
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
@@ -400,7 +400,7 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
-    
+
     上面的例子中EventsManager仅在对象和监听器（匿名函数）之间扮演了一个桥接器的角色。如果我们想在创建应用时使用同一个EventsManager,我们需要把这个EventsManager对象设置到
     collectionManager服务中：
 
@@ -408,13 +408,13 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    //Registering the collectionManager service
-    $di->set('collectionManager', function() {
+    // Registering the collectionManager service
+    $di->set('collectionManager', function () {
 
         $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('collection', function($event, $model) {
+        $eventsManager->attach('collection', function ($event, $model) {
             if (get_class($model) == 'Robots') {
                 if ($event->getType() == 'beforeSave') {
                     if ($model->name == 'Scooby Doo') {
@@ -456,7 +456,7 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
         }
 
     }
- 
+
 在响应某些事件时返回了false则会停止当前的操作。 如果事实响应未返回任何值， :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` 会假定返回了true值。
 
 验证数据完整性（Validating Data Integrity）
@@ -687,13 +687,13 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
     <?php
 
     // This service returns a mongo database at 192.168.1.100
-    $di->set('mongo1', function() {
+    $di->set('mongo1', function () {
         $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
         return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
-    $di->set('mongo2', function() {
+    $di->set('mongo2', function () {
         $mongo = new MongoClient("mongodb://localhost");
         return $mongo->selectDB("invoicing");
     }, true);
@@ -735,7 +735,7 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
             $flash = $this->getDI()->getShared('flash');
 
             // Show validation messages
-            foreach ($this->getMessages() as $message){
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

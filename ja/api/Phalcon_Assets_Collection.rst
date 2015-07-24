@@ -3,6 +3,9 @@ Class **Phalcon\\Assets\\Collection**
 
 *implements* Countable, Iterator, Traversable
 
+Represents a collection of resources
+
+
 Methods
 -------
 
@@ -90,7 +93,7 @@ Adds a inline CSS to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the collection
 

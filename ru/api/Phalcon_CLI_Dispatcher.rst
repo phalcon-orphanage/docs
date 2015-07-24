@@ -193,7 +193,7 @@ Gets the latest dispatched action name
 
 
 
-public  **setParams** (*unknown* $params) inherited from Phalcon\\Dispatcher
+public  **setParams** (*array* $params) inherited from Phalcon\\Dispatcher
 
 Sets action params to be dispatched
 
@@ -205,13 +205,13 @@ Gets action params
 
 
 
-public  **setParam** (*unknown* $param, *unknown* $value) inherited from Phalcon\\Dispatcher
+public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
 
 Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*unknown* $param, [*unknown* $filters], [*unknown* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -229,7 +229,7 @@ Checks if the dispatch loop is finished or has more pendent controllers/tasks to
 
 
 
-public  **setReturnedValue** (*unknown* $value) inherited from Phalcon\\Dispatcher
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
 
 Sets the latest returned value by an action manually
 
@@ -247,7 +247,7 @@ Dispatches a handle action taking into account the routing parameters
 
 
 
-public  **forward** (*unknown* $forward) inherited from Phalcon\\Dispatcher
+public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
 
 Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
 

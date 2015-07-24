@@ -25,7 +25,7 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
     <?php
 
     use Phalcon\Mvc\Micro;
-    
+
     $app = new Micro();
 
 定义路由（Defining routes）
@@ -43,7 +43,7 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
 
 get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} 中含有一个参数 {$name}, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
 处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：
- 
+
 .. code-block:: php
 
     <?php
@@ -58,7 +58,7 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     //  静态方法
     $app->get('/say/hello/{name}', "SomeClass::someSayMethod");
 
-    //  对象内的方法 
+    //  对象内的方法
     $myController = new MyController();
     $app->get('/say/hello/{name}', array($myController, "someAction"));
 
@@ -76,7 +76,7 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     // 匹配http get 方法：
     $app->get('/api/products', "get_products");
 
-    //匹配HTTP post方法
+    // 匹配HTTP post方法
     $app->post('/api/products/add', "add_product");
 
     // 匹配http put 方法
@@ -94,6 +94,16 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     // 匹配http get 或 post方法
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    // Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 路由参数（Routes with Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,7 +141,7 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 处理响应（Working with Responses）
@@ -184,13 +194,13 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
         // 创建Response类实例
         $response = new Phalcon\Http\Response();
 
-        //Set the Content-Type header 设置返回内容的类型
+        // Set the Content-Type header 设置返回内容的类型
         $response->setContentType('text/plain');
 
         // 设置文件内容参数
         $response->setContent(file_get_contents("data.txt"));
 
-        //返回response实例对象
+        // 返回response实例对象
         return $response;
     });
 
@@ -222,17 +232,17 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     // 设置名为 "show-post"的路由
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. show the post here 
+        // .. show the post here
 
     })->setName('show-post');
 
-    // 产生url 
-    $app->get('/', function() use ($app) {
+    // 产生url
+    $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });
@@ -252,7 +262,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     $di = new FactoryDefault();
 
-    $di->set('config', function() {
+    $di->set('config', function () {
         return new IniConfig("config.ini");
     });
 
@@ -261,7 +271,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     $app->setDI($di);
 
     $app->get('/', function () use ($app) {
-        //Read a setting from the config
+        // Read a setting from the config
         echo $app->config->app_name;
     });
 
@@ -281,7 +291,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     $app = new Micro();
 
     // 设置数据库服务实例
-    $app['db'] = function() {
+    $app['db'] = function () {
         return new MysqlAdapter(array(
             "host" => "localhost",
             "username" => "root",
@@ -326,7 +336,7 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function(){
+    $app->get('/products/find', function () {
 
         foreach (Products::find() as $product) {
             echo $product->name, '<br>';
@@ -338,7 +348,7 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
 微应用中的事件（Micro Application Events）
 ----------------------------------------
-当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件： 
+当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件：
 
 +---------------------+-------------------------------------------------------------------+----------------------+
 | 事件名              |  如何触发                                                         | 是否可中断执行       |
@@ -367,7 +377,7 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     $eventManager = new EventsManager();
 
     // 监听应用的所有事件
-    $eventManager->attach('micro', function($event, $app) {
+    $eventManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -399,25 +409,25 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     // 每个路由匹配之前执行
     // 返回false来中止程序执行
-    $app->before(function() use ($app) {
+    $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
             return false;
         }
         return true;
     });
 
-    $app->map('/api/robots', function(){
+    $app->map('/api/robots', function () {
         return array(
             'status' => 'OK'
         );
     });
 
-    $app->after(function() use ($app) {
+    $app->after(function () use ($app) {
         // 路由处理器执行后执行
         echo json_encode($app->getReturnedValue());
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // 路由处理器执行后执行
     });
 
@@ -427,11 +437,11 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     <?php
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // 第一个结束处理器
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // 第二个结束处理器
     });
 
@@ -525,12 +535,12 @@ PostsController形如下：
 
         public function index()
         {
-            //...
+            // ...
         }
 
         public function show($slug)
         {
-            //...
+            // ...
         }
     }
 
@@ -557,7 +567,7 @@ PostsController形如下：
     $app = new Micro();
 
     // 返回Response实例
-    $app->get('/welcome/index', function() {
+    $app->get('/welcome/index', function () {
 
         $response = new Response();
 
@@ -578,14 +588,14 @@ PostsController形如下：
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function() {
+    $app['view'] = function () {
         $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
 
     // 返回渲染过的视图
-    $app->get('/products/show', function() use ($app) {
+    $app->get('/products/show', function () use ($app) {
 
         // 渲染视图时传递参数
         echo $app['view']->render('products/show', array(
@@ -605,11 +615,11 @@ A proper response can be generated if an exception is raised in a micro handler:
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app->get('/', function() {
+    $app->get('/', function () {
         throw new \Exception("An error");
     });
 
-    $app->error(function($exception) {
+    $app->error(function ($exception) {
         echo "An error has occurred";
     });
 

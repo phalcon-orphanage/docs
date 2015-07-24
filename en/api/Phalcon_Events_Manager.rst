@@ -9,13 +9,13 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 Methods
 -------
 
-public  **attach** (*unknown* $eventType, *unknown* $handler, [*unknown* $priority])
+public  **attach** (*string* $eventType, *object|callable* $handler, [*int* $priority])
 
 Attach a listener to the events manager
 
 
 
-public  **detach** (*unknown* $eventType, *unknown* $handler)
+public  **detach** (*string* $eventType, *object* $handler)
 
 Detach the listener from the events manager
 
@@ -63,15 +63,15 @@ Alias of detachAll
 
 
 
-final public *mixed*  **fireQueue** (*unknown* $queue, *unknown* $event)
+final public *mixed*  **fireQueue** (*\SplPriorityQueue|array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
 Internal handler to call a queue of events
 
 
 
-public *mixed*  **fire** (*unknown* $eventType, *unknown* $source, [*unknown* $data], [*unknown* $cancelable])
+public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
-Fires an event in the events manager causing that active listeners be notified about it 
+Fires an event in the events manager causing the active listeners to be notified about it 
 
 .. code-block:: php
 
@@ -88,7 +88,7 @@ Check whether certain type of event has listeners
 
 
 
-public *array*  **getListeners** (*unknown* $type)
+public *array*  **getListeners** (*string* $type)
 
 Returns all the attached listeners of a certain type
 

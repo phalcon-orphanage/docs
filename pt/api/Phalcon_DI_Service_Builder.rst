@@ -1,19 +1,19 @@
-Class **Phalcon\\DI\\Service\\Builder**
+Class **Phalcon\\Di\\Service\\Builder**
 =======================================
 
 This class builds instances based on complex definitions
 
 
 Methods
----------
+-------
 
-protected *mixed*  **_buildParameter** ()
+private *mixed*  **_buildParameter** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *int* $position, *array* $argument)
 
 Resolves a constructor/call parameter
 
 
 
-protected *array*  **_buildParameters** ()
+private  **_buildParameters** (*unknown* $dependencyInjector, *unknown* $arguments)
 
 Resolves an array of parameters
 

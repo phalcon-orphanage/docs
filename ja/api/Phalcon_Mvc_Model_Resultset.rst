@@ -42,7 +42,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*unknown* $result, [*unknown* $cache])
+public  **__construct** (*Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -96,7 +96,7 @@ Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value)
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -162,7 +162,7 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*unknown* $data, [*unknown* $conditionCallback])
+public *boolean*  **update** (*array* $data, [*Closure* $conditionCallback])
 
 Updates every record in the resultset
 
@@ -174,7 +174,7 @@ Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*unknown* $filter)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires 
 

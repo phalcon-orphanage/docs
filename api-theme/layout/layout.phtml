@@ -3,9 +3,9 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://static.phalconphp.com/css/phalcon.min.css" />
-        <link href="//fonts.googleapis.com/css?family=Open+Sans:700,400" rel="stylesheet" type="text/css">
-        <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://static.phalconphp.com/www/css/phalcon.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,400" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="<?= $this->asset("static/style.css") ?>" />
         <link rel="stylesheet" type="text/css" href="<?= $this->asset("static/prettify.css") ?>" />
 
@@ -25,7 +25,7 @@
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', '<?= $this->themeOption("analytics") ?>', 'auto');
         ga('send', 'pageview');
@@ -61,7 +61,7 @@
                                 <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
                                 <li><a href="//phalconphp.com/en/about">About</a></li>
                                 <li><div align="right">
-                                        <iframe src="//ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
                                     </div></li>
                             </ul>
                         </div>
@@ -79,25 +79,28 @@
 
         </div>
 
+        <table>
+            <tr>
+                <td valign="top">
+                    <div id="body-left">
 
+                        <div class="header-search">
+                            <input class="search-box" placeholder="Search for a class or namespace" type="text" />
+                        </div>
 
+                        <div id="menu-wrapper">
+                        </div>
+                    </div>
+                </td>
+                <td valign="top">
 
-        <div id="body-left">
-
-            <div class="header-search">
-                <input class="search-box" placeholder="Search for a class or namespace " type="text" />
-            </div>
-
-            <div id="menu-wrapper">
-            </div>
-
-
-
-        </div>
         <div id="body-right">
             <div class="content">
                 <?= $this->partial($contentPartial) ?>
             </div>
+        </div>
+    </tr>
+</table>
 
             <div class="prefooter">
                 <div class="container">
@@ -133,25 +136,24 @@
                         <div class="col-xs-4 col-sm-3">
                             <h4>Community</h4>
                             <ul>
-                                <li><a href="http://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                                <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
                                 <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
                                 <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
                                 <li><a href="http://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
-                                <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
-                                <li><a href="http://builtwith.phalconphp.com/">Built with Phalcon</a></li>
-                                <li><a href="http://store.phalconphp.com/">Store</a></li>
+                                <li><a href="//builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                                <li><a href="//store.phalconphp.com/">Store</a></li>
                             </ul>
                         </div>
                         <div class="col-xs-4 col-sm-2">
                             <h4>About</h4>
                             <ul>
-                                <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
-                                <li><a href="http://phalconphp.com/en/about">About</a></li>
-                                <li><a href="http://phalconphp.com/en/team">Team</a></li>
-                                <li><a href="http://phalconphp.com/en/roadmap">Roadmap</a></li>
-                                <li><a href="http://phalconphp.com/en/donate">Donate</a></li>
-                                <li><a href="http://phalconphp.com/en/consulting">Consulting</a></li>
-                                <li><a href="http://phalconphp.com/en/hosting">Hosting</a></li>
+                                <li><a class="link-black" href="//blog.phalconphp.com/">Blog</a></li>
+                                <li><a href="//phalconphp.com/en/about">About</a></li>
+                                <li><a href="//phalconphp.com/en/team">Team</a></li>
+                                <li><a href="//phalconphp.com/en/roadmap">Roadmap</a></li>
+                                <li><a href="//phalconphp.com/en/donate">Donate</a></li>
+                                <li><a href="//phalconphp.com/en/consulting">Consulting</a></li>
+                                <li><a href="//phalconphp.com/en/hosting">Hosting</a></li>
                             </ul>
                         </div>
                         <div id="license-spaccer" class="visible-xs"></div>
@@ -176,10 +178,5 @@
                 </div>
             </footer>
 
-        </div>
-
     </body>
-
-
-
 </html>

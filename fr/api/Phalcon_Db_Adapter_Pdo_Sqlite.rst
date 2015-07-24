@@ -41,13 +41,13 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 
-public :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` [] **describeIndexes** (*unknown* $table, [*unknown* $schema])
+public :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes
 
 
 
-public :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` [] **describeReferences** (*unknown* $table, [*unknown* $schema])
+public :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` [] **describeReferences** (*string* $table, [*string* $schema])
 
 Lists table references
 
@@ -97,7 +97,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\PDOStatement*  **executePrepared** (*unknown* $statement, *unknown* $placeholders, *unknown* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 
@@ -161,7 +161,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 
 
-public *string*  **escapeIdentifier** (*unknown* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Escapes a column/table/schema name 
 
@@ -201,7 +201,7 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 
 
-public *int|boolean*  **lastInsertId** ([*unknown* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *int|boolean*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
 
@@ -314,7 +314,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -333,7 +333,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 
@@ -359,7 +359,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *string|*  **fetchColumn** (*unknown* $sqlQuery, [*unknown* $placeholders], [*unknown* $column]) inherited from Phalcon\\Db\\Adapter
+public *string|*  **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int|string* $column]) inherited from Phalcon\\Db\\Adapter
 
 Returns the n'th field of first row in a SQL query result 
 
@@ -378,7 +378,7 @@ Returns the n'th field of first row in a SQL query result
 
 
 
-public *boolean*  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -399,7 +399,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **insertAsDict** (*unknown* $table, *unknown* $data, [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -422,7 +422,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **update** (*string|array* $table, *array* $fields, *array* $values, [*string|array* $whereCondition], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -458,7 +458,7 @@ Warning! If $whereCondition is string it not escaped.
 
 
 
-public *boolean*  **updateAsDict** (*unknown* $table, *unknown* $data, [*unknown* $whereCondition], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
 
@@ -481,7 +481,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
 
 
-public *boolean*  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **delete** (*string|array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -501,7 +501,7 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*unknown* $columnList) inherited from Phalcon\\Db\\Adapter
+public *string*  **getColumnList** (*array* $columnList) inherited from Phalcon\\Db\\Adapter
 
 Gets a list of columns
 
@@ -570,7 +570,7 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Creates a view
 

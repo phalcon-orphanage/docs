@@ -22,8 +22,8 @@ Grâce au conteneur de services, on peux s'assurer que les sessions sont accessi
 
     <?php
 
-    //Start the session the first time when some component request the session service
-    $di->setShared('session', function() {
+    // Start the session the first time when some component request the session service
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -44,17 +44,17 @@ accéder aux services de session et stocker/récupérer des informations de cett
 
         public function indexAction()
         {
-            //Set a session variable
+            // Set a session variable
             $this->session->set("user-name", "Michael");
         }
 
         public function welcomeAction()
         {
 
-            //Check if the variable is defined
+            // Check if the variable is defined
             if ($this->session->has("user-name")) {
 
-                //Retrieve its value
+                // Retrieve its value
                 $name = $this->session->get("user-name");
             }
         }
@@ -74,13 +74,13 @@ Il est aussi tout à fait possible de supprimer des variables spécifiques de se
 
         public function removeAction()
         {
-            //Remove a session variable
+            // Remove a session variable
             $this->session->remove("user-name");
         }
 
         public function logoutAction()
         {
-            //Destroy the whole session
+            // Destroy the whole session
             $this->session->destroy();
         }
 
@@ -98,10 +98,10 @@ Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions 
 
     <?php
 
-    //Isolating the session data
-    $di->set('session', function(){
+    // Isolating the session data
+    $di->set('session', function () {
 
-        //All variables created will prefixed with "my-app-1"
+        // All variables created will prefixed with "my-app-1"
         $session = new Phalcon\Session\Adapter\Files(
             array(
                 'uniqueId' => 'my-app-1'

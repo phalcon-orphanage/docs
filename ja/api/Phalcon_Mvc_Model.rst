@@ -3,7 +3,7 @@ Abstract class **Phalcon\\Mvc\\Model**
 
 *implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).  A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.  Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.  
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).  A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.  Phalcon\\Mvc\\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.  
 
 .. code-block:: php
 
@@ -205,7 +205,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*unknown* $data, [*unknown* $dataColumnMap], [*unknown* $whiteList])
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*unknown* $dataColumnMap], [*array* $whiteList])
 
 Assigns values to a model from an array 
 
@@ -232,7 +232,7 @@ Assigns values to a model from an array
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*unknown* $base, *unknown* $data, *unknown* $columnMap, [*unknown* $dirtyState], [*unknown* $keepSnapshots])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -249,13 +249,13 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static *mixed*  **cloneResultMapHydrate** (*unknown* $data, *unknown* $columnMap, *unknown* $hydrationMode)
+public static *mixed*  **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
 
 Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *unknown* $data, [*unknown* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -272,7 +272,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*unknown* $parameters])
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -303,7 +303,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*unknown* $parameters])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*string|array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -332,19 +332,19 @@ Create a criteria for a specific model
 
 
 
-protected *boolean*  **_exists** (*unknown* $metaData, *unknown* $connection, [*unknown* $table])
+protected *boolean*  **_exists** (:doc:`Phalcon\\Mvc\\Model\\MetadataInterface <Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, [*string|array* $table])
 
 Checks if the current record already exists or not
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** (*unknown* $functionName, *unknown* $alias, *unknown* $parameters)
+protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** (*unknown* $functionName, *string* $alias, *array* $parameters)
 
 Generate a PHQL SELECT statement for an aggregate
 
 
 
-public static *mixed*  **count** ([*unknown* $parameters])
+public static *mixed*  **count** ([*array* $parameters])
 
 Allows to count how many records match the specified conditions 
 
@@ -363,7 +363,7 @@ Allows to count how many records match the specified conditions
 
 
 
-public static *mixed*  **sum** ([*unknown* $parameters])
+public static *mixed*  **sum** ([*array* $parameters])
 
 Allows to calculate a summatory on a column that match the specified conditions 
 
@@ -382,7 +382,7 @@ Allows to calculate a summatory on a column that match the specified conditions
 
 
 
-public static *mixed*  **maximum** ([*unknown* $parameters])
+public static *mixed*  **maximum** ([*array* $parameters])
 
 Allows to get the maximum value of a column that match the specified conditions 
 
@@ -401,7 +401,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 
 
-public static *mixed*  **minimum** ([*unknown* $parameters])
+public static *mixed*  **minimum** ([*array* $parameters])
 
 Allows to get the minimum value of a column that match the specified conditions 
 
@@ -420,7 +420,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 
 
-public static *double*  **average** ([*unknown* $parameters])
+public static *double*  **average** ([*array* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions 
 
@@ -592,31 +592,31 @@ Executes internal events after save a record
 
 
 
-protected *boolean*  **_doLowInsert** (*unknown* $metaData, *unknown* $connection, *unknown* $table, *unknown* $identityField)
+protected *boolean*  **_doLowInsert** (:doc:`Phalcon\\Mvc\\Model\\MetadataInterface <Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table, *boolean|string* $identityField)
 
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-protected *boolean*  **_doLowUpdate** (*unknown* $metaData, *unknown* $connection, *unknown* $table)
+protected *boolean*  **_doLowUpdate** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table)
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean*  **_preSaveRelatedRecords** (*unknown* $connection, *unknown* $related)
+protected *boolean*  **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *Phalcon\\Mvc\\ModelInterface[]* $related)
 
 Saves related records that must be stored prior to save the master record
 
 
 
-protected *boolean*  **_postSaveRelatedRecords** (*unknown* $connection, *unknown* $related)
+protected *boolean*  **_postSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *Phalcon\\Mvc\\ModelInterface[]* $related)
 
 Save the related records assigned in the has-one/has-many relations
 
 
 
-public *boolean*  **save** ([*unknown* $data], [*unknown* $whiteList])
+public *boolean*  **save** ([*array* $data], [*array* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -898,7 +898,7 @@ Setup a relation 1-n between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** (*unknown* $fields, *unknown* $intermediateModel, *unknown* $intermediateFields, *unknown* $intermediateReferencedFields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** (*string|array* $fields, *string* $intermediateModel, *string|array* $intermediateFields, *string|array* $intermediateReferencedFields, *unknown* $referenceModel, *string|array* $referencedFields, [*array* $options])
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -979,7 +979,7 @@ Sets if the model must keep the original record snapshot in memory
 
 
 
-public  **setSnapshotData** (*unknown* $data, [*unknown* $columnMap])
+public  **setSnapshotData** (*array* $data, [*array* $columnMap])
 
 Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
@@ -997,7 +997,7 @@ Returns the internal snapshot data
 
 
 
-public  **hasChanged** ([*unknown* $fieldName])
+public  **hasChanged** ([*string|array* $fieldName])
 
 Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
@@ -1031,37 +1031,37 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*unknown* $alias, [*unknown* $arguments])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
 
 
 
-protected *mixed*  **_getRelatedRecords** (*unknown* $modelName, *unknown* $method, *unknown* $arguments)
+protected *mixed*  **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 
 Returns related records defined relations depending on the method name
 
 
 
-public *mixed*  **__call** (*unknown* $method, *unknown* $arguments)
+public *mixed*  **__call** (*string* $method, *array* $arguments)
 
 Handles method calls when a method is not implemented
 
 
 
-public static *mixed*  **__callStatic** (*unknown* $method, [*unknown* $arguments])
+public static *mixed*  **__callStatic** (*string* $method, [*array* $arguments])
 
 Handles method calls when a static method is not implemented
 
 
 
-public  **__set** (*unknown* $property, *unknown* $value)
+public  **__set** (*string* $property, *mixed* $value)
 
 Magic method to assign values to the the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*unknown* $property)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*string* $property)
 
 Magic method to get related records using the relation alias as a property
 

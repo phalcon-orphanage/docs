@@ -21,7 +21,7 @@ Represents individually a service in the services container
 Methods
 -------
 
-final public  **__construct** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
+final public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 
 
@@ -45,13 +45,13 @@ Check whether the service is shared or not
 
 
 
-public  **setSharedInstance** (*unknown* $sharedInstance)
+public  **setSharedInstance** (*mixed* $sharedInstance)
 
 Sets/Resets the shared instance related to the service
 
 
 
-public  **setDefinition** (*unknown* $definition)
+public  **setDefinition** (*mixed* $definition)
 
 Set the service definition
 
@@ -63,7 +63,7 @@ Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
+public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
@@ -75,7 +75,7 @@ Changes a parameter in the definition without resolve the service
 
 
 
-public *array*  **getParameter** (*unknown* $position)
+public *array*  **getParameter** (*int* $position)
 
 Returns a parameter in a specific position
 

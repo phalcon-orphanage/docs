@@ -195,11 +195,11 @@ to be notified when a route is executed:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function() {
+    $di['dispatcher'] = function () {
 
         $eventsManager = new EventsManager();
 
-        //Attach the plugin to 'dispatch' events
+        // Attach the plugin to 'dispatch' events
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new MvcDispatcher();
@@ -229,29 +229,29 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //Parse the annotations in the method currently executed
+            // Parse the annotations in the method currently executed
             $annotations = $this->annotations->getMethod(
-                $dispatcher->getActiveController(),
+                $dispatcher->getControllerClass(),
                 $dispatcher->getActiveMethod()
             );
 
-            //Check if the method has an annotation 'Cache'
+            // Check if the method has an annotation 'Cache'
             if ($annotations->has('Cache')) {
 
-                //The method has the annotation 'Cache'
+                // The method has the annotation 'Cache'
                 $annotation = $annotations->get('Cache');
 
-                //Get the lifetime
+                // Get the lifetime
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //Check if there is an user defined cache key
+                // Check if there is a user defined cache key
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //Enable the cache for the current method
+                // Enable the cache for the current method
                 $this->view->cache($options);
             }
         }

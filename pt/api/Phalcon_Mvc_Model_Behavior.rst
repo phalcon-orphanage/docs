@@ -1,11 +1,11 @@
-Class **Phalcon\\Mvc\\Model\\Behavior**
-=======================================
+Abstract class **Phalcon\\Mvc\\Model\\Behavior**
+================================================
 
 This is an optional base class for ORM behaviors
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -13,19 +13,19 @@ public  **__construct** ([*array* $options])
 
 
 
-protected  **mustTakeAction** ()
+protected  **mustTakeAction** (*unknown* $eventName)
 
 Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ()
+protected *array*  **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 
 
 
-public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **notify** (*unknown* $type, *unknown* $model)
 
 This method receives the notifications from the EventsManager
 

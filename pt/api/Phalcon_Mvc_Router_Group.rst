@@ -1,16 +1,18 @@
 Class **Phalcon\\Mvc\\Router\\Group**
 =====================================
 
+*implements* :doc:`Phalcon\\Mvc\\Router\\GroupInterface <Phalcon_Mvc_Router_GroupInterface>`
+
 Helper class to create a group of routes with common attributes  
 
 .. code-block:: php
 
     <?php
 
-     $router = new Phalcon\Mvc\Router();
+     $router = new \Phalcon\Mvc\Router();
     
      //Create a group with a common module and controller
-     $blog = new Phalcon\Mvc\Router\Group(array(
+     $blog = new Group(array(
      	'module' => 'blog',
      	'controller' => 'index'
      ));
@@ -40,75 +42,69 @@ Helper class to create a group of routes with common attributes
 
 
 Methods
----------
+-------
 
-public  **__construct** ([*array* $paths])
+public  **__construct** ([*unknown* $paths])
 
 Phalcon\\Mvc\\Router\\Group constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setHostname** (*string* $hostname)
+public  **setHostname** (*unknown* $hostname)
 
 Set a hostname restriction for all the routes in the group
 
 
 
-public *string*  **getHostname** ()
+public  **getHostname** ()
 
 Returns the hostname restriction
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setPrefix** (*string* $prefix)
+public  **setPrefix** (*unknown* $prefix)
 
 Set a common uri prefix for all the routes in this group
 
 
 
-public *string*  **getPrefix** ()
+public  **getPrefix** ()
 
 Returns the common prefix for all the routes
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **beforeMatch** (*unknown* $beforeMatch)
+public  **beforeMatch** (*unknown* $beforeMatch)
 
-Set a before-match condition for the whole group
-
-
-
-public *string*  **getBeforeMatch** ()
-
-Returns the before-match condition if any
+Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setPaths** (*array* $paths)
+public  **getBeforeMatch** ()
+
+Returns the 'before match' callback if any
+
+
+
+public  **setPaths** (*unknown* $paths)
 
 Set common paths for all the routes in the group
 
 
 
-public *array|string*  **getPaths** ()
+public  **getPaths** ()
 
 Returns the common paths defined for this group
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` [] **getRoutes** ()
+public  **getRoutes** ()
 
 Returns the routes added to the group
 
 
 
-protected :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **_addRoute** ()
-
-Adds a route applying the common attributes
-
-
-
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
+public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
 
 Adds a route to the router on any HTTP method 
 
@@ -116,7 +112,7 @@ Adds a route to the router on any HTTP method
 
     <?php
 
-     $router->add('/about', 'About::index');
+     router->add('/about', 'About::index');
 
 
 
@@ -166,6 +162,12 @@ Adds a route to the router that only match if the HTTP method is HEAD
 public  **clear** ()
 
 Removes all the pre-defined routes
+
+
+
+protected  **_addRoute** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+
+Adds a route applying the common attributes
 
 
 

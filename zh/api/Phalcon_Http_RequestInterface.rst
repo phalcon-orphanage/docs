@@ -34,6 +34,11 @@ abstract public  **hasPost** (*unknown* $name)
 ...
 
 
+abstract public  **hasPut** (*unknown* $name)
+
+...
+
+
 abstract public  **hasQuery** (*unknown* $name)
 
 ...
@@ -104,7 +109,7 @@ abstract public  **getUserAgent** ()
 ...
 
 
-abstract public  **isMethod** (*unknown* $methods)
+abstract public  **isMethod** (*unknown* $methods, [*unknown* $strict])
 
 ...
 
@@ -139,12 +144,12 @@ abstract public  **isOptions** ()
 ...
 
 
-abstract public  **hasFiles** ([*unknown* $notErrored])
+abstract public  **hasFiles** ([*unknown* $onlySuccessful])
 
 ...
 
 
-abstract public  **getUploadedFiles** ([*unknown* $notErrored])
+abstract public  **getUploadedFiles** ([*unknown* $onlySuccessful])
 
 ...
 

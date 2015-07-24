@@ -7,19 +7,19 @@ Base class for Phalcon\\Translate adapters
 Methods
 -------
 
-public *string*  **t** (*unknown* $translateKey, [*unknown* $placeholders])
+public *string*  **t** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*unknown* $translateKey, [*unknown* $placeholders])
+public *string*  **_** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key (alias of method 't')
 
 
 
-public  **offsetSet** (*unknown* $offset, *unknown* $value)
+public  **offsetSet** (*string* $offset, *string* $value)
 
 Sets a translation value
 
@@ -31,13 +31,13 @@ Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*unknown* $offset)
+public  **offsetUnset** (*string* $offset)
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $translateKey)
+public *string*  **offsetGet** (*string* $translateKey)
 
 Returns the translation related to the given key
 

@@ -1,5 +1,6 @@
 加密与解密（Encryption/Decryption）
 =====================
+
 Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密和解密工具。这个类提供了对php mcrypt_ 的封装。默认情况下这个组件使用AES-256 (rijndael-256-cbc)。
 
 基本使用
@@ -13,7 +14,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     use Phalcon\Crypt;
 
-    //Create an instance
+    // Create an instance
     $crypt     = new Crypt();
 
     $key       = 'le password';
@@ -98,7 +99,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $crypt->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($encrypt, $key);
 
 配置加密服务（Setting up an Encryption service）
 ------------------------------------------------
@@ -110,7 +111,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
 
         $crypt = new Crypt();
 
@@ -119,7 +120,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
         return $crypt;
     }, true);
-    
+
 然后，例如，我们可以在控制器中使用它了：
 
 .. code-block:: php
@@ -130,7 +131,6 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     class SecretsController extends Controller
     {
-
         public function saveAction()
         {
             $secret = new Secrets();
@@ -148,4 +148,3 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
 .. _here: http://www.php.net/manual/en/mcrypt.ciphers.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php
-

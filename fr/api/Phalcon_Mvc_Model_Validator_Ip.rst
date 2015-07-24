@@ -11,7 +11,7 @@ Phalcon\\Mvc\\Model\\Validator\\IP  Validates that a value is ipv4 address in va
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\CardNumber;
+    use Phalcon\Mvc\Model\Validator\Ip;
     
     class Data extends Phalcon\Mvc\Model
     {
@@ -19,7 +19,7 @@ Phalcon\\Mvc\\Model\\Validator\\IP  Validates that a value is ipv4 address in va
       public function validation()
       {
           // Any pubic IP
-          $this->validate(new IPv4(array(
+          $this->validate(new IP(array(
               'field'             => 'server_ip',
               'version'           => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
               'allowReserved'     => false,   // False if not specified. Ignored for v6
@@ -73,7 +73,7 @@ Phalcon\\Mvc\\Model\\Validator constructor
 
 
 
-protected  **appendMessage** (*unknown* $message, [*unknown* $field], [*unknown* $type]) inherited from Phalcon\\Mvc\\Model\\Validator
+protected  **appendMessage** (*string* $message, [*string|array* $field], [*string* $type]) inherited from Phalcon\\Mvc\\Model\\Validator
 
 Appends a message to the validator
 

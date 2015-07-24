@@ -44,10 +44,10 @@
 
     $eventsManager = new EventsManager();
 
-    //创建一个数据库侦听
+    // 创建一个数据库侦听
     $dbListener = new MyDbListener();
 
-    //侦听全部数据库事件
+    // 侦听全部数据库事件
     $eventsManager->attach('db', $dbListener);
 
     $connection = new DbAdapter(array(
@@ -57,10 +57,10 @@
         "dbname" => "invo"
     ));
 
-    //将$eventsManager赋值给数据库甜适配器
+    // 将$eventsManager赋值给数据库甜适配器
     $connection->setEventsManager($eventsManager);
 
-    //发送一个SQL命令到数据库服务器
+    // 发送一个SQL命令到数据库服务器
     $connection->query("SELECT * FROM products p WHERE p.status = 1");
 
 为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
@@ -145,7 +145,7 @@
 
     <?php
 
-    //发送一个SQL命令到数据库服务器
+    // 发送一个SQL命令到数据库服务器
     $connection->execute("SELECT * FROM products p WHERE p.status = 1");
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
@@ -161,8 +161,8 @@
 
     <?php
 
-    //侦听全部数据加事件
-    $eventManager->attach('db', function($event, $connection) {
+    // 侦听全部数据加事件
+    $eventManager->attach('db', function ($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
         }
@@ -234,19 +234,19 @@
 
     <?php
 
-    //创建一个事件管理器
+    // 创建一个事件管理器
     $eventsManager = new Phalcon\Events\Manager();
 
-    //创建MyComponent实例
+    // 创建MyComponent实例
     $myComponent = new MyComponent();
 
-    //将事件管理器绑定到创建MyComponent实例实例
+    // 将事件管理器绑定到创建MyComponent实例实例
     $myComponent->setEventsManager($eventsManager);
 
-    //为事件管理器附上侦听者
+    // 为事件管理器附上侦听者
     $eventsManager->attach('my-component', new SomeListener());
 
-    //执行组件的方法
+    // 执行组件的方法
     $myComponent->someTask();
 
 当“someTask”被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
@@ -270,13 +270,13 @@
 
     <?php
 
-    //从第三个参数接收数据
-    $eventManager->attach('my-component', function($event, $component, $data) {
+    // 从第三个参数接收数据
+    $eventManager->attach('my-component', function ($event, $component, $data) {
         print_r($data);
     });
 
-    //从事件上下文中接收数据
-    $eventManager->attach('my-component', function($event, $component) {
+    // 从事件上下文中接收数据
+    $eventManager->attach('my-component', function ($event, $component) {
         print_r($event->getData());
     });
 
@@ -286,9 +286,9 @@
 
     <?php
 
-    //这个处理器只会在“beforeSomeTask”事件触发时才被执行
-    $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
-        //...
+    // 这个处理器只会在“beforeSomeTask”事件触发时才被执行
+    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
+        // ...
     });
 
 事件传播与取消（Event Propagation/Cancellation）
@@ -300,15 +300,15 @@
 
     <?php
 
-    $eventsManager->attach('db', function($event, $connection){
+    $eventsManager->attach('db', function ($event, $connection) {
 
-        //如果可以取消，我们就终止此事件
+        // 如果可以取消，我们就终止此事件
         if ($event->isCancelable()) {
-            //终止事件，这样的话其他侦听都就不会再收到此通知
+            // 终止事件，这样的话其他侦听都就不会再收到此通知
             $event->stop();
         }
 
-        //...
+        // ...
 
     });
 
@@ -331,9 +331,9 @@
 
     $evManager->enablePriorities(true);
 
-    $evManager->attach('db', new DbListener(), 150); //高优先级
-    $evManager->attach('db', new DbListener(), 100); //正常优先级
-    $evManager->attach('db', new DbListener(), 50); //低优先级
+    $evManager->attach('db', new DbListener(), 150); // 高优先级
+    $evManager->attach('db', new DbListener(), 100); // 正常优先级
+    $evManager->attach('db', new DbListener(), 50); // 低优先级
 
 收集响应（Collecting Responses）
 --------------------
@@ -347,23 +347,23 @@
 
     $evManager = new EventsManager();
 
-    //建立事件管理器以为收集结果响应
+    // 建立事件管理器以为收集结果响应
     $evManager->collectResponses(true);
 
-    //附上一个侦听者
-    $evManager->attach('custom:custom', function() {
+    // 附上一个侦听者
+    $evManager->attach('custom:custom', function () {
         return 'first response';
     });
 
-    //附上一个侦听者
-    $evManager->attach('custom:custom', function() {
+    // 附上一个侦听者
+    $evManager->attach('custom:custom', function () {
         return 'second response';
     });
 
-    //执行fire事件
+    // 执行fire事件
     $evManager->fire('custom:custom', null);
 
-    //获取全部收集到的响应
+    // 获取全部收集到的响应
     print_r($evManager->getResponses());
 
 上面示例将输出：

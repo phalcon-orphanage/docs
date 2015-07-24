@@ -32,7 +32,7 @@ different files, where keys remain the same and values contain the translated st
 
     <?php
 
-    //app/messages/es.php
+    // app/messages/es.php
     $messages = array(
         "hi"      => "Hello",
         "bye"     => "Good Bye",
@@ -44,7 +44,7 @@ different files, where keys remain the same and values contain the translated st
 
     <?php
 
-    //app/messages/fr.php
+    // app/messages/fr.php
     $messages = array(
         "hi"      => "Bonjour",
         "bye"     => "Au revoir",
@@ -68,10 +68,10 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
       protected function _getTranslation()
       {
 
-        //Ask browser what is the best language
+        // Ask browser what is the best language
         $language = $this->request->getBestLanguage();
 
-        //Check if we have a translation file for that lang
+        // Check if we have a translation file for that lang
         if (file_exists("app/messages/".$language.".php")) {
            require "app/messages/".$language.".php";
         } else {
@@ -79,7 +79,7 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
            require "app/messages/en.php";
         }
 
-        //Return a translation object
+        // Return a translation object
         return new \Phalcon\Translate\Adapter\NativeArray(array(
            "content" => $messages
         ));

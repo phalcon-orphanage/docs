@@ -132,7 +132,7 @@ The example below shows how to change the log format:
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    //Changing the logger format
+    // Changing the logger format
     $formatter = new LineFormatter("%date% - %message%");
     $logger->setFormatter($formatter);
 
@@ -185,7 +185,7 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
 .. code-block:: php
 
     <?php
-    
+
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // Basic Usage
@@ -210,9 +210,9 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
- 	$logger->log("This is a message");
- 	$logger->log("This is an error", Logger::ERROR);
- 	$logger->error("This is another error");
+     $logger->log("This is a message");
+     $logger->log("This is an error", Logger::ERROR);
+     $logger->error("This is another error");
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

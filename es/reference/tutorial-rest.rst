@@ -51,7 +51,7 @@ that is our application:
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Then, in the index.php file we create the following:
@@ -62,7 +62,7 @@ Then, in the index.php file we create the following:
 
     $app = new \Phalcon\Mvc\Micro();
 
-    //define the routes here
+    // define the routes here
 
     $app->handle();
 
@@ -74,33 +74,33 @@ Now we will create the routes as we defined above:
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() {
+    // Retrieves all robots
+    $app->get('/api/robots', function () {
 
     });
 
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
-    //Adds a new robot
-    $app->post('/api/robots', function() {
+    // Adds a new robot
+    $app->post('/api/robots', function () {
 
     });
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function () {
 
     });
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -133,7 +133,7 @@ application:
 
         public function validation()
         {
-            //Type must be: droid, mechanical or virtual
+            // Type must be: droid, mechanical or virtual
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
@@ -141,7 +141,7 @@ application:
                 )
             ));
 
-            //Robot name must be unique
+            // Robot name must be unique
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
@@ -149,12 +149,12 @@ application:
                 )
             ));
 
-            //Year cannot be less than zero
+            // Year cannot be less than zero
             if ($this->year < 0) {
                 $this->appendMessage(new Message("The year cannot be less than zero"));
             }
 
-            //Check if any messages have been produced
+            // Check if any messages have been produced
             if ($this->validationHasFailed() == true) {
                 return false;
             }
@@ -170,8 +170,8 @@ Now, we must set up a connection to be used by this model:
 
     $di = new \Phalcon\DI\FactoryDefault();
 
-    //Set up the database service
-    $di->set('db', function(){
+    // Set up the database service
+    $di->set('db', function () {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
             "username" => "asimov",
@@ -182,7 +182,7 @@ Now, we must set up a connection to be used by this model:
 
     $app = new \Phalcon\Mvc\Micro();
 
-    //Bind the DI to the application
+    // Bind the DI to the application
     $app->setDI($di);
 
 Retrieving Data
@@ -194,8 +194,8 @@ perform this simple query returning the results as JSON:
 
     <?php
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() use ($app) {
+    // Retrieves all robots
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
@@ -221,8 +221,8 @@ The searching by name handler would look like:
 
     <?php
 
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
@@ -247,8 +247,8 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
 
     <?php
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
@@ -278,8 +278,8 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
     <?php
 
-    //Adds a new robot
-    $app->post('/api/robots', function() use ($app) {
+    // Adds a new robot
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = json_decode($app->request->getRawBody());
 
@@ -291,7 +291,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
 
             $this->response->setStatusCode(201, "Created")->sendHeaders();
@@ -302,10 +302,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
-            //Send errors to the client
+            // Send errors to the client
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
@@ -327,8 +327,8 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
     <?php
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = json_decode($app->request->getRawBody());
 
@@ -340,14 +340,14 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
 
             $response = array('status' => 'OK');
 
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
@@ -371,8 +371,8 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
     <?php
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
@@ -384,7 +384,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
@@ -411,7 +411,7 @@ Obtain all the robots:
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Tue, 21 Jul 2015 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -425,7 +425,7 @@ Search a robot by its name:
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Tue, 21 Jul 2015 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -439,7 +439,7 @@ Obtain a robot by its id:
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Tue, 21 Jul 2015 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -454,7 +454,7 @@ Insert a new robot:
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Tue, 21 Jul 2015 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -469,7 +469,7 @@ Try to insert a new robot with the name of an existing robot:
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Tue, 21 Jul 2015 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -484,7 +484,7 @@ Or update a robot with an unknown type:
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Tue, 21 Jul 2015 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -499,7 +499,7 @@ Finally, delete a robot:
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Tue, 21 Jul 2015 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

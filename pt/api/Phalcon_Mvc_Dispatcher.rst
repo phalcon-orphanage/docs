@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
 Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.  
 
@@ -11,9 +11,9 @@ Dispatching is the process of taking the request object, extracting the module n
 
     <?php
 
-    $di = new Phalcon\DI();
+    $di = new \Phalcon\Di();
     
-    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher = new \Phalcon\Mvc\Dispatcher();
     
       $dispatcher->setDI($di);
     
@@ -41,45 +41,69 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
-public  **setControllerSuffix** (*string* $controllerSuffix)
+public  **setControllerSuffix** (*unknown* $controllerSuffix)
 
 Sets the default controller suffix
 
 
 
-public  **setDefaultController** (*string* $controllerName)
+public  **setDefaultController** (*unknown* $controllerName)
 
 Sets the default controller name
 
 
 
-public  **setControllerName** (*string* $controllerName)
+public  **setControllerName** (*unknown* $controllerName)
 
 Sets the controller name to be dispatched
 
 
 
-public *string*  **getControllerName** ()
+public  **getControllerName** ()
 
 Gets last dispatched controller name
 
 
 
-protected  **_throwDispatchException** ()
+public  **getPreviousControllerName** ()
+
+Gets previous dispatched controller name
+
+
+
+public  **getPreviousActionName** ()
+
+Gets previous dispatched action name
+
+
+
+protected  **_throwDispatchException** (*unknown* $message, [*unknown* $exceptionCode])
 
 Throws an internal exception
 
 
 
-public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getLastController** ()
+protected  **_handleException** (*unknown* $exception)
+
+Handles a user exception
+
+
+
+public  **getControllerClass** ()
+
+Possible controller class name that will be located to dispatch the request
+
+
+
+public  **getLastController** ()
 
 Returns the lastest dispatched controller
 
 
 
-public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
+public  **getActiveController** ()
 
 Returns the active controller in the dispatcher
 
@@ -91,87 +115,87 @@ Phalcon\\Dispatcher constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
+public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Dispatcher
+public  **getDI** () inherited from Phalcon\\Dispatcher
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
+public  **getEventsManager** () inherited from Phalcon\\Dispatcher
 
 Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon\\Dispatcher
+public  **setActionSuffix** (*unknown* $actionSuffix) inherited from Phalcon\\Dispatcher
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*string* $moduleName) inherited from Phalcon\\Dispatcher
+public  **setModuleName** (*unknown* $moduleName) inherited from Phalcon\\Dispatcher
 
 Sets the module where the controller is (only informative)
 
 
 
-public *string*  **getModuleName** () inherited from Phalcon\\Dispatcher
+public  **getModuleName** () inherited from Phalcon\\Dispatcher
 
 Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setNamespaceName** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the namespace where the controller class is
 
 
 
-public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+public  **getNamespaceName** () inherited from Phalcon\\Dispatcher
 
 Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\Dispatcher
+public  **setDefaultNamespace** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
 
 
 
-public *string*  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
+public  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
 
 Returns the default namespace
 
 
 
-public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Dispatcher
+public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the default action name
 
 
 
-public  **setActionName** (*string* $actionName) inherited from Phalcon\\Dispatcher
+public  **setActionName** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the action name to be dispatched
 
 
 
-public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
+public  **getActionName** () inherited from Phalcon\\Dispatcher
 
-Gets the lastest dispatched action name
+Gets the latest dispatched action name
 
 
 
@@ -181,7 +205,7 @@ Sets action params to be dispatched
 
 
 
-public *array*  **getParams** () inherited from Phalcon\\Dispatcher
+public  **getParams** () inherited from Phalcon\\Dispatcher
 
 Gets action params
 
@@ -199,15 +223,15 @@ Gets a param by its name or numeric index
 
 
 
-public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+public  **getActiveMethod** () inherited from Phalcon\\Dispatcher
 
 Returns the current method to be/executed in the dispatcher
 
 
 
-public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
+public  **isFinished** () inherited from Phalcon\\Dispatcher
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 
 
@@ -237,14 +261,26 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
     <?php
 
-      $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
+      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
 
 
 
 
-public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
+public  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
+
+
+
+public  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
+
+
+
+protected  **_resolveEmptyProperties** () inherited from Phalcon\\Dispatcher
+
+Set empty properties to their defaults (where defaults are available)
 
 
 

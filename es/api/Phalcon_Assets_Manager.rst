@@ -7,7 +7,7 @@ Manages collections of CSS/Javascript assets
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 
 
@@ -153,37 +153,37 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** (*unknown* $collection, *unknown* $callback, *unknown* $type)
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, *string* $type)
 
 Traverses a collection calling the callback to generate its HTML
 
 
 
-public  **outputInline** (*unknown* $collection, *unknown* $type)
+public  **outputInline** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *string* $type)
 
 Traverses a collection and generate its HTML
 
 
 
-public  **outputCss** ([*unknown* $collectionName])
+public  **outputCss** ([*string* $collectionName])
 
 Prints the HTML for CSS resources
 
 
 
-public  **outputInlineCss** ([*unknown* $collectionName])
+public  **outputInlineCss** ([*string* $collectionName])
 
 Prints the HTML for inline CSS
 
 
 
-public  **outputJs** ([*unknown* $collectionName])
+public  **outputJs** ([*string* $collectionName])
 
 Prints the HTML for JS resources
 
 
 
-public  **outputInlineJs** ([*unknown* $collectionName])
+public  **outputInlineJs** ([*string* $collectionName])
 
 Prints the HTML for inline JS
 

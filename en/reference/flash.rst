@@ -28,7 +28,7 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Set up the flash service
-    $di->set('flash', function() {
+    $di->set('flash', function () {
         return new FlashDirect();
     });
 
@@ -94,8 +94,8 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
 
     use Phalcon\Flash\Direct as FlashDirect;
 
-    //Register the flash service with custom CSS classes
-    $di->set('flash', function(){
+    // Register the flash service with custom CSS classes
+    $di->set('flash', function () {
         $flash = new FlashDirect(array(
             'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',

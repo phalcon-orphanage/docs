@@ -18,7 +18,7 @@ Stores the parsed annotations to XCache. This adapter is suitable for production
 Methods
 -------
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*unknown* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
 Reads parsed annotations from XCache
 
@@ -42,7 +42,7 @@ Returns the annotation reader
 
 
 
-public  **get** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **get** (*string|object* $className) inherited from Phalcon\\Annotations\\Adapter
 
 Parses or retrieves all the annotations found in a class
 

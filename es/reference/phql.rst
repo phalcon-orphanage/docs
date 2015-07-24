@@ -110,11 +110,11 @@ From a controller or a view, it's easy create/execute them using a injected :doc
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars = $query->execute();
 
-    //With bound parameters
+    // With bound parameters
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars = $query->execute(array(
         'name' => 'Audi'
@@ -126,10 +126,10 @@ Or simply execute it:
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Executing with bound parameters
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
@@ -318,6 +318,25 @@ If an alias is used to rename the models in the query, those will be used to nam
         echo "Brand: ", $row->b->name, "\n";
     }
 
+When the joined model has a many-to-many relation to the 'from' model, the intermediate model is implicitly added to the generated query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
+            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $result = $this->modelsManager->executeQuery($phql);
+
+This code executes the following SQL in MySQL:
+
+.. code-block:: sql
+
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
+    INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
+    INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
+    WHERE `artists`.`genre` = 'Trip-Hop'
+
 Aggregations
 ^^^^^^^^^^^^
 The following examples show how to use aggregations in PHQL:
@@ -468,7 +487,7 @@ because the price does not meet the business rule that we implemented:
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false)
     {
@@ -531,7 +550,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -729,7 +748,7 @@ The following is the life cycle of each PHQL statement executed:
 
 Using Raw SQL
 -------------
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 .. code-block:: php
 

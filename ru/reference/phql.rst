@@ -313,7 +313,7 @@ PHQL поддерживает большинство стандартов SQL, �
 
     <?php
 
-    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
     $result = $this->modelsManager->query($phql);
 
@@ -321,7 +321,7 @@ PHQL поддерживает большинство стандартов SQL, �
 
 .. code-block:: sql
 
-    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
     INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
@@ -472,7 +472,7 @@ Phalcon не только преобразует PHQL выражения в SQL.
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false)
     {
@@ -533,7 +533,7 @@ UPDATE выполняет изменение в два этапа:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {

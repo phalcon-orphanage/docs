@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
-This components aids in the generation of: URIs, URLs and Paths  
+This components helps in the generation of: URIs, URLs and Paths  
 
 .. code-block:: php
 
@@ -18,21 +18,21 @@ This components aids in the generation of: URIs, URLs and Paths
 
 
 Methods
----------
+-------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public  **setBaseUri** (*string* $baseUri)
+public  **setBaseUri** (*unknown* $baseUri)
 
 Sets a prefix for all the URIs to be generated 
 
@@ -46,7 +46,7 @@ Sets a prefix for all the URIs to be generated
 
 
 
-public  **setStaticBaseUri** (*string* $staticBaseUri)
+public  **setStaticBaseUri** (*unknown* $staticBaseUri)
 
 Sets a prefix for all static URLs generated 
 
@@ -59,13 +59,19 @@ Sets a prefix for all static URLs generated
 
 
 
-public *string*  **getBaseUri** ()
+public  **getBaseUri** ()
 
 Returns the prefix for all the generated urls. By default /
 
 
 
-public  **setBasePath** (*string* $basePath)
+public  **getStaticBaseUri** ()
+
+Returns the prefix for all the generated static urls. By default /
+
+
+
+public  **setBasePath** (*unknown* $basePath)
 
 Sets a base path for all the generated paths 
 
@@ -78,13 +84,13 @@ Sets a base path for all the generated paths
 
 
 
-public *string*  **getBasePath** ()
+public  **getBasePath** ()
 
 Returns the base path
 
 
 
-public *string*  **get** ([*string|array* $uri])
+public  **get** ([*unknown* $uri], [*unknown* $args], [*unknown* $local], [*unknown* $baseUri])
 
 Generates a URL 
 
@@ -96,18 +102,29 @@ Generates a URL
      echo $url->get('products/edit/1');
     
      //Generate a URL for a predefined route
-     echo $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2012'));
+     echo $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2015'));
 
 
 
 
-public *string*  **getStatic** ([*string|array* $uri])
+public  **getStatic** ([*unknown* $uri])
 
-Generates a URL for a static resource
+Generates a URL for a static resource 
+
+.. code-block:: php
+
+    <?php
+
+     // Generate a URL for a static resource
+     echo $url->getStatic("img/logo.png");
+    
+     // Generate a URL for a static predefined route
+     echo $url->getStatic(array('for' => 'logo-cdn'));
 
 
 
-public *string*  **path** ([*string* $path])
+
+public  **path** ([*unknown* $path])
 
 Generates a local path
 

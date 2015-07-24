@@ -1,36 +1,47 @@
-Class **Phalcon\\Validation\\Validator**
-========================================
+Abstract class **Phalcon\\Validation\\Validator**
+=================================================
+
+*implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
 This is a base class for validators
 
 
 Methods
----------
+-------
 
-public  **__construct** ([*array* $options])
+public  **__construct** ([*unknown* $options])
 
 Phalcon\\Validation\\Validator constructor
 
 
 
-public *mixed*  **isSetOption** (*string* $key)
+public  **isSetOption** (*unknown* $key)
 
 Checks if an option is defined
 
 
 
-public *mixed*  **getOption** (*string* $key)
+public  **hasOption** (*unknown* $key)
 
-Returns an option in the validator's options Returns null if the option hasn't been set
+Checks if an option is defined
 
 
 
-public  **setOption** (*string* $key, *mixed* $value)
+public  **getOption** (*unknown* $key, [*unknown* $defaultValue])
+
+Returns an option in the validator's options Returns null if the option hasn't set
+
+
+
+public  **setOption** (*unknown* $key, *unknown* $value)
 
 Sets an option in the validator
 
 
 
-abstract public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** (*Phalcon\\Validation* $validator, *string* $attribute) inherited from Phalcon\\Validation\\ValidatorInterface
+abstract public  **validate** (*unknown* $validation, *unknown* $attribute)
 
 Executes the validation
+
+
+

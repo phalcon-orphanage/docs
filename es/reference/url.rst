@@ -1,16 +1,16 @@
 Generating URLs and Paths
 =========================
 
-:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
-capable of produce independent urls based on routes.
+:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate URLs in a Phalcon application. It's
+capable of produce independent URLs based on routes.
 
 Setting a base URI
 ------------------
-Dependending of which directory of your document root your application is installed, it may have a base uri or not.
+Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
 For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
 baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
-Execute the following code to know the base uri detected by Phalcon:
+Execute the following code to know the base URI detected by Phalcon:
 
 .. code-block:: php
 
@@ -36,10 +36,10 @@ Usually, this component must be registered in the Dependency Injector container,
 
     <?php
 
-    $di->set('url', function(){
-    	$url = new Phalcon\Mvc\Url();
-    	$url->setBaseUri('/invo/');
-    	return $url;
+    $di->set('url', function () {
+        $url = new Phalcon\Mvc\Url();
+        $url->setBaseUri('/invo/');
+        return $url;
     });
 
 Generating URIs
@@ -52,7 +52,7 @@ pattern defined in the router) passing a string to the method "get":
 
     <?php echo $url->get("products/save") ?>
 
-Note that isn't necessary to prepend the base uri. If you have named routes you can easily change it creating it dynamically.
+Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically.
 For Example if you have the following route:
 
 .. code-block:: php
@@ -70,17 +70,17 @@ A URL can be generated in the following way:
 
     <?php
 
-    //This produces: /blog/2012/01/some-blog-post
+    // This produces: /blog/2015/01/some-blog-post
     $url->get(array(
         'for' => 'show-post',
-        'year' => 2012,
+        'year' => 2015,
         'month' => '01',
         'title' => 'some-blog-post'
     ));
 
 Producing URLs without Mod-Rewrite
 ----------------------------------
-You can use this component also to create urls without mod-rewrite:
+You can use this component also to create URLs without mod-rewrite:
 
 .. code-block:: php
 
@@ -88,10 +88,10 @@ You can use this component also to create urls without mod-rewrite:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI in $_GET["_url"]
+    // Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //This produce: /invo/index.php?_url=/products/save
+    // This produce: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
 
 You can also use $_SERVER["REQUEST_URI"]:
@@ -102,10 +102,10 @@ You can also use $_SERVER["REQUEST_URI"]:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI using $_SERVER["REQUEST_URI"]
+    // Pass the URI using $_SERVER["REQUEST_URI"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //Pass the URI in $_GET["_url"]
+    // Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php/');
 
 In this case, it's necessary to manually handle the required URI in the Router:
@@ -127,7 +127,7 @@ The produced routes would look like:
 
     <?php
 
-    //This produce: /invo/index.php/products/save
+    // This produce: /invo/index.php/products/save
     echo $url->get("products/save");
 
 Producing URLs from Volt

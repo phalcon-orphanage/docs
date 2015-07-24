@@ -57,7 +57,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -76,7 +76,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -102,7 +102,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *string|*  **fetchColumn** (*unknown* $sqlQuery, [*unknown* $placeholders], [*unknown* $column])
+public *string|*  **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int|string* $column])
 
 Returns the n'th field of first row in a SQL query result 
 
@@ -121,7 +121,7 @@ Returns the n'th field of first row in a SQL query result
 
 
 
-public *boolean*  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes])
+public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -142,7 +142,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **insertAsDict** (*unknown* $table, *unknown* $data, [*unknown* $dataTypes])
+public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -165,7 +165,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes])
+public *boolean*  **update** (*string|array* $table, *array* $fields, *array* $values, [*string|array* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -201,7 +201,7 @@ Warning! If $whereCondition is string it not escaped.
 
 
 
-public *boolean*  **updateAsDict** (*unknown* $table, *unknown* $data, [*unknown* $whereCondition], [*unknown* $dataTypes])
+public *boolean*  **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
 
@@ -224,7 +224,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
 
 
-public *boolean*  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes])
+public *boolean*  **delete** (*string|array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -244,7 +244,7 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*unknown* $columnList)
+public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
@@ -313,7 +313,7 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
 
 Creates a view
 
@@ -411,7 +411,7 @@ List all views on a database
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*unknown* $table, [*unknown* $schema])
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
 

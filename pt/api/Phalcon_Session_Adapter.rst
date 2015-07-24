@@ -1,11 +1,20 @@
-Class **Phalcon\\Session\\Adapter**
-===================================
+Abstract class **Phalcon\\Session\\Adapter**
+============================================
 
 Base class for Phalcon\\Session adapters
 
 
-Methods
+Constants
 ---------
+
+*integer* **SESSION_ACTIVE**
+
+*integer* **SESSION_NONE**
+
+*integer* **SESSION_DISABLED**
+
+Methods
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -13,13 +22,13 @@ Phalcon\\Session\\Adapter constructor
 
 
 
-public *boolean*  **start** ()
+public  **start** ()
 
 Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*array* $options)
+public  **setOptions** (*unknown* $options)
 
 Sets session's options 
 
@@ -34,13 +43,25 @@ Sets session's options
 
 
 
-public *array*  **getOptions** ()
+public  **getOptions** ()
 
 Get internal options
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
+public  **setName** (*unknown* $name)
+
+Set session name
+
+
+
+public  **getName** ()
+
+Get session name
+
+
+
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove])
 
 Gets a session variable from an application context
 
@@ -59,7 +80,7 @@ Sets a session variable in an application context
 
 
 
-public *boolean*  **has** (*string* $index)
+public  **has** (*unknown* $index)
 
 Check whether a session variable is set in an application context 
 
@@ -72,7 +93,7 @@ Check whether a session variable is set in an application context
 
 
 
-public  **remove** (*string* $index)
+public  **remove** (*unknown* $index)
 
 Removes a session variable from an application context 
 
@@ -85,7 +106,7 @@ Removes a session variable from an application context
 
 
 
-public *string*  **getId** ()
+public  **getId** ()
 
 Returns active session id 
 
@@ -98,7 +119,20 @@ Returns active session id
 
 
 
-public *boolean*  **isStarted** ()
+public  **setId** (*unknown* $id)
+
+Set the current session id 
+
+.. code-block:: php
+
+    <?php
+
+    $session->setId($id);
+
+
+
+
+public  **isStarted** ()
 
 Check whether the session has been started 
 
@@ -111,7 +145,7 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** ()
+public  **destroy** ()
 
 Destroys the active session 
 
@@ -121,6 +155,48 @@ Destroys the active session
 
     var_dump($session->destroy());
 
+
+
+
+public  **status** ()
+
+Returns the status of the current session. For PHP 5.3 this function will always return SESSION_NONE 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->status());
+    
+      // PHP 5.4 and above will give meaningful messages, 5.3 gets SESSION_NONE always
+      if ($session->status() !== $session::SESSION_ACTIVE) {
+          $session->start();
+      }
+
+
+
+
+public *mixed*  **__get** (*string* $index)
+
+Alias: Gets a session variable from an application context
+
+
+
+public  **__set** (*string* $index, *string* $value)
+
+Alias: Sets a session variable in an application context
+
+
+
+public  **__isset** (*unknown* $index)
+
+Alias: Check whether a session variable is set in an application context
+
+
+
+public  **__unset** (*unknown* $index)
+
+Alias: Removes a session variable from an application context
 
 
 

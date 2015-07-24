@@ -18,7 +18,7 @@ you can define routes and map them to controllers/actions that you require. A ro
     // Create the router
     $router = new Router();
 
-    //Define a route
+    // Define a route
     $router->add(
         "/admin/users/my-profile",
         array(
@@ -27,7 +27,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         )
     );
 
-    //Another route
+    // Another route
     $router->add(
         "/admin/users/change-password",
         array(
@@ -56,7 +56,7 @@ create more flexible routes:
     // Create the router
     $router = new Router();
 
-    //Define a route
+    // Define a route
     $router->add(
         "/admin/:controller/a/:action/:params",
         array(
@@ -241,11 +241,11 @@ are added to the route paths according to the position on which they were define
 
     <?php
 
-    //First position must be skipped because it is used for
-    //the named parameter 'country'
+    // First position must be skipped because it is used for
+    // the named parameter 'country'
     $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
         array(
-            'section' => 2, //Positions start with 2
+            'section' => 2, // Positions start with 2
             'article' => 3
         )
     );
@@ -351,14 +351,14 @@ Convertions allow to freely transform the route's parameters before passing them
 
     <?php
 
-    //The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    // The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
             'action'     => 'show'
         ))
-        ->convert('slug', function($slug) {
-            //Transform the slug removing the dashes
+        ->convert('slug', function ($slug) {
+            // Transform the slug removing the dashes
             return str_replace('-', '', $slug);
         });
 
@@ -375,32 +375,32 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     $router = new Router();
 
-    //Create a group with a common module and controller
+    // Create a group with a common module and controller
     $blog = new RouterGroup(array(
         'module'     => 'blog',
         'controller' => 'index'
     ));
 
-    //All the routes start with /blog
+    // All the routes start with /blog
     $blog->setPrefix('/blog');
 
-    //Add a route to the group
+    // Add a route to the group
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Add another route to the group
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //This route maps to a controller different than the default
+    // This route maps to a controller different than the default
     $blog->add('/blog', array(
         'controller' => 'blog',
         'action'     => 'index'
     ));
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount($blog);
 
 You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
@@ -415,26 +415,26 @@ You can move groups of routes to separate files in order to improve the organiza
     {
         public function initialize()
         {
-            //Default paths
+            // Default paths
             $this->setPaths(array(
                 'module'    => 'blog',
                 'namespace' => 'Blog\Controllers'
             ));
 
-            //All the routes start with /blog
+            // All the routes start with /blog
             $this->setPrefix('/blog');
 
-            //Add a route to the group
+            // Add a route to the group
             $this->add('/save', array(
                 'action' => 'save'
             ));
 
-            //Add another route to the group
+            // Add another route to the group
             $this->add('/edit/{id}', array(
                 'action' => 'edit'
             ));
 
-            //This route maps to a controller different than the default
+            // This route maps to a controller different than the default
             $this->add('/blog', array(
                 'controller' => 'blog',
                 'action'     => 'index'
@@ -449,7 +449,7 @@ Then mount the group in the router:
 
     <?php
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount(new BlogRoutes());
 
 Matching Routes
@@ -463,7 +463,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 The following example shows how to use this component in stand-alone mode:
 
@@ -491,7 +491,7 @@ The following example shows how to use this component in stand-alone mode:
     // Getting the processed action
     echo $router->getActionName();
 
-    //Get the matched route
+    // Get the matched route
     $route = $router->getMatchedRoute();
 
 Naming Routes
@@ -508,7 +508,7 @@ This is especially useful if you want to create URLs from it.
 
     $route->setName("show-posts");
 
-    //or just
+    // or just
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
@@ -572,7 +572,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/posts/2010/02/some-cool-content"
+    // matches "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -663,7 +663,7 @@ If none of the routes specified in the router are matched, you can define a grou
 
     <?php
 
-    //Set 404 paths
+    // Set 404 paths
     $router->notFound(array(
         "controller" => "index",
         "action"     => "route404"
@@ -678,13 +678,13 @@ those paths they can be automatically filled by the router:
 
     <?php
 
-    //Setting a specific default
+    // Setting a specific default
     $router->setDefaultModule('backend');
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController('index');
     $router->setDefaultAction('index');
 
-    //Using an array
+    // Using an array
     $router->setDefaults(array(
         'controller' => 'index',
         'action'     => 'index'
@@ -703,7 +703,7 @@ a not-found status in the dispatcher. You can set up the router to automatically
 
     $router = new Router();
 
-    //Remove trailing slashes automatically
+    // Remove trailing slashes automatically
     $router->removeExtraSlashes(true);
 
 Or, you can modify specific routes to optionally accept trailing slashes:
@@ -732,8 +732,8 @@ Sometimes, routes must be matched if they meet specific conditions, you can add 
     $router->add('/login', array(
         'module'     => 'admin',
         'controller' => 'session'
-    ))->beforeMatch(function($uri, $route) {
-        //Check if the request was made with Ajax
+    ))->beforeMatch(function ($uri, $route) {
+        // Check if the request was made with Ajax
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
@@ -800,34 +800,34 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
     use Phalcon\Mvc\Router\Group as RouterGroup;
 
-    //Create a group with a common module and controller
+    // Create a group with a common module and controller
     $blog = new RouterGroup(array(
         'module'     => 'blog',
         'controller' => 'posts'
     ));
 
-    //Hostname restriction
+    // Hostname restriction
     $blog->setHostName('blog.mycompany.com');
 
-    //All the routes start with /blog
+    // All the routes start with /blog
     $blog->setPrefix('/blog');
 
-    //Default route
+    // Default route
     $blog->add('/', array(
         'action' => 'index'
     ));
 
-    //Add a route to the group
+    // Add a route to the group
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Add another route to the group
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount($blog);
 
 URI Sources
@@ -864,7 +864,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
     use Phalcon\Mvc\Router;
 
-    //These routes simulate real URIs
+    // These routes simulate real URIs
     $testRoutes = array(
         '/',
         '/index',
@@ -877,18 +877,18 @@ Since this component has no dependencies, you can create a file as shown below t
 
     $router = new Router();
 
-    //Add here your custom routes
-    //...
+    // Add here your custom routes
+    // ...
 
-    //Testing each route
+    // Testing each route
     foreach ($testRoutes as $testRoute) {
 
-        //Handle the route
+        // Handle the route
         $router->handle($testRoute);
 
         echo 'Testing ', $testRoute, '<br>';
 
-        //Check if some route was matched
+        // Check if some route was matched
         if ($router->wasMatched()) {
             echo 'Controller: ', $router->getControllerName(), '<br>';
             echo 'Action: ', $router->getActionName(), '<br>';
@@ -910,12 +910,12 @@ you can write the routes directly in the controllers instead of adding them in t
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //Use the annotations router
+        // Use the annotations router
         $router = new RouterAnnotations(false);
 
-        //Read the annotations from ProductsController if the uri starts with /api/products
+        // Read the annotations from ProductsController if the URI starts with /api/products
         $router->addResource('Products', '/api/products');
 
         return $router;
@@ -978,7 +978,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Name         | Description                                                                                       | Usage                                                              |
 +==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -1015,12 +1015,12 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //Use the annotations router
+        // Use the annotations router
         $router = new RouterAnnotations(false);
 
-        //Read the annotations from Backend\Controllers\ProductsController if the uri starts with /api/products
+        // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;
@@ -1039,7 +1039,7 @@ You need to add code below in your bootstrap file (for example index.php or app/
     /**
     * add routing capabilities
     */
-    $di->set('router', function(){
+    $di->set('router', function () {
         require __DIR__.'/../app/config/routes.php';
         return $router;
     });

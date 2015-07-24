@@ -125,13 +125,13 @@ Connections are retrieved from the services container. By default, Phalcon tries
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient();
         return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function() {
+    $di->set('mongo', function () {
         $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
         return $mongo->selectDB("store");
     }, true);
@@ -394,8 +394,8 @@ listeners that run when an event is triggered.
 
     $eventsManager = new EventsManager();
 
-    //Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function($event, $robot) {
+    // Attach an anonymous function as a listener for "model" events
+    $eventsManager->attach('collection', function ($event, $robot) {
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
@@ -421,13 +421,13 @@ objects created in our application use the same EventsManager, then we need to a
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Collection\Manager as CollectionManager;
 
-    //Registering the collectionManager service
-    $di->set('collectionManager', function() {
+    // Registering the collectionManager service
+    $di->set('collectionManager', function () {
 
         $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('collection', function($event, $model) {
+        $eventsManager->attach('collection', function ($event, $model) {
             if (get_class($model) == 'Robots') {
                 if ($event->getType() == 'beforeSave') {
                     if ($model->name == 'Scooby Doo') {
@@ -705,13 +705,13 @@ in the application's services container. You can overwrite this service setting 
     <?php
 
     // This service returns a mongo database at 192.168.1.100
-    $di->set('mongo1', function() {
+    $di->set('mongo1', function () {
         $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
         return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
-    $di->set('mongo2', function() {
+    $di->set('mongo2', function () {
         $mongo = new MongoClient("mongodb://localhost");
         return $mongo->selectDB("invoicing");
     }, true);
@@ -752,7 +752,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getShared('flash');
 
             // Show validation messages
-            foreach ($this->getMessages() as $message){
+            foreach ($this->getMessages() as $message) {
                 $flash->error((string) $message);
             }
         }

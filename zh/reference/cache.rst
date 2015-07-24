@@ -41,7 +41,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     use Phalcon\Cache\Backend\File as BackFile;
     use Phalcon\Cache\Frontend\Output as FrontOutput;
 
-    //Create an Output frontend. Cache the files for 2 days
+    // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(array(
         "lifetime" => 172800
     ));
@@ -59,10 +59,10 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
 
-        //Print date and time
+        // Print date and time
         echo date("r");
 
-        //Generate a link to the sign-up action
+        // Generate a link to the sign-up action
         echo Tag::linkTo(
             array(
                 "user/signup",
@@ -141,7 +141,7 @@ Memcached 后端存储器例子（Memcached Backend Example）
     use Phalcon\Cache\Frontend\Data as FrontData;
     use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
-    //Cache data for one hour
+    // Cache data for one hour
     $frontCache = new FrontData(array(
         "lifetime" => 3600
     ));
@@ -149,13 +149,13 @@ Memcached 后端存储器例子（Memcached Backend Example）
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new BackMemCached($frontCache, array(
-	"servers" => array(
-		array(
-			"host" => "127.0.0.1",
-			"port" => "11211",
-			"weight" => "1"
-		)
-	)
+    "servers" => array(
+        array(
+            "host" => "127.0.0.1",
+            "port" => "11211",
+            "weight" => "1"
+        )
+    )
     ));
 
     // Try to get cached records
@@ -201,7 +201,7 @@ Memcached 后端存储器例子（Memcached Backend Example）
         echo "Key=", $key, " Data=", $data;
     }
 
-    //Query keys in the cache that begins with "my-prefix"
+    // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
 
 
@@ -251,7 +251,7 @@ Setting the lifetime when retrieving:
 
     $cacheKey = 'my.cache';
 
-    //Setting the cache when getting a result
+    // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
     if ($robots === null) {
 
@@ -274,7 +274,7 @@ Setting the lifetime when retrieving:
 
         $robots = "some robots";
 
-        //Setting the cache when saving data
+        // Setting the cache when saving data
         $cache->save($cacheKey, $robots, 3600);
     }
 
@@ -305,7 +305,7 @@ Setting the lifetime when retrieving:
         "lifetime" => 604800
     ));
 
-    //Backends are registered from the fastest to the slower
+    // Backends are registered from the fastest to the slower
     $cache = new Multiple(array(
         new ApcCache($ultraFastFrontend, array(
             "prefix" => 'cache',
@@ -321,7 +321,7 @@ Setting the lifetime when retrieving:
         ))
     ));
 
-    //Save, saves in every backend
+    // Save, saves in every backend
     $cache->save('my-key', $data);
 
 前端适配器（Frontend Adapters）

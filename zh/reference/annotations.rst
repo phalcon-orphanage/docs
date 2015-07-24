@@ -93,22 +93,22 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //反射在Example类的注释
+    // 反射在Example类的注释
     $reflector = $reader->get('Example');
 
-    //读取类中注释块中的注释
+    // 读取类中注释块中的注释
     $annotations = $reflector->getClassAnnotations();
 
-    //遍历注释
+    // 遍历注释
     foreach ($annotations as $annotation) {
 
-        //打印注释名称
+        // 打印注释名称
         echo $annotation->getName(), PHP_EOL;
 
-        //打印注释参数个数
+        // 打印注释参数个数
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //打印注释参数
+        // 打印注释参数
         print_r($annotation->getArguments());
     }
 
@@ -186,11 +186,11 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
     <?php
 
-    $di['dispatcher'] = function() {
+    $di['dispatcher'] = function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //添加插件到dispatch事件中
+        // 添加插件到dispatch事件中
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -218,29 +218,29 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //解析目前访问的控制的方法的注释
+            // 解析目前访问的控制的方法的注释
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //检查是否方法中带有注释名称‘Cache’的注释单元
+            // 检查是否方法中带有注释名称‘Cache’的注释单元
             if ($annotations->has('Cache')) {
 
-                //这个方法带有‘Cache’注释单元
+                // 这个方法带有‘Cache’注释单元
                 $annotation = $annotations->get('Cache');
 
-                //获取注释单元的‘lifetime’参数
+                // 获取注释单元的‘lifetime’参数
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //检查注释单元中是否有用户定义的‘key’参数
+                // 检查注释单元中是否有用户定义的‘key’参数
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //为当前dispatcher访问的方法开启cache
+                // 为当前dispatcher访问的方法开启cache
                 $this->view->cache($options);
             }
 

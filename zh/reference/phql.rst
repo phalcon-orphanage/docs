@@ -112,11 +112,11 @@ From a controller or a view, it's easy to create/execute them using an injected 
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $query  = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars   = $query->execute();
 
-    //With bound parameters
+    // With bound parameters
     $query  = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars   = $query->execute(array(
         'name' => 'Audi'
@@ -128,10 +128,10 @@ Or simply execute it:
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Executing with bound parameters
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
@@ -326,15 +326,15 @@ When the joined model has a many-to-many relation to the 'from' model, the inter
 
     <?php
 
-    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
-    $result = $this->modelsManager->query($phql);
+    $result = $this->modelsManager->executeQuery($phql);
 
-This code produces the following SQL in MySQL:
+This code executes the following SQL in MySQL:
 
 .. code-block:: sql
 
-    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
     INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
@@ -490,7 +490,7 @@ because the price does not meet the business rule that we implemented:
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false)
     {
@@ -553,7 +553,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process  = function() use (&$messages) {
+    $process  = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -602,7 +602,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    //Getting a whole set
+    // Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -610,7 +610,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
         ->getQuery()
         ->execute();
 
-    //Getting the first row
+    // Getting the first row
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -759,7 +759,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
 
     <?php
 
-    //Passing parameters in the query construction
+    // Passing parameters in the query construction
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:', array('name' => $name))
@@ -767,7 +767,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute();
 
-    //Passing parameters in query execution
+    // Passing parameters in query execution
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:')

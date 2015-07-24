@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection\\Document**
 ============================================
 
-*implements* ArrayAccess
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, ArrayAccess
 
 This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
@@ -9,13 +9,13 @@ This component allows Phalcon\\Mvc\\Collection to return rows without an associa
 Methods
 -------
 
-public *boolean*  **offsetExists** (*unknown* $index)
+public *boolean*  **offsetExists** (*int* $index)
 
 Checks whether an offset exists in the document
 
 
 
-public *mixed*  **offsetGet** (*unknown* $index)
+public  **offsetGet** (*unknown* $index)
 
 Returns the value of a field using the ArrayAccess interfase
 
@@ -27,13 +27,13 @@ Change a value using the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*unknown* $offset)
+public  **offsetUnset** (*string* $offset)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public *mixed*  **readAttribute** (*unknown* $attribute)
+public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -41,12 +41,12 @@ Reads an attribute value by its name
 
     <?php
 
-            echo robot->readAttribute('name');
+      echo $robot->readAttribute('name');
 
 
 
 
-public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name 
 
@@ -54,8 +54,14 @@ Writes an attribute value by its name
 
     <?php
 
-            robot->writeAttribute('name', 'Rosey');
+      $robot->writeAttribute('name', 'Rosey');
 
+
+
+
+public *array*  **toArray** ()
+
+Returns the instance as an array representation
 
 
 

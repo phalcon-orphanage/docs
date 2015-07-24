@@ -9,37 +9,37 @@ Encapsulates validation info generated in the validation process
 Methods
 -------
 
-public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type])
 
 Phalcon\\Validation\\Message constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setType** (*unknown* $type)
+public  **setType** (*unknown* $type)
 
 Sets message type
 
 
 
-public *string*  **getType** ()
+public  **getType** ()
 
 Returns message type
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setMessage** (*unknown* $message)
+public  **setMessage** (*unknown* $message)
 
 Sets verbose message
 
 
 
-public *string*  **getMessage** ()
+public  **getMessage** ()
 
 Returns verbose message
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setField** (*unknown* $field)
+public  **setField** (*unknown* $field)
 
 Sets field name related to message
 
@@ -51,13 +51,13 @@ Returns field name related to message
 
 
 
-public *string*  **__toString** ()
+public  **__toString** ()
 
 Magic __toString method returns verbose message
 
 
 
-public static :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **__set_state** (*unknown* $message)
+public static  **__set_state** (*unknown* $message)
 
 Magic __set_state helps to recover messsages from serialization
 

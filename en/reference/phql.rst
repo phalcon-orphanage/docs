@@ -326,15 +326,15 @@ When the joined model has a many-to-many relation to the 'from' model, the inter
 
     <?php
 
-    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
-    $result = $this->modelsManager->query($phql);
+    $result = $this->modelsManager->executeQuery($phql);
 
-This code produces the following SQL in MySQL:
+This code executes the following SQL in MySQL:
 
 .. code-block:: sql
 
-    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
     INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
@@ -449,7 +449,7 @@ With PHQL it's possible to insert data using the familiar INSERT statement:
     // Inserting using placeholders
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES (:name:, :brand_id:, :year:, :style)";
-    $manager->executeQuery($sql,
+    $manager->executeQuery($phql,
         array(
             'name'     => 'Lamborghini Espada',
             'brand_id' => 7,
@@ -555,7 +555,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process  = function() use (&$messages) {
+    $process  = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -616,7 +616,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    //Getting a whole set
+    // Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -624,7 +624,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
         ->getQuery()
         ->execute();
 
-    //Getting the first row
+    // Getting the first row
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -772,7 +772,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
 
     <?php
 
-    //Passing parameters in the query construction
+    // Passing parameters in the query construction
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:', array('name' => $name))
@@ -780,7 +780,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute();
 
-    //Passing parameters in query execution
+    // Passing parameters in query execution
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:')

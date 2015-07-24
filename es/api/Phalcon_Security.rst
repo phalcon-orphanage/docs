@@ -133,7 +133,7 @@ Removes the value of the CSRF token and key from session
 
 
 
-public  **computeHmac** (*unknown* $data, *unknown* $key, *unknown* $algo, [*unknown* $raw])
+public  **computeHmac** (*string* $data, *string* $key, *string* $algo, [*boolean* $raw])
 
 Computes a HMAC
 

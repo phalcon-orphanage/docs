@@ -151,7 +151,7 @@
     $filter = new Filter();
 
     // 使用匿名函数
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
@@ -186,7 +186,7 @@
 
 复杂的过滤与清理（Complex Sanitizing and Filtering）
 --------------------------------
-你可以使用PHP本身提供的优秀过滤器扩展。请查看对应的文档： `PHP文档上的数据过滤器`_ 
+你可以使用PHP本身提供的优秀过滤器扩展。请查看对应的文档： `PHP文档上的数据过滤器`_
 
 自定义过滤器（Implementing your own Filter）
 ----------------------------

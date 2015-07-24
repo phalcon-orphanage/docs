@@ -55,13 +55,13 @@ Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setDbService** (*unknown* $service)
+public  **setDbService** (*unknown* $service)
 
 Sets the database service used to run the isolated transactions
 
@@ -73,31 +73,31 @@ Returns the database service used to isolate the transaction
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setRollbackPendent** (*unknown* $rollbackPendent)
+public  **setRollbackPendent** (*unknown* $rollbackPendent)
 
 Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
 
 
-public *boolean*  **getRollbackPendent** ()
+public  **getRollbackPendent** ()
 
 Check if the transaction manager is registering a shutdown function to clean up pendent transactions
 
 
 
-public *boolean*  **has** ()
+public  **has** ()
 
 Checks whether the manager has an active transaction
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>`  **get** ([*unknown* $autoBegin])
+public  **get** ([*unknown* $autoBegin])
 
 Returns a new \\Phalcon\\Mvc\\Model\\Transaction or an already created once This method registers a shutdown function to rollback active connections
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>`  **getOrCreateTransaction** ([*unknown* $autoBegin])
+public  **getOrCreateTransaction** ([*unknown* $autoBegin])
 
 Create/Returns a new transaction or an existing one
 
@@ -115,7 +115,7 @@ Commmits active transactions within the manager
 
 
 
-public  **rollback** ([*unknown* $collect])
+public  **rollback** ([*boolean* $collect])
 
 Rollbacks active transactions within the manager Collect will remove the transaction from the manager
 

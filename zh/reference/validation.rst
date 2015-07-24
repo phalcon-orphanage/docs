@@ -31,7 +31,7 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
             echo $message, '<br>';
         }
     }
-    
+
 由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：
 
 初始化验证（Initializing Validation）
@@ -216,7 +216,7 @@ Phalcon的验证组件中内置了一些验证器：
 
     $messages = $validation->validate();
     if (count($messages)) {
-        //Filter only the messages generated for the field 'name'
+        // Filter only the messages generated for the field 'name'
         foreach ($validation->getMessages()->filter('name') as $message) {
             echo $message;
         }
@@ -242,7 +242,7 @@ Phalcon的验证组件中内置了一些验证器：
             'message' => 'The email is required'
         )));
 
-    //Filter any extra space
+    // Filter any extra space
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
@@ -293,7 +293,7 @@ Phalcon的验证组件中内置了一些验证器：
          */
         public function afterValidation($data, $entity, $messages)
         {
-            //... add additional messages or perform more validations
+            // ... add additional messages or perform more validations
         }
 
     }
@@ -356,7 +356,7 @@ Phalcon的验证组件中内置了一些验证器：
                 $validator->setOption('cancelOnFail', true);
             }
 
-            //...
+            // ...
         }
 
     }

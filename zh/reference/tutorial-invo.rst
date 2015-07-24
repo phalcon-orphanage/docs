@@ -1,4 +1,4 @@
-教程 2：INVO 项目讲解（Tutorial 2: Explaining INVO）
+教程 2：Introducing INVO（Tutorial 2: Introducing INVO）
 ===========================
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
@@ -164,9 +164,9 @@ the required components:
     // ...
 
     /**
-     * The URL component is used to generate all kind of urls in the application
+     * The URL component is used to generate all kind of URLs in the application
      */
-    $di->set('url', function() use ($config){
+    $di->set('url', function () use ($config) {
         $url = new UrlProvider();
         $url->setBaseUri($config->application->baseUri);
         return $url;
@@ -215,7 +215,7 @@ called when the application requires access to the session data:
     // ...
 
     // Start the session the first time a component requests the session service
-    $di->set('session', function() {
+    $di->set('session', function () {
         $session = new Session();
         $session->start();
         return $session;

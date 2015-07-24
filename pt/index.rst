@@ -21,6 +21,9 @@ Tabela do Conteúdo
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-invo-2
+   reference/tutorial-invo-3
+   reference/tutorial-invo-4
    reference/tutorial-rest
    reference/samples
    reference/di
@@ -68,6 +71,7 @@ Tabela do Conteúdo
    reference/debug
    reference/tools
    reference/whats-next
+   reference/unit-testing
    api/index
    reference/license
 

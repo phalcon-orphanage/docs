@@ -14,19 +14,19 @@ To illustrate how this component works and why it is important, consider the fol
 
     <?php
 
-        //Document title with malicious extra HTML tags
+        // Document title with malicious extra HTML tags
         $maliciousTitle = '</title><script>alert(1)</script>';
 
-        //Malicious CSS class name
+        // Malicious CSS class name
         $className = ';`(';
 
-        //Malicious CSS font name
+        // Malicious CSS font name
         $fontName = 'Verdana"</style>';
 
-        //Malicious Javascript text
+        // Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        //Create an escaper
+        // Create an escaper
         $e = new Phalcon\Escaper();
 
     ?>
@@ -91,7 +91,7 @@ character to the form. This kind of escaping is intended to most simpler attribu
 
     <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-You can escape an HTML attribute by using the escapeHtmlAttr method:
+You can escape a HTML attribute by using the escapeHtmlAttr method:
 
 .. code-block:: html+php
 
@@ -111,7 +111,7 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
     <a href="Escape untrusted data here!">Some link</a>
 
-You can escape an HTML attribute by using the escapeUrl method:
+You can escape a HTML attribute by using the escapeUrl method:
 
 .. code-block:: html+php
 
@@ -129,9 +129,9 @@ CSS identifiers/values can be escaped too:
 
 .. code-block:: html
 
-    <a style="color: Escape unstrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape an HTML attribute by using the escapeCss method:
+You can escape a HTML attribute by using the escapeCss method:
 
 .. code-block:: html+php
 
@@ -151,7 +151,7 @@ Strings to be inserted into javascript code also must be properly escaped:
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape an HTML attribute by using the escapeJs method:
+You can escape a HTML attribute by using the escapeJs method:
 
 .. code-block:: html+php
 

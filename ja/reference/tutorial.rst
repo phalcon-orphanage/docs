@@ -64,7 +64,7 @@ Phalconに関連した "library" ディレクトリを必要としないこと�
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 プロジェクトへの全てのリクエストは ドキュメントルートに指定した public/ ディレクトリにリライトされます。これにより、プロジェクトの内部フォルダを閲覧されることを防ぎ、セキュリティの脅威を排除することが保証されます。
@@ -78,7 +78,7 @@ Phalconに関連した "library" ディレクトリを必要としないこと�
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Bootstrap
@@ -93,36 +93,36 @@ tutorial/public/index.php は次のようになります。
 
     try {
 
-        //オートローダにディレクトリを登録する
+        // オートローダにディレクトリを登録する
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //DIコンテナを作る
+        // DIコンテナを作る
         $di = new Phalcon\DI\FactoryDefault();
 
-        //ビューのコンポーネントの組み立て
-        $di->set('view', function(){
+        // ビューのコンポーネントの組み立て
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
-        $di->set('url', function(){
+
+        // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });        
+        });
 
-        //リクエストを処理する
+        // リクエストを処理する
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -130,7 +130,7 @@ tutorial/public/index.php は次のようになります。
 ^^^^^^^^^^^
 bootstrapの最初の部分では、オートローダを登録しています。これは、アプリケーション内のコントローラやモデルなどのクラスをロードするために使用されます。例えば、アプリケーションの柔軟性を増加させる、コントローラの1つまたは複数のディレクトリを登録することができます。この例では、Phalcon\\ Loaderコンポーネントを使用しています。
 
-これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。 
+これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。
 
 .. code-block:: php
 
@@ -154,7 +154,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    //Create a DI
+    // Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` は Phalcon\\DI の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
@@ -167,25 +167,25 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    //Setup the view component
-    $di->set('view', function(){
+    // Setup the view component
+    $di->set('view', function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
-    
+
 次に、Phalconにより生成されるすべてのURI に "/tutorial/" が含まれるように、base URIを登録します。 これは、このチュートリアルで、ハイパーリンクを生成するために、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用する際に重要になってきます。
 
 .. code-block:: php
 
     <?php
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set('url', function () {
         $url = new \Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
-    });   
+    });
 
 このファイルの最後のパートで、:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を見つけるでしょう。この目的は、リクエスト環境を初期化し、リクエストのルートを決め、発見したアクションを起動することであり、処理が完了した際にレスポンスを集約し、返却することです。
 
@@ -387,18 +387,18 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
     try {
 
-        //Register an autoloader
+        // Register an autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //データベースサービスのセットアップ
-        $di->set('db', function(){
+        // データベースサービスのセットアップ
+        $di->set('db', function () {
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
@@ -407,26 +407,26 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
             ));
         });
 
-        //Setup the view component
-        $di->set('view', function(){
+        // Setup the view component
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });       
+        });
 
-        //Handle the request
+        // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -453,7 +453,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
             $user = new Users();
 
-            //データを保存し、エラーをチェックする
+            // データを保存し、エラーをチェックする
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -464,7 +464,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
                     echo $message->getMessage(), "<br/>";
                 }
             }
-            
+
             $this->view->disable();
         }
 

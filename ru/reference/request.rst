@@ -13,10 +13,10 @@
     $request = new \Phalcon\Http\Request();
 
     // Проверка что данные пришли методом POST
-    if ($request->isPost() == true) {
+    if ($request->isPost()) {
 
         // Проверка что request создан через Ajax
-        if ($request->isAjax() == true) {
+        if ($request->isAjax()) {
             echo "Request создан используя POST и AJAX";
         }
     }
@@ -77,7 +77,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
         {
 
             // Проверка что данные пришли методом POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
 
                 // Получение POST данных
                 $customerName = $this->request->getPost("name");
@@ -106,7 +106,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
         public function uploadAction()
         {
             // Проверяем что файл загрузился
-            if ($this->request->hasFiles() == true) {
+            if ($this->request->hasFiles()) {
 
                 // Выводим имя и размер файла
                 foreach ($this->request->getUploadedFiles() as $file) {
@@ -148,7 +148,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
     }
 
     // Проверка уровня запроса
-    if ($request->isSecureRequest() == true) {
+    if ($request->isSecureRequest()) {
         echo "The request was made using a secure layer";
     }
 

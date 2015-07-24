@@ -20,13 +20,13 @@ Stores the parsed annotations in diles. This adapter is suitable for production
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Annotations\\Adapter\\Files constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*unknown* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
 Reads parsed annotations from files
 
@@ -50,7 +50,7 @@ Returns the annotation reader
 
 
 
-public  **get** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **get** (*string|object* $className) inherited from Phalcon\\Annotations\\Adapter
 
 Parses or retrieves all the annotations found in a class
 

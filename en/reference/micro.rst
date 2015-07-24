@@ -67,7 +67,7 @@ any callable item in the PHP userland. The following example shows how to define
     $myController = new MyController();
     $app->get('/say/hello/{name}', array($myController, "someAction"));
 
-    //Anonymous function
+    // Anonymous function
     $app->get('/say/hello/{name}', function ($name) {
         echo "<h1>Hello! $name</h1>";
     });
@@ -79,27 +79,37 @@ which the route is constrained for:
 
     <?php
 
-    //Matches if the HTTP method is GET
+    // Matches if the HTTP method is GET
     $app->get('/api/products', "get_products");
 
-    //Matches if the HTTP method is POST
+    // Matches if the HTTP method is POST
     $app->post('/api/products/add', "add_product");
 
-    //Matches if the HTTP method is PUT
+    // Matches if the HTTP method is PUT
     $app->put('/api/products/update/{id}', "update_product");
 
-    //Matches if the HTTP method is DELETE
+    // Matches if the HTTP method is DELETE
     $app->delete('/api/products/remove/{id}', "delete_product");
 
-    //Matches if the HTTP method is OPTIONS
+    // Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
 
-    //Matches if the HTTP method is PATCH
+    // Matches if the HTTP method is PATCH
     $app->patch('/api/products/update/{id}', "info_product");
 
-    //Matches if the HTTP method is GET or POST
+    // Matches if the HTTP method is GET or POST
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    // Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -110,7 +120,7 @@ formatting is also available using regular expressions to ensure consistency of 
 
     <?php
 
-    //This route have two parameters and each of them have a format
+    // This route have two parameters and each of them have a format
     $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
         echo "<h1>Title: $title</h1>";
         echo "<h2>Year: $year</h2>";
@@ -139,7 +149,7 @@ The following rules can be used together with Apache to rewrite the URis:
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Working with Responses
@@ -175,10 +185,10 @@ response:
 
     $app->get('/show/data', function () use ($app) {
 
-        //Set the Content-Type header
+        // Set the Content-Type header
         $app->response->setContentType('text/plain')->sendHeaders();
 
-        //Print a file
+        // Print a file
         readfile("data.txt");
 
     });
@@ -233,12 +243,12 @@ by this way the "url" service can produce the corresponding URL:
     // Set a route with the name "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. show the post here
+        // .. show the post here
 
     })->setName('show-post');
 
-    // produce an URL somewhere
-    $app->get('/', function() use ($app) {
+    // Produce a URL somewhere
+    $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(array(
             'for'   => 'show-post',
@@ -264,7 +274,7 @@ can create outside the application a container to manipulate its services:
 
     $di = new FactoryDefault();
 
-    $di->set('config', function() {
+    $di->set('config', function () {
         return new IniConfig("config.ini");
     });
 
@@ -273,7 +283,7 @@ can create outside the application a container to manipulate its services:
     $app->setDI($di);
 
     $app->get('/', function () use ($app) {
-        //Read a setting from the config
+        // Read a setting from the config
         echo $app->config->app_name;
     });
 
@@ -293,7 +303,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
     $app = new Micro();
 
     // Setup the database service
-    $app['db'] = function() {
+    $app['db'] = function () {
         return new MysqlAdapter(array(
             "host"     => "localhost",
             "username" => "root",
@@ -311,7 +321,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
 Not-Found Handler
 -----------------
-When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
+When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
 An example of that behavior is below:
 
 .. code-block:: php
@@ -339,7 +349,7 @@ Models in Micro Applications
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function(){
+    $app->get('/products/find', function () {
 
         foreach (Products::find() as $product) {
             echo $product->name, '<br>';
@@ -381,7 +391,7 @@ In the following example, we explain how to control the application security usi
     $eventManager = new EventsManager();
 
     // Listen all the application events
-    $eventManager->attach('micro', function($event, $app) {
+    $eventManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -389,7 +399,7 @@ In the following example, we explain how to control the application security usi
                 $app->flashSession->error("The user isn't authenticated");
                 $app->response->redirect("/")->sendHeaders();
 
-                //Return (false) stop the operation
+                // Return (false) stop the operation
                 return false;
             }
         }
@@ -413,25 +423,25 @@ In addition to the events manager, events can be added using the methods 'before
 
     // Executed before every route is executed
     // Return false cancels the route execution
-    $app->before(function() use ($app) {
+    $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
             return false;
         }
         return true;
     });
 
-    $app->map('/api/robots', function(){
+    $app->map('/api/robots', function () {
         return array(
             'status' => 'OK'
         );
     });
 
-    $app->after(function() use ($app) {
+    $app->after(function () use ($app) {
         // This is executed after the route was executed
         echo json_encode($app->getReturnedValue());
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // This is executed when the request has been served
     });
 
@@ -441,11 +451,11 @@ You can call the methods several times to add more events of the same type:
 
     <?php
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // First 'finish' middleware
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // Second 'finish' middleware
     });
 
@@ -515,16 +525,16 @@ You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Coll
 
     $posts = new MicroCollection();
 
-    //Set the main handler. ie. a controller instance
+    // Set the main handler. ie. a controller instance
     $posts->setHandler(new PostsController());
 
-    //Set a common prefix for all routes
+    // Set a common prefix for all routes
     $posts->setPrefix('/posts');
 
-    //Use the method 'index' in PostsController
+    // Use the method 'index' in PostsController
     $posts->get('/', 'index');
 
-    //Use the method 'show' in PostsController
+    // Use the method 'show' in PostsController
     $posts->get('/show/{slug}', 'show');
 
     $app->mount($posts);
@@ -542,12 +552,12 @@ The controller 'PostsController' might look like this:
 
         public function index()
         {
-            //...
+            // ...
         }
 
         public function show($slug)
         {
-            //...
+            // ...
         }
     }
 
@@ -576,7 +586,7 @@ When responses are returned by handlers they are automatically sent by the appli
     $app = new Micro();
 
     // Return a response
-    $app->get('/welcome/index', function() {
+    $app->get('/welcome/index', function () {
 
         $response = new Response();
 
@@ -597,14 +607,14 @@ Rendering Views
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function() {
+    $app['view'] = function () {
         $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
 
-    //Return a rendered view
-    $app->get('/products/show', function() use ($app) {
+    // Return a rendered view
+    $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render('products/show', array(
@@ -624,11 +634,11 @@ A proper response can be generated if an exception is raised in a micro handler:
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app->get('/', function() {
+    $app->get('/', function () {
         throw new \Exception("An error");
     });
 
-    $app->error(function($exception) {
+    $app->error(function ($exception) {
         echo "An error has occurred";
     });
 

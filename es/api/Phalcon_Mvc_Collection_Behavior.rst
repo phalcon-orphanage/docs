@@ -7,7 +7,7 @@ This is an optional base class for ORM behaviors
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 
 
@@ -19,7 +19,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*unknown* $eventName])
+protected *array*  **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 

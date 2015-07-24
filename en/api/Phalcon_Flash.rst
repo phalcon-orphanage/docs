@@ -91,7 +91,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message)
+public  **outputMessage** (*unknown* $type, *string|array* $message)
 
 Outputs a message formatting it with HTML 
 

@@ -11,13 +11,13 @@ Formats messages using JSON encoding
 Methods
 -------
 
-public *string*  **format** (*unknown* $message, *unknown* $type, *unknown* $timestamp, [*array* $context])
+public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 
 
 
-public *string*  **getTypeString** (*unknown* $type) inherited from Phalcon\\Logger\\Formatter
+public  **getTypeString** (*unknown* $type) inherited from Phalcon\\Logger\\Formatter
 
 Returns the string meaning of a logger constant
 

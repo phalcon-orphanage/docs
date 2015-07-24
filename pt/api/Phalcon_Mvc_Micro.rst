@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Micro**
 =============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, ArrayAccess
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, ArrayAccess
 
 With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.  
 
@@ -11,7 +11,7 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 
     <?php
 
-     $app = new Phalcon\Mvc\Micro();
+     $app = new \Phalcon\Mvc\Micro();
     
      $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -22,15 +22,15 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 
 
 Methods
----------
+-------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*unknown* $dependencyInjector])
 
 Phalcon\\Mvc\\Micro constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -84,7 +84,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **mount** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection)
+public  **mount** (*unknown* $collection)
 
 Mounts a collection of handlers
 
@@ -96,7 +96,13 @@ Sets a handler that will be called when the router doesn't match any of the defi
 
 
 
-public :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`  **getRouter** ()
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **error** (*callable* $handler)
+
+Sets a handler that will be called when an exception is thrown handling the route
+
+
+
+public  **getRouter** ()
 
 Returns the internal router used by the application
 
@@ -108,7 +114,7 @@ Sets a service from the DI
 
 
 
-public *boolean*  **hasService** (*string* $serviceName)
+public  **hasService** (*unknown* $serviceName)
 
 Checks if a service is registered in the DI
 
@@ -170,7 +176,7 @@ Allows to register a shared service in the internal services container using the
 
     <?php
 
-    $app['request'] = new Phalcon\Http\Request();
+    $app['request'] = new \Phalcon\Http\Request();
 
 
 
@@ -218,25 +224,25 @@ Returns the internal handlers attached to the application
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

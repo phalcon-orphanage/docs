@@ -13,7 +13,7 @@
     // ルーターの初期化
     $router = new \Phalcon\Mvc\Router();
 
-    //ルートの定義
+    // ルートの定義
     $router->add(
         "/admin/users/my-profile",
         array(
@@ -22,7 +22,7 @@
         )
     );
 
-    //別のルートを定義
+    // 別のルートを定義
     $router->add(
         "/admin/users/change-password",
         array(
@@ -44,7 +44,7 @@ add()メソッドは、第1引数にURIのパターン、第2引数にパスを�
     // ルーターの初期化
     $router = new \Phalcon\Mvc\Router();
 
-    //ルートの定義
+    // ルートの定義
     $router->add(
         "/admin/:controller/a/:action/:params",
         array(
@@ -208,11 +208,11 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    //'country' という名前付きパラメーターが使用されているため
-    //1番目のパラメーターは使用してはならない
+    // 'country' という名前付きパラメーターが使用されているため
+    // 1番目のパラメーターは使用してはならない
     $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
         array(
-            'section' => 2, //連番は2から始める
+            'section' => 2, // 連番は2から始める
             'article' => 3
         )
     );
@@ -313,14 +313,14 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    //アクションの名前にはダッシュが許可されているので、アクションは次のようになる: /products/new-ipod-nano-4-generation
+    // アクションの名前にはダッシュが許可されているので、アクションは次のようになる: /products/new-ipod-nano-4-generation
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
             'action' => 'show'
         ))
-        ->convert('slug', function($slug) {
-            //ダッシュを取り除く
+        ->convert('slug', function ($slug) {
+            // ダッシュを取り除く
             return str_replace('-', '', $slug);
         });
 
@@ -334,32 +334,32 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     $router = new \Phalcon\Mvc\Router();
 
-    //共通のモジュールとコントローラーのグループを作る
+    // 共通のモジュールとコントローラーのグループを作る
     $blog = new \Phalcon\Mvc\Router\Group(array(
         'module' => 'blog',
         'controller' => 'index'
     ));
 
-    ///blog から始まる全てのルート
+    // /blog から始まる全てのルート
     $blog->setPrefix('/blog');
 
-    //ルートをグループに追加する
+    // ルートをグループに追加する
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //もう一つルートをグループに追加する
+    // もう一つルートをグループに追加する
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //このルートはデフォルトとは異なるルートにマッピングする
+    // このルートはデフォルトとは異なるルートにマッピングする
     $blog->add('/blog', array(
         'controller' => 'blog',
         'action' => 'index'
     ));
 
-    //グループをルーターに追加
+    // グループをルーターに追加
     $router->mount($blog);
 
 ルートのグループを別のファイルに分割して、アプリケーションの構造化とコードの再利用をしやすくする:
@@ -372,26 +372,26 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     {
         public function initialize()
         {
-            //デフォルトパス
+            // デフォルトパス
             $this->setPaths(array(
                 'module' => 'blog',
                 'namespace' => 'Blog\Controllers'
             ));
 
-            //All the routes start with /blog
+            // All the routes start with /blog
             $this->setPrefix('/blog');
 
-            //Add a route to the group
+            // Add a route to the group
             $this->add('/save', array(
                 'action' => 'save'
             ));
 
-            //Add another route to the group
+            // Add another route to the group
             $this->add('/edit/{id}', array(
                 'action' => 'edit'
             ));
 
-            //This route maps to a controller different than the default
+            // This route maps to a controller different than the default
             $this->add('/blog', array(
                 'controller' => 'blog',
                 'action' => 'index'
@@ -406,7 +406,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount(new BlogRoutes());
 
 ルートのマッチ
@@ -418,7 +418,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 以下は、ルーターコンポーネントを単独で使用する方法です:
 
@@ -523,7 +523,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
         )
     );
 
-    // "/posts/2010/02/some-cool-content" にマッチ
+    // "/posts/2015/02/some-cool-content" にマッチ
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -610,7 +610,7 @@ Not Found パス
 
     <?php
 
-    //404のパスをセット
+    // 404のパスをセット
     $router->notFound(array(
         "controller" => "index",
         "action" => "route404"
@@ -624,13 +624,13 @@ Not Found パス
 
     <?php
 
-    //デフォルト設定
+    // デフォルト設定
     $router->setDefaultModule('backend');
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController('index');
     $router->setDefaultAction('index');
 
-    //配列の使用
+    // 配列の使用
     $router->setDefaults(array(
         'controller' => 'index',
         'action' => 'index'
@@ -646,7 +646,7 @@ Not Found パス
 
     $router = new \Phalcon\Mvc\Router();
 
-    //末尾のスラッシュを自動的に取り除く
+    // 末尾のスラッシュを自動的に取り除く
     $router->removeExtraSlashes(true);
 
 あるいは、特定のルートだけ選んで、末尾のスラッシュを受け入れるように変更することもできます:
@@ -674,8 +674,8 @@ Not Found パス
     $router->add('/login', array(
         'module' => 'admin',
         'controller' => 'session'
-    ))->beforeMatch(function($uri, $route) {
-        //リクエストがAjaxによって生成されたかチェック
+    ))->beforeMatch(function ($uri, $route) {
+        // リクエストがAjaxによって生成されたかチェック
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
@@ -739,34 +739,34 @@ Not Found パス
 
     <?php
 
-    //Create a group with a common module and controller
+    // Create a group with a common module and controller
     $blog = new \Phalcon\Mvc\Router\Group(array(
         'module' => 'blog',
         'controller' => 'posts'
     ));
 
-    //ホスト名制限
+    // ホスト名制限
     $blog->setHostName('blog.mycompany.com');
 
-    //All the routes start with /blog
+    // All the routes start with /blog
     $blog->setPrefix('/blog');
 
-    //デフォルトルート
+    // デフォルトルート
     $blog->add('/', array(
         'action' => 'index'
     ));
 
-    //Add a route to the group
+    // Add a route to the group
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Add another route to the group
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount($blog);
 
 URIのソース
@@ -796,7 +796,7 @@ URIのソース
 
     <?php
 
-    //これらのルートによって、実際のURIをシミュレートする
+    // これらのルートによって、実際のURIをシミュレートする
     $testRoutes = array(
         '/',
         '/index',
@@ -809,18 +809,18 @@ URIのソース
 
     $router = new Phalcon\Mvc\Router();
 
-    //ここで独自のルートを追加
-    //...
+    // ここで独自のルートを追加
+    // ...
 
-    //それぞれのルートをテスト
+    // それぞれのルートをテスト
     foreach ($testRoutes as $testRoute) {
 
-        //ルートの処理
+        // ルートの処理
         $router->handle($testRoute);
 
         echo 'Testing ', $testRoute, '<br>';
 
-        //ルートがマッチしたかチェック
+        // ルートがマッチしたかチェック
         if ($router->wasMatched()) {
             echo 'Controller: ', $router->getControllerName(), '<br>';
             echo 'Action: ', $router->getActionName(), '<br>';
@@ -839,12 +839,12 @@ URIのソース
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //アノテーションルーターを使う
+        // アノテーションルーターを使う
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //URIが /api/products から始まるときは、 ProductsController からアノテーションを読み取る
+        // URIが /api/products から始まるときは、 ProductsController からアノテーションを読み取る
         $router->addResource('Products', '/api/products');
 
         return $router;
@@ -907,7 +907,7 @@ URIのソース
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Name         | Description                                                                                       | Usage                                                              |
 +==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -942,12 +942,12 @@ URIのソース
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
-        //Use the annotations router
+        // Use the annotations router
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //URIが /api/products から始まる場合、 Backend\Controllers\ProductsController からアノテーションを読み取る
+        // URIが /api/products から始まる場合、 Backend\Controllers\ProductsController からアノテーションを読み取る
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;
@@ -964,7 +964,7 @@ PhalconのDIコンテナへのサービス登録の際、ルーターを登録�
     /**
     * add routing capabilities
     */
-    $di->set('router', function(){
+    $di->set('router', function () {
         require __DIR__.'/../app/config/routes.php';
         return $router;
     });

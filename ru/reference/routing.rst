@@ -344,7 +344,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
             'controller' => 'products',
             'action' => 'show'
         ))
-        ->convert('slug', function($slug) {
+        ->convert('slug', function ($slug) {
             // Удаляем тире из выбранного параметра
             return str_replace('-', '', $slug);
         });
@@ -445,7 +445,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 В следующем примере показано, как использовать этот компонент автономно:
 
@@ -552,7 +552,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
         )
     );
 
-    // пример - "/posts/2010/02/some-cool-content"
+    // пример - "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -709,7 +709,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router->add('/login', array(
         'module' => 'admin',
         'controller' => 'session'
-    ))->beforeMatch(function($uri, $route) {
+    ))->beforeMatch(function ($uri, $route) {
         // Проверим, что это был Ajax-запрос
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
@@ -848,7 +848,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     $router = new Phalcon\Mvc\Router();
     $router->setDI(new Phalcon\DI\FactoryDefault());
     // Тут необходимо установить правила маршрутизации
-    //...
+    // ...
 
     // Цикл проверки маршрутов
     foreach ($testRoutes as $testRoute) {
@@ -880,7 +880,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);
@@ -983,7 +983,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     <?php
 
-    $di['router'] = function() {
+    $di['router'] = function () {
 
         // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);

@@ -99,7 +99,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon\\Flash
+public  **outputMessage** (*unknown* $type, *string|array* $message) inherited from Phalcon\\Flash
 
 Outputs a message formatting it with HTML 
 

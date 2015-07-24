@@ -215,7 +215,7 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
         public function up()
         {
-            //...
+            // ...
             self::$_connection->insert(
                 "products",
                 array("Malabar spinach", 14.50),

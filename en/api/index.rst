@@ -182,6 +182,8 @@ API Indice
    Phalcon_Mvc_Model_MetaData
    Phalcon_Mvc_Model_MetaData_Apc
    Phalcon_Mvc_Model_MetaData_Files
+   Phalcon_Mvc_Model_MetaData_Libmemcached
+   Phalcon_Mvc_Model_MetaData_Memcache
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations

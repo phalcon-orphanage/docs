@@ -1,5 +1,5 @@
-Class **Phalcon\\Db**
-=====================
+Abstract class **Phalcon\\Db**
+==============================
 
 Phalcon\\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS.  This component is intended to lower level database operations. If you want to interact with databases using higher level of abstraction use Phalcon\\Mvc\\Model.  Phalcon\\Db is an abstract class. You only can use it with a database adapter like Phalcon\\Db\\Adapter\\Pdo  
 
@@ -9,7 +9,7 @@ Phalcon\\Db and its related classes provide a simple SQL database interface for 
 
     try {
     
-      $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
+      $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
          'host' => '192.168.0.11',
          'username' => 'sigma',
          'password' => 'secret',
@@ -32,18 +32,44 @@ Phalcon\\Db and its related classes provide a simple SQL database interface for 
 Constants
 ---------
 
+*integer* **FETCH_LAZY**
+
 *integer* **FETCH_ASSOC**
 
-*integer* **FETCH_BOTH**
+*integer* **FETCH_NAMED**
 
 *integer* **FETCH_NUM**
 
+*integer* **FETCH_BOTH**
+
 *integer* **FETCH_OBJ**
 
-Methods
----------
+*integer* **FETCH_BOUND**
 
-public static  **setup** (*array* $options)
+*integer* **FETCH_COLUMN**
+
+*integer* **FETCH_CLASS**
+
+*integer* **FETCH_INTO**
+
+*integer* **FETCH_FUNC**
+
+*integer* **FETCH_GROUP**
+
+*integer* **FETCH_UNIQUE**
+
+*integer* **FETCH_KEY_PAIR**
+
+*integer* **FETCH_CLASSTYPE**
+
+*integer* **FETCH_SERIALIZE**
+
+*integer* **FETCH_PROPS_LATE**
+
+Methods
+-------
+
+public static  **setup** (*unknown* $options)
 
 Enables/disables options in the Database component
 

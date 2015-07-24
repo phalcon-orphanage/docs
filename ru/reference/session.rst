@@ -18,7 +18,7 @@
     <?php
 
     // Сессии запустятся один раз, при первом обращении к объекту
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -91,7 +91,7 @@
     <?php
 
     // Изоляция данных сессий
-    $di->set('session', function(){
+    $di->set('session', function () {
 
         // Все переменные этого приложения будет иметь префикс "my-app-1"
         $session = new Phalcon\Session\Adapter\Files(
@@ -109,8 +109,8 @@
 
 Наборы сессий (Session Bags)
 ----------------------------
-Компонент :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` (Session Bags, дословно "Мешки с сессиями") 
-позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать 
+Компонент :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` (Session Bags, дословно "Мешки с сессиями")
+позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать
 группы переменных сессии в приложении. Установив значение переменной такого объекта, оно автоматически сохранится в сессии:
 
 .. code-block:: php

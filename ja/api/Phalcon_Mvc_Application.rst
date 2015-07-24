@@ -89,7 +89,7 @@ Return the modules registered in the application
 
 
 
-public *array|object*  **getModule** (*unknown* $name)
+public *array|object*  **getModule** (*string* $name)
 
 Gets the module definition registered in the application via module name
 
@@ -107,7 +107,7 @@ Returns the default module name
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*unknown* $uri])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*string* $uri])
 
 Handles a MVC request
 

@@ -115,7 +115,7 @@ Commmits active transactions within the manager
 
 
 
-public  **rollback** ([*unknown* $collect])
+public  **rollback** ([*boolean* $collect])
 
 Rollbacks active transactions within the manager Collect will remove the transaction from the manager
 

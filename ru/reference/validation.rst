@@ -296,7 +296,7 @@
          */
         public function afterValidation($data, $entity, $messages)
         {
-            //... добавляем дополнительные сообщения или валидацию
+            // ... добавляем дополнительные сообщения или валидацию
         }
 
     }
@@ -359,7 +359,7 @@
                 $validator->setOption('cancelOnFail', true);
             }
 
-            //...
+            // ...
         }
 
     }

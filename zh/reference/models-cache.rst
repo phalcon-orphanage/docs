@@ -22,7 +22,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
     // 设置模型缓存服务
-    $di->set('modelsCache', function() {
+    $di->set('modelsCache', function () {
 
         // 默认缓存时间为一天
         $frontCache = new FrontendData(array(
@@ -52,7 +52,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
         "cache" => array("key" => "my-cache")
     ));
 
-    //缓存查询结果时间为300秒
+    // 缓存查询结果时间为300秒
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
@@ -78,7 +78,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
     $comments = $post->getComments(array(
         "cache" => array("key" => "my-key", "lifetime" => 3600)
     ));
-    
+
 如果想删除已经缓存的结果，则只需要使用前面指定的缓存的键值进行删除即可。
 
 注意并不是所有的结果都必须缓存下来。那些经常改变的数据就不应该被缓存，这样做只会影响应用的性能。另外对于那些特别大的
@@ -147,15 +147,15 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
         public static function find($parameters=null)
         {
 
-            //Create an unique key based on the parameters
+            // Create an unique key based on the parameters
             $key = self::_createKey($parameters);
 
             if (!isset(self::$_cache[$key])) {
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = parent::find($parameters);
             }
 
-            //Return the result in the cache
+            // Return the result in the cache
             return self::$_cache[$key];
         }
 
@@ -179,35 +179,35 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
     public static function find($parameters=null)
     {
 
-        //Create an unique key based on the parameters
+        // Create an unique key based on the parameters
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
 
-            //We're using APC as second cache
+            // We're using APC as second cache
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //There are no memory or apc cache
+            // There are no memory or apc cache
             $data = parent::find($parameters);
 
-            //Store the result in the memory cache
+            // Store the result in the memory cache
             self::$_cache[$key] = $data;
 
-            //Store the result in APC
+            // Store the result in APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Return the result in the cache
+        // Return the result in the cache
         return self::$_cache[$key];
     }
 
@@ -229,12 +229,12 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
         public static function find($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
 
         public static function findFirst($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
     }
 
@@ -281,13 +281,13 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
         public static function find($parameters=null)
         {
 
-            //Convert the parameters to an array
+            // Convert the parameters to an array
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
 
-            //Check if a cache key wasn't passed
-            //and create the cache parameters
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
                     "key"      => self::_createKey($parameters),
@@ -300,7 +300,7 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
         public static function findFirst($parameters=null)
         {
-            //...
+            // ...
         }
 
     }
@@ -348,15 +348,15 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    //Get some invoice
+    // Get some invoice
     $invoice  = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer;
 
-    //Print his/her name
+    // Print his/her name
     echo $customer->name, "\n";
-    
+
 这个例子非常简单，依据查询到的订单信息取得用户信息之后再取得用户名。下面的情景也是如何：我们查询了一些订单的信息，然后取得这些订单相关联
 用户的信息，之后取得用户名：
 
@@ -364,15 +364,15 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    //Get a set of invoices
+    // Get a set of invoices
     // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
-        //Get the customer related to the invoice
+        // Get the customer related to the invoice
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
-        //Print his/her name
+        // Print his/her name
         echo $customer->name, "\n";
     }
 
@@ -416,14 +416,14 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
          * @param string $key
          * @return object
          */
-        public function getReusableRecords($modelName, $key){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function getReusableRecords($modelName, $key)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 return apc_fetch($key);
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             return parent::getReusableRecords($modelName, $key);
         }
 
@@ -434,15 +434,15 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
          * @param string $key
          * @param mixed $records
          */
-        public function setReusableRecords($modelName, $key, $records){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function setReusableRecords($modelName, $key, $records)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 apc_store($key, $records);
                 return;
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             parent::setReusableRecords($modelName, $key, $records);
         }
     }
@@ -453,7 +453,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    $di->setShared('modelsManager', function() {
+    $di->setShared('modelsManager', function () {
         return new CustomModelsManager();
     });
 
@@ -477,13 +477,13 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    //Get some invoice
+    // Get some invoice
     $invoice  = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
 
-    //Same as above
+    // Same as above
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
 因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法
@@ -499,7 +499,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         public static function findFirst($parameters=null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
     }
 
@@ -534,10 +534,10 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         public static function find($parameters=null)
         {
-            //Create a unique key
+            // Create a unique key
             $key     = self::_createKey($parameters);
 
-            //Check if there are data in the cache
+            // Check if there are data in the cache
             $results = self::_getCache($key);
 
             // Valid data is an object
@@ -550,16 +550,16 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
 
-                //Query the related customer
+                // Query the related customer
                 $customer = $invoice->customer;
 
-                //Assign it to the record
+                // Assign it to the record
                 $invoice->customer = $customer;
 
                 $results[] = $invoice;
             }
 
-            //Store the invoices in the cache + their customers
+            // Store the invoices in the cache + their customers
             self::_setCache($key, $results);
 
             return $results;
@@ -656,7 +656,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
         }
 
     }
-    
+
 这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等我们还要创建更复杂的方法。另外当我们使用find/findFirst来查询关联数据时此方法亦会失效：
 
 .. code-block:: php
@@ -709,35 +709,35 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
          */
         public function execute($params=null, $types=null)
         {
-            //Parse the intermediate representation for the SELECT
+            // Parse the intermediate representation for the SELECT
             $ir = $this->parse();
 
-            //Check if the query has conditions
+            // Check if the query has conditions
             if (isset($ir['where'])) {
 
-                //The fields in the conditions can have any order
-                //We need to recursively check the conditions tree
-                //to find the info we're looking for
+                // The fields in the conditions can have any order
+                // We need to recursively check the conditions tree
+                // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
-                //Recursively visits the nodes
+                // Recursively visits the nodes
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
                 $final   = $visitor->getFinal();
 
-                //Select the cache according to the range
-                //...
+                // Select the cache according to the range
+                // ...
 
-                //Check if the cache has data
-                //...
+                // Check if the cache has data
+                // ...
             }
 
-            //Execute the query
+            // Execute the query
             $result = $this->_executeSelect($ir, $params, $types);
 
-            //cache the result
-            //...
+            // cache the result
+            // ...
 
             return $result;
         }
@@ -856,7 +856,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
         $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
-        //...
+        // ...
     }
 
 上面的例子中，Phalcon产生了10个查询计划，这导致了应用的内存使用量增加。重写以上代码，我们使用绑定参数的这个优点可以减少系统和数据库的过多操作：
@@ -871,7 +871,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         $robots = $this->modelsManager->executeQuery($phql, array($i));
 
-        //...
+        // ...
     }
 
 得用PHQL查询亦可以提供查询性能：
@@ -887,7 +887,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         $robots = $query->execute($phql, array($i));
 
-        //...
+        // ...
     }
 
 `预先准备的查询语句`_的查询计划亦可以被大多数的数据库所缓存，这样可以减少执行的时间，也可以使用我们的系统免受'SQL注入'_的影响。

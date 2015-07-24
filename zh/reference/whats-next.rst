@@ -96,7 +96,7 @@ Yahoo! YSlow
 .. figure:: ../_static/img/speed-tracer.jpg
     :align: center
 
-这是一个非常有用的工具，它可以为我们显示出html页面渲染的时间， Javascript及css执行(渲染)的时间等。 
+这是一个非常有用的工具，它可以为我们显示出html页面渲染的时间， Javascript及css执行(渲染)的时间等。
 
 使用最新的 PHP 版本（Use a recent PHP version）
 ------------------------------------------------

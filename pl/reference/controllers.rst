@@ -2,10 +2,10 @@
 Using Controllers
 =================
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access an URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
@@ -15,7 +15,7 @@ part like this:
 +------------------------+----------------+
 | **Action**             | show           |
 +------------------------+----------------+
-| **Parameter**          | 2012           |
+| **Parameter**          | 2015           |
 +------------------------+----------------+
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
@@ -62,7 +62,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year=2012, $postTitle='some default title')
+        public function showAction($year=2015, $postTitle='some default title')
         {
 
         }
@@ -172,7 +172,7 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
 
@@ -195,7 +195,7 @@ method 'onConstruct':
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -216,7 +216,7 @@ container in application. For example, if we have registered a service like this
 
     $di = new Phalcon\DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -232,19 +232,19 @@ Then, we can access to that service in several ways:
         public function saveAction()
         {
 
-            //Injecting the service by just accessing the property with the same name
+            // Injecting the service by just accessing the property with the same name
             $this->storage->save('/some/file');
 
-            //Accessing the service from the DI
+            // Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->getDi()->getStorage()->save('/some/file');
 
-            //Using the array-syntax
+            // Using the array-syntax
             $this->di['storage']->save('/some/file');
         }
 
@@ -340,17 +340,17 @@ any other class registered with its name can easily replace a controller:
 
     <?php
 
-    //Register a controller as a service
-    $di->set('IndexController', function() {
+    // Register a controller as a service
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-	    //Register a namespaced controller as a service
-	    $di->set('Backend\Controllers\IndexController', function() {
-	        $component = new Component();
-	        return $component;
-	    });
+        // Register a namespaced controller as a service
+        $di->set('Backend\Controllers\IndexController', function () {
+            $component = new Component();
+            return $component;
+        });
 
 Creating a Base Controller
 --------------------------

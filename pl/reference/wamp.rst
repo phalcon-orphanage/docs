@@ -1,13 +1,13 @@
 Instalacja na WAMP
 ====================
-WampServer_ to darmowy, zintegrowany pakiet webowy, z pomocą którego łatwo uruchomimy na swoim komputerze własny serwer WWW. Z powodzeniem posłużyć ono może do testowania skryptów PHP, jak również hostowania niewielkich stron internetowych oraz aplikacji webowych.  
+WampServer_ to darmowy, zintegrowany pakiet webowy, z pomocą którego łatwo uruchomimy na swoim komputerze własny serwer WWW. Z powodzeniem posłużyć ono może do testowania skryptów PHP, jak również hostowania niewielkich stron internetowych oraz aplikacji webowych.
 Poniżej przedstawiamy szczegółową instrukcję instalacji  Phalcona na WampServer. Korzystanie z najnowszej wersji WampServer jest wysoce zalecane.
 
 Pobierz właściwą wersję Phalcona
 -------------------------------------
 WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.
 WAMP ma zarówno wersje 32 jak i 64 bitowe. Z sekcji Download możesz wybrać wersje Phalcona odpowiednią dla swojej architektury.
-Po pobraniu biblioteki Phalcon, będziesz miał plik zip jak na obrazku poniżej: 
+Po pobraniu biblioteki Phalcon, będziesz miał plik zip jak na obrazku poniżej:
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center

@@ -80,9 +80,9 @@ ACLの照会
     <?php
 
     // ロールが操作を行う権限を持っているかチェック
-    $acl->isAllowed("Guests", "Customers", "edit");   //0が返る
-    $acl->isAllowed("Guests", "Customers", "search"); //1が返る
-    $acl->isAllowed("Guests", "Customers", "create"); //1が返る
+    $acl->isAllowed("Guests", "Customers", "edit");   // 0が返る
+    $acl->isAllowed("Guests", "Customers", "search"); // 1が返る
+    $acl->isAllowed("Guests", "Customers", "create"); // 1が返る
 
 ロールの継承
 -----------------
@@ -110,19 +110,19 @@ ACLリストのシリアライズ
 
     <?php
 
-    //ACLデータが既に存在するかどうかをチェックする
+    // ACLデータが既に存在するかどうかをチェックする
     if (!file_exists("app/security/acl.data")) {
 
         $acl = new \Phalcon\Acl\Adapter\Memory();
 
-        //ロール、リソース、アクセスなどを定義
+        // ロール、リソース、アクセスなどを定義
 
         // シリアライズされたリストをファイルに格納
         file_put_contents("app/security/acl.data", serialize($acl));
 
     } else {
 
-         //シリアライズされたファイルからACLオブジェクトを復元
+         // シリアライズされたファイルからACLオブジェクトを復元
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
@@ -151,11 +151,11 @@ ACLイベント
 
     <?php
 
-    //イベントマネージャーを作成
+    // イベントマネージャーを作成
     $eventsManager = new Phalcon\Events\Manager();
 
-    //リスナーに「acl」タイプを紐付け
-    $eventsManager->attach("acl", function($event, $acl) {
+    // リスナーに「acl」タイプを紐付け
+    $eventsManager->attach("acl", function ($event, $acl) {
         if ($event->getType() == 'beforeCheckAccess') {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
@@ -165,10 +165,10 @@ ACLイベント
 
     $acl = new \Phalcon\Acl\Adapter\Memory();
 
-    //$acl をセットアップ
-    //...
+    // $acl をセットアップ
+    // ...
 
-    //aclコンポーネントにイベントマネージャーを紐付け
+    // aclコンポーネントにイベントマネージャーを紐付け
     $acl->setEventsManager($eventManagers);
 
 独自アダプタの実装

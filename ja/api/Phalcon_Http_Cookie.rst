@@ -9,7 +9,7 @@ Provide OO wrappers to manage a HTTP cookie
 Methods
 -------
 
-public  **__construct** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
+public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
 Phalcon\\Http\\Cookie constructor
 
@@ -27,13 +27,13 @@ Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*unknown* $value)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*string* $value)
 
 Sets the cookie's value
 
 
 
-public *mixed*  **getValue** ([*unknown* $filters], [*unknown* $defaultValue])
+public *mixed*  **getValue** ([*string|array* $filters], [*string* $defaultValue])
 
 Returns the cookie's value
 

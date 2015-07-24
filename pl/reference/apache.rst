@@ -5,7 +5,7 @@ Apache_ is a popular and well known web server available on many platforms.
 Configuring Apache for Phalcon
 ------------------------------
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
-focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
+focused on the configuration of the mod-rewrite module allowing to use friendly URLs and the
 :doc:`router component <routing>`. Commonly an application has the following structure:
 
 .. code-block:: php
@@ -34,7 +34,7 @@ to the application's document root (public/).
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Now a second .htaccess file is located in the public/ directory, this re-writes all the URIs to the public/index.php file:
@@ -47,7 +47,7 @@ Now a second .htaccess file is located in the public/ directory, this re-writes 
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 If you do not want to use .htaccess files you can move these configurations to the apache's main configuration file:
@@ -59,14 +59,14 @@ If you do not want to use .htaccess files you can move these configurations to t
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>

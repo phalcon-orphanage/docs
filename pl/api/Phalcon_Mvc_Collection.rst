@@ -26,7 +26,7 @@ Phalcon\\Mvc\\Collection constructor
 
 
 
-public  **setId** (*unknown* $id)
+public  **setId** (*mixed* $id)
 
 Sets a value for the _id property, creates a MongoId object if needed
 
@@ -110,7 +110,7 @@ Retrieves a database connection
 
 
 
-public *mixed*  **readAttribute** (*unknown* $attribute)
+public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -123,7 +123,7 @@ Reads an attribute value by its name
 
 
 
-public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name 
 
@@ -142,19 +142,19 @@ Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** (*unknown* $params, *unknown* $collection, *unknown* $connection, *unknown* $unique)
+protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int*  **_getGroupResultset** (*unknown* $params, *unknown* $collection, *unknown* $connection)
+protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection)
 
 Perform a count over a resultset
 
 
 
-final protected *boolean*  **_preSave** (*unknown* $dependencyInjector, *unknown* $disableEvents, *unknown* $exists)
+final protected *boolean*  **_preSave** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
@@ -242,7 +242,7 @@ Cancel the current operation
 
 
 
-protected *boolean*  **_exists** (*unknown* $collection)
+protected *boolean*  **_exists** (*\MongoCollection* $collection)
 
 Checks if the document exists in the collection
 
@@ -299,11 +299,11 @@ Appends a customized message on the validation process
 
 public  **save** ()
 
-Creates/Updates a collection based on the values in the atributes
+Creates/Updates a collection based on the values in the attributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*unknown* $id)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
 
 Find a document by its id (_id)
 

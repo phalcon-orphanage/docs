@@ -1,33 +1,21 @@
 Interface **Phalcon\\Translate\\AdapterInterface**
 ==================================================
 
-Phalcon\\Translate\\AdapterInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public  **__construct** (*array* $options)
+abstract public  **t** (*unknown* $translateKey, [*unknown* $placeholders])
 
-Phalcon\\Translate\\Adapter\\NativeArray constructor
-
-
-
-abstract public *string*  **_** (*string* $translateKey, [*array* $placeholders])
-
-Returns the translation string of the given key
+...
 
 
+abstract public  **query** (*unknown* $index, [*unknown* $placeholders])
 
-abstract public *string*  **query** (*string* $index, [*array* $placeholders])
-
-Returns the translation related to the given key
-
+...
 
 
-abstract public *bool*  **exists** (*string* $index)
+abstract public  **exists** (*unknown* $index)
 
-Check whether is defined a translation key in the internal array
-
+...
 
 

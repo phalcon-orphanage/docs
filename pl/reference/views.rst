@@ -275,7 +275,7 @@ This method can be invoked from the controller or from a superior view layer to 
             // This is an Ajax response so it doesn't generate any kind of view
             $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
-            //...
+            // ...
         }
 
         public function showAction($postId)
@@ -314,11 +314,11 @@ You can permanently or temporarily disable render levels. A level could be perma
 
     use Phalcon\Mvc\View;
 
-    $di->set('view', function(){
+    $di->set('view', function () {
 
         $view = new View();
 
-        //Disable several levels
+        // Disable several levels
         $view->disableLevel(array(
             View::LEVEL_LAYOUT => true,
             View::LEVEL_MAIN_LAYOUT => true
@@ -392,13 +392,13 @@ avoiding unnecessary processing:
 
         public function closeSessionAction()
         {
-            //Close session
-            //...
+            // Close session
+            // ...
 
-            //An HTTP Redirect
+            // A HTTP Redirect
             $this->response->redirect('index/index');
 
-            //Disable the view to avoid rendering
+            // Disable the view to avoid rendering
             $this->view->disable();
         }
 
@@ -415,10 +415,10 @@ You can return a 'response' object to avoid disable the view manually:
 
         public function closeSessionAction()
         {
-            //Close session
-            //...
+            // Close session
+            // ...
 
-            //An HTTP Redirect
+            // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
 
@@ -440,7 +440,7 @@ The default component must be replaced in the service container:
 
     <?php
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new Phalcon\Mvc\View\Simple();
 
@@ -479,16 +479,16 @@ To render a view it's necessary to call the render method explicitly indicating 
 
         public function indexAction()
         {
-            //Render 'views-dir/index.phtml'
+            // Render 'views-dir/index.phtml'
             echo $this->view->render('index');
 
-            //Render 'views-dir/posts/show.phtml'
+            // Render 'views-dir/posts/show.phtml'
             echo $this->view->render('posts/show');
 
-            //Render 'views-dir/index.phtml' passing variables
+            // Render 'views-dir/index.phtml' passing variables
             echo $this->view->render('index', array('posts' => Posts::find()));
 
-            //Render 'views-dir/posts/show.phtml' passing variables
+            // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render('posts/show', array('posts' => Posts::find()));
         }
 
@@ -540,13 +540,13 @@ use that object to set variables directly to the view from a controller action b
 
         public function showAction()
         {
-            //Pass all the posts to the views
+            // Pass all the posts to the views
             $this->view->setVar("posts", Posts::find());
 
-            //Using the magic setter
+            // Using the magic setter
             $this->view->posts = Posts::find();
 
-            //Passing more than one variable at the same time
+            // Passing more than one variable at the same time
             $this->view->setVars(array(
                 'title' => $post->title,
                 'content' => $post->content
@@ -608,7 +608,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function showAction()
         {
-            //Cache the view using the default settings
+            // Cache the view using the default settings
             $this->view->cache(true);
         }
 
@@ -622,7 +622,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function resumeAction()
         {
-            //Cache this view for 1 day with the key "resume-cache"
+            // Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
                 array(
                     "lifetime" => 86400,
@@ -633,7 +633,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function downloadAction()
         {
-            //Passing a custom service
+            // Passing a custom service
             $this->view->cache(
                 array(
                     "service"  => "myCache",
@@ -658,15 +658,15 @@ The service name convention for this service is "viewCache":
     use Phalcon\Cache\Frontend\Output as OutputFrontend,
         Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
-    //Set the views cache service
-    $di->set('viewCache', function() {
+    // Set the views cache service
+    $di->set('viewCache', function () {
 
-        //Cache data for one day by default
+        // Cache data for one day by default
         $frontCache = new OutputFrontend(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Memcached connection settings
         $cache = new MemcacheBackend($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -695,10 +695,10 @@ expired to make the calculations/queries to display data in the view:
         public function indexAction()
         {
 
-            //Check whether the cache with key "downloads" exists or has expired
+            // Check whether the cache with key "downloads" exists or has expired
             if ($this->view->getCache()->exists('downloads')) {
 
-                //Query the latest downloads
+                // Query the latest downloads
                 $latest = Downloads::find(array(
                     'order' => 'created_at DESC'
                 ));
@@ -706,7 +706,7 @@ expired to make the calculations/queries to display data in the view:
                 $this->view->latest = $latest;
             }
 
-            //Enable the cache with the same key "downloads"
+            // Enable the cache with the same key "downloads"
             $this->view->cache(array(
                 'key' => 'downloads'
             ));
@@ -757,7 +757,7 @@ when it's necessary.
          */
         public function __construct($view, $di)
         {
-            //Initialize here the adapter
+            // Initialize here the adapter
             parent::__construct($view, $di);
         }
 
@@ -776,8 +776,8 @@ when it's necessary.
             // Access options
             $options = $this->_options;
 
-            //Render the view
-            //...
+            // Render the view
+            // ...
         }
 
     }
@@ -829,12 +829,12 @@ If you want to register a template engine or a set of them for each request in t
 
     <?php
 
-    //Setting up the view component
-    $di->set('view', function() {
+    // Setting up the view component
+    $di->set('view', function () {
 
         $view = new \Phalcon\Mvc\View();
 
-        //A trailing directory separator is required
+        // A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
@@ -852,7 +852,7 @@ Injecting services in View
 Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
 to the application's service container.
 
-The following example shows how to write a jQuery `ajax request`_ using a url with the framework conventions.
+The following example shows how to write a jQuery `ajax request`_ using a URL with the framework conventions.
 The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
 
 .. code-block:: html+php
@@ -862,7 +862,7 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
     $.ajax({
         url: "<?php echo $this->url->get("cities/get") ?>"
     })
-    .done(function() {
+    .done(function () {
         alert("Done!");
     });
 
@@ -882,20 +882,20 @@ Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode 
 
     $view = new \Phalcon\Mvc\View();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
     $view->setVar("someProducts", $products);
     $view->setVar("someFeatureEnabled", true);
 
-    //Start the output buffering
+    // Start the output buffering
     $view->start();
 
-    //Render all the view hierarchy related to the view products/list.phtml
+    // Render all the view hierarchy related to the view products/list.phtml
     $view->render("products", "list");
 
-    //Finish the output buffering
+    // Finish the output buffering
     $view->finish();
 
     echo $view->getContent();
@@ -913,8 +913,8 @@ A short syntax is also available:
             "someProducts" => $products,
             "someFeatureEnabled" => true
         ),
-        function($view) {
-            //Set any extra options here
+        function ($view) {
+            // Set any extra options here
             $view->setViewsDir("../app/views/");
             $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT);
         }
@@ -930,7 +930,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
 
     $view = new \Phalcon\Mvc\View\Simple();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Render a view and return its contents as a string
@@ -968,20 +968,20 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
-        //Create an events manager
+        // Create an events manager
         $eventsManager = new Phalcon\Events\Manager();
 
-        //Attach a listener for type "view"
-        $eventsManager->attach("view", function($event, $view) {
+        // Attach a listener for type "view"
+        $eventsManager->attach("view", function ($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
 
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir("../app/views/");
 
-        //Bind the eventsManager to the view component
+        // Bind the eventsManager to the view component
         $view->setEventsManager($eventsManager);
 
         return $view;
@@ -1015,7 +1015,7 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 
     }
 
-    //Attach the plugin as a listener
+    // Attach the plugin as a listener
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php

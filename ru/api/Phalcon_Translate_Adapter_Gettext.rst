@@ -17,7 +17,7 @@ Phalcon\\Translate\\Adapter\\Gettext constructor
 
 
 
-public *string*  **query** (*unknown* $index, [*unknown* $placeholders])
+public *string*  **query** (*string* $index, [*array* $placeholders])
 
 Returns the translation related to the given key
 
@@ -29,13 +29,13 @@ Check whether is defined a translation key in the internal array
 
 
 
-public *string*  **nquery** (*unknown* $msgid1, *unknown* $msgid2, *unknown* $count, [*unknown* $placeholders], [*unknown* $domain])
+public *string*  **nquery** (*string* $msgid1, *string* $msgid2, *int* $count, [*array* $placeholders], [*string* $domain])
 
 The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
 
 
 
-public *string Returns the new current domain.*  **setDomain** (*unknown* $domain)
+public *string Returns the new current domain.*  **setDomain** (*string* $domain)
 
 Changes the current domain (i.e. the translation file). The passed domain must be one of those passed to the constructor.
 
@@ -101,19 +101,19 @@ Gets default options
 
 
 
-public *string*  **t** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key (alias of method 't')
 
 
 
-public  **offsetSet** (*unknown* $offset, *unknown* $value) inherited from Phalcon\\Translate\\Adapter
+public  **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon\\Translate\\Adapter
 
 Sets a translation value
 
@@ -125,13 +125,13 @@ Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*unknown* $offset) inherited from Phalcon\\Translate\\Adapter
+public  **offsetUnset** (*string* $offset) inherited from Phalcon\\Translate\\Adapter
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public *string*  **offsetGet** (*string* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation related to the given key
 

@@ -64,7 +64,7 @@
 
     $some = new SomeComponent();
 
-    //建立数据库连接实例
+    // 建立数据库连接实例
     $connection = new Connection(array(
         "host" => "localhost",
         "username" => "root",
@@ -72,7 +72,7 @@
         "dbname" => "invo"
     ));
 
-    //向组件注入数据连接实例
+    // 向组件注入数据连接实例
     $some->setConnection($connection);
 
     $some->someDbTask();
@@ -126,7 +126,7 @@
 
     $some = new SomeComponent();
 
-    //把注册表中的连接实例传递给组件
+    // 把注册表中的连接实例传递给组件
     $some->setConnection(Registry::getConnection());
 
     $some->someDbTask();
@@ -160,7 +160,7 @@
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null){
+            if (self::$_connection===null) {
                 $connection = self::_createConnection();
                 self::$_connection = $connection;
             }
@@ -212,12 +212,12 @@
 
     $some = new SomeComponent();
 
-    //注入共享连接实例
+    // 注入共享连接实例
     $some->setConnection(Registry::getSharedConnection());
 
     $some->someDbTask();
 
-    //这里我们总是传递一个新的连接实例
+    // 这里我们总是传递一个新的连接实例
     $some->someOtherDbTask(Registry::getConnection());
 
 到目前为止，我们已经看到依赖注入怎么解决我们的问题了。把依赖作为参数来传递，而不是建立在内部建立它们，这使我们的应用更加容易维护和更加解耦。不管怎么样，长期来说，这种形式的依赖注入有一些缺点。
@@ -229,14 +229,14 @@
 
     <?php
 
-    //创建依赖实例或从注册表中查找
+    // 创建依赖实例或从注册表中查找
     $connection = new Connection();
     $session = new Session();
     $fileSystem = new FileSystem();
     $filter = new Filter();
     $selector = new Selector();
 
-    //把实例作为参数传递给构造函数
+    // 把实例作为参数传递给构造函数
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
     // ... 或者使用setter
@@ -318,8 +318,8 @@
 
     $di = new Phalcon\DI();
 
-    //在容器中注册一个db服务
-    $di->set('db', function() {
+    // 在容器中注册一个db服务
+    $di->set('db', function () {
         return new Connection(array(
             "host" => "localhost",
             "username" => "root",
@@ -328,17 +328,17 @@
         ));
     });
 
-    //在容器中注册一个filter服务
-    $di->set('filter', function() {
+    // 在容器中注册一个filter服务
+    $di->set('filter', function () {
         return new Filter();
     });
 
-    //在容器中注册一个session服务
-    $di->set('session', function() {
+    // 在容器中注册一个session服务
+    $di->set('session', function () {
         return new Session();
     });
 
-    //把传递服务的容器作为唯一参数传递给组件
+    // 把传递服务的容器作为唯一参数传递给组件
     $some = new SomeComponent($di);
 
     $some->someTask();
@@ -378,7 +378,7 @@ Phalcon\\DI 是一个实现依赖注入和定位服务的组件，而且它本�
     $di->set("request", 'Phalcon\Http\Request');
 
     // 使用匿名函数去设置服务，这个实例将被延迟加载
-    $di->set("request", function() {
+    $di->set("request", function () {
         return new Phalcon\Http\Request();
     });
 
@@ -403,7 +403,7 @@ Phalcon\\DI 是一个实现依赖注入和定位服务的组件，而且它本�
     $di["request"] = 'Phalcon\Http\Request';
 
     // 使用匿名函数去设置服务，这个实例将被延迟加载
-    $di["request"] = function() {
+    $di["request"] = function () {
         return new Phalcon\Http\Request();
     };
 
@@ -458,7 +458,7 @@ Phalcon\\DI 对每个储存的服务提供了延迟加载。除非开发者选�
 
     <?php
 
-    $di->set("db", function() {
+    $di->set("db", function () {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => "localhost",
              "username" => "root",
@@ -474,7 +474,7 @@ Phalcon\\DI 对每个储存的服务提供了延迟加载。除非开发者选�
     <?php
 
     // 把当前域的$config变量传递给匿名函数使用
-    $di->set("db", function() use ($config) {
+    $di->set("db", function () use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => $config->host,
              "username" => $config->username,
@@ -503,7 +503,7 @@ Phalcon\\DI 对每个储存的服务提供了延迟加载。除非开发者选�
     ));
 
     // 使用匿名函数的方式
-    $di->set('logger', function() {
+    $di->set('logger', function () {
         return new \Phalcon\Logger\Adapter\File('../apps/logs/error.log');
     });
 
@@ -734,7 +734,7 @@ reponse服务(Phalcon\\Http\\Response)作为第一个参数传递给构造函数
     <?php
 
     // 把session服务注册成“shared”类型
-    $di->setShared('session', function() {
+    $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -750,8 +750,8 @@ reponse服务(Phalcon\\Http\\Response)作为第一个参数传递给构造函数
     <?php
 
     // 把session服务注册成“shared”类型
-    $di->set('session', function() {
-        //...
+    $di->set('session', function () {
+        // ...
     }, true);
 
 如果一个服务不是注册成“shared”类型，而你又想从DI中获取服务的“shared”实例，你可以使用getShared方法：
@@ -777,7 +777,7 @@ reponse服务(Phalcon\\Http\\Response)作为第一个参数传递给构造函数
     $requestService = $di->getService('request');
 
     // 改变它的定义
-    $requestService->setDefinition(function() {
+    $requestService->setDefinition(function () {
         return new Phalcon\Http\Request();
     });
 
@@ -797,13 +797,13 @@ reponse服务(Phalcon\\Http\\Response)作为第一个参数传递给构造函数
     <?php
 
     // 把一个控制器注册为服务
-    $di->set('IndexController', function() {
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     }, true);
 
     // 把一个控制器注册为服务
-    $di->set('MyOtherComponent', function() {
+    $di->set('MyOtherComponent', function () {
         // 实际上返回另外一个组件
         $component = new AnotherComponent();
         return $component;
@@ -847,10 +847,10 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     <?php
 
-    //注册服务
+    // 注册服务
     $di->set('myClass', 'MyClass');
 
-    //解析服务（注意：将自动调用$myClass->setDi($di)方法）
+    // 解析服务（注意：将自动调用$myClass->setDi($di)方法）
     $myClass = $di->get('myClass');
 
 避免服务解析（Avoiding service resolution）
@@ -861,10 +861,10 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     <?php
 
-    //外部解析服务对象而不是使用定义服务的方式
+    // 外部解析服务对象而不是使用定义服务的方式
     $router = new MyRouter();
 
-    //把已解析的对象设置到注册服务中
+    // 把已解析的对象设置到注册服务中
     $di->set('router', $router);
 
 使用文件组织服务（Organizing services in files）
@@ -875,7 +875,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     <?php
 
-    $di->set('router', function() {
+    $di->set('router', function () {
         return include "../app/config/routes.php";
     });
 
@@ -904,7 +904,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
         public static function someMethod()
         {
-            //获取session服务
+            // 获取session服务
             $session = Phalcon\DI::getDefault()->getSession();
         }
 

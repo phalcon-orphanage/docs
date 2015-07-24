@@ -225,7 +225,7 @@ for a specific field using the 'filter' method:
 
     $messages = $validation->validate();
     if (count($messages)) {
-        //Filter only the messages generated for the field 'name'
+        // Filter only the messages generated for the field 'name'
         foreach ($validation->getMessages()->filter('name') as $message) {
             echo $message;
         }
@@ -251,7 +251,7 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
             'message' => 'The email is required'
         )));
 
-    //Filter any extra space
+    // Filter any extra space
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
@@ -304,7 +304,7 @@ cancelled:
          */
         public function afterValidation($data, $entity, $messages)
         {
-            //... add additional messages or perform more validations
+            // ... add additional messages or perform more validations
         }
     }
 
@@ -368,7 +368,7 @@ If you are creating custom validators you can dynamically stop the validation ch
                 $validator->setOption('cancelOnFail', true);
             }
 
-            //...
+            // ...
         }
     }
 

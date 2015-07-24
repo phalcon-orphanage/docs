@@ -51,7 +51,7 @@
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 После этого, создаём файл index.php:
@@ -75,32 +75,32 @@
     $app = new Phalcon\Mvc\Micro();
 
     // Получение списка всех роботов
-    $app->get('/api/robots', function() {
+    $app->get('/api/robots', function () {
 
     });
 
     // Поиск роботов с $name в названии
-    $app->get('/api/robots/search/{name}', function($name) {
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
     // Получение робота по указанному ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
     // Добавление нового робота
-    $app->post('/api/robots', function() {
+    $app->post('/api/robots', function () {
 
     });
 
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    $app->put('/api/robots/{id:[0-9]+}', function () {
 
     });
 
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -168,7 +168,7 @@
     $di = new \Phalcon\DI\FactoryDefault();
 
     // Настройка сервиса базы данных
-    $di->set('db', function(){
+    $di->set('db', function () {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
             "username" => "asimov",
@@ -189,13 +189,13 @@
     <?php
 
     // Получение всех роботов
-    $app->get('/api/robots', function() use ($app) {
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach( $robots as $robot){
+        foreach ( $robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -216,7 +216,7 @@
     <?php
 
     // Поиск роботов, в названии которых содержится $name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
@@ -225,7 +225,7 @@
 
         $data = array();
 
-        foreach ($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -243,14 +243,14 @@
     <?php
 
     // Получение робота по ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ))->getFirst();
 
-        //Create a response
+        // Create a response
         $response = new Phalcon\Http\Response();
 
         if ($robot == false) {
@@ -277,7 +277,7 @@
     <?php
 
     // Добавление нового робота
-    $app->post('/api/robots', function() use ($app) {
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -292,7 +292,7 @@
         // Формируем ответ
         $response = new Phalcon\Http\Response();
 
-        //Проверка, что вставка произведена успешно
+        // Проверка, что вставка произведена успешно
         if ($status->success() == true) {
 
             // Изменение HTML статуса
@@ -307,7 +307,7 @@
             // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
-            //Отправляем сообщение об ошибке клиенту
+            // Отправляем сообщение об ошибке клиенту
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
@@ -328,7 +328,7 @@
     <?php
 
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -348,7 +348,7 @@
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Изменение HTML статуса
+            // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -371,7 +371,7 @@
     <?php
 
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
@@ -411,7 +411,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Tue, 21 Jul 2015 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -425,7 +425,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Tue, 21 Jul 2015 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -439,7 +439,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Tue, 21 Jul 2015 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -454,7 +454,7 @@
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Tue, 21 Jul 2015 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -469,7 +469,7 @@
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Tue, 21 Jul 2015 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -484,7 +484,7 @@
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Tue, 21 Jul 2015 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -499,7 +499,7 @@
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Tue, 21 Jul 2015 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

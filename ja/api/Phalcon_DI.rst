@@ -58,7 +58,7 @@ Registers an "always shared" service in the services container
 
 public  **remove** (*unknown* $name)
 
-Removes a service in the services container
+Removes a service in the services container It also removes any shared instance created for the service
 
 
 
@@ -92,7 +92,7 @@ Resolves the service based on its configuration
 
 
 
-public *mixed*  **getShared** (*unknown* $name, [*unknown* $parameters])
+public *mixed*  **getShared** (*string* $name, [*array* $parameters])
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
@@ -122,7 +122,7 @@ Check if a service is registered using the array syntax
 
 
 
-public *boolean*  **offsetSet** (*unknown* $name, *unknown* $definition)
+public *boolean*  **offsetSet** (*string* $name, *mixed* $definition)
 
 Allows to register a shared service using the array syntax 
 
@@ -135,7 +135,7 @@ Allows to register a shared service using the array syntax
 
 
 
-public *mixed*  **offsetGet** (*unknown* $name)
+public *mixed*  **offsetGet** (*string* $name)
 
 Allows to obtain a shared service using the array syntax 
 
@@ -154,7 +154,7 @@ Removes a service from the services container using the array syntax
 
 
 
-public *mixed*  **__call** (*unknown* $method, [*unknown* $arguments])
+public *mixed*  **__call** (*string* $method, [*array* $arguments])
 
 Magic method to get or set services using setters/getters
 

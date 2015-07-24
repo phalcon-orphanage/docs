@@ -7,7 +7,7 @@ User Components
 ---------------
 All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
+upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
 
 This part of the application is implemented in the component "Elements" (app/library/Elements.php).
 
@@ -22,12 +22,12 @@ This part of the application is implemented in the component "Elements" (app/lib
 
         public function getMenu()
         {
-            //...
+            // ...
         }
 
         public function getTabs()
         {
-            //...
+            // ...
         }
 
     }
@@ -40,8 +40,8 @@ our first user component in the services container:
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    // Register a user component
+    $di->set('elements', function () {
         return new Elements();
     });
 
@@ -68,7 +68,7 @@ in the container and by just accessing an attribute with the same name as a prev
         {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2014</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 
@@ -77,7 +77,6 @@ The important part is:
 .. code-block:: html+php
 
     {{ elements.getMenu() }}
-
 
 Changing the Title Dynamically
 ------------------------------
@@ -93,12 +92,12 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            // Set the document title
             $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
-        //...
+        // ...
 
     }
 
@@ -115,11 +114,11 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Prepend the application name to the title
             $this->tag->prependTitle('INVO | ');
         }
 
-        //...
+        // ...
     }
 
 Finally, the title is printed in the main view (app/views/index.phtml):

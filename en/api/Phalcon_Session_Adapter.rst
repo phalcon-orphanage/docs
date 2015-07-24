@@ -16,7 +16,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Session\\Adapter constructor
 
@@ -61,13 +61,13 @@ Get session name
 
 
 
-public *mixed*  **get** (*unknown* $index, [*unknown* $defaultValue], [*unknown* $remove])
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove])
 
 Gets a session variable from an application context
 
 
 
-public  **set** (*unknown* $index, *unknown* $value)
+public  **set** (*string* $index, *string* $value)
 
 Sets a session variable in an application context 
 
@@ -176,13 +176,13 @@ Returns the status of the current session. For PHP 5.3 this function will always
 
 
 
-public *mixed*  **__get** (*unknown* $index)
+public *mixed*  **__get** (*string* $index)
 
 Alias: Gets a session variable from an application context
 
 
 
-public  **__set** (*unknown* $index, *unknown* $value)
+public  **__set** (*string* $index, *string* $value)
 
 Alias: Sets a session variable in an application context
 

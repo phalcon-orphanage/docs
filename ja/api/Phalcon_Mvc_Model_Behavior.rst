@@ -7,7 +7,7 @@ This is an optional base class for ORM behaviors
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 
 
@@ -19,7 +19,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*unknown* $eventName])
+protected *array*  **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 
@@ -31,7 +31,7 @@ This method receives the notifications from the EventsManager
 
 
 
-public  **missingMethod** (*unknown* $model, *unknown* $method, [*unknown* $arguments])
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments])
 
 Acts as fallbacks when a missing method is called on the model
 

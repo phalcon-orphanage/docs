@@ -250,7 +250,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
     $success = $connection->execute($sql, array('Astroy Boy', 1952));
 
@@ -265,7 +265,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
     $success = $connection->execute($sql, array('Astroy Boy', 101));
 
@@ -281,7 +281,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // With placeholders
     $sql     = "DELETE `robots` WHERE `id` = ?";
     $success = $connection->execute($sql, array(101));
 
@@ -299,19 +299,19 @@ often increase the performance on most database systems:
 
     try {
 
-        //Start a transaction
+        // Start a transaction
         $connection->begin();
 
-        //Execute some SQL statements
+        // Execute some SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 101");
         $connection->execute("DELETE `robots` WHERE `id` = 102");
         $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-        //Commit if everything goes well
+        // Commit if everything goes well
         $connection->commit();
 
-    } catch(Exception $e) {
-        //An exception has ocurred rollback the transaction
+    } catch (Exception $e) {
+        // An exception has ocurred rollback the transaction
         $connection->rollback();
     }
 
@@ -325,37 +325,37 @@ is created:
 
     try {
 
-        //Start a transaction
+        // Start a transaction
         $connection->begin();
 
-        //Execute some SQL statements
+        // Execute some SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
 
-            //Start a nested transaction
+            // Start a nested transaction
             $connection->begin();
 
-            //Execute these SQL statements into the nested transaction
+            // Execute these SQL statements into the nested transaction
             $connection->execute("DELETE `robots` WHERE `id` = 102");
             $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-            //Create a save point
+            // Create a save point
             $connection->commit();
 
-        } catch(Exception $e) {
-            //An error has ocurred, release the nested transaction
+        } catch (Exception $e) {
+            // An error has ocurred, release the nested transaction
             $connection->rollback();
         }
 
-        //Continue, executing more SQL statements
+        // Continue, executing more SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 104");
 
-        //Commit if everything goes well
+        // Commit if everything goes well
         $connection->commit();
 
-    } catch(Exception $e) {
-        //An exception has ocurred rollback the transaction
+    } catch (Exception $e) {
+        // An exception has ocurred rollback the transaction
         $connection->rollback();
     }
 
@@ -393,7 +393,7 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     $eventsManager = new EventsManager();
 
-    //Listen all the database events
+    // Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(array(
@@ -403,7 +403,7 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
         "dbname" => "invo"
     ));
 
-    //Assign the eventsManager to the db adapter instance
+    // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
 
 Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
@@ -412,16 +412,16 @@ Stop SQL operations are very useful if for example you want to implement some la
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function($event, $connection) {
+    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
 
-        //Check for malicious words in SQL statements
+        // Check for malicious words in SQL statements
         if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
             // DROP/ALTER operations aren't allowed in the application,
             // this must be a SQL injection!
             return false;
         }
 
-        //It's ok
+        // It's ok
         return true;
     });
 
@@ -442,19 +442,19 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     $profiler = new DbProfiler();
 
-    //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+    // Listen all the database events
+    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
-            //Start a profile with the active connection
+            // Start a profile with the active connection
             $profiler->startProfile($connection->getSQLStatement());
         }
         if ($event->getType() == 'afterQuery') {
-            //Stop the active profile
+            // Stop the active profile
             $profiler->stopProfile();
         }
     });
 
-    //Assign the events manager to the connection
+    // Assign the events manager to the connection
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
@@ -503,13 +503,13 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
-    //Create an EventsManager
+    // Create an EventsManager
     $eventsManager = new EventsManager();
 
-    //Create a listener
+    // Create a listener
     $dbProfiler = new DbProfiler();
 
-    //Attach the listener listening for all database events
+    // Attach the listener listening for all database events
     $eventsManager->attach('db', $dbProfiler);
 
 Logging SQL Statements
@@ -528,17 +528,17 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new Logger("app/logs/db.log");
 
-    //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($logger) {
+    // Listen all the database events
+    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
-    //Assign the eventsManager to the db adapter instance
+    // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
 
-    //Execute some SQL statement
+    // Execute some SQL statement
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
@@ -761,7 +761,7 @@ Examples on dropping tables:
     // Drop table robot from active database
     $connection->dropTable("robots");
 
-    //Drop table robot from database "machines"
+    // Drop table robot from database "machines"
     $connection->dropTable("robots", "machines");
 
 .. _PDO: http://www.php.net/manual/en/book.pdo.php

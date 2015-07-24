@@ -97,6 +97,16 @@ HTTP используется, чтобы запросы путей соотве
     // Совпадет, если HTTP-метод - GET или POST
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    // Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 Пути с параметрами
 ^^^^^^^^^^^^^^^^^^
@@ -137,7 +147,7 @@ HTTP используется, чтобы запросы путей соотве
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Работа с заголовками ответов (Responses)
@@ -233,17 +243,17 @@ HTTP используется, чтобы запросы путей соотве
     // Установка маршрута с именем "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. здесь показываем текст статьи
+        // .. здесь показываем текст статьи
 
     })->setName('show-post');
 
     // Где-нибудь используем наш новый адрес
-    $app->get('/', function() use ($app) {
+    $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year' => 2015
         )), '">Show the post</a>';
 
     });
@@ -265,7 +275,7 @@ HTTP используется, чтобы запросы путей соотве
 
     $di = new FactoryDefault();
 
-    $di->set('config', function() {
+    $di->set('config', function () {
         return new IniConfig("config.ini");
     });
 
@@ -294,7 +304,7 @@ HTTP используется, чтобы запросы путей соотве
     $app = new Micro();
 
     // Установка сервиса базы данных
-    $app['db'] = function() {
+    $app['db'] = function () {
         return new MysqlAdapter(array(
             "host" => "localhost",
             "username" => "root",
@@ -340,7 +350,7 @@ HTTP используется, чтобы запросы путей соотве
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function(){
+    $app->get('/products/find', function () {
 
         foreach (Products::find() as $product) {
             echo $product->name, '<br>';
@@ -382,7 +392,7 @@ HTTP используется, чтобы запросы путей соотве
     $eventManager = new EventsManager();
 
     // Слушаем все события приложения
-    $eventManager->attach('micro', function($event, $app) {
+    $eventManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -414,25 +424,25 @@ HTTP используется, чтобы запросы путей соотве
 
     // Выполнится до того, как выполнится любой из маршрутов
     // Возврат false отменит выполнение маршрута
-    $app->before(function() use ($app) {
+    $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
             return false;
         }
         return true;
     });
 
-    $app->map('/api/robots', function(){
+    $app->map('/api/robots', function () {
         return array(
             'status' => 'OK'
         );
     });
 
-    $app->after(function() use ($app) {
+    $app->after(function () use ($app) {
         // Это выполнится после того, как выполнится маршрут
         echo json_encode($app->getReturnedValue());
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // Это выполнится после того, как был обработан запрос
     });
 
@@ -442,12 +452,12 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    $app->finish(function() use ($app) {
-        //First 'finish' middleware
+    $app->finish(function () use ($app) {
+        // First 'finish' middleware
     });
 
-    $app->finish(function() use ($app) {
-        //Second 'finish' middleware
+    $app->finish(function () use ($app) {
+        // Second 'finish' middleware
     });
 
 Код из связанных событий может быть повторно использован в отдельных классах:
@@ -541,12 +551,12 @@ HTTP используется, чтобы запросы путей соотве
 
         public function index()
         {
-            //...
+            // ...
         }
 
         public function show($slug)
         {
-            //...
+            // ...
         }
     }
 
@@ -574,7 +584,7 @@ HTTP используется, чтобы запросы путей соотве
     $app = new Micro();
 
     // Взвращаем ответ
-    $app->get('/welcome/index', function() {
+    $app->get('/welcome/index', function () {
 
         $response = new Response();
 
@@ -596,14 +606,14 @@ HTTP используется, чтобы запросы путей соотве
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function() {
+    $app['view'] = function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('app/views/');
         return $view;
     };
 
     // Возвращаем отрисованное представление
-    $app->get('/products/show', function() use ($app) {
+    $app->get('/products/show', function () use ($app) {
 
         // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
         echo $app['view']->render('products/show', array(

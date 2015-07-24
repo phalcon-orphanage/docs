@@ -1,7 +1,7 @@
 Class **Phalcon\\Queue\\Beanstalk\\Job**
 ========================================
 
-* Phalcon\\Queue\\Beanstalk\\Job * * Represents a job in a beanstalk queue
+Represents a job in a beanstalk queue
 
 
 Methods
@@ -17,7 +17,7 @@ public  **getBody** ()
 ...
 
 
-public  **__construct** (*unknown* $queue, *unknown* $id, *unknown* $body)
+public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *string* $id, *string* $body)
 
 
 

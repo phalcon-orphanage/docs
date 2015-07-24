@@ -126,13 +126,13 @@ so you have access to the application services if needed:
         public function initialize()
         {
 
-            //Set the same form as entity
+            // Set the same form as entity
             $this->setEntity($this);
 
-            //Add a text element to capture the 'email'
+            // Add a text element to capture the 'email'
             $this->add(new Text("email"));
 
-            //Add a text element to put a hidden csrf
+            // Add a text element to put a hidden csrf
             $this->add(new Hidden("csrf"));
         }
     }
@@ -265,7 +265,7 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
@@ -279,10 +279,10 @@ You can validate the form and assign the values from the user input in the follo
 
     $form->bind($_POST, $robot);
 
-    //Check if the form is valid
+    // Check if the form is valid
     if ($form->isValid()) {
 
-        //Save the entity
+        // Save the entity
         $robot->save();
     }
 
@@ -394,7 +394,7 @@ in the form's class to perform pre-validations and post-validations:
 
 フォームのレンダリング
 ---------------
-You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 .. code-block:: html+php
 
@@ -402,14 +402,14 @@ You can render the form with total flexibility, the following example shows how 
 
     <form method="post">
         <?php
-            //Traverse the form
+            // Traverse the form
             foreach ($form as $element) {
 
-                //Get any generated messages for the current element
+                // Get any generated messages for the current element
                 $messages = $form->getMessagesFor($element->getName());
 
                 if (count($messages)) {
-                    //Print each element
+                    // Print each element
                     echo '<div class="messages">';
                     foreach ($messages as $message) {
                         echo $message;
@@ -437,18 +437,18 @@ Or reuse the logic in your form class:
     {
         public function initialize()
         {
-            //...
+            // ...
         }
 
         public function renderDecorated($name)
         {
             $element = $this->get($name);
 
-            //Get any generated messages for the current element
+            // Get any generated messages for the current element
             $messages = $this->getMessagesFor($element->getName());
 
             if (count($messages)) {
-                //Print each element
+                // Print each element
                 echo '<div class="messages">';
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
@@ -488,7 +488,7 @@ In addition to the form elements provided by Phalcon you can create your own cus
     {
         public function render($attributes=null)
         {
-            $html = //... produce some html
+            $html = // ... produce some html
             return $html;
         }
     }
@@ -501,7 +501,7 @@ This component provides a forms manager that can be used by the developer to reg
 
     <?php
 
-    $di['forms'] = function() {
+    $di['forms'] = function () {
         return new Phalcon\Forms\Manager();
     };
 

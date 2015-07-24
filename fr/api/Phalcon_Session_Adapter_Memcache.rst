@@ -12,10 +12,10 @@ This adapter store sessions in memcache
     <?php
 
      $session = new \Phalcon\Session\Adapter\Memcache(array(
-        'uniqueId' => 'my-private-app'
+        'uniqueId' => 'my-private-app',
         'host' => '127.0.0.1',
         'port' => 11211,
-        'persistent' => TRUE,
+        'persistent' => true,
         'lifetime' => 3600,
         'prefix' => 'my_'
      ));
@@ -66,19 +66,19 @@ public  **close** ()
 ...
 
 
-public *mixed*  **read** (*unknown* $sessionId)
+public *mixed*  **read** (*string* $sessionId)
 
 
 
 
 
-public  **write** (*unknown* $sessionId, *unknown* $data)
+public  **write** (*string* $sessionId, *string* $data)
 
 
 
 
 
-public *boolean*  **destroy** ([*unknown* $sessionId])
+public *boolean*  **destroy** ([*string* $sessionId])
 
 
 
@@ -129,13 +129,13 @@ Get session name
 
 
 
-public *mixed*  **get** (*unknown* $index, [*unknown* $defaultValue], [*unknown* $remove]) inherited from Phalcon\\Session\\Adapter
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove]) inherited from Phalcon\\Session\\Adapter
 
 Gets a session variable from an application context
 
 
 
-public  **set** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Session\\Adapter
+public  **set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
 
 Sets a session variable in an application context 
 
@@ -231,13 +231,13 @@ Returns the status of the current session. For PHP 5.3 this function will always
 
 
 
-public *mixed*  **__get** (*unknown* $index) inherited from Phalcon\\Session\\Adapter
+public *mixed*  **__get** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
 Alias: Gets a session variable from an application context
 
 
 
-public  **__set** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Session\\Adapter
+public  **__set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
 
 Alias: Sets a session variable in an application context
 

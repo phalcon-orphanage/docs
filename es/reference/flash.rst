@@ -25,8 +25,8 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
 
     <?php
 
-    //Set up the flash service
-    $di->set('flash', function() {
+    // Set up the flash service
+    $di->set('flash', function () {
         return new \Phalcon\Flash\Direct();
     });
 
@@ -88,8 +88,8 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
 
     <?php
 
-    //Register the flash service with custom CSS classes
-    $di->set('flash', function(){
+    // Register the flash service with custom CSS classes
+    $di->set('flash', function () {
         $flash = new \Phalcon\Flash\Direct(array(
             'error' => 'alert alert-error',
             'success' => 'alert alert-success',
@@ -127,12 +127,12 @@ if you make a "forward" is not necessary to store the messages in session, but i
         public function saveAction()
         {
 
-            //store the post
+            // store the post
 
-            //Using direct flash
+            // Using direct flash
             $this->flash->success("Your information were stored correctly!");
 
-            //Forward to the index action
+            // Forward to the index action
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
@@ -155,12 +155,12 @@ Or using a HTTP redirection:
         public function saveAction()
         {
 
-            //store the post
+            // store the post
 
-            //Using session flash
+            // Using session flash
             $this->flashSession->success("Your information were stored correctly!");
 
-            //Make a full HTTP redirection
+            // Make a full HTTP redirection
             return $this->response->redirect("contact/index");
         }
 

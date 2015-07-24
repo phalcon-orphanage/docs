@@ -74,13 +74,13 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 
 
-public  **handle** ([*unknown* $arguments])
+public  **handle** ([*array* $arguments])
 
 Handles routing information received from command-line arguments
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **add** (*unknown* $pattern, [*unknown* $paths])
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router 
 
@@ -141,7 +141,7 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getRouteById** (*unknown* $id)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getRouteById** (*int* $id)
 
 Returns a route object by its id
 

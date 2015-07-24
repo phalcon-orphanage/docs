@@ -1,6 +1,9 @@
 Abstract class **Phalcon\\Mvc\\Model\\Validator**
 =================================================
 
+This is a base class for Phalcon\\Mvc\\Model validators
+
+
 Methods
 -------
 
@@ -10,7 +13,7 @@ Phalcon\\Mvc\\Model\\Validator constructor
 
 
 
-protected  **appendMessage** (*unknown* $message, [*unknown* $field], [*unknown* $type])
+protected  **appendMessage** (*string* $message, [*string|array* $field], [*string* $type])
 
 Appends a message to the validator
 

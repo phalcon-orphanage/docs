@@ -32,17 +32,20 @@ Methods
 
 public  **getError** ()
 
-...
+
+
 
 
 public  **getKey** ()
 
-...
+
+
 
 
 public  **getExtension** ()
 
-...
+
+
 
 
 public  **__construct** (*unknown* $file, [*unknown* $key])

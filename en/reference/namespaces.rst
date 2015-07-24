@@ -61,7 +61,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
     use Phalcon\Mvc\Dispatcher;
 
     // Registering a dispatcher
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
         return $dispatcher;

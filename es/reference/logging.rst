@@ -119,7 +119,7 @@ The example below shows how to change the log format:
 
     <?php
 
-    //Changing the logger format
+    // Changing the logger format
     $formatter = new Phalcon\Logger\Formatter\Line("%date% - %message%");
     $logger->setFormatter($formatter);
 

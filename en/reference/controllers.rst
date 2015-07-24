@@ -2,10 +2,10 @@
 Using Controllers
 =================
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access an URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
@@ -65,7 +65,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year = 2012, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = 'some default title')
         {
 
         }
@@ -179,7 +179,7 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
     }
@@ -203,7 +203,7 @@ method 'onConstruct':
 
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -226,7 +226,7 @@ container in application. For example, if we have registered a service like this
 
     $di = new DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -354,14 +354,14 @@ any other class registered with its name can easily replace a controller:
 
     <?php
 
-    //Register a controller as a service
-    $di->set('IndexController', function() {
+    // Register a controller as a service
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-    //Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function() {
+    // Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });

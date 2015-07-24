@@ -9,43 +9,43 @@ This is a base class for form elements
 Methods
 -------
 
-public  **__construct** (*unknown* $name, [*unknown* $attributes])
+public  **__construct** (*string* $name, [*array* $attributes])
 
 Phalcon\\Forms\\Element constructor
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setForm** (*unknown* $form)
+public  **setForm** (*unknown* $form)
 
 Sets the parent form to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **getForm** ()
+public  **getForm** ()
 
 Returns the parent form to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setName** (*unknown* $name)
+public  **setName** (*unknown* $name)
 
 Sets the element name
 
 
 
-public *string*  **getName** ()
+public  **getName** ()
 
 Returns the element name
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*unknown* $filters)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*array|string* $filters)
 
 Sets the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addFilter** (*unknown* $filter)
+public  **addFilter** (*unknown* $filter)
 
 Adds a filter to current list of filters
 
@@ -63,61 +63,61 @@ Adds a group of validators
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidator** (*unknown* $validator)
+public  **addValidator** (*unknown* $validator)
 
 Adds a validator to the element
 
 
 
-public :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` [] **getValidators** ()
+public  **getValidators** ()
 
 Returns the validators registered for the element
 
 
 
-public *array*  **prepareAttributes** ([*unknown* $attributes], [*unknown* $useChecked])
+public *array*  **prepareAttributes** ([*array* $attributes], [*boolean* $useChecked])
 
 Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element parameters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*unknown* $attribute, *unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*string* $attribute, *mixed* $value)
 
 Sets a default attribute for the element
 
 
 
-public *mixed*  **getAttribute** (*unknown* $attribute, [*unknown* $defaultValue])
+public *mixed*  **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
 
 Returns the value of an attribute if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttributes** (*unknown* $attributes)
+public  **setAttributes** (*unknown* $attributes)
 
 Sets default attributes for the element
 
 
 
-public *array*  **getAttributes** ()
+public  **getAttributes** ()
 
 Returns the default attributes for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*unknown* $option, *unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the element
 
 
 
-public *mixed*  **getUserOption** (*unknown* $option, [*unknown* $defaultValue])
+public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*unknown* $options)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options)
 
 Sets options for the element
 
@@ -129,25 +129,25 @@ Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** (*unknown* $label)
+public  **setLabel** (*unknown* $label)
 
 Sets the element label
 
 
 
-public *string*  **getLabel** ()
+public  **getLabel** ()
 
 Returns the element label
 
 
 
-public *string*  **label** ([*unknown* $attributes])
+public *string*  **label** ([*array* $attributes])
 
 Generate the HTML to label the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*mixed* $value)
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
@@ -165,37 +165,37 @@ Returns the element value
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** ()
+public  **getMessages** ()
 
 Returns the messages that belongs to the element The element needs to be attached to a form
 
 
 
-public *boolean*  **hasMessages** ()
+public  **hasMessages** ()
 
 Checks whether there are messages attached to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setMessages** (*unknown* $group)
+public  **setMessages** (*unknown* $group)
 
 Sets the validation messages related to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **appendMessage** (*unknown* $message)
+public  **appendMessage** (*unknown* $message)
 
 Appends a message to the internal message list
 
 
 
-public :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`  **clear** ()
+public  **clear** ()
 
 Clears every element in the form to its default value
 
 
 
-public *string*  **__toString** ()
+public  **__toString** ()
 
 Magic method __toString renders the widget without atttributes
 

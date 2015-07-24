@@ -1,7 +1,7 @@
 Менеджер событий EventsManager
 ==============================
 Цель данного компонента состоит в добавлении возможности перехватывать процесс выполнения большинства компонентов системы путём создания
-специальных "ключевых точек". Эти ключевые точки позволяют разработчику получить информацию о состоянии, манипулировать данными и изменять 
+специальных "ключевых точек". Эти ключевые точки позволяют разработчику получить информацию о состоянии, манипулировать данными и изменять
 процесс работы компонента.
 
 Пример использования
@@ -163,7 +163,7 @@
     <?php
 
     // Слушаем все события базы данных
-    $eventManager->attach('db', function($event, $connection) {
+    $eventManager->attach('db', function ($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
         }
@@ -273,12 +273,12 @@
     <?php
 
     // Получение данных из третьего параметра
-    $eventManager->attach('my-component', function($event, $component, $data) {
+    $eventManager->attach('my-component', function ($event, $component, $data) {
         print_r($data);
     });
 
     // Получение данных из контекста события
-    $eventManager->attach('my-component', function($event, $component) {
+    $eventManager->attach('my-component', function ($event, $component) {
         print_r($event->getData());
     });
 
@@ -289,8 +289,8 @@
     <?php
 
     // Обработчик выполнится только при наступлении события "beforeSomeTask"
-    $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
-        //...
+    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
+        // ...
     });
 
 Остановка/Продолжение событий
@@ -303,7 +303,7 @@
 
     <?php
 
-    $eventsManager->attach('db', function($event, $connection){
+    $eventsManager->attach('db', function ($event, $connection) {
 
         // Если событие поддерживает прекращение
         if ($event->isCancelable()) {
@@ -311,7 +311,7 @@
             $event->stop();
         }
 
-        //...
+        // ...
 
     });
 
@@ -355,12 +355,12 @@
     $evManager->collectResponses(true);
 
     // Добавления слушателя
-    $evManager->attach('custom:custom', function() {
+    $evManager->attach('custom:custom', function () {
         return 'first response';
     });
 
     // Добавления еще одного слушателя
-    $evManager->attach('custom:custom', function() {
+    $evManager->attach('custom:custom', function () {
         return 'second response';
     });
 

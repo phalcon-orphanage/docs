@@ -17,19 +17,19 @@ Phalcon\\Mvc\\View\\Engine constructor
 
 
 
-public *string*  **getContent** ()
+public  **getContent** ()
 
-Returns cached ouput on another view stage
+Returns cached output on another view stage
 
 
 
-public *string*  **partial** (*unknown* $partialPath, [*unknown* $params])
+public *string*  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial inside another view
 
 
 
-public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **getView** ()
+public  **getView** ()
 
 Returns the view component related to the adapter
 
@@ -41,7 +41,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -53,7 +53,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

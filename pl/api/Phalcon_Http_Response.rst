@@ -19,7 +19,7 @@ Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Respon
 Methods
 -------
 
-public  **__construct** ([*unknown* $content], [*unknown* $code], [*unknown* $status])
+public  **__construct** ([*string* $content], [*int* $code], [*string* $status])
 
 Phalcon\\Http\\Response constructor
 
@@ -87,7 +87,7 @@ Returns coookies set by the user
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setHeader** (*unknown* $name, *unknown* $value)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setHeader** (*string* $name, *string* $value)
 
 Overwrites a header in the response 
 
@@ -138,7 +138,7 @@ Sends a Not-Modified response
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setContentType** (*unknown* $contentType, [*unknown* $charset])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setContentType** (*string* $contentType, [*string* $charset])
 
 Sets the response content-type mime, optionally the charset 
 
@@ -165,7 +165,7 @@ Set a custom ETag
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **redirect** ([*unknown* $location], [*unknown* $externalRedirect], [*unknown* $statusCode])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **redirect** ([*string|array* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
 
@@ -201,7 +201,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setJsonContent** (*unknown* $content, [*unknown* $jsonOptions], [*unknown* $depth])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setJsonContent** (*mixed* $content, [*int* $jsonOptions], [*unknown* $depth])
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -214,7 +214,7 @@ Sets HTTP response body. The parameter is automatically converted to JSON
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **appendContent** (*unknown* $content)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
 
@@ -250,7 +250,7 @@ Prints out HTTP response to the client
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName], [*unknown* $attachment])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
 
 Sets an attached file to be sent at the end of the request
 

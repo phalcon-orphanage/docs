@@ -24,12 +24,12 @@ You can easily add resources to these collections like follows:
         public function index()
         {
 
-            //Add some local CSS resources
+            // Add some local CSS resources
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            //and some local javascript resources
+            // and some local javascript resources
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -66,7 +66,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
 
     <?php
 
-    //Add some local CSS resources
+    // Add some local CSS resources
     $this->assets
         ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
         ->addCss('css/style.css', true);
@@ -80,13 +80,13 @@ You can create additional collections to group specific resources for ease of pl
 
     <?php
 
-    //Javascripts in the header
+    // Javascripts in the header
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    //Javascripts in the footer
+    // Javascripts in the footer
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -156,29 +156,29 @@ The following example shows how to minify a collection of resources:
 
     $manager
 
-        //These Javascripts are located in the page's bottom
+        // These Javascripts are located in the page's bottom
         ->collection('jsFooter')
 
-        //The name of the final output
+        // The name of the final output
         ->setTargetPath('final.js')
 
-        //The script tag is generated with this URI
+        // The script tag is generated with this URI
         ->setTargetUri('production/final.js')
 
-        //This is a remote resource that does not need filtering
+        // This is a remote resource that does not need filtering
         ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
 
-        //These are local resources that must be filtered
+        // These are local resources that must be filtered
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //Join all the resources in a single file
+        // Join all the resources in a single file
         ->join(true)
 
-        //Use the built-in Jsmin filter
+        // Use the built-in Jsmin filter
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //Use a custom filter
+        // Use a custom filter
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 It starts getting a collection of resources from the assets manager, a collection can contain javascript or css
@@ -190,7 +190,7 @@ of obtaining them.
 
     <?php
 
-    //These Javascripts are located in the page's bottom
+    // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
 
 As seen above, method addJs is used to add resources to the collection, the second parameter indicates
@@ -215,10 +215,10 @@ in the same order as filters were registered:
 
     <?php
 
-    //Use the built-in Jsmin filter
+    // Use the built-in Jsmin filter
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //Use a custom filter
+    // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 Note that both built-in and custom filters can be transparently applied to collections.
@@ -232,14 +232,14 @@ individually. To tell the collection that all resources must be joined you can u
     // This a remote resource that does not need filtering
     $js->join(true);
 
-    //The name of the final file path
+    // The name of the final file path
     $js->setTargetPath('public/production/final.js');
 
-    //The script html tag is generated with this URI
+    // The script html tag is generated with this URI
     $js->setTargetUri('production/final.js');
 
 If resources are going to be joined, we need also to define which file will be used to store the resources
-and which uri will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
+and which URI will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
 
 Built-In Filters
 ^^^^^^^^^^^^^^^^
@@ -295,7 +295,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
         public function filter($contents)
         {
 
-            //Write the string contents into a temporal file
+            // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -308,7 +308,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //Return the contents of file
+            // Return the contents of file
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }
@@ -319,10 +319,10 @@ Usage:
 
     <?php
 
-    //Get some CSS collection
+    // Get some CSS collection
     $css = $this->assets->get('head');
 
-    //Add/Enable the YUI compressor filter in the collection
+    // Add/Enable the YUI compressor filter in the collection
     $css->addFilter(new CssYUICompressor(array(
          'java-bin' => '/usr/local/bin/java',
          'yui' => '/some/path/yuicompressor-x.y.z.jar',

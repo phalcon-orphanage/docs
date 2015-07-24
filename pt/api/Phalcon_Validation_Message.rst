@@ -1,11 +1,13 @@
 Class **Phalcon\\Validation\\Message**
 ======================================
 
+*implements* :doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>`
+
 Encapsulates validation info generated in the validation process
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $message, [*string* $field], [*string* $type])
 
@@ -13,31 +15,31 @@ Phalcon\\Validation\\Message constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setType** (*string* $type)
+public  **setType** (*unknown* $type)
 
 Sets message type
 
 
 
-public *string*  **getType** ()
+public  **getType** ()
 
 Returns message type
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setMessage** (*string* $message)
+public  **setMessage** (*unknown* $message)
 
 Sets verbose message
 
 
 
-public *string*  **getMessage** ()
+public  **getMessage** ()
 
 Returns verbose message
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setField** (*string* $field)
+public  **setField** (*unknown* $field)
 
 Sets field name related to message
 
@@ -49,13 +51,13 @@ Returns field name related to message
 
 
 
-public *string*  **__toString** ()
+public  **__toString** ()
 
 Magic __toString method returns verbose message
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **__set_state** (*array* $message)
+public static  **__set_state** (*unknown* $message)
 
 Magic __set_state helps to recover messsages from serialization
 

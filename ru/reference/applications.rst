@@ -49,7 +49,7 @@ MVC Приложения
     $di = new FactoryDefault();
 
     // Регистрация компонента представлений
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -90,14 +90,14 @@ MVC Приложения
     $di = new FactoryDefault();
 
     // Регистрация диспетчера c пространством имён для контроллеров
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Регистрация компонента представлений
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -108,7 +108,7 @@ MVC Приложения
         $application = new Application($di);
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -178,14 +178,14 @@ MVC Приложения
         {
 
             // Регистрация диспетчера
-            $di->set('dispatcher', function() {
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
             // Регистрация компонента представлений
-            $di->set('view', function() {
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
@@ -255,7 +255,7 @@ MVC Приложения
         // Обработка запроса
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -269,19 +269,19 @@ MVC Приложения
     $view = new \Phalcon\Mvc\View();
 
     // Установка параметров компонента представлений
-    //...
+    // ...
 
     // Регистрация установленных модулей
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -307,10 +307,10 @@ MVC Приложения
     try {
 
         // Регистрация автозагрузчика
-        //...
+        // ...
 
         // Регистрация сервисов
-        //...
+        // ...
 
         // Обработка запроса
         $application = new \Phalcon\Mvc\Application($di);
@@ -400,13 +400,13 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //Get the returned value by the lastest executed action
+    // Get the returned value by the lastest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the request
         $response->send();
     }
 
@@ -435,7 +435,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        //An exception has ocurred, dispatch some controller/action aimed for that
+        // An exception has ocurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -446,13 +446,13 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     }
 
-    //Get the returned value by the lastest executed action
+    // Get the returned value by the lastest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the request
         $response->send();
     }
 
@@ -491,7 +491,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );
