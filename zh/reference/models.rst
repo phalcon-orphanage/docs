@@ -2453,18 +2453,13 @@ Then you can use it in your model as follows:
 
 事务管理（Transactions）
 ------------
-When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
-be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-are committed to the database.
+当一个进程执行多个数据库操作时，通常需要每一步都是成功完成以便保证数据完整性。事务可以确保在数据提交到数据库保存之前所有数据库操作都成功执行。
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
-all operations if something went wrong.
+Phalcon中通过事务，可以在所有操作都成功执行之后提交到服务器，或者当有错误发生时回滚所有的操作。
 
 自定义事务（Manual Transactions）
 ^^^^^^^^^^^^^^^^^^^
-If an application only uses one connection and the transactions aren't very complex, a transaction can be
-created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
-is successfully or not:
+如果一个应用只用到了一个数据库连接并且这些事务都不太复杂，那么可以通过简单的将当前数据库连接设置成事务模式实现事务功能，根据操作的成功与否提交或者回滚：
 
 .. code-block:: php
 
@@ -2502,8 +2497,7 @@ is successfully or not:
 
 隐含的事务（Implicit Transactions）
 ^^^^^^^^^^^^^^^^^^^^^
-Existing relationships can be used to store records and their related instances, this kind of operation
-implicitly creates a transaction to ensure that data are correctly stored:
+也可以通过已有的关系来存储记录以及其相关记录，这种操作将隐式的创建一个事务来保证所有数据能够正确的保存：
 
 .. code-block:: php
 
@@ -2521,10 +2515,8 @@ implicitly creates a transaction to ensure that data are correctly stored:
 
 单独的事务（Isolated Transactions）
 ^^^^^^^^^^^^^^^^^^^^^
-Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checks and business rules are isolated from the main connection.
-This kind of transaction requires a transaction manager that globally manages each
-transaction created ensuring that they are correctly rolled back/committed before ending the request:
+单独事务在一个新的连接中执行所有的SQL，虚拟外键检查和业务规则与主数据库连接是相互独立的。
+这种事务需要一个事务管理器来全局的管理每一个事务，保证他们在请求结束前能正确的回滚或者提交。
 
 .. code-block:: php
 
@@ -2564,7 +2556,7 @@ transaction created ensuring that they are correctly rolled back/committed befor
         echo "Failed, reason: ", $e->getMessage();
     }
 
-Transactions can be used to delete many records in a consistent way:
+事务可以用以保证以一致性的方式删除多条记录：
 
 .. code-block:: php
 
@@ -2601,8 +2593,7 @@ Transactions can be used to delete many records in a consistent way:
         echo "Failed, reason: ", $e->getMessage();
     }
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
-is performed. You can use the service container to create the global transaction manager for the entire application:
+事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个commit()或者一个rollback()执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局师傅管理器。
 
 .. code-block:: php
 
@@ -2614,7 +2605,7 @@ is performed. You can use the service container to create the global transaction
         return new TransactionManager();
     });
 
-Then access it from a controller or view:
+然后在控制器或者视图中访问：
 
 .. code-block:: php
 

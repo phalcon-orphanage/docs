@@ -47,14 +47,11 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case, if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. Currently, the router does not execute the controller and action, it only collects this
-information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is controller/action it should to execute.
+add() 方法接受一个匹配模式作为第一个参数，一组可选的路径作为第二个参数。如上，如果URI就是/admin/users/my-profile的话，
+那么 "users" 控制的 "profile" 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（
+比如  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` ）应该调用这个控制器的这个动作。
 
-An application can have many paths, define routes one by one can be a cumbersome task. In these cases we can
-create more flexible routes:
+一个应用程序可以由很多路径，一个一个定义是一个非常笨重的工作。这种情况下我们可以创建一个更加灵活的路由：
 
 .. code-block:: php
 
@@ -75,8 +72,8 @@ create more flexible routes:
         )
     );
 
-In the example above, using wildcards we make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) then:
+
+在上面的例子中我们通过使用通配符定义了一个可以匹配多个URI的路由，比如，访问这个URL（/admin/users/a/delete/dave/301），那么：
 
 +------------+---------------+
 | Controller | users         |
@@ -912,10 +909,10 @@ Since this component has no dependencies, you can create a file as shown below t
 
     }
 
-匿名路由（Annotations Router）
+注解路由（Annotations Router）
 ------------------------------
-This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
-you can write the routes directly in the controllers instead of adding them in the service registration:
+这个组件利用集成的注解服务 :doc:`annotations <annotations>` 提供了一个路由定义的变体。通过这个策略，你可以直接在书写控制器
+的时候编写路由，而不需要一个一个在服务注册的时候添加。
 
 .. code-block:: php
 
@@ -934,7 +931,7 @@ you can write the routes directly in the controllers instead of adding them in t
         return $router;
     };
 
-The annotations can be defined in the following way:
+注解通过如下的方式定义：
 
 .. code-block:: php
 
@@ -986,10 +983,10 @@ The annotations can be defined in the following way:
 
     }
 
-Only methods marked with valid annotations are used as routes. List of annotations supported:
+只有标记了格式正确的注解的方法才能被用作路由。Phalcon支持如下注解：
 
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                              |
+| 名称         | 描述                                                                                              | 用法                                                               |
 +==============+===================================================================================================+====================================================================+
 | RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -1006,10 +1003,10 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 | Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | @Option("/api/products/info")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
-For annotations that add routes, the following parameters are supported:
+用来添加路由的注解支持如下参数：
 
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                              |
+| 名称         | 描述                                                                                              | 用法                                                               |
 +==============+===================================================================================================+====================================================================+
 | methods      | Define one or more HTTP method that route must meet with                                          | @Route("/api/products", methods={"GET", "POST"})                   |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -1020,7 +1017,7 @@ For annotations that add routes, the following parameters are supported:
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
-If routes map to controllers in modules is better use the addModuleResource method:
+如果路由对应的控制器属于一个模块，使用 addModuleResource 效果更佳：
 
 .. code-block:: php
 
