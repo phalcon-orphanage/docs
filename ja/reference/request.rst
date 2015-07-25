@@ -1,4 +1,4 @@
-HTTPリクエスト
+Request Environment
 ===================
 
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
@@ -10,8 +10,10 @@ information of the request, allowing you to access it in an object-oriented way.
 
     <?php
 
+    use Phalcon\Http\Request;
+
     // Getting a request instance
-    $request = new \Phalcon\Http\Request();
+    $request = new Request();
 
     // Check whether the request was made with method POST
     if ($request->isPost()) {
@@ -36,12 +38,14 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
 
     <?php
 
+    use Phalcon\Filter;
+
     // Manually applying the filter
-    $filter = new \Phalcon\Filter();
+    $filter = new Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new \Phalcon\Filter();
+    $filter = new Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
@@ -64,7 +68,9 @@ the $this->request public property of the controller:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         public function indexAction()
         {
@@ -93,7 +99,9 @@ an object-oriented way to achieve this task:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         public function uploadAction()
         {

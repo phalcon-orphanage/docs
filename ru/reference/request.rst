@@ -10,8 +10,10 @@
 
     <?php
 
+    use Phalcon\Http\Request;
+
     // Получаем экземпляр объекта request
-    $request = new \Phalcon\Http\Request();
+    $request = new Request();
 
     // Проверка что данные пришли методом POST
     if ($request->isPost()) {
@@ -35,12 +37,14 @@ $_GET и $_POST массивам и обезопасивает или фильт
 
     <?php
 
+    use Phalcon\Filter;
+
     // Ручная фильтрация
-    $filter = new Phalcon\Filter();
+    $filter = new Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Ручная фильтрация значения
-    $filter = new Phalcon\Filter();
+    $filter = new Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Автоматическая фильтрация значения
