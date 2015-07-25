@@ -1,5 +1,6 @@
 Internationalization
 ====================
+
 Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
 Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
 
@@ -24,9 +25,11 @@ There are several ways to find out the best available locale using intl_. One of
     echo $locale;
 
 Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
+
 Examples of identifiers include:
 
 * en-US (English, United States)
+* ru-RU (Russian, Russia)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
