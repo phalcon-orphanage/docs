@@ -27,7 +27,7 @@ soluciones de bajo nivel para conseguir el mayor rendimiento posible.
 ¿Cómo funciona PHP?
 -------------------
 * PHP tiene tipificación dinámica/débil. Esto significa que para una simple operación (2 + "2"), PHP chequea ambos operadores para efectuar posibles conversiones
-* PHP es interprado y no compilado. La mayor desventaja es la perdida de rendimiento
+* PHP es interpretado y no compilado. La mayor desventaja es la perdida de rendimiento
 * Cada vez que se accede a un script en PHP este debe ser interpretado
 * Si un cache de bytecode (como APC) no es usado, la sintaxis de cada archivo es revisada en cada petición
 
