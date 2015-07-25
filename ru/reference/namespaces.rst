@@ -1,5 +1,6 @@
 Работа с пространством имён
 ===========================
+
 `Пространства имён`_ могут быть использованы для исключения пересечений названий классов; это означает, что если в вашем приложении два контроллера с одинаковыми именами,
 пространства имен могут использоваться, чтобы различать их. Пространства имен также полезны для создания бандлов (bundles) или модулей.
 
@@ -16,8 +17,8 @@
 
     $loader->registerNamespaces(
         array(
-           'Store\Admin\Controllers'    => "../bundles/admin/controllers/",
-           'Store\Admin\Models'    => "../bundles/admin/models/",
+           "Store\\Admin\\Controllers" => "../bundles/admin/controllers/",
+           "Store\\Admin\\Models"      => "../bundles/admin/models/"
         )
     );
 
@@ -28,11 +29,11 @@
     <?php
 
     $router->add(
-        '/admin/users/my-profile',
+        "/admin/users/my-profile",
         array(
-            'namespace'  => 'Store\Admin',
-            'controller' => 'Users',
-            'action'     => 'profile',
+            "namespace"  => "Store\\Admin",
+            "controller" => "Users",
+            "action"     => "profile"
         )
     );
 
@@ -43,11 +44,11 @@
     <?php
 
     $router->add(
-        '/:namespace/admin/users/my-profile',
+        "/:namespace/admin/users/my-profile",
         array(
-            'namespace'  => 1,
-            'controller' => 'Users',
-            'action'     => 'profile',
+            "namespace"  => 1,
+            "controller" => "Users",
+            "action"     => "profile"
         )
     );
 
@@ -58,10 +59,12 @@
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher;
+
     // Регистрация диспетчера
     $di->set('dispatcher', function () {
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace("Store\\Admin\\Controllers");
         return $dispatcher;
     });
 
@@ -75,9 +78,10 @@
 
     namespace Store\Admin\Controllers;
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function indexAction()
         {
 
@@ -87,7 +91,6 @@
         {
 
         }
-
     }
 
 Модели в пространстве имён
@@ -100,7 +103,9 @@
 
     namespace Store\Models;
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
     }
@@ -113,13 +118,20 @@
 
     namespace Store\Models;
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {
-            $this->hasMany('id', 'Store\Models\Parts', 'robots_id', array(
-                'alias' => 'parts'
-            ));
+            $this->hasMany(
+                "id",
+                "Store\\Models\\Parts",
+                "robots_id",
+                array(
+                    "alias" => "parts"
+                )
+            );
         }
     }
 

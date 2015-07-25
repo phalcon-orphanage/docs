@@ -1,5 +1,6 @@
 Travailler avec les espaces de nom
 =======================
+
 Namespaces_, c'est le nom anglais des espaces de nom. Ces derniers peuvent être utilisés pour éviter le conflit des noms de classe.
 Par exemple si vous avez deux controlleurs dans votre application avec le même nom, un namespace peut être utilisé pour les différencier.
 Les espaces de nom sont aussi utiles pour créer des paquets ou des modules.
@@ -17,8 +18,8 @@ Utiliser un autoload qui prends en compte les espaces de nom, par exemple Phalco
 
     $loader->registerNamespaces(
         array(
-           'Store\Admin\Controllers'    => "../bundles/admin/controllers/",
-           'Store\Admin\Models'    => "../bundles/admin/models/",
+           "Store\\Admin\\Controllers" => "../bundles/admin/controllers/",
+           "Store\\Admin\\Models"      => "../bundles/admin/models/"
         )
     );
 
@@ -29,11 +30,11 @@ Vous pouvez le spécifier aux routes comme un paramètre séparé :
     <?php
 
     $router->add(
-        '/admin/users/my-profile',
+        "/admin/users/my-profile",
         array(
-            'namespace'  => 'Store\Admin',
-            'controller' => 'Users',
-            'action"     => 'profile',
+            "namespace"  => "Store\\Admin",
+            "controller" => "Users",
+            "action"     => "profile"
         )
     );
 
@@ -44,11 +45,11 @@ Le passer en tant que partie du chemin:
     <?php
 
     $router->add(
-        '/:namespace/admin/users/my-profile',
+        "/:namespace/admin/users/my-profile",
         array(
-            'namespace'  => 1,
-            'controller' => 'Users',
-            'action'     => 'profile',
+            "namespace"  => 1,
+            "controller" => "Users",
+            "action"     => "profile"
         )
     );
 
@@ -59,10 +60,12 @@ ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le 
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher;
+
     // Registering a dispatcher
     $di->set('dispatcher', function () {
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace("Store\\Admin\\Controllers");
         return $dispatcher;
     });
 
@@ -76,9 +79,10 @@ L'exemple suivante montre comment implémenter un controlleur qui utilise des es
 
     namespace Store\Admin\Controllers;
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function indexAction()
         {
 
@@ -88,7 +92,56 @@ L'exemple suivante montre comment implémenter un controlleur qui utilise des es
         {
 
         }
+    }
+
+Models in Namespaces
+--------------------
+Take the following into consideration when using models in namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Models;
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
 
     }
+
+If models have relationships they must include the namespace too:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Models;
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public function initialize()
+        {
+            $this->hasMany(
+                "id",
+                "Store\\Models\\Parts",
+                "robots_id",
+                array(
+                    "alias" => "parts"
+                )
+            );
+        }
+    }
+
+In PHQL you must write the statements including namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
 
 .. _Namespaces: http://php.net/manual/en/language.namespaces.php
