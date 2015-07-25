@@ -1,5 +1,6 @@
 Работа с Моделями
 =================
+
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используются для управления правилами
 взаимодействия с соответствующими таблицами базы данных. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении.
 Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
@@ -22,7 +23,9 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
     }
@@ -43,14 +46,14 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function getSource()
         {
             return "the_robots";
         }
-
     }
 
 Теперь модель Robots маппирует (использует) таблицу "the_robots". Метод initialize() помогает в создании модели с пользовательским поведением, т.е. использовании другой таблицы.
@@ -60,14 +63,14 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function initialize()
         {
             $this->setSource("the_robots");
         }
-
     }
 
 Метод initialize() вызывается один раз при обработке запроса к приложению и предназначен для инициализации экземпляров модели в приложении.
@@ -77,14 +80,14 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function onConstruct()
         {
             // ...
         }
-
     }
 
 Публичные свойства и Setters/Getters
@@ -95,7 +98,9 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -110,7 +115,9 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         protected $id;
 
@@ -125,6 +132,7 @@
 
         public function setName($name)
         {
+            // The name is too short?
             if (strlen($name) < 10) {
                 throw new \InvalidArgumentException('Имя слишком короткое');
             }
@@ -138,6 +146,7 @@
 
         public function setPrice($price)
         {
+            // Negative prices aren't allowed
             if ($price < 0) {
                 throw new \InvalidArgumentException('Цена не может быть отрицательной');
             }
@@ -153,58 +162,6 @@
 
 Публичные свойства облегчают создание кода. Напротив, применение getters/setters делает ваш код тестируемым, расширяемым и удобным в сопровождении. Разработчик вправе сам определить способ описания модели. ORM совместим с обоими способами.
 
-.. highlights::
-    Прим. переводчика :
-    В то же время, использование getters/setters позволяет использовать некоторые преимущества такого способа.
-    Например, если модель имеет связь один-ко-многим с другой моделью, при запросе связанной модели будет произведено N+1 запросов к базе данных. Напротив, при использовании getters/setters модель сделает только 2 запроса.
-
-.. code-block:: php
-
-    <?php
-
-    class Robots extends \Phalcon\Mvc\Model
-    {
-
-        protected $id;
-
-        protected $name;
-
-        public function getId()
-        {
-            return $this->id;
-        }
-
-        public function setName($name)
-        {
-            if (strlen($name) < 10) {
-                throw new \InvalidArgumentException('Имя слишком короткое');
-            }
-            $this->name = $name;
-        }
-
-        public function getName()
-        {
-            return $this->name;
-        }
-
-        public function initialize()
-        {
-            $this->hasMany("id", "RobotsParts", "robots_id");
-        }
-
-        /**
-         * Возвращает "robots parts" одним запросом
-         *
-         * @return \RobotsParts[]
-         */
-        public function getRobotsParts($parameters=null)
-        {
-            return $this->getRelated('RobotsParts', $parameters);
-        }
-
-    }
-
-
 Модели в Пространствах Имен
 ---------------------------
 Вы можете использовать пространства имен, чтобы избежать конфликтов, связанных с именами классов. В этом случае, имя таблицы, из которой модель получает данные, соответствует имени класса (преобразуется в нижний регистр).
@@ -215,9 +172,33 @@
 
     namespace Store\Toys;
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
+        // ...
+    }
+
+Namespaces make part of model names when they are within strings:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Toys;
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany('id', 'Store\Toys\RobotsParts', 'robots_id');
+        }
     }
 
 Понимание Записей В Объектах
@@ -255,7 +236,7 @@
 
     <?php
 
-    $robot = Robots::findFirst(3);
+    $robot       = Robots::findFirst(3);
     $robot->name = "RoboCop";
     $robot->save();
 
@@ -279,20 +260,24 @@
     echo "There are ", count($robots), "\n";
 
     // Получить и распечатать виртуальных роботов упорядоченные по имени
-    $robots = Robots::find(array(
-        "type = 'virtual'",
-        "order" => "name"
-    ));
+    $robots = Robots::find(
+        array(
+            "type = 'virtual'",
+            "order" => "name"
+        )
+    );
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
     // Получить первые 100 виртуальных роботов упорядоченных по имени
-    $robots = Robots::find(array(
-        "type = 'virtual'",
-        "order" => "name",
-        "limit" => 100
-    ));
+    $robots = Robots::find(
+        array(
+            "type = 'virtual'",
+            "order" => "name",
+            "limit" => 100
+        )
+    );
     foreach ($robots as $robot) {
        echo $robot->name, "\n";
     }
@@ -317,7 +302,12 @@
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
     // Первый  виртуальный робот  упорядоченный по имени в таблице роботов
-    $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
+    $robot = Robots::findFirst(
+        array(
+            "type = 'virtual'",
+            "order" => "name"
+        )
+    );
     echo "The first virtual robot name is ", $robot->name, "\n";
 
 Оба метода find() и findFirst() принимают ассоциативный массив, определяющий критерии поиска:
@@ -326,16 +316,20 @@
 
     <?php
 
-    $robot = Robots::findFirst(array(
-        "type = 'virtual'",
-        "order" => "name DESC",
-        "limit" => 30
-    ));
+    $robot = Robots::findFirst(
+        array(
+            "type = 'virtual'",
+            "order" => "name DESC",
+            "limit" => 30
+        )
+    );
 
-    $robots = Robots::find(array(
-        "conditions" => "type = ?1",
-        "bind"       => array(1 => "virtual")
-    ));
+    $robots = Robots::find(
+        array(
+            "conditions" => "type = ?1",
+            "bind"       => array(1 => "virtual")
+        )
+    );
 
 Доступные параметры запроса:
 
@@ -348,7 +342,7 @@
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | bind        | Используется вместе с условием поиск, он заменяет указатели, освобождает значения для увеличения безопасности                                                                                                  | "bind" => array("status" => "A", "type" => "some-time")                 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | При использовании связующих указателей вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность                                                                    | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
+| bindTypes   | При использовании связующих указателей вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность                                                                    | "bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | order       | Используется для сортировки результатов. Можно использовать несколько полей через запятую                                                                                                                      | "order" => "name DESC, status"                                          |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -382,6 +376,45 @@
 
 Все запросы внутри обрабатываются как :doc:`PHQL <phql>` запросы. PHQL это высокоуровневый, объектно-ориентированный, SQL подобный язык.
 Этот язык предоставит вам больше возможностей для выполнения запросов, таких как объединение с другими моделями, определение группировок, добавление агрегации и т.д.
+
+Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
+retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+An example is in order, so taking our Robots model mentioned earlier :
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public $id;
+
+        public $name;
+
+        public $price;
+    }
+
+We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in
+the table with the name 'Terminator'. This could be written like:
+
+.. code-block:: php
+
+    <?php
+
+    $name  = "Terminator";
+    $robot = Robots::findFirstByName($name);
+
+    if ($robot) {
+        echo "The first robot with the name " . $name . " cost " . $robot->price . ".";
+    } else {
+        echo "There were no robots found in our table with the name " . $name . ".";
+    }
+
+Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name
+we are looking for in our table. Notice also that when we find a match with our query, all the other properties
+are available to us as well.
 
 Возвращение результатов моделью
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -419,13 +452,13 @@
 
     // Перемещение внутреннего курсора к третьему роботу
     $robots->seek(2);
-    $robot = $robots->current()
+    $robot = $robots->current();
 
     // Access a robot by its position in the resultset
     $robot = $robots[5];
 
     // Доступ робота по его положению в наборе результатов
-    if (isset($robots[3]) {
+    if (isset($robots[3])) {
        $robot = $robots[3];
     }
 
@@ -462,8 +495,27 @@
 
     // Обходим parts в foreach
     foreach ($parts as $part) {
-       echo $part->id;
+        echo $part->id;
     }
+
+Filtering Resultsets
+^^^^^^^^^^^^^^^^^^^^
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
+Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+
+.. code-block:: php
+
+    <?php
+
+    $customers = Customers::find()->filter(
+        function ($customer) {
+
+            // Return only customers with a valid e-mail
+            if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
+                return $customer;
+            }
+        }
+    );
 
 Привязка параметров
 ^^^^^^^^^^^^^^^^^^^
@@ -484,18 +536,22 @@
     );
 
     // Выполнение запроса
-    $robots = Robots::find(array(
-        $conditions,
-        "bind" => $parameters
-    ));
+    $robots = Robots::find(
+        array(
+            $conditions,
+            "bind" => $parameters
+        )
+    );
 
-    // Запрос роботов с  связывающими параметрами с числовыми заполнителями
+    // Запрос роботов с связывающими параметрами с числовыми заполнителями
     $conditions = "name = ?1 AND type = ?2";
     $parameters = array(1 => "Robotina", 2 => "maid");
-    $robots     = Robots::find(array(
-        $conditions,
-        "bind" => $parameters
-    ));
+    $robots     = Robots::find(
+        array(
+            $conditions,
+            "bind" => $parameters
+        )
+    );
 
     // Запрос роботов с  связывающими параметрами с строковыми и числовыми заполнителями
     $conditions = "name = :name: AND type = ?1";
@@ -503,26 +559,30 @@
     // Параметры с ключом, номер или название которого идентично заполнителям
     $parameters = array(
         "name" => "Robotina",
-        1 => "maid"
+        1      => "maid"
     );
 
     // Выполнение запроса
-    $robots = Robots::find(array(
-        $conditions,
-        "bind" => $parameters
-    ));
+    $robots = Robots::find(
+        array(
+            $conditions,
+            "bind" => $parameters
+        )
+    );
 
 При использовании цифровых указателей, необходимо определить их как целые числа, то есть 1 или 2. В этом случае "1" или "2" считаются строками,
-поэтому указатель не может быть успешно заменен. Строки автоматически изолируются используя PDO_.
-Эта функция принимает во внимание кодировку соединения с базой данных, поэтому её рекомендуется определять в параметрах соединения или в конфигурации базы данных,
+поэтому указатель не может быть успешно заменен.
+
+Строки автоматически изолируются используя PDO_. Эта функция принимает во внимание кодировку соединения с базой данных, поэтому её рекомендуется определять в параметрах соединения или в конфигурации базы данных,
 неправильная кодировка будет приводить к некорректному хранению и извлеченюи данных.
+
 Кроме того, вы можете установить параметр "bindTypes", что позволит определить, каким образом параметры должны быть связаны в соответствии с его типом данных:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Db\Column;
+    use Phalcon\Db\Column;
 
     // Привязка параметров
     $parameters = array(
@@ -537,30 +597,73 @@
     );
 
     // Запрос роботов с  связывающими параметрами и типами строковых заполнителей
-    $robots = Robots::find(array(
-        "name = :name: AND year = :year:",
-        "bind" => $parameters,
-        "bindTypes" => $types
-    ));
+    $robots = Robots::find(
+        array(
+            "name = :name: AND year = :year:",
+            "bind"      => $parameters,
+            "bindTypes" => $types
+        )
+    );
 
 .. highlights::
 
     Поскольку тип-связывания по умолчанию \\Phalcon\\Db\\Column::BIND_PARAM_STR, нет необходимости указывать параметр "bindTypes", если все столбцы этого типа.
 
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+
+.. code-block:: php
+
+    <?php
+
+    $array = ["a","b","c"]; // $array: [[0] => "a", [1] => "b", [2] => "c"]
+
+    unset($array[1]); // $array: [[0] => "a", [2] => "c"]
+
+    // Now we have to renumber the keys
+    $array = array_values($array); // $array: [[0] => "a", [1] => "c"]
+
+    $robots = Robots::find(
+        array(
+            'letter IN ({letter:array})',
+            'bind' => array(
+                'letter' => $array
+            )
+        )
+    );
+
+.. highlights::
+
 Привязка параметров доступна для всех запросов метода, таких как find() и findFirst(), а так же для методов count(), sum(), average() и т.д.
+
+If you're using "finders", bound parameters are automatically used for you:
+
+.. code-block:: php
+
+    <?php
+
+    // Explicit query using bound parameters
+    $robots = Robots::find(
+        array(
+            "name = ?0",
+            "bind" => ["Ultron"],
+        )
+    );
+
+    // Implicit query using bound parameters
+    $robots = Robots::findByName("Ultron");
 
 Инициализация/Изменение полученных записей
 ------------------------------------------
-
 Может быть так, что вам необходимо произвести некоторые манипуляции с полученными записями. Для этого вы можете реализовать метод 'afterFetch' в модели. Этот метод выполняется каждый раз, когда экземпляр модели получает записи.
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public $id;
 
         public $name;
@@ -586,7 +689,9 @@
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -598,7 +703,6 @@
         {
             return explode(',', $this->status);
         }
-
     }
 
 Отношения между моделями
@@ -666,7 +770,7 @@
 * Модель "Robots" имеет несколько "RobotsParts".
 * Модель "Parts" имеет несколько "RobotsParts".
 * Модель "RobotsParts" принадлежит обоим "Robots" и "Parts" моделям как многие-к-одному.
-* Модель "Robots" имеет отношение многие-ко-многим к "Parts" через "RobotsParts"
+* Модель "Robots" имеет отношение многие-ко-многим к "Parts" через "RobotsParts".
 
 Посмотрим EER схему, чтобы лучше понять отношения:
 
@@ -679,7 +783,9 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -689,16 +795,16 @@
         {
             $this->hasMany("id", "RobotsParts", "robots_id");
         }
-
     }
 
 .. code-block:: php
 
     <?php
 
-    class Parts extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Parts extends Model
+    {
         public $id;
 
         public $name;
@@ -707,16 +813,16 @@
         {
             $this->hasMany("id", "RobotsParts", "parts_id");
         }
-
     }
 
 .. code-block:: php
 
     <?php
 
-    class RobotsParts extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class RobotsParts extends Model
+    {
         public $id;
 
         public $robots_id;
@@ -728,7 +834,6 @@
             $this->belongsTo("robots_id", "Robots", "id");
             $this->belongsTo("parts_id", "Parts", "id");
         }
-
     }
 
 Отношение "многие-ко-многим" требуют 3 модели и определение атрибутов, участвующих в отношениях:
@@ -737,7 +842,9 @@
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -753,7 +860,6 @@
                 "id"
             );
         }
-
     }
 
 Первый параметр указывает локальные поля модели, используемые в отношениях; второй указывает имя модели и третье имя поля в указанной модели.
@@ -780,7 +886,7 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    $robot = Robots::findFirst();
+    $robot       = Robots::findFirst();
     $robotsParts = $robot->robotsParts; // все связанные записи с RobotsParts
 
 Кроме того, вы можете использовать магию получателя:
@@ -789,7 +895,7 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    $robot = Robots::findFirst();
+    $robot       = Robots::findFirst();
     $robotsParts = $robot->getRobotsParts(); // все связанные записи с RobotsParts
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // передача параметров
 
@@ -800,7 +906,7 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    $robot = Robots::findFirst(2);
+    $robot       = Robots::findFirst(2);
 
     // Модель Robots имеет отношение один-ко-многим 1-n (hasMany)
     // Отношение к RobotsParts
@@ -810,12 +916,16 @@ Phalcon использует магические методы __set/__get/__cal
     $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
     // Или используя связанные параметры
-    $robotsParts = $robot->getRobotsParts(array(
-        "created_at = :date:",
-        "bind" => array("date" => "2015-03-15")
-    ));
+    $robotsParts = $robot->getRobotsParts(
+        array(
+            "created_at = :date:",
+            "bind" => array(
+                "date" => "2015-03-15"
+            )
+        )
+    );
 
-    $robotPart = RobotsParts::findFirst(1);
+    $robotPart   = RobotsParts::findFirst(1);
 
     // Модель RobotsParts имеет отношение многие-к-одному n-1 (belongsTo)
     // Отношение к Robots
@@ -827,7 +937,7 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    $robot = Robots::findFirst(2);
+    $robot       = Robots::findFirst(2);
 
     // Модель Robots имеет отношение один-ко-многим 1-n (hasMany)
     // Отношение к  RobotsParts
@@ -838,7 +948,7 @@ Phalcon использует магические методы __set/__get/__cal
         "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
-    $robotPart = RobotsParts::findFirst(1);
+    $robotPart   = RobotsParts::findFirst(1);
 
     // Модель RobotsParts имеет отношение многие-к-одному n-1 (belongsTo)
     // Отношениеo к RobotsParts
@@ -899,13 +1009,11 @@ Phalcon использует магические методы __set/__get/__cal
 
     class RobotsSimilar extends Phalcon\Mvc\Model
     {
-
         public function initialize()
         {
             $this->belongsTo('robots_id', 'Robots', 'id');
             $this->belongsTo('similar_robots_id', 'Robots', 'id');
         }
-
     }
 
 Так как отношения указывают на ту же модель (Robots), получить записи, относящиеся к взаимосвязи корректно нельзя:
@@ -930,19 +1038,30 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    class RobotsSimilar extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class RobotsSimilar extends Model
+    {
         public function initialize()
         {
-            $this->belongsTo('robots_id', 'Robots', 'id', array(
-                'alias' => 'Robot'
-            ));
-            $this->belongsTo('similar_robots_id', 'Robots', 'id', array(
-                'alias' => 'SimilarRobot'
-            ));
-        }
+            $this->belongsTo(
+                'robots_id',
+                'Robots',
+                'id',
+                array(
+                    'alias' => 'Robot'
+                )
+            );
 
+            $this->belongsTo(
+                'similar_robots_id',
+                'Robots',
+                'id',
+                array(
+                    'alias' => 'SimilarRobot'
+                )
+            );
+        }
     }
 
 С алиасами мы можем легко получить соответствующие записи:
@@ -969,9 +1088,10 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public $id;
 
         public $name;
@@ -986,11 +1106,10 @@ Phalcon использует магические методы __set/__get/__cal
          *
          * @return \RobotsParts[]
          */
-        public function getRobotsParts($parameters=null)
+        public function getRobotsParts($parameters = null)
         {
             return $this->getRelated('RobotsParts', $parameters);
         }
-
     }
 
 Виртуальные внешние ключи
@@ -1003,9 +1122,10 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    class RobotsParts extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class RobotsParts extends Model
+    {
         public $id;
 
         public $robots_id;
@@ -1014,17 +1134,26 @@ Phalcon использует магические методы __set/__get/__cal
 
         public function initialize()
         {
-            $this->belongsTo("robots_id", "Robots", "id", array(
-                "foreignKey" => true
-            ));
-
-            $this->belongsTo("parts_id", "Parts", "id", array(
-                "foreignKey" => array(
-                    "message" => "part_id не существует в модели Parts"
+            $this->belongsTo(
+                "robots_id",
+                "Robots",
+                "id",
+                array(
+                    "foreignKey" => true
                 )
-            ));
-        }
+            );
 
+            $this->belongsTo(
+                "parts_id",
+                "Parts",
+                "id",
+                array(
+                    "foreignKey" => array(
+                        "message" => "part_id не существует в модели Parts"
+                    )
+                )
+            );
+        }
     }
 
 Если вы изменяете belongsTo() отношения в качестве внешнего ключа, он будет проверять, что значения вставляется/обновляется на тех полях где значение допустимое для эталонной модели. Аналогичным образом, если HasMany()/hasOne() изменяется он будет проверять, что записи не могут быть удалены, если эта запись используется для эталонной моделью.
@@ -1033,18 +1162,55 @@ Phalcon использует магические методы __set/__get/__cal
 
     <?php
 
-    class Parts extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Parts extends Model
     {
+        public function initialize()
+        {
+            $this->hasMany(
+                "id",
+                "RobotsParts",
+                "parts_id",
+                array(
+                    "foreignKey" => array(
+                        "message" => "id не может быть удален, потому что используется в RobotsParts"
+                    )
+                )
+            );
+        }
+    }
+
+A virtual foreign key can be set up to allow null values as follows:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class RobotsParts extends Model
+    {
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
 
         public function initialize()
         {
-            $this->hasMany("id", "RobotsParts", "parts_id", array(
-                "foreignKey" => array(
-                    "message" => "id не может быть удален, потому что используется в RobotsParts"
+            $this->belongsTo(
+                "parts_id",
+                "Parts",
+                "id",
+                array(
+                    "foreignKey" => array(
+                        "allowNulls" => true,
+                        "message"    => "The part_id does not exist on the Parts model"
+                    )
                 )
-            ));
+            );
         }
-
     }
 
 Cascade/Ограничить действия
@@ -1057,25 +1223,28 @@ Cascade/Ограничить действия
 
     namespace Store\Models;
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Relation;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Relation;
 
     class Robots extends Model
     {
-
         public $id;
 
         public $name;
 
         public function initialize()
         {
-            $this->hasMany('id', 'Store\Models\Parts', 'robots_id', array(
-                'foreignKey' => array(
-                    'action' => Relation::ACTION_CASCADE
+            $this->hasMany(
+                'id',
+                'Store\\Models\\Parts',
+                'robots_id',
+                array(
+                    'foreignKey' => array(
+                        'action' => Relation::ACTION_CASCADE
+                    )
                 )
-            ));
+            );
         }
-
     }
 
 Код выше удалит все относящиеся записи (parts), если основная запись (robot) удаляется.
@@ -1095,28 +1264,42 @@ Cascade/Ограничить действия
     $rowcount = Employees::count();
 
     // Сколько уникальных сфер деятельности рабочих?
-    $rowcount = Employees::count(array("distinct" => "area"));
+    $rowcount = Employees::count(
+        array(
+            "distinct" => "area"
+        )
+    );
 
     // Сколько сотрудников работает в сфере тестирования?
-    $rowcount = Employees::count("area = 'Testing'");
+    $rowcount = Employees::count(
+        "area = 'Testing'"
+    );
 
     // Количество сотрудников сгруппированных по сфере деятельности
-    $group = Employees::count(array("group" => "area"));
+    $group = Employees::count(
+        array(
+            "group" => "area"
+        )
+    );
     foreach ($group as $row) {
        echo  $row->rowcount , " cотрудников в ", $row->area;
     }
 
     // Количество сотрудников сгруппированных по сфере деятельности упорядочено по их количеству
-    $group = Employees::count(array(
-        "group" => "area",
-        "order" => "rowcount"
-    ));
+    $group = Employees::count(
+        array(
+            "group" => "area",
+            "order" => "rowcount"
+        )
+    );
 
     // Избегайте SQL инъекции, используя связанные параметры
-    $group = Employees::count(array(
-        "type > ?0"
-        "bind" => array($type)
-    ));
+    $group = Employees::count(
+        array(
+            "type > ?0",
+            "bind" => array($type)
+        )
+    );
 
 Пример суммы:
 
@@ -1125,35 +1308,47 @@ Cascade/Ограничить действия
     <?php
 
     // Какая заработная плата всех сотрудников?
-    $total = Employees::sum(array("column" => "salary"));
+    $total = Employees::sum(
+        array(
+            "column" => "salary"
+        )
+    );
 
     // Какая заработная плата всех сотруднииков в сфере продаж?
-    $total = Employees::sum(array(
-        "column"     => "salary",
-        "conditions" => "area = 'Sales'"
-    ));
+    $total = Employees::sum(
+        array(
+            "column"     => "salary",
+            "conditions" => "area = 'Sales'"
+        )
+    );
 
     // Генерирует суммарную заработную плату каждой области
-    $group = Employees::sum(array(
-        "column" => "salary",
-        "group"  => "area"
-    ));
+    $group = Employees::sum(
+        array(
+            "column" => "salary",
+            "group"  => "area"
+        )
+    );
     foreach ($group as $row) {
        echo "Сумма заработной платы ", $row->area, " составляет ", $row->sumatory;
     }
 
     // Групирует зарплаты каждой сферы деятельности и упорядочивает их от большего к меньшему
-    $group = Employees::sum(array(
-        "column" => "salary",
-        "group"  => "area",
-        "order"  => "sumatory DESC"
-    ));
+    $group = Employees::sum(
+        array(
+            "column" => "salary",
+            "group"  => "area",
+            "order"  => "sumatory DESC"
+        )
+    );
 
     // Избегайте SQL инъекции, используя связанные параметры
-    $group = Employees::sum(array(
-        "conditions" => "area > ?0"
-        "bind" => array($area)
-    ));
+    $group = Employees::sum(
+        array(
+            "conditions" => "area > ?0",
+            "bind"       => array($area)
+        )
+    );
 
 Пример поиска среднего:
 
@@ -1162,20 +1357,28 @@ Cascade/Ограничить действия
     <?php
 
     // Какая средняя зарплата среди всех сотрудников?
-    $average = Employees::average(array("column" => "salary"));
+    $average = Employees::average(
+        array(
+            "column" => "salary"
+        )
+    );
 
     // Какая средняя зарплата среди сотрудников сферы продаж?
-    $average = Employees::average(array(
-        "column" => "salary",
-        "conditions" => "area = 'Sales'"
-    ));
+    $average = Employees::average(
+        array(
+            "column"     => "salary",
+            "conditions" => "area = 'Sales'"
+        )
+    );
 
     // Избегайте SQL инъекции, используя связанные параметры
-    $average = Employees::average(array(
-        "column" => "age"
-        "conditions" => "area > ?0"
-        "bind" => array($area)
-    ));
+    $average = Employees::average(
+        array(
+            "column"     => "age",
+            "conditions" => "area > ?0",
+            "bind"       => array($area)
+        )
+    );
 
 Пример нахождения максимального/минимального:
 
@@ -1184,16 +1387,26 @@ Cascade/Ограничить действия
     <?php
 
     // Какой максимальный возраст среди всех сотрудников?
-    $age = Employees::maximum(array("column" => "age"));
+    $age = Employees::maximum(
+        array(
+            "column" => "age"
+        )
+    );
 
     // Какой максимальный возраст среди сотрудников сферы продаж?
-    $age = Employees::maximum(array(
-        "column" => "age",
-        "conditions" => "area = 'Sales'"
-    ));
+    $age = Employees::maximum(
+        array(
+            "column"     => "age",
+            "conditions" => "area = 'Sales'"
+        )
+    );
 
     // Какая минимальная зарплата среди сотрудников?
-    $salary = Employees::minimum(array("column" => "salary"));
+    $salary = Employees::minimum(
+        array(
+            "column" => "salary"
+        )
+    );
 
 Режимы гидратации
 -----------------
@@ -1248,9 +1461,11 @@ Cascade/Ограничить действия
 
     use Phalcon\Mvc\Model\Resultset;
 
-    $robots = Robots::find(array(
-        'hydration' => Resultset::HYDRATE_ARRAYS
-    ));
+    $robots = Robots::find(
+        array(
+            'hydration' => Resultset::HYDRATE_ARRAYS
+        )
+    );
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
@@ -1272,6 +1487,7 @@ Cascade/Ограничить действия
     $robot->type = "mechanical";
     $robot->name = "Astro Boy";
     $robot->year = 1952;
+
     if ($robot->save() == false) {
         echo "Мы не можем сохранить робота прямо сейчас: \n";
         foreach ($robot->getMessages() as $message) {
@@ -1289,11 +1505,14 @@ Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры,
     <?php
 
     $robot = new Robots();
-    $robot->save(array(
-        "type" => "mechanical",
-        "name" => "Astro Boy",
-        "year" => 1952
-    ));
+
+    $robot->save(
+        array(
+            "type" => "mechanical",
+            "name" => "Astro Boy",
+            "year" => 1952
+        )
+    );
 
 Значения, назначеные непосредственно через атрибуты или через массив, экранируются/проверяются в соответствии с типом данных атрибута. Таким образом, вы можете передать ненадежный массив, не беспокоясь о возможных SQL инъекциях :
 
@@ -1317,7 +1536,14 @@ Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры,
     <?php
 
     $robot = new Robots();
-    $robot->save($_POST, array('name', 'type'));
+
+    $robot->save(
+        $_POST,
+        array(
+            'name',
+            'type'
+        )
+    );
 
 Создание/Обновление с уверенностью
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1372,14 +1598,14 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function getSequenceName()
         {
             return "robots_sequence_name";
         }
-
     }
 
 Связаное сохранение записей
@@ -1391,15 +1617,15 @@ Phalcon пытается получить сгенерированное зна�
     <?php
 
     // Создать артиста
-    $artist = new Artists();
-    $artist->name = 'Shinichi Osawa';
+    $artist          = new Artists();
+    $artist->name    = 'Shinichi Osawa';
     $artist->country = 'Japan';
 
     // Создать альбом
-    $album = new Albums();
-    $album->name = 'The One';
+    $album         = new Albums();
+    $album->name   = 'The One';
     $album->artist = $artist; // Назначить артиста
-    $album->year = 2008;
+    $album->year   = 2008;
 
     // Сохранить обе записи
     $album->save();
@@ -1414,20 +1640,20 @@ Phalcon пытается получить сгенерированное зна�
     $artist = Artists::findFirst('name = "Shinichi Osawa"');
 
     // Создать альбом
-    $album = new Albums();
-    $album->name = 'The One';
+    $album         = new Albums();
+    $album->name   = 'The One';
     $album->artist = $artist;
 
     $songs = array();
 
     // Создать первую песню
-    $songs[0] = new Songs();
-    $songs[0]->name = 'Star Guitar';
+    $songs[0]           = new Songs();
+    $songs[0]->name     = 'Star Guitar';
     $songs[0]->duration = '5:54';
 
     // Создать вторую песню
-    $songs[1] = new Songs();
-    $songs[1]->name = 'Last Days';
+    $songs[1]           = new Songs();
+    $songs[1]->name     = 'Last Days';
     $songs[1]->duration = '4:29';
 
     // Связать массив песен
@@ -1484,7 +1710,9 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function getMessages()
         {
@@ -1502,6 +1730,7 @@ Phalcon пытается получить сгенерированное зна�
                         break;
                 }
             }
+
             return $messages;
         }
     }
@@ -1550,14 +1779,14 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function beforeValidationOnCreate()
         {
             echo "Это выполняется перед созданием робота!";
         }
-
     }
 
 События могут быть полезны для присвоения значений перед выполнением операции, например:
@@ -1566,9 +1795,10 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Products extends Model
+    {
         public function beforeCreate()
         {
             // Установить дату создания
@@ -1580,27 +1810,24 @@ Phalcon пытается получить сгенерированное зна�
             // Установить дату модификации
             $this->modified_in = date('Y-m-d H:i:s');
         }
-
     }
 
 Использование пользовательского менеджера событий
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Кроме того, этот компонент интегрируется с  :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+Кроме того, этот компонент интегрируется с :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
 это означает, что мы можем создать слушателей, которые запускаются при наступлении события.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Events\Manager as EventsManager;
 
     class Robots extends Model
     {
-
         public function initialize()
         {
-
             $eventsManager = new EventsManager();
 
             // Прикрепить анонимную функцию в качестве слушателя для событий "model"
@@ -1611,13 +1838,13 @@ Phalcon пытается получить сгенерированное зна�
                         return false;
                     }
                 }
+
                 return true;
             });
 
             // Прикрепите менеджер событий для события
             $this->setEventsManager($eventsManager);
         }
-
     }
 
 В примере, приведенном выше, EventsManager действует только в качестве моста между объектом и слушателем
@@ -1627,9 +1854,10 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
+
     $robot->save();
 
 Если мы хотим, чтобы все объекты, созданные в нашем приложении использовать один и тот же EventsManager,
@@ -1656,14 +1884,15 @@ Phalcon пытается получить сгенерированное зна�
                         return false;
                     }
                 }
-
             }
+
             return true;
         });
 
         // Установки EventsManager по умолчанию
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
+
         return $modelsManager;
     });
 
@@ -1683,9 +1912,10 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function beforeSave()
         {
             if ($this->year < 0) {
@@ -1693,7 +1923,6 @@ Phalcon пытается получить сгенерированное зна�
                 return false;
             }
         }
-
     }
 
 Некоторые события возвращают false как указание, что надо прервать текущую операцию.
@@ -1710,32 +1939,34 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
-
         public function validation()
         {
-
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("Mechanical", "Virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array("Mechanical", "Virtual")
+                    )
                 )
-            ));
+            );
 
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "Название робота должен быть уникальным"
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "Название робота должен быть уникальным"
+                    )
                 )
-            ));
+            );
 
             return $this->validationHasFailed() != true;
         }
-
     }
 
 Приведенный выше пример выполняет проверку с помощью встроенного валидатора "InclusionIn".
@@ -1743,27 +1974,27 @@ Phalcon пытается получить сгенерированное зна�
 то валидация будет прервана и будет возвращено значение false.
 Доступны следующие валидаторы:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Название     | Пояснение                                                                                                                                            | Пример                                                            |
-+==============+======================================================================================================================================================+===================================================================+
-| PresenceOf   | Проверяет, чтобы значение поля не являлось NULL или пустой строкой. Этот валидатор автоматически добавляется на основе атрибутов  NOT NULL в таблице | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Проверяет, чтобы поле содержало допустимый формат электронной почты                                                                                  | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Проверяет, чтобы значение не находилось в пределах списка возможных значений                                                                         | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Проверяет, чтобы значение находилось в пределах списка возможных значений                                                                            | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Проверяет, чтобы поле имело числовой формат                                                                                                          | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Проверяет, чтобы значение поля соответствовало регулярному выражению                                                                                 | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Uniqueness   | Проверяет, чтобы поле или комбинация из набора полей встречалось не более одного раза в записях связанной таблицы                                    | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Проверяет длину строки                                                                                                                               | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Проверяет, чтобы значение имело правильный формат URL                                                                                                | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Url>`           |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Название     | Пояснение                                                                                                                                            | Пример                                                           |
++==============+======================================================================================================================================================+==================================================================+
+| PresenceOf   | Проверяет, чтобы значение поля не являлось NULL или пустой строкой. Этот валидатор автоматически добавляется на основе атрибутов  NOT NULL в таблице | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Email        | Проверяет, чтобы поле содержало допустимый формат электронной почты                                                                                  | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| ExclusionIn  | Проверяет, чтобы значение не находилось в пределах списка возможных значений                                                                         | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| InclusionIn  | Проверяет, чтобы значение находилось в пределах списка возможных значений                                                                            | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Numericality | Проверяет, чтобы поле имело числовой формат                                                                                                          | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Regex        | Проверяет, чтобы значение поля соответствовало регулярному выражению                                                                                 | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Uniqueness   | Проверяет, чтобы поле или комбинация из набора полей встречалось не более одного раза в записях связанной таблицы                                    | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| StringLength | Проверяет длину строки                                                                                                                               | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Url          | Проверяет, чтобы значение имело правильный формат URL                                                                                                | :doc:`Пример <../api/Phalcon_Mvc_Model_Validator_Url>`           |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
 В дополнение ко встроенным, вы можете создавать свои собственные валидаторы:
 
@@ -1771,19 +2002,18 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator,
-        Phalcon\Mvc\Model\ValidatorInterface,
-        Phalcon\Mvc\EntityInterface;
+    use Phalcon\Mvc\Model\Validator;
+    use Phalcon\Mvc\Model\ValidatorInterface;
+    use Phalcon\Mvc\EntityInterface;
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
-
         public function validate(EntityInterface $model)
         {
             $field = $this->getOption('field');
 
-            $min = $this->getOption('min');
-            $max = $this->getOption('max');
+            $min   = $this->getOption('min');
+            $max   = $this->getOption('max');
 
             $value = $model->$field;
 
@@ -1793,12 +2023,18 @@ Phalcon пытается получить сгенерированное зна�
                     $field,
                     "MaxMinValidator"
                 );
+
                 return false;
             }
+
             return true;
         }
-
     }
+
+.. highlights::
+
+    *NOTE* Up to version 2.0.4 `$model` must be `\\Phalcon\\Mvc\\ModelInterface`
+    instance (`public function validate(\\Phalcon\\Mvc\\ModelInterface $model)`).
 
 Добавление валидатора в модель:
 
@@ -1806,23 +2042,26 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    class Customers extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Customers extends Model
+    {
         public function validation()
         {
-            $this->validate(new MaxMinValidator(
-                array(
-                    "field"  => "price",
-                    "min" => 10,
-                    "max" => 100
+            $this->validate(
+                new MaxMinValidator(
+                    array(
+                        "field" => "price",
+                        "min"   => 10,
+                        "max"   => 100
+                    )
                 )
-            ));
+            );
+
             if ($this->validationHasFailed() == true) {
                 return false;
             }
         }
-
     }
 
 Идея создания валидаторов - использовать повторно в нескольких моделях.
@@ -1832,12 +2071,11 @@ Phalcon пытается получить сгенерированное зна�
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
 
     class Robots extends Model
     {
-
         public function validation()
         {
             if ($this->type == "Old") {
@@ -1846,12 +2084,14 @@ Phalcon пытается получить сгенерированное зна�
                     "type",
                     "MyType"
                 );
+
                 $this->appendMessage($message);
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 Предотвращение SQL инъекции
@@ -1881,10 +2121,10 @@ Phalcon использует внутреннее `связывание пара
 
     <?php
 
+    $name           = 'Artichoke';
+    $price          = 10.5;
+    $active         = 'Y';
     $productTypesId = 1;
-    $name = 'Artichoke';
-    $price = 10.5;
-    $active = 'Y';
 
     $sql = 'INSERT INTO products VALUES (null, :productTypesId, :name, :price, :active)';
     $sth = $dbh->prepare($sql);
@@ -1902,11 +2142,12 @@ Phalcon использует внутреннее `связывание пара
 
     <?php
 
-    $product = new Products();
+    $product                   = new Products();
     $product->product_types_id = 1;
-    $product->name = 'Artichoke';
-    $product->price = 10.5;
-    $product->active = 'Y';
+    $product->name             = 'Artichoke';
+    $product->price            = 10.5;
+    $product->active           = 'Y';
+
     $product->create();
 
 Пропуск столбцов
@@ -1918,21 +2159,34 @@ Phalcon использует внутреннее `связывание пара
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function initialize()
         {
             // Пропуск поля.столбца при всех INSERT/UPDATE операциях
-            $this->skipAttributes(array('year', 'price'));
+            $this->skipAttributes(
+                array(
+                    'year',
+                    'price'
+                )
+            );
 
             // Пропуск только при вставке
-            $this->skipAttributesOnCreate(array('created_at'));
+            $this->skipAttributesOnCreate(
+                array(
+                    'created_at'
+                )
+            );
 
             // Пропуск только при обновлении
-            $this->skipAttributesOnUpdate(array('modified_in'));
+            $this->skipAttributesOnUpdate(
+                array(
+                    'modified_in'
+                )
+            );
         }
-
     }
 
 Это заставит игнорировать глобально эти поля на каждой операции INSERT/UPDATE для всего приложения.
@@ -1942,10 +2196,13 @@ Phalcon использует внутреннее `связывание пара
 
     <?php
 
-    $robot = new Robots();
-    $robot->name = 'Bender';
-    $robot->year = 1999;
-    $robot->created_at = new \Phalcon\Db\RawValue('default');
+    use Phalcon\Db\RawValue;
+
+    $robot             = new Robots();
+    $robot->name       = 'Bender';
+    $robot->year       = 1999;
+    $robot->created_at = new RawValue('default');
+
     $robot->create();
 
 Обратный вызов также может быть использован для создания условного назначения автоматических значений по умолчанию:
@@ -1954,8 +2211,8 @@ Phalcon использует внутреннее `связывание пара
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Db\RawValue;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Db\RawValue;
 
     class Robots extends Model
     {
@@ -1986,7 +2243,9 @@ SQL UPDATE операции по умолчанию приводят к изме
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {
@@ -2003,9 +2262,11 @@ SQL UPDATE операции по умолчанию приводят к изме
     <?php
 
     $robot = Robots::findFirst(11);
+
     if ($robot != false) {
         if ($robot->delete() == false) {
             echo "К сожалению, мы не можем удалить робота прямо сейчас: \n";
+
             foreach ($robot->getMessages() as $message) {
                 echo $message, "\n";
             }
@@ -2023,6 +2284,7 @@ SQL UPDATE операции по умолчанию приводят к изме
     foreach (Robots::find("type='mechanical'") as $robot) {
         if ($robot->delete() == false) {
             echo "К сожалению, мы не можем удалить робота прямо сейчас: \n";
+
             foreach ($robot->getMessages() as $message) {
                 echo $message, "\n";
             }
@@ -2048,18 +2310,20 @@ SQL UPDATE операции по умолчанию приводят к изме
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function beforeDelete()
         {
             if ($this->status == 'A') {
                 echo "Робот активен, он не может быть удален";
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 События ошибок при проверке
@@ -2087,9 +2351,10 @@ SQL UPDATE операции по умолчанию приводят к изме
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Model
     {
         public $id;
 
@@ -2099,16 +2364,17 @@ SQL UPDATE операции по умолчанию приводят к изме
 
         public function initialize()
         {
-            $this->addBehavior(new Timestampable(
-                array(
-                    'beforeCreate' => array(
-                        'field' => 'created_at',
-                        'format' => 'Y-m-d'
+            $this->addBehavior(
+                new Timestampable(
+                    array(
+                        'beforeCreate' => array(
+                            'field'  => 'created_at',
+                            'format' => 'Y-m-d'
+                        )
                     )
                 )
-            ));
+            );
         }
-
     }
 
 Фреймворком обеспечиваются следующие встроенные поведения:
@@ -2130,16 +2396,20 @@ Timestampable
 
     <?php
 
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
+
     public function initialize()
     {
-        $this->addBehavior(new Timestampable(
-            array(
-                'beforeCreate' => array(
-                    'field' => 'created_at',
-                    'format' => 'Y-m-d'
+        $this->addBehavior(
+            new Timestampable(
+                array(
+                    'beforeCreate' => array(
+                        'field'  => 'created_at',
+                        'format' => 'Y-m-d'
+                    )
                 )
             )
-        ));
+        );
     }
 
 Каждое событие может иметь свои собственные настройки,  'field' -  имя столбца, который необходимо обновить,
@@ -2150,19 +2420,23 @@ format  может быть анонимной функцией, позволя�
 
     <?php
 
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
+
     public function initialize()
     {
-        $this->addBehavior(new Timestampable(
-            array(
-                'beforeCreate' => array(
-                    'field' => 'created_at',
-                    'format' => function () {
-                        $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
-                        return $datetime->format('Y-m-d H:i:sP');
-                    }
+        $this->addBehavior(
+            new Timestampable(
+                array(
+                    'beforeCreate' => array(
+                        'field'  => 'created_at',
+                        'format' => function () {
+                            $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
+                            return $datetime->format('Y-m-d H:i:sP');
+                        }
+                    )
                 )
             )
-        ));
+        );
     }
 
 Если опция 'format' опущена, то будет использованна метка времени PHP функции time_.
@@ -2175,11 +2449,11 @@ SoftDelete
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Model
     {
-
         const DELETED = 'D';
 
         const NOT_DELETED = 'N';
@@ -2192,14 +2466,15 @@ SoftDelete
 
         public function initialize()
         {
-            $this->addBehavior(new SoftDelete(
-                array(
-                    'field' => 'status',
-                    'value' => Users::DELETED
+            $this->addBehavior(
+                new SoftDelete(
+                    array(
+                        'field' => 'status',
+                        'value' => Users::DELETED
+                    )
                 )
-            ));
+            );
         }
-
     }
 
 Это поведение принимает две опции: 'field' и 'value', 'field' определяет, что поле должно быть обновлено и
@@ -2255,12 +2530,11 @@ ORM предоставляет API для создания собственны�
 
     <?php
 
-    use Phalcon\Mvc\Model\Behavior,
-        Phalcon\Mvc\Model\BehaviorInterface;
+    use Phalcon\Mvc\Model\Behavior;
+    use Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
     {
-
         public function notify($eventType, $model)
         {
             switch ($eventType) {
@@ -2268,7 +2542,6 @@ ORM предоставляет API для создания собственны�
                 case 'afterCreate':
                 case 'afterDelete':
                 case 'afterUpdate':
-
 
                     $userName = // ... получить текущего пользователя из сессии
 
@@ -2284,7 +2557,6 @@ ORM предоставляет API для создания собственны�
                     /* игнорировать остальную часть событий */
             }
         }
-
     }
 
 Вышеизложенное является очень простым "поведением", но оно показывает, как создать "поведение".
@@ -2294,14 +2566,14 @@ ORM предоставляет API для создания собственны�
 
     <?php
 
-    class Profiles extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Profiles extends Model
+    {
         public function initialize()
         {
             $this->addBehavior(new Blameable());
         }
-
     }
 
 Поведение также может перехватывать отсутствующие методы ваших моделей:
@@ -2310,20 +2582,19 @@ ORM предоставляет API для создания собственны�
 
     <?php
 
-    use Phalcon\Mvc\Model\Behavior,
-        Phalcon\Mvc\Model\BehaviorInterface;
+    use Phalcon\Tag;
+    use Phalcon\Mvc\Model\Behavior;
+    use Phalcon\Mvc\Model\BehaviorInterface;
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
-
-        public function missingMethod($model, $method, $arguments=array())
+        public function missingMethod($model, $method, $arguments = array())
         {
             // iЕсли метод - 'getSlug ", то преобразовать  title
             if ($method == 'getSlug') {
                 return Phalcon\Tag::friendlyTitle($model->title);
             }
         }
-
     }
 
 Вызов этого метода у модели, реализующей Sluggable, возвращает SEO-оптимизированное название:
@@ -2346,7 +2617,6 @@ ORM предоставляет API для создания собственны�
 
     trait MyTimestampable
     {
-
         public function beforeCreate()
         {
             $this->created_at = date('r');
@@ -2356,7 +2626,6 @@ ORM предоставляет API для создания собственны�
         {
             $this->updated_at = date('r');
         }
-
     }
 
 Затем вы можете использовать его в вашей модели следующим образом:
@@ -2365,7 +2634,9 @@ ORM предоставляет API для создания собственны�
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         use MyTimestampable;
     }
@@ -2381,21 +2652,29 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
+        public $code;
+
+        public $theName;
+
+        public $theType;
+
+        public $theYear;
 
         public function columnMap()
         {
             // Ключи - реальные имена в таблице и
             //  значения - их имена в приложении
             return array(
-                'id' => 'code',
+                'id'       => 'code',
                 'the_name' => 'theName',
                 'the_type' => 'theType',
                 'the_year' => 'theYear'
             );
         }
-
     }
 
 Затем вы можете использовать новые переменные в вашем коде:
@@ -2409,17 +2688,22 @@ Phalcon сделает за вас все остальное. Например:
     echo $robot->theName, "\n";
 
     // Получить роботов, сгруппированных по типу
-    $robot = Robots::find(array('order' => 'theType DESC'));
+    $robot = Robots::find(
+        array(
+            'order' => 'theType DESC'
+        )
+    );
     foreach ($robots as $robot) {
         echo 'Code: ', $robot->code, "\n";
     }
 
     // Создать робота
-    $robot = new Robots();
-    $robot->code = '10101';
+    $robot          = new Robots();
+    $robot->code    = '10101';
     $robot->theName = 'Bender';
     $robot->theType = 'Industrial';
     $robot->theYear = 2999;
+
     $robot->save();
 
 При переименовании столбцов примите во внимание:
@@ -2447,12 +2731,14 @@ Phalcon сделает за вас все остальное. Например:
     <?php
 
     foreach ($robots->getParts() as $part) {
-        $part->stock = 100;
+        $part->stock      = 100;
         $part->updated_at = time();
+
         if ($part->update() == false) {
             foreach ($part->getMessages() as $message) {
                 echo $message;
             }
+
             break;
         }
     }
@@ -2463,10 +2749,12 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    $robots->getParts()->update(array(
-        'stock' => 100,
-        'updated_at' => time()
-    ));
+    $robots->getParts()->update(
+        array(
+            'stock'      => 100,
+            'updated_at' => time()
+        )
+    );
 
 'update' также принимает анонимную функцию, чтобы отфильтровать какие записи должны быть обновлены:
 
@@ -2475,7 +2763,7 @@ Phalcon сделает за вас все остальное. Например:
     <?php
 
     $data = array(
-        'stock' => 100,
+        'stock'      => 100,
         'updated_at' => time()
     );
 
@@ -2484,8 +2772,9 @@ Phalcon сделает за вас все остальное. Например:
         if ($part->type == Part::TYPE_BASIC) {
             return false;
         }
+
         return true;
-    }
+    });
 
 Удаление связанных записей
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2500,6 +2789,7 @@ Phalcon сделает за вас все остальное. Например:
             foreach ($part->getMessages() as $message) {
                 echo $message;
             }
+
             break;
         }
     }
@@ -2523,6 +2813,7 @@ Phalcon сделает за вас все остальное. Например:
         if ($part->stock < 0) {
             return false;
         }
+
         return true;
     });
 
@@ -2537,7 +2828,9 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {
@@ -2571,14 +2864,14 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function getSchema()
         {
             return "toys";
         }
-
     }
 
 Установка нескольких баз данных
@@ -2592,24 +2885,31 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
+    use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
+
     // Этот сервис возвращает базу данных MySQL
     $di->set('dbMysql', function () {
-         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
-        ));
+        return new MysqlPdo(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "invo"
+            )
+        );
     });
 
     // Этот сервис возвращает базу данных PostgreSQL
     $di->set('dbPostgres', function () {
-         return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
-            "host" => "localhost",
-            "username" => "postgres",
-            "password" => "",
-            "dbname" => "invo"
-        ));
+        return new PostgreSQLPdo(
+            array(
+                "host"     => "localhost",
+                "username" => "postgres",
+                "password" => "",
+                "dbname"   => "invo"
+            )
+        );
     });
 
 Затем в методе Initialize, определим сервис соединения для модели:
@@ -2618,14 +2918,14 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function initialize()
         {
             $this->setConnectionService('dbPostgres');
         }
-
     }
 
 Но Phalcon предлагает вам больше гибкости, вы можете определить соединение, которое необходимо использовать
@@ -2636,15 +2936,15 @@ Phalcon сделает за вас все остальное. Например:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public function initialize()
         {
             $this->setReadConnectionService('dbSlave');
             $this->setWriteConnectionService('dbMaster');
         }
-
     }
 
 ORM так же обеспечивает  устройство горизонтального шардинга,
@@ -2654,7 +2954,9 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         /**
          * Dynamically selects a shard
@@ -2673,9 +2975,11 @@ ORM так же обеспечивает  устройство горизонт�
                 // Выбор возможного осколка в соответствии с условиями
                 if ($conditions['left']['name'] == 'id') {
                     $id = $conditions['right']['value'];
+
                     if ($id > 0 && $id < 10000) {
                         return $this->getDI()->get('dbShard1');
                     }
+
                     if ($id > 10000) {
                         return $this->getDI()->get('dbShard2');
                     }
@@ -2685,7 +2989,6 @@ ORM так же обеспечивает  устройство горизонт�
             // Использовать осколок умолчанию
             return $this->getDI()->get('dbShard0');
         }
-
     }
 
 Метод 'selectReadConnection' вызывается для правильного выбора соединения,
@@ -2710,16 +3013,16 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Db\Adapter\Pdo\Mysql as Connection,
-        Phalcon\Events\Manager,
-        Phalcon\Logger\Adapter\File;
+    use Phalcon\Logger;
+    use Phalcon\Events\Manager;
+    use Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
     $di->set('db', function () {
 
         $eventsManager = new EventsManager();
 
-        $logger = new Logger("app/logs/debug.log");
+        $logger = new FileLogger("app/logs/debug.log");
 
         // Слушать все события базы данных
         $eventsManager->attach('db', function ($event, $connection) use ($logger) {
@@ -2728,12 +3031,14 @@ ORM так же обеспечивает  устройство горизонт�
             }
         });
 
-        $connection = new Connection(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
-        ));
+        $connection = new Connection(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "invo"
+            )
+        );
 
         // Назначить EventsManager к экземпляру адаптера БД
         $connection->setEventsManager($eventsManager);
@@ -2748,9 +3053,10 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    $robot = new Robots();
-    $robot->name = "Robby the Robot";
-    $robot->created_at = "1956-07-21"
+    $robot             = new Robots();
+    $robot->name       = "Robby the Robot";
+    $robot->created_at = "1956-07-21";
+
     if ($robot->save() == false) {
         echo "Невозможно сохранить робот";
     }
@@ -2772,33 +3078,40 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
+    use Phalcon\Db\Profiler as ProfilerDb;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
+
     $di->set('profiler', function () {
-        return new \Phalcon\Db\Profiler();
+        return new ProfilerDb();
     }, true);
 
     $di->set('db', function () use ($di) {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Получить общий экземпляр DbProfiler
-        $profiler = $di->getProfiler();
+        $profiler      = $di->getProfiler();
 
         // Слушать все события базы данных
         $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
             if ($event->getType() == 'beforeQuery') {
                 $profiler->startProfile($connection->getSQLStatement());
             }
+
             if ($event->getType() == 'afterQuery') {
                 $profiler->stopProfile();
             }
         });
 
-        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
-        ));
+        $connection = new MysqlPdo(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "invo"
+            )
+        );
 
         // Назначить EventsManager к экземпляру адаптера БД
         $connection->setEventsManager($eventsManager);
@@ -2812,10 +3125,18 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    // Отправить некоторые  SQL операторы  базы данных
+    // Отправить некоторые SQL операторы  базы данных
     Robots::find();
-    Robots::find(array("order" => "name");
-    Robots::find(array("limit" => 30);
+    Robots::find(
+        array(
+            "order" => "name"
+        )
+    );
+    Robots::find(
+        array(
+            "limit" => 30
+        )
+    );
 
     // Получить сгенерированные профили из профилировщика
     $profiles = $di->get('profiler')->getProfiles();
@@ -2838,10 +3159,11 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
-        public function notSave()
+    class Robots extends Model
+    {
+        public function notSaved()
         {
             // Получить флэш службу из контейнера DI
             $flash = $this->getDI()->getFlash();
@@ -2851,10 +3173,9 @@ ORM так же обеспечивает  устройство горизонт�
                 $flash->error($message);
             }
         }
-
     }
 
-Событие "notSave" срабатывает каждый раз, когда не удаются действия "create" или "update".
+Событие "notSaved" срабатывает каждый раз, когда не удаются действия "create" или "update".
 Таким образом, мы показываем сообщения проверки при помощи пакета "Flash", полученного из контейнера DI.
 Делая так, мы не должны выводить сообщения после каждого сохранения.
 
@@ -2868,10 +3189,14 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    \Phalcon\Mvc\Model::setup(array(
-        'events' => false,
-        'columnRenaming' => false
-    ));
+    use Phalcon\Mvc\Model;
+
+    Model::setup(
+        array(
+            'events'         => false,
+            'columnRenaming' => false
+        )
+    );
 
 Доступные опции:
 
@@ -2888,6 +3213,8 @@ ORM так же обеспечивает  устройство горизонт�
 +---------------------+-------------------------------------------------------------------------------------------------+--------------+
 | phqlLiterals        | Включение/выключение литералов в PHQL парсере                                                   | true         |
 +---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| lateStateBinding    | Enables/Disables late state binding of the method Mvc\Model::cloneResultMap                     | false        |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
 
 Автономный компонент
 ---------------------
@@ -2897,18 +3224,23 @@ ORM так же обеспечивает  устройство горизонт�
 
     <?php
 
-    use Phalcon\DI,
-        Phalcon\Db\Adapter\Pdo\Sqlite as Connection,
-        Phalcon\Mvc\Model\Manager as ModelsManager,
-        Phalcon\Mvc\Model\Metadata\Memory as MetaData,
-        Phalcon\Mvc\Model;
+    use Phalcon\DI;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
+    use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
+    use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
     $di = new DI();
 
     // Настройка подключения
-    $di->set('db', new Connection(array(
-        "dbname" => "sample.db"
-    )));
+    $di->set(
+        'db',
+        new Connection(
+            array(
+                "dbname" => "sample.db"
+            )
+        )
+    );
 
     // Установить менеджер модели
     $di->set('modelsManager', new ModelsManager());
