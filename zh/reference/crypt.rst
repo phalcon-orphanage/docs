@@ -1,4 +1,4 @@
-加密与解密（Encryption/Decryption）
+Encryption/Decryption
 =====================
 
 Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密和解密工具。这个类提供了对PHP mcrypt_ 的封装。
@@ -13,8 +13,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Create an instance
-    $crypt     = new \Phalcon\Crypt();
+    $crypt     = new Crypt();
 
     $key       = 'le password';
     $text      = 'This is a secret text';
@@ -29,8 +31,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     <?php
 
+    use Phalcon\Crypt;
+
     // 创建实例
-    $crypt = new \Phalcon\Crypt();
+    $crypt = new Crypt();
 
     $texts = array(
         'my-key'    => 'This is a secret text',
@@ -65,8 +69,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     <?php
 
+    use Phalcon\Crypt;
+
     // 创建实例
-    $crypt = new \Phalcon\Crypt();
+    $crypt = new Crypt();
 
     // 使用 blowfish
     $crypt->setCipher('blowfish');
@@ -84,8 +90,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     <?php
 
+    use Phalcon\Crypt;
+
     // 创建实例
-    $crypt   = new \Phalcon\Crypt();
+    $crypt   = new Crypt();
 
     $key     = 'le password';
     $text    = 'This is a secret text';
@@ -102,9 +110,11 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function () {
 
-        $crypt = new \Phalcon\Crypt();
+        $crypt = new Crypt();
 
         // 设置全局加密密钥
         $crypt->setKey('%31.1e$i86e$f!8jz');

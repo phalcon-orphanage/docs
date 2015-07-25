@@ -1,5 +1,5 @@
-﻿Зашифрование и расшифрование
-============================
+﻿Encryption/Decryption
+=====================
 
 Phalcon предоставляет средства шифрования с помощью компонента :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
 Этот класс предоставляет простые объектно-ориентированные обертки к PHP библиотеке mcrypt_.
@@ -14,8 +14,10 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создание экземпляра
-    $crypt     = new \Phalcon\Crypt();
+    $crypt     = new Crypt();
 
     $key       = 'это пароль';
     $text      = 'Это секретный текст';
@@ -30,8 +32,10 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создание экземпляра
-    $crypt = new \Phalcon\Crypt();
+    $crypt = new Crypt();
 
     $texts = array(
         'my-key'    => 'Это секретный текст',
@@ -65,8 +69,10 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создаем экземпляр
-    $crypt = new \Phalcon\Crypt();
+    $crypt = new Crypt();
 
     // Используем алгоритм blowfish
     $crypt->setCipher('blowfish');
@@ -85,8 +91,10 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создаем экземпляр
-    $crypt   = new \Phalcon\Crypt();
+    $crypt   = new Crypt();
 
     $key     = 'это пароль';
     $text    = 'Это секретный текст';
@@ -103,9 +111,11 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function () {
 
-        $crypt = new \Phalcon\Crypt();
+        $crypt = new Crypt();
 
         // Устанавливаем глобальный ключ шифрования
         $crypt->setKey('%31.1e$i86e$f!8jz');
