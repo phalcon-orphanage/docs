@@ -1,16 +1,17 @@
 Security
 ========
+
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
 
 Password Hashing
 ----------------
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user
 accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods
-“md5_” and “sha1_”. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable
+"md5_" and "sha1_". However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable
 to brute force attacks. These attacks are also known as `rainbow tables`_.
 
-To solve this problem we can use hash algorithms as bcrypt_. Why bcrypt? Thanks to its “Eksblowfish_” key setup algorithm
-we can make the password encryption as “slow” as we want. Slow algorithms make the process to calculate the real
+To solve this problem we can use hash algorithms as bcrypt_. Why bcrypt? Thanks to its "Eksblowfish_" key setup algorithm
+we can make the password encryption as "slow" as we want. Slow algorithms make the process to calculate the real
 password behind a hash extremely difficult if not impossible. This will protect your for a long time from a
 possible attack using rainbow tables.
 
@@ -24,13 +25,11 @@ This component gives you the ability to use this algorithm in a simple way:
 
     class UsersController extends Controller
     {
-
         public function registerAction()
         {
-
             $user = new Users();
 
-            $login = $this->request->getPost('login');
+            $login    = $this->request->getPost('login');
             $password = $this->request->getPost('password');
 
             $user->login = $login;
@@ -40,7 +39,6 @@ This component gives you the ability to use this algorithm in a simple way:
 
             $user->save();
         }
-
     }
 
 We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as
@@ -54,11 +52,9 @@ its encryption will be slow. We can check if the password is correct as follows:
 
     class SessionController extends Controller
     {
-
         public function loginAction()
         {
-
-            $login = $this->request->getPost('login');
+            $login    = $this->request->getPost('login');
             $password = $this->request->getPost('password');
 
             $user = Users::findFirstByLogin($login);
@@ -70,7 +66,6 @@ its encryption will be slow. We can check if the password is correct as follows:
 
             // The validation has failed
         }
-
     }
 
 The salt is generated using pseudo-random bytes with the PHP's function openssl_random_pseudo_bytes_ so is required to have the openssl_ extension loaded.
@@ -88,7 +83,7 @@ token in the session to the one submitted by the form:
 
     <?php echo Tag::form('session/login') ?>
 
-        <!-- login and password inputs ... -->
+        <!-- Login and password inputs ... -->
 
         <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
             value="<?php echo $this->security->getToken() ?>"/>
@@ -105,16 +100,14 @@ Then in the controller's action you can check if the CSRF token is valid:
 
     class SessionController extends Controller
     {
-
         public function loginAction()
         {
             if ($this->request->isPost()) {
                 if ($this->security->checkToken()) {
-                    // The token is ok
+                    // The token is OK
                 }
             }
         }
-
     }
 
 Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
@@ -152,7 +145,7 @@ to setup its options:
 
 External Resources
 ------------------
-* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
+* `V�kur� <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _sha1 : http://php.net/manual/en/function.sha1.php
 .. _md5 : http://php.net/manual/en/function.md5.php
@@ -162,5 +155,4 @@ External Resources
 .. _`random nonce`: http://en.wikipedia.org/wiki/Cryptographic_nonce
 .. _bcrypt : http://en.wikipedia.org/wiki/Bcrypt
 .. _Eksblowfish : http://en.wikipedia.org/wiki/Bcrypt#Algorithm
-
 .. _`rainbow tables`: http://en.wikipedia.org/wiki/Rainbow_table
