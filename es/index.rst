@@ -38,6 +38,7 @@ Table of Contents
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-transactions
    reference/phql
    reference/models-cache
    reference/odm
