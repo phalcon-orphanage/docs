@@ -27,6 +27,7 @@ Phalconはパフォーマンスだけではありません。我々のゴール�
    reference/tutorial-invo-2
    reference/tutorial-invo-3
    reference/tutorial-invo-4
+   reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
    reference/di

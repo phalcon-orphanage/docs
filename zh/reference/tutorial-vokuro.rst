@@ -84,12 +84,14 @@ different than the one we saw before (app/config/loader.php):
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerNamespaces(array(
-        'Vokuro\Models'      => $config->application->modelsDir,
-        'Vokuro\Controllers' => $config->application->controllersDir,
-        'Vokuro\Forms'       => $config->application->formsDir,
-        'Vokuro'             => $config->application->libraryDir
-    ));
+    $loader->registerNamespaces(
+        array(
+            'Vokuro\Models'      => $config->application->modelsDir,
+            'Vokuro\Controllers' => $config->application->controllersDir,
+            'Vokuro\Forms'       => $config->application->formsDir,
+            'Vokuro'             => $config->application->libraryDir
+        )
+    );
 
     $loader->register();
 
@@ -108,7 +110,6 @@ requires it in its definition:
 
     class AboutController extends ControllerBase
     {
-
         // ...
     }
 
