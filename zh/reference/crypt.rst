@@ -1,11 +1,12 @@
-加密与解密（Encryption/Decryption）
+Encryption/Decryption
 =====================
 
-Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密和解密工具。这个类提供了对PHP mcrypt_ 的封装。默认情况下这个组件使用AES-256 (rijndael-256-cbc)。
+Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密和解密工具。这个类提供了对PHP mcrypt_ 的封装。
+
+默认情况下这个组件使用AES-256 (rijndael-256-cbc)。
 
 基本使用
 -----------
-
 这个组件极易使用：
 
 .. code-block:: php

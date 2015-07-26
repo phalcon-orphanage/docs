@@ -1,4 +1,4 @@
-暗号化/復号化
+Encryption/Decryption
 =====================
 
 Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
@@ -14,11 +14,13 @@ This component is designed to provide a very simple usage:
 
     <?php
 
-    // Create an instance
-    $crypt = new Phalcon\Crypt();
+    use Phalcon\Crypt;
 
-    $key  = 'le password';
-    $text = 'This is a secret text';
+    // Create an instance
+    $crypt     = new Crypt();
+
+    $key       = 'le password';
+    $text      = 'This is a secret text';
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -30,8 +32,10 @@ You can use the same instance to encrypt/decrypt several times:
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Create an instance
-    $crypt = new Phalcon\Crypt();
+    $crypt = new Crypt();
 
     $texts = array(
         'my-key'    => 'This is a secret text',
@@ -65,14 +69,16 @@ Example:
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Create an instance
-    $crypt = new Phalcon\Crypt();
+    $crypt = new Crypt();
 
     // Use blowfish
     $crypt->setCipher('blowfish');
 
-    $key  = 'le password';
-    $text = 'This is a secret text';
+    $key   = 'le password';
+    $text  = 'This is a secret text';
 
     echo $crypt->encrypt($text, $key);
 
@@ -84,11 +90,13 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     <?php
 
-    // Create an instance
-    $crypt = new Phalcon\Crypt();
+    use Phalcon\Crypt;
 
-    $key  = 'le password';
-    $text = 'This is a secret text';
+    // Create an instance
+    $crypt   = new Crypt();
+
+    $key     = 'le password';
+    $text    = 'This is a secret text';
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -102,9 +110,11 @@ You can set up the encryption component in the services container in order to us
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function () {
 
-        $crypt = new Phalcon\Crypt();
+        $crypt = new Crypt();
 
         // Set a global encryption key
         $crypt->setKey('%31.1e$i86e$f!8jz');
