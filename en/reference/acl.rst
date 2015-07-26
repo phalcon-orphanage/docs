@@ -1,5 +1,6 @@
 Access Control Lists ACL
 ========================
+
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` provides an easy and lightweight management of ACLs as well as the permissions
 attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying
 objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
@@ -42,7 +43,7 @@ A role is an object that can or cannot access certain resources in the access li
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
-    // Add "Guests" role to acl
+    // Add "Guests" role to ACL
     $acl->addRole($roleGuests);
 
     // Add "Designers" role to ACL without a Phalcon\Acl\Role
@@ -111,7 +112,7 @@ You can build complex role structures using the inheritance that :doc:`Phalcon\\
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
-    // Add "Guests" role to acl
+    // Add "Guests" role to ACL
     $acl->addRole($roleGuests);
 
     // Add "Administrators" role inheriting from "Guests" its accesses
@@ -152,18 +153,18 @@ so that they can be loaded at will without having to redefine the whole list. Yo
         echo "Access denied :(";
     }
 
-Acl Events
+ACL Events
 ----------
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
 are triggered using the type "acl". Some events when returning boolean false could stop the active operation. The following events are supported:
 
-+----------------------+------------------------------------------------------------+---------------------+
-| Event Name           | Triggered                                                  | Can stop operation? |
-+======================+============================================================+=====================+
-| beforeCheckAccess    | Triggered before checking if a role/resource has access    | Yes                 |
-+----------------------+------------------------------------------------------------+---------------------+
-| afterCheckAccess     | Triggered after checking if a role/resource has access     | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
++-------------------+---------------------------------------------------------+---------------------+
+| Event Name        | Triggered                                               | Can stop operation? |
++===================+=========================================================+=====================+
+| beforeCheckAccess | Triggered before checking if a role/resource has access | Yes                 |
++-------------------+---------------------------------------------------------+---------------------+
+| afterCheckAccess  | Triggered after checking if a role/resource has access  | No                  |
++-------------------+---------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:
 
