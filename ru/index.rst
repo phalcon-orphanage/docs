@@ -39,6 +39,7 @@ Phalcon заботится не только о производительнос
    reference/mvc
    reference/controllers
    reference/models
+   reference/models-metadata
    reference/model-transactions
    reference/phql
    reference/models-cache
