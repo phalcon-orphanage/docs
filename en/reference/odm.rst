@@ -1,5 +1,6 @@
 ODM (Object-Document Mapper)
 ============================
+
 In addition to its ability to :doc:`map tables <models>` in relational databases, Phalcon can map documents from NoSQL databases.
 The ODM offers a CRUD functionality, events, validations among other services.
 
@@ -84,12 +85,10 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     class Robots extends Collection
     {
-
         public function getSource()
         {
             return "robots";
         }
-
     }
 
 You could find a certain document by its id and then print its name:
@@ -110,9 +109,13 @@ Once the record is in memory, you can make modifications to its data and then sa
 
     <?php
 
-    $robot = Robots::findFirst(array(
-        array('name' => 'Astroy Boy')
-    ));
+    $robot = Robots::findFirst(
+        array(
+            array(
+                'name' => 'Astro Boy'
+            )
+        )
+    );
     $robot->name = "Voltron";
     $robot->save();
 
@@ -150,30 +153,46 @@ to query documents and convert them transparently to model instances:
     echo "There are ", count($robots), "\n";
 
     // How many mechanical robots are there?
-    $robots = Robots::find(array(
-        array("type" => "mechanical")
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            )
+        )
+    );
     echo "There are ", count($robots), "\n";
 
     // Get and print mechanical robots ordered by name upward
-    $robots = Robots::find(array(
-        array("type" => "mechanical"),
-        "sort" => array("name" => 1)
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            ),
+            "sort" => array(
+                "name" => 1
+            )
+        )
+    );
 
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
     // Get first 100 mechanical robots ordered by name
-    $robots = Robots::find(array(
-        array("type" => "mechanical"),
-        "sort"  => array("name" => 1),
-        "limit" => 100
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            ),
+            "sort"  => array(
+                "name" => 1
+            ),
+            "limit" => 100
+        )
+    );
 
     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
+        echo $robot->name, "\n";
     }
 
 You could also use the findFirst() method to get only the first record matching the given criteria:
@@ -187,9 +206,13 @@ You could also use the findFirst() method to get only the first record matching 
     echo "The robot name is ", $robot->name, "\n";
 
     // What's the first mechanical robot in robots collection?
-    $robot = Robots::findFirst(array(
-        array("type" => "mechanical")
-    ));
+    $robot = Robots::findFirst(
+        array(
+            array(
+                "type" => "mechanical"
+            )
+        )
+    );
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
@@ -199,18 +222,22 @@ Both find() and findFirst() methods accept an associative array specifying the s
     <?php
 
     // First robot where type = "mechanical" and year = "1999"
-    $robot = Robots::findFirst(array(
-        "conditions" => array(
-            "type" => "mechanical",
-            "year" => "1999"
+    $robot = Robots::findFirst(
+        array(
+            "conditions" => array(
+                "type" => "mechanical",
+                "year" => "1999"
+            )
         )
-    ));
+    );
 
     // All virtual robots ordered by name downward
-    $robots = Robots::find(array(
-        "conditions" => array("type" => "virtual"),
-        "sort"       => array("name" => -1)
-    ));
+    $robots = Robots::find(
+        array(
+            "conditions" => array("type" => "virtual"),
+            "sort"       => array("name" => -1)
+        )
+    );
 
 The available query options are:
 
@@ -239,17 +266,19 @@ With this option is easy perform tasks such as totaling or averaging field value
 
     <?php
 
-    $data = Article::aggregate(array(
+    $data = Article::aggregate(
         array(
-            '$project' => array('category' => 1)
-        ),
-        array(
-            '$group' => array(
-                '_id' => array('category' => '$category'),
-                'id'  => array('$max' => '$_id')
+            array(
+                '$project' => array('category' => 1)
+            ),
+            array(
+                '$group' => array(
+                    '_id' => array('category' => '$category'),
+                    'id'  => array('$max' => '$_id')
+                )
             )
         )
-    ));
+    );
 
 Creating Updating/Records
 -------------------------
@@ -350,12 +379,10 @@ To make a model to react to an event, we must to implement a method with the sam
 
     class Robots extends Collection
     {
-
         public function beforeValidationOnCreate()
         {
             echo "This is executed before creating a Robot!";
         }
-
     }
 
 Events can be useful to assign values before performing an operation, for example:
@@ -368,7 +395,6 @@ Events can be useful to assign values before performing an operation, for exampl
 
     class Products extends Collection
     {
-
         public function beforeCreate()
         {
             // Set the creation date
@@ -380,7 +406,6 @@ Events can be useful to assign values before performing an operation, for exampl
             // Set the modification date
             $this->modified_in = date('Y-m-d H:i:s');
         }
-
     }
 
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <events>`, this means we can create
@@ -399,9 +424,11 @@ listeners that run when an event is triggered.
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
+
                 return false;
             }
         }
+
         return true;
     });
 
@@ -462,7 +489,6 @@ The following example implements an event that validates the year cannot be smal
 
     class Robots extends Collection
     {
-
         public function beforeSave()
         {
             if ($this->year < 0) {
@@ -470,7 +496,6 @@ The following example implements an event that validates the year cannot be smal
                 return false;
             }
         }
-
     }
 
 Some events return false as an indication to stop the current operation. If an event doesn't return anything,
@@ -493,28 +518,29 @@ The following example shows how to use it:
 
     class Robots extends Collection
     {
-
         public function validation()
         {
-
-            $this->validate(new InclusionIn(
-                array(
-                    "field"   => "type",
-                    "message" => "Type must be: mechanical or virtual",
-                    "domain"  => array("Mechanical", "Virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"   => "type",
+                        "message" => "Type must be: mechanical or virtual",
+                        "domain"  => array("Mechanical", "Virtual")
+                    )
                 )
-            ));
+            );
 
-            $this->validate(new Numericality(
-                array(
-                    "field"   => "price",
-                    "message" => "Price must be numeric"
+            $this->validate(
+                new Numericality(
+                    array(
+                        "field"   => "price",
+                        "message" => "Price must be numeric"
+                    )
                 )
-            ));
+            );
 
             return $this->validationHasFailed() != true;
         }
-
     }
 
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
@@ -542,11 +568,10 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    use \Phalcon\Mvc\Model\Validator as CollectionValidator;
+    use Phalcon\Mvc\Model\Validator as CollectionValidator;
 
     class UrlValidator extends CollectionValidator
     {
-
         public function validate($model)
         {
             $field = $this->getOption('field');
@@ -555,11 +580,12 @@ In addition to the built-in validators, you can create your own validators:
             $filtered = filter_var($value, FILTER_VALIDATE_URL);
             if (!$filtered) {
                 $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 Adding the validator to a model:
@@ -572,17 +598,20 @@ Adding the validator to a model:
 
     class Customers extends Collection
     {
-
         public function validation()
         {
-            $this->validate(new UrlValidator(array(
-                "field"  => "url",
-            )));
+            $this->validate(
+                new UrlValidator(
+                    array(
+                        "field"  => "url",
+                    )
+                )
+            );
+
             if ($this->validationHasFailed() == true) {
                 return false;
             }
         }
-
     }
 
 The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
@@ -596,7 +625,6 @@ The idea of creating validators is make them reusable across several models. A v
 
     class Robots extends Collection
     {
-
         public function validation()
         {
             if ($this->type == "Old") {
@@ -605,12 +633,14 @@ The idea of creating validators is make them reusable across several models. A v
                     "type",
                     "MyType"
                 );
+
                 $this->appendMessage($message);
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 Deleting Records
@@ -730,7 +760,6 @@ Then, in the Initialize method, we define the connection service for the model:
         {
             $this->setConnectionService('mongo1');
         }
-
     }
 
 Injecting services into Models
@@ -745,7 +774,6 @@ You may be required to access the application services within a model, the follo
 
     class Robots extends Collection
     {
-
         public function notSave()
         {
             // Obtain the flash service from the DI container
@@ -756,7 +784,6 @@ You may be required to access the application services within a model, the follo
                 $flash->error((string) $message);
             }
         }
-
     }
 
 The "notSave" event is triggered whenever a "creating" or "updating" action fails. We're flashing the validation messages

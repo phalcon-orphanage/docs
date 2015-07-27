@@ -1,5 +1,6 @@
 ODM (Object-Document Mapper)
 ============================
+
 В дополнение к его способности :doc:`отображать таблицы <models>` в реляционных базах данных, Phalcon может отображать документы из баз данных NoSQL.
 ODM предлагает функциональность CRUD, события, валидацию и другие сервисы.
 
@@ -9,11 +10,11 @@ ODM предлагает функциональность CRUD, события, 
 
 Поддерживаются следующие базы данных NoSQL:
 
-+------------+---------------------------------------------------------------------------------------+
-| Name       | Description                                                                           |
-+============+=======================================================================================+
-| MongoDB_   | MongoDB - масштабируемая, высоко-производительная NoSQL БД, с открытым исходным кодом.|
-+------------+---------------------------------------------------------------------------------------+
++------------+----------------------------------------------------------------------------------------+
+| Name       | Description                                                                            |
++============+========================================================================================+
+| MongoDB_   | MongoDB - масштабируемая, высоко-производительная NoSQL БД, с открытым исходным кодом. |
++------------+----------------------------------------------------------------------------------------+
 
 Создание моделей
 ----------------
@@ -25,7 +26,9 @@ ODM предлагает функциональность CRUD, события, 
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
     }
@@ -42,7 +45,9 @@ ODM предлагает функциональность CRUD, события, 
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function getSource()
         {
@@ -52,7 +57,6 @@ ODM предлагает функциональность CRUD, события, 
 
 Понимание Документов как Объектов
 ----------------------------------
-
 Каждый экземпляр модели представляет документ в коллекции. Вы можете легко получить доступ к коллекции данных путем считывания свойств объекта.
 Например, для коллекции "robots" с документами:
 
@@ -71,8 +75,7 @@ ODM предлагает функциональность CRUD, события, 
 
 Модели в пространствах имен
 ---------------------------
-Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов.
-В этом случае необходимо указать имя соответствующей колекции, используя getSource:
+Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов. В этом случае необходимо указать имя соответствующей колекции, используя getSource:
 
 .. code-block:: php
 
@@ -80,14 +83,14 @@ ODM предлагает функциональность CRUD, события, 
 
     namespace Store\Toys;
 
-    class Robots extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Robots extends Collection
+    {
         public function getSource()
         {
             return "robots";
         }
-
     }
 
 Вы можете найти определенный документ, его ID, а затем распечатать его имя:
@@ -108,9 +111,13 @@ ODM предлагает функциональность CRUD, события, 
 
     <?php
 
-    $robot = Robots::findFirst(array(
-        array('name' => 'Astroy Boy')
-    ));
+    $robot = Robots::findFirst(
+        array(
+            array(
+                'name' => 'Astro Boy'
+            )
+        )
+    );
     $robot->name = "Voltron";
     $robot->save();
 
@@ -124,14 +131,14 @@ Connections are retrieved from the services container. By default, Phalcon tries
 
     // Simple database connection to localhost
     $di->set('mongo', function () {
-        $mongo = new Mongo();
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient();
+        return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
     $di->set('mongo', function () {
-        $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
+        return $mongo->selectDB("store");
     }, true);
 
 Finding Documents
@@ -148,30 +155,46 @@ to query documents and convert them transparently to model instances:
     echo "There are ", count($robots), "\n";
 
     // How many mechanical robots are there?
-    $robots = Robots::find(array(
-        array("type" => "mechanical")
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            )
+        )
+    );
     echo "There are ", count($robots), "\n";
 
     // Get and print mechanical robots ordered by name upward
-    $robots = Robots::find(array(
-        array("type" => "mechanical"),
-        "sort" => array("name" => 1)
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            ),
+            "sort" => array(
+                "name" => 1
+            )
+        )
+    );
 
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
     // Get first 100 mechanical robots ordered by name
-    $robots = Robots::find(array(
-        array("type" => "mechanical"),
-        "sort" => array("name" => 1),
-        "limit" => 100
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            ),
+            "sort"  => array(
+                "name" => 1
+            ),
+            "limit" => 100
+        )
+    );
 
     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
+        echo $robot->name, "\n";
     }
 
 You could also use the findFirst() method to get only the first record matching the given criteria:
@@ -185,9 +208,13 @@ You could also use the findFirst() method to get only the first record matching 
     echo "The robot name is ", $robot->name, "\n";
 
     // What's the first mechanical robot in robots collection?
-    $robot = Robots::findFirst(array(
-        array("type" => "mechanical")
-    ));
+    $robot = Robots::findFirst(
+        array(
+            array(
+                "type" => "mechanical"
+            )
+        )
+    );
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
@@ -197,16 +224,22 @@ Both find() and findFirst() methods accept an associative array specifying the s
     <?php
 
     // First robot where type = "mechanical" and year = "1999"
-    $robot = Robots::findFirst(array(
-        "type" => "mechanical",
-        "year" => "1999"
-    ));
+    $robot = Robots::findFirst(
+        array(
+            "conditions" => array(
+                "type" => "mechanical",
+                "year" => "1999"
+            )
+        )
+    );
 
     // All virtual robots ordered by name downward
-    $robots = Robots::find(array(
-        "conditions" => array("type" => "virtual"),
-        "sort"       => array("name" => -1)
-    ));
+    $robots = Robots::find(
+        array(
+            "conditions" => array("type" => "virtual"),
+            "sort"       => array("name" => -1)
+        )
+    );
 
 The available query options are:
 
@@ -215,9 +248,9 @@ The available query options are:
 +=============+==============================================================================================================================================================================================+=========================================================================+
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | "conditions" => array('$gt' => 1990)                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "conditions" => array('$gt' => 1990)                                    |
+| fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "fields" => array('name' => true)                                       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "order" => array("name" => -1, "statys" => 1)                           |
+| sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "sort" => array("name" => -1, "status" => 1)                            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | limit       | Limit the results of the query to results to certain range                                                                                                                                   | "limit" => 10                                                           |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -235,17 +268,19 @@ With this option is easy perform tasks such as totaling or averaging field value
 
     <?php
 
-    $data = Article::aggregate(array(
+    $data = Article::aggregate(
         array(
-            '$project' => array('category' => 1)
-        ),
-        array(
-            '$group' => array(
-                '_id' => array('category' => '$category'),
-                'id' => array('$max' => '$_id')
+            array(
+                '$project' => array('category' => 1)
+            ),
+            array(
+                '$group' => array(
+                    '_id' => array('category' => '$category'),
+                    'id'  => array('$max' => '$_id')
+                )
             )
         )
-    ));
+    );
 
 Creating Updating/Records
 -------------------------
@@ -342,14 +377,14 @@ To make a model to react to an event, we must to implement a method with the sam
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Robots extends Collection
+    {
         public function beforeValidationOnCreate()
         {
             echo "This is executed before creating a Robot!";
         }
-
     }
 
 Events can be useful to assign values before performing an operation, for example:
@@ -358,9 +393,10 @@ Events can be useful to assign values before performing an operation, for exampl
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Products extends Collection
+    {
         public function beforeCreate()
         {
             // Set the creation date
@@ -372,7 +408,6 @@ Events can be useful to assign values before performing an operation, for exampl
             // Set the modification date
             $this->modified_in = date('Y-m-d H:i:s');
         }
-
     }
 
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <events>`, this means we can create
@@ -382,20 +417,24 @@ listeners that run when an event is triggered.
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager;
+
+    $eventsManager = new EventsManager();
 
     // Attach an anonymous function as a listener for "model" events
     $eventsManager->attach('collection', function ($event, $robot) {
         if ($event->getType() == 'beforeSave') {
             if ($robot->name == 'Scooby Doo') {
                 echo "Scooby Doo isn't a robot!";
+
                 return false;
             }
         }
+
         return true;
     });
 
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->setEventsManager($eventsManager);
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
@@ -408,10 +447,13 @@ objects created in our application use the same EventsManager, then we need to a
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Collection\Manager as CollectionManager;
+
     // Registering the collectionManager service
     $di->set('collectionManager', function () {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
         $eventsManager->attach('collection', function ($event, $model) {
@@ -427,7 +469,7 @@ objects created in our application use the same EventsManager, then we need to a
         });
 
         // Setting a default EventsManager
-        $modelsManager = new Phalcon\Mvc\Collection\Manager();
+        $modelsManager = new CollectionManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
 
@@ -445,9 +487,10 @@ The following example implements an event that validates the year cannot be smal
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Robots extends Collection
+    {
         public function beforeSave()
         {
             if ($this->year < 0) {
@@ -455,7 +498,6 @@ The following example implements an event that validates the year cannot be smal
                 return false;
             }
         }
-
     }
 
 Some events return false as an indication to stop the current operation. If an event doesn't return anything,
@@ -472,33 +514,35 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Numericality;
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Numericality;
 
-    class Robots extends \Phalcon\Mvc\Collection
+    class Robots extends Collection
     {
-
         public function validation()
         {
-
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "message" => "Type must be: mechanical or virtual",
-                    "domain" => array("Mechanical", "Virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"   => "type",
+                        "message" => "Type must be: mechanical or virtual",
+                        "domain"  => array("Mechanical", "Virtual")
+                    )
                 )
-            ));
+            );
 
-            $this->validate(new Numericality(
-                array(
-                    "field"  => "price",
-                    "message" => "Price must be numeric"
+            $this->validate(
+                new Numericality(
+                    array(
+                        "field"   => "price",
+                        "message" => "Price must be numeric"
+                    )
                 )
-            ));
+            );
 
             return $this->validationHasFailed() != true;
         }
-
     }
 
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
@@ -526,9 +570,10 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    class UrlValidator extends \Phalcon\Mvc\Model\Validator
-    {
+    use \Phalcon\Mvc\Model\Validator as CollectionValidator;
 
+    class UrlValidator extends CollectionValidator
+    {
         public function validate($model)
         {
             $field = $this->getOption('field');
@@ -537,11 +582,12 @@ In addition to the built-in validators, you can create your own validators:
             $filtered = filter_var($value, FILTER_VALIDATE_URL);
             if (!$filtered) {
                 $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 Adding the validator to a model:
@@ -550,19 +596,24 @@ Adding the validator to a model:
 
     <?php
 
-    class Customers extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Customers extends Collection
+    {
         public function validation()
         {
-            $this->validate(new UrlValidator(array(
-                "field"  => "url",
-            )));
+            $this->validate(
+                new UrlValidator(
+                    array(
+                        "field"  => "url",
+                    )
+                )
+            );
+
             if ($this->validationHasFailed() == true) {
                 return false;
             }
         }
-
     }
 
 The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
@@ -571,23 +622,27 @@ The idea of creating validators is make them reusable across several models. A v
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Message as ModelMessage;
 
+    class Robots extends Collection
+    {
         public function validation()
         {
             if ($this->type == "Old") {
-                $message = new Phalcon\Mvc\Model\Message(
+                $message = new ModelMessage(
                     "Sorry, old robots are not allowed anymore",
                     "type",
                     "MyType"
                 );
+
                 $this->appendMessage($message);
+
                 return false;
             }
+
             return true;
         }
-
     }
 
 Deleting Records
@@ -655,13 +710,15 @@ Another type of events is available when the data validation process finds any i
 Implicit Ids vs. User Primary Keys
 ----------------------------------
 By default Phalcon\\Mvc\\Collection assumes that the _id attribute is automatically generated using MongoIds_.
-If a model uses custom primary keys this behavior can be overriden:
+If a model uses custom primary keys this behavior can be overridden:
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
@@ -681,14 +738,14 @@ in the application's services container. You can overwrite this service setting 
 
     // This service returns a mongo database at 192.168.1.100
     $di->set('mongo1', function () {
-        $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
-        return $mongo->selectDb("management");
+        $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+        return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
     $di->set('mongo2', function () {
-        $mongo = new Mongo("mongodb://localhost");
-        return $mongo->selectDb("invoicing");
+        $mongo = new MongoClient("mongodb://localhost");
+        return $mongo->selectDB("invoicing");
     }, true);
 
 Then, in the Initialize method, we define the connection service for the model:
@@ -697,13 +754,14 @@ Then, in the Initialize method, we define the connection service for the model:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
             $this->setConnectionService('mongo1');
         }
-
     }
 
 Injecting services into Models
@@ -714,9 +772,10 @@ You may be required to access the application services within a model, the follo
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
-    {
+    use Phalcon\Mvc\Collection;
 
+    class Robots extends Collection
+    {
         public function notSave()
         {
             // Obtain the flash service from the DI container
@@ -727,7 +786,6 @@ You may be required to access the application services within a model, the follo
                 $flash->error((string) $message);
             }
         }
-
     }
 
 The "notSave" event is triggered whenever a "creating" or "updating" action fails. We're flashing the validation messages
