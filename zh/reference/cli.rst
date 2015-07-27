@@ -61,9 +61,9 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
-        } elseif($k == 2) {
+        } elseif ($k == 2) {
             $arguments['action'] = $arg;
-        } elseif($k >= 3) {
+        } elseif ($k >= 3) {
             $arguments['params'][] = $arg;
         }
     }

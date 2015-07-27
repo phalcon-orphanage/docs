@@ -62,9 +62,9 @@ index.php, как в веб-приложениях, мы используем cl
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
-        } elseif($k == 2) {
+        } elseif ($k == 2) {
             $arguments['action'] = $arg;
-        } elseif($k >= 3) {
+        } elseif ($k >= 3) {
             $arguments['params'][] = $arg;
         }
     }
@@ -137,6 +137,8 @@ index.php, как в веб-приложениях, мы используем cl
             echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
         }
     }
+
+We can then run the following command:
 
 .. code-block:: bash
 
