@@ -1,6 +1,9 @@
 表单（Forms）
-===============
-Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用中的表单。 下面的例子中展示了基本的使用方法：
+===========
+
+Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用中的表单。
+
+下面的例子中展示了基本的使用方法：
 
 .. code-block:: php
 
@@ -16,10 +19,15 @@ Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用�
 
     $form->add(new Text("telephone"));
 
-    $form->add(new Select("telephoneType", array(
-        'H' => 'Home',
-        'C' => 'Cell'
-    )));
+    $form->add(
+        new Select(
+            "telephoneType",
+            array(
+                'H' => 'Home',
+                'C' => 'Cell'
+            )
+        )
+    );
 
 可在表单定义时穿插使用表单元素的字义：
 
@@ -31,17 +39,17 @@ Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用�
 
         <p>
             <label>Name</label>
-            <?php echo $form->render("name") ?>
+            <?php echo $form->render("name"); ?>
         </p>
 
         <p>
             <label>Telephone</label>
-            <?php echo $form->render("telephone") ?>
+            <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
             <label>Type</label>
-            <?php echo $form->render("telephoneType") ?>
+            <?php echo $form->render("telephoneType"); ?>
         </p>
 
         <p>
@@ -50,31 +58,34 @@ Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用�
 
     </form>
 
-
-开发者可根据需要渲染html组件。 当使用render()函数时， phalcon内部会使用 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 生成相应的html项，
+开发者可根据需要渲染HTML组件。 当使用render()函数时， phalcon内部会使用 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 生成相应的html项，
 第二个参数中可以对一些属性进行设置。
 
 .. code-block:: html+php
 
     <p>
         <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
+        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
     </p>
 
-html的属性也可以在创建时指定：
+HTML的属性也可以在创建时指定：
 
 .. code-block:: php
 
     <?php
 
-    $form->add(new Text("name", array(
-        'maxlength' => 30,
-        'placeholder' => 'Type your name'
-    )));
+    $form->add(
+        new Text(
+            "name",
+            array(
+                'maxlength'   => 30,
+                'placeholder' => 'Type your name'
+            )
+        )
+    );
 
 初始化表单（Initializing forms）
-------------------------------------
-
+------------------------------
 从上面的例子我们可以看到表单项也可以在form对象初始化后进行添加。 当然开发者也可以对原有的Form类进行扩展：
 
 .. code-block:: php
@@ -93,9 +104,18 @@ html的属性也可以在创建时指定：
 
             $this->add(new Text("telephone"));
 
-            $this->add(new Select("telephoneType", TelephoneTypes::find(), array(
-                'using' => array('id', 'name')
-            )));
+            $this->add(
+                new Select(
+                    "telephoneType",
+                    TelephoneTypes::find(),
+                    array(
+                        'using' => array(
+                            'id',
+                            'name'
+                        )
+                    )
+                )
+            );
         }
     }
 
@@ -112,7 +132,6 @@ html的属性也可以在创建时指定：
 
     class ContactForm extends Form
     {
-
         /**
          * This method returns the default value for field 'csrf'
          */
@@ -123,7 +142,6 @@ html的属性也可以在创建时指定：
 
         public function initialize()
         {
-
             // Set the same form as entity
             $this->setEntity($this);
 
@@ -141,9 +159,9 @@ html的属性也可以在创建时指定：
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class UsersForm extends Form
     {
@@ -155,7 +173,6 @@ html的属性也可以在创建时指定：
          */
         public function initialize($user, $options)
         {
-
             if ($options['edit']) {
                 $this->add(new Hidden('id'));
             } else {
@@ -172,10 +189,15 @@ html的属性也可以在创建时指定：
 
     <?php
 
-    $form = new UsersForm(new Users(), array('edit' => true));
+    $form = new UsersForm(
+        new Users(),
+        array(
+            'edit' => true
+        )
+    );
 
 验证（Validation）
---------------------
+-----------------
 Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供验证。 开发者要单独为每个html元素提供内置或自定义的验证器。
 
 .. code-block:: php
@@ -188,14 +210,22 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     $name = new Text("name");
 
-    $name->addValidator(new PresenceOf(array(
-        'message' => 'The name is required'
-    )));
+    $name->addValidator(
+        new PresenceOf(
+            array(
+                'message' => 'The name is required'
+            )
+        )
+    );
 
-    $name->addValidator(new StringLength(array(
-        'min' => 10,
-        'messageMinimum' => 'The name is too short'
-    )));
+    $name->addValidator(
+        new StringLength(
+            array(
+                'min'            => 10,
+                'messageMinimum' => 'The name is too short'
+            )
+        )
+    );
 
     $form->add($name);
 
@@ -221,6 +251,7 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
         echo 'Messages generated by ', $attribute, ':', "\n";
+
         foreach ($messages as $message) {
             echo $message, '<br>';
         }
@@ -240,12 +271,10 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 ------------------
 表单元素可以在进行验证前先进行过滤， 开发者可以为每个元素设置过滤器：
 
-
 设置用户选项（Setting User Options）
-----------------------------------------
-
+----------------------------------
 表单与实体（Forms + Entities）
-----------------------------------------
+----------------------------
 我们可以把 model/collection/plain 设置到表单对象中， 这样 phalcon 会自动的设置表单元素的值：
 
 .. code-block:: php
@@ -264,7 +293,7 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name') ?>
+    <?php echo $form->render('name'); ?>
 
 开发者可以使用下面的方式验证表单及利用用户的输入来设置值：
 
@@ -289,11 +318,9 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     class Preferences
     {
-
         public $timezone = 'Europe/Amsterdam';
 
         public $receiveEmails = 'No';
-
     }
 
 使用此类做为对象实体，这样可以使用此类中的值作为表单的默认值：
@@ -304,17 +331,27 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     $form = new Form(new Preferences());
 
-    $form->add(new Select("timezone", array(
-        'America/New_York' => 'New York',
-        'Europe/Amsterdam' => 'Amsterdam',
-        'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokyo' => 'Tokyo',
-    )));
+    $form->add(
+        new Select(
+            "timezone",
+            array(
+                'America/New_York'  => 'New York',
+                'Europe/Amsterdam'  => 'Amsterdam',
+                'America/Sao_Paulo' => 'Sao Paulo',
+                'Asia/Tokyo'        => 'Tokyo'
+            )
+        )
+    );
 
-    $form->add(new Select("receiveEmails", array(
-        'Yes' => 'Yes, please!',
-        'No' => 'No, thanks'
-    )));
+    $form->add(
+        new Select(
+            "receiveEmails",
+            array(
+                'Yes' => 'Yes, please!',
+                'No'  => 'No, thanks'
+            )
+        )
+    );
 
 实体中也可以使用getters, 这样可以给开发者更多的自由， 当然也会洽使开发稍麻烦一些，不过这是值得的：
 
@@ -324,7 +361,6 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     class Preferences
     {
-
         public $timezone;
 
         public $receiveEmails;
@@ -338,11 +374,10 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
         {
             return 'No';
         }
-
     }
 
 表单控件（Form Elements）
---------------------------
+-----------------------
 Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 Phalcon\\Forms\\Element命名空间下：
 
 +--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -372,7 +407,6 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 事件回调（Event Callbacks）
 ------------------------------
 当扩展表单时， 我们可以在表单类中实现验证前操作及验证后操作：
-
 
 .. code-block:: html+php
 
@@ -440,7 +474,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
         public function renderDecorated($name)
         {
-            $element = $this->get($name);
+            $element  = $this->get($name);
 
             // Get any generated messages for the current element
             $messages = $this->getMessagesFor($element->getName());
@@ -459,7 +493,6 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
             echo $element;
             echo '</p>';
         }
-
     }
 
 视图中：
@@ -476,7 +509,6 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 --------------------------------------------
 除了可以使用phalcon提供的html元素以外， 开发者还可以使用自定义的html元素：
 
-
 .. code-block:: php
 
     <?php
@@ -485,17 +517,16 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     class MyElement extends Element
     {
-        public function render($attributes=null)
+        public function render($attributes = null)
         {
-            $html = // ... produce some html
+            $html = // ... Produce some HTML
             return $html;
         }
     }
 
 表单管理（Forms Manager）
---------------------------
+-----------------------
 此组件为开发者提供了一个表单管理器， 可以用来注册表单，此组件可以使用服务容器来访问：
-
 
 .. code-block:: php
 
@@ -524,5 +555,5 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
     echo $this->forms->get('login')->render();
 
 外部资源（External Resources)
-------------------------------------
+----------------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_ 是一个使用表单构建器来创建和维护表单的示例 [`Github <https://github.com/phalcon/vokuro>`_]
