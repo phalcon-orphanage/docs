@@ -61,9 +61,9 @@ Below is a sample bootstrap that is being used for this example.
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
-        } elseif($k == 2) {
+        } elseif ($k == 2) {
             $arguments['action'] = $arg;
-        } elseif($k >= 3) {
+        } elseif ($k >= 3) {
             $arguments['params'][] = $arg;
         }
     }
@@ -132,6 +132,8 @@ If you run the the application with the following parameters and action:
             echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
         }
     }
+
+We can then run the following command:
 
 .. code-block:: bash
 
