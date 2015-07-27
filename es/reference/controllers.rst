@@ -1,6 +1,6 @@
-
 Using Controllers
 =================
+
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
 public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
@@ -8,17 +8,17 @@ the response. Usually responses are in the form of a rendered view, but there ar
 For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
-+------------------------+----------------+
-| **Phalcon Directory**  | blog           |
-+------------------------+----------------+
-| **Controller**         | posts          |
-+------------------------+----------------+
-| **Action**             | show           |
-+------------------------+----------------+
-| **Parameter**          | 2015           |
-+------------------------+----------------+
-| **Parameter**          | the-post-title |
-+------------------------+----------------+
++-----------------------+----------------+
+| **Phalcon Directory** | blog           |
++-----------------------+----------------+
+| **Controller**        | posts          |
++-----------------------+----------------+
+| **Action**            | show           |
++-----------------------+----------------+
+| **Parameter**         | 2015           |
++-----------------------+----------------+
+| **Parameter**         | the-post-title |
++-----------------------+----------------+
 
 In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
 could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
@@ -29,9 +29,10 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -41,7 +42,6 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
         {
 
         }
-
     }
 
 Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
@@ -54,19 +54,19 @@ Parameters without a default value are handled as required. Setting optional val
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
         }
 
-        public function showAction($year=2015, $postTitle='some default title')
+        public function showAction($year = 2015, $postTitle = 'some default title')
         {
 
         }
-
     }
 
 Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
@@ -75,9 +75,10 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -85,12 +86,10 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year = $this->dispatcher->getParam('year');
+            $year      = $this->dispatcher->getParam('year');
             $postTitle = $this->dispatcher->getParam('postTitle');
         }
-
     }
-
 
 Dispatch Loop
 -------------
@@ -102,9 +101,10 @@ execution to a different controller/action.
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -115,12 +115,13 @@ execution to a different controller/action.
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "signin"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action"     => "signin"
+                )
+            );
         }
-
     }
 
 If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action.
@@ -129,9 +130,10 @@ If users don't have permissions to access a certain action then will be forwarde
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function indexAction()
         {
 
@@ -141,7 +143,6 @@ If users don't have permissions to access a certain action then will be forwarde
         {
 
         }
-
     }
 
 There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
@@ -157,9 +158,10 @@ action is executed on a controller. The use of the "__construct" method is not r
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public $settings;
 
         public function initialize()
@@ -175,8 +177,35 @@ action is executed on a controller. The use of the "__construct" method is not r
                 // ...
             }
         }
-
     }
+
+.. highlights::
+
+    Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
+    that application logic in the initializer cannot be executed without authorization.
+
+If you want to execute some initialization logic just after build the controller object you can implement the
+method 'onConstruct':
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
+    {
+        public function onConstruct()
+        {
+            // ...
+        }
+    }
+
+.. highlights::
+
+    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
+    in the controller or the user does not have access to it (according to custom control access
+    provided by developer).
 
 Injecting Services
 ------------------
@@ -187,7 +216,9 @@ container in application. For example, if we have registered a service like this
 
     <?php
 
-    $di = new Phalcon\DI();
+    use Phalcon\DI;
+
+    $di = new DI();
 
     $di->set('storage', function () {
         return new Storage('/some/directory');
@@ -199,12 +230,12 @@ Then, we can access to that service in several ways:
 
     <?php
 
-    class FilesController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class FilesController extends Controller
+    {
         public function saveAction()
         {
-
             // Injecting the service by just accessing the property with the same name
             $this->storage->save('/some/file');
 
@@ -220,7 +251,6 @@ Then, we can access to that service in several ways:
             // Using the array-syntax
             $this->di['storage']->save('/some/file');
         }
-
     }
 
 If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
@@ -235,9 +265,10 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -252,7 +283,6 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
                 $customerBorn = $this->request->getPost("born");
             }
         }
-
     }
 
 The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
@@ -262,9 +292,10 @@ an afterDispatch event - it can be useful to access the response directly:
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -275,7 +306,6 @@ an afterDispatch event - it can be useful to access the response directly:
             // Send a HTTP 404 response header
             $this->response->setStatusCode(404, "Not Found");
         }
-
     }
 
 Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
@@ -289,9 +319,10 @@ from any controller to encapsulate data that need to be persistent.
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
             $this->persistent->name = "Michael";
@@ -301,7 +332,6 @@ from any controller to encapsulate data that need to be persistent.
         {
             echo "Welcome, ", $this->persistent->name;
         }
-
     }
 
 Using Services as Controllers
@@ -315,6 +345,12 @@ any other class registered with its name can easily replace a controller:
 
     // Register a controller as a service
     $di->set('IndexController', function () {
+        $component = new Component();
+        return $component;
+    });
+
+    // Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });
@@ -343,17 +379,17 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     <?php
 
-    class ControllerBase extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ControllerBase extends Controller
     {
+        /**
+         * This action is available for multiple controllers
+         */
+        public function someAction()
+        {
 
-      /**
-       * This action is available for multiple controllers
-       */
-      public function someAction()
-      {
-
-      }
-
+        }
     }
 
 Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
@@ -376,21 +412,23 @@ you to implement hook points before/after the actions are executed:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-
             if ($dispatcher->getActionName() == 'save') {
 
                 $this->flash->error("You don't have permission to save posts");
 
-                $this->dispatcher->forward(array(
-                    'controller' => 'home',
-                    'action' => 'index'
-                ));
+                $this->dispatcher->forward(
+                    array(
+                        'controller' => 'home',
+                        'action'     => 'index'
+                    )
+                );
 
                 return false;
             }
@@ -400,7 +438,6 @@ you to implement hook points before/after the actions are executed:
         {
             // Executed after every found action
         }
-
     }
 
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself

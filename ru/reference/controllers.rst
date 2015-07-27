@@ -1,22 +1,23 @@
 Использование контроллеров
 ==========================
+
 Контроллеры содержат в себе ряд методов, называемых действиями (actions). Действия контроллеров занимаются непосредственно обработкой запросов.
 По умолчанию все публичные методы контролеров доступны для доступа по URL. Действия отвечают за разбор запросов (request) и создание ответов (response).
 Как правило, результаты работы действий используются для представлений, но так же возможно их иное использование.
 
 Например, при обращении по ссылке: http://localhost/blog/posts/show/2015/the-post-title Phalcon разберёт её и получит следующие части:
 
-+----------------------------+----------------+
-| **Подкаталог Phalcon**     | blog           |
-+----------------------------+----------------+
-| **Контроллер/Controller**  | posts          |
-+----------------------------+----------------+
-| **Действие/Action**        | show           |
-+----------------------------+----------------+
-| **Параметр**               | 2015           |
-+----------------------------+----------------+
-| **Параметр**               | the-post-title |
-+----------------------------+----------------+
++---------------------------+----------------+
+| **Подкаталог Phalcon**    | blog           |
++---------------------------+----------------+
+| **Контроллер/Controller** | posts          |
++---------------------------+----------------+
+| **Действие/Action**       | show           |
++---------------------------+----------------+
+| **Параметр**              | 2015           |
++---------------------------+----------------+
+| **Параметр**              | the-post-title |
++---------------------------+----------------+
 
 Для этого случая запрос будет отправлен для обработки в контроллер PostsController. Для контроллеров не существует специального места, в приложениях
 они загружаются с помощью :doc:`автозагрузки <loader>`, поэтому вы можете организовывать их в любую удобную структуру.
@@ -27,9 +28,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -39,7 +41,6 @@
         {
 
         }
-
     }
 
 Параметры, определённые в ссылках (URI) передаются в качестве параметров действий, и легко могут быть доступны для локального использования.
@@ -52,19 +53,19 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
         }
 
-        public function showAction($year=2015, $postTitle='другой заголовок по умолчанию')
+        public function showAction($year = 2015, $postTitle = 'другой заголовок по умолчанию')
         {
 
         }
-
     }
 
 Параметры поступают в порядке указанном в правиле маршрутизации (route). Получить доступ к произвольному параметру можно следующим образом:
@@ -73,9 +74,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -83,12 +85,10 @@
 
         public function showAction()
         {
-            $year = $this->dispatcher->getParam('year');
+            $year      = $this->dispatcher->getParam('year');
             $postTitle = $this->dispatcher->getParam('postTitle');
         }
-
     }
-
 
 Цикл работы
 -----------
@@ -99,9 +99,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -112,12 +113,13 @@
             $this->flash->error("У вас недостаточно прав для выполнения этого действия");
 
             // Перенаправление на другое действие
-            $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action" => "signin"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action"     => "signin"
+                )
+            );
         }
-
     }
 
 Если у пользователя недостаточно прав, он будет перенаправлен в контроллер пользователей для выполнения авторизации.
@@ -126,9 +128,10 @@
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function indexAction()
         {
 
@@ -138,7 +141,6 @@
         {
 
         }
-
     }
 
 Метод "forwards" может быть вызван неограниченное количество раз, приложение будет выполняться, пока не появится явный сигнал для завершения.
@@ -154,9 +156,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public $settings;
 
         public function initialize()
@@ -172,7 +175,6 @@
                 // ...
             }
         }
-
     }
 
 .. highlights::
@@ -187,9 +189,10 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function onConstruct()
         {
             // ...
@@ -210,7 +213,9 @@
 
     <?php
 
-    $di = new Phalcon\DI();
+    use Phalcon\DI;
+
+    $di = new DI();
 
     $di->set('storage', function () {
         return new Storage('/some/directory');
@@ -222,12 +227,12 @@
 
     <?php
 
-    class FilesController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class FilesController extends Controller
+    {
         public function saveAction()
         {
-
             // Прямой доступ по имени, используя его как свойство
             $this->storage->save('/some/file');
 
@@ -243,7 +248,6 @@
             // Используя синтаксис работы с массивами
             $this->di['storage']->save('/some/file');
         }
-
     }
 
 Если вы используете все возможности Phalcon, прочитайте о провайдере сервисов :doc:`используемый по умолчанию <di>`.
@@ -258,9 +262,10 @@
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -275,7 +280,6 @@
                 $customerBorn = $this->request->getPost("born");
             }
         }
-
     }
 
 Объект работы с ответами, как правило, не используется напрямую, но создаваясь до выполнения всех действий может быть полезен,
@@ -285,9 +289,10 @@
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -298,7 +303,6 @@
             // Отправка 404 HTTP статуса
             $this->response->setStatusCode(404, "Not Found");
         }
-
     }
 
 Получить подробности про работу с HTTP можно в соответствующих статьях :doc:`request <request>` и :doc:`response <response>`.
@@ -312,9 +316,10 @@
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
             $this->persistent->name = "Колюня";
@@ -324,7 +329,6 @@
         {
             echo "Привет, ", $this->persistent->name;
         }
-
     }
 
 Использование сервисов как контроллеров
@@ -372,17 +376,17 @@ apps/controllers/ControllerBase.php. Файл может быть напряму
 
     <?php
 
-    class ControllerBase extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ControllerBase extends Controller
     {
+        /**
+         * Это действие доступно для всех контроллеров
+         */
+        public function someAction()
+        {
 
-      /**
-       * Это действие доступно для всех контроллеров
-       */
-      public function someAction()
-      {
-
-      }
-
+        }
     }
 
 Теперь любой контроллер, наследуемый от базового, автоматически получает доступ к общим компонентам (смотрите выше):
@@ -405,9 +409,10 @@ apps/controllers/ControllerBase.php. Файл может быть напряму
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function beforeExecuteRoute($dispatcher)
         {
             // Выполняется до запуска любого найденного действия
@@ -415,10 +420,12 @@ apps/controllers/ControllerBase.php. Файл может быть напряму
 
                 $this->flash->error("You don't have permission to save posts");
 
-                $this->dispatcher->forward(array(
-                    'controller' => 'home',
-                    'action' => 'index'
-                ));
+                $this->dispatcher->forward(
+                    array(
+                        'controller' => 'home',
+                        'action'     => 'index'
+                    )
+                );
 
                 return false;
             }
@@ -428,7 +435,6 @@ apps/controllers/ControllerBase.php. Файл может быть напряму
         {
             // Выполняется после каждого выполненного действия
         }
-
     }
 
 .. _DRY: http://ru.wikipedia.org/wiki/Don't_repeat_yourself
