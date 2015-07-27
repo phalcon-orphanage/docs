@@ -1,5 +1,6 @@
-通用类加载器（Universal Class Loader）
+Universal Class Loader
 ======================
+
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` is a component that allows you to load project classes automatically,
 based on some predefined rules. Since this component is written in C, it provides the lowest overhead in
 reading and interpreting external PHP files.
@@ -10,7 +11,7 @@ not exist is used in any part of the code, a special handler will try to load it
 By loading classes on a need to load basis, the overall performance is increased since the only file
 reads that occur are for the files needed. This technique is called `lazy initialization`_.
 
-With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ compliant.
+With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ and `PSR-4 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md>`_ compliant.
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
@@ -25,15 +26,17 @@ the end of the paths.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some namespaces
     $loader->registerNamespaces(
         array(
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
-           "Example"         => "vendor/example/",
+           "Example"         => "vendor/example/"
         )
     );
 
@@ -54,15 +57,17 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some prefixes
     $loader->registerPrefixes(
         array(
-           "Example_Base"     => "vendor/example/base/",
-           "Example_Adapter"  => "vendor/example/adapter/",
-           "Example_"         => "vendor/example/",
+            "Example_Base"    => "vendor/example/base/",
+            "Example_Adapter" => "vendor/example/adapter/",
+            "Example_"        => "vendor/example/"
         )
     );
 
@@ -83,8 +88,10 @@ It's important to register the directories in relevance order. Remember always a
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some directories
     $loader->registerDirs(
@@ -115,14 +122,16 @@ maintenance of the class list very cumbersome and it is not recommended.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some classes
     $loader->registerClasses(
         array(
             "Some"         => "library/OtherComponent/Other/Some.php",
-            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php",
+            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
         )
     );
 
@@ -143,7 +152,7 @@ are using additional extensions you could set it with the method "setExtensions"
 
     <?php
 
-     // Creates the autoloader
+    // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
     // Set file extensions to check
@@ -217,11 +226,13 @@ In the following example, the EventsManager is working with the class loader, al
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerNamespaces(array(
-       'Example\\Base' => 'vendor/example/base/',
-       'Example\\Adapter' => 'vendor/example/adapter/',
-       'Example' => 'vendor/example/'
-    ));
+    $loader->registerNamespaces(
+        array(
+            'Example\\Base'    => 'vendor/example/base/',
+            'Example\\Adapter' => 'vendor/example/adapter/',
+            'Example'          => 'vendor/example/'
+        )
+    );
 
     // Listen all the loader events
     $eventsManager->attach('loader', function ($event, $loader) {
