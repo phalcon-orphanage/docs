@@ -1,5 +1,6 @@
 Использование представлений (Views)
 ===================================
+
 Представления (views) — это пользовательский интерфейс вашего приложения. Чаще всего они представляют собой HTML-файлы со вставками PHP-кода, задача которого связана лишь с выводом данных. Представления управляют работой по передаче данных браузеру или любому другому средству, с помощью которого выполняются запросы к приложению.
 
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` и :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` отвечают за управление слоем представления в вашем MVC-приложении.
@@ -26,9 +27,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -37,9 +39,8 @@ Dispatcher будет искать "PostsController" и его метод "showA
         public function showAction($postId)
         {
             // Передать параметр $postId в представление
-            $this->view->setVar("postId", $postId);
+            $this->view->postId = $postId;
         }
-
     }
 
 Метод setVar позволяет создавать переменные, которые могут быть использованы в шаблоне. В примере выше показано, как передать переменную $postId.
@@ -70,7 +71,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <h3>This is show view!</h3>
 
-    <p>I have received the parameter <?php echo $postId ?></p>
+    <p>I have received the parameter <?php echo $postId; ?></p>
 
 .. code-block:: html+php
 
@@ -78,7 +79,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <h2>This is the "posts" controller layout!</h2>
 
-    <?php echo $this->getContent() ?>
+    <?php echo $this->getContent(); ?>
 
 .. code-block:: html+php
 
@@ -91,7 +92,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
             <h1>This is main layout!</h1>
 
-            <?php echo $this->getContent() ?>
+            <?php echo $this->getContent(); ?>
 
         </body>
     </html>
@@ -136,7 +137,9 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         public function initialize()
         {
@@ -158,7 +161,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
             <title>Blog's title</title>
         </head>
         <body>
-            <?php echo $this->getContent() ?>
+            <?php echo $this->getContent(); ?>
         </body>
     </html>
 
@@ -172,7 +175,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
         <li><a href="/contact">Contact us</a></li>
     </ul>
 
-    <div class="content"><?php echo $this->getContent() ?></div>
+    <div class="content"><?php echo $this->getContent(); ?></div>
 
 .. code-block:: html+php
 
@@ -180,7 +183,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <h1>Blog Title</h1>
 
-    <?php echo $this->getContent() ?>
+    <?php echo $this->getContent(); ?>
 
 .. code-block:: html+php
 
@@ -249,12 +252,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    use Phalcon\Mvc\Controller,
-        Phalcon\Mvc\View;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Controller;
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -262,7 +264,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
         public function findAction()
         {
-
             // Ajax-ответ, генерация представления не нужна
             $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
@@ -274,7 +275,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Показать только представление, относящееся к конкретному действию контроллера
             $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
-
     }
 
 Допустимые уровни отрисовки:
@@ -310,13 +310,14 @@ Dispatcher будет искать "PostsController" и его метод "showA
         $view = new View();
 
         // Отключить несколько уровней
-        $view->disableLevel(array(
-            View::LEVEL_LAYOUT => true,
-            View::LEVEL_MAIN_LAYOUT => true
-        ));
+        $view->disableLevel(
+            array(
+                View::LEVEL_LAYOUT      => true,
+                View::LEVEL_MAIN_LAYOUT => true
+            )
+        );
 
         return $view;
-
     }, true);
 
 или только для какой-либо его части:
@@ -325,12 +326,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    use Phalcon\Mvc\View,
-        Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Controller;
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -340,7 +340,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
         {
             $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         }
-
     }
 
 Переопределение Представлений (Picking Views)
@@ -351,35 +350,35 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ProductsController extends Controller
+    {
         public function listAction()
         {
             // Использовать для отрисовки "views-dir/products/search"
             $this->view->pick("products/search");
 
-            // Использовать для отрисовки "views-dir/products/list"
-            $this->view->pick(array('products'));
+            // Использовать для отрисовки "views-dir/books/list"
+            $this->view->pick(array('books'));
 
             // Использовать для отрисовки "views-dir/products/search"
             $this->view->pick(array(1 => 'search'));
         }
-
     }
 
 Отключение представления
 ------------------------
 Если в контроллере нет никакого вывода, то отключить компонент представления, чтобы избежать выполнение ненужных действий:
 
-
 .. code-block:: php
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function closeSessionAction()
         {
             // Тут завершилась сессия
@@ -391,7 +390,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Отключение компонента представлений
             $this->view->disable();
         }
-
     }
 
 Вы можете вернуть объект 'response', чтобы вручную отключить компонент представления:
@@ -400,9 +398,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UsersController extends Controller
+    {
         public function closeSessionAction()
         {
             // Close session
@@ -411,7 +410,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
-
     }
 
 Простая отрисовка
@@ -427,14 +425,15 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
+    use Phalcon\Mvc\View\Simple as SimpleView;
+
     $di->set('view', function () {
 
-        $view = new Phalcon\Mvc\View\Simple();
+        $view = new SimpleView();
 
         $view->setViewsDir('../app/views/');
 
         return $view;
-
     }, true);
 
 Процесс автоматической отрисовки может быть отключен в :doc:`Phalcon\\Mvc\\Application <applications>` (если это необходимо):
@@ -443,9 +442,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
-        $application = new Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         $application->useImplicitView(false);
 
@@ -461,9 +462,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends \Controller
+    {
         public function indexAction()
         {
             // Render 'views-dir/index.phtml'
@@ -478,7 +480,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render('posts/show', array('posts' => Posts::find()));
         }
-
     }
 
 Части шаблонов (Partials)
@@ -489,7 +490,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
 .. code-block:: html+php
 
-    <div class="top"><?php $this->partial("shared/ad_banner") ?></div>
+    <div class="top"><?php $this->partial("shared/ad_banner"); ?></div>
 
     <div class="content">
         <h1>Robots</h1>
@@ -498,13 +499,13 @@ Dispatcher будет искать "PostsController" и его метод "showA
         ...
     </div>
 
-    <div class="footer"><?php $this->partial("shared/footer") ?></div>
+    <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
 Метод partial() принимает в качестве второго параметра массив переменных, которые будут доступны только в пределах части шаблона:
 
 .. code-block:: html+php
 
-    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
+    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')); ?>
 
 Передача переменных контроллера
 -------------------------------
@@ -514,13 +515,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-.. code-block:: php
+    use Phalcon\Mvc\Controller;
 
-    <?php
-
-    class PostsController extends \Phalcon\Mvc\Controller
+    class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -529,18 +527,22 @@ Dispatcher будет искать "PostsController" и его метод "showA
         public function showAction()
         {
             // Передаёт все посты во представление
-            $this->view->setVar("posts", Posts::find());
+            $this->view->setVar(
+                "posts",
+                Posts::find()
+            );
 
             // Используется "магический" сеттер
             $this->view->posts = Posts::find();
 
             // Передача сразу нескольких переменных с помощью массива
-            $this->view->setVars(array(
-                'title' => $post->title,
-                'content' => $post->content
-            ));
+            $this->view->setVars(
+                array(
+                    'title'   => $post->title,
+                    'content' => $post->content
+                )
+            );
         }
-
     }
 
 Первым параметром метода setVar() передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа, как простым, например, строкой или числом, так и сложной структурой вроде массива или коллекции объектов.
@@ -550,9 +552,9 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <div class="post">
     <?php
 
-      foreach ($posts as $post) {
-        echo "<h1>", $post->title, "</h1>";
-      }
+        foreach ($posts as $post) {
+            echo "<h1>", $post->title, "</h1>";
+        }
 
     ?>
     </div>
@@ -567,7 +569,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <?php
 
         foreach (Categories::find("status = 1") as $category) {
-           echo "<span class='category'>", $category->name, "</span>";
+            echo "<span class='category'>", $category->name, "</span>";
         }
 
     ?>
@@ -585,9 +587,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function showAction()
         {
             // Кэширование с использованием настроек по умолчанию
@@ -597,9 +600,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
         public function showArticleAction()
         {
             // Кэширование на один час
-            $this->view->cache(array(
-                "lifetime" => 3600
-            ));
+            $this->view->cache(
+                array(
+                    "lifetime" => 3600
+                )
+            );
         }
 
         public function resumeAction()
@@ -608,7 +613,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
             $this->view->cache(
                 array(
                     "lifetime" => 86400,
-                    "key"      => "resume-cache",
+                    "key"      => "resume-cache"
                 )
             );
         }
@@ -620,11 +625,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
                 array(
                     "service"  => "myCache",
                     "lifetime" => 86400,
-                    "key"      => "resume-cache",
+                    "key"      => "resume-cache"
                 )
             );
         }
-
     }
 
 Если ключ кэша не задан, то компонент автоматически создаёт его на основе md5_ суммы имени текущего представления. Это хороший способ задания уникального ключа для кэша конкретного представления.
@@ -635,22 +639,27 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    use Phalcon\Cache\Frontend\Output as OutputFrontend,
-        Phalcon\Cache\Backend\Memcache as MemcacheBackend;
+    use Phalcon\Cache\Frontend\Output as OutputFrontend;
+    use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
     // Назначение сервиса кэширования представлений
     $di->set('viewCache', function () {
 
         // Кэширование данных на сутки по умолчанию
-        $frontCache = new OutputFrontend(array(
-            "lifetime" => 86400
-        ));
+        $frontCache = new OutputFrontend(
+            array(
+                "lifetime" => 86400
+            )
+        );
 
         // Настройки соединения с Memcached
-        $cache = new MemcacheBackend($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
+        $cache = new MemcacheBackend(
+            $frontCache,
+            array(
+                "host" => "localhost",
+                "port" => "11211"
+            )
+        );
 
         return $cache;
     });
@@ -666,29 +675,32 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class DownloadController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class DownloadController extends Controller
+    {
         public function indexAction()
         {
-
             // Проверяет, кэш с ключом "downloads" на существование или истёкший срок
             if ($this->view->getCache()->exists('downloads')) {
 
                 // Запрос последних загрузок
-                $latest = Downloads::find(array(
-                    'order' => 'created_at DESC'
-                ));
+                $latest = Downloads::find(
+                    array(
+                        'order' => 'created_at DESC'
+                    )
+                );
 
                 $this->view->latest = $latest;
             }
 
             // Включает кэширование с ключом "downloads"
-            $this->view->cache(array(
-                'key' => 'downloads'
-            ));
+            $this->view->cache(
+                array(
+                    'key' => 'downloads'
+                )
+            );
         }
-
     }
 
 Пример реализации кэширования фрагментов — `PHP alternative site`_.
@@ -717,9 +729,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class MyTemplateAdapter extends \Phalcon\Mvc\View\Engine
-    {
+    use Phalcon\Mvc\Engine;
 
+    class MyTemplateAdapter extends Engine
+    {
         /**
          * Конструктор адаптера
          *
@@ -740,9 +753,8 @@ Dispatcher будет искать "PostsController" и его метод "showA
          */
         public function render($path, $params)
         {
-
             // Доступ к view
-            $view = $this->_view;
+            $view    = $this->_view;
 
             // Доступ к настройкам
             $options = $this->_options;
@@ -750,7 +762,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
             // Render the view
             // ...
         }
-
     }
 
 Изменение шаблонизатора
@@ -761,9 +772,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
             // Назначение шаблонизатора
@@ -780,11 +792,10 @@ Dispatcher будет искать "PostsController" и его метод "showA
             $this->view->registerEngines(
                 array(
                     ".my-html" => 'MyTemplateAdapter',
-                    ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
+                    ".phtml"   => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
         }
-
     }
 
 Вы можете полностью заменить шаблонизатор или использовать несколько шаблонизаторов одновременно. Метод \Phalcon\\Mvc\\View::registerEngines() принимает в качестве параметра массив, в котором описываются данные шаблонизаторов. Ключами массива в этом случае будут расширения файлов, что помогает отличить их друг от друга. Файлы шаблонов, относящиеся к этим шаблонизаторам должны иметь соответствующие расширения.
@@ -797,20 +808,23 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     // Настройка компонента представления
     $di->set('view', function () {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         // A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".my-html" => 'MyTemplateAdapter'
-        ));
+        $view->registerEngines(
+            array(
+                ".my-html" => 'MyTemplateAdapter'
+            )
+        );
 
         return $view;
-
     }, true);
 
 Адаптеры для некоторых шаблонизаторов можно найти здесь: `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_.
@@ -827,7 +841,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <script type="text/javascript">
 
     $.ajax({
-        url: "<?php echo $this->url->get("cities/get") ?>"
+        url: "<?php echo $this->url->get("cities/get"); ?>"
     })
     .done(function () {
         alert("Done!");
@@ -847,7 +861,9 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    $view = new View();
 
     // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
@@ -873,17 +889,19 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    $view = new View();
 
     echo $view->getRender('products', 'list',
         array(
-            "someProducts" => $products,
+            "someProducts"       => $products,
             "someFeatureEnabled" => true
         ),
         function ($view) {
             // Установка дополнительных опций
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
+            $view->setRenderLevel(View::LEVEL_LAYOUT);
         }
     );
 
@@ -895,7 +913,9 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <?php
 
-    $view = new \Phalcon\Mvc\View\Simple();
+    use Phalcon\Mvc\View\Simple as SimpleView;
+
+    $view = new SimpleView();
 
     // Обязательно закрывающий слеш
     $view->setViewsDir("../app/views/");
@@ -904,10 +924,13 @@ Dispatcher будет искать "PostsController" и его метод "showA
     echo $view->render("templates/welcomeMail");
 
     // Передача параметров для отрисовки
-    echo $view->render("templates/welcomeMail", array(
-        'email' => $email,
-        'content' => $content
-    ));
+    echo $view->render(
+        "templates/welcomeMail",
+        array(
+            'email'   => $email,
+            'content' => $content
+        )
+    );
 
 События компонента представлений
 --------------------------------
@@ -927,24 +950,26 @@ Dispatcher будет искать "PostsController" и его метод "showA
 | notFoundView         | Если представление не найдено                              | Нет                           |
 +----------------------+------------------------------------------------------------+-------------------------------+
 
-
 Пример ниже демонстрирует как назначить слушателей (listeners) для этого компонента:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Mvc\View;
+    use Phalcon\Events\Manager as EventsManager;
+
     $di->set('view', function () {
 
         // Создание обработчика событий
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Назначение слушателя для событий типа "view"
         $eventsManager->attach("view", function ($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir("../app/views/");
 
         // Назначение обработчика событий для компонента представления
@@ -962,15 +987,13 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     class TidyPlugin
     {
-
         public function afterRender($event, $view)
         {
-
             $tidyConfig = array(
-                'clean' => true,
-                'output-xhtml' => true,
+                'clean'          => true,
+                'output-xhtml'   => true,
                 'show-body-only' => true,
-                'wrap' => 0,
+                'wrap'           => 0
             );
 
             $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');
@@ -978,7 +1001,6 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
             $view->setContent((string) $tidy);
         }
-
     }
 
     // Назначение плагина в качестве слушателя
