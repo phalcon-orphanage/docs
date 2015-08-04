@@ -1,7 +1,8 @@
 Assets Management
 =================
+
 Phalcon\\Assets is a component that allows the developer to manage static resources
-such as css stylesheets or javascript libraries in a web application.
+such as CSS stylesheets or JavaScript libraries in a web application.
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` is available in the services
 container, so you can add resources from any part of the application where the container
@@ -19,11 +20,12 @@ You can easily add resources to these collections like follows:
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
-
             // Add some local CSS resources
             $this->assets
                 ->addCss('css/style.css')
@@ -33,7 +35,6 @@ You can easily add resources to these collections like follows:
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -54,6 +55,23 @@ Then in the views added resources can be printed:
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss() }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs() }}
+        </body>
+    <html>
+
 Local/Remote resources
 ----------------------
 Local resources are those who're provided by the same application and they're located in the document root
@@ -66,10 +84,13 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
 
     <?php
 
-    // Add some local CSS resources
-    $this->assets
-        ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-        ->addCss('css/style.css', true);
+    public function indexAction()
+    {
+        // Add some local CSS resources
+        $this->assets
+            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
+            ->addCss('css/style.css', true);
+    }
 
 Collections
 -----------
@@ -109,6 +130,23 @@ Then in the views:
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss('header') }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs('footer') }}
+        </body>
+    <html>
+
 Prefixes
 --------
 Collections can be URL-prefixed, this allows to easily change from a server to other at any moment:
@@ -119,7 +157,7 @@ Collections can be URL-prefixed, this allows to easily change from a server to o
 
     $scripts = $this->assets->collection('footer');
 
-    if ($config->enviroment == 'development') {
+    if ($config->environment == 'development') {
         $scripts->setPrefix('/');
     } else {
         $scripts->setPrefix('http:://cdn.example.com/');
@@ -128,7 +166,7 @@ Collections can be URL-prefixed, this allows to easily change from a server to o
     $scripts->addJs('js/jquery.js')
             ->addJs('js/bootstrap.min.js');
 
-A chaineable syntax is available too:
+A chainable syntax is available too:
 
 .. code-block:: php
 
@@ -144,7 +182,7 @@ A chaineable syntax is available too:
 Minification/Filtering
 ----------------------
 Phalcon\\Assets provides built-in minification of Javascript and CSS resources. The developer can create a collection of
-resources instructing the Assets Manager which ones must be filtered and which ones must be​ left as they are.
+resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are.
 In addition to the above, Jsmin by Douglas Crockford is part of the core extension offering minification of javascript files
 for maximum performance. In the CSS land, CSSMin by Ryan Day is also available to minify CSS files:
 
@@ -166,7 +204,7 @@ The following example shows how to minify a collection of resources:
         ->setTargetUri('production/final.js')
 
         // This is a remote resource that does not need filtering
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
         // These are local resources that must be filtered
         ->addJs('common-functions.js')
@@ -181,7 +219,7 @@ The following example shows how to minify a collection of resources:
         // Use a custom filter
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-It starts getting a collection of resources from the assets manager, a collection can contain javascript or css
+It starts getting a collection of resources from the assets manager, a collection can contain javascript or CSS
 resources but not both. Some resources may be remote, that is, they're obtained by HTTP from a remote source
 for further filtering. It is recommended to convert the external resources to local eliminating the overhead
 of obtaining them.
@@ -202,7 +240,7 @@ be filtered or left as is:
     <?php
 
     // This a remote resource that does not need filtering
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // These are local resources that must be filtered
     $js->addJs('common-functions.js');
@@ -273,7 +311,6 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -294,7 +331,6 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
          */
         public function filter($contents)
         {
-
             // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
@@ -323,11 +359,15 @@ Usage:
     $css = $this->assets->get('head');
 
     // Add/Enable the YUI compressor filter in the collection
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
 Custom Output
 -------------
@@ -338,8 +378,10 @@ You can override this method or print the resources manually in the following wa
 
     <?php
 
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/

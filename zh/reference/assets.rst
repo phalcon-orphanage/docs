@@ -1,6 +1,7 @@
 资源文件管理（Assets Management）
 =================
-Phalcon\\Assets是一个让开发者管理静态资源的组件，如管理css，javascript等。
+
+Phalcon\\Assets是一个让开发者管理静态资源的组件，如管理CSS，JavaScript等。
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` 存在于DI容器中，所以我们可以在服务容器存在的
 任何地方使用它来添加/管理资源。
 
@@ -21,7 +22,6 @@ javascript另一为css.
     {
         public function index()
         {
-
             // 添加本地css资源
             $this->assets
                 ->addCss('css/style.css')
@@ -31,7 +31,6 @@ javascript另一为css.
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -65,7 +64,7 @@ Volt语法：
 
             <!-- ... -->
 
-              {{ assets.outputJs() }}
+            {{ assets.outputJs() }}
         </body>
     <html>
 
@@ -73,6 +72,7 @@ Volt语法：
 ----------------------
 本地资源是同一应用中的资源，这些资源存在于应用的根目录中。 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 用来生成
 本地的url.
+
 远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jquery, bootstrap等资源。
 
 .. code-block:: php
@@ -81,7 +81,6 @@ Volt语法：
 
     public function indexAction()
     {
-
         // 添加远程及本地资源
         $this->assets
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
@@ -139,7 +138,7 @@ Volt语法：
 
             <!-- ... -->
 
-              {{ assets.outputJs('footer') }}
+            {{ assets.outputJs('footer') }}
         </body>
     <html>
 
@@ -229,7 +228,7 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
     <?php
 
     // 添加远程资源但不压缩
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // These are local resources that must be filtered
     // 添加本地资源并压缩
@@ -281,7 +280,6 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
 
 自定义过滤器（Custom Filters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 除了使用Phalcon内置的过滤器外，开发者还可以创建自己的过滤器。这样我们就可以使用YUI_, Sass, Closure_,等。
 
 .. code-block:: php
@@ -292,12 +290,12 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
 
     /**
      * 使用YUI过滤css内容
+     *
      * @param string $contents
      * @return string
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -312,12 +310,12 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
 
         /**
          * 执行过滤
+         *
          * @param string $contents
          * @return string
          */
         public function filter($contents)
         {
-
             // 保存字符吕内容到临时文件中
             file_put_contents('temp/my-temp-1.css', $contents);
 
@@ -346,16 +344,19 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
     $css = $this->assets->get('head');
 
     // 添加/启用YUI压缩器
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
 自定义输出（Custom Output）
 -------------
-
-OutputJs及outputCss方法可以依据不同的资源类来创建需要的html代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
+OutputJs及outputCss方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
 
 .. code-block:: php
 

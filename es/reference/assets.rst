@@ -1,7 +1,8 @@
 Assets Management
 =================
+
 Phalcon\\Assets is a component that allows the developer to manage static resources
-such as css stylesheets or javascript libraries in a web application.
+such as CSS stylesheets or JavaScript libraries in a web application.
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` is available in the services
 container, so you can add resources from any part of the application where the container
@@ -25,17 +26,15 @@ You can easily add resources to these collections like follows:
     {
         public function index()
         {
-
             // Add some local CSS resources
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            // and some local javascript resources
+            // And some local javascript resources
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -69,7 +68,7 @@ Volt syntax:
 
             <!-- ... -->
 
-              {{ assets.outputJs() }}
+            {{ assets.outputJs() }}
         </body>
     <html>
 
@@ -87,7 +86,6 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
 
     public function indexAction()
     {
-
         // Add some local CSS resources
         $this->assets
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
@@ -145,7 +143,7 @@ Volt syntax:
 
             <!-- ... -->
 
-              {{ assets.outputJs('footer') }}
+            {{ assets.outputJs('footer') }}
         </body>
     <html>
 
@@ -221,7 +219,7 @@ The following example shows how to minify a collection of resources:
         // Use a custom filter
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-It starts getting a collection of resources from the assets manager, a collection can contain javascript or css
+It starts getting a collection of resources from the assets manager, a collection can contain javascript or CSS
 resources but not both. Some resources may be remote, that is, they're obtained by HTTP from a remote source
 for further filtering. It is recommended to convert the external resources to local eliminating the overhead
 of obtaining them.
@@ -313,7 +311,6 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -334,7 +331,6 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
          */
         public function filter($contents)
         {
-
             // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
@@ -363,11 +359,15 @@ Usage:
     $css = $this->assets->get('head');
 
     // Add/Enable the YUI compressor filter in the collection
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin'      => '/usr/local/bin/java',
-         'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
 Custom Output
 -------------

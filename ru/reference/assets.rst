@@ -1,5 +1,6 @@
 Управление ресурсами (Assets Management)
 ========================================
+
 Phalcon\\Assets - это компонент позволяющий разработчику управлять статичными ресурсами в веб-приложении,
 такими как каскадные таблицы стилей или javascript'ы.
 
@@ -18,11 +19,12 @@ Phalcon\\Assets - это компонент позволяющий разраб�
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
-
             // Добавляем некоторые локальные таблицы стилей
             $this->assets
                 ->addCss('css/style.css')
@@ -32,7 +34,6 @@ Phalcon\\Assets - это компонент позволяющий разраб�
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -53,6 +54,23 @@ Phalcon\\Assets - это компонент позволяющий разраб�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss() }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs() }}
+        </body>
+    <html>
+
 Локальные/удаленные ресурсы
 ---------------------------
 Локальные ресурсы это те, которые предоставляются вами в том же приложении.
@@ -65,10 +83,13 @@ Phalcon\\Assets - это компонент позволяющий разраб�
 
     <?php
 
-    // Добавляем некоторые локальные и удаленные ресурсы
-    $this->assets
-        ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-        ->addCss('css/style.css', true);
+    public function indexAction()
+    {
+        // Добавляем некоторые локальные и удаленные ресурсы
+        $this->assets
+            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
+            ->addCss('css/style.css', true);
+    }
 
 Коллекции
 ---------
@@ -108,6 +129,23 @@ Phalcon\\Assets - это компонент позволяющий разраб�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss('header') }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs('footer') }}
+        </body>
+    <html>
+
 Префиксы
 --------
 К коллекциям могут применяться URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:
@@ -118,7 +156,7 @@ Phalcon\\Assets - это компонент позволяющий разраб�
 
     $scripts = $this->assets->collection('footer');
 
-    if ($config->enviroment == 'development') {
+    if ($config->environment == 'development') {
         $scripts->setPrefix('/');
     } else {
         $scripts->setPrefix('http:://cdn.example.com/');
@@ -168,7 +206,7 @@ Phalcon\Assets предоставляет встроенную возможно�
         ->setTargetUri('production/final.js')
 
         // Это удаленный ресурс, не нуждающийся в фильтрации
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
         // Это локальные ресурсы, к которым необходимо применить фильтры
         ->addJs('common-functions.js')
@@ -204,7 +242,7 @@ Phalcon\Assets предоставляет встроенную возможно�
     <?php
 
     // Это удаленный ресурс, не нуждающийся в фильтрации
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // Это локальные ресурсы, к которым необходимо применить фильтры
     $js->addJs('common-functions.js');
@@ -238,7 +276,7 @@ Phalcon\Assets предоставляет встроенную возможно�
     // Название получаемого файла
     $js->setTargetPath('public/production/final.js');
 
-    // С таким URI генерируется тэг html
+    // С таким URI генерируется тэг HTML
     $js->setTargetUri('production/final.js');
 
 Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для
@@ -277,7 +315,6 @@ Phalcon имеет два встроенных фильтра минимизац
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -298,7 +335,6 @@ Phalcon имеет два встроенных фильтра минимизац
          */
         public function filter($contents)
         {
-
             // Write the string contents into a temporal file
             file_put_contents('temp/my-temp-1.css', $contents);
 
@@ -327,11 +363,15 @@ Phalcon имеет два встроенных фильтра минимизац
     $css = $this->assets->get('head');
 
     // Add/Enable the YUI compressor filter in the collection
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
 Пользовательский вывод
 ----------------------
@@ -342,8 +382,10 @@ Phalcon имеет два встроенных фильтра минимизац
 
     <?php
 
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/

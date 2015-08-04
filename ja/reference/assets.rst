@@ -1,5 +1,6 @@
 アセット管理
 =================
+
 Phalcon\\Assets コンポーネントは、Webアプリケーション内のCSSやJavaScriptなどの静的リソースを管理することができます。
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` はサービスコンテナで使用可能で、コンテナが使用可能などの場所からもリソースを追加することが出来ます。
@@ -14,11 +15,12 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
-
             // CSSのローカルリソースを追加します
             $this->assets
                 ->addCss('css/style.css')
@@ -28,7 +30,6 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -49,6 +50,23 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss() }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs() }}
+        </body>
+    <html>
+
 ローカル／リモートリソース
 ----------------------
 ローカルリソースは同じアプリケーションのドキュメントルートに配備されたものです。ローカルリソースのURLは`URL`サービスによって生成されます（通常は :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` ）。
@@ -59,10 +77,13 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     <?php
 
-    // Add some local CSS resources
-    $this->assets
-        ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-        ->addCss('css/style.css', true);
+    public function indexAction()
+    {
+        // Add some local CSS resources
+        $this->assets
+            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
+            ->addCss('css/style.css', true);
+    }
 
 コレクション
 -----------
@@ -101,6 +122,23 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+              {{ assets.outputCss('header') }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs('footer') }}
+        </body>
+    <html>
+
 プレフィックス
 --------
 コレクションはURLのプレフィックスを付けることができ、簡単に配信元のサーバを切り替えることができます。
@@ -111,7 +149,7 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     $scripts = $this->assets->collection('footer');
 
-    if ($config->enviroment == 'development') {
+    if ($config->environment == 'development') {
         $scripts->setPrefix('/');
     } else {
         $scripts->setPrefix('http:://cdn.example.com/');
@@ -155,7 +193,7 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
         ->setTargetUri('production/final.js')
 
         // これはフィルタリングを必要としないリモートリソースです
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
         // これらはフィルタリングを必要とするローカルリソースです
         ->addJs('common-functions.js')
@@ -186,7 +224,7 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     <?php
 
     // これはフィルタリングする必要のないリモートのリソースです
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // These are local resources that must be filtered
     $js->addJs('common-functions.js');
@@ -251,7 +289,6 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -272,7 +309,6 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
          */
         public function filter($contents)
         {
-
             // 文字列のコンテンツを一時ファイルに書き出す
             file_put_contents('temp/my-temp-1.css', $contents);
 
@@ -301,11 +337,15 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
     $css = $this->assets->get('head');
 
     // コレクションにYUIコンプレッサーフィルタを追加/有効にする
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
 カスタム出力
 -------------
@@ -315,8 +355,10 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
 
     <?php
 
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/
