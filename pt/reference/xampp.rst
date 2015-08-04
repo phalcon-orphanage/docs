@@ -1,9 +1,10 @@
 Instalação no XAMPP
-=====================
+===================
+
 XAMPP_ é uma distribuição Apache fácil de instalar contendo MySQL, PHP e Perl. Uma vez feito o download do XAMPP, tudo que você precisa fazer é extrair-lo e começar a usa-lo. Abaixo existem instruções detalhadas de como instalar o Phalcon no XAMPP para o Windows. É fortemente recomendável utilizar a última versão do XAMPP.
 
 Download da versão certa do Phalcon
--------------------------------------
+-----------------------------------
 XAMPP sempre é lançado para versões 32 bit do Apache e do PHP. Você precisará fazer o download da versão x86 do Phalcon para o Windows, na seção de download.
 
 Após o download da biblioteca do Phalcon, você terá um arquivo zip como o da figura abaixo:
@@ -52,7 +53,7 @@ O seguinte screencast é um guia passo-a-passo para instalação do Phalcon no W
    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Guias Relacionados
---------------
+------------------
 * :doc:`Instalação Geral </reference/install>`
 * :doc:`Instalação Detalhada do WAMP para Windows </reference/wamp>`
 
