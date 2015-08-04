@@ -1,5 +1,6 @@
 ロギング
 =======
+
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
 アダプタ
@@ -38,9 +39,9 @@ The log generated is below:
 
 .. code-block:: php
 
-    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error
 
 トランザクション
 ------------
@@ -69,16 +70,16 @@ relevant adapter (File in this case) in a single atomic operation.
 
 複数のハンドラへのロギング
 ----------------------------
-:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` allows to send messages to multiple handlers with a just single call:
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` can send messages to multiple handlers with a just single call:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Logger\Multiple as MultipleStream,
-        Phalcon\Logger\Adapter\File as FileAdapter,
-        Phalcon\Logger\Adapter\Stream as StreamAdapter;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Multiple as MultipleStream;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+    use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
     $logger = new MultipleStream();
 
@@ -89,21 +90,21 @@ relevant adapter (File in this case) in a single atomic operation.
     $logger->log("This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
-The messages are sent to the handlers in the order they where registered.
+The messages are sent to the handlers in the order they were registered.
 
 メッセージフォーマット
 ------------------
-This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
+This component makes use of 'formatters' to format messages before sending them to the backend. The formatters available are:
 
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter | Description                                   | API                                                                                |
-+=========+===============================================+====================================================================================+
-| Line    | Formats the messages using an one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Json    | Prepares a message to be encoded with JSON    | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Adapter | Description                                  | API                                                                                |
++=========+==============================================+====================================================================================+
+| Line    | Formats the messages using a one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Json    | Prepares a message to be encoded with JSON   | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Syslog  | Prepares a message to be sent to syslog      | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
 
 行フォーマット
 ^^^^^^^^^^^^^^
@@ -163,9 +164,9 @@ The stream logger writes messages to a valid registered stream in PHP. A list of
 
 ファイル ロガー
 ^^^^^^^^^^^
-This logger uses plain files to log any kind of data. By default all logger files are open using
-append mode which open the files for writing only; placing the file pointer at the end of the file.
-If the file does not exist, attempt to create it. You can change this mode passing additional options to the constructor:
+This logger uses plain files to log any kind of data. By default all logger files are opened using
+append mode which opens the files for writing only; placing the file pointer at the end of the file.
+If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:
 
 .. code-block:: php
 
@@ -174,9 +175,12 @@ If the file does not exist, attempt to create it. You can change this mode passi
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     // Create the file logger in 'w' mode
-    $logger = new FileAdapter("app/logs/test.log", array(
-        'mode' => 'w'
-    ));
+    $logger = new FileAdapter(
+        "app/logs/test.log",
+        array(
+            'mode' => 'w'
+        )
+    );
 
 Syslog ロガー
 ^^^^^^^^^^^^^
@@ -185,32 +189,37 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
 .. code-block:: php
 
     <?php
+
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // Basic Usage
     $logger = new SyslogAdapter(null);
 
     // Setting ident/mode/facility
-    $logger = new SyslogAdapter("ident-name", array(
-        'option' => LOG_NDELAY,
-        'facility' => LOG_MAIL
-    ));
-
+    $logger = new SyslogAdapter(
+        "ident-name",
+        array(
+            'option'   => LOG_NDELAY,
+            'facility' => LOG_MAIL
+        )
+    );
 
 FirePHP ロガー
 ^^^^^^^^^^^^^^
-This logger sends messages to the FirePHP.
+This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
+a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-     $logger->log("This is a message");
-     $logger->log("This is an error", \Phalcon\Logger::ERROR);
-     $logger->error("This is another error");
+    $logger->log("This is a message");
+    $logger->log("This is an error", Logger::ERROR);
+    $logger->error("This is another error");
 
 独自アダプタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

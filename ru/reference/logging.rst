@@ -1,5 +1,6 @@
 Логирование
 ===========
+
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` является компонентом для обеспечения ведения логов в приложении. Он позволяет
 вести логирование разных типов с использованием различных адаптеров. Он также предлагает регистрацию транзакций, параметров конфигурации, различных форматов и фильтров.
 Вы можете использовать :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` для логирования всех операций, отладки процессов и отслеживания работы приложения.
@@ -9,15 +10,17 @@
 Этот компонент позволяет использовать адаптеры для хранения журнала сообщений. Использование адаптеров обеспечивает общий интерфейс для регистрации
 время переключения интерфейсов при необходимости. Реализованные адаптеры:
 
-+---------+-------------------------------+--------------------------------------------------------------------------------+
-| Адаптер | Описание                      | API                                                                            |
-+=========+===============================+================================================================================+
-| File    | Логирование в текстовой файл  | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`     |
-+---------+-------------------------------+--------------------------------------------------------------------------------+
-| Stream  | Логирование в PHP поток       | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>` |
-+---------+-------------------------------+--------------------------------------------------------------------------------+
-| Syslog  | Логирование в системный журнал| :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>` |
-+---------+-------------------------------+--------------------------------------------------------------------------------+
++---------+--------------------------------+----------------------------------------------------------------------------------+
+| Адаптер | Описание                       | API                                                                              |
++=========+================================+==================================================================================+
+| File    | Логирование в текстовой файл   | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
++---------+--------------------------------+----------------------------------------------------------------------------------+
+| Stream  | Логирование в PHP поток        | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
++---------+--------------------------------+----------------------------------------------------------------------------------+
+| Syslog  | Логирование в системный журнал | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
++---------+--------------------------------+----------------------------------------------------------------------------------+
+| Firephp | Logs to the FirePHP            | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
++---------+--------------------------------+----------------------------------------------------------------------------------+
 
 Создание журнала
 ----------------
@@ -38,9 +41,9 @@
 
 .. code-block:: php
 
-    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] Это сообщение
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] А это уже сообщение об ошибке
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] Это тоже про ошибку
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Это сообщение
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] А это уже сообщение об ошибке
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] Это тоже про ошибку
 
 Транзакции
 ----------
@@ -75,10 +78,10 @@
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Logger\Multiple as MultipleStream,
-        Phalcon\Logger\Adapter\File as FileAdapter,
-        Phalcon\Logger\Adapter\Stream as StreamAdapter;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Multiple as MultipleStream;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+    use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
     $logger = new MultipleStream();
 
@@ -174,9 +177,12 @@ File Logger
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     // Создание регистратора с поддержкой записи
-    $logger = new FileAdapter("app/logs/test.log", array(
-        'mode' => 'w'
-    ));
+    $logger = new FileAdapter(
+        "app/logs/test.log",
+        array(
+            'mode' => 'w'
+        )
+    );
 
 Syslog Logger
 ^^^^^^^^^^^^^
@@ -192,10 +198,30 @@ Syslog Logger
     $logger = new SyslogAdapter(null);
 
     // Установка ident/mode/facility
-    $logger = new SyslogAdapter("ident-name", array(
-        'option' => LOG_NDELAY,
-        'facility' => LOG_MAIL
-    ));
+    $logger = new SyslogAdapter(
+        "ident-name",
+        array(
+            'option'   => LOG_NDELAY,
+            'facility' => LOG_MAIL
+        )
+    );
+
+FirePHP Logger
+^^^^^^^^^^^^^^
+This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
+a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\Firephp as Firephp;
+
+    $logger = new Firephp("");
+    $logger->log("This is a message");
+    $logger->log("This is an error", Logger::ERROR);
+    $logger->error("This is another error");
 
 Реализация собственных адаптеров
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

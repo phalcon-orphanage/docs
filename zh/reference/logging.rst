@@ -1,5 +1,6 @@
 日志记录（Logging）
 =====================
+
 Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`。 我们可以使用此组件输出日志到不同的流中，如文件，系统日志等。
 这个组件还提供了其它的功能如日志事务（类似于数据库的事务）， 配置选项， 还可以输出不同的格式，另外还支持多种过滤器。 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`
  提供了多种日志记录方式，从调试程序到跟踪应用的执行以满足应用的需求。
@@ -22,9 +23,7 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 创建日志（Creating a Log）
 --------------------------
-
 下面的例子展示了如何创建日志对象及如何添加日志信息：
-
 
 .. code-block:: php
 
@@ -41,9 +40,9 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 .. code-block:: php
 
-    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error
 
 事务（Transactions）
 ----------------------
@@ -77,10 +76,10 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Logger\Multiple as MultipleStream,
-        Phalcon\Logger\Adapter\File as FileAdapter,
-        Phalcon\Logger\Adapter\Stream as StreamAdapter;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Multiple as MultipleStream;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+    use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
     $logger = new MultipleStream();
 
@@ -116,7 +115,6 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 我们可以使用setFormat()来设置自定义格式。 下面是格式变量：
 
-
 +-----------+------------------------------------------+
 | 变量      | 描述                                     |
 +===========+==========================================+
@@ -144,7 +142,6 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 若要实现自定义的格式则要实现 :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` 接口，
 这样才能扩展已有的格式或创建自定义的格式
 
-
 适配器(Adapters)
 ----------------
 下面的例子中展示了每种适配器的简单用法：
@@ -167,7 +164,6 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 文件日志记录器（File Logger）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 文件适配器保存所有的日志信息到普通的文件中。 默认情况下日志文件使用添加模式打开，打开文件后文件的指针会指向文件的尾端。
 如果文件不存在，则会尝试创建。 我们可以通过传递附加参数的形式来修改打开的模式：
 
@@ -178,9 +174,12 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     // 使用写模式打开
-    $logger = new FileAdapter("app/logs/test.log", array(
-        'mode' => 'w'
-    ));
+    $logger = new FileAdapter(
+        "app/logs/test.log",
+        array(
+            'mode' => 'w'
+        )
+    );
 
 Syslog 日志记录器（Syslog Logger）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -189,35 +188,38 @@ Syslog 日志记录器（Syslog Logger）
 .. code-block:: php
 
     <?php
+
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // 基本用法
     $logger = new SyslogAdapter(null);
 
     // Setting ident/mode/facility 参数设置
-    $logger = new SyslogAdapter("ident-name", array(
-        'option' => LOG_NDELAY,
-        'facility' => LOG_MAIL
-    ));
-
+    $logger = new SyslogAdapter(
+        "ident-name",
+        array(
+            'option'   => LOG_NDELAY,
+            'facility' => LOG_MAIL
+        )
+    );
 
 FirePHP 日志记录器（FirePHP Logger）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-发送消息到FirePHP:
+This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
+a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
     $logger->log("This is a message");
-    $logger->log("This is an error", \Phalcon\Logger::ERROR);
+    $logger->log("This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 如果开发者想自定义新的日志组件则需实现此接口： :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` 。

@@ -1,5 +1,6 @@
 Logging
 =======
+
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
 Adapters
@@ -38,9 +39,9 @@ The log generated is below:
 
 .. code-block:: php
 
-    [Tue, 17 Apr 15 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is an error
-    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is another error
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error
 
 Transactions
 ------------
@@ -75,10 +76,10 @@ Logging to Multiple Handlers
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Logger\Multiple as MultipleStream,
-        Phalcon\Logger\Adapter\File as FileAdapter,
-        Phalcon\Logger\Adapter\Stream as StreamAdapter;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Multiple as MultipleStream;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+    use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
     $logger = new MultipleStream();
 
@@ -95,15 +96,15 @@ Message Formatting
 ------------------
 This component makes use of 'formatters' to format messages before sending them to the backend. The formatters available are:
 
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter | Description                                   | API                                                                                |
-+=========+===============================================+====================================================================================+
-| Line    | Formats the messages using a one-line string  | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Json    | Prepares a message to be encoded with JSON    | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Adapter | Description                                  | API                                                                                |
++=========+==============================================+====================================================================================+
+| Line    | Formats the messages using a one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Json    | Prepares a message to be encoded with JSON   | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
+| Syslog  | Prepares a message to be sent to syslog      | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
++---------+----------------------------------------------+------------------------------------------------------------------------------------+
 
 Line Formatter
 ^^^^^^^^^^^^^^
@@ -174,9 +175,12 @@ If the file does not exist, an attempt will be made to create it. You can change
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     // Create the file logger in 'w' mode
-    $logger = new FileAdapter("app/logs/test.log", array(
-        'mode' => 'w'
-    ));
+    $logger = new FileAdapter(
+        "app/logs/test.log",
+        array(
+            'mode' => 'w'
+        )
+    );
 
 Syslog Logger
 ^^^^^^^^^^^^^
@@ -192,10 +196,13 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     $logger = new SyslogAdapter(null);
 
     // Setting ident/mode/facility
-    $logger = new SyslogAdapter("ident-name", array(
-        'option' => LOG_NDELAY,
-        'facility' => LOG_MAIL
-    ));
+    $logger = new SyslogAdapter(
+        "ident-name",
+        array(
+            'option'   => LOG_NDELAY,
+            'facility' => LOG_MAIL
+        )
+    );
 
 FirePHP Logger
 ^^^^^^^^^^^^^^
@@ -210,9 +217,9 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-     $logger->log("This is a message");
-     $logger->log("This is an error", Logger::ERROR);
-     $logger->error("This is another error");
+    $logger->log("This is a message");
+    $logger->log("This is an error", Logger::ERROR);
+    $logger->error("This is another error");
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
