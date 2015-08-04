@@ -1,5 +1,6 @@
 Phalcon Developer Tools on Mac OS X
 ===================================
+
 These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
 
 Prerequisites
@@ -61,7 +62,6 @@ Congratulations you now have Phalcon tools installed!
 
 Related Guides
 ^^^^^^^^^^^^^^
-
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
