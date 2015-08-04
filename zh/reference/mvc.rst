@@ -1,5 +1,6 @@
 MVC 架构（The MVC Architecture）
 ====================
+
 Phalcon 提供了面向对象的类，在应用程序中必须实现模型（Model）、视图（View）、控制器（Controller）架构（通常我们称之为 MVC_）。这种设计模式被广泛的应用到其他 web 框架以及桌面应用程序中。
 
 MVC 优点：
@@ -26,4 +27,3 @@ Phalcon 的类是使用 C 语言编写而成， 这是为这种模式开发的 P
 控制器用于控制应用程序的流程，调用模型和视图。负责处理来自 web 浏览器的请求，从模型中获取数据，然后将数据传递给视图完成展示。:doc:`了解更多 <controllers>`
 
 .. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
-
