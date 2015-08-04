@@ -1,5 +1,6 @@
 Инструменты разработчика Phalcon Developer Tools в Linux
 ========================================================
+
 Этот шаг поможет вам установить Phalcon Developer Tools в Linux.
 
 Требования
@@ -8,8 +9,8 @@
 
 Скачать
 -------
-
 Вы можете скачать кроссплатформенный пакет инструментов разработчиков из раздела Download_. Также вы можете его слить ( git clone ) на Github_.
+
 Введите в терминале следующие команды:
 
 .. figure:: ../_static/img/linux-1.png
@@ -19,6 +20,14 @@
 
 .. figure:: ../_static/img/linux-2.png
    :align: center
+
+Create a symbolink link to the phalcon.php script:
+
+.. code-block:: bash
+
+    ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
+
+    chmod ugo+x /usr/bin/phalcon
 
 Поздравляем, инструменты разработчика Phalcon установлены!
 
