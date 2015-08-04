@@ -1,5 +1,6 @@
-Чтение конфигурации
-===================
+Reading Configurations
+======================
+
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` - это компонент для чтения конфигурации в разных форматах (используя адаптеры), и преобразования её
 в PHP-объекты для использования в приложении.
 
@@ -7,13 +8,13 @@
 ---------------
 Доступные адаптеры:
 
-+-----------+---------------------------------------------------------------------------------------------------+
-| Тип файла | Описание                                                                                          |
-+===========+===================================================================================================+
-| Ini       | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию parse_ini_file.            |
-+-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Использует многомерные массивы PHP для конфигурации. Этот адаптер максимально производителен.     |
-+-----------+---------------------------------------------------------------------------------------------------+
++-----------+-----------------------------------------------------------------------------------------------+
+| Тип файла | Описание                                                                                      |
++===========+===============================================================================================+
+| Ini       | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию parse_ini_file.        |
++-----------+-----------------------------------------------------------------------------------------------+
+| Array     | Использует многомерные массивы PHP для конфигурации. Этот адаптер максимально производителен. |
++-----------+-----------------------------------------------------------------------------------------------+
 
 Нативные массивы
 ----------------
@@ -24,23 +25,25 @@
 
     <?php
 
+    use Phalcon\Config;
+
     $settings = array(
         "database" => array(
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
-            "dbname"     => "test_db",
+            "dbname"   => "test_db"
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
+            "viewsDir"       => "../app/views/"
         ),
         "mysetting" => "the-value"
     );
 
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
     echo $config->app->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -52,8 +55,10 @@
 
     <?php
 
+    use Phalcon\Config;
+
     require "config/config.php";
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
 Чтение INI-файлов
 -----------------
@@ -67,7 +72,7 @@ Ini-файлы являются довольно распространённы�
     host     = localhost
     username = scott
     password = cheetah
-    dbname     = test_db
+    dbname   = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -83,7 +88,9 @@ Ini-файлы являются довольно распространённы�
 
     <?php
 
-    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    $config = new ConfigIni("path/config.ini");
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -97,20 +104,28 @@ Phalcon\\Config позволяет объединить объекты конф�
 
     <?php
 
-    $config = new \Phalcon\Config(array(
-        'database' => array(
-            'host' => 'localhost',
-            'dbname' => 'test_db'
-        ),
-        'debug' => 1
-    ));
+    use Phalcon\Config;
 
-    $config2 = new \Phalcon\Config(array(
-        'database' => array(
-            'username' => 'scott',
-            'password' => 'secret',
+    $config = new Config(
+        array(
+            'database' => array(
+                'host'   => 'localhost',
+                'dbname' => 'test_db'
+            ),
+            'debug' => 1
         )
-    ));
+    );
+
+    $config2 = new Config(
+        array(
+            'database' => array(
+                'dbname'   => 'production_db',
+                'username' => 'scott',
+                'password' => 'secret'
+            ),
+            'logging' => 1
+        )
+    );
 
     $config->merge($config2);
 
@@ -125,11 +140,12 @@ Phalcon\\Config позволяет объединить объекты конф�
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => test_db
+                [dbname]   => production_db
                 [username] => scott
                 [password] => secret
             )
         [debug] => 1
+        [logging] => 1
     )
 
 Существует еще несколько типов адаптеров конфигурации, их можно получить в "Инкубаторе" - `Phalcon Incubator <https://github.com/phalcon/incubator>`_

@@ -1,18 +1,19 @@
 Lendo Configurações
-======================
+===================
+
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler e transformar arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
 
 Adaptadores de Arquivo
--------------
+----------------------
 Os adaptadores disponíveis são:
 
-+-------------------+---------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo   | Descrição                                                                                                     |
-+===================+===============================================================================================================+
-| Ini               | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
-+-------------------+---------------------------------------------------------------------------------------------------------------+
-| Array             | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho         |
-+-------------------+---------------------------------------------------------------------------------------------------------------+
++-----------------+-------------------------------------------------------------------------------------------------------------+
+| Tipo de Arquivo | Descrição                                                                                                   |
++=================+=============================================================================================================+
+| Ini             | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file. |
++-----------------+-------------------------------------------------------------------------------------------------------------+
+| Array           | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho       |
++-----------------+-------------------------------------------------------------------------------------------------------------+
 
 Arrays Nativos
 -------------
@@ -22,23 +23,25 @@ O próximo exemplo mostra como converter arrays nativos em objetos Phalcon\\Conf
 
     <?php
 
+    use Phalcon\Config;
+
     $settings = array(
         "database" => array(
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
-            "dbname"     => "test_db",
+            "dbname"   => "test_db"
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
+            "viewsDir"       => "../app/views/"
         ),
         "mysetting" => "the-value"
     );
 
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
     echo $config->app->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -50,11 +53,13 @@ Se você deseja uma melhor organização do seu projeto, você pode salvar o arr
 
     <?php
 
+    use Phalcon\Config;
+
     require "config/config.php";
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
 Lendo arquivos INI
------------------
+------------------
 Arquivo INI são usados comumente para armazenar configurações. O Phalcon\\Config usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
 
 .. code-block:: ini
@@ -64,7 +69,7 @@ Arquivo INI são usados comumente para armazenar configurações. O Phalcon\\Con
     host     = localhost
     username = scott
     password = cheetah
-    dbname     = test_db
+    dbname   = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -80,34 +85,44 @@ Você pode ler o arquivo como no exemplo a seguir:
 
     <?php
 
-    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    $config = new ConfigIni("path/config.ini");
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
 Mesclando Configurações
-----------------------
+-----------------------
 O Phalcon\\Config permite mesclar um objeto de configuração em outro, recursivamente:
 
 .. code-block:: php
 
     <?php
 
-    $config = new \Phalcon\Config(array(
-        'database' => array(
-            'host' => 'localhost',
-            'dbname' => 'test_db'
-        ),
-        'debug' => 1
-    ));
+    use Phalcon\Config;
 
-    $config2 = new \Phalcon\Config(array(
-        'database' => array(
-            'username' => 'scott',
-            'password' => 'secret',
+    $config = new Config(
+        array(
+            'database' => array(
+                'host'   => 'localhost',
+                'dbname' => 'test_db'
+            ),
+            'debug' => 1
         )
-    ));
+    );
+
+    $config2 = new Config(
+        array(
+            'database' => array(
+                'dbname'   => 'production_db',
+                'username' => 'scott',
+                'password' => 'secret'
+            ),
+            'logging' => 1
+        )
+    );
 
     $config->merge($config2);
 
@@ -122,11 +137,12 @@ O código acima produz o seguinte:
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => test_db
+                [dbname]   => production_db
                 [username] => scott
                 [password] => secret
             )
         [debug] => 1
+        [logging] => 1
     )
 
 Existem mais adaptadores disponíveis para esse componente em `Phalcon Incubator <https://github.com/phalcon/incubator>`_

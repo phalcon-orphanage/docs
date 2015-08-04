@@ -1,5 +1,6 @@
 读取配置（Reading Configurations）
 ======================
+
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` 是一个用于将各种格式的配置文件读取到PHP对象的组件（使用适配器）。
 
 文件适配器（File Adapters）
@@ -26,16 +27,16 @@
 
     $settings = array(
         "database" => array(
-            "adapter"    => "Mysql",
-            "host"       => "localhost",
-            "username"   => "scott",
-            "password"   => "cheetah",
-            "dbname"     => "test_db",
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db"
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
+            "viewsDir"       => "../app/views/"
         ),
         "mysetting" => "the-value"
     );
@@ -102,22 +103,26 @@ Phalcon\\Config 允许合并配置对象到另一个:
 
     use Phalcon\Config;
 
-    $config = new Config(array(
-        'database' => array(
-            'host'   => 'localhost',
-            'dbname' => 'test_db'
-        ),
-        'debug' => 1,
-    ));
+    $config = new Config(
+        array(
+            'database' => array(
+                'host'   => 'localhost',
+                'dbname' => 'test_db'
+            ),
+            'debug' => 1
+        )
+    );
 
-    $config2 = new Config(array(
-        'database' => array(
-            'dbname' => 'production_db',
-            'username' => 'scott',
-            'password' => 'secret',
-        ),
-        'logging' => 1,
-    ));
+    $config2 = new Config(
+        array(
+            'database' => array(
+                'dbname'   => 'production_db',
+                'username' => 'scott',
+                'password' => 'secret'
+            ),
+            'logging' => 1
+        )
+    );
 
     $config->merge($config2);
 
