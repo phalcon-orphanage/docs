@@ -24,9 +24,9 @@ Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", 
 Create a symbolink link to the phalcon.php script:
 
 .. code-block:: bash
-ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
 
-chmod ugo+x /usr/bin/phalcon
+    ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
+    chmod ugo+x /usr/bin/phalcon
 
 
 Congratulations you now have Phalcon tools installed!
