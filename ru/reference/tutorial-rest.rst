@@ -1,5 +1,6 @@
-Урок 3: Создание простейшего REST API
+Урок 7: Создание простейшего REST API
 =====================================
+
 В этом уроке мы объясним, как создать простейшее приложение, предоставляющее RESTful_ API с использованием
 различных HTTP методов:
 
@@ -60,7 +61,9 @@
 
     <?php
 
-    $app = new \Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // тут определяются роуты
 
@@ -72,7 +75,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // Получение списка всех роботов
     $app->get('/api/robots', function () {
@@ -120,31 +125,38 @@
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message,
-        Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
-
         public function validation()
         {
             // Тип робота должен быть: droid, mechanical или virtual
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("droid", "mechanical", "virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array(
+                            "droid",
+                            "mechanical",
+                            "virtual"
+                        )
+                    )
                 )
-            ));
+            );
 
             // Имя робота должно быть уникально
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "The robot name must be unique"
+                    )
                 )
-            ));
+            );
 
             // Год не может быть меньше нулевого
             if ($this->year < 0) {
@@ -156,7 +168,6 @@
                 return false;
             }
         }
-
     }
 
 Теперь мы должны настроить соединение с базой данных, чтобы использовать его в этой модели
@@ -165,19 +176,36 @@
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
+    // Use Loader() to autoload our model
+    $loader = new Loader();
+
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
+
+    $di = new FactoryDefault();
 
     // Настройка сервиса базы данных
     $di->set('db', function () {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "asimov",
-            "password" => "zeroth",
-            "dbname" => "robotics"
-        ));
+        return new PdoMysql(
+            array(
+                "host"     => "localhost",
+                "username" => "asimov",
+                "password" => "zeroth",
+                "dbname"   => "robotics"
+            )
+        );
     });
 
-    $app = new \Phalcon\Mvc\Micro($di);
+    // Create and bind the DI to the application
+    $app = new Micro($di);
 
 Получение данных
 ----------------
@@ -195,10 +223,10 @@
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach ( $robots as $robot) {
+        foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
@@ -219,21 +247,22 @@
     $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%' . $name . '%'
-        ));
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            array(
+                'name' => '%' . $name . '%'
+            )
+        );
 
         $data = array();
-
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
         echo json_encode($data);
-
     });
 
 В нашем случае поиск по полю "id" очень похож, кроме того, мы сообщаем, найден робот или нет:
@@ -241,6 +270,8 @@
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Получение робота по ключу
     $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
@@ -251,18 +282,24 @@
         ))->getFirst();
 
         // Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($robot == false) {
-            $response->setJsonContent(array('status' => 'NOT-FOUND'));
-        } else {
-            $response->setJsonContent(array(
-                'status' => 'FOUND',
-                'data' => array(
-                    'id' => $robot->id,
-                    'name' => $robot->name
+            $response->setJsonContent(
+                array(
+                    'status' => 'NOT-FOUND'
                 )
-            ));
+            );
+        } else {
+            $response->setJsonContent(
+                array(
+                    'status' => 'FOUND',
+                    'data'   => array(
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    )
+                )
+            );
         }
 
         return $response;
@@ -275,6 +312,8 @@
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Добавление нового робота
     $app->post('/api/robots', function () use ($app) {
@@ -290,7 +329,7 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         // Проверка, что вставка произведена успешно
         if ($status->success() == true) {
@@ -300,7 +339,12 @@
 
             $robot->id = $status->getModel()->id;
 
-            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $robot
+                )
+            );
 
         } else {
 
@@ -313,7 +357,12 @@
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -326,6 +375,8 @@
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Обновление робота по ключу
     $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
@@ -341,11 +392,15 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         // Проверка, что обновление произведено успешно
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Изменение HTML статуса
@@ -356,7 +411,12 @@
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -370,6 +430,8 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Удаление робота по ключу
     $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
@@ -379,10 +441,14 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Изменение HTTP статуса
@@ -393,8 +459,12 @@
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
-
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;

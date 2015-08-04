@@ -1,5 +1,6 @@
-Tutorial 3: Creating a Simple REST API
+Tutorial 7: Creating a Simple REST API
 ======================================
+
 In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
 different HTTP methods:
 
@@ -60,7 +61,9 @@ Then, in the index.php file we create the following:
 
     <?php
 
-    $app = new \Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // Define the routes here
 
@@ -72,7 +75,9 @@ Now we will create the routes as we defined above:
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // Retrieves all robots
     $app->get('/api/robots', function () {
@@ -123,31 +128,38 @@ application:
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message,
-        Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
-
         public function validation()
         {
             // Type must be: droid, mechanical or virtual
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("droid", "mechanical", "virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array(
+                            "droid",
+                            "mechanical",
+                            "virtual"
+                        )
+                    )
                 )
-            ));
+            );
 
             // Robot name must be unique
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "The robot name must be unique"
+                    )
                 )
-            ));
+            );
 
             // Year cannot be less than zero
             if ($this->year < 0) {
@@ -159,7 +171,6 @@ application:
                 return false;
             }
         }
-
     }
 
 Now, we must set up a connection to be used by this model and load it within our app:
@@ -168,27 +179,36 @@ Now, we must set up a connection to be used by this model and load it within our
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
     // Use Loader() to autoload our model
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
     // Set up the database service
     $di->set('db', function () {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "asimov",
-            "password" => "zeroth",
-            "dbname" => "robotics"
-        ));
+        return new PdoMysql(
+            array(
+                "host"     => "localhost",
+                "username" => "asimov",
+                "password" => "zeroth",
+                "dbname"   => "robotics"
+            )
+        );
     });
 
     // Create and bind the DI to the application
-    $app = new \Phalcon\Mvc\Micro($di);
+    $app = new Micro($di);
 
 Retrieving Data
 ---------------
@@ -208,8 +228,8 @@ perform this simple query returning the results as JSON:
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
@@ -230,20 +250,22 @@ The searching by name handler would look like:
     $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%' . $name . '%'
-        ));
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            array(
+                'name' => '%' . $name . '%'
+            )
+        );
 
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
         echo json_encode($data);
-
     });
 
 Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
@@ -251,6 +273,8 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Retrieves robots based on primary key
     $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
@@ -261,18 +285,24 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         ))->getFirst();
 
         // Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($robot == false) {
-            $response->setJsonContent(array('status' => 'NOT-FOUND'));
-        } else {
-            $response->setJsonContent(array(
-                'status' => 'FOUND',
-                'data' => array(
-                    'id' => $robot->id,
-                    'name' => $robot->name
+            $response->setJsonContent(
+                array(
+                    'status' => 'NOT-FOUND'
                 )
-            ));
+            );
+        } else {
+            $response->setJsonContent(
+                array(
+                    'status' => 'FOUND',
+                    'data'   => array(
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    )
+                )
+            );
         }
 
         return $response;
@@ -285,6 +315,8 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Adds a new robot
     $app->post('/api/robots', function () use ($app) {
@@ -300,7 +332,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         ));
 
         // Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         // Check if the insertion was successful
         if ($status->success() == true) {
@@ -310,7 +342,12 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
             $robot->id = $status->getModel()->id;
 
-            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $robot
+                )
+            );
 
         } else {
 
@@ -323,7 +360,12 @@ Taking the data as a JSON string inserted in the body of the request, we also us
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -336,6 +378,8 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Http\Response;
 
     // Updates robots based on primary key
     $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
@@ -351,11 +395,15 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
         ));
 
         // Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         // Check if the insertion was successful
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Change the HTTP status
@@ -366,7 +414,12 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -380,6 +433,8 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Deletes robots based on primary key
     $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
@@ -389,10 +444,14 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         ));
 
         // Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Change the HTTP status
@@ -403,8 +462,12 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
-
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;

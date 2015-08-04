@@ -1,5 +1,6 @@
-教程 3：创建简单的 REST API（Tutorial 3: Creating a Simple REST API）
+教程 7：创建简单的 REST API（Tutorial 7: Creating a Simple REST API）
 ======================================
+
 在这个教程中，我们会学习如何创建一个拥有 RESTful API 的应用程序，它将会使用如下的几个 HTTP 方法：
 
 * GET - 接受、查找数据
@@ -133,24 +134,31 @@ application:
 
     class Robots extends Model
     {
-
         public function validation()
         {
             // Type must be: droid, mechanical or virtual
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("droid", "mechanical", "virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array(
+                            "droid",
+                            "mechanical",
+                            "virtual"
+                        )
+                    )
                 )
-            ));
+            );
 
             // Robot name must be unique
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "The robot name must be unique"
+                    )
                 )
-            ));
+            );
 
             // Year cannot be less than zero
             if ($this->year < 0) {
@@ -162,7 +170,6 @@ application:
                 return false;
             }
         }
-
     }
 
 Now, we must set up a connection to be used by this model and load it within our app:
@@ -179,20 +186,24 @@ Now, we must set up a connection to be used by this model and load it within our
     // Use Loader() to autoload our model
     $loader = new Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $di = new FactoryDefault();
 
     // Set up the database service
     $di->set('db', function () {
-        return new PdoMysql(array(
-            "host"      => "localhost",
-            "username"  => "asimov",
-            "password"  => "zeroth",
-            "dbname"    => "robotics"
-        ));
+        return new PdoMysql(
+            array(
+                "host"     => "localhost",
+                "username" => "asimov",
+                "password" => "zeroth",
+                "dbname"   => "robotics"
+            )
+        );
     });
 
     // Create and bind the DI to the application
@@ -216,8 +227,8 @@ perform this simple query returning the results as JSON:
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id'    => $robot->id,
-                'name'  => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
@@ -238,20 +249,22 @@ The searching by name handler would look like:
     $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%' . $name . '%'
-        ));
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            array(
+                'name' => '%' . $name . '%'
+            )
+        );
 
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id'    => $robot->id,
-                'name'  => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
         echo json_encode($data);
-
     });
 
 Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
@@ -274,15 +287,21 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         $response = new Response();
 
         if ($robot == false) {
-            $response->setJsonContent(array('status' => 'NOT-FOUND'));
-        } else {
-            $response->setJsonContent(array(
-                'status' => 'FOUND',
-                'data'   => array(
-                    'id'   => $robot->id,
-                    'name' => $robot->name
+            $response->setJsonContent(
+                array(
+                    'status' => 'NOT-FOUND'
                 )
-            ));
+            );
+        } else {
+            $response->setJsonContent(
+                array(
+                    'status' => 'FOUND',
+                    'data'   => array(
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    )
+                )
+            );
         }
 
         return $response;
@@ -322,7 +341,12 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
             $robot->id = $status->getModel()->id;
 
-            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $robot
+                )
+            );
 
         } else {
 
@@ -335,7 +359,12 @@ Taking the data as a JSON string inserted in the body of the request, we also us
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -369,7 +398,11 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
         // Check if the insertion was successful
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Change the HTTP status
@@ -380,7 +413,12 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -408,7 +446,11 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         $response = new Response();
 
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Change the HTTP status
@@ -419,8 +461,12 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
-
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
