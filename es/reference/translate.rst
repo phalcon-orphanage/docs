@@ -56,8 +56,8 @@ different files, where keys remain the same and values contain the translated st
 Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
 automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
-A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACCEPT_LANGUAGE'] contents, or if you wish, access it
-directly by calling $this->request->getBestLanguage() from an action/controller:
+A simple way of detecting the user's language is to parse the :code:`$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it
+directly by calling :code:`$this->request->getBestLanguage()` from an action/controller:
 
 .. code-block:: php
 
@@ -96,7 +96,7 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
         }
     }
 
-The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it,
+The :code:`_getTranslation()` method is available for all actions that require translations. The :code:`$t` variable is passed to the views, and with it,
 we can translate strings in that layer:
 
 .. code-block:: html+php
@@ -105,8 +105,8 @@ we can translate strings in that layer:
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
 
-The "_" function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
-calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters
+The :code:`_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
+calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the :code:`_()` method. The passed parameters
 are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 .. code-block:: html+php
