@@ -140,6 +140,8 @@ Using Templates
 ^^^^^^^^^^^^^^^
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
+Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
+
 .. code-block:: php
 
     <?php
@@ -231,6 +233,49 @@ The final output will be the following:
                 <!-- app/views/layouts/posts.phtml -->
 
                 <h1>Blog Title</h1>
+
+                <!-- app/views/posts/last.phtml -->
+
+                <article>
+                    <h2>This is a title</h2>
+                    <p>This is the post content</p>
+                </article>
+
+                <article>
+                    <h2>This is another title</h2>
+                    <p>This is another post content</p>
+                </article>
+
+            </div>
+
+        </body>
+    </html>
+
+If we had used :code:`$this->view->setTemplateBefore('common')`, this would be the final output:
+
+.. code-block:: html+php
+
+    <!-- app/views/index.phtml -->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Blog's title</title>
+        </head>
+        <body>
+
+            <!-- app/views/layouts/posts.phtml -->
+
+            <h1>Blog Title</h1>
+
+            <!-- app/views/layouts/common.phtml -->
+
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/contact">Contact us</a></li>
+            </ul>
+
+            <div class="content">
 
                 <!-- app/views/posts/last.phtml -->
 
