@@ -42,7 +42,7 @@ with each other.
     memory and reduce the memory allocation.
 
 By default, the model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the getSource() method:
+you can use the :code:`getSource()` method:
 
 .. code-block:: php
 
@@ -58,8 +58,8 @@ you can use the getSource() method:
         }
     }
 
-The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
-The initialize() method is only called once during the request.
+The model Robots now maps to "the_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
+The :code:`initialize()` method is only called once during the request.
 
 .. code-block:: php
 
@@ -75,7 +75,7 @@ The initialize() method is only called once during the request.
         }
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for
+The :code:`initialize()` method is only called once during the request, it's intended to perform initializations that apply for
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
 created you can 'onConstruct':
 
@@ -294,7 +294,7 @@ how to query one or more records from a model:
 
     If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+You could also use the :code:`findFirst()` method to get only the first record matching the given criteria:
 
 .. code-block:: php
 
@@ -317,7 +317,7 @@ You could also use the findFirst() method to get only the first record matching 
     );
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+Both :code:`find()` and :code:`findFirst()` methods accept an associative array specifying the search criteria:
 
 .. code-block:: php
 
@@ -379,7 +379,7 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+The static method :code:`query()` returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
@@ -425,7 +425,7 @@ are available to us as well.
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
+While :code:`findFirst()` returns directly an instance of the called class (when there is data to be returned), the :code:`find()` method returns a
 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
 a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -644,8 +644,8 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 .. highlights::
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
-methods like count(), sum(), average() etc.
+Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
+methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.
 
 If you're using "finders", bound parameters are automatically used for you:
 
@@ -738,8 +738,8 @@ The bidirectional relations build relationships in both models and each model de
 
 Defining relationships
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne(),
-hasMany() and hasManyToMany() define the relationship between one or more fields from the current model to fields in
+In Phalcon, relationships must be defined in the :code:`initialize()` method of a model. The methods :code:`belongsTo()`, :code:`hasOne()`,
+:code:`hasMany()` and :code:`hasManyToMany()` define the relationship between one or more fields from the current model to fields in
 another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
 +---------------+----------------------------+
@@ -915,7 +915,7 @@ Also, you can use a magic getter:
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Passing parameters
 
 If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
-findFirst()/find() result. The following example compares retrieving related results with using magic methods
+:code:`findFirst()`/:code:`find()` result. The following example compares retrieving related results with using magic methods
 and without:
 
 .. code-block:: php
@@ -971,7 +971,7 @@ Getting related records manually:
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
-The prefix "get" is used to find()/findFirst() related records. Depending on the type of relation it will use
+The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
 'find' or 'findFirst':
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
@@ -1177,8 +1177,8 @@ The RobotsPart model can be changed to demonstrate this feature:
         }
     }
 
-If you alter a belongsTo() relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
-valid value on the referenced model. Similarly, if a hasMany()/hasOne() is altered it will validate that the records cannot be deleted
+If you alter a :code:`belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
+valid value on the referenced model. Similarly, if a :code:`hasMany()`/:code:`hasOne()` is altered it will validate that the records cannot be deleted
 if that record is used on a referenced model.
 
 .. code-block:: php
@@ -1501,7 +1501,7 @@ Hydration mode can also be passed as a parameter of 'find':
 
 Creating Updating/Records
 -------------------------
-The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
+The method :code:`Phalcon\\Mvc\\Model::save()` allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
 should be updated or created.
@@ -1579,8 +1579,8 @@ the mass assignment:
 Create/Update with Confidence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the save() call with create() or update():
+could happen if we use :code:`Phalcon\\Mvc\\Model::save()` to persist the records in the database. If we want to be absolutely
+sure that a record is created or updated, we can change the :code:`save()` call with :code:`create()` or :code:`update()`:
 
 .. code-block:: php
 
@@ -1697,11 +1697,11 @@ passed back to the user for information regarding any errors.
 
 Note: Adding related entities by overloading the following methods is not possible:
 
- - Phalcon\\Mvc\\Model::beforeSave()
- - Phalcon\\Mvc\\Model::beforeCreate()
- - Phalcon\\Mvc\\Model::beforeUpdate()
+ - :code:`Phalcon\\Mvc\\Model::beforeSave()`
+ - :code:`Phalcon\\Mvc\\Model::beforeCreate()`
+ - :code:`Phalcon\\Mvc\\Model::beforeUpdate()`
 
-You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
+You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -1709,7 +1709,7 @@ Validation Messages
 validation messages generated during the insert/update processes.
 
 Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
+messages generated can be retrieved with the method :code:`getMessages()`. Each message provides extended information like the field name that
 generated the message or the message type:
 
 .. code-block:: php
@@ -1740,7 +1740,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method getMessages() can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -2286,7 +2286,7 @@ this specially helps when the table has blob/text fields:
 
 Deleting Records
 ----------------
-The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
+The method :code:`Phalcon\\Mvc\\Model::delete()` allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 

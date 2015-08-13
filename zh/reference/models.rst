@@ -37,7 +37,7 @@
 
     如果使用 PHP 5.4/5.5 建议在模型中预先定义好所有的列，这样可以减少模型内存的开销以及内存分配。
 
-默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 getSource() 方法：
+默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 :code:`getSource()` 方法：
 
 .. code-block:: php
 
@@ -53,8 +53,8 @@
         }
     }
 
-模型 Robots 现在映射到了 "the_robots" 表。initialize() 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
-initialize() 方法在请求期间只被调用一次。
+模型 Robots 现在映射到了 "the_robots" 表。:code:`initialize()` 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
+:code:`initialize()` 方法在请求期间只被调用一次。
 
 .. code-block:: php
 
@@ -70,7 +70,7 @@ initialize() 方法在请求期间只被调用一次。
         }
     }
 
-initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
+:code:`initialize()` 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
 可以使用 'onConstruct' 事件：
 
 .. code-block:: php
@@ -285,7 +285,7 @@ Namespaces make part of model names when they are within strings:
 
     If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.
 
-你可以使用 findFirst() 方法获取第一条符合查询条件的结果：
+你可以使用 :code:`findFirst()` 方法获取第一条符合查询条件的结果：
 
 .. code-block:: php
 
@@ -308,7 +308,7 @@ Namespaces make part of model names when they are within strings:
     );
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-find() 和 findFirst() 方法都接受关联数组作为查询条件：
+:code:`find()` 和 :code:`findFirst()` 方法都接受关联数组作为查询条件：
 
 .. code-block:: php
 
@@ -370,7 +370,7 @@ find() 和 findFirst() 方法都接受关联数组作为查询条件：
         ->order("name")
         ->execute();
 
-静态方法 query() 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
+静态方法 :code:`query()` 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
 
 所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
 
@@ -412,7 +412,7 @@ find() 和 findFirst() 方法都接受关联数组作为查询条件：
 
 模型结果集（Model Resultsets）
 ^^^^^^^^^^^^^^^^
-findFirst() 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 find() 方法返回一个 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。
+:code:`findFirst()` 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 :code:`find()` 方法返回一个 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。
 
 这些对象比一般数组功能更强大。最大的特点是 :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。
 
@@ -622,8 +622,8 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 .. highlights::
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
-methods like count(), sum(), average() etc.
+Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
+methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.
 
 If you're using "finders", bound parameters are automatically used for you:
 
@@ -718,8 +718,8 @@ The bidirectional relations build relationships in both models and each model de
 
 定义关系（Defining relationships）
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne(),
-hasMany() and hasManyToMany() define the relationship between one or more fields from the current model to fields in
+In Phalcon, relationships must be defined in the :code:`initialize()` method of a model. The methods :code:`belongsTo()`, :code:`hasOne()`,
+:code:`hasMany()` and :code:`hasManyToMany()` define the relationship between one or more fields from the current model to fields in
 another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
 +---------------+----------------------------+
@@ -895,7 +895,7 @@ Also, you can use a magic getter:
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Passing parameters
 
 If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
-findFirst()/find() result. The following example compares retrieving related results with using magic methods
+:code:`findFirst()`/:code:`find()` result. The following example compares retrieving related results with using magic methods
 and without:
 
 .. code-block:: php
@@ -951,7 +951,7 @@ Getting related records manually:
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
-The prefix "get" is used to find()/findFirst() related records. Depending on the type of relation it will use
+The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
 'find' or 'findFirst':
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
@@ -1157,8 +1157,8 @@ The RobotsPart model can be changed to demonstrate this feature:
         }
     }
 
-If you alter a belongsTo() relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
-valid value on the referenced model. Similarly, if a hasMany()/hasOne() is altered it will validate that the records cannot be deleted
+If you alter a :code:`belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
+valid value on the referenced model. Similarly, if a :code:`hasMany()`/:code:`hasOne()` is altered it will validate that the records cannot be deleted
 if that record is used on a referenced model.
 
 .. code-block:: php
@@ -1481,7 +1481,7 @@ Hydration mode can also be passed as a parameter of 'find':
 
 创建与更新记录（Creating Updating/Records）
 -------------------------
-The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
+The method :code:`Phalcon\\Mvc\\Model::save()` allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
 should be updated or created.
@@ -1559,8 +1559,8 @@ the mass assignment:
 创建与更新结果判断（Create/Update with Confidence）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the save() call with create() or update():
+could happen if we use :code:`Phalcon\\Mvc\\Model::save()` to persist the records in the database. If we want to be absolutely
+sure that a record is created or updated, we can change the :code:`save()` call with :code:`create()` or :code:`update()`:
 
 .. code-block:: php
 
@@ -1677,11 +1677,11 @@ passed back to the user for information regarding any errors.
 
 Note: Adding related entities by overloading the following methods is not possible:
 
- - Phalcon\\Mvc\\Model::beforeSave()
- - Phalcon\\Mvc\\Model::beforeCreate()
- - Phalcon\\Mvc\\Model::beforeUpdate()
+ - :code:`Phalcon\\Mvc\\Model::beforeSave()`
+ - :code:`Phalcon\\Mvc\\Model::beforeCreate()`
+ - :code:`Phalcon\\Mvc\\Model::beforeUpdate()`
 
-You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
+You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 验证信息（Validation Messages）
 ^^^^^^^^^^^^^^^^^^^
@@ -1689,7 +1689,7 @@ You need to overload Phalcon\Mvc\Model::save() for this to work from within a mo
 validation messages generated during the insert/update processes.
 
 Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
+messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the field name that
 generated the message or the message type:
 
 .. code-block:: php
@@ -1720,7 +1720,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method getMessages() can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -2266,7 +2266,7 @@ this specially helps when the table has blob/text fields:
 
 删除记录（Deleting Records）
 ----------------
-The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
+The method :code:`Phalcon\\Mvc\\Model::delete()` allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 
