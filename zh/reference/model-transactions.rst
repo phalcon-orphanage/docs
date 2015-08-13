@@ -19,12 +19,14 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
     {
         public function saveAction()
         {
+            // Start a transaction
             $this->db->begin();
 
             $robot              = new Robots();
             $robot->name        = "WALL·E";
             $robot->created_at  = date("Y-m-d");
 
+            // The model failed to save, so rollback the transaction
             if ($robot->save() == false) {
                 $this->db->rollback();
                 return;
@@ -34,11 +36,13 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
+            // The model failed to save, so rollback the transaction
             if ($robotPart->save() == false) {
                 $this->db->rollback();
                 return;
             }
 
+            // Commit the transaction
             $this->db->commit();
         }
     }
@@ -97,7 +101,7 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
             $transaction->rollback("Cannot save robot part");
         }
 
-        // Everything goes fine, let's commit the transaction
+        // Everything's gone fine, let's commit the transaction
         $transaction->commit();
 
     } catch (TxFailed $e) {
@@ -121,18 +125,18 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         // Request a transaction
         $transaction = $manager->get();
 
-        // Get the robots will be deleted
+        // Get the robots to be deleted
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
-                // Something goes wrong, we should to rollback the transaction
+                // Something's gone wrong, we should rollback the transaction
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
                 }
             }
         }
 
-        // Everything goes fine, let's commit the transaction
+        // Everything's gone fine, let's commit the transaction
         $transaction->commit();
 
         echo "Robots were deleted successfully!";

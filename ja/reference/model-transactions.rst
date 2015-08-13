@@ -1,18 +1,16 @@
 Model Transactions
 ==================
 
-When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
+When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can
 be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-are committed to the database.
+is committed to the database.
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
-all operations if something went wrong.
+Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
 手動のトランザクション
 -------------
 If an application only uses one connection and the transactions aren't very complex, a transaction can be
-created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
-is successfully or not:
+created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
 .. code-block:: php
 
@@ -24,12 +22,14 @@ is successfully or not:
     {
         public function saveAction()
         {
+            // Start a transaction
             $this->db->begin();
 
             $robot              = new Robots();
             $robot->name        = "WALL·E";
             $robot->created_at  = date("Y-m-d");
 
+            // The model failed to save, so rollback the transaction
             if ($robot->save() == false) {
                 $this->db->rollback();
                 return;
@@ -39,11 +39,13 @@ is successfully or not:
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
+            // The model failed to save, so rollback the transaction
             if ($robotPart->save() == false) {
                 $this->db->rollback();
                 return;
             }
 
+            // Commit the transaction
             $this->db->commit();
         }
     }
@@ -51,7 +53,7 @@ is successfully or not:
 暗黙的なトランザクション
 ---------------
 Existing relationships can be used to store records and their related instances, this kind of operation
-implicitly creates a transaction to ensure that data are correctly stored:
+implicitly creates a transaction to ensure that data is correctly stored:
 
 .. code-block:: php
 
@@ -105,7 +107,7 @@ transaction created ensuring that they are correctly rolled back/committed befor
             $transaction->rollback("Cannot save robot part");
         }
 
-        // Everything goes fine, let's commit the transaction
+        // Everything's gone fine, let's commit the transaction
         $transaction->commit();
 
     } catch (TxFailed $e) {
@@ -129,18 +131,18 @@ Transactions can be used to delete many records in a consistent way:
         // Request a transaction
         $transaction = $manager->get();
 
-        // Get the robots will be deleted
+        // Get the robots to be deleted
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
-                // Something goes wrong, we should to rollback the transaction
+                // Something's gone wrong, we should rollback the transaction
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
                 }
             }
         }
 
-        // Everything goes fine, let's commit the transaction
+        // Everything's gone fine, let's commit the transaction
         $transaction->commit();
 
         echo "Robots were deleted successfully!";
@@ -149,7 +151,7 @@ Transactions can be used to delete many records in a consistent way:
         echo "Failed, reason: ", $e->getMessage();
     }
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
+Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a :code:`commit()` or :code:`rollback()`
 is performed. You can use the service container to create the global transaction manager for the entire application:
 
 .. code-block:: php

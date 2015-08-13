@@ -24,12 +24,14 @@
     {
         public function saveAction()
         {
+            // Start a transaction
             $this->db->begin();
 
             $robot              = new Robots();
             $robot->name        = "WALL·E";
             $robot->created_at  = date("Y-m-d");
 
+            // The model failed to save, so rollback the transaction
             if ($robot->save() == false) {
                 $this->db->rollback();
                 return;
@@ -39,11 +41,13 @@
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
+            // The model failed to save, so rollback the transaction
             if ($robotPart->save() == false) {
                 $this->db->rollback();
                 return;
             }
 
+            // Commit the transaction
             $this->db->commit();
         }
     }
