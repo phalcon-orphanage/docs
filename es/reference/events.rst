@@ -1,7 +1,7 @@
 Events Manager
 ==============
 
-The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
+The purpose of this component is to intercept the execution of most of the other components of the framework by creating "hook points". These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 Usage Example
@@ -88,7 +88,7 @@ the event listener contains contextual information about the event that is runni
         }
     }
 
-As part of this example, we will also implement the Phalcon\\Db\\Profiler to detect the SQL statements that are taking longer to execute than expected:
+As part of this example, we will also implement the :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` to detect the SQL statements that are taking longer to execute than expected:
 
 .. code-block:: php
 
@@ -159,7 +159,7 @@ In a similar manner we can register a lambda function to perform the task instea
     <?php
 
     // Listen all the database events
-    $eventManager->attach('db', function ($event, $connection) {
+    $eventsManager->attach('db', function ($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
         }
@@ -169,7 +169,7 @@ Creating components that trigger Events
 ---------------------------------------
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners
 that react to these events when generated. In the following example we're creating a component called "MyComponent".
-This component is EventsManager aware; when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
+This component is EventsManager aware (it implements :doc:`Phalcon\\Events\\EventsAwareInterface <../api/Phalcon_Events_EventsAwareInterface>`); when its :code:`someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
 .. code-block:: php
 
@@ -196,6 +196,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
             $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
 
             // Do some task
+            echo "Here, someTask\n";
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
@@ -245,14 +246,15 @@ A listener is simply a class that implements any of all the events triggered by 
     // Execute methods in the component
     $myComponent->someTask();
 
-As "someTask" is executed, the two methods in the listener will be executed, producing the following output:
+As :code:`someTask()` is executed, the two methods in the listener will be executed, producing the following output:
 
 .. code-block:: php
 
     Here, beforeSomeTask
+    Here, someTask
     Here, afterSomeTask
 
-Additional data may also passed when triggering an event using the third parameter of "fire":
+Additional data may also passed when triggering an event using the third parameter of :code:`fire()`:
 
 .. code-block:: php
 
@@ -267,29 +269,29 @@ In a listener the third parameter also receives this data:
     <?php
 
     // Receiving the data in the third parameter
-    $eventManager->attach('my-component', function ($event, $component, $data) {
+    $eventsManager->attach('my-component', function ($event, $component, $data) {
         print_r($data);
     });
 
     // Receiving the data from the event context
-    $eventManager->attach('my-component', function ($event, $component) {
+    $eventsManager->attach('my-component', function ($event, $component) {
         print_r($event->getData());
     });
 
-If a listener it is only interested in listening a specific type of event you can attach a listener directly:
+If a listener it is only interested in listening to a specific type of event you can attach a listener directly:
 
 .. code-block:: php
 
     <?php
 
     // The handler will only be executed if the event triggered is "beforeSomeTask"
-    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
+    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
         // ...
     });
 
 Event Propagation/Cancellation
 ------------------------------
-Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
+Many listeners may be added to the same event manager. This means that for the same type of event many listeners can be notified.
 The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
 these may be stopped preventing other listeners are notified about the event:
 
@@ -310,7 +312,7 @@ these may be stopped preventing other listeners are notified about the event:
     });
 
 By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
-by passing "false" in the fourth parameter of fire:
+by passing :code:`false` in the fourth parameter of :code:`fire()`:
 
 .. code-block:: php
 
@@ -327,15 +329,15 @@ in which they must be called:
 
     <?php
 
-    $evManager->enablePriorities(true);
+    $eventsManager->enablePriorities(true);
 
-    $evManager->attach('db', new DbListener(), 150); // More priority
-    $evManager->attach('db', new DbListener(), 100); // Normal priority
-    $evManager->attach('db', new DbListener(), 50); // Less priority
+    $eventsManager->attach('db', new DbListener(), 150); // More priority
+    $eventsManager->attach('db', new DbListener(), 100); // Normal priority
+    $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 
 Collecting Responses
 --------------------
-The events manager can collect every response returned by every notified listener, this example explains how it works:
+The events manager can collect every response returned by every notified listener. This example explains how it works:
 
 .. code-block:: php
 
@@ -343,26 +345,26 @@ The events manager can collect every response returned by every notified listene
 
     use Phalcon\Events\Manager as EventsManager;
 
-    $evManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // Set up the events manager to collect responses
-    $evManager->collectResponses(true);
+    $eventsManager->collectResponses(true);
 
     // Attach a listener
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'first response';
     });
 
     // Attach a listener
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'second response';
     });
 
     // Fire the event
-    $evManager->fire('custom:custom', null);
+    $eventsManager->fire('custom:custom', null);
 
     // Get all the collected responses
-    print_r($evManager->getResponses());
+    print_r($eventsManager->getResponses());
 
 The above example produces:
 

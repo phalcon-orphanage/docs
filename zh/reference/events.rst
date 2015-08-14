@@ -88,7 +88,7 @@
         }
     }
 
-作为些示例的一部分，我们同样实现了 Phalcon\\Db\\Profiler 来检测SQL语句是否超出了期望的执行时间：
+作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
 
@@ -159,7 +159,7 @@
     <?php
 
     // 侦听全部数据加事件
-    $eventManager->attach('db', function ($event, $connection) {
+    $eventsManager->attach('db', function ($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
         }
@@ -169,7 +169,7 @@
 ---------------------------------------
 你可以在你的应用中为事件管理器的触发事件创建组件。这样的结果是，可以有很多存在的侦听者为这些产生的事件作出响应。
 在以下的示例中，我们将会创建一个叫做“MyComponent”组件。这是个意识事件管理器组件；
-当它的方法“someTask”被执行时它将触发事件管理器中全部侦听者的两个事件：
+当它的方法:code:someTask()`被执行时它将触发事件管理器中全部侦听者的两个事件：
 
 .. code-block:: php
 
@@ -196,6 +196,7 @@
             $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
 
             // 做一些你想做的事情
+            echo "这里, someTask\n";
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
@@ -244,14 +245,15 @@
     // 执行组件的方法
     $myComponent->someTask();
 
-当“someTask”被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
+当:code:someTask()`被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
 
 .. code-block:: php
 
     这里, beforeSomeTask
+    这里, someTask
     这里, afterSomeTask
 
-当触发一个事件时也可以使用“fire”中的第三个参数来传递额外的数据：
+当触发一个事件时也可以使用:code:fire()`中的第三个参数来传递额外的数据：
 
 .. code-block:: php
 
@@ -266,12 +268,12 @@
     <?php
 
     // 从第三个参数接收数据
-    $eventManager->attach('my-component', function ($event, $component, $data) {
+    $eventsManager->attach('my-component', function ($event, $component, $data) {
         print_r($data);
     });
 
     // 从事件上下文中接收数据
-    $eventManager->attach('my-component', function ($event, $component) {
+    $eventsManager->attach('my-component', function ($event, $component) {
         print_r($event->getData());
     });
 
@@ -308,7 +310,7 @@
     });
 
 默认情况下全部的事件都是可以取消的，甚至框架提供的事件也是可以取消的。
-你可以通过在fire中的第四个参数中传递false来指明这是一个不可取消的事件：
+你可以通过在:code:fire()`中的第四个参数中传递:code:`false`来指明这是一个不可取消的事件：
 
 .. code-block:: php
 
@@ -326,9 +328,9 @@
 
     $evManager->enablePriorities(true);
 
-    $evManager->attach('db', new DbListener(), 150); // 高优先级
-    $evManager->attach('db', new DbListener(), 100); // 正常优先级
-    $evManager->attach('db', new DbListener(), 50);  // 低优先级
+    $eventsManager->attach('db', new DbListener(), 150); // 高优先级
+    $eventsManager->attach('db', new DbListener(), 100); // 正常优先级
+    $eventsManager->attach('db', new DbListener(), 50);  // 低优先级
 
 收集响应（Collecting Responses）
 --------------------
@@ -340,26 +342,26 @@
 
     use Phalcon\Events\Manager as EventsManager;
 
-    $evManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // 建立事件管理器以为收集结果响应
-    $evManager->collectResponses(true);
+    $eventsManager->collectResponses(true);
 
     // 附上一个侦听者
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'first response';
     });
 
     // 附上一个侦听者
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'second response';
     });
 
     // 执行fire事件
-    $evManager->fire('custom:custom', null);
+    $eventsManager->fire('custom:custom', null);
 
     // 获取全部收集到的响应
-    print_r($evManager->getResponses());
+    print_r($eventsManager->getResponses());
 
 上面示例将输出：
 

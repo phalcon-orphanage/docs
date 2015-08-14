@@ -89,7 +89,7 @@
         }
     }
 
-В рамках этого примера, мы будем также использовать профайлер Phalcon\\Db\\Profiler для обнаружения SQL-запросов с длительным временем выполнения:
+В рамках этого примера, мы будем также использовать профайлер :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler >` для обнаружения SQL-запросов с длительным временем выполнения:
 
 .. code-block:: php
 
@@ -170,7 +170,7 @@
 -----------------------------------------
 Компоненты, созданные в вашем приложении, могут инициировать события в EventsManager. Вы также можете создавать слушателей, которые
 реагируют на эти события. В следующем примере мы создаем компонент, под названием "MyComponent".
-Этот компонент будет указывать менеджеру событий о выполнении своего метода "someTask", что в свою очередь будет вызывать два события для слушателей в EventsManager:
+Этот компонент будет указывать менеджеру событий о выполнении своего метода :code:`someTask()`, что в свою очередь будет вызывать два события для слушателей в EventsManager:
 
 .. code-block:: php
 
@@ -197,6 +197,7 @@
             $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
 
             // тут выполнение каких-либо действий
+            echo "Выполняется someTask\n";
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
@@ -246,14 +247,15 @@
     // Выполняем метод нашего компонента
     $myComponent->someTask();
 
-Когда метод "someTask" выполнится, сработают оба метода слушателя, и выведутся следующие строки:
+Когда метод :code:`someTask()` выполнится, сработают оба метода слушателя, и выведутся следующие строки:
 
 .. code-block:: php
 
     Выполняется beforeSomeTask
+    Выполняется someTask
     Выполняется afterSomeTask
 
-Во время наступления события в слушателей можно передавать дополнительные данные, они должны передаваться третьим параметром в метод "fire":
+Во время наступления события в слушателей можно передавать дополнительные данные, они должны передаваться третьим параметром в метод :code:`fire()`:
 
 .. code-block:: php
 
@@ -268,12 +270,12 @@
     <?php
 
     // Получение данных из третьего параметра
-    $eventManager->attach('my-component', function ($event, $component, $data) {
+    $eventsManager->attach('my-component', function ($event, $component, $data) {
         print_r($data);
     });
 
     // Получение данных из контекста события
-    $eventManager->attach('my-component', function ($event, $component) {
+    $eventsManager->attach('my-component', function ($event, $component) {
         print_r($event->getData());
     });
 
@@ -284,7 +286,7 @@
     <?php
 
     // Обработчик выполнится только при наступлении события "beforeSomeTask"
-    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
+    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
         // ...
     });
 
@@ -311,7 +313,7 @@
     });
 
 По умолчанию все события поддерживают прекращение, большинство событий, выполняемых в ядре фреймворка, тоже поддерживают прекращение. Вы можете
-указать, что событие не прекращаемое передавая "false" в четвертый параметр вызова fire:
+указать, что событие не прекращаемое передавая :code:`false` в четвертый параметр вызова :code:`fire()`:
 
 .. code-block:: php
 
@@ -328,11 +330,11 @@
     <?php
 
     // активация установки приоритетов
-    $evManager->enablePriorities(true);
+    $eventsManager->enablePriorities(true);
 
-    $evManager->attach('db', new DbListener(), 150); // Высокий приоритет
-    $evManager->attach('db', new DbListener(), 100); // Нормальный приоритет
-    $evManager->attach('db', new DbListener(), 50);  // Низкий приоритет
+    $eventsManager->attach('db', new DbListener(), 150); // Высокий приоритет
+    $eventsManager->attach('db', new DbListener(), 100); // Нормальный приоритет
+    $eventsManager->attach('db', new DbListener(), 50);  // Низкий приоритет
 
 Сбор ответов
 ------------
@@ -344,26 +346,26 @@
 
     use Phalcon\Events\Manager as EventsManager;
 
-    $evManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // Настройка сборщика ответов
-    $evManager->collectResponses(true);
+    $eventsManager->collectResponses(true);
 
     // Добавления слушателя
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'first response';
     });
 
     // Добавления еще одного слушателя
-    $evManager->attach('custom:custom', function () {
+    $eventsManager->attach('custom:custom', function () {
         return 'second response';
     });
 
     // Выполнение события
-    $evManager->fire('custom:custom', null);
+    $eventsManager->fire('custom:custom', null);
 
     // Получаем все ответы
-    print_r($evManager->getResponses());
+    print_r($eventsManager->getResponses());
 
 Сформируются такие данные:
 
