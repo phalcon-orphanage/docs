@@ -29,20 +29,54 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
     <?php
 
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     $logger = new FileAdapter("app/logs/test.log");
+
+    // These are the different log levels available:
+    $logger->critical("This is a critical message");
+    $logger->emergency("This is an emergency message");
+    $logger->debug("This is a debug message");
+    $logger->error("This is an error message");
+    $logger->info("This is an info message");
+    $logger->notice("This is a notice message");
+    $logger->warning("This is a warning message");
+    $logger->alert("This is an alert message");
+
+    // You can also use the log() method with a Logger constant:
+    $logger->log("This is another error message", Logger::ERROR);
+
+    // If no constant is given, DEBUG is assumed.
     $logger->log("This is a message");
-    $logger->log("This is an error", \Phalcon\Logger::ERROR);
-    $logger->error("This is another error");
 
 产生的日志信息如下：
 
+.. code-block::
+
+    [Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
+    [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a debug message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error message
+    [Tue, 28 Jul 15 22:09:02 -0500][INFO] This is an info message
+    [Tue, 28 Jul 15 22:09:02 -0500][NOTICE] This is a notice message
+    [Tue, 28 Jul 15 22:09:02 -0500][WARNING] This is a warning message
+    [Tue, 28 Jul 15 22:09:02 -0500][ALERT] This is an alert message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error message
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+
+You can also set a log level using the :code:`setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
+
 .. code-block:: php
 
-    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error
-    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+
+    $logger = new FileAdapter("app/logs/test.log");
+
+    $logger->setLogLevel(Logger::CRITICAL);
+
+In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 事务（Transactions）
 ----------------------
@@ -94,14 +128,15 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 信息格式（Message Formatting）
 ------------------------------
-
 此组件使用 formatters 在信息发送前格式化日志信息。 支持下而后格式：
 
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 | 适配器  | 描述                                          | 接口                                                                               |
 +=========+===============================================+====================================================================================+
 | Line    | 文本方式格式化信息                            | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
-+---------+-----------------------------------------------+------------------------------------------------------------------------------------+
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Firephp | Formats the messages so that they can be sent to FirePHP | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Firephp>`  |
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
 | Json    | 使用JSON格式格式化信息                        | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 | Syslog  | 使用系统提供的格式格式化信息                  | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
@@ -111,9 +146,11 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 使用单行格式格式化信息。 默认的格式如下：
 
-[%date%][%type%] %message%
+.. code-block::
 
-我们可以使用setFormat()来设置自定义格式。 下面是格式变量：
+    [%date%][%type%] %message%
+
+我们可以使用:code:`setFormat()`来设置自定义格式。 下面是格式变量：
 
 +-----------+------------------------------------------+
 | 变量      | 描述                                     |

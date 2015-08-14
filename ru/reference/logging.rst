@@ -30,20 +30,54 @@
 
     <?php
 
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     $logger = new FileAdapter("app/logs/test.log");
+
+    // These are the different log levels available:
+    $logger->critical("This is a critical message");
+    $logger->emergency("This is an emergency message");
+    $logger->debug("This is a debug message");
+    $logger->error("This is an error message");
+    $logger->info("This is an info message");
+    $logger->notice("This is a notice message");
+    $logger->warning("This is a warning message");
+    $logger->alert("This is an alert message");
+
+    // You can also use the log() method with a Logger constant:
+    $logger->log("Это тоже про ошибку", Logger::ERROR);
+
+    // If no constant is given, DEBUG is assumed.
     $logger->log("Это сообщение");
-    $logger->log("А это уже сообщение об ошибке", \Phalcon\Logger::ERROR);
-    $logger->error("Это тоже про ошибку");
 
 Результат кода:
 
+.. code-block::
+
+    [Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
+    [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a debug message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error message
+    [Tue, 28 Jul 15 22:09:02 -0500][INFO] This is an info message
+    [Tue, 28 Jul 15 22:09:02 -0500][NOTICE] This is a notice message
+    [Tue, 28 Jul 15 22:09:02 -0500][WARNING] This is a warning message
+    [Tue, 28 Jul 15 22:09:02 -0500][ALERT] This is an alert message
+    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] Это тоже про ошибку
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Это сообщение
+
+You can also set a log level using the :code:`setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
+
 .. code-block:: php
 
-    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Это сообщение
-    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] А это уже сообщение об ошибке
-    [Tue, 28 Jul 15 22:09:02 -0500][ERROR] Это тоже про ошибку
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File as FileAdapter;
+
+    $logger = new FileAdapter("app/logs/test.log");
+
+    $logger->setLogLevel(Logger::CRITICAL);
+
+In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 Транзакции
 ----------
@@ -99,23 +133,27 @@
 Данный компонент позволяет использовать 'formatters' для форматирования сообщений перед тем как их отправить на бэкенд.
 Реализованные следующие форматеры:
 
-+---------+--------------------------------------------------+------------------------------------------------------------------------------------+
-| Адаптер | Описание                                         | API                                                                                |
-+=========+==================================================+====================================================================================+
-| Line    | Оформление записей одной строкой                 | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
-+---------+--------------------------------------------------+------------------------------------------------------------------------------------+
-| Json    | Подготовка записей для преобразoвание в JSON     | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
-+---------+--------------------------------------------------+------------------------------------------------------------------------------------+
-| Syslog  | Подготовка записи для отправки в системный журнал| :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
-+---------+--------------------------------------------------+------------------------------------------------------------------------------------+
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Адаптер | Описание                                                 | API                                                                                |
++=========+==========================================================+====================================================================================+
+| Line    | Оформление записей одной строкой                         | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Firephp | Formats the messages so that they can be sent to FirePHP | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Firephp>`  |
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Json    | Подготовка записей для преобразoвание в JSON             | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Syslog  | Подготовка записи для отправки в системный журнал        | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
++---------+----------------------------------------------------------+------------------------------------------------------------------------------------+
 
 Линейный Оформитель
 ^^^^^^^^^^^^^^^^^^^
 Оформление записей в одну строку. Формат по умолчанию:
 
-[%date%][%type%] %message%
+.. code-block::
 
-Вы можете изменить вид сообщений по умолчанию используя setFormat(), этот метод позволяет менять формат конечных сообщений, определяя свой ​​собственный.
+    [%date%][%type%] %message%
+
+Вы можете изменить вид сообщений по умолчанию используя :code:`setFormat()`, этот метод позволяет менять формат конечных сообщений, определяя свой ​​собственный.
 Поддерживаются такие переменные:
 
 +-----------+------------------------------------------+
