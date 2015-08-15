@@ -1,19 +1,19 @@
 Queueing
 ========
 
-Perform activities like process a video, resize images or send emails aren't suitable to be executed
-online or in real time because it may slow the loading time of pages, impacting the user experience.
+Activities like processing videos, resizing images or sending emails aren't suitable to be executed
+online or in real time because it may slow the loading time of pages and severely impact the user experience.
 
-The best solution here is implementing background jobs. A web application must put the job
-into a queue and wait that it will be processed.
+The best solution here is to implement background jobs. The web application puts jobs
+into a queue and which will be processed separately.
 
 While you can find more sophisticated PHP extensions to address queueing in your applications like RabbitMQ_;
 Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
-It’s simple, lightweight, and completely specialized on job queueing.
+It’s simple, lightweight, and completely specialized for job queueing.
 
 Putting Jobs into the Queue
 ---------------------------
-After connecting to Bens can insert as many jobs as required. The developer can define the message
+After connecting to Beanstalk you can insert as many jobs as required. You can define the message
 structure according to the needs of the application:
 
 .. code-block:: php
@@ -30,7 +30,9 @@ structure according to the needs of the application:
 
     // Insert the job in the queue
     $queue->put(
-        array('processVideo' => 4871)
+        array(
+            'processVideo' => 4871
+        )
     );
 
 Available connection options are:
@@ -44,9 +46,9 @@ Available connection options are:
 +----------+----------------------------------------------------------+-----------+
 
 In the above example we stored a message which will allow a background job to process a video.
-The message is stored in the queue immediately and does not have a certain time to life.
+The message is stored in the queue immediately and does not have a certain time to live.
 
-Additional options as time to run, priority and delay could be passed as second parameter:
+Additional options as time to run, priority and delay can be passed as second parameter:
 
 .. code-block:: php
 
@@ -54,8 +56,14 @@ Additional options as time to run, priority and delay could be passed as second 
 
     // Insert the job in the queue with options
     $queue->put(
-        array('processVideo' => 4871),
-        array('priority' => 250, 'delay' => 10, 'ttr' => 3600)
+        array(
+            'processVideo' => 4871
+        ),
+        array(
+            'priority' => 250,
+            'delay'    => 10,
+            'ttr'      => 3600
+        )
     );
 
 The following options are available:
@@ -70,19 +78,21 @@ The following options are available:
 | ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
 +----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Every job put into the queue returns a "job id" the developer can use to track the status of the job:
+Every job put into the queue returns a "job id" which you can use to track the status of the job:
 
 .. code-block:: php
 
     <?php
 
     $jobId = $queue->put(
-        array('processVideo' => 4871)
+        array(
+            'processVideo' => 4871
+        )
     );
 
 Retrieving Messages
 -------------------
-Once a job is placed into the queue, those messages can be consumed by a background job which have enough time to complete
+Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete
 the task:
 
 .. code-block:: php
