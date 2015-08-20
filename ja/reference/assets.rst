@@ -87,7 +87,7 @@ Volt syntax:
 
 コレクション
 -----------
-コレクションは同じ種類のリソースをグループ化します。Asset Managerは暗黙的にcssとjsのコレクションを生成します。ビューへの配置を容易にするために、特定のリソースをグループ化するコレクションを追加することが出来ます。
+コレクションは同じ種類のリソースをグループ化します。Assets Managerは暗黙的にcssとjsのコレクションを生成します。ビューへの配置を容易にするために、特定のリソースをグループ化するコレクションを追加することが出来ます。
 
 .. code-block:: php
 
@@ -217,7 +217,7 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
 
-上記で示すように、addJsメソッドがコレクションにリソースを追加するのに使われます。2番目のパラメータはリソースが外部のものかそうでないかを指定し、3番目のパラメータはリソースがフィルタされるべきかそのままにすべきかを指定します:
+上記で示すように、:code:`addJs()`メソッドがコレクションにリソースを追加するのに使われます。2番目のパラメータはリソースが外部のものかそうでないかを指定し、3番目のパラメータはリソースがフィルタされるべきかそのままにすべきかを指定します:
 
 .. code-block:: php
 
@@ -242,7 +242,7 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「join」メソッドを利用できます:
+ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「:code:`join()`」メソッドを利用できます:
 
 .. code-block:: php
 
@@ -254,14 +254,14 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     // 最後のファイルパスの名前です
     $js->setTargetPath('public/production/final.js');
 
-    // このスクリプトのhtmlタグがこのURIで生成されます
+    // このスクリプトのHTMLタグがこのURIで生成されます
     $js->setTargetUri('production/final.js');
 
-もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、setTargetPath() と setTargetUri() で設定できます。
+もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、:code:`setTargetPath()` と :code:`setTargetUri()` で設定できます。
 
 ビルトインフィルタ
 ^^^^^^^^^^^^^^^^
-Phalcon は、javascript と CSS のそれぞれに対して圧縮するための 2つのビルトインのフィルタを提供します。それらの C言語によるバックエンドは、このタスクを実行するためのオーバーヘッドを最小限に留めてくれます:
+Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するための 2つのビルトインのフィルタを提供します。それらの C言語によるバックエンドは、このタスクを実行するためのオーバーヘッドを最小限に留めてくれます:
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 | Filter                            | Description                                                                                               |
@@ -347,9 +347,39 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
         )
     );
 
+In a previous example, we used a custom filter called :code:`LicenseStamper`:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Assets\FilterInterface;
+
+    /**
+     * Adds a license message to the top of the file
+     *
+     * @param string $contents
+     * @return string
+     */
+    class LicenseStamper implements FilterInterface
+    {
+        /**
+         * Do the filtering
+         *
+         * @param string $contents
+         * @return string
+         */
+        public function filter($contents)
+        {
+            $license = "/* (c) 2015 Your Name Here */";
+
+            return $license . PHP_EOL . PHP_EOL . $contents;
+        }
+    }
+
 カスタム出力
 -------------
-必要なHTMLコードを生成する outputJs と outputCss メソッドがリソースのタイプに応じて利用できます。これらのメソッドをオーバーライドするか、次のようにリソースを手動で出力します:
+必要なHTMLコードを生成する :code:`outputJs()` と :code:`outputCss()` メソッドがリソースのタイプに応じて利用できます。これらのメソッドをオーバーライドするか、次のようにリソースを手動で出力します:
 
 .. code-block:: php
 

@@ -8,7 +8,7 @@ Phalcon\\Assets是一个让开发者管理静态资源的组件，如管理CSS�
 添加资源（Adding Resources）
 ----------------
 Assets支持两个内置的资源管理器：css和javascripts.我们可以根据需要创建其它的资源。资源管理器内部保存了两类资源集合一为
-javascript另一为css.
+JavaScript另一为CSS.
 
 我们可以非常简单的向这两个集合里添加资源，如下：
 
@@ -22,12 +22,12 @@ javascript另一为css.
     {
         public function index()
         {
-            // 添加本地css资源
+            // 添加本地CSS资源
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            // 添加本地js资源
+            // 添加本地JavaScript资源
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -73,7 +73,7 @@ Volt语法：
 本地资源是同一应用中的资源，这些资源存在于应用的根目录中。 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 用来生成
 本地的url.
 
-远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jquery, bootstrap等资源。
+远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jQuery, Bootstrap等资源。
 
 .. code-block:: php
 
@@ -96,13 +96,13 @@ Volt语法：
 
     <?php
 
-    // html头部的js资源
+    // HTML 头部的js资源
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    // html尾部的js资源
+    // HTML尾部的js资源
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -142,7 +142,7 @@ Volt语法：
         </body>
     <html>
 
-前缀（Prefixes）
+前缀（URL Prefixes）
 --------
 集合可以添加前缀，这可以实现非常简单的更换服务器：
 
@@ -211,7 +211,7 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
         // 使用自定义过滤器
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含javascript或css资源但不能同时包含两个。一些资源可能位于远程的服务器上
+开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含JavaScript或CSS资源但不能同时包含两个。一些资源可能位于远程的服务器上
 这上结资源我们可以通过http取得。为了提高性能建议把远程的资源取到本地来，以减少加载远程资源的开销。
 
 .. code-block:: php
@@ -263,19 +263,19 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
     // 使用此uri引用js
     $js->setTargetUri('production/final.js');
 
-如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用setTargetPath()
-和setTargetUri()两个函数来配置。
+如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用:code:`setTargetPath()`
+和:code:`setTargetUri()`两个函数来配置。
 
 内置过滤器（Built-In Filters）
 ^^^^^^^^^^^^^^^^
-Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二者是使用c实现的故极大的减少了性能上的开销：
+Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由于二者是使用c实现的故极大的减少了性能上的开销：
 
 +-----------------------------------+----------------------------------------------------------------+
 | 过滤器                            | 说明                                                           |
 +===================================+================================================================+
-| Phalcon\\Assets\\Filters\\Jsmin   | 压缩Javascript文件即去除掉javascript解释器/编译器忽略的一些字符|
+| Phalcon\\Assets\\Filters\\Jsmin   | 压缩JavaScript文件即去除掉JavaScript解释器/编译器忽略的一些字符|
 +-----------------------------------+----------------------------------------------------------------+
-| Phalcon\\Assets\\Filters\\Cssmin  | 压缩css文件即去除掉浏览器在渲染css时不需要的一些字符           |
+| Phalcon\\Assets\\Filters\\Cssmin  | 压缩CSS文件即去除掉浏览器在渲染CSS时不需要的一些字符           |
 +-----------------------------------+----------------------------------------------------------------+
 
 自定义过滤器（Custom Filters）
@@ -289,7 +289,7 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
     use Phalcon\Assets\FilterInterface;
 
     /**
-     * 使用YUI过滤css内容
+     * 使用YUI过滤CSS内容
      *
      * @param string $contents
      * @return string
@@ -340,7 +340,7 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
 
     <?php
 
-    // 取css集合
+    // 取CSS集合
     $css = $this->assets->get('head');
 
     // 添加/启用YUI压缩器
@@ -354,9 +354,39 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
         )
     );
 
+In a previous example, we used a custom filter called :code:`LicenseStamper`:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Assets\FilterInterface;
+
+    /**
+     * Adds a license message to the top of the file
+     *
+     * @param string $contents
+     * @return string
+     */
+    class LicenseStamper implements FilterInterface
+    {
+        /**
+         * Do the filtering
+         *
+         * @param string $contents
+         * @return string
+         */
+        public function filter($contents)
+        {
+            $license = "/* (c) 2015 Your Name Here */";
+
+            return $license . PHP_EOL . PHP_EOL . $contents;
+        }
+    }
+
 自定义输出（Custom Output）
 -------------
-OutputJs及outputCss方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
+:code:`outputJs()`及:code:`outputCss()`方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
 
 .. code-block:: php
 
