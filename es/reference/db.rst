@@ -710,6 +710,7 @@ The following example shows how to create a table:
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
+                        "primary"       => true,
                     )
                 ),
                 new Column(

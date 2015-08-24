@@ -726,6 +726,7 @@ bound parameters are directly passed to PDO:
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
+                        "primary"       => true,
                     )
                 ),
                 new Column(
