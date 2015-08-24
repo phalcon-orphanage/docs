@@ -206,7 +206,6 @@ Defining References
 | "onUpdate"          | If the foreign record is updated, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 
-
 Writing Migrations
 ------------------
 Migrations aren't only designed to "morph" table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the :doc:`database component <db>`.

@@ -190,17 +190,21 @@ Database migrations support the following database column types:
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
 
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| Index               | Description                                                                                         | Optional |
-+=====================+=====================================================================================================+==========+
-| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "columns"           | An array with the name of the columns at the table that have the reference                          | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| Index               | Description                                                                                         | Optional | Implemented in   |
++=====================+=====================================================================================================+==========+==================+
+| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | No       | All              |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| "columns"           | An array with the name of the columns at the table that have the reference                          | No       | All              |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       | All              |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      | All              |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| "onDelete"          | If the foreign record is removed, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
+| "onUpdate"          | If the foreign record is updated, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
++---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 
 マイグレーションの記述
 ------------------
