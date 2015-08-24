@@ -1,5 +1,6 @@
 キャッシュによるパフォーマンス改善
 ================================
+
 Phalcon provides the :doc:`Phalcon\\Cache <cache>` class allowing faster access to frequently used or already processed data.
 :doc:`Phalcon\\Cache <cache>` is written in C, achieving higher performance and reducing the overhead when getting items from the backends.
 This class uses an internal structure of frontend and backend components. Front-end components act as input sources or
@@ -17,7 +18,7 @@ We recommend you check this cases before using a cache:
 .. highlights::
 
     *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
-    be done, especially in the case of Memcache or Apc, with the relevant tools that backends provide.
+    be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
 
 キャッシュの振る舞い
 ----------------
@@ -39,17 +40,26 @@ call whenever this piece of code is called.
 
     <?php
 
+    use Phalcon\Tag;
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Output as FrontOutput;
+
     // Create an Output frontend. Cache the files for 2 days
-    $frontCache = new Phalcon\Cache\Frontend\Output(array(
-        "lifetime" => 172800
-    ));
+    $frontCache = new FrontOutput(
+        array(
+            "lifetime" => 172800
+        )
+    );
 
     // Create the component that will cache from the "Output" to a "File" backend
     // Set the cache file directory - it's important to keep the "/" at the end of
     // the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
-        "cacheDir" => "../app/cache/"
-    ));
+    $cache = new BackFile(
+        $frontCache,
+        array(
+            "cacheDir" => "../app/cache/"
+        )
+    );
 
     // Get/Set the cache file to ../app/cache/my-cache.html
     $content = $cache->start("my-cache.html");
@@ -61,7 +71,7 @@ call whenever this piece of code is called.
         echo date("r");
 
         // Generate a link to the sign-up action
-        echo Phalcon\Tag::linkTo(
+        echo Tag::linkTo(
             array(
                 "user/signup",
                 "Sign Up",
@@ -96,26 +106,38 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
 
     <?php
 
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
     // Cache the files for 2 days using a Data frontend
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 172800
-    ));
+    $frontCache = new FrontData(
+        array(
+            "lifetime" => 172800
+        )
+    );
 
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
     // of the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
-        "cacheDir" => "../app/cache/"
-    ));
+    $cache = new BackFile(
+        $frontCache,
+        array(
+            "cacheDir" => "../app/cache/"
+        )
+    );
 
     // Try to get cached records
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
-        $robots = Robots::find(array("order" => "id"));
+        $robots = Robots::find(
+            array(
+                "order" => "id"
+            )
+        );
 
         // Store it in the cache
         $cache->save($cacheKey, $robots);
@@ -134,26 +156,43 @@ The above example changes slightly (especially in terms of configuration) when w
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontData;
+    use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
+
     // Cache data for one hour
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 3600
-    ));
+    $frontCache = new FrontData(
+        array(
+            "lifetime" => 3600
+        )
+    );
 
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
-    $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
-        "host" => "localhost",
-        "port" => "11211"
-    ));
+    $cache = new BackMemCached(
+        $frontCache,
+        array(
+            "servers" => array(
+                array(
+                    "host"   => "127.0.0.1",
+                    "port"   => "11211",
+                    "weight" => "1"
+                )
+            )
+        )
+    );
 
     // Try to get cached records
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
-        $robots = Robots::find(array("order" => "id"));
+        $robots = Robots::find(
+            array(
+                "order" => "id"
+            )
+        );
 
         // Store it in the cache
         $cache->save($cacheKey, $robots);
@@ -226,7 +265,6 @@ It is possible to check if a cache already exists with a given key:
         echo "Cache does not exists!";
     }
 
-
 保存期間
 --------
 A "lifetime" is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation.
@@ -269,47 +307,64 @@ Setting the lifetime when saving:
 
 マルチレベル・キャッシュ
 -----------------
-This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful
-because you can save the same data in several cache​ locations​ with different lifetimes, reading ​first from the one with
-the faster adapter and ending with the slowest one until the data expire​s​:
+This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful
+because you can save the same data in several cache locations with different lifetimes, reading first from the one with
+the faster adapter and ending with the slowest one until the data expires:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Cache\Frontend\Data as DataFrontend,
-        Phalcon\Cache\Multiple,
-        Phalcon\Cache\Backend\Apc as ApcCache,
-        Phalcon\Cache\Backend\Memcache as MemcacheCache,
-        Phalcon\Cache\Backend\File as FileCache;
+    use Phalcon\Cache\Multiple;
+    use Phalcon\Cache\Backend\Apc as ApcCache;
+    use Phalcon\Cache\Backend\File as FileCache;
+    use Phalcon\Cache\Frontend\Data as DataFrontend;
+    use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
-    $ultraFastFrontend = new DataFrontend(array(
-        "lifetime" => 3600
-    ));
+    $ultraFastFrontend = new DataFrontend(
+        array(
+            "lifetime" => 3600
+        )
+    );
 
-    $fastFrontend = new DataFrontend(array(
-        "lifetime" => 86400
-    ));
+    $fastFrontend = new DataFrontend(
+        array(
+            "lifetime" => 86400
+        )
+    );
 
-    $slowFrontend = new DataFrontend(array(
-        "lifetime" => 604800
-    ));
+    $slowFrontend = new DataFrontend(
+        array(
+            "lifetime" => 604800
+        )
+    );
 
     // Backends are registered from the fastest to the slower
-    $cache = new Multiple(array(
-        new ApcCache($ultraFastFrontend, array(
-            "prefix" => 'cache',
-        )),
-        new MemcacheCache($fastFrontend, array(
-            "prefix" => 'cache',
-            "host" => "localhost",
-            "port" => "11211"
-        )),
-        new FileCache($slowFrontend, array(
-            "prefix" => 'cache',
-            "cacheDir" => "../app/cache/"
-        ))
-    ));
+    $cache = new Multiple(
+        array(
+            new ApcCache(
+                $ultraFastFrontend,
+                array(
+                    "prefix" => 'cache',
+                )
+            ),
+            new MemcacheCache(
+                $fastFrontend,
+                array(
+                    "prefix" => 'cache',
+                    "host"   => "localhost",
+                    "port"   => "11211"
+                )
+            ),
+            new FileCache(
+                $slowFrontend,
+                array(
+                    "prefix"   => 'cache',
+                    "cacheDir" => "../app/cache/"
+                )
+            )
+        )
+    );
 
     // Save, saves in every backend
     $cache->save('my-key', $data);
@@ -385,7 +440,7 @@ This backend will store cached content on a memcached server. The available opti
 +------------+-------------------------------------------------------------+
 | port       | memcached port                                              |
 +------------+-------------------------------------------------------------+
-| persistent | create a persitent connection to memcached?                 |
+| persistent | create a persistent connection to memcached?                |
 +------------+-------------------------------------------------------------+
 
 APC バックエンド オプション

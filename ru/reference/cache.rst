@@ -1,5 +1,6 @@
 Улучшение производительности с помощью Кэширования
 ==================================================
+
 Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, дающий быстрый доступ к часто используемым или уже сгенерированным данным.
 :doc:`Phalcon\\Cache <cache>` написан на языке C, поэтому он предоставляет высокую производительность и пониженный расход ресурсов.
 Этот класс использует два компонента: frontend и backend. Frontend компонент является входным источником или интерфейсом, в то время
@@ -39,16 +40,25 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
+    use Phalcon\Tag;
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Output as FrontOutput;
+
     // Создание frontend для выходных данных. Кэшируем файлы на 2 дня
-    $frontCache = new Phalcon\Cache\Frontend\Output(array(
-        "lifetime" => 172800
-    ));
+    $frontCache = new FrontOutput(
+        array(
+            "lifetime" => 172800
+        )
+    );
 
     // Создаем компонент, который будем кэшировать из "Выходных данных" в "Файл"
     // Устанавливаем папку для кэшируемых файлов - важно указать символ "/" в конце пути
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
-        "cacheDir" => "../app/cache/"
-    ));
+    $cache = new BackFile(
+        $frontCache,
+        array(
+            "cacheDir" => "../app/cache/"
+        )
+    );
 
     // Получить/Создать кэшируемый файл ../app/cache/my-cache.html
     $content = $cache->start("my-cache.html");
@@ -60,7 +70,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
         echo date("r");
 
         // Генерируем ссылку на "регистрацию"
-        echo Phalcon\Tag::linkTo(
+        echo Tag::linkTo(
             array(
                 "user/signup",
                 "Sign Up",
@@ -95,25 +105,37 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
     // Кэшируем данные на 2 дня
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 172800
-    ));
+    $frontCache = new FrontData(
+        array(
+            "lifetime" => 172800
+        )
+    );
 
     // Создаем компонент, который будем кэшировать из "Выходных данных" в "Файл"
     // Устанавливаем папку для кэшируемых файлов - важно сохранить символ "/" в конце пути
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
-        "cacheDir" => "../app/cache/"
-    ));
+    $cache = new BackFile(
+        $frontCache,
+        array(
+            "cacheDir" => "../app/cache/"
+        )
+    );
 
     // Пробуем получить закэшированные записи
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует
         // Получим данные из БД
-        $robots = Robots::find(array("order" => "id"));
+        $robots = Robots::find(
+            array(
+                "order" => "id"
+            )
+        );
 
         // Сохраняем их в кэше
         $cache->save($cacheKey, $robots);
@@ -132,26 +154,43 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontData;
+    use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
+
     // Кэшируем данные на 1 час
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 3600
-    ));
+    $frontCache = new FrontData(
+        array(
+            "lifetime" => 3600
+        )
+    );
 
     // Создаем компонент, который будет кэшировать данные в Memcache
     // Настройки подключения к Memcache
-    $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
-        "host" => "localhost",
-        "port" => "11211"
-    ));
+    $cache = new BackMemCached(
+        $frontCache,
+        array(
+            "servers" => array(
+                array(
+                    "host"   => "127.0.0.1",
+                    "port"   => "11211",
+                    "weight" => "1"
+                )
+            )
+        )
+    );
 
     // Пробуем получить закэшированные записи
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует
         // Получим данные из БД
-        $robots = Robots::find(array("order" => "id"));
+        $robots = Robots::find(
+            array(
+                "order" => "id"
+            )
+        );
 
         // Сохраняем их в кэше
         $cache->save($cacheKey, $robots);
@@ -210,7 +249,6 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
         $cache->delete($key);
     }
 
-
 Проверяем наличие кэша
 ----------------------
 Существует возможность проверить наличие данных в кэше.
@@ -221,11 +259,9 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     if ($cache->exists("someKey")) {
         echo $cache->get("someKey");
-    }
-    else {
+    } else {
         echo "Данных в кэше не существует!";
     }
-
 
 Время жизни
 -----------
@@ -268,26 +304,6 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
         $cache->save($cacheKey, $robots, 3600);
     }
 
-Существуют некоторые различия в поведении backend компонентов. Например, файловый адаптер требует установку времени жизни при
-получении, в то время как APC при сохранении.
-
-Во избежание конфликтов можно использовать такую хитрость:
-
-.. code-block:: php
-
-    <?php
-
-    $lifetime = 3600;
-    $cacheKey = 'my.cache';
-
-    $robots = $cache->get($cacheKey, $lifetime);
-    if ($robots === null) {
-
-        $robots = "some robots";
-
-        $cache->save($cacheKey, $robots, $lifetime);
-    }
-
 Многоуровневое кэширование
 --------------------------
 Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность
@@ -298,33 +314,56 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
-    $ultraFastFrontend = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 3600
-    ));
+    use Phalcon\Cache\Multiple;
+    use Phalcon\Cache\Backend\Apc as ApcCache;
+    use Phalcon\Cache\Backend\File as FileCache;
+    use Phalcon\Cache\Frontend\Data as DataFrontend;
+    use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
-    $fastFrontend = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 86400
-    ));
+    $ultraFastFrontend = new DataFrontend(
+        array(
+            "lifetime" => 3600
+        )
+    );
 
-    $slowFrontend = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 604800
-    ));
+    $fastFrontend = new DataFrontend(
+        array(
+            "lifetime" => 86400
+        )
+    );
+
+    $slowFrontend = new DataFrontend(
+        array(
+            "lifetime" => 604800
+        )
+    );
 
     // Backends от самого быстрого до самого медленного
-    $cache = new \Phalcon\Cache\Multiple(array(
-        new Phalcon\Cache\Backend\Apc($ultraFastFrontend, array(
-            "prefix" => 'cache',
-        )),
-        new Phalcon\Cache\Backend\Memcache($fastFrontend, array(
-            "prefix" => 'cache',
-            "host" => "localhost",
-            "port" => "11211"
-        )),
-        new Phalcon\Cache\Backend\File($slowFrontend, array(
-            "prefix" => 'cache',
-            "cacheDir" => "../app/cache/"
-        ))
-    ));
+    $cache = new Multiple(
+        array(
+            new ApcCache(
+                $ultraFastFrontend,
+                array(
+                    "prefix" => 'cache',
+                )
+            ),
+            new MemcacheCache(
+                $fastFrontend,
+                array(
+                    "prefix" => 'cache',
+                    "host"   => "localhost",
+                    "port"   => "11211"
+                )
+            ),
+            new FileCache(
+                $slowFrontend,
+                array(
+                    "prefix"   => 'cache',
+                    "cacheDir" => "../app/cache/"
+                )
+            )
+        )
+    );
 
     // Сохраняем, сохраняется сразу во все адаптеры кэширования
     $cache->save('my-key', $data);
@@ -370,7 +409,6 @@ Backend Адаптеры
 +-----------+-------------------------------------------------+------------+------------------------+-----------------------------------------------------------------------------------+
 | XCache    | Сохроняет данные в XCache                       | XCache_    | `xcache extension`_    | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
 +-----------+-------------------------------------------------+------------+------------------------+-----------------------------------------------------------------------------------+
-
 
 Реализация собственных Backend адаптеров
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
