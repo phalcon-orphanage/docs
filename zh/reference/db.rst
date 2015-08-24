@@ -704,6 +704,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
+                        "primary"       => true,
                     )
                 ),
                 new Column(
