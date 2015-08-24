@@ -199,7 +199,7 @@ Database migrations support the following database column types:
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 | "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      | All              |
+| "referencedSchema"  | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 | "onDelete"          | If the foreign record is removed, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
