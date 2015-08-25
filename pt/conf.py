@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Phalcon'
-copyright = '2014, Phalcon Team and contributors'
+copyright = '2015, Phalcon Team and contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
