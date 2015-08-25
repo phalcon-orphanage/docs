@@ -1,10 +1,11 @@
 Tutorial 5: Customizing INVO
 ============================
+
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
 Composants utilisateurs
----------------
+-----------------------
 Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Twitter Bootstrap`_.
 Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté).
 Par exemple dans le coin en haut à droite, les liens "Log in/Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter)
@@ -20,7 +21,6 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
 
     class Elements extends Component
     {
-
         public function getMenu()
         {
             // ...
@@ -30,7 +30,6 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
         {
             // ...
         }
-
     }
 
 Cette classe étend de Phalcon\\Mvc\\User\\Component,il n'est pas imposé d'étendre un composant avec cette classe, mais
@@ -41,14 +40,14 @@ Maintenant enregistrons cette classe au conteneur de service :
 
     <?php
 
-    // Register an user component
+    // Register a user component
     $di->set('elements', function () {
         return new Elements();
     });
 
 Tout comme les contrôleurs, les plugins et les composants à l'intérieur des vues, ce composant à aussi accès aux services requis dans le conteneur en accédant juste à l'attribut.
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -59,16 +58,16 @@ Tout comme les contrôleurs, les plugins et les composants à l'intérieur des v
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">INVO</a>
-                <?php echo $this->elements->getMenu() ?>
+                {{ elements.getMenu() }}
             </div>
         </div>
     </div>
 
     <div class="container">
-        <?php echo $this->getContent() ?>
+        {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 
@@ -76,10 +75,10 @@ La partie la plus importante est :
 
 .. code-block:: html+php
 
-    <?php echo $this->elements->getMenu() ?>
+    {{ elements.getMenu() }}
 
 Changer le titre de manière dynamique
-------------------------------
+-------------------------------------
 Quand vous naviguez sur le site, vous remarquerez que le titre change d'une page à l'autre.
 Cela est réalisé dans l'"initializer" de chaque contrôleur.
 
@@ -89,16 +88,14 @@ Cela est réalisé dans l'"initializer" de chaque contrôleur.
 
     class ProductsController extends ControllerBase
     {
-
         public function initialize()
         {
             // Set the document title
-            Tag::setTitle('Manage your product types');
+            $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
         // ...
-
     }
 
 Notez que la méthode parent::initialize() est aussi appelée, cela ajoute plus de donnée à la suite du titre:
@@ -107,27 +104,27 @@ Notez que la méthode parent::initialize() est aussi appelée, cela ajoute plus 
 
     <?php
 
-    class ControllerBase extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ControllerBase extends Controller
+    {
         protected function initialize()
         {
             // Prepend the application name to the title
-            Phalcon\Tag::prependTitle('INVO | ');
+            $this->tag->prependTitle('INVO | ');
         }
 
         // ...
     }
 
-Enfin, le titre est affiché dans la vue principale (app/views/index.phtml) :
+Enfin, le titre est affiché dans la vue principale (app/views/index.volt) :
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag as Tag ?>
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo Tag::getTitle() ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <!-- ... -->
     </html>

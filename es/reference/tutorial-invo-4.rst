@@ -1,5 +1,6 @@
 Tutorial 5: Customizing INVO
 ============================
+
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
@@ -20,7 +21,6 @@ Esta parte de la aplicación es implementada en el componente de usuario "Elemen
 
     class Elements extends Component
     {
-
         public function getMenu()
         {
             // ...
@@ -30,7 +30,6 @@ Esta parte de la aplicación es implementada en el componente de usuario "Elemen
         {
             // ...
         }
-
     }
 
 Esta clase extiende de Phalcon\\Mvc\\User\\Component, no es obligatorio que los componentes de usuario extiendan de esa clase,
@@ -50,7 +49,7 @@ Así como los controladores, plugins o componentes, dentro de una vista, este co
 acceder a los servicios de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
 servicio previamente registrado:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -61,16 +60,16 @@ servicio previamente registrado:
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">INVO</a>
-                <?php echo $this->elements->getMenu() ?>
+                {{ elements.getMenu() }}
             </div>
         </div>
     </div>
 
     <div class="container">
-        <?php echo $this->getContent() ?>
+        {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 
@@ -78,7 +77,7 @@ La parte relevante es:
 
 .. code-block:: html+php
 
-    <?php echo $this->elements->getMenu() ?>
+    {{ elements.getMenu() }}
 
 Cambiar el título dinámicamente
 -------------------------------
@@ -91,16 +90,14 @@ donde estamos trabajando actualmente. Esto se logra en el método inicializador 
 
     class ProductsController extends ControllerBase
     {
-
         public function initialize()
         {
             // Establecer el título de la página
-            Tag::setTitle('Manage your product types');
+            $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
         // ...
-
     }
 
 El método parent::initialize() en la clase padre se llama igualmente, esté agrega más información al título:
@@ -109,27 +106,27 @@ El método parent::initialize() en la clase padre se llama igualmente, esté agr
 
     <?php
 
-    class ControllerBase extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ControllerBase extends Controller
+    {
         protected function initialize()
         {
             // Agregar el nombre de la aplicación al principio del título
-            Phalcon\Tag::prependTitle('INVO | ');
+            $this->tag->prependTitle('INVO | ');
         }
 
         // ...
     }
 
-Finalmente, el título se imprime en la vista principal (app/views/index.phtml):
+Finalmente, el título se imprime en la vista principal (app/views/index.volt):
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag as Tag ?>
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo Tag::getTitle() ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <!-- ... -->
     </html>

@@ -1,5 +1,6 @@
 Tutorial 5: Customizing INVO
 ============================
+
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
@@ -19,7 +20,6 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     class Elements extends Component
     {
-
         public function getMenu()
         {
             // ...
@@ -29,7 +29,6 @@ This part of the application is implemented in the component "Elements" (app/lib
         {
             // ...
         }
-
     }
 
 This class extends the Phalcon\\Mvc\\User\\Component. It is not imposed to extend a component with this class, but
@@ -48,7 +47,7 @@ our first user component in the services container:
 As controllers, plugins or components within a view, this component also has access to the services registered
 in the container and by just accessing an attribute with the same name as a previously registered service:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -78,7 +77,6 @@ The important part is:
 
     {{ elements.getMenu() }}
 
-
 Changing the Title Dynamically
 ------------------------------
 When you browse between one option and another will see that the title changes dynamically indicating where
@@ -90,7 +88,6 @@ we are currently working. This is achieved in each controller initializer:
 
     class ProductsController extends ControllerBase
     {
-
         public function initialize()
         {
             // Set the document title
@@ -99,7 +96,6 @@ we are currently working. This is achieved in each controller initializer:
         }
 
         // ...
-
     }
 
 Note, that the method parent::initialize() is also called, it adds more data to the title:
@@ -112,7 +108,6 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
     class ControllerBase extends Controller
     {
-
         protected function initialize()
         {
             // Prepend the application name to the title
@@ -122,14 +117,14 @@ Note, that the method parent::initialize() is also called, it adds more data to 
         // ...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+Finally, the title is printed in the main view (app/views/index.volt):
 
 .. code-block:: html+php
 
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo $this->tag->getTitle() ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <!-- ... -->
     </html>

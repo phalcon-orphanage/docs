@@ -1,5 +1,6 @@
 Tutorial 5: Customizing INVO
 ============================
+
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
@@ -19,7 +20,6 @@ and changing the title according to the controller executed.
 
     class Elements extends Component
     {
-
         public function getMenu()
         {
             // ...
@@ -29,7 +29,6 @@ and changing the title according to the controller executed.
         {
             // ...
         }
-
     }
 
 Этот класс расширяет Phalcon\\Mvc\\User\\Component. Это, в общем, необязательно, но помогает быстро получать
@@ -47,7 +46,7 @@ and changing the title according to the controller executed.
 Как и контроллеры, плагины и компоненты в представлениях, этот компонент также получит доступ к сервисам,
 зарегистрированным в контейнере, и сам будет доступен как атрибут с тем именем, с каким мы его зарегистрировали:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -58,16 +57,16 @@ and changing the title according to the controller executed.
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">INVO</a>
-                <?php echo $this->elements->getMenu() ?>
+                {{ elements.getMenu() }}
             </div>
         </div>
     </div>
 
     <div class="container">
-        <?php echo $this->getContent() ?>
+        {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 
@@ -75,7 +74,7 @@ and changing the title according to the controller executed.
 
 .. code-block:: html+php
 
-    <?php echo $this->elements->getMenu() ?>
+    {{ elements.getMenu() }}
 
 Динамическое изменениие заголовка
 ---------------------------------
@@ -88,7 +87,6 @@ and changing the title according to the controller executed.
 
     class ProductsController extends ControllerBase
     {
-
         public function initialize()
         {
             // Устанавливаем заголовок документа
@@ -97,7 +95,6 @@ and changing the title according to the controller executed.
         }
 
         // ...
-
     }
 
 Заметьте, что метод parent::initialize() также вызывается и может добавить в заголовок дополнительные данные:
@@ -106,9 +103,10 @@ and changing the title according to the controller executed.
 
     <?php
 
-    class ControllerBase extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ControllerBase extends Controller
+    {
         protected function initialize()
         {
             // Дописываем в начало заголовка название приложения
@@ -118,14 +116,14 @@ and changing the title according to the controller executed.
         // ...
     }
 
-Вот так этот заголовок выводится в главном представлении (app/views/index.phtml):
+Вот так этот заголовок выводится в главном представлении (app/views/index.volt):
 
 .. code-block:: html+php
 
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo $this->tag->getTitle() ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <!-- ... -->
     </html>

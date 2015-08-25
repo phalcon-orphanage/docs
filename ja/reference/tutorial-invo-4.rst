@@ -1,5 +1,6 @@
 Tutorial 5: Customizing INVO
 ============================
+
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
@@ -17,7 +18,6 @@ and changing the title according to the controller executed.
 
     class Elements extends Component
     {
-
         public function getMenu()
         {
             // ...
@@ -27,7 +27,6 @@ and changing the title according to the controller executed.
         {
             // ...
         }
-
     }
 
 このクラスは Phalcon\\Mvc\\User\\Component を継承しています。このクラスのコンポーネントを継承することは必須ではありませんが、アプリケーションのサービスに素早くアクセスする助けになります。それでは、このクラスをサービスコンテナに登録します:
@@ -36,7 +35,7 @@ and changing the title according to the controller executed.
 
     <?php
 
-    // Register an user component
+    // Register a user component
     $di->set('elements', function () {
         return new Elements();
     });
@@ -44,7 +43,7 @@ and changing the title according to the controller executed.
 As controllers, plugins or components within a view, this component also has access to the services registered
 in the container and by just accessing an attribute with the same name as a previously registered service:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -55,16 +54,16 @@ in the container and by just accessing an attribute with the same name as a prev
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">INVO</a>
-                <?php echo $this->elements->getMenu() ?>
+                {{ elements.getMenu() }}
             </div>
         </div>
     </div>
 
     <div class="container">
-        <?php echo $this->getContent() ?>
+        {{ content() }}
         <hr>
         <footer>
-            <p>&copy; Company 2012</p>
+            <p>&copy; Company 2015</p>
         </footer>
     </div>
 
@@ -72,7 +71,7 @@ The important part is:
 
 .. code-block:: html+php
 
-    <?php echo $this->elements->getMenu() ?>
+    {{ elements.getMenu() }}
 
 タイトルの動的な変更
 ------------------------------
@@ -85,7 +84,6 @@ we are currently working. This is achieved in each controller initializer:
 
     class ProductsController extends ControllerBase
     {
-
         public function initialize()
         {
             // Set the document title
@@ -94,7 +92,6 @@ we are currently working. This is achieved in each controller initializer:
         }
 
         // ...
-
     }
 
 Note, that the method parent::initialize() is also called, it adds more data to the title:
@@ -103,9 +100,10 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
     <?php
 
-    class ControllerBase extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ControllerBase extends Controller
+    {
         protected function initialize()
         {
             // Prepend the application name to the title
@@ -115,14 +113,14 @@ Note, that the method parent::initialize() is also called, it adds more data to 
         // ...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+Finally, the title is printed in the main view (app/views/index.volt):
 
 .. code-block:: html+php
 
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo $this->tag->getTitle() ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <!-- ... -->
     </html>
