@@ -407,9 +407,8 @@ Then initialize and use your own validator:
     }
 
 Avoid validate empty values
-===========================
-You can pass the option 'allowEmpty' to all the built-in validators to avoid the
-validation to be performed if an empty value is passed:
+---------------------------
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 .. code-block:: php
 

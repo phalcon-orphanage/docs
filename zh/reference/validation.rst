@@ -339,7 +339,7 @@ Phalcon的验证组件中内置了一些验证器：
     }
 
 取消验证（Cancelling Validations）
-==================================
+----------------------
 默认所有的验证器都会被执行，不管验证成功与否。 我们可以通过设置 cancelOnFail 参数为 true 来指定某个验证器验证失败时中止以后的所有验证：
 
 .. code-block:: php
@@ -400,9 +400,8 @@ Phalcon的验证组件中内置了一些验证器：
     }
 
 Avoid validate empty values
-===========================
-You can pass the option 'allowEmpty' to all the built-in validators to avoid the
-validation to be performed if an empty value is passed:
+---------------------------
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 .. code-block:: php
 

@@ -295,8 +295,7 @@ component or use the built-in ones.
 
 バリデーション・イベント
 -----------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
-perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
+When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
 cancelled:
 
 .. code-block:: php
@@ -345,7 +344,7 @@ cancelled:
     }
 
 バリデーションのキャンセル
-=====================
+----------------------
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:
 
@@ -408,9 +407,8 @@ If you are creating custom validators you can dynamically stop the validation ch
     }
 
 Avoid validate empty values
-===========================
-You can pass the option 'allowEmpty' to all the built-in validators to avoid the
-validation to be performed if an empty value is passed:
+---------------------------
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 .. code-block:: php
 
