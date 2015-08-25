@@ -37,7 +37,10 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
 在上面的例子中，我们发现注释块中除了注释单元，还可以有注释内容，一个注释单元语法如下：
 
-@注释名称[(参数1, 参数2, ...)]
+.. code-block::
+
+    @注释名称
+    @注释名称(参数1, 参数2, ...)
 
 当然，一个注释单元可以放在注释内容里的任意位置：
 
@@ -198,7 +201,9 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($eventsManager);
+
         return $dispatcher;
     };
 
@@ -208,6 +213,8 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\User\Plugin;
 
     /**
@@ -218,7 +225,7 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
         /**
          * 这个事件在dispatcher中的每个路由被执行前执行
          */
-        public function beforeExecuteRoute($event, $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // 解析目前访问的控制的方法的注释
             $annotations = $this->annotations->getMethod(
@@ -286,7 +293,7 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
 
 Private/Public areas with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 .. code-block:: php
 

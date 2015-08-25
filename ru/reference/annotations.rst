@@ -37,7 +37,10 @@
 
 В примере выше мы показали аннотации в комментариях, имеющие следующий синтаксис:
 
-@Annotation-Name[(param1, param2, ...)]
+.. code-block::
+
+    @Annotation-Name
+    @Annotation-Name(param1, param2, ...)
 
 Аннотации также могут быть помещены в любую часть блока документации:
 
@@ -202,7 +205,9 @@
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($eventsManager);
+
         return $dispatcher;
     };
 
@@ -212,6 +217,8 @@ CacheEnablerPlugin это плагин, который перехватывае�
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\User\Plugin;
 
     /**
@@ -223,7 +230,7 @@ CacheEnablerPlugin это плагин, который перехватывае�
         /**
          * Это событие запускается перед запуском каждого маршрута в диспетчере
          */
-        public function beforeExecuteRoute($event, $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Разбор аннотаций в текущем запущенном методе
             $annotations = $this->annotations->getMethod(
@@ -291,7 +298,7 @@ CacheEnablerPlugin это плагин, который перехватывае�
 
 Private/Public areas with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 .. code-block:: php
 

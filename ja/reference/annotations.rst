@@ -36,7 +36,10 @@
 
 上記サンプルのコメント内にいくつかのアノテーションが見られます。アノテーションのシンタックスは以下のようになります :
 
-@Annotation-Name[(param1, param2, ...)]
+.. code-block::
+
+    @Annotation-Name
+    @Annotation-Name(param1, param2, ...)
 
 また、アノテーションはコメントブロックの一部として配置することができます：
 
@@ -196,7 +199,9 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($eventsManager);
+
         return $dispatcher;
     };
 
@@ -206,6 +211,8 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\User\Plugin;
 
     /**
@@ -217,7 +224,7 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
         /**
          * This event is executed before every route is executed in the dispatcher
          */
-        public function beforeExecuteRoute($event, $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // 現在実行中のメソッドのアノテーションをパースする
             $annotations = $this->annotations->getMethod(
@@ -285,7 +292,7 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
 
 Private/Public areas with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 .. code-block:: php
 

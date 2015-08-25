@@ -35,11 +35,14 @@ Annotations are read from docblocks in classes, methods and properties. An annot
         }
     }
 
-In the above example we find some annotations in the comments, an annotation has the following syntax:
+An annotation has the following syntax:
 
-@Annotation-Name[(param1, param2, ...)]
+.. code-block::
 
-Also, an annotation could be placed at any part of a docblock:
+    @Annotation-Name
+    @Annotation-Name(param1, param2, ...)
+
+Also, an annotation can be placed at any part of a docblock:
 
 .. code-block:: php
 
@@ -117,7 +120,7 @@ The annotation reading process is very fast, however, for performance reasons it
 Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
 :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
-only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
+only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are
 other adapters to swap out when the application is in production stage.
 
 Types of Annotations
@@ -183,8 +186,8 @@ Next we will explain some practical examples of annotations in PHP applications:
 
 Cache Enabler with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's pretend we've the following controller and the developer wants to create a plugin that automatically starts the
-cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
+Let's pretend we've created the following controller and you want to create a plugin that automatically starts the
+cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service
 to be notified when a route is executed:
 
 .. code-block:: php
@@ -202,7 +205,9 @@ to be notified when a route is executed:
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($eventsManager);
+
         return $dispatcher;
     };
 
@@ -212,6 +217,8 @@ CacheEnablerPlugin is a plugin that intercepts every action executed in the disp
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\User\Plugin;
 
     /**
@@ -223,7 +230,7 @@ CacheEnablerPlugin is a plugin that intercepts every action executed in the disp
         /**
          * This event is executed before every route is executed in the dispatcher
          */
-        public function beforeExecuteRoute($event, $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Parse the annotations in the method currently executed
             $annotations = $this->annotations->getMethod(
@@ -291,7 +298,7 @@ Now, we can use the annotation in a controller:
 
 Private/Public areas with Annotations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the ACL what areas belongs to the admnistrative areas or not using annotations
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 .. code-block:: php
 
