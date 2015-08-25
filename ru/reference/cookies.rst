@@ -59,7 +59,9 @@
 
     $di->set('cookies', function () {
         $cookies = new Cookies();
+
         $cookies->useEncryption(false);
+
         return $cookies;
     });
 
@@ -73,7 +75,9 @@
 
     $di->set('crypt', function () {
         $crypt = new Crypt();
+
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Используйте свой собственный ключ!
+
         return $crypt;
     });
 
