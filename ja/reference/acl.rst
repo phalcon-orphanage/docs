@@ -1,5 +1,5 @@
-アクセス制御リスト ACL
-===============
+アクセス制御リスト (ACL)
+=================
 
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` はACLだけでなく、それらに付随するアクセス権を簡単かつ軽量に管理する機能を提供します。 `Access Control Lists`_ (ACL) は、アプリケーションがリクエストによるその領域や背後にあるオブジェクトへのアクセスを制御することを可能にします。あなたがその概念を十分に理解できるよう、ACLの方法論についての詳細を読むことをお勧めします。
 
@@ -78,7 +78,7 @@ ACLにロールの追加
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-allowメソッドは特定のロールが特定のリソースへのアクセス権を与えられたことを明示します。denyメソッドはその反対です。
+:code:`allow()`メソッドは特定のロールが特定のリソースへのアクセス権を与えられたことを明示します。:code:`deny()`メソッドはその反対です。
 
 ACLの照会
 ---------------
@@ -148,6 +148,8 @@ ACLリストのシリアライズ
     } else {
         echo "Access denied :(";
     }
+
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
 ACLイベント
 -------

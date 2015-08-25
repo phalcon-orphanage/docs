@@ -1,5 +1,5 @@
-Access Control Lists ACL
-========================
+Access Control Lists (ACL)
+==========================
 
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` provides an easy and lightweight management of ACLs as well as the permissions
 attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying
@@ -39,7 +39,8 @@ A role is an object that can or cannot access certain resources in the access li
 
     use Phalcon\Acl\Role;
 
-    // Create some roles
+    // Create some roles.
+    // The first parameter is the name, the second parameter is an optional description.
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
@@ -70,7 +71,7 @@ Resources are objects where access is controlled. Normally in MVC applications r
 
 Defining Access Controls
 ------------------------
-Now we've roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level "allow" or "deny".
+Now we have roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking into consideration your default access level "allow" or "deny".
 
 .. code-block:: php
 
@@ -81,7 +82,7 @@ Now we've roles and resources. It's time to define the ACL i.e. which roles can 
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-The allow method designates that a particular role has granted access to a particular resource. The deny method does the opposite.
+The :code:`allow()` method designates that a particular role has granted access to a particular resource. The :code:`deny()` method does the opposite.
 
 Querying an ACL
 ---------------
@@ -98,7 +99,7 @@ Once the list has been completely defined. We can query it to check if a role ha
 
 Roles Inheritance
 -----------------
-You can build complex role structures using the inheritance that :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list.
+You can build complex role structures using the inheritance that :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 .. code-block:: php
 
@@ -152,6 +153,8 @@ so that they can be loaded at will without having to redefine the whole list. Yo
     } else {
         echo "Access denied :(";
     }
+
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
 ACL Events
 ----------

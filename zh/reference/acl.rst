@@ -39,6 +39,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
     use Phalcon\Acl\Role;
 
     // 创建角色
+    // The first parameter is the name, the second parameter is an optional description.
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
@@ -153,6 +154,8 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
     } else {
         echo "Access denied :(";
     }
+
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
 ACL 事件（ACL Events）
 ----------------------

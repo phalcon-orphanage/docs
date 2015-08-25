@@ -45,7 +45,8 @@
 
     use Phalcon\Acl\Role;
 
-    // Создаем роли
+    // Создаем роли.
+    // The first parameter is the name, the second parameter is an optional description.
     $roleAdmins = new Role("Administrators", "Super-User role");
     $roleGuests = new Role("Guests");
 
@@ -68,8 +69,10 @@
 
     <?php
 
+    use Phalcon\Acl\Resource;
+
     // Определяем ресурс "Customers"
-    $customersResource = new \Phalcon\Acl\Resource("Customers");
+    $customersResource = new Resource("Customers");
 
     // Добавим ресурс "Customers" с несколькими операциями
     $acl->addResource($customersResource, "search");
@@ -114,9 +117,13 @@
 
     <?php
 
+    use Phalcon\Acl\Role;
+
+    // ...
+
     // Создаем несколько ролей
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // Добавляем роль "Guests"
     $acl->addRole($roleGuests);
@@ -159,6 +166,8 @@
     } else {
         echo "Доступ запрещен :(";
     }
+
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
 События ACL
 -----------
