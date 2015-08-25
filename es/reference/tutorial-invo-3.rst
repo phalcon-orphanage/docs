@@ -1,5 +1,6 @@
 Tutorial 4: Using CRUDs
 =======================
+
 Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
 INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
 using forms, validations, paginators and more.
@@ -13,16 +14,18 @@ usando un básico y común CRUD_ (Create, Read, Update and Delete). Cada CRUD co
 
     invo/
         app/
-            app/controllers/
+            controllers/
                 ProductsController.php
-            app/models/
+            models/
                 Products.php
-            app/views/
+            forms/
+                ProductsForm.php
+            views/
                 products/
-                    edit.phtml
-                    index.phtml
-                    new.phtml
-                    search.phtml
+                    edit.volt
+                    index.volt
+                    new.volt
+                    search.volt
 
 Cada controlador implementa las siguientes acciones:
 
@@ -32,7 +35,6 @@ Cada controlador implementa las siguientes acciones:
 
     class ProductsController extends ControllerBase
     {
-
         /**
          * La acción de inicio, permite buscar productos
          */
@@ -89,7 +91,6 @@ Cada controlador implementa las siguientes acciones:
         {
             // ...
         }
-
     }
 
 Formulario de Buscar
@@ -109,27 +110,8 @@ su búsqueda por este campo.
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->productTypes = ProductTypes::find();
+        $this->view->form               = new ProductsForm;
     }
-
-Todos los tipos de productos son consultados y pasados a la vista como una variable local $productTypes. Luego,
-en la vista (app/views/index.phtml) mostramos una etiqueta "select" llena con esos datos:
-
-.. code-block:: html+php
-
-    <div>
-        <label for="product_types_id">Product Type</label>
-        <?php echo Tag::select(array(
-            "product_types_id",
-            $productTypes,
-            "using" => array("id", "name"),
-            "useDummy" => true
-        )) ?>
-    </div>
-
-Fijate que $productTypes contiene todos los datos necesarios para llenar la etiqueta SELECT usando Phalcon\\Tag::select.
-Una vez el formulario es enviado, la acción "search" es ejecutada en el controlado realizando la búsqueda basada en los parámetros entrados
-por el usuario.
 
 An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
 This form defines the fields that are visible to the user:
@@ -148,13 +130,11 @@ This form defines the fields that are visible to the user:
 
     class ProductsForm extends Form
     {
-
         /**
          * Initialize the products form
          */
         public function initialize($entity = null, $options = array())
         {
-
             if (!isset($options['edit'])) {
                 $element = new Text("id");
                 $this->add($element->setLabel("Id"));
@@ -165,32 +145,46 @@ This form defines the fields that are visible to the user:
             $name = new Text("name");
             $name->setLabel("Name");
             $name->setFilters(array('striptags', 'string'));
-            $name->addValidators(array(
-                new PresenceOf(array(
-                    'message' => 'Name is required'
-                ))
-            ));
+            $name->addValidators(
+                array(
+                    new PresenceOf(
+                        array(
+                            'message' => 'Name is required'
+                        )
+                    )
+                )
+            );
             $this->add($name);
 
-            $type = new Select('profilesId', ProductTypes::find(), array(
-                'using'      => array('id', 'name'),
-                'useEmpty'   => true,
-                'emptyText'  => '...',
-                'emptyValue' => ''
-            ));
+            $type = new Select(
+                'profilesId',
+                ProductTypes::find(),
+                array(
+                    'using'      => array('id', 'name'),
+                    'useEmpty'   => true,
+                    'emptyText'  => '...',
+                    'emptyValue' => ''
+                )
+            );
             $this->add($type);
 
             $price = new Text("price");
             $price->setLabel("Price");
             $price->setFilters(array('float'));
-            $price->addValidators(array(
-                new PresenceOf(array(
-                    'message' => 'Price is required'
-                )),
-                new Numericality(array(
-                    'message' => 'Price is required'
-                ))
-            ));
+            $price->addValidators(
+                array(
+                    new PresenceOf(
+                        array(
+                            'message' => 'Price is required'
+                        )
+                    ),
+                    new Numericality(
+                        array(
+                            'message' => 'Price is required'
+                        )
+                    )
+                )
+            );
             $this->add($price);
         }
     }
@@ -212,11 +206,15 @@ Every element follows almost the same structure:
     $name->setFilters(array('striptags', 'string'));
 
     // Apply this validators
-    $name->addValidators(array(
-        new PresenceOf(array(
-            'message' => 'Name is required'
-        ))
-    ));
+    $name->addValidators(
+        array(
+            new PresenceOf(
+                array(
+                    'message' => 'Name is required'
+                )
+            )
+        )
+    );
 
     // Add the element to the form
     $this->add($name);
@@ -234,12 +232,16 @@ Other elements are also used in this form:
 
     // Add a HTML Select (list) to the form
     // and fill it with data from "product_types"
-    $type = new Select('profilesId', ProductTypes::find(), array(
-        'using'      => array('id', 'name'),
-        'useEmpty'   => true,
-        'emptyText'  => '...',
-        'emptyValue' => ''
-    ));
+    $type = new Select(
+        'profilesId',
+        ProductTypes::find(),
+        array(
+            'using'      => array('id', 'name'),
+            'useEmpty'   => true,
+            'emptyText'  => '...',
+            'emptyValue' => ''
+        )
+    );
 
 Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select.
 Once the form is passed to the view, it can be rendered and presented to the user:
@@ -328,7 +330,6 @@ otro usamos el componente :doc:`Request <request>`:
      */
     public function searchAction()
     {
-
         if ($this->request->isPost()) {
             // Crear las condiciones de búsqueda
         } else {
@@ -336,7 +337,6 @@ otro usamos el componente :doc:`Request <request>`:
         }
 
         // ...
-
     }
 
 Con la ayuda de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, podemos crear una búsqueda
@@ -346,7 +346,7 @@ de manera inteligente basada en los tipos de datos enviados en el formulario:
 
     <?php
 
-    $query = Criteria::fromInput($this->di, "Products", $_POST);
+    $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
 
 Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y los toma en cuenta para crear el criterio de búsqueda
 
@@ -387,11 +387,17 @@ Supongamos que retornó registros, entonces creamos un páginador para navegar f
 
     <?php
 
-    $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    // Data to paginate
-        "limit" => 5,           // Rows per page
-        "page" => $numberPage   // Active page
-    ));
+    use Phalcon\Paginator\Adapter\Model as Paginator;
+
+    // ...
+
+    $paginator = new Paginator(
+        array(
+            "data"  => $products,  // Data to paginate
+            "limit" => 5,          // Rows per page
+            "page"  => $numberPage // Active page
+        )
+    );
 
     // Obtener la página activa
     $page = $paginator->getPaginate();
@@ -404,21 +410,176 @@ Finalmente pasamos la página devuelta a la vista:
 
     $this->view->page = $page;
 
-En la vista (app/views/products/search.phtml), recorremos los resultados correspondientes de la página actual:
+En la vista (app/views/products/search.volt), recorremos los resultados correspondientes de la página actual:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
+
+    {% for product in page.items %}
+      {% if loop.first %}
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Product Type</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+        <tbody>
+      {% endif %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.getProductTypes().name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+      </tr>
+      {% if loop.last %}
+      </tbody>
+        <tbody>
+          <tr>
+            <td colspan="7">
+              <div>
+                {{ link_to("products/search", 'First') }}
+                {{ link_to("products/search?page=" ~ page.before, 'Previous') }}
+                {{ link_to("products/search?page=" ~ page.next, 'Next') }}
+                {{ link_to("products/search?page=" ~ page.last, 'Last') }}
+                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {% endif %}
+    {% else %}
+      No products are recorded
+    {% endfor %}
+
+There are many things in the above example that worth detailing. First of all, active items
+in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+
+.. code-block:: html+jinja
+
+    {% for product in page.items %}
+
+Which in PHP is the same as:
+
+.. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
-        <tr>
-            <td><?= $product->id ?></td>
-            <td><?= $product->getProductTypes()->name ?></td>
-            <td><?= $product->name ?></td>
-            <td><?= $product->price ?></td>
-            <td><?= $product->active ?></td>
-            <td><?= Tag::linkTo("products/edit/" . $product->id, 'Edit') ?></td>
-            <td><?= Tag::linkTo("products/delete/" . $product->id, 'Delete') ?></td>
-        </tr>
-    <?php } ?>
+
+The whole 'for' block provides the following:
+
+    {% for product in page.items %}
+      {% if loop.first %}
+        Executed before the first product in the loop
+      {% endif %}
+        Executed for every product of page.items
+      {% if loop.last %}
+        Executed after the last product is loop
+      {% endif %}
+    {% else %}
+      Executed if page.items does not have any products
+    {% endfor %}
+
+Now you can go back to the view and find out what every block is doing. Every field
+in "product" is printed accordingly:
+
+.. code-block:: html+jinja
+
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.productTypes.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+      </tr>
+
+As we seen before using product.id is the same as in PHP as doing: $product->id,
+we made the same with product.name and so on. Other fields are rendered differently,
+for instance, let's focus in product.productTypes.name. To understand this part,
+we have to check the model Products (app/models/Products.php):
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    /**
+     * Products
+     */
+    class Products extends Model
+    {
+        // ...
+
+        /**
+         * Products initializer
+         */
+        public function initialize()
+        {
+            $this->belongsTo(
+                'product_types_id',
+                'ProductTypes',
+                'id',
+                array(
+                    'reusable' => true
+                )
+            );
+        }
+
+        // ...
+    }
+
+A model, can have a method called "initialize", this method is called once per request and it serves
+the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
+has a one-to-many relationship to another model called "ProductTypes".
+
+.. code-block:: php
+
+    <?php
+
+    $this->belongsTo(
+        'product_types_id',
+        'ProductTypes',
+        'id',
+        array(
+            'reusable' => true
+        )
+    );
+
+Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
+the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
+the product type by using:
+
+.. code-block:: html+jinja
+
+    <td>{{ product.productTypes.name }}</td>
+
+The field "price" is printed by its formatted using a Volt filter:
+
+.. code-block:: html+jinja
+
+    <td>{{ "%.2f"|format(product.price) }}</td>
+
+What in PHP would be:
+
+.. code-block:: php
+
+    <?php echo sprintf("%.2f", $product->price) ?>
+
+Printing whether the product is active or not uses a helper implemented in the model:
+
+.. code-block:: php
+
+    <td>{{ product.getActiveDetail() }}</td>
+
+This method is defined in the model:
 
 Creando y Actualizando Registros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -437,51 +598,92 @@ En el caso de creación, recuperamos los datos enviados y los asignamos a una nu
      */
     public function createAction()
     {
+        if (!$this->request->isPost()) {
+            return $this->forward("products/index");
+        }
 
-        $products = new Products();
+        $form    = new ProductsForm;
+        $product = new Products();
 
-        $products->id = $this->request->getPost("id", "int");
-        $products->product_types_id = $this->request->getPost("product_types_id", "int");
-        $products->name = $this->request->getPost("name", "striptags");
-        $products->price = $this->request->getPost("price", "double");
-        $products->active = $this->request->getPost("active");
+        $product->id               = $this->request->getPost("id", "int");
+        $product->product_types_id = $this->request->getPost("product_types_id", "int");
+        $product->name             = $this->request->getPost("name", "striptags");
+        $product->price            = $this->request->getPost("price", "double");
+        $product->active           = $this->request->getPost("active");
 
         // ...
-
     }
 
-Los datos son filtrados antes de ser asignados al objeto. Realizar este filtrado es opcional, el ORM escapa los datos
-de entrada y realiza conversiones de tipos de dato antes de guardar. Sin embargo, es recomendable para asegurarnos
-que la entrada no contiene caracteres basura ó invalidos.
-
-Al guardar, sabremos si los datos cumplen con las reglas de negocio y validaciones adicionales implementadas en el modulo Products:
+Remember the filters we defined in the Products form? Data is filtered before being assigned to the object $product.
+This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
 
 .. code-block:: php
 
     <?php
 
-    /**
-     * Creates a product based on the data entered in the "new" action
-     */
-    public function createAction()
-    {
+    // ...
 
-        // ...
+    $name = new Text("name");
+    $name->setLabel("Name");
 
-        if (!$products->create()) {
+    // Filters for name
+    $name->setFilters(array('striptags', 'string'));
 
-            // Guardar falló, mostrar los mensajes
-            foreach ($products->getMessages() as $message) {
-                $this->flash->error($message);
-            }
+    // Validators for name
+    $name->addValidators(
+        array(
+            new PresenceOf(
+                array(
+                    'message' => 'Name is required'
+                )
+            )
+        )
+    );
 
-            return $this->forward("products/new");
-        } else {
-            $this->flash->success("Product was created successfully");
-            return $this->forward("products/index");
+    $this->add($name);
+
+When saving we'll know whether the data conforms to the business rules and validations implemented
+in the form ProductsForm (app/forms/ProductsForm.php):
+
+.. code-block:: php
+
+    <?php
+
+    // ...
+
+    $form    = new ProductsForm;
+    $product = new Products();
+
+    // Validate the input
+    $data = $this->request->getPost();
+    if (!$form->isValid($data, $product)) {
+        foreach ($form->getMessages() as $message) {
+            $this->flash->error($message);
+        }
+        return $this->forward('products/new');
+    }
+
+Finally, if the form does not return any validation message we can save the product instance:
+
+.. code-block:: php
+
+    <?php
+
+    // ...
+
+    if ($product->save() == false) {
+        // Guardar falló, mostrar los mensajes
+        foreach ($product->getMessages() as $message) {
+            $this->flash->error($message);
         }
 
+        return $this->forward('products/new');
     }
+
+    $form->clear();
+
+    $this->flash->success("Product was created successfully");
+    return $this->forward("products/index");
 
 Ahora, en el caso de la actualización, primero debemos presentar al usuario los datos correspondientes al registro editado:
 
@@ -494,17 +696,17 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
      */
     public function editAction($id)
     {
+        if (!$this->request->isPost()) {
 
-        // ...
+            $product = Products::findFirstById($id);
+            if (!$product) {
+                $this->flash->error("Product was not found");
 
-        $product = Products::findFirstById($id);
+                return $this->forward("products/index");
+            }
 
-        Tag::setDefault("id", $product->id);
-        Tag::setDefault("product_types_id", $product->product_types_id);
-        Tag::setDefault("name", $product->name);
-        Tag::setDefault("price", $product->price);
-        Tag::setDefault("active", $product->active);
-
+            $this->view->form = new ProductsForm($product, array('edit' => true));
+        }
     }
 
 El método "Tag::setDefault" nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
@@ -519,18 +721,43 @@ Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vue
      */
     public function saveAction()
     {
-
-        // ...
-
-        // Buscar el producto a actualizar
-        $product = Products::findFirstById($this->request->getPost("id"));
-        if (!$product) {
-            $this->flash->error("products does not exist " . $id);
+        if (!$this->request->isPost()) {
             return $this->forward("products/index");
         }
 
-        // ... asignar los valores al objeto y guardar
+        $id = $this->request->getPost("id", "int");
 
+        // Buscar el producto a actualizar
+        $product = Products::findFirstById($id);
+        if (!$product) {
+            $this->flash->error("Product does not exist");
+
+            return $this->forward("products/index");
+        }
+
+        $form = new ProductsForm;
+
+        $data = $this->request->getPost();
+        if (!$form->isValid($data, $product)) {
+            foreach ($form->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+
+            return $this->forward('products/new');
+        }
+
+        if ($product->save() == false) {
+            foreach ($product->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+
+            return $this->forward('products/new');
+        }
+
+        $form->clear();
+
+        $this->flash->success("Product was updated successfully");
+        return $this->forward("products/index");
     }
 
 We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
