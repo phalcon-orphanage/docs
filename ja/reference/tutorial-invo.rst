@@ -1,8 +1,9 @@
 チュートリアル 2: Introducing INVO
 ================================
+
 この第2のチュートリアルでは、より完全なアプリケーションを例にして説明し、Phalconを使用した開発について理解を深めます。INVOは、私達が制作したサンプルアプリケーションの1つです。INVOは小さなWebサイトで、ユーザーは送り状（invoice）を生成したり、顧客や製品を管理したりといったタスクを行うことができます。コードは Github_ からクローンすることができます。
 
-また、INVOのクライアントサイドは `Twitter Bootstrap`_ を使用して作られています。アプリケーションが送り状を生成しなくても、フレームワークの働きを理解するサンプルにはなります。
+また、INVOのクライアントサイドは `Bootstrap`_ を使用して作られています。アプリケーションが送り状を生成しなくても、フレームワークの働きを理解するサンプルにはなります。
 
 プロジェクト構造
 ------------------
@@ -12,16 +13,17 @@
 
     invo/
         app/
-            app/config/
-            app/controllers/
-            app/library/
-            app/models/
-            app/plugins/
-            app/views/
+            config/
+            controllers/
+            library/
+            forms/
+            models/
+            plugins/
+            views/
         public/
-            public/bootstrap/
-            public/css/
-            public/js/
+            bootstrap/
+            css/
+            js/
         schemas/
 
 ご存知のように、Phalconはアプリケーション開発に際して特定の構造を強制しません。このプロジェクトはシンプルなMVC構造を持ち、publicディレクトリをドキュメントルートとします。
@@ -47,8 +49,12 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
 
     <?php
 
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    // ...
+
     // 設定の読み込み
-    $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
+    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
 設定ファイルは以下の設定を含んでいます:
@@ -62,17 +68,14 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
     name     = invo
 
     [application]
-    controllersDir = /../app/controllers/
-    modelsDir      = /../app/models/
-    viewsDir       = /../app/views/
-    pluginsDir     = /../app/plugins/
-    libraryDir     = /../app/library/
+    controllersDir = app/controllers/
+    modelsDir      = app/models/
+    viewsDir       = app/views/
+    pluginsDir     = app/plugins/
+    formsDir       = app/forms/
+    libraryDir     = app/library/
     baseUri        = /invo/
 
-    ;[metadata]
-    ;adapter = "Apc"
-    ;suffix = my-suffix
-    ;lifetime = 3600
 
 Phalconには、定義済みの慣習的な設定は全くありません。セクション名を付けておくと、オプションを適切に構成する助けになります。このファイルには3つのセクションが含まれ、後で使用されます。
 
@@ -86,16 +89,66 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     $loader = new \Phalcon\Loader();
 
+    // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
         array(
-            $config->application->controllersDir,
-            $config->application->pluginsDir,
-            $config->application->libraryDir,
-            $config->application->modelsDir,
+            APP_PATH . $config->application->controllersDir,
+            APP_PATH . $config->application->pluginsDir,
+            APP_PATH . $config->application->libraryDir,
+            APP_PATH . $config->application->modelsDir,
+            APP_PATH . $config->application->formsDir,
         )
     )->register();
 
 上記コードでは、設定ファイルに定義されているディレクトリを登録していることに注意してください。viewsDirディレクトリだけは、登録しません。viewsDirにはHTMLファイルとPHPファイルが含まれますが、クラスは含まれていないからです。
+Also, note that we have using a constant called APP_PATH, this constant is defined in the bootstrap
+(public/index.php) to allow us have a reference to the root of our project:
+
+.. code-block:: php
+
+    <?php
+
+    // ...
+
+    define('APP_PATH', realpath('..') . '/');
+
+Registering services
+--------------------
+Another file that is required in the bootstrap is (app/config/services.php). This file allow
+us to organize the services that INVO does use.
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Load application services
+     */
+    require APP_PATH . 'app/config/services.php';
+
+Service registration is achieved as in the previous tutorial, making use of a closure to lazily loads
+the required components:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Url as UrlProvider;
+
+    // ...
+
+    /**
+     * The URL component is used to generate all kind of URLs in the application
+     */
+    $di->set('url', function () use ($config) {
+        $url = new UrlProvider();
+
+        $url->setBaseUri($config->application->baseUri);
+
+        return $url;
+    });
+
+We will discuss this file in depth later.
 
 リクエストの処理
 --------------------
@@ -105,7 +158,11 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     <?php
 
-    $app = new \Phalcon\Mvc\Application($di);
+    use Phalcon\Mvc\Application;
+
+    // ...
+
+    $app = new Application($di);
 
     echo $app->handle()->getContent();
 
@@ -121,10 +178,16 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as Session;
+
+    // ...
+
     // コンポーネントがsessionサービスを最初に要求した時に、セッションを開始する
     $di->set('session', function () {
-        $session = new Phalcon\Session\Adapter\Files();
+        $session = new Session();
+
         $session->start();
+
         return $session;
     });
 
@@ -136,11 +199,17 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     <?php
 
+    use Phalcon\DI\FactoryDefault;
+
+    // ...
+
     // FactoryDefault は、フルスタックフレームワークを
     // 提供するために必要なサービスを自動的に登録する
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
 FactoryDefault はフレームワークが標準的に提供しているコンポーネントサービスの大部分を登録します。もし、サービス定義のオーバーライドが必要な場合、"session" を上で定義したのと同じように同じ名前で再度定義してください。以上が、$di 変数が存在する理由です。
 
+In next chapter, we will see how to authentication and authorization is implemented in INVO.
+
 .. _Github: https://github.com/phalcon/invo
-.. _Twitter Bootstrap: http://twitter.github.io/bootstrap/
+.. _Bootstrap: http://getbootstrap.com/
