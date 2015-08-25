@@ -61,7 +61,7 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-              {{ assets.outputCss() }}
+            {{ assets.outputCss() }}
         </head>
         <body>
 
@@ -70,6 +70,8 @@ Volt syntax:
             {{ assets.outputJs() }}
         </body>
     <html>
+
+For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
 
 Локальные/удаленные ресурсы
 ---------------------------
@@ -88,7 +90,8 @@ Volt syntax:
         // Добавляем некоторые локальные и удаленные ресурсы
         $this->assets
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true);
+            ->addCss('css/style.css', true)
+            ->addCss('css/extra.css');
     }
 
 Коллекции
@@ -136,7 +139,7 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-              {{ assets.outputCss('header') }}
+            {{ assets.outputCss('header') }}
         </head>
         <body>
 
@@ -226,20 +229,16 @@ Phalcon\Assets предоставляет встроенную возможно�
 помощью HTTP запроса для дальнейшей фильтрации. Преобразования внешних ресурсов рекомендуется для
 устранения накладных расходов на их получение.
 
+As seen above, the :code:`addJs()` method is used to add resources to the collection, the second parameter indicates
+whether the resource is external or not and the third parameter indicates whether the resource should
+be filtered or left as is:
+
 .. code-block:: php
 
     <?php
 
     // Этот javascript расположен внизу
     $js = $manager->collection('jsFooter');
-
-Как показано выше, метод addJs используется для добавления ресурсов в коллекцию, второй параметр
-указывает, является ли ресурс внешних или нет, и третий параметр указывает, должен ли ресурс быть
-отфильтрован или нет:
-
-.. code-block:: php
-
-    <?php
 
     // Это удаленный ресурс, не нуждающийся в фильтрации
     $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
@@ -264,13 +263,15 @@ Phalcon\Assets предоставляет встроенную возможно�
 Заметим, что встроенные и пользовательские фильтры могут сразу применяться к набору ресурсов.
 Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать
 каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать
-метод :code:`join()`:
+метод :code:`join()`.
+
+If resources are going to be joined, we need also to define which file will be used to store the resources
+and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`:
 
 .. code-block:: php
 
     <?php
 
-    // Объединяем все ресурсы в один файл
     $js->join(true);
 
     // Название получаемого файла

@@ -57,7 +57,7 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-              {{ assets.outputCss() }}
+            {{ assets.outputCss() }}
         </head>
         <body>
 
@@ -67,11 +67,15 @@ Volt syntax:
         </body>
     <html>
 
+For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
+
 ローカル／リモートリソース
 ----------------------
 ローカルリソースは同じアプリケーションのドキュメントルートに配備されたものです。ローカルリソースのURLは`URL`サービスによって生成されます（通常は :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` ）。
 
 リモートリソースはCDNから提供される、jQueryやBootstrapのようなライブラリです。
+
+The second parameter of :code:`addCss()` and :code:`addJs()` says whether the resource is local or not (:code:`true` is local, :code:`false` is remote). By default, the assets manager will assume the resource is local:
 
 .. code-block:: php
 
@@ -82,7 +86,8 @@ Volt syntax:
         // Add some local CSS resources
         $this->assets
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true);
+            ->addCss('css/style.css', true)
+            ->addCss('css/extra.css');
     }
 
 コレクション
@@ -129,7 +134,7 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-              {{ assets.outputCss('header') }}
+            {{ assets.outputCss('header') }}
         </head>
         <body>
 
@@ -210,18 +215,16 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
 これは、アセットマネージャーからリソースのコレクションの取得を始めます。javascript や css のリソースを含むことができるコレクションですが、両方を含むことはできません。いくつかのリソースはリモートにあるかもしれません、すなわち、それらはさらなるフィルタリングのためにリモートのソースからHTTPを介して取得されます。取得のオーバーヘッドを排除するため、外部のリソースをローカルに変換することが推奨されています。
 
+As seen above, the :code:`addJs()` method is used to add resources to the collection, the second parameter indicates
+whether the resource is external or not and the third parameter indicates whether the resource should
+be filtered or left as is:
+
 .. code-block:: php
 
     <?php
 
     // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
-
-上記で示すように、:code:`addJs()`メソッドがコレクションにリソースを追加するのに使われます。2番目のパラメータはリソースが外部のものかそうでないかを指定し、3番目のパラメータはリソースがフィルタされるべきかそのままにすべきかを指定します:
-
-.. code-block:: php
-
-    <?php
 
     // これはフィルタリングする必要のないリモートのリソースです
     $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
@@ -242,13 +245,15 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
     // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「:code:`join()`」メソッドを利用できます:
+ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「:code:`join()`」メソッドを利用できます.
+
+If resources are going to be joined, we need also to define which file will be used to store the resources
+and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`:
 
 .. code-block:: php
 
     <?php
 
-    // This a remote resource that does not need filtering
     $js->join(true);
 
     // 最後のファイルパスの名前です
@@ -263,13 +268,13 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 ^^^^^^^^^^^^^^^^
 Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するための 2つのビルトインのフィルタを提供します。それらの C言語によるバックエンドは、このタスクを実行するためのオーバーヘッドを最小限に留めてくれます:
 
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Filter                            | Description                                                                                               |
-+===================================+===========================================================================================================+
-| Phalcon\\Assets\\Filters\\Jsmin   | Minifies Javascript removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS removing unnecessary characters that are already ignored by browsers                         |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Filter                            | Description                                                                                                  |
++===================================+==============================================================================================================+
+| Phalcon\\Assets\\Filters\\Jsmin   | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
 
 カスタムフィルタ
 ^^^^^^^^^^^^^^
