@@ -1,5 +1,6 @@
 Tutorial 3: Securing INVO
-==========================
+=========================
+
 In this chapter, we continue explaining how INVO is structured, we'll talk
 about the implementation of authentication, authorization using events and plugins and
 an access control list (ACL) managed by Phalcon.
@@ -26,12 +27,14 @@ again taking parameters from the configuration file in order to configure a serv
 
     // Database connection is created based on parameters defined in the configuration file
     $di->set('db', function () use ($config) {
-        return new DbAdapter(array(
-            "host"     => $config->database->host,
-            "username" => $config->database->username,
-            "password" => $config->database->password,
-            "dbname"   => $config->database->name
-        ));
+        return new DbAdapter(
+            array(
+                "host"     => $config->database->host,
+                "username" => $config->database->username,
+                "password" => $config->database->password,
+                "dbname"   => $config->database->name
+            )
+        );
     });
 
 Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
@@ -75,42 +78,66 @@ data entered in the form including checking for a valid user in the database:
 
     class SessionController extends ControllerBase
     {
-
         // ...
 
         private function _registerSession($user)
         {
-            $this->session->set('auth', array(
-                'id'    => $user->id,
-                'name'  => $user->name
-            ));
+            $this->session->set(
+                'auth',
+                array(
+                    'id'   => $user->id,
+                    'name' => $user->name
+                )
+            );
         }
 
         /**
          * This action authenticate and logs a user into the application
-         *
          */
         public function startAction()
         {
             if ($this->request->isPost()) {
 
-                $email      = $this->request->getPost('email');
-                $password   = $this->request->getPost('password');
+                // Get the data from the user
+                $email    = $this->request->getPost('email');
+                $password = $this->request->getPost('password');
 
-                $user = Users::findFirst(array(
-                    "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                    'bind' => array('email' => $email, 'password' => sha1($password))
-                ));
+                // Find the user in the database
+                $user = Users::findFirst(
+                    array(
+                        "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+                        'bind' => array(
+                            'email'    => $email,
+                            'password' => sha1($password)
+                        )
+                    )
+                );
+
                 if ($user != false) {
+
                     $this->_registerSession($user);
+
                     $this->flash->success('Welcome ' . $user->name);
-                    return $this->forward('invoices/index');
+
+                    // Forward to the 'invoices' controller if the user is valid
+                    return $this->dispatcher->forward(
+                        array(
+                            'controller' => 'invoices',
+                            'action'     => 'index'
+                        )
+                    );
                 }
 
                 $this->flash->error('Wrong email/password');
             }
 
-            return $this->forward('session/index');
+            // Forward to the login form again
+            return $this->dispatcher->forward(
+                array(
+                    'controller' => 'session',
+                    'action'     => 'index'
+                )
+            );
         }
     }
 
@@ -130,10 +157,13 @@ For instance, here we invoke the "session" service and then we store the user id
 
     <?php
 
-    $this->session->set('auth', array(
-        'id'    => $user->id,
-        'name'  => $user->name
-    ));
+    $this->session->set(
+        'auth',
+        array(
+            'id'   => $user->id,
+            'name' => $user->name
+        )
+    );
 
 Another important aspect of this section is how the user is validated as a valid one,
 first we validate whether the request has been made using method POST:
@@ -150,7 +180,7 @@ Then, we receive the parameters from the form:
 
     <?php
 
-    $email = $this->request->getPost('email');
+    $email    = $this->request->getPost('email');
     $password = $this->request->getPost('password');
 
 Now, we have to check if there is one user with the same username or email and password:
@@ -159,10 +189,15 @@ Now, we have to check if there is one user with the same username or email and p
 
     <?php
 
-    $user = Users::findFirst(array(
-        "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-        'bind' => array('email' => $email, 'password' => sha1($password))
-    ));
+    $user = Users::findFirst(
+        array(
+            "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+            'bind' => array(
+                'email'    => $email,
+                'password' => sha1($password)
+            )
+        )
+    );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
 then the values are 'bound' using the parameter 'bind'. This safely replaces the values for those
@@ -177,6 +212,7 @@ If the user is valid we register it in session and forwards him/her to the dashb
     if ($user != false) {
         $this->_registerSession($user);
         $this->flash->success('Welcome ' . $user->name);
+
         return $this->forward('invoices/index');
     }
 
@@ -226,7 +262,7 @@ replaced the component by creating a function in the bootstrap:
 
         // ...
 
-        $dispatcher = new Dispatcher;
+        $dispatcher = new Dispatcher();
 
         return $dispatcher;
     });
@@ -250,19 +286,18 @@ interests us now is "dispatch". The following code filters all events produced b
 
     $di->set('dispatcher', function () {
 
-        $eventsManager = new EventsManager;
+        // Create an events manager
+        $eventsManager = new EventsManager();
 
-        /**
-         * Check if the user is allowed to access certain action using the SecurityPlugin
-         */
-        $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+        // Listen for events produced in the dispatcher using the Security plugin
+        $eventsManager->attach('dispatch', new SecurityPlugin);
 
-        /**
-         * Handle exceptions and not-found exceptions using NotFoundPlugin
-         */
+        // Handle exceptions and not-found exceptions using NotFoundPlugin
         $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
-        $dispatcher = new Dispatcher;
+        $dispatcher = new Dispatcher();
+
+        // Assign the events manager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -297,21 +332,18 @@ SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This clas
 
     <?php
 
-    use Phalcon\Acl;
     use Phalcon\Events\Event;
     use Phalcon\Mvc\User\Plugin;
     use Phalcon\Mvc\Dispatcher;
 
     class SecurityPlugin extends Plugin
     {
-
         // ...
 
         public function beforeDispatch(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
-
     }
 
 The hook events always receive a first parameter that contains contextual information of the event produced ($event)
@@ -331,14 +363,12 @@ If the user does not have access we redirect to the home screen as explained bef
     use Phalcon\Mvc\User\Plugin;
     use Phalcon\Mvc\Dispatcher;
 
-    class Security extends Plugin
+    class SecurityPlugin extends Plugin
     {
-
         // ...
 
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
-
             // Check whether the "auth" variable exists in session to define the active role
             $auth = $this->session->get('auth');
             if (!$auth) {
@@ -370,14 +400,12 @@ If the user does not have access we redirect to the home screen as explained bef
                 // Returning "false" we tell to the dispatcher to stop the current operation
                 return false;
             }
-
         }
-
     }
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
-In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
+In the above example we have obtained the ACL using the method $this->getAcl(). This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php
@@ -400,6 +428,7 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
         'users'  => new Role('Users'),
         'guests' => new Role('Guests')
     );
+
     foreach ($roles as $role) {
         $acl->addRole($role);
     }
@@ -428,12 +457,12 @@ accesses for the resources:
 
     // Public area resources (frontend)
     $publicResources = array(
-       'index'      => array('index'),
-       'about'      => array('index'),
-       'register'   => array('index'),
-       'errors'     => array('show404', 'show500'),
-       'session'    => array('index', 'register', 'start', 'end'),
-       'contact'    => array('index', 'send')
+        'index'    => array('index'),
+        'about'    => array('index'),
+        'register' => array('index'),
+        'errors'   => array('show404', 'show500'),
+        'session'  => array('index', 'register', 'start', 'end'),
+        'contact'  => array('index', 'send')
     );
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);

@@ -1,5 +1,6 @@
 Tutorial 3: Securing INVO
-==========================
+=========================
+
 In this chapter, we continue explaining how INVO is structured, we'll talk
 about the implementation of authentication, authorization using events and plugins and
 an access control list (ACL) managed by Phalcon.
@@ -16,33 +17,51 @@ an access control list (ACL) managed by Phalcon.
 
     <?php
 
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
+    // ...
+
     // 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
     $di->set('db', function () use ($config) {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => $config->database->host,
-            "username" => $config->database->username,
-            "password" => $config->database->password,
-            "dbname" => $config->database->name
-        ));
+        return new DbAdapter(
+            array(
+                "host"     => $config->database->host,
+                "username" => $config->database->username,
+                "password" => $config->database->password,
+                "dbname"   => $config->database->name
+            )
+        );
     });
 
 ここで、MySQL接続アダプタのインスタンスを返しています。ロガーやプロファイラの追加、アダプタの変更等が必要であれば、それらの処理を追加することもできます。
 
-以下の簡単なフォーム (app/views/session/index.phtml) では、ユーザーにログイン情報を求めています。サンプルを簡潔にするため、いくつかのHTMLコードは省いています:
+以下の簡単なフォーム (app/views/session/index.volt) では、ユーザーにログイン情報を求めています。サンプルを簡潔にするため、いくつかのHTMLコードは省いています:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
-    <?php echo $this->tag->form('session/start') ?>
-
-        <label for="email">Username/Email</label>
-        <?php echo $this->tag->textField(array("email", "size" => "30")) ?>
-
-        <label for="password">Password</label>
-        <?php echo $this->tag->passwordField(array("password", "size" => "30")) ?>
-
-        <?php echo $this->tag->submitButton(array('Login')) ?>
-
+    {{ form('session/start') }}
+        <fieldset>
+            <div>
+                <label for="email">Username/Email</label>
+                <div>
+                    {{ text_field('email') }}
+                </div>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <div>
+                    {{ password_field('password') }}
+                </div>
+            </div>
+            <div>
+                {{ submit_button('Login') }}
+            </div>
+        </fieldset>
     </form>
+
+Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
+template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
+It will not take too long before you become familiar with Volt.
 
 SessionController::startAction (app/controllers/SessionController.php) が、フォームに入力されたデータのバリデーションを行います。これには、データベース内の有効なユーザーかの確認も含まれます:
 
@@ -52,32 +71,41 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
 
     class SessionController extends ControllerBase
     {
-
         // ...
 
         private function _registerSession($user)
         {
-            $this->session->set('auth', array(
-                'id' => $user->id,
-                'name' => $user->name
-            ));
+            $this->session->set(
+                'auth',
+                array(
+                    'id'   => $user->id,
+                    'name' => $user->name
+                )
+            );
         }
 
+        /**
+         * This action authenticate and logs a user into the application
+         */
         public function startAction()
         {
             if ($this->request->isPost()) {
 
                 // POSTで送信された変数を受け取る
-                $email = $this->request->getPost('email', 'email');
+                $email    = $this->request->getPost('email');
                 $password = $this->request->getPost('password');
 
-                $password = sha1($password);
-
                 // データベースからユーザーを検索
-                $user = Users::findFirst(array(
-                    "email = :email: AND password = :password: AND active = 'Y'",
-                    "bind" => array('email' => $email, 'password' => $password)
-                ));
+                $user = Users::findFirst(
+                    array(
+                        "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+                        'bind' => array(
+                            'email'    => $email,
+                            'password' => sha1($password)
+                        )
+                    )
+                );
+
                 if ($user != false) {
 
                     $this->_registerSession($user);
@@ -85,23 +113,25 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
                     $this->flash->success('Welcome ' . $user->name);
 
                     // ユーザーが有効なら、'invoices' コントローラーに転送する
-                    return $this->dispatcher->forward(array(
-                        'controller' => 'invoices',
-                        'action' => 'index'
-                    ));
+                    return $this->dispatcher->forward(
+                        array(
+                            'controller' => 'invoices',
+                            'action'     => 'index'
+                        )
+                    );
                 }
 
                 $this->flash->error('Wrong email/password');
             }
 
             // ログインフォームへ再度転送
-            return $this->dispatcher->forward(array(
-                'controller' => 'session',
-                'action' => 'index'
-            ));
-
+            return $this->dispatcher->forward(
+                array(
+                    'controller' => 'session',
+                    'action'     => 'index'
+                )
+            );
         }
-
     }
 
 簡単にするため、 データベースに保存するパスワードハッシュに "sha1_" を使用していますが、このアルゴリズムは実際のアプリケーションでは推奨されません。代わりに、 ":doc:`bcrypt <security>`" を使ってください。
@@ -116,10 +146,13 @@ SessionController::startAction (app/controllers/SessionController.php) が、フ
 
     <?php
 
-    $this->session->set('auth', array(
-        'id' => $user->id,
-        'name' => $user->name
-    ));
+    $this->session->set(
+        'auth',
+        array(
+            'id'   => $user->id,
+            'name' => $user->name
+        )
+    );
 
 Another important aspect of this section is how the user is validated as a valid one,
 first we validate whether the request has been made using method POST:
@@ -136,7 +169,7 @@ Then, we receive the parameters from the form:
 
     <?php
 
-    $email = $this->request->getPost('email');
+    $email    = $this->request->getPost('email');
     $password = $this->request->getPost('password');
 
 Now, we have to check if there is one user with the same username or email and password:
@@ -145,10 +178,15 @@ Now, we have to check if there is one user with the same username or email and p
 
     <?php
 
-    $user = Users::findFirst(array(
-        "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-        'bind' => array('email' => $email, 'password' => sha1($password))
-    ));
+    $user = Users::findFirst(
+        array(
+            "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+            'bind' => array(
+                'email'    => $email,
+                'password' => sha1($password)
+            )
+        )
+    );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
 then the values are 'bound' using the parameter 'bind'. This safely replaces the values for those
@@ -163,6 +201,7 @@ If the user is valid we register it in session and forwards him/her to the dashb
     if ($user != false) {
         $this->_registerSession($user);
         $this->flash->success('Welcome ' . $user->name);
+
         return $this->forward('invoices/index');
     }
 
@@ -191,8 +230,19 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    $di->set('dispatcher', function () use ($di) {
-        $dispatcher = new Phalcon\Mvc\Dispatcher();
+    use Phalcon\Mvc\Dispatcher;
+
+    // ...
+
+    /**
+     * MVC dispatcher
+     */
+    $di->set('dispatcher', function () {
+
+        // ...
+
+        $dispatcher = new Dispatcher();
+
         return $dispatcher;
     });
 
@@ -206,18 +256,21 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    $di->set('dispatcher', function () use ($di) {
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
-        // 標準のイベントマネージャーをDIから取得
-        $eventsManager = $di->getShared('eventsManager');
+    $di->set('dispatcher', function () {
 
-        // Securityプラグインをインスタンス化
-        $security = new Security($di);
+        // Create an events manager
+        $eventsManager = new EventsManager();
 
         // Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
-        $eventsManager->attach('dispatch', $security);
+        $eventsManager->attach('dispatch', new SecurityPlugin);
 
-        $dispatcher = new Phalcon\Mvc\Dispatcher();
+        // Handle exceptions and not-found exceptions using NotFoundPlugin
+        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+
+        $dispatcher = new Dispatcher();
 
         // イベントマネージャーをディスパッチャに束縛する
         $dispatcher->setEventsManager($eventsManager);
@@ -225,27 +278,46 @@ If the user does not exist we forward the user back again to action where the fo
         return $dispatcher;
     });
 
+When an event called "beforeDispatch" is triggered the following plugin will be notified:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Check if the user is allowed to access certain action using the SecurityPlugin
+     */
+    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+
+When a "beforeException" is triggered then other plugin is notified:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Handle exceptions and not-found exceptions using NotFoundPlugin
+     */
+    $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+
 Securityプラグインは (app/plugins/Security.php) にあるクラスです。このクラスは "beforeDispatch" メソッドを実装しています。これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Events\Event,
-        Phalcon\Mvc\User\Plugin,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Acl;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
 
-    class Security extends Plugin
+    class SecurityPlugin extends Plugin
     {
-
         // ...
 
         public function beforeDispatch(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
-
     }
 
 フックイベントは常に2つの引数を取ります。第1引数はイベントが生成されたコンテキストの情報($event) で、第2引数はイベントを生成したオブジェクト自身 ($dispatcher) です。プラグインが Phalcon\\Mvc\\User\\Plugin を継承することは必須ではありませんが、継承することでアプリケーションのサービスに簡単にアクセスできるようになります。
@@ -256,19 +328,17 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
 
     <?php
 
-    use Phalcon\Events\Event,
-        Phalcon\Mvc\User\Plugin,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Acl;
+    use Phalcon\Acl;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
 
-    class Security extends Plugin
+    class SecurityPlugin extends Plugin
     {
-
         // ...
 
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
-
             // ロールを定義するため、セッションに "auth" 変数があるかチェックする
             $auth = $this->session->get('auth');
             if (!$auth) {
@@ -293,38 +363,41 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
                 $dispatcher->forward(
                     array(
                         'controller' => 'index',
-                        'action' => 'index'
+                        'action'     => 'index'
                     )
                 );
 
                 // "false" を返し、ディスパッチャーに現在の処理を停止させる
                 return false;
             }
-
         }
-
     }
 
 ACLリストの提供
 ^^^^^^^^^^^^^^^^^^^^^
-上の例では、 $this->_getAcl() メソッドでACLを取得しました。このメソッドもプラグインに実装されています。ここでは、アクセス制御リスト (ACL) をどのように作ったか、ステップバイステップで解説します:
+上の例では、 $this->getAcl() メソッドでACLを取得しました。このメソッドもプラグインに実装されています。ここでは、アクセス制御リスト (ACL) をどのように作ったか、ステップバイステップで解説します:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Acl;
+    use Phalcon\Acl\Role;
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
     // ACLオブジェクトを作る
-    $acl = new Phalcon\Acl\Adapter\Memory();
+    $acl = new AclList();
 
     // デフォルトの挙動はDENY（拒否）
-    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    $acl->setDefaultAction(Acl::DENY);
 
     // 2つのロールを登録する
     // ユーザーは登録済みユーザー、ゲストは未登録ユーザー
     $roles = array(
-        'users' => new Phalcon\Acl\Role('Users'),
-        'guests' => new Phalcon\Acl\Role('Guests')
+        'users'  => new Role('Users'),
+        'guests' => new Role('Guests')
     );
+
     foreach ($roles as $role) {
         $acl->addRole($role);
     }
@@ -335,26 +408,32 @@ ACLリストの提供
 
     <?php
 
+    use Phalcon\Acl\Resource;
+
+    // ...
+
     // プライベートエリアのリソース (バックエンド)
     $privateResources = array(
-      'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices' => array('index', 'profile')
+      'invoices'     => array('index', 'profile')
     );
     foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+        $acl->addResource(new Resource($resource), $actions);
     }
 
     // 公開エリアのリソース (フロントエンド)
     $publicResources = array(
-      'index' => array('index'),
-      'about' => array('index'),
-      'session' => array('index', 'register', 'start', 'end'),
-      'contact' => array('index', 'send')
+        'index'    => array('index'),
+        'about'    => array('index'),
+        'register' => array('index'),
+        'errors'   => array('show404', 'show500'),
+        'session'  => array('index', 'register', 'start', 'end'),
+        'contact'  => array('index', 'send')
     );
     foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+        $acl->addResource(new Resource($resource), $actions);
     }
 
 いま、ACLは既存のコントローラーと関連するアクションの情報を知っている状態になっています。"Users" ロールはバックエンドとフロントエンド双方の全てのリソースにアクセスできます。"Guests" ロールは公開エリアにだけアクセスできます:
