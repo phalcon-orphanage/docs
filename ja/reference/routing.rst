@@ -77,21 +77,21 @@ add()メソッドは、定義済みのプレースホルダーや、正規表現
 
 プレースホルダーは、読みやすく理解しやすい正規表現を書く助けになります。以下のプレースホルダーがサポートされています：
 
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| Placeholder  | Regular Expression  | Usage                                                                                                  |
-+==============+=====================+========================================================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| Placeholder          | Regular Expression          | Usage                                                                                                  |
++======================+=============================+========================================================================================================+
+| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 
 コントローラーの名前はキャメルケースに変換されます。ハイフン(-)とアンダースコア(_)は取り除かれ、次の文字が大文字になります。例えば、 some_controller は SomeController に変換されます。
 
@@ -142,6 +142,8 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
             // "day" のパラメーターを返す
             $day = $this->dispatcher->getParam("day");
+
+            // ...
         }
     }
 
@@ -176,6 +178,8 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
             // "type" のパラメーターを返す
             $type = $this->dispatcher->getParam("type");
+
+            // ...
         }
     }
 
@@ -226,14 +230,19 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    $router = new Phalcon\Mvc\Router(false);
+    use Phalcon\Mvc\Router;
 
-    $router->add('/:module/:controller/:action/:params', array(
-        'module'     => 1,
-        'controller' => 2,
-        'action'     => 3,
-        'params'     => 4
-    ));
+    $router = new Router(false);
+
+    $router->add(
+        '/:module/:controller/:action/:params',
+        array(
+            'module'     => 1,
+            'controller' => 2,
+            'action'     => 3,
+            'params'     => 4
+        )
+    );
 
 この場合、ルートは必ずURLの一部にモジュール名を含まなければなりません。例えば、 /admin/users/edit/sonny のようなURLです。これは、以下のように処理されます：
 
@@ -316,7 +325,7 @@ HTTP メソッドの制限
     $router->addPost("/products/save", "Products::save");
 
     // HTTPメソッドがPOST又はPUTの場合にだけマッチ
-    $router->add("/products/update")->via(array("POST", "PUT"));
+    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
 
 convertの使用
 ^^^^^^^^^^^^^^^^^
@@ -362,20 +371,29 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     $blog->setPrefix('/blog');
 
     // ルートをグループに追加する
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
     // もう一つルートをグループに追加する
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
     // このルートはデフォルトとは異なるルートにマッピングする
-    $blog->add('/blog', array(
-        'controller' => 'blog',
-        'action' => 'index'
-    ));
+    $blog->add(
+        '/blog',
+        array(
+            'controller' => 'blog',
+            'action'     => 'index'
+        )
+    );
 
     // グループをルーターに追加
     $router->mount($blog);
@@ -597,9 +615,10 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     );
 
 .. highlights::
+
     Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+    read unauthorized files. A safe regular expression is: :code:`/([a-zA-Z0-9\_\-]+)`
 
 デフォルトの振る舞い
 ----------------
@@ -701,6 +720,7 @@ Not Found パス
 
     <?php
 
+    // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
         '/{language:[a-z]{2}}/:controller[/]{0,1}',
         array(
@@ -750,7 +770,7 @@ Not Found パス
 
     $router->add('/get/info/{id}', array(
         'controller' => 'products',
-        'action' => 'info'
+        'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 ホスト名によるアクセス制限
@@ -777,7 +797,7 @@ Not Found パス
         'module'     => 'admin',
         'controller' => 'session',
         'action'     => 'login'
-    ))->setHostName('([a-z+]).company.com');
+    ))->setHostName('([a-z]+).company.com');
 
 ルートのグループの中で、グループの全てのルートに適用されるホスト名の制限を設定することもできます:
 
@@ -802,19 +822,28 @@ Not Found パス
     $blog->setPrefix('/blog');
 
     // デフォルトルート
-    $blog->add('/', array(
-        'action' => 'index'
-    ));
+    $blog->add(
+        '/',
+        array(
+            'action' => 'index'
+        )
+    );
 
     // Add a route to the group
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
     // Add another route to the group
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
     // Add the group to the router
     $router->mount($blog);
@@ -987,7 +1016,7 @@ URIのソース
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
+| paths        | An array of paths like the one passed to :code:`Phalcon\\Mvc\\Router::add()`                      | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -1022,10 +1051,14 @@ PhalconのDIコンテナへのサービス登録の際、ルーターを登録�
     /**
      * Add routing capabilities
      */
-    $di->set('router', function () {
-        require __DIR__.'/../app/config/routes.php';
-        return $router;
-    });
+    $di->set(
+        'router',
+        function () {
+            require __DIR__.'/../app/config/routes.php';
+
+            return $router;
+        }
+    );
 
 app/config/routes.php を作って、以下のような初期化コードを追加します:
 
@@ -1037,15 +1070,21 @@ app/config/routes.php を作って、以下のような初期化コードを追�
 
     $router = new Router();
 
-    $router->add("/login", array(
-        'controller' => 'login',
-        'action'     => 'index'
-    ));
+    $router->add(
+        "/login",
+        array(
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
-    $router->add("/products/:action", array(
-        'controller' => 'products',
-        'action'     => 1
-    ));
+    $router->add(
+        "/products/:action",
+        array(
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
     return $router;
 

@@ -1,7 +1,7 @@
 Routing
 =======
 
-The router component allows defining routes that are mapped to controllers or handlers that should receive
+The router component allows you to define routes that are mapped to controllers or handlers that should receive
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -39,13 +39,13 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case, if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. Currently, the router does not execute the controller and action, it only collects this
+The first parameter of the :code:`add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
+In this case, if the URI is /admin/users/my-profile, then the "users" controller with its action "profile"
+will be executed. It's important to remember that the router does not execute the controller and action, it only collects this
 information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is controller/action it should to execute.
+that this is the controller/action it should execute.
 
-An application can have many paths, define routes one by one can be a cumbersome task. In these cases we can
+An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can
 create more flexible routes:
 
 .. code-block:: php
@@ -67,8 +67,8 @@ create more flexible routes:
         )
     );
 
-In the example above, using wildcards we make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) then:
+In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the
+following URL (/admin/users/a/delete/dave/301) would produce:
 
 +------------+---------------+
 | Controller | users         |
@@ -80,38 +80,38 @@ following URL (/admin/users/a/delete/dave/301) then:
 | Parameter  | 301           |
 +------------+---------------+
 
-The method add() receives a pattern that optionally could have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used
+The :code:`add()` method receives a pattern that can optionally have predefined placeholders and regular expression
+modifiers. All the routing patterns must start with a forward slash character (/). The regular expression syntax used
 is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All routes patterns are case-insensitive.
+delimiters. All route patterns are case-insensitive.
 
 The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
 parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
-first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
+first subpattern matched (:code:`:controller`) is the controller part of the route, the second the action and so on.
 
 These placeholders help writing regular expressions that are more readable for developers and easier
 to understand. The following placeholders are supported:
 
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| Placeholder  | Regular Expression  | Usage                                                                                                  |
-+==============+=====================+========================================================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| Placeholder          | Regular Expression          | Usage                                                                                                  |
++======================+=============================+========================================================================================================+
+| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 
-Controller names are camelized, this means that characters (-) and (_) are removed and the next character
+Controller names are camelized, this means that characters (:code:`-`) and (:code:`_`) are removed and the next character
 is uppercased. For instance, some_controller is converted to SomeController.
 
-Since you can add many routes as you need using add(), the order in which routes are added indicate
+Since you can add many routes as you need using the :code:`add()` method, the order in which routes are added indicate
 their relevance, latest routes added have more relevance than first added. Internally, all defined routes
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
@@ -155,14 +155,16 @@ by the request. Inside the controller, those named parameters can be accessed as
 
         public function showAction()
         {
-            // Return "year" parameter
+            // Get "year" parameter
             $year = $this->dispatcher->getParam("year");
 
-            // Return "month" parameter
+            // Get "month" parameter
             $month = $this->dispatcher->getParam("month");
 
-            // Return "day" parameter
+            // Get "day" parameter
             $day = $this->dispatcher->getParam("day");
+
+            // ...
         }
     }
 
@@ -194,11 +196,13 @@ You can access their values in the same way as before:
     {
         public function showAction()
         {
-            // Returns "name" parameter
+            // Get "name" parameter
             $name = $this->dispatcher->getParam("name");
 
-            // Returns "type" parameter
+            // Get "type" parameter
             $type = $this->dispatcher->getParam("type");
+
+            // ...
         }
     }
 
@@ -256,12 +260,15 @@ It's possible define a default route that includes a module wildcard:
 
     $router = new Router(false);
 
-    $router->add('/:module/:controller/:action/:params', array(
-        'module'     => 1,
-        'controller' => 2,
-        'action'     => 3,
-        'params'     => 4
-    ));
+    $router->add(
+        '/:module/:controller/:action/:params',
+        array(
+            'module'     => 1,
+            'controller' => 2,
+            'action'     => 3,
+            'params'     => 4
+        )
+    );
 
 In this case, the route always must have the module name as part of the URL. For example, the following
 URL: /admin/users/edit/sonny, will be processed as:
@@ -332,7 +339,7 @@ Namespaces/class names must be passed separated:
 
 HTTP Method Restrictions
 ^^^^^^^^^^^^^^^^^^^^^^^^
-When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
+When you add a route using simply :code:`add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
 this is especially useful when creating RESTful applications:
 
 .. code-block:: php
@@ -348,9 +355,10 @@ this is especially useful when creating RESTful applications:
     // This route will be matched if the HTTP method is POST or PUT
     $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
 
-Using convertions
-^^^^^^^^^^^^^^^^^
-Convertions allow to freely transform the route's parameters before passing them to the dispatcher, the following examples show how to use them:
+Using conversors
+^^^^^^^^^^^^^^^^
+Conversors allow you to freely transform the route's parameters before passing them to the dispatcher.
+The following examples show how to use them:
 
 .. code-block:: php
 
@@ -392,20 +400,29 @@ If a set of routes have common paths they can be grouped to easily maintain them
     $blog->setPrefix('/blog');
 
     // Add a route to the group
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
     // Add another route to the group
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
     // This route maps to a controller different than the default
-    $blog->add('/blog', array(
-        'controller' => 'blog',
-        'action'     => 'index'
-    ));
+    $blog->add(
+        '/blog',
+        array(
+            'controller' => 'blog',
+            'action'     => 'index'
+        )
+    );
 
     // Add the group to the router
     $router->mount($blog);
@@ -471,8 +488,8 @@ Then mount the group in the router:
 
 Matching Routes
 ---------------
-A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
-By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
+A valid URI must be passed to the Router so that it can process it and find a matching route.
+By default, the routing URI is taken from the :code:`$_GET['_url']` variable that is created by the rewrite engine
 module. A couple of rewrite rules that work very well with Phalcon are:
 
 .. code-block:: apacheconf
@@ -481,6 +498,8 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+
+In this configuration, any requests to files or folders that don't exist will be sent to index.php.
 
 The following example shows how to use this component in stand-alone mode:
 
@@ -513,7 +532,7 @@ The following example shows how to use this component in stand-alone mode:
 
 Naming Routes
 -------------
-Each route that is added to the router is stored internally as an object :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
+Each route that is added to the router is stored internally as a :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>` object.
 That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
 This is especially useful if you want to create URLs from it.
 
@@ -631,13 +650,14 @@ The following are examples of custom routes:
     );
 
 .. highlights::
+
     Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+    read unauthorized files. A safe regular expression is: :code:`/([a-zA-Z0-9\_\-]+)`
 
 Default Behavior
 ----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior that provides a very simple routing that
 always expects a URI that matches the following pattern: /:controller/:action/:params
 
 For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows:
@@ -650,7 +670,7 @@ For example, for a URL like this *http://phalconphp.com/documentation/show/about
 | Parameter  | about.html    |
 +------------+---------------+
 
-If you don't want use this routes as default in your application, you must create the router passing false as parameter:
+If you don't want the router to have this behavior, you must create the router passing :code:`false` as the first parameter:
 
 .. code-block:: php
 
@@ -694,9 +714,11 @@ If none of the routes specified in the router are matched, you can define a grou
         )
     );
 
+This is typically for an Error 404 page.
+
 Setting default paths
 ---------------------
-It's possible to define default values for common paths like module, controller or action. When a route is missing any of
+It's possible to define default values for the module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:
 
 .. code-block:: php
@@ -719,8 +741,9 @@ those paths they can be automatically filled by the router:
 
 Dealing with extra/trailing slashes
 -----------------------------------
-Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
-a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
+Sometimes a route could be accessed with extra/trailing slashes.
+Those extra slashes would lead to produce a not-found status in the dispatcher.
+You can set up the router to automatically remove the slashes from the end of handled route:
 
 .. code-block:: php
 
@@ -739,6 +762,7 @@ Or, you can modify specific routes to optionally accept trailing slashes:
 
     <?php
 
+    // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
         '/{language:[a-z]{2}}/:controller[/]{0,1}',
         array(
@@ -749,8 +773,9 @@ Or, you can modify specific routes to optionally accept trailing slashes:
 
 Match Callbacks
 ---------------
-Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
-'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
+Sometimes, routes should only be matched if they meet specific conditions.
+You can add arbitrary conditions to routes using the :code:`beforeMatch()` callback.
+If this function return :code:`false`, the route will be treated as non-matched:
 
 .. code-block:: php
 
@@ -794,7 +819,7 @@ And use this class instead of the anonymous function:
 
 Hostname Constraints
 --------------------
-The router allow to set hostname constraints, this means that specific routes or a group of routes can be restricted
+The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted
 to only match if the route also meets the hostname constraint:
 
 .. code-block:: php
@@ -807,7 +832,7 @@ to only match if the route also meets the hostname constraint:
         'action'     => 'login'
     ))->setHostName('admin.company.com');
 
-Hostname can also be regular expressions:
+The hostname can also be passed as a regular expressions:
 
 .. code-block:: php
 
@@ -817,7 +842,7 @@ Hostname can also be regular expressions:
         'module'     => 'admin',
         'controller' => 'session',
         'action'     => 'login'
-    ))->setHostName('([a-z+]).company.com');
+    ))->setHostName('([a-z]+).company.com');
 
 In groups of routes you can set up a hostname constraint that apply for every route in the group:
 
@@ -842,27 +867,36 @@ In groups of routes you can set up a hostname constraint that apply for every ro
     $blog->setPrefix('/blog');
 
     // Default route
-    $blog->add('/', array(
-        'action' => 'index'
-    ));
+    $blog->add(
+        '/',
+        array(
+            'action' => 'index'
+        )
+    );
 
     // Add a route to the group
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
     // Add another route to the group
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
     // Add the group to the router
     $router->mount($blog);
 
 URI Sources
 -----------
-By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
-Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
+By default the URI information is obtained from the :code:`$_GET['_url']` variable, this is passed by the Rewrite-Engine to
+Phalcon, you can also use :code:`$_SERVER['REQUEST_URI']` if required:
 
 .. code-block:: php
 
@@ -875,7 +909,7 @@ Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI'] (default)
 
-Or you can manually pass a URI to the 'handle' method:
+Or you can manually pass a URI to the :code:`handle()` method:
 
 .. code-block:: php
 
@@ -941,7 +975,7 @@ you can write the routes directly in the controllers instead of adding them in t
 
     $di['router'] = function () {
 
-        // Use the annotations router
+        // Use the annotations router. We're passing false as we don't want the router to add its default patterns
         $router = new RouterAnnotations(false);
 
         // Read the annotations from ProductsController if the URI starts with /api/products
@@ -1029,12 +1063,12 @@ For annotations that add routes, the following parameters are supported:
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
+| paths        | An array of paths like the one passed to :code:`Phalcon\\Mvc\\Router::add()`                      | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
-If routes map to controllers in modules is better use the addModuleResource method:
+If you're using modules in your application, it is better use the :code:`addModuleResource()` method:
 
 .. code-block:: php
 
@@ -1055,7 +1089,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
 Registering Router instance
 ---------------------------
-You can register router during service registration with Phalcon dependency injector to make it available inside controller.
+You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
 You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
 
@@ -1066,10 +1100,14 @@ You need to add code below in your bootstrap file (for example index.php or app/
     /**
      * Add routing capabilities
      */
-    $di->set('router', function () {
-        require __DIR__.'/../app/config/routes.php';
-        return $router;
-    });
+    $di->set(
+        'router',
+        function () {
+            require __DIR__.'/../app/config/routes.php';
+
+            return $router;
+        }
+    );
 
 You need to create app/config/routes.php and add router initialization code, for example:
 
@@ -1081,15 +1119,21 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router = new Router();
 
-    $router->add("/login", array(
-        'controller' => 'login',
-        'action'     => 'index'
-    ));
+    $router->add(
+        "/login",
+        array(
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
-    $router->add("/products/:action", array(
-        'controller' => 'products',
-        'action'     => 1
-    ));
+    $router->add(
+        "/products/:action",
+        array(
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
     return $router;
 
