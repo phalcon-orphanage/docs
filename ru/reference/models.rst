@@ -683,6 +683,12 @@ If you're using "finders", bound parameters are automatically used for you:
             // Convert the string to an array
             $this->status = explode(',', $this->status);
         }
+        
+        public function afterSave()
+        {
+            // Convert the string to an array
+            $this->status = explode(',', $this->status);
+        }
     }
 
 Независимо от того, используете вы getters/setters или публичные свойства, вы можете реализовать обработку поля при получении доступа к последнему:
