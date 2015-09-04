@@ -679,6 +679,12 @@ will be executed just after create the instance and assign the data to it:
             // Convert the string to an array
             $this->status = explode(',', $this->status);
         }
+        
+        public function afterSave()
+        {
+            // Convert the string to an array
+            $this->status = explode(',', $this->status);
+        }
     }
 
 If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
