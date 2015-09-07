@@ -113,6 +113,8 @@ Remember to add a session adapter to your Dependency Injector, otherwise the tok
 
 .. code-block:: php
 
+    <?php
+
     $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
