@@ -107,6 +107,8 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
 .. code-block:: php
 
+    <?php
+
     $di->setShared('session', function () {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
