@@ -10,7 +10,7 @@ the ACLs. Roles are objects that request access to resources and can be allowed 
 
 Creating an ACL
 ---------------
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:
+This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
 
 .. code-block:: php
 
@@ -20,7 +20,7 @@ This component is designed to initially work in memory. This provides ease of us
 
     $acl = new AclList();
 
-By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level.
+By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a "deny" level as a default access level.
 
 .. code-block:: php
 
@@ -71,7 +71,7 @@ Resources are objects where access is controlled. Normally in MVC applications r
 
 Defining Access Controls
 ------------------------
-Now we have roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking into consideration your default access level "allow" or "deny".
+Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level "allow" or "deny".
 
 .. code-block:: php
 
