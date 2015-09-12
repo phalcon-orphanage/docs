@@ -290,7 +290,7 @@ interests us now is "dispatch". The following code filters all events produced b
         $eventsManager = new EventsManager();
 
         // Listen for events produced in the dispatcher using the Security plugin
-        $eventsManager->attach('dispatch', new SecurityPlugin);
+        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
         // Handle exceptions and not-found exceptions using NotFoundPlugin
         $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
@@ -303,7 +303,7 @@ interests us now is "dispatch". The following code filters all events produced b
         return $dispatcher;
     });
 
-When an event called "beforeDispatch" is triggered the following plugin will be notified:
+When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
 .. code-block:: php
 
@@ -312,7 +312,7 @@ When an event called "beforeDispatch" is triggered the following plugin will be 
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -340,7 +340,7 @@ SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This clas
     {
         // ...
 
-        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }

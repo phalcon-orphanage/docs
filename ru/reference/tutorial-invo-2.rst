@@ -288,7 +288,7 @@ If the user does not exist we forward the user back again to action where the fo
         $eventsManager = new EventsManager();
 
         // Плагин безопасности слушает события, инициированные диспетчером
-        $eventsManager->attach('dispatch', new SecurityPlugin);
+        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
         // Handle exceptions and not-found exceptions using NotFoundPlugin
         $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
@@ -301,7 +301,7 @@ If the user does not exist we forward the user back again to action where the fo
         return $dispatcher;
     });
 
-When an event called "beforeDispatch" is triggered the following plugin will be notified:
+When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
 .. code-block:: php
 
@@ -310,7 +310,7 @@ When an event called "beforeDispatch" is triggered the following plugin will be 
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -323,7 +323,7 @@ When a "beforeException" is triggered then other plugin is notified:
      */
     $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
-Плагин безопасности - это класс, описанный в app/plugins/Security.php. Этот класс реализует метод "beforeDispatch"
+Плагин безопасности - это класс, описанный в app/plugins/Security.php. Этот класс реализует метод "beforeExecuteRoute"
 (хук события). Его название совпадает с именем одного из событий, инициируемых диспетчером:
 
 .. code-block:: php
@@ -338,7 +338,7 @@ When a "beforeException" is triggered then other plugin is notified:
     {
         // ...
 
-        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }

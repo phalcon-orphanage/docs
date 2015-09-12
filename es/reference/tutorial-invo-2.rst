@@ -288,7 +288,7 @@ nos interesa ahora es "dispatch", el siguiente código filtra todos los eventos 
         $eventsManager = new EventsManager();
 
         // Enviar todos los eventos producidos en el Dispatcher al plugin Security
-        $eventsManager->attach('dispatch', new SecurityPlugin);
+        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
         // Handle exceptions and not-found exceptions using NotFoundPlugin
         $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
@@ -301,7 +301,7 @@ nos interesa ahora es "dispatch", el siguiente código filtra todos los eventos 
         return $dispatcher;
     });
 
-When an event called "beforeDispatch" is triggered the following plugin will be notified:
+When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
 .. code-block:: php
 
@@ -310,7 +310,7 @@ When an event called "beforeDispatch" is triggered the following plugin will be 
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -324,7 +324,7 @@ When a "beforeException" is triggered then other plugin is notified:
     $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
 El plugin Security es una clase úbicada en (app/plugins/SecurityPlugin.php). Esta clase implementa
-el método "beforeDispatch". Este tiene el mismo nombre de uno de los eventos producidos en el dispatcher.
+el método "beforeExecuteRoute". Este tiene el mismo nombre de uno de los eventos producidos en el dispatcher.
 
 .. code-block:: php
 
@@ -338,7 +338,7 @@ el método "beforeDispatch". Este tiene el mismo nombre de uno de los eventos pr
     {
         // ...
 
-        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
