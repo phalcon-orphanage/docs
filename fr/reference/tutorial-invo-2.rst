@@ -279,7 +279,7 @@ Le type d'évènement qui nous intéresse actuellement est le "dispatch", la cod
         $eventsManager = new EventsManager();
 
         // Listen for events produced in the dispatcher using the Security plugin
-        $eventsManager->attach('dispatch', new SecurityPlugin);
+        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
         // Handle exceptions and not-found exceptions using NotFoundPlugin
         $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
@@ -292,7 +292,7 @@ Le type d'évènement qui nous intéresse actuellement est le "dispatch", la cod
         return $dispatcher;
     });
 
-When an event called "beforeDispatch" is triggered the following plugin will be notified:
+When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
 .. code-block:: php
 
@@ -301,7 +301,7 @@ When an event called "beforeDispatch" is triggered the following plugin will be 
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeDispatch', new SecurityPlugin);
+    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -329,7 +329,7 @@ C'est le même nom qu'un des évènement produit dans le dispatcer :
     {
         // ...
 
-        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
