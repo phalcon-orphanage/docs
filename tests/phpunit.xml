@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    colors="true"
+    stopOnFailure="false"
+    backupGlobals="false"
+    bootstrap="./bootstrap_phpunit.php">
+    <testsuites>
+        <testsuite name="Phalcon\Docs">
+            <directory suffix="Test.php">./</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src/</directory>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">../vendor/</directory>
+        </blacklist>
+    </filter>
+</phpunit>
