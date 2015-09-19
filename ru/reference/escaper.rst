@@ -5,7 +5,7 @@
 экранирования, в некоторых случаях этого бывает недостаточно. Класс :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` предоставляет
 контекстное экранирование, позволяя выполнять экранированию любых текстов с минимальными затратами ресурсов.
 
-Мы разработали компонент, базируемый на `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ , созданный в OWASP_
+Мы разработали компонент, базируемый на `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ , созданный в OWASP_.
 
 Этот компонент полагается на mbstring_ для того, чтобы поддерживать любую кодировку.
 
@@ -34,13 +34,13 @@
 
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title><?php echo $e->escapeHtml($maliciousTitle) ?></title>
+        <title><?php echo $e->escapeHtml($maliciousTitle); ?></title>
 
         <style type="text/css">
-        .<?php echo $e->escapeCss($className) ?> {
-            font-family  : "<?php echo $e->escapeCss($fontName) ?>";
+        .<?php echo $e->escapeCss($className); ?> {
+            font-family: "<?php echo $e->escapeCss($fontName); ?>";
             color: red;
         }
         </style>
@@ -49,9 +49,9 @@
 
     <body>
 
-        <div class='<?php echo $e->escapeHtmlAttr($className) ?>'>hello</div>
+        <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>hello</div>
 
-        <script>var some = '<?php echo $e->escapeJs($javascriptText) ?>'</script>
+        <script>var some = '<?php echo $e->escapeJs($javascriptText); ?>'</script>
 
     </body>
     </html>
@@ -71,7 +71,7 @@
 
     <div class="comments"><!-- Экранируем данные, которым не доверяем! --></div>
 
-Вы можете экранировать эти данные с помощью метода escapeHtml:
+Вы можете экранировать эти данные с помощью метода :code:`escapeHtml`:
 
 .. code-block:: html+php
 
@@ -112,7 +112,7 @@
 
     <a href="Экранируем данные, которым не доверяем!">Some link</a>
 
-Вы можете экранировать этот HTML-атрибут, используя метод escapeUrl:
+Вы можете экранировать этот HTML-атрибут, используя метод :code:`escapeUrl`:
 
 .. code-block:: html+php
 
@@ -132,7 +132,7 @@ CSS идентификаторы/значения также могут быть
 
     <a style="color: Экранируем данные, которым не доверяем!">Ссылка</a>
 
-Экранирование в этом случае можно выполнить с помощью метода escapeCss:
+Экранирование в этом случае можно выполнить с помощью метода :code:`escapeCss`:
 
 .. code-block:: html+php
 
@@ -144,19 +144,19 @@ CSS идентификаторы/значения также могут быть
 
     <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Ссылка</a>
 
-Экранирование Javascript
+Экранирование JavaScript
 ------------------------
-Строки, которые попадают в код javascript, тоже должны быть правильно экранированы:
+Строки, которые попадают в код JavaScript, тоже должны быть правильно экранированы:
 
 .. code-block:: html
 
     <script>document.title = 'Экранируем данные, которым не доверяем!'</script>
 
-Для этого используем метод escapeJs:
+Для этого используем метод :code:`escapeJs`:
 
 .. code-block:: html+php
 
-    <script>document.title = '<?php echo $e->escapejs("'; alert(100); var x='"); ?>'</script>
+    <script>document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>'</script>
 
 .. code-block:: html
 

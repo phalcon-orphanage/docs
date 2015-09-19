@@ -1,11 +1,11 @@
 コンテキストのエスケープ
 ===================
 
-Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
-those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
+Websites and web applications are vulnerable to XSS_ attacks and although PHP provides escaping functionality, in some contexts
+it is not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping and is written in Zephir, providing
 the minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_
+We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_.
 
 Additionally, this component relies on mbstring_ to support almost any charset.
 
@@ -34,13 +34,13 @@ To illustrate how this component works and why it is important, consider the fol
 
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title><?php echo $e->escapeHtml($maliciousTitle) ?></title>
+        <title><?php echo $e->escapeHtml($maliciousTitle); ?></title>
 
         <style type="text/css">
-        .<?php echo $e->escapeCss($className) ?> {
-            font-family  : "<?php echo $e->escapeCss($fontName) ?>";
+        .<?php echo $e->escapeCss($className); ?> {
+            font-family: "<?php echo $e->escapeCss($fontName); ?>";
             color: red;
         }
         </style>
@@ -49,9 +49,9 @@ To illustrate how this component works and why it is important, consider the fol
 
     <body>
 
-        <div class='<?php echo $e->escapeHtmlAttr($className) ?>'>hello</div>
+        <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>hello</div>
 
-        <script>var some = '<?php echo $e->escapeJs($javascriptText) ?>'</script>
+        <script>var some = '<?php echo $e->escapeJs($javascriptText); ?>'</script>
 
     </body>
     </html>
@@ -71,7 +71,7 @@ The most common situation when inserting unsafe data is between HTML tags:
 
     <div class="comments"><!-- Escape untrusted data here! --></div>
 
-You can escape those data using the escapeHtml method:
+You can escape those data using the :code:`escapeHtml` method:
 
 .. code-block:: html+php
 
@@ -85,14 +85,14 @@ Which produces:
 
 HTML属性のエスケープ
 ------------------------
-Escape HTML attributes is different from escape a full HTML content. The escape works by changing every non-alphanumeric
+Escaping HTML attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric
 character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
 
 .. code-block:: html
 
     <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-You can escape a HTML attribute by using the escapeHtmlAttr method:
+You can escape a HTML attribute by using the :code:`escapeHtmlAttr` method:
 
 .. code-block:: html+php
 
@@ -112,7 +112,7 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
     <a href="Escape untrusted data here!">Some link</a>
 
-You can escape a HTML attribute by using the escapeUrl method:
+You can escape a HTML attribute by using the :code:`escapeUrl` method:
 
 .. code-block:: html+php
 
@@ -132,7 +132,7 @@ CSS identifiers/values can be escaped too:
 
     <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape a HTML attribute by using the escapeCss method:
+You can escape a HTML attribute by using the :code:`escapeCss` method:
 
 .. code-block:: html+php
 
@@ -146,17 +146,17 @@ Which produces:
 
 Javascriptのエスケープ
 -------------------
-Strings to be inserted into javascript code also must be properly escaped:
+Strings to be inserted into JavaScript code also must be properly escaped:
 
 .. code-block:: html
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape a HTML attribute by using the escapeJs method:
+You can escape a HTML attribute by using the :code:`escapeJs` method:
 
 .. code-block:: html+php
 
-    <script>document.title = '<?php echo $e->escapejs("'; alert(100); var x='"); ?>'</script>
+    <script>document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>'</script>
 
 .. code-block:: html
 
