@@ -873,7 +873,7 @@ To call a Phalcon\\Tag helper, you only need to call an uncamelized version of t
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::emailField           | email_field           |
 +------------------------------------+-----------------------+
-| Phalcon\\Tag::numberField          | number_field          |
+| Phalcon\\Tag::numericField         | numeric_field         |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::submitButton         | submit_button         |
 +------------------------------------+-----------------------+

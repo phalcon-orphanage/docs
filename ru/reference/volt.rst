@@ -863,7 +863,7 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::emailField           | email_field           |
 +------------------------------------+-----------------------+
-| Phalcon\\Tag::numberField          | number_field          |
+| Phalcon\\Tag::numericField         | numeric_field         |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::submitButton         | submit_button         |
 +------------------------------------+-----------------------+
