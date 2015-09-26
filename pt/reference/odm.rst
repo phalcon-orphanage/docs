@@ -37,7 +37,7 @@ file must contain a single class; its class name should be in camel case notatio
     memory and reduce the memory allocation.
 
 By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
-you can use the getSource() method:
+you can use the :code:`getSource()` method:
 
 .. code-block:: php
 
@@ -91,7 +91,7 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
         }
     }
 
-You could find a certain document by its id and then print its name:
+You could find a certain document by its ID and then print its name:
 
 .. code-block:: php
 
@@ -195,7 +195,7 @@ to query documents and convert them transparently to model instances:
         echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+You could also use the :code:`findFirst()` method to get only the first record matching the given criteria:
 
 .. code-block:: php
 
@@ -215,7 +215,7 @@ You could also use the findFirst() method to get only the first record matching 
     );
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+Both :code:`find()` and :code:`findFirst()` methods accept an associative array specifying the search criteria:
 
 .. code-block:: php
 
@@ -241,19 +241,19 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
 The available query options are:
 
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                  | Example                                                                 |
-+=============+==============================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | "conditions" => array('$gt' => 1990)                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "fields" => array('name' => true)                                       |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "sort" => array("name" => -1, "status" => 1)                            |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                   | "limit" => 10                                                           |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| skip        | Skips a number of results                                                                                                                                                                    | "skip" => 50                                                            |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
+| Parameter          | Description                                                                                                                                                                                  | Example                                              |
++====================+==============================================================================================================================================================================================+======================================================+
+| :code:`conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | :code:`"conditions" => array('$gt' => 1990)`         |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
+| :code:`fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | :code:`"fields" => array('name' => true)`            |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
+| :code:`sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | :code:`"sort" => array("name" => -1, "status" => 1)` |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
+| :code:`limit`      | Limit the results of the query to results to certain range                                                                                                                                   | :code:`"limit" => 10`                                |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
+| :code:`skip`       | Skips a number of results                                                                                                                                                                    | :code:`"skip" => 50`                                 |
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------+
 
 If you have experience with SQL databases, you may want to check the `SQL to Mongo Mapping Chart`_.
 
@@ -282,8 +282,8 @@ With this option is easy perform tasks such as totaling or averaging field value
 
 Creating Updating/Records
 -------------------------
-The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
-associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
+The :code:`Phalcon\\Mvc\\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection
+associated with a model. The :code:`save()` method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
 
 Also the method executes associated validators and events that are defined in the model:
 
@@ -339,35 +339,35 @@ Validation Events and Events Manager
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         |
-+====================+==========================+=======================+=====================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the validation process and the final insert/update to the database                               |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the validation process only when an insertion operation is being made                            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the validation process when an insertion operation is being made                                  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the validation process when an updating operation is being made                                   |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the validation process                                                                            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                         |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Operation          | Name                             | Can stop operation?   | Explanation                                                                                                        |
++====================+==================================+=======================+====================================================================================================================+
+| Inserting/Updating | :code:`beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting          | :code:`beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Updating           | :code:`beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | :code:`onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting          | :code:`afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Updating           | :code:`afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | :code:`afterValidation`          | YES                   | Is executed after the validation process                                                                           |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | :code:`beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Updating           | :code:`beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting          | :code:`beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Updating           | :code:`afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting          | :code:`afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | :code:`afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
++--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -449,29 +449,39 @@ objects created in our application use the same EventsManager, then we need to a
     use Phalcon\Mvc\Collection\Manager as CollectionManager;
 
     // Registering the collectionManager service
-    $di->set('collectionManager', function () {
+    $di->set(
+        'collectionManager',
+        function () {
 
-        $eventsManager = new EventsManager();
+            $eventsManager = new EventsManager();
 
-        // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('collection', function ($event, $model) {
-            if (get_class($model) == 'Robots') {
-                if ($event->getType() == 'beforeSave') {
-                    if ($model->name == 'Scooby Doo') {
-                        echo "Scooby Doo isn't a robot!";
-                        return false;
+            // Attach an anonymous function as a listener for "model" events
+            $eventsManager->attach(
+                'collection',
+                function ($event, $model) {
+                    if (get_class($model) == 'Robots') {
+                        if ($event->getType() == 'beforeSave') {
+                            if ($model->name == 'Scooby Doo') {
+                                echo "Scooby Doo isn't a robot!";
+
+                                return false;
+                            }
+                        }
                     }
+
+                    return true;
                 }
-            }
-            return true;
-        });
+            );
 
-        // Setting a default EventsManager
-        $modelsManager = new CollectionManager();
-        $modelsManager->setEventsManager($eventsManager);
-        return $modelsManager;
+            // Setting a default EventsManager
+            $modelsManager = new CollectionManager();
 
-    }, true);
+            $modelsManager->setEventsManager($eventsManager);
+
+            return $modelsManager;
+        },
+        true
+    );
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -493,6 +503,7 @@ The following example implements an event that validates the year cannot be smal
         {
             if ($this->year < 0) {
                 echo "Year cannot be smaller than zero!";
+
                 return false;
             }
         }
@@ -546,21 +557,21 @@ The following example shows how to use it:
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                            | Example                                                           |
-+==============+========================================================================================================================================+===================================================================+
-| Email        | Validates that field contains a valid email format                                                                                     | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                         | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                             | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                            | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Name         | Explanation                                                      | Example                                                           |
++==============+==================================================================+===================================================================+
+| Email        | Validates that field contains a valid email format               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  | Validates that a value is not within a list of possible values   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  | Validates that a value is within a list of possible values       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numericality | Validates that a field has a numeric format                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| Regex        | Validates that the value of a field matches a regular expression | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
+| StringLength | Validates the length of a string                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validators, you can create your own validators:
 
@@ -614,7 +625,7 @@ Adding the validator to a model:
         }
     }
 
-The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
+The idea of creating validators is to make them reusable across several models. A validator can also be as simple as:
 
 .. code-block:: php
 
@@ -645,7 +656,7 @@ The idea of creating validators is make them reusable across several models. A v
 
 Deleting Records
 ----------------
-The method Phalcon\\Mvc\\Collection::delete() allows to delete a document. You can use it as follows:
+The :code:`Phalcon\\Mvc\\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
 .. code-block:: php
 
@@ -663,15 +674,20 @@ The method Phalcon\\Mvc\\Collection::delete() allows to delete a document. You c
         }
     }
 
-You can also delete many documents by traversing a resultset with a foreach:
+You can also delete many documents by traversing a resultset with a :code:`foreach` loop:
 
 .. code-block:: php
 
     <?php
 
-    $robots = Robots::find(array(
-        array("type" => "mechanical")
-    ));
+    $robots = Robots::find(
+        array(
+            array(
+                "type" => "mechanical"
+            )
+        )
+    );
+
     foreach ($robots as $robot) {
         if ($robot->delete() == false) {
             echo "Sorry, we can't delete the robot right now: \n";
@@ -685,29 +701,29 @@ You can also delete many documents by traversing a resultset with a foreach:
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-+-----------+--------------+---------------------+------------------------------------------+
-| Operation | Name         | Can stop operation? | Explanation                              |
-+===========+==============+=====================+==========================================+
-| Deleting  | beforeDelete | YES                 | Runs before the delete operation is made |
-+-----------+--------------+---------------------+------------------------------------------+
-| Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
-+-----------+--------------+---------------------+------------------------------------------+
++-----------+----------------------+---------------------+------------------------------------------+
+| Operation | Name                 | Can stop operation? | Explanation                              |
++===========+======================+=====================+==========================================+
+| Deleting  | :code:`beforeDelete` | YES                 | Runs before the delete operation is made |
++-----------+----------------------+---------------------+------------------------------------------+
+| Deleting  | :code:`afterDelete`  | NO                  | Runs after the delete operation was made |
++-----------+----------------------+---------------------+------------------------------------------+
 
 Validation Failed Events
 ------------------------
 Another type of events is available when the data validation process finds any inconsistency:
 
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Operation                | Name               | Explanation                                                        |
-+==========================+====================+====================================================================+
-| Insert or Update         | notSave            | Triggered when the insert/update operation fails for any reason    |
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
-+--------------------------+--------------------+--------------------------------------------------------------------+
++--------------------------+---------------------------+--------------------------------------------------------------------+
+| Operation                | Name                      | Explanation                                                        |
++==========================+===========================+====================================================================+
+| Insert or Update         | :code:`notSave`           | Triggered when the insert/update operation fails for any reason    |
++--------------------------+---------------------------+--------------------------------------------------------------------+
+| Insert, Delete or Update | :code:`onValidationFails` | Triggered when any data manipulation operation fails               |
++--------------------------+---------------------------+--------------------------------------------------------------------+
 
 Implicit Ids vs. User Primary Keys
 ----------------------------------
-By default Phalcon\\Mvc\\Collection assumes that the _id attribute is automatically generated using MongoIds_.
+By default :code:`Phalcon\\Mvc\\Collection` assumes that the :code:`_id` attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overridden:
 
 .. code-block:: php
@@ -735,18 +751,28 @@ in the application's services container. You can overwrite this service setting 
     <?php
 
     // This service returns a mongo database at 192.168.1.100
-    $di->set('mongo1', function () {
-        $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
-        return $mongo->selectDB("management");
-    }, true);
+    $di->set(
+        'mongo1',
+        function () {
+            $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+
+            return $mongo->selectDB("management");
+        },
+        true
+    );
 
     // This service returns a mongo database at localhost
-    $di->set('mongo2', function () {
-        $mongo = new MongoClient("mongodb://localhost");
-        return $mongo->selectDB("invoicing");
-    }, true);
+    $di->set(
+        'mongo2',
+        function () {
+            $mongo = new MongoClient("mongodb://localhost");
 
-Then, in the Initialize method, we define the connection service for the model:
+            return $mongo->selectDB("invoicing");
+        },
+        true
+    );
+
+Then, in the :code:`initialize()` method, we define the connection service for the model:
 
 .. code-block:: php
 
