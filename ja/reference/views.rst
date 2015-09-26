@@ -695,7 +695,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
         }
     }
 
-When we do not define a key to the cache, the component automatically creates one using an MD5_ hash of the name of the view currently being rendered.
+When we do not define a key to the cache, the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
 It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
 
 When the View component needs to cache something it will request a cache service from the services container.

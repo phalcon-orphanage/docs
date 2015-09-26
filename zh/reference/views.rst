@@ -676,7 +676,8 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         }
     }
 
-当我们没有定义缓存的关键组件，这个组件会自动创建一个经过 md5_ 的当前渲染的视图名。它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
+当我们没有定义缓存的关键组件， the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
+它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
 
 当视图组件需要缓存的东西时，就会请求缓存服务的服务容器。
 这个服务的服务名称约定为"viewCache"：
