@@ -42,9 +42,9 @@
 
 Структура класса Migration
 --------------------------
-Каждый файл содержит уникальный класс, который расширяет  Phalcon\\Mvc\\Model\\Migration. Эти классы обычно имеют два метода: up() и down(). Up() выполняет миграцию, а down() откатывает ее.
+Каждый файл содержит уникальный класс, который расширяет :code:`Phalcon\\Mvc\\Model\\Migration`. Эти классы обычно имеют два метода: :code:`up()` и :code:`down()`. :code:`up()` выполняет миграцию, а :code:`down()` откатывает ее.
 
-Метод Up() также содержит магический метод morphTable(). Магия начинается тогда, когда он распознает изменения, требующие синхронизации фактической таблицы в базе данных, приведенные выше.
+Метод :code:`up()` также содержит *магический* метод :code:`morphTable()`. Магия начинается тогда, когда он распознает изменения, требующие синхронизации фактической таблицы в базе данных, приведенные выше.
 
 .. code-block:: php
 
@@ -147,6 +147,7 @@
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------+
 | "options"    | Массив с набором опций для создания таблицы. Эти опции зачастую связаны с системой базы данных, в которой миграция был сгенерирована.  | Да          |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------+
+
 Определение столбцов
 ^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` используется для определения столбцов таблицы. Этот класс инкапсулирует возможности связанные с конкретным столбцом. Его конструктор принимает в качестве первого параметра имя столбца и массив, описывающий колонки. Доступны следующие опции при описании столбцов:
@@ -173,13 +174,24 @@
 
 Миграции базы данных поддерживают следующие типы столбцов базы данных:
 
-* Phalcon\\Db\\Column::TYPE_INTEGER
-* Phalcon\\Db\\Column::TYPE_DATE
-* Phalcon\\Db\\Column::TYPE_VARCHAR
-* Phalcon\\Db\\Column::TYPE_DECIMAL
-* Phalcon\\Db\\Column::TYPE_DATETIME
-* Phalcon\\Db\\Column::TYPE_CHAR
-* Phalcon\\Db\\Column::TYPE_TEXT
+* :code:`Phalcon\\Db\\Column::TYPE_INTEGER`
+* :code:`Phalcon\\Db\\Column::TYPE_VARCHAR`
+* :code:`Phalcon\\Db\\Column::TYPE_CHAR`
+* :code:`Phalcon\\Db\\Column::TYPE_DATE`
+* :code:`Phalcon\\Db\\Column::TYPE_DATETIME`
+* :code:`Phalcon\\Db\\Column::TYPE_TIMETAMP`
+* :code:`Phalcon\\Db\\Column::TYPE_DECIMAL`
+* :code:`Phalcon\\Db\\Column::TYPE_TEXT`
+* :code:`Phalcon\\Db\\Column::TYPE_BOOLEAN`
+* :code:`Phalcon\\Db\\Column::TYPE_FLOAT`
+* :code:`Phalcon\\Db\\Column::TYPE_DOUBLE`
+* :code:`Phalcon\\Db\\Column::TYPE_TINYBLOB`
+* :code:`Phalcon\\Db\\Column::TYPE_BLOB`
+* :code:`Phalcon\\Db\\Column::TYPE_MEDIUMBLOB`
+* :code:`Phalcon\\Db\\Column::TYPE_LONGBLOB`
+* :code:`Phalcon\\Db\\Column::TYPE_JSON`
+* :code:`Phalcon\\Db\\Column::TYPE_JSONB`
+* :code:`Phalcon\\Db\\Column::TYPE_BIGINTEGER`
 
 Определение индексов
 ^^^^^^^^^^^^^^^^^^^^
@@ -219,6 +231,7 @@
         public function up()
         {
             // ...
+
             self::$_connection->insert(
                 "products",
                 array("Малабарский шпинат", 14.50),
