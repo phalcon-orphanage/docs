@@ -148,7 +148,7 @@ HTML的属性也可以在创建时指定：
             // Add a text element to capture the 'email'
             $this->add(new Text("email"));
 
-            // Add a text element to put a hidden csrf
+            // Add a text element to put a hidden CSRF
             $this->add(new Hidden("csrf"));
         }
     }
@@ -171,7 +171,7 @@ HTML的属性也可以在创建时指定：
          * @param Users $user
          * @param array $options
          */
-        public function initialize($user, $options)
+        public function initialize(Users $user, $options)
         {
             if ($options['edit']) {
                 $this->add(new Hidden('id'));

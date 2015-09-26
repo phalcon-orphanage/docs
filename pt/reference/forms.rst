@@ -1,7 +1,7 @@
 Forms
 =====
 
-Phalcon\\Forms is a component that aid the developer in the creation and maintenance of forms in web applications.
+Phalcon\\Forms is a component that aids you in the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
 
@@ -59,8 +59,7 @@ Forms can be rendered based on the form definition:
     </form>
 
 Each element in the form can be rendered as required by the developer. Internally,
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the right HTML for each element,
-you can pass additional HTML attributes as second parameter for render:
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of :code:`render()`:
 
 .. code-block:: html+php
 
@@ -69,7 +68,7 @@ you can pass additional HTML attributes as second parameter for render:
         <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
     </p>
 
-HTML Attributes also can be set in the element's definition:
+HTML attributes also can be set in the element's definition:
 
 .. code-block:: php
 
@@ -150,7 +149,7 @@ so you have access to the application services if needed:
             // Add a text element to capture the 'email'
             $this->add(new Text("email"));
 
-            // Add a text element to put a hidden csrf
+            // Add a text element to put a hidden CSRF
             $this->add(new Hidden("csrf"));
         }
     }
@@ -173,7 +172,7 @@ The associated entity added to the form in the initialization and custom user op
          * @param Users $user
          * @param array $options
          */
-        public function initialize($user, $options)
+        public function initialize(Users $user, $options)
         {
             if ($options['edit']) {
                 $this->add(new Hidden('id'));
@@ -412,7 +411,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 Event Callbacks
 ---------------
-Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
+Whenever forms are implemented as classes, the callbacks: :code:`beforeValidation()` and :code:`afterValidation()` can be implemented
 in the form's class to perform pre-validations and post-validations:
 
 .. code-block:: html+php
@@ -563,4 +562,4 @@ Using the unique name, forms can be accessed in any part of the application:
 
 External Resources
 ------------------
-* `VÃ¶kurÃ³ <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]

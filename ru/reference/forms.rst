@@ -150,7 +150,7 @@ html-атрибуты вторым параметром:
             // Установка поля 'email'
             $this->add(new Text("email"));
 
-            // Добавление скрытого поля csrf
+            // Добавление скрытого поля CSRF
             $this->add(new Hidden("csrf"));
         }
     }
@@ -173,7 +173,7 @@ html-атрибуты вторым параметром:
          * @param Users $user
          * @param array $options
          */
-        public function initialize($user, $options)
+        public function initialize(Users $user, $options)
         {
             if ($options['edit']) {
                 $this->add(new Hidden('id'));
@@ -419,7 +419,9 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    use Phalcon\Mvc\Form;
+
+    class ContactForm extends Form
     {
         public function beforeValidation()
         {
