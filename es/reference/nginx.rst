@@ -22,8 +22,7 @@ Using $_GET['_url'] as source of URIs:
 
         index index.php index.html index.htm;
 
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         try_files $uri $uri/ @rewrite;
 
@@ -44,7 +43,7 @@ Using $_GET['_url'] as source of URIs:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -63,8 +62,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
 
         index index.php index.html index.htm;
 
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         location / {
             try_files $uri $uri/ /index.php;
@@ -80,7 +78,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -100,10 +98,8 @@ Instancias dedicadas
 
         #access_log  /var/log/nginx/host.access.log  main;
 
-        set $root_path '/srv/www/htdocs/phalcon-website/public';
-
         location / {
-            root   $root_path;
+            root   /srv/www/htdocs/phalcon-website/public;
             index  index.php index.html index.htm;
 
             # if file exists return it right away
@@ -132,7 +128,7 @@ Instancias dedicadas
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /srv/www/htdocs/phalcon-website/public;
         }
     }
 
@@ -147,8 +143,7 @@ Esta configuración te permite tener varias configuraciones por Host:
 
         server_name localhost;
 
-        set         $root_path '/var/www/$host/public';
-        root        $root_path;
+        root        /var/www/$host/public;
 
         access_log  /var/log/nginx/$host-access.log;
         error_log   /var/log/nginx/$host-error.log error;
@@ -175,7 +170,7 @@ Esta configuración te permite tener varias configuraciones por Host:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/$host/public;
         }
 
         location ~ /\.ht {

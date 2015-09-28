@@ -26,8 +26,7 @@ $_GET['_url'] をURIsとする場合:
 
         index index.php index.html index.htm;
 
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         try_files $uri $uri/ @rewrite;
 
@@ -48,7 +47,7 @@ $_GET['_url'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -67,8 +66,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
         index index.php index.html index.htm;
 
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         location / {
             try_files $uri $uri/ /index.php;
@@ -84,7 +82,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -104,10 +102,8 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
         #access_log  /var/log/nginx/host.access.log  main;
 
-        set $root_path '/srv/www/htdocs/phalcon-website/public';
-
         location / {
-            root   $root_path;
+            root   /srv/www/htdocs/phalcon-website/public;
             index  index.php index.html index.htm;
 
             # if file exists return it right away
@@ -136,7 +132,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /srv/www/htdocs/phalcon-website/public;
         }
     }
 
@@ -151,8 +147,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
         server_name localhost;
 
-        set         $root_path '/var/www/$host/public';
-        root        $root_path;
+        root        /var/www/$host/public;
 
         access_log  /var/log/nginx/$host-access.log;
         error_log   /var/log/nginx/$host-error.log error;
@@ -179,7 +174,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/$host/public;
         }
 
         location ~ /\.ht {
