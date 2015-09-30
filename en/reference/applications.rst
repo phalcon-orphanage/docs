@@ -191,7 +191,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         }
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+A special bootstrap file is required to load a multi-module MVC architecture:
 
 .. code-block:: php
 
@@ -224,7 +224,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             array(
                 'module'     => 'backend',
                 'controller' => 'products',
-                'action'     => 1
+                'action'     => 'index'
             )
         );
 
@@ -232,7 +232,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             "/products/:action",
             array(
                 'controller' => 'products',
-                'action'     => 1
+                'action'     => 'index'
             )
         );
 
