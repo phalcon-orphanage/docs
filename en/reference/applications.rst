@@ -90,14 +90,14 @@ If namespaces are used, the following bootstrap can be used:
 
     $di = new FactoryDefault();
 
-    // Register the dispatcher setting a Namespace for controllers
+    // Register the default dispatcher's namespace for controllers
     $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
-    // Registering the view component
+    // Register the view component
     $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
