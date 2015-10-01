@@ -204,6 +204,7 @@ A special bootstrap file is required to load a multi-module MVC architecture:
     $di = new FactoryDefault();
 
     // Specify routes for modules
+    // More information how to set the router up https://docs.phalconphp.com/pl/latest/reference/routing.html
     $di->set('router', function () {
 
         $router = new Router();
@@ -224,7 +225,7 @@ A special bootstrap file is required to load a multi-module MVC architecture:
             array(
                 'module'     => 'backend',
                 'controller' => 'products',
-                'action'     => 'index'
+                'action'     => 1
             )
         );
 
@@ -232,7 +233,7 @@ A special bootstrap file is required to load a multi-module MVC architecture:
             "/products/:action",
             array(
                 'controller' => 'products',
-                'action'     => 'index'
+                'action'     => 1
             )
         );
 
