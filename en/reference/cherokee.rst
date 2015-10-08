@@ -1,5 +1,6 @@
 Cherokee Installation Notes
 ===========================
+
 Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
 
 Configuring Cherokee for Phalcon

@@ -124,7 +124,7 @@ var ZepDoc = (function($){
             $cItem.attr("title",curClass.name);
             $cItem.attr("menu-depth",depth);
 
-            $cItem.find("a").attr("href", ZepCurrentPath  + "class/" + curClass.name.replace("\\","/") + ".html");
+            $cItem.find("a").attr("href", ZepCurrentPath  + "class/" + curClass.name.replace(/\\/g,"/") + ".html");
             $cItem.addClass( "type-" + curClass.type);
             $cItem.attr("data-class-name",curClass.name);
 

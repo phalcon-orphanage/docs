@@ -22,31 +22,31 @@ This components controls the initialization of models, keeping record of relatio
 Methods
 -------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public  **setCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setCustomEventsManager** (*unknown* $model, *unknown* $eventsManager)
 
 Sets a custom events manager for a specific model
 
@@ -64,13 +64,13 @@ Initializes a model in the models manager
 
 
 
-public *bool*  **isInitialized** (*string* $modelName)
+public  **isInitialized** (*unknown* $modelName)
 
 Check whether a model is already initialized
 
 
 
-public :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`  **getLastInitialized** ()
+public  **getLastInitialized** ()
 
 Get the latest initialized model
 
@@ -88,7 +88,7 @@ Sets whether a model must use implicit objects ids
 
 
 
-public *boolean*  **isUsingImplicitObjectIds** (*unknown* $model)
+public  **isUsingImplicitObjectIds** (*unknown* $model)
 
 Checks if a model is using implicit object ids
 
@@ -103,6 +103,18 @@ Returns the connection related to a model
 public  **notifyEvent** (*unknown* $eventName, *unknown* $model)
 
 Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+
+
+
+public  **missingMethod** (*unknown* $model, *unknown* $eventName, *unknown* $data)
+
+Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
+
+
+
+public  **addBehavior** (*unknown* $model, *unknown* $behavior)
+
+Binds a behavior to a model
 
 
 

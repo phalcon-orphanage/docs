@@ -63,7 +63,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 对该项目的所有请求都将被重定向到为public/文档根目录。此步骤可确保内部项目的文件夹仍然对公共访客隐藏，从而消除了一些安全威胁。
@@ -77,7 +77,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 引导程序（Bootstrap）
@@ -110,14 +110,14 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         $di = new FactoryDefault();
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
@@ -128,7 +128,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -187,12 +187,12 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
-    
+
 接下来，我们注册一个基础URI，这样通过Phalcon生成包括我们之前设置的“tutorial”文件夹在内的所有的URI。
 我们使用类  :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`  生成超链接，这将在本教程后续部分很重要。
 
@@ -205,7 +205,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    $di->set('url', function () {
         $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
@@ -442,7 +442,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
         $di = new FactoryDefault();
 
         // Setup the database service
-        $di->set('db', function(){
+        $di->set('db', function () {
             return new DbAdapter(array(
                 "host"     => "localhost",
                 "username" => "root",
@@ -452,25 +452,25 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
         });
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
-        //Handle the request
+        // Handle the request
         $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
     }
 
@@ -499,7 +499,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
             $user = new Users();
 
-            //Store and check for errors
+            // Store and check for errors
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -510,7 +510,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
                     echo $message->getMessage(), "<br/>";
                 }
             }
-            
+
             $this->view->disable();
         }
 

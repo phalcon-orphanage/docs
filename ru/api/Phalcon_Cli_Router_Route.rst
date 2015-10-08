@@ -12,37 +12,37 @@ Constants
 Methods
 -------
 
-public  **__construct** (*unknown* $pattern, [*unknown* $paths])
+public  **__construct** (*string* $pattern, [*array* $paths])
 
 Phalcon\\Cli\\Router\\Route constructor
 
 
 
-public *string*  **compilePattern** (*unknown* $pattern)
+public  **compilePattern** (*unknown* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public *array|boolean*  **extractNamedParams** (*unknown* $pattern)
+public *array|boolean*  **extractNamedParams** (*string* $pattern)
 
 Extracts parameters from a string
 
 
 
-public  **reConfigure** (*unknown* $pattern, [*unknown* $paths])
+public  **reConfigure** (*string* $pattern, [*array* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
 
 
-public *string*  **getName** ()
+public  **getName** ()
 
 Returns the route's name
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **setName** (*unknown* $name)
+public  **setName** (*unknown* $name)
 
 Sets the route's name 
 
@@ -57,9 +57,9 @@ Sets the route's name
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **beforeMatch** (*unknown* $callback)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **beforeMatch** (*callback* $callback)
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched
+Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
 
 
@@ -69,43 +69,43 @@ Returns the 'before match' callback if any
 
 
 
-public *string*  **getRouteId** ()
+public  **getRouteId** ()
 
 Returns the route's id
 
 
 
-public *string*  **getPattern** ()
+public  **getPattern** ()
 
 Returns the route's pattern
 
 
 
-public *string*  **getCompiledPattern** ()
+public  **getCompiledPattern** ()
 
 Returns the route's compiled pattern
 
 
 
-public *array*  **getPaths** ()
+public  **getPaths** ()
 
 Returns the paths
 
 
 
-public *array*  **getReversedPaths** ()
+public  **getReversedPaths** ()
 
 Returns the paths using positions as keys and names as values
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **convert** (*unknown* $name, *unknown* $converter)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **convert** (*string* $name, *callable* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 
 
 
-public *array*  **getConverters** ()
+public  **getConverters** ()
 
 Returns the router converter
 
@@ -123,7 +123,7 @@ Set the routing delimiter
 
 
 
-public static *string*  **getDelimiter** ()
+public static  **getDelimiter** ()
 
 Get routing delimiter
 

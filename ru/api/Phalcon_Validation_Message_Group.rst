@@ -9,13 +9,13 @@ Represents a group of validation messages
 Methods
 -------
 
-public  **__construct** ([*unknown* $messages])
+public  **__construct** ([*array* $messages])
 
 Phalcon\\Validation\\Message\\Group constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **offsetGet** (*unknown* $index)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **offsetGet** (*int* $index)
 
 Gets an attribute a message using the array syntax 
 
@@ -28,7 +28,7 @@ Gets an attribute a message using the array syntax
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $message)
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
 Sets an attribute using the array-syntax 
 
@@ -41,7 +41,7 @@ Sets an attribute using the array-syntax
 
 
 
-public *boolean*  **offsetExists** (*unknown* $index)
+public *boolean*  **offsetExists** (*int* $index)
 
 Checks if an index exists 
 
@@ -54,7 +54,7 @@ Checks if an index exists
 
 
 
-public  **offsetUnset** (*unknown* $index)
+public  **offsetUnset** (*string* $index)
 
 Removes a message from the list 
 
@@ -80,7 +80,7 @@ Appends a message to the group
 
 
 
-public  **appendMessages** (*unknown* $messages)
+public  **appendMessages** (*Phalcon\\Validation\\MessageInterface[]* $messages)
 
 Appends an array of messages to the group 
 
@@ -93,13 +93,13 @@ Appends an array of messages to the group
 
 
 
-public *array*  **filter** (*unknown* $fieldName)
+public *array*  **filter** (*string* $fieldName)
 
 Filters the message group by field name
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of messages in the list
 
@@ -117,7 +117,7 @@ Returns the current message in the iterator
 
 
 
-public *int*  **key** ()
+public  **key** ()
 
 Returns the current position/key in the iterator
 
@@ -129,13 +129,13 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current message in the iterator is valid
 
 
 
-public static :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **__set_state** (*unknown* $group)
+public static :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **__set_state** (*array* $group)
 
 Magic __set_state helps to re-build messages variable when exporting
 

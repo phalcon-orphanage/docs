@@ -1,6 +1,8 @@
 Class **Phalcon\\Paginator\\Adapter\\QueryBuilder**
 ===================================================
 
+*extends* abstract class :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
+
 *implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
 Pagination using a PHQL query builder as source of data  
@@ -31,27 +33,9 @@ public  **__construct** (*unknown* $config)
 
 
 
-public  **setCurrentPage** (*unknown* $currentPage)
-
-Set the current page number
-
-
-
-public *int page*  **getCurrentPage** ()
+public  **getCurrentPage** ()
 
 Get the current page number
-
-
-
-public  **setLimit** (*unknown* $limitRows)
-
-Set current rows limit
-
-
-
-public  **getLimit** ()
-
-Get current rows limit
 
 
 
@@ -70,6 +54,24 @@ Get query builder object
 public  **getPaginate** ()
 
 Returns a slice of the resultset to show in the pagination
+
+
+
+public  **setCurrentPage** (*unknown* $page) inherited from Phalcon\\Paginator\\Adapter
+
+Set the current page number
+
+
+
+public  **setLimit** (*unknown* $limitRows) inherited from Phalcon\\Paginator\\Adapter
+
+Set current rows limit
+
+
+
+public  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
+
+Get current rows limit
 
 
 

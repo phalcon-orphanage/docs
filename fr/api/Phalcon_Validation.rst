@@ -22,43 +22,43 @@ Phalcon\\Validation constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** ([*unknown* $data], [*unknown* $entity])
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** ([*array|object* $data], [*object* $entity])
 
 Validate a set of data according to a set of rules
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **add** (*unknown* $field, *unknown* $validator)
+public  **add** (*unknown* $field, *unknown* $validator)
 
 Adds a validator to a field
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **rule** (*unknown* $field, *unknown* $validator)
+public  **rule** (*unknown* $field, *unknown* $validator)
 
 Alias of `add` method
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **rules** (*unknown* $field, *unknown* $validators)
+public  **rules** (*unknown* $field, *unknown* $validators)
 
 Adds the validators to a field
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setFilters** (*unknown* $field, *unknown* $filters)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setFilters** (*string* $field, *array|string* $filters)
 
 Adds filters to the field
 
 
 
-public *mixed*  **getFilters** ([*unknown* $field])
+public *mixed*  **getFilters** ([*string* $field])
 
 Returns all the filters or a specific one
 
 
 
-public *array*  **getValidators** ()
+public  **getValidators** ()
 
 Returns the validators added to the validation
 
@@ -70,19 +70,19 @@ Returns the bound entity
 
 
 
-public *array*  **setDefaultMessages** ([*unknown* $messages])
+public  **setDefaultMessages** ([*unknown* $messages])
 
 Adds default messages to validators
 
 
 
-public *string*  **getDefaultMessage** (*unknown* $type)
+public  **getDefaultMessage** (*string* $type)
 
 Get default message for validator type
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** ()
+public  **getMessages** ()
 
 Returns the registered validators
 
@@ -94,25 +94,25 @@ Adds labels for fields
 
 
 
-public *string*  **getLabel** (*unknown* $field)
+public *string*  **getLabel** (*string* $field)
 
 Get label for field
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **appendMessage** (*unknown* $message)
+public  **appendMessage** (*unknown* $message)
 
 Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*unknown* $entity, *unknown* $data)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*object* $entity, *array|object* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 
 
 
-public *mixed*  **getValue** (*unknown* $field)
+public *mixed*  **getValue** (*string* $field)
 
 Gets the a value to validate in the array/object data source
 
@@ -124,7 +124,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -136,7 +136,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

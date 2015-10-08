@@ -1,5 +1,6 @@
 Storing data in Session
 =======================
+
 The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
 Reasons to use this component instead of raw-sessions:
@@ -17,9 +18,11 @@ Thanks to the service container, we can ensure that the session is accessed only
 
     <?php
 
-    //Start the session the first time when some component request the session service
-    $di->setShared('session', function() {
-        $session = new Phalcon\Session\Adapter\Files();
+    use Phalcon\Session\Adapter\Files as Session;
+
+    // Start the session the first time when some component request the session service
+    $di->setShared('session', function () {
+        $session = new Session();
         $session->start();
         return $session;
     });
@@ -33,22 +36,22 @@ and store items and retrieve them in the following way:
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
-            //Set a session variable
+            // Set a session variable
             $this->session->set("user-name", "Michael");
         }
 
         public function welcomeAction()
         {
-
-            //Check if the variable is defined
+            // Check if the variable is defined
             if ($this->session->has("user-name")) {
 
-                //Retrieve its value
+                // Retrieve its value
                 $name = $this->session->get("user-name");
             }
         }
@@ -63,21 +66,21 @@ It's also possible remove specific variables or destroy the whole session:
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function removeAction()
         {
-            //Remove a session variable
+            // Remove a session variable
             $this->session->remove("user-name");
         }
 
         public function logoutAction()
         {
-            //Destroy the whole session
+            // Destroy the whole session
             $this->session->destroy();
         }
-
     }
 
 Isolating Session Data between Applications
@@ -90,11 +93,13 @@ prefix for every session variable created in a certain application:
 
     <?php
 
-    //Isolating the session data
-    $di->set('session', function(){
+    use Phalcon\Session\Adapter\Files as Session;
 
-        //All variables created will prefixed with "my-app-1"
-        $session = new Phalcon\Session\Adapter\Files(
+    // Isolating the session data
+    $di->set('session', function () {
+
+        // All variables created will prefixed with "my-app-1"
+        $session = new Session(
             array(
                 'uniqueId' => 'my-app-1'
             )
@@ -104,6 +109,8 @@ prefix for every session variable created in a certain application:
 
         return $session;
     });
+
+Adding a unique ID is not necessary.
 
 Session Bags
 ------------
@@ -115,7 +122,9 @@ it's automatically stored in session:
 
     <?php
 
-    $user       = new Phalcon\Session\Bag('user');
+    use Phalcon\Session\Bag as SessionBag;
+
+    $user       = new SessionBag('user');
     $user->setDI($di);
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
@@ -131,9 +140,10 @@ Thanks to this you can persist data between requests in every class in an indepe
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
             // Create a persistent variable "name"
@@ -142,12 +152,10 @@ Thanks to this you can persist data between requests in every class in an indepe
 
         public function welcomeAction()
         {
-            if (isset($this->persistent->name))
-            {
+            if (isset($this->persistent->name)) {
                 echo "Welcome, ", $this->persistent->name;
             }
         }
-
     }
 
 In a component:
@@ -156,9 +164,10 @@ In a component:
 
     <?php
 
-    class Security extends Phalcon\Mvc\User\Component
-    {
+    use Phalcon\Mvc\Controller;
 
+    class Security extends Component
+    {
         public function auth()
         {
             // Create a persistent variable "name"
@@ -169,7 +178,6 @@ In a component:
         {
             return $this->persistent->name;
         }
-
     }
 
 The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)

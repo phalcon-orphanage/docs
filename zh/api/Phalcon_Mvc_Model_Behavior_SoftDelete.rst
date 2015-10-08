@@ -17,7 +17,7 @@ Listens for notifications from the models manager
 
 
 
-public  **__construct** ([*unknown* $options]) inherited from Phalcon\\Mvc\\Model\\Behavior
+public  **__construct** ([*array* $options]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Phalcon\\Mvc\\Model\\Behavior
 
@@ -29,13 +29,13 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*unknown* $eventName]) inherited from Phalcon\\Mvc\\Model\\Behavior
+protected *array*  **getOptions** ([*string* $eventName]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Returns the behavior options related to an event
 
 
 
-public  **missingMethod** (*unknown* $model, *unknown* $method, [*unknown* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Acts as fallbacks when a missing method is called on the model
 

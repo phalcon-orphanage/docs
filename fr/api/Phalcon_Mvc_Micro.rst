@@ -24,7 +24,7 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*unknown* $dependencyInjector])
 
 Phalcon\\Mvc\\Micro constructor
 
@@ -36,19 +36,19 @@ Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **map** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **map** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler without any HTTP method constraint
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **get** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **get** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **post** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **post** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
@@ -66,73 +66,73 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **head** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **head** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **delete** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **delete** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **options** (*unknown* $routePattern, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **options** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **mount** (*unknown* $collection)
+public  **mount** (*unknown* $collection)
 
 Mounts a collection of handlers
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **notFound** (*unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **error** (*unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **error** (*callable* $handler)
 
 Sets a handler that will be called when an exception is thrown handling the route
 
 
 
-public :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`  **getRouter** ()
+public  **getRouter** ()
 
 Returns the internal router used by the application
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*unknown* $serviceName, *unknown* $definition, [*unknown* $shared])
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
 Sets a service from the DI
 
 
 
-public *boolean*  **hasService** (*unknown* $serviceName)
+public  **hasService** (*unknown* $serviceName)
 
 Checks if a service is registered in the DI
 
 
 
-public *object*  **getService** (*unknown* $serviceName)
+public *object*  **getService** (*string* $serviceName)
 
 Obtains a service from the DI
 
 
 
-public *mixed*  **getSharedService** (*unknown* $serviceName)
+public *mixed*  **getSharedService** (*string* $serviceName)
 
 Obtains a shared service from the DI
 
 
 
-public *mixed*  **handle** ([*unknown* $uri])
+public *mixed*  **handle** ([*string* $uri])
 
 Handle the whole request
 
@@ -144,7 +144,7 @@ Stops the middleware execution avoiding than other middlewares be executed
 
 
 
-public  **setActiveHandler** (*unknown* $activeHandler)
+public  **setActiveHandler** (*callable* $activeHandler)
 
 Sets externally the handler that must be called by the matched route
 
@@ -162,13 +162,13 @@ Returns the value returned by the executed handler
 
 
 
-public *boolean*  **offsetExists** (*unknown* $alias)
+public *boolean*  **offsetExists** (*string* $alias)
 
 Check if a service is registered in the internal services container using the array syntax
 
 
 
-public  **offsetSet** (*unknown* $alias, *unknown* $definition)
+public  **offsetSet** (*string* $alias, *mixed* $definition)
 
 Allows to register a shared service in the internal services container using the array syntax 
 
@@ -181,7 +181,7 @@ Allows to register a shared service in the internal services container using the
 
 
 
-public *mixed*  **offsetGet** (*unknown* $alias)
+public *mixed*  **offsetGet** (*string* $alias)
 
 Allows to obtain a shared service in the internal services container using the array syntax 
 
@@ -194,25 +194,25 @@ Allows to obtain a shared service in the internal services container using the a
 
 
 
-public  **offsetUnset** (*unknown* $alias)
+public  **offsetUnset** (*string* $alias)
 
 Removes a service from the internal services container using the array syntax
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **before** (*unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **before** (*callable* $handler)
 
 Appends a before middleware to be called before execute the route
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **after** (*unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **after** (*callable* $handler)
 
 Appends an 'after' middleware to be called after execute the route
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*unknown* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
 
 Appends a 'finish' middleware to be called when the request is finished
 
@@ -224,7 +224,7 @@ Returns the internal handlers attached to the application
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -236,7 +236,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

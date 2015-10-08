@@ -1,5 +1,6 @@
 アセット管理
 =================
+
 Phalcon\\Assets コンポーネントは、Webアプリケーション内のCSSやJavaScriptなどの静的リソースを管理することができます。
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` はサービスコンテナで使用可能で、コンテナが使用可能などの場所からもリソースを追加することが出来ます。
@@ -14,21 +15,21 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
-
-            //CSSのローカルリソースを追加します
+            // CSSのローカルリソースを追加します
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            //JavaScriptのローカルリソースを追加します
+            // JavaScriptのローカルリソースを追加します
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
-
         }
     }
 
@@ -49,36 +50,61 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+            {{ assets.outputCss() }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs() }}
+        </body>
+    <html>
+
+For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
+
 ローカル／リモートリソース
 ----------------------
 ローカルリソースは同じアプリケーションのドキュメントルートに配備されたものです。ローカルリソースのURLは`URL`サービスによって生成されます（通常は :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` ）。
 
 リモートリソースはCDNから提供される、jQueryやBootstrapのようなライブラリです。
 
+The second parameter of :code:`addCss()` and :code:`addJs()` says whether the resource is local or not (:code:`true` is local, :code:`false` is remote). By default, the assets manager will assume the resource is local:
+
 .. code-block:: php
 
     <?php
 
-    //Add some local CSS resources
-    $this->assets
-        ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-        ->addCss('css/style.css', true);
+    public function indexAction()
+    {
+        // Add some local CSS resources
+        $this->assets
+            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
+            ->addCss('css/style.css', true)
+            ->addCss('css/extra.css');
+    }
 
 コレクション
 -----------
-コレクションは同じ種類のリソースをグループ化します。Asset Managerは暗黙的にcssとjsのコレクションを生成します。ビューへの配置を容易にするために、特定のリソースをグループ化するコレクションを追加することが出来ます。
+コレクションは同じ種類のリソースをグループ化します。Assets Managerは暗黙的にcssとjsのコレクションを生成します。ビューへの配置を容易にするために、特定のリソースをグループ化するコレクションを追加することが出来ます。
 
 .. code-block:: php
 
     <?php
 
-    //ヘッダーのJavaScript
+    // ヘッダーのJavaScript
     $this->assets
         ->collection('header')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-    //フッターのJavaScript
+    // フッターのJavaScript
     $this->assets
         ->collection('footer')
         ->addJs('js/jquery.js')
@@ -101,6 +127,23 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         </body>
     <html>
 
+Volt syntax:
+
+.. code-block:: html+jinja
+
+    <html>
+        <head>
+            <title>Some amazing website</title>
+            {{ assets.outputCss('header') }}
+        </head>
+        <body>
+
+            <!-- ... -->
+
+            {{ assets.outputJs('footer') }}
+        </body>
+    <html>
+
 プレフィックス
 --------
 コレクションはURLのプレフィックスを付けることができ、簡単に配信元のサーバを切り替えることができます。
@@ -111,7 +154,7 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
 
     $scripts = $this->assets->collection('footer');
 
-    if ($config->enviroment == 'development') {
+    if ($config->environment == 'development') {
         $scripts->setPrefix('/');
     } else {
         $scripts->setPrefix('http:://cdn.example.com/');
@@ -145,48 +188,46 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
     $manager
 
-        //これらのJavaScriptはページ下部に配置されます
+        // これらのJavaScriptはページ下部に配置されます
         ->collection('jsFooter')
 
-        //最終的に出力されるファイル名
+        // 最終的に出力されるファイル名
         ->setTargetPath('final.js')
 
-        //このURIで生成されたscriptタグ
+        // このURIで生成されたscriptタグ
         ->setTargetUri('production/final.js')
 
-        //これはフィルタリングを必要としないリモートリソースです
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        // これはフィルタリングを必要としないリモートリソースです
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
-        //これらはフィルタリングを必要とするローカルリソースです
+        // これらはフィルタリングを必要とするローカルリソースです
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //全てのリソースを1つのファイルに結合します
+        // 全てのリソースを1つのファイルに結合します
         ->join(true)
 
-        //組み込みのJsminフィルターを使います
+        // 組み込みのJsminフィルターを使います
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //カスタムフィルターを使います
+        // カスタムフィルターを使います
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 これは、アセットマネージャーからリソースのコレクションの取得を始めます。javascript や css のリソースを含むことができるコレクションですが、両方を含むことはできません。いくつかのリソースはリモートにあるかもしれません、すなわち、それらはさらなるフィルタリングのためにリモートのソースからHTTPを介して取得されます。取得のオーバーヘッドを排除するため、外部のリソースをローカルに変換することが推奨されています。
 
+As seen above, the :code:`addJs()` method is used to add resources to the collection, the second parameter indicates
+whether the resource is external or not and the third parameter indicates whether the resource should
+be filtered or left as is:
+
 .. code-block:: php
 
     <?php
 
-    //These Javascripts are located in the page's bottom
+    // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
 
-上記で示すように、addJsメソッドがコレクションにリソースを追加するのに使われます。2番目のパラメータはリソースが外部のものかそうでないかを指定し、3番目のパラメータはリソースがフィルタされるべきかそのままにすべきかを指定します:
-
-.. code-block:: php
-
-    <?php
-
     // これはフィルタリングする必要のないリモートのリソースです
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // These are local resources that must be filtered
     $js->addJs('common-functions.js');
@@ -198,40 +239,42 @@ Phalcon\\Assets には、JavaScriptやCSSのサイズを小さくする機能が
 
     <?php
 
-    //Use the built-in Jsmin filter
+    // Use the built-in Jsmin filter
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //Use a custom filter
+    // Use a custom filter
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「join」メソッドを利用できます:
+ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「:code:`join()`」メソッドを利用できます.
+
+If resources are going to be joined, we need also to define which file will be used to store the resources
+and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`:
 
 .. code-block:: php
 
     <?php
 
-    // This a remote resource that does not need filtering
     $js->join(true);
 
-    //最後のファイルパスの名前です
+    // 最後のファイルパスの名前です
     $js->setTargetPath('public/production/final.js');
 
-    //このスクリプトのhtmlタグがこのURIで生成されます
+    // このスクリプトのHTMLタグがこのURIで生成されます
     $js->setTargetUri('production/final.js');
 
-もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、setTargetPath() と setTargetUri() で設定できます。
+もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、:code:`setTargetPath()` と :code:`setTargetUri()` で設定できます。
 
 ビルトインフィルタ
 ^^^^^^^^^^^^^^^^
-Phalcon は、javascript と CSS のそれぞれに対して圧縮するための 2つのビルトインのフィルタを提供します。それらの C言語によるバックエンドは、このタスクを実行するためのオーバーヘッドを最小限に留めてくれます:
+Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するための 2つのビルトインのフィルタを提供します。それらの C言語によるバックエンドは、このタスクを実行するためのオーバーヘッドを最小限に留めてくれます:
 
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Filter                            | Description                                                                                               |
-+===================================+===========================================================================================================+
-| Phalcon\\Assets\\Filters\\Jsmin   | Minifies Javascript removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS removing unnecessary characters that are already ignored by browsers                         |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Filter                            | Description                                                                                                  |
++===================================+==============================================================================================================+
+| Phalcon\\Assets\\Filters\\Jsmin   | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
 
 カスタムフィルタ
 ^^^^^^^^^^^^^^
@@ -251,7 +294,6 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
      */
     class CssYUICompressor implements FilterInterface
     {
-
         protected $_options;
 
         /**
@@ -272,8 +314,7 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
          */
         public function filter($contents)
         {
-
-            //文字列のコンテンツを一時ファイルに書き出す
+            // 文字列のコンテンツを一時ファイルに書き出す
             file_put_contents('temp/my-temp-1.css', $contents);
 
             system(
@@ -286,7 +327,7 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
                 ' -o temp/my-temp-file-2.css'
             );
 
-            //ファイルのコンテンツを返す
+            // ファイルのコンテンツを返す
             return file_get_contents("temp/my-temp-file-2.css");
         }
     }
@@ -297,26 +338,62 @@ Phalcon は、javascript と CSS のそれぞれに対して圧縮するため�
 
     <?php
 
-    //CSSコレクションを取得する
+    // CSSコレクションを取得する
     $css = $this->assets->get('head');
 
-    //コレクションにYUIコンプレッサーフィルタを追加/有効にする
-    $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
-         'extra-options' => '--charset utf8'
-    )));
+    // コレクションにYUIコンプレッサーフィルタを追加/有効にする
+    $css->addFilter(
+        new CssYUICompressor(
+            array(
+                'java-bin'      => '/usr/local/bin/java',
+                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+                'extra-options' => '--charset utf8'
+            )
+        )
+    );
 
-カスタム出力
--------------
-必要なHTMLコードを生成する outputJs と outputCss メソッドがリソースのタイプに応じて利用できます。これらのメソッドをオーバーライドするか、次のようにリソースを手動で出力します:
+In a previous example, we used a custom filter called :code:`LicenseStamper`:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Assets\FilterInterface;
+
+    /**
+     * Adds a license message to the top of the file
+     *
+     * @param string $contents
+     * @return string
+     */
+    class LicenseStamper implements FilterInterface
+    {
+        /**
+         * Do the filtering
+         *
+         * @param string $contents
+         * @return string
+         */
+        public function filter($contents)
+        {
+            $license = "/* (c) 2015 Your Name Here */";
+
+            return $license . PHP_EOL . PHP_EOL . $contents;
+        }
+    }
+
+カスタム出力
+-------------
+必要なHTMLコードを生成する :code:`outputJs()` と :code:`outputCss()` メソッドがリソースのタイプに応じて利用できます。これらのメソッドをオーバーライドするか、次のようにリソースを手動で出力します:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/

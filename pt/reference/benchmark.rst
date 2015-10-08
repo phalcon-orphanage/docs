@@ -1,10 +1,10 @@
-﻿Benchmarks dos Frameworks 
+﻿Benchmarks dos Frameworks
 ====================
-No passado, desempenho não era considerado uma das principais prioridades para o desenvolvimento de aplicações web. Hardware Razoáveis eram capazes de compensar a falta de desempenho das aplicações. Entretanto quando o Google decidiu_ levar em conta a velocidade dos sites nos rankings de pesquisas, desempenho tornou-se uma das principais prioridades juntamente com a funcionalidade. Essa é mais uma maneira em que a melhoria do desempenho terá um impacto positivo em um web site. 
+No passado, desempenho não era considerado uma das principais prioridades para o desenvolvimento de aplicações web. Hardware Razoáveis eram capazes de compensar a falta de desempenho das aplicações. Entretanto quando o Google decidiu_ levar em conta a velocidade dos sites nos rankings de pesquisas, desempenho tornou-se uma das principais prioridades juntamente com a funcionalidade. Essa é mais uma maneira em que a melhoria do desempenho terá um impacto positivo em um web site.
 
 Os benchmarks abaixo, mostram como o Phalcon é eficiente em relação aos outros tradicionais frameworks escritos em PHP. Esses benchmarks são atualizados de acordo com o lançamento das versões estáveis de cada um dos frameworks mencionados em comparação com as versões estáveis do Phalcon.
 
-Nós encorajamos programadores copiarem nossas suítes de teste que utilizamos para nossos benchmarks. Caso você tenha qualquer otimizações adicionais ou comentários, por favor `contacte nos`_. `Verifique nossas fontes no Github`_ 
+Nós encorajamos programadores copiarem nossas suítes de teste que utilizamos para nossos benchmarks. Caso você tenha qualquer otimizações adicionais ou comentários, por favor `contacte nos`_. `Verifique nossas fontes no Github`_
 
 Qual foi o ambiente de teste utilizado?
 ------------------------------

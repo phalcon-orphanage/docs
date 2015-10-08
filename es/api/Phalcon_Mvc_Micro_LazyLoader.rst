@@ -13,7 +13,7 @@ Phalcon\\Mvc\\Micro\\LazyLoader constructor
 
 
 
-public *mixed*  **__call** (*unknown* $method, *unknown* $arguments)
+public *mixed*  **__call** (*string* $method, *array* $arguments)
 
 Initializes the internal handler, calling functions on it
 

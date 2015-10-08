@@ -1,23 +1,23 @@
-
 使用控制器（Using Controllers）
 =================
+
 控制器提供了一堆可以被调用的方法，即：action。action是控制器中用于处理请求的方法。默认情况下，全部
 控制器public的方法都会映射到action并且可以通过URL访问。action负责解释请求和创建响应。
 通常，响应是以渲染的视图格式被创建，但也存在其他的方式来创建（译者注：如AJAX请求返回JSON格式的数据）。
 
-例如，当你访问一个类似这样的URL时：http://localhost/blog/posts/show/2012/the-post-title，Phalcon默认会这样分解各个部分：
+例如，当你访问一个类似这样的URL时：http://localhost/blog/posts/show/2015/the-post-title，Phalcon默认会这样分解各个部分：
 
-+------------------------+----------------+
-| **Phalcon目录**        | blog           |
-+------------------------+----------------+
-| **控制器**             | posts          |
-+------------------------+----------------+
-| **Action**             | show           |
-+------------------------+----------------+
-| **参数**               | 2012           |
-+------------------------+----------------+
-| **参数**               | the-post-title |
-+------------------------+----------------+
++-----------------+----------------+
+| **Phalcon目录** | blog           |
++-----------------+----------------+
+| **控制器**       | posts          |
++-----------------+----------------+
+| **Action**      | show           |
++-----------------+----------------+
+| **参数**         | 2015           |
++-----------------+----------------+
+| **参数**         | the-post-title |
++-----------------+----------------+
 
 这时，PostsController将会处理这个请求。在一个项目中，没有强制指定放置控制器的地方，这些控制器都可以
 通过使用 :doc:`autoloaders <loader>` 来加载，所以你可以根据需要自由组件你的控制器。
@@ -32,7 +32,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -42,7 +41,6 @@
         {
 
         }
-
     }
 
 额外的URI参数定义为action的参数，以致这些参数可以简单地通过本地变量来获取。控制器
@@ -59,17 +57,15 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
         }
 
-        public function showAction($year=2012, $postTitle='some default title')
+        public function showAction($year = 2015, $postTitle = 'some default title')
         {
 
         }
-
     }
 
 参数将会按路由传递和函数定义一样的顺序来赋值。你可以使用以下根据参数名称的方式来获取任意一个参数：
@@ -82,7 +78,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -90,12 +85,10 @@
 
         public function showAction()
         {
-            $year = $this->dispatcher->getParam('year');
+            $year      = $this->dispatcher->getParam('year');
             $postTitle = $this->dispatcher->getParam('postTitle');
         }
-
     }
-
 
 循环调度（Dispatch Loop）
 -------------
@@ -111,7 +104,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -122,12 +114,13 @@
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action"     => "signin"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action"     => "signin"
+                )
+            );
         }
-
     }
 
 如果用户没有访问某个action的权限，那么请求将会被转发到Users控制器的signin行为。
@@ -140,7 +133,6 @@
 
     class UsersController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -150,7 +142,6 @@
         {
 
         }
-
     }
 
 对于“forwards”转发的次数没有限制，只要不会形成循环重定向即可，否则就意味着
@@ -170,7 +161,6 @@
 
     class PostsController extends Controller
     {
-
         public $settings;
 
         public function initialize()
@@ -183,10 +173,9 @@
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
-
     }
 
 .. highlights::
@@ -204,10 +193,9 @@
 
     class PostsController extends Controller
     {
-
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -229,7 +217,7 @@
 
     $di = new DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -243,10 +231,8 @@
 
     class FilesController extends Controller
     {
-
         public function saveAction()
         {
-
             // 以和服务相同名字的类属性访问
             $this->storage->save('/some/file');
 
@@ -262,7 +248,6 @@
             // 使用数组下标
             $this->di['storage']->save('/some/file');
         }
-
     }
 
 如果你是把Phalcon作为全能(Full-Stack)框架来使用，你可以阅读框架中 :doc:`by default <di>` 提供的服务。
@@ -281,7 +266,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -296,7 +280,6 @@
                 $customerBorn = $this->request->getPost("born");
             }
         }
-
     }
 
 响应对象通常不会直接使用，但在action的执行前会被创建，有时候 - 如在
@@ -310,7 +293,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -321,14 +303,13 @@
             // 发送一个HTTP 404 响应的header
             $this->response->setStatusCode(404, "Not Found");
         }
-
     }
 
 如需学习了解HTTP环境更多内容，请查看专题： :doc:`request <request>` 和 :doc:`response <response>` 。
 
 会话数据（Session Data）
 ------------
-会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 
+会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 以便封装需要进行持久化的数据。
 
 .. code-block:: php
@@ -339,7 +320,6 @@
 
     class UserController extends Controller
     {
-
         public function indexAction()
         {
             $this->persistent->name = "Michael";
@@ -349,7 +329,6 @@
         {
             echo "Welcome, ", $this->persistent->name;
         }
-
     }
 
 在控制器中使用服务（Using Services as Controllers）
@@ -362,16 +341,16 @@
     <?php
 
     // 将一个控制器作为服务进行注册
-    $di->set('IndexController', function() {
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-	    // 将一个命名空间下的控制器作为服务进行注册
-	    $di->set('Backend\Controllers\IndexController', function() {
-	        $component = new Component();
-	        return $component;
-	    });
+    // 将一个命名空间下的控制器作为服务进行注册
+    $di->set('Backend\Controllers\IndexController', function () {
+        $component = new Component();
+        return $component;
+    });
 
 创建基控制器（Creating a Base Controller）
 --------------------------
@@ -389,7 +368,6 @@
 
     require "../app/controllers/ControllerBase.php";
 
-
 对通用组件（action，方法，和类属性等）也在这个基类文件里面：
 
 .. code-block:: php
@@ -400,15 +378,13 @@
 
     class ControllerBase extends Controller
     {
+        /**
+         * 这个方法可以被不同的控制器子类使用
+         */
+        public function someAction()
+        {
 
-      /**
-       * 这个方法可以被不同的控制器子类使用
-       */
-      public function someAction()
-      {
-
-      }
-
+        }
     }
 
 现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上面讲到的的）：
@@ -435,7 +411,6 @@
 
     class PostsController extends Controller
     {
-
         public function beforeExecuteRoute($dispatcher)
         {
             // 这个方法会在每一个能找到的action前执行
@@ -443,10 +418,12 @@
 
                 $this->flash->error("You don't have permission to save posts");
 
-                $this->dispatcher->forward(array(
-                    'controller' => 'home',
-                    'action' => 'index'
-                ));
+                $this->dispatcher->forward(
+                    array(
+                        'controller' => 'home',
+                        'action'     => 'index'
+                    )
+                );
 
                 return false;
             }
@@ -456,7 +433,6 @@
         {
             // 在找到的action后执行
         }
-
     }
 
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself

@@ -1,8 +1,9 @@
 ﻿Notas de Instalação do Apache
 =========================
+
 Apache_ é um popular e bem conhecido servidor web, disponível para muitas plataformas.
 
-Configurando o Apache para o Phalcon 
+Configurando o Apache para o Phalcon
 ------------------------------
 A seguir existem potenciais configurações que você pode usar para configurar o Apache com o Phalcon. Essas notas são primariamente focadas na configuração do modulo mod-rewrite, permitindo utilizar ulrs amigáveis e o :doc:`componente de rotas <routing>`. Normalmente  uma aplicação terá a seguinte estrutura:
 
@@ -21,7 +22,7 @@ A seguir existem potenciais configurações que você pode usar para configurar 
 
 Diretório principal sob o Documento Raiz (DocumentRoot)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob a raiz do documento. Neste caso, utilizamos dois .htaccess, o primeiro para esconder o código da aplicação enviando todas as requisições para o documento raiz (DocumentRoot) da aplicação (public/). 
+Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob a raiz do documento. Neste caso, utilizamos dois .htaccess, o primeiro para esconder o código da aplicação enviando todas as requisições para o documento raiz (DocumentRoot) da aplicação (public/).
 
 .. code-block:: apacheconf
 
@@ -30,7 +31,7 @@ Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Agora o segundo .htaccess é localizado no diretório public/, este contem os re-writes de todas URIs para o public/index.php:
@@ -43,7 +44,7 @@ Agora o segundo .htaccess é localizado no diretório public/, este contem os re
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Se você não quiser usar o .htaccess, você pode mover essas configurações para o arquivo principal de configuração do apache:
@@ -55,14 +56,14 @@ Se você não quiser usar o .htaccess, você pode mover essas configurações pa
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>

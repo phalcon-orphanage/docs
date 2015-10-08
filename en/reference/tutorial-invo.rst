@@ -1,5 +1,6 @@
 Tutorial 2: Introducing INVO
 ============================
+
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
 generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
@@ -61,9 +62,7 @@ app/config/config.ini and it's loaded in the very first lines of the application
 
     // ...
 
-    /**
-     * Read the configuration
-     */
+    // Read the configuration
     $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
@@ -73,10 +72,9 @@ for configuration files. The configuration file contains the following settings:
 .. code-block:: ini
 
     [database]
-    adapter  = Mysql
     host     = localhost
     username = root
-    password =
+    password = secret
     name     = invo
 
     [application]
@@ -113,9 +111,7 @@ the classes that it eventually will need.
 
     $loader = new \Phalcon\Loader();
 
-    /**
-     * We're a registering a set of directories taken from the configuration file
-     */
+    // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
         array(
             APP_PATH . $config->application->controllersDir,
@@ -165,15 +161,17 @@ the required components:
     // ...
 
     /**
-     * The URL component is used to generate all kind of urls in the application
+     * The URL component is used to generate all kind of URLs in the application
      */
-    $di->set('url', function() use ($config){
+    $di->set('url', function () use ($config) {
         $url = new UrlProvider();
+
         $url->setBaseUri($config->application->baseUri);
+
         return $url;
     });
 
-We will discuss this file in depth later
+We will discuss this file in depth later.
 
 Handling the Request
 --------------------
@@ -216,9 +214,11 @@ called when the application requires access to the session data:
     // ...
 
     // Start the session the first time a component requests the session service
-    $di->set('session', function() {
+    $di->set('session', function () {
         $session = new Session();
+
         $session->start();
+
         return $session;
     });
 

@@ -1,6 +1,7 @@
 フォーム
 =====
-Phalcon\\Forms is a component that aid the developer in the creation and maintenance of forms in web applications.
+
+Phalcon\\Forms is a component that aids you in the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
 
@@ -8,9 +9,9 @@ The following example shows its basic usage:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     $form = new Form();
 
@@ -18,10 +19,15 @@ The following example shows its basic usage:
 
     $form->add(new Text("telephone"));
 
-    $form->add(new Select("telephoneType", array(
-        'H' => 'Home',
-        'C' => 'Cell'
-    )));
+    $form->add(
+        new Select(
+            "telephoneType",
+            array(
+                'H' => 'Home',
+                'C' => 'Cell'
+            )
+        )
+    );
 
 Forms can be rendered based on the form definition:
 
@@ -33,17 +39,17 @@ Forms can be rendered based on the form definition:
 
         <p>
             <label>Name</label>
-            <?php echo $form->render("name") ?>
+            <?php echo $form->render("name"); ?>
         </p>
 
         <p>
             <label>Telephone</label>
-            <?php echo $form->render("telephone") ?>
+            <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
             <label>Type</label>
-            <?php echo $form->render("telephoneType") ?>
+            <?php echo $form->render("telephoneType"); ?>
         </p>
 
         <p>
@@ -53,26 +59,30 @@ Forms can be rendered based on the form definition:
     </form>
 
 Each element in the form can be rendered as required by the developer. Internally,
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the right HTML for each element,
-you can pass additional html attributes as second parameter for render:
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of :code:`render()`:
 
 .. code-block:: html+php
 
     <p>
         <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
+        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
     </p>
 
-HTML Attributes also can be set in the element's definition:
+HTML attributes also can be set in the element's definition:
 
 .. code-block:: php
 
     <?php
 
-    $form->add(new Text("name", array(
-        'maxlength' => 30,
-        'placeholder' => 'Type your name'
-    )));
+    $form->add(
+        new Text(
+            "name",
+            array(
+                'maxlength'   => 30,
+                'placeholder' => 'Type your name'
+            )
+        )
+    );
 
 フォームの初期化
 ------------------
@@ -83,9 +93,9 @@ classes implementing the form in a separated file:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     class ContactForm extends Form
     {
@@ -95,9 +105,18 @@ classes implementing the form in a separated file:
 
             $this->add(new Text("telephone"));
 
-            $this->add(new Select("telephoneType", TelephoneTypes::find(), array(
-                'using' => array('id', 'name')
-            )));
+            $this->add(
+                new Select(
+                    "telephoneType",
+                    TelephoneTypes::find(),
+                    array(
+                        'using' => array(
+                            'id',
+                            'name'
+                        )
+                    )
+                )
+            );
         }
     }
 
@@ -108,13 +127,12 @@ so you have access to the application services if needed:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class ContactForm extends Form
     {
-
         /**
          * This method returns the default value for field 'csrf'
          */
@@ -125,14 +143,13 @@ so you have access to the application services if needed:
 
         public function initialize()
         {
-
-            //Set the same form as entity
+            // Set the same form as entity
             $this->setEntity($this);
 
-            //Add a text element to capture the 'email'
+            // Add a text element to capture the 'email'
             $this->add(new Text("email"));
 
-            //Add a text element to put a hidden csrf
+            // Add a text element to put a hidden CSRF
             $this->add(new Hidden("csrf"));
         }
     }
@@ -143,9 +160,9 @@ The associated entity added to the form in the initialization and custom user op
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class UsersForm extends Form
     {
@@ -155,9 +172,8 @@ The associated entity added to the form in the initialization and custom user op
          * @param Users $user
          * @param array $options
          */
-        public function initialize($user, $options)
+        public function initialize(Users $user, $options)
         {
-
             if ($options['edit']) {
                 $this->add(new Hidden('id'));
             } else {
@@ -174,7 +190,12 @@ In the form's instantiation you must use:
 
     <?php
 
-    $form = new UsersForm(new Users(), array('edit' => true));
+    $form = new UsersForm(
+        new Users(),
+        array(
+            'edit' => true
+        )
+    );
 
 バリデーション
 ----------
@@ -185,20 +206,28 @@ custom validators could be set to each element:
 
     <?php
 
-    use Phalcon\Forms\Element\Text,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\StringLength;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Validation\Validator\PresenceOf;
+    use Phalcon\Validation\Validator\StringLength;
 
     $name = new Text("name");
 
-    $name->addValidator(new PresenceOf(array(
-        'message' => 'The name is required'
-    )));
+    $name->addValidator(
+        new PresenceOf(
+            array(
+                'message' => 'The name is required'
+            )
+        )
+    );
 
-    $name->addValidator(new StringLength(array(
-        'min' => 10,
-        'messageMinimum' => 'The name is too short'
-    )));
+    $name->addValidator(
+        new StringLength(
+            array(
+                'min'            => 10,
+                'messageMinimum' => 'The name is too short'
+            )
+        )
+    );
 
     $form->add($name);
 
@@ -225,6 +254,7 @@ you can change this behavior to get the messages separated by the field:
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
         echo 'Messages generated by ', $attribute, ':', "\n";
+
         foreach ($messages as $message) {
             echo $message, '<br>';
         }
@@ -242,9 +272,7 @@ Or get specific messages for an element:
 
 フィルタリング
 ---------
-A form is also able to filter data before be validated, you can set filters in each element:
-
-
+A form is also able to filter data before it is validated. You can set filters in each element:
 
 オプションのセット
 --------------------
@@ -265,11 +293,11 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name') ?>
+    <?php echo $form->render('name'); ?>
 
 You can validate the form and assign the values from the user input in the following way:
 
@@ -279,10 +307,10 @@ You can validate the form and assign the values from the user input in the follo
 
     $form->bind($_POST, $robot);
 
-    //Check if the form is valid
+    // Check if the form is valid
     if ($form->isValid()) {
 
-        //Save the entity
+        // Save the entity
         $robot->save();
     }
 
@@ -294,11 +322,9 @@ Setting up a plain class as entity also is possible:
 
     class Preferences
     {
-
         public $timezone = 'Europe/Amsterdam';
 
         public $receiveEmails = 'No';
-
     }
 
 Using this class as entity, allows the form to take the default values from it:
@@ -309,20 +335,30 @@ Using this class as entity, allows the form to take the default values from it:
 
     $form = new Form(new Preferences());
 
-    $form->add(new Select("timezone", array(
-        'America/New_York' => 'New York',
-        'Europe/Amsterdam' => 'Amsterdam',
-        'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokyo' => 'Tokyo',
-    )));
+    $form->add(
+        new Select(
+            "timezone",
+            array(
+                'America/New_York'  => 'New York',
+                'Europe/Amsterdam'  => 'Amsterdam',
+                'America/Sao_Paulo' => 'Sao Paulo',
+                'Asia/Tokyo'        => 'Tokyo'
+            )
+        )
+    );
 
-    $form->add(new Select("receiveEmails", array(
-        'Yes' => 'Yes, please!',
-        'No' => 'No, thanks'
-    )));
+    $form->add(
+        new Select(
+            "receiveEmails",
+            array(
+                'Yes' => 'Yes, please!',
+                'No'  => 'No, thanks'
+            )
+        )
+    );
 
-Entities can implement getters, which have more precedence than public propierties, these methods
-give you more free to produce values:
+Entities can implement getters, which have a higher precedence than public properties. These methods
+give you more freedom to produce values:
 
 .. code-block:: php
 
@@ -330,7 +366,6 @@ give you more free to produce values:
 
     class Preferences
     {
-
         public $timezone;
 
         public $receiveEmails;
@@ -340,11 +375,10 @@ give you more free to produce values:
             return 'Europe/Amsterdam';
         }
 
-        public function getTimezone()
+        public function getReceiveEmails()
         {
             return 'No';
         }
-
     }
 
 フォーム要素
@@ -377,14 +411,16 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 イベント・コールバック
 ---------------
-Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
+Whenever forms are implemented as classes, the callbacks: :code:`beforeValidation()` and :code:`afterValidation()` can be implemented
 in the form's class to perform pre-validations and post-validations:
 
 .. code-block:: html+php
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    use Phalcon\Mvc\Form;
+
+    class ContactForm extends Form
     {
         public function beforeValidation()
         {
@@ -394,7 +430,7 @@ in the form's class to perform pre-validations and post-validations:
 
 フォームのレンダリング
 ---------------
-You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 .. code-block:: html+php
 
@@ -402,14 +438,14 @@ You can render the form with total flexibility, the following example shows how 
 
     <form method="post">
         <?php
-            //Traverse the form
+            // Traverse the form
             foreach ($form as $element) {
 
-                //Get any generated messages for the current element
+                // Get any generated messages for the current element
                 $messages = $form->getMessagesFor($element->getName());
 
                 if (count($messages)) {
-                    //Print each element
+                    // Print each element
                     echo '<div class="messages">';
                     foreach ($messages as $message) {
                         echo $message;
@@ -433,22 +469,24 @@ Or reuse the logic in your form class:
 
     <?php
 
-    class ContactForm extends Phalcon\Forms\Form
+    use Phalcon\Forms\Form;
+
+    class ContactForm extends Form
     {
         public function initialize()
         {
-            //...
+            // ...
         }
 
         public function renderDecorated($name)
         {
-            $element = $this->get($name);
+            $element  = $this->get($name);
 
-            //Get any generated messages for the current element
+            // Get any generated messages for the current element
             $messages = $this->getMessagesFor($element->getName());
 
             if (count($messages)) {
-                //Print each element
+                // Print each element
                 echo '<div class="messages">';
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
@@ -461,7 +499,6 @@ Or reuse the logic in your form class:
             echo $element;
             echo '</p>';
         }
-
     }
 
 In the view:
@@ -486,9 +523,9 @@ In addition to the form elements provided by Phalcon you can create your own cus
 
     class MyElement extends Element
     {
-        public function render($attributes=null)
+        public function render($attributes = null)
         {
-            $html = //... produce some html
+            $html = // ... Produce some HTML
             return $html;
         }
     }
@@ -501,8 +538,10 @@ This component provides a forms manager that can be used by the developer to reg
 
     <?php
 
-    $di['forms'] = function() {
-        return new Phalcon\Forms\Manager();
+    use Phalcon\Forms\Manager as FormsManager;
+
+    $di['forms'] = function () {
+        return new FormsManager();
     };
 
 Forms are added to the forms manager and referenced by a unique name:
@@ -513,7 +552,7 @@ Forms are added to the forms manager and referenced by a unique name:
 
     $this->forms->set('login', new LoginForm());
 
-Using the unique name, forms can be accesed in any part of the application:
+Using the unique name, forms can be accessed in any part of the application:
 
 .. code-block:: php
 

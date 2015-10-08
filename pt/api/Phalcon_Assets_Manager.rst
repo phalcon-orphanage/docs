@@ -5,33 +5,33 @@ Manages collections of CSS/Javascript assets
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
-Phalcon\\Assets\\Manager constructor
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setOptions** (*array* $options)
 
-Sets the manager's options
+public  **setOptions** (*unknown* $options)
 
-
-
-public *array*  **getOptions** ()
-
-Returns the manager's options
+Sets the manager options
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **useImplicitOutput** (*boolean* $implicitOutput)
+public  **getOptions** ()
+
+Returns the manager options
+
+
+
+public  **useImplicitOutput** (*unknown* $implicitOutput)
 
 Sets if the HTML generated must be directly printed or returned
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addCss** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
 
 Adds a Css resource to the 'css' collection 
 
@@ -45,7 +45,13 @@ Adds a Css resource to the 'css' collection
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+
+Adds a inline Css to the 'css' collection
+
+
+
+public  **addJs** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
 
 Adds a javascript resource to the 'js' collection 
 
@@ -54,12 +60,18 @@ Adds a javascript resource to the 'js' collection
     <?php
 
     $assets->addJs('scripts/jquery.js');
-    $assets->addJs('http://jquery.my-cdn.com/jquery.js', true);
+    $assets->addJs('http://jquery.my-cdn.com/jquery.js', false);
 
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addResourceByType** (*string* $type, :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
+public  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+
+Adds a inline javascript to the 'js' collection
+
+
+
+public  **addResourceByType** (*unknown* $type, *unknown* $resource)
 
 Adds a resource by its type 
 
@@ -67,12 +79,18 @@ Adds a resource by its type
 
     <?php
 
-    $assets->addResourceByType('css', new Phalcon\Assets\Resource\Css('css/style.css'));
+    $assets->addResourceByType('css', new \Phalcon\Assets\Resource\Css('css/style.css'));
 
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addResource** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
+public  **addInlineCodeByType** (*unknown* $type, *unknown* $code)
+
+Adds a inline code by its type
+
+
+
+public  **addResource** (*unknown* $resource)
 
 Adds a raw resource to the manager 
 
@@ -85,7 +103,13 @@ Adds a raw resource to the manager
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **set** (*string* $id, :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection)
+public  **addInlineCode** (*unknown* $code)
+
+Adds a raw inline code to the manager
+
+
+
+public  **set** (*unknown* $id, *unknown* $collection)
 
 Sets a collection in the Assets Manager 
 
@@ -93,12 +117,12 @@ Sets a collection in the Assets Manager
 
     <?php
 
-     $assets->get('js', $collection);
+     $assets->set('js', $collection);
 
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **get** (*string* $id)
+public  **get** (*unknown* $id)
 
 Returns a collection by its id 
 
@@ -111,27 +135,33 @@ Returns a collection by its id
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **getCss** ()
+public  **getCss** ()
 
 Returns the CSS collection of assets
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **getJs** ()
+public  **getJs** ()
 
-Returns the JS collection of assets
+Returns the CSS collection of assets
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **collection** (*string* $name)
+public  **collection** (*unknown* $name)
 
 Creates/Returns a collection of resources
 
 
 
-public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback)
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, *string* $type)
 
 Traverses a collection calling the callback to generate its HTML
+
+
+
+public  **outputInline** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *string* $type)
+
+Traverses a collection and generate its HTML
 
 
 
@@ -141,9 +171,27 @@ Prints the HTML for CSS resources
 
 
 
+public  **outputInlineCss** ([*string* $collectionName])
+
+Prints the HTML for inline CSS
+
+
+
 public  **outputJs** ([*string* $collectionName])
 
 Prints the HTML for JS resources
+
+
+
+public  **outputInlineJs** ([*string* $collectionName])
+
+Prints the HTML for inline JS
+
+
+
+public  **getCollections** ()
+
+Returns existing collections in the manager
 
 
 

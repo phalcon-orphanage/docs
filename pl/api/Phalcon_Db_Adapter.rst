@@ -39,7 +39,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
@@ -51,13 +51,13 @@ Sets the dialect used to produce the SQL
 
 
 
-public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** ()
+public  **getDialect** ()
 
 Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -76,7 +76,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -102,7 +102,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *string|*  **fetchColumn** (*unknown* $sqlQuery, [*unknown* $placeholders], [*unknown* $column])
+public *string|*  **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int|string* $column])
 
 Returns the n'th field of first row in a SQL query result 
 
@@ -110,18 +110,39 @@ Returns the n'th field of first row in a SQL query result
 
     <?php
 
-        //Getting count of robots
-        $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
-        print_r($robotsCount);
+    //Getting count of robots
+    $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
+    print_r($robotsCount);
     
-        //Getting name of last edited robot
-        $robot = $connection->fetchColumn("SELECT id, name FROM robots order by modified desc");
-        print_r($robot);
+    //Getting name of last edited robot
+    $robot = $connection->fetchColumn("SELECT id, name FROM robots order by modified desc", 1);
+    print_r($robot);
 
 
 
 
-public *boolean*  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes])
+public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
+
+Inserts data into a table using custom RBDM SQL syntax 
+
+.. code-block:: php
+
+    <?php
+
+     // Inserting a new robot
+     $success = $connection->insert(
+     "robots",
+     array("Astro Boy", 1952),
+     array("name", "year")
+     );
+    
+     // Next SQL sentence is sent to the database system
+     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+
+
+
+
+public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -130,10 +151,12 @@ Inserts data into a table using custom RBDM SQL syntax
     <?php
 
      //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array("Astro Boy", 1952),
-         array("name", "year")
+     $success = $connection->insertAsDict(
+     "robots",
+     array(
+    	  "name" => "Astro Boy",
+    	  "year" => 1952
+      )
      );
     
      //Next SQL sentence is sent to the database system
@@ -142,30 +165,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **insertAsDict** (*unknown* $table, *unknown* $data, [*unknown* $dataTypes])
-
-Inserts data into a table using custom RBDM SQL syntax Another, more convenient syntax 
-
-.. code-block:: php
-
-    <?php
-
-     //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array(
-              "name" => "Astro Boy",
-              "year" => 1952
-          )
-     );
-    
-     //Next SQL sentence is sent to the database system
-     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
-
-
-
-
-public *boolean*  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes])
+public *boolean*  **update** (*string|array* $table, *array* $fields, *array* $values, [*string|array* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -175,10 +175,10 @@ Updates data on a table using custom RBDM SQL syntax
 
      //Updating existing robot
      $success = $connection->update(
-         "robots",
-         array("name"),
-         array("New Astro Boy"),
-         "id = 101"
+     "robots",
+     array("name"),
+     array("New Astro Boy"),
+     "id = 101"
      );
     
      //Next SQL sentence is sent to the database system
@@ -186,22 +186,22 @@ Updates data on a table using custom RBDM SQL syntax
     
      //Updating existing robot with array condition and $dataTypes
      $success = $connection->update(
-         "robots",
-         array("name"),
-         array("New Astro Boy"),
-         array(
-             'conditions' => "id = ?",
-             'bind' => array($some_unsafe_id),
-             'bindTypes' => array(PDO::PARAM_INT) //use only if you use $dataTypes param
-         ),
-         array(PDO::PARAM_STR)
+     "robots",
+     array("name"),
+     array("New Astro Boy"),
+     array(
+    	 'conditions' => "id = ?",
+    	 'bind' => array($some_unsafe_id),
+    	 'bindTypes' => array(PDO::PARAM_INT) //use only if you use $dataTypes param
+     ),
+     array(PDO::PARAM_STR)
      );
 
 Warning! If $whereCondition is string it not escaped.
 
 
 
-public *boolean*  **updateAsDict** (*unknown* $table, *unknown* $data, [*unknown* $whereCondition], [*unknown* $dataTypes])
+public *boolean*  **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
 
@@ -211,11 +211,11 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
      //Updating existing robot
      $success = $connection->update(
-         "robots",
-         array(
-              "name" => "New Astro Boy"
-          ),
-         "id = 101"
+     "robots",
+     array(
+    	  "name" => "New Astro Boy"
+      ),
+     "id = 101"
      );
     
      //Next SQL sentence is sent to the database system
@@ -224,7 +224,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
 
 
-public *boolean*  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes])
+public *boolean*  **delete** (*string|array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -234,8 +234,8 @@ Deletes data from a table using custom RBDM SQL syntax
 
      //Deleting existing robot
      $success = $connection->delete(
-         "robots",
-         "id = 101"
+     "robots",
+     "id = 101"
      );
     
      //Next SQL sentence is generated
@@ -244,13 +244,13 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*unknown* $columnList)
+public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
 
 
-public *string*  **limit** (*unknown* $sqlQuery, *unknown* $number)
+public  **limit** (*unknown* $sqlQuery, *unknown* $number)
 
 Appends a LIMIT clause to $sqlQuery argument 
 
@@ -263,7 +263,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public *boolean*  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
+public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -276,7 +276,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public *boolean*  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
+public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -289,103 +289,103 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-public *string*  **forUpdate** (*unknown* $sqlQuery)
+public  **forUpdate** (*unknown* $sqlQuery)
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-public *string*  **sharedLock** (*unknown* $sqlQuery)
+public  **sharedLock** (*unknown* $sqlQuery)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public *boolean*  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
+public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
 
 Creates a table
 
 
 
-public *boolean*  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
+public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
 
 Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
 
 Creates a view
 
 
 
-public *boolean*  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
+public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
 
 Drops a view
 
 
 
-public *boolean*  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
 Adds a column to a table
 
 
 
-public *boolean*  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
 
 Modifies a table column based on a definition
 
 
 
-public *boolean*  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
+public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
 
 Drops a column from a table
 
 
 
-public *boolean*  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
 Adds an index to a table
 
 
 
-public *boolean*  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
+public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
 
 Drop an index from a table
 
 
 
-public *boolean*  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
 Adds a primary key to a table
 
 
 
-public *boolean*  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
+public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
 
 Drops a table's primary key
 
 
 
-public *boolean true*  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
 
 Adds a foreign key to a table
 
 
 
-public *boolean true*  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
+public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
 
 Drops a foreign key from a table
 
 
 
-public *string*  **getColumnDefinition** (*unknown* $column)
+public  **getColumnDefinition** (*unknown* $column)
 
 Returns the SQL column definition from a column
 
 
 
-public *array*  **listTables** ([*unknown* $schemaName])
+public  **listTables** ([*unknown* $schemaName])
 
 List all tables on a database 
 
@@ -398,7 +398,7 @@ List all tables on a database
 
 
 
-public *array*  **listViews** ([*unknown* $schemaName])
+public  **listViews** ([*unknown* $schemaName])
 
 List all views on a database 
 
@@ -411,7 +411,7 @@ List all views on a database
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*unknown* $table, [*unknown* $schema])
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
 
@@ -424,7 +424,7 @@ Lists table indexes
 
 
 
-public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*unknown* $table, [*unknown* $schema])
+public  **describeReferences** (*unknown* $table, [*unknown* $schema])
 
 Lists table references 
 
@@ -437,7 +437,7 @@ Lists table references
 
 
 
-public *array*  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
+public  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
 
 Gets creation options from a table 
 
@@ -450,43 +450,43 @@ Gets creation options from a table
 
 
 
-public *boolean*  **createSavepoint** (*unknown* $name)
+public  **createSavepoint** (*unknown* $name)
 
 Creates a new savepoint
 
 
 
-public *boolean*  **releaseSavepoint** (*unknown* $name)
+public  **releaseSavepoint** (*unknown* $name)
 
 Releases given savepoint
 
 
 
-public *boolean*  **rollbackSavepoint** (*unknown* $name)
+public  **rollbackSavepoint** (*unknown* $name)
 
 Rollbacks given savepoint
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
+public  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
 
 Set if nested transactions should use savepoints
 
 
 
-public *boolean*  **isNestedTransactionsWithSavepoints** ()
+public  **isNestedTransactionsWithSavepoints** ()
 
 Returns if nested transactions should use savepoints
 
 
 
-public *string*  **getNestedTransactionSavepointName** ()
+public  **getNestedTransactionSavepointName** ()
 
 Returns the savepoint name to use for nested transactions
 
 
 
-public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
+public  **getDefaultIdValue** ()
 
 Returns the default identity value to be inserted in an identity column 
 
@@ -496,21 +496,39 @@ Returns the default identity value to be inserted in an identity column
 
      //Inserting a new robot with a valid default value for the column 'id'
      $success = $connection->insert(
-         "robots",
-         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
-         array("id", "name", "year")
+     "robots",
+     array($connection->getDefaultIdValue(), "Astro Boy", 1952),
+     array("id", "name", "year")
      );
 
 
 
 
-public *boolean*  **supportSequences** ()
+public  **getDefaultValue** ()
+
+Returns the default value to make the RBDM use the default value declared in the table definition 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot with a valid default value for the column 'year'
+     $success = $connection->insert(
+     "robots",
+     array("Astro Boy", $connection->getDefaultValue()),
+     array("name", "year")
+     );
+
+
+
+
+public  **supportSequences** ()
 
 Check whether the database system requires a sequence to produce auto-numeric values
 
 
 
-public *boolean*  **useExplicitIdValue** ()
+public  **useExplicitIdValue** ()
 
 Check whether the database system requires an explicit value for identity columns
 
@@ -528,13 +546,13 @@ Gets the active connection unique identifier
 
 
 
-public *string*  **getSQLStatement** ()
+public  **getSQLStatement** ()
 
 Active SQL statement in the object
 
 
 
-public *string*  **getRealSQLStatement** ()
+public  **getRealSQLStatement** ()
 
 Active SQL statement in the object without replace bound paramters
 

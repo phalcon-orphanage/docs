@@ -1,5 +1,6 @@
 Помощники представлений
 =======================
+
 Написание и хранение HTML разметки может быстро надоесть из-за многочисленных элементов с разными именами и атрибутами, зависимостями
 которые должны быть всегда учтены. Phalcon облегчает эти сложности предлагая для работы компонент :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`,
 предоставляющий помощников (helpers) для работы с элементами и формирования готовой HTML разметки.
@@ -7,6 +8,7 @@
 Компонент может быть использован в шаблонах представлений из HTML+PHP или в шаблонизаторе :doc:`Volt <volt>`.
 
 .. highlights::
+
     Это руководство не отображает все возможности помощников представлений и их аргументов. Для получения полной актуальной информации
     ознакомьтесь с документацией по API :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`.
 
@@ -48,7 +50,13 @@ HTML разметки. Например, при указании любого т
 
 .. code-block:: php
 
-    <?php $this->tag->setDoctype(\$this->tag->HTML401_STRICT); ?>
+    <?php
+
+    use Phalcon\Tag;
+
+    $this->tag->setDoctype(Tag::HTML401_STRICT);
+
+    ?>
 
 Вывод типа документа:
 
@@ -106,10 +114,12 @@ HTML разметки. Например, при указании любого т
     <!-- for a named route -->
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
 
+    <!-- for a named route with a HTML class -->
+    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show', 'class': 'edit-btn') }}
+
 Создание форм
 -------------
-Формы веб-приложений играют важную роль для получения данных, введённых пользователем. Пример ниже показывает вариант реализации формы
-поиска с использованием помощников представлений.
+Формы веб-приложений играют важную роль для получения данных, введённых пользователем. Пример ниже показывает вариант реализации формы поиска с использованием помощников представлений.
 
 .. code-block:: html+php
 
@@ -118,14 +128,14 @@ HTML разметки. Например, при указании любого т
         <label for="q">Search:</label>
         <?= $this->tag->textField("q") ?>
         <?= $this->tag->submitButton("Search") ?>
-    </form>
+    <?= $this->tag->endForm() ?>
 
     <!-- Использование специфичного для элемента FORM тега - метода отправки данных -->
     <?= $this->tag->form(array("products/search", "method" => "get")); ?>
         <label for="q">Search:</label>
         <?= $this->tag->textField("q"); ?>
         <?= $this->tag->submitButton("Search"); ?>
-    </form>
+    <?= $this->tag->endForm() ?>
 
 Из кода выше сформируется такой HTML результат:
 
@@ -135,26 +145,24 @@ HTML разметки. Например, при указании любого т
          <label for="q">Search:</label>
          <input type="text" id="q" value="" name="q" />
          <input type="submit" value="Search" />
-    </endform>
+    </form>
 
 Аналогичную форму можно сгенерировать в Volt:
 
 .. code-block:: html+jinja
 
-    <!-- Specyfing another method or attributes for the FORM tag -->
+    <!-- Specifying another method or attributes for the FORM tag -->
     {{ form("products/search", "method": "get") }}
         <label for="q">Search:</label>
         {{ text_field("q") }}
         {{ submit_button("Search") }}
-    </form>
+    {{ endForm() }}
 
 Phalcon так же содержит :doc:`сборщик форм<forms>` для создания форм с использованием объектно-ориентированного подхода.
 
 Помощники создания элементов форм
 ---------------------------------
-Phalcon предоставляет ряд помощников для создания элементов формы, такие как текстовые поля, кнопки и многие другие. Первый параметр в таких методах
-это всегда имя элемента. При отправке формы это имя будет передаваться вместе со значениями формы. В контроллере вы можете получить значение элемента
-используя это же имя элемента и методы getPost() и getQuery() объекта запроса ($this->request).
+Phalcon предоставляет ряд помощников для создания элементов формы, такие как текстовые поля, кнопки и многие другие. Первый параметр в таких методах это всегда имя элемента. При отправке формы это имя будет передаваться вместе со значениями формы. В контроллере вы можете получить значение элемента используя это же имя элемента и методы getPost() и getQuery() объекта запроса ($this->request).
 
 .. code-block::  html+php
 
@@ -245,7 +253,7 @@ Phalcon предоставляет ряд помощников для созда
         array(
             "productId",
             Products::find("type = 'vegetables'"),
-            "using" => array("id", "name"),
+            "using"    => array("id", "name"),
             "useEmpty" => true
         )
     );
@@ -270,12 +278,11 @@ Phalcon предоставляет ряд помощников для созда
         array(
             'productId',
             Products::find("type = 'vegetables'"),
-            'using' => array('id', "name"),
-            'useEmpty' => true,
-            'emptyText' => 'Выберите значение...',
+            'using'      => array('id', "name"),
+            'useEmpty'   => true,
+            'emptyText'  => 'Выберите значение...',
             'emptyValue' => '@'
-        ),
-
+        )
     );
 
 .. code-block:: html
@@ -301,12 +308,12 @@ Phalcon предоставляет ряд помощников для созда
 
 .. code-block:: html+php
 
-    <?php \$this->tag->textField(
+    <?php $this->tag->textField(
         array(
             "price",
             "size"        => 20,
             "maxlength"   => 30,
-            "placeholder" => "Введите цену",
+            "placeholder" => "Введите цену"
         )
     ) ?>
 
@@ -336,14 +343,14 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ProductsController extends Controller
+    {
         public function indexAction()
         {
             $this->tag->setDefault("color", "Blue");
         }
-
     }
 
 В представлении помощник selectStatic сделает активным установленный индекс. В данном случае это "цвет":
@@ -352,7 +359,7 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
-    echo \$this->tag->selectStatic(
+    echo $this->tag->selectStatic(
         array(
             "color",
             array(
@@ -378,7 +385,6 @@ Phalcon предоставляет ряд помощников для созда
 Одна из волшебных функций Phalcon реализованной в компоненте :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` позволяет хранить данные, введённые в формы,
 между запросами. Таким образом, вы можете легко выводить сообщения об ошибках и правильности заполнения формы без потери введенных пользователем данных.
 
-
 Установка значений напрямую
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Каждый помощник форм поддерживает параметр "value", с помощью него указываются конечные значения элемента. При указании этого параметра
@@ -393,26 +399,26 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function initialize()
         {
-            $this->tag->setTitle(" Суперсайт");
+            $this->tag->setTitle("Суперсайт");
         }
 
         public function indexAction()
         {
             $this->tag->prependTitle("Главная страница - ");
         }
-
     }
 
 .. code-block:: html+php
 
     <html>
         <head>
-            <?php echo \$this->tag->getTitle(); ?>
+            <?php echo $this->tag->getTitle(); ?>
         </head>
         <body>
 
@@ -427,15 +433,15 @@ Phalcon предоставляет ряд помощников для созда
         <head>
             <title>Главная страница - Суперсайт</title>
         </head>
-          <body>
 
-          </body>
+        <body>
+
+        </body>
     </html>
 
 Помощники работы со статичными элементами
 -----------------------------------------
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` так же содержит помощников для генерации тегов script, link и img. Они помогают в быстрой и простой
-генерации тегов подключения статичных ресурсов.
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` так же содержит помощников для генерации тегов script, link и img. Они помогают в быстрой и простой генерации тегов подключения статичных ресурсов.
 
 Изображения
 ^^^^^^^^^^^
@@ -444,10 +450,10 @@ Phalcon предоставляет ряд помощников для созда
     <?php
 
     // Сформируется <img src="/your-app/img/hello.gif">
-    echo \$this->tag->image("img/hello.gif");
+    echo $this->tag->image("img/hello.gif");
 
     // Сформируется <img alt="alternative text" src="/your-app/img/hello.gif">
-    echo \$this->tag->image(
+    echo $this->tag->image(
         array(
            "img/hello.gif",
            "alt" => "alternative text"
@@ -471,10 +477,10 @@ Phalcon предоставляет ряд помощников для созда
     <?php
 
     // Сформируется <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
-    echo \$this->tag->stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+    echo $this->tag->stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
 
     // Сформируется <link rel="stylesheet" href="/your-app/css/styles.css" type="text/css">
-    echo \$this->tag->stylesheetLink("css/styles.css");
+    echo $this->tag->stylesheetLink("css/styles.css");
 
 Аналогично в Volt:
 
@@ -493,10 +499,10 @@ Javascript
     <?php
 
     // Сформируется <script src="http://localhost/javascript/jquery.min.js" type="text/javascript"></script>
-    echo \$this->tag->javascriptInclude("http://localhost/javascript/jquery.min.js", false);
+    echo $this->tag->javascriptInclude("http://localhost/javascript/jquery.min.js", false);
 
     // Сформируется <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script>
-    echo \$this->tag->javascriptInclude("javascript/jquery.min.js");
+    echo $this->tag->javascriptInclude("javascript/jquery.min.js");
 
 То же самое в Volt:
 
@@ -520,20 +526,20 @@ Javascript
     // <canvas id="canvas1" width="300" class="cnvclass">
     // This is my canvas
     // </canvas>
-    echo \$this->tag->tagHtml("canvas", array("id" => "canvas1", "width" => "300", "class" => "cnvclass", false, true, true));
+    echo $this->tag->tagHtml("canvas", array("id" => "canvas1", "width" => "300", "class" => "cnvclass"), false, true, true);
     echo "This is my canvas";
-    echo \$this->tag->tagHtmlClose("canvas");
+    echo $this->tag->tagHtmlClose("canvas");
 
 Синтаксис Volt:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
-    {# Generate #}
-    {# <canvas id="canvas1" width="300" class="cnvclass"> #}
-    {# This is my canvas #}
-    {# </canvas> #}
-    {{ tag_html("canvas", ["id":"canvas1", width":"300", "class":"cnvclass"], false, true, true) }}
+    {# Generate
+    <canvas id="canvas1" width="300" class="cnvclass">
     This is my canvas
+    </canvas> #}
+    {{ tag_html("canvas", ["id": "canvas1", width": "300", "class": "cnvclass"], false, true, true) }}
+        This is my canvas
     {{ tag_html_close("canvas") }}
 
 Сервис Tag
@@ -545,27 +551,28 @@ Javascript
 
     <?php echo $this->tag->linkTo('pages/about', 'About') ?>
 
-Вы можете легко добавить свои хелперы в пользовательском компоненте, заменяющем сервис 'tag' в
-контейнере зависимостей:
+Вы можете легко добавить свои хелперы в пользовательском компоненте, заменяющем сервис 'tag' в контейнере зависимостей:
 
 .. code-block:: php
 
     <?php
 
-    class MyTags extends \Phalcon\Tag
+    use Phalcon\Tag;
+
+    class MyTags extends Tag
     {
-        //...
+        // ...
 
         // Создаем новый хелпер
         static public function myAmazingHelper($parameters)
         {
-            //...
+            // ...
         }
 
         // Переопределяем уже существующий метод
         static public function textField($parameters)
         {
-            //...
+            // ...
         }
     }
 
@@ -575,23 +582,22 @@ Javascript
 
     <?php
 
-    $di['tag'] = function() {
+    $di['tag'] = function () {
         return new MyTags();
     };
 
 Создание собственных помощников
 -------------------------------
-
-Вы можете с лёгкостью создавать своих помощников расширяя :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` и реализуя собственных помощников. Пример ниже
-отображает вариант такой реализации:
+Вы можете с лёгкостью создавать своих помощников расширяя :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` и реализуя собственных помощников. Пример ниже отображает вариант такой реализации:
 
 .. code-block:: php
 
     <?php
 
-    class MyTags extends \Phalcon\Tag
-    {
+    use Phalcon\Tag;
 
+    class MyTags extends Tag
+    {
         /**
          * Соаздёт виджет вывода тега HTML5 audio
          *
@@ -600,7 +606,6 @@ Javascript
          */
         static public function audioField($parameters)
         {
-
             // Приведение к массиву
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
@@ -621,7 +626,7 @@ Javascript
             }
 
             // Определение значения элемента
-            // \$this->tag->setDefault() позволяет установить значение элемента
+            // $this->tag->setDefault() позволяет установить значение элемента
             if (isset($parameters["value"])) {
                 $value = $parameters["value"];
                 unset($parameters["value"]);
@@ -640,8 +645,61 @@ Javascript
 
             return $code;
         }
-
     }
+
+After creating our custom helper, we will autoload the new directory that contains our helper class from our "index.php" located in the public directory.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault();
+    use Phalcon\Exception as PhalconException;
+
+    try {
+
+        $loader = new Loader();
+        $loader->registerDirs(array(
+            '../app/controllers',
+            '../app/models',
+            '../app/customhelpers' // Add the new helpers folder
+        ))->register();
+
+        $di = new FactoryDefault();
+
+        // Assign our new tag a definition so we can call it
+        $di->set('MyTags', function () {
+            return new MyTags();
+        });
+
+        $application = new Application($di);
+        echo $application->handle()->getContent();
+
+    } catch (PhalconException $e) {
+        echo "PhalconException: ", $e->getMessage();
+    }
+
+Now you are ready to use your new helper within your views:
+
+.. code-block:: php
+
+    <body>
+
+        <?php
+
+        echo MyTags::audioField(
+            array(
+                'name' => 'test',
+                'id'   => 'audio_test',
+                'src'  => '/path/to/audio.mp3'
+            )
+        );
+
+        ?>
+
+    </body>
 
 Так же предлагаем вам ознакомиться с :doc:`Volt <volt>` - очень быстрым шаблонизатором для PHP. В нём вы же можете использовать
 возможности Phalcon\\Tag в более дружественном синтаксисе.

@@ -1,9 +1,10 @@
 Notas para la instalación en Cherokee
-===========================
+=====================================
+
 Cherokee_ es un servidor web de alto rendimiento. Es muy rápido, flexible y fácil de configurar.
 
 Configurando Cherokee para Phalcon
---------------------------------
+----------------------------------
 Cherokee provee una amistosa interfaz de usuario que permite configurar cada una de las opciones del servidor web.
 Inicia el administrador de Cherokee ejecutando /path-to-cherokee/sbin/cherokee-admin.
 

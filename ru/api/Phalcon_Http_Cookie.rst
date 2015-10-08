@@ -9,7 +9,7 @@ Provide OO wrappers to manage a HTTP cookie
 Methods
 -------
 
-public  **__construct** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
+public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
 Phalcon\\Http\\Cookie constructor
 
@@ -21,31 +21,31 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*unknown* $value)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*string* $value)
 
 Sets the cookie's value
 
 
 
-public *mixed*  **getValue** ([*unknown* $filters], [*unknown* $defaultValue])
+public *mixed*  **getValue** ([*string|array* $filters], [*string* $defaultValue])
 
 Returns the cookie's value
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **send** ()
+public  **send** ()
 
 Sends the cookie to the HTTP client Stores the cookie definition in session
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **restore** ()
+public  **restore** ()
 
 Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
 
@@ -57,85 +57,85 @@ Deletes the cookie by setting an expire time in the past
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **useEncryption** (*unknown* $useEncryption)
+public  **useEncryption** (*unknown* $useEncryption)
 
 Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-public *boolean*  **isUsingEncryption** ()
+public  **isUsingEncryption** ()
 
 Check if the cookie is using implicit encryption
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setExpiration** (*unknown* $expire)
+public  **setExpiration** (*unknown* $expire)
 
 Sets the cookie's expiration time
 
 
 
-public *string*  **getExpiration** ()
+public  **getExpiration** ()
 
 Returns the current expiration time
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*unknown* $path)
+public  **setPath** (*unknown* $path)
 
 Sets the cookie's expiration time
 
 
 
-public *string*  **getName** ()
+public  **getName** ()
 
 Returns the current cookie's name
 
 
 
-public *string*  **getPath** ()
+public  **getPath** ()
 
 Returns the current cookie's path
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setDomain** (*unknown* $domain)
+public  **setDomain** (*unknown* $domain)
 
 Sets the domain that the cookie is available to
 
 
 
-public *string*  **getDomain** ()
+public  **getDomain** ()
 
 Returns the domain that the cookie is available to
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setSecure** (*unknown* $secure)
+public  **setSecure** (*unknown* $secure)
 
 Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
 
 
-public *boolean*  **getSecure** ()
+public  **getSecure** ()
 
 Returns whether the cookie must only be sent when the connection is secure (HTTPS)
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setHttpOnly** (*unknown* $httpOnly)
+public  **setHttpOnly** (*unknown* $httpOnly)
 
 Sets if the cookie is accessible only through the HTTP protocol
 
 
 
-public *boolean*  **getHttpOnly** ()
+public  **getHttpOnly** ()
 
 Returns if the cookie is accessible only through the HTTP protocol
 
 
 
-public *string*  **__toString** ()
+public  **__toString** ()
 
 Magic __toString method converts the cookie's value to string
 

@@ -1,5 +1,6 @@
 MVC 应用（MVC Applications）
 ================
+
 在Phalcon，策划MVC操作背后的全部困难工作通常都可以
 通过 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 做到。这个组件封装了全部后端所需要的复杂
 操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
@@ -48,7 +49,7 @@ MVC 应用（MVC Applications）
     $di = new FactoryDefault();
 
     // 注册视图组件
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -76,7 +77,6 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
 
-
     $loader = new Loader();
 
     // 根据命名空间前缀加载
@@ -90,14 +90,14 @@ MVC 应用（MVC Applications）
     $di = new FactoryDefault();
 
     // 注册调度器，并设置控制器的默认命名空间
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // 注册视图组件
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -109,10 +109,9 @@ MVC 应用（MVC Applications）
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
-
 
 多模块（Multi Module）
 ^^^^^^^^^^^^
@@ -147,19 +146,17 @@ MVC 应用（MVC Applications）
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\ModuleDefinitionInterface;
 
-
     class Module implements ModuleDefinitionInterface
     {
-
         /**
          * 注册自定义加载器
          */
         public function registerAutoloaders()
         {
-
             $loader = new Loader();
 
             $loader->registerNamespaces(
@@ -175,24 +172,22 @@ MVC 应用（MVC Applications）
         /**
          * 注册自定义服务
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
-            //Registering a dispatcher
-            $di->set('dispatcher', function() {
+            // Registering a dispatcher
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
-            $di->set('view', function() {
+            // Registering the view component
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
         }
-
     }
 
 还需要一个指定的启动文件来加载多模块的MVC架构：
@@ -205,7 +200,6 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
 
-
     $di = new FactoryDefault();
 
     // 自定义路由
@@ -215,22 +209,31 @@ MVC 应用（MVC Applications）
 
         $router->setDefaultModule("frontend");
 
-        $router->add("/login", array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ));
+        $router->add(
+            "/login",
+            array(
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index'
+            )
+        );
 
-        $router->add("/admin/products/:action", array(
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/admin/products/:action",
+            array(
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
-        $router->add("/products/:action", array(
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/products/:action",
+            array(
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
         return $router;
     });
@@ -257,7 +260,7 @@ MVC 应用（MVC Applications）
         // 处理请求
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -273,19 +276,19 @@ MVC 应用（MVC Applications）
     $view = new View();
 
     // 设置视图组件相关选项
-    //...
+    // ...
 
     // Register the installed modules
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -306,16 +309,18 @@ MVC 应用（MVC Applications）
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
         // 注册自动加载器
-        //...
+        // ...
 
         // 注册服务
-        //...
+        // ...
 
         // 处理请求
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
@@ -437,7 +442,7 @@ MVC 应用（MVC Applications）
 
     } catch (Exception $e) {
 
-        //An exception has occurred, dispatch some controller/action aimed for that
+        // An exception has occurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -445,7 +450,6 @@ MVC 应用（MVC Applications）
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
     // 获取最后的返回结果
@@ -495,7 +499,7 @@ MVC 应用（MVC Applications）
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );

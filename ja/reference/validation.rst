@@ -1,5 +1,6 @@
 バリデーション
 ==========
+
 Phalcon\\Validation is an independent validation component that validates an arbitrary set of data.
 This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -9,22 +10,38 @@ The following example shows its basic usage:
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
-    $validation->add('name', new PresenceOf(array(
-        'message' => 'The name is required'
-    )));
+    $validation->add(
+        'name',
+        new PresenceOf(
+            array(
+                'message' => 'The name is required'
+            )
+        )
+    );
 
-    $validation->add('email', new PresenceOf(array(
-        'message' => 'The e-mail is required'
-    )));
+    $validation->add(
+        'email',
+        new PresenceOf(
+            array(
+                'message' => 'The e-mail is required'
+            )
+        )
+    );
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
     $messages = $validation->validate($_POST);
     if (count($messages)) {
@@ -38,33 +55,50 @@ The loosely-coupled design of this component allows you to create your own valid
 バリデーションの初期化
 -----------------------
 Validation chains can be initialized in a direct manner by just adding validators to the Phalcon\\Validation object.
-You can put your validations in a seperate file for better re-use code and organization:
+You can put your validations in a separate file for better re-use code and organization:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
     class MyValidation extends Validation
     {
         public function initialize()
         {
-            $this->add('name', new PresenceOf(array(
-                'message' => 'The name is required'
-            )));
+            $this->add(
+                'name',
+                new PresenceOf(
+                    array(
+                        'message' => 'The name is required'
+                    )
+                )
+            );
 
-            $this->add('email', new PresenceOf(array(
-                'message' => 'The e-mail is required'
-            )));
+            $this->add(
+                'email',
+                new PresenceOf(
+                    array(
+                        'message' => 'The e-mail is required'
+                    )
+                )
+            );
 
-            $this->add('email', new Email(array(
-                'message' => 'The e-mail is not valid'
-            )));
+            $this->add(
+                'email',
+                new Email(
+                    array(
+                        'message' => 'The e-mail is not valid'
+                    )
+                )
+            );
         }
     }
+
+Then initialize and use your own validator:
 
 .. code-block:: php
 
@@ -86,7 +120,7 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Explanation                                                                                                                                                      | Example                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
+| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -102,7 +136,9 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Validates that a value is the same as another present in the data                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
+| Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
@@ -111,13 +147,12 @@ The following example explains how to create additional validators for this comp
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
 
     class IpValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * Executes the validation
          *
@@ -129,7 +164,7 @@ The following example explains how to create additional validators for this comp
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
@@ -143,7 +178,6 @@ The following example explains how to create additional validators for this comp
 
             return true;
         }
-
     }
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
@@ -170,15 +204,16 @@ generated the message or the message type:
         }
     }
 
-The getMessages() method can be overriden in a validation class to replace/translate the default messages generated by the validators:
+The getMessages() method can be overridden in a validation class to replace/translate the default messages generated by the validators:
 
 .. code-block:: php
 
     <?php
 
-    class MyValidation extends Phalcon\Validation
-    {
+    use Phalcon\Validation;
 
+    class MyValidation extends Validation
+    {
         public function initialize()
         {
             // ...
@@ -194,6 +229,7 @@ The getMessages() method can be overriden in a validation class to replace/trans
                         break;
                 }
             }
+
             return $messages;
         }
     }
@@ -206,9 +242,14 @@ Or you can pass a 'message' parameter to change the default message in each vali
 
     use Phalcon\Validation\Validator\Email;
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
 By default, 'getMessages' returns all the messages generated during validation. You can filter messages
 for a specific field using the 'filter' method:
@@ -219,7 +260,7 @@ for a specific field using the 'filter' method:
 
     $messages = $validation->validate();
     if (count($messages)) {
-        //Filter only the messages generated for the field 'name'
+        // Filter only the messages generated for the field 'name'
         foreach ($validation->getMessages()->filter('name') as $message) {
             echo $message;
         }
@@ -233,7 +274,9 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 
     <?php
 
-    $validation = new Phalcon\Validation();
+    use Phalcon\Validation;
+
+    $validation = new Validation();
 
     $validation
         ->add('name', new PresenceOf(array(
@@ -243,7 +286,7 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
             'message' => 'The email is required'
         )));
 
-    //Filter any extra space
+    // Filter any extra space
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
@@ -252,8 +295,7 @@ component or use the built-in ones.
 
 バリデーション・イベント
 -----------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
-perform additional checks, filters, clean-up, etc. If 'beforeValidation' method returns false the validation is automatically
+When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
 cancelled:
 
 .. code-block:: php
@@ -264,7 +306,6 @@ cancelled:
 
     class LoginValidation extends Validation
     {
-
         public function initialize()
         {
             // ...
@@ -282,8 +323,10 @@ cancelled:
         {
             if ($this->request->getHttpHost() != 'admin.mydomain.com') {
                 $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+
                 return false;
             }
+
             return true;
         }
 
@@ -296,13 +339,12 @@ cancelled:
          */
         public function afterValidation($data, $entity, $messages)
         {
-            //... add additional messages or perform more validations
+            // ... Add additional messages or perform more validations
         }
-
     }
 
 バリデーションのキャンセル
----------------------
+----------------------
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:
 
@@ -310,10 +352,11 @@ this behavior by telling the validation component which validator may stop the v
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
     $validation
         ->add('telephone', new PresenceOf(array(
@@ -325,8 +368,8 @@ this behavior by telling the validation component which validator may stop the v
             'pattern' => '/\+44 [0-9]+/'
         )))
         ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is too short',
-            'min' => 2
+            'messageMinimum' => 'The telephone is too short',
+            'min'            => 2
         )));
 
 The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
@@ -338,13 +381,13 @@ If you are creating custom validators you can dynamically stop the validation ch
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
 
     class MyValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * Executes the validation
          *
@@ -352,14 +395,33 @@ If you are creating custom validators you can dynamically stop the validation ch
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
             if ($attribute == 'name') {
                 $validator->setOption('cancelOnFail', true);
             }
 
-            //...
+            // ...
         }
-
     }
+
+Avoid validate empty values
+---------------------------
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+
+    $validation = new Validation();
+
+    $validation
+        ->add('telephone', new Regex(array(
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/',
+            'allowEmpty' => true
+        )));

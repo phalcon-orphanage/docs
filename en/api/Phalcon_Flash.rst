@@ -21,25 +21,25 @@ Phalcon\\Flash constructor
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*unknown* $implicitFlush)
+public  **setImplicitFlush** (*unknown* $implicitFlush)
 
-Set whether the output must be implictly flushed to the output or returned as string
-
-
-
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*unknown* $automaticHtml)
-
-Set if the output must be implictily formatted with HTML
+Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*unknown* $cssClasses)
+public  **setAutomaticHtml** (*unknown* $automaticHtml)
+
+Set if the output must be implicitly formatted with HTML
+
+
+
+public  **setCssClasses** (*unknown* $cssClasses)
 
 Set an array with CSS classes to format the messages
 
 
 
-public *string*  **error** (*unknown* $message)
+public  **error** (*unknown* $message)
 
 Shows a HTML error message 
 
@@ -52,7 +52,7 @@ Shows a HTML error message
 
 
 
-public *string*  **notice** (*unknown* $message)
+public  **notice** (*unknown* $message)
 
 Shows a HTML notice/information message 
 
@@ -65,7 +65,7 @@ Shows a HTML notice/information message
 
 
 
-public *string*  **success** (*unknown* $message)
+public  **success** (*unknown* $message)
 
 Shows a HTML success message 
 
@@ -78,7 +78,7 @@ Shows a HTML success message
 
 
 
-public *string*  **warning** (*unknown* $message)
+public  **warning** (*unknown* $message)
 
 Shows a HTML warning message 
 
@@ -91,7 +91,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message)
+public  **outputMessage** (*unknown* $type, *string|array* $message)
 
 Outputs a message formatting it with HTML 
 
@@ -101,6 +101,12 @@ Outputs a message formatting it with HTML
 
      $flash->outputMessage('error', message);
 
+
+
+
+public  **clear** ()
+
+Clears accumulated messages when implicit flush is disabled
 
 
 

@@ -1,12 +1,13 @@
 Filtering and Sanitizing
 ========================
+
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
-access to the content of your application, mainly user data, or even the server your application is hosted.
+access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
-Full image (from xkcd)
+`Full image (from xkcd)`_
 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
@@ -19,18 +20,20 @@ By sanitizing input we ensure that application integrity will be intact.
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
 
-    // returns "someone@example.com"
+    $filter = new Filter();
+
+    // Returns "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
 
-    // returns "hello"
+    // Returns "hello"
     $filter->sanitize("hello<<", "string");
 
-    // returns "100019"
+    // Returns "100019"
     $filter->sanitize("!100a019", "int");
 
-    // returns "100019.01"
+    // Returns "100019.01"
     $filter->sanitize("!100a019.01a", "float");
 
 
@@ -43,9 +46,10 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ProductsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -53,15 +57,12 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
         public function saveAction()
         {
-
             // Sanitizing price from input
             $price = $this->request->getPost("price", "double");
 
             // Sanitizing email from input
             $email = $this->request->getPost("customerEmail", "email");
-
         }
-
     }
 
 Filtering Action Parameters
@@ -72,9 +73,10 @@ The next example shows you how to sanitize the action parameters within a contro
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class ProductsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -84,7 +86,6 @@ The next example shows you how to sanitize the action parameters within a contro
         {
             $productId = $this->filter->sanitize($productId, "int");
         }
-
     }
 
 Filtering data
@@ -96,13 +97,15 @@ the format we expect.
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
 
-    // returns "Hello"
-    $filter->filter("<h1>Hello</h1>", "striptags");
+    $filter = new Filter();
 
-    // returns "Hello"
-    $filter->filter("  Hello   ", "trim");
+    // Returns "Hello"
+    $filter->sanitize("<h1>Hello</h1>", "striptags");
+
+    // Returns "Hello"
+    $filter->sanitize("  Hello   ", "trim");
 
 
 Types of Built-in Filters
@@ -112,9 +115,9 @@ The following are the built-in filters provided by this component:
 +-----------+---------------------------------------------------------------------------+
 | Name      | Description                                                               |
 +===========+===========================================================================+
-| string    | Strip tags                                                                |
+| string    | Strip tags and escapes HTML entities, including single and double quotes. |
 +-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
 +-----------+---------------------------------------------------------------------------+
 | int       | Remove all characters except digits, plus and minus sign.                 |
 +-----------+---------------------------------------------------------------------------+
@@ -133,20 +136,22 @@ The following are the built-in filters provided by this component:
 
 Creating your own Filters
 -------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonymous function:
 
 .. code-block:: php
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
 
-    //Using an anonymous function
-    $filter->add('md5', function($value) {
+    $filter = new Filter();
+
+    // Using an anonymous function
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
-    //Sanitize with the "md5" filter
+    // Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
 Or, if you prefer, you can implement the filter in a class:
@@ -155,22 +160,22 @@ Or, if you prefer, you can implement the filter in a class:
 
     <?php
 
+    use Phalcon\Filter;
+
     class IPv4Filter
     {
-
         public function filter($value)
         {
             return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
-
     }
 
-    $filter = new \Phalcon\Filter();
+    $filter = new Filter();
 
-    //Using an object
+    // Using an object
     $filter->add('ipv4', new IPv4Filter());
 
-    //Sanitize with the "ipv4" filter
+    // Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
 Complex Sanitizing and Filtering
@@ -182,6 +187,7 @@ Implementing your own Filter
 The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
 replacing the one provided by Phalcon.
 
+.. _Full image (from xkcd): http://xkcd.com/327/
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
 .. _trim: http://www.php.net/manual/en/function.trim.php

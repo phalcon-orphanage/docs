@@ -2,7 +2,7 @@ Framework Benchmarks
 ====================
 En el pasado, el rendimiento no era considerado una prioridad al desarrollar aplicaciones web. Tener un buen hardware
 era suficiente para compensarlo. Ahora que Google ha decidido_ tener en cuenta la velocidad en sus rankings de búsqueda,
-esta se ha vuelto una proridad junto con el contenido y la funcionalidad. 
+esta se ha vuelto una proridad junto con el contenido y la funcionalidad.
 
 Los benchmarks monstrados a continuación, muestran que tan eficiente es Phalcon al ser comparado con frameworks PHP tradicionales.
 Estos benchmarks son actualizados en la medida que nuevas versiones son liberadas.

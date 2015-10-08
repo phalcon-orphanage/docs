@@ -1,5 +1,6 @@
 MVC アプリケーション
 ================
+
 PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の働きがあります。このコンポーネントは、バックグラウンドで必要となる全ての複雑な処理をカプセル化し、必要とされる全てのコンポーネントを初期化して、それらをプロジェクトに統合し、MVCパターンの望ましい動作を実現します。
 
 シングルまたはマルチモジュールアプリケーション
@@ -28,10 +29,10 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Application,
-        Phalcon\Mvc\View;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -45,7 +46,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     $di = new FactoryDefault();
 
     // viewコンポーネントを登録
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -67,11 +68,11 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\View,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\Application;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -86,14 +87,14 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     $di = new FactoryDefault();
 
     // コントローラーの名前空間を設定してディスパッチャに登録
-    $di->set('dispatcher', function() {
+    $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Registering the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
@@ -105,10 +106,9 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
-
 
 マルチモジュール
 ^^^^^^^^^^^^
@@ -141,20 +141,19 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     namespace Multiple\Backend;
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\View,
-        Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\ModuleDefinitionInterface;
 
     class Module implements ModuleDefinitionInterface
     {
-
         /**
          * Register a specific autoloader for the module
          */
         public function registerAutoloaders()
         {
-
             $loader = new Loader();
 
             $loader->registerNamespaces(
@@ -170,24 +169,22 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         /**
          * Register specific services for the module
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
-            //ディスパッチャを登録
-            $di->set('dispatcher', function() {
+            // ディスパッチャを登録
+            $di->set('dispatcher', function () {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
-            $di->set('view', function() {
+            // Registering the view component
+            $di->set('view', function () {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
         }
-
     }
 
 マルチモジュールのMVC構成をロードするには、特別なブートストラップファイルが必要になります：
@@ -196,42 +193,51 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
-    use Phalcon\Mvc\Router,
-        Phalcon\Mvc\Application,
-        Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $di = new FactoryDefault();
 
-    //モジュールのルーティング設定
+    // モジュールのルーティング設定
     $di->set('router', function () {
 
         $router = new Router();
 
         $router->setDefaultModule("frontend");
 
-        $router->add("/login", array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ));
+        $router->add(
+            "/login",
+            array(
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index'
+            )
+        );
 
-        $router->add("/admin/products/:action", array(
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/admin/products/:action",
+            array(
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
-        $router->add("/products/:action", array(
-            'controller' => 'products',
-            'action'     => 1,
-        ));
+        $router->add(
+            "/products/:action",
+            array(
+                'controller' => 'products',
+                'action'     => 1
+            )
+        );
 
         return $router;
     });
 
     try {
 
-        //アプリケーションを初期化
+        // アプリケーションを初期化
         $application = new Application($di);
 
         // モジュールを登録する
@@ -248,10 +254,10 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
             )
         );
 
-        //リクエストを処理する
+        // リクエストを処理する
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -261,23 +267,25 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
-    //viewコンポーネントの初期化
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
 
-    //viewコンポーネントにオプションを設定
-    //...
+    // viewコンポーネントの初期化
+    $view = new View();
+
+    // viewコンポーネントにオプションを設定
+    // ...
 
     // Register the installed modules
     $application->registerModules(
         array(
-            'frontend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'frontend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
                     return $view;
                 });
             },
-            'backend' => function($di) use ($view) {
-                $di->setShared('view', function() use ($view) {
+            'backend' => function ($di) use ($view) {
+                $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
@@ -295,16 +303,18 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
         // オートローダにディレクトリを登録する
-        //...
+        // ...
 
         // サービスを登録する
-        //...
+        // ...
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
@@ -390,13 +400,13 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //直前に実行されたアクションの返り値を取得
+    // 直前に実行されたアクションの返り値を取得
     $response = $dispatcher->getReturnedValue();
 
-    //返り値がResponseオブジェクトのインスタンスか確認する
+    // 返り値がResponseオブジェクトのインスタンスか確認する
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //リクエストを送信する
+        // リクエストを送信する
         $response->send();
     }
 
@@ -425,7 +435,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     } catch (Exception $e) {
 
-        //例外が発生した場合、それに対応するコントローラーとアクションを実行する
+        // 例外が発生した場合、それに対応するコントローラーとアクションを実行する
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -433,16 +443,15 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
-    //Get the returned value by the lastest executed action
+    // Get the returned value by the last executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the response
         $response->send();
     }
 
@@ -480,7 +489,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     $eventsManager->attach(
         "application",
-        function($event, $application) {
+        function ($event, $application) {
             // ...
         }
     );

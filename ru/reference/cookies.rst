@@ -1,5 +1,6 @@
 ﻿Управление Куками
 =================
+
 `Куки`_ очень полезный способ хранения маленьких фрагментов данных на стороне клиента, которые могут быть получены, даже
 если пользователь закроет свой браузер. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
 выступает в качестве глобального "мешка" (bag) для Кук. Куки хранятся в таком "мешке" (bag) во время выполнения запроса
@@ -13,7 +14,9 @@
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
         public function loginAction()
         {
@@ -24,14 +27,19 @@
                 $rememberMe = $this->cookies->get('remember-me');
 
                 // Извлекаем значение из Куки
-                $value = $rememberMe->getValue();
-
+                $value      = $rememberMe->getValue();
             }
         }
 
         public function startAction()
         {
             $this->cookies->set('remember-me', 'некоторое значение', time() + 15 * 86400);
+        }
+
+        public function logoutAction()
+        {
+            // Delete the cookie
+            $this->cookies->get('remember-me')->delete();
         }
     }
 
@@ -47,9 +55,13 @@
 
     <?php
 
-    $di->set('cookies', function() {
-        $cookies = new Phalcon\Http\Response\Cookies();
+    use Phalcon\Http\Response\Cookies;
+
+    $di->set('cookies', function () {
+        $cookies = new Cookies();
+
         $cookies->useEncryption(false);
+
         return $cookies;
     });
 
@@ -59,9 +71,13 @@
 
     <?php
 
-    $di->set('crypt', function() {
-        $crypt = new Phalcon\Crypt();
+    use Phalcon\Crypt;
+
+    $di->set('crypt', function () {
+        $crypt = new Crypt();
+
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Используйте свой собственный ключ!
+
         return $crypt;
     });
 

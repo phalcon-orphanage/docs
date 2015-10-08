@@ -9,9 +9,9 @@ Groups Micro-Mvc handlers as controllers
 
     <?php
 
-     $app = new Phalcon\Mvc\Micro();
+     $app = new \Phalcon\Mvc\Micro();
     
-     $collection = new Phalcon\Mvc\Micro\Collection();
+     $collection = new Collection();
     
      $collection->setHandler(new PostsController());
     
@@ -22,21 +22,21 @@ Groups Micro-Mvc handlers as controllers
 
 
 Methods
----------
+-------
 
-protected  **_addMap** ()
+protected  **_addMap** (*string|array* $method, *string* $routePattern, *mixed* $handler, *string* $name)
 
 Internal function to add a handler to the group
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setPrefix** (*string* $prefix)
+public  **setPrefix** (*unknown* $prefix)
 
 Sets a prefix for all routes added to the collection
 
 
 
-public *string*  **getPrefix** ()
+public  **getPrefix** ()
 
 Returns the collection prefix if any
 
@@ -54,13 +54,13 @@ Sets the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setLazy** (*boolean* $lazy)
+public  **setLazy** (*unknown* $lazy)
 
 Sets if the main handler must be lazy loaded
 
 
 
-public *boolean*  **isLazy** ()
+public  **isLazy** ()
 
 Returns if the main handler must be lazy loaded
 
@@ -72,49 +72,49 @@ Returns the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **map** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **map** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **get** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **get** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **post** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **post** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **put** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **put** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **patch** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **head** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **head** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **delete** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **options** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **options** (*string* $routePattern, *callable* $handler, [*unknown* $name])
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 

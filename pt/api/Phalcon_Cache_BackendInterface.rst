@@ -1,87 +1,71 @@
 Interface **Phalcon\\Cache\\BackendInterface**
 ==============================================
 
-Phalcon\\Cache\\BackendInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
+abstract public  **start** (*unknown* $keyName, [*unknown* $lifetime])
 
-Starts a cache. The $keyname allows to identify the created fragment
-
-
-
-abstract public  **stop** ([*boolean* $stopBuffer])
-
-Stops the frontend without store any cached content
+...
 
 
+abstract public  **stop** ([*unknown* $stopBuffer])
 
-abstract public *mixed*  **getFrontend** ()
-
-Returns front-end instance adapter related to the back-end
-
+...
 
 
-abstract public *array*  **getOptions** ()
+abstract public  **getFrontend** ()
 
-Returns the backend options
-
-
-
-abstract public *boolean*  **isFresh** ()
-
-Checks whether the last cache is fresh or cached
+...
 
 
+abstract public  **getOptions** ()
 
-abstract public *boolean*  **isStarted** ()
-
-Checks whether the cache has starting buffering or not
-
+...
 
 
-abstract public  **setLastKey** (*string* $lastKey)
+abstract public  **isFresh** ()
 
-Sets the last key used in the cache
-
-
-
-abstract public *string*  **getLastKey** ()
-
-Gets the last key stored by the cache
+...
 
 
+abstract public  **isStarted** ()
 
-abstract public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
-
-Returns a cached content
-
+...
 
 
-abstract public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+abstract public  **setLastKey** (*unknown* $lastKey)
 
-Stores cached content into the file backend and stops the frontend
-
-
-
-abstract public *boolean*  **delete** (*int|string* $keyName)
-
-Deletes a value from the cache by its key
+...
 
 
+abstract public  **getLastKey** ()
 
-abstract public *array*  **queryKeys** ([*string* $prefix])
-
-Query the existing cached keys
-
+...
 
 
-abstract public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+abstract public  **get** (*unknown* $keyName, [*unknown* $lifetime])
 
-Checks if cache exists and it hasn't expired
+...
 
+
+abstract public  **save** ([*unknown* $keyName], [*unknown* $content], [*unknown* $lifetime], [*unknown* $stopBuffer])
+
+...
+
+
+abstract public  **delete** (*unknown* $keyName)
+
+...
+
+
+abstract public  **queryKeys** ([*unknown* $prefix])
+
+...
+
+
+abstract public  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
+
+...
 
 

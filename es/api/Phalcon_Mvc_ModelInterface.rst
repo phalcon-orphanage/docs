@@ -184,16 +184,6 @@ abstract public  **skipOperation** (*unknown* $skip)
 ...
 
 
-abstract public  **readAttribute** (*unknown* $attribute)
-
-...
-
-
-abstract public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
-
-...
-
-
 abstract public  **getRelated** (*unknown* $alias, [*unknown* $arguments])
 
 ...

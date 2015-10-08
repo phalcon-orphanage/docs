@@ -1,8 +1,8 @@
 使用视图（Using Views）
 =======================
+
 视图代表了应用程序中的用户界面. 视图通常是在 HTML 文件里嵌入 PHP 代码，这些代码仅仅是用来展示数据。
 视图的任务是当应用程序发生请求时，提供数据给 web 浏览器或者其他工具。
-
 
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
 负责管理你的MVC应用程序的视图(View)层。
@@ -33,7 +33,6 @@
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -42,9 +41,8 @@
         public function showAction($postId)
         {
             // Pass the $postId parameter to the view
-            $this->view->setVar("postId", $postId);
+            $this->view->postId = $postId;
         }
-
     }
 
 setVar允许我们创建视图变量，这样可以在视图模板中使用它们。上面的示例演示了如何传递 $postId 参数到相应的视图模板。
@@ -73,7 +71,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <h3>This is show view!</h3>
 
-    <p>I have received the parameter <?php echo $postId ?></p>
+    <p>I have received the parameter <?php echo $postId; ?></p>
 
 .. code-block:: html+php
 
@@ -81,7 +79,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <h2>This is the "posts" controller layout!</h2>
 
-    <?php echo $this->getContent() ?>
+    <?php echo $this->getContent(); ?>
 
 .. code-block:: html+php
 
@@ -94,7 +92,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
             <h1>This is main layout!</h1>
 
-            <?php echo $this->getContent() ?>
+            <?php echo $this->getContent(); ?>
 
         </body>
     </html>
@@ -134,6 +132,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 模板视图可以用来分享共同的视图代码。他们作为控制器的布局，所以你需要放在布局目录。
 
+Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
+
 .. code-block:: php
 
     <?php
@@ -162,7 +162,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             <title>Blog's title</title>
         </head>
         <body>
-            <?php echo $this->getContent() ?>
+            <?php echo $this->getContent(); ?>
         </body>
     </html>
 
@@ -176,7 +176,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         <li><a href="/contact">Contact us</a></li>
     </ul>
 
-    <div class="content"><?php echo $this->getContent() ?></div>
+    <div class="content"><?php echo $this->getContent(); ?></div>
 
 .. code-block:: html+php
 
@@ -184,7 +184,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <h1>Blog Title</h1>
 
-    <?php echo $this->getContent() ?>
+    <?php echo $this->getContent(); ?>
 
 .. code-block:: html+php
 
@@ -243,6 +243,49 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         </body>
     </html>
 
+If we had used :code:`$this->view->setTemplateBefore('common')`, this would be the final output:
+
+.. code-block:: html+php
+
+    <!-- app/views/index.phtml -->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Blog's title</title>
+        </head>
+        <body>
+
+            <!-- app/views/layouts/posts.phtml -->
+
+            <h1>Blog Title</h1>
+
+            <!-- app/views/layouts/common.phtml -->
+
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/contact">Contact us</a></li>
+            </ul>
+
+            <div class="content">
+
+                <!-- app/views/posts/last.phtml -->
+
+                <article>
+                    <h2>This is a title</h2>
+                    <p>This is the post content</p>
+                </article>
+
+                <article>
+                    <h2>This is another title</h2>
+                    <p>This is another post content</p>
+                </article>
+
+            </div>
+
+        </body>
+    </html>
+
 渲染级别控制（Control Rendering Levels）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如上所述，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 支持视图分层。你可能需要控制视图组件的渲染级别。方法 Phalcon\Mvc\\View::setRenderLevel() 提供这个功能。
@@ -258,7 +301,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -266,11 +308,10 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
         public function findAction()
         {
-
             // This is an Ajax response so it doesn't generate any kind of view
             $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
-            //...
+            // ...
         }
 
         public function showAction($postId)
@@ -278,7 +319,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Shows only the view related to the action
             $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
-
     }
 
 可用的渲染级别:
@@ -309,18 +349,19 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     use Phalcon\Mvc\View;
 
-    $di->set('view', function(){
+    $di->set('view', function () {
 
         $view = new View();
 
-        //Disable several levels
-        $view->disableLevel(array(
-            View::LEVEL_LAYOUT      => true,
-            View::LEVEL_MAIN_LAYOUT => true
-        ));
+        // Disable several levels
+        $view->disableLevel(
+            array(
+                View::LEVEL_LAYOUT      => true,
+                View::LEVEL_MAIN_LAYOUT => true
+            )
+        );
 
         return $view;
-
     }, true);
 
 或者在某些应用程序的一部分暂时或禁用:
@@ -334,7 +375,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -344,7 +384,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         {
             $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         }
-
     }
 
 选择视图（Picking Views）
@@ -359,7 +398,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class ProductsController extends Controller
     {
-
         public function listAction()
         {
             // Pick "views-dir/products/search" as view to render
@@ -385,19 +423,17 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class UsersController extends Controller
     {
-
         public function closeSessionAction()
         {
-            //Close session
-            //...
+            // Close session
+            // ...
 
-            //An HTTP Redirect
+            // A HTTP Redirect
             $this->response->redirect('index/index');
 
-            //Disable the view to avoid rendering
+            // Disable the view to avoid rendering
             $this->view->disable();
         }
-
     }
 
 你可以返回一个“response”的对象，避免手动禁用视图:
@@ -410,16 +446,14 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class UsersController extends Controller
     {
-
         public function closeSessionAction()
         {
-            //Close session
-            //...
+            // Close session
+            // ...
 
-            //An HTTP Redirect
+            // A HTTP Redirect
             return $this->response->redirect('index/index');
         }
-
     }
 
 简单渲染（Simple Rendering）
@@ -438,14 +472,13 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     use Phalcon\Mvc\View\Simple as SimpleView;
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new SimpleView();
 
         $view->setViewsDir('../app/views/');
 
         return $view;
-
     }, true);
 
 自动渲染必须在 :doc:`Phalcon\\Mvc\\Application <applications>`被禁用 (如果需要):
@@ -478,22 +511,20 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends \Controller
     {
-
         public function indexAction()
         {
-            //Render 'views-dir/index.phtml'
+            // Render 'views-dir/index.phtml'
             echo $this->view->render('index');
 
-            //Render 'views-dir/posts/show.phtml'
+            // Render 'views-dir/posts/show.phtml'
             echo $this->view->render('posts/show');
 
-            //Render 'views-dir/index.phtml' passing variables
+            // Render 'views-dir/index.phtml' passing variables
             echo $this->view->render('index', array('posts' => Posts::find()));
 
-            //Render 'views-dir/posts/show.phtml' passing variables
+            // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render('posts/show', array('posts' => Posts::find()));
         }
-
     }
 
 使用局部模版（Using Partials）
@@ -504,7 +535,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
 .. code-block:: html+php
 
-    <div class="top"><?php $this->partial("shared/ad_banner") ?></div>
+    <div class="top"><?php $this->partial("shared/ad_banner"); ?></div>
 
     <div class="content">
         <h1>Robots</h1>
@@ -513,13 +544,13 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         ...
     </div>
 
-    <div class="footer"><?php $this->partial("shared/footer") ?></div>
+    <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
 方法 partial() 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
-    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
+    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')); ?>
 
 控制器传值给视图（Transfer values from the controller to views）
 ----------------------------------------------------------------
@@ -533,7 +564,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -541,31 +571,35 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
         public function showAction()
         {
-            //Pass all the posts to the views
-            $this->view->setVar("posts", Posts::find());
+            // Pass all the posts to the views
+            $this->view->setVar(
+                "posts",
+                Posts::find()
+            );
 
-            //Using the magic setter
+            // Using the magic setter
             $this->view->posts = Posts::find();
 
-            //Passing more than one variable at the same time
-            $this->view->setVars(array(
-                'title' => $post->title,
-                'content' => $post->content
-            ));
+            // Passing more than one variable at the same time
+            $this->view->setVars(
+                array(
+                    'title'   => $post->title,
+                    'content' => $post->content
+                )
+            );
         }
-
     }
 
-名为setvar()的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
+名为setVar()的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
 
 .. code-block:: html+php
 
     <div class="post">
     <?php
 
-      foreach ($posts as $post) {
-        echo "<h1>", $post->title, "</h1>";
-      }
+        foreach ($posts as $post) {
+            echo "<h1>", $post->title, "</h1>";
+        }
 
     ?>
     </div>
@@ -580,7 +614,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
     <?php
 
         foreach (Categories::find("status = 1") as $category) {
-           echo "<span class='category'>", $category->name, "</span>";
+            echo "<span class='category'>", $category->name, "</span>";
         }
 
     ?>
@@ -602,47 +636,48 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends Controller
     {
-
         public function showAction()
         {
-            //Cache the view using the default settings
+            // Cache the view using the default settings
             $this->view->cache(true);
         }
 
         public function showArticleAction()
         {
             // Cache this view for 1 hour
-            $this->view->cache(array(
-                "lifetime" => 3600
-            ));
+            $this->view->cache(
+                array(
+                    "lifetime" => 3600
+                )
+            );
         }
 
         public function resumeAction()
         {
-            //Cache this view for 1 day with the key "resume-cache"
+            // Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
                 array(
                     "lifetime" => 86400,
-                    "key"      => "resume-cache",
+                    "key"      => "resume-cache"
                 )
             );
         }
 
         public function downloadAction()
         {
-            //Passing a custom service
+            // Passing a custom service
             $this->view->cache(
                 array(
                     "service"  => "myCache",
                     "lifetime" => 86400,
-                    "key"      => "resume-cache",
+                    "key"      => "resume-cache"
                 )
             );
         }
-
     }
 
-当我们没有定义缓存的关键组件，这个组件会自动创建一个经过 md5_ 的当前渲染的视图名。它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
+当我们没有定义缓存的关键组件， the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
+它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
 
 当视图组件需要缓存的东西时，就会请求缓存服务的服务容器。
 这个服务的服务名称约定为"viewCache"：
@@ -654,26 +689,31 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
     use Phalcon\Cache\Frontend\Output as OutputFrontend;
     use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
-    //Set the views cache service
-    $di->set('viewCache', function() {
+    // Set the views cache service
+    $di->set('viewCache', function () {
 
-        //Cache data for one day by default
-        $frontCache = new OutputFrontend(array(
-            "lifetime" => 86400
-        ));
+        // Cache data for one day by default
+        $frontCache = new OutputFrontend(
+            array(
+                "lifetime" => 86400
+            )
+        );
 
-        //Memcached connection settings
-        $cache = new MemcacheBackend($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
+        // Memcached connection settings
+        $cache = new MemcacheBackend(
+            $frontCache,
+            array(
+                "host" => "localhost",
+                "port" => "11211"
+            )
+        );
 
         return $cache;
     });
 
 .. highlights::
     前端 Phalcon\\Cache\\Frontend\\Output 和服务 'viewCache' 必须在服务容器（DI）注册为
-	总是开放的（不共享 not shared）
+    总是开放的（不共享 not shared）
 
 在视图中使用视图缓存也是有用的，以防止控制器执行过程所产生的数据被显示。
 
@@ -687,27 +727,28 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class DownloadController extends Controller
     {
-
         public function indexAction()
         {
-
-            //Check whether the cache with key "downloads" exists or has expired
+            // Check whether the cache with key "downloads" exists or has expired
             if ($this->view->getCache()->exists('downloads')) {
 
-                //Query the latest downloads
-                $latest = Downloads::find(array(
-                    'order' => 'created_at DESC'
-                ));
+                // Query the latest downloads
+                $latest = Downloads::find(
+                    array(
+                        'order' => 'created_at DESC'
+                    )
+                );
 
                 $this->view->latest = $latest;
             }
 
-            //Enable the cache with the same key "downloads"
-            $this->view->cache(array(
-                'key' => 'downloads'
-            ));
+            // Enable the cache with the same key "downloads"
+            $this->view->cache(
+                array(
+                    'key' => 'downloads'
+                )
+            );
         }
-
     }
 
 `PHP alternative site`_ 是实现缓存片段的一个例子。
@@ -741,7 +782,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class MyTemplateAdapter extends Engine
     {
-
         /**
          * Adapter constructor
          *
@@ -750,7 +790,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
          */
         public function __construct($view, $di)
         {
-            //Initialize here the adapter
+            // Initialize here the adapter
             parent::__construct($view, $di);
         }
 
@@ -762,17 +802,15 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
          */
         public function render($path, $params)
         {
-
             // Access view
             $view    = $this->_view;
 
             // Access options
             $options = $this->_options;
 
-            //Render the view
-            //...
+            // Render the view
+            // ...
         }
-
     }
 
 替换模版引擎（Changing the Template Engine）
@@ -787,7 +825,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
             // Set the engine
@@ -804,11 +841,10 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             $this->view->registerEngines(
                 array(
                     ".my-html" => 'MyTemplateAdapter',
-                    ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
+                    ".phtml"   => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
         }
-
     }
 
 你可以完全更换模板引擎或同时使用多个模板引擎。方法 \Phalcon\\Mvc\\View::registerEngines() 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
@@ -823,20 +859,21 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     use Phalcon\Mvc\View;
 
-    //Setting up the view component
-    $di->set('view', function() {
+    // Setting up the view component
+    $di->set('view', function () {
 
         $view = new View();
 
-        //A trailing directory separator is required
+        // A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".my-html" => 'MyTemplateAdapter'
-        ));
+        $view->registerEngines(
+            array(
+                ".my-html" => 'MyTemplateAdapter'
+            )
+        );
 
         return $view;
-
     }, true);
 
 在 `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_ 有一些适配器可用于数个模板引擎
@@ -853,9 +890,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
     <script type="text/javascript">
 
     $.ajax({
-        url: "<?php echo $this->url->get("cities/get") ?>"
+        url: "<?php echo $this->url->get("cities/get"); ?>"
     })
-    .done(function() {
+    .done(function () {
         alert("Done!");
     });
 
@@ -877,20 +914,20 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     $view = new View();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
     $view->setVar("someProducts", $products);
     $view->setVar("someFeatureEnabled", true);
 
-    //Start the output buffering
+    // Start the output buffering
     $view->start();
 
-    //Render all the view hierarchy related to the view products/list.phtml
+    // Render all the view hierarchy related to the view products/list.phtml
     $view->render("products", "list");
 
-    //Finish the output buffering
+    // Finish the output buffering
     $view->finish();
 
     echo $view->getContent();
@@ -910,8 +947,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             "someProducts"       => $products,
             "someFeatureEnabled" => true
         ),
-        function($view) {
-            //Set any extra options here
+        function ($view) {
+            // Set any extra options here
             $view->setViewsDir("../app/views/");
             $view->setRenderLevel(View::LEVEL_LAYOUT);
         }
@@ -929,17 +966,20 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     $view = new SimpleView();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Render a view and return its contents as a string
     echo $view->render("templates/welcomeMail");
 
     // Render a view passing parameters
-    echo $view->render("templates/welcomeMail", array(
-        'email'   => $email,
-        'content' => $content
-    ));
+    echo $view->render(
+        "templates/welcomeMail",
+        array(
+            'email'   => $email,
+            'content' => $content
+        )
+    );
 
 视图事件（View Events）
 -----------------------
@@ -968,20 +1008,20 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
     use Phalcon\Mvc\View;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('view', function() {
+    $di->set('view', function () {
 
-        //Create an events manager
+        // Create an events manager
         $eventsManager = new EventsManager();
 
-        //Attach a listener for type "view"
-        $eventsManager->attach("view", function($event, $view) {
+        // Attach a listener for type "view"
+        $eventsManager->attach("view", function ($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
 
         $view = new View();
         $view->setViewsDir("../app/views/");
 
-        //Bind the eventsManager to the view component
+        // Bind the eventsManager to the view component
         $view->setEventsManager($eventsManager);
 
         return $view;
@@ -996,15 +1036,13 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     class TidyPlugin
     {
-
         public function afterRender($event, $view)
         {
-
             $tidyConfig = array(
                 'clean'          => true,
                 'output-xhtml'   => true,
                 'show-body-only' => true,
-                'wrap'           => 0,
+                'wrap'           => 0
             );
 
             $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');
@@ -1012,10 +1050,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
             $view->setContent((string) $tidy);
         }
-
     }
 
-    //Attach the plugin as a listener
+    // Attach the plugin as a listener
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php

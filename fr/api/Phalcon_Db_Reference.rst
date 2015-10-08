@@ -73,7 +73,7 @@ Phalcon\\Db\\Reference constructor
 
 
 
-public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** (*unknown* $data)
+public static  **__set_state** (*unknown* $data)
 
 Restore a Phalcon\\Db\\Reference object from export
 

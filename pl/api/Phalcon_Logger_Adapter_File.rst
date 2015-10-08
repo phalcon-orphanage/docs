@@ -28,25 +28,25 @@ File Path
 
 
 
-public  **__construct** (*unknown* $name, [*unknown* $options])
+public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\\Logger\\Adapter\\File constructor
 
 
 
-public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
+public  **getFormatter** ()
 
 Returns the internal formatter
 
 
 
-public  **logInternal** (*unknown* $message, *unknown* $type, *unknown* $time, *array* $context)
+public  **logInternal** (*unknown* $message, *unknown* $type, *unknown* $time, *unknown* $context)
 
 Writes the log to the file itself
 
 
 
-public *boolean*  **close** ()
+public  **close** ()
 
 Closes the logger
 
@@ -142,7 +142,7 @@ Sends/Writes an alert message to the log
 
 
 
-public  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*mixed* $type, [*mixed* $message], [*mixed* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Logs messages to the internal logger. Appends logs to the logger
 

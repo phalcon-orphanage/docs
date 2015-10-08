@@ -37,13 +37,13 @@ public  **setLastKey** (*unknown* $lastKey)
 ...
 
 
-public  **__construct** (*unknown* $frontend, [*unknown* $options])
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*unknown* $keyName, [*unknown* $lifetime])
+public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime])
 
 Starts a cache. The keyname allows to identify the created fragment
 
@@ -55,13 +55,13 @@ Stops the frontend without store any cached content
 
 
 
-public *boolean*  **isFresh** ()
+public  **isFresh** ()
 
 Checks whether the last cache is fresh or cached
 
 
 
-public *boolean*  **isStarted** ()
+public  **isStarted** ()
 
 Checks whether the cache has starting buffering or not
 

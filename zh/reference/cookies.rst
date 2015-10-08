@@ -1,5 +1,6 @@
 Cookie 管理（Cookies Management）
 ==================
+
 Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用户关闭了TA的浏览器也能获取这些数据。
 :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>` 作为全局的cookies包。
 在请求执行的期间，Cookies存放于这个包里，并且在请求结束时会自动发送回给客户端。
@@ -25,14 +26,19 @@ Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用�
                 $rememberMe = $this->cookies->get('remember-me');
 
                 // 获取cookie的值
-                $value = $rememberMe->getValue();
-
+                $value      = $rememberMe->getValue();
             }
         }
 
         public function startAction()
         {
             $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
+        }
+
+        public function logoutAction()
+        {
+            // Delete the cookie
+            $this->cookies->get('remember-me')->delete();
         }
     }
 
@@ -50,9 +56,11 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function() {
+    $di->set('cookies', function () {
         $cookies = new Cookies();
+
         $cookies->useEncryption(false);
+
         return $cookies;
     });
 
@@ -64,9 +72,11 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function() {
+    $di->set('crypt', function () {
         $crypt = new Crypt();
+
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // 使用你自己的key！
+
         return $crypt;
     });
 

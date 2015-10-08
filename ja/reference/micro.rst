@@ -1,5 +1,6 @@
 マイクロアプリケーション
 ==================
+
 マイクロフレームワークライクなアプリケーションを構築することができます。
 PHPアプリケーションを最小のコードで書くことが可能です。
 マイクロアプリケーションは、小規模アプリケーションやAPI、プロトタイプを実装するのに適切です。
@@ -8,7 +9,9 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -24,7 +27,9 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
 ルーティングの設定
 ---------------
@@ -33,7 +38,6 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 ルートは、常に/から開始しなければいけません。ルートを設定する際に、HTTPメソッドを任意に制限することができます。
 指定したHTTPメソッドに一致したリクエストがあった場合にのみ、正しくルーティングされます。
 以下の例では、GETメソッドのルーティングの設定方法を表記しています。
-
 
 .. code-block:: php
 
@@ -65,7 +69,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
     $myController = new MyController();
     $app->get('/say/hello/{name}', array($myController, "someAction"));
 
-    //Anonymous function
+    // Anonymous function
     $app->get('/say/hello/{name}', function ($name) {
         echo "<h1>Hello! $name</h1>";
     });
@@ -77,27 +81,37 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    //Matches if the HTTP method is GET
+    // Matches if the HTTP method is GET
     $app->get('/api/products', "get_products");
 
-    //Matches if the HTTP method is POST
+    // Matches if the HTTP method is POST
     $app->post('/api/products/add', "add_product");
 
-    //Matches if the HTTP method is PUT
+    // Matches if the HTTP method is PUT
     $app->put('/api/products/update/{id}', "update_product");
 
-    //Matches if the HTTP method is DELETE
+    // Matches if the HTTP method is DELETE
     $app->delete('/api/products/remove/{id}', "delete_product");
 
-    //Matches if the HTTP method is OPTIONS
+    // Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
 
-    //Matches if the HTTP method is PATCH
+    // Matches if the HTTP method is PATCH
     $app->patch('/api/products/update/{id}', "info_product");
 
-    //Matches if the HTTP method is GET or POST
-    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
+    // Matches if the HTTP method is GET or POST
+    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    // Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 パラメータ付きのルーティング
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +122,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    //This route have two parameters and each of them have a format
+    // This route have two parameters and each of them have a format
     $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
         echo "<h1>Title: $title</h1>";
         echo "<h2>Year: $year</h2>";
@@ -122,7 +136,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    //This is the start route
+    // This is the start route
     $app->get('/', function () {
         echo "<h1>Welcome!</h1>";
     });
@@ -136,7 +150,7 @@ URisのrewriteは、以下のようにApacheで制限します。
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 レスポンス
@@ -147,19 +161,25 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     <?php
 
-    //Direct output
+    // Direct output
     $app->get('/say/hello', function () {
         echo "<h1>Hello! $name</h1>";
     });
 
-    //Requiring another file
+    // Requiring another file
     $app->get('/show/results', function () {
         require 'views/results.php';
     });
 
-    //Returning a JSON
+    // Returning JSON
     $app->get('/get/some-json', function () {
-        echo json_encode(array("some", "important", "data"));
+        echo json_encode(
+            array(
+                "some",
+                "important",
+                "data"
+            )
+        );
     });
 
 レスポンスについての詳細は、:doc:`"response" <response>`を参照してください。
@@ -170,12 +190,11 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     $app->get('/show/data', function () use ($app) {
 
-        //Set the Content-Type header
+        // Set the Content-Type header
         $app->response->setContentType('text/plain')->sendHeaders();
 
-        //Print a file
+        // Print a file
         readfile("data.txt");
-
     });
 
 レスポンスオブジェクトを作成して、ハンドラーから返す方法もあります。
@@ -186,16 +205,16 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     $app->get('/show/data', function () {
 
-        //Create a response
+        // Create a response
         $response = new Phalcon\Http\Response();
 
-        //Set the Content-Type header
+        // Set the Content-Type header
         $response->setContentType('text/plain');
 
-        //Pass the content of a file
+        // Pass the content of a file
         $response->setContent(file_get_contents("data.txt"));
 
-        //Return the response
+        // Return the response
         return $response;
     });
 
@@ -207,9 +226,9 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     <?php
 
-    //This route makes a redirection to another route
+    // This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("new/welcome")->sendHeaders();
     });
 
     $app->post('/new/welcome', function () use ($app) {
@@ -225,24 +244,25 @@ URisのrewriteは、以下のようにApacheで制限します。
 
     <?php
 
-    //Set a route with the name "show-post"
+    // Set a route with the name "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. show the post here
+        // ... Show the post here
 
     })->setName('show-post');
 
-    //produce an URL somewhere
-    $app->get('/', function() use ($app) {
+    // Produce a URL somewhere
+    $app->get('/', function () use ($app) {
 
-        echo '<a href="', $app->url->get(array(
-            'for' => 'show-post',
-            'title' => 'php-is-a-great-framework',
-            'year' => 2012
-        )), '">Show the post</a>';
+        echo '<a href="', $app->url->get(
+            array(
+                'for'   => 'show-post',
+                'title' => 'php-is-a-great-framework',
+                'year'  => 2015
+            )
+        ), '">Show the post</a>';
 
     });
-
 
 Interacting with the Dependency Injector
 ----------------------------------------
@@ -253,13 +273,13 @@ can create outside the application a container to manipulate its services:
 
     <?php
 
-    use Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Micro,
-        Phalcon\Config\Adapter\Ini as IniConfig;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
 
-    $di->set('config', function() {
+    $di->set('config', function () {
         return new IniConfig("config.ini");
     });
 
@@ -268,7 +288,7 @@ can create outside the application a container to manipulate its services:
     $app->setDI($di);
 
     $app->get('/', function () use ($app) {
-        //Read a setting from the config
+        // Read a setting from the config
         echo $app->config->app_name;
     });
 
@@ -282,19 +302,21 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
     $app = new Micro();
 
-    //Setup the database service
-    $app['db'] = function() {
-        return new MysqlAdapter(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "test_db"
-        ));
+    // Setup the database service
+    $app['db'] = function () {
+        return new MysqlAdapter(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "test_db"
+            )
+        );
     };
 
     $app->get('/blog', function () use ($app) {
@@ -328,13 +350,15 @@ Not-Found ハンドラ
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function(){
+    $app->get('/products/find', function () {
 
         foreach (Products::find() as $product) {
             echo $product->name, '<br>';
@@ -372,29 +396,28 @@ In the following example, we explain how to control the application security usi
     use Phalcon\Mvc\Micro,
         Phalcon\Events\Manager as EventsManager;
 
-    //Create a events manager
-    $eventManager = new EventsManager();
+    // Create a events manager
+    $eventsManager = new EventsManager();
 
-    //Listen all the application events
-    $eventManager->attach('micro', function($event, $app) {
+    // Listen all the application events
+    $eventsManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
 
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                $app->response->redirect("/")->sendHeaders();
 
-                //Return (false) stop the operation
+                // Return (false) stop the operation
                 return false;
             }
         }
-
     });
 
     $app = new Micro();
 
-    //Bind the events manager to the app
-    $app->setEventsManager($eventManager);
+    // Bind the events manager to the app
+    $app->setEventsManager($eventsManager);
 
 ミドルウェアイベント
 -----------------
@@ -406,28 +429,34 @@ In addition to the events manager, events can be added using the methods 'before
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Executed before every route is executed
-    //Return false cancels the route execution
-    $app->before(function() use ($app) {
+    // Executed before every route is executed
+    // Return false cancels the route execution
+    $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            // Return false stops the normal execution
             return false;
         }
+
         return true;
     });
 
-    $app->map('/api/robots', function(){
+    $app->map('/api/robots', function () {
         return array(
             'status' => 'OK'
         );
     });
 
-    $app->after(function() use ($app) {
-        //This is executed after the route was executed
+    $app->after(function () use ($app) {
+        // This is executed after the route is executed
         echo json_encode($app->getReturnedValue());
     });
 
-    $app->finish(function() use ($app) {
-        //This is executed when the request has been served
+    $app->finish(function () use ($app) {
+        // This is executed when the request has been served
     });
 
 You can call the methods several times to add more events of the same type:
@@ -436,12 +465,12 @@ You can call the methods several times to add more events of the same type:
 
     <?php
 
-    $app->finish(function() use ($app) {
-        //First 'finish' middleware
+    $app->finish(function () use ($app) {
+        // First 'finish' middleware
     });
 
-    $app->finish(function() use ($app) {
-        //Second 'finish' middleware
+    $app->finish(function () use ($app) {
+        // Second 'finish' middleware
     });
 
 Code for middlewares can be reused using separate classes:
@@ -461,15 +490,15 @@ Code for middlewares can be reused using separate classes:
     {
         public function call($application)
         {
-
-            $cache = $application['cache'];
+            $cache  = $application['cache'];
             $router = $application['router'];
 
-            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-            //Check if the request is cached
+            // Check if the request is cached
             if ($cache->exists($key)) {
                 echo $cache->get($key);
+
                 return false;
             }
 
@@ -510,16 +539,16 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
 
     $posts = new MicroCollection();
 
-    //Set the main handler. ie. a controller instance
+    // Set the main handler. ie. a controller instance
     $posts->setHandler(new PostsController());
 
-    //Set a common prefix for all routes
+    // Set a common prefix for all routes
     $posts->setPrefix('/posts');
 
-    //Use the method 'index' in PostsController
+    // Use the method 'index' in PostsController
     $posts->get('/', 'index');
 
-    //Use the method 'show' in PostsController
+    // Use the method 'show' in PostsController
     $posts->get('/show/{slug}', 'show');
 
     $app->mount($posts);
@@ -530,17 +559,18 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function index()
         {
-            //...
+            // ...
         }
 
         public function show($slug)
         {
-            //...
+            // ...
         }
     }
 
@@ -563,13 +593,13 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Http\Response;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
-    //Return a response
-    $app->get('/welcome/index', function() {
+    // Return a response
+    $app->get('/welcome/index', function () {
 
         $response = new Response();
 
@@ -590,22 +620,44 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function() {
-        $view = new \Phalcon\Mvc\View();
+    $app['view'] = function () {
+        $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
 
-    //Return a rendered view
-    $app->get('/products/show', function() use ($app) {
+    // Return a rendered view
+    $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render('products/show', array(
-            'id' => 100,
+            'id'   => 100,
             'name' => 'Artichoke'
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function () {
+        throw new \Exception("An error");
+    });
+
+    $app->error(
+        function ($exception) {
+            echo "An error has occurred";
+        }
+    );
+
+If the handler returns "false" the exception is stopped.
 
 関連ソース
 ---------------

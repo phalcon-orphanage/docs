@@ -27,4 +27,4 @@
 
 最然打开浏览器输入并跳转到 http://localhost:8000/，检测是否可以正常访问。
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
+.. _built-in: http://php.net/manual/en/features.commandline.webserver.php

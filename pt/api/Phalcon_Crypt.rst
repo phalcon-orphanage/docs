@@ -9,7 +9,7 @@ Provides encryption facilities to phalcon applications
 
     <?php
 
-    $crypt = new Phalcon\Crypt();
+    $crypt = new \Phalcon\Crypt();
     
     $key = 'le password';
     $text = 'This is a secret text';
@@ -20,46 +20,81 @@ Provides encryption facilities to phalcon applications
 
 
 
-Methods
+Constants
 ---------
 
-public *Phalcon\\Encrypt*  **setCipher** (*string* $cipher)
+*integer* **PADDING_DEFAULT**
+
+*integer* **PADDING_ANSI_X_923**
+
+*integer* **PADDING_PKCS7**
+
+*integer* **PADDING_ISO_10126**
+
+*integer* **PADDING_ISO_IEC_7816_4**
+
+*integer* **PADDING_ZERO**
+
+*integer* **PADDING_SPACE**
+
+Methods
+-------
+
+public  **setPadding** (*int* $scheme)
+
+Changes the padding scheme used
+
+
+
+public  **setCipher** (*unknown* $cipher)
 
 Sets the cipher algorithm
 
 
 
-public *string*  **getCipher** ()
+public  **getCipher** ()
 
 Returns the current cipher
 
 
 
-public *Phalcon\\Encrypt*  **setMode** (*unknown* $mode)
+public  **setMode** (*unknown* $mode)
 
 Sets the encrypt/decrypt mode
 
 
 
-public *string*  **getMode** ()
+public  **getMode** ()
 
 Returns the current encryption mode
 
 
 
-public *Phalcon\\Encrypt*  **setKey** (*string* $key)
+public  **setKey** (*unknown* $key)
 
 Sets the encryption key
 
 
 
-public *string*  **getKey** ()
+public  **getKey** ()
 
 Returns the encryption key
 
 
 
-public *string*  **encrypt** (*string* $text, [*string* $key])
+protected  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+
+Pads texts before encryption
+
+
+
+protected  **_cryptUnpadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+
+If the function detects that the text was not padded, it will return it unmodified
+
+
+
+public  **encrypt** (*unknown* $text, [*unknown* $key])
 
 Encrypts a text 
 
@@ -72,7 +107,7 @@ Encrypts a text
 
 
 
-public *string*  **decrypt** (*string* $text, [*string* $key])
+public  **decrypt** (*unknown* $text, [*unknown* $key])
 
 Decrypts an encrypted text 
 
@@ -85,25 +120,25 @@ Decrypts an encrypted text
 
 
 
-public *string*  **encryptBase64** (*string* $text, [*string* $key])
+public  **encryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-public *string*  **decryptBase64** (*string* $text, [*string* $key])
+public  **decryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Decrypt a text that is coded as a base64 string
 
 
 
-public *array*  **getAvailableCiphers** ()
+public  **getAvailableCiphers** ()
 
 Returns a list of available cyphers
 
 
 
-public *array*  **getAvailableModes** ()
+public  **getAvailableModes** ()
 
 Returns a list of available modes
 

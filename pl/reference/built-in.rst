@@ -27,4 +27,4 @@ and then start the server with:
 
 Then point your browser to http://localhost:8000/ to check if everything is working.
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
+.. _built-in: http://php.net/manual/en/features.commandline.webserver.php

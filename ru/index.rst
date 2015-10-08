@@ -29,12 +29,18 @@ Phalcon заботится не только о производительнос
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-invo-2
+   reference/tutorial-invo-3
+   reference/tutorial-invo-4
+   reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
    reference/di
    reference/mvc
    reference/controllers
    reference/models
+   reference/models-metadata
+   reference/model-transactions
    reference/phql
    reference/models-cache
    reference/odm

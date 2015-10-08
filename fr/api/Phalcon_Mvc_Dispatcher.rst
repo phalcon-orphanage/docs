@@ -61,19 +61,19 @@ Sets the controller name to be dispatched
 
 
 
-public *string*  **getControllerName** ()
+public  **getControllerName** ()
 
 Gets last dispatched controller name
 
 
 
-public *string*  **getPreviousControllerName** ()
+public  **getPreviousControllerName** ()
 
 Gets previous dispatched controller name
 
 
 
-public *string*  **getPreviousActionName** ()
+public  **getPreviousActionName** ()
 
 Gets previous dispatched action name
 
@@ -91,19 +91,19 @@ Handles a user exception
 
 
 
-public *string*  **getControllerClass** ()
+public  **getControllerClass** ()
 
 Possible controller class name that will be located to dispatch the request
 
 
 
-public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getLastController** ()
+public  **getLastController** ()
 
 Returns the lastest dispatched controller
 
 
 
-public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
+public  **getActiveController** ()
 
 Returns the active controller in the dispatcher
 
@@ -121,7 +121,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Dispatcher
+public  **getDI** () inherited from Phalcon\\Dispatcher
 
 Returns the internal dependency injector
 
@@ -133,7 +133,7 @@ Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
+public  **getEventsManager** () inherited from Phalcon\\Dispatcher
 
 Returns the internal event manager
 
@@ -151,7 +151,7 @@ Sets the module where the controller is (only informative)
 
 
 
-public *string*  **getModuleName** () inherited from Phalcon\\Dispatcher
+public  **getModuleName** () inherited from Phalcon\\Dispatcher
 
 Gets the module where the controller class is
 
@@ -163,7 +163,7 @@ Sets the namespace where the controller class is
 
 
 
-public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+public  **getNamespaceName** () inherited from Phalcon\\Dispatcher
 
 Gets a namespace to be prepended to the current handler name
 
@@ -175,7 +175,7 @@ Sets the default namespace
 
 
 
-public *string*  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
+public  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
 
 Returns the default namespace
 
@@ -193,49 +193,49 @@ Sets the action name to be dispatched
 
 
 
-public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
+public  **getActionName** () inherited from Phalcon\\Dispatcher
 
 Gets the latest dispatched action name
 
 
 
-public  **setParams** (*unknown* $params) inherited from Phalcon\\Dispatcher
+public  **setParams** (*array* $params) inherited from Phalcon\\Dispatcher
 
 Sets action params to be dispatched
 
 
 
-public *array*  **getParams** () inherited from Phalcon\\Dispatcher
+public  **getParams** () inherited from Phalcon\\Dispatcher
 
 Gets action params
 
 
 
-public  **setParam** (*unknown* $param, *unknown* $value) inherited from Phalcon\\Dispatcher
+public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
 
 Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*unknown* $param, [*unknown* $filters], [*unknown* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
 
 
-public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+public  **getActiveMethod** () inherited from Phalcon\\Dispatcher
 
 Returns the current method to be/executed in the dispatcher
 
 
 
-public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
+public  **isFinished** () inherited from Phalcon\\Dispatcher
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 
 
-public  **setReturnedValue** (*unknown* $value) inherited from Phalcon\\Dispatcher
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
 
 Sets the latest returned value by an action manually
 
@@ -253,7 +253,7 @@ Dispatches a handle action taking into account the routing parameters
 
 
 
-public  **forward** (*unknown* $forward) inherited from Phalcon\\Dispatcher
+public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
 
 Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
 
@@ -266,9 +266,21 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
 
 
-public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
+public  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
+
+
+
+public  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
+
+
+
+protected  **_resolveEmptyProperties** () inherited from Phalcon\\Dispatcher
+
+Set empty properties to their defaults (where defaults are available)
 
 
 

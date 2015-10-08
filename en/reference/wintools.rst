@@ -1,5 +1,6 @@
 Phalcon Developer Tools on Windows
 ==================================
+
 These steps will guide you through the process of installing Phalcon Developer Tools for Windows.
 
 Prerequisites
@@ -26,7 +27,7 @@ Adding PHP and Tools to your system PATH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\wamp\bin\\php\\php5.3.10\\php.exe*.
 
-From the Windows start menu, right mouse click on the "My Computer" icon and select "Properties":
+From the Windows start menu, right mouse click on the "Computer" icon and select "Properties":
 
 .. figure:: ../_static/img/path-1.png
    :align: center

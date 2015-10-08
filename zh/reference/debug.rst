@@ -3,15 +3,14 @@
 
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center
-    
-Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。 
+
+Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。
 Phalcon主要使用这个异常类来包装这些功能，以方便开发者或用户使用。
 
-尽管Phalcon是使用C语言书写的，但其依然如其它的PHP框架般提供了一些必须的调试工具，PHP本身提供的调试工具亦然可以正常使用。 
+尽管Phalcon是使用C语言书写的，但其依然如其它的PHP框架般提供了一些必须的调试工具，PHP本身提供的调试工具亦然可以正常使用。
 
 捕获异常（Catching Exceptions）
 ----------------------------------
-
 纵观Phalcon的文档及其提供的例子程序， 有一个最直接的捕获异常的方法即是使用try/catch块：
 
 .. code-block:: php
@@ -20,9 +19,9 @@ Phalcon主要使用这个异常类来包装这些功能，以方便开发者或�
 
     try {
 
-        //... some phalcon/php code
+        // ... Some Phalcon/PHP code
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -53,10 +52,9 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
         final public string getTraceAsString ( void )
         public string __toString ( void )
         final private void __clone ( void )
-
     }
 
-如从 `Exception class`_ 中取得异常信息一样， 我也可以从 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` 中取异常信息。 
+如从 `Exception class`_ 中取得异常信息一样， 我也可以从 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` 中取异常信息。
 
 .. code-block:: php
 
@@ -64,9 +62,9 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
 
     try {
 
-        //... app code ...
+        // ... App code ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";
@@ -100,7 +98,7 @@ PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如�
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-从上面我们可以看到异常信息中有Phalcon的类及方法，甚至调用时的参数也显示了出来。 如果需要可以使用 `Exception::getTrace`_ 获取更多的信息。 
+从上面我们可以看到异常信息中有Phalcon的类及方法，甚至调用时的参数也显示了出来。 如果需要可以使用 `Exception::getTrace`_ 获取更多的信息。
 
 调试组件（Debug component）
 -----------------------------
@@ -111,7 +109,7 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 要打开调试功能只需要如下做：
@@ -191,7 +189,6 @@ Phalcon的类的实例通常比一般的类实例更复杂。 这里我们可以
             )
     )
 
-
 使用 XDebug（Using XDebug）
 ------------
 XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工具一起为我们提调试工具（可以和PHP内置的调试工具互补）。 XDebug_ 也是一个PHP扩展， 所以二者可以一起使用，而且不需要额外的配置。
@@ -201,24 +198,25 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 一旦安装了xdebug, 开发者便可以使用其API来取得更多的异常信息和其它信息：
 
 .. highlights::
 
+    我们强烈推荐至少使用XDebug 2.2.3 以提供与Phalcon最佳的兼容性。
 
-我们强烈推荐至少使用XDebug 2.2.3 以提供与Phalcon最佳的兼容性。下面的例子中调用了 xdebug_print_function_stack_ 方法， 
-并返回了该方法产生的代码跟踪结果.
+下面的例子中调用了 xdebug_print_function_stack_ 方法， 并返回了该方法产生的代码跟踪结果:
 
 .. code-block:: php
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class SignupController extends Controller
+    {
         public function indexAction()
         {
 
@@ -226,8 +224,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 
         public function registerAction()
         {
-
-            // Request variables from html form
+            // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 
@@ -241,9 +238,8 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
             // Store and check for errors
             $user->save();
         }
-
     }
-    
+
 这个例子中， XDebug显示出了局部变量和代码的跟踪信息：
 
 .. code-block:: html
@@ -269,4 +265,3 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 .. _XDebug: http://xdebug.org
 .. _XDebug documentation: http://xdebug.org/docs
 .. _xdebug_print_function_stack: http://xdebug.org/docs/stack_trace
-

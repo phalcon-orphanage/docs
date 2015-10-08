@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation\\Validator\\Alnum**
 ===============================================
 
-*extends* class :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
+*extends* abstract class :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
@@ -22,7 +22,7 @@ Check for alphanumeric character(s)
 Methods
 -------
 
-public *boolean*  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (*unknown* $validation, *unknown* $field)
 
 Executes the validation
 
@@ -34,13 +34,19 @@ Phalcon\\Validation\\Validator constructor
 
 
 
-public *boolean*  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+public  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
 
 Checks if an option is defined
 
 
 
-public *mixed*  **getOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+public  **hasOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+
+Checks if an option is defined
+
+
+
+public  **getOption** (*unknown* $key, [*unknown* $defaultValue]) inherited from Phalcon\\Validation\\Validator
 
 Returns an option in the validator's options Returns null if the option hasn't set
 

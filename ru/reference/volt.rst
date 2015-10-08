@@ -1,6 +1,7 @@
 Шаблонизатор Volt
 =================
-Volt — ультрабыстрый и дружелюбный по отношению к дизайнеру язык шаблонизирования, написанный на C для PHP. Он предоставляет набор подручных средств, который позволит вам легко создавать представления. Volt очень сильно связан с остальными компонентами Phalcon, однако, вы можете использовать его в качестве самостоятельного компонента вашего приложения.
+
+Volt - ультрабыстрый и дружелюбный по отношению к дизайнеру язык шаблонизирования, написанный на C для PHP. Он предоставляет набор подручных средств, который позволит вам легко создавать представления. Volt очень сильно связан с остальными компонентами Phalcon, однако, вы можете использовать его в качестве самостоятельного компонента вашего приложения.
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
@@ -26,7 +27,6 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     {% endblock %}
 
-
 Подключение Volt
 ----------------
 Вы можете подключить Volt в компоненте представлений как любой другой шаблонизатор, используя при этом новое расширение для файлов, или всё то же стандартное .phtml:
@@ -35,16 +35,20 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     <?php
 
-    //Registering Volt as template engine
-    $di->set('view', function() {
+    use Phalcon\Mvc\View;
 
-        $view = new \Phalcon\Mvc\View();
+    // Registering Volt as template engine
+    $di->set('view', function () {
+
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-        ));
+        $view->registerEngines(
+            array(
+                ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
+            )
+        );
 
         return $view;
     });
@@ -55,9 +59,11 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     <?php
 
-    $view->registerEngines(array(
-        ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
-    ));
+    $view->registerEngines(
+        array(
+            ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
+        )
+    );
 
 Основы
 ------
@@ -71,7 +77,7 @@ Volt был написан под вдохновлением от Jinja_, кот
     <!DOCTYPE html>
     <html>
         <head>
-            <title>{{ title }} - A example blog</title>
+            <title>{{ title }} - An example blog</title>
         </head>
         <body>
 
@@ -98,24 +104,27 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function showAction()
         {
-
             $post = Post::findFirst();
 
-            $this->view->setVar("title", $post->title);
-            $this->view->setVar("post", $post);
-            // или
-            $this->view->menu = Menu::find();
+            $this->view->title           = $post->title;
+            $this->view->post            = $post;
+            $this->view->menu            = Menu::find();
             $this->view->show_navigation = true;
 
+            // или...
+
+            $this->view->setVar("title",           $post->title);
+            $this->view->setVar("post",            $post);
+            $this->view->setVar("menu",            Menu::find());
+            $this->view->setVar("show_navigation", true);
         }
-
     }
-
 
 Переменные
 ----------
@@ -123,13 +132,12 @@ Volt был написан под вдохновлением от Jinja_, кот
 
 .. code-block:: jinja
 
-    {{ post.title }}
-    {{ post['title'] }}
+    {{ post.title }} {# for $post->title #}
+    {{ post['title'] }} {# for $post['title'] #}
 
 Фильтры
 -------
 Вывод переменных можно форматировать или модифицировать при помощи фильтров. Для их применения используется оператор | (вертикальная черта):
-
 
 .. code-block:: jinja
 
@@ -153,6 +161,10 @@ Volt был написан под вдохновлением от Jinja_, кот
 | escape_attr          | Применяет к значению Phalcon\\Escaper->escapeHtmlAttr                         |
 +----------------------+-------------------------------------------------------------------------------+
 | trim                 | Применяет к значению PHP-фукнцию trim_, которая удаляет лишние пробелы        |
++----------------------+-------------------------------------------------------------------------------+
+| left_trim            | Applies the ltrim_ PHP function to the value. Removing extra spaces           |
++----------------------+-------------------------------------------------------------------------------+
+| right_trim           | Applies the rtrim_ PHP function to the value. Removing extra spaces           |
 +----------------------+-------------------------------------------------------------------------------+
 | striptags            | Применяет к значению PHP-фукнцию strip_tags_, удаляющую HTML тэги             |
 +----------------------+-------------------------------------------------------------------------------+
@@ -200,51 +212,51 @@ Volt был написан под вдохновлением от Jinja_, кот
     {{ "<h1>Hello<h1>"|e }}
     {{ "<h1>Hello<h1>"|escape }}
 
-    {# trim #}
+    {# trim filter #}
     {{ "   hello   "|trim }}
 
-    {# striptags #}
+    {# striptags filter #}
     {{ "<h1>Hello<h1>"|striptags }}
 
-    {# slashes #}
+    {# slashes filter #}
     {{ "'this is a string'"|slashes }}
 
-    {# stripslashes #}
+    {# stripslashes filter #}
     {{ "\'this is a string\'"|stripslashes }}
 
-    {# capitalize #}
+    {# capitalize filter #}
     {{ "hello"|capitalize }}
 
-    {# lower #}
+    {# lower filter #}
     {{ "HELLO"|lower }}
 
-    {# upper #}
+    {# upper filter #}
     {{ "hello"|upper }}
 
-    {# length #}
+    {# length filter #}
     {{ "robots"|length }}
     {{ [1, 2, 3]|length }}
 
-    {# nl2br #}
+    {# nl2br filter #}
     {{ "some\ntext"|nl2br }}
 
     {# sort filter #}
-    {% set sorted=[3, 1, 2]|sort %}
+    {% set sorted = [3, 1, 2]|sort %}
 
     {# keys filter #}
-    {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
+    {% set keys = ['first': 1, 'second': 2, 'third': 3]|keys %}
 
     {# join filter #}
-    {% "a".."z"|join(",") %}
+    {% set joined = "a".."z"|join(",") %}
 
     {# format filter #}
-    {% "My real name is %s"|format(name) %}
+    {{ "My real name is %s"|format(name) }}
 
     {# json_encode filter #}
-    {% robots|json_encode %}
+    {% set encoded = robots|json_encode %}
 
     {# json_decode filter #}
-    {% set decoded='{"one":1,"two":2,"three":3}'|json_decode %}
+    {% set decoded = '{"one":1,"two":2,"three":3}'|json_decode %}
 
     {# url_encode filter #}
     {{ post.permanent_link|url_encode }}
@@ -299,7 +311,6 @@ For
     {% for name, value in numbers %}
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
-
 
 Кроме того для выборочного прохода по элементам, можно определить условие "if":
 
@@ -430,17 +441,17 @@ If
     {% for robot in robots %}
         {% if loop.first %}
             <table>
-            <tr>
-                <th>#</th>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
         {% endif %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ robot.id }}</td>
-                <td>{{ robot.name }}</td>
-            </tr>
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ robot.id }}</td>
+                    <td>{{ robot.name }}</td>
+                </tr>
         {% if loop.last %}
             </table>
         {% endif %}
@@ -543,7 +554,7 @@ If an expression needs to be evaluated without be printed the 'do' statement can
 .. code-block:: html+jinja
 
     {% set myArray = {'Apple', 'Banana', 'Orange'} %}
-    {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
+    {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 Математические операторы
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -693,24 +704,24 @@ The following built-in tests are available in Volt:
 
     {% if robot is empty %}
         The robot is null or isn't defined
-    {% endif }
+    {% endif %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is even %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is odd %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
         {% if key is numeric %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
@@ -852,7 +863,7 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::emailField           | email_field           |
 +------------------------------------+-----------------------+
-| Phalcon\\Tag::numberField          | number_field          |
+| Phalcon\\Tag::numericField         | numeric_field         |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::submitButton         | submit_button         |
 +------------------------------------+-----------------------+
@@ -902,7 +913,7 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
 +----------------------+------------------------------------------------------------------------------+
 | constant             | Читает PHP константу                                                         |
 +----------------------+------------------------------------------------------------------------------+
-| url                  | Генерирует URL, используя сервис 'url'                                       |
+| URL                  | Генерирует URL, используя сервис 'url'                                       |
 +----------------------+------------------------------------------------------------------------------+
 
 Связывание с представлениями
@@ -940,6 +951,18 @@ template where it's included. Templates aren't inlined if the 'include' have var
     {# The contents of 'partials/footer.volt' is compiled and inlined #}
     <div id="footer">{% include "partials/footer.volt" %}</div>
 
+Partial vs Include
+^^^^^^^^^^^^^^^^^^
+Keep the following points in mind when choosing to use the "partial" function or "include":
+
+* 'Partial' allows you to include templates made in Volt and in other template engines as well
+* 'Partial' allows you to pass an expression like a variable allowing to include the content of other view dynamically
+* 'Partial' is better if the content that you have to include changes frequently
+
+* 'Include' copies the compiled content into the view which improves the performance
+* 'Include' only allows to include templates made with Volt
+* 'Include' requires an existing template at compile time
+
 Наследование шаблонов
 ---------------------
 С помощью наследования шаблонов вы можете создавать базовые шаблоны, которые могут быть расширены другими шаблонами, что позволит повторно использовать уже написанный код. Базовый шаблон определяет *блоки*, которые могут быть переопределены дочерними шаблонами. Предположим, что у нас есть некоторый базовый шаблон:
@@ -958,7 +981,7 @@ template where it's included. Templates aren't inlined if the 'include' have var
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
             <div id="footer">
-                {% block footer %}&copy; Copyright 2012, All rights reserved.{% endblock %}
+                {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
             </div>
         </body>
     </html>
@@ -994,7 +1017,7 @@ template where it's included. Templates aren't inlined if the 'include' have var
                 <p class="important">Welcome on my awesome homepage.</p>
             </div>
             <div id="footer">
-                &copy; Copyright 2012, All rights reserved.
+                &copy; Copyright 2015, All rights reserved.
             </div>
         </body>
     </html>
@@ -1099,32 +1122,36 @@ Volt можно настроить так, чтобы изменить его п
 
     <?php
 
-    use Phalcon\Mvc\View,
-        Phalcon\Mvc\View\Engine\Volt;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
 
-    //Register Volt as a service
-    $di->set('voltService', function($view, $di) {
+    // Register Volt as a service
+    $di->set('voltService', function ($view, $di) {
 
         $volt = new Volt($view, $di);
 
-        $volt->setOptions(array(
-            "compiledPath" => "../app/compiled-templates/",
-            "compiledExtension" => ".compiled"
-        ));
+        $volt->setOptions(
+            array(
+                "compiledPath"      => "../app/compiled-templates/",
+                "compiledExtension" => ".compiled"
+            )
+        );
 
         return $volt;
     });
 
-    //Register Volt as template engine
-    $di->set('view', function() {
+    // Register Volt as template engine
+    $di->set('view', function () {
 
         $view = new View();
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => 'voltService'
-        ));
+        $view->registerEngines(
+            array(
+                ".volt" => 'voltService'
+            )
+        );
 
         return $view;
     });
@@ -1135,22 +1162,27 @@ Volt можно настроить так, чтобы изменить его п
 
     <?php
 
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
+
     // Регистрация Volt в качестве шаблонизатора с анонимной функцией
-    $di->set('view', function() {
+    $di->set('view', function () {
 
         $view = new \Phalcon\Mvc\View();
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(array(
-            ".volt" => function($view, $di) {
-                $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+        $view->registerEngines(
+            array(
+                ".volt" => function ($view, $di) {
+                    $volt = new Volt($view, $di);
 
-                // тут установка каких-то настроек
+                    // тут установка каких-то настроек
 
-                return $volt;
-            }
-        ));
+                    return $volt;
+                }
+            )
+        );
 
         return $view;
     });
@@ -1172,9 +1204,11 @@ Volt можно настроить так, чтобы изменить его п
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
 | prefix            | Позволяет добавлять префикс к шаблонам в папке скомпилированных PHP файлов                                                     | null         |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| autoescape        | Enables globally autoescape of HTML                                                                                            | false        |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
-an anonymous function can be used to generate the compilation path, this function receives the relative path to the template in the
+an anonymous function can be used to generate it, this function receives the relative path to the template in the
 views directory. The following examples show how to change the compilation path dynamically:
 
 .. code-block:: php
@@ -1183,22 +1217,28 @@ views directory. The following examples show how to change the compilation path 
 
     // Just append the .php extension to the template path
     // leaving the compiled templates in the same directory
-    $volt->setOptions(array(
-        'compiledPath' => function($templatePath) {
-            return $templatePath . '.php';
-        }
-    ));
-
-    // ​​Recursively create the same structure in another directory
-    $volt->setOptions(array(
-        'compiledPath' => function($templatePath) {
-            $dirName = dirname($templatePath);
-            if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName);
+    $volt->setOptions(
+        array(
+            'compiledPath' => function ($templatePath) {
+                return $templatePath . '.php';
             }
-            return 'cache/' . $dirName . '/'. $templatePath . '.php';
-        }
-    ));
+        )
+    );
+
+    // Recursively create the same structure in another directory
+    $volt->setOptions(
+        array(
+            'compiledPath' => function ($templatePath) {
+                $dirName = dirname($templatePath);
+
+                if (!is_dir('cache/' . $dirName)) {
+                    mkdir('cache/' . $dirName);
+                }
+
+                return 'cache/' . $dirName . '/'. $templatePath . '.php';
+            }
+        )
+    );
 
 Расширение Volt
 ---------------
@@ -1214,7 +1254,9 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+    use Phalcon\Mvc\View\Engine\Volt;
+
+    $volt = new Volt($view, $di);
 
     $compiler = $volt->getCompiler();
 
@@ -1227,8 +1269,8 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('widget', function($resolvedArgs, $exprArgs) {
-        return 'MyLibrary\Widgets::get('.$resolvedArgs.')';
+    $compiler->addFunction('widget', function ($resolvedArgs, $exprArgs) {
+        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
     });
 
 Учитывайте, что параметры независимы или не переданы:
@@ -1237,7 +1279,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('repeat', function($resolvedArgs, $exprArgs) use ($compiler) {
+    $compiler->addFunction('repeat', function ($resolvedArgs, $exprArgs) use ($compiler) {
 
         // Получение первого параметра
         $firstArgument = $compiler->expression($exprArgs[0]['expr']);
@@ -1259,7 +1301,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFunction('contains_text', function($resolvedArgs, $exprArgs) {
+    $compiler->addFunction('contains_text', function ($resolvedArgs, $exprArgs) {
         if (function_exists('mb_stripos')) {
             return 'mb_stripos(' . $resolvedArgs . ')';
         } else {
@@ -1291,7 +1333,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    $compiler->addFilter('int', function($resolvedArgs, $exprArgs) {
+    $compiler->addFilter('int', function ($resolvedArgs, $exprArgs) {
         return 'intval(' . $resolvedArgs . ')';
     });
 
@@ -1301,12 +1343,12 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    //Replace built-in filter 'capitalize'
+    // Replace built-in filter 'capitalize'
     $compiler->addFilter('capitalize', 'lcfirst');
 
 Расширения
 ^^^^^^^^^^
-С расширениями разработчик получает большую гибкость, чтобы расширить механизм шаблонов, и переопределить компиляцию 
+С расширениями разработчик получает большую гибкость, чтобы расширить механизм шаблонов, и переопределить компиляцию
 конкретной инструкции, изменить поведение выражения или оператора, добавить функции/фильтры и многое другое.
 
 Расширения - это класс, которые реализует события инициированные Volt как метод самого себя.
@@ -1352,7 +1394,7 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
-    //Register the extension in the compiler
+    // Register the extension in the compiler
     $compiler->addExtension(new PhpFunctionExtension());
 
 Кэширование частей представления
@@ -1408,13 +1450,17 @@ Volt-компилятор позволяет вам расширить его, �
 
     <?php
 
+    use Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
+
     // Создание компилятора
-    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    $compiler = new VoltCompiler();
 
     // Добавление каких-то опций
-    $compiler->setOptions(array(
-        //...
-    ));
+    $compiler->setOptions(
+        array(
+            // ...
+        )
+    );
 
     // Компиляция шаблона-строки, возвращающая PHP-код
     echo $compiler->compileString('{{ "hello" }}');

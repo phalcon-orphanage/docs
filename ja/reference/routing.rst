@@ -1,5 +1,6 @@
 ルーティング
 =======
+
 ルーターによって、どのコントローラー又はハンドラーがリクエストを受け付けるべきか結びつけを行う、ルートの定義を行うことができます。ルーターはURIの文字列を解析して、この結びつきを決定します。ルーターには2つのモードがあります。MVCモードとマッチオンリーモードです。前者は、MVCのアプリケーションを扱うのに最適です。
 
 ルーティングの定義
@@ -10,24 +11,26 @@
 
     <?php
 
-    // ルーターの初期化
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
 
-    //ルートの定義
+    // ルーターの初期化
+    $router = new Router();
+
+    // ルートの定義
     $router->add(
         "/admin/users/my-profile",
         array(
             "controller" => "users",
-            "action"     => "profile",
+            "action"     => "profile"
         )
     );
 
-    //別のルートを定義
+    // 別のルートを定義
     $router->add(
         "/admin/users/change-password",
         array(
             "controller" => "users",
-            "action"     => "changePassword",
+            "action"     => "changePassword"
         )
     );
 
@@ -41,16 +44,18 @@ add()メソッドは、第1引数にURIのパターン、第2引数にパスを�
 
     <?php
 
-    // ルーターの初期化
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
 
-    //ルートの定義
+    // ルーターの初期化
+    $router = new Router();
+
+    // ルートの定義
     $router->add(
         "/admin/:controller/a/:action/:params",
         array(
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3,
+            "params"     => 3
         )
     );
 
@@ -72,21 +77,21 @@ add()メソッドは、定義済みのプレースホルダーや、正規表現
 
 プレースホルダーは、読みやすく理解しやすい正規表現を書く助けになります。以下のプレースホルダーがサポートされています：
 
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| Placeholder  | Regular Expression  | Usage                                                                                                  |
-+==============+=====================+========================================================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
-+--------------+---------------------+--------------------------------------------------------------------------------------------------------+
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| Placeholder          | Regular Expression          | Usage                                                                                                  |
++======================+=============================+========================================================================================================+
+| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
++----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 
 コントローラーの名前はキャメルケースに変換されます。ハイフン(-)とアンダースコア(_)は取り除かれ、次の文字が大文字になります。例えば、 some_controller は SomeController に変換されます。
 
@@ -108,7 +113,7 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4, // :params
+            "params"     => 4  // :params
         )
     );
 
@@ -118,9 +123,10 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -128,7 +134,6 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
         public function showAction()
         {
-
             // "year" のパラメーターを返す
             $year = $this->dispatcher->getParam("year");
 
@@ -138,8 +143,8 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
             // "day" のパラメーターを返す
             $day = $this->dispatcher->getParam("day");
 
+            // ...
         }
-
     }
 
 パラメーターの値は、ディスパッチャから取得する点に注意してください。なぜこのようになっているかというと、ディスパッチャがアプリケーションのドライバと最後にやりとりするコンポーネントだからです。さらに、名前付きパラメーターを作成する方法がもう一つあります:
@@ -162,20 +167,20 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    class DocumentationController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class DocumentationController extends Controller
+    {
         public function showAction()
         {
-
             // "name" のパラメーターを返す
             $name = $this->dispatcher->getParam("name");
 
             // "type" のパラメーターを返す
             $type = $this->dispatcher->getParam("type");
 
+            // ...
         }
-
     }
 
 短縮記法
@@ -196,7 +201,7 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2,
+           "title"      => 2
         )
     );
 
@@ -208,11 +213,11 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    //'country' という名前付きパラメーターが使用されているため
-    //1番目のパラメーターは使用してはならない
+    // 'country' という名前付きパラメーターが使用されているため
+    // 1番目のパラメーターは使用してはならない
     $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
         array(
-            'section' => 2, //連番は2から始める
+            'section' => 2, // 連番は2から始める
             'article' => 3
         )
     );
@@ -225,14 +230,19 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    $router = new Phalcon\Mvc\Router(false);
+    use Phalcon\Mvc\Router;
 
-    $router->add('/:module/:controller/:action/:params', array(
-        'module' => 1,
-        'controller' => 2,
-        'action' => 3,
-        'params' => 4
-    ));
+    $router = new Router(false);
+
+    $router->add(
+        '/:module/:controller/:action/:params',
+        array(
+            'module'     => 1,
+            'controller' => 2,
+            'action'     => 3,
+            'params'     => 4
+        )
+    );
 
 この場合、ルートは必ずURLの一部にモジュール名を含まなければなりません。例えば、 /admin/users/edit/sonny のようなURLです。これは、以下のように処理されます：
 
@@ -252,17 +262,23 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    $router->add("/login", array(
-        'module' => 'backend',
-        'controller' => 'login',
-        'action' => 'index',
-    ));
+    $router->add(
+        "/login",
+        array(
+            'module'     => 'backend',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
-    $router->add("/products/:action", array(
-        'module' => 'frontend',
-        'controller' => 'products',
-        'action' => 1,
-    ));
+    $router->add(
+        "/products/:action",
+        array(
+            'module'     => 'frontend',
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
 また、特定の名前空間に紐付けることもできます:
 
@@ -270,11 +286,14 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    $router->add("/:namespace/login", array(
-        'namespace' => 1,
-        'controller' => 'login',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/:namespace/login",
+        array(
+            'namespace'  => 1,
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 名前空間とクラス名は、別々に渡す必要があります:
 
@@ -282,11 +301,14 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     <?php
 
-    $router->add("/login", array(
-        'namespace' => 'Backend\Controllers',
-        'controller' => 'login',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/login",
+        array(
+            'namespace'  => 'Backend\Controllers',
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
 
 HTTP メソッドの制限
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -303,7 +325,7 @@ HTTP メソッドの制限
     $router->addPost("/products/save", "Products::save");
 
     // HTTPメソッドがPOST又はPUTの場合にだけマッチ
-    $router->add("/products/update")->via(array("POST", "PUT"));
+    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
 
 convertの使用
 ^^^^^^^^^^^^^^^^^
@@ -313,14 +335,14 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    //アクションの名前にはダッシュが許可されているので、アクションは次のようになる: /products/new-ipod-nano-4-generation
+    // アクションの名前にはダッシュが許可されているので、アクションは次のようになる: /products/new-ipod-nano-4-generation
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
-            'action' => 'show'
+            'action'     => 'show'
         ))
-        ->convert('slug', function($slug) {
-            //ダッシュを取り除く
+        ->convert('slug', function ($slug) {
+            // ダッシュを取り除く
             return str_replace('-', '', $slug);
         });
 
@@ -332,34 +354,48 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Router\Group as RouterGroup;
 
-    //共通のモジュールとコントローラーのグループを作る
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
-        'controller' => 'index'
-    ));
+    $router = new Router();
 
-    ///blog から始まる全てのルート
+    // 共通のモジュールとコントローラーのグループを作る
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'index'
+        )
+    );
+
+    // /blog から始まる全てのルート
     $blog->setPrefix('/blog');
 
-    //ルートをグループに追加する
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    // ルートをグループに追加する
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
-    //もう一つルートをグループに追加する
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    // もう一つルートをグループに追加する
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
-    //このルートはデフォルトとは異なるルートにマッピングする
-    $blog->add('/blog', array(
-        'controller' => 'blog',
-        'action' => 'index'
-    ));
+    // このルートはデフォルトとは異なるルートにマッピングする
+    $blog->add(
+        '/blog',
+        array(
+            'controller' => 'blog',
+            'action'     => 'index'
+        )
+    );
 
-    //グループをルーターに追加
+    // グループをルーターに追加
     $router->mount($blog);
 
 ルートのグループを別のファイルに分割して、アプリケーションの構造化とコードの再利用をしやすくする:
@@ -368,35 +404,47 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    class BlogRoutes extends Phalcon\Mvc\Router\Group
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
+    class BlogRoutes extends RouterGroup
     {
         public function initialize()
         {
-            //デフォルトパス
-            $this->setPaths(array(
-                'module' => 'blog',
-                'namespace' => 'Blog\Controllers'
-            ));
+            // デフォルトパス
+            $this->setPaths(
+                array(
+                    'module'    => 'blog',
+                    'namespace' => 'Blog\Controllers'
+                )
+            );
 
-            //All the routes start with /blog
+            // All the routes start with /blog
             $this->setPrefix('/blog');
 
-            //Add a route to the group
-            $this->add('/save', array(
-                'action' => 'save'
-            ));
+            // Add a route to the group
+            $this->add(
+                '/save',
+                array(
+                    'action' => 'save'
+                )
+            );
 
-            //Add another route to the group
-            $this->add('/edit/{id}', array(
-                'action' => 'edit'
-            ));
+            // Add another route to the group
+            $this->add(
+                '/edit/{id}',
+                array(
+                    'action' => 'edit'
+                )
+            );
 
-            //This route maps to a controller different than the default
-            $this->add('/blog', array(
-                'controller' => 'blog',
-                'action' => 'index'
-            ));
-
+            // This route maps to a controller different than the default
+            $this->add(
+                '/blog',
+                array(
+                    'controller' => 'blog',
+                    'action'     => 'index'
+                )
+            );
         }
     }
 
@@ -406,7 +454,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount(new BlogRoutes());
 
 ルートのマッチ
@@ -418,7 +466,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 以下は、ルーターコンポーネントを単独で使用する方法です:
 
@@ -426,8 +474,10 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // ルーターオブジェクトを作る
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     // ルートを何か定義する
     // ...
@@ -470,11 +520,13 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     <?php
 
     // /posts/2012/phalcon-1-0-released を返す
-    echo $url->get(array(
-        "for" => "show-posts",
-        "year" => "2012",
-        "title" => "phalcon-1-0-released"
-    ));
+    echo $url->get(
+        array(
+            "for"   => "show-posts",
+            "year"  => "2012",
+            "title" => "phalcon-1-0-released"
+        )
+    );
 
 使用例
 --------------
@@ -523,7 +575,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
         )
     );
 
-    // "/posts/2010/02/some-cool-content" にマッチ
+    // "/posts/2015/02/some-cool-content" にマッチ
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -553,18 +605,20 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     );
 
     // /api/v1/users/peter.json にマッチ
-    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
+    $router->add(
+        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
-            'version' => 1,
-            'format' => 4
+            'version'    => 1,
+            'format'     => 4
         )
     );
 
 .. highlights::
+
     Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+    read unauthorized files. A safe regular expression is: :code:`/([a-zA-Z0-9\_\-]+)`
 
 デフォルトの振る舞い
 ----------------
@@ -586,8 +640,10 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // デフォルトルートなしのルーターを作る
-    $router = new \Phalcon\Mvc\Router(false);
+    $router = new Router(false);
 
 デフォルトルートを設定する
 -------------------------
@@ -597,10 +653,13 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
 
     <?php
 
-    $router->add("/", array(
-        'controller' => 'index',
-        'action' => 'index'
-    ));
+    $router->add(
+        "/",
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 Not Found パス
 ---------------
@@ -610,11 +669,13 @@ Not Found パス
 
     <?php
 
-    //404のパスをセット
-    $router->notFound(array(
-        "controller" => "index",
-        "action" => "route404"
-    ));
+    // 404のパスをセット
+    $router->notFound(
+        array(
+            "controller" => "index",
+            "action"     => "route404"
+        )
+    );
 
 デフォルトパスの設定
 ---------------------
@@ -624,17 +685,19 @@ Not Found パス
 
     <?php
 
-    //デフォルト設定
+    // デフォルト設定
     $router->setDefaultModule('backend');
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController('index');
     $router->setDefaultAction('index');
 
-    //配列の使用
-    $router->setDefaults(array(
-        'controller' => 'index',
-        'action' => 'index'
-    ));
+    // 配列の使用
+    $router->setDefaults(
+        array(
+            'controller' => 'index',
+            'action'     => 'index'
+        )
+    );
 
 余分なスラッシュの扱い
 -----------------------------------
@@ -644,9 +707,11 @@ Not Found パス
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
 
-    //末尾のスラッシュを自動的に取り除く
+    $router = new Router();
+
+    // 末尾のスラッシュを自動的に取り除く
     $router->removeExtraSlashes(true);
 
 あるいは、特定のルートだけ選んで、末尾のスラッシュを受け入れるように変更することもできます:
@@ -655,6 +720,7 @@ Not Found パス
 
     <?php
 
+    // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
         '/{language:[a-z]{2}}/:controller[/]{0,1}',
         array(
@@ -672,10 +738,10 @@ Not Found パス
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session'
-    ))->beforeMatch(function($uri, $route) {
-        //リクエストがAjaxによって生成されたかチェック
+    ))->beforeMatch(function ($uri, $route) {
+        // リクエストがAjaxによって生成されたかチェック
         if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
@@ -704,7 +770,7 @@ Not Found パス
 
     $router->add('/get/info/{id}', array(
         'controller' => 'products',
-        'action' => 'info'
+        'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 ホスト名によるアクセス制限
@@ -716,9 +782,9 @@ Not Found パス
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('admin.company.com');
 
 ホスト名は正規表現にすることもできます:
@@ -728,10 +794,10 @@ Not Found パス
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
-    ))->setHostName('([a-z+]).company.com');
+        'action'     => 'login'
+    ))->setHostName('([a-z]+).company.com');
 
 ルートのグループの中で、グループの全てのルートに適用されるホスト名の制限を設定することもできます:
 
@@ -739,34 +805,47 @@ Not Found パス
 
     <?php
 
-    //Create a group with a common module and controller
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
-        'controller' => 'posts'
-    ));
+    use Phalcon\Mvc\Router\Group as RouterGroup;
 
-    //ホスト名制限
+    // Create a group with a common module and controller
+    $blog = new RouterGroup(
+        array(
+            'module'     => 'blog',
+            'controller' => 'posts'
+        )
+    );
+
+    // ホスト名制限
     $blog->setHostName('blog.mycompany.com');
 
-    //All the routes start with /blog
+    // All the routes start with /blog
     $blog->setPrefix('/blog');
 
-    //デフォルトルート
-    $blog->add('/', array(
-        'action' => 'index'
-    ));
+    // デフォルトルート
+    $blog->add(
+        '/',
+        array(
+            'action' => 'index'
+        )
+    );
 
-    //Add a route to the group
-    $blog->add('/save', array(
-        'action' => 'save'
-    ));
+    // Add a route to the group
+    $blog->add(
+        '/save',
+        array(
+            'action' => 'save'
+        )
+    );
 
-    //Add another route to the group
-    $blog->add('/edit/{id}', array(
-        'action' => 'edit'
-    ));
+    // Add another route to the group
+    $blog->add(
+        '/edit/{id}',
+        array(
+            'action' => 'edit'
+        )
+    );
 
-    //Add the group to the router
+    // Add the group to the router
     $router->mount($blog);
 
 URIのソース
@@ -776,6 +855,10 @@ URIのソース
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Mvc\Router;
+
+    // ...
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // $_GET['_url'] を使う(デフォルト)
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // $_SERVER['REQUEST_URI'] を使う(デフォルト)
@@ -796,7 +879,9 @@ URIのソース
 
     <?php
 
-    //これらのルートによって、実際のURIをシミュレートする
+    use Phalcon\Mvc\Router;
+
+    // これらのルートによって、実際のURIをシミュレートする
     $testRoutes = array(
         '/',
         '/index',
@@ -807,28 +892,28 @@ URIのソース
         '/products/show/101',
     );
 
-    $router = new Phalcon\Mvc\Router();
+    $router = new Router();
 
-    //ここで独自のルートを追加
-    //...
+    // ここで独自のルートを追加
+    // ...
 
-    //それぞれのルートをテスト
+    // それぞれのルートをテスト
     foreach ($testRoutes as $testRoute) {
 
-        //ルートの処理
+        // ルートの処理
         $router->handle($testRoute);
 
         echo 'Testing ', $testRoute, '<br>';
 
-        //ルートがマッチしたかチェック
+        // ルートがマッチしたかチェック
         if ($router->wasMatched()) {
             echo 'Controller: ', $router->getControllerName(), '<br>';
             echo 'Action: ', $router->getActionName(), '<br>';
         } else {
             echo 'The route wasn\'t matched by any route<br>';
         }
-        echo '<br>';
 
+        echo '<br>';
     }
 
 アノテーションによるルーター
@@ -839,12 +924,14 @@ URIのソース
 
     <?php
 
-    $di['router'] = function() {
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-        //アノテーションルーターを使う
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+    $di['router'] = function () {
 
-        //URIが /api/products から始まるときは、 ProductsController からアノテーションを読み取る
+        // アノテーションルーターを使う
+        $router = new RouterAnnotations(false);
+
+        // URIが /api/products から始まるときは、 ProductsController からアノテーションを読み取る
         $router->addResource('Products', '/api/products');
 
         return $router;
@@ -861,7 +948,6 @@ URIのソース
      */
     class ProductsController
     {
-
         /**
          * @Get("/")
          */
@@ -899,7 +985,6 @@ URIのソース
         {
 
         }
-
     }
 
 有効なアノテーションでマーキングされたメソッドだけが、ルートとして使われます。サポートされているアノテーションのリストは以下です:
@@ -907,7 +992,7 @@ URIのソース
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Name         | Description                                                                                       | Usage                                                              |
 +==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -931,7 +1016,7 @@ URIのソース
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
+| paths        | An array of paths like the one passed to :code:`Phalcon\\Mvc\\Router::add()`                      | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -942,12 +1027,14 @@ URIのソース
 
     <?php
 
-    $di['router'] = function() {
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-        //Use the annotations router
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+    $di['router'] = function () {
 
-        //URIが /api/products から始まる場合、 Backend\Controllers\ProductsController からアノテーションを読み取る
+        // Use the annotations router
+        $router = new RouterAnnotations(false);
+
+        // URIが /api/products から始まる場合、 Backend\Controllers\ProductsController からアノテーションを読み取る
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;
@@ -962,12 +1049,16 @@ PhalconのDIコンテナへのサービス登録の際、ルーターを登録�
     <?php
 
     /**
-    * add routing capabilities
-    */
-    $di->set('router', function(){
-        require __DIR__.'/../app/config/routes.php';
-        return $router;
-    });
+     * Add routing capabilities
+     */
+    $di->set(
+        'router',
+        function () {
+            require __DIR__.'/../app/config/routes.php';
+
+            return $router;
+        }
+    );
 
 app/config/routes.php を作って、以下のような初期化コードを追加します:
 
@@ -975,20 +1066,27 @@ app/config/routes.php を作って、以下のような初期化コードを追�
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
 
-    $router->add("/login", array(
-        'controller' => 'login',
-        'action' => 'index',
-    ));
+    $router = new Router();
 
-    $router->add("/products/:action", array(
-        'controller' => 'products',
-        'action' => 1,
-    ));
+    $router->add(
+        "/login",
+        array(
+            'controller' => 'login',
+            'action'     => 'index'
+        )
+    );
+
+    $router->add(
+        "/products/:action",
+        array(
+            'controller' => 'products',
+            'action'     => 1
+        )
+    );
 
     return $router;
-
 
 独自ルータの実装
 ----------------------------

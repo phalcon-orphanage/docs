@@ -67,7 +67,7 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus eliminates security threats of this kind.
@@ -81,7 +81,7 @@ The second set of rules will check if the requested file exists and, if it does,
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Bootstrap
@@ -116,14 +116,14 @@ The tutorial/public/index.php file should look like:
         $di = new FactoryDefault();
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
@@ -195,7 +195,7 @@ Services can be registered in several ways, but for our tutorial we'll use an `a
     // ...
 
     // Setup the view component
-    $di->set('view', function() {
+    $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -214,7 +214,7 @@ to generate a hyperlink.
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    $di->set('url', function () {
         $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
@@ -368,7 +368,7 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in
+The Phalcon\\Tag::form method receives only one parameter for instance, a relative URI to a controller/action in
 the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
@@ -459,7 +459,7 @@ In order to be able to use a database connection and subsequently access data th
         $di = new FactoryDefault();
 
         // Setup the database service
-        $di->set('db', function(){
+        $di->set('db', function () {
             return new DbAdapter(array(
                 "host"     => "localhost",
                 "username" => "root",
@@ -469,20 +469,20 @@ In order to be able to use a database connection and subsequently access data th
         });
 
         // Setup the view component
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+        $di->set('url', function () {
             $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
-        //Handle the request
+        // Handle the request
         $application = new Application($di);
 
         echo $application->handle()->getContent();
@@ -516,7 +516,7 @@ Receiving data from the form and storing them in the table is the next step.
 
             $user = new Users();
 
-            //Store and check for errors
+            // Store and check for errors
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {

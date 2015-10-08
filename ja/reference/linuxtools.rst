@@ -1,5 +1,6 @@
 Phalcon 開発者ツール / Linux向け
 ================================
+
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
 
 Prerequisites
@@ -20,6 +21,14 @@ Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", 
 
 .. figure:: ../_static/img/linux-2.png
    :align: center
+
+Create a symbolink link to the phalcon.php script:
+
+.. code-block:: bash
+
+    ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
+
+    chmod ugo+x /usr/bin/phalcon
 
 Congratulations you now have Phalcon tools installed!
 

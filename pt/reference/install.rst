@@ -16,7 +16,7 @@ Para utilizar o phalcon no Windows você pode fazer o download da biblioteca DLL
 
 Reinicie seu servidor web.
 
-O seguinte screencast é um passo-a-passo para instalação do Phalcon no Windows: 
+O seguinte screencast é um passo-a-passo para instalação do Phalcon no Windows:
 
 .. raw:: html
 
@@ -32,7 +32,7 @@ Guias Relacionados
 
 Linux/Solaris/Mac
 -----------------
-Nos sistemas Linux/Solaris/Mac você pode facilmente compilar e instalar a extensão diretamente dos códigos fontes: 
+Nos sistemas Linux/Solaris/Mac você pode facilmente compilar e instalar a extensão diretamente dos códigos fontes:
 
 Requerimentos
 ^^^^^^^^^^^^
@@ -40,9 +40,9 @@ Os pacotes pré-requisitos são:
 
 * PHP 5.3.x/5.4.x/5.5.(recursos de desenvolvimento)
 * Compilador GCC (Linux/Solaris) ou Xcode (Mac)
-* Git (caso ainda não esteja instalado no seu sistema - a menos que você faça o download do pacote no GitHub e depois o upload para o seu servidor via FTP/SFTP) 
+* Git (caso ainda não esteja instalado no seu sistema - a menos que você faça o download do pacote no GitHub e depois o upload para o seu servidor via FTP/SFTP)
 
-Pacotes específicos para plataformas em comum: 
+Pacotes específicos para plataformas em comum:
 
 .. code-block:: bash
 
@@ -90,7 +90,7 @@ Phalcon automaticamente detecta a sua arquitetura, no entanto, você poderá for
 
 FreeBSD
 -------
-Um port esta disponível para o FreeBSD. Basta um simples comando na linha de comando para instalar-lo: 
+Um port esta disponível para o FreeBSD. Basta um simples comando na linha de comando para instalar-lo:
 
 .. code-block:: bash
 

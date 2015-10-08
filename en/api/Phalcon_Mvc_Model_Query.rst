@@ -17,7 +17,7 @@ This class takes a PHQL intermediate representation and executes it.
      ));
     
      foreach ($result as $row) {
-       echo "Name: ", $row->cars->name, "\n";
+       echo "Name: ",  $row->cars->name, "\n";
        echo "Price: ", $row->cars->price, "\n";
        echo "Taxes: ", $row->taxes, "\n";
      }
@@ -38,7 +38,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $phql], [*unknown* $dependencyInjector])
+public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -50,85 +50,91 @@ Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setUniqueRow** (*unknown* $uniqueRow)
+public  **setUniqueRow** (*unknown* $uniqueRow)
 
 Tells to the query if only the first row in the resultset must be returned
 
 
 
-public *boolean*  **getUniqueRow** ()
+public  **getUniqueRow** ()
 
 Check if the query is programmed to get only the first row in the resultset
 
 
 
-final protected *string*  **_getQualified** (*unknown* $expr)
+final protected  **_getQualified** (*unknown* $expr)
 
 Replaces the model's name to its source name in a qualifed-name expression
 
 
 
-final protected *array*  **_getCallArgument** (*unknown* $argument)
+final protected  **_getCallArgument** (*unknown* $argument)
 
 Resolves a expression in a single call argument
 
 
 
-final protected *array*  **_getFunctionCall** (*unknown* $expr)
+final protected  **_getCaseExpression** (*unknown* $expr)
 
 Resolves a expression in a single call argument
 
 
 
-final protected *string*  **_getExpression** (*unknown* $expr, [*unknown* $quoting])
+final protected  **_getFunctionCall** (*unknown* $expr)
+
+Resolves a expression in a single call argument
+
+
+
+final protected *string*  **_getExpression** (*array* $expr, [*boolean* $quoting])
 
 Resolves an expression from its intermediate code into a string
 
 
 
-final protected *array*  **_getSelectColumn** (*unknown* $column)
+final protected *array*  **_getSelectColumn** (*array* $column)
 
-Resolves a column from its intermediate representation into an array used to determine if the resulset produced is simple or complex
+Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
 
 
 
-final protected *string*  **_getTable** (*unknown* $manager, *unknown* $qualifiedName)
+final protected *string*  **_getTable** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $qualifiedName)
 
 Resolves a table in a SELECT statement checking if the model exists
 
 
 
-final protected *array*  **_getJoin** (*unknown* $manager, *unknown* $join)
+final protected *array*  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $join)
 
 Resolves a JOIN clause checking if the associated models exist
 
 
 
-final protected *string*  **_getJoinType** (*unknown* $join)
+final protected *string*  **_getJoinType** (*array* $join)
 
 Resolves a JOIN type
 
 
 
-final protected *array*  **_getSingleJoin** (*unknown* $joinType, *unknown* $joinSource, *unknown* $modelAlias, *unknown* $joinAlias, *unknown* $relation)
+final protected *array*  **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving has-one/belongs-to/has-many relations
 
 
 
-final protected *array*  **_getMultiJoin** (*unknown* $joinType, *unknown* $joinSource, *unknown* $modelAlias, *unknown* $joinAlias, *unknown* $relation)
+final protected *array*  **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving many-to-many relations
 
 
 
-final protected *array*  **_getJoins** (*unknown* $select)
+final protected *array*  **_getJoins** (*array* $select)
 
 Processes the JOINs in the query returning an internal representation for the database dialect
 
@@ -140,103 +146,109 @@ Returns a processed order clause for a SELECT statement
 
 
 
-final protected *array*  **_getGroupClause** (*array* $group)
+final protected  **_getGroupClause** (*unknown* $group)
 
 Returns a processed group clause for a SELECT statement
 
 
 
-final protected *array*  **_prepareSelect** ()
+final protected  **_getLimitClause** (*unknown* $limitClause)
+
+Returns a processed limit clause for a SELECT statement
+
+
+
+final protected  **_prepareSelect** ([*unknown* $ast], [*unknown* $merge])
 
 Analyzes a SELECT intermediate code and produces an array to be executed later
 
 
 
-final protected *array*  **_prepareInsert** ()
+final protected  **_prepareInsert** ()
 
 Analyzes an INSERT intermediate code and produces an array to be executed later
 
 
 
-final protected *array*  **_prepareUpdate** ()
+final protected  **_prepareUpdate** ()
 
 Analyzes an UPDATE intermediate code and produces an array to be executed later
 
 
 
-final protected *array*  **_prepareDelete** ()
+final protected  **_prepareDelete** ()
 
 Analyzes a DELETE intermediate code and produces an array to be executed later
 
 
 
-public *array*  **parse** ()
+public  **parse** ()
 
 Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 
-public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+public  **getCache** ()
 
 Returns the current cache backend instance
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_executeSelect** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected  **_executeSelect** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes, [*unknown* $simulate])
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\\Resultset
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** (*unknown* $model, *unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Query the records on which the UPDATE/DELETE operation well be done
 
 
 
-public *mixed*  **execute** ([*unknown* $bindParams], [*unknown* $bindTypes])
+public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 
 
 
-public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*unknown* $bindParams], [*unknown* $bindTypes])
+public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes the query returning the first result
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setType** (*unknown* $type)
+public  **setType** (*unknown* $type)
 
 Sets the type of PHQL statement to be executed
 
 
 
-public *int*  **getType** ()
+public  **getType** ()
 
 Gets the type of PHQL statement executed
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindParams** (*unknown* $bindParams)
+public  **setBindParams** (*unknown* $bindParams, [*unknown* $merge])
 
 Set default bind parameters
 
@@ -248,7 +260,7 @@ Returns default bind params
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindTypes** (*unknown* $bindTypes)
+public  **setBindTypes** (*unknown* $bindTypes, [*unknown* $merge])
 
 Set default bind parameters
 
@@ -260,7 +272,7 @@ Returns default bind types
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setIntermediate** (*unknown* $intermediate)
+public  **setIntermediate** (*unknown* $intermediate)
 
 Allows to set the IR to be executed
 
@@ -272,7 +284,7 @@ Returns the intermediate representation of the PHQL statement
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **cache** (*unknown* $cacheOptions)
+public  **cache** (*unknown* $cacheOptions)
 
 Sets the cache parameters of the query
 
@@ -281,6 +293,12 @@ Sets the cache parameters of the query
 public  **getCacheOptions** ()
 
 Returns the current cache options
+
+
+
+public  **getSql** ()
+
+Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
 
 
 

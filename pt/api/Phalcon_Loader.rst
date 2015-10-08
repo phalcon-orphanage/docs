@@ -10,7 +10,7 @@ This component helps to load your project classes automatically based on some co
     <?php
 
      //Creates the autoloader
-     $loader = new Phalcon\Loader();
+     $loader = new Loader();
     
      //Register some namespaces
      $loader->registerNamespaces(array(
@@ -28,7 +28,7 @@ This component helps to load your project classes automatically based on some co
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -36,31 +36,31 @@ Phalcon\\Loader constructor
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*array* $extensions)
+public  **setExtensions** (*unknown* $extensions)
 
-Sets an array of extensions that the loader must try in each attempt to locate the file
-
-
-
-public *boolean*  **getExtensions** ()
-
-Return file extensions registered in the loader
+Sets an array of file extensions that the loader must try in each attempt to locate the file
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*array* $namespaces, [*boolean* $merge])
+public  **getExtensions** ()
+
+Returns the file extensions registered in the loader
+
+
+
+public  **registerNamespaces** (*unknown* $namespaces, [*unknown* $merge])
 
 Register namespaces and their related directories
 
@@ -68,35 +68,35 @@ Register namespaces and their related directories
 
 public  **getNamespaces** ()
 
-Return current namespaces registered in the autoloader
+Returns the namespaces currently registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*array* $prefixes, [*boolean* $merge])
+public  **registerPrefixes** (*unknown* $prefixes, [*unknown* $merge])
 
-Register directories on which "not found" classes could be found
+Register directories in which "not found" classes could be found
 
 
 
 public  **getPrefixes** ()
 
-Return current prefixes registered in the autoloader
+Returns the prefixes currently registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories, [*boolean* $merge])
+public  **registerDirs** (*unknown* $directories, [*unknown* $merge])
 
-Register directories on which "not found" classes could be found
+Register directories in which "not found" classes could be found
 
 
 
 public  **getDirs** ()
 
-Return current directories registered in the autoloader
+Returns the directories currently registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*array* $classes, [*boolean* $merge])
+public  **registerClasses** (*unknown* $classes, [*unknown* $merge])
 
 Register classes and their locations
 
@@ -104,35 +104,35 @@ Register classes and their locations
 
 public  **getClasses** ()
 
-Return the current class-map registered in the autoloader
+Returns the class-map currently registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **register** ()
+public  **register** ()
 
 Register the autoload method
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **unregister** ()
+public  **unregister** ()
 
 Unregister the autoload method
 
 
 
-public *boolean*  **autoLoad** (*string* $className)
+public  **autoLoad** (*unknown* $className)
 
-Makes the work of autoload registered classes
+Autoloads the registered classes
 
 
 
-public *string*  **getFoundPath** ()
+public  **getFoundPath** ()
 
 Get the path when a class was found
 
 
 
-public *string*  **getCheckedPath** ()
+public  **getCheckedPath** ()
 
 Get the path the loader is checking for a path
 

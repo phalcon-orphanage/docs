@@ -11,17 +11,17 @@ Encapsulates validation info generated before save/delete records fails
 
     use Phalcon\Mvc\Model\Message as Message;
     
-      class Robots extends Phalcon\Mvc\Model
+      class Robots extends \Phalcon\Mvc\Model
       {
     
         public function beforeSave()
         {
-          if ($this->name == 'Peter') {
-            $text = "A robot cannot be named Peter";
-            $field = "name";
-            $type = "InvalidValue";
-            $message = new Message($text, $field, $type);
-            $this->appendMessage($message);
+          if (this->name == 'Peter') {
+            text = "A robot cannot be named Peter";
+            field = "name";
+            type = "InvalidValue";
+            message = new Message(text, field, type);
+            this->appendMessage(message);
          }
        }
     
@@ -30,69 +30,69 @@ Encapsulates validation info generated before save/delete records fails
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
+public  **__construct** (*string* $message, [*string|array* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setType** (*string* $type)
+public  **setType** (*unknown* $type)
 
 Sets message type
 
 
 
-public *string*  **getType** ()
+public  **getType** ()
 
 Returns message type
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setMessage** (*string* $message)
+public  **setMessage** (*unknown* $message)
 
 Sets verbose message
 
 
 
-public *string*  **getMessage** ()
+public  **getMessage** ()
 
 Returns verbose message
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setField** (*string* $field)
+public  **setField** (*unknown* $field)
 
 Sets field name related to message
 
 
 
-public *string*  **getField** ()
+public  **getField** ()
 
 Returns field name related to message
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **setModel** (*unknown* $model)
 
 Set the model who generates the message
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
+public  **getModel** ()
 
 Returns the model that produced the message
 
 
 
-public *string*  **__toString** ()
+public  **__toString** ()
 
 Magic __toString method returns verbose message
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **__set_state** (*array* $message)
+public static  **__set_state** (*unknown* $message)
 
 Magic __set_state helps to re-build messages variable exporting
 

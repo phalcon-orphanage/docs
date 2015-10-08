@@ -1,5 +1,6 @@
 Сохранение данных в сессии
 ==========================
+
 Компонент :doc:`Phalcon\\Session <../api/Phalcon_Session>` предоставляет объектно-ориентированный интерфейс для работы с сессиями.
 
 Причины использования этого компонента, а не обычных сессий:
@@ -17,9 +18,11 @@
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as Session;
+
     // Сессии запустятся один раз, при первом обращении к объекту
-    $di->setShared('session', function() {
-        $session = new Phalcon\Session\Adapter\Files();
+    $di->setShared('session', function () {
+        $session = new Session();
         $session->start();
         return $session;
     });
@@ -33,9 +36,10 @@
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
             // Установка значения сессии
@@ -44,7 +48,6 @@
 
         public function welcomeAction()
         {
-
             // Проверка наличия переменной сессии
             if ($this->session->has("user-name")) {
 
@@ -63,9 +66,10 @@
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function removeAction()
         {
             // Удаление переменной сессии
@@ -77,7 +81,6 @@
             // Полная очистка сессии
             $this->session->destroy();
         }
-
     }
 
 Изоляция данных сессии внутри приложения
@@ -90,11 +93,13 @@
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as Session;
+
     // Изоляция данных сессий
-    $di->set('session', function(){
+    $di->set('session', function () {
 
         // Все переменные этого приложения будет иметь префикс "my-app-1"
-        $session = new Phalcon\Session\Adapter\Files(
+        $session = new Session(
             array(
                 'uniqueId' => 'my-app-1'
             )
@@ -109,15 +114,17 @@
 
 Наборы сессий (Session Bags)
 ----------------------------
-Компонент :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` (Session Bags, дословно "Мешки с сессиями") 
-позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать 
+Компонент :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` (Session Bags, дословно "Мешки с сессиями")
+позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать
 группы переменных сессии в приложении. Установив значение переменной такого объекта, оно автоматически сохранится в сессии:
 
 .. code-block:: php
 
     <?php
 
-    $user       = new Phalcon\Session\Bag('user');
+    use Phalcon\Session\Bag as SessionBag;
+
+    $user       = new SessionBag('user');
     $user->setDI($di);
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
@@ -133,9 +140,10 @@
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class UserController extends Controller
+    {
         public function indexAction()
         {
             // Создаётся постоянная (persistent) переменная "name"
@@ -144,12 +152,10 @@
 
         public function welcomeAction()
         {
-            if (isset($this->persistent->name))
-            {
+            if (isset($this->persistent->name)) {
                 echo "Привет, ", $this->persistent->name;
             }
         }
-
     }
 
 И в компоненте:
@@ -158,9 +164,10 @@
 
     <?php
 
-    class Security extends Phalcon\Mvc\User\Component
-    {
+    use Phalcon\Mvc\Controller;
 
+    class Security extends Component
+    {
         public function auth()
         {
             // Создаётся постоянная (persistent) переменная "name"
@@ -171,7 +178,6 @@
         {
             return $this->persistent->name;
         }
-
     }
 
 Данные, добавленные непосредственно в сессию ($this->session) доступны во всём приложении, в то время как persistent ($this->persistent)
@@ -179,7 +185,6 @@
 
 Реализация собственных адаптеров сессий
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Для создания адаптера необходимо реализовать интерфейс :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>`,
-или использовать наследование от готового с доработкой необходимой логики.
+Для создания адаптера необходимо реализовать интерфейс :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>`, или использовать наследование от готового с доработкой необходимой логики.
 
 У нас есть некоторые готовые адаптеры для сессий `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter>`_

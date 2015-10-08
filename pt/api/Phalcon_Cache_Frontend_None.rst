@@ -9,12 +9,14 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
     <?php
 
+    <?php
+    
     //Create a None Cache
-    $frontCache = new Phalcon\Cache\Frontend\None();
+    $frontCache = new \Phalcon\Cache\Frontend\None();
     
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
-    $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
+    $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
     	"host" => "localhost",
     	"port" => "11211"
     ));
@@ -39,15 +41,15 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
 
 Methods
----------
+-------
 
-public *int*  **getLifetime** ()
+public  **getLifetime** ()
 
 Returns cache lifetime, always one second expiring content
 
 
 
-public *boolean*  **isBuffering** ()
+public  **isBuffering** ()
 
 Check whether if frontend is buffering output, always false
 

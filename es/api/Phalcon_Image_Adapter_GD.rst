@@ -176,7 +176,7 @@ Add a reflection to an image
 
 public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
 
-Add a watermark to an image with a specified opacity
+Add a watermark to an image with the specified opacity
 
 
 

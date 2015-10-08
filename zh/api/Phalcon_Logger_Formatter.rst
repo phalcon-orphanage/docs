@@ -7,7 +7,7 @@ This is a base class for logger formatters
 Methods
 -------
 
-public *string*  **getTypeString** (*unknown* $type)
+public  **getTypeString** (*unknown* $type)
 
 Returns the string meaning of a logger constant
 

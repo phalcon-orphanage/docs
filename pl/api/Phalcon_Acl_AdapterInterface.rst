@@ -34,7 +34,7 @@ abstract public  **isResource** (*unknown* $resourceName)
 ...
 
 
-abstract public  **addResource** (*unknown* $resourceObject, [*unknown* $accessList])
+abstract public  **addResource** (*unknown* $resourceObject, *unknown* $accessList)
 
 ...
 

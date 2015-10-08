@@ -1,8 +1,8 @@
-Tutorial 3: Créer une application REST API
-======================================
+Tutorial 7: Créer une application REST API
+==========================================
+
 Dans ce tutoriel, nous allons montrer comment créer une simple application qui fourni une API RESTful_ en utilisant les
 méthodes HTTP suivantes :
-
 
 * GET pour récupérer et chercher les données
 * POST pour ajouter des données
@@ -10,7 +10,7 @@ méthodes HTTP suivantes :
 * DELETE pour supprimer les données
 
 Définir l'API
-----------------
+-------------
 L'API comprends les méthodes suivantes :
 
 +--------+----------------------------+----------------------------------------------------------+
@@ -30,7 +30,7 @@ L'API comprends les méthodes suivantes :
 +--------+----------------------------+----------------------------------------------------------+
 
 Créer l'application
-------------------------
+-------------------
 Comme l'application est relativement simple, nous n'allons pas implémenter un environnement MVC complet.
 Dans notre cas nous allons utiliser une :doc:`micro application <micro>`.
 
@@ -51,7 +51,7 @@ Tout d'abord nous avons besoin d'un .htaccess qui va contenir toutes les règles
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Ensuite dans notre fichier index.php, on ajoute ceci :
@@ -60,9 +60,11 @@ Ensuite dans notre fichier index.php, on ajoute ceci :
 
     <?php
 
-    $app = new \Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
 
-    //define the routes here
+    $app = new Micro();
+
+    // Define the routes here
 
     $app->handle();
 
@@ -72,35 +74,37 @@ Maintenant, nous allons créer les routes comme défini au dessus (le tableau) :
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() {
+    $app = new Micro();
 
-    });
-
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) {
+    // Retrieves all robots
+    $app->get('/api/robots', function () {
 
     });
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
-    //Adds a new robot
-    $app->post('/api/robots', function() {
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    // Adds a new robot
+    $app->post('/api/robots', function () {
 
     });
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function () {
+
+    });
+
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -112,87 +116,108 @@ suivi par une fonction anonyme. La route suivante '/api/robots/{id:[0-9]+}', par
 Quand une requête URI corresponds à une route défini, l'application exécute la fonction anonyme qui lui est liée.
 
 Créer un Model
-----------------
+--------------
 Notre API fourni des informations sur les 'robots', ces données doivent donc être enregistrés dans une base de données.
 Le model suivant nous permet d'accéder à la table comme si c'était un objet. Nous avons implémenté quelques règles en utilisant
 des validateurs. Ainsi nous seront tranquille car les données respecteront toujours les conditions nécessaire pour notre application:
 
-
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message,
-        Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
-
         public function validation()
         {
-            //Type must be: droid, mechanical or virtual
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("droid", "mechanical", "virtual")
+            // Type must be: droid, mechanical or virtual
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array(
+                            "droid",
+                            "mechanical",
+                            "virtual"
+                        )
+                    )
                 )
-            ));
+            );
 
-            //Robot name must be unique
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+            // Robot name must be unique
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "The robot name must be unique"
+                    )
                 )
-            ));
+            );
 
-            //Year cannot be less than zero
+            // Year cannot be less than zero
             if ($this->year < 0) {
                 $this->appendMessage(new Message("The year cannot be less than zero"));
             }
 
-            //Check if any messages have been produced
+            // Check if any messages have been produced
             if ($this->validationHasFailed() == true) {
                 return false;
             }
         }
-
     }
-Maintenant nous devons mettre en place la connexion qui sera utilisée par le model :
+
+Maintenant nous devons mettre en place la connexion qui sera utilisée par le model and load it within our app :
 
 .. code-block:: php
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-    //Set up the database service
-    $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "asimov",
-            "password" => "zeroth",
-            "dbname" => "robotics"
-        ));
+    // Use Loader() to autoload our model
+    $loader = new Loader();
+
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
+
+    $di = new FactoryDefault();
+
+    // Set up the database service
+    $di->set('db', function () {
+        return new PdoMysql(
+            array(
+                "host"     => "localhost",
+                "username" => "asimov",
+                "password" => "zeroth",
+                "dbname"   => "robotics"
+            )
+        );
     });
 
-    //Create and bind the DI to the application
-    $app = new \Phalcon\Mvc\Micro($di);
+    // Create and bind the DI to the application
+    $app = new Micro($di);
 
 Récupérer les données
----------------
+---------------------
 Le premier gestionnaire que l'on a implémenté est celui qui retourne tous les robots à partir d'une méthode GET.
 Utilisons PHQL pour exécuter une simple requête qui retourne les résultats sous forme de JSON :
 
-
 .. code-block:: php
 
     <?php
 
-    //Retrieves all robots
-    $app->get('/api/robots', function() use ($app) {
+    // Retrieves all robots
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
@@ -200,8 +225,8 @@ Utilisons PHQL pour exécuter une simple requête qui retourne les résultats so
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
@@ -218,24 +243,26 @@ La recherche par nom ressemblera à cela :
 
     <?php
 
-    //Searches for robots with $name in their name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    // Searches for robots with $name in their name
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%' . $name . '%'
-        ));
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            array(
+                'name' => '%' . $name . '%'
+            )
+        );
 
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
         echo json_encode($data);
-
     });
 
 Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nous allons notifier l'utilisateur si le robot n'existe pas :
@@ -244,42 +271,52 @@ Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nou
 
     <?php
 
-    //Retrieves robots based on primary key
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    use Phalcon\Http\Response;
+
+    // Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ))->getFirst();
 
-        //Create a response
-        $response = new Phalcon\Http\Response();
+        // Create a response
+        $response = new Response();
 
         if ($robot == false) {
-            $response->setJsonContent(array('status' => 'NOT-FOUND'));
-        } else {
-            $response->setJsonContent(array(
-                'status' => 'FOUND',
-                'data' => array(
-                    'id' => $robot->id,
-                    'name' => $robot->name
+            $response->setJsonContent(
+                array(
+                    'status' => 'NOT-FOUND'
                 )
-            ));
+            );
+        } else {
+            $response->setJsonContent(
+                array(
+                    'status' => 'FOUND',
+                    'data'   => array(
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    )
+                )
+            );
         }
 
         return $response;
     });
 
 Ajouter des données
---------------
+-------------------
 Prenons la données comme une chaine JSON que l'on insert dans le corps de la requête. Nous allons utiliser PHQL pour l'insertion.
 
 .. code-block:: php
 
     <?php
 
-    //Adds a new robot
-    $app->post('/api/robots', function() use ($app) {
+    use Phalcon\Http\Response;
+
+    // Adds a new robot
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -291,45 +328,58 @@ Prenons la données comme une chaine JSON que l'on insert dans le corps de la re
             'year' => $robot->year
         ));
 
-        //Create a response
-        $response = new Phalcon\Http\Response();
+        // Create a response
+        $response = new Response();
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
 
+            // Change the HTTP status
             $response->setStatusCode(201, "Created");
 
             $robot->id = $status->getModel()->id;
 
-            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $robot
+                )
+            );
 
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
-            //Send errors to the client
+            // Send errors to the client
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
     });
 
 Modifier les données
--------------
+--------------------
 La modification de données est similaire à l'insertion. L'ID passé en paramètre indique quel robot doit être modifié :
 
 .. code-block:: php
 
     <?php
 
-    //Updates robots based on primary key
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    use Phalcon\Http\Response;
+
+    // Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -341,15 +391,19 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
             'year' => $robot->year
         ));
 
-        //Create a response
-        $response = new Phalcon\Http\Response();
+        // Create a response
+        $response = new Response();
 
-        //Check if the insertion was successful
+        // Check if the insertion was successful
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -357,38 +411,47 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
     });
 
 Supprimer des données
--------------
-La suppression de données est relativement identique à la modification.
-L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être supprimé.
-
+---------------------
+La suppression de données est relativement identique à la modification. L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être supprimé.
 
 .. code-block:: php
 
     <?php
 
-    //Deletes robots based on primary key
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    use Phalcon\Http\Response;
+
+    // Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
 
-        //Create a response
-        $response = new Phalcon\Http\Response();
+        // Create a response
+        $response = new Response();
 
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
-            //Change the HTTP status
+            // Change the HTTP status
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -396,8 +459,12 @@ L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
-
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -414,7 +481,7 @@ Récupérer tous les robots :
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Tue, 21 Jul 2015 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -428,7 +495,7 @@ Chercher un robot par son nom :
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Tue, 21 Jul 2015 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -442,7 +509,7 @@ Récupérer un robot par son ID :
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Tue, 21 Jul 2015 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -457,7 +524,7 @@ Insérer un nouveau robot :
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Tue, 21 Jul 2015 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -472,7 +539,7 @@ Essayer d'insérer un nouveau robot avec le nom d'un robot existant :
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Tue, 21 Jul 2015 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -487,7 +554,7 @@ Modifier un robot avec un type inconnu :
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Tue, 21 Jul 2015 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -502,7 +569,7 @@ Enfin, la suppresion de robots :
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Tue, 21 Jul 2015 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

@@ -3,7 +3,7 @@
 /**
  * This scripts generates the restructuredText for the class API.
  *
- * Change the CPHALCON_DIR constant to point to the dev/ directory in the Phalcon source code
+ * Change the CPHALCON_DIR constant to point to the ext/ directory in the Phalcon source code
  *
  * php scripts/gen-api.php
  */
@@ -18,7 +18,7 @@ if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
 }
 
-$languages = array('en', 'es', 'ja', 'pl', 'fr', 'ru');
+$languages = array('en', 'es', 'fr', 'ja', 'pl', 'pt', 'ru', 'zh');
 
 /**
  * Class ApiGenerator
@@ -202,7 +202,8 @@ class ApiGenerator
                         if ($matches[1] == 'param') {
                             $parts = preg_split('/[ \t]+/', $content);
                             if (count($parts) == 2) {
-                                $ret['parameters'][$parts[1]] = trim($parts[0]);
+                                $name = "$" . str_replace("$", "", $parts[1]);
+                                $ret['parameters'][$name] = trim($parts[0]);
                             } else {
                                 //throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
                             }

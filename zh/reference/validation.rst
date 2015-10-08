@@ -1,6 +1,9 @@
 验证（Validation）
 ================
-Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。 当然也可以用来对非模型内的数据进行验证。
+
+Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。
+当然也可以用来对非模型内的数据进行验证。
+
 下面的例子展示了一些基本的使用方法：
 
 .. code-block:: php
@@ -13,17 +16,32 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
 
     $validation = new Validation();
 
-    $validation->add('name', new PresenceOf(array(
-        'message' => 'The name is required'
-    )));
+    $validation->add(
+        'name',
+        new PresenceOf(
+            array(
+                'message' => 'The name is required'
+            )
+        )
+    );
 
-    $validation->add('email', new PresenceOf(array(
-        'message' => 'The e-mail is required'
-    )));
+    $validation->add(
+        'email',
+        new PresenceOf(
+            array(
+                'message' => 'The e-mail is required'
+            )
+        )
+    );
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
     $messages = $validation->validate($_POST);
     if (count($messages)) {
@@ -31,7 +49,7 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
             echo $message, '<br>';
         }
     }
-    
+
 由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：
 
 初始化验证（Initializing Validation）
@@ -50,19 +68,36 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
     {
         public function initialize()
         {
-            $this->add('name', new PresenceOf(array(
-                'message' => 'The name is required'
-            )));
+            $this->add(
+                'name',
+                new PresenceOf(
+                    array(
+                        'message' => 'The name is required'
+                    )
+                )
+            );
 
-            $this->add('email', new PresenceOf(array(
-                'message' => 'The e-mail is required'
-            )));
+            $this->add(
+                'email',
+                new PresenceOf(
+                    array(
+                        'message' => 'The e-mail is required'
+                    )
+                )
+            );
 
-            $this->add('email', new Email(array(
-                'message' => 'The e-mail is not valid'
-            )));
+            $this->add(
+                'email',
+                new Email(
+                    array(
+                        'message' => 'The e-mail is not valid'
+                    )
+                )
+            );
         }
     }
+
+Then initialize and use your own validator:
 
 .. code-block:: php
 
@@ -102,6 +137,8 @@ Phalcon的验证组件中内置了一些验证器：
 +--------------+------------------------------------+-------------------------------------------------------------------+
 | Confirmation |  检测两个值是否相等                  | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------+-------------------------------------------------------------------+
+| Url          | Validates that field contains a valid URL | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 下面的例子中展示了如何创建自定义的验证器：
 
@@ -115,7 +152,6 @@ Phalcon的验证组件中内置了一些验证器：
 
     class IpValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * 执行验证
          *
@@ -141,7 +177,6 @@ Phalcon的验证组件中内置了一些验证器：
 
             return true;
         }
-
     }
 
 最重要的一点即是难证器要返回一个布尔值以标识验证是否成功：
@@ -176,7 +211,6 @@ Phalcon的验证组件中内置了一些验证器：
 
     class MyValidation extends Validation
     {
-
         public function initialize()
         {
             // ...
@@ -192,6 +226,7 @@ Phalcon的验证组件中内置了一些验证器：
                         break;
                 }
             }
+
             return $messages;
         }
     }
@@ -204,9 +239,14 @@ Phalcon的验证组件中内置了一些验证器：
 
     use Phalcon\Validation\Validator\Email;
 
-    $validation->add('email', new Email(array(
-        'message' => 'The e-mail is not valid'
-    )));
+    $validation->add(
+        'email',
+        new Email(
+            array(
+                'message' => 'The e-mail is not valid'
+            )
+        )
+    );
 
 默认，getMessages()方法会返回在验证过程中所产生的信息。 我们可以使用filter()方法来过滤我们感兴趣的消息：
 
@@ -216,7 +256,7 @@ Phalcon的验证组件中内置了一些验证器：
 
     $messages = $validation->validate();
     if (count($messages)) {
-        //Filter only the messages generated for the field 'name'
+        // Filter only the messages generated for the field 'name'
         foreach ($validation->getMessages()->filter('name') as $message) {
             echo $message;
         }
@@ -242,7 +282,7 @@ Phalcon的验证组件中内置了一些验证器：
             'message' => 'The email is required'
         )));
 
-    //Filter any extra space
+    // Filter any extra space
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
@@ -261,7 +301,6 @@ Phalcon的验证组件中内置了一些验证器：
 
     class LoginValidation extends Validation
     {
-
         public function initialize()
         {
             // ...
@@ -279,8 +318,10 @@ Phalcon的验证组件中内置了一些验证器：
         {
             if ($this->request->getHttpHost() != 'admin.mydomain.com') {
                 $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+
                 return false;
             }
+
             return true;
         }
 
@@ -293,13 +334,12 @@ Phalcon的验证组件中内置了一些验证器：
          */
         public function afterValidation($data, $entity, $messages)
         {
-            //... add additional messages or perform more validations
+            // ... Add additional messages or perform more validations
         }
-
     }
 
 取消验证（Cancelling Validations）
-==================================
+----------------------
 默认所有的验证器都会被执行，不管验证成功与否。 我们可以通过设置 cancelOnFail 参数为 true 来指定某个验证器验证失败时中止以后的所有验证：
 
 .. code-block:: php
@@ -323,7 +363,7 @@ Phalcon的验证组件中内置了一些验证器：
         )))
         ->add('telephone', new StringLength(array(
             'messageMinimum' => 'The telephone is too short',
-            'min' => 2
+            'min'            => 2
         )));
 
 第一个验证器中 cancelOnFail 参数设置为 true 则表示如果此验证器验证失败则验证链中接下的验证不会被执行。
@@ -334,14 +374,13 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;
 
-
     class MyValidator extends Validator implements ValidatorInterface
     {
-
         /**
          * 执行验证
          *
@@ -349,14 +388,33 @@ Phalcon的验证组件中内置了一些验证器：
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
             if ($attribute == 'name') {
                 $validator->setOption('cancelOnFail', true);
             }
 
-            //...
+            // ...
         }
-
     }
+
+Avoid validate empty values
+---------------------------
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+
+    $validation = new Validation();
+
+    $validation
+        ->add('telephone', new Regex(array(
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/',
+            'allowEmpty' => true
+        )));

@@ -1,5 +1,6 @@
-Безопасность
-============
+Security
+========
+
 Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery (CSRF).
 
 Хеширование паролей
@@ -22,58 +23,49 @@
     use Phalcon\Mvc\Controller;
 
     class UsersController extends Controller
+    {
+        public function registerAction()
         {
+            $user = new Users();
 
-            public function registerAction()
-            {
+            $login    = $this->request->getPost('login');
+            $password = $this->request->getPost('password');
 
-                $user = new Users();
+            $user->login = $login;
 
-                $login = $this->request->getPost('login');
-                $password = $this->request->getPost('password');
+            // Сохраняем пароль хешированным
+            $user->password = $this->security->hash($password);
 
-                $user->login = $login;
-
-                //Сохраняем пароль хешированным
-                $user->password = $this->security->hash($password);
-
-                $user->save();
-            }
-
+            $user->save();
         }
+    }
 
 Мы сохранили пароль хешированным с коэффициентом хеширования по-умолчанию. Более высокий коэффициент хеширования сделает пароль менее уязвимым, так как
 его шифрование будет медленным. Мы можем проверить правильность пароля следующим способом:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
     use Phalcon\Mvc\Controller;
 
     class SessionController extends Controller
+    {
+        public function loginAction()
         {
+            $login    = $this->request->getPost('login');
+            $password = $this->request->getPost('password');
 
-            public function loginAction()
-            {
-
-                $login = $this->request->getPost('login');
-                $password = $this->request->getPost('password');
-
-                $user = Users::findFirst(array(
-                    "login = ?0",
-                    "bind" => array($login)
-                ));
-                if ($user) {
-                    if ($this->security->checkHash($password, $user->password)) {
-                        //Пароль верный
-                    }
+            $user = Users::findFirstByLogin($login);
+            if ($user) {
+                if ($this->security->checkHash($password, $user->password)) {
+                    // Пароль верный
                 }
-
-                //неудачная проверка
             }
 
+            // неудачная проверка
         }
+    }
 
 Соль генерируется с использованием псевдослучайных байтов функции PHP openssl_random_pseudo_bytes_, поэтому необходимо, чтобы расширение openssl_ было загружено.
 
@@ -88,14 +80,14 @@
 
 .. code-block:: html+php
 
-        <?php echo Tag::form('session/login') ?>
+    <?php echo Tag::form('session/login') ?>
 
-            <!-- поля логина и пароля ... -->
+        <!-- поля логина и пароля ... -->
 
-            <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
-                value="<?php echo $this->security->getToken() ?>"/>
+        <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
+            value="<?php echo $this->security->getToken() ?>"/>
 
-        </form>
+    </form>
 
 После этого, в действии контроллера вы можете проверить CSRF-токен на правильность:
 
@@ -106,18 +98,28 @@
     use Phalcon\Mvc\Controller;
 
     class SessionController extends Controller
+    {
+        public function loginAction()
         {
-
-            public function loginAction()
-            {
-                if ($this->request->isPost()) {
-                    if ($this->security->checkToken()) {
-                        //Токен верный
-                    }
+            if ($this->request->isPost()) {
+                if ($this->security->checkToken()) {
+                    // Токен верный
                 }
             }
-
         }
+    }
+
+Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
+
+.. code-block:: php
+
+    <?php
+
+    $di->setShared('session', function () {
+        $session = new Phalcon\Session\Adapter\Files();
+        $session->start();
+        return $session;
+    });
 
 Также рекомендуется добавление каптчи (captcha_) в форму, чтобы полностью избежать рисков от этого типа атак.
 
@@ -128,17 +130,19 @@
 
 .. code-block:: php
 
-        <?php
+    <?php
 
-        $di->set('security', function(){
+    use Phalcon\Security;
 
-            $security = new Phalcon\Security();
+    $di->set('security', function () {
 
-            //Устанавливаем фактор хеширования в 12 раундов
-            $security->setWorkFactor(12);
+        $security = new Security();
 
-            return $security;
-        }, true);
+        // Устанавливаем фактор хеширования в 12 раундов
+        $security->setWorkFactor(12);
+
+        return $security;
+    }, true);
 
 Внешние источники
 -----------------

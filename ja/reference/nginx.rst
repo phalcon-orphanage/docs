@@ -1,5 +1,6 @@
 Nginx インストール ノート
 ========================
+
 Nginx_ は無料でオープンソースな高性能HTTPサーバで、リバースプロキシとしてだけでなく、IMAP/POP3のプロキシサーバとしても動きます。
 伝統的なサーバとは異なり、Nginx_ は要求を処理するスレッドに依存しません。
 その代わりに、はるかに拡張性の高いイベント駆動型（非同期）アーキテクチャを使用しています。
@@ -19,18 +20,18 @@ $_GET['_url'] をURIsとする場合:
 .. code-block:: nginx
 
     server {
+        listen 80;
 
-        listen   80;
         server_name localhost.dev;
 
         index index.php index.html index.htm;
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+
+        root /var/www/phalcon/public;
 
         try_files $uri $uri/ @rewrite;
 
         location @rewrite {
-            rewrite ^/(.*)$ /index.php?_url=/$1;
+            rewrite ^(.*)$ /index.php?_url=$1;
         }
 
         location ~ \.php {
@@ -46,7 +47,7 @@ $_GET['_url'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -59,13 +60,13 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 .. code-block:: nginx
 
     server {
+        listen 80;
 
-        listen   80;
         server_name localhost.dev;
 
         index index.php index.html index.htm;
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+
+        root /var/www/phalcon/public;
 
         location / {
             try_files $uri $uri/ /index.php;
@@ -81,7 +82,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -101,10 +102,8 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
         #access_log  /var/log/nginx/host.access.log  main;
 
-        set $root_path '/srv/www/htdocs/phalcon-website/public';
-
         location / {
-            root   $root_path;
+            root   /srv/www/htdocs/phalcon-website/public;
             index  index.php index.html index.htm;
 
             # if file exists return it right away
@@ -114,7 +113,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
             # otherwise rewrite it
             if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=/$1 last;
+                rewrite ^(.+)$ /index.php?_url=$1 last;
                 break;
             }
         }
@@ -133,7 +132,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /srv/www/htdocs/phalcon-website/public;
         }
     }
 
@@ -145,9 +144,10 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
 
     server {
         listen      80;
+
         server_name localhost;
-        set         $root_path '/var/www/$host/public';
-        root        $root_path;
+
+        root        /var/www/$host/public;
 
         access_log  /var/log/nginx/$host-access.log;
         error_log   /var/log/nginx/$host-error.log error;
@@ -157,7 +157,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         try_files $uri $uri/ @rewrite;
 
         location @rewrite {
-            rewrite ^/(.*)$ /index.php?_url=/$1;
+            rewrite ^(.*)$ /index.php?_url=$1;
         }
 
         location ~ \.php {
@@ -174,7 +174,7 @@ $_SERVER['REQUEST_URI'] をURIsとする場合:
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/$host/public;
         }
 
         location ~ /\.ht {

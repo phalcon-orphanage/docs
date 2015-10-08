@@ -1,5 +1,6 @@
 Universal Class Loader
 ======================
+
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` is a component that allows you to load project classes automatically,
 based on some predefined rules. Since this component is written in C, it provides the lowest overhead in
 reading and interpreting external PHP files.
@@ -10,7 +11,7 @@ not exist is used in any part of the code, a special handler will try to load it
 By loading classes on a need to load basis, the overall performance is increased since the only file
 reads that occur are for the files needed. This technique is called `lazy initialization`_.
 
-With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ compliant.
+With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ and `PSR-4 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md>`_ compliant.
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
@@ -25,19 +26,21 @@ the end of the paths.
 
     <?php
 
-    // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader;
 
-    //Register some namespaces
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some namespaces
     $loader->registerNamespaces(
         array(
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
-           "Example"         => "vendor/example/",
+           "Example"         => "vendor/example/"
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the
@@ -45,7 +48,7 @@ the end of the paths.
     $some = new Example\Adapter\Some();
 
 Registering Prefixes
-----------------------
+--------------------
 This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
 where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
 the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.
@@ -54,19 +57,21 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     <?php
 
-    // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader;
 
-    //Register some prefixes
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some prefixes
     $loader->registerPrefixes(
         array(
-           "Example_Base"    => "vendor/example/base/",
-           "Example_Adapter" => "vendor/example/adapter/",
-           "Example_"         => "vendor/example/",
+            "Example_Base"    => "vendor/example/base/",
+            "Example_Adapter" => "vendor/example/adapter/",
+            "Example_"        => "vendor/example/"
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the
@@ -83,8 +88,10 @@ It's important to register the directories in relevance order. Remember always a
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some directories
     $loader->registerDirs(
@@ -96,7 +103,7 @@ It's important to register the directories in relevance order. Remember always a
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // The required class will automatically include the file from
@@ -115,18 +122,20 @@ maintenance of the class list very cumbersome and it is not recommended.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some classes
     $loader->registerClasses(
         array(
             "Some"         => "library/OtherComponent/Other/Some.php",
-            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php",
+            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
         )
     );
 
-    // register autoloader
+    // Register autoloader
     $loader->register();
 
     // Requiring a class will automatically include the file it references
@@ -143,15 +152,15 @@ are using additional extensions you could set it with the method "setExtensions"
 
     <?php
 
-     // Creates the autoloader
+    // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
-    //Set file extensions to check
+    // Set file extensions to check
     $loader->setExtensions(array("php", "inc", "phb"));
 
 Modifying current strategies
 ----------------------------
-Additional data could be added to the existing values for strategies in the following way:
+Additional auto-loading data can be added to existing values in the following way:
 
 .. code-block:: php
 
@@ -160,13 +169,50 @@ Additional data could be added to the existing values for strategies in the foll
     // Adding more directories
     $loader->registerDirs(
         array(
-            "../app/library/"
+            "../app/library/",
             "../app/plugins/"
         ),
         true
     );
 
 Passing "true" as second parameter will merge the current values with new ones in any strategy.
+
+Security Layer
+--------------
+Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+Consider the following example:
+
+.. code-block:: php
+
+    <?php
+
+    // Basic autoloader
+    spl_autoload_register(function ($className) {
+        if (file_exists($className . '.php')) {
+            require $className . '.php';
+        }
+    });
+
+The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
+
+.. code-block:: php
+
+    <?php
+
+    // This variable is not filtered and comes from an insecure source
+    $className = '../processes/important-process';
+
+    // Check if the class exists triggering the auto-loader
+    if (class_exists($className)) {
+        // ...
+    }
+
+If '../processes/important-process.php' is a valid file, an external user could execute the file without
+authorization.
+
+To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invalid character from the class name
+reducing the possibility of being attacked.
 
 Autoloading Events
 ------------------
@@ -180,14 +226,16 @@ In the following example, the EventsManager is working with the class loader, al
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerNamespaces(array(
-       'Example\\Base' => 'vendor/example/base/',
-       'Example\\Adapter' => 'vendor/example/adapter/',
-       'Example' => 'vendor/example/'
-    ));
+    $loader->registerNamespaces(
+        array(
+            'Example\\Base'    => 'vendor/example/base/',
+            'Example\\Adapter' => 'vendor/example/adapter/',
+            'Example'          => 'vendor/example/'
+        )
+    );
 
-    //Listen all the loader events
-    $eventsManager->attach('loader', function($event, $loader) {
+    // Listen all the loader events
+    $eventsManager->attach('loader', function ($event, $loader) {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();
         }

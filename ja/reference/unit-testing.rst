@@ -1,5 +1,6 @@
 ユニットテスト
 ============
+
 適切なテストを書くことは、より良いソフトウェアを書く助けになります。適切なテストケースを組み立てれば、機能面のバグの多くを削減でき、より良いメンテナンスを行えるようになります。
 
 PHPunitとphalconの統合
@@ -28,51 +29,53 @@ PHPUnitをインストールしたら、「tests」ディレクトリをルー�
   app/
   public/
   tests/
-  
+
 次に、ユニットテストの前にアプリケーションを立ち上げるための「ヘルパー」ファイルが必要になります。
 
 PHPunitヘルパーファイル
-------------------------
+-----------------------
 ヘルパーファイルは、テスト実行のためにアプリケーションを立ち上げます。以下のサンプルファイルを、tests/ ディレクトリに TestHelper.php として保存してください。
 
 .. code-block:: php
 
-  <?php
-  use Phalcon\DI,
-      Phalcon\DI\FactoryDefault;
-  
-  ini_set('display_errors',1);
-  error_reporting(E_ALL);
-  
-  define('ROOT_PATH', __DIR__);
-  define('PATH_LIBRARY', __DIR__ . '/../app/library/');
-  define('PATH_SERVICES', __DIR__ . '/../app/services/');
-  define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
-  
-  set_include_path(
-      ROOT_PATH . PATH_SEPARATOR . get_include_path()
-  );
-  
-  // phalcon/incubator のために必要
-  include __DIR__ . "/../vendor/autoload.php";
-  
-  // アプリケーションのオートローダを使用してクラスをオートロードする
-  // composerの依存関係をオートロードする
-  $loader = new \Phalcon\Loader();
-  
-  $loader->registerDirs(array(
-      ROOT_PATH
-  ));
-  
-  $loader->register();
-  
-  $di = new FactoryDefault();
-  DI::reset();
-  
-  // 必要なサービスをDIに登録する
-  
-  DI::setDefault($di);
+    <?php
 
+    use Phalcon\DI;
+    use Phalcon\DI\FactoryDefault;
+
+    ini_set('display_errors',1);
+    error_reporting(E_ALL);
+
+    define('ROOT_PATH', __DIR__);
+    define('PATH_LIBRARY', __DIR__ . '/../app/library/');
+    define('PATH_SERVICES', __DIR__ . '/../app/services/');
+    define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
+
+    set_include_path(
+        ROOT_PATH . PATH_SEPARATOR . get_include_path()
+    );
+
+    // phalcon/incubator のために必要
+    include __DIR__ . "/../vendor/autoload.php";
+
+    // アプリケーションのオートローダを使用してクラスをオートロードする
+    // composerの依存関係をオートロードする
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(
+        array(
+            ROOT_PATH
+        )
+    );
+
+    $loader->register();
+
+    $di = new FactoryDefault();
+    DI::reset();
+
+    // 必要なサービスをDIに登録する
+
+    DI::setDefault($di);
 
 独自ライブラリのコンポーネントをテストするなら、それらをオートローダーに登録するか、アプリケーション本体のオートローダを使用してください。
 
@@ -119,7 +122,7 @@ PHPunit.xml ファイル
           <directory>./</directory>
       </testsuite>
   </phpunit>
-  
+
 phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
 この設定では、tests/ ディレクトリ配下の全てのテストが実行されます。
@@ -134,79 +137,78 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
 .. code-block:: php
 
-  <?php
-  use Phalcon\DI,
-      \Phalcon\Test\UnitTestCase as PhalconTestCase;
-  
-  abstract class UnitTestCase extends PhalconTestCase {
-  
-      /**
-       * @var \Voice\Cache
-       */
-      protected $_cache;
-  
-      /**
-       * @var \Phalcon\Config
-       */
-      protected $_config;
-  
-      /**
-       * @var bool
-       */
-      private $_loaded = false;
-  
-      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
-  
-          // テスト中に必要になる追加のサービスを読み込み
-          $di = DI::getDefault();
-  
-          // ここで必要なDIコンポーネントを取得する。config があるなら、それを parent に渡すことを忘れずに
-  
-          parent::setUp($di);
-  
-          $this->_loaded = true;
-      }
-  
-      /**
-       * Check if the test case is setup properly
-       * @throws \PHPUnit_Framework_IncompleteTestError;
-       */
-      public function __destruct() {
-          if(!$this->_loaded) {
-              throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
-          }
-      }
-  }
-  
+    <?php
+
+    use Phalcon\DI;
+    use Phalcon\Test\UnitTestCase as PhalconTestCase;
+
+    abstract class UnitTestCase extends PhalconTestCase
+    {
+        /**
+         * @var \Voice\Cache
+         */
+        protected $_cache;
+
+        /**
+         * @var \Phalcon\Config
+         */
+        protected $_config;
+
+        /**
+         * @var bool
+         */
+        private $_loaded = false;
+
+        public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+        {
+            // テスト中に必要になる追加のサービスを読み込み
+            $di = DI::getDefault();
+
+            // ここで必要なDIコンポーネントを取得する。config があるなら、それを parent に渡すことを忘れずに
+            parent::setUp($di);
+
+            $this->_loaded = true;
+        }
+
+        /**
+         * Check if the test case is setup properly
+         *
+         * @throws \PHPUnit_Framework_IncompleteTestError;
+         */
+        public function __destruct()
+        {
+            if (!$this->_loaded) {
+                throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
+            }
+        }
+    }
+
 ユニットテストを名前空間で分割することは、良い考えです。このテストのために、「Test」という名前空間を作りましょう。ファイルは \tests\Test\UnitTest.php という名前になります:
 
 .. code-block:: php
 
-  <?php
-  namespace Test;
-  /**
-   * Class UnitTest
-   */
-  class UnitTest extends \UnitTestCase {
-  
-  
-  
-      public function testTestCase() {
-  
-          $this->assertEquals('works',
-              'works',
-              'This is OK'
-          );
-  
-          $this->assertEquals('works',
-              'works1',
-              'This wil fail'
-          );
-  
-  
-      }
-  }
+    <?php
 
+    namespace Test;
+
+    /**
+     * Class UnitTest
+     */
+    class UnitTest extends \UnitTestCase
+    {
+        public function testTestCase()
+        {
+            $this->assertEquals('works',
+                'works',
+                'This is OK'
+            );
+
+            $this->assertEquals('works',
+                'works1',
+                'This will fail'
+            );
+        }
+    }
 
 いま、コマンドラインから \tests ディレクトリに入って「phpunit」コマンドを実行すると、以下の出力が得られます:
 
@@ -214,27 +216,27 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
   $ phpunit
   PHPUnit 3.7.23 by Sebastian Bergmann.
-  
+
   Configuration read from /private/var/www/tests/phpunit.xml
-  
+
   Time: 3 ms, Memory: 3.25Mb
-  
+
   There was 1 failure:
-  
+
   1) Test\UnitTest::testTestCase
-  This wil fail
+  This will fail
   Failed asserting that two strings are equal.
   --- Expected
   +++ Actual
   @@ @@
   -'works'
   +'works1'
-  
+
   /private/var/www/tests/Test/UnitTest.php:25
-  
+
   FAILURES!
   Tests: 1, Assertions: 2, Failures: 1.
-  
+
 これで、ユニットテストを作り始めることができます。以下のリンク先に、優れたガイドがあります(PHPUnitに慣れていないなら、PHPUnitのドキュメントをあわせて読むことをおすすめします):
 
 http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/

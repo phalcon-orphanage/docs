@@ -1,11 +1,11 @@
 Contextual Escaping
 ===================
 
-Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
-those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
+Websites and web applications are vulnerable to XSS_ attacks and although PHP provides escaping functionality, in some contexts
+it is not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping and is written in Zephir, providing
 the minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_
+We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_.
 
 Additionally, this component relies on mbstring_ to support almost any charset.
 
@@ -15,32 +15,32 @@ To illustrate how this component works and why it is important, consider the fol
 
     <?php
 
-        //Document title with malicious extra HTML tags
+        // Document title with malicious extra HTML tags
         $maliciousTitle = '</title><script>alert(1)</script>';
 
-        //Malicious CSS class name
-        $className = ';`(';
+        // Malicious CSS class name
+        $className      = ';`(';
 
-        //Malicious CSS font name
-        $fontName = 'Verdana"</style>';
+        // Malicious CSS font name
+        $fontName       = 'Verdana"</style>';
 
-        //Malicious Javascript text
+        // Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        //Create a escaper
-        $e = new Phalcon\Escaper();
+        // Create an escaper
+        $e              = new Phalcon\Escaper();
 
     ?>
 
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title><?php echo $e->escapeHtml($maliciousTitle) ?></title>
+        <title><?php echo $e->escapeHtml($maliciousTitle); ?></title>
 
         <style type="text/css">
-        .<?php echo $e->escapeCss($className) ?> {
-            font-family  : "<?php echo $e->escapeCss($fontName) ?>";
+        .<?php echo $e->escapeCss($className); ?> {
+            font-family: "<?php echo $e->escapeCss($fontName); ?>";
             color: red;
         }
         </style>
@@ -49,9 +49,9 @@ To illustrate how this component works and why it is important, consider the fol
 
     <body>
 
-        <div class='<?php echo $e->escapeHtmlAttr($className) ?>'>hello</div>
+        <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>hello</div>
 
-        <script>var some = '<?php echo $e->escapeJs($javascriptText) ?>'</script>
+        <script>var some = '<?php echo $e->escapeJs($javascriptText); ?>'</script>
 
     </body>
     </html>
@@ -69,9 +69,9 @@ The most common situation when inserting unsafe data is between HTML tags:
 
 .. code-block:: html
 
-    <div class="comments"><!-- Escape unstrusted data here! --></div>
+    <div class="comments"><!-- Escape untrusted data here! --></div>
 
-You can escape those data using the escapeHtml method:
+You can escape those data using the :code:`escapeHtml` method:
 
 .. code-block:: html+php
 
@@ -85,14 +85,14 @@ Which produces:
 
 Escaping HTML Attributes
 ------------------------
-Escape HTML attributes is different from escape a full HTML content. The escape works by changing every non-alphanumeric
+Escaping HTML attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric
 character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
 
 .. code-block:: html
 
-    <table width="Escape unstrusted data here!"><tr><td>Hello</td></tr></table>
+    <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-You can escape an HTML attribute by using the escapeHtmlAttr method:
+You can escape a HTML attribute by using the :code:`escapeHtmlAttr` method:
 
 .. code-block:: html+php
 
@@ -110,9 +110,9 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
 .. code-block:: html
 
-    <a href="Escape unstrusted data here!">Some link</a>
+    <a href="Escape untrusted data here!">Some link</a>
 
-You can escape an HTML attribute by using the escapeUrl method:
+You can escape a HTML attribute by using the :code:`escapeUrl` method:
 
 .. code-block:: html+php
 
@@ -130,9 +130,9 @@ CSS identifiers/values can be escaped too:
 
 .. code-block:: html
 
-    <a style="color: Escape unstrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape an HTML attribute by using the escapeCss method:
+You can escape a HTML attribute by using the :code:`escapeCss` method:
 
 .. code-block:: html+php
 
@@ -144,23 +144,23 @@ Which produces:
 
     <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
 
-Escaping Javascript
+Escaping JavaScript
 -------------------
-Strings to be inserted into javascript code also must be properly escaped:
+Strings to be inserted into JavaScript code also must be properly escaped:
 
 .. code-block:: html
 
-    <script>document.title = 'Escape unstrusted data here'</script>
+    <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape an HTML attribute by using the escapeJs method:
+You can escape a HTML attribute by using the :code:`escapeJs` method:
 
 .. code-block:: html+php
 
-    <script>document.title = '<?php echo $e->escapejs("'; alert(100); var x='"); ?>'</script>
+    <script>document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>'</script>
 
 .. code-block:: html
 
-    <script>alert('\x27\x3b\x20alert\x28100\x29\x3b\x20var\x20x\x3d\x27')</script>
+    <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
 
 .. _OWASP : https://www.owasp.org
 .. _XSS : https://www.owasp.org/index.php/XSS

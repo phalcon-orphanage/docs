@@ -1,11 +1,12 @@
 Генерация ссылок (URLs)
 =======================
+
 Компонент :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` позволяет генерировать ссылки для приложений Phalcon. Он может формировать ссылки
 основываясь на маршрутах.
 
 Указание базового URI
 ---------------------
-В зависимости от корня установленного приложение, может появиться необходимость указания базового URL.
+В зависимости от корня установленного приложения, может появиться необходимость указания базового URL.
 
 Например, если корневой каталог /var/www/htdocs, а ваше приложение установлено в /var/www/htdocs/invo, базовый URI (baseUri) будет  "/invo/".
 При использовании виртуальных хостов, или приложение установлено в корневой каталог, параметр baseUri будет "/".
@@ -15,7 +16,9 @@
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
     echo $url->getBaseUri();
 
 По умолчанию Phalcon самостоятельно выявляет необходимый baseUri, но в целях повышения производительности советуем указать его вручную:
@@ -24,7 +27,9 @@
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     // Относительный URI
     $url->setBaseUri('/invo/');
@@ -41,8 +46,10 @@
 
     <?php
 
-    $di->set('url', function(){
-        $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $di->set('url', function () {
+        $url = new Url();
         $url->setBaseUri('/invo/');
         return $url;
     });
@@ -55,7 +62,7 @@
 
 .. code-block:: php
 
-    <?php echo $url->get("products/save") ?>
+    <?php echo $url->get("products/save"); ?>
 
 Обратите внимание: указывать базовый URL нет необходимости. При использовании именованных маршрутов ссылки можно формировать динамически.
 Например, у вас есть такой маршрут:
@@ -64,10 +71,13 @@
 
     <?php
 
-    $route->add('/blog/{year}/{month}/{title}', array(
-        'controller' => 'posts',
-        'action' => 'show'
-    ))->setName('show-post');
+    $route->add(
+        "/blog/{year}/{month}/{title}",
+        array(
+            'controller' => 'posts',
+            'action'     => 'show'
+        )
+    )->setName('show-post');
 
 Ссылку на него можно сформировать таким образом:
 
@@ -75,13 +85,15 @@
 
     <?php
 
-    // Получится: /blog/2012/01/some-blog-post
-    $url->get(array(
-        'for' => 'show-post',
-        'year' => 2012,
-        'month' => '01',
-        'title' => 'some-blog-post'
-    ));
+    // This produces: /blog/2015/01/some-blog-post
+    $url->get(
+        array(
+            'for'   => 'show-post',
+            'year'  => 2015,
+            'month' => '01',
+            'title' => 'some-blog-post'
+        )
+    );
 
 Создание ссылок без Mod-Rewrite
 -------------------------------
@@ -91,7 +103,9 @@
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     // Указание базового адреса из $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
@@ -105,7 +119,9 @@
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     // Указание базового адреса используя $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
@@ -119,7 +135,9 @@
 
     <?php
 
-    $router = new Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
 
     // ... указание правил маршрутизации
 
@@ -157,13 +175,15 @@
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     // Динамический URI
     $url->setBaseUri('/');
 
     // Статические ресурсы проходят через CDN
-    $url->setStaticBaseUri('http://static.example.com/');
+    $url->setStaticBaseUri('http://static.mywebsite.com/');
 
 :doc:`Phalcon\\Tag <tags>` будет запрашивать как динамические, так и статические URI, используя этот компонент.
 

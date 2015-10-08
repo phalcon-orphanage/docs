@@ -1,5 +1,6 @@
-Формы
+Forms
 =====
+
 Компонент Phalcon\\Forms позволяет создавать и управлять формами вашего приложения.
 
 Ниже представлен базовый пример работы с формами:
@@ -8,9 +9,9 @@
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     $form = new Form();
 
@@ -18,10 +19,15 @@
 
     $form->add(new Text("telephone"));
 
-    $form->add(new Select("telephoneType", array(
-        'H' => 'Home',
-        'C' => 'Cell'
-    )));
+    $form->add(
+        new Select(
+            "telephoneType",
+            array(
+                'H' => 'Home',
+                'C' => 'Cell'
+            )
+        )
+    );
 
 Элементы форм выводятся по указанным при создании именам:
 
@@ -33,17 +39,17 @@
 
         <p>
             <label>Имя</label>
-            <?php echo $form->render("name") ?>
+            <?php echo $form->render("name"); ?>
         </p>
 
         <p>
             <label>Телефон</label>
-            <?php echo $form->render("telephone") ?>
+            <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
             <label>Тип телефона</label>
-            <?php echo $form->render("telephoneType") ?>
+            <?php echo $form->render("telephoneType"); ?>
         </p>
 
         <p>
@@ -60,7 +66,7 @@ html-атрибуты вторым параметром:
 
     <p>
         <label>Имя</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Введите своё имя')) ?>
+        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Введите своё имя')); ?>
     </p>
 
 Атрибуты HTML могут быть указаны в параметрах при создании элемента:
@@ -69,11 +75,15 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    $form->add(new Text("name", array(
-        'maxlength' => 30,
-        'placeholder' => 'Введите своё имя'
-    )));
-
+    $form->add(
+        new Text(
+            "name",
+            array(
+                'maxlength'   => 30,
+                'placeholder' => 'Введите своё имя'
+            )
+        )
+    );
 
 Инициализация
 -------------
@@ -84,9 +94,9 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     class ContactForm extends Form
     {
@@ -96,12 +106,20 @@ html-атрибуты вторым параметром:
 
             $this->add(new Text("telephone"));
 
-            $this->add(new Select("telephoneType", TelephoneTypes::find(), array(
-                'using' => array('id', 'name')
-            )));
+            $this->add(
+                new Select(
+                    "telephoneType",
+                    TelephoneTypes::find(),
+                    array(
+                        'using' => array(
+                            'id',
+                            'name'
+                        )
+                    )
+                )
+            );
         }
     }
-
 
 Формы :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` наследуются от :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`,
 предоставляя доступ к службам приложения, если это необходимо:
@@ -110,13 +128,12 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class ContactForm extends Form
     {
-
         /**
          * Этот метод возвращает значение по умолчанию для поля 'csrf'
          */
@@ -127,14 +144,13 @@ html-атрибуты вторым параметром:
 
         public function initialize()
         {
-
             // Установка сущности
             $this->setEntity($this);
 
             // Установка поля 'email'
             $this->add(new Text("email"));
 
-            // Добавление скрытого поля csrf
+            // Добавление скрытого поля CSRF
             $this->add(new Hidden("csrf"));
         }
     }
@@ -145,9 +161,9 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class UsersForm extends Form
     {
@@ -157,9 +173,8 @@ html-атрибуты вторым параметром:
          * @param Users $user
          * @param array $options
          */
-        public function initialize($user, $options)
+        public function initialize(Users $user, $options)
         {
-
             if ($options['edit']) {
                 $this->add(new Hidden('id'));
             } else {
@@ -176,7 +191,12 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    $form = new UsersForm(new Users(), array('edit' => true));
+    $form = new UsersForm(
+        new Users(),
+        array(
+            'edit' => true
+        )
+    );
 
 Валидация
 ---------
@@ -187,20 +207,28 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    use Phalcon\Forms\Element\Text,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\StringLength;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Validation\Validator\PresenceOf;
+    use Phalcon\Validation\Validator\StringLength;
 
     $name = new Text("name");
 
-    $name->addValidator(new PresenceOf(array(
-        'message' => 'Поле Name обязательно для заполнения'
-    )));
+    $name->addValidator(
+        new PresenceOf(
+            array(
+                'message' => 'Поле Name обязательно для заполнения'
+            )
+        )
+    );
 
-    $name->addValidator(new StringLength(array(
-        'min' => 10,
-        'messageMinimum' => 'Значение поля Name слишком короткое'
-    )));
+    $name->addValidator(
+        new StringLength(
+            array(
+                'min'            => 10,
+                'messageMinimum' => 'Значение поля Name слишком короткое'
+            )
+        )
+    );
 
     $form->add($name);
 
@@ -227,11 +255,11 @@ html-атрибуты вторым параметром:
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
         echo 'Сообщение создано ', $attribute, ':', "\n";
+
         foreach ($messages as $message) {
             echo $message, '<br>';
         }
     }
-
 
 Так же можно получить сообщения конкретного элемента:
 
@@ -243,11 +271,9 @@ html-атрибуты вторым параметром:
         echo $message, '<br>';
     }
 
-
 Фильтрация
 ----------
 Форма может фильтровать данные до валидации, вы можете установить фильтры в каждом из элементов:
-
 
 Настройка пользовательских параметров
 -------------------------------------
@@ -272,7 +298,7 @@ html-атрибуты вторым параметром:
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name') ?>
+    <?php echo $form->render('name'); ?>
 
 Проверить введённые пользователем значения в форму можно следующим образом:
 
@@ -297,11 +323,9 @@ html-атрибуты вторым параметром:
 
     class Preferences
     {
-
         public $timezone = 'Europe/Amsterdam';
 
         public $receiveEmails = 'No';
-
     }
 
 Использование данного класса в виде сущности позволяет форме брать из него значения по умолчанию:
@@ -312,17 +336,27 @@ html-атрибуты вторым параметром:
 
     $form = new Form(new Preferences());
 
-    $form->add(new Select("timezone", array(
-        'America/New_York' => 'New York',
-        'Europe/Amsterdam' => 'Amsterdam',
-        'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokyo' => 'Tokyo',
-    )));
+    $form->add(
+        new Select(
+            "timezone",
+            array(
+                'America/New_York'  => 'New York',
+                'Europe/Amsterdam'  => 'Amsterdam',
+                'America/Sao_Paulo' => 'Sao Paulo',
+                'Asia/Tokyo'        => 'Tokyo'
+            )
+        )
+    );
 
-    $form->add(new Select("receiveEmails", array(
-        'Yes' => 'Yes, please!',
-        'No' => 'No, thanks'
-    )));
+    $form->add(
+        new Select(
+            "receiveEmails",
+            array(
+                'Yes' => 'Yes, please!',
+                'No'  => 'No, thanks'
+            )
+        )
+    );
 
 Сущности могут содержать геттеры, приоритет которых выше, чем у публичных свойств. Эти методы
 дают вам больше свободы для работы со значениями:
@@ -333,7 +367,6 @@ html-атрибуты вторым параметром:
 
     class Preferences
     {
-
         public $timezone;
 
         public $receiveEmails;
@@ -347,7 +380,6 @@ html-атрибуты вторым параметром:
         {
             return 'No';
         }
-
     }
 
 Элементы форм
@@ -387,7 +419,9 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    use Phalcon\Mvc\Form;
+
+    class ContactForm extends Form
     {
         public function beforeValidation()
         {
@@ -436,16 +470,18 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    class ContactForm extends Phalcon\Forms\Form
+    use Phalcon\Forms\Form;
+
+    class ContactForm extends Form
     {
         public function initialize()
         {
-            //...
+            // ...
         }
 
         public function renderDecorated($name)
         {
-            $element = $this->get($name);
+            $element  = $this->get($name);
 
             // Собираем все сгенерированные сообщения для текущего элемента
             $messages = $this->getMessagesFor($element->getName());
@@ -464,7 +500,6 @@ beforeValidation и afterValidation. Данные методы позволяю�
             echo $element;
             echo '</p>';
         }
-
     }
 
 В представлении:
@@ -489,9 +524,9 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     class MyElement extends Element
     {
-        public function render($attributes=null)
+        public function render($attributes = null)
         {
-            $html = //... немного html-кода
+            $html = // ... немного HTML-кода
             return $html;
         }
     }
@@ -505,9 +540,11 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    $di['forms'] = function() {
-        return new Phalcon\Forms\Manager();
-    }
+    use Phalcon\Forms\Manager as FormsManager;
+
+    $di['forms'] = function () {
+        return new FormsManager();
+    };
 
 Формы добавляются к менеджеру форм и в дальнейшем могут быть доступны через уникальное имя:
 

@@ -1,5 +1,6 @@
 Списки Контроля Доступа (ACL)
 =============================
+
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` предоставляет простое и легкое управление контролем доступа и прикрепленными
 разрешениями. `Список контроля доступа`_ (ACL) позволяет приложению управлять доступом к своим областям и основным
 запрошенным объектам.
@@ -16,7 +17,11 @@
 
 .. code-block:: php
 
-    <?php $acl = new \Phalcon\Acl\Adapter\Memory();
+    <?php
+
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    $acl = new AclList();
 
 По умолчанию :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` предоставляет доступ к действию над ресурсом, которое еще не было
 определенно в ACL. Чтобы увеличить уровень безопасности мы можем указать уровень "запрещено", как уровень по умолчанию.
@@ -38,9 +43,12 @@
 
     <?php
 
-    // Создаем роли
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    use Phalcon\Acl\Role;
+
+    // Создаем роли.
+    // The first parameter is the name, the second parameter is an optional description.
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // Добавляем "Guests" в список ACL
     $acl->addRole($roleGuests);
@@ -61,8 +69,10 @@
 
     <?php
 
+    use Phalcon\Acl\Resource;
+
     // Определяем ресурс "Customers"
-    $customersResource = new \Phalcon\Acl\Resource("Customers");
+    $customersResource = new Resource("Customers");
 
     // Добавим ресурс "Customers" с несколькими операциями
     $acl->addResource($customersResource, "search");
@@ -107,9 +117,13 @@
 
     <?php
 
+    use Phalcon\Acl\Role;
+
+    // ...
+
     // Создаем несколько ролей
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // Добавляем роль "Guests"
     $acl->addRole($roleGuests);
@@ -127,16 +141,19 @@
 
     <?php
 
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    // ...
+
     // Проверяем существует ли сериализованный файл
-    if (!file_exists("app/security/acl.data")) {
+    if (!is_file("app/security/acl.data")) {
 
-        $acl = new \Phalcon\Acl\Adapter\Memory();
+        $acl = new AclList();
 
-        //... Определяем роли, ресурсы, доступ и т.д.
+        // ... Определяем роли, ресурсы, доступ и т.д.
 
         // Сохраняем сериализованный объект в файл
         file_put_contents("app/security/acl.data", serialize($acl));
-
     } else {
 
          // Восстанавливаем ACL объект из текстового файла
@@ -150,19 +167,21 @@
         echo "Доступ запрещен :(";
     }
 
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+
 События ACL
 -----------
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` может отправлять события в :doc:`EventsManager <events>`. События срабатывают
 используя тип "acl". Некоторые события могут возвращать boolean значение 'false', чтобы прервать текущую операцию.
 Поддерживаются следующие типы событий:
 
-+----------------------+------------------------------------------------------------+----------------------------+
-| Название события     | Когда срабатывает                                          | Может остановить операцию? |
-+======================+============================================================+============================+
-| beforeCheckAccess    | Срабатывает перед проверкой доступа роли/ресурса           | Да                         |
-+----------------------+------------------------------------------------------------+----------------------------+
-| afterCheckAccess     | Срабатывает после проверки доступа роли/ресурса            | Нет                        |
-+----------------------+------------------------------------------------------------+----------------------------+
++-------------------+--------------------------------------------------+----------------------------+
+| Название события  | Когда срабатывает                                | Может остановить операцию? |
++===================+==================================================+============================+
+| beforeCheckAccess | Срабатывает перед проверкой доступа роли/ресурса | Да                         |
++-------------------+--------------------------------------------------+----------------------------+
+| afterCheckAccess  | Срабатывает после проверки доступа роли/ресурса  | Нет                        |
++-------------------+--------------------------------------------------+----------------------------+
 
 В следующем примере показано, как прикрепить слушателей (listeners) к компоненту:
 
@@ -170,22 +189,27 @@
 
     <?php
 
+    use Phalcon\Acl\Adapter\Memory as AclList;
+    use Phalcon\Events\Manager as EventsManager;
+
+    // ...
+
     // Создаем менеджер событий
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     // Прикрепляем слушателя (функцию/callback) к типу "acl"
-    $eventsManager->attach("acl", function($event, $acl) {
-        if ($event->getType() == 'beforeCheckAccess') {
+    $eventsManager->attach("acl", function ($event, $acl) {
+        if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
                     $acl->getActiveAccess();
         }
     });
 
-    $acl = new \Phalcon\Acl\Adapter\Memory();
+    $acl = new AclList();
 
     // Настраиваем $acl
-    //...
+    // ...
 
     // Присваиваем менеджера событий к компоненту ACL
     $acl->setEventsManager($eventManagers);

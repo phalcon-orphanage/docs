@@ -20,8 +20,7 @@
         server_name localhost.dev;
 
         index index.php index.html index.htm;
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         try_files $uri $uri/ @rewrite;
 
@@ -42,7 +41,7 @@
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -61,8 +60,7 @@
         server_name localhost.dev;
 
         index index.php index.html index.htm;
-        set $root_path '/var/www/phalcon/public';
-        root $root_path;
+        root /var/www/phalcon/public;
 
         location / {
             try_files $uri $uri/ /index.php;
@@ -78,7 +76,7 @@
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -99,10 +97,8 @@
 
         #access_log  /var/log/nginx/host.access.log  main;
 
-        set $root_path '/srv/www/htdocs/phalcon-website/public';
-
         location / {
-            root   $root_path;
+            root   /srv/www/htdocs/phalcon-website/public;
             index  index.php index.html index.htm;
 
             # if file exists return it right away
@@ -131,7 +127,7 @@
         }
 
         location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root $root_path;
+            root /srv/www/htdocs/phalcon-website/public;
         }
     }
 

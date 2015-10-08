@@ -1,5 +1,6 @@
-Микроприложения
-===============
+Micro Applications
+==================
+
 С помощью Phalcon можно создавать приложения по типу "Микрофреймворк".
 Для этого, необходимо написать всего лишь несколько строк кода. Микроприложения подходят для реализации
 небольших приложений, различныx API и прототипов на практике.
@@ -8,7 +9,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -24,7 +27,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
 Создание путей
 --------------
@@ -95,8 +100,18 @@ HTTP используется, чтобы запросы путей соотве
     $app->patch('/api/products/update/{id}', "info_product");
 
     // Совпадет, если HTTP-метод - GET или POST
-    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    // Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 Пути с параметрами
 ^^^^^^^^^^^^^^^^^^
@@ -137,7 +152,7 @@ HTTP используется, чтобы запросы путей соотве
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Работа с заголовками ответов (Responses)
@@ -161,7 +176,13 @@ HTTP используется, чтобы запросы путей соотве
 
     // Возврат JSON
     $app->get('/get/some-json', function () {
-        echo json_encode(array("some", "important", "data"));
+        echo json_encode(
+            array(
+                "some",
+                "important",
+                "data"
+            )
+        );
     });
 
 В дополнение к этому, у вас есть доступ к сервису :doc:`"response" <response>`, благодаря которому вы
@@ -178,7 +199,6 @@ HTTP используется, чтобы запросы путей соотве
 
         // Вывод содержимого файла
         readfile("data.txt");
-
     });
 
 Или создайте объект класса Response и верните его из обработчика:
@@ -201,7 +221,6 @@ HTTP используется, чтобы запросы путей соотве
         // Возвращаем объект Response
         return $response;
     });
-
 
 Создание перенаправлений (Redirects)
 ------------------------------------
@@ -233,21 +252,22 @@ HTTP используется, чтобы запросы путей соотве
     // Установка маршрута с именем "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. здесь показываем текст статьи
+        // ... здесь показываем текст статьи
 
     })->setName('show-post');
 
     // Где-нибудь используем наш новый адрес
-    $app->get('/', function() use ($app) {
+    $app->get('/', function () use ($app) {
 
-        echo '<a href="', $app->url->get(array(
-            'for' => 'show-post',
-            'title' => 'php-is-a-great-framework',
-            'year' => 2012
-        )), '">Show the post</a>';
+        echo '<a href="', $app->url->get(
+            array(
+                'for'   => 'show-post',
+                'title' => 'php-is-a-great-framework',
+                'year'  => 2015
+            )
+        ), '">Show the post</a>';
 
     });
-
 
 Работа с Внедрением зависимостей (Dependency Injector)
 ------------------------------------------------------
@@ -259,13 +279,13 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    use Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Micro,
-        Phalcon\Config\Adapter\Ini as IniConfig;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
 
-    $di->set('config', function() {
+    $di->set('config', function () {
         return new IniConfig("config.ini");
     });
 
@@ -288,19 +308,21 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
     $app = new Micro();
 
     // Установка сервиса базы данных
-    $app['db'] = function() {
-        return new MysqlAdapter(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "test_db"
-        ));
+    $app['db'] = function () {
+        return new MysqlAdapter(
+            array(
+                "host"     => "localhost",
+                "username" => "root",
+                "password" => "secret",
+                "dbname"   => "test_db"
+            )
+        );
     };
 
     $app->get('/blog', function () use ($app) {
@@ -334,13 +356,15 @@ HTTP используется, чтобы запросы путей соотве
 
     $loader = new \Phalcon\Loader();
 
-    $loader->registerDirs(array(
-        __DIR__ . '/models/'
-    ))->register();
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function(){
+    $app->get('/products/find', function () {
 
         foreach (Products::find() as $product) {
             echo $product->name, '<br>';
@@ -379,10 +403,10 @@ HTTP используется, чтобы запросы путей соотве
         Phalcon\Events\Manager as EventsManager;
 
     // Создаём менеджер событий
-    $eventManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
     // Слушаем все события приложения
-    $eventManager->attach('micro', function($event, $app) {
+    $eventsManager->attach('micro', function ($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
@@ -394,13 +418,12 @@ HTTP используется, чтобы запросы путей соотве
                 return false;
             }
         }
-
     });
 
     $app = new Micro();
 
     // Привязываем менеджер событий к приложению
-    $app->setEventsManager($eventManager);
+    $app->setEventsManager($eventsManager);
 
 Промежуточные события
 ---------------------
@@ -414,25 +437,31 @@ HTTP используется, чтобы запросы путей соотве
 
     // Выполнится до того, как выполнится любой из маршрутов
     // Возврат false отменит выполнение маршрута
-    $app->before(function() use ($app) {
+    $app->before(function () use ($app) {
         if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            // Return false stops the normal execution
             return false;
         }
+
         return true;
     });
 
-    $app->map('/api/robots', function(){
+    $app->map('/api/robots', function () {
         return array(
             'status' => 'OK'
         );
     });
 
-    $app->after(function() use ($app) {
+    $app->after(function () use ($app) {
         // Это выполнится после того, как выполнится маршрут
         echo json_encode($app->getReturnedValue());
     });
 
-    $app->finish(function() use ($app) {
+    $app->finish(function () use ($app) {
         // Это выполнится после того, как был обработан запрос
     });
 
@@ -442,12 +471,12 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    $app->finish(function() use ($app) {
-        //First 'finish' middleware
+    $app->finish(function () use ($app) {
+        // First 'finish' middleware
     });
 
-    $app->finish(function() use ($app) {
-        //Second 'finish' middleware
+    $app->finish(function () use ($app) {
+        // Second 'finish' middleware
     });
 
 Код из связанных событий может быть повторно использован в отдельных классах:
@@ -467,15 +496,15 @@ HTTP используется, чтобы запросы путей соотве
     {
         public function call($application)
         {
-
-            $cache = $application['cache'];
+            $cache  = $application['cache'];
             $router = $application['router'];
 
-            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
             // Проверяем, закэширован ли запрос
             if ($cache->exists($key)) {
                 echo $cache->get($key);
+
                 return false;
             }
 
@@ -536,17 +565,18 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class PostsController extends Controller
+    {
         public function index()
         {
-            //...
+            // ...
         }
 
         public function show($slug)
         {
-            //...
+            // ...
         }
     }
 
@@ -568,13 +598,13 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Http\Response;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
     // Взвращаем ответ
-    $app->get('/welcome/index', function() {
+    $app->get('/welcome/index', function () {
 
         $response = new Response();
 
@@ -596,22 +626,44 @@ HTTP используется, чтобы запросы путей соотве
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function() {
-        $view = new \Phalcon\Mvc\View();
+    $app['view'] = function () {
+        $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
 
     // Возвращаем отрисованное представление
-    $app->get('/products/show', function() use ($app) {
+    $app->get('/products/show', function () use ($app) {
 
         // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
         echo $app['view']->render('products/show', array(
-            'id' => 100,
+            'id'   => 100,
             'name' => 'Artichoke'
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function () {
+        throw new \Exception("An error");
+    });
+
+    $app->error(
+        function ($exception) {
+            echo "An error has occurred";
+        }
+    );
+
+If the handler returns "false" the exception is stopped.
 
 Внешние источники
 -----------------

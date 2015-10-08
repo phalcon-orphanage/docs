@@ -1,5 +1,6 @@
 ORMにおけるキャッシュ
 ==================
+
 Every application is different, we could have models whose data change frequently and others that rarely change.
 Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
 the complex connection/communication processes that PHP must do in each request to obtain data from the database.
@@ -25,19 +26,27 @@ First, you must register it as a service in the services container:
 
     <?php
 
-    //Set the models cache service
-    $di->set('modelsCache', function() {
+    use Phalcon\Cache\Frontend\Data as FrontendData;
+    use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
-        //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-            "lifetime" => 86400
-        ));
+    // Set the models cache service
+    $di->set('modelsCache', function () {
 
-        //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
+        // Cache data for one day by default
+        $frontCache = new FrontendData(
+            array(
+                "lifetime" => 86400
+            )
+        );
+
+        // Memcached connection settings
+        $cache = new BackendMemcache(
+            $frontCache,
+            array(
+                "host" => "localhost",
+                "port" => "11211"
+            )
+        );
 
         return $cache;
     });
@@ -53,17 +62,30 @@ as an anonymous function. Once the cache setup is properly defined you could cac
     $products = Products::find();
 
     // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache")
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key" => "my-cache"
+            )
+        )
+    );
 
     // Cache the resultset for only for 5 minutes
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key"      => "my-cache",
+                "lifetime" => 300
+            )
+        )
+    );
 
     // Using a custom cache
-    $products = Products::find(array("cache" => $myCache));
+    $products = Products::find(
+        array(
+            "cache" => $myCache
+        )
+    );
 
 Caching could be also applied to resultsets generated using relationships:
 
@@ -72,17 +94,26 @@ Caching could be also applied to resultsets generated using relationships:
     <?php
 
     // Query some post
-    $post = Post::findFirst();
+    $post     = Post::findFirst();
 
     // Get comments related to a post, also cache it
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key")
-    ));
+    $comments = $post->getComments(
+        array(
+            "cache" => array(
+                "key" => "my-key"
+            )
+        )
+    );
 
     // Get comments related to a post, setting lifetime
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key", "lifetime" => 3600)
-    ));
+    $comments = $post->getComments(
+        array(
+            "cache" => array(
+                "key"      => "my-key",
+                "lifetime" => 3600
+            )
+        )
+    );
 
 When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
 
@@ -100,19 +131,19 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
-        public static function find($parameters=null)
+    class Robots extends Model
+    {
+        public static function find($parameters = null)
         {
             return parent::find($parameters);
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
             return parent::findFirst($parameters);
         }
-
     }
 
 By doing this, you're intercepting all the calls to these methods, this way, you can add a cache
@@ -123,9 +154,10 @@ a static property to avoid that a record would be queried several times in a sam
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         protected static $_cache = array();
 
         /**
@@ -135,6 +167,7 @@ a static property to avoid that a record would be queried several times in a sam
         protected static function _createKey($parameters)
         {
             $uniqueKey = array();
+
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
                     $uniqueKey[] = $key . ':' . $value;
@@ -144,29 +177,28 @@ a static property to avoid that a record would be queried several times in a sam
                     }
                 }
             }
+
             return join(',', $uniqueKey);
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-
-            //Create an unique key based on the parameters
+            // Create an unique key based on the parameters
             $key = self::_createKey($parameters);
 
             if (!isset(self::$_cache[$key])) {
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = parent::find($parameters);
             }
 
-            //Return the result in the cache
+            // Return the result in the cache
             return self::$_cache[$key];
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
             // ...
         }
-
     }
 
 Access the database is several times slower than calculate a cache key, you're free in implement the
@@ -180,38 +212,37 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
 
     <?php
 
-    public static function find($parameters=null)
+    public static function find($parameters = null)
     {
-
-        //Create an unique key based on the parameters
+        // Create an unique key based on the parameters
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
 
-            //We're using APC as second cache
+            // We're using APC as second cache
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Store the result in the memory cache
+                // Store the result in the memory cache
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //There are no memory or apc cache
+            // There are no memory or apc cache
             $data = parent::find($parameters);
 
-            //Store the result in the memory cache
+            // Store the result in the memory cache
             self::$_cache[$key] = $data;
 
-            //Store the result in APC
+            // Store the result in APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Return the result in the cache
+        // Return the result in the cache
         return self::$_cache[$key];
     }
 
@@ -222,22 +253,23 @@ you can create a base class for all of them:
 
     <?php
 
-    class CacheableModel extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class CacheableModel extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // ... Create a cache key based on the parameters
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-            //.. custom caching strategy
+            // ... Custom caching strategy
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
-            //.. custom caching strategy
+            // ... Custom caching strategy
         }
     }
 
@@ -262,9 +294,14 @@ cacheable we pass the key 'cache' in the array of parameters:
     <?php
 
     // Cache the resultset for only for 5 minutes
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key"      => "my-cache",
+                "lifetime" => 300
+            )
+        )
+    );
 
 This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
 we can override the find/findFirst method to force every query to be cached:
@@ -273,27 +310,27 @@ we can override the find/findFirst method to force every query to be cached:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // ... Create a cache key based on the parameters
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-
-            //Convert the parameters to an array
+            // Convert the parameters to an array
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
 
-            //Check if a cache key wasn't passed
-            //and create the cache parameters
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
-                    "key" => self::_createKey($parameters),
+                    "key"      => self::_createKey($parameters),
                     "lifetime" => 300
                 );
             }
@@ -301,9 +338,9 @@ we can override the find/findFirst method to force every query to be cached:
             return parent::find($parameters);
         }
 
-        public static function findFirst($parameters=null)
+        public static function findFirst($parameters = null)
         {
-            //...
+            // ...
         }
 
     }
@@ -321,16 +358,20 @@ This language gives you much more freedom to create all kinds of queries. Of cou
 
     $query = $this->modelsManager->createQuery($phql);
 
-    $query->setCache(array(
-        "key" => "cars-by-name",
-        "lifetime" => 300
-    ));
+    $query->cache(
+        array(
+            "key"      => "cars-by-name",
+            "lifetime" => 300
+        )
+    );
 
-    $cars = $query->execute(array(
-        'name' => 'Audi'
-    ));
+    $cars = $query->execute(
+        array(
+            'name' => 'Audi'
+        )
+    );
 
-If you don't want to use the implicit cache just save the resulset into your favorite cache backend:
+If you don't want to use the implicit cache just save the resultset into your favorite cache backend:
 
 .. code-block:: php
 
@@ -338,9 +379,12 @@ If you don't want to use the implicit cache just save the resulset into your fav
 
     $phql = "SELECT * FROM Cars WHERE name = :name:";
 
-    $cars = $this->modelsManager->executeQuery($phql, array(
-        'name' => 'Audi'
-    ));
+    $cars = $this->modelsManager->executeQuery(
+        $phql,
+        array(
+            'name' => 'Audi'
+        )
+    );
 
     apc_store('my-cars', $cars);
 
@@ -352,13 +396,13 @@ Some models may have relationships to other models. This allows us to easily che
 
     <?php
 
-    //Get some invoice
-    $invoice = Invoices::findFirst();
+    // Get some invoice
+    $invoice  = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer;
 
-    //Print his/her name
+    // Print his/her name
     echo $customer->name, "\n";
 
 This example is very simple, a customer is queried and can be used as required, for example, to show its name.
@@ -368,15 +412,15 @@ This also applies if we retrieve a set of invoices to show customers that corres
 
     <?php
 
-    //Get a set of invoices
-    // SELECT * FROM invoices
+    // Get a set of invoices
+    // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
-        //Get the customer related to the invoice
-        // SELECT * FROM customers WHERE id = ?
+        // Get the customer related to the invoice
+        // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
-        //Print his/her name
+        // Print his/her name
         echo $customer->name, "\n";
     }
 
@@ -388,16 +432,21 @@ the records instead of re-querying them again and again:
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         public function initialize()
         {
-            $this->belongsTo("customers_id", "Customer", "id", array(
-                'reusable' => true
-            ));
+            $this->belongsTo(
+                "customers_id",
+                "Customer",
+                "id",
+                array(
+                    'reusable' => true
+                )
+            );
         }
-
     }
 
 This cache works in memory only, this means that cached data are released when the request is terminated. You can
@@ -407,9 +456,10 @@ add a more sophisticated cache for this scenario overriding the models manager:
 
     <?php
 
-    class CustomModelsManager extends \Phalcon\Mvc\Model\Manager
-    {
+    use Phalcon\Mvc\Model\Manager as ModelManager;
 
+    class CustomModelsManager extends ModelManager
+    {
         /**
          * Returns a reusable object from the cache
          *
@@ -417,14 +467,14 @@ add a more sophisticated cache for this scenario overriding the models manager:
          * @param string $key
          * @return object
          */
-        public function getReusableRecords($modelName, $key){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function getReusableRecords($modelName, $key)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 return apc_fetch($key);
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             return parent::getReusableRecords($modelName, $key);
         }
 
@@ -435,15 +485,15 @@ add a more sophisticated cache for this scenario overriding the models manager:
          * @param string $key
          * @param mixed $records
          */
-        public function setReusableRecords($modelName, $key, $records){
-
-            //If the model is Products use the APC cache
-            if ($modelName == 'Products'){
+        public function setReusableRecords($modelName, $key, $records)
+        {
+            // If the model is Products use the APC cache
+            if ($modelName == 'Products') {
                 apc_store($key, $records);
                 return;
             }
 
-            //For the rest, use the memory cache
+            // For the rest, use the memory cache
             parent::setReusableRecords($modelName, $key, $records);
         }
     }
@@ -454,13 +504,13 @@ Do not forget to register the custom models manager in the DI:
 
     <?php
 
-    $di->setShared('modelsManager', function() {
+    $di->setShared('modelsManager', function () {
         return new CustomModelsManager();
     });
 
 関連するレコードのキャッシュ
 -----------------------
-When a related record is queried, the ORM internally builds the appropiate condition and gets the required records using find/findFirst
+When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find/findFirst
 in the target model according to the following table:
 
 +---------------------+---------------------------------------------------------------------------------------------------------------+
@@ -479,13 +529,13 @@ This means that when you get a related record you could intercept how these data
 
     <?php
 
-    //Get some invoice
-    $invoice = Invoices::findFirst();
+    // Get some invoice
+    $invoice  = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
 
-    //Same as above
+    // Same as above
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
 Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
@@ -494,12 +544,13 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
-        public static function findFirst($parameters=null)
+    class Invoices extends Model
+    {
+        public static function findFirst($parameters = null)
         {
-            //.. custom caching strategy
+            // .. custom caching strategy
         }
     }
 
@@ -513,30 +564,31 @@ to obtain all entities:
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // ... Create a cache key based on the parameters
         }
 
         protected static function _getCache($key)
         {
-            // returns data from a cache
+            // Returns data from a cache
         }
 
         protected static function _setCache($key)
         {
-            // stores data in the cache
+            // Stores data in the cache
         }
 
-        public static function find($parameters=null)
+        public static function find($parameters = null)
         {
-            //Create a unique key
-            $key = self::_createKey($parameters);
+            // Create a unique key
+            $key     = self::_createKey($parameters);
 
-            //Check if there are data in the cache
+            // Check if there are data in the cache
             $results = self::_getCache($key);
 
             // Valid data is an object
@@ -549,16 +601,16 @@ to obtain all entities:
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
 
-                //Query the related customer
+                // Query the related customer
                 $customer = $invoice->customer;
 
-                //Assign it to the record
+                // Assign it to the record
                 $invoice->customer = $customer;
 
                 $results[] = $invoice;
             }
 
-            //Store the invoices in the cache + their customers
+            // Store the invoices in the cache + their customers
             self::_setCache($key, $results);
 
             return $results;
@@ -566,7 +618,7 @@ to obtain all entities:
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
     }
 
@@ -577,30 +629,33 @@ Note that this process can also be performed with PHQL following an alternative 
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Invoices extends Model
+    {
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // Add relations and initialize other stuff
         }
 
         protected static function _createKey($conditions, $params)
         {
-            // .. create a cache key based on the parameters
+            // ... Create a cache key based on the parameters
         }
 
-        public function getInvoicesCustomers($conditions, $params=null)
+        public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql = "SELECT Invoices.*, Customers.*
+            $phql  = "SELECT Invoices.*, Customers.*
             FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
-            $query->setCache(array(
-                "key" => self::_createKey($conditions, $params),
-                "lifetime" => 300
-            ));
+            $query->cache(
+                array(
+                    "key"      => self::_createKey($conditions, $params),
+                    "lifetime" => 300
+                )
+            );
 
             return $query->execute($params);
         }
@@ -622,37 +677,51 @@ According to the range where the primary key is located we choose a different ca
 | > 20000             | mongo3             |
 +---------------------+--------------------+
 
-The easiest way is adding an static method to the model that chooses the right cache to be used:
+The easiest way is adding a static method to the model that chooses the right cache to be used:
 
 .. code-block:: php
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
-    {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
         public static function queryCache($initial, $final)
         {
             if ($initial >= 1 && $final < 10000) {
-                return self::find(array(
-                    'id >= ' . $initial . ' AND id <= '.$final,
-                    'cache' => array('service' => 'mongo1')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial . ' AND id <= '.$final,
+                        'cache' => array(
+                            'service' => 'mongo1'
+                        )
+                    )
+                );
             }
+
             if ($initial >= 10000 && $final <= 20000) {
-                return self::find(array(
-                    'id >= ' . $initial . ' AND id <= '.$final,
-                    'cache' => array('service' => 'mongo2')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial . ' AND id <= '.$final,
+                        'cache' => array(
+                            'service' => 'mongo2'
+                        )
+                    )
+                );
             }
+
             if ($initial > 20000) {
-                return self::find(array(
-                    'id >= ' . $initial,
-                    'cache' => array('service' => 'mongo3')
-                ));
+                return self::find(
+                    array(
+                        'id >= ' . $initial,
+                        'cache' => array(
+                            'service' => 'mongo3'
+                        )
+                    )
+                );
             }
         }
-
     }
 
 This approach solves the problem, however, if we want to add other parameters such orders or conditions we would have to create
@@ -666,11 +735,13 @@ a more complicated method. Additionally, this method does not work if the data i
     $robots = Robots::find('id > 100 AND type = "A"');
     $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
 
-    $robots = Robots::find(array(
-        '(id > ?0 AND type = "A") AND id < ?1',
-        'bind' => array(100, 2000),
-        'order' => 'type'
-    ));
+    $robots = Robots::find(
+        array(
+            '(id > ?0 AND type = "A") AND id < ?1',
+            'bind'  => array(100, 2000),
+            'order' => 'type'
+        )
+    );
 
 To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and
 thus customize the cache everything possible:
@@ -681,16 +752,16 @@ The first is create a custom builder, so we can generate a totally customized qu
 
     <?php
 
-    class CustomQueryBuilder extends Phalcon\Mvc\Model\Query\Builder
-    {
+    use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
 
+    class CustomQueryBuilder extends QueryBuilder
+    {
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
             $query->setDI($this->getDI());
             return $query;
         }
-
     }
 
 Instead of directly returning a Phalcon\\Mvc\\Model\\Query, our custom builder returns a CustomQuery instance,
@@ -700,47 +771,47 @@ this class looks like:
 
     <?php
 
-    class CustomQuery extends Phalcon\Mvc\Model\Query
-    {
+    use Phalcon\Mvc\Model\Query as ModelQuery;
 
+    class CustomQuery extends ModelQuery
+    {
         /**
-         * The execute method is overrided
+         * The execute method is overridden
          */
-        public function execute($params=null, $types=null)
+        public function execute($params = null, $types = null)
         {
-            //Parse the intermediate representation for the SELECT
+            // Parse the intermediate representation for the SELECT
             $ir = $this->parse();
 
-            //Check if the query has conditions
+            // Check if the query has conditions
             if (isset($ir['where'])) {
 
-                //The fields in the conditions can have any order
-                //We need to recursively check the conditions tree
-                //to find the info we're looking for
+                // The fields in the conditions can have any order
+                // We need to recursively check the conditions tree
+                // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
-                //Recursively visits the nodes
+                // Recursively visits the nodes
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
-                $final = $visitor->getFinal();
+                $final   = $visitor->getFinal();
 
-                //Select the cache according to the range
-                //...
+                // Select the cache according to the range
+                // ...
 
-                //Check if the cache has data
-                //...
+                // Check if the cache has data
+                // ...
             }
 
-            //Execute the query
+            // Execute the query
             $result = $this->_executeSelect($ir, $params, $types);
 
-            //cache the result
-            //...
+            // Cache the result
+            // ...
 
             return $result;
         }
-
     }
 
 Implementing a helper (CustomNodeVisitor) that recursively checks the conditions looking for fields that
@@ -752,7 +823,6 @@ tell us the possible range to be used in the cache:
 
     class CustomNodeVisitor
     {
-
         protected $_initial = 0;
 
         protected $_final = 25000;
@@ -763,7 +833,7 @@ tell us the possible range to be used in the cache:
 
                 case 'binary-op':
 
-                    $left = $this->visit($node['left']);
+                    $left  = $this->visit($node['left']);
                     $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
@@ -819,11 +889,12 @@ Finally, we can replace the find method in the Robots model to use the custom cl
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
-    {
-        public static function find($parameters=null)
-        {
+    use Phalcon\Mvc\Model;
 
+    class Robots extends Model
+    {
+        public static function find($parameters = null)
+        {
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
@@ -836,7 +907,6 @@ Finally, we can replace the find method in the Robots model to use the custom cl
             } else {
                 return $builder->getQuery()->execute();
             }
-
         }
     }
 
@@ -853,10 +923,10 @@ build all your SQL statements passing variable parameters as bound parameters:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
-        //...
+        // ...
     }
 
 In the above example, ten plans were generated increasing the memory usage and processing in the application.
@@ -872,7 +942,7 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
 
         $robots = $this->modelsManager->executeQuery($phql, array($i));
 
-        //...
+        // ...
     }
 
 Performance can be also improved reusing the PHQL query:
@@ -881,14 +951,14 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
 
         $robots = $query->execute($phql, array($i));
 
-        //...
+        // ...
     }
 
 Execution plans for queries involving `prepared statements`_ are also cached by most database systems

@@ -26,7 +26,7 @@ Constants
 *integer* **ACTION_CASCADE**
 
 Methods
----------
+-------
 
 public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
 
@@ -40,13 +40,13 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-public *int*  **getType** ()
+public  **getType** ()
 
 Returns the relation type
 
 
 
-public *string*  **getReferencedModel** ()
+public  **getReferencedModel** ()
 
 Returns the referenced model
 
@@ -70,7 +70,7 @@ Returns the options
 
 
 
-public *string|array*  **isForeignKey** ()
+public  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 
@@ -82,13 +82,19 @@ Returns the foreign key configuration
 
 
 
-public *boolean*  **isThrough** ()
+public *array*  **getParams** ()
+
+Returns parameters that must be always used when the related records are obtained
+
+
+
+public  **isThrough** ()
 
 Check whether the relation is a 'many-to-many' relation or not
 
 
 
-public *boolean*  **isReusable** ()
+public  **isReusable** ()
 
 Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
 
@@ -96,13 +102,13 @@ Check if records returned by getting belongs-to/has-many are implicitly cached d
 
 public *string|array*  **getIntermediateFields** ()
 
-Gets the intermediate fields for has-\*-through relations
+Gets the intermediate fields for has-*-through relations
 
 
 
-public *string*  **getIntermediateModel** ()
+public  **getIntermediateModel** ()
 
-Gets the intermediate model for has-\*-through relations
+Gets the intermediate model for has-*-through relations
 
 
 

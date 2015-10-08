@@ -99,7 +99,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public *this merged config*  **merge** (*unknown* $config) inherited from Phalcon\\Config
+public  **merge** (*unknown* $config) inherited from Phalcon\\Config
 
 Merges a configuration into the current one 
 
@@ -153,7 +153,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-private *Config merged config*  **_merge** (*unknown* $config, [*unknown* $instance]) inherited from Phalcon\\Config
+final protected *Config merged config*  **_merge** (*Config* $config, [*unknown* $instance]) inherited from Phalcon\\Config
 
 Helper method for merge configs (forwarding nested config instance)
 

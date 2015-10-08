@@ -29,49 +29,55 @@ Sets a global formatter
 
 
 
-public  **log** (*unknown* $message, [*unknown* $type])
+public  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context])
 
 Sends a message to each registered logger
 
 
 
-public  **emergency** (*unknown* $message)
+public  **critical** (*unknown* $message, [*unknown* $context])
+
+Sends/Writes an critical message to the log
+
+
+
+public  **emergency** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an emergency message to the log
 
 
 
-public  **debug** (*unknown* $message)
+public  **debug** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*unknown* $message)
+public  **error** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*unknown* $message)
+public  **info** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*unknown* $message)
+public  **notice** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*unknown* $message)
+public  **warning** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*unknown* $message)
+public  **alert** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an alert message to the log
 

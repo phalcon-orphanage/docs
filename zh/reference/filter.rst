@@ -1,5 +1,6 @@
 过滤与清理（Filtering and Sanitizing）
 ========================
+
 清理用户输入是软件开发中很重要的一个环节。信任或者忽略对用户输入数据作清理可能会导致
 对应用内容（主要是用户数据），甚至你应用所处在的服务器的非法访问。
 
@@ -49,7 +50,6 @@
 
     class ProductsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -57,15 +57,12 @@
 
         public function saveAction()
         {
-
             // 从输入中清理price
             $price = $this->request->getPost("price", "double");
 
             // 从输入中清理email
             $email = $this->request->getPost("customerEmail", "email");
-
         }
-
     }
 
 过滤动作参数（Filtering Action Parameters）
@@ -80,7 +77,6 @@
 
     class ProductsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -90,7 +86,6 @@
         {
             $productId = $this->filter->sanitize($productId, "int");
         }
-
     }
 
 过滤数据（Filtering data）
@@ -121,11 +116,11 @@
 +===========+===========================================================================+
 | string    | 带标签                                                                    |
 +-----------+---------------------------------------------------------------------------+
-| email     | 删掉除字母、数字和 !#$%&*+-/=?^_`{|}~@.[] 外的全部字符                    |
+| email     | 删掉除字母、数字和 !#$%&*+-/=?^_`{\|}~@.[] 外的全部字符                    |
 +-----------+---------------------------------------------------------------------------+
-| int       | 删掉除R数字、加号、减号外的全部字符                                       |
+| int       | 删掉除R数字、加号、减号外的全部字符                                         |
 +-----------+---------------------------------------------------------------------------+
-| float     | 删掉除数字、点号和加号、减号外的全部字符                                  |
+| float     | 删掉除数字、点号和加号、减号外的全部字符                                    |
 +-----------+---------------------------------------------------------------------------+
 | alphanum  | 删掉除[a-zA-Z0-9]外的全部字符                                             |
 +-----------+---------------------------------------------------------------------------+
@@ -151,7 +146,7 @@
     $filter = new Filter();
 
     // 使用匿名函数
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
@@ -168,12 +163,10 @@
 
     class IPv4Filter
     {
-
         public function filter($value)
         {
             return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
-
     }
 
     $filter = new Filter();
@@ -186,7 +179,7 @@
 
 复杂的过滤与清理（Complex Sanitizing and Filtering）
 --------------------------------
-你可以使用PHP本身提供的优秀过滤器扩展。请查看对应的文档： `PHP文档上的数据过滤器`_ 
+你可以使用PHP本身提供的优秀过滤器扩展。请查看对应的文档： `PHP文档上的数据过滤器`_
 
 自定义过滤器（Implementing your own Filter）
 ----------------------------

@@ -9,7 +9,7 @@ Returns the content without make any modification to the original source
 Methods
 -------
 
-public *string*  **filter** (*unknown* $content)
+public  **filter** (*unknown* $content)
 
 Returns the content without be touched
 

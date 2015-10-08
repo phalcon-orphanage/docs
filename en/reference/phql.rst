@@ -1,5 +1,6 @@
 Phalcon Query Language (PHQL)
 =============================
+
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
 standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
@@ -68,7 +69,6 @@ And every Car has a Brand, so a Brand has many Cars:
 
     class Brands extends Model
     {
-
         public $id;
 
         public $name;
@@ -113,14 +113,16 @@ From a controller or a view, it's easy to create/execute them using an injected 
     <?php
 
     // Executing a simple query
-    $query  = $this->modelsManager->createQuery("SELECT * FROM Cars");
-    $cars   = $query->execute();
+    $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
+    $cars  = $query->execute();
 
     // With bound parameters
-    $query  = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
-    $cars   = $query->execute(array(
-        'name' => 'Audi'
-    ));
+    $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
+    $cars  = $query->execute(
+        array(
+            'name' => 'Audi'
+        )
+    );
 
 Or simply execute it:
 
@@ -153,14 +155,14 @@ Classes in namespaces are also allowed:
 
     <?php
 
-    $phql   = "SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name";
-    $query  = $manager->createQuery($phql);
+    $phql  = "SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query = $manager->createQuery($phql);
 
-    $phql   = "SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name";
-    $query  = $manager->createQuery($phql);
+    $phql  = "SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query = $manager->createQuery($phql);
 
-    $phql   = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
-    $query  = $manager->createQuery($phql);
+    $phql  = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
+    $query = $manager->createQuery($phql);
 
 Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
 
@@ -193,7 +195,12 @@ This is exactly the same as:
 
     <?php
 
-    $cars = Cars::find(array("order" => "name"));
+    $cars = Cars::find(
+        array(
+            "order" => "name"
+        )
+    );
+
     foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
@@ -212,7 +219,7 @@ other types of queries that do not return complete objects, for example:
     }
 
 We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
-still a resulset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
+still a resultset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
 object that only contain the two columns that were requested.
 
 These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
@@ -260,8 +267,8 @@ relationships in the models, PHQL adds these conditions automatically:
 
     <?php
 
-    $phql  = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
-    $rows  = $manager->executeQuery($phql);
+    $phql = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
+    $rows = $manager->executeQuery($phql);
     foreach ($rows as $row) {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
@@ -285,7 +292,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-Also is possible set manually the conditions of the JOIN:
+It is also possible to manually set the conditions of the JOIN:
 
 .. code-block:: php
 
@@ -326,15 +333,15 @@ When the joined model has a many-to-many relation to the 'from' model, the inter
 
     <?php
 
-    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
-    $result = $this->modelsManager->query($phql);
+    $result = $this->modelsManager->executeQuery($phql);
 
-This code produces the following SQL in MySQL:
+This code executes the following SQL in MySQL:
 
 .. code-block:: sql
 
-    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
     INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
@@ -427,7 +434,6 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
     $phql = "SELECT * FROM Cars WHERE Cars.name = ?0";
     $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
 
-
 Inserting Data
 --------------
 With PHQL it's possible to insert data using the familiar INSERT statement:
@@ -449,7 +455,8 @@ With PHQL it's possible to insert data using the familiar INSERT statement:
     // Inserting using placeholders
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES (:name:, :brand_id:, :year:, :style)";
-    $manager->executeQuery($sql,
+    $manager->executeQuery(
+        $phql,
         array(
             'name'     => 'Lamborghini Espada',
             'brand_id' => 7,
@@ -471,7 +478,6 @@ on the model cars. A car cannot cost less than $ 10,000:
 
     class Cars extends Model
     {
-
         public function beforeCreate()
         {
             if ($this->price < 10000) {
@@ -521,11 +527,14 @@ will be executed for each row.
 
     // Using placeholders
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
-    $manager->executeQuery($phql, array(
-        0 => 7000.00,
-        1 => 'Sedan',
-        2 => 5
-    ));
+    $manager->executeQuery(
+        $phql,
+        array(
+            0 => 7000.00,
+            1 => 'Sedan',
+            2 => 5
+        )
+    );
 
 An UPDATE statement performs the update in two phases:
 
@@ -539,7 +548,7 @@ In summary, the following code:
 
     <?php
 
-    $phql    = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+    $phql   = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false) {
         foreach ($result->getMessages() as $message) {
@@ -555,7 +564,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process  = function() use (&$messages) {
+    $process  = function () use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -616,7 +625,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    //Getting a whole set
+    // Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -624,7 +633,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
         ->getQuery()
         ->execute();
 
-    //Getting the first row
+    // Getting the first row
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
@@ -652,7 +661,12 @@ More examples of the builder:
     $builder->from('Robots');
 
     // 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts';
-    $builder->from(array('Robots', 'RobotsParts'));
+    $builder->from(
+        array(
+            'Robots',
+            'RobotsParts'
+        )
+    );
 
     // 'SELECT * FROM Robots';
     $phql = $builder->columns('*')
@@ -715,8 +729,8 @@ More examples of the builder:
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
 
-    // 'SELECT Robots.* FROM Robots ;
-    // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p ;
+    // 'SELECT Robots.* FROM Robots
+    // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p
     // JOIN Parts ON Parts.id = RobotsParts.parts_id AS t';
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
@@ -772,7 +786,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
 
     <?php
 
-    //Passing parameters in the query construction
+    // Passing parameters in the query construction
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:', array('name' => $name))
@@ -780,7 +794,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute();
 
-    //Passing parameters in query execution
+    // Passing parameters in query execution
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:')
@@ -804,11 +818,9 @@ to potential SQL injections:
 
 If $login is changed to ' OR '' = ', the produced PHQL is:
 
-.. code-block:: php
+.. code-block:: sql
 
-    <?php
-
-    "SELECT * FROM Models\Users WHERE login = '' OR '' = ''"
+    SELECT * FROM Models\Users WHERE login = '' OR '' = ''
 
 Which is always true no matter what the login stored in the database is.
 
@@ -831,7 +843,11 @@ You can disallow literals in the following way:
 
     use Phalcon\Mvc\Model;
 
-    Model::setup(array('phqlLiterals' => false));
+    Model::setup(
+        array(
+            'phqlLiterals' => false
+        )
+    );
 
 Bound parameters can be used even if literals are allowed or not. Disallowing them is just
 another security decision a developer could take in web applications.
@@ -899,7 +915,7 @@ If Raw SQL queries are common in your application a generic method could be adde
 
     class Robots extends Model
     {
-        public static function findByRawSql($conditions, $params=null)
+        public static function findByRawSql($conditions, $params = null)
         {
             // A raw SQL statement
             $sql   = "SELECT * FROM robots WHERE $conditions";
@@ -925,8 +941,8 @@ Troubleshooting
 Some things to keep in mind when using PHQL:
 
 * Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-* Correct charset must be defined in the connection to bind parameters with success
-* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver
+* Correct charset must be defined in the connection to bind parameters with success.
+* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
+* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

@@ -1,7 +1,7 @@
-Class **Phalcon\\Dispatcher**
-=============================
+Abstract class **Phalcon\\Dispatcher**
+======================================
 
-*implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers
 
@@ -22,7 +22,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -30,87 +30,87 @@ Phalcon\\Dispatcher constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*string* $actionSuffix)
+public  **setActionSuffix** (*unknown* $actionSuffix)
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*string* $moduleName)
+public  **setModuleName** (*unknown* $moduleName)
 
 Sets the module where the controller is (only informative)
 
 
 
-public *string*  **getModuleName** ()
+public  **getModuleName** ()
 
 Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*string* $namespaceName)
+public  **setNamespaceName** (*unknown* $namespaceName)
 
 Sets the namespace where the controller class is
 
 
 
-public *string*  **getNamespaceName** ()
+public  **getNamespaceName** ()
 
 Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*string* $namespace)
+public  **setDefaultNamespace** (*unknown* $namespaceName)
 
 Sets the default namespace
 
 
 
-public *string*  **getDefaultNamespace** ()
+public  **getDefaultNamespace** ()
 
 Returns the default namespace
 
 
 
-public  **setDefaultAction** (*string* $actionName)
+public  **setDefaultAction** (*unknown* $actionName)
 
 Sets the default action name
 
 
 
-public  **setActionName** (*string* $actionName)
+public  **setActionName** (*unknown* $actionName)
 
 Sets the action name to be dispatched
 
 
 
-public *string*  **getActionName** ()
+public  **getActionName** ()
 
-Gets the lastest dispatched action name
+Gets the latest dispatched action name
 
 
 
@@ -120,7 +120,7 @@ Sets action params to be dispatched
 
 
 
-public *array*  **getParams** ()
+public  **getParams** ()
 
 Gets action params
 
@@ -138,15 +138,15 @@ Gets a param by its name or numeric index
 
 
 
-public *string*  **getActiveMethod** ()
+public  **getActiveMethod** ()
 
 Returns the current method to be/executed in the dispatcher
 
 
 
-public *boolean*  **isFinished** ()
+public  **isFinished** ()
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 
 
@@ -176,14 +176,26 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
     <?php
 
-      $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
+      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
 
 
 
 
-public *boolean*  **wasForwarded** ()
+public  **wasForwarded** ()
 
 Check if the current executed action was forwarded by another one
+
+
+
+public  **getHandlerClass** ()
+
+Possible class name that will be located to dispatch the request
+
+
+
+protected  **_resolveEmptyProperties** ()
+
+Set empty properties to their defaults (where defaults are available)
 
 
 

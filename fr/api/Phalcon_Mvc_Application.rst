@@ -55,7 +55,7 @@ public  **__construct** ([*unknown* $dependencyInjector])
 
 
 
-public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **useImplicitView** (*unknown* $implicitView)
+public  **useImplicitView** (*unknown* $implicitView)
 
 By default. The view is implicitly buffering all the output You can full disable the view component using this method
 
@@ -89,25 +89,25 @@ Return the modules registered in the application
 
 
 
-public *array|object*  **getModule** (*unknown* $name)
+public *array|object*  **getModule** (*string* $name)
 
 Gets the module definition registered in the application via module name
 
 
 
-public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **setDefaultModule** (*unknown* $defaultModule)
+public  **setDefaultModule** (*unknown* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
 
 
 
-public *string*  **getDefaultModule** ()
+public  **getDefaultModule** ()
 
 Returns the default module name
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*unknown* $uri])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*string* $uri])
 
 Handles a MVC request
 
@@ -119,7 +119,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -131,7 +131,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

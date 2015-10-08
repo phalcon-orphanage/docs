@@ -4,11 +4,6 @@ Interface **Phalcon\\Mvc\\Model\\TransactionInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $dependencyInjector, [*unknown* $autoBegin], [*unknown* $service])
-
-...
-
-
 abstract public  **setTransactionManager** (*unknown* $manager)
 
 ...

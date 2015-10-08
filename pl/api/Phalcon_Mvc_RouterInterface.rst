@@ -69,6 +69,11 @@ abstract public  **addHead** (*unknown* $pattern, [*unknown* $paths])
 ...
 
 
+abstract public  **mount** (*unknown* $group)
+
+...
+
+
 abstract public  **clear** ()
 
 ...

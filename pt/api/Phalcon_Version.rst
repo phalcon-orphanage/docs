@@ -4,8 +4,21 @@ Class **Phalcon\\Version**
 This class allows to get the installed version of the framework
 
 
-Methods
+Constants
 ---------
+
+*integer* **VERSION_MAJOR**
+
+*integer* **VERSION_MEDIUM**
+
+*integer* **VERSION_MINOR**
+
+*integer* **VERSION_SPECIAL**
+
+*integer* **VERSION_SPECIAL_NUMBER**
+
+Methods
+-------
 
 protected static  **_getVersion** ()
 
@@ -13,7 +26,13 @@ Area where the version number is set. The format is as follows: ABBCCDE A - Majo
 
 
 
-public static *string*  **get** ()
+final protected static  **_getSpecial** (*unknown* $special)
+
+Translates a number to a special release If Special release = 1 this function will return ALPHA
+
+
+
+public static  **get** ()
 
 Returns the active version (string) 
 
@@ -26,7 +45,7 @@ Returns the active version (string)
 
 
 
-public static *int*  **getId** ()
+public static  **getId** ()
 
 Returns the numeric active version 
 
@@ -35,6 +54,19 @@ Returns the numeric active version
     <?php
 
      echo Phalcon\Version::getId();
+
+
+
+
+public static  **getPart** (*unknown* $part)
+
+Returns a specific part of the version. If the wrong parameter is passed it will return the full version 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Version::getPart(Phalcon\Version::VERSION_MAJOR);
 
 
 

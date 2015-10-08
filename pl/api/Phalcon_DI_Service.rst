@@ -21,7 +21,7 @@ Represents individually a service in the services container
 Methods
 -------
 
-final public  **__construct** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
+final public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 
 
@@ -39,19 +39,19 @@ Sets if the service is shared or not
 
 
 
-public *boolean*  **isShared** ()
+public  **isShared** ()
 
 Check whether the service is shared or not
 
 
 
-public  **setSharedInstance** (*unknown* $sharedInstance)
+public  **setSharedInstance** (*mixed* $sharedInstance)
 
 Sets/Resets the shared instance related to the service
 
 
 
-public  **setDefinition** (*unknown* $definition)
+public  **setDefinition** (*mixed* $definition)
 
 Set the service definition
 
@@ -63,31 +63,31 @@ Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
+public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
 
 
-public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **setParameter** (*unknown* $position, *unknown* $parameter)
+public  **setParameter** (*unknown* $position, *unknown* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
 
 
-public *array*  **getParameter** (*unknown* $position)
+public *array*  **getParameter** (*int* $position)
 
 Returns a parameter in a specific position
 
 
 
-public *bool*  **isResolved** ()
+public  **isResolved** ()
 
 Returns true if the service was resolved
 
 
 
-public static :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **__set_state** (*unknown* $attributes)
+public static  **__set_state** (*unknown* $attributes)
 
 Restore the internal state of a service
 

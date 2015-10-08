@@ -1,11 +1,11 @@
 Configuration de lecture
-======================
+========================
+
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` est un composant utilisé pour lire des fichiers de configuration sous différents formats
 (en utilisant des adaptateurs) et transformer le contenu en objet PHP pour pouvoir l'utiliser dans une application.
 
-
 Adaptateur de fichier
--------------
+---------------------
 Les adaptateurs disponibles sont :
 
 +-----------+----------------------------------------------------------------------------------------------------------------------+
@@ -17,7 +17,7 @@ Les adaptateurs disponibles sont :
 +-----------+----------------------------------------------------------------------------------------------------------------------+
 
 Les Array natifs
--------------
+----------------
 L'exemple suivant montre comment convertir les arrays natifs en objets Phalcon\\Config.
 Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu pendant la requête.
 
@@ -25,23 +25,25 @@ Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu
 
     <?php
 
+    use Phalcon\Config;
+
     $settings = array(
         "database" => array(
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
-            "dbname"     => "test_db",
+            "dbname"   => "test_db"
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
+            "viewsDir"       => "../app/views/"
         ),
         "mysetting" => "the-value"
     );
 
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
     echo $config->app->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -53,11 +55,13 @@ Si vous voulez mieux organiser votre projet vous pouvez sauvegarder l'array dans
 
     <?php
 
+    use Phalcon\Config;
+
     require "config/config.php";
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
 Lire les fichiers INI
------------------
+---------------------
 Les fichiers INI sont un moyen habituel pour stoquer des paramètres.
 Phalcon\\Config utilise la fonction parse_ini_file optimisé pour lire ces fichiers.
 Les sections sont parsé en sous-paramètres pour un accès simplifié.
@@ -69,7 +73,7 @@ Les sections sont parsé en sous-paramètres pour un accès simplifié.
     host     = localhost
     username = scott
     password = cheetah
-    dbname     = test_db
+    dbname   = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -85,34 +89,44 @@ Vous pouvez lire le fichier comme cela :
 
     <?php
 
-    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    $config = new ConfigIni("path/config.ini");
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
 Configuration de fusion
-----------------------
+-----------------------
 Phalcon\\Config permet de fusionner une configuration objet en un autre de manière récursif :
 
 .. code-block:: php
 
     <?php
 
-    $config = new \Phalcon\Config(array(
-        'database' => array(
-            'host' => 'localhost',
-            'dbname' => 'test_db'
-        ),
-        'debug' => 1
-    ));
+    use Phalcon\Config;
 
-    $config2 = new \Phalcon\Config(array(
-        'database' => array(
-            'username' => 'scott',
-            'password' => 'secret',
+    $config = new Config(
+        array(
+            'database' => array(
+                'host'   => 'localhost',
+                'dbname' => 'test_db'
+            ),
+            'debug' => 1
         )
-    ));
+    );
+
+    $config2 = new Config(
+        array(
+            'database' => array(
+                'dbname'   => 'production_db',
+                'username' => 'scott',
+                'password' => 'secret'
+            ),
+            'logging' => 1
+        )
+    );
 
     $config->merge($config2);
 
@@ -127,11 +141,12 @@ Le code fournit le résultat suivant :
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => test_db
+                [dbname]   => production_db
                 [username] => scott
                 [password] => secret
             )
         [debug] => 1
+        [logging] => 1
     )
 
 Il y a plus d'adaptateurs disponible pour ce composant dans l'

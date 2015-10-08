@@ -1,5 +1,6 @@
-Урок 3: Создание простейшего REST API
+Урок 7: Создание простейшего REST API
 =====================================
+
 В этом уроке мы объясним, как создать простейшее приложение, предоставляющее RESTful_ API с использованием
 различных HTTP методов:
 
@@ -51,7 +52,7 @@
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 После этого, создаём файл index.php:
@@ -60,7 +61,9 @@
 
     <?php
 
-    $app = new \Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // тут определяются роуты
 
@@ -72,35 +75,37 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     // Получение списка всех роботов
-    $app->get('/api/robots', function() {
+    $app->get('/api/robots', function () {
 
     });
 
     // Поиск роботов с $name в названии
-    $app->get('/api/robots/search/{name}', function($name) {
+    $app->get('/api/robots/search/{name}', function ($name) {
 
     });
 
     // Получение робота по указанному ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
 
     });
 
     // Добавление нового робота
-    $app->post('/api/robots', function() {
+    $app->post('/api/robots', function () {
 
     });
 
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function() {
+    $app->put('/api/robots/{id:[0-9]+}', function () {
 
     });
 
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function() {
+    $app->delete('/api/robots/{id:[0-9]+}', function () {
 
     });
 
@@ -120,31 +125,38 @@
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message,
-        Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
-
         public function validation()
         {
             // Тип робота должен быть: droid, mechanical или virtual
-            $this->validate(new InclusionIn(
-                array(
-                    "field"  => "type",
-                    "domain" => array("droid", "mechanical", "virtual")
+            $this->validate(
+                new InclusionIn(
+                    array(
+                        "field"  => "type",
+                        "domain" => array(
+                            "droid",
+                            "mechanical",
+                            "virtual"
+                        )
+                    )
                 )
-            ));
+            );
 
             // Имя робота должно быть уникально
-            $this->validate(new Uniqueness(
-                array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+            $this->validate(
+                new Uniqueness(
+                    array(
+                        "field"   => "name",
+                        "message" => "The robot name must be unique"
+                    )
                 )
-            ));
+            );
 
             // Год не может быть меньше нулевого
             if ($this->year < 0) {
@@ -156,7 +168,6 @@
                 return false;
             }
         }
-
     }
 
 Теперь мы должны настроить соединение с базой данных, чтобы использовать его в этой модели
@@ -165,19 +176,36 @@
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
+    // Use Loader() to autoload our model
+    $loader = new Loader();
+
+    $loader->registerDirs(
+        array(
+            __DIR__ . '/models/'
+        )
+    )->register();
+
+    $di = new FactoryDefault();
 
     // Настройка сервиса базы данных
-    $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "asimov",
-            "password" => "zeroth",
-            "dbname" => "robotics"
-        ));
+    $di->set('db', function () {
+        return new PdoMysql(
+            array(
+                "host"     => "localhost",
+                "username" => "asimov",
+                "password" => "zeroth",
+                "dbname"   => "robotics"
+            )
+        );
     });
 
-    $app = new \Phalcon\Mvc\Micro($di);
+    // Create and bind the DI to the application
+    $app = new Micro($di);
 
 Получение данных
 ----------------
@@ -189,16 +217,16 @@
     <?php
 
     // Получение всех роботов
-    $app->get('/api/robots', function() use ($app) {
+    $app->get('/api/robots', function () use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach( $robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
@@ -216,24 +244,25 @@
     <?php
 
     // Поиск роботов, в названии которых содержится $name
-    $app->get('/api/robots/search/{name}', function($name) use ($app) {
+    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%' . $name . '%'
-        ));
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            array(
+                'name' => '%' . $name . '%'
+            )
+        );
 
         $data = array();
-
-        foreach ($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'   => $robot->id,
+                'name' => $robot->name
             );
         }
 
         echo json_encode($data);
-
     });
 
 В нашем случае поиск по полю "id" очень похож, кроме того, мы сообщаем, найден робот или нет:
@@ -242,27 +271,35 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Получение робота по ключу
-    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
         $robot = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ))->getFirst();
 
-        //Create a response
-        $response = new Phalcon\Http\Response();
+        // Create a response
+        $response = new Response();
 
         if ($robot == false) {
-            $response->setJsonContent(array('status' => 'NOT-FOUND'));
-        } else {
-            $response->setJsonContent(array(
-                'status' => 'FOUND',
-                'data' => array(
-                    'id' => $robot->id,
-                    'name' => $robot->name
+            $response->setJsonContent(
+                array(
+                    'status' => 'NOT-FOUND'
                 )
-            ));
+            );
+        } else {
+            $response->setJsonContent(
+                array(
+                    'status' => 'FOUND',
+                    'data'   => array(
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    )
+                )
+            );
         }
 
         return $response;
@@ -276,8 +313,10 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Добавление нового робота
-    $app->post('/api/robots', function() use ($app) {
+    $app->post('/api/robots', function () use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -290,9 +329,9 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
-        //Проверка, что вставка произведена успешно
+        // Проверка, что вставка произведена успешно
         if ($status->success() == true) {
 
             // Изменение HTML статуса
@@ -300,20 +339,30 @@
 
             $robot->id = $status->getModel()->id;
 
-            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK',
+                    'data'   => $robot
+                )
+            );
 
         } else {
 
             // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
-            //Отправляем сообщение об ошибке клиенту
+            // Отправляем сообщение об ошибке клиенту
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -327,8 +376,10 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Обновление робота по ключу
-    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $robot = $app->request->getJsonRawBody();
 
@@ -341,14 +392,18 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         // Проверка, что обновление произведено успешно
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
-            //Изменение HTML статуса
+            // Изменение HTML статуса
             $response->setStatusCode(409, "Conflict");
 
             $errors = array();
@@ -356,7 +411,12 @@
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -370,8 +430,10 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Удаление робота по ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
@@ -379,10 +441,14 @@
         ));
 
         // Формируем ответ
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($status->success() == true) {
-            $response->setJsonContent(array('status' => 'OK'));
+            $response->setJsonContent(
+                array(
+                    'status' => 'OK'
+                )
+            );
         } else {
 
             // Изменение HTTP статуса
@@ -393,8 +459,12 @@
                 $errors[] = $message->getMessage();
             }
 
-            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
-
+            $response->setJsonContent(
+                array(
+                    'status'   => 'ERROR',
+                    'messages' => $errors
+                )
+            );
         }
 
         return $response;
@@ -411,7 +481,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Tue, 21 Jul 2015 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -425,7 +495,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Tue, 21 Jul 2015 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -439,7 +509,7 @@
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Tue, 21 Jul 2015 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -454,7 +524,7 @@
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Tue, 21 Jul 2015 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -469,7 +539,7 @@
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Tue, 21 Jul 2015 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -484,7 +554,7 @@
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Tue, 21 Jul 2015 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -499,7 +569,7 @@
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Tue, 21 Jul 2015 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

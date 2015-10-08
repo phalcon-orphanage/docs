@@ -1,5 +1,6 @@
 注释解析器（Annotations Parser）
 ==================
+
 这是第一个为PHP用C语言写的注释解析器。
 Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于解析和缓存注释的功能。
 
@@ -16,7 +17,6 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
      */
     class Example
     {
-
         /**
          * This a property with a special feature
          *
@@ -33,12 +33,14 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
         {
             // ...
         }
-
     }
 
 在上面的例子中，我们发现注释块中除了注释单元，还可以有注释内容，一个注释单元语法如下：
 
-@注释名称[(参数1, 参数2, ...)]
+.. code-block::
+
+    @注释名称
+    @注释名称(参数1, 参数2, ...)
 
 当然，一个注释单元可以放在注释内容里的任意位置：
 
@@ -91,24 +93,26 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
     <?php
 
-    $reader = new \Phalcon\Annotations\Adapter\Memory();
+    use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
 
-    //反射在Example类的注释
+    $reader = new MemoryAdapter();
+
+    // 反射在Example类的注释
     $reflector = $reader->get('Example');
 
-    //读取类中注释块中的注释
+    // 读取类中注释块中的注释
     $annotations = $reflector->getClassAnnotations();
 
-    //遍历注释
+    // 遍历注释
     foreach ($annotations as $annotation) {
 
-        //打印注释名称
+        // 打印注释名称
         echo $annotation->getName(), PHP_EOL;
 
-        //打印注释参数个数
+        // 打印注释参数个数
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //打印注释参数
+        // 打印注释参数
         print_r($annotation->getArguments());
     }
 
@@ -164,7 +168,7 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
      * 嵌套数组/哈希列表
      *
      * @SomeAnnotation({"name"="SomeName", "other"={
-     *      "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
+     *     "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
      * }})
      */
 
@@ -186,15 +190,20 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
     <?php
 
-    $di['dispatcher'] = function() {
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
-        $eventsManager = new \Phalcon\Events\Manager();
+    $di['dispatcher'] = function () {
 
-        //添加插件到dispatch事件中
+        $eventsManager = new EventsManager();
+
+        // 添加插件到dispatch事件中
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
+
         $dispatcher->setEventsManager($eventsManager);
+
         return $dispatcher;
     };
 
@@ -204,48 +213,46 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\User\Plugin;
+
     /**
      * 为视图启动缓存，如果被执行的action带有@Cache 注释单元。
-     *
      */
-    class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
+    class CacheEnablerPlugin extends Plugin
     {
-
         /**
          * 这个事件在dispatcher中的每个路由被执行前执行
-         *
          */
-        public function beforeExecuteRoute($event, $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
-
-            //解析目前访问的控制的方法的注释
+            // 解析目前访问的控制的方法的注释
             $annotations = $this->annotations->getMethod(
-                $dispatcher->getActiveController(),
+                $dispatcher->getControllerClass(),
                 $dispatcher->getActiveMethod()
             );
 
-            //检查是否方法中带有注释名称‘Cache’的注释单元
+            // 检查是否方法中带有注释名称‘Cache’的注释单元
             if ($annotations->has('Cache')) {
 
-                //这个方法带有‘Cache’注释单元
+                // 这个方法带有‘Cache’注释单元
                 $annotation = $annotations->get('Cache');
 
-                //获取注释单元的‘lifetime’参数
+                // 获取注释单元的‘lifetime’参数
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //检查注释单元中是否有用户定义的‘key’参数
+                // 检查注释单元中是否有用户定义的‘key’参数
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //为当前dispatcher访问的方法开启cache
+                // 为当前dispatcher访问的方法开启cache
                 $this->view->cache($options);
             }
-
         }
-
     }
 
 现在，我们可以使用注释单元在控制器中：
@@ -254,9 +261,10 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
 
     <?php
 
-    class NewsController extends \Phalcon\Mvc\Controller
-    {
+    use Phalcon\Mvc\Controller;
 
+    class NewsController extends Controller
+    {
         public function indexAction()
         {
 
@@ -281,15 +289,74 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
         {
             $this->view->article = Articles::findFirstByTitle($slug);
         }
-
     }
 
-选择渲染模版（Choose template to render）
+Private/Public areas with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl;
+    use Phalcon\Acl\Role;
+    use Phalcon\Acl\Resource;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    /**
+     * SecurityAnnotationsPlugin
+     *
+     * This is the security plugin which controls that users only have access to the modules they're assigned to
+     */
+    class SecurityAnnotationsPlugin extends Plugin
+    {
+        /**
+         * This action is executed before execute any action in the application
+         *
+         * @param Event $event
+         * @param Dispatcher $dispatcher
+         */
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        {
+            // Possible controller class name
+            $controllerName = $dispatcher->getControllerClass();
+
+            // Possible method name
+            $actionName = $dispatcher->getActiveMethod();
+
+            // Get annotations in the controller class
+            $annotations = $this->annotations->get($controllerName);
+
+            // The controller is private?
+            if ($annotations->getClassAnnotations()->has('Private')) {
+
+                // Check if the session variable is active?
+                if (!$this->session->get('auth')) {
+
+                    // The user is no logged redirect to login
+                    $dispatcher->forward(
+                        array(
+                            'controller' => 'session',
+                            'action'     => 'login'
+                        )
+                    );
+
+                    return false;
+                }
+            }
+
+            // Continue normally
+            return true;
+        }
+    }
+
+选择渲染模版（Choose the template to render）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:`Phalcon\\Mvc\\View\\Simple <views>`，哪一个模板文件需要渲染：
-
-
-
 
 注释适配器（Annotations Adapters）
 --------------------
@@ -313,4 +380,4 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
 
 外部资源（External Resources）
 ------------------
-* `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+* `Tutorial: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_

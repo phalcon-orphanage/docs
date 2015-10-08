@@ -1,5 +1,6 @@
 授权（License）
 =======
+
 Phalcon is brought to you by the Phalcon Team! [`Twitter`_ - `Google Plus`_ - `Github`_]
 
 The Phalcon PHP Framework is released under the `new BSD license`_. Except where otherwise noted, content on

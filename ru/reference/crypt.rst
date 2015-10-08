@@ -1,7 +1,8 @@
-﻿Зашифрование и расшифрование
-============================
+﻿Encryption/Decryption
+=====================
+
 Phalcon предоставляет средства шифрования с помощью компонента :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
-Этот класс предоставляет простые объектно-ориентированные обертки к php библиотеке mcrypt_.
+Этот класс предоставляет простые объектно-ориентированные обертки к PHP библиотеке mcrypt_.
 
 По умолчанию данный компонент использует надежный алгоритм шифрования AES-256 (rijndael-256-cbc).
 
@@ -13,11 +14,13 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
-    // Создание экземпляра
-    $crypt = new Phalcon\Crypt();
+    use Phalcon\Crypt;
 
-    $key = 'это пароль';
-    $text = 'Это секретный текст';
+    // Создание экземпляра
+    $crypt     = new Crypt();
+
+    $key       = 'это пароль';
+    $text      = 'Это секретный текст';
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -29,11 +32,13 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создание экземпляра
-    $crypt = new Phalcon\Crypt();
+    $crypt = new Crypt();
 
     $texts = array(
-        'my-key' => 'Это секретный текст',
+        'my-key'    => 'Это секретный текст',
         'other-key' => 'Это очень секретно'
     );
 
@@ -64,14 +69,16 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
+    use Phalcon\Crypt;
+
     // Создаем экземпляр
-    $crypt = new Phalcon\Crypt();
+    $crypt = new Crypt();
 
     // Используем алгоритм blowfish
     $crypt->setCipher('blowfish');
 
-    $key = 'это пароль';
-    $text = 'Это секретный текст';
+    $key   = 'это пароль';
+    $text  = 'Это секретный текст';
 
     echo $crypt->encrypt($text, $key);
 
@@ -84,15 +91,17 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
-    // Создаем экземпляр
-    $crypt = new Phalcon\Crypt();
+    use Phalcon\Crypt;
 
-    $key = 'это пароль';
-    $text = 'Это секретный текст';
+    // Создаем экземпляр
+    $crypt   = new Crypt();
+
+    $key     = 'это пароль';
+    $text    = 'Это секретный текст';
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $crypt->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($encrypt, $key);
 
 Настройка сервиса
 -----------------
@@ -102,9 +111,11 @@ Phalcon предоставляет средства шифрования с по
 
     <?php
 
-    $di->set('crypt', function() {
+    use Phalcon\Crypt;
 
-        $crypt = new Phalcon\Crypt();
+    $di->set('crypt', function () {
+
+        $crypt = new Crypt();
 
         // Устанавливаем глобальный ключ шифрования
         $crypt->setKey('%31.1e$i86e$f!8jz');
@@ -122,7 +133,6 @@ Phalcon предоставляет средства шифрования с по
 
     class SecretsController extends Controller
     {
-
         public function saveAction()
         {
             $secret = new Secrets();
@@ -134,9 +144,7 @@ Phalcon предоставляет средства шифрования с по
             if ($secret->save()) {
                 $this->flash->success('Секрет успешно создан!');
             }
-
         }
-
     }
 
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php

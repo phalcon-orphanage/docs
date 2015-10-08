@@ -17,13 +17,13 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-protected *array*  **_getSessionMessages** (*unknown* $remove)
+protected  **_getSessionMessages** (*unknown* $remove)
 
 Returns the messages stored in session
 
@@ -41,13 +41,13 @@ Adds a message to the session flasher
 
 
 
-public *boolean*  **has** ([*unknown* $type])
+public  **has** ([*unknown* $type])
 
 Checks whether there are messages
 
 
 
-public *array*  **getMessages** ([*unknown* $type], [*unknown* $remove])
+public  **getMessages** ([*unknown* $type], [*unknown* $remove])
 
 Returns the messages in the session flasher
 
@@ -61,7 +61,8 @@ Prints the messages in the session flasher
 
 public  **clear** ()
 
-...
+Clear messages in the session messenger
+
 
 
 public  **__construct** ([*unknown* $cssClasses]) inherited from Phalcon\\Flash
@@ -70,25 +71,25 @@ Phalcon\\Flash constructor
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
 
-Set whether the output must be implictly flushed to the output or returned as string
-
-
-
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\\Flash
-
-Set if the output must be implictily formatted with HTML
+Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\\Flash
+public  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\\Flash
+
+Set if the output must be implicitly formatted with HTML
+
+
+
+public  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 
 
 
-public *string*  **error** (*unknown* $message) inherited from Phalcon\\Flash
+public  **error** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML error message 
 
@@ -101,7 +102,7 @@ Shows a HTML error message
 
 
 
-public *string*  **notice** (*unknown* $message) inherited from Phalcon\\Flash
+public  **notice** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML notice/information message 
 
@@ -114,7 +115,7 @@ Shows a HTML notice/information message
 
 
 
-public *string*  **success** (*unknown* $message) inherited from Phalcon\\Flash
+public  **success** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML success message 
 
@@ -127,7 +128,7 @@ Shows a HTML success message
 
 
 
-public *string*  **warning** (*unknown* $message) inherited from Phalcon\\Flash
+public  **warning** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML warning message 
 
@@ -140,7 +141,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon\\Flash
+public  **outputMessage** (*unknown* $type, *string|array* $message) inherited from Phalcon\\Flash
 
 Outputs a message formatting it with HTML 
 

@@ -39,7 +39,7 @@ abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *un
 ...
 
 
-abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
 
 ...
 
@@ -84,12 +84,27 @@ abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *
 ...
 
 
+abstract public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
+
+...
+
+
 abstract public  **dropTable** (*unknown* $tableName, *unknown* $schemaName)
 
 ...
 
 
+abstract public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
+
+...
+
+
 abstract public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
+
+...
+
+
+abstract public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
 
 ...
 

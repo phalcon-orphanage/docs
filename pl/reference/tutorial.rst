@@ -1,7 +1,7 @@
 Tutorial 1: Nauczmy się przez przykład
 ==================================
-W naszym pierwszym tutorialu, przeprowadzimy Cię przez  tworzenie aplikacji z prostym formularzem rejestracyjnym od podstaw. 
-Wyjaśnimy również podstawowe aspekty działania frameworka. Jeżeli jesteś zainteresowany narzędziami do automatycznego generowania kodu, 
+W naszym pierwszym tutorialu, przeprowadzimy Cię przez  tworzenie aplikacji z prostym formularzem rejestracyjnym od podstaw.
+Wyjaśnimy również podstawowe aspekty działania frameworka. Jeżeli jesteś zainteresowany narzędziami do automatycznego generowania kodu,
 możesz sprawdzić nasze :doc:`developer tools <tools>`.
 
 Sprawdzenie instalacji
@@ -53,7 +53,7 @@ Zauważ, że nie potrzebujesz żadnych folderów "bibliotek" związanych z Phalc
 
 Przyjazne URLe
 ^^^^^^^^^^^^^^
-W tym tutorialu użyjemy ładnych (przyjaznych) URLi. Przyjazne URLe są lepsze dla SEO, jak również łatwe do zapamiętania dla użytkowników. Phalcon obsługuje moduły przepisywania dostarczone przez najbardziej popularne serwery WWW. 
+W tym tutorialu użyjemy ładnych (przyjaznych) URLi. Przyjazne URLe są lepsze dla SEO, jak również łatwe do zapamiętania dla użytkowników. Phalcon obsługuje moduły przepisywania dostarczone przez najbardziej popularne serwery WWW.
 Korzystanie przez Twoją aplikację z przyjaznych URLi nie jest obowiązkowe i możesz równie dobrze programować bez nich.
 
 W tym przykładzie użyjemy modułu przepisywania dla Apache. Stwórzmy kilka reguł przepisywania w pliku /tutorial/.htaccess:
@@ -64,7 +64,7 @@ W tym przykładzie użyjemy modułu przepisywania dla Apache. Stwórzmy kilka re
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Wszystkie żądania do projektu zostaną przepisane do folderu public/ czyniąc go głównym folderem. Ten etap zapewnia ukrycie wewnętrznych folderów projektu od widoku publicznego, eliminując różnego typu zagrożenia bezpieczeństwa.
@@ -78,7 +78,7 @@ Drugi zestaw reguł sprawdzi czy żądany plik istnieje i, jeśli istnieje, nie 
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Bootstrap
@@ -93,42 +93,42 @@ Plik tutorial/public/index.php powinien wyglądać następująco:
 
     try {
 
-        //Register an autoloader
+        // Register an autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the view component
-        $di->set('view', function(){
+        // Setup the view component
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });        
+        });
 
-        //Handle the request
+        // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
 Autoloadery
 ^^^^^^^^^^^
-Pierwszą częścią, którą znajdziemy w naszym pliku bootstrap jest rejestracja autoloadera. Autoloader ten będzie użyty do załadowania klas w aplikacji jako kontrolery i modele. Na przykład, możemy zarejestrować jeden lub więcej folderów kontrolerów, zwiększając elastyczność aplikacji. 
+Pierwszą częścią, którą znajdziemy w naszym pliku bootstrap jest rejestracja autoloadera. Autoloader ten będzie użyty do załadowania klas w aplikacji jako kontrolery i modele. Na przykład, możemy zarejestrować jeden lub więcej folderów kontrolerów, zwiększając elastyczność aplikacji.
 W naszym przykładzie użyliśmy komponentu Phalcon\\Loader.
 
 Dzięki niemu, możemy załadować klasy z zastosowaniem różnych strategii, jednak w tym przykładzie zdecydowaliśmy się zlokalizować klasy w oparciu o predefiniowane katalogi:
@@ -147,7 +147,7 @@ Dzięki niemu, możemy załadować klasy z zastosowaniem różnych strategii, je
 
 Zarządzanie zależnościami
 ^^^^^^^^^^^^^^^^^^^^^
-Bardzo ważnym pojęciem, które musi być zrozumiane podczas pracy z Phalconem jest jego :doc:`dependency injection container <di>`. Może to brzmieć bardzo skomplikowanie, ale jest bardzo proste i praktyczne. 
+Bardzo ważnym pojęciem, które musi być zrozumiane podczas pracy z Phalconem jest jego :doc:`dependency injection container <di>`. Może to brzmieć bardzo skomplikowanie, ale jest bardzo proste i praktyczne.
 
 A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
@@ -155,7 +155,7 @@ A service container is a bag where we globally store the services that our appli
 
     <?php
 
-    //Stwórz DI
+    // Stwórz DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
@@ -168,25 +168,25 @@ Services can be registered in several ways, but for our tutorial we'll use an `a
 
     <?php
 
-    //Setup the view component
-    $di->set('view', function(){
+    // Setup the view component
+    $di->set('view', function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
-    
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` to generate a hyperlink. 
+
+Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` to generate a hyperlink.
 
 .. code-block:: php
 
     <?php
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function(){
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set('url', function () {
         $url = new \Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
-    });   
+    });
 
 In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -323,7 +323,7 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+The Phalcon\\Tag::form method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
 
@@ -388,18 +388,18 @@ In order to be able to use a database connection and subsequently access data th
 
     try {
 
-        //Register an autoloader
+        // Register an autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the database service
-        $di->set('db', function(){
+        // Setup the database service
+        $di->set('db', function () {
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
@@ -408,26 +408,26 @@ In order to be able to use a database connection and subsequently access data th
             ));
         });
 
-        //Setup the view component
-        $di->set('view', function(){
+        // Setup the view component
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function(){
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
+        $di->set('url', function () {
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });       
+        });
 
-        //Handle the request
+        // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -454,7 +454,7 @@ Receiving data from the form and storing them in the table is the next step.
 
             $user = new Users();
 
-            //Store and check for errors
+            // Store and check for errors
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -465,7 +465,7 @@ Receiving data from the form and storing them in the table is the next step.
                     echo $message->getMessage(), "<br/>";
                 }
             }
-            
+
             $this->view->disable();
         }
 

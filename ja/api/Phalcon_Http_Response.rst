@@ -19,7 +19,7 @@ Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Respon
 Methods
 -------
 
-public  **__construct** ([*unknown* $content], [*unknown* $code], [*unknown* $status])
+public  **__construct** ([*string* $content], [*int* $code], [*string* $status])
 
 Phalcon\\Http\\Response constructor
 
@@ -31,13 +31,13 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setStatusCode** (*unknown* $code, [*unknown* $message])
+public  **setStatusCode** (*unknown* $code, [*unknown* $message])
 
 Sets the HTTP response code 
 
@@ -50,19 +50,32 @@ Sets the HTTP response code
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeaders** (*unknown* $headers)
+public  **getStatusCode** ()
+
+Returns the status code 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($response->getStatusCode());
+
+
+
+
+public  **setHeaders** (*unknown* $headers)
 
 Sets a headers bag for the response externally
 
 
 
-public :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`  **getHeaders** ()
+public  **getHeaders** ()
 
 Returns headers set by the user
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (*unknown* $cookies)
+public  **setCookies** (*unknown* $cookies)
 
 Sets a cookies bag for the response externally
 
@@ -74,7 +87,7 @@ Returns coookies set by the user
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeader** (*unknown* $name, *unknown* $value)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setHeader** (*string* $name, *string* $value)
 
 Overwrites a header in the response 
 
@@ -87,7 +100,7 @@ Overwrites a header in the response
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setRawHeader** (*unknown* $header)
+public  **setRawHeader** (*unknown* $header)
 
 Send a raw header to the response 
 
@@ -100,13 +113,13 @@ Send a raw header to the response
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **resetHeaders** ()
+public  **resetHeaders** ()
 
 Resets all the stablished headers
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*unknown* $datetime)
+public  **setExpires** (*unknown* $datetime)
 
 Sets a Expires header to use HTTP cache 
 
@@ -119,13 +132,13 @@ Sets a Expires header to use HTTP cache
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setNotModified** ()
+public  **setNotModified** ()
 
 Sends a Not-Modified response
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*unknown* $contentType, [*unknown* $charset])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setContentType** (*string* $contentType, [*string* $charset])
 
 Sets the response content-type mime, optionally the charset 
 
@@ -139,7 +152,7 @@ Sets the response content-type mime, optionally the charset
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setEtag** (*unknown* $etag)
+public  **setEtag** (*unknown* $etag)
 
 Set a custom ETag 
 
@@ -152,7 +165,7 @@ Set a custom ETag
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*unknown* $location], [*unknown* $externalRedirect], [*unknown* $statusCode])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **redirect** ([*string|array* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
 
@@ -175,7 +188,7 @@ Redirect by HTTP to another action or URL
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContent** (*unknown* $content)
+public  **setContent** (*unknown* $content)
 
 Sets HTTP response body 
 
@@ -188,7 +201,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*unknown* $content, [*unknown* $jsonOptions])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setJsonContent** (*mixed* $content, [*int* $jsonOptions], [*unknown* $depth])
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -201,43 +214,43 @@ Sets HTTP response body. The parameter is automatically converted to JSON
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **appendContent** (*unknown* $content)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
 
 
 
-public *string*  **getContent** ()
+public  **getContent** ()
 
 Gets the HTTP response body
 
 
 
-public *boolean*  **isSent** ()
+public  **isSent** ()
 
 Check if the response is already sent
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendHeaders** ()
+public  **sendHeaders** ()
 
 Sends headers to the client
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendCookies** ()
+public  **sendCookies** ()
 
 Sends cookies to the client
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **send** ()
+public  **send** ()
 
 Prints out HTTP response to the client
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName], [*unknown* $attachment])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
 
 Sets an attached file to be sent at the end of the request
 

@@ -40,61 +40,61 @@ Constants
 Methods
 -------
 
-public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setPadding** (*unknown* $scheme)
+public  **setPadding** (*int* $scheme)
+
+Changes the padding scheme used
 
 
 
-
-
-public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setCipher** (*unknown* $cipher)
+public  **setCipher** (*unknown* $cipher)
 
 Sets the cipher algorithm
 
 
 
-public *string*  **getCipher** ()
+public  **getCipher** ()
 
 Returns the current cipher
 
 
 
-public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setMode** (*unknown* $mode)
+public  **setMode** (*unknown* $mode)
 
 Sets the encrypt/decrypt mode
 
 
 
-public *string*  **getMode** ()
+public  **getMode** ()
 
 Returns the current encryption mode
 
 
 
-public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setKey** (*unknown* $key)
+public  **setKey** (*unknown* $key)
 
 Sets the encryption key
 
 
 
-public *string*  **getKey** ()
+public  **getKey** ()
 
 Returns the encryption key
 
 
 
-private  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+protected  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+
+Pads texts before encryption
 
 
 
-
-
-private  **_cryptUnpadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+protected  **_cryptUnpadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
 
 If the function detects that the text was not padded, it will return it unmodified
 
 
 
-public *string*  **encrypt** (*unknown* $text, [*unknown* $key])
+public  **encrypt** (*unknown* $text, [*unknown* $key])
 
 Encrypts a text 
 
@@ -107,7 +107,7 @@ Encrypts a text
 
 
 
-public *string*  **decrypt** (*unknown* $text, [*unknown* $key])
+public  **decrypt** (*unknown* $text, [*unknown* $key])
 
 Decrypts an encrypted text 
 
@@ -120,25 +120,25 @@ Decrypts an encrypted text
 
 
 
-public *string*  **encryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
+public  **encryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-public *string*  **decryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
+public  **decryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Decrypt a text that is coded as a base64 string
 
 
 
-public *array*  **getAvailableCiphers** ()
+public  **getAvailableCiphers** ()
 
 Returns a list of available cyphers
 
 
 
-public *array*  **getAvailableModes** ()
+public  **getAvailableModes** ()
 
 Returns a list of available modes
 

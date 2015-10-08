@@ -1,18 +1,10 @@
 Interface **Phalcon\\Mvc\\ViewInterface**
 =========================================
 
+*implements* :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
+
 Methods
 -------
-
-abstract public  **setViewsDir** (*unknown* $viewsDir)
-
-...
-
-
-abstract public  **getViewsDir** ()
-
-...
-
 
 abstract public  **setLayoutsDir** (*unknown* $layoutsDir)
 
@@ -35,6 +27,11 @@ abstract public  **getPartialsDir** ()
 
 
 abstract public  **setBasePath** (*unknown* $basePath)
+
+...
+
+
+abstract public  **getBasePath** ()
 
 ...
 
@@ -84,21 +81,6 @@ abstract public  **cleanTemplateAfter** ()
 ...
 
 
-abstract public  **setParamToView** (*unknown* $key, *unknown* $value)
-
-...
-
-
-abstract public  **setVar** (*unknown* $key, *unknown* $value)
-
-...
-
-
-abstract public  **getParamsToView** ()
-
-...
-
-
 abstract public  **getControllerName** ()
 
 ...
@@ -134,32 +116,7 @@ abstract public  **pick** (*unknown* $renderView)
 ...
 
 
-abstract public  **partial** (*unknown* $partialPath)
-
-...
-
-
 abstract public  **finish** ()
-
-...
-
-
-abstract public  **getCache** ()
-
-...
-
-
-abstract public  **cache** ([*unknown* $options])
-
-...
-
-
-abstract public  **setContent** (*unknown* $content)
-
-...
-
-
-abstract public  **getContent** ()
 
 ...
 
@@ -185,6 +142,56 @@ abstract public  **reset** ()
 
 
 abstract public  **isDisabled** ()
+
+...
+
+
+abstract public  **setViewsDir** (*unknown* $viewsDir) inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **getViewsDir** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **setParamToView** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **setVar** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **getParamsToView** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **getCache** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **cache** ([*unknown* $options]) inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **setContent** (*unknown* $content) inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **getContent** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+
+...
+
+
+abstract public  **partial** (*unknown* $partialPath, [*unknown* $params]) inherited from Phalcon\\Mvc\\ViewBaseInterface
 
 ...
 

@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Criteria**
 =======================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
-This class allows to build the array parameter required by Phalcon\\Mvc\\Model::find and Phalcon\\Mvc\\Model::findFirst using an object-oriented interface  
+This class is used to build the array parameter required by Phalcon\\Mvc\\Model::find() and Phalcon\\Mvc\\Model::findFirst() using an object-oriented interface.  
 
 .. code-block:: php
 
@@ -13,51 +13,58 @@ This class allows to build the array parameter required by Phalcon\\Mvc\\Model::
         ->where("type = :type:")
         ->andWhere("year < 2000")
         ->bind(array("type" => "mechanical"))
-        ->order("name")
+        ->limit(5, 10)
+        ->orderBy("name")
         ->execute();
 
 
 
 Methods
----------
+-------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **setModelName** (*string* $modelName)
+public  **setModelName** (*unknown* $modelName)
 
 Set a model on which the query will be executed
 
 
 
-public *string*  **getModelName** ()
+public  **getModelName** ()
 
 Returns an internal model name on which the criteria will be applied
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bind** (*string* $bindParams)
+public  **bind** (*unknown* $bindParams)
 
 Sets the bound parameters in the criteria This method replaces all previously set bound parameters
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bindTypes** (*string* $bindTypes)
+public  **bindTypes** (*unknown* $bindTypes)
 
 Sets the bind types in the criteria This method replaces all previously set bound parameters
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*string|array* $columns)
+public  **distinct** (*unknown* $distinct)
+
+Sets SELECT DISTINCT / SELECT ALL flag
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **columns** (*string|array* $columns)
 
 Sets the columns to be queried 
 
@@ -70,7 +77,7 @@ Sets the columns to be queried
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+public  **join** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias], [*unknown* $type])
 
 Adds a INNER join to the query 
 
@@ -86,7 +93,7 @@ Adds a INNER join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public  **innerJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a INNER join to the query 
 
@@ -97,12 +104,11 @@ Adds a INNER join to the query
     $criteria->innerJoin('Robots');
     $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
     $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public  **leftJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a LEFT join to the query 
 
@@ -115,7 +121,7 @@ Adds a LEFT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public  **rightJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a RIGHT join to the query 
 
@@ -128,31 +134,31 @@ Adds a RIGHT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public  **where** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Sets the conditions parameter in the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public  **addWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator (deprecated)
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Appends a condition to the current conditions using an OR operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a BETWEEN condition to the current conditions 
 
@@ -165,7 +171,7 @@ Appends a BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a NOT BETWEEN condition to the current conditions 
 
@@ -178,7 +184,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+public  **inWhere** (*unknown* $expr, *unknown* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -191,7 +197,7 @@ Appends an IN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+public  **notInWhere** (*unknown* $expr, *unknown* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -204,85 +210,115 @@ Appends a NOT IN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **conditions** (*string* $conditions)
+public  **conditions** (*unknown* $conditions)
 
 Adds the conditions parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **order** (*string* $orderColumns)
+public  **order** (*unknown* $orderColumns)
 
 Adds the order-by parameter to the criteria (deprecated)
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orderBy** (*string* $orderColumns)
+public  **orderBy** (*unknown* $orderColumns)
 
-Adds the order-by parameter to the criteria
+Adds the order-by clause to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **limit** (*int* $limit, [*int* $offset])
+public  **groupBy** (*unknown* $group)
+
+Adds the group-by clause to the criteria
+
+
+
+public  **having** (*unknown* $having)
+
+Adds the having clause to the criteria
+
+
+
+public  **limit** (*unknown* $limit, [*unknown* $offset])
 
 Adds the limit parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **forUpdate** ([*boolean* $forUpdate])
+public  **forUpdate** ([*unknown* $forUpdate])
 
 Adds the "for_update" parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **sharedLock** ([*boolean* $sharedLock])
+public  **sharedLock** ([*unknown* $sharedLock])
 
 Adds the "shared_lock" parameter to the criteria
 
 
 
-public *string*  **getWhere** ()
+public  **cache** (*unknown* $cache)
+
+Sets the cache options in the criteria This method replaces all previously set cache options
+
+
+
+public  **getWhere** ()
 
 Returns the conditions parameter in the criteria
 
 
 
-public *string|array*  **getColumns** ()
+public *string|array|null*  **getColumns** ()
 
-Return the columns to be queried
+Returns the columns to be queried
 
 
 
-public *string*  **getConditions** ()
+public  **getConditions** ()
 
 Returns the conditions parameter in the criteria
 
 
 
-public *string*  **getLimit** ()
+public *int|array|null*  **getLimit** ()
 
-Returns the limit parameter in the criteria
-
-
-
-public *string*  **getOrder** ()
-
-Returns the order parameter in the criteria
+Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
 
 
 
-public *string*  **getParams** ()
+public  **getOrder** ()
+
+Returns the order clause in the criteria
+
+
+
+public  **getGroupBy** ()
+
+Returns the group clause in the criteria
+
+
+
+public  **getHaving** ()
+
+Returns the having clause in the criteria
+
+
+
+public *array*  **getParams** ()
 
 Returns all the parameters defined in the criteria
 
 
 
-public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
+public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data)
 
-Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
+Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like _POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
+public  **execute** ()
 
 Executes a find using the parameters built with the criteria
 

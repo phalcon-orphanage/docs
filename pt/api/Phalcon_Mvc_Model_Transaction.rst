@@ -11,7 +11,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
     try {
     
-      $manager = new Phalcon\Mvc\Model\Transaction\Manager();
+      $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
     
       $transaction = $manager->get();
     
@@ -39,27 +39,27 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
 
 Methods
----------
+-------
 
-public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
+public  **__construct** (*unknown* $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
 
 
-public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
+public  **setTransactionManager** (*unknown* $manager)
 
 Sets transaction manager related to the transaction
 
 
 
-public *boolean*  **begin** ()
+public  **begin** ()
 
 Starts the transaction
 
 
 
-public *boolean*  **commit** ()
+public  **commit** ()
 
 Commits the transaction
 
@@ -71,43 +71,43 @@ Rollbacks the transaction
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
+public  **getConnection** ()
 
 Returns the connection related to transaction
 
 
 
-public  **setIsNewTransaction** (*boolean* $isNew)
+public  **setIsNewTransaction** (*unknown* $isNew)
 
 Sets if is a reused transaction or new once
 
 
 
-public  **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
+public  **setRollbackOnAbort** (*unknown* $rollbackOnAbort)
 
 Sets flag to rollback on abort the HTTP connection
 
 
 
-public *boolean*  **isManaged** ()
+public  **isManaged** ()
 
 Checks whether transaction is managed by a transaction manager
 
 
 
-public *array*  **getMessages** ()
+public  **getMessages** ()
 
 Returns validations messages from last save try
 
 
 
-public *boolean*  **isValid** ()
+public  **isValid** ()
 
 Checks whether internal connection is under an active transaction
 
 
 
-public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+public  **setRollbackedRecord** (*unknown* $record)
 
 Sets object which generates rollback action
 

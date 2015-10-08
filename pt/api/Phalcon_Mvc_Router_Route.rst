@@ -7,21 +7,21 @@ This class represents every route added to the router
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods])
+public  **__construct** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
 
 Phalcon\\Mvc\\Router\\Route constructor
 
 
 
-public *string*  **compilePattern** (*string* $pattern)
+public  **compilePattern** (*unknown* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **via** (*string|array* $httpMethods)
+public  **via** (*unknown* $httpMethods)
 
 Set one or more HTTP methods that constraint the matching of the route 
 
@@ -35,19 +35,31 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-public  **reConfigure** (*string* $pattern, [*array* $paths])
+public  **extractNamedParams** (*unknown* $pattern)
+
+Extracts parameters from a string
+
+
+
+public  **reConfigure** (*unknown* $pattern, [*unknown* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
 
 
-public *string*  **getName** ()
+public static  **getRoutePaths** ([*unknown* $paths])
+
+Returns routePaths
+
+
+
+public  **getName** ()
 
 Returns the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setName** (*string* $name)
+public  **setName** (*unknown* $name)
 
 Sets the route's name 
 
@@ -62,49 +74,49 @@ Sets the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **beforeMatch** (*callback* $callback)
+public  **beforeMatch** (*unknown* $callback)
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched
+Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
 
 
-public *mixed*  **getBeforeMatch** ()
+public  **getBeforeMatch** ()
 
 Returns the 'before match' callback if any
 
 
 
-public *string*  **getRouteId** ()
+public  **getRouteId** ()
 
 Returns the route's id
 
 
 
-public *string*  **getPattern** ()
+public  **getPattern** ()
 
 Returns the route's pattern
 
 
 
-public *string*  **getCompiledPattern** ()
+public  **getCompiledPattern** ()
 
 Returns the route's compiled pattern
 
 
 
-public *array*  **getPaths** ()
+public  **getPaths** ()
 
 Returns the paths
 
 
 
-public *array*  **getReversedPaths** ()
+public  **getReversedPaths** ()
 
 Returns the paths using positions as keys and names as values
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*string|array* $httpMethods)
+public  **setHttpMethods** (*unknown* $httpMethods)
 
 Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
 
@@ -118,13 +130,13 @@ Sets a set of HTTP methods that constraint the matching of the route (alias of v
 
 
 
-public *string|array*  **getHttpMethods** ()
+public  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHostname** (*unknown* $hostname)
+public  **setHostname** (*unknown* $hostname)
 
 Sets a hostname restriction to the route 
 
@@ -137,19 +149,31 @@ Sets a hostname restriction to the route
 
 
 
-public *string*  **getHostname** ()
+public  **getHostname** ()
 
 Returns the hostname restriction if any
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **convert** (*string* $name, *callable* $converter)
+public  **setGroup** (*unknown* $group)
+
+Sets the group associated with the route
+
+
+
+public  **getGroup** ()
+
+Returns the group associated with the route
+
+
+
+public  **convert** (*unknown* $name, *unknown* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 
 
 
-public *array*  **getConverters** ()
+public  **getConverters** ()
 
 Returns the router converter
 

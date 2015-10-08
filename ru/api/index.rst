@@ -158,6 +158,9 @@ API Indice
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Behavior
+   Phalcon_Mvc_Collection_Behavior_SoftDelete
+   Phalcon_Mvc_Collection_Behavior_Timestampable
    Phalcon_Mvc_Collection_Document
    Phalcon_Mvc_Collection_Exception
    Phalcon_Mvc_Collection_Manager
@@ -179,6 +182,8 @@ API Indice
    Phalcon_Mvc_Model_MetaData
    Phalcon_Mvc_Model_MetaData_Apc
    Phalcon_Mvc_Model_MetaData_Files
+   Phalcon_Mvc_Model_MetaData_Libmemcached
+   Phalcon_Mvc_Model_MetaData_Memcache
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations
@@ -202,6 +207,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Email
    Phalcon_Mvc_Model_Validator_Exclusionin
    Phalcon_Mvc_Model_Validator_Inclusionin
+   Phalcon_Mvc_Model_Validator_Ip
    Phalcon_Mvc_Model_Validator_Numericality
    Phalcon_Mvc_Model_Validator_PresenceOf
    Phalcon_Mvc_Model_Validator_Regex
@@ -225,6 +231,7 @@ API Indice
    Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Simple
+   Phalcon_Paginator_Adapter
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder
@@ -248,6 +255,7 @@ API Indice
    Phalcon_Translate
    Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_Csv
+   Phalcon_Translate_Adapter_Gettext
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
    Phalcon_Validation
@@ -307,9 +315,11 @@ API Indice
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface
+   Phalcon_Mvc_Collection_BehaviorInterface
    Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
+   Phalcon_Mvc_EntityInterface
    Phalcon_Mvc_Micro_CollectionInterface
    Phalcon_Mvc_Micro_MiddlewareInterface
    Phalcon_Mvc_ModelInterface
@@ -330,8 +340,10 @@ API Indice
    Phalcon_Mvc_Model_ValidatorInterface
    Phalcon_Mvc_ModuleDefinitionInterface
    Phalcon_Mvc_RouterInterface
+   Phalcon_Mvc_Router_GroupInterface
    Phalcon_Mvc_Router_RouteInterface
    Phalcon_Mvc_UrlInterface
+   Phalcon_Mvc_ViewBaseInterface
    Phalcon_Mvc_ViewInterface
    Phalcon_Mvc_View_EngineInterface
    Phalcon_Paginator_AdapterInterface

@@ -1,5 +1,6 @@
 Instalacja na serwerach Cherokee
-===========================
+================================
+
 Cherokee_  jest wysoce wydajnym serwerem WWW. Jest bardzo szybki, elastyczny i prosty w konfiguracji.
 
 Configuring Cherokee for Phalcon
@@ -16,7 +17,7 @@ Stwórz nowy serwer wirtualny klikając na 'vServers', następnie dodaj nowy ser
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-Ostatnio dodany wirtualny serwer musi pojawić się na lewym pasku ekranu. W zakładce 'Behaviors' 
+Ostatnio dodany wirtualny serwer musi pojawić się na lewym pasku ekranu. W zakładce 'Behaviors'
 zobaczysz zestaw domyślnych zachowań dla tego serwera wirtualnego. Kliknij na przycisk 'Rule Management'.
 Usuń te oznaczone jako 'Directory /cherokee_themes' i 'Directory /icons':
 

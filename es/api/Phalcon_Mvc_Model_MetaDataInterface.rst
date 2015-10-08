@@ -99,6 +99,16 @@ abstract public  **setAutomaticUpdateAttributes** (*unknown* $model, *unknown* $
 ...
 
 
+abstract public  **setEmptyStringAttributes** (*unknown* $model, *unknown* $attributes)
+
+...
+
+
+abstract public  **getEmptyStringAttributes** (*unknown* $model)
+
+...
+
+
 abstract public  **getDefaultValues** (*unknown* $model)
 
 ...

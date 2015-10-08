@@ -63,7 +63,7 @@ Phalcon не обязывает использовать определенну�
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Все запросы будут перенаправлены в каталог public/, делая его тем самым корневым каталогом хоста. Данный шаг обеспечивает недоступность внутренних файлов проекта для внешнего пользователя, избегая таким образом угроз безопасности подобного характера.
@@ -77,7 +77,7 @@ Phalcon не обязывает использовать определенну�
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Bootstrap
@@ -93,29 +93,29 @@ Bootstrap
 
     try {
 
-        //Register an autoloader
+        // Register an autoloader
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setting up the view component
-        $di->set('view', function(){
+        // Setting up the view component
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
-        //Handle the request
+        // Handle the request
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch (\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -151,7 +151,7 @@ DI представляет из себя глобальный контейне�
 
     <?php
 
-    //Создание DI
+    // Создание DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` является вариантом Phalcon\\DI. Он берет на себя функции регистрации большинства компонентов из состава Phalcon, поэтому нам не придется регистрировать их вручную один за другим.
@@ -165,8 +165,8 @@ DI представляет из себя глобальный контейне�
 
     <?php
 
-    //Setting up the view component
-    $di->set('view', function(){
+    // Setting up the view component
+    $di->set('view', function () {
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
@@ -390,7 +390,7 @@ Phalcon содержит первую ORM для PHP, полностью нап�
         $di = new Phalcon\DI\FactoryDefault();
 
         // Настраиваем сервис для работы с БД
-        $di->set('db', function(){
+        $di->set('db', function () {
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
@@ -400,7 +400,7 @@ Phalcon содержит первую ORM для PHP, полностью нап�
         });
 
         // Настраиваем компонент View
-        $di->set('view', function(){
+        $di->set('view', function () {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
@@ -411,7 +411,7 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
+    } catch (Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 

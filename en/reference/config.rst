@@ -1,5 +1,6 @@
 Reading Configurations
 ======================
+
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
 PHP objects for use in an application.
 
@@ -7,13 +8,13 @@ File Adapters
 -------------
 The adapters available are:
 
-+-----------+---------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                       |
-+===========+===================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file.    |
-+-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
-+-----------+---------------------------------------------------------------------------------------------------+
++-----------+------------------------------------------------------------------------------------------------+
+| File Type | Description                                                                                    |
++===========+================================================================================================+
+| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file. |
++-----------+------------------------------------------------------------------------------------------------+
+| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.  |
++-----------+------------------------------------------------------------------------------------------------+
 
 Native Arrays
 -------------
@@ -28,16 +29,16 @@ read during this request.
 
     $settings = array(
         "database" => array(
-            "adapter"    => "Mysql",
-            "host"       => "localhost",
-            "username"   => "scott",
-            "password"   => "cheetah",
-            "dbname"     => "test_db",
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db"
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
+            "viewsDir"       => "../app/views/"
         ),
         "mysetting" => "the-value"
     );
@@ -105,22 +106,26 @@ New properties are added and existing properties are updated.
 
     use Phalcon\Config;
 
-    $config = new Config(array(
-        'database' => array(
-            'host'   => 'localhost',
-            'dbname' => 'test_db'
-        ),
-        'debug' => 1,
-    ));
+    $config = new Config(
+        array(
+            'database' => array(
+                'host'   => 'localhost',
+                'dbname' => 'test_db'
+            ),
+            'debug' => 1
+        )
+    );
 
-    $config2 = new Config(array(
-        'database' => array(
-            'dbname' => 'production_db',
-            'username' => 'scott',
-            'password' => 'secret',
-        ),
-        'logging' => 1,
-    ));
+    $config2 = new Config(
+        array(
+            'database' => array(
+                'dbname'   => 'production_db',
+                'username' => 'scott',
+                'password' => 'secret'
+            ),
+            'logging' => 1
+        )
+    );
 
     $config->merge($config2);
 

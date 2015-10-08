@@ -1,5 +1,6 @@
 视图助手（View Helpers）
 ========================
+
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to
 be taken into consideration. Phalcon deals with this complexity by offering :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`, which in turn offers
 view helpers to generate HTML markup.
@@ -7,6 +8,7 @@ view helpers to generate HTML markup.
 This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` template.
 
 .. highlights::
+
     This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
     the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
@@ -52,6 +54,7 @@ Setting document type.
     use Phalcon\Tag;
 
     $this->tag->setDoctype(Tag::HTML401_STRICT);
+
     ?>
 
 Getting document type.
@@ -110,8 +113,8 @@ Same links generated with Volt:
     <!-- for a named route -->
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
 
-    <!-- for a named route with class -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
+    <!-- for a named route with a HTML class -->
+    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show', 'class': 'edit-btn') }}
 
 创建表单（Creating Forms）
 --------------------------
@@ -152,7 +155,7 @@ Same form generated in Volt:
         <label for="q">Search:</label>
         {{ text_field("q") }}
         {{ submit_button("Search") }}
-    {{ endform() }}
+    {{ endForm() }}
 
 Phalcon also provides a :doc:`form builder <forms>` to create forms in an object-oriented manner.
 
@@ -248,10 +251,12 @@ You can add an "empty" option to the generated HTML:
         array(
             "productId",
             Products::find("type = 'vegetables'"),
-            "using" => array("id", "name"),
+            "using"    => array("id", "name"),
             "useEmpty" => true
         )
     );
+
+Produces this HTML:
 
 .. code-block:: html
 
@@ -306,7 +311,7 @@ All the helpers accept an array as their first parameter which can contain addit
             "price",
             "size"        => 20,
             "maxlength"   => 30,
-            "placeholder" => "Enter a price",
+            "placeholder" => "Enter a price"
         )
     ) ?>
 
@@ -341,12 +346,10 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 
     class ProductsController extends Controller
     {
-
         public function indexAction()
         {
             $this->tag->setDefault("color", "Blue");
         }
-
     }
 
 At the view, a selectStatic helper matches the same index used to preset the value. In this case "color":
@@ -399,7 +402,6 @@ The following example demonstrates just that:
 
     class PostsController extends Controller
     {
-
         public function initialize()
         {
             $this->tag->setTitle("Your Website");
@@ -409,7 +411,6 @@ The following example demonstrates just that:
         {
             $this->tag->prependTitle("Index of Posts - ");
         }
-
     }
 
 .. code-block:: html+php
@@ -431,9 +432,10 @@ The following HTML will generated:
         <head>
             <title>Index of Posts - Your Website</title>
         </head>
-          <body>
 
-          </body>
+        <body>
+
+        </body>
     </html>
 
 静态内容助手（Static Content Helpers）
@@ -515,7 +517,6 @@ HTML5 对象（HTML5 elements - generic HTML helper）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
-
 .. code-block:: php
 
     <?php
@@ -540,7 +541,6 @@ Volt syntax:
         This is my canvas
     {{ tag_html_close("canvas") }}
 
-
 标签服务（Tag Service）
 -----------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is available via the 'tag' service, this means you can access it from any part
@@ -560,18 +560,18 @@ You can easily add new helpers to a custom component replacing the service 'tag'
 
     class MyTags extends Tag
     {
-        //...
+        // ...
 
-        //Create a new helper
+        // Create a new helper
         static public function myAmazingHelper($parameters)
         {
-            //...
+            // ...
         }
 
-        //Override an existing method
+        // Override an existing method
         static public function textField($parameters)
         {
-            //...
+            // ...
         }
     }
 
@@ -581,7 +581,7 @@ Then change the definition of the service 'tag':
 
     <?php
 
-    $di['tag'] = function() {
+    $di['tag'] = function () {
         return new MyTags();
     };
 
@@ -597,7 +597,6 @@ You can easily create your own helpers. First, start by creating a new folder wi
 
     class MyTags extends Tag
     {
-
         /**
          * Generates a widget to show a HTML5 audio tag
          *
@@ -606,7 +605,6 @@ You can easily create your own helpers. First, start by creating a new folder wi
          */
         static public function audioField($parameters)
         {
-
             // Converting parameters to array if it is not
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
@@ -646,7 +644,6 @@ You can easily create your own helpers. First, start by creating a new folder wi
 
             return $code;
         }
-
     }
 
 After creating our custom helper, we will autoload the new directory that contains our helper class from our "index.php" located in the public directory.
@@ -672,20 +669,16 @@ After creating our custom helper, we will autoload the new directory that contai
         $di = new FactoryDefault();
 
         // Assign our new tag a definition so we can call it
-        $di->set('MyTags',  function()
-        {
+        $di->set('MyTags', function () {
             return new MyTags();
         });
 
         $application = new Application($di);
         echo $application->handle()->getContent();
 
-        } catch(PhalconException $e) {
-             echo "PhalconException: ", $e->getMessage();
-        }
-
+    } catch (PhalconException $e) {
+        echo "PhalconException: ", $e->getMessage();
     }
-
 
 Now you are ready to use your new helper within your views:
 
@@ -695,15 +688,17 @@ Now you are ready to use your new helper within your views:
 
         <?php
 
-        echo MyTags::audioField(array(
-            'name'  => 'test',
-            'id'    => 'audio_test',
-            'src'   => '/path/to/audio.mp3'
-            ));
+        echo MyTags::audioField(
+            array(
+                'name' => 'test',
+                'id'   => 'audio_test',
+                'src'  => '/path/to/audio.mp3'
+            )
+        );
+
         ?>
 
     </body>
-
 
 In next chapter, we'll talk about :doc:`Volt <volt>` a faster template engine for PHP, where you can use a
 more friendly syntax for using helpers provided by Phalcon\\Tag.

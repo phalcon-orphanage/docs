@@ -1,5 +1,6 @@
 国际化（Internationalization）
 ====================
+
 Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
 Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
 
@@ -24,9 +25,11 @@ There are several ways to find out the best available locale using intl_. One of
     echo $locale;
 
 Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
+
 Examples of identifiers include:
 
 * en-US (English, United States)
+* ru-RU (Russian, Russia)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
@@ -59,16 +62,16 @@ Message formatting using time and date patterns:
 
     <?php
 
-    //Setting parameters
+    // Setting parameters
     $time   = time();
     $values = array(7, $time, $time);
 
-    // Prints "At 3:50:31 PM on Apr 19, 2012, there was a disturbance on planet 7."
+    // Prints "At 3:50:31 PM on Apr 19, 2015, there was a disturbance on planet 7."
     $pattern   = "At {1, time} on {1, date}, there was a disturbance on planet {0, number}.";
     $formatter = new MessageFormatter("en_US", $pattern);
     echo $formatter->format($values);
 
-    // Prints "À 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planète 7."
+    // Prints "À 15:53:01 le 19 avr. 2015, il y avait une perturbation sur la planète 7."
     $pattern   = "À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.";
     $formatter = new MessageFormatter("fr_FR", $pattern);
     echo $formatter->format($values);

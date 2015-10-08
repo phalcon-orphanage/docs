@@ -1,5 +1,6 @@
 分页（Pagination）
 ==========
+
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data browsable pages.
 
@@ -24,6 +25,8 @@ In the example below, the paginator will use as its source data the result of a 
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
     // Current page to show
     // In a controller this can be:
@@ -89,7 +92,7 @@ An example of the source data that must be used for each adapter:
     use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
     use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-    //Passing a resultset as data
+    // Passing a resultset as data
     $paginator = new PaginatorModel(
         array(
             "data"  => Products::find(),
@@ -98,7 +101,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing an array as data
+    // Passing an array as data
     $paginator = new PaginatorArray(
         array(
             "data"  => array(
@@ -113,19 +116,20 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing a querybuilder as data
+    // Passing a querybuilder as data
 
     $builder = $this->modelsManager->createBuilder()
         ->columns('id, name')
         ->from('Robots')
         ->orderBy('name');
 
-    $paginator = new PaginatorQueryBuilder(array(
-        "builder" => $builder,
-        "limit"   => 20,
-        "page"    => 1
-    ));
-
+    $paginator = new PaginatorQueryBuilder(
+        array(
+            "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1
+        )
+    );
 
 页面属性（Page Attributes）
 ---------------
@@ -161,7 +165,6 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     class MyPaginator implements PaginatorInterface
     {
-
         /**
          * Adapter constructor
          *
@@ -182,5 +185,4 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
          * @return stdClass
          */
         public function getPaginate();
-
     }

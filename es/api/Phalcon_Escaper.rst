@@ -31,7 +31,7 @@ Sets the encoding to be used by the escaper
 
 
 
-public *string*  **getEncoding** ()
+public  **getEncoding** ()
 
 Returns the internal encoding used by the escaper
 
@@ -50,43 +50,43 @@ Sets the HTML quoting type for htmlspecialchars
 
 
 
-public *string/null*  **detectEncoding** (*unknown* $str)
+final public  **detectEncoding** (*unknown* $str)
 
 Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
 
 
-public *string*  **normalizeEncoding** (*unknown* $str)
+final public  **normalizeEncoding** (*unknown* $str)
 
 Utility to normalize a string's encoding to UTF-32.
 
 
 
-public *string*  **escapeHtml** (*unknown* $text)
+public  **escapeHtml** (*unknown* $text)
 
 Escapes a HTML string. Internally uses htmlspecialchars
 
 
 
-public *string*  **escapeHtmlAttr** (*unknown* $attribute)
+public  **escapeHtmlAttr** (*unknown* $attribute)
 
 Escapes a HTML attribute string
 
 
 
-public *string*  **escapeCss** (*unknown* $css)
+public  **escapeCss** (*unknown* $css)
 
 Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 
-public *string*  **escapeJs** (*unknown* $js)
+public  **escapeJs** (*unknown* $js)
 
 Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 
-public *string*  **escapeUrl** (*unknown* $url)
+public  **escapeUrl** (*unknown* $url)
 
 Escapes a URL. Internally uses rawurlencode
 

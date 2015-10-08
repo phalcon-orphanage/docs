@@ -9,7 +9,7 @@ Deletes the characters which are insignificant to JavaScript. Comments will be r
 Methods
 -------
 
-public *string*  **filter** (*unknown* $content)
+public  **filter** (*unknown* $content)
 
 Filters the content using JSMIN
 

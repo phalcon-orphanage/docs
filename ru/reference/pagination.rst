@@ -1,5 +1,6 @@
 Постраничная навигация (Paginators)
 ===================================
+
 Разделение данных на страницы бывает актуально при необходимости вывести большой объём данных поэтапно. Компонент Phalcon\\Paginator
 предлагает простой и удобный способ для этого случая.
 
@@ -19,12 +20,13 @@
 
 Пример
 ------
-В примере, приведенном ниже, пагинатор будет использовать в качестве источника результат запроса данных модели, и будет выводить
-данные по 10 записей на странице:
+В примере, приведенном ниже, пагинатор будет использовать в качестве источника результат запроса данных модели, и будет выводить данные по 10 записей на странице:
 
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
     // Текущая страница
     // В контроллерах можно использовать:
@@ -33,14 +35,14 @@
     $currentPage = (int) $_GET["page"];
 
     // Набор данных для разбивки на страницы
-    $robots = Robots::find();
+    $robots      = Robots::find();
 
     // Создаём пагинатор, отображаются 10 элементов на странице, начиная с текущей - $currentPage
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator   = new PaginatorModel(
         array(
-            "data" => $robots,
-            "limit"=> 10,
-            "page" => $currentPage
+            "data"  => $robots,
+            "limit" => 10,
+            "page"  => $currentPage
         )
     );
 
@@ -86,8 +88,12 @@
 
     <?php
 
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+    use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
+    use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+
     // Передача данных модели
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator = new PaginatorModel(
         array(
             "data"  => Products::find(),
             "limit" => 10,
@@ -96,7 +102,7 @@
     );
 
     // Передача данных из массива
-    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
+    $paginator = new PaginatorArray(
         array(
             "data"  => array(
                 array('id' => 1, 'name' => 'Artichoke'),
@@ -117,12 +123,13 @@
         ->from('Robots')
         ->orderBy('name');
 
-    $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
-        "builder" => $builder,
-        "limit"=> 20,
-        "page" => 1
-    ));
-
+    $paginator = new PaginatorQueryBuilder(
+        array(
+            "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1
+        )
+    );
 
 Атрибуты страниц
 ----------------
@@ -154,9 +161,10 @@
 
     <?php
 
-    class MyPaginator implements Phalcon\Paginator\AdapterInterface
-    {
+    use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 
+    class MyPaginator implements PaginatorInterface
+    {
         /**
          * Конструктор адаптера
          *
@@ -177,5 +185,4 @@
          * @return stdClass
          */
         public function getPaginate();
-
     }

@@ -21,9 +21,9 @@ Throughout the tutorials and examples of the Phalcon documentation, there is a c
 
     try {
 
-        //... some phalcon/php code
+        // ... Some Phalcon/PHP code
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -66,9 +66,9 @@ Retrieving information from :doc:`Phalcon\\Exception <../api/Phalcon_Exception>`
 
     try {
 
-        //... app code ...
+        // ... App code ...
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         echo get_class($e), ": ", $e->getMessage(), "\n";
         echo " File=", $e->getFile(), "\n";
         echo " Line=", $e->getLine(), "\n";
@@ -116,7 +116,7 @@ The following screencast explains how it works:
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 To enable it, add the following to your bootstrap:
@@ -197,7 +197,6 @@ It's easy to know the internal state of any object. The above example prints the
             )
     )
 
-
 Using XDebug
 ------------
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together
@@ -208,7 +207,7 @@ The following screencast shows a Xdebug session with Phalcon:
 .. raw:: html
 
     <div align="center">
-        <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="//player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
@@ -217,7 +216,7 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
     We highly recommend use at least XDebug 2.2.3 for a better compatibility with Phalcon
 
-The following example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace
+The following example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace:
 
 .. code-block:: php
 
@@ -227,7 +226,6 @@ The following example implements xdebug_print_function_stack_ to stop the execut
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -235,8 +233,7 @@ The following example implements xdebug_print_function_stack_ to stop the execut
 
         public function registerAction()
         {
-
-            // Request variables from html form
+            // Request variables from HTML form
             $name  = $this->request->getPost("name", "string");
             $email = $this->request->getPost("email", "email");
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Behavior\\Timestampable**
 ======================================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
@@ -9,9 +9,9 @@ Allows to automatically update a model’s attribute saving the datetime when a 
 
 
 Methods
----------
+-------
 
-public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **notify** (*unknown* $type, *unknown* $model)
 
 Listens for notifications from the models manager
 
@@ -23,13 +23,13 @@ Phalcon\\Mvc\\Model\\Behavior
 
 
 
-protected  **mustTakeAction** () inherited from Phalcon\\Mvc\\Model\\Behavior
+protected  **mustTakeAction** (*unknown* $eventName) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** () inherited from Phalcon\\Mvc\\Model\\Behavior
+protected *array*  **getOptions** ([*string* $eventName]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Returns the behavior options related to an event
 

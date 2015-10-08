@@ -1,24 +1,24 @@
-
 Using Controllers
 =================
+
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access an URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
-+------------------------+----------------+
-| **Phalcon Directory**  | blog           |
-+------------------------+----------------+
-| **Controller**         | posts          |
-+------------------------+----------------+
-| **Action**             | show           |
-+------------------------+----------------+
-| **Parameter**          | 2015           |
-+------------------------+----------------+
-| **Parameter**          | the-post-title |
-+------------------------+----------------+
++-----------------------+----------------+
+| **Phalcon Directory** | blog           |
++-----------------------+----------------+
+| **Controller**        | posts          |
++-----------------------+----------------+
+| **Action**            | show           |
++-----------------------+----------------+
+| **Parameter**         | 2015           |
++-----------------------+----------------+
+| **Parameter**         | the-post-title |
++-----------------------+----------------+
 
 In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
 could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
@@ -33,7 +33,6 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -59,17 +58,15 @@ Parameters without a default value are handled as required. Setting optional val
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
         }
 
-        public function showAction($year = 2012, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = 'some default title')
         {
 
         }
-
     }
 
 Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
@@ -82,7 +79,6 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -90,14 +86,14 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year       = $this->dispatcher->getParam('year');
-            $postTitle  = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam('year');
+            $postTitle = $this->dispatcher->getParam('postTitle');
         }
     }
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the above example only one
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
 action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
 execution to a different controller/action.
 
@@ -109,7 +105,6 @@ execution to a different controller/action.
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -120,10 +115,12 @@ execution to a different controller/action.
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array(
-                "controller" => "users",
-                "action"     => "signin"
-            ));
+            $this->dispatcher->forward(
+                array(
+                    "controller" => "users",
+                    "action"     => "signin"
+                )
+            );
         }
     }
 
@@ -137,7 +134,6 @@ If users don't have permissions to access a certain action then will be forwarde
 
     class UsersController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -166,7 +162,6 @@ action is executed on a controller. The use of the "__construct" method is not r
 
     class PostsController extends Controller
     {
-
         public $settings;
 
         public function initialize()
@@ -179,7 +174,7 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function saveAction()
         {
             if ($this->settings["mySetting"] == "value") {
-                //...
+                // ...
             }
         }
     }
@@ -200,10 +195,9 @@ method 'onConstruct':
 
     class PostsController extends Controller
     {
-
         public function onConstruct()
         {
-            //...
+            // ...
         }
     }
 
@@ -226,7 +220,7 @@ container in application. For example, if we have registered a service like this
 
     $di = new DI();
 
-    $di->set('storage', function() {
+    $di->set('storage', function () {
         return new Storage('/some/directory');
     }, true);
 
@@ -240,10 +234,8 @@ Then, we can access to that service in several ways:
 
     class FilesController extends Controller
     {
-
         public function saveAction()
         {
-
             // Injecting the service by just accessing the property with the same name
             $this->storage->save('/some/file');
 
@@ -277,7 +269,6 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -305,7 +296,6 @@ an afterDispatch event - it can be useful to access the response directly:
 
     class PostsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -333,7 +323,6 @@ from any controller to encapsulate data that need to be persistent.
 
     class UserController extends Controller
     {
-
         public function indexAction()
         {
             $this->persistent->name = "Michael";
@@ -354,14 +343,14 @@ any other class registered with its name can easily replace a controller:
 
     <?php
 
-    //Register a controller as a service
-    $di->set('IndexController', function() {
+    // Register a controller as a service
+    $di->set('IndexController', function () {
         $component = new Component();
         return $component;
     });
 
-    //Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function() {
+    // Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function () {
         $component = new Component();
         return $component;
     });
@@ -394,7 +383,6 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     class ControllerBase extends Controller
     {
-
         /**
          * This action is available for multiple controllers
          */
@@ -402,7 +390,6 @@ The implementation of common components (actions, methods, properties etc.) resi
         {
 
         }
-
     }
 
 Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
@@ -429,7 +416,6 @@ you to implement hook points before/after the actions are executed:
 
     class PostsController extends Controller
     {
-
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
@@ -437,10 +423,12 @@ you to implement hook points before/after the actions are executed:
 
                 $this->flash->error("You don't have permission to save posts");
 
-                $this->dispatcher->forward(array(
-                    'controller' => 'home',
-                    'action'     => 'index'
-                ));
+                $this->dispatcher->forward(
+                    array(
+                        'controller' => 'home',
+                        'action'     => 'index'
+                    )
+                );
 
                 return false;
             }

@@ -1,5 +1,6 @@
 Filtering and Sanitizing
 ========================
+
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
 access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -23,16 +24,16 @@ By sanitizing input we ensure that application integrity will be intact.
 
     $filter = new Filter();
 
-    // returns "someone@example.com"
+    // Returns "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
 
-    // returns "hello"
+    // Returns "hello"
     $filter->sanitize("hello<<", "string");
 
-    // returns "100019"
+    // Returns "100019"
     $filter->sanitize("!100a019", "int");
 
-    // returns "100019.01"
+    // Returns "100019.01"
     $filter->sanitize("!100a019.01a", "float");
 
 
@@ -49,7 +50,6 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
     class ProductsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -57,15 +57,12 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
         public function saveAction()
         {
-
             // Sanitizing price from input
             $price = $this->request->getPost("price", "double");
 
             // Sanitizing email from input
             $email = $this->request->getPost("customerEmail", "email");
-
         }
-
     }
 
 Filtering Action Parameters
@@ -80,7 +77,6 @@ The next example shows you how to sanitize the action parameters within a contro
 
     class ProductsController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -90,7 +86,6 @@ The next example shows you how to sanitize the action parameters within a contro
         {
             $productId = $this->filter->sanitize($productId, "int");
         }
-
     }
 
 Filtering data
@@ -106,10 +101,10 @@ the format we expect.
 
     $filter = new Filter();
 
-    // returns "Hello"
+    // Returns "Hello"
     $filter->sanitize("<h1>Hello</h1>", "striptags");
 
-    // returns "Hello"
+    // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
 
@@ -152,7 +147,7 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
     $filter = new Filter();
 
     // Using an anonymous function
-    $filter->add('md5', function($value) {
+    $filter->add('md5', function ($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
@@ -169,12 +164,10 @@ Or, if you prefer, you can implement the filter in a class:
 
     class IPv4Filter
     {
-
         public function filter($value)
         {
             return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
-
     }
 
     $filter = new Filter();

@@ -1,6 +1,8 @@
 Class **Phalcon\\Paginator\\Adapter\\NativeArray**
 ==================================================
 
+*extends* abstract class :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
+
 *implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
 Pagination using a PHP array as source of data  
@@ -9,7 +11,7 @@ Pagination using a PHP array as source of data
 
     <?php
 
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
     	array(
     		"data"  => array(
     			array('id' => 1, 'name' => 'Artichoke'),
@@ -34,27 +36,27 @@ Phalcon\\Paginator\\Adapter\\NativeArray constructor
 
 
 
-public  **setCurrentPage** (*unknown* $page)
+public  **getPaginate** ()
+
+Returns a slice of the resultset to show in the pagination
+
+
+
+public  **setCurrentPage** (*unknown* $page) inherited from Phalcon\\Paginator\\Adapter
 
 Set the current page number
 
 
 
-public  **setLimit** (*unknown* $limitRows)
+public  **setLimit** (*unknown* $limitRows) inherited from Phalcon\\Paginator\\Adapter
 
 Set current rows limit
 
 
 
-public  **getLimit** ()
+public  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
 
 Get current rows limit
-
-
-
-public  **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
 
 
 

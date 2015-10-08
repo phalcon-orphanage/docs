@@ -1,5 +1,6 @@
 Pagination
 ==========
+
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data browsable pages.
 
@@ -7,15 +8,15 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter      | Description                                                                                                                                                                 |
-+==============+=============================================================================================================================================================================+
-| NativeArray  | Use a PHP array as source data                                                                                                                                              |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this paginator don't be used to paginate a large number of records |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter      | Description                                                                                                                                                                   |
++==============+===============================================================================================================================================================================+
+| NativeArray  | Use a PHP array as source data                                                                                                                                                |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                               |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Examples
 --------
@@ -25,6 +26,8 @@ In the example below, the paginator will use as its source data the result of a 
 
     <?php
 
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+
     // Current page to show
     // In a controller this can be:
     // $this->request->getQuery('page', 'int'); // GET
@@ -32,14 +35,14 @@ In the example below, the paginator will use as its source data the result of a 
     $currentPage = (int) $_GET["page"];
 
     // The data set to paginate
-    $robots = Robots::find();
+    $robots      = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator   = new PaginatorModel(
         array(
-            "data" => $robots,
-            "limit"=> 10,
-            "page" => $currentPage
+            "data"  => $robots,
+            "limit" => 10,
+            "page"  => $currentPage
         )
     );
 
@@ -85,8 +88,12 @@ An example of the source data that must be used for each adapter:
 
     <?php
 
-    //Passing a resultset as data
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+    use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
+    use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+
+    // Passing a resultset as data
+    $paginator = new PaginatorModel(
         array(
             "data"  => Products::find(),
             "limit" => 10,
@@ -94,8 +101,8 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing an array as data
-    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
+    // Passing an array as data
+    $paginator = new PaginatorArray(
         array(
             "data"  => array(
                 array('id' => 1, 'name' => 'Artichoke'),
@@ -109,19 +116,20 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing a querybuilder as data
+    // Passing a querybuilder as data
 
     $builder = $this->modelsManager->createBuilder()
         ->columns('id, name')
         ->from('Robots')
         ->orderBy('name');
 
-    $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
-        "builder" => $builder,
-        "limit"=> 20,
-        "page" => 1
-    ));
-
+    $paginator = new PaginatorQueryBuilder(
+        array(
+            "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1
+        )
+    );
 
 Page Attributes
 ---------------
@@ -153,9 +161,10 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     <?php
 
-    class MyPaginator implements Phalcon\Paginator\AdapterInterface
-    {
+    use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 
+    class MyPaginator implements PaginatorInterface
+    {
         /**
          * Adapter constructor
          *
@@ -176,5 +185,4 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
          * @return stdClass
          */
         public function getPaginate();
-
     }

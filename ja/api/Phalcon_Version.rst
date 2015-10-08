@@ -26,13 +26,13 @@ Area where the version number is set. The format is as follows: ABBCCDE A - Majo
 
 
 
-final protected static *string*  **_getSpecial** (*unknown* $special)
+final protected static  **_getSpecial** (*unknown* $special)
 
 Translates a number to a special release If Special release = 1 this function will return ALPHA
 
 
 
-public static *string*  **get** ()
+public static  **get** ()
 
 Returns the active version (string) 
 
@@ -45,7 +45,7 @@ Returns the active version (string)
 
 
 
-public static *string*  **getId** ()
+public static  **getId** ()
 
 Returns the numeric active version 
 
@@ -58,7 +58,7 @@ Returns the numeric active version
 
 
 
-public static *string*  **getPart** (*unknown* $part)
+public static  **getPart** (*unknown* $part)
 
 Returns a specific part of the version. If the wrong parameter is passed it will return the full version 
 
