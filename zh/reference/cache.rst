@@ -406,6 +406,8 @@ Setting the lifetime when retrieving:
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 | XCache    | 在XCache中存放数据                             | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_  | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`        |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 
 自定义后端适配器（Implementing your own Backend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -476,6 +478,26 @@ XCache 后端存储器选项（XCache Backend Options）
 | prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
 
+Redis Backend Options
+^^^^^^^^^^^^^^^^^^^^^
+This backend will store cached content on a Redis server (Redis_). The available options for this backend are:
+
++------------+---------------------------------------------------------------+
+| Option     | Description                                                   |
++============+===============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys    |
++------------+---------------------------------------------------------------+
+| host       | Redis host                                                    |
++------------+---------------------------------------------------------------+
+| port       | Redis port                                                    |
++------------+---------------------------------------------------------------+
+| auth       | Password to authenticate to a password-protected Redis server |
++------------+---------------------------------------------------------------+
+| persistent | Create a persistent connection to Redis                       |
++------------+---------------------------------------------------------------+
+| index      | The index of the Redis database to use                        |
++------------+---------------------------------------------------------------+
+
 在 `Phalcon Incubator <https://github.com/phalcon/incubator>`_ 上还有更多针对这个组件可用的适配器
 
 .. _Memcached: http://www.php.net/memcache
@@ -486,3 +508,5 @@ XCache 后端存储器选项（XCache Backend Options）
 .. _Mongo: http://pecl.php.net/package/mongo
 .. _XCache: http://xcache.lighttpd.net/
 .. _XCache extension: http://pecl.php.net/package/xcache
+.. _Redis: http://redis.io/
+.. _redis extension: http://pecl.php.net/package/redis

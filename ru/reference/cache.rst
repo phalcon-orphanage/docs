@@ -409,6 +409,8 @@ Backend Адаптеры
 +-----------+-------------------------------------------------+------------+------------------------+-----------------------------------------------------------------------------------+
 | XCache    | Сохроняет данные в XCache                       | XCache_    | `xcache extension`_    | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
 +-----------+-------------------------------------------------+------------+------------------------+-----------------------------------------------------------------------------------+
+| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_      | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`        |
++-----------+------------------------------------------------+------------+-------------------------+-----------------------------------------------------------------------------------+
 
 Реализация собственных Backend адаптеров
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -478,6 +480,26 @@ Backend Адаптеры
 | prefix     | Префикс, который будет автоматически добавляться в кэш ключей|
 +------------+--------------------------------------------------------------+
 
+Redis Backend Options
+^^^^^^^^^^^^^^^^^^^^^
+This backend will store cached content on a Redis server (Redis_). The available options for this backend are:
+
++------------+---------------------------------------------------------------+
+| Option     | Description                                                   |
++============+===============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys    |
++------------+---------------------------------------------------------------+
+| host       | Redis host                                                    |
++------------+---------------------------------------------------------------+
+| port       | Redis port                                                    |
++------------+---------------------------------------------------------------+
+| auth       | Password to authenticate to a password-protected Redis server |
++------------+---------------------------------------------------------------+
+| persistent | Create a persistent connection to Redis                       |
++------------+---------------------------------------------------------------+
+| index      | The index of the Redis database to use                        |
++------------+---------------------------------------------------------------+
+
 Существует еще несколько типов адаптеров, их можно получить в "Инкубаторе" - `Phalcon Incubator <https://github.com/phalcon/incubator>`_
 
 .. _Memcached: http://ru.wikipedia.org/wiki/Memcached
@@ -488,3 +510,5 @@ Backend Адаптеры
 .. _Mongo: http://pecl.php.net/package/mongo
 .. _XCache: http://xcache.lighttpd.net/
 .. _XCache extension: http://pecl.php.net/package/xcache
+.. _Redis: http://redis.io/
+.. _redis extension: http://pecl.php.net/package/redis
