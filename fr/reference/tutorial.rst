@@ -296,7 +296,7 @@ The empty index action gives the clean pass to a view with the form definition:
      </p>
 
      <p>
-        <label for="name">E-Mail</label>
+        <label for="email">E-Mail</label>
         <?php echo Tag::textField("email") ?>
      </p>
 

@@ -312,7 +312,7 @@ Al encontrarce la acción 'index' vacía se da paso a la vista, la cual contiene
      </p>
 
      <p>
-        <label for="name">Correo electrónico</label>
+        <label for="email">Correo electrónico</label>
         <?php echo Tag::textField("email") ?>
      </p>
 
