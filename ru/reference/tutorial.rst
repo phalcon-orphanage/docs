@@ -295,7 +295,7 @@ Phalcon ищет файл представления с именем, совпа
      </p>
 
      <p>
-        <label for="name">E-Mail</label>
+        <label for="email">E-Mail</label>
         <?php echo Tag::textField("email") ?>
      </p>
 
