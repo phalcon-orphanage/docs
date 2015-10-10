@@ -20,7 +20,6 @@ Phalconはパフォーマンスだけではありません。我々のゴール�
    :maxdepth: 3
 
    reference/motivation
-   reference/benchmark
    reference/install
    reference/tutorial
    reference/tutorial-invo

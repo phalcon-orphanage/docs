@@ -17,7 +17,6 @@ Tabela do Conteúdo
    :maxdepth: 3
 
    reference/motivation
-   reference/benchmark
    reference/install
    reference/tutorial
    reference/tutorial-invo
