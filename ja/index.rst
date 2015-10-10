@@ -86,4 +86,3 @@ Phalconはパフォーマンスだけではありません。我々のゴール�
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
 * `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
-

@@ -54,7 +54,7 @@ The loosely-coupled design of this component allows you to create your own valid
 
 バリデーションの初期化
 -----------------------
-Validation chains can be initialized in a direct manner by just adding validators to the Phalcon\\Validation object.
+Validation chains can be initialized in a direct manner by just adding validators to the :code:`Phalcon\Validation` object.
 You can put your validations in a separate file for better re-use code and organization:
 
 .. code-block:: php
@@ -160,7 +160,7 @@ The following example explains how to create additional validators for this comp
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             $value = $validator->getValue($attribute);
 
@@ -360,7 +360,7 @@ this behavior by telling the validation component which validator may stop the v
 
     $validation
         ->add('telephone', new PresenceOf(array(
-            'message' => 'The telephone is required',
+            'message'      => 'The telephone is required',
             'cancelOnFail' => true
         )))
         ->add('telephone', new Regex(array(
@@ -421,7 +421,7 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation
         ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/',
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+44 [0-9]+/',
             'allowEmpty' => true
         )));

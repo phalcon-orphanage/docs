@@ -160,7 +160,7 @@ Then initialize and use your own validator:
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             $value = $validator->getValue($attribute);
 
@@ -360,7 +360,7 @@ Then initialize and use your own validator:
 
     $validation
         ->add('telephone', new PresenceOf(array(
-            'message' => 'The telephone is required',
+            'message'      => 'The telephone is required',
             'cancelOnFail' => true
         )))
         ->add('telephone', new Regex(array(
@@ -421,7 +421,7 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation
         ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/',
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+44 [0-9]+/',
             'allowEmpty' => true
         )));

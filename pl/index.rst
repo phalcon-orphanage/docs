@@ -80,3 +80,10 @@ Spis treści
    reference/unit-testing
    api/index
    reference/license
+
+Other formats
+-------------
+
+* `PDF <https://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
+* `HTML in one Zip <https://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
+* `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_

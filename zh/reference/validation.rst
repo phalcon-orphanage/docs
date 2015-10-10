@@ -159,7 +159,7 @@ Phalcon的验证组件中内置了一些验证器：
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             $value = $validator->getValue($attribute);
 
@@ -354,7 +354,7 @@ Phalcon的验证组件中内置了一些验证器：
 
     $validation
         ->add('telephone', new PresenceOf(array(
-            'message' => 'The telephone is required',
+            'message'      => 'The telephone is required',
             'cancelOnFail' => true
         )))
         ->add('telephone', new Regex(array(
@@ -414,7 +414,7 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation
         ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/',
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+44 [0-9]+/',
             'allowEmpty' => true
         )));

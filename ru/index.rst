@@ -87,6 +87,7 @@ Phalcon заботится не только о производительнос
 
 Документация в других форматах
 ------------------------------
-* `PDF <http://media.readthedocs.org/pdf/phalcon-docs-ru/latest/phalcon-docs-ru.pdf>`_
-* `HTML страницы в Zip <http://media.readthedocs.org/htmlzip/phalcon-docs-ru/latest/phalcon-docs-ru.zip>`_
-* `ePub <http://media.readthedocs.org/epub/phalcon-docs-ru/latest/phalcon-docs-ru.epub>`_
+
+* `PDF <https://media.readthedocs.org/pdf/phalcon-docs-ru/latest/phalcon-docs-ru.pdf>`_
+* `HTML страницы в Zip <https://media.readthedocs.org/htmlzip/phalcon-docs-ru/latest/phalcon-docs-ru.zip>`_
+* `ePub <https://media.readthedocs.org/epub/phalcon-docs-ru/latest/phalcon-docs-ru.epub>`_

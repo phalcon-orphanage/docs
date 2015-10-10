@@ -81,7 +81,6 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 其他格式
 -------------
 
-* `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
-* `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
+* `PDF <https://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
+* `HTML in one Zip <https://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
 * `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
-

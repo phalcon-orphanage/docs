@@ -1,5 +1,5 @@
 Bienvenue !
-========
+===========
 
 Bienvenue sur le framework Phalcon, une toute nouvelle approche des frameworks PHP. Notre objectif est de vous donner un outil de pointe pour développer des sites Web et des applications sans se soucier des performances.
 
@@ -83,4 +83,3 @@ Other formats
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
 * `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
-
