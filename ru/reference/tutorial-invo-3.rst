@@ -1,13 +1,14 @@
-Tutorial 4: Using CRUDs
-=======================
+Tutorial 4: Использование CRUD
+==============================
 
-Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
-INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
-using forms, validations, paginators and more.
+Бэкенд обычно предоставляет формы, позволяющие пользователям работать с данными. Продолжая объяснение
+INVO, мы подходим к созданию CRUD, очень распространенной задаче, которую Phalcon упростит
+с помощью форм, валидации, пагинаторов и так далее.
 
 Работа с CRUD
 -------------
-Большинство функционала, требующего манипуляции данными (компании, товары и типы товаров), разрабатывается с использованием простого и стандартного CRUD_ (Create, Read, Update и Delete). Каждый CRUD содержит примерно следующие файлы:
+Большинство функционала, требующего манипуляции данными (компании, товары и типы товаров), разрабатывается
+с использованием простого и стандартного CRUD_ (Create, Read, Update и Delete). Каждый CRUD содержит примерно следующие файлы:
 
 .. code-block:: bash
 
@@ -43,7 +44,7 @@ using forms, validations, paginators and more.
         }
 
         /**
-         * Выполняет "search" на основание критериев, отправленных с "index".
+         * Выполняет "search" на основании критериев, отправленных с "index".
          * Возвращает результаты с пагинацией.
          */
         public function searchAction()
@@ -112,8 +113,8 @@ using forms, validations, paginators and more.
         $this->view->form               = new ProductsForm;
     }
 
-An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
-This form defines the fields that are visible to the user:
+Экземпляр формы ProductsForm (app/forms/ProductsForm.php) передается в представление.
+Эта форма определяет поля, видимые пользователю:
 
 .. code-block:: php
 
@@ -130,7 +131,7 @@ This form defines the fields that are visible to the user:
     class ProductsForm extends Form
     {
         /**
-         * Initialize the products form
+         * Инициализация формы
          */
         public function initialize($entity = null, $options = array())
         {
@@ -142,13 +143,13 @@ This form defines the fields that are visible to the user:
             }
 
             $name = new Text("name");
-            $name->setLabel("Name");
+            $name->setLabel("Название");
             $name->setFilters(array('striptags', 'string'));
             $name->addValidators(
                 array(
                     new PresenceOf(
                         array(
-                            'message' => 'Name is required'
+                            'message' => 'Название обязательно'
                         )
                     )
                 )
@@ -168,18 +169,18 @@ This form defines the fields that are visible to the user:
             $this->add($type);
 
             $price = new Text("price");
-            $price->setLabel("Price");
+            $price->setLabel("Цена");
             $price->setFilters(array('float'));
             $price->addValidators(
                 array(
                     new PresenceOf(
                         array(
-                            'message' => 'Price is required'
+                            'message' => 'Цена обязательна'
                         )
                     ),
                     new Numericality(
                         array(
-                            'message' => 'Price is required'
+                            'message' => 'Цена обязательна'
                         )
                     )
                 )
@@ -188,49 +189,49 @@ This form defines the fields that are visible to the user:
         }
     }
 
-The form is declared using an object-oriented scheme based on the elements provided by the :doc:`forms <forms>` component.
-Every element follows almost the same structure:
+Форма определена в объектно-ориентированном стиле, основываясь на элементах, предоставляемых компонентом :doc:`forms <forms>`.
+Каждый элемент следует почти одной и той же структуре:
 
 .. code-block:: php
 
     <?php
 
-    // Create the element
+    // Создаем элемент
     $name = new Text("name");
 
-    // Set its label
-    $name->setLabel("Name");
+    // Устанавливаем лейбл
+    $name->setLabel("Название");
 
-    // Before validating the element apply these filters
+    // Перед валидацией применяем эти фильтры
     $name->setFilters(array('striptags', 'string'));
 
-    // Apply this validators
+    // Применяем валидаторы
     $name->addValidators(
         array(
             new PresenceOf(
                 array(
-                    'message' => 'Name is required'
+                    'message' => 'Название обязательно'
                 )
             )
         )
     );
 
-    // Add the element to the form
+    // Добавляем элемент в форму
     $this->add($name);
 
-Other elements are also used in this form:
+Другие элементы также используются в форме:
 
 .. code-block:: php
 
     <?php
 
-    // Add a hidden input to the form
+    // Добавляем скрытое поле в форму
     $this->add(new Hidden("id"));
 
     // ...
 
-    // Add a HTML Select (list) to the form
-    // and fill it with data from "product_types"
+    // Добавляем HTML Select (список) в форму
+    // и заполняем его данными из "product_types"
     $type = new Select(
         'profilesId',
         ProductTypes::find(),
@@ -242,14 +243,14 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select.
-Once the form is passed to the view, it can be rendered and presented to the user:
+Заметьте, что ProductTypes::find() содержит данные, необходимые для заполнения тега SELECT с помощью Phalcon\\Tag::select.
+После передачи формы представлению, она может быть показана пользователю:
 
 .. code-block:: html+jinja
 
     {{ form("products/search") }}
 
-    <h2>Search products</h2>
+    <h2>Поиск продуктов</h2>
 
     <fieldset>
 
@@ -266,13 +267,13 @@ Once the form is passed to the view, it can be rendered and presented to the use
 
     </fieldset>
 
-This produces the following HTML:
+Это генерирует следующий HTML:
 
 .. code-block:: html
 
     <form action="/invo/products/search" method="post">
 
-    <h2>Search products</h2>
+    <h2>Поиск продуктов</h2>
 
     <fieldset>
 
@@ -282,7 +283,7 @@ This produces the following HTML:
         </div>
 
         <div class="control-group">
-            <label for="name" class="control-label">Name</label>
+            <label for="name" class="control-label">Название</label>
             <div class="controls">
                 <input type="text" id="name" name="name" />
             </div>
@@ -293,14 +294,14 @@ This produces the following HTML:
             <div class="controls">
                 <select id="profilesId" name="profilesId">
                     <option value="">...</option>
-                    <option value="1">Vegetables</option>
-                    <option value="2">Fruits</option>
+                    <option value="1">Овощи</option>
+                    <option value="2">Фрукты</option>
                 </select>
             </div>
         </div>
 
         <div class="control-group">
-            <label for="price" class="control-label">Price</label>
+            <label for="price" class="control-label">Цена</label>
             <div class="controls"><input type="text" id="price" name="price" /></div>
         </div>
 
@@ -310,8 +311,8 @@ This produces the following HTML:
 
     </fieldset>
 
-When the form is submitted, the action "search" is executed in the controller performing the search
-based on the data entered by the user.
+Когда форма отправлена, в контроллере выполняется действие "search", производя поиск
+на основе данных, введенных пользователем.
 
 Выполнение поиска
 ^^^^^^^^^^^^^^^^^
@@ -338,8 +339,8 @@ based on the data entered by the user.
         // ...
     }
 
-С помощью :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` мы можем интеллектульно создать
-условия поиска на основе типов данных и значений, полученных с формы:
+С помощью :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` мы можем создать условия поиска
+на основе типов данных и значений, полученных с формы:
 
 .. code-block:: php
 
@@ -353,7 +354,7 @@ based on the data entered by the user.
 * В противном случае он будет использовать оператор "=".
 
 Кроме того, "Criteria" игнорирует все переменные $_POST, которые не соответствуют полям таблицы.
-Значения автоматически эскейпируются с помощью "биндинга параметров".
+Значения автоматически экранируются с помощью "связанных параметров".
 
 Теперь сохраним созданные параметры в разделе сессии, предназначенном нашему контроллеру (сессионная сумка):
 
@@ -379,7 +380,7 @@ based on the data entered by the user.
     }
 
 Если поиск не вернул ни одного продукта, мы снова перенаправляем пользователся на действие index.
-Если же поиск что-то находит, то создадим пагинатор для облегчения навигации по ним:
+Если же поиск что-то находит, то создаем пагинатор для облегчения навигации по ним:
 
 .. code-block:: php
 
@@ -392,7 +393,7 @@ based on the data entered by the user.
     $paginator = new Paginator(
         array(
             "data"  => $products,  // Данные для пагинации
-            "limit" => 5,          // Число строк на страницу
+            "limit" => 5,          // Количество записей на страницу
             "page"  => $numberPage // Активная страница
         )
     );
@@ -418,10 +419,10 @@ based on the data entered by the user.
           <thead>
             <tr>
               <th>Id</th>
-              <th>Product Type</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Active</th>
+              <th>Тип продукта</th>
+              <th>Название</th>
+              <th>Цена</th>
+              <th>Активен</th>
             </tr>
           </thead>
         <tbody>
@@ -432,8 +433,8 @@ based on the data entered by the user.
         <td>{{ product.name }}</td>
         <td>{{ "%.2f"|format(product.price) }}</td>
         <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Редактировать') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Удалить') }}</td>
       </tr>
       {% if loop.last %}
       </tbody>
@@ -441,11 +442,11 @@ based on the data entered by the user.
           <tr>
             <td colspan="7">
               <div>
-                {{ link_to("products/search", 'First') }}
-                {{ link_to("products/search?page=" ~ page.before, 'Previous') }}
-                {{ link_to("products/search?page=" ~ page.next, 'Next') }}
-                {{ link_to("products/search?page=" ~ page.last, 'Last') }}
-                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
+                {{ link_to("products/search", 'Первая') }}
+                {{ link_to("products/search?page=" ~ page.before, 'Предыдущая') }}
+                {{ link_to("products/search?page=" ~ page.next, 'Следующая') }}
+                {{ link_to("products/search?page=" ~ page.last, 'Последняя') }}
+                <span class="help-inline">{{ page.current }} из {{ page.total_pages }}</span>
               </div>
             </td>
           </tr>
@@ -453,38 +454,38 @@ based on the data entered by the user.
       </table>
       {% endif %}
     {% else %}
-      No products are recorded
+      В базе нет продуктов
     {% endfor %}
 
-There are many things in the above example that worth detailing. First of all, active items
-in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+В примере выше многое требует уточнения. Прежде всего, активные товары
+на текущей странице обходятся циклом 'for' шаблонизатора Volt. Volt предоставляет простой синтаксис для PHP 'foreach'.
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
 
-Which in PHP is the same as:
+То же самое на PHP:
 
 .. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
 
-The whole 'for' block provides the following:
+Весь блок 'for' представлен ниже:
 
     {% for product in page.items %}
       {% if loop.first %}
-        Executed before the first product in the loop
+        Выполняется до первого продукта в цикле
       {% endif %}
-        Executed for every product of page.items
+        Выполняется для каждого продукта из page.items
       {% if loop.last %}
-        Executed after the last product is loop
+        Выполняется после последнего продукта в цикле
       {% endif %}
     {% else %}
-      Executed if page.items does not have any products
+      Выполняется при отсутствии продуктов в page.items
     {% endfor %}
 
-Now you can go back to the view and find out what every block is doing. Every field
-in "product" is printed accordingly:
+Теперь вы можете вернуться к представлению и выснить назначение каждого блока. Каждое поле
+в "product" выводится соответствующим образом:
 
 .. code-block:: html+jinja
 
@@ -494,14 +495,14 @@ in "product" is printed accordingly:
         <td>{{ product.name }}</td>
         <td>{{ "%.2f"|format(product.price) }}</td>
         <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Редактировать') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Удалить') }}</td>
       </tr>
 
-As we seen before using product.id is the same as in PHP as doing: $product->id,
-we made the same with product.name and so on. Other fields are rendered differently,
-for instance, let's focus in product.productTypes.name. To understand this part,
-we have to check the model Products (app/models/Products.php):
+Как мы уже увидели, использование product.id то же, что и в PHP: $product->id,
+так же с product.name и так далее. Другие поля выводятся иначе,
+к примеру, давайте взглянем на product.productTypes.name. Чтобы понять эту часть,
+мы должны проверить модель Products (app/models/Products.php):
 
 .. code-block:: php
 
@@ -517,7 +518,7 @@ we have to check the model Products (app/models/Products.php):
         // ...
 
         /**
-         * Products initializer
+         * Инициализация Products
          */
         public function initialize()
         {
@@ -534,9 +535,9 @@ we have to check the model Products (app/models/Products.php):
         // ...
     }
 
-A model, can have a method called "initialize", this method is called once per request and it serves
-the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
-has a one-to-many relationship to another model called "ProductTypes".
+Модель может иметь метод "initialize", этот метод вызывается один раз при запросе и служит
+ORM для инициализации модели. В данном случае, "Products" инициализируется с указанием того, что модель
+имеет отношение один-ко-многим с другой моделью, называемой "ProductTypes".
 
 .. code-block:: php
 
@@ -551,47 +552,47 @@ has a one-to-many relationship to another model called "ProductTypes".
         )
     );
 
-Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
-the product type by using:
+Это значит, что локальный атрибут "product_types_id" в "Products" имеет отношение один-ко-многим с
+моделью "ProductTypes" по ее атрибуту "id". Определяя такое отношение, мы можем получить доступ к названию
+типа продукта следующим образом:
 
 .. code-block:: html+jinja
 
     <td>{{ product.productTypes.name }}</td>
 
-The field "price" is printed by its formatted using a Volt filter:
+Поле "price" выводится форматированным с помощью Volt фильтра:
 
 .. code-block:: html+jinja
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-What in PHP would be:
+Что то же самое на PHP выглядит как:
 
 .. code-block:: php
 
     <?php echo sprintf("%.2f", $product->price) ?>
 
-Printing whether the product is active or not uses a helper implemented in the model:
+Вывод того, активен продукт или нет, использует вспомогательную функцию, реализованную в модели:
 
 .. code-block:: php
 
     <td>{{ product.getActiveDetail() }}</td>
 
-This method is defined in the model:
+Этот метод определен в модели:
 
-Creating and Updating Records
+Создание и обновление записей
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+Теперь давайте посмотрим на то, как CRUD создает и обновляет записи. Из представлений "new" и "edit" данные, введенные пользователем,
+пересылаются в действие "create" и "save", которые производят операции по "созданию" и "обновлению" продуктов соответственно.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+В случае создания мы берем отправленные данные и присваиваем их новому экземпляру "product":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * Создает продукт, на основе данных, введенных в действии "new"
      */
     public function createAction()
     {
@@ -611,8 +612,8 @@ In the creation case, we recover the data submitted and assign them to a new "pr
         // ...
     }
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object $product.
-This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
+Помните фильтры, которые мы определили в форме Products? Данные фильтруются перед присваиванием объекту $product.
+Эта фильтрация опциональна, также ORM экранирует введенные данные и производит дополнительные преобразования соответственно типам полей:
 
 .. code-block:: php
 
@@ -621,17 +622,17 @@ This filtering is optional, also the ORM escapes the input data and performs add
     // ...
 
     $name = new Text("name");
-    $name->setLabel("Name");
+    $name->setLabel("Название");
 
-    // Filters for name
+    // Фильтры для названия
     $name->setFilters(array('striptags', 'string'));
 
-    // Validators for name
+    // Валидаторы для названия
     $name->addValidators(
         array(
             new PresenceOf(
                 array(
-                    'message' => 'Name is required'
+                    'message' => 'Название обязательно'
                 )
             )
         )
@@ -639,8 +640,8 @@ This filtering is optional, also the ORM escapes the input data and performs add
 
     $this->add($name);
 
-When saving we'll know whether the data conforms to the business rules and validations implemented
-in the form ProductsForm (app/forms/ProductsForm.php):
+При сохранении мы будем знать, соответствуют ли данные бизнес логике и валидации, реализованной
+в форме ProductsForm (app/forms/ProductsForm.php):
 
 .. code-block:: php
 
@@ -651,7 +652,7 @@ in the form ProductsForm (app/forms/ProductsForm.php):
     $form    = new ProductsForm;
     $product = new Products();
 
-    // Validate the input
+    // Валидация ввода
     $data = $this->request->getPost();
     if (!$form->isValid($data, $product)) {
         foreach ($form->getMessages() as $message) {
@@ -660,7 +661,7 @@ in the form ProductsForm (app/forms/ProductsForm.php):
         return $this->forward('products/new');
     }
 
-Finally, if the form does not return any validation message we can save the product instance:
+В итоге, если форма не возвращает каких-либо сообщений валидации, то мы можем сохранить экземпляр продукта:
 
 .. code-block:: php
 
@@ -678,17 +679,17 @@ Finally, if the form does not return any validation message we can save the prod
 
     $form->clear();
 
-    $this->flash->success("Product was created successfully");
+    $this->flash->success("Продукт успешно создан");
     return $this->forward("products/index");
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+Теперь, в случае обновления продукта, сперва мы должны представить пользователю данные, которые уже имеются в редактируемой записи:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Edits a product based on its id
+     * Изменяет продукт по его id
      */
     public function editAction($id)
     {
@@ -696,7 +697,7 @@ Now, in the case of product updating, first we must present to the user the data
 
             $product = Products::findFirstById($id);
             if (!$product) {
-                $this->flash->error("Product was not found");
+                $this->flash->error("Продукт не найден");
 
                 return $this->forward("products/index");
             }
@@ -705,15 +706,15 @@ Now, in the case of product updating, first we must present to the user the data
         }
     }
 
-The data found is bound to the form passing the model as first parameter. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+Найденные данные связываются с формой, передавая модель первым параметром. Благодаря этому
+пользователи могут менять любое значение, и затем отправлять его обратно в базу данных через действие "save":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Обновляет продукт на основе данных, введенных в действии "edit"
      */
     public function saveAction()
     {
@@ -725,7 +726,7 @@ the user can change any value and then sent it back to the database through to t
 
         $product = Products::findFirstById($id);
         if (!$product) {
-            $this->flash->error("Product does not exist");
+            $this->flash->error(Продукт не существует");
 
             return $this->forward("products/index");
         }
@@ -751,12 +752,12 @@ the user can change any value and then sent it back to the database through to t
 
         $form->clear();
 
-        $this->flash->success("Product was updated successfully");
+        $this->flash->success("Продукт успешно обновлен");
         return $this->forward("products/index");
     }
 
-We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
-In next chapter, we will see how to add custom HTML elements like a menu.
+Теперь мы видим, как Phalcon позволяет создавать формы и привязывать данные из базы данных в структурированном стиле.
+В следующей главе мы увидим, как добавить пользовательские HTML элементы наподобие меню.
 
 .. _Jinja: http://jinja.pocoo.org/
-.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _CRUD: http://ru.wikipedia.org/wiki/CRUD
