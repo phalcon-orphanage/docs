@@ -6,7 +6,7 @@ and changing the title according to the controller executed.
 
 Composants utilisateurs
 -----------------------
-Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Twitter Bootstrap`_.
+Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Bootstrap`_.
 Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté).
 Par exemple dans le coin en haut à droite, les liens "Log in/Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter)
 quand un utilisateur se connecte.

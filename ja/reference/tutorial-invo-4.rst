@@ -6,7 +6,7 @@ and changing the title according to the controller executed.
 
 ユーザーコンポーネント
 ---------------
-全てのUI要素とスタイルは、 `Twitter Bootstrap`_ によって実現されています。ナビゲーションバーなどの要素は、アプリケーションの状態によって変わります。たとえば、右上のリンク "Log in / Sign Up" は、ユーザーがログインしている場合には "Log out" に変わります。
+全てのUI要素とスタイルは、 `Bootstrap`_ によって実現されています。ナビゲーションバーなどの要素は、アプリケーションの状態によって変わります。たとえば、右上のリンク "Log in / Sign Up" は、ユーザーがログインしている場合には "Log out" に変わります。
 
 アプリケーションのこの部分は、"Elements" コンポーネント (app/library/Elements.php) で実装されています。
 

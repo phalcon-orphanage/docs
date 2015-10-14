@@ -6,7 +6,7 @@ and changing the title according to the controller executed.
 
 Componentes de Usuario
 ----------------------
-Todos los elementos visuales en la aplicación han sido logrados usando mayormente con `Twitter Bootstrap`_.
+Todos los elementos visuales en la aplicación han sido logrados usando mayormente con `Bootstrap`_.
 Algunos elementos, como la barra de navegación cambian de acuerdo al estado actual de la aplicación.
 Por ejemplo, en la esquina superior derecha, el link "Log in / Sign Up" cambia a "Log out" si un
 usuario ha iniciado sesión en la aplicación.
