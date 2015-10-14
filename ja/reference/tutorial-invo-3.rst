@@ -474,6 +474,8 @@ Which in PHP is the same as:
 
 The whole 'for' block provides the following:
 
+.. code-block:: html+jinja
+
     {% for product in page.items %}
       {% if loop.first %}
         Executed before the first product in the loop
@@ -580,7 +582,7 @@ Printing whether the product is active or not uses a helper implemented in the m
 
     <td>{{ product.getActiveDetail() }}</td>
 
-This method is defined in the model:
+This method is defined in the model.
 
 レコードの登録と更新
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
