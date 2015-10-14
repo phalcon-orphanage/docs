@@ -10,7 +10,7 @@ Once you clone the project in your document root you'll see the following struct
 
 .. code-block:: bash
 
-    invo/
+    vokuro/
         app/
             cache/
             config/
@@ -18,11 +18,10 @@ Once you clone the project in your document root you'll see the following struct
             forms/
             library/
             models/
-            plugins/
             views/
         public/
             css/
-            js/
+            img/
         schemas/
 
 This project follows a quite similar structure to INVO. Once you open the application in your
@@ -185,11 +184,6 @@ allow the user enter the login details:
         <hr>
 
     </form>
-
-Conclusion
-----------
-As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
-use micro applications and the :doc:`PHQL <phql>` language.
 
 .. _Github: https://github.com/phalcon/vokuro
 .. _composer: https://getcomposer.org/
