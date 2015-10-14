@@ -1,12 +1,12 @@
-Tutorial 6: Vökuró
-==================
-Vökuró is another sample application you can use to learn more about Phalcon.
-Vökuró is a small website that shows how to implement a security features and
-management of users and permissions. You can clone its code from Github_.
+Урок 6: Vökuró
+==============
+Vökuró - еще одно приложение, с помощью которого вы сможете узнать больше о Phalcon.
+Vökuró - это небольшой сайт, показывающий, как реализовать защитный функционал и
+управление пользователями и правами доступа. Вы можете клонировать код приложения с Github_.
 
-Project Structure
+Структура проекта
 -----------------
-Once you clone the project in your document root you'll see the following structure:
+После клонирования проекта вы увидите следующую структуру:
 
 .. code-block:: bash
 
@@ -24,30 +24,30 @@ Once you clone the project in your document root you'll see the following struct
             img/
         schemas/
 
-This project follows a quite similar structure to INVO. Once you open the application in your
-browser http://localhost/vokuro you'll see something like this:
+Его структура весьма схожа с INVO. Открыв приложение в
+браузере http://localhost/vokuro, вы увидите что-то подобное:
 
 .. figure:: ../_static/img/vokuro-1.png
    :align: center
 
-The application is divided into two parts, a frontend, where visitors can sign up the service
-and a backend where administrative users can manage registered users. Both frontend and backend
-are combined in a single module.
+Приложение разбито на две части: фронтенд, где посетители могут авторизоваться в сервисе,
+и бэкенд, где администраторы могут управлять зарегистрированными пользователями. Фронтенд и бэкенд
+объединены в один модуль.
 
-Load Classes and Dependencies
------------------------------
-This project uses Phalcon\\Loader to load controllers, models, forms, etc. within the project and composer_
-to load the project's dependencies. So, the first thing you have to do before execute Vökuró is
-install its dependencies via composer_. Assuming you have it correctly installed, type the
-following command in the console:
+Загрузка классов и зависимостей
+-------------------------------
+Этот проект использует Phalcon\\Loader для загрузки контроллеров, моделей, форм и так далее, и composer_
+для загрузки зависимостей проекта. Таким образом, первое, что нужно сделать перед запуском Vökuró -
+установить зависимости с помощью composer_. Если он у вас уже установлен, то введите
+команду в консоли:
 
 .. code-block:: bash
 
     cd vokuro
     composer install
 
-Vökuró sends emails to confirm the sign up of registered users using Swift,
-the composer.json looks like:
+Vökuró, для подтверждения регистрации пользователей, отправляет письма с помощью Swift,
+composer.json выглядит следующим образом:
 
 .. code-block:: json
 
@@ -60,9 +60,9 @@ the composer.json looks like:
         }
     }
 
-Now, there is a file called app/config/loader.php where all the auto-loading stuff is set up. At the end of
-this file you can see that the composer autoloader is included enabling the application to autoload
-any of the classes in the downloaded dependencies:
+В файле app/config/loader.php настраивается вся автозагрузка. В конце
+этого файла можно заметить подключение автозагрузчика composer, это позволяет приложению загружать
+любой класс, указанный в зависимостях:
 
 .. code-block:: php
 
@@ -70,12 +70,12 @@ any of the classes in the downloaded dependencies:
 
     // ...
 
-    // Use composer autoloader to load vendor classes
+    // Используем автозагрузчик composer для загрузки внешних зависимостей
     require_once __DIR__ . '/../../vendor/autoload.php';
 
-Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models
-which is the recommended practice to structure a project. This way the autoloader looks slightly
-different than the one we saw before (app/config/loader.php):
+Кроме того, Vökuró, в отличие от INVO, использует пространства имен для контроллеров и моделей,
+что является рекомендуемой практикой. Таким образом, автозагрузчик несколько
+отличается от тех, что мы видели прежде (app/config/loader.php):
 
 .. code-block:: php
 
@@ -96,10 +96,10 @@ different than the one we saw before (app/config/loader.php):
 
     // ...
 
-Instead of using registerDirectories, we use registerNamespaces. Every namespace points to a directory
-defined in the configuration file (app/config/config.php). For instance the namespace Vokuro\\Controllers
-points to app/controllers so all the classes required by the application within this namespace
-requires it in its definition:
+Вместо registerDirectories мы используем registerNamespaces. Каждое пространство имен указывает на директорию,
+определенную в конфигурационном файле (app/config/config.php). К примеру, пространство имен Vokuro\\Controllers
+указывает на app/controllers, таким образом, классам, находящимся в этом пространстве имен,
+необходимо указывать его при определении:
 
 .. code-block:: php
 
@@ -113,10 +113,10 @@ requires it in its definition:
     }
 
 
-Sign Up
--------
-First, let's check how users are registered in Vökuró. When a user clicks the "Create an Account" button,
-the controller SessionController is invoked and the action "signup" is executed:
+Регистрация
+-----------
+Во-первых, давайте посмотрим на то, как пользователи регистрируются в Vökuró. Когда пользователь нажимает на кнопку "Создать аккаунт"
+вызывается контроллер SessionController, и выполняется действие "signup":
 
 .. code-block:: php
 
@@ -138,14 +138,14 @@ the controller SessionController is invoked and the action "signup" is executed:
         }
     }
 
-This action simply pass a form instance of SignUpForm to the view, which itself is rendered to
-allow the user enter the login details:
+Это действие просто передает экземпляр формы SignUpForm в представление, которое отображает форму,
+что позволяет пользователям ввести свои данные:
 
 .. code-block:: html+jinja
 
     {{ form('class': 'form-search') }}
 
-        <h2>Sign Up</h2>
+        <h2>Регистрация</h2>
 
         <p>{{ form.label('name') }}</p>
         <p>
