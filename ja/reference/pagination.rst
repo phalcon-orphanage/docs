@@ -2,25 +2,25 @@
 ==========
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
-fast and convenient way to split these sets of data browsable pages.
+fast and convenient way to split these sets of data into browsable pages.
 
 データ・アダプタ
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter      | Description                                                                                                                                                                 |
-+==============+=============================================================================================================================================================================+
-| NativeArray  | Use a PHP array as source data                                                                                                                                              |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter                                                     | Description                                                                                                                                                                                                               |
++=============================================================+===========================================================================================================================================================================================================================+
+| :doc:`NativeArray <../api/Phalcon_Paginator_NativeArray>`   | Use a PHP array as source data                                                                                                                                                                                            |
++-------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Model <../api/Phalcon_Paginator_Model>`               | Use a :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
++-------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`QueryBuilder <../api/Phalcon_Paginator_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
++-------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 例
 --------
-In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
+In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
 .. code-block:: php
 
@@ -49,7 +49,7 @@ In the example below, the paginator will use as its source data the result of a 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page
+The :code:`$currentPage` variable controls the page to be displayed. The :code:`$paginator->getPaginate()` returns a :code:`$page`
 object that contains the paginated data. It can be used for generating the pagination:
 
 .. code-block:: html+php
@@ -69,7 +69,7 @@ object that contains the paginated data. It can be used for generating the pagin
         <?php } ?>
     </table>
 
-The $page object also contains navigation data:
+The :code:`$page` object also contains navigation data:
 
 .. code-block:: html+php
 
@@ -116,7 +116,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    // Passing a querybuilder as data
+    // Passing a QueryBuilder as data
 
     $builder = $this->modelsManager->createBuilder()
         ->columns('id, name')
@@ -133,7 +133,7 @@ An example of the source data that must be used for each adapter:
 
 Pageオブジェクトの持つ属性
 ---------------
-The $page object has the following attributes:
+The :code:`$page` object has the following attributes:
 
 +-------------+--------------------------------------------------------+
 | Attribute   | Description                                            |
