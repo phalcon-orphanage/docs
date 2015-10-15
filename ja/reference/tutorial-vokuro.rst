@@ -36,7 +36,7 @@ are combined in a single module.
 
 Load Classes and Dependencies
 -----------------------------
-This project uses Phalcon\\Loader to load controllers, models, forms, etc. within the project and composer_
+This project uses :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` to load controllers, models, forms, etc. within the project and composer_
 to load the project's dependencies. So, the first thing you have to do before execute Vökuró is
 install its dependencies via composer_. Assuming you have it correctly installed, type the
 following command in the console:
@@ -81,7 +81,7 @@ different than the one we saw before (app/config/loader.php):
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
 
     $loader->registerNamespaces(
         array(
