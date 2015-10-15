@@ -144,7 +144,7 @@ data entered in the form including checking for a valid user in the database:
 For the sake of simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
 not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
+Note that multiple public attributes are accessed in the controller like: :code:`$this->flash`, :code:`$this->request` or :code:`$this->session`.
 These are services defined in the services container from earlier (app/config/services.php).
 When they're accessed the first time, they are injected as part of the controller.
 
@@ -346,9 +346,9 @@ SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This clas
         }
     }
 
-The hook events always receive a first parameter that contains contextual information of the event produced ($event)
-and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
-plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
+The hook events always receive a first parameter that contains contextual information of the event produced (:code:`$event`)
+and a second one that is the object that produced the event itself (:code:`$dispatcher`). It is not mandatory that
+plugins extend the class :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, but by doing this they gain easier access to the services
 available in the application.
 
 Now, we're verifying the role in the current session, checking if the user has access using the ACL list.
@@ -405,7 +405,7 @@ If the user does not have access we redirect to the home screen as explained bef
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
-In the above example we have obtained the ACL using the method $this->getAcl(). This method is also
+In the above example we have obtained the ACL using the method :code:`$this->getAcl()`. This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php

@@ -139,9 +139,9 @@ Le SessionController::startAction (app/controllers/SessionController.php) a pour
     }
 
 Pour des raisons de simplicité, nous avons utilisé "sha1_" pour stocker le mot de passe hashé dans la base de données, cependant cet algorithme n'est pas recommandé pour une vraie application,
-il est préférable d'utiliser " :doc:`bcrypt <security>`" à la place.
+il est préférable d'utiliser ":doc:`bcrypt <security>`" à la place.
 
-Veuillez noter que plusieurs attributs public sont accessibles dans le contrôleur avec $this->flash, $this->request ou $this->session.
+Veuillez noter que plusieurs attributs public sont accessibles dans le contrôleur avec :code:`$this->flash`, :code:`$this->request` ou :code:`$this->session`.
 Ceux-ci sont des servies défini dans le conteneur de service de tout à l'heure. Quand ils sont accédés pour la première fois, ils sont insérés dans le controlleur.
 
 Ces services sont partagés, ce qui signifie qu'on accéde à la même instance sans tenir compte de l'endroit où on les a créés.
@@ -335,9 +335,9 @@ C'est le même nom qu'un des évènement produit dans le dispatcer :
         }
     }
 
-Les évènements "hooks" reçoivent toujours un premier paramètre qui contient le contexte de l'information de l'évènement produit ($event)
-et un second paramètre qui est l'objet produit par l'évènement lui-même ($dispatcher). Il n'est pas obligatoire de faire étendre le plugin de la classe
-Phalcon\\Mvc\\User\\Plugin, mais en faisant ainsi on a un accès facilité aux services disponibles de l'application.
+Les évènements "hooks" reçoivent toujours un premier paramètre qui contient le contexte de l'information de l'évènement produit (:code:`$event`)
+et un second paramètre qui est l'objet produit par l'évènement lui-même (:code:`$dispatcher`). Il n'est pas obligatoire de faire étendre le plugin de la classe
+:doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, mais en faisant ainsi on a un accès facilité aux services disponibles de l'application.
 
 Maintenant nous allons vérifier le rôle de la session courrante, vérifier si l'utilisateur a accès en utilisant les listes ACL (access control list).
 S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme expliqué précédemment.
@@ -393,7 +393,7 @@ S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme
 
 Fournir une liste ACL
 ^^^^^^^^^^^^^^^^^^^^^
-Dans l'exemple précédent, nous avons obtenu les ACL en utilisant la méthode $this->getAcl(). Cette méthode est aussi
+Dans l'exemple précédent, nous avons obtenu les ACL en utilisant la méthode :code:`$this->getAcl()`. Cette méthode est aussi
 implémentée dans Plugin. Maintenant nous allons expliquer étape par étape comment nous avons construit les ACL (access control list) :
 
 .. code-block:: php
