@@ -109,7 +109,7 @@ the classes that it eventually will need.
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
@@ -137,7 +137,7 @@ Also, note that we have using a constant called APP_PATH, this constant is defin
 
 Atendiendo la petición
 ----------------------
-Vallamos mucho más adelante, al final del archivo, la petición es finalmente atendida por Phalcon\\Mvc\\Application,
+Vallamos mucho más adelante, al final del archivo, la petición es finalmente atendida por :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
 esta clase inicializa y ejecuta todo lo necesario para que la aplicación sea ejecutada:
 
 .. code-block:: php
@@ -175,7 +175,7 @@ We will discuss this file in depth later.
 
 Handling the Request
 --------------------
-If we skip to the end of the file (public/index.php), the request is finally handled by Phalcon\\Mvc\\Application
+If we skip to the end of the file (public/index.php), the request is finally handled by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
 which initializes and executes all that is necessary to make the application run:
 
 .. code-block:: php
@@ -192,10 +192,10 @@ which initializes and executes all that is necessary to make the application run
 
 Inyección de Dependencias
 -------------------------
-En el código anterior, la variable $di es pasada al constructor de Phalcon\\Mvc\\Application.
+En el código anterior, la variable :code:`$di` es pasada al constructor de :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`.
 ¿Cuál es el proposito de esta variable? Como Phalcon es un framework altamente desacoplado, necesitamos un componente
 que actúe como intermediario entre los distintos componentes para hacer que todo trabaje junto de una manera sencilla.
-Este componente es Phalcon\\DI. Es un contenedor de servicios que también permite injeccción de dependencias,
+Este componente es :doc:`Phalcon\\DI <../api/Phalcon_DI>`. Es un contenedor de servicios que también permite injeccción de dependencias,
 instanciando e inicializando todos los componentes a medida que son requeridos por la aplicación.
 
 Hay muchas formas de registrar servicios en el contenedor. En INVO, la mayoría de servicios han sido registrados
@@ -227,7 +227,7 @@ Ten en cuenta que el servicio se registró usando el nombre "session". Esta es u
 componentes a solicitar el servicio correcto en el contenedor de servicios.
 
 Una petición puede usar muchos servicios, registrar cada servicio puede ser tedioso. Por esta razón,
-el framework proporciona una variante Phalcon\\DI llamada Phalcon\\DI\\FactoryDefault cuyo objetivo es registrar
+el framework proporciona una variante :doc:`Phalcon\\DI <../api/Phalcon_DI>` llamada :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` cuyo objetivo es registrar
 todos los servicios proporcionados por un framework full-stack.
 
 .. code-block:: php
@@ -244,7 +244,7 @@ todos los servicios proporcionados por un framework full-stack.
 
 Así se registran la mayoria de servicios con componentes proporcionados por el framework como estándar. Si queremos
 reemplazar la definición de un servicio podemos hacerla como hicimos antes con el servicio "session". Esta es la razón
-de la existencia de la variable $di.
+de la existencia de la variable :code:`$di`.
 
 In next chapter, we will see how to authentication and authorization is implemented in INVO.
 

@@ -109,7 +109,7 @@ the classes that it eventually will need.
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
@@ -175,7 +175,7 @@ We will discuss this file in depth later.
 
 Handling the Request
 --------------------
-If we skip to the end of the file (public/index.php), the request is finally handled by Phalcon\\Mvc\\Application
+If we skip to the end of the file (public/index.php), the request is finally handled by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
 which initializes and executes all that is necessary to make the application run:
 
 .. code-block:: php
@@ -193,8 +193,8 @@ which initializes and executes all that is necessary to make the application run
 Dependency Injection
 --------------------
 Look at the first line of the code block above, the Application class constructor is receiving the variable
-$di as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework,
-so we need a component that acts as glue to make everything work together. That component is Phalcon\\DI.
+:code:`$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework,
+so we need a component that acts as glue to make everything work together. That component is :doc:`Phalcon\\DI <../api/Phalcon_DI>`.
 It is a service container that also performs dependency injection and service location,
 instantiating all components as they are needed by the application.
 
@@ -227,7 +227,7 @@ was registered using the name "session". This is a convention that will allow th
 service in the services container.
 
 A request can use many services and registering each service individually can be a cumbersome task. For that reason,
-the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
+the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` whose task is to register
 all services providing a full-stack framework.
 
 .. code-block:: php
@@ -244,7 +244,7 @@ all services providing a full-stack framework.
 
 It registers the majority of services with components provided by the framework as standard. If we need to override
 the definition of some service we could just set it again as we did above with "session" or "url".
-This is the reason for the existence of the variable $di.
+This is the reason for the existence of the variable :code:`$di`.
 
 In next chapter, we will see how to authentication and authorization is implemented in INVO.
 

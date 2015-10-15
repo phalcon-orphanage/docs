@@ -101,7 +101,7 @@ L'autoloader enregistre un ensemble de dossies où l'application va chercher les
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
@@ -167,7 +167,7 @@ We will discuss this file in depth later.
 
 Gérer la requête
 ----------------
-Allons plus loin dans le fichier, à la fin, la requête est finalement gérée par Phalcon\\Mvc\\Application,
+Allons plus loin dans le fichier, à la fin, la requête est finalement gérée par :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
 cette classe initialise et exécute tous ce qui est nécessaire pour faire tourner l'application:
 
 .. code-block:: php
@@ -184,9 +184,9 @@ cette classe initialise et exécute tous ce qui est nécessaire pour faire tourn
 
 Injection de dépendances
 ------------------------
-Regardez à la premiére ligne du code juste au dessus, la variable $app reçoit une autre variable $di dans son constructeur.
+Regardez à la premiére ligne du code juste au dessus, la variable :code:`$app` reçoit une autre variable :code:`$di` dans son constructeur.
 Quel est le but de cette variable ? Phalcon est un framework fortement découplé, donc on a besoin d'un composant qui agit comme une sorte de colle pour que tout fonctionne ensemble, correctement.
-Ce composant est Phalcon\\DI. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
+Ce composant est :doc:`Phalcon\\DI <../api/Phalcon_DI>`. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
 
 Il y a différents moyens d'enregistrer les services dans un conteneur. Dans INVO la plupart des services ont été enregistrés en utilisant des fonctions anonymes.
 Grace à cela, les objets sont instanciés paresseusement (= uniquement lorsque nécessaire) , ce qui réduit les ressources requises par l'application.
@@ -214,7 +214,7 @@ Dans cette situation, on a la possibilité de changer l'adaptateur, de faire des
 Notez que le service est enregistré avec le nom "session", c'est une convention qui va permettre au framework d'identifier le service actifdans le conteneur de service.
 
 Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peux être une lourde tâche.
-Pour cette raison le framework fournit une variante à Phalcon\\DI appelée Phalcon\\DI\\FactoryDefault qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
+Pour cette raison le framework fournit une variante à :doc:`Phalcon\\DI <../api/Phalcon_DI>` appelée :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
 
 .. code-block:: php
 
@@ -229,7 +229,7 @@ Pour cette raison le framework fournit une variante à Phalcon\\DI appelée Phal
     $di = new FactoryDefault();
 
 Cet extrait enregistre la majorité des services avec les composants fournis par le framework. Si on a besoin d'outrepasser la définition de certains services
-on pourrait le modifier comme on l'a fait pour la "session" au dessus. C'est l'intérêt de la variable $di.
+on pourrait le modifier comme on l'a fait pour la "session" au dessus. C'est l'intérêt de la variable :code:`$di`.
 
 In next chapter, we will see how to authentication and authorization is implemented in INVO.
 
