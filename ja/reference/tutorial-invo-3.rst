@@ -6,7 +6,7 @@ INVO, we now address the creation of CRUDs, a very common task that Phalcon will
 using forms, validations, paginators and more.
 
 CRUDを使用した作業
----------------------
+-----------
 Most options that manipulate data in INVO (companies, products and types of products), were developed
 using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
 
@@ -94,7 +94,7 @@ Each controller has the following actions:
     }
 
 検索フォーム
-^^^^^^^^^^^^^^^
+^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
 to create a search criteria from any field. Table "products" has a relationship to the table "products_types".
 In this case, we previously queried the records in this table in order to facilitate the search by that field:
@@ -242,7 +242,7 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select.
+Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using :code:`Phalcon\\Tag::select`.
 Once the form is passed to the view, it can be rendered and presented to the user:
 
 .. code-block:: html+jinja
@@ -314,7 +314,7 @@ When the form is submitted, the action "search" is executed in the controller pe
 based on the data entered by the user.
 
 検索の実行
-^^^^^^^^^^^^^^^^^^^
+^^^^^
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
 form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
 we check it using the :doc:`Request <request>` component:
@@ -353,7 +353,7 @@ the search criteria:
 * If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
 * If the data type is not text or similar, it'll use the operator "=".
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
+Additionally, "Criteria" ignores all the :code:`$_POST` variables that do not match any field in the table.
 Values are automatically escaped using "bound parameters".
 
 Now, we store the produced parameters in the controller's session bag:
@@ -503,7 +503,7 @@ in "product" is printed accordingly:
         <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
       </tr>
 
-As we seen before using product.id is the same as in PHP as doing: $product->id,
+As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
 for instance, let's focus in product.productTypes.name. To understand this part,
 we have to check the model Products (app/models/Products.php):
@@ -585,7 +585,7 @@ Printing whether the product is active or not uses a helper implemented in the m
 This method is defined in the model.
 
 レコードの登録と更新
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
 are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
 
@@ -616,7 +616,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
         // ...
     }
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object $product.
+Remember the filters we defined in the Products form? Data is filtered before being assigned to the object :code:`$product`.
 This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
 
 .. code-block:: php

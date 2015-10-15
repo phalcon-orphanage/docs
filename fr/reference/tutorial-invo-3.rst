@@ -242,7 +242,7 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select.
+Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using :code:`Phalcon\\Tag::select`.
 Once the form is passed to the view, it can be rendered and presented to the user:
 
 .. code-block:: html+jinja
@@ -351,7 +351,7 @@ Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "nu
 * Si le champs de données est "text" ou similaire (char, varchar, text, etc.). L'opérateur "like" sera utilisé pour filtrer les résultats.
 * Si le type de donnée est différent, l'opérateur "=" sera utilisé
 
-De plus, "Criteria" ignore toutes les variables POST qui ne correspondent à aucun champs de la table.
+De plus, "Criteria" ignore toutes les variables :code:`$_POST` qui ne correspondent à aucun champs de la table.
 Les valeurs seront automatiquement échappées en utilisant les paramètres liés (bond parameters).
 
 Maintenant, on va stoquer les paramètres dans le "sac" de session du contrôleur :
@@ -499,7 +499,7 @@ in "product" is printed accordingly:
         <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
       </tr>
 
-As we seen before using product.id is the same as in PHP as doing: $product->id,
+As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
 for instance, let's focus in product.productTypes.name. To understand this part,
 we have to check the model Products (app/models/Products.php):
