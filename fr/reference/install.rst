@@ -16,7 +16,7 @@ from Phalcon.
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
 
     extension=php_phalcon.dll
 
@@ -120,3 +120,5 @@ Installation notes for Web Servers:
     nginx
     cherokee
     built-in
+
+.. _download: http://phalconphp.com/fr/download

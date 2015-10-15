@@ -11,7 +11,7 @@
 
 Windows
 -------
-Для использования Phalcon в среде Windows достаточно скачать DLL библиотеку и добавить в конце php.ini :
+Для использования Phalcon в среде Windows достаточно `скачать`_ DLL библиотеку и добавить в конце php.ini :
 
     extension=php_phalcon.dll
 
@@ -115,3 +115,5 @@ FreeBSD
     nginx
     cherokee
     built-in
+
+.. _скачать: http://phalconphp.com/ru/download

@@ -1,11 +1,11 @@
 Instalacja
-============
+==========
 Rozszerzenia PHP wymagają nieco innej metody instalacji niż tradycyjna biblioteka PHP lub framework.
 Możesz pobrać pakiet binarny dla wybranego przez siebie systemu lub skompilować go ze źródeł.
 
 Windows
 -------
-Aby korzystać z Phalcon na systemie Windows możesz pobrać bibliotekę DLL. Edytuj swój plik php.ini i dodaj na jego końcu:
+Aby korzystać z Phalcon na systemie Windows możesz `pobrać`_ bibliotekę DLL. Edytuj swój plik php.ini i dodaj na jego końcu:
 
 .. code-block:: bash
 
@@ -23,7 +23,7 @@ Poniższy filmik jest przewodnikiem "krok po kroku" jak zainstalować Phalcon na
 Jeżeli nie wiesz którą bibliotekę pobrać, use the following script_ to figure it out.
 
 Powiązane Przewodniki
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -35,7 +35,7 @@ Linux/Solaris
 Na systemach Linux/Solaris/Mac możesz w łatwy sposób skompilować i zainstalować rozszerzenie z kodu źródłowego:
 
 Wymagania
-^^^^^^^^^^^^
+^^^^^^^^^
 Wstępnie wymagane pakiety:
 
 * Pliki źródłowe PHP 5.3.x/5.4.x/5.5.x
@@ -59,7 +59,7 @@ Specyficzne pakiety dla wspólnych platform:
     pkg install gcc-45 php-53 apache-php53
 
 Kompilacja
-^^^^^^^^^^^
+^^^^^^^^^^
 Tworzenie rozszerzenia:
 
 .. code-block:: bash
@@ -106,7 +106,7 @@ Mac OS X
 Na systemach Mac OS X możesz skompilować rozszerzenie z kodu źródłowego:
 
 Wymagania
-^^^^^^^^^^^^
+^^^^^^^^^
 Wstępnie wymagane pakiety:
 
 * Pliki źródłowe PHP 5.3.x lub nowsze
@@ -154,4 +154,4 @@ Informacje o instalacji dla serwerów WWW:
     cherokee
     built-in
 
-.. _download : http://phalconphp.com/en/download
+.. _pobrać: http://phalconphp.com/pl/download

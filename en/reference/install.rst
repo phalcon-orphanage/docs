@@ -164,4 +164,4 @@ Installation notes for Web Servers:
     cherokee
     built-in
 
-.. _download : http://phalconphp.com/en/download
+.. _download: http://phalconphp.com/en/download
