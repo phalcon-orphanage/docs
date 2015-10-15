@@ -32,7 +32,7 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
         }
     }
 
-Cette classe étend de Phalcon\\Mvc\\User\\Component,il n'est pas imposé d'étendre un composant avec cette classe, mais
+Cette classe étend de :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`, il n'est pas imposé d'étendre un composant avec cette classe, mais
 cela permet d'accéder plus rapidement/facilement aux services de l'application.
 Maintenant enregistrons cette classe au conteneur de service :
 

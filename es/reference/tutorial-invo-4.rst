@@ -32,7 +32,7 @@ Esta parte de la aplicación es implementada en el componente de usuario "Elemen
         }
     }
 
-Esta clase extiende de Phalcon\\Mvc\\User\\Component, no es obligatorio que los componentes de usuario extiendan de esa clase,
+Esta clase extiende de :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`, no es obligatorio que los componentes de usuario extiendan de esa clase,
 sin embargo esto ayuda a que puedan acceder facilmente a los servicios de la aplicación. Ahora vamos a registrar
 esta clase en el contenedor de servicios:
 
