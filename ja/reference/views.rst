@@ -539,6 +539,22 @@ To render a view it's necessary to call the render method explicitly indicating 
         }
     }
 
+This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :code:`render()` method uses controllers and actions as parameters:
+
+.. code-block:: php
+
+    <?php
+
+    $params = array('posts' => Posts::find());
+
+    // Phalcon\Mvc\View
+    $view = new \Phalcon\Mvc\View();
+    echo $view->render('posts', 'show', $params);
+
+    // Phalcon\Mvc\View\Simple
+    $simpleView = new \Phalcon\Mvc\View\Simple();
+    echo $simpleView->render('posts/show', $params);
+
 パーシャルの使用
 --------------
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different

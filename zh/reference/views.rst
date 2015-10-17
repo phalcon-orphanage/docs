@@ -527,6 +527,22 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         }
     }
 
+This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :code:`render()` method uses controllers and actions as parameters:
+
+.. code-block:: php
+
+    <?php
+
+    $params = array('posts' => Posts::find());
+
+    // Phalcon\Mvc\View
+    $view = new \Phalcon\Mvc\View();
+    echo $view->render('posts', 'show', $params);
+
+    // Phalcon\Mvc\View\Simple
+    $simpleView = new \Phalcon\Mvc\View\Simple();
+    echo $simpleView->render('posts/show', $params);
+
 使用局部模版（Using Partials）
 ------------------------------
 局部模板是把渲染过程分解成更简单、更好管理的、可以重用不同部分的应用程序块的另一种方式。你可以移动渲染特定响应的代码块到自己的文件。

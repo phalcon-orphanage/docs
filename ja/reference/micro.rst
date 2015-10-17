@@ -637,6 +637,32 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
 
     });
 
+Please note that this code block uses :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` which uses relative paths instead of controllers and actions.
+If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` instead, you will need to change the parameters of the :code:`render()` method:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app['view'] = function () {
+        $view = new \Phalcon\Mvc\View();
+        $view->setViewsDir('app/views/');
+        return $view;
+    };
+
+    // Return a rendered view
+    $app->get('/products/show', function () use ($app) {
+
+        // Render app/views/products/show.phtml passing some variables
+        echo $app['view']->render('products', 'show', array(
+            'id'   => 100,
+            'name' => 'Artichoke'
+        ));
+
+    });
+
 Error Handling
 --------------
 A proper response can be generated if an exception is raised in a micro handler:

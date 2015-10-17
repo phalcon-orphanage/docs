@@ -527,6 +527,22 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         }
     }
 
+This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :code:`render()` method uses controllers and actions as parameters:
+
+.. code-block:: php
+
+    <?php
+
+    $params = array('posts' => Posts::find());
+
+    // Phalcon\Mvc\View
+    $view = new \Phalcon\Mvc\View();
+    echo $view->render('posts', 'show', $params);
+
+    // Phalcon\Mvc\View\Simple
+    $simpleView = new \Phalcon\Mvc\View\Simple();
+    echo $simpleView->render('posts/show', $params);
+
 Части шаблонов (Partials)
 -------------------------
 Части шаблонов (Partial templates) — это ещё один способ дробления процесса отрисовки на более простые части, которые впоследствии могут быть использованы в различных частях приложения. С помощью них можно вынести код отрисовки какой-то конкретной части шаблона в отдельный файл.
