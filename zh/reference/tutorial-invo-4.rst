@@ -31,7 +31,7 @@ This part of the application is implemented in the component "Elements" (app/lib
         }
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component. It is not imposed to extend a component with this class, but
+This class extends the :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`. It is not imposed to extend a component with this class, but
 it helps to get access more quickly to the application services. Now, we are going to register
 our first user component in the services container:
 

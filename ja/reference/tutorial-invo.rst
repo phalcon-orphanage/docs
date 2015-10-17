@@ -1,12 +1,12 @@
 チュートリアル 2: Introducing INVO
-================================
+===========================
 
 この第2のチュートリアルでは、より完全なアプリケーションを例にして説明し、Phalconを使用した開発について理解を深めます。INVOは、私達が制作したサンプルアプリケーションの1つです。INVOは小さなWebサイトで、ユーザーは送り状（invoice）を生成したり、顧客や製品を管理したりといったタスクを行うことができます。コードは Github_ からクローンすることができます。
 
 また、INVOのクライアントサイドは `Bootstrap`_ を使用して作られています。アプリケーションが送り状を生成しなくても、フレームワークの働きを理解するサンプルにはなります。
 
 プロジェクト構造
-------------------
+--------
 ブラウザで http://localhost/invo にアクセスしてアプリケーションを開くと、以下のように表示されるでしょう:
 
 .. code-block:: bash
@@ -41,8 +41,8 @@ INVOはRouterコンポーネントに組み込みの標準のルートを使用�
 
 /session/register というルートでは、SessionController コントローラの registerAction アクションが実行されます。
 
-設定
--------------
+設定 (Configuration)
+------------------
 INVOには、アプリケーションの一般的なパラメーターをセットする設定ファイルがあります。このファイルはブートストラップ (public/index.php) の最初の数行で読み込まれています:
 
 .. code-block:: php
@@ -80,14 +80,14 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
 Phalconには、定義済みの慣習的な設定は全くありません。セクション名を付けておくと、オプションを適切に構成する助けになります。このファイルには3つのセクションが含まれ、後で使用されます。
 
 オートローダ
------------
+------
 ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
 
 .. code-block:: php
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
@@ -151,8 +151,8 @@ the required components:
 We will discuss this file in depth later.
 
 リクエストの処理
---------------------
-ファイルの最後まで飛ばすと、リクエストは最終的に Phalcon\\Mvc\\Application に処理されています。このクラスは、アプリケーションに必要な全ての初期化と処理の実行を行います:
+--------
+ファイルの最後まで飛ばすと、リクエストは最終的に :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` に処理されています。このクラスは、アプリケーションに必要な全ての初期化と処理の実行を行います:
 
 .. code-block:: php
 
@@ -167,8 +167,8 @@ We will discuss this file in depth later.
     echo $app->handle()->getContent();
 
 依存性の注入 (Dependency Injection)
---------------------
-上記コード例の1行目を見てください。 Application クラスのコンストラクタは、$di 変数を引数として受け取っています。この変数の目的は何でしょう？ Phalconは非常に分離された (decoupled) フレームワークなので、全てを協調して動作させる、接着剤としての役割を果たすコンポーネントが必要です。それは、 Phalcon\\DI です。これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
+-----------------------------
+上記コード例の1行目を見てください。 Application クラスのコンストラクタは、:code:`$di` 変数を引数として受け取っています。この変数の目的は何でしょう？ Phalconは非常に分離された (decoupled) フレームワークなので、全てを協調して動作させる、接着剤としての役割を果たすコンポーネントが必要です。それは、 :doc:`Phalcon\\DI <../api/Phalcon_DI>` です。これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
 
 コンテナにサービスを登録するには、様々な方法があります。INVOでは、ほとんどのサービスは無名関数を使って登録されています。このおかげで、オブジェクトは必要になるまでインスタンス化されないので、アプリケーションに必要なリソースが節約できます。
 
@@ -193,7 +193,7 @@ We will discuss this file in depth later.
 
 これで、アダプタを変更して、初期化処理を追加する等を自由に行えるようになりました。サービスは "session" という名前で登録されていることに注意してください。これは、フレームワークがサービスコンテナ内の有効なサービスを見分けるための慣習です。
 
-リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。そのため、Phalconは Phalcon\\DI\\FactoryDefault というPhalcon\\DI の別バージョンを用意しています。これには、フルスタックフレームワークのための全てのサービスを登録します。
+リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。そのため、Phalconは :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` という :doc:`Phalcon\\DI <../api/Phalcon_DI>` の別バージョンを用意しています。これには、フルスタックフレームワークのための全てのサービスを登録します。
 
 .. code-block:: php
 
@@ -207,7 +207,7 @@ We will discuss this file in depth later.
     // 提供するために必要なサービスを自動的に登録する
     $di = new FactoryDefault();
 
-FactoryDefault はフレームワークが標準的に提供しているコンポーネントサービスの大部分を登録します。もし、サービス定義のオーバーライドが必要な場合、"session" を上で定義したのと同じように同じ名前で再度定義してください。以上が、$di 変数が存在する理由です。
+FactoryDefault はフレームワークが標準的に提供しているコンポーネントサービスの大部分を登録します。もし、サービス定義のオーバーライドが必要な場合、"session" を上で定義したのと同じように同じ名前で再度定義してください。以上が、:code:`$di` 変数が存在する理由です。
 
 In next chapter, we will see how to authentication and authorization is implemented in INVO.
 

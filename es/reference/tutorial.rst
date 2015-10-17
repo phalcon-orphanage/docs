@@ -54,7 +54,7 @@ Para efectos de este tutorial y como punto de inicio, te sugerimos la siguiente 
 Ten en cuenta que no necesitas un directorio "library" para Phalcon. El framework está en memoria y listo para ser usado en cualquier parte.
 
 URLs Amigables
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 Usaremos URLS bonitas o amigables para este tutorial. Estas Urls son mejores para SEO, además los usuarios las recuerdan más fácilmente.
 Phalcon soporta modulos de reescritura (rewrite) proporcionados por los servidores web más populares. Que tus aplicaciones tengan URLs
 amigables no es una obligación y también podrás desarrollar tu aplicación sin ellas.
@@ -100,44 +100,44 @@ El archivo public/index.php debería verse así:
     try {
 
         // Registrar un autocargador
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
         // Crear un Inyector de dependencias
-        $di = new \Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\DI\FactoryDefault();
 
         // Configurar el componente de vistas
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Atender la petición
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch (\Phalcon\Exception $e) {
+    } catch (Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
 Autocargadores
-^^^^^^^^^^^
+^^^^^^^^^^^^^^
 La primera parte que encontramos en el bootstrap es el registro de un autocargador. Este será usado para cargar clases como controladores y modelos en la aplicación.
 Por ejemplo podemos registrar uno o más directorios de controladores incrementando la flexibilidad de la aplicación.
 
-En nuestro ejemplo hemos usado el componente Phalcon\\Loader. Con él, podemos cargar clases usando varias estrategias, para
+En nuestro ejemplo hemos usado el componente :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`. Con él, podemos cargar clases usando varias estrategias, para
 este ejemplo vamos a cargar las clases basado en unos directorios predeterminados.
 
 .. code-block:: php
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -152,7 +152,7 @@ Puede sonar complejo pero en realidad es muy sencillo y práctico.
 
 Un contenedor de servicios es una bolsa donde globalmente registramos los servicios que nuestra aplicación necesita para trabajar.
 Cada vez que requerimos un componente, le solicitaremos al contenedor el servicio usando un nombre previamente convenido.
-Ya que Phalcon es un framework libremente acoplado, Phalcon\\DI actúa como intermediario facilitando la integración
+Ya que Phalcon es un framework libremente acoplado, :doc:`Phalcon\\DI <../api/Phalcon_DI>` actúa como intermediario facilitando la integración
 de los diferentes componentes logrando que trabajen juntos de manera transparente.
 
 .. code-block:: php
@@ -162,7 +162,7 @@ de los diferentes componentes logrando que trabajen juntos de manera transparent
     // Crear un DI
     $di = new Phalcon\DI\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` es una variante de Phalcon\\DI.
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` es una variante de :doc:`Phalcon\\DI <../api/Phalcon_DI>`.
 Para hacer las cosas más fáciles, él ya tiene registrado la mayoría de componentes que vienen con Phalcon.
 De esta manera no debemos registrarlos uno a uno. Puedes reemplazar un componente por otro en cualquier momento que lo desees.
 
@@ -177,7 +177,7 @@ Los servicios pueden ser registrados de muchas maneras, para nuestro tutorial us
 
     // Configurar el componente de vistas
     $di->set('view', function () {
-        $view = new \Phalcon\Mvc\View();
+        $view = new Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
@@ -190,7 +190,7 @@ respuestas para el cliente.
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application($di);
+    $application = new Phalcon\Mvc\Application($di);
 
     echo $application->handle()->getContent();
 
@@ -206,7 +206,7 @@ El controlador Index (app/controllers/IndexController.php) se ve así:
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -241,7 +241,7 @@ Ahora nuestro controlador (app/controllers/IndexController.php) tiene la impleme
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -273,7 +273,7 @@ El HTML generado muestra una eqiqueta "A" enlazando al nuevo controlador:
 
     <h1>Hello!</h1> <a href="/test/signup">Sign Up Here!</a>
 
-Para generar la etiqueta hemos usado la clase :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`.
+Para generar la etiqueta hemos usado la clase :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`.
 Esta es una clase utilitaria que nos permite construir código HTML teniendo en cuenta las convenciones del framework.
 Puedes encontrar más información relacionada a la generación de etiquetas HTML aquí :doc:`found here <tags>`
 
@@ -286,7 +286,7 @@ Aquí está el controlador Signup (app/controllers/SignupController.php):
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -329,7 +329,7 @@ Visualizando el formulario en tu navegador mostrará algo como esto:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` también proporciona métodos para definir formularios.
 
-El método Phalcon\\Tag::form recibe un parámetro, una URI relativa a el controlador/acción en la aplicación.
+El método :code:`Phalcon\\Tag::form` recibe un parámetro, una URI relativa a el controlador/acción en la aplicación.
 
 Al hacer click en el botón "Registrarme", verás que el framework lanza una excepción indicando que
 nos hace falta definir la acción "register" en el controlador "signup":
@@ -342,7 +342,7 @@ Continuemos con la implementación de esta acción para no mostrar más la excep
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -364,7 +364,7 @@ De acuerdo con el patrón MVC, las interacciones con la base de datos deben real
 nos aseguramos que la aplicación está completamente orientada a objetos.
 
 Creando un Modelo
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 Phalcon posee el primer ORM para PHP escrito totalmente en C. En vez de aumentar la complejidad del desarrollo, la simplifica.
 
 Antes de crear nuestro primer modelo, necesitamos una tabla que el modelo use para mapearse. Una simple tabla para guardar los
@@ -385,17 +385,17 @@ Según como hemos organizado esta aplicación, un modelo debe ser ubicado en el 
 
     <?php
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Phalcon\Mvc\Model
     {
 
     }
 
 Estableciendo la conexión a la base de datos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Para poder conectarnos a una base de datos y por lo tanto usar nuestros modelos, necesitamos especificar esta configuración en el bootstrap
 de la aplicación.
 
-Una conexión a una base de datos es simplemente otro servicio que nuestra aplicación usará en muchos componentes, entre ellos Phalcon\Mvc\Model:
+Una conexión a una base de datos es simplemente otro servicio que nuestra aplicación usará en muchos componentes, entre ellos :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
 
 .. code-block:: php
 
@@ -404,7 +404,7 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
     try {
 
         // Registrar un autoloader
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
@@ -415,7 +415,7 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
 
         // Establecer el servicio de base de datos
         $di->set('db', function () {
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            return new Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
                 "password" => "secret",
@@ -425,13 +425,13 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
 
         // Establecer el servicio de vistas
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Atender la petición
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
@@ -449,7 +449,7 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()

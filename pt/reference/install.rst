@@ -1,5 +1,5 @@
 ﻿Instalação
-============
+==========
 A instalação de uma extensão PHP é levemente diferente dos métodos tradicionais de instalação das bibliotecas de um framework baseado em PHP. Você pode fazer o download dos pacotes binários construído para o seu sistema de sua escolha ou compilar-los a partir das fontes.
 
 .. highlights::
@@ -10,7 +10,7 @@ A instalação de uma extensão PHP é levemente diferente dos métodos tradicio
 
 Windows
 -------
-Para utilizar o phalcon no Windows você pode fazer o download da biblioteca DLL. Editar o seu php.ini adicionando no final a seguinte instrução:
+Para utilizar o phalcon no Windows você pode fazer o download_ da biblioteca DLL. Editar o seu php.ini adicionando no final a seguinte instrução:
 
     extension=php_phalcon.dll
 
@@ -23,7 +23,7 @@ O seguinte screencast é um passo-a-passo para instalação do Phalcon no Window
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Guias Relacionados
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -35,7 +35,7 @@ Linux/Solaris/Mac
 Nos sistemas Linux/Solaris/Mac você pode facilmente compilar e instalar a extensão diretamente dos códigos fontes:
 
 Requerimentos
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 Os pacotes pré-requisitos são:
 
 * PHP 5.3.x/5.4.x/5.5.(recursos de desenvolvimento)
@@ -63,7 +63,7 @@ Pacotes específicos para plataformas em comum:
     pkg install php-53 apache-php53
 
 Compilação
-^^^^^^^^^^^
+^^^^^^^^^^
 Criando a extensão:
 
 .. code-block:: bash
@@ -104,7 +104,7 @@ ou
     cd /usr/ports/www/phalcon && make install clean
 
 Notas de Instalação
-------------------
+-------------------
 Notas de Instalação para os Servidores Web:
 
 .. toctree::
@@ -114,3 +114,5 @@ Notas de Instalação para os Servidores Web:
     nginx
     cherokee
     built-in
+
+.. _download: http://phalconphp.com/pt/download

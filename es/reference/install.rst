@@ -11,7 +11,7 @@ Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el 
 
 Windows
 -------
-Para usar Phalcon en Windows debes descargar un DLL y ubicarlo en el directorio de extensiones. Edita el php.ini y agrega al final:
+Para usar Phalcon en Windows debes descargar_ un DLL y ubicarlo en el directorio de extensiones. Edita el php.ini y agrega al final:
 
     extension=php_phalcon.dll
 
@@ -37,7 +37,7 @@ Linux/Solaris/Mac
 En un sistema Linux/Solaris/Mac puedes compilar e instalar la extensión fácilmente desde la fuente del repositorio:
 
 Requerimientos
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 Los paquetes requeridos son:
 
 * PHP 5.3.x/5.4.x fuentes de desarrollo (development resources)
@@ -106,7 +106,7 @@ o
     cd /usr/ports/www/phalcon && make install clean
 
 Notas para la instalación
-------------------
+-------------------------
 
 Notas para los servidores web:
 
@@ -117,3 +117,5 @@ Notas para los servidores web:
     nginx
     cherokee
     built-in
+
+.. _descargar: http://phalconphp.com/es/download

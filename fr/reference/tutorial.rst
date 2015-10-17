@@ -94,7 +94,7 @@ The public/index.php file should look like:
     try {
 
         // Register an autoloader
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
@@ -105,13 +105,13 @@ The public/index.php file should look like:
 
         // Setting up the view component
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
@@ -121,7 +121,7 @@ The public/index.php file should look like:
 
 Autoloaders
 ^^^^^^^^^^^
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`.
 
 With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
 
@@ -129,7 +129,7 @@ With it, we can load classes using various strategies but for this example we ha
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -143,7 +143,7 @@ A very important concept that must be understood when working with Phalcon is it
 actually very simple and practical.
 
 A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, it will
-ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the
+ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\DI <../api/Phalcon_DI>` acts as glue facilitating the integration of the
 different components achieving their work together in a transparent manner.
 
 .. code-block:: php
@@ -153,7 +153,7 @@ different components achieving their work together in a transparent manner.
     // Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>`. To make things easier, it has registered most of the components
 that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes,
@@ -167,7 +167,7 @@ Services can be registered in several ways, but for our tutorial we'll use lambd
 
     // Setting up the view component
     $di->set('view', function () {
-        $view = new \Phalcon\Mvc\View();
+        $view = new Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
@@ -179,7 +179,7 @@ route the incoming request, and then dispatch any discovered actions; it aggrega
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application($di);
+    $application = new Phalcon\Mvc\Application($di);
 
     echo $application->handle()->getContent();
 
@@ -195,7 +195,7 @@ controller (app/controllers/IndexController.php) looks like:
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -229,7 +229,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -259,7 +259,7 @@ The generated HTML code displays an "A" HTML tag linking to a new controller:
 
     <h1>Hello!</h1> <a href="/test/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+To generate the tag we use the class :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -270,7 +270,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -313,7 +313,7 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative URI to a controller/action in the application.
+The :code:`Phalcon\\Tag::form` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework,
 indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
@@ -326,7 +326,7 @@ Implementing that method will remove the exception:
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -365,7 +365,7 @@ A model should be located in the app/models directory. The model mapping to "use
 
     <?php
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Phalcon\Mvc\Model
     {
 
     }
@@ -382,7 +382,7 @@ A database connection is just another service that our application has that can 
     try {
 
         // Register an autoloader
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
@@ -393,7 +393,7 @@ A database connection is just another service that our application has that can 
 
         // Set the database service
         $di->set('db', function () {
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            return new Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
                 "password" => "secret",
@@ -403,13 +403,13 @@ A database connection is just another service that our application has that can 
 
         // Setting up the view component
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
@@ -427,7 +427,7 @@ Receiving data from the form and storing them in the table is the next step.
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()

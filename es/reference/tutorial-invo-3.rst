@@ -243,7 +243,7 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select.
+Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using :code:`Phalcon\\Tag::select`.
 Once the form is passed to the view, it can be rendered and presented to the user:
 
 .. code-block:: html+jinja
@@ -353,7 +353,7 @@ Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y lo
 * Si el campo tiene un tipo de dato de texto o similar (char, varchar, text, etc.) Usa el operador SQL "like" para filtrar los resultados
 * Si el tipo de dato no es texto, entonces usará el operador "="
 
-Adicionalmente, "Criteria" ignora todas las variables $_POST que no correspondan a campos en la tabla.
+Adicionalmente, "Criteria" ignora todas las variables :code:`$_POST` que no correspondan a campos en la tabla.
 Los valores son automáticamente escapados usando "bound parameters" evitando inyecciones de SQL.
 
 Ahora, almacenamos los parametros producidos en la bolsa de datos de sesión del controlador:
@@ -502,7 +502,7 @@ in "product" is printed accordingly:
         <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
       </tr>
 
-As we seen before using product.id is the same as in PHP as doing: $product->id,
+As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
 for instance, let's focus in product.productTypes.name. To understand this part,
 we have to check the model Products (app/models/Products.php):
@@ -616,7 +616,7 @@ En el caso de creación, recuperamos los datos enviados y los asignamos a una nu
         // ...
     }
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object $product.
+Remember the filters we defined in the Products form? Data is filtered before being assigned to the object :code:`$product`.
 This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
 
 .. code-block:: php

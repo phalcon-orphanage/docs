@@ -1,11 +1,11 @@
 チュートリアル 1: 例題で学習しよう
-==================================
+===================
 この最初のチュートリアルでは、簡単な登録フォームを使用したアプリケーションをゼロから作成する手順を見ていきます。
 また、フレームワークの動作の基本的な側面を説明していきます。もしあなたが Phalconのコード自動生成ツールに興味があるのでしたら、
 次のドキュメントを参照ください。 :doc:`developer tools <tools>`.
 
 インストールの確認
---------------------------
+---------
 すでにPhalconはインストールされていると思います。 phpinfo() の "Phalcon"のセクションの出力を確認するか、
 次のコードスニペットを実行してみてください。
 
@@ -29,11 +29,11 @@ Phalcon拡張モジュールは下記のように出力の一部に現れるで�
     )
 
 プロジェクトの作成
-------------------
+---------
 このガイドを使用する最良の方法は、順番にそれぞれのステップに従うことです。完全なコードは、`ここ <https://github.com/phalcon/tutorial>`_ から取得することができます。
 
 ファイル構造
-^^^^^^^^^^^^^^
+^^^^^^
 Phalconはアプリケーション開発において特定のファイル構造を強制しません。Phalconは疎結合になっているため、あなたのやりやすいファイル構造でアプリケーションを実装することができます。
 
 このチュートリアルの出発点として、次のような構造にしてみましょう。
@@ -53,7 +53,7 @@ Phalconはアプリケーション開発において特定のファイル構造�
 Phalconに関連した "library" ディレクトリを必要としないことに注意してください。フレームワークはメモリ内で利用可能となっています。
 
 きれいなURL
-^^^^^^^^^^^^^^
+^^^^^^^
 このチュートリアルでは、きれいな、使いやすいURLを使用します。使いやすいURLはSEOに良いだけでなく、ユーザーが覚えやすいという利点もあります。Phalconは一般的なWEBサーバーにより提供されるrewriteモジュールをサポートしています。ただし、あなたのアプリケーションを使いやすいURLにすることは必須条件ではありません。それなしでも同様に開発することができます。
 
 この例では、Apacheの rewriteモジュールを使用します。/tutorial/.htaccess というファイルに、rewrite ルールを記述してみましょう。
@@ -94,7 +94,7 @@ tutorial/public/index.php は次のようになります。
     try {
 
         // オートローダにディレクトリを登録する
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
@@ -105,20 +105,20 @@ tutorial/public/index.php は次のようになります。
 
         // ビューのコンポーネントの組み立て
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
         $di->set('url', function () {
-            $url = new \Phalcon\Mvc\Url();
+            $url = new Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
         // リクエストを処理する
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
@@ -127,8 +127,8 @@ tutorial/public/index.php は次のようになります。
     }
 
 オートローダ
-^^^^^^^^^^^
-bootstrapの最初の部分では、オートローダを登録しています。これは、アプリケーション内のコントローラやモデルなどのクラスをロードするために使用されます。例えば、アプリケーションの柔軟性を増加させる、コントローラの1つまたは複数のディレクトリを登録することができます。この例では、Phalcon\\ Loaderコンポーネントを使用しています。
+^^^^^^
+bootstrapの最初の部分では、オートローダを登録しています。これは、アプリケーション内のコントローラやモデルなどのクラスをロードするために使用されます。例えば、アプリケーションの柔軟性を増加させる、コントローラの1つまたは複数のディレクトリを登録することができます。この例では、:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` コンポーネントを使用しています。
 
 これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。
 
@@ -136,7 +136,7 @@ bootstrapの最初の部分では、オートローダを登録しています�
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    $loader = new Phalcon\Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -145,10 +145,10 @@ bootstrapの最初の部分では、オートローダを登録しています�
     )->register();
 
 依存性の管理
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
 Phalconで開発する際に、理解するべき非常に重要なコンセプトは :doc:`dependency injection container <di>` です。それは複雑に聞こえますが、実際にはシンプルで実用的なものです。
 
-サービスコンテナは、アプリケーションが機能するために使用するサービスをグローバルに保存する入れ物です。フレームワークはコンポーネントを必要とするたびに、サービスに決められた名称でコンテナに問い合わせます。Phalconはとても疎結合なフレームワークです。Phalcon\\ DI は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
+サービスコンテナは、アプリケーションが機能するために使用するサービスをグローバルに保存する入れ物です。フレームワークはコンポーネントを必要とするたびに、サービスに決められた名称でコンテナに問い合わせます。Phalconはとても疎結合なフレームワークです。:doc:`Phalcon\\DI <../api/Phalcon_DI>` は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
 
 .. code-block:: php
 
@@ -157,7 +157,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
     // Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` は Phalcon\\DI の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` は :doc:`Phalcon\\DI <../api/Phalcon_DI>` の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
 
 次のパートでは、フレームワークがviewファイルを探すディレクトリを示す "view" サービスを登録します。 viewファイルはクラスでないため、オートローダで補完されません。
 
@@ -169,12 +169,12 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     // Setup the view component
     $di->set('view', function () {
-        $view = new \Phalcon\Mvc\View();
+        $view = new Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
 
-次に、Phalconにより生成されるすべてのURI に "/tutorial/" が含まれるように、base URIを登録します。 これは、このチュートリアルで、ハイパーリンクを生成するために、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用する際に重要になってきます。
+次に、Phalconにより生成されるすべてのURI に "/tutorial/" が含まれるように、base URIを登録します。 これは、このチュートリアルで、ハイパーリンクを生成するために、 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` を使用する際に重要になってきます。
 
 .. code-block:: php
 
@@ -182,7 +182,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function () {
-        $url = new \Phalcon\Mvc\Url();
+        $url = new Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
     });
@@ -193,21 +193,21 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application($di);
+    $application = new Phalcon\Mvc\Application($di);
 
     echo $application->handle()->getContent();
 
 ご覧のように、bootstrap ファイルはとても短く、追加のファイルを読み込む必要はありません。柔軟なMVCアプリケーションの設定が、30行足らずのコードで行えるのです。
 
 コントローラの作成
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
 デフォルトでは、Phalcon は、"Index" という名称のコントローラを探します。これは、リクエストでいずれのコントローラ、アクションも渡されていない場合の出発点となります。index コントローラ (app/controllers/IndexController.php) は、次のようになります。
 
 .. code-block:: php
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -238,7 +238,7 @@ Viewへのアウトプットの送信
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    class IndexController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -248,10 +248,10 @@ Viewへのアウトプットの送信
 
     }
 
-ブラウザの出力は同じままにしてください。アクションの実行が終了すると:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` スタティックコンポーネントが自動的に生成されます。Viewの使い方について詳しくは :doc:`こちら <views>` を参照ください。
+ブラウザの出力は同じままにしてください。アクションの実行が終了すると :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` スタティックコンポーネントが自動的に生成されます。Viewの使い方について詳しくは :doc:`こちら <views>` を参照ください。
 
 サインアップフォームのデザイン
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 今度は、index.phtmlを編集して、「signup」という名前の新しいコントローラーへのリンクを追加してみましょう。目標は、ユーザーがアプリケーションにログインできるようにすることです。
 
 .. code-block:: php
@@ -268,7 +268,7 @@ Viewへのアウトプットの送信
 
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
-タグを生成するためには、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用します。このユーティリティクラスによって、フレームワークの規約に従ったHTMLタグを生成することができます。HTML生成機能の詳細については、 :doc:`found here <tags>` を参照してください。
+タグを生成するためには、 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` を使用します。このユーティリティクラスによって、フレームワークの規約に従ったHTMLタグを生成することができます。HTML生成機能の詳細については、 :doc:`found here <tags>` を参照してください。
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -279,7 +279,7 @@ Viewへのアウトプットの送信
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -322,7 +322,7 @@ Viewへのアウトプットの送信
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
-Phalcon\\Tag::form メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
+:code:`Phalcon\\Tag::form` メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
 
 送信ボタンをクリックすると、「signup」コントローラーの「register」アクションが見つからない、という例外が投げられることに気づくはずです。 public/index.php が以下の例外を投げています：
 
@@ -334,7 +334,7 @@ Phalcon\\Tag::form メソッドは、 controller/action への相対URIを唯一
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -352,7 +352,7 @@ Phalcon\\Tag::form メソッドは、 controller/action への相対URIを唯一
 送信ボタンをもう一度クリックすると、空のページが表示されるでしょう。ユーザーが入力した名前とEメールアドレスは、データベースに保存すべきです。MVCのガイドラインによると、データベースとの連携はモデルで行わなければなりません。そうすることで、きれいなオブジェクト指向のコードを保つことができます。
 
 モデルの作成
-^^^^^^^^^^^^^^^^
+^^^^^^
 Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。ORMは開発の複雑さを増幅させるのではなく、開発をシンプルにしてくれます。
 
 最初のモデルを作る前に、Phalconの外でマッピングするデータベースのテーブルを作る必要があります。登録したユーザーの情報を保存するシンプルなテーブルは、以下のように定義できます:
@@ -372,13 +372,13 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
     <?php
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Phalcon\Mvc\Model
     {
 
     }
 
 データベース接続の設定
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 データベース接続を使用できるようにし、モデルからデータにアクセスできるようにするため、ブートストラップの途中でデータベース接続を明確にする必要があります。データベース接続は、アプリケーションが所有し、他のコンポーネントで利用可能なサービスです:
 
 .. code-block:: php
@@ -388,7 +388,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
     try {
 
         // Register an autoloader
-        $loader = new \Phalcon\Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
@@ -399,7 +399,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
         // データベースサービスのセットアップ
         $di->set('db', function () {
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            return new Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
                 "username" => "root",
                 "password" => "secret",
@@ -409,20 +409,20 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
         // Setup the view component
         $di->set('view', function () {
-            $view = new \Phalcon\Mvc\View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function () {
-            $url = new \Phalcon\Mvc\Url();
+            $url = new Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
 
@@ -433,14 +433,14 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 正しいデータベースのパラメーターが設定されれば、モデルが使用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
 モデルを使用したデータの保存
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 次のステップでは、フォームからデータを受け取って、テーブルに保存します。
 
 .. code-block:: php
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    class SignupController extends Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -485,7 +485,7 @@ Not Null (必須パラメーター) 制約の課されたフィールドには�
 ここまででお分かりのように、チュートリアルはとてもシンプルでした。Phalconでアプリケーションを作り始めることは簡単です。PhalconがWebサーバー上で動作するPHP拡張であるという点は、開発の容易さや、利用可能な機能に影響を与えません。このマニュアルを引き続き読むことで、Phalconが提供する様々な機能を知ることができるでしょう!
 
 サンプル アプリケーション
--------------------
+-------------
 以下の、Phalcon製アプリケーションをご覧になることができます。これらは、より豊富な機能を備えたサンプルです:
 
 * `INVO application`_: 送り状を生成するアプリケーションです。製品・会社・製品の種類等の管理ができます。

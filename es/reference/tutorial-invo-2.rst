@@ -143,9 +143,9 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
     }
 
 Por simplicidad, hemos usado "sha1_" para guardar los passwords en la base de datos, sin embargo, este
-algoritmo no es recomendado para aplicaciones reales, usa mejor " :doc:`bcrypt <security>`".
+algoritmo no es recomendado para aplicaciones reales, usa mejor ":doc:`bcrypt <security>`".
 
-Como pudiste ver, muchos atributos públicos fueron accedidos desde el controlador como: $this->flash, $this->request y $this->session.
+Como pudiste ver, muchos atributos públicos fueron accedidos desde el controlador como: :code:`$this->flash`, :code:`$this->request` y :code:`$this->session`.
 Estos son servicios en el contenedor de servicios anteriormente. Cuando ellos son accedidos la primera vez, son injectados
 como parte del controlador.
 
@@ -345,8 +345,8 @@ el método "beforeExecuteRoute". Este tiene el mismo nombre de uno de los evento
     }
 
 Los escuchadores de eventos siempre reciben un primer parámetro que contiene información contextual del evento producido
-y un segundo que es el objeto que produjo el evento como tal ($dispatcher). No es obligatorio que los plugins extiendan
-la clase Phalcon\\Mvc\\User\\Plugin, pero haciendo esto, ellos ganan acceso de forma simple a los servicios disponibles
+y un segundo que es el objeto que produjo el evento como tal (:code:`$dispatcher`). No es obligatorio que los plugins extiendan
+la clase :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, pero haciendo esto, ellos ganan acceso de forma simple a los servicios disponibles
 en la aplicación.
 
 Ahora, verificamos si el pérfil (role) actual en sesión tiene acceso usando una lista de control de acceso ACL.
@@ -404,7 +404,7 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
 
 Crear una lista ACL
 ^^^^^^^^^^^^^^^^^^^
-En el ejemplo anterior, hemos obtenido la lista ACL usando el método $this->getAcl(). Este método
+En el ejemplo anterior, hemos obtenido la lista ACL usando el método :code:`$this->getAcl()`. Este método
 también es implementado en el plugin. Ahora, explicaremos paso a paso como construir la lista de control de acceso.
 
 .. code-block:: php
