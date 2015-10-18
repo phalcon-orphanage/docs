@@ -584,5 +584,5 @@ Conclusion
 As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
 use micro applications and the :doc:`PHQL <phql>` language.
 
-.. _curl : http://en.wikipedia.org/wiki/CURL
-.. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer
+.. _curl: http://pl.wikipedia.org/wiki/CURL
+.. _RESTful: http://pl.wikipedia.org/wiki/Representational_State_Transfer
