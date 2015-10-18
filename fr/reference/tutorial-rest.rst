@@ -471,7 +471,7 @@ La suppression de données est relativement identique à la modification. L'iden
     });
 
 Tester notre application
------------------------
+------------------------
 En utilisant curl_ nous allons tester chaque route de notre application et vérifier que les opérations fonctionnent correctement:
 
 Récupérer tous les robots :
@@ -581,5 +581,5 @@ Conclusion
 Comme nous l'abons vu, développer une API RESTful avec Phalcon est simple. Plus loin dans la documentation, nous expliqueront en détail comment
 utiliser une micro application et nous aborderont aussi le langage :doc:`PHQL <phql>` plus en détail.
 
-.. _curl : http://en.wikipedia.org/wiki/CURL
-.. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer
+.. _curl: http://fr.wikipedia.org/wiki/CURL
+.. _RESTful: http://fr.wikipedia.org/wiki/Representational_State_Transfer
