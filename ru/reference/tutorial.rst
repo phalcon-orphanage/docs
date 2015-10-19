@@ -482,7 +482,7 @@ ORM автоматически экранирует ввод для предот
 * `Album O'Rama`_: Витрина музыкальных альбомов. Обработка больших объемов данных с помощью диалекта :doc:`PHQL <phql>` и шаблонизатора :doc:`Volt <volt>`
 * `Phosphorum`_: Простой форум
 
-.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
-.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
+.. _INVO application: http://blog.phalconphp.com/post/20928554661
+.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072
+.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262
+.. _Phosphorum: http://blog.phalconphp.com/post/41461000213

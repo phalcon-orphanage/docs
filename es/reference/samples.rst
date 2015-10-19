@@ -16,7 +16,7 @@ Following examples are full applications you can use to learn more about Phalcon
             </td>
             <td class="sample-2 sample">
                 <div>
-                    <a href="http://blog.phalconphp.com/post/20928554661/invo-a-sample-application">
+                    <a href="http://blog.phalconphp.com/post/20928554661">
                         INVO: CRUD, Acl, Layouts and more
                     </a>
                 </div>
@@ -28,14 +28,14 @@ Following examples are full applications you can use to learn more about Phalcon
         <tr>
             <td class="sample-3 sample">
                 <div>
-                    <a href="http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site">
+                    <a href="http://blog.phalconphp.com/post/24622423072">
                         PHP Alternative website: Multi-Lingual, Complex Routing and more
                     </a>
                 </div>
             </td>
             <td class="sample-4 sample">
                 <div>
-                    <a href="http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum">
+                    <a href="http://blog.phalconphp.com/post/41461000213>
                         Phosphorum: Phalcon's forum
                     </a>
                 </div>
@@ -47,14 +47,14 @@ Following examples are full applications you can use to learn more about Phalcon
         <tr>
             <td class="sample-5 sample">
                 <div>
-                    <a href="http://blog.phalconphp.com/post/37515965262/sample-application-album-orama">
+                    <a href="http://blog.phalconphp.com/post/37515965262">
                         Album O'Rama: Large Data, Volt, PHQL and Caching and more
                     </a>
                 </div>
             </td>
             <td class="sample-6 sample">
                 <div>
-                    <a href="http://blog.phalconphp.com/post/49450016172/sample-application-vokuro">
+                    <a href="http://blog.phalconphp.com/post/49450016172">
                         Vökuró: Security, Authentication, Authorization and more
                     </a>
                 </div>
