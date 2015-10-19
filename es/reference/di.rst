@@ -356,10 +356,10 @@ o cualquier otro aspecto no afectarán el componente.
 
 Our approach
 ============
-Phalcon\\DI es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
 es un contenedor para ellos.
 
-Ya que Phalcon es altamente desacoplado, Phalcon\\DI es esencial para integrar los diferentes componentes del framework.
+Ya que Phalcon es altamente desacoplado, :doc:`Phalcon\\DI <../api/Phalcon_DI>` es esencial para integrar los diferentes componentes del framework.
 El desarrollador puede usar este componente para inyectar dependencias y administrar instancias globales de las distintas
 clases usadas en el framework.
 
@@ -451,7 +451,7 @@ un array ofrece más flexibilidad pero puede ser un poco más complicado.
 La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización
 sino es editando directamente su código.
 
-La mayoría de estrategias para registrar servicios en Phalcon\\DI inicializan los servicios solo la primera vez
+La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\DI <../api/Phalcon_DI>` inicializan los servicios solo la primera vez
 que son requeridas.
 
 Registro simple
@@ -615,7 +615,7 @@ El servicio puede ser registrado de la siguiente forma:
         )
     ));
 
-El servicio "response" (Phalcon\\Http\\Response) es resuelto y se pasa como primer argumetno del constructor,
+El servicio "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) es resuelto y se pasa como primer argumetno del constructor,
 mientras que el segundo es un valor booleano (true) que se pasa tal y como está.
 
 Inyección via Setters
@@ -741,15 +741,15 @@ Un servicio con dependencias inyectadas en sus propiedades se puede registrar as
 
 Los tipos de parámetros soportados incluyen los siguientes:
 
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| Tipo        | Descripción                                              | Ejemplo                                                                             |
-+=============+==========================================================+=====================================================================================+
-| parameter   | Representa un valor literal a ser inyectado              | array('type' => 'parameter', 'value' => 1234)                                       |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| service     | Representa el resultado de resolver otro servicio en DI  | array('type' => 'service', 'name' => 'request')                                     |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| instance    | Representa un objeto que debe ser construído por el DI   | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| Tipo        | Descripción                                              | Ejemplo                                                                                     |
++=============+==========================================================+=============================================================================================+
+| parameter   | Representa un valor literal a ser inyectado              | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| service     | Representa el resultado de resolver otro servicio en DI  | :code:`array('type' => 'service', 'name' => 'request')`                                     |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| instance    | Representa un objeto que debe ser construído por el DI   | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
 
 Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas
 inicialmente. Sin embargo, estas proporcionan una estrategía más robusta para inyectar servicios:
@@ -930,7 +930,7 @@ to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface
         }
     }
 
-Then once the service is resolved, the $di will be passed to setDi automatically:
+Then once the service is resolved, the :code:`$di` will be passed to setDi automatically:
 
 .. code-block:: php
 
@@ -1004,7 +1004,7 @@ If needed you can access the latest DI created in a static function in the follo
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
@@ -1063,14 +1063,14 @@ the correct (built-in) service when you need it.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | transactionManager  | Models Transaction Manager Service          | :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <../api/Phalcon_Mvc_Model_Transaction_Manager>`    | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| modelsCache         | Cache backend for models cache              | None                                                                                               | -      |
+| modelsCache         | Cache backend for models cache              | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
+| viewsCache          | Cache backend for views fragments           | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
 Implementing your own DI
 ========================
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
-.. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
-.. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _`Inversion of Control`: http://es.wikipedia.org/wiki/Inversi%C3%B3n_de_control
+.. _Singletons: http://es.wikipedia.org/wiki/Singleton

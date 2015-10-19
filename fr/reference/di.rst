@@ -356,9 +356,9 @@ their behavior or any other aspect of them and that would not affect the compone
 
 Our approach
 ============
-Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
+Since Phalcon is highly decoupled, :doc:`Phalcon\\DI <../api/Phalcon_DI>` is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
 Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
@@ -444,7 +444,7 @@ developer and the particular requirements that will designate which one is used.
 Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
 code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
 in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 Simple Registration
@@ -610,7 +610,7 @@ The service can be registered this way:
         )
     ));
 
-The service "response" (Phalcon\\Http\\Response) is resolved to be passed as the first argument of the constructor,
+The service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) is resolved to be passed as the first argument of the constructor,
 while the second is a boolean value (true) that is passed as it is.
 
 Setter Injection
@@ -736,15 +736,15 @@ A service with properties injection can be registered as follows:
 
 Supported parameter types include the following:
 
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| Type        | Description                                              | Example                                                                             |
-+=============+==========================================================+=====================================================================================+
-| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                       |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| service     | Represents another service in the service container      | array('type' => 'service', 'name' => 'request')                                     |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| instance    | Represents an object that must be built dynamically      | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| Type        | Description                                              | Example                                                                                     |
++=============+==========================================================+=============================================================================================+
+| parameter   | Represents a literal value to be passed as parameter     | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| service     | Represents another service in the service container      | :code:`array('type' => 'service', 'name' => 'request')`                                     |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| instance    | Represents an object that must be built dynamically      | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However,
 these provide a more robust approach to define and inject services.
@@ -850,7 +850,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
     use Phalcon\Http\Request;
 
-    // Register the "register" service
+    // Register the "request" service
     $di->set('request', 'Phalcon\Http\Request');
 
     // Get the service
@@ -922,7 +922,7 @@ to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface
         }
     }
 
-Then once the service is resolved, the $di will be passed to setDi automatically:
+Then once the service is resolved, the :code:`$di` will be passed to setDi automatically:
 
 .. code-block:: php
 
@@ -996,7 +996,7 @@ If needed you can access the latest DI created in a static function in the follo
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
@@ -1055,14 +1055,14 @@ the correct (built-in) service when you need it.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | transactionManager  | Models Transaction Manager Service          | :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <../api/Phalcon_Mvc_Model_Transaction_Manager>`    | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| modelsCache         | Cache backend for models cache              | None                                                                                               | -      |
+| modelsCache         | Cache backend for models cache              | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
+| viewsCache          | Cache backend for views fragments           | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
 Implementing your own DI
 ========================
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
-.. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
-.. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _`Inversion of Control`: http://fr.wikipedia.org/wiki/Inversion_de_contr%C3%B4le
+.. _Singletons: http://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
