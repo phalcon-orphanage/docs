@@ -30,17 +30,17 @@ You can get a list of available commands in Phalcon tools by typing: phalcon com
 
    $ phalcon commands
 
-   Phalcon DevTools (1.2.3)
+   Phalcon DevTools (2.0.8)
 
    Available commands:
-     commands (alias of: list, enumerate)
-     controller (alias of: create-controller)
-     model (alias of: create-model)
-     all-models (alias of: create-all-models)
-     project (alias of: create-project)
-     scaffold
-     migration
-     webtools
+     commands         (alias of: list, enumerate)
+     controller       (alias of: create-controller)
+     model            (alias of: create-model)
+     all-models       (alias of: create-all-models)
+     project          (alias of: create-project)
+     scaffold         (alias of: create-scaffold)
+     migration        (alias of: create-migration)
+     webtools         (alias of: create-webtools)
 
 
 Generating a Project Skeleton
@@ -65,29 +65,31 @@ You could add the parameter *--help* to get help on the usage of a certain scrip
 
 .. code-block:: sh
 
-Phalcon DevTools (1.2.3)
+    $ phalcon project --help
 
-Help:
-  Creates a project
+    Phalcon DevTools (2.0.8)
 
-Usage:
-  project [name] [type] [directory] [enable-webtools]
+    Help:
+      Creates a project
 
-Arguments:
-  help    Shows this help text
+    Usage:
+      project [name] [type] [directory] [enable-webtools]
 
-Example
-  phalcon project store simple
+    Arguments:
+      help    Shows this help text
 
-Options:
- --name               Name of the new project
- --enable-webtools    Determines if webtools should be enabled [optional]
- --directory=s        Base path on which project will be created [optional]
- --type=s             Type of the application to be generated (micro, simple, modules)
- --template-path      Specify a template path [optional]
- --use-config-ini     Use a ini file as configuration file [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --help               Shows this help
+    Example
+      phalcon project store simple
+
+    Options:
+     --name               Name of the new project
+     --enable-webtools    Determines if webtools should be enabled [optional]
+     --directory=s        Base path on which project will be created [optional]
+     --type=s             Type of the application to be generated (cli, micro, simple, modules)
+     --template-path=s    Specify a template path [optional]
+     --use-config-ini     Use a ini file as configuration file [optional]
+     --trace              Shows the trace of the framework in case of exception. [optional]
+     --help               Shows this help
 
 Accessing the project from the web server will show you:
 
@@ -152,11 +154,13 @@ Options:
  --namespace=s        Model's namespace [optional]
  --get-set            Attributes will be protected and have setters/getters. [optional]
  --extends=s          Model extends the class name supplied [optional]
+ --excludefields=l    Excludes fields defined in a comma separated list [optional]
  --doc                Helps to improve code completion on IDEs [optional]
  --directory=s        Base path on which project will be created [optional]
  --force              Rewrite the model. [optional]
  --trace              Shows the trace of the framework in case of exception. [optional]
  --mapcolumn          Get some code for map columns. [optional]
+ --abstract           Abstract Model [optional]
 
 The simplest way to generate a model is:
 
@@ -296,11 +300,11 @@ controllers for a new resource in a single operation, scaffolding is the tool fo
 
 Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting
 to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the
-framework works or develop prototypes. The screenshot below shows a scaffold based on the table "products":
+framework works or develop prototypes. The code below shows a scaffold based on the table "products":
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name test
+         $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 

@@ -30,17 +30,17 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 
    $ phalcon commands
 
-   Phalcon DevTools (1.2.3)
+   Phalcon DevTools (2.0.8)
 
    Available commands:
-     commands (alias of: list, enumerate)
-     controller (alias of: create-controller)
-     model (alias of: create-model)
-     all-models (alias of: create-all-models)
-     project (alias of: create-project)
-     scaffold
-     migration
-     webtools
+     commands         (alias of: list, enumerate)
+     controller       (alias of: create-controller)
+     model            (alias of: create-model)
+     all-models       (alias of: create-all-models)
+     project          (alias of: create-project)
+     scaffold         (alias of: create-scaffold)
+     migration        (alias of: create-migration)
+     webtools         (alias of: create-webtools)
 
 
 生成项目框架（Generating a Project Skeleton）
@@ -65,29 +65,31 @@ web服务器根目录下输入如下命令：
 
 .. code-block:: sh
 
-Phalcon DevTools (1.2.3)
+    $ phalcon project --help
 
-Help:
-  Creates a project  创建项目
+    Phalcon DevTools (2.0.8)
 
-Usage:
-  project [name] [type] [directory] [enable-webtools]
+    Help:
+      Creates a project 创建项目
 
-Arguments: 参数
-  help    Shows this help text  显示此帮助信息
+    Usage:
+      project [name] [type] [directory] [enable-webtools]
 
-Example 例子
-  phalcon project store simple
+    Arguments: 参数
+      help    Shows this help text 显示此帮助信息
 
-Options: 选项
- --name               Name of the new project 新项目的名字
- --enable-webtools    Determines if webtools should be enabled [optional] 此选项决定了新的项目中是否使用webtools开发辅助组件
- --directory=s        Base path on which project will be created [optional] 在何外创建项目
- --type=s             Type of the application to be generated (micro, simple, modules, cli) 应用的种类（微型，简单，多模块，console等）
- --template-path      Specify a template path [optional]  指定模板路径
- --use-config-ini     Use a ini file as configuration file [optional] 使用ini文件作为配置保存文件
- --trace              Shows the trace of the framework in case of exception. [optional] 出错时是否显示框架的trace信息
- --help               Shows this help 显示帮助
+    Example 例子
+      phalcon project store simple
+
+    Options: 选项
+     --name               Name of the new project 新项目的名字
+     --enable-webtools    Determines if webtools should be enabled [optional] 此选项决定了新的项目中是否使用webtools开发辅助组件
+     --directory=s        Base path on which project will be created [optional] 在何外创建项目
+     --type=s             Type of the application to be generated (cli, micro, simple, modules) 应用的种类（微型，简单，多模块，console等）
+     --template-path=s    Specify a template path [optional] 指定模板路径
+     --use-config-ini     Use a ini file as configuration file [optional] 使用ini文件作为配置保存文件
+     --trace              Shows the trace of the framework in case of exception. [optional] 出错时是否显示框架的trace信息
+     --help               Shows this help 显示帮助
 
 我们访问新生成项目的地址显示如下：
 
@@ -148,11 +150,13 @@ Options:
  --namespace=s        Model's namespace [optional] 模型命名空间
  --get-set            Attributes will be protected and have setters/getters. [optional] 设置字段访问属性为私有 并添加setters/getters方法
  --extends=s          Model extends the class name supplied [optional] 指定扩展类名
+ --excludefields=l    Excludes fields defined in a comma separated list [optional]
  --doc                Helps to improve code completion on IDEs [optional] 辅助IDE的自动完成功能
  --directory=s        Base path on which project will be created [optional] 项目的根目录
  --force              Rewrite the model. [optional] 重写模型
  --trace              Shows the trace of the framework in case of exception. [optional] 出错时显示框架trace信息
  --mapcolumn          Get some code for map columns. [optional] 生成字映射的代码
+ --abstract           Abstract Model [optional]
 
 最简单的生成模型的方式：
 
@@ -293,7 +297,7 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name test
+         $ phalcon scaffold --table-name products
 
 scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：
 

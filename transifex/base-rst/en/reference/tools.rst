@@ -32,18 +32,18 @@
 .. code-block:: sh
 
    $ phalcon commands
-   
-   Phalcon DevTools (1.2.3)
-   
+
+   Phalcon DevTools (2.0.8)
+
    Available commands:
-     commands (alias of: list, enumerate)
-     controller (alias of: create-controller)
-     model (alias of: create-model)
-     all-models (alias of: create-all-models)
-     project (alias of: create-project)
-     scaffold
-     migration
-     webtools
+     commands         (alias of: list, enumerate)
+     controller       (alias of: create-controller)
+     model            (alias of: create-model)
+     all-models       (alias of: create-all-models)
+     project          (alias of: create-project)
+     scaffold         (alias of: create-scaffold)
+     migration        (alias of: create-migration)
+     webtools         (alias of: create-webtools)
 
 
 
@@ -54,9 +54,9 @@
 .. code-block:: sh
 
       $ pwd
-      
+
       /Applications/MAMP/htdocs
-      
+
       $ phalcon create-project store
 
 
@@ -96,7 +96,7 @@
 %{tools_40d723c00197dab564136975660379ab}%
 
 .. code-block:: sh
-         
+
          $ phalcon create-controller --name test
 
 
@@ -148,7 +148,7 @@
 %{tools_806d1bdc5625ca89cb015ee23299a7e2}%
 
 .. code-block:: sh
-         
+
          $ phalcon model products
 
 .. code-block:: sh
@@ -286,7 +286,7 @@
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name test
+         $ phalcon scaffold --table-name products
 
 
 %{tools_499e3e858ae84fcd7bc4c32289d2244e}%
