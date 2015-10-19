@@ -350,7 +350,7 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 --------------------
 Phalcon开发辅助工具为我们提供了一种简易的产生应用代码的方法， 这可以减少开发时间及潜在的错误。
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409/dont-like-command-line-and-consoles-no-problem
+.. _blog post: http://blog.phalconphp.com/post/23251010409
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

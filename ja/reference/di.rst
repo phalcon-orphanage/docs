@@ -1,5 +1,5 @@
 依存性の注入とサービス・ロケーション
-*************************************
+******************
 
 以下の例は少々長めですが、なぜサービス・ロケーションと依存性の注入を使用するのかを説明しています。初めに、SomeComponentというコンポーネントを開発しているとしましょう。これは、今のところ重要ではないタスクを実行します。このコンポーネントは、DB接続に依存しています。
 
@@ -336,10 +336,10 @@
 これで、コンポーネントは必要とするサービスにシンプルにアクセスできるようになりました。不要なサービスは、初期化されることさえないので、リソースを節約できます。コンポーネントは高度に疎結合です。たとえば、コンポーネントの振る舞いやその他の側面を変更せずに、DB接続のやり方を変更することができます。
 
 私たちのアプローチ
-============
-Phalcon\\DI は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
+=========
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
 
-Phalconが高度に分離されているため、Phalcon\\DI はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
+Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalcon_DI>` はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
 
 基本的には、このコンポーネントは、`コントロールの反転`パターンを実装しています。
 
@@ -348,7 +348,7 @@ Phalconが高度に分離されているため、Phalcon\\DI はフレームワ�
 加えて、このパターンによってコードがテストしやすくなり、エラーへの耐性が向上します。
 
 サービスのコンテナへの登録
-=====================================
+=============
 フレームワーク自身だけでなく、開発者も、サービスを登録することができます。コンポーネントAが動作するのにコンポーネントB(あるいはそのクラスのインスタンス)を必要とする場合、コンポーネントBの新しいインスタンスを作るのではなく、コンテナからコンポーネントBを取り出します。
 
 このやり方には、大きな利点があります:
@@ -420,14 +420,14 @@ Phalconが高度に分離されているため、Phalcon\\DI はフレームワ�
 
 文字列でのサービス登録は、シンプルですが、柔軟性に欠けます。配列でのサービス登録は、より柔軟ですが、コードが複雑になります。無名関数にはこの2つの中間的なバランスの良さがありますが、意外とメンテナンスが大変です。
 
-Phalcon\\DI は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
 
 簡単な登録
--------------------
+-----
 As seen before, there are several ways to register services. These we call simple:
 
 文字列
-^^^^^^
+^^^^^
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader.
 This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -455,7 +455,7 @@ the same object/value:
     $di->set('request', new Request());
 
 クロージャ／無名関数
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
 This method offers greater freedom to build the dependency as desired, however, it is difficult to
 change some of the parameters externally without having to completely change the definition of dependency:
 
@@ -497,7 +497,7 @@ Some of the limitations can be overcome by passing additional variables to the c
     });
 
 複雑な登録
---------------------
+-----
 If it is required to change the definition of a service without instantiating/resolving the service,
 then, we need to define the services using the array syntax. Define a service using an array definition
 can be a little more verbose:
@@ -585,7 +585,7 @@ The service can be registered this way:
         )
     ));
 
-The service "response" (Phalcon\\Http\\Response) is resolved to be passed as the first argument of the constructor,
+The service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) is resolved to be passed as the first argument of the constructor,
 while the second is a boolean value (true) that is passed as it is.
 
 Setter Injection
@@ -711,15 +711,15 @@ A service with properties injection can be registered as follows:
 
 Supported parameter types include the following:
 
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| Type        | Description                                              | Example                                                                             |
-+=============+==========================================================+=====================================================================================+
-| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                       |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| service     | Represents another service in the service container      | array('type' => 'service', 'name' => 'request')                                     |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
-| instance    | Represents an object that must be built dynamically      | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
-+-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| Type        | Description                                              | Example                                                                                     |
++=============+==========================================================+=============================================================================================+
+| parameter   | Represents a literal value to be passed as parameter     | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| service     | Represents another service in the service container      | :code:`array('type' => 'service', 'name' => 'request')`                                     |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
+| instance    | Represents an object that must be built dynamically      | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
++-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However,
 these provide a more robust approach to define and inject services.
@@ -728,7 +728,7 @@ Mixing different types of definitions is allowed, everyone can decide what is th
 according to the application needs.
 
 サービスの解決
-==================
+=======
 Obtaining a service from the container is a matter of simply calling the "get" method. A new instance of the service will be returned:
 
 .. code-block:: php
@@ -775,7 +775,7 @@ The following events are supported:
 +----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
 
 共有サービス
-===============
+======
 Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
 the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -816,7 +816,7 @@ the service is obtained from the DI, you can use the 'getShared' method:
     $request = $di->getShared("request");
 
 個別のサービスの操作
-==================================
+==========
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
 .. code-block:: php
@@ -825,7 +825,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
     use Phalcon\Http\Request;
 
-    // Register the "register" service
+    // Register the "request" service
     $di->set('request', 'Phalcon\Http\Request');
 
     // Get the service
@@ -897,7 +897,7 @@ to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface
         }
     }
 
-Then once the service is resolved, the $di will be passed to setDi automatically:
+Then once the service is resolved, the :code:`$di` will be passed to setDi automatically:
 
 .. code-block:: php
 
@@ -950,7 +950,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
     return $router;
 
 静的な方法でのDIへのアクセス
-================================
+===============
 If needed you can access the latest DI created in a static function in the following way:
 
 .. code-block:: php
@@ -971,7 +971,7 @@ If needed you can access the latest DI created in a static function in the follo
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
@@ -983,7 +983,7 @@ registers the appropriate services bundled with the framework to act as full-sta
     $di = new FactoryDefault();
 
 サービス名の規約
-========================
+========
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
 the correct (built-in) service when you need it.
 
@@ -1030,14 +1030,14 @@ the correct (built-in) service when you need it.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | transactionManager  | Models Transaction Manager Service          | :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <../api/Phalcon_Mvc_Model_Transaction_Manager>`    | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| modelsCache         | Cache backend for models cache              | None                                                                                               | -      |
+| modelsCache         | Cache backend for models cache              | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
+| viewsCache          | Cache backend for views fragments           | None                                                                                               | No     |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
 独自のDIの実装
-========================
+========
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
-.. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
-.. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _`Inversion of Control`: http://ja.wikipedia.org/wiki/%E5%88%B6%E5%BE%A1%E3%81%AE%E5%8F%8D%E8%BB%A2
+.. _Singletons: http://ja.wikipedia.org/wiki/Singleton_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3

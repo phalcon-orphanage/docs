@@ -386,4 +386,4 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
 Внешние источники
 -----------------
-* `Обучение: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+* `Обучение: Creating a custom model's initializer with Annotations <http://blog.phalconphp.com/post/47471246411>`_

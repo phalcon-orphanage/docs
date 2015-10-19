@@ -507,8 +507,8 @@ A continuación tienes ejemplos de aplicaciones de mayor complejidad:
 * `Album O'Rama`_: Un catalogo de albunes de música con un gran número de datos que usa :doc:`PHQL <phql>` y :doc:`Volt <volt>` como motor de plantillas
 * `Phosphorum`_: Un foro simple y compacto
 
-.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
-.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
+.. _INVO application: http://blog.phalconphp.com/post/20928554661
+.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072
+.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262
+.. _Phosphorum: http://blog.phalconphp.com/post/41461000213
 
