@@ -30,4 +30,4 @@ Controllers
 The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests
 from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
 
-.. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+.. _MVC: http://pt.wikipedia.org/wiki/MVC

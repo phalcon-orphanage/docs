@@ -30,4 +30,4 @@ Les controlleurs
 Les controlleurs gèrent le "flux" entre les models et les vues. Ils sont responsables de la gestion des requêtes venant du navigateur,
 d'interroger le model pour les données et passer ces données à la vue. :doc:`En savoir plus <controllers>`
 
-.. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+.. _MVC: http://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
