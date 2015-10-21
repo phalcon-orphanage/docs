@@ -145,6 +145,34 @@ to setup its options:
         return $security;
     }, true);
 
+Random
+------
+The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class makes it really easy to generate lots of types of random data.
+
+.. code-block:: php
+
+    <?php
+
+    $random = new \Phalcon\Security\Random();
+
+    // ...
+    $bytes      = $random->bytes();
+
+    // Generate a random hex string of length $len.
+    $hex        = $random->hex($len);
+
+    // Generate a random base64 string of length $len.
+    $base64     = $random->base64($len);
+
+    // Generate a random URL-safe base64 string of length $len.
+    $base64Safe = $random->base64Safe($len);
+
+    // Generate a UUID (version 4). See https://en.wikipedia.org/wiki/Universally_unique_identifier
+    $uuid       = $random->uuid();
+
+    // Generate a random integer between 0 and $n.
+    $number     = $random->number($n);
+
 外部資料
 ------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
