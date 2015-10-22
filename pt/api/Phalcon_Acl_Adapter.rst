@@ -3,6 +3,11 @@ Abstract class **Phalcon\\Acl\\Adapter**
 
 *implements* :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Adapter for Phalcon\\Acl adapters
 
 

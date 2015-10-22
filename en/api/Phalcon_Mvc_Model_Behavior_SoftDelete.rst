@@ -5,6 +5,11 @@ Class **Phalcon\\Mvc\\Model\\Behavior\\SoftDelete**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/behavior/softdelete.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
 

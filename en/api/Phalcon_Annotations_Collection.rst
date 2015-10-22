@@ -3,6 +3,11 @@ Class **Phalcon\\Annotations\\Collection**
 
 *implements* Iterator, Traversable, Countable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Represents a collection of annotations. This class allows to traverse a group of annotations easily  
 
 .. code-block:: php

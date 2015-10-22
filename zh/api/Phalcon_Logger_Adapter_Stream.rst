@@ -5,6 +5,11 @@ Class **Phalcon\\Logger\\Adapter\\Stream**
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapter/stream.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Sends logs to a valid PHP stream  
 
 .. code-block:: php

@@ -1,6 +1,11 @@
 Interface **Phalcon\\Cache\\BackendInterface**
 ==============================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Methods
 -------
 

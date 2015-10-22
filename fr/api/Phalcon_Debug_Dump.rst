@@ -1,6 +1,11 @@
 Class **Phalcon\\Debug\\Dump**
 ==============================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/debug/dump.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Dumps information about a variable(s)  
 
 .. code-block:: php

@@ -5,6 +5,11 @@ Class **Phalcon\\Mvc\\Model\\Behavior\\Timestampable**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/behavior/timestampable.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
 

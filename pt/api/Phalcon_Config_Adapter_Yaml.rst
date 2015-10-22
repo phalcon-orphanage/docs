@@ -5,6 +5,11 @@ Class **Phalcon\\Config\\Adapter\\Yaml**
 
 *implements* Countable, ArrayAccess
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/yaml.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Reads YAML files and converts them to Phalcon\\Config objects.  Given the following configuration file:  
 
 .. code-block:: php

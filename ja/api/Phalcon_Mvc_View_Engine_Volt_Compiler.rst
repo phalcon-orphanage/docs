@@ -3,6 +3,11 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
 
 *implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This class reads and compiles Volt templates into PHP plain code  
 
 .. code-block:: php

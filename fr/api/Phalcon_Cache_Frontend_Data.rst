@@ -3,6 +3,11 @@ Class **Phalcon\\Cache\\Frontend\\Data**
 
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/data.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to cache native PHP data in a serialized form  
 
 .. code-block:: php

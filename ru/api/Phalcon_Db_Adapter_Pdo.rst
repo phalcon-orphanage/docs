@@ -5,6 +5,11 @@ Abstract class **Phalcon\\Db\\Adapter\\Pdo**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database  
 
 .. code-block:: php
@@ -292,11 +297,11 @@ Returns the first row in a SQL query result
     <?php
 
     //Getting first robot
-    $robot = $connection->fecthOne("SELECT * FROM robots");
+    $robot = $connection->fetchOne("SELECT * FROM robots");
     print_r($robot);
     
     //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    $robot = $connection->fetchOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 

@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\Between**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/between.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.  
 
 .. code-block:: php

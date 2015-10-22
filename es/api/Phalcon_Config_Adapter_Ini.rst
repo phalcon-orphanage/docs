@@ -5,6 +5,11 @@ Class **Phalcon\\Config\\Adapter\\Ini**
 
 *implements* Countable, ArrayAccess
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/ini.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Reads ini files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 
 .. code-block:: ini

@@ -5,6 +5,11 @@ Class **Phalcon\\Forms\\Element\\TextArea**
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/element/textarea.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Component TEXTAREA for forms
 
 

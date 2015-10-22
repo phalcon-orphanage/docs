@@ -3,6 +3,11 @@ Final class **Phalcon\\Registry**
 
 *implements* ArrayAccess, Countable, Iterator, Traversable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/registry.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.  
 
 .. code-block:: php

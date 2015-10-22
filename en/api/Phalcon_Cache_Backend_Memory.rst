@@ -5,6 +5,11 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`, Serializable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Stores content in memory. Data is lost when the request is finished  
 
 .. code-block:: php

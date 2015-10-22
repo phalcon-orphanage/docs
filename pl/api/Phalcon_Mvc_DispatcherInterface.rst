@@ -3,6 +3,11 @@ Interface **Phalcon\\Mvc\\DispatcherInterface**
 
 *implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/dispatcherinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Methods
 -------
 

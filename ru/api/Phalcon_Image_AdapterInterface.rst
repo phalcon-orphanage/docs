@@ -1,6 +1,11 @@
 Interface **Phalcon\\Image\\AdapterInterface**
 ==============================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Methods
 -------
 

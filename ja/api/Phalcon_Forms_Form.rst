@@ -5,6 +5,11 @@ Class **Phalcon\\Forms\\Form**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Countable, Iterator, Traversable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/form.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This component allows to build forms using an object-oriented interface
 
 

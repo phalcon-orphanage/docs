@@ -5,6 +5,11 @@ Class **Phalcon\\Flash\\Direct**
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/flash/direct.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This is a variant of the Phalcon\\Flash that inmediately outputs any message passed to it
 
 

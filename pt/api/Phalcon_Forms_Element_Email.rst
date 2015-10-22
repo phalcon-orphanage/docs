@@ -5,6 +5,11 @@ Class **Phalcon\\Forms\\Element\\Email**
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/element/email.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Component INPUT[type=email] for forms
 
 

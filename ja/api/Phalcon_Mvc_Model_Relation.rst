@@ -3,6 +3,11 @@ Class **Phalcon\\Mvc\\Model\\Relation**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/relation.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This class represents a relationship between two models
 
 

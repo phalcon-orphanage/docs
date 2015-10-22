@@ -5,6 +5,11 @@ Class **Phalcon\\Cache\\Backend\\Redis**
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to cache output fragments, PHP data or raw data to a redis backend  This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter  
 
 .. code-block:: php

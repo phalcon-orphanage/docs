@@ -1,6 +1,11 @@
 Class **Phalcon\\Annotations\\Reflection**
 ==========================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to manipulate the annotations reflection in an OO manner  
 
 .. code-block:: php

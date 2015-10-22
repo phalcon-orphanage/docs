@@ -5,6 +5,11 @@ Class **Phalcon\\Cache\\Frontend\\Igbinary**
 
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to cache native PHP data in a serialized form using igbinary extension  
 
 .. code-block:: php

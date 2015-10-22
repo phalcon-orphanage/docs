@@ -1,6 +1,11 @@
 Abstract class **Phalcon\\Mvc\\Model\\Behavior**
 ================================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/behavior.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This is an optional base class for ORM behaviors
 
 

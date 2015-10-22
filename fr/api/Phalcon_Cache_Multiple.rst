@@ -1,6 +1,11 @@
 Class **Phalcon\\Cache\\Multiple**
 ==================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to read to chained backend adapters writing to multiple backends  
 
 .. code-block:: php

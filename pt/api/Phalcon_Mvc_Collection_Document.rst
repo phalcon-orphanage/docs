@@ -3,6 +3,11 @@ Class **Phalcon\\Mvc\\Collection\\Document**
 
 *implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, ArrayAccess
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/document.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
 

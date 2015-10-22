@@ -5,6 +5,11 @@ Class **Phalcon\\Db\\Dialect\\MySQL**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Db\\Dialect\\Mysql  Generates database specific SQL for the MySQL RDBMS
 
 

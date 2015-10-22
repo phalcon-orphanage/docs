@@ -3,6 +3,11 @@ Class **Phalcon\\Cli\\Router**
 
 *implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Cli\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
 
 .. code-block:: php

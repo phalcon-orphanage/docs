@@ -3,6 +3,11 @@ Class **Phalcon\\Http\\Request**
 
 *implements* :doc:`Phalcon\\Http\\RequestInterface <Phalcon_Http_RequestInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Encapsulates request information for easy and secure access from application controllers.  The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.  
 
 .. code-block:: php

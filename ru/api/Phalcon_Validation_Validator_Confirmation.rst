@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\Confirmation**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/confirmation.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Checks that two values have the same value  
 
 .. code-block:: php

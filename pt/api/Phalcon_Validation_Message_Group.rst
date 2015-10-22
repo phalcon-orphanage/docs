@@ -3,6 +3,11 @@ Class **Phalcon\\Validation\\Message\\Group**
 
 *implements* Countable, ArrayAccess, Iterator, Traversable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/message/group.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Represents a group of validation messages
 
 

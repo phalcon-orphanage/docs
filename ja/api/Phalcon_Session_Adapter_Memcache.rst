@@ -5,6 +5,11 @@ Class **Phalcon\\Session\\Adapter\\Memcache**
 
 *implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/adapter/memcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This adapter store sessions in memcache  
 
 .. code-block:: php

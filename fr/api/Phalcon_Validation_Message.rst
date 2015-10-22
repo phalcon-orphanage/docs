@@ -3,6 +3,11 @@ Class **Phalcon\\Validation\\Message**
 
 *implements* :doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Encapsulates validation info generated in the validation process
 
 

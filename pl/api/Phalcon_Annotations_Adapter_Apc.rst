@@ -5,6 +5,11 @@ Class **Phalcon\\Annotations\\Adapter\\Apc**
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Stores the parsed annotations in APC. This adapter is suitable for production  
 
 .. code-block:: php

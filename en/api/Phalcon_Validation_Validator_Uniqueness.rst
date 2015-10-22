@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\Uniqueness**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/uniqueness.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Check that a field is unique in the related table  
 
 .. code-block:: php

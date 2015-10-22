@@ -5,6 +5,11 @@ Class **Phalcon\\Flash\\Session**
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/flash/session.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Temporarily stores the messages in session, then messages can be printed in the next request
 
 

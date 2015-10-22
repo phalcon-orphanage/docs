@@ -3,6 +3,11 @@ Class **Phalcon\\Filter**
 
 *implements* :doc:`Phalcon\\FilterInterface <Phalcon_FilterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters  
 
 .. code-block:: php

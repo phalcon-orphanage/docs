@@ -3,6 +3,11 @@ Class **Phalcon\\Db\\Column**
 
 *implements* :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to define columns to be used on create or alter table operations  
 
 .. code-block:: php

@@ -3,6 +3,11 @@ Class **Phalcon\\Crypt**
 
 *implements* :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Provides encryption facilities to phalcon applications  
 
 .. code-block:: php

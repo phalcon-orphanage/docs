@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\PresenceOf**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Validates that a value is not null or empty string  
 
 .. code-block:: php

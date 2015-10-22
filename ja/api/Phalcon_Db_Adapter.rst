@@ -3,6 +3,11 @@ Abstract class **Phalcon\\Db\\Adapter**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Base class for Phalcon\\Db adapters
 
 

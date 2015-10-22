@@ -478,6 +478,12 @@ foreach ($classes as $className) {
         $code .= '*implements* ' . join(', ', $implements) . PHP_EOL . PHP_EOL;
     }
 
+    $githubLink = 'https://github.com/phalcon/cphalcon/blob/master/' . str_replace("\\", "/", strtolower($className)) . '.zep';
+
+    $code .= '.. role:: raw-html(raw)' . PHP_EOL . '   :format: html' . PHP_EOL . PHP_EOL;
+
+    $code .= ':raw-html:`<a href="' . $githubLink . '" class="btn btn-default btn-sm">Source on GitHub</a>`' . PHP_EOL . PHP_EOL;
+
     if (isset($classDocs[$realClassName])) {
         $ret = $api->getPhpDoc($classDocs[$realClassName], $className, $realClassName);
         $code .= $ret['description'] . PHP_EOL . PHP_EOL;

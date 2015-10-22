@@ -1,6 +1,11 @@
 Abstract class **Phalcon\\Flash**
 =================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/flash.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
 
 .. code-block:: php

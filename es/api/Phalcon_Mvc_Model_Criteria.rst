@@ -3,6 +3,11 @@ Class **Phalcon\\Mvc\\Model\\Criteria**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/criteria.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This class is used to build the array parameter required by Phalcon\\Mvc\\Model::find() and Phalcon\\Mvc\\Model::findFirst() using an object-oriented interface.  
 
 .. code-block:: php

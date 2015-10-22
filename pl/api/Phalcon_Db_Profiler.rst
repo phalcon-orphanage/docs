@@ -1,6 +1,11 @@
 Class **Phalcon\\Db\\Profiler**
 ===============================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/profiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications.  
 
 .. code-block:: php

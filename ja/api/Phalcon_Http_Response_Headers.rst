@@ -3,6 +3,11 @@ Class **Phalcon\\Http\\Response\\Headers**
 
 *implements* :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headers.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This class is a bag to manage the response headers
 
 

@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\StringLength**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/stringlength.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Validates that a string has the specified maximum and minimum constraints The test is passed if for a string's length L, min<=L<=max, i.e. L must be at least min, and at most max.  
 
 .. code-block:: php

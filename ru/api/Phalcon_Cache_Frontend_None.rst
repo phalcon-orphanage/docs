@@ -3,6 +3,11 @@ Class **Phalcon\\Cache\\Frontend\\None**
 
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options  
 
 .. code-block:: php

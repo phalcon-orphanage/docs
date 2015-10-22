@@ -3,6 +3,11 @@ Class **Phalcon\\Config**
 
 *implements* ArrayAccess, Countable
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.  
 
 .. code-block:: php

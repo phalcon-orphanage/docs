@@ -3,6 +3,11 @@ Interface **Phalcon\\Mvc\\ViewInterface**
 
 *implements* :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/viewinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Methods
 -------
 

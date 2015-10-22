@@ -3,6 +3,11 @@ Class **Phalcon\\Di**
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`, ArrayAccess
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Di is a component that implements Dependency Injection/Service Location of services and it"s itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.  
 
 .. code-block:: php

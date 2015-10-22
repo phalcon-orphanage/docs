@@ -5,6 +5,11 @@ Class **Phalcon\\Logger\\Formatter\\Firephp**
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/formatter/firephp.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Formats messages so that they can be sent to FirePHP
 
 

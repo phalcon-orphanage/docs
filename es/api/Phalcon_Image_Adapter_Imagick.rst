@@ -5,6 +5,11 @@ Class **Phalcon\\Image\\Adapter\\Imagick**
 
 *implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter/imagick.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Image manipulation support. Allows images to be resized, cropped, etc.  
 
 .. code-block:: php

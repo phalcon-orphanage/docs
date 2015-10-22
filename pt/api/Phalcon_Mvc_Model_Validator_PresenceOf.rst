@@ -5,6 +5,11 @@ Class **Phalcon\\Mvc\\Model\\Validator\\PresenceOf**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Allows to validate if a filed have a value different of null and empty string ("")  
 
 .. code-block:: php

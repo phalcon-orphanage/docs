@@ -5,6 +5,11 @@ Class **Phalcon\\Validation\\Validator\\Alpha**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/alpha.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Check for alphabetic character(s)  
 
 .. code-block:: php

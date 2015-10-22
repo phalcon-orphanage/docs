@@ -3,6 +3,11 @@ Class **Phalcon\\Mvc\\Collection\\Manager**
 
 *implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 This components controls the initialization of models, keeping record of relations between the different models of the application.  A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\\Di.  
 
 .. code-block:: php

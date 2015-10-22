@@ -3,6 +3,11 @@ Class **Phalcon\\Http\\Request\\File**
 
 *implements* :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Provides OO wrappers to the $_FILES superglobal  
 
 .. code-block:: php

@@ -1,6 +1,11 @@
 Class **Phalcon\\Forms\\Manager**
 =================================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 
 
 

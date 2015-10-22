@@ -5,6 +5,11 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Exclusionin**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/exclusionin.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Phalcon\\Mvc\\Model\\Validator\\ExclusionIn  Check if a value is not included into a list of values  
 
 .. code-block:: php

@@ -1,6 +1,11 @@
 Class **Phalcon\\Logger\\Item**
 ===============================
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/item.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Represents each item in a logging transaction
 
 

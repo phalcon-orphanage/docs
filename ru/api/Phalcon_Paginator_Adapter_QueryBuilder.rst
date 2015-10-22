@@ -5,6 +5,11 @@ Class **Phalcon\\Paginator\\Adapter\\QueryBuilder**
 
 *implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
 Pagination using a PHQL query builder as source of data  
 
 .. code-block:: php
