@@ -1,10 +1,11 @@
 Phalcon 开发工具（Phalcon Developer Tools）
 ===========================================
+
 Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一些程序的基本框架，生成控制器模型等。使用这个工具我们只需要一个简单的命令即可生成应用的基本框架。
 
 .. highlights::
-    **非常重要:** 要使用这个工具我们必须要安装Phalcon 0.5版本以上的扩展才行。这里我们推荐使用PHP5.3.6或更高版本的PHP. 如果你喜欢使用web版而非console版本的程序，那么在这里
-     `blog post`_ 可以看到更多的内容。
+    **非常重要:** 要使用这个工具我们必须要安装Phalcon 0.5版本以上的扩展才行。这里我们推荐使用PHP5.4或更高版本的PHP. 如果你喜欢使用web版而非console版本的程序，那么在这里
+    `blog post`_ 可以看到更多的内容。
 
 下载（Download）
 ----------------
@@ -23,8 +24,7 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 
 获取可用的命令（Getting Available Commands）
 --------------------------------------------
-我们可以在虚拟控制台上输入如下命令：phalcon commands
-
+我们可以在虚拟控制台上输入如下命令： :code:`phalcon commands`
 
 .. code-block:: sh
 
@@ -41,7 +41,6 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
      scaffold         (alias of: create-scaffold)
      migration        (alias of: create-migration)
      webtools         (alias of: create-webtools)
-
 
 生成项目框架（Generating a Project Skeleton）
 ---------------------------------------------
@@ -112,17 +111,16 @@ web服务器根目录下输入如下命令：
 
     class TestController extends Phalcon\Mvc\Controller
     {
-
         public function indexAction()
         {
 
         }
-
     }
 
 数据库配置（Preparing Database Settings）
 -----------------------------------------
 当我们使用phalcon的辅助开发工具生成项目时，则生成的配置信息会被放在 *app/config/config.ini* 文件内。 我们必须要正确的配置连接信息才可生成模型或基本的CRUD操作。
+
 可以在config.ini中进行修改配置信息：
 
 .. code-block:: ini
@@ -176,7 +174,6 @@ Options:
 
     class Products extends \Phalcon\Mvc\Model
     {
-
         /**
          * @var integer
          */
@@ -206,7 +203,6 @@ Options:
          * @var string
          */
         public $status;
-
     }
 
 我们可以在生成模型时指定 *--get-set* 参数以实现对字面的保护， 这样我们可以在setter/getter方法里执行一些业务逻辑。
@@ -217,7 +213,6 @@ Options:
 
     class Products extends \Phalcon\Mvc\Model
     {
-
         /**
          * @var integer
          */
@@ -267,7 +262,7 @@ Options:
             $this->types_id = $types_id;
         }
 
-        ...
+        // ...
 
         /**
          * Returns the value of field status
@@ -277,11 +272,9 @@ Options:
         {
             return $this->status;
         }
-
     }
 
 另一个非常好的特性即是在我们多次生成模型时，原有的对模型的更改依然会存在。 这样我们就可以不用担心对模型的属性进行修会被后来再次执模型的生成命令所覆盖。下面的截图显示了这是如何工作的：
-
 
 .. raw:: html
 
@@ -294,7 +287,6 @@ Options:
 代码生成后，你可以根据自己的需要修改生成的代码。很多开发者可能不会去使用这个功能，其实这东西有时不是太好用，很多时候开发者往往会手动的书写相关代码。使用scaffold产生的代码可以
 帮助我们理解框架是如何工作的当然也可以帮助我们制作出快速原型来。 下面的截图展示了基于products表的scaffold:
 
-
 .. code-block:: sh
 
          $ phalcon scaffold --table-name products
@@ -302,21 +294,19 @@ Options:
 scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：
 
 +----------------------------------------+--------------------------------+
-| 文件                                   | 作用                        |
+| 文件                                   | 作用                           |
 +========================================+================================+
-| app/controllers/ProductsController.php | Products控制器        |
+| app/controllers/ProductsController.php | Products控制器                 |
 +----------------------------------------+--------------------------------+
-| app/models/Products.php                | Products模型             |
+| app/models/Products.php                | Products模型                   |
 +----------------------------------------+--------------------------------+
-| app/views/layout/products.phtml        | Products控制器布局 |
+| app/views/layout/products.phtml        | Products控制器布局             |
 +----------------------------------------+--------------------------------+
 | app/views/products/new.phtml           | View for the action "new"      |
 +----------------------------------------+--------------------------------+
 | app/views/products/edit.phtml          | View for the action "edit"     |
 +----------------------------------------+--------------------------------+
 | app/views/products/search.phtml        | View for the action "search"   |
-+----------------------------------------+--------------------------------+
-| app/views/products/edit.phtml          | View for the action "edit"     |
 +----------------------------------------+--------------------------------+
 
 在生成的Products控制器中，我们可以看到一个搜索表单和一个生成新product的链接：

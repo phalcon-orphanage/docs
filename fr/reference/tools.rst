@@ -1,13 +1,15 @@
 Outils pour développeurs Phalcon
-=======================
+================================
+
 Ces outils sont une collection de scripts utiles pour générer un squelette de code.
 Des composants principaux de votre application peuvent être générés avec une simple commande, vous permettant de développer des applications facilement avec phalcon.
 
 .. highlights::
-    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs. Il est fortement recommandé d'utilisé PHP 5.3.6 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
+    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs. Il est fortement recommandé
+    d'utilisé PHP 5.4 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
 
 Téléchargement
---------
+--------------
 Vous pouvez télécharger ou cloner un packet multi-plateforme contenant les outils pour développeurs à partir de Github_.
 
 Installation
@@ -22,8 +24,8 @@ Vous trouverez des informations détaillés pour chaque plateforme aux adresses 
    linuxtools
 
 Les commandes disponibles
---------------------------
-Vous pouvez obtenir la liste des commandes phalcon disponibles en tapant : phalcon commands
+-------------------------
+Vous pouvez obtenir la liste des commandes Phalcon disponibles en tapant : :code:`phalcon commands`
 
 .. code-block:: sh
 
@@ -42,7 +44,7 @@ Vous pouvez obtenir la liste des commandes phalcon disponibles en tapant : phalc
      webtools         (alias of: create-webtools)
 
 Générer un squelette de Project
------------------------------
+-------------------------------
 Vous pouvez utiliser les outils Phalcon pour générer un squelette de projet prédéfini pour vos applications.
 Par défaut le générateur de squelette de projet utilise le module d'url rewriting (mod_rewrite) d'Apache.
 Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votre projet :
@@ -54,6 +56,7 @@ Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votr
       /Applications/MAMP/htdocs
 
       $ phalcon create-project store
+
 La structure suivante sera générée :
 
 .. figure:: ../_static/img/tools-2.png
@@ -95,7 +98,7 @@ Accédez à l'url de votre projet et vous obtiendrez ceci :
    :align: center
 
 Générer des controlleurs
-----------------------
+------------------------
 La commande "create-controller" génère un controlleur type.
 Il est important de faire cette commande à l'intérieur du dossier qui contient le projet Phalcon.
 
@@ -111,19 +114,18 @@ Le code suivant sera généré par le script :
 
     class TestController extends Phalcon\Mvc\Controller
     {
-
         public function indexAction()
         {
 
         }
-
     }
 
 Préparez les paramètres de base de données
----------------------------
+------------------------------------------
 Quand un projet est généré avec les outils pour développeurs, un fichier de configuration sera disponible dans *app/config/config.ini*.
 Pour générer un model vous devrez changer les paramètres utilisés pour se connecter à la base de données.
 
+Change the database section in your config.ini file:
 
 .. code-block:: ini
 
@@ -132,7 +134,7 @@ Pour générer un model vous devrez changer les paramètres utilisés pour se co
     host     = "127.0.0.1"
     username = "root"
     password = "secret"
-    name     = "store_db"
+    dbname   = "store_db"
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -141,10 +143,9 @@ Pour générer un model vous devrez changer les paramètres utilisés pour se co
     baseUri        = "/store/"
 
 Générer des models
------------------
+------------------
 Il y a plusieurs manières de générer des models. Vous pouvez créer tous les models à partir de la connexion par défaut à la base de données ou de manière plus sélective.
 Les models peuvent avoir des attributs public pour la représentation des champs ou des setters/getters peuvent être utilisés.
-
 
 Options:
  --name=s             Table name
@@ -178,7 +179,6 @@ Tous les champs de la table seront déclarés public pour un accès direct.
 
     class Products extends \Phalcon\Mvc\Model
     {
-
         /**
          * @var integer
          */
@@ -208,11 +208,9 @@ Tous les champs de la table seront déclarés public pour un accès direct.
          * @var string
          */
         public $status;
-
     }
 
 En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des variables protégés et y accéder avec les setter/getter.
-
 
 .. code-block:: php
 
@@ -220,7 +218,6 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
     class Products extends \Phalcon\Mvc\Model
     {
-
         /**
          * @var integer
          */
@@ -270,7 +267,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
             $this->types_id = $types_id;
         }
 
-        ...
+        // ...
 
         /**
          * Returns the value of field status
@@ -280,7 +277,6 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
         {
             return $this->status;
         }
-
     }
 
 Une fonctionnalité intéressante de la génération de model est qu'il garde trace des changements fait par les développeurs entre les générations de code.
@@ -292,7 +288,7 @@ La vidéo suivante vous montre comment cela fonctionne :
    <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 L'échaffaudage d'un CRUD
----------------
+------------------------
 "L'échaffaudage" est un moyen rapide de générer la plupart des parties importante d'une application.
 Si vous voulez créer les models, vues et les controlleurs pour une nouvelle ressource en une seule action, l'échaffaudage est l'outil qu'il vous faut.
 
@@ -305,7 +301,6 @@ Sur l'exemple de code suivant illustre le liner sur la base de la table "product
          $ phalcon scaffold --table-name products
 
 Le générateur d'échaffaudage va créer plusieurs fichiers/dossiers dans votre application. Voici un aperçu de ce qui sera généré:
-
 
 +----------------------------------------+--------------------------------+
 | Fichier                                | Objectif                       |
@@ -321,8 +316,6 @@ Le générateur d'échaffaudage va créer plusieurs fichiers/dossiers dans votre
 | app/views/products/edit.phtml          | Vue pour l'action "edit"       |
 +----------------------------------------+--------------------------------+
 | app/views/products/search.phtml        | Vue pour l'action "search"     |
-+----------------------------------------+--------------------------------+
-| app/views/products/edit.phtml          | Vue pour l'action "edit"       |
 +----------------------------------------+--------------------------------+
 
 Quand on se déplace sur la page du controlleur généré, on voit un champ de recherche et un lien pour créer un nouveau produit:
@@ -341,7 +334,7 @@ Après avoir effectué une recherche, un composant de pagination est disponible 
    :align: center
 
 L'interface web des outils
-----------------------
+--------------------------
 Si vous préférez il est tout à fait possible d'utiliser les outils de développeur Phalcon à partir d'une interface web.
 Regardez la vidéo suivante pour voir comment faire :
 
@@ -350,7 +343,7 @@ Regardez la vidéo suivante pour voir comment faire :
    <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Intégrer les outils sur PhpStorm
------------------------------------
+--------------------------------
 La vidéo suivante vous montre comment intégrer les outils de développeur avec  `PhpStorm IDE`_.
 La configuration peut facilement être adaptée à d'autres IDE pour PHP.
 
@@ -362,7 +355,6 @@ Conclusion
 ----------
 Les outils pour développeurs Phalcon fournissent un moyen simple de générer du code pour votre application.
 Cela réduit le temps de développement et diminue le nombre potentiel d'erreur de code.
-
 
 .. _blog post: http://blog.phalconphp.com/post/23251010409
 .. _Github: https://github.com/phalcon/phalcon-devtools
