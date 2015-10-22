@@ -4,10 +4,6 @@ Volt 模版引擎（Volt: Template Engine）
 Volt 是一个用C为PHP编写的超快的并且对设计师友好的模板语言。Volt 提供一组辅助工具有助于你以一种更简单的的方式编写视图（Views）。
 同时，Volt与Phalcon的其他组件高度集成在一起，就像你在应用中单独使用Volt一样。
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
-
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
@@ -18,8 +14,6 @@ accustomed to while working with Phalcon.
 
 简介（Introduction）
 ------------
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
-
 Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP代码的工作：
 
 .. code-block:: html+jinja
@@ -37,9 +31,9 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
     {% endblock %}
 
-启用 Vlot（Activating Volt）
+启用 Volt（Activating Volt）
 ---------------
-As other template engines, you may register Volt in the view component, using a new extension or
+As with other templating engines, you may register Volt in the view component, using a new extension or
 reusing the standard .phtml:
 
 .. code-block:: php
@@ -49,20 +43,23 @@ reusing the standard .phtml:
     use Phalcon\Mvc\View;
 
     // Registering Volt as template engine
-    $di->set('view', function () {
+    $di->set(
+        'view',
+        function () {
 
-        $view = new View();
+            $view = new View();
 
-        $view->setViewsDir('../app/views/');
+            $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(
-            array(
-                ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-            )
-        );
+            $view->registerEngines(
+                array(
+                    ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
+                )
+            );
 
-        return $view;
-    });
+            return $view;
+        }
+    );
 
 Use the standard ".phtml" extension:
 
@@ -79,7 +76,7 @@ Use the standard ".phtml" extension:
 基本用法（Basic Usage）
 -----------
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
+Volt mode. :code:`{% ... %}` is used to execute statements such as for-loops or assign values and :code:`{{ ... }}`,
 prints the result of an expression to the template.
 
 Below is a minimal template that illustrates a few basics:
@@ -96,9 +93,13 @@ Below is a minimal template that illustrates a few basics:
 
             {% if show_navigation %}
                 <ul id="navigation">
-                {% for item in menu %}
-                    <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
-                {% endfor %}
+                    {% for item in menu %}
+                        <li>
+                            <a href="{{ item.href }}">
+                                {{ item.caption }}
+                            </a>
+                        </li>
+                    {% endfor %}
                 </ul>
             {% endif %}
 
@@ -112,7 +113,7 @@ Below is a minimal template that illustrates a few basics:
     </html>
 
 Using Phalcon\\Mvc\\View you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: title, menu and post:
+In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
 
 .. code-block:: php
 
@@ -125,25 +126,26 @@ In the above example, three variables were passed to the view: title, menu and p
         public function showAction()
         {
             $post = Post::findFirst();
+            $menu = Menu::findFirst();
 
             $this->view->title           = $post->title;
             $this->view->post            = $post;
-            $this->view->menu            = Menu::find();
+            $this->view->menu            = $menu;
             $this->view->show_navigation = true;
 
             // Or...
 
             $this->view->setVar("title",           $post->title);
             $this->view->setVar("post",            $post);
-            $this->view->setVar("menu",            Menu::find());
+            $this->view->setVar("menu",            $menu);
             $this->view->setVar("show_navigation", true);
         }
     }
 
 变量（Variables）
 -----------------
-Object variables may have attributes which can be accessed using the syntax: foo.bar.
-If you are passing arrays, you have to use the square bracket syntax: foo['bar']
+Object variables may have attributes which can be accessed using the syntax: :code:`foo.bar`.
+If you are passing arrays, you have to use the square bracket syntax: :code:`foo['bar']`
 
 .. code-block:: jinja
 
@@ -152,7 +154,7 @@ If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
 过滤器（Filters）
 -----------------
-Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
+Variables can be formatted or modified using filters. The pipe operator :code:`|` is used to apply filters to
 variables:
 
 .. code-block:: jinja
@@ -163,62 +165,62 @@ variables:
 
 The following is the list of available built-in filters in Volt:
 
-+----------------------+------------------------------------------------------------------------------+
-| Filter               | Description                                                                  |
-+======================+==============================================================================+
-| e                    | Applies Phalcon\\Escaper->escapeHtml to the value                            |
-+----------------------+------------------------------------------------------------------------------+
-| escape               | Applies Phalcon\\Escaper->escapeHtml to the value                            |
-+----------------------+------------------------------------------------------------------------------+
-| escape_css           | Applies Phalcon\\Escaper->escapeCss to the value                             |
-+----------------------+------------------------------------------------------------------------------+
-| escape_js            | Applies Phalcon\\Escaper->escapeJs to the value                              |
-+----------------------+------------------------------------------------------------------------------+
-| escape_attr          | Applies Phalcon\\Escaper->escapeHtmlAttr to the value                        |
-+----------------------+------------------------------------------------------------------------------+
-| trim                 | Applies the trim_ PHP function to the value. Removing extra spaces           |
-+----------------------+------------------------------------------------------------------------------+
-| left_trim            | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
-+----------------------+------------------------------------------------------------------------------+
-| right_trim           | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
-+----------------------+------------------------------------------------------------------------------+
-| striptags            | Applies the striptags_ PHP function to the value. Removing HTML tags         |
-+----------------------+------------------------------------------------------------------------------+
-| slashes              | Applies the slashes_ PHP function to the value. Escaping values              |
-+----------------------+------------------------------------------------------------------------------+
-| stripslashes         | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
-+----------------------+------------------------------------------------------------------------------+
-| capitalize           | Capitalizes a string by applying the ucwords_ PHP function to the value      |
-+----------------------+------------------------------------------------------------------------------+
-| lower                | Change the case of a string to lowercase                                     |
-+----------------------+------------------------------------------------------------------------------+
-| upper                | Change the case of a string to uppercase                                     |
-+----------------------+------------------------------------------------------------------------------+
-| length               | Counts the string length or how many items are in an array or object         |
-+----------------------+------------------------------------------------------------------------------+
-| nl2br                | Changes newlines \\n by line breaks (<br />). Uses the PHP function nl2br_   |
-+----------------------+------------------------------------------------------------------------------+
-| sort                 | Sorts an array using the PHP function asort_                                 |
-+----------------------+------------------------------------------------------------------------------+
-| keys                 | Returns the array keys using array_keys_                                     |
-+----------------------+------------------------------------------------------------------------------+
-| join                 | Joins the array parts using a separator join_                                |
-+----------------------+------------------------------------------------------------------------------+
-| format               | Formats a string using sprintf_.                                             |
-+----------------------+------------------------------------------------------------------------------+
-| json_encode          | Converts a value into its JSON_ representation                               |
-+----------------------+------------------------------------------------------------------------------+
-| json_decode          | Converts a value from its JSON_ representation to a PHP representation       |
-+----------------------+------------------------------------------------------------------------------+
-| abs                  | Applies the abs_ PHP function to a value.                                    |
-+----------------------+------------------------------------------------------------------------------+
-| url_encode           | Applies the urlencode_ PHP function to the value                             |
-+----------------------+------------------------------------------------------------------------------+
-| default              | Sets a default value in case that the evaluated expression is empty          |
-|                      | (is not set or evaluates to a falsy value)                                   |
-+----------------------+------------------------------------------------------------------------------+
-| convert_encoding     | Converts a string from one charset to another                                |
-+----------------------+------------------------------------------------------------------------------+
++--------------------------+------------------------------------------------------------------------------+
+| Filter                   | Description                                                                  |
++==========================+==============================================================================+
+| :code:`e`                | Applies :code:`Phalcon\\Escaper->escapeHtml()` to the value                  |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`escape`           | Applies :code:`Phalcon\\Escaper->escapeHtml()` to the value                  |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`escape_css`       | Applies :code:`Phalcon\\Escaper->escapeCss()` to the value                   |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`escape_js`        | Applies :code:`Phalcon\\Escaper->escapeJs()` to the value                    |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`escape_attr`      | Applies :code:`Phalcon\\Escaper->escapeHtmlAttr()` to the value              |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`trim`             | Applies the trim_ PHP function to the value. Removing extra spaces           |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`left_trim`        | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`right_trim`       | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`striptags`        | Applies the striptags_ PHP function to the value. Removing HTML tags         |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`slashes`          | Applies the slashes_ PHP function to the value. Escaping values              |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`stripslashes`     | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`capitalize`       | Capitalizes a string by applying the ucwords_ PHP function to the value      |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`lower`            | Change the case of a string to lowercase                                     |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`upper`            | Change the case of a string to uppercase                                     |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`length`           | Counts the string length or how many items are in an array or object         |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`nl2br`            | Changes newlines \\n by line breaks (<br />). Uses the PHP function nl2br_   |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`sort`             | Sorts an array using the PHP function asort_                                 |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`keys`             | Returns the array keys using array_keys_                                     |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`join`             | Joins the array parts using a separator join_                                |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`format`           | Formats a string using sprintf_.                                             |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`json_encode`      | Converts a value into its JSON_ representation                               |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`json_decode`      | Converts a value from its JSON_ representation to a PHP representation       |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`abs`              | Applies the abs_ PHP function to a value.                                    |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`url_encode`       | Applies the urlencode_ PHP function to the value                             |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`default`          | Sets a default value in case that the evaluated expression is empty          |
+|                          | (is not set or evaluates to a falsy value)                                   |
++--------------------------+------------------------------------------------------------------------------+
+| :code:`convert_encoding` | Converts a string from one charset to another                                |
++--------------------------+------------------------------------------------------------------------------+
 
 Examples:
 
@@ -282,7 +284,7 @@ Examples:
 
 注释（Comments）
 ----------------
-Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
+Comments may also be added to a template using the :code:`{# ... #}` delimiters. All text inside them is just ignored in the final output:
 
 .. code-block:: jinja
 
@@ -302,9 +304,11 @@ Loop over each item in a sequence. The following example shows how to traverse a
 
     <h1>Robots</h1>
     <ul>
-    {% for robot in robots %}
-      <li>{{ robot.name|e }}</li>
-    {% endfor %}
+        {% for robot in robots %}
+            <li>
+                {{ robot.name|e }}
+            </li>
+        {% endfor %}
     </ul>
 
 for-loops can also be nested:
@@ -313,9 +317,9 @@ for-loops can also be nested:
 
     <h1>Robots</h1>
     {% for robot in robots %}
-      {% for part in robot.parts %}
-      Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
-      {% endfor %}
+        {% for part in robot.parts %}
+            Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+        {% endfor %}
     {% endfor %}
 
 You can get the element "keys" as in the PHP counterpart using the following syntax:
@@ -325,7 +329,7 @@ You can get the element "keys" as in the PHP counterpart using the following syn
     {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
     {% for name, value in numbers %}
-      Name: {{ name }} Value: {{ value }}
+        Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
 An "if" evaluation can be optionally set:
@@ -335,11 +339,11 @@ An "if" evaluation can be optionally set:
     {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
     {% for value in numbers if value < 2 %}
-      Value: {{ value }}
+        Value: {{ value }}
     {% endfor %}
 
     {% for name, value in numbers if name != 'two' %}
-      Name: {{ name }} Value: {{ value }}
+        Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
 If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
@@ -348,7 +352,7 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
 
     <h1>Robots</h1>
     {% for robot in robots %}
-        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
     {% else %}
         There are no robots to show
     {% endfor %}
@@ -359,7 +363,7 @@ Alternative syntax:
 
     <h1>Robots</h1>
     {% for robot in robots %}
-        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
     {% elsefor %}
         There are no robots to show
     {% endfor %}
@@ -396,11 +400,11 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
 
     <h1>Cyborg Robots</h1>
     <ul>
-    {% for robot in robots %}
-      {% if robot.type == "cyborg" %}
-      <li>{{ robot.name|e }}</li>
-      {% endif %}
-    {% endfor %}
+        {% for robot in robots %}
+            {% if robot.type == "cyborg" %}
+                <li>{{ robot.name|e }}</li>
+            {% endif %}
+        {% endfor %}
     </ul>
 
 The else clause is also supported:
@@ -409,13 +413,13 @@ The else clause is also supported:
 
     <h1>Robots</h1>
     <ul>
-    {% for robot in robots %}
-      {% if robot.type == "cyborg" %}
-      <li>{{ robot.name|e }}</li>
-      {% else %}
-      <li>{{ robot.name|e }} (not a cyborg)</li>
-      {% endif %}
-    {% endfor %}
+        {% for robot in robots %}
+            {% if robot.type == "cyborg" %}
+                <li>{{ robot.name|e }}</li>
+            {% else %}
+                <li>{{ robot.name|e }} (not a cyborg)</li>
+            {% endif %}
+        {% endfor %}
     </ul>
 
 The 'elseif' control flow structure can be used together with if to emulate a 'switch' block:
@@ -434,23 +438,23 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 A special variable is available inside 'for' loops providing you information about
 
-+----------------------+------------------------------------------------------------------------------+
-| Variable             | Description                                                                  |
-+======================+==============================================================================+
-| loop.index           | The current iteration of the loop. (1 indexed)                               |
-+----------------------+------------------------------------------------------------------------------+
-| loop.index0          | The current iteration of the loop. (0 indexed)                               |
-+----------------------+------------------------------------------------------------------------------+
-| loop.revindex        | The number of iterations from the end of the loop (1 indexed)                |
-+----------------------+------------------------------------------------------------------------------+
-| loop.revindex0       | The number of iterations from the end of the loop (0 indexed)                |
-+----------------------+------------------------------------------------------------------------------+
-| loop.first           | True if in the first iteration.                                              |
-+----------------------+------------------------------------------------------------------------------+
-| loop.last            | True if in the last iteration.                                               |
-+----------------------+------------------------------------------------------------------------------+
-| loop.length          | The number of items to iterate                                               |
-+----------------------+------------------------------------------------------------------------------+
++------------------------+---------------------------------------------------------------+
+| Variable               | Description                                                   |
++========================+===============================================================+
+| :code:`loop.index`     | The current iteration of the loop. (1 indexed)                |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.index0`    | The current iteration of the loop. (0 indexed)                |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.first`     | True if in the first iteration.                               |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.last`      | True if in the last iteration.                                |
++------------------------+---------------------------------------------------------------+
+| :code:`loop.length`    | The number of items to iterate                                |
++------------------------+---------------------------------------------------------------+
 
 .. code-block:: html+jinja
 
@@ -576,87 +580,87 @@ Curly braces also can be used to define arrays or hashes:
 ^^^^^^^^^^^^^^^^
 You may make calculations in templates using the following operators:
 
-+----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
-+======================+==============================================================================+
-| \+                   | Perform an adding operation. {{ 2 + 3 }} returns 5                           |
-+----------------------+------------------------------------------------------------------------------+
-| \-                   | Perform a substraction operation {{ 2 - 3 }} returns -1                      |
-+----------------------+------------------------------------------------------------------------------+
-| \*                   | Perform a multiplication operation {{ 2 * 3 }} returns 6                     |
-+----------------------+------------------------------------------------------------------------------+
-| \/                   | Perform a division operation {{ 10 / 2 }} returns 5                          |
-+----------------------+------------------------------------------------------------------------------+
-| \%                   | Calculate the remainder of an integer division {{ 10 % 3 }} returns 1        |
-+----------------------+------------------------------------------------------------------------------+
++-----------+-------------------------------------------------------------------------------+
+| Operator  | Description                                                                   |
++===========+===============================================================================+
+| :code:`+` | Perform an adding operation. :code:`{{ 2 + 3 }}` returns 5                    |
++-----------+-------------------------------------------------------------------------------+
+| :code:`-` | Perform a substraction operation :code:`{{ 2 - 3 }}` returns -1               |
++-----------+-------------------------------------------------------------------------------+
+| :code:`*` | Perform a multiplication operation :code:`{{ 2 * 3 }}` returns 6              |
++-----------+-------------------------------------------------------------------------------+
+| :code:`/` | Perform a division operation :code:`{{ 10 / 2 }}` returns 5                   |
++-----------+-------------------------------------------------------------------------------+
+| :code:`%` | Calculate the remainder of an integer division :code:`{{ 10 % 3 }}` returns 1 |
++-----------+-------------------------------------------------------------------------------+
 
 比较运算（Comparisons）
 ^^^^^^^^^^^^^^^^^^^^^^^
 The following comparison operators are available:
 
-+----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
-+======================+==============================================================================+
-| ==                   | Check whether both operands are equal                                        |
-+----------------------+------------------------------------------------------------------------------+
-| !=                   | Check whether both operands aren't equal                                     |
-+----------------------+------------------------------------------------------------------------------+
-| \<\>                 | Check whether both operands aren't equal                                     |
-+----------------------+------------------------------------------------------------------------------+
-| \>                   | Check whether left operand is greater than right operand                     |
-+----------------------+------------------------------------------------------------------------------+
-| \<                   | Check whether left operand is less than right operand                        |
-+----------------------+------------------------------------------------------------------------------+
-| <=                   | Check whether left operand is less or equal than right operand               |
-+----------------------+------------------------------------------------------------------------------+
-| >=                   | Check whether left operand is greater or equal than right operand            |
-+----------------------+------------------------------------------------------------------------------+
-| ===                  | Check whether both operands are identical                                    |
-+----------------------+------------------------------------------------------------------------------+
-| !==                  | Check whether both operands aren't identical                                 |
-+----------------------+------------------------------------------------------------------------------+
++-------------+-------------------------------------------------------------------+
+| Operator    | Description                                                       |
++=============+===================================================================+
+| :code:`==`  | Check whether both operands are equal                             |
++-------------+-------------------------------------------------------------------+
+| :code:`!=`  | Check whether both operands aren't equal                          |
++-------------+-------------------------------------------------------------------+
+| :code:`<>`  | Check whether both operands aren't equal                          |
++-------------+-------------------------------------------------------------------+
+| :code:`>`   | Check whether left operand is greater than right operand          |
++-------------+-------------------------------------------------------------------+
+| :code:`<`   | Check whether left operand is less than right operand             |
++-------------+-------------------------------------------------------------------+
+| :code:`<=`  | Check whether left operand is less or equal than right operand    |
++-------------+-------------------------------------------------------------------+
+| :code:`>=`  | Check whether left operand is greater or equal than right operand |
++-------------+-------------------------------------------------------------------+
+| :code:`===` | Check whether both operands are identical                         |
++-------------+-------------------------------------------------------------------+
+| :code:`!==` | Check whether both operands aren't identical                      |
++-------------+-------------------------------------------------------------------+
 
 逻辑运算（Logic）
 ^^^^^^^^^^^^^^^^^
 Logic operators are useful in the "if" expression evaluation to combine multiple tests:
 
-+----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
-+======================+==============================================================================+
-| or                   | Return true if the left or right operand is evaluated as true                |
-+----------------------+------------------------------------------------------------------------------+
-| and                  | Return true if both left and right operands are evaluated as true            |
-+----------------------+------------------------------------------------------------------------------+
-| not                  | Negates an expression                                                        |
-+----------------------+------------------------------------------------------------------------------+
-| ( expr )             | Parenthesis groups expressions                                               |
-+----------------------+------------------------------------------------------------------------------+
++------------------+-------------------------------------------------------------------+
+| Operator         | Description                                                       |
++==================+===================================================================+
+| :code:`or`       | Return true if the left or right operand is evaluated as true     |
++------------------+-------------------------------------------------------------------+
+| :code:`and`      | Return true if both left and right operands are evaluated as true |
++------------------+-------------------------------------------------------------------+
+| :code:`not`      | Negates an expression                                             |
++------------------+-------------------------------------------------------------------+
+| :code:`( expr )` | Parenthesis groups expressions                                    |
++------------------+-------------------------------------------------------------------+
 
 其他操作（Other Operators）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additional operators seen the following operators are available:
 
-+----------------------+----------------------------------------------------------------------------------------------+
-| Operator             | Description                                                                                  |
-+======================+==============================================================================================+
-| \~                   | Concatenates both operands {{ "hello " \~ "world" }}                                         |
-+----------------------+----------------------------------------------------------------------------------------------+
-| \|                   | Applies a filter in the right operand to the left {{ "hello"\|uppercase }}                   |
-+----------------------+----------------------------------------------------------------------------------------------+
-| \.\.                 | Creates a range {{ 'a'..'z' }} {{ 1..10 }}                                                   |
-+----------------------+----------------------------------------------------------------------------------------------+
-| is                   | Same as == (equals), also performs tests                                                     |
-+----------------------+----------------------------------------------------------------------------------------------+
-| in                   | To check if an expression is contained into other expressions if "a" in "abc"                |
-+----------------------+----------------------------------------------------------------------------------------------+
-| is not               | Same as != (not equals)                                                                      |
-+----------------------+----------------------------------------------------------------------------------------------+
-| 'a' ? 'b' : 'c'      | Ternary operator. The same as the PHP ternary operator                                       |
-+----------------------+----------------------------------------------------------------------------------------------+
-| ++                   | Increments a value                                                                           |
-+----------------------+----------------------------------------------------------------------------------------------+
-| --                   | Decrements a value                                                                           |
-+----------------------+----------------------------------------------------------------------------------------------+
++-------------------------+---------------------------------------------------------------------------------------+
+| Operator                | Description                                                                           |
++=========================+=======================================================================================+
+| :code:`~`               | Concatenates both operands :code:`{{ "hello " ~ "world" }}`                           |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`|`               | Applies a filter in the right operand to the left :code:`{{ "hello"|uppercase }}`     |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`..`              | Creates a range :code:`{{ 'a'..'z' }}` :code:`{{ 1..10 }}`                            |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`is`              | Same as == (equals), also performs tests                                              |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`in`              | To check if an expression is contained into other expressions :code:`if "a" in "abc"` |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`is not`          | Same as != (not equals)                                                               |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`++`              | Increments a value                                                                    |
++-------------------------+---------------------------------------------------------------------------------------+
+| :code:`--`              | Decrements a value                                                                    |
++-------------------------+---------------------------------------------------------------------------------------+
 
 The following example shows how to use operators:
 
@@ -686,29 +690,29 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-+----------------------+----------------------------------------------------------------------------------------------+
-| Test                 | Description                                                                                  |
-+======================+==============================================================================================+
-| defined              | Checks if a variable is defined (isset)                                                      |
-+----------------------+----------------------------------------------------------------------------------------------+
-| empty                | Checks if a variable is empty                                                                |
-+----------------------+----------------------------------------------------------------------------------------------+
-| even                 | Checks if a numeric value is even                                                            |
-+----------------------+----------------------------------------------------------------------------------------------+
-| odd                  | Checks if a numeric value is odd                                                             |
-+----------------------+----------------------------------------------------------------------------------------------+
-| numeric              | Checks if value is numeric                                                                   |
-+----------------------+----------------------------------------------------------------------------------------------+
-| scalar               | Checks if value is scalar (not an array or object)                                           |
-+----------------------+----------------------------------------------------------------------------------------------+
-| iterable             | Checks if a value is iterable. Can be traversed by a "for" statement                         |
-+----------------------+----------------------------------------------------------------------------------------------+
-| divisibleby          | Checks if a value is divisible by other value                                                |
-+----------------------+----------------------------------------------------------------------------------------------+
-| sameas               | Checks if a value is identical to other value                                                |
-+----------------------+----------------------------------------------------------------------------------------------+
-| type                 | Checks if a value is of the specified type                                                   |
-+----------------------+----------------------------------------------------------------------------------------------+
++---------------------+----------------------------------------------------------------------+
+| Test                | Description                                                          |
++=====================+======================================================================+
+| :code:`defined`     | Checks if a variable is defined (:code:`isset()`)                    |
++---------------------+----------------------------------------------------------------------+
+| :code:`empty`       | Checks if a variable is empty                                        |
++---------------------+----------------------------------------------------------------------+
+| :code:`even`        | Checks if a numeric value is even                                    |
++---------------------+----------------------------------------------------------------------+
+| :code:`odd`         | Checks if a numeric value is odd                                     |
++---------------------+----------------------------------------------------------------------+
+| :code:`numeric`     | Checks if value is numeric                                           |
++---------------------+----------------------------------------------------------------------+
+| :code:`scalar`      | Checks if value is scalar (not an array or object)                   |
++---------------------+----------------------------------------------------------------------+
+| :code:`iterable`    | Checks if a value is iterable. Can be traversed by a "for" statement |
++---------------------+----------------------------------------------------------------------+
+| :code:`divisibleby` | Checks if a value is divisible by other value                        |
++---------------------+----------------------------------------------------------------------+
+| :code:`sameas`      | Checks if a value is identical to other value                        |
++---------------------+----------------------------------------------------------------------+
+| :code:`type`        | Checks if a value is of the specified type                           |
++---------------------+----------------------------------------------------------------------+
 
 More examples:
 
@@ -763,10 +767,15 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 
 .. code-block:: html+jinja
 
+    {# Macro "display a list of links to related topics" #}
     {%- macro related_bar(related_links) %}
         <ul>
             {%- for link in related_links %}
-                <li><a href="{{ url(link.url) }}" title="{{ link.title|striptags }}">{{ link.text }}</a></li>
+                <li>
+                    <a href="{{ url(link.url) }}" title="{{ link.title|striptags }}">
+                        {{ link.text }}
+                    </a>
+                </li>
             {%- endfor %}
         </ul>
     {%- endmacro %}
@@ -857,79 +866,79 @@ The following PHP is generated:
 
 To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
 
-+------------------------------------+-----------------------+
-| Method                             | Volt function         |
-+====================================+=======================+
-| Phalcon\\Tag::linkTo               | link_to               |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::textField            | text_field            |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::passwordField        | password_field        |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::hiddenField          | hidden_field          |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::fileField            | file_field            |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::checkField           | check_field           |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::radioField           | radio_field           |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::dateField            | date_field            |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::emailField           | email_field           |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::numericField         | numeric_field         |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::submitButton         | submit_button         |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::selectStatic         | select_static         |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::select               | select                |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::textArea             | text_area             |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::form                 | form                  |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::endForm              | end_form              |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::getTitle             | get_title             |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::stylesheetLink       | stylesheet_link       |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::javascriptInclude    | javascript_include    |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::image                | image                 |
-+------------------------------------+-----------------------+
-| Phalcon\\Tag::friendlyTitle        | friendly_title        |
-+------------------------------------+-----------------------+
++-----------------------------------------+----------------------------+
+| Method                                  | Volt function              |
++=========================================+============================+
+| :code:`Phalcon\\Tag::linkTo`            | :code:`link_to`            |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::textField`         | :code:`text_field`         |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::passwordField`     | :code:`password_field`     |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::hiddenField`       | :code:`hidden_field`       |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::fileField`         | :code:`file_field`         |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::checkField`        | :code:`check_field`        |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::radioField`        | :code:`radio_field`        |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::dateField`         | :code:`date_field`         |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::emailField`        | :code:`email_field`        |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::numericField`      | :code:`numeric_field`      |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::submitButton`      | :code:`submit_button`      |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::selectStatic`      | :code:`select_static`      |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::select`            | :code:`select`             |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::textArea`          | :code:`text_area`          |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::form`              | :code:`form`               |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::endForm`           | :code:`end_form`           |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::getTitle`          | :code:`get_title`          |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::stylesheetLink`    | :code:`stylesheet_link`    |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::javascriptInclude` | :code:`javascript_include` |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::image`             | :code:`image`              |
++-----------------------------------------+----------------------------+
+| :code:`Phalcon\\Tag::friendlyTitle`     | :code:`friendly_title`     |
++-----------------------------------------+----------------------------+
 
 函数（Functions）
 -----------------
 The following built-in functions are available in Volt:
 
-+----------------------+------------------------------------------------------------------------------+
-| Name                 | Description                                                                  |
-+======================+==============================================================================+
-| content              | Includes the content produced in a previous rendering stage                  |
-+----------------------+------------------------------------------------------------------------------+
-| get_content          | Same as 'content'                                                            |
-+----------------------+------------------------------------------------------------------------------+
-| partial              | Dynamically loads a partial view in the current template                     |
-+----------------------+------------------------------------------------------------------------------+
-| super                | Render the contents of the parent block                                      |
-+----------------------+------------------------------------------------------------------------------+
-| time                 | Calls the PHP function with the same name                                    |
-+----------------------+------------------------------------------------------------------------------+
-| date                 | Calls the PHP function with the same name                                    |
-+----------------------+------------------------------------------------------------------------------+
-| dump                 | Calls the PHP function 'var_dump'                                            |
-+----------------------+------------------------------------------------------------------------------+
-| version              | Returns the current version of the framework                                 |
-+----------------------+------------------------------------------------------------------------------+
-| constant             | Reads a PHP constant                                                         |
-+----------------------+------------------------------------------------------------------------------+
-| URL                  | Generate a URL using the 'url' service                                       |
-+----------------------+------------------------------------------------------------------------------+
++---------------------+-------------------------------------------------------------+
+| Name                | Description                                                 |
++=====================+=============================================================+
+| :code:`content`     | Includes the content produced in a previous rendering stage |
++---------------------+-------------------------------------------------------------+
+| :code:`get_content` | Same as :code:`content`                                     |
++---------------------+-------------------------------------------------------------+
+| :code:`partial`     | Dynamically loads a partial view in the current template    |
++---------------------+-------------------------------------------------------------+
+| :code:`super`       | Render the contents of the parent block                     |
++---------------------+-------------------------------------------------------------+
+| :code:`time`        | Calls the PHP function with the same name                   |
++---------------------+-------------------------------------------------------------+
+| :code:`date`        | Calls the PHP function with the same name                   |
++---------------------+-------------------------------------------------------------+
+| :code:`dump`        | Calls the PHP function :code:`var_dump()`                   |
++---------------------+-------------------------------------------------------------+
+| :code:`version`     | Returns the current version of the framework                |
++---------------------+-------------------------------------------------------------+
+| :code:`constant`    | Reads a PHP constant                                        |
++---------------------+-------------------------------------------------------------+
+| :code:`url`         | Generate a URL using the 'url' service                      |
++---------------------+-------------------------------------------------------------+
 
 视图集成（View Integration）
 ----------------------------
@@ -951,10 +960,14 @@ as part of the view which was included:
 .. code-block:: html+jinja
 
     {# Simple include of a partial #}
-    <div id="footer">{% include "partials/footer" %}</div>
+    <div id="footer">
+        {% include "partials/footer" %}
+    </div>
 
     {# Passing extra variables #}
-    <div id="footer">{% include "partials/footer" with ['links': links] %}</div>
+    <div id="footer">
+        {% include "partials/footer" with ['links': links] %}
+    </div>
 
 包含（Include）
 ^^^^^^^^^^^^^^^
@@ -965,7 +978,9 @@ template where it's included. Templates aren't inlined if the 'include' have var
 .. code-block:: html+jinja
 
     {# The contents of 'partials/footer.volt' is compiled and inlined #}
-    <div id="footer">{% include "partials/footer.volt" %}</div>
+    <div id="footer">
+        {% include "partials/footer.volt" %}
+    </div>
 
 Partial vs Include
 ^^^^^^^^^^^^^^^^^^
@@ -997,6 +1012,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
         </head>
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
+
             <div id="footer">
                 {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
             </div>
@@ -1033,6 +1049,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
                 <h1>Index</h1>
                 <p class="important">Welcome on my awesome homepage.</p>
             </div>
+
             <div id="footer">
                 &copy; Copyright 2015, All rights reserved.
             </div>
@@ -1108,7 +1125,7 @@ Rendering "index.volt" produces:
         </body>
     </html>
 
-Note the call to the function "super()". With that function it's possible to render the contents of the parent block.
+Note the call to the function :code:`super()`. With that function it's possible to render the contents of the parent block.
 
 As partials, the path set to "extends" is a relative path under the current views directory (i.e. app/views/).
 
@@ -1116,7 +1133,7 @@ As partials, the path set to "extends" is a relative path under the current view
 
     By default, and for performance reasons, Volt only checks for changes in the children templates
     to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
-    'compileAlways' => true. Thus, the templates are compiled always taking into account changes in
+    :code:`'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in
     the parent templates.
 
 自动编码模式（Autoescape mode）
@@ -1146,35 +1163,41 @@ Volt can be configured to alter its default behavior, the following example expl
     use Phalcon\Mvc\View\Engine\Volt;
 
     // Register Volt as a service
-    $di->set('voltService', function ($view, $di) {
+    $di->set(
+        'voltService',
+        function ($view, $di) {
 
-        $volt = new Volt($view, $di);
+            $volt = new Volt($view, $di);
 
-        $volt->setOptions(
-            array(
-                "compiledPath"      => "../app/compiled-templates/",
-                "compiledExtension" => ".compiled"
-            )
-        );
+            $volt->setOptions(
+                array(
+                    "compiledPath"      => "../app/compiled-templates/",
+                    "compiledExtension" => ".compiled"
+                )
+            );
 
-        return $volt;
-    });
+            return $volt;
+        }
+    );
 
     // Register Volt as template engine
-    $di->set('view', function () {
+    $di->set(
+        'view',
+        function () {
 
-        $view = new View();
+            $view = new View();
 
-        $view->setViewsDir('../app/views/');
+            $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(
-            array(
-                ".volt" => 'voltService'
-            )
-        );
+            $view->registerEngines(
+                array(
+                    ".volt" => 'voltService'
+                )
+            );
 
-        return $view;
-    });
+            return $view;
+        }
+    );
 
 If you do not want to reuse Volt as a service you can pass an anonymous function to register the engine instead of a service name:
 
@@ -1186,46 +1209,49 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
     use Phalcon\Mvc\View\Engine\Volt;
 
     // Register Volt as template engine with an anonymous function
-    $di->set('view', function () {
+    $di->set(
+        'view',
+        function () {
 
-        $view = new \Phalcon\Mvc\View();
+            $view = new \Phalcon\Mvc\View();
 
-        $view->setViewsDir('../app/views/');
+            $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(
-            array(
-                ".volt" => function ($view, $di) {
-                    $volt = new Volt($view, $di);
+            $view->registerEngines(
+                array(
+                    ".volt" => function ($view, $di) {
+                        $volt = new Volt($view, $di);
 
-                    // Set some options here
+                        // Set some options here
 
-                    return $volt;
-                }
-            )
-        );
+                        return $volt;
+                    }
+                )
+            );
 
-        return $view;
-    });
+            return $view;
+        }
+    );
 
 The following options are available in Volt:
 
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| Option            | Description                                                                                                                    | Default |
-+===================+================================================================================================================================+=========+
-| compiledPath      | A writable path where the compiled PHP templates will be placed                                                                | ./      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compiledExtension | An additional extension appended to the compiled PHP file                                                                      | .php    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compiledSeparator | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory   | %%      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| stat              | Whether Phalcon must check if exists differences between the template file and its compiled path                               | true    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| prefix            | Allows to prepend a prefix to the templates in the compilation path                                                            | null    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| autoescape        | Enables globally autoescape of HTML                                                                                            | false   |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| Option                    | Description                                                                                                                  | Default |
++===========================+==============================================================================================================================+=========+
+| :code:`compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | ./      |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | .php    |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`compiledSeparator` | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory | %%      |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | true    |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | false   |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | null    |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
+| :code:`autoescape`        | Enables globally autoescape of HTML                                                                                          | false   |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------+---------+
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
 an anonymous function can be used to generate it, this function receives the relative path to the template in the
@@ -1294,9 +1320,12 @@ as were passed in the arguments:
 
     <?php
 
-    $compiler->addFunction('widget', function ($resolvedArgs, $exprArgs) {
-        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
-    });
+    $compiler->addFunction(
+        'widget',
+        function ($resolvedArgs, $exprArgs) {
+            return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+        }
+    );
 
 Treat the arguments independently and unresolved:
 
@@ -1304,21 +1333,24 @@ Treat the arguments independently and unresolved:
 
     <?php
 
-    $compiler->addFunction('repeat', function ($resolvedArgs, $exprArgs) use ($compiler) {
+    $compiler->addFunction(
+        'repeat',
+        function ($resolvedArgs, $exprArgs) use ($compiler) {
 
-        // Resolve the first argument
-        $firstArgument = $compiler->expression($exprArgs[0]['expr']);
+            // Resolve the first argument
+            $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-        // Checks if the second argument was passed
-        if (isset($exprArgs[1])) {
-            $secondArgument = $compiler->expression($exprArgs[1]['expr']);
-        } else {
-            // Use '10' as default
-            $secondArgument = '10';
+            // Checks if the second argument was passed
+            if (isset($exprArgs[1])) {
+                $secondArgument = $compiler->expression($exprArgs[1]['expr']);
+            } else {
+                // Use '10' as default
+                $secondArgument = '10';
+            }
+
+            return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
         }
-
-        return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
-    });
+    );
 
 Generate the code based on some function availability:
 
@@ -1326,13 +1358,16 @@ Generate the code based on some function availability:
 
     <?php
 
-    $compiler->addFunction('contains_text', function ($resolvedArgs, $exprArgs) {
-        if (function_exists('mb_stripos')) {
-            return 'mb_stripos(' . $resolvedArgs . ')';
-        } else {
-            return 'stripos(' . $resolvedArgs . ')';
+    $compiler->addFunction(
+        'contains_text',
+        function ($resolvedArgs, $exprArgs) {
+            if (function_exists('mb_stripos')) {
+                return 'mb_stripos(' . $resolvedArgs . ')';
+            } else {
+                return 'stripos(' . $resolvedArgs . ')';
+            }
         }
-    });
+    );
 
 Built-in functions can be overridden adding a function with its name:
 
@@ -1359,9 +1394,12 @@ is similar as seen with the functions:
 
     <?php
 
-    $compiler->addFilter('int', function ($resolvedArgs, $exprArgs) {
-        return 'intval(' . $resolvedArgs . ')';
-    });
+    $compiler->addFilter(
+        'int',
+        function ($resolvedArgs, $exprArgs) {
+            return 'intval(' . $resolvedArgs . ')';
+        }
+    );
 
 Built-in filters can be overridden adding a function with its name:
 
@@ -1406,17 +1444,17 @@ behavior provided by the engine.
 
 The following compilation events are available to be implemented in extensions:
 
-+-------------------+------------------------------------------------------------------------------------------------------------+
-| Event/Method      | Description                                                                                                |
-+===================+============================================================================================================+
-| compileFunction   | Triggered before trying to compile any function call in a template                                         |
-+-------------------+------------------------------------------------------------------------------------------------------------+
-| compileFilter     | Triggered before trying to compile any filter call in a template                                           |
-+-------------------+------------------------------------------------------------------------------------------------------------+
-| resolveExpression | Triggered before trying to compile any expression. This allows the developer to override operators         |
-+-------------------+------------------------------------------------------------------------------------------------------------+
-| compileStatement  | Triggered before trying to compile any expression. This allows the developer to override any statement     |
-+-------------------+------------------------------------------------------------------------------------------------------------+
++---------------------------+--------------------------------------------------------------------------------------------------------+
+| Event/Method              | Description                                                                                            |
++===========================+========================================================================================================+
+| :code:`compileFunction`   | Triggered before trying to compile any function call in a template                                     |
++---------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
++---------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
++---------------------------+--------------------------------------------------------------------------------------------------------+
+| :code:`compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
++---------------------------+--------------------------------------------------------------------------------------------------------+
 
 Volt extensions must be in registered in the compiler making them available in compile time:
 
