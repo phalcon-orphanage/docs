@@ -90,14 +90,14 @@ If namespaces are used, the following bootstrap can be used:
 
     $di = new FactoryDefault();
 
-    // Register the dispatcher setting a Namespace for controllers
+    // Register the default dispatcher's namespace for controllers
     $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
-    // Registering the view component
+    // Register the view component
     $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -191,7 +191,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         }
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+A special bootstrap file is required to load a multi-module MVC architecture:
 
 .. code-block:: php
 
@@ -204,6 +204,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
     $di = new FactoryDefault();
 
     // Specify routes for modules
+    // More information how to set the router up https://docs.phalconphp.com/es/latest/reference/routing.html
     $di->set('router', function () {
 
         $router = new Router();

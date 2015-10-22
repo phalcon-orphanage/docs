@@ -205,6 +205,7 @@ MVC Приложения
     $di = new FactoryDefault();
 
     // Специфичные роуты для модуля
+    // More information how to set the router up https://docs.phalconphp.com/ru/latest/reference/routing.html
     $di->set('router', function () {
 
         $router = new Router();

@@ -93,7 +93,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
         return $dispatcher;
     });
 
-    // Registering the view component
+    // Register the view component
     $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -200,6 +200,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     $di = new FactoryDefault();
 
     // モジュールのルーティング設定
+    // More information how to set the router up https://docs.phalconphp.com/ja/latest/reference/routing.html
     $di->set('router', function () {
 
         $router = new Router();

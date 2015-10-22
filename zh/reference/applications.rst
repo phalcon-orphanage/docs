@@ -203,6 +203,7 @@ MVC 应用（MVC Applications）
     $di = new FactoryDefault();
 
     // 自定义路由
+    // More information how to set the router up https://docs.phalconphp.com/zh/latest/reference/routing.html
     $di->set('router', function () {
 
         $router = new Router();
@@ -295,6 +296,7 @@ MVC 应用（MVC Applications）
             }
         )
     );
+
 当 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 有多个模块注册时，通常
 每个都是需要的，以便每一个被匹配到的路由都能返回一个有效的模块。每个已经注册的模块都有一个相关的类来提供建立和启动自身的函数。
 而每个模块定义的类都必须实现registerAutoloaders()和registerServices()这两个方法，这两个函数会在模块即被执行时被
