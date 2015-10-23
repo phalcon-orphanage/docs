@@ -1,5 +1,5 @@
 Volt: テンプレートエンジン
-=====================
+==========================
 
 Volt は、PHPのためにCで記述されており、とても速く、デザイナにも扱いやすいテンプレート言語です。簡単にビューを書けるようにヘルパーセットを提供します。Volt は、Phalcon の他のコンポーネントに高度に統合されており、また、あなたのアプリケーションの中でスタンドアロンのコンポーネントとしても利用できます。
 
@@ -69,7 +69,7 @@ Voltの有効化
     );
 
 基本的な使い方
------------
+--------------
 ビューは、VoltやPHP、HTMLのコードで構成されます。Voltモードでは、特有のデリミタのセットが使用できます。 :code:`{% ... %}` は、forループや値の代入など、制御文を実行する場合に使います。また、 :code:`{{ ... }}` は、テンプレートに記述した結果を出力します。
 
 下記は、いくつかの基本を示す最小限のテンプレートです:
@@ -144,7 +144,7 @@ Phalcon\\Mvc\\View を使うことで、コントローラからビューへ変�
     {{ post['title'] }} {# for $post['title'] #}
 
 フィルタ
--------
+--------
 変数は、フォーマットしたり、フィルタを用いて加工することができます。変数にフィルタを適用するには、パイプ演算子 | を使います:
 
 .. code-block:: jinja
@@ -425,7 +425,7 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
     {% endif %}
 
 ループ・コンテキスト
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 A special variable is available inside 'for' loops providing you information about
 
 +------------------------+---------------------------------------------------------------+
@@ -468,7 +468,7 @@ A special variable is available inside 'for' loops providing you information abo
     {% endfor %}
 
 変数の割り当て
------------
+--------------
 Variables may be changed in a template using the instruction "set":
 
 .. code-block:: html+jinja
@@ -567,7 +567,7 @@ Curly braces also can be used to define arrays or hashes:
     {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 演算子
-^^^^
+^^^^^^
 You may make calculations in templates using the following operators:
 
 +-----------+-------------------------------------------------------------------------------+
@@ -611,7 +611,7 @@ The following comparison operators are available:
 +-------------+-------------------------------------------------------------------+
 
 論理演算子
-^^^^^
+^^^^^^^^^^
 Logic operators are useful in the "if" expression evaluation to combine multiple tests:
 
 +------------------+-------------------------------------------------------------------+
@@ -665,7 +665,7 @@ The following example shows how to use operators:
     {% endfor %}
 
 テスト
------
+------
 Tests can be used to test if a variable has a valid expected value. The operator "is" is used to perform the tests:
 
 .. code-block:: html+jinja
@@ -903,7 +903,7 @@ To call a Phalcon\\Tag helper, you only need to call an uncamelized version of t
 +-----------------------------------------+----------------------------+
 
 ビルトイン関数
----------
+--------------
 The following built-in functions are available in Volt:
 
 +---------------------+-------------------------------------------------------------+
@@ -960,7 +960,7 @@ as part of the view which was included:
     </div>
 
 インクルード
-^^^^^^^
+^^^^^^^^^^^^
 'include' has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension
 when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent
 template where it's included. Templates aren't inlined if the 'include' have variables passed with 'with':
@@ -1127,7 +1127,7 @@ As partials, the path set to "extends" is a relative path under the current view
     the parent templates.
 
 自動エスケープモード
----------------
+--------------------
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
 .. code-block:: html+jinja
@@ -1369,7 +1369,7 @@ Built-in functions can be overridden adding a function with its name:
     $compiler->addFunction('dump', 'print_r');
 
 フィルタ
-^^^^^^^
+^^^^^^^^
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters
 is similar as seen with the functions:
 
@@ -1503,7 +1503,7 @@ If a service container (DI) is available for Volt, you can use the services by o
     <input type="hidden" name="token" value="{{ security.getToken() }}">
 
 スタンドアロン コンポーネント
----------------------
+-----------------------------
 Using Volt in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
@@ -1537,10 +1537,10 @@ Using Volt in a stand-alone mode can be demonstrated below:
 外部情報
 ------------------
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
-* `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
-* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
-* `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
-* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Album-O-Rama on Github <https://github.com/phalcon/album-o-rama>`_]
+* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Our website on Github <https://github.com/phalcon/website>`_]
+* `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Phosphorum on Github <https://github.com/phalcon/forum>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Vökuró on Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference

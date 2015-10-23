@@ -32,7 +32,7 @@ soluciones de bajo nivel para conseguir el mayor rendimiento posible.
 * Si un cache de bytecode (como APC) no es usado, la sintaxis de cada archivo es revisada en cada petición
 
 ¿Cómo trabajan los frameworks tradicionales para PHP?
-----------------------------------------------------
+-----------------------------------------------------
 
 * Muchos archivos con clases y funciones se leen en cada petición. La lectura de disco impacta el rendimiento
 * Muchos frameworks usan autoloaders para incrementar el rendimiento (para cargar y ejecutar solo el código requirido)

@@ -1,12 +1,12 @@
 Travailler avec les espaces de nom
-=======================
+==================================
 
 Namespaces_, c'est le nom anglais des espaces de nom. Ces derniers peuvent être utilisés pour éviter le conflit des noms de classe.
 Par exemple si vous avez deux controlleurs dans votre application avec le même nom, un namespace peut être utilisé pour les différencier.
 Les espaces de nom sont aussi utiles pour créer des paquets ou des modules.
 
 Mise en place
-------------------------
+-------------
 Utiliser les espaces de nom a quelques implications quand on charge le controlleur approprié.
 Pour ajuster le comportement du framework aux namespaces, il est nécessaire de faire une (ou toutes)les tâches suivante:
 
@@ -70,7 +70,7 @@ ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le 
     });
 
 Controlleur avec namespace
----------------------------
+--------------------------
 L'exemple suivante montre comment implémenter un controlleur qui utilise des espaces de nom:
 
 .. code-block:: php

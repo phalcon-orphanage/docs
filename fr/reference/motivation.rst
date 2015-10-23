@@ -1,5 +1,6 @@
 Nos Motivations
-==============
+===============
+
 Aujourd'hui il existe une multitude de framework PHP, mais aucun d'eux ne ressemble à Phalcon (faites-nous confiance sur ce point).
 
 La plupart des programmeurs préfèreront utiliser un framework.
@@ -12,7 +13,7 @@ Toutes ces opérations ralentissants l'application peuvent avoir un impacte nég
 
 
 La Question
-------------
+-----------
 Pourquoi ne pouvons-nous pas avoir un framework complet avec tous ces avantages mais sans un seul, ou très peu, de ces désavantages ?
 
 C'est pour ça que Phalcon est né !
@@ -24,32 +25,32 @@ et à générer des solutions bas niveau pour arriver à atteindre le meilleur t
 
 
 Pourquoi ?
-----
+----------
 * Aujourd'hui, l'utilisation d'un framework est devenue obligatoire dans le monde professionel du développement PHP.
 * Les framework offrent un mode de travail structuré permettant de maintenir facilement un projet, d'écrire moins de code et de rendre le développement plus divertissant.
 
 Fonctionnement interne de PHP ?
-----------------------
+-------------------------------
 * PHP utilise des variables dynamiques et faiblement typées. A chaque opération binaire (ex. 2 + "2"), PHP vérifie le type des opérandes pour effectuer d'éventuelles conversions.
 * Contrairement à un langage compilé, PHP est un langage interprété. La perte de performances en est le plus grand désavantage
 * A chaque fois qu'un script est appelé, il est d'abord interprété
 * Si aucun cache d'OPCodes (comme APC) n'est utilisé, la vérification syntaxique est faite lors de chaque requête
 
 Comment fonctionne un framework traditionnel ?
-------------------------------------
+----------------------------------------------
 * Des fichiers avec des classes et des fonctions sont lus lors de chaque requête. Les accès disque sont coûteux en termes de performances, surtout quand la structure des fichier est profonde
 * Les frameworks modernes utilisent le "lazy loadind" (autoload) pour améliorer les performances en ne chargeant que les fichiers nécessaires
 * Le chargement continue ou interprété impacte les performances
 * Le code du framework ne change pas souvent, cependant l'application doit le charger et l'interpréter à chaque requête
 
 Comment fonctionne une extension C pour PHP ?
---------------------------------
+---------------------------------------------
 * Les extensions C sont chargées une seule fois en même temps que PHP lorsque le processus (daemon) du serveur web démarre
 * Les classes et les fonctions proposées par l'extension sont disponnibles depuis PHP dans n'importe quelle application
 * Le code n'est pas interprété parcequ'il est déjà compilé pour une plateforme spécifique.
 
 Comment fonctionne Phalcon ?
-----------------------
+----------------------------
 * Les composants sont faiblement couplés. Avec Phalcon, rien n'est imposé : vous êtes libre d'utiliser tout le framework ou seulement une partie
 * L'optimisation bas niveau offre d'excellentes performances pour les applications MVC
 * Les interractions avec la base de données sont optimisées au maximum en utilisant un ORM écrit en langage C pour PHP
@@ -57,7 +58,7 @@ Comment fonctionne Phalcon ?
 
 
 Pourquoi ai-je besoin de Phalcon ?
-----------------------
+----------------------------------
 
 Chaque application ses propres nécessités et tâches à accomplire.
 Par exemple certaines sont faites pour générer un contenu qui ne change que rarement.

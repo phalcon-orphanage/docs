@@ -1,5 +1,5 @@
 Aplicações de Linha de Comando
-=========================
+==============================
 
 Aplicações CLI são executadas pela linha de comando. Elas são usadas para criar tarefas agendadas (Cron Jobs), scripts, comandos úteis e muito mais.
 
@@ -89,7 +89,7 @@ This piece of code can be run using:
     This is the default task and the default action
 
 Tarefas (Tasks)
------
+---------------
 Tarefas são similares aos controladores. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Below is an example of the app/tasks/MainTask.php file:

@@ -1,5 +1,6 @@
 .. highlights::
-Attention: Cette documentation est incomplète.
+
+    Attention: Cette documentation est incomplète.
 
 Améliorer les performances : C'est quoi la suite ?
 ==================================================
@@ -63,7 +64,7 @@ Xhprof fournit un aperçu en HTML pour analyser les données récupérés :
     :align: center
 
 Profilage des requête SQL
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 La plupart des bases de données fournissent des outils pour identifier les requêtes lourdes. Détecter et corriger ces requêtes est très important pour améliorer les performances
 du côté serveur. Dans le cas de MySQL, vous pouvez utiliser les "slow queries logs" (logs de requêtes lentes) pour savoir quelles requêtes prennent plus de temps que prévu :
 
@@ -114,7 +115,7 @@ PHP est plus rapide chaque jour, en utilisant la dernière version, vous pourrez
 et aussi de PHP.
 
 Utiliser un cache PHP Bytecode
-------------------------
+------------------------------
 APC_, comme beaucoup d'autre cache bytecode, aide une application à réduire le temps de chargement des lectures, il segmente et parse les fichiers PHP pour chaque requêtes.
 Une fois l'extension installé, utilisez la ligne suivante pour le mettre en place :
 

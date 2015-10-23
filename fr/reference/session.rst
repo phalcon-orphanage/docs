@@ -1,5 +1,6 @@
 .. highlights::
-Attention: cette traduction n'est pas parfaite, si des éléments vous paraissent faux ou mal expliqués, merci de modifier la documentation.
+
+    Attention: cette traduction n'est pas parfaite, si des éléments vous paraissent faux ou mal expliqués, merci de modifier la documentation.
 
 Stocker des données dans une session
 ====================================

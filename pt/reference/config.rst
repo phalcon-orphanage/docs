@@ -16,7 +16,7 @@ Os adaptadores disponíveis são:
 +-----------------+-------------------------------------------------------------------------------------------------------------+
 
 Arrays Nativos
--------------
+--------------
 O próximo exemplo mostra como converter arrays nativos em objetos Phalcon\\Config. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
 
 .. code-block:: php

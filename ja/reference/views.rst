@@ -137,7 +137,7 @@ The generated HTML by the request will be:
     </html>
 
 テンプレートの使用
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
 Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
@@ -295,7 +295,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
     </html>
 
 レンダリングレベルのコントロール
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
 produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
 
@@ -349,7 +349,7 @@ The available render levels are:
 +-----------------------+--------------------------------------------------------------------------+-------+
 
 レンダリング レベルの無効化
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
 .. code-block:: php
@@ -467,7 +467,7 @@ You can return a 'response' object to avoid disable the view manually:
     }
 
 簡単なレンダリング
-----------------
+------------------
 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
 the main feature of its counterpart.
@@ -556,7 +556,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     echo $simpleView->render('posts/show', $params);
 
 パーシャルの使用
---------------
+----------------
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
 parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
@@ -790,7 +790,7 @@ expired to make the calculations/queries to display data in the view:
 The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
 テンプレートエンジン
-----------------
+--------------------
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine
 called :doc:`Volt <volt>`.
 
@@ -944,7 +944,7 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
     </script>
 
 スタンドアロンコンポーネント
----------------------
+----------------------------
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
 階層的なレンダリング
@@ -1000,7 +1000,7 @@ A short syntax is also available:
     );
 
 簡単なレンダリング
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
@@ -1027,7 +1027,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
     );
 
 View イベント
------------
+-------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` are able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +----------------------+------------------------------------------------------------+---------------------+
