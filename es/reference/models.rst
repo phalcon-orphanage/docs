@@ -646,8 +646,8 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 .. highlights::
 
-Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
-methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.
+    Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
+    methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.
 
 If you're using "finders", bound parameters are automatically used for you:
 

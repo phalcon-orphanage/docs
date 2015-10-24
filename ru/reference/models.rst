@@ -635,7 +635,8 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 .. highlights::
 
-Привязка параметров доступна для всех запросов метода, таких как :code:`find()` и :code:`findFirst()`, а так же для методов :code:`count()`, :code:`sum()`, :code:`average()` и т.д.
+    Привязка параметров доступна для всех запросов метода, таких как :code:`find()` и :code:`findFirst()`,
+    а так же для методов :code:`count()`, :code:`sum()`, :code:`average()` и т.д.
 
 If you're using "finders", bound parameters are automatically used for you:
 
