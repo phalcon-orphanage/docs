@@ -59,7 +59,15 @@ Returns the DependencyInjector container
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **distinct** (*bool|null* $distinct)
 
-Sets SELECT DISTINCT / SELECT ALL flag
+Sets SELECT DISTINCT / SELECT ALL flag 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->distinct("status");
+    $builder->distinct(null);
+
 
 
 
@@ -77,7 +85,9 @@ Sets the columns to be queried
 
     <?php
 
+    $builder->columns("id, name");
     $builder->columns(array('id', 'name'));
+      $builder->columns(array('name', 'number' => 'COUNT(*)'));
 
 
 
@@ -98,11 +108,12 @@ Sets the models who makes part of the query
 
     $builder->from('Robots');
     $builder->from(array('Robots', 'RobotsParts'));
+    $builder->from(array('r' => 'Robots', 'rp' => 'RobotsParts'));
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias], [*unknown* $with])
 
 Add a model to take part of the query 
 
@@ -110,7 +121,19 @@ Add a model to take part of the query
 
     <?php
 
+      // Load data from models Robots
+    $builder->addFrom('Robots');
+    
+      // Load data from model 'Robots' using 'r' as alias in PHQL
     $builder->addFrom('Robots', 'r');
+    
+      // Load data from model 'Robots' using 'r' as alias in PHQL
+      // and eager load model 'RobotsParts'
+    $builder->addFrom('Robots', 'r', 'RobotsParts');
+    
+      // Load data from model 'Robots' using 'r' as alias in PHQL
+      // and eager load models 'RobotsParts' and 'Parts'
+    $builder->addFrom('Robots', 'r', ['RobotsParts', 'Parts']);
 
 
 
@@ -129,10 +152,17 @@ Adds a INNER join to the query
 
     <?php
 
+      // Inner Join model 'Robots' with automatic conditions and alias
     $builder->join('Robots');
-    $builder->join('Robots', 'r.id = RobotsParts.robots_id');
+    
+      // Inner Join model 'Robots' specifing conditions
+    $builder->join('Robots', 'Robots.id = RobotsParts.robots_id');
+    
+      // Inner Join model 'Robots' specifing conditions and alias
     $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'INNER');
+    
+      // Left Join model 'Robots' specifing conditions, alias and type of join
+    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 
@@ -145,8 +175,13 @@ Adds a INNER join to the query
 
     <?php
 
+      // Inner Join model 'Robots' with automatic conditions and alias
     $builder->innerJoin('Robots');
-    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
+    
+      // Inner Join model 'Robots' specifing conditions
+    $builder->innerJoin('Robots', 'Robots.id = RobotsParts.robots_id');
+    
+      // Inner Join model 'Robots' specifing conditions and alias
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
 
 

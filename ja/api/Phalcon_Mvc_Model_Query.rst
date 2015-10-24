@@ -18,7 +18,7 @@ This class takes a PHQL intermediate representation and executes it.
               WHERE b.name = :name: ORDER BY c.name";
     
      $result = manager->executeQuery($phql, array(
-       "name": "Lamborghini"
+       "name" => "Lamborghini"
      ));
     
      foreach ($result as $row) {
@@ -43,7 +43,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*unknown* $options])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -235,7 +235,7 @@ Executes a parsed PHQL statement
 
 
 
-public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes the query returning the first result
 

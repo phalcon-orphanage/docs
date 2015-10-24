@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Cookie**
 ===============================
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Http\\CookieInterface <Phalcon_Http_CookieInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html

@@ -8,7 +8,7 @@ Abstract class **Phalcon\\Dispatcher**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers
+This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
 
 Constants

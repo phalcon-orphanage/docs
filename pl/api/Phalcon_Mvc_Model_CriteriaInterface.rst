@@ -114,11 +114,6 @@ abstract public  **getParams** ()
 ...
 
 
-abstract public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data)
-
-...
-
-
 abstract public  **execute** ()
 
 ...

@@ -96,3 +96,9 @@ Checks if cache exists in at least one backend
 
 
 
+public  **flush** ()
+
+Flush all backend(s)
+
+
+

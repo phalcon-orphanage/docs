@@ -66,9 +66,22 @@ Get session name
 
 
 
+public  **regenerateId** ([*unknown* $deleteOldSession])
+
+
+
+
+
 public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove])
 
-Gets a session variable from an application context
+Gets a session variable from an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->get('auth', 'yes');
+
 
 
 
@@ -150,7 +163,7 @@ Check whether the session has been started
 
 
 
-public  **destroy** ()
+public  **destroy** ([*unknown* $removeData])
 
 Destroys the active session 
 
@@ -159,6 +172,7 @@ Destroys the active session
     <?php
 
     var_dump($session->destroy());
+    var_dump($session->destroy(true));
 
 
 
@@ -203,5 +217,10 @@ public  **__unset** (*unknown* $index)
 
 Alias: Removes a session variable from an application context
 
+
+
+public  **__destruct** ()
+
+...
 
 

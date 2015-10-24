@@ -75,6 +75,12 @@ Returns the options
 
 
 
+public  **getOption** (*unknown* $name)
+
+Returns an option by the specified name If the option doesn't exist null is returned
+
+
+
 public  **isForeignKey** ()
 
 Check whether the relation act as a foreign key

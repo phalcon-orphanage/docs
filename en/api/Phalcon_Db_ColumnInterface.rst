@@ -94,6 +94,11 @@ abstract public  **getDefault** ()
 ...
 
 
+abstract public  **hasDefault** ()
+
+...
+
+
 abstract public static  **__set_state** (*unknown* $data)
 
 ...

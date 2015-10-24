@@ -58,7 +58,7 @@ Returns the current headers as an array
 
 public static  **__set_state** (*unknown* $data)
 
-Restore a Phalcon\\Http\\Response\\Headers object
+Restore a \\Phalcon\\Http\\Response\\Headers object
 
 
 

@@ -185,6 +185,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Libmemcached
    Phalcon_Mvc_Model_MetaData_Memcache
    Phalcon_Mvc_Model_MetaData_Memory
+   Phalcon_Mvc_Model_MetaData_Redis
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations
    Phalcon_Mvc_Model_MetaData_Strategy_Introspection
@@ -229,6 +230,7 @@ API Indice
    Phalcon_Mvc_View_Engine_Php
    Phalcon_Mvc_View_Engine_Volt
    Phalcon_Mvc_View_Engine_Volt_Compiler
+   Phalcon_Mvc_View_Engine_Volt_Exception
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Simple
    Phalcon_Paginator_Adapter
@@ -241,11 +243,13 @@ API Indice
    Phalcon_Registry
    Phalcon_Security
    Phalcon_Security_Exception
+   Phalcon_Security_Random
    Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Adapter_Libmemcached
    Phalcon_Session_Adapter_Memcache
+   Phalcon_Session_Adapter_Redis
    Phalcon_Session_Bag
    Phalcon_Session_Exception
    Phalcon_Tag
@@ -258,6 +262,8 @@ API Indice
    Phalcon_Translate_Adapter_Gettext
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
+   Phalcon_Translate_Interpolator_AssociativeArray
+   Phalcon_Translate_Interpolator_IndexedArray
    Phalcon_Validation
    Phalcon_Validation_Exception
    Phalcon_Validation_Message
@@ -267,6 +273,7 @@ API Indice
    Phalcon_Validation_Validator_Alpha
    Phalcon_Validation_Validator_Between
    Phalcon_Validation_Validator_Confirmation
+   Phalcon_Validation_Validator_CreditCard
    Phalcon_Validation_Validator_Digit
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
@@ -306,6 +313,7 @@ API Indice
    Phalcon_Filter_UserFilterInterface
    Phalcon_FlashInterface
    Phalcon_Forms_ElementInterface
+   Phalcon_Http_CookieInterface
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
@@ -350,5 +358,6 @@ API Indice
    Phalcon_Session_AdapterInterface
    Phalcon_Session_BagInterface
    Phalcon_Translate_AdapterInterface
+   Phalcon_Translate_InterpolatorInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface

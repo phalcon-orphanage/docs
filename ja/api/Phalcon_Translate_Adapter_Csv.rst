@@ -22,6 +22,12 @@ Phalcon\\Translate\\Adapter\\Csv constructor
 
 
 
+private  **_load** (*string* $file, *int* $length, *string* $delimiter, *string* $enclosure)
+
+Load translates from file
+
+
+
 public  **query** (*unknown* $index, [*unknown* $placeholders])
 
 Returns the translation related to the given key
@@ -32,6 +38,11 @@ public  **exists** (*unknown* $index)
 
 Check whether is defined a translation key in the internal array
 
+
+
+public  **setInterpolator** (*unknown* $interpolator) inherited from Phalcon\\Translate\\Adapter
+
+...
 
 
 public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter

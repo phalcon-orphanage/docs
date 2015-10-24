@@ -317,7 +317,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data)
+public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data, [*unknown* $operator])
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like _POST
 

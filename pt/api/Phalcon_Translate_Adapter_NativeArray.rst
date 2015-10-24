@@ -34,6 +34,11 @@ Check whether is defined a translation key in the internal array
 
 
 
+public  **setInterpolator** (*unknown* $interpolator) inherited from Phalcon\\Translate\\Adapter
+
+...
+
+
 public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key

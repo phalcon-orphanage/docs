@@ -67,7 +67,7 @@ Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*string* $module, *string* $namespaceName, *string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
+public  **processActionAnnotation** (*unknown* $module, *unknown* $namespaceName, *unknown* $controller, *unknown* $action, *unknown* $annotation)
 
 Checks for annotations in the public methods of the controller
 

@@ -48,6 +48,12 @@ Rollbacks the internal transaction
 
 
 
+public  **isTransaction** ()
+
+Returns the whether the logger is currently in an active transaction or not
+
+
+
 public  **critical** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a critical message to the log

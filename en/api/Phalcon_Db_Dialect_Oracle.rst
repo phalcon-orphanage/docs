@@ -188,6 +188,12 @@ Checks whether the platform supports releasing savepoints.
 
 
 
+protected  **prepareTable** (*unknown* $table, [*unknown* $schema], [*unknown* $alias], [*unknown* $escapeChar])
+
+Prepares table for this RDBMS
+
+
+
 public  **registerCustomFunction** (*unknown* $name, *unknown* $customFunction) inherited from Phalcon\\Db\\Dialect
 
 Registers custom SQL functions
@@ -400,12 +406,6 @@ Resolve a LIMIT clause
 protected  **prepareColumnAlias** (*unknown* $qualified, [*unknown* $alias], [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Prepares column for this RDBMS
-
-
-
-protected  **prepareTable** (*unknown* $table, [*unknown* $schema], [*unknown* $alias], [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
-
-Prepares table for this RDBMS
 
 
 

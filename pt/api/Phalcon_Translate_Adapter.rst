@@ -12,6 +12,16 @@ Base class for Phalcon\\Translate adapters
 Methods
 -------
 
+public  **__construct** (*unknown* $options)
+
+...
+
+
+public  **setInterpolator** (*unknown* $interpolator)
+
+...
+
+
 public *string*  **t** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key

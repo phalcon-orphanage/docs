@@ -21,7 +21,7 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
      if ($robot->save() == false) {
       echo "Umh, We can store robots: ";
       foreach ($robot->getMessages() as $message) {
-    echo message;
+     echo message;
       }
      } else {
       echo "Great, a new robot was saved successfully!";
@@ -113,14 +113,14 @@ Sets a transaction related to the Model instance
       $robot->name = 'WALL·E';
       $robot->created_at = date('Y-m-d');
       if ($robot->save() == false) {
-    $transaction->rollback("Can't save robot");
+      $transaction->rollback("Can't save robot");
       }
     
       $robotPart = new RobotParts();
       $robotPart->setTransaction($transaction);
       $robotPart->type = 'head';
       if ($robotPart->save() == false) {
-    $transaction->rollback("Robot part cannot be saved");
+      $transaction->rollback("Robot part cannot be saved");
       }
     
       $transaction->commit();
@@ -362,7 +362,7 @@ Allows to count how many records match the specified conditions
      echo "There are ", $number, "\n";
     
      //How many mechanical robots are there?
-     $number = Robots::count("type='mechanical'");
+     $number = Robots::count("type = 'mechanical'");
      echo "There are ", $number, " mechanical robots\n";
 
 
@@ -381,7 +381,7 @@ Allows to calculate a summatory on a column that match the specified conditions
      echo "The total price of robots is ", $sum, "\n";
     
      //How much are mechanical robots?
-     $sum = Robots::sum(array("type='mechanical'", 'column' => 'price'));
+     $sum = Robots::sum(array("type = 'mechanical'", 'column' => 'price'));
      echo "The total price of mechanical robots is  ", $sum, "\n";
 
 
@@ -545,7 +545,7 @@ Check whether validation process has generated any messages
 
 public  **getMessages** ([*unknown* $filter])
 
-Returns all the validation messages 
+Returns array of validation messages 
 
 .. code-block:: php
 
@@ -943,9 +943,10 @@ Setups a behavior in a model
 
     <?php
     
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Behavior\Timestampable;
     
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
     
        public function initialize()
@@ -971,8 +972,9 @@ Sets if the model must keep the original record snapshot in memory
     <?php
 
     <?php
+    use Phalcon\Mvc\Model;
     
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
     
        public function initialize()
@@ -1023,8 +1025,9 @@ Sets if a model must use dynamic update instead of the all-field update
     <?php
 
     <?php
+    use Phalcon\Mvc\Model;
     
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
     
        public function initialize()
@@ -1048,13 +1051,19 @@ Returns related records defined relations depending on the method name
 
 
 
+final protected static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` []|:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` |boolean **_invokeFinder** (*string* $method, *array* $arguments)
+
+Try to check if the query must invoke a finder
+
+
+
 public *mixed*  **__call** (*string* $method, *array* $arguments)
 
 Handles method calls when a method is not implemented
 
 
 
-public static *mixed*  **__callStatic** (*string* $method, [*array* $arguments])
+public static *mixed*  **__callStatic** (*string* $method, *array* $arguments)
 
 Handles method calls when a static method is not implemented
 

@@ -54,7 +54,7 @@ Removes a service in the services container It also removes any shared instance 
 
 public  **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
 
-Attempts to register a service in the services container Only is successful if a service hasn"t been registered previously with the same name
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 

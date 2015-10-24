@@ -47,7 +47,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+public  **__construct** (:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -167,7 +167,7 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*Closure* $conditionCallback])
+public *boolean*  **update** (*array* $data, [*\Closure* $conditionCallback])
 
 Updates every record in the resultset
 

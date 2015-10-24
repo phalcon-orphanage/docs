@@ -25,7 +25,7 @@ Sends logs to FirePHP
 Methods
 -------
 
-public *\Phalcon\Logger\FormatterInterface*  **getFormatter** ()
+public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
 
 Returns the internal formatter
 
@@ -76,6 +76,12 @@ Commits the internal transaction
 public  **rollback** () inherited from Phalcon\\Logger\\Adapter
 
 Rollbacks the internal transaction
+
+
+
+public  **isTransaction** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the whether the logger is currently in an active transaction or not
 
 
 

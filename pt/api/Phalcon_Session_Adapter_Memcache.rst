@@ -134,9 +134,22 @@ Get session name
 
 
 
+public  **regenerateId** ([*unknown* $deleteOldSession]) inherited from Phalcon\\Session\\Adapter
+
+
+
+
+
 public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove]) inherited from Phalcon\\Session\\Adapter
 
-Gets a session variable from an application context
+Gets a session variable from an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->get('auth', 'yes');
+
 
 
 
@@ -258,5 +271,10 @@ public  **__unset** (*unknown* $index) inherited from Phalcon\\Session\\Adapter
 
 Alias: Removes a session variable from an application context
 
+
+
+public  **__destruct** () inherited from Phalcon\\Session\\Adapter
+
+...
 
 

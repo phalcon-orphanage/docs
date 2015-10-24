@@ -60,6 +60,12 @@ Get stats of a tube.
 
 
 
+public  **listTubes** ()
+
+Get list of a tubes.
+
+
+
 public  **peekReady** ()
 
 Inspect the next ready job.

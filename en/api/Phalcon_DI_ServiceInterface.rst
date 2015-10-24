@@ -44,6 +44,11 @@ abstract public  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInj
 ...
 
 
+abstract public  **setParameter** (*unknown* $position, *unknown* $parameter)
+
+...
+
+
 abstract public static  **__set_state** (*unknown* $attributes)
 
 ...

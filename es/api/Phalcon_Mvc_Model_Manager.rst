@@ -8,16 +8,16 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\DI.  
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\Di.  
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\DI;
+     use Phalcon\Di;
      use Phalcon\Mvc\Model\Manager as ModelsManager;
     
-     $di = new DI();
+     $di = new Di();
     
      $di->set('modelsManager', function() {
           return new ModelsManager();

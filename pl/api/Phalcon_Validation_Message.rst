@@ -14,7 +14,7 @@ Encapsulates validation info generated in the validation process
 Methods
 -------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*unknown* $code])
 
 Phalcon\\Validation\\Message constructor
 
@@ -53,6 +53,18 @@ Sets field name related to message
 public *string*  **getField** ()
 
 Returns field name related to message
+
+
+
+public  **setCode** (*unknown* $code)
+
+Sets code for the message
+
+
+
+public  **getCode** ()
+
+Returns the message code
 
 
 

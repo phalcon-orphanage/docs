@@ -16,7 +16,7 @@ This component helps to separate session data into "namespaces". Working by this
 
     $user = new \Phalcon\Session\Bag('user');
     $user->name = "Kimbra Johnson";
-    $user->age = 22;
+    $user->age  = 22;
 
 
 

@@ -68,6 +68,8 @@ Constants
 
 *integer* **TYPE_JSONB**
 
+*integer* **TYPE_TIMESTAMP**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**
@@ -190,6 +192,12 @@ Returns the type of bind handling
 public static  **__set_state** (*unknown* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
+
+
+
+public  **hasDefault** ()
+
+Check whether column has default value
 
 
 

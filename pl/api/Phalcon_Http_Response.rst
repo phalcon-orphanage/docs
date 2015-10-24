@@ -137,6 +137,19 @@ Sets a Expires header to use HTTP cache
 
 
 
+public  **setCache** (*unknown* $minutes)
+
+Sets Cache headers to use HTTP cache 
+
+.. code-block:: php
+
+    <?php
+
+    $this->response->setCache(60);
+
+
+
+
 public  **setNotModified** ()
 
 Sends a Not-Modified response

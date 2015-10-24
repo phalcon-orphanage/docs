@@ -99,6 +99,12 @@ Rollbacks the internal transaction
 
 
 
+public  **isTransaction** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the whether the logger is currently in an active transaction or not
+
+
+
 public  **critical** (*unknown* $message, [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a critical message to the log

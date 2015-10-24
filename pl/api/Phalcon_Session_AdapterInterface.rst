@@ -54,7 +54,22 @@ abstract public  **isStarted** ()
 ...
 
 
-abstract public  **destroy** ()
+abstract public  **destroy** ([*unknown* $removeData])
+
+...
+
+
+abstract public  **regenerateId** ([*unknown* $deleteOldSession])
+
+...
+
+
+abstract public  **setName** (*unknown* $name)
+
+...
+
+
+abstract public  **getName** ()
 
 ...
 
