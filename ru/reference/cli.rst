@@ -191,4 +191,4 @@ We can then run the following command:
         }
     }
 
-Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>`, и реализовать такую логику там.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>`, и реализовать такую логику там.
