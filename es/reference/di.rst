@@ -791,7 +791,7 @@ Los argumentos se pueden pasar al constructor agregando un array como parámetro
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
 Events
-^^^^^^
+------
 :doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
 Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
 The following events are supported:
