@@ -932,5 +932,5 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
 `预先准备的查询语句`_的查询计划亦可以被大多数的数据库所缓存，这样可以减少执行的时间，也可以使用我们的系统免受'SQL注入'_的影响。
 
-.. _`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
-.. _`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
+.. _`prepared statements`: http://en.wikipedia.org/wiki/Prepared_statement
+.. _`SQL Injections`: http://en.wikipedia.org/wiki/SQL_injection

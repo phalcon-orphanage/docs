@@ -281,7 +281,7 @@ Examples:
     {{ post.permanent_link|url_encode }}
 
     {# convert_encoding filter #}
-    {{ "désolé"|convert_encoding('utf8', 'latin1') }}
+    {{ "dÃ©solÃ©"|convert_encoding('utf8', 'latin1') }}
 
 Comments
 --------
@@ -1551,7 +1551,7 @@ External Resources
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Album-O-Rama on Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Our website on Github <https://github.com/phalcon/website>`_]
 * `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Phosphorum on Github <https://github.com/phalcon/forum>`_]
-* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Vökuró on Github <https://github.com/phalcon/vokuro>`_]
+* `VÃ¶kurÃ³ <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`VÃ¶kurÃ³ on Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference

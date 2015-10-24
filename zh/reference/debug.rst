@@ -258,10 +258,10 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 
 使用xdebug我们可以使用若干种方法来取得关phalcon应用的调试信息。更多信可以参看这里的 `XDebug documentation`_ （ XDebug 文档）。
 
-.. _`Pretty Exceptions` : https://github.com/phalcon/pretty-exceptions
-.. _Exception class : http://www.php.net/manual/en/language.exceptions.php
-.. _`Reflection API` : http://php.net/manual/en/book.reflection.php
-.. _Exception::getTrace : http://www.php.net/manual/en/exception.gettrace.php
+.. _`Pretty Exceptions`: https://github.com/phalcon/pretty-exceptions
+.. _Exception class: http://www.php.net/manual/en/language.exceptions.php
+.. _`Reflection API`: http://php.net/manual/en/book.reflection.php
+.. _`Exception::getTrace`: http://www.php.net/manual/en/exception.gettrace.php
 .. _XDebug: http://xdebug.org
 .. _XDebug documentation: http://xdebug.org/docs
 .. _xdebug_print_function_stack: http://xdebug.org/docs/stack_trace

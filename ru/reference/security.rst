@@ -176,12 +176,12 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
 -----------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, пример приложения с использованием Security для избежание CSRF и хешированием паролей [`Github <https://github.com/phalcon/vokuro>`_]
 
-.. _sha1 : http://php.net/manual/ru/function.sha1.php
-.. _md5 : http://php.net/manual/ru/function.md5.php
-.. _openssl_random_pseudo_bytes : http://php.net/manual/ru/function.openssl-random-pseudo-bytes.php
-.. _openssl : http://php.net/manual/ru/book.openssl.php
-.. _captcha : http://www.google.com/recaptcha
+.. _sha1: http://php.net/manual/ru/function.sha1.php
+.. _md5: http://php.net/manual/ru/function.md5.php
+.. _openssl_random_pseudo_bytes: http://php.net/manual/ru/function.openssl-random-pseudo-bytes.php
+.. _openssl: http://php.net/manual/ru/book.openssl.php
+.. _captcha: http://www.google.com/recaptcha
 .. _`nonce`: http://ru.wikipedia.org/wiki/Nonce
-.. _bcrypt : http://ru.wikipedia.org/wiki/Bcrypt
-.. _Eksblowfish : http://ru.wikipedia.org/wiki/Bcrypt#.D0.90.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC
+.. _bcrypt: http://ru.wikipedia.org/wiki/Bcrypt
+.. _Eksblowfish: http://ru.wikipedia.org/wiki/Bcrypt#.D0.90.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC
 .. _`rainbow tables`: http://ru.wikipedia.org/wiki/Rainbow_table

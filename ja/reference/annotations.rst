@@ -36,10 +36,12 @@
 
 上記サンプルのコメント内にいくつかのアノテーションが見られます。アノテーションのシンタックスは以下のようになります :
 
-.. code-block::
+.. code-block:: php
 
-    @Annotation-Name
-    @Annotation-Name(param1, param2, ...)
+    /**
+     * @Annotation-Name
+     * @Annotation-Name(param1, param2, ...)
+     */
 
 また、アノテーションはコメントブロックの一部として配置することができます：
 

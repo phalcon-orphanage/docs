@@ -416,6 +416,6 @@ You can override this method or print the resources manually in the following wa
         echo Tag::javascriptInclude($resource->getPath());
     }
 
-.. _YUI : http://yui.github.io/yuicompressor/
-.. _Closure : https://developers.google.com/closure/compiler/?hl=fr
-.. _Sass : http://sass-lang.com/
+.. _YUI: http://yui.github.io/yuicompressor/
+.. _Closure: https://developers.google.com/closure/compiler/?hl=fr
+.. _Sass: http://sass-lang.com/

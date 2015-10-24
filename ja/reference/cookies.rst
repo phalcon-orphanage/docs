@@ -89,4 +89,4 @@ If you wish to use encryption, a global key must be set in the 'crypt' service:
     to attack the application. If you do not want to use encryption, we highly recommend you only send very
     basic cookie data like numbers or small string literals.
 
-.. _Cookies : http://en.wikipedia.org/wiki/HTTP_cookie
+.. _Cookies: http://en.wikipedia.org/wiki/HTTP_cookie

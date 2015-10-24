@@ -573,7 +573,7 @@ If an expression needs to be evaluated without be printed the 'do' statement can
 +-----------+-------------------------------------------------------------------------+
 | Оператор  | Оператор                                                                |
 +===========+=========================================================================+
-| :code:`+  | Производит операцию сложения. :code:`{{ 2 + 3 }}` вернёт 5              |
+| :code:`+` | Производит операцию сложения. :code:`{{ 2 + 3 }}` вернёт 5              |
 +-----------+-------------------------------------------------------------------------+
 | :code:`-` | Производит операцию вычитания. :code:`{{ 2 - 3 }}` вернёт -1            |
 +-----------+-------------------------------------------------------------------------+
@@ -1533,6 +1533,8 @@ Volt-компилятор позволяет вам расширить его, �
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
 .. _trim: http://www.php.net/manual/ru/function.trim.php
+.. _ltrim: http://php.net/manual/ru/function.ltrim.php
+.. _rtrim: http://php.net/manual/ru/function.rtrim.php
 .. _strip_tags: http://www.php.net/manual/ru/function.strip-tags.php
 .. _addslashes: http://www.php.net/manual/ru/function.addslashes.php
 .. _stripslashes: http://www.php.net/manual/ru/function.stripslashes.php

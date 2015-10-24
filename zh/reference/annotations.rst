@@ -37,10 +37,12 @@ Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于�
 
 在上面的例子中，我们发现注释块中除了注释单元，还可以有注释内容，一个注释单元语法如下：
 
-.. code-block::
+.. code-block:: php
 
-    @注释名称
-    @注释名称(参数1, 参数2, ...)
+    /**
+     * @Annotation-Name
+     * @Annotation-Name(param1, param2, ...)
+     */
 
 当然，一个注释单元可以放在注释内容里的任意位置：
 

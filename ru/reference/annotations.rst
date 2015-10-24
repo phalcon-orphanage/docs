@@ -37,10 +37,12 @@
 
 В примере выше мы показали аннотации в комментариях, имеющие следующий синтаксис:
 
-.. code-block::
+.. code-block:: php
 
-    @Annotation-Name
-    @Annotation-Name(param1, param2, ...)
+    /**
+     * @Annotation-Name
+     * @Annotation-Name(param1, param2, ...)
+     */
 
 Аннотации также могут быть помещены в любую часть блока документации:
 

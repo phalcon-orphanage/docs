@@ -81,6 +81,6 @@ Conclusion
 ----------
 Phalcon se concentre à construire le framework PHP le plus rapide. Vous avez maintenant la possibilité de développer rapidement des application avec un framework qui suit la philosophie "la performance est primordiale" ! Enjoy !
 
-.. _`compute-bound` : http://en.wikipedia.org/wiki/CPU_bound
-.. _`memory-bound` : http://en.wikipedia.org/wiki/Memory_bound
-.. _`I/O bound` : http://en.wikipedia.org/wiki/IO_bound
+.. _`compute-bound`: http://en.wikipedia.org/wiki/CPU_bound
+.. _`memory-bound`: http://en.wikipedia.org/wiki/Memory_bound
+.. _`I/O bound`: http://en.wikipedia.org/wiki/IO_bound
