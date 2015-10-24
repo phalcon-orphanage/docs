@@ -1,5 +1,5 @@
 バリデーション
-==========
+==============
 
 Phalcon\\Validation is an independent validation component that validates an arbitrary set of data.
 This component can be used to implement validation rules on data objects that do not belong to a model or collection.
@@ -114,7 +114,7 @@ Then initialize and use your own validator:
     }
 
 ビルトイン バリデータ一覧
-----------
+-------------------------
 Phalcon exposes a set of built-in validators for this component:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -183,7 +183,7 @@ The following example explains how to create additional validators for this comp
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
 バリデーションメッセージ
--------------------
+------------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the validation processes.
 
@@ -267,7 +267,7 @@ for a specific field using the 'filter' method:
     }
 
 データのフィルタリング
------------------
+----------------------
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 .. code-block:: php
@@ -294,7 +294,7 @@ Filtering and sanitizing is performed using the :doc:`filter <filter>`: componen
 component or use the built-in ones.
 
 バリデーション・イベント
------------------
+------------------------
 When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
 cancelled:
 
@@ -344,7 +344,7 @@ cancelled:
     }
 
 バリデーションのキャンセル
-----------------------
+--------------------------
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:
 

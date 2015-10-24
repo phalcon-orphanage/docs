@@ -1,5 +1,5 @@
 コントローラの使用
-===============
+==================
 
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
 public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
@@ -256,7 +256,7 @@ Then, we can access to that service in several ways:
 If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
 
 リクエストとレスポンス
---------------------
+----------------------
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
 The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
 contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
@@ -311,7 +311,7 @@ an afterDispatch event - it can be useful to access the response directly:
 Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
 
 セッションデータ
-------------
+----------------
 Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 from any controller to encapsulate data that need to be persistent.
 
@@ -404,7 +404,7 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
     }
 
 コントローラのイベント
----------------------
+----------------------
 Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
 you to implement hook points before/after the actions are executed:
 

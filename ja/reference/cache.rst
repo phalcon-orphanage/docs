@@ -1,5 +1,5 @@
 キャッシュによるパフォーマンス改善
-================================
+==================================
 
 Phalcon provides the :doc:`Phalcon\\Cache <cache>` class allowing faster access to frequently used or already processed data.
 :doc:`Phalcon\\Cache <cache>` is written in C, achieving higher performance and reducing the overhead when getting items from the backends.
@@ -7,7 +7,7 @@ This class uses an internal structure of frontend and backend components. Front-
 interfaces, while backend components offer storage options to the class.
 
 どのような時にキャッシュを実装する？
-------------------------
+------------------------------------
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain.
 We recommend you check this cases before using a cache:
 
@@ -21,7 +21,7 @@ We recommend you check this cases before using a cache:
     be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
 
 キャッシュの振る舞い
-----------------
+--------------------
 The caching process is divided into 2 parts:
 
 * **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
@@ -93,12 +93,12 @@ transparently captures that output and stores it in the cache file (when the cac
 pre-compiled from a previous call, thus avoiding expensive operations.
 
 任意のデータのキャッシュ
-----------------------
+------------------------
 Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data,
 thus speeding up your application.
 
 ファイルをバックエンドとする例
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 One of the caching adapters is 'File'. The only key area for this adapter is the location of where the cache files will be stored.
 This is controlled by the cacheDir option which *must* have a backslash at the end of it.
 
@@ -149,7 +149,7 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
     }
 
 Memcached をバックエンドとする例
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
 
 .. code-block:: php
@@ -252,7 +252,7 @@ The only requirement is to know the key that the data have been stored with.
     }
 
 キャッシュが存在するかの確認
-------------------------
+----------------------------
 It is possible to check if a cache already exists with a given key:
 
 .. code-block:: php
@@ -306,7 +306,7 @@ Setting the lifetime when saving:
     }
 
 マルチレベル・キャッシュ
------------------
+------------------------
 This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful
 because you can save the same data in several cache locations with different lifetimes, reading first from the one with
 the faster adapter and ending with the slowest one until the data expires:
@@ -370,7 +370,7 @@ the faster adapter and ending with the slowest one until the data expires:
     $cache->save('my-key', $data);
 
 フロントエンド・アダプタ
------------------
+-------------------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
@@ -418,7 +418,7 @@ Implementing your own Backend adapters
 The :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
 ファイル・バックエンド オプション
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content into files in the local server. The available options for this backend are:
 
 +----------+-------------------------------------------------------------+
@@ -430,7 +430,7 @@ This backend will store cached content into files in the local server. The avail
 +----------+-------------------------------------------------------------+
 
 Memcached バックエンド オプション
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a memcached server. The available options for this backend are:
 
 +------------+-------------------------------------------------------------+
@@ -446,7 +446,7 @@ This backend will store cached content on a memcached server. The available opti
 +------------+-------------------------------------------------------------+
 
 APC バックエンド オプション
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on Alternative PHP Cache (APC_). The available options for this backend are:
 
 +------------+-------------------------------------------------------------+
@@ -456,7 +456,7 @@ This backend will store cached content on Alternative PHP Cache (APC_). The avai
 +------------+-------------------------------------------------------------+
 
 Mongo バックエンド オプション
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a MongoDB server. The available options for this backend are:
 
 +------------+-------------------------------------------------------------+
@@ -472,7 +472,7 @@ This backend will store cached content on a MongoDB server. The available option
 +------------+-------------------------------------------------------------+
 
 XCache バックエンド オプション
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on XCache (XCache_). The available options for this backend are:
 
 +------------+-------------------------------------------------------------+

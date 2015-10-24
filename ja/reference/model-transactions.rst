@@ -8,7 +8,7 @@ is committed to the database.
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
 手動のトランザクション
--------------
+----------------------
 If an application only uses one connection and the transactions aren't very complex, a transaction can be
 created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
@@ -51,7 +51,7 @@ created by just moving the current connection into transaction mode and then com
     }
 
 暗黙的なトランザクション
----------------
+------------------------
 Existing relationships can be used to store records and their related instances, this kind of operation
 implicitly creates a transaction to ensure that data is correctly stored:
 

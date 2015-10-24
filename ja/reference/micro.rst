@@ -1,5 +1,5 @@
 マイクロアプリケーション
-==================
+========================
 
 マイクロフレームワークライクなアプリケーションを構築することができます。
 PHPアプリケーションを最小のコードで書くことが可能です。
@@ -20,7 +20,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
     $app->handle();
 
 マイクロアプリケーションの作成
-----------------------------
+------------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` は、マイクロアプリケーションを実装するためのクラスです。
 
 .. code-block:: php
@@ -32,7 +32,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
     $app = new Micro();
 
 ルーティングの設定
----------------
+------------------
 オブジェクトのインスタンスを作成したら、いくつかのルーティングを設定する必要があります。
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` は、ルーティングを管理します。
 ルートは、常に/から開始しなければいけません。ルートを設定する際に、HTTPメソッドを任意に制限することができます。
@@ -114,7 +114,7 @@ To access the HTTP method data `$app` needs to be passed into the closure:
     });
 
 パラメータ付きのルーティング
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 パラメータ付きのルートは、上記の例のように簡単に設定できます。パラメータ名は括弧で括る必要があります。
 パラメータのフォーマットは正規表現を使用して設定できます。
 
@@ -327,7 +327,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
     });
 
 Not-Found ハンドラ
------------------
+------------------
 未定義のルートにアクセスした場合、マイクロアプリケーションでは、"Not-Found"ハンドラーが実行されます。
 
 .. code-block:: php
@@ -340,7 +340,7 @@ Not-Found ハンドラ
     });
 
 マイクロアプリケーションにおけるモデル
-----------------------------
+--------------------------------------
 マイクロアプリケーションで、:doc:`Models <models>`が使用することができます。
 モデルは自動読み込みで行う必要があります。
 
@@ -369,7 +369,7 @@ Not-Found ハンドラ
     $app->handle();
 
 マイクロアプリケーション イベント
-------------------------
+---------------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
 Events are triggered using the type "micro". The following events are supported:
 
@@ -420,7 +420,7 @@ In the following example, we explain how to control the application security usi
     $app->setEventsManager($eventsManager);
 
 ミドルウェアイベント
------------------
+--------------------
 In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
 
 .. code-block:: php
@@ -585,7 +585,7 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
 レスポンスのリターン
--------------------
+--------------------
 ハンドラーは、:doc:`Phalcon\\Http\\Response <response>` を使用した生のレスポンスを返したり、または、ビューなどのインターフェイスコンポーネントを返したりすると思います。
 ハンドラーによってレスポンスが返されるとき、アプリケーションによって自動的にそれが送信されます。
 
@@ -611,7 +611,7 @@ Micro\\MVCを使用した中規模アプリケーションでは、コントロ�
     });
 
 ビューのレンダリング
----------------
+--------------------
 :doc:`Phalcon\\Mvc\\View\\Simple <views>` はビューをレンダリングするために使用します。
 
 .. code-block:: php

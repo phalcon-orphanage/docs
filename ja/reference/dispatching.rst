@@ -112,7 +112,7 @@ An instantiated controller automatically acts as a listener for dispatch events,
     }
 
 他のアクションへのフォワード
----------------------------
+----------------------------
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
 access to certain options, redirect users to other screens or simply reuse code.
 
@@ -302,7 +302,7 @@ When a route provides named parameters you can receive them in a controller, a v
 You can also define an arbitrary schema for actions before be dispatched.
 
 アクション名のキャメルケース化
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If the original URL is: http://example.com/admin/products/show-latest-products,
 and for example you want to camelize 'show-latest-products' to 'ShowLatestProducts',
 the following code is required:
@@ -369,7 +369,7 @@ You can remove it before dispatch the controller/action combination:
     });
 
 モデルインスタンスの注入
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
 inject model instances.
 
@@ -455,7 +455,7 @@ The above example has been simplified for academic purposes.
 A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
 Not-Found Exceptionのハンドリング
------------------------------
+---------------------------------
 Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 .. code-block:: php

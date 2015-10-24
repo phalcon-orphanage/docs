@@ -34,7 +34,7 @@ Examples of identifiers include:
 * fr-CA, fr-FR (French for Canada and France respectively)
 
 ロケールに基づいてメッセージをフォーマットする
------------------------------------
+----------------------------------------------
 Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
 production of those messages.
 

@@ -7,7 +7,7 @@ acts as a global bag for cookies. Cookies are stored in this bag during the requ
 automatically at the end of the request.
 
 基本的な使い方
------------
+--------------
 You can set/get cookies by just accessing the 'cookies' service in any part of the application where services can be
 accessed:
 

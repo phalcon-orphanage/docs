@@ -5,7 +5,7 @@ Namespaces_ can be used to avoid class name collisions; this means that if you h
 a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 フレームワークのセットアップ
-------------------------
+----------------------------
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
 to perform one or all of the following tasks:
 

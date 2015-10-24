@@ -1,5 +1,5 @@
 コマンドライン アプリケーション
-=========================
+===============================
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
@@ -89,7 +89,7 @@ This piece of code can be run using:
     This is the default task and the default action
 
 タスク
------
+------
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Below is an example of the app/tasks/MainTask.php file:

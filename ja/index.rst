@@ -1,5 +1,5 @@
 ようこそ!
-========
+=========
 
 新しいアプローチで作られたPHPフレームワーク、Phalconへようこそ。
 我々の使命は、パフォーマンスを気にせずにウェブサイトやアプリケーションを開発できる、先進的なツールを提供することです。
@@ -81,7 +81,7 @@ Phalconはパフォーマンスだけではありません。我々のゴール�
    reference/license
 
 その他のフォーマット
--------------
+--------------------
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_

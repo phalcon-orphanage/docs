@@ -5,7 +5,7 @@
 PHP objects for use in an application.
 
 ファイル アダプタ
--------------
+-----------------
 The adapters available are:
 
 +-----------+------------------------------------------------------------------------------------------------+
@@ -61,7 +61,7 @@ If you want to better organize your project you can save the array in another fi
     $config = new Config($settings);
 
 INIファイルの読み込み
------------------
+---------------------
 Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
 
 .. code-block:: ini

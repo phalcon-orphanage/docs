@@ -1,11 +1,11 @@
 ページネーション
-==========
+================
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data into browsable pages.
 
 データ・アダプタ
--------------
+----------------
 This component makes use of adapters to encapsulate different sources of data:
 
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -81,7 +81,7 @@ The :code:`$page` object also contains navigation data:
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
 アダプタの使用方法
---------------
+------------------
 An example of the source data that must be used for each adapter:
 
 .. code-block:: php
@@ -132,7 +132,7 @@ An example of the source data that must be used for each adapter:
     );
 
 Pageオブジェクトの持つ属性
----------------
+--------------------------
 The :code:`$page` object has the following attributes:
 
 +-------------+--------------------------------------------------------+

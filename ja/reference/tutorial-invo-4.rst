@@ -5,7 +5,7 @@ To finish the detailed explanation of INVO we are going to explain how to custom
 and changing the title according to the controller executed.
 
 ユーザーコンポーネント
------------
+----------------------
 全てのUI要素とスタイルは、 `Bootstrap`_ によって実現されています。ナビゲーションバーなどの要素は、アプリケーションの状態によって変わります。たとえば、右上のリンク "Log in / Sign Up" は、ユーザーがログインしている場合には "Log out" に変わります。
 
 アプリケーションのこの部分は、"Elements" コンポーネント (app/library/Elements.php) で実装されています。
@@ -74,7 +74,7 @@ The important part is:
     {{ elements.getMenu() }}
 
 タイトルの動的な変更
-----------
+--------------------
 When you browse between one option and another will see that the title changes dynamically indicating where
 we are currently working. This is achieved in each controller initializer:
 

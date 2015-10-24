@@ -1,5 +1,5 @@
 アプリケーションのデバッグ
-======================
+==========================
 
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center
@@ -107,7 +107,7 @@ As you can see from the above output the Phalcon's classes and methods are displ
 parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
 デバッグコンポーネント
----------------
+----------------------
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application
 created with the framework.
 

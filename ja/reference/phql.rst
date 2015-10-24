@@ -1,5 +1,5 @@
 Phalconクエリランゲージ (PHQL)
-======================
+==============================
 
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
 standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
@@ -139,7 +139,7 @@ Or simply execute it:
     ));
 
 レコードのセレクト
------------------
+------------------
 As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
 .. code-block:: php
@@ -259,7 +259,7 @@ This allows access to both complete objects and scalars at once:
 Scalars are mapped as properties of each "row", while complete objects are mapped as properties with the name of its related model.
 
 表結合(JOIN)
-^^^^^
+^^^^^^^^^^^^
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
 relationships in the models, PHQL adds these conditions automatically:
 
@@ -779,7 +779,7 @@ More examples of the builder:
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
 割り当てられたパラメータ
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
 .. code-block:: php
@@ -803,7 +803,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->execute(array('name' => $name, 'type' => $type));
 
 PHQL内でのリテラルの無効化
--------------------------
+--------------------------
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
 will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
 to potential SQL injections:
@@ -870,7 +870,7 @@ words using the cross-database escaping delimiters '[' and ']':
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
 PHQL ライフサイクル
---------------
+-------------------
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
 The following is the life cycle of each PHQL statement executed:
 
@@ -937,7 +937,7 @@ The above findByRawSql could be used as follows:
     $robots = Robots::findByRawSql('id > ?', array(10));
 
 トラブルシューティング
----------------
+----------------------
 Some things to keep in mind when using PHQL:
 
 * Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.

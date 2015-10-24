@@ -1,5 +1,5 @@
 ロギング
-=======
+========
 
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
@@ -78,7 +78,7 @@ You can also set a log level using the :code:`setLogLevel()` method. This method
 In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 トランザクション
-------------
+----------------
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you
 can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the
 relevant adapter (File in this case) in a single atomic operation.
@@ -127,7 +127,7 @@ relevant adapter (File in this case) in a single atomic operation.
 The messages are sent to the handlers in the order they were registered.
 
 メッセージフォーマット
-------------------
+----------------------
 This component makes use of 'formatters' to format messages before sending them to the backend. The formatters available are:
 
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -185,7 +185,7 @@ create your own logger formatter or extend the existing ones.
 The following examples show the basic use of each adapter:
 
 ストリーム ロガー
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`_:
 
 .. code-block:: php
@@ -201,7 +201,7 @@ The stream logger writes messages to a valid registered stream in PHP. A list of
     $logger = new StreamAdapter("php://stderr");
 
 ファイル ロガー
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 This logger uses plain files to log any kind of data. By default all logger files are opened using
 append mode which opens the files for writing only; placing the file pointer at the end of the file.
 If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:

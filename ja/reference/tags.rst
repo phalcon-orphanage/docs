@@ -13,7 +13,7 @@ This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` t
     the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
 コンテンツのドキュメントタイプ
-------------------------
+------------------------------
 Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
 For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
@@ -197,7 +197,7 @@ Volt syntax:
     {{ hidden_field("parent_id", "value": "5") }}
 
 セレクトボックスの作成
--------------------
+----------------------
 Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\\Tag::select() and Phalcon\\Tag::selectStatic().
 Phalcon\\Tag::select() has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while Phalcon\\Tag::selectStatic() can with PHP arrays.
 
@@ -332,7 +332,7 @@ The following HTML is generated:
 ---------------------
 
 コントローラで設定する
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
 You can set those values directly from the controller using Phalcon\\Tag::setDefault().
 This helper preloads a value for any helpers present in the view. If any helper in the view has
@@ -380,7 +380,7 @@ This will generate the following select tag with the value "Blue" selected:
     </select>
 
 リクエストから設定する
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 A special feature that the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values
 of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
@@ -470,7 +470,7 @@ Volt syntax:
     {{ image("img/hello.gif", "alt": "alternative text") }}
 
 スタイルシート
-^^^^^^^^^^^
+^^^^^^^^^^^^^^
 .. code-block:: php
 
     <?php
@@ -542,7 +542,7 @@ Volt syntax:
     {{ tag_html_close("canvas") }}
 
 タグ サービス
------------
+-------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is available via the 'tag' service, this means you can access it from any part
 of the application where the services container is located:
 

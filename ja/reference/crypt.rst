@@ -7,7 +7,7 @@ This class offers simple object-oriented wrappers to the mcrypt_ PHP's encryptio
 By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
 
 基本的な使い方
------------
+--------------
 This component is designed to provide a very simple usage:
 
 .. code-block:: php
@@ -83,7 +83,7 @@ Example:
     echo $crypt->encrypt($text, $key);
 
 Base64 サポート
---------------
+---------------
 In order for encryption to be properly transmitted (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
 
 .. code-block:: php

@@ -91,7 +91,7 @@ the $this->request public property of the controller:
     }
 
 ファイルのアップロード
----------------
+----------------------
 Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
 an object-oriented way to achieve this task:
 

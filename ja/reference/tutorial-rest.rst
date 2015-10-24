@@ -1,5 +1,5 @@
 チュートリアル 7: シンプルなREST APIの作成
-===========================
+==========================================
 
 In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
 different HTTP methods:
@@ -10,7 +10,7 @@ different HTTP methods:
 * DELETE to delete data
 
 APIの定義
-------
+---------
 The API consists of the following methods:
 
 +--------+----------------------------+----------------------------------------------------------+
@@ -30,7 +30,7 @@ The API consists of the following methods:
 +--------+----------------------------+----------------------------------------------------------+
 
 アプリケーションの作成
------------
+----------------------
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case,
 we will use a :doc:`micro application <micro>` to meet our goal.
 
@@ -118,7 +118,7 @@ by example, explicitly sets that the "id" parameter must have a numeric format.
 When a defined route matches the requested URI then the application executes the corresponding handler.
 
 モデルの作成
-------
+------------
 Our API provides information about 'robots', these data are stored in a database. The following model allows us to
 access that table in an object-oriented way. We have implemented some business rules using built-in validators
 and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
@@ -211,7 +211,7 @@ Now, we must set up a connection to be used by this model and load it within our
     $app = new Micro($di);
 
 データの取得
-------
+------------
 The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
 perform this simple query returning the results as JSON:
 
@@ -309,7 +309,7 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
     });
 
 データの登録
-------
+------------
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
 .. code-block:: php
@@ -372,7 +372,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
     });
 
 データの更新
-------
+------------
 The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
 
 .. code-block:: php
@@ -426,7 +426,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
     });
 
 データの削除
-------
+------------
 The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
 
 .. code-block:: php
@@ -474,7 +474,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
     });
 
 アプリケーションのテスト
-------------
+------------------------
 Using curl_ we'll test every route in our application verifying its proper operation:
 
 Obtain all the robots:
@@ -580,7 +580,7 @@ Finally, delete a robot:
     {"status":"OK"}
 
 まとめ
------
+------
 As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
 use micro applications and the :doc:`PHQL <phql>` language.
 

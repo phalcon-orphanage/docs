@@ -1,5 +1,5 @@
 イベントマネージャ
-==============
+==================
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating "hook points". These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
@@ -166,7 +166,7 @@ In a similar manner we can register a lambda function to perform the task instea
     });
 
 イベントをトリガするコンポーネントの作成
----------------------------------------
+----------------------------------------
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners
 that react to these events when generated. In the following example we're creating a component called "MyComponent".
 This component is EventsManager aware (it implements :doc:`Phalcon\\Events\\EventsAwareInterface <../api/Phalcon_Events_EventsAwareInterface>`); when its :code:`someTask()` method is executed it triggers two events to any listener in the EventsManager:
