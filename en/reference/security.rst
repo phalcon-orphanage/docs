@@ -175,7 +175,7 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
 
 External Resources
 ------------------
-* `V�kur� <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _sha1: http://php.net/manual/en/function.sha1.php
 .. _md5: http://php.net/manual/en/function.md5.php
