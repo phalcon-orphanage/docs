@@ -162,7 +162,7 @@ You can escape a HTML attribute by using the :code:`escapeJs` method:
 
     <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
 
-.. _OWASP : https://www.owasp.org
-.. _XSS : https://www.owasp.org/index.php/XSS
-.. _`XSS (Cross Site Scripting) Prevention Cheat Sheet` : https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
-.. _mbstring : http://php.net/manual/en/book.mbstring.php
+.. _OWASP: https://www.owasp.org
+.. _XSS: https://www.owasp.org/index.php/XSS
+.. _`XSS (Cross Site Scripting) Prevention Cheat Sheet`: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
+.. _mbstring: http://php.net/manual/en/book.mbstring.php

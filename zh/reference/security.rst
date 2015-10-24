@@ -169,12 +169,12 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
 ----------------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, 是一个使用的安全组件避免CSRF和密码散列的示例应用程序 [`Github <https://github.com/phalcon/vokuro>`_]
 
-.. _sha1 : http://php.net/manual/en/function.sha1.php
-.. _md5 : http://php.net/manual/en/function.md5.php
-.. _openssl_random_pseudo_bytes : http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
-.. _openssl : http://php.net/manual/en/book.openssl.php
-.. _captcha : http://www.google.com/recaptcha
+.. _sha1: http://php.net/manual/en/function.sha1.php
+.. _md5: http://php.net/manual/en/function.md5.php
+.. _openssl_random_pseudo_bytes: http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+.. _openssl: http://php.net/manual/en/book.openssl.php
+.. _captcha: http://www.google.com/recaptcha
 .. _`random nonce`: http://en.wikipedia.org/wiki/Cryptographic_nonce
-.. _bcrypt : http://en.wikipedia.org/wiki/Bcrypt
-.. _Eksblowfish : http://en.wikipedia.org/wiki/Bcrypt#Algorithm
+.. _bcrypt: http://en.wikipedia.org/wiki/Bcrypt
+.. _Eksblowfish: http://en.wikipedia.org/wiki/Bcrypt#Algorithm
 .. _`rainbow tables`: http://en.wikipedia.org/wiki/Rainbow_table

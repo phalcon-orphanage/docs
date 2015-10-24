@@ -987,5 +987,5 @@ Performance can be also improved reusing the PHQL query:
 Execution plans for queries involving `prepared statements`_ are also cached by most database systems
 reducing the overall execution time, also protecting your application against `SQL Injections`_.
 
-.. _`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
-.. _`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
+.. _`prepared statements`: http://en.wikipedia.org/wiki/Prepared_statement
+.. _`SQL Injections`: http://en.wikipedia.org/wiki/SQL_injection

@@ -86,4 +86,4 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
     可能会暴露应用内部的细节给外界，从而被黑客利用、发起攻击。
     如果你不想使用加密，我们强烈建议你只返回基本的cookie数据，如数字或者小串的文字。
 
-.. _Cookies : http://en.wikipedia.org/wiki/HTTP_cookie
+.. _Cookies: http://en.wikipedia.org/wiki/HTTP_cookie

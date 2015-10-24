@@ -396,6 +396,6 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
         echo Tag::javascriptInclude($resource->getPath());
     }
 
-.. _YUI : http://yui.github.io/yuicompressor/
-.. _Closure : https://developers.google.com/closure/compiler/?hl=fr
-.. _Sass : http://sass-lang.com/
+.. _YUI: http://yui.github.io/yuicompressor/
+.. _Closure: https://developers.google.com/closure/compiler/?hl=fr
+.. _Sass: http://sass-lang.com/

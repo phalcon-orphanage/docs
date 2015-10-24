@@ -268,10 +268,10 @@ In this instance, Xdebug will also show us the variables in the local scope, and
 Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can
 check the `XDebug documentation`_ for more information.
 
-.. _`Pretty Exceptions` : https://github.com/phalcon/pretty-exceptions
-.. _Exception class : http://www.php.net/manual/en/language.exceptions.php
-.. _`Reflection API` : http://php.net/manual/en/book.reflection.php
-.. _Exception::getTrace : http://www.php.net/manual/en/exception.gettrace.php
+.. _`Pretty Exceptions`: https://github.com/phalcon/pretty-exceptions
+.. _Exception class: http://www.php.net/manual/en/language.exceptions.php
+.. _`Reflection API`: http://php.net/manual/en/book.reflection.php
+.. _`Exception::getTrace`: http://www.php.net/manual/en/exception.gettrace.php
 .. _XDebug: http://xdebug.org
 .. _XDebug documentation: http://xdebug.org/docs
 .. _xdebug_print_function_stack: http://xdebug.org/docs/stack_trace

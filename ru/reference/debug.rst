@@ -267,10 +267,10 @@ Xdebug так же покажет локальные переменные в э�
 Xdebug предоставляет несколько путей для отладки ваших приложений и получения отладочной информации. Вы можете ознакомиться
 с `XDebug документацией`_ для дополнительной информации.
 
-.. _`Pretty Exceptions` : https://github.com/phalcon/pretty-exceptions
-.. _`Exception class` : http://www.php.net/manual/ru/language.exceptions.php
-.. _`Reflection API` : http://php.net/manual/ru/book.reflection.php
-.. _`Exception::getTrace` : http://www.php.net/manual/ru/exception.gettrace.php
+.. _`Pretty Exceptions`: https://github.com/phalcon/pretty-exceptions
+.. _`Exception class`: http://www.php.net/manual/ru/language.exceptions.php
+.. _`Reflection API`: http://php.net/manual/ru/book.reflection.php
+.. _`Exception::getTrace`: http://www.php.net/manual/ru/exception.gettrace.php
 .. _`XDebug`: http://xdebug.org
 .. _`XDebug документацией`: http://xdebug.org/docs
 .. _`xdebug_print_function_stack`: http://xdebug.org/docs/stack_trace
