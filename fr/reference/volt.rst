@@ -281,7 +281,7 @@ Examples:
     {{ post.permanent_link|url_encode }}
 
     {# convert_encoding filter #}
-    {{ "d�sol�"|convert_encoding('utf8', 'latin1') }}
+    {{ "désolé"|convert_encoding('utf8', 'latin1') }}
 
 Comments
 --------
