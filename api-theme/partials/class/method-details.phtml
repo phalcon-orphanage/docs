@@ -29,7 +29,7 @@ $methodDocblock =  $method->getParsedDocBlock();
                     <div class="method-docblock-summary">
                         <?= $methodDocblock->getSummary() ?>
                     </div>
-                    <div class="method-docblock-details code-inside"><?= $methodDocblock->getDescription() ?></div>
+                    <div class="method-docblock-details code-inside"><?= $this->escaper->escapeHtml($methodDocblock->getDescription()) ?></div>
                 <?php } ?>
             </div>
 
