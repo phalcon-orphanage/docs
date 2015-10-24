@@ -51,7 +51,7 @@ The example below shows how to create a log and add messages to it:
 
 The log generated is below:
 
-.. code-block::
+.. code-block:: none
 
     [Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
     [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
@@ -146,7 +146,7 @@ Line Formatter
 ^^^^^^^^^^^^^^
 Formats the messages using a one-line string. The default logging format is:
 
-.. code-block::
+.. code-block:: none
 
     [%date%][%type%] %message%
 

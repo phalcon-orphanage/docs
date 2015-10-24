@@ -53,7 +53,7 @@
 
 Результат кода:
 
-.. code-block::
+.. code-block:: none
 
     [Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
     [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
@@ -149,7 +149,7 @@ In the example above, only critical and emergency messages will get saved to the
 ^^^^^^^^^^^^^^^^^^^
 Оформление записей в одну строку. Формат по умолчанию:
 
-.. code-block::
+.. code-block:: none
 
     [%date%][%type%] %message%
 

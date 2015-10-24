@@ -37,10 +37,12 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 
 An annotation has the following syntax:
 
-.. code-block::
+.. code-block:: php
 
-    @Annotation-Name
-    @Annotation-Name(param1, param2, ...)
+    /**
+     * @Annotation-Name
+     * @Annotation-Name(param1, param2, ...)
+     */
 
 Also, an annotation can be placed at any part of a docblock:
 

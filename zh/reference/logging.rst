@@ -52,7 +52,7 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
 产生的日志信息如下：
 
-.. code-block::
+.. code-block:: none
 
     [Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
     [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
@@ -146,7 +146,7 @@ In the example above, only critical and emergency messages will get saved to the
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 使用单行格式格式化信息。 默认的格式如下：
 
-.. code-block::
+.. code-block:: none
 
     [%date%][%type%] %message%
 
