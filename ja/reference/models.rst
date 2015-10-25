@@ -81,7 +81,7 @@
     }
 
 パブリックプロパティ vs セッター/ゲッター
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 モデルの各プロパティは、パブリックスコープで実装することができます、つまり、特に制限なく、モデルクラスがインスタンス化されたコードのどの部分からでも更新/読み取ることができることを意味します。
 
 .. code-block:: php
@@ -192,7 +192,7 @@ Namespaces make part of model names when they are within strings:
     }
 
 レコードからオブジェクトを理解する
---------------------------------
+----------------------------------
 モデルのすべてのインスタンスは、テーブル内の行を表します。あなたは簡単にオブジェクトのプロパティを読み取ることによってレコードデータにアクセスすることができます。例えば、"robots" テーブル:
 
 .. code-block:: bash
@@ -408,7 +408,7 @@ we are looking for in our table. Notice also that when we find a match with our 
 are available to us as well.
 
 モデルの結果セット
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 While :code:`findFirst()` returns directly an instance of the called class (when there is data to be returned), the :code:`find()` method returns a
 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
 a resultset has like traversing, seeking specific records, counting, etc.
@@ -491,7 +491,7 @@ thus consuming more memory while this process takes place.
     }
 
 結果セットのフィルタリング
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
 Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -510,7 +510,7 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
     );
 
 パラメータの割り当て
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. You are encouraged to use
 this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks.
 Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
@@ -1694,7 +1694,7 @@ Note: Adding related entities by overloading the following methods is not possib
 You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 バリデーション・メッセージ
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
 
@@ -1762,7 +1762,7 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
     }
 
 イベントとイベント・マネージャ
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
@@ -1838,7 +1838,7 @@ Events can be useful to assign values before performing an operation, for exampl
     }
 
 カスタムイベントマネージャの使用
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
 this means we can create listeners that run when an event is triggered.
 
@@ -2116,7 +2116,7 @@ The idea of creating validators is make them reusable between several models. A 
     }
 
 SQLインジェクションの回避
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
 each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
 capability provided by PDO to automatically escape every value to be stored in the database.
@@ -2348,7 +2348,7 @@ With the above events can also define business rules in the models:
     }
 
 バリデーション失敗のイベント
-------------------------
+----------------------------
 Another type of events are available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
@@ -2360,7 +2360,7 @@ Another type of events are available when the data validation process finds any 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
 振る舞い(ビヘイビア)
----------
+--------------------
 Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
 behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
@@ -2407,7 +2407,7 @@ The following built-in behaviors are provided by the framework:
 +----------------+-------------------------------------------------------------------------------------------------------------------------------+
 
 タイムスタンプ化
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 .. code-block:: php
@@ -2618,7 +2618,7 @@ Call that method on a model that implements Sluggable returns a SEO friendly tit
     $title = $post->getSlug();
 
 振る舞いとしてのトレイトの使用
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way to implement
 custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
@@ -2829,7 +2829,7 @@ you can do this:
 
 
 レコードのスナップショット
-----------------
+--------------------------
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what
 fields are changed according to the data queried from the persistence:
 
@@ -3218,7 +3218,7 @@ The available options are:
 +---------------------+----------------------------------------------------------------------------------+---------+
 
 スタンドアロン・コンポーネント
----------------------
+------------------------------
 Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php

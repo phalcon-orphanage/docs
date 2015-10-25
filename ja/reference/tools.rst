@@ -9,7 +9,7 @@ a simple command, allowing you to easily develop applications using Phalcon.
     to use PHP 5.4 or greater. If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
 
 ダウンロード
---------
+------------
 You can download or clone a cross platform package containing the developer tools from Github_.
 
 インストール
@@ -288,7 +288,7 @@ The following screencast shows you how it works:
    <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 CRUDのScaffolding
----------------
+-----------------
 Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and
 controllers for a new resource in a single operation, scaffolding is the tool for the job.
 
@@ -335,7 +335,7 @@ After performing a search, a pager component is available to show paged results.
    :align: center
 
 ツールへのWEBインターフェース
-----------------------
+-----------------------------
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
 .. raw:: html

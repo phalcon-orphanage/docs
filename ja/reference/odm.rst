@@ -140,7 +140,7 @@ Connections are retrieved from the services container. By default, Phalcon tries
     }, true);
 
 ドキュメントの検索
------------------
+------------------
 As :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` relies on the Mongo PHP extension you have the same facilities
 to query documents and convert them transparently to model instances:
 
@@ -314,7 +314,7 @@ The "_id" property is automatically updated with the MongoId_ object created by 
     echo "The generated id is: ", $robot->getId();
 
 バリデーション・メッセージ
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
 
@@ -335,7 +335,7 @@ generated the message or the message type:
     }
 
 バリデーション・イベントとイベント・マネージャ
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
@@ -710,7 +710,7 @@ The following events are available to define custom business rules that can be e
 +-----------+----------------------+---------------------+------------------------------------------+
 
 バリデーション失敗のイベント
-------------------------
+----------------------------
 Another type of events is available when the data validation process finds any inconsistency:
 
 +--------------------------+---------------------------+--------------------------------------------------------------------+
@@ -722,7 +722,7 @@ Another type of events is available when the data validation process finds any i
 +--------------------------+---------------------------+--------------------------------------------------------------------+
 
 暗黙のID VS. ユーザー指定プライマリキー
-----------------------------------
+---------------------------------------
 By default :code:`Phalcon\\Mvc\\Collection` assumes that the :code:`_id` attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overridden:
 

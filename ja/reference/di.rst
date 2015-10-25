@@ -1,5 +1,5 @@
 依存性の注入とサービス・ロケーション
-******************
+************************************
 
 以下の例は少々長めですが、なぜサービス・ロケーションと依存性の注入を使用するのかを説明しています。初めに、SomeComponentというコンポーネントを開発しているとしましょう。これは、今のところ重要ではないタスクを実行します。このコンポーネントは、DB接続に依存しています。
 
@@ -336,7 +336,7 @@
 これで、コンポーネントは必要とするサービスにシンプルにアクセスできるようになりました。不要なサービスは、初期化されることさえないので、リソースを節約できます。コンポーネントは高度に疎結合です。たとえば、コンポーネントの振る舞いやその他の側面を変更せずに、DB接続のやり方を変更することができます。
 
 私たちのアプローチ
-=========
+==================
 :doc:`Phalcon\\DI <../api/Phalcon_DI>` は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
 
 Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalcon_DI>` はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
@@ -348,7 +348,7 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalc
 加えて、このパターンによってコードがテストしやすくなり、エラーへの耐性が向上します。
 
 サービスのコンテナへの登録
-=============
+==========================
 フレームワーク自身だけでなく、開発者も、サービスを登録することができます。コンポーネントAが動作するのにコンポーネントB(あるいはそのクラスのインスタンス)を必要とする場合、コンポーネントBの新しいインスタンスを作るのではなく、コンテナからコンポーネントBを取り出します。
 
 このやり方には、大きな利点があります:
@@ -423,11 +423,11 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalc
 :doc:`Phalcon\\DI <../api/Phalcon_DI>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
 
 簡単な登録
------
+----------
 As seen before, there are several ways to register services. These we call simple:
 
 文字列
-^^^^^
+^^^^^^
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader.
 This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -439,7 +439,7 @@ This type of definition does not allow to specify arguments for the class constr
     $di->set('request', 'Phalcon\Http\Request');
 
 オブジェクト
-^^^^^^
+^^^^^^^^^^^^
 This type expects an object. Due to the fact that object does not need to be resolved as it is
 already an object, one could say that it is not really a dependency injection,
 however it is useful if you want to force the returned dependency to always be
@@ -455,7 +455,7 @@ the same object/value:
     $di->set('request', new Request());
 
 クロージャ／無名関数
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 This method offers greater freedom to build the dependency as desired, however, it is difficult to
 change some of the parameters externally without having to completely change the definition of dependency:
 
@@ -497,7 +497,7 @@ Some of the limitations can be overcome by passing additional variables to the c
     });
 
 複雑な登録
------
+----------
 If it is required to change the definition of a service without instantiating/resolving the service,
 then, we need to define the services using the array syntax. Define a service using an array definition
 can be a little more verbose:
@@ -728,7 +728,7 @@ Mixing different types of definitions is allowed, everyone can decide what is th
 according to the application needs.
 
 サービスの解決
-=======
+==============
 Obtaining a service from the container is a matter of simply calling the "get" method. A new instance of the service will be returned:
 
 .. code-block:: php
@@ -775,7 +775,7 @@ The following events are supported:
 +----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
 
 共有サービス
-======
+============
 Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
 the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -816,7 +816,7 @@ the service is obtained from the DI, you can use the 'getShared' method:
     $request = $di->getShared("request");
 
 個別のサービスの操作
-==========
+====================
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
 .. code-block:: php
@@ -950,7 +950,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
     return $router;
 
 静的な方法でのDIへのアクセス
-===============
+============================
 If needed you can access the latest DI created in a static function in the following way:
 
 .. code-block:: php
@@ -983,7 +983,7 @@ registers the appropriate services bundled with the framework to act as full-sta
     $di = new FactoryDefault();
 
 サービス名の規約
-========
+================
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
 the correct (built-in) service when you need it.
 
@@ -1036,7 +1036,7 @@ the correct (built-in) service when you need it.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
 独自のDIの実装
-========
+==============
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://ja.wikipedia.org/wiki/%E5%88%B6%E5%BE%A1%E3%81%AE%E5%8F%8D%E8%BB%A2

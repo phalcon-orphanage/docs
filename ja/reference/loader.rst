@@ -178,7 +178,7 @@ Additional auto-loading data can be added to existing values in the following wa
 Passing "true" as second parameter will merge the current values with new ones in any strategy.
 
 セキュリティレイヤ
---------------
+------------------
 Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:
 
@@ -215,7 +215,7 @@ To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invali
 reducing the possibility of being attacked.
 
 オートロード時のイベント
-------------------
+------------------------
 In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
 .. code-block:: php
@@ -258,7 +258,7 @@ Some events when returning boolean false could stop the active operation. The fo
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
 トラブルシューティング
----------------
+----------------------
 Some things to keep in mind when using the universal autoloader:
 
 * Auto-loading process is case-sensitive, the class will be loaded as it is written in the code

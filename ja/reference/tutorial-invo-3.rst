@@ -6,7 +6,7 @@ INVO, we now address the creation of CRUDs, a very common task that Phalcon will
 using forms, validations, paginators and more.
 
 CRUDを使用した作業
------------
+------------------
 Most options that manipulate data in INVO (companies, products and types of products), were developed
 using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
 
@@ -94,7 +94,7 @@ Each controller has the following actions:
     }
 
 検索フォーム
-^^^^^^
+^^^^^^^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
 to create a search criteria from any field. Table "products" has a relationship to the table "products_types".
 In this case, we previously queried the records in this table in order to facilitate the search by that field:
@@ -314,7 +314,7 @@ When the form is submitted, the action "search" is executed in the controller pe
 based on the data entered by the user.
 
 検索の実行
-^^^^^
+^^^^^^^^^^
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
 form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
 we check it using the :doc:`Request <request>` component:
@@ -585,7 +585,7 @@ Printing whether the product is active or not uses a helper implemented in the m
 This method is defined in the model.
 
 レコードの登録と更新
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
 are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
 

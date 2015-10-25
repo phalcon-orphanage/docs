@@ -115,7 +115,7 @@ Note that a redirection doesn't disable the view component, so if there is a vie
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTPキャッシュ
-----------
+--------------
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache.
 Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
@@ -158,7 +158,7 @@ Browsers rely on the client's clock to assess if this date has passed or not. Th
 make pages expire and this may represent a limitation for this cache mechanism.
 
 キャッシュコントロール
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
 how long it must keep the page in its cache:
 

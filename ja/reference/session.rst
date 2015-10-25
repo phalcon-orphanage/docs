@@ -1,5 +1,5 @@
 セッションへのデータの保存
-=======================
+==========================
 
 The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
@@ -113,7 +113,7 @@ prefix for every session variable created in a certain application:
 Adding a unique ID is not necessary.
 
 セッション・バッグ
-------------
+------------------
 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component that helps separating session data into "namespaces".
 Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
 it's automatically stored in session:
@@ -131,7 +131,7 @@ it's automatically stored in session:
 
 
 コンポーネントでの永続的なデータ
------------------------------
+--------------------------------
 Controller, components and classes that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
 a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
 Thanks to this you can persist data between requests in every class in an independent way.

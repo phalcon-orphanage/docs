@@ -1,5 +1,5 @@
 ORMにおけるキャッシュ
-==================
+=====================
 
 Every application is different, we could have models whose data change frequently and others that rarely change.
 Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
@@ -12,7 +12,7 @@ The framework gives you the tools to implement the cache where you demand of it 
 of your application.
 
 結果セットのキャッシュ
-------------------
+----------------------
 A well established technique to avoid the continuous access to the database is to cache resultsets that don't change
 frequently using a system with faster access (usually memory).
 
@@ -285,7 +285,7 @@ Then use this class as base class for each 'Cacheable' model:
     }
 
 キャッシュの強制
--------------
+----------------
 Earlier we saw how Phalcon\\Mvc\\Model has a built-in integration with the caching component provided by the framework. To make a record/resultset
 cacheable we pass the key 'cache' in the array of parameters:
 
@@ -346,7 +346,7 @@ we can override the find/findFirst method to force every query to be cached:
     }
 
 PHQLクエリのキャッシュ
---------------------
+----------------------
 All queries in the ORM, no matter how high level syntax we used to create them are handled internally using PHQL.
 This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -509,7 +509,7 @@ Do not forget to register the custom models manager in the DI:
     });
 
 関連するレコードのキャッシュ
------------------------
+----------------------------
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find/findFirst
 in the target model according to the following table:
 
@@ -555,7 +555,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 関連するレコードの再帰的なキャッシュ
------------------------------------
+------------------------------------
 In this scenario, we assume that everytime we query a result we also retrieve their associated records.
 If we store the records found together with their related entities perhaps we could reduce a bit the overhead required
 to obtain all entities:

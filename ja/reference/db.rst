@@ -12,7 +12,7 @@ This component allows for a lower level database manipulation than using traditi
     for a complete reference.
 
 データベースアダプタ
------------------
+--------------------
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
 database engines are supported:
 
@@ -151,7 +151,7 @@ You can set PDO options at connection time by passing the parameters 'options':
     );
 
 レコードの検索
-------------
+--------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 .. code-block:: php
@@ -225,7 +225,7 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     echo $result->numRows();
 
 パラメータのバインディング
-------------------
+--------------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
 injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
@@ -353,7 +353,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $success = $connection->delete("robots", "id = ?", array(101));
 
 トランザクションとネストしたトランザクション
-------------------------------------
+--------------------------------------------
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
 often increase the performance on most database systems:
 
@@ -424,7 +424,7 @@ is created:
     }
 
 データベースイベント
----------------
+--------------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +---------------------+-----------------------------------------------------------+---------------------+

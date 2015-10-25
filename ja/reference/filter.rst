@@ -1,5 +1,5 @@
 フィルタリングとサニタイジング
-========================
+==============================
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
 access to the content of your application, mainly user data, or even the server your application is hosted on.
@@ -12,7 +12,7 @@ access to the content of your application, mainly user data, or even the server 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
 データのサニタイズ
----------------
+------------------
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
 By sanitizing input we ensure that application integrity will be intact.
 
@@ -38,7 +38,7 @@ By sanitizing input we ensure that application integrity will be intact.
 
 
 コントローラでのサニタイジング
----------------------------
+------------------------------
 You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
 (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
@@ -66,7 +66,7 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
     }
 
 アクションパラメータのフィルタリング
----------------------------
+------------------------------------
 The next example shows you how to sanitize the action parameters within a controller action:
 
 .. code-block:: php
@@ -89,7 +89,7 @@ The next example shows you how to sanitize the action parameters within a contro
     }
 
 データのフィルタリング
---------------
+----------------------
 In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
 the format we expect.
 
@@ -109,7 +109,7 @@ the format we expect.
 
 
 ビルトイン・フィルタの種類
--------------------------
+--------------------------
 The following are the built-in filters provided by this component:
 
 +-----------+---------------------------------------------------------------------------+

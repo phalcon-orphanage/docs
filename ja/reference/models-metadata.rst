@@ -1,5 +1,5 @@
 モデルのメタデータ
-=============
+===`=============
 
 To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
 related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
@@ -25,7 +25,7 @@ Sometimes it is necessary to get those attributes when working with models. You 
     print_r($dataTypes);
 
 メタデータのキャッシュ
------------
+----------------------
 Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each
 time you use the table. This could be done caching the meta-data using any of the following adapters:
 
@@ -65,7 +65,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
     };
 
 メタデータの取得方法
---------------
+--------------------
 As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information
 schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
@@ -94,11 +94,11 @@ You can change the default meta-data introspection in the following way:
     };
 
 データベースの内部構造から取得する方法
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
 
 アノテーションによる方法
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
 
 .. code-block:: php
@@ -185,7 +185,7 @@ The annotations strategy could be set up this way:
     };
 
 手動によるメタデータの管理
------------------
+--------------------------
 Phalcon can obtain the metadata for each model automatically without the developer must set them manually
 using any of the introspection strategies presented above.
 

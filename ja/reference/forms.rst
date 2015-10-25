@@ -1,5 +1,5 @@
 フォーム
-=====
+========
 
 Phalcon\\Forms is a component that aids you in the creation and maintenance of forms in web applications.
 
@@ -198,7 +198,7 @@ In the form's instantiation you must use:
     );
 
 バリデーション
-----------
+--------------
 Phalcon forms are integrated with the :doc:`validation <validation>` component to offer instant validation. Built-in or
 custom validators could be set to each element:
 
@@ -271,7 +271,7 @@ Or get specific messages for an element:
     }
 
 フィルタリング
----------
+--------------
 A form is also able to filter data before it is validated. You can set filters in each element:
 
 オプションのセット
@@ -410,7 +410,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 イベント・コールバック
----------------
+----------------------
 Whenever forms are implemented as classes, the callbacks: :code:`beforeValidation()` and :code:`afterValidation()` can be implemented
 in the form's class to perform pre-validations and post-validations:
 
@@ -429,7 +429,7 @@ in the form's class to perform pre-validations and post-validations:
     }
 
 フォームのレンダリング
----------------
+----------------------
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 .. code-block:: html+php
