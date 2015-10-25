@@ -68,7 +68,7 @@ L'utilisation d'un cache rendra généralement l'application très rapide même 
 D'autres applications génèrent un contenu qui changera à chaque requête. Dans ce cas PHP est utilisé pour génèrer ce contenu.
 De telles applications peuvent être des APIs, des forums à fort trafic, des blogs avec beaucoup de commentaires et de contributeurs,
 des applications de statistiques, des interfaces d'administration, des progiciels de gestion intégré (ou "ERP"),
- des logiciels d'informatique décisionnelle ("BI", ou  "business-intelligence" en anglais) qui traitent des données en temps réel, et bien d'autres...
+des logiciels d'informatique décisionnelle ("BI", ou  "business-intelligence" en anglais) qui traitent des données en temps réel, et bien d'autres...
 
 Une application sera aussi lente que le plus lent de ses composants/processus.
 Phalcon offre des fonctionnalités riches et très rapides qui permettent aux développeurs de se concentrer sur la création de leurs applications.

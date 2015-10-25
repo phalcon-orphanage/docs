@@ -250,7 +250,7 @@ This function takes into account the connection charset, so its recommended to d
 in the connection parameters or in your database server configuration, as a wrong
 charset will produce undesired effects when storing or retrieving data.
 
-Also, you can pass your parameterers directly to the execute/query methods. In this case
+Also, you can pass your parameters directly to the execute/query methods. In this case
 bound parameters are directly passed to PDO:
 
 .. code-block:: php

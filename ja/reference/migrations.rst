@@ -179,7 +179,7 @@ Database migrations support the following database column types:
 * :code:`Phalcon\\Db\\Column::TYPE_CHAR`
 * :code:`Phalcon\\Db\\Column::TYPE_DATE`
 * :code:`Phalcon\\Db\\Column::TYPE_DATETIME`
-* :code:`Phalcon\\Db\\Column::TYPE_TIMETAMP`
+* :code:`Phalcon\\Db\\Column::TYPE_TIMESTAMP`
 * :code:`Phalcon\\Db\\Column::TYPE_DECIMAL`
 * :code:`Phalcon\\Db\\Column::TYPE_TEXT`
 * :code:`Phalcon\\Db\\Column::TYPE_BOOLEAN`
