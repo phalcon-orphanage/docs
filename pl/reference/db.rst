@@ -751,6 +751,8 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "notNull"       | Column can store null values?                                                                                                              | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Yes      |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
