@@ -960,7 +960,7 @@ Phalcon использует магические методы __set/__get/__cal
     $robotPart   = RobotsParts::findFirst(1);
 
     // Модель RobotsParts имеет отношение многие-к-одному n-1 (belongsTo)
-    // Отношениеo к RobotsParts
+    // Отношение к RobotsParts
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
@@ -1291,7 +1291,7 @@ Cascade/Ограничить действия
         )
     );
     foreach ($group as $row) {
-       echo  $row->rowcount , " cотрудников в ", $row->area;
+       echo  $row->rowcount , " сотрудников в ", $row->area;
     }
 
     // Количество сотрудников сгруппированных по сфере деятельности упорядочено по их количеству

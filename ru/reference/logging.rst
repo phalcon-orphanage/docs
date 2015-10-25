@@ -140,7 +140,7 @@ In the example above, only critical and emergency messages will get saved to the
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
 | Firephp | Formats the messages so that they can be sent to FirePHP | :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` |
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Json    | Подготовка записей для преобразoвание в JSON             | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       |
+| Json    | Подготовка записей для преобразование в JSON             | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       |
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
 | Syslog  | Подготовка записи для отправки в системный журнал        | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   |
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
