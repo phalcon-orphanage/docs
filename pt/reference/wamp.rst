@@ -42,7 +42,7 @@ Abra seu navegador e navegue até o endereço: http://localhost. A página de bo
 Parabens!, você agora está voando com Phalcon.
 
 Guias Relacionados
---------------
+------------------
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on XAMPP for Windows </reference/xampp>`
 
