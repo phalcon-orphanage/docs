@@ -78,7 +78,7 @@ ACLにロールの追加
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-:code:`allow()`メソッドは特定のロールが特定のリソースへのアクセス権を与えられたことを明示します。:code:`deny()`メソッドはその反対です。
+:code:`allow()` メソッドは特定のロールが特定のリソースへのアクセス権を与えられたことを明示します。:code:`deny()` メソッドはその反対です。
 
 ACLの照会
 ---------------
