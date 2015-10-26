@@ -6,7 +6,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 默认情况下这个组件使用AES-256 (rijndael-256-cbc)。
 
 基本使用
------------
+--------
 这个组件极易使用：
 
 .. code-block:: php
@@ -51,7 +51,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     }
 
 加密选项（Encryption Options）
------------------------------
+------------------------------
 
 下面的选项可以改变加密的行为：
 
@@ -83,7 +83,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     echo $crypt->encrypt($text, $key);
 
 提供 Base64（Base64 Support）
-----------------------------
+-----------------------------
 为了方便传输或显示我们可以对加密后的数据进行 base64_ 转码：
 
 .. code-block:: php

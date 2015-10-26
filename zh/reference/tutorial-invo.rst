@@ -1,5 +1,5 @@
 教程 2：Introducing INVO（Tutorial 2: Introducing INVO）
-===================================================
+========================================================
 
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
@@ -9,7 +9,7 @@ Also, INVO was made with `Bootstrap`_ as client-side framework. Although the app
 invoices, it still serves as an example to understand how the framework works.
 
 项目结构（Project Structure）
------------------------
+-----------------------------
 Once you clone the project in your document root you'll see the following structure:
 
 .. code-block:: bash
@@ -42,7 +42,7 @@ about INVO and request contact information. The second part is the backend, an a
 registered user can manage his/her products and customers.
 
 路由（Routing）
------------
+---------------
 INVO uses the standard route that is built-in with the :doc:`Router <routing>` component. These routes match the following
 pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
 action and the rest are the parameters.
@@ -50,7 +50,7 @@ action and the rest are the parameters.
 The following route `/session/register` executes the controller SessionController and its action registerAction.
 
 配置（Configuration）
------------------
+---------------------
 INVO has a configuration file that sets general parameters in the application. This file is located at
 app/config/config.ini and it's loaded in the very first lines of the application bootstrap (public/index.php):
 
@@ -90,7 +90,7 @@ Phalcon hasn't any pre-defined convention settings. Sections help us to organize
 In this file there are two sections to be used later "application" and "database".
 
 自动加载（Autoloaders）
------------------
+-----------------------
 The second part that appears in the bootstrap file (public/index.php) is the autoloader:
 
 .. code-block:: php
@@ -191,7 +191,7 @@ which initializes and executes all that is necessary to make the application run
     echo $app->handle()->getContent();
 
 依赖注入（Dependency Injection）
---------------------------
+--------------------------------
 Look at the first line of the code block above, the Application class constructor is receiving the variable
 :code:`$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework,
 so we need a component that acts as glue to make everything work together. That component is :doc:`Phalcon\\DI <../api/Phalcon_DI>`.

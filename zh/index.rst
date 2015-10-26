@@ -13,7 +13,7 @@ Phalcon 也是松耦合的，可以根据项目的需要任意使用其他对象
 Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，拥有更加丰富的功能以及更加简单易于使用！
 
 目录
------------------
+-----
 
 .. toctree::
    :maxdepth: 3
@@ -79,7 +79,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/license
 
 其他格式
--------------
+--------
 
 * `PDF <https://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <https://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_

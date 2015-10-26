@@ -1,14 +1,14 @@
 Windows 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Windows）
-==================================
+=========================================================================
 
 These steps will guide you through the process of installing Phalcon Developer Tools for Windows.
 
 预备知识（Prerequisites）
--------------
+-------------------------
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
 下载（Download）
---------
+----------------
 You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 
 On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\phalcon-tools*. You will need this path in the steps below. Edit the file "phalcon.bat" by right clicking on the file and selecting "Edit":
@@ -24,7 +24,7 @@ Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\ph
 Save the changes.
 
 添加 PHP 以及工具所在路径到系统环境变量 PATH （Adding PHP and Tools to your system PATH）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\wamp\bin\\php\\php5.3.10\\php.exe*.
 
 From the Windows start menu, right mouse click on the "Computer" icon and select "Properties":
@@ -65,7 +65,7 @@ Type the commands "php -v" and "phalcon" and you will see something like this:
 Congratulations you now have Phalcon tools installed!
 
 相关指南（Related Guides）
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on OS X <mactools>`
 * :doc:`Installation on Linux <linuxtools>`

@@ -16,7 +16,7 @@ With this component you can load files from other projects or vendors, this auto
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
 注册命名空间（Registering Namespaces）
-----------------------
+--------------------------------------
 If you're organizing your code using namespaces, or external libraries do so, the registerNamespaces() provides the autoloading mechanism. It
 takes an associative array, which keys are namespace prefixes and their values are directories where the classes are located in. The namespace
 separator will be replaced by the directory separator when the loader try to find the classes. Remember always to add a trailing slash at
@@ -48,7 +48,7 @@ the end of the paths.
     $some = new Example\Adapter\Some();
 
 注册前缀（Registering Prefixes）
---------------------
+--------------------------------
 This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
 where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
 the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.
@@ -79,7 +79,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
     $some = new Example_Adapter_Some();
 
 注册文件夹（Registering Directories）
------------------------
+-------------------------------------
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance,
 since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class.
 It's important to register the directories in relevance order. Remember always add a trailing slash at the end of the paths.
@@ -112,7 +112,7 @@ It's important to register the directories in relevance order. Remember always a
     $some = new Some();
 
 注册类名（Registering Classes）
--------------------
+-------------------------------
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the
 project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading.
 However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make
@@ -144,7 +144,7 @@ maintenance of the class list very cumbersome and it is not recommended.
     $some = new Some();
 
 额外的扩展名（Additional file extensions）
---------------------------
+------------------------------------------
 Some autoloading strategies such as  "prefixes", "namespaces" or "directories" automatically append the "php" extension at the end of the checked file. If you
 are using additional extensions you could set it with the method "setExtensions". Files are checked in the order as it were defined:
 
@@ -159,7 +159,7 @@ are using additional extensions you could set it with the method "setExtensions"
     $loader->setExtensions(array("php", "inc", "phb"));
 
 修改当前策略（Modifying current strategies）
-----------------------------
+--------------------------------------------
 Additional auto-loading data can be added to existing values in the following way:
 
 .. code-block:: php
@@ -178,7 +178,7 @@ Additional auto-loading data can be added to existing values in the following wa
 Passing "true" as second parameter will merge the current values with new ones in any strategy.
 
 安全层（Security Layer）
---------------
+------------------------
 Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:
 
@@ -215,7 +215,7 @@ To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invali
 reducing the possibility of being attacked.
 
 自动加载事件（Autoloading Events）
-------------------
+----------------------------------
 In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
 .. code-block:: php
@@ -258,7 +258,7 @@ Some events when returning boolean false could stop the active operation. The fo
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
 注意事项（Troubleshooting）
----------------
+---------------------------
 Some things to keep in mind when using the universal autoloader:
 
 * Auto-loading process is case-sensitive, the class will be loaded as it is written in the code

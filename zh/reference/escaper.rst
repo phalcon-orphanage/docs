@@ -1,5 +1,5 @@
 上下文编码（Contextual Escaping）
-===================
+=================================
 
 网站及其它B/S应用极易受到 XSS_ 攻击，尽管PHP提供了转义功能，在某些情况下依然不够安全。在Phalcon中 :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` 提供了上下文转义功能，这个模块是由C语言实现的，
 这在进行转义时可以有更好的性能。
@@ -70,7 +70,7 @@ HTML 编码（Escaping HTML）
 
     <div class="comments"><!-- Escape untrusted data here! --></div>
 
-我们可以使用:code:`escapeHtml`方法对这些文本进行转义：
+我们可以使用 :code:`escapeHtml` 方法对这些文本进行转义：
 
 .. code-block:: html+php
 
@@ -83,14 +83,14 @@ HTML 编码（Escaping HTML）
     <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
 
 HTML 属性编码（Escaping HTML Attributes）
-----------------------------------------
+-----------------------------------------
 对html属性进行转义和对html内容进行转义略有不同。对html的属性进行转义是通过对所有的非字母和数字转义来实现的。类例的转义都会如此进行的，除了一些复杂的属性外如：href和url:
 
 .. code-block:: html
 
     <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-我们这里使用:code:`escapeHtmlAttr`方法对html属性进行转义：
+我们这里使用 :code:`escapeHtmlAttr` 方法对html属性进行转义：
 
 .. code-block:: html+php
 
@@ -103,14 +103,14 @@ HTML 属性编码（Escaping HTML Attributes）
     <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
 
 URL 编码（Escaping URLs）
--------------
+-------------------------
 一些html的属性如href或url需要使用特定的方法进行转义：
 
 .. code-block:: html
 
     <a href="Escape untrusted data here!">Some link</a>
 
-我们这里使用:code:`escapeUrl`方法进行url的转义：
+我们这里使用 :code:`escapeUrl` 方法进行url的转义：
 
 .. code-block:: html+php
 
@@ -123,14 +123,14 @@ URL 编码（Escaping URLs）
     <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
 
 CSS 编码（Escaping CSS）
-------------
+------------------------
 CSS标识/值也可以进行转义:
 
 .. code-block:: html
 
     <a style="color: Escape untrusted data here">Some link</a>
 
-这里我们使用:code:`escapeCss`方法进行转义：
+这里我们使用 :code:`escapeCss` 方法进行转义：
 
 .. code-block:: html+php
 
@@ -150,7 +150,7 @@ JavaScript 编码（Escaping JavaScript）
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-这里我们使用:code:`escapeJs`进行转义：
+这里我们使用 :code:`escapeJs` 进行转义：
 
 .. code-block:: html+php
 

@@ -1,5 +1,5 @@
 资源文件管理（Assets Management）
-=================
+=================================
 
 Phalcon\\Assets是一个让开发者管理静态资源的组件，如管理CSS，JavaScript等。
 
@@ -7,7 +7,7 @@ Phalcon\\Assets是一个让开发者管理静态资源的组件，如管理CSS�
 任何地方使用它来添加/管理资源。
 
 添加资源（Adding Resources）
-----------------
+----------------------------
 Assets支持两个内置的资源管理器：css和javascripts.我们可以根据需要创建其它的资源。资源管理器内部保存了两类资源集合一为
 JavaScript另一为CSS.
 
@@ -72,7 +72,7 @@ Volt语法：
 For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
 
 本地与远程资源（Local/Remote resources）
-----------------------
+----------------------------------------
 本地资源是同一应用中的资源，这些资源存在于应用的根目录中。 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 用来生成
 本地的url.
 
@@ -94,7 +94,7 @@ The second parameter of :code:`addCss()` and :code:`addJs()` says whether the re
     }
 
 集合（Collections）
------------
+-------------------
 集合即是把一同类的资源放在一些，资源管理器隐含的创建了两个集合：css和js. 当然我们可以创建其它的集合以归类其它的资源， 这样我们可以很容易的
 在视图里显示：
 
@@ -149,7 +149,7 @@ Volt语法：
     <html>
 
 前缀（URL Prefixes）
---------
+--------------------
 集合可以添加前缀，这可以实现非常简单的更换服务器：
 
 .. code-block:: php
@@ -181,7 +181,7 @@ Volt语法：
         ->addJs('js/bootstrap.min.js');
 
 压缩与过滤（Minification/Filtering）
-----------------------
+------------------------------------
 Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定资源管理器以确定对哪些资源进行压缩啊些资源不进行压缩。除了上面这些之外
 我们还可以使用Douglas Crockford书写的Jsmin压缩工具，及Ryan Day提供的CSSMin来对js及css文件进行压缩.
 下面的例子中展示了如何使用集合对资源文件进行压缩：
@@ -269,11 +269,11 @@ and which URI will be used to show it. These settings are set up with :code:`set
     // 使用此uri引用js
     $js->setTargetUri('production/final.js');
 
-如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用:code:`setTargetPath()`
-和:code:`setTargetUri()`两个函数来配置。
+如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用 :code:`setTargetPath()`
+和 :code:`setTargetUri()` 两个函数来配置。
 
 内置过滤器（Built-In Filters）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由于二者是使用c实现的故极大的减少了性能上的开销：
 
 +-----------------------------------+----------------------------------------------------------------+
@@ -285,8 +285,8 @@ Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由
 +-----------------------------------+----------------------------------------------------------------+
 
 自定义过滤器（Custom Filters）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-除了使用Phalcon内置的过滤器外，开发者还可以创建自己的过滤器。这样我们就可以使用YUI_, Sass, Closure_,等。
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+除了使用Phalcon内置的过滤器外，开发者还可以创建自己的过滤器。这样我们就可以使用 YUI_, Sass_, Closure_, 等。
 
 .. code-block:: php
 
@@ -391,8 +391,8 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
     }
 
 自定义输出（Custom Output）
--------------
-:code:`outputJs()`及:code:`outputCss()`方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
+---------------------------
+:code:`outputJs()` 及 :code:`outputCss()` 方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：
 
 .. code-block:: php
 

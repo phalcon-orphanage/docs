@@ -1,5 +1,5 @@
 安全（Security）
-==============
+================
 
 该组件可以帮助开发人员在共同安全方面的一些工作，比如密码散列和跨站点请求伪造(CSRF)保护。
 
@@ -66,7 +66,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的，所以需要加载扩展 openssl_。
 
 防止跨站点请求伪造攻击（Cross-Site Request Forgery (CSRF) protection）
---------------------------------------------------------------------
+----------------------------------------------------------------------
 这是另一个常见的web站点和应用程序攻击。如用户注册或添加注释的这类表单就很容易受到这种攻击。
 
 可以想到的方式防止表单值发送自外部应用程序。为了解决这个问题，我们为每个表单生成一个一次性随机令牌（`random nonce`_），在会话中添加令牌，然后一旦表单数据提交到
@@ -118,7 +118,7 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 同时也建议为表单添加一个 captcha_ ，以完全避免这种攻击的风险。
 
 设置组件（Setting up the component）
-----------------------------------
+------------------------------------
 该组件自动在服务容器中注册为“security”,你亦可以重新注册它并为它设置参数:
 
 .. code-block:: php
@@ -166,7 +166,7 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
     $number     = $random->number($n);
 
 外部资源（External Resources）
-----------------------------
+------------------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, 是一个使用的安全组件避免CSRF和密码散列的示例应用程序 [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _sha1: http://php.net/manual/en/function.sha1.php

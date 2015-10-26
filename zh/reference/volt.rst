@@ -1,5 +1,5 @@
 Volt 模版引擎（Volt: Template Engine）
-=====================
+======================================
 
 Volt 是一个用C为PHP编写的超快的并且对设计师友好的模板语言。Volt 提供一组辅助工具有助于你以一种更简单的的方式编写视图（Views）。
 同时，Volt与Phalcon的其他组件高度集成在一起，就像你在应用中单独使用Volt一样。
@@ -13,7 +13,7 @@ have been enhanced with more elements and of course with the performance that de
 accustomed to while working with Phalcon.
 
 简介（Introduction）
-------------
+--------------------
 Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP代码的工作：
 
 .. code-block:: html+jinja
@@ -32,7 +32,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
     {% endblock %}
 
 启用 Volt（Activating Volt）
----------------
+----------------------------
 As with other templating engines, you may register Volt in the view component, using a new extension or
 reusing the standard .phtml:
 
@@ -74,7 +74,7 @@ Use the standard ".phtml" extension:
     );
 
 基本用法（Basic Usage）
------------
+-----------------------
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
 Volt mode. :code:`{% ... %}` is used to execute statements such as for-loops or assign values and :code:`{{ ... }}`,
 prints the result of an expression to the template.

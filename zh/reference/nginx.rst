@@ -1,16 +1,16 @@
 Nginx 安装说明（Nginx Installation Notes）
-========================
+==========================================
 
 Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
 The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications.
 
 Niginx 下配置 Phalcon（Configuring Nginx for Phalcon）
------------------------------
+------------------------------------------------------
 The following are potential configurations you can use to setup nginx with Phalcon:
 
 基础配置（Basic configuration）
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using $_GET['_url'] as source of URIs:
 
 .. code-block:: nginx
@@ -87,7 +87,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
     }
 
 专属实例（Dedicated Instance）
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: nginx
 
     server {
@@ -133,7 +133,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
     }
 
 使用 Host 配置（Configuration by Host）
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 And this second configuration allow you to have different configurations by host:
 
 .. code-block:: nginx

@@ -1,11 +1,11 @@
 多语言支持（Multi-lingual Support）
-=====================
+===================================
 
 The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications.
 Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 适配器（Adapters）
---------
+------------------
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
 +-------------+-----------------------------------------------------------------------------------------+
@@ -15,7 +15,7 @@ This component makes use of adapters to read translation messages from different
 +-------------+-----------------------------------------------------------------------------------------+
 
 组件的使用（Component Usage）
----------------
+-----------------------------
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
 to organize your translation strings. A simple structure could be:
 
@@ -119,7 +119,7 @@ Some applications implement multilingual on the URL such as http://www.mozilla.o
 this by using a :doc:`Router <routing>`.
 
 自定义适配器（Implementing your own adapters）
-------------------------------
+----------------------------------------------
 The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` interface must be implemented
 in order to create your own translate adapters or extend the existing ones:
 

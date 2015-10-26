@@ -1,5 +1,5 @@
 访问控制列表 ACL（Access Control Lists ACL）
-==========================================
+============================================
 
 Phalcon在权限方面通过 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 提供了一个轻量级的 ACL(访问控制列表). `Access Control Lists`_ (ACL)
 允许系统对用户的访问权限进行控制，比如允许访问某些资源而不允许访问其它资源等。 这里我们建议开发者了解一些关于ACL的技术。
@@ -52,7 +52,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 上面我们看到，我们可以直接使用字符串来定义角色。
 
 添加资源（Adding Resources）
----------------------------
+----------------------------
 资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是控制器。 Phalcon中我们使用 :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` 来定义资源。
 非常重要的一点即是我们把相关的action或操作添加到资源中这样ACL才知道控制什么资源。
 
@@ -70,7 +70,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
     $acl->addResource($customersResource, array("create", "update"));
 
 定义访问控制（Defining Access Controls）
----------------------------------------
+----------------------------------------
 至此我们定义了角色及资源， 现在是定义ACL的时候了，即是定义角色对资源的访问。 这个部分是极其重要的，特别是在我们设定了默认的访问级别后。
 
 .. code-block:: php
@@ -203,7 +203,7 @@ ACL 事件（ACL Events）
     $acl->setEventsManager($eventManagers);
 
 自定义适配器（Implementing your own adapters）
----------------------------------------------
+----------------------------------------------
 开发者要创建自己的扩展或已存在适配器则需要实现此 :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` 接口。
 
 .. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list
