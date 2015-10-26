@@ -1,5 +1,5 @@
 数据库迁移（Database Migrations）
-===================
+=================================
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -18,7 +18,7 @@ When a migration is generated a set of classes are created to describe how your 
     </div>
 
 图解导出（Schema Dumping）
---------------
+--------------------------
 The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
 
 The available options for generating migrations are:
@@ -41,7 +41,7 @@ By default :doc:`Phalcon Developer Tools <tools>` uses the *app/migrations* dire
    :align: center
 
 迁移类剖析（Migration Class Anatomy）
------------------------
+-------------------------------------
 Each file contains a unique class that extends the :code:`Phalcon\\Mvc\\Model\\Migration` class. These classes normally have two methods: :code:`up()` and :code:`down()`. :code:`up()` performs the migration, while :code:`down()` rolls it back.
 
 :code:`up()` also contains the *magic* method :code:`morphTable()`. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
@@ -149,7 +149,7 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 定义列（Defining Columns）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -194,11 +194,11 @@ Database migrations support the following database column types:
 * :code:`Phalcon\\Db\\Column::TYPE_BIGINTEGER`
 
 定义索引（Defining Indexes）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 定义关系（Defining References）
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
@@ -218,7 +218,7 @@ Database migrations support the following database column types:
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 
 创建迁移类（Writing Migrations）
-------------------
+--------------------------------
 Migrations aren't only designed to "morph" table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the :doc:`database component <db>`.
 
 .. code-block:: php
@@ -240,7 +240,7 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
     }
 
 执行迁移（Running Migrations）
-------------------
+------------------------------
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
 .. figure:: ../_static/img/migrations-4.png

@@ -1,10 +1,10 @@
 Cherokee 安装说明（Cherokee Installation Notes）
-===========================
+================================================
 
 Cherokee_ 是一个高性能的web服务器。它非常快，运行稳定并且易于配置。
 
 针对Phalcon的Cherokee配置
---------------------------------
+-------------------------
 Cherokee提供了友好的界面来设置几乎web服务器全部可用的配置。
 使用root帐号执行 /path-to-cherokee/sbin/cherokee-admin 可以开启cherokee管理员。
 

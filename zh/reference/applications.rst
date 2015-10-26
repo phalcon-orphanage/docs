@@ -1,16 +1,16 @@
 MVC 应用（MVC Applications）
-================
+============================
 
 在Phalcon，策划MVC操作背后的全部困难工作通常都可以
 通过 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 做到。这个组件封装了全部后端所需要的复杂
 操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
 
 单模块或多模块应用（Single or Multi Module Applications）
------------------------------------
+---------------------------------------------------------
 通过这个组件，你可以运行各式各样的MVC结构：
 
 单模块（Single Module）
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 单一的MVC应用仅仅包含了一个模块。可以使用命名空间，但不是必需的。
 这样类型的应用可能会有以下文件目录结构：
 
@@ -114,7 +114,7 @@ MVC 应用（MVC Applications）
     }
 
 多模块（Multi Module）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 多模块的应用使用了相同的文档根目录但拥有多个模块。在这种情况下，可以使用以下的文件目录结构：
 
 .. code-block:: php
@@ -300,10 +300,10 @@ MVC 应用（MVC Applications）
 当 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 有多个模块注册时，通常
 每个都是需要的，以便每一个被匹配到的路由都能返回一个有效的模块。每个已经注册的模块都有一个相关的类来提供建立和启动自身的函数。
 而每个模块定义的类都必须实现registerAutoloaders()和registerServices()这两个方法，这两个函数会在模块即被执行时被
- :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 调用。
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 调用。
 
 理解默认行为（Understanding the default behavior）
-----------------------------------
+--------------------------------------------------
 如果你已经看过了 :doc:`tutorial <tutorial>` 或者已经通过 :doc:`Phalcon Devtools <tools>` 生成了代码，
 你将很容易识别以下的启动文件：
 
@@ -339,7 +339,7 @@ MVC 应用（MVC Applications）
     echo $application->handle()->getContent();
 
 手动启动（Manual bootstrapping）
--------------------
+--------------------------------
 如果你不想使用 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` ，以上的代码可以改成这样：
 
 .. code-block:: php
@@ -469,7 +469,7 @@ MVC 应用（MVC Applications）
 因为根据你的项目需要，你可以想对实例什么和不实例化什么进行完全的控制，或者想用你自己的组件来替代那些确定和必须的组件从而扩展默认的功能。
 
 应用事件（Application Events）
-------------------
+------------------------------
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 可以把事件发送到 :doc:`EventsManager <events>` （如果它激活的话）。
 事件将被当作"application"类型被消费掉。目前已支持的事件如下：
 
@@ -507,5 +507,5 @@ MVC 应用（MVC Applications）
     );
 
 外部资源（External Resources）
-------------------
+------------------------------
 * `Github上的MVC示例 <https://github.com/phalcon/mvc>`_

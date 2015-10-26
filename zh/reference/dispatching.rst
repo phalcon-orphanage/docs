@@ -1,11 +1,11 @@
 调度控制器（Dispatching Controllers）
-=======================
+=====================================
 
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
 控制器和执行在这些控制器上必要动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务。
 
 循环调度（The Dispatch Loop）
------------------
+-----------------------------
 在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
 发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
 如果一个动作将这个流转发给了另一个控制器/动作，控制调度器将会再次启动。为了更好
@@ -36,7 +36,7 @@
 上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。
 
 循环调度事件（Dispatch Loop Events）
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 可以发送事件给当前的 :doc:`EventsManager <events>` 。
 事件会以“dispatch”类型被所触发。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：
 
@@ -114,7 +114,7 @@
     }
 
 转发到其他动作（Forwarding to other actions）
----------------------------
+---------------------------------------------
 循环调度允许我们转发执行流到另一个控制器/动作。这对于检查用户是否可以
 访问页面，将用户重定向到其他屏幕或简单地代码重用都非常有用。
 
@@ -186,7 +186,7 @@
 +----------------+--------------------------------------------------------+
 
 准备参数（Preparing Parameters）
---------------------
+--------------------------------
 多得 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 提供的钩子函数， 你可以简单地
 调整你的应用来匹配URL格式：
 
@@ -268,7 +268,7 @@
     });
 
 获取参数（Getting Parameters）
-------------------
+------------------------------
 当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了
 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获得这些参数。
 
@@ -300,11 +300,11 @@
     }
 
 准备行动（Preparing actions）
------------------
+-----------------------------
 你也可以为动作定义一个调度前的映射表。
 
 转换动作名（Camelize action names）
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如果原始链接是：http://example.com/admin/products/show-latest-products，
 例如你想把'show-latest-products'转换成'ShowLatestProducts'，
 需要以下代码：
@@ -334,7 +334,7 @@
     });
 
 删除遗留的扩展名（Remove legacy extensions）
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如果原始链接总是包含一个'.php'扩展名：
 
 http://example.com/admin/products/show-latest-products.php
@@ -371,7 +371,7 @@ http://example.com/admin/products/index.php
     });
 
 注入模型实例（Inject model instances）
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在这个实例中，开发人员想要观察动作接收到的参数以便可以动态注入模型实例。
 
 控制器看起来像这样：
@@ -456,7 +456,7 @@ http://example.com/admin/products/index.php
 开发人员可以在执行动作前注入任何类型的依赖或者模型，以进行提高和强化。
 
 处理 Not-Found 错误（Handling Not-Found Exceptions）
------------------------------
+----------------------------------------------------
 使用 :doc:`EventsManager <events>` ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：
 
 .. code-block:: php
@@ -551,6 +551,6 @@ http://example.com/admin/products/index.php
     侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。
 
 自定义调度器（Implementing your own Dispatcher）
---------------------------------
+------------------------------------------------
 为了创建自定义调度器，必须实现  :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口，
 从而替换Phalcon框架默认提供的调度器。

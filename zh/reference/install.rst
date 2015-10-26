@@ -1,5 +1,5 @@
 安装（Installation）
-================
+====================
 作为PHP C拓展形式的Phalcon，需要一个略微不同于传统PHP的库或框架的安装方法。你可以选择一个当前系统的一个二进制包下载，或者使用源代码构建它。
 
 .. highlights::
@@ -23,7 +23,7 @@ Windows
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 相关指南（Related Guides）
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -35,7 +35,7 @@ Linux/Solaris/Mac
 在Linux/Solaris/Mac系统下，你能很轻易从源代码编译和安装这个拓展:
 
 基本要求（Requirements）
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 必要的包:
 
 * PHP 5.3.x/5.4.x/5.5.x development resources
@@ -59,7 +59,7 @@ Linux/Solaris/Mac
     pkg install gcc-45 php-53 apache-php53
 
 编译（Compilation）
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 创建扩展:
 
 .. code-block:: bash
@@ -153,7 +153,7 @@ FreeBSD
     cd /usr/ports/www/phalcon && make install clean
 
 安装说明（Installation Notes）
-------------------------
+------------------------------
 常见Web服务器的安装说明：
 
 .. toctree::

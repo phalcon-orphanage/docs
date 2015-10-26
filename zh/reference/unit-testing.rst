@@ -1,10 +1,10 @@
 单元测试（Unit testing）
-============
+========================
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 整合 PHPunit 到 phalcon（Integrating PHPunit with phalcon）
---------------------------------
+-----------------------------------------------------------
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
 .. code-block:: bash
@@ -33,7 +33,7 @@ Once phpunit is installed create a directory called 'tests' in your root directo
 Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 PHPunit 辅助文件（The PHPunit helper file）
------------------------
+-------------------------------------------
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your tests/ directory as TestHelper.php.
 
 .. code-block:: php
@@ -102,7 +102,7 @@ or by manually adding it to composer.json:
 You can also clone the repository using the repo link above.
 
 PHPunit.xml 文件（PHPunit.xml file）
-----------------
+------------------------------------
 Now, create a phpunit file:
 
 .. code-block:: xml
@@ -129,7 +129,7 @@ Modify the phpunit.xml to fit your needs and save it in tests/.
 This will run any tests under the tests/ directory.
 
 简单的单元测试（Sample unit test）
-----------------
+----------------------------------
 To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
 This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.

@@ -1,11 +1,11 @@
 分页（Pagination）
-==========
+==================
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data into browsable pages.
 
 数据适配器（Data Adapters）
--------------
+---------------------------
 This component makes use of adapters to encapsulate different sources of data:
 
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -19,7 +19,7 @@ This component makes use of adapters to encapsulate different sources of data:
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 示例（Examples）
---------
+----------------
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
 .. code-block:: php
@@ -81,7 +81,7 @@ The :code:`$page` object also contains navigation data:
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
 适配器使用（Adapters Usage）
---------------
+----------------------------
 An example of the source data that must be used for each adapter:
 
 .. code-block:: php
@@ -132,7 +132,7 @@ An example of the source data that must be used for each adapter:
     );
 
 页面属性（Page Attributes）
----------------
+---------------------------
 The :code:`$page` object has the following attributes:
 
 +-------------+--------------------------------------------------------+
@@ -154,7 +154,7 @@ The :code:`$page` object has the following attributes:
 +-------------+--------------------------------------------------------+
 
 自定义适配器（Implementing your own adapters）
-------------------------------
+----------------------------------------------
 The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
 .. code-block:: php

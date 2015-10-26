@@ -1,5 +1,5 @@
 队列（Queueing）
-========
+================
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed
 online or in real time because it may slow the loading time of pages and severely impact the user experience.
@@ -12,7 +12,7 @@ Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Mem
 It’s simple, lightweight, and completely specialized for job queueing.
 
 将任务加入队列（Putting Jobs into the Queue）
----------------------------
+---------------------------------------------
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message
 structure according to the needs of the application:
 
@@ -91,7 +91,7 @@ Every job put into the queue returns a "job id" which you can use to track the s
     );
 
 检索信息（Retrieving Messages）
--------------------
+-------------------------------
 Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete
 the task:
 

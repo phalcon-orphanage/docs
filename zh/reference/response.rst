@@ -1,5 +1,5 @@
 返回响应（Returning Responses）
-=============================
+===============================
 
 Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
@@ -45,7 +45,7 @@ directly from a controller's action follow this example:
     }
 
 使用头部信息（Working with Headers）
-----------------------------------
+------------------------------------
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
 type of response and much more.
 
@@ -76,7 +76,7 @@ retrieves the headers before sending it to client:
     $contentType = $response->getHeaders()->get("Content-Type");
 
 重定向（Making Redirections）
----------------------------
+-----------------------------
 可以通过 :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` 来执行HTTP重定向：
 
 .. code-block:: php
@@ -119,7 +119,7 @@ will be executed anyway. You can disable the view from a controller by executing
 值得注意的时候重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 $this->view->disable() 来禁用view。
 
 HTTP 缓存（HTTP Cache）
-----------------------
+-----------------------
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache.
 Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 

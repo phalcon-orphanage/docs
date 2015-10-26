@@ -1,12 +1,12 @@
 日志记录（Logging）
-=====================
+===================
 
 Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`。 我们可以使用此组件输出日志到不同的流中，如文件，系统日志等。
 这个组件还提供了其它的功能如日志事务（类似于数据库的事务）， 配置选项， 还可以输出不同的格式，另外还支持多种过滤器。 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`
- 提供了多种日志记录方式，从调试程序到跟踪应用的执行以满足应用的需求。
+提供了多种日志记录方式，从调试程序到跟踪应用的执行以满足应用的需求。
 
 适配器（Adapters）
------------------
+------------------
 此组件使用不同的流适配器来保存日信息。 我们可以按需使用适配器。支持的适配器如下：
 
 +---------+---------------------------+----------------------------------------------------------------------------------+
@@ -79,7 +79,7 @@ You can also set a log level using the :code:`setLogLevel()` method. This method
 In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 事务（Transactions）
-----------------------
+--------------------
 保存日志到适配器如文件(文件系统)是非常消耗系统资源的。 为了减少应用性能上的开销，我们可以使用日志事务。 事务会把日志记录临时的保存到内存中然后再
 写入到适配中（此例子中为文件），（这个操作是个原子操作）
 
@@ -103,7 +103,7 @@ In the example above, only critical and emergency messages will get saved to the
     $logger->commit();
 
 使用多个处理程序进行日志记录（Logging to Multiple Handlers）
---------------------------------------------------------------------
+------------------------------------------------------------
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` 也可以同时保存日志信息到多个适配器中：
 
 .. code-block:: php
@@ -143,14 +143,14 @@ In the example above, only critical and emergency messages will get saved to the
 +---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
 
 行格式化处理（Line Formatter）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 使用单行格式格式化信息。 默认的格式如下：
 
 .. code-block:: none
 
     [%date%][%type%] %message%
 
-我们可以使用:code:`setFormat()`来设置自定义格式。 下面是格式变量：
+我们可以使用 :code:`setFormat()` 来设置自定义格式。 下面是格式变量：
 
 +-----------+------------------------------------------+
 | 变量      | 描述                                     |
@@ -159,7 +159,7 @@ In the example above, only critical and emergency messages will get saved to the
 +-----------+------------------------------------------+
 | %date%    | 消息添加的时间                           |
 +-----------+------------------------------------------+
-| %type%    | 消息类型（使用大写）                   |
+| %type%    | 消息类型（使用大写）                     |
 +-----------+------------------------------------------+
 
 下面的例子中展示了如何修改日志格式：
@@ -175,7 +175,7 @@ In the example above, only critical and emergency messages will get saved to the
     $logger->setFormatter($formatter);
 
 自定义格式处理（Implementing your own formatters）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 若要实现自定义的格式则要实现 :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` 接口，
 这样才能扩展已有的格式或创建自定义的格式
 
@@ -184,7 +184,7 @@ In the example above, only critical and emergency messages will get saved to the
 下面的例子中展示了每种适配器的简单用法：
 
 数据流日志记录器（Stream Logger）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 系统日志保存消息到一个已注册的有效的PHP流中。 这里列出了可用的流： here <http://php.net/manual/en/wrappers.php>`_:
 
 .. code-block:: php
@@ -200,7 +200,7 @@ In the example above, only critical and emergency messages will get saved to the
     $logger = new StreamAdapter("php://stderr");
 
 文件日志记录器（File Logger）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 文件适配器保存所有的日志信息到普通的文件中。 默认情况下日志文件使用添加模式打开，打开文件后文件的指针会指向文件的尾端。
 如果文件不存在，则会尝试创建。 我们可以通过传递附加参数的形式来修改打开的模式：
 
@@ -219,7 +219,7 @@ In the example above, only critical and emergency messages will get saved to the
     );
 
 Syslog 日志记录器（Syslog Logger）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 使用系统日志适配器。 由于操作系统的不同得到的日志也不尽相同：
 
 .. code-block:: php
@@ -241,7 +241,7 @@ Syslog 日志记录器（Syslog Logger）
     );
 
 FirePHP 日志记录器（FirePHP Logger）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
 a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
 
@@ -258,5 +258,5 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     $logger->error("This is another error");
 
 自定义适配器（Implementing your own adapters）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如果开发者想自定义新的日志组件则需实现此接口： :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` 。
