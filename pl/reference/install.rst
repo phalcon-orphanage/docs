@@ -19,9 +19,6 @@ Poniższy filmik jest przewodnikiem "krok po kroku" jak zainstalować Phalcon na
 
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-
-Jeżeli nie wiesz którą bibliotekę pobrać, use the following script_ to figure it out.
-
 Powiązane Przewodniki
 ^^^^^^^^^^^^^^^^^^^^^
 .. toctree::
