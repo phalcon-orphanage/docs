@@ -117,9 +117,9 @@ Quand une requête URI corresponds à une route défini, l'application exécute 
 
 Créer un Model
 --------------
-Notre API fourni des informations sur les 'robots', ces données doivent donc être enregistrés dans une base de données.
+Notre API fournit des informations sur les 'robots', ces données doivent donc être enregistrées dans une base de données.
 Le model suivant nous permet d'accéder à la table comme si c'était un objet. Nous avons implémenté quelques règles en utilisant
-des validateurs. Ainsi nous seront tranquille car les données respecteront toujours les conditions nécessaire pour notre application:
+des validateurs. Ainsi nous serons tranquilles car les données respecteront toujours les conditions nécessaires pour notre application:
 
 .. code-block:: php
 
