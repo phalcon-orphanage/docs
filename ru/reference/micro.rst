@@ -46,7 +46,7 @@ HTTP используется, чтобы запросы путей соотве
         echo "<h1>Hello! $name</h1>";
     });
 
-Метод "get" показывает, что используется GET-запрос. Путь /say/hello/{name} также имеет параметр {$name},
+Метод "get" показывает, что используется GET-запрос. Путь :code:`/say/hello/{name}` также имеет параметр :code:`{$name}`,
 который напрямую передается обработчику пути (анонимная функция). Обработка пути выполняется, когда путь совпадает.
 Обработчик может быть любого типа, который возвращает данные в PHP-среде. Следующий пример демонстрирует,
 как создавать различные типы обработчиков пути:
@@ -102,7 +102,7 @@ HTTP используется, чтобы запросы путей соотве
     // Совпадет, если HTTP-метод - GET или POST
     $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
-To access the HTTP method data `$app` needs to be passed into the closure:
+To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 .. code-block:: php
 
