@@ -286,7 +286,7 @@ Then use this class as base class for each 'Cacheable' model:
 
 キャッシュの強制
 ----------------
-Earlier we saw how Phalcon\\Mvc\\Model has a built-in integration with the caching component provided by the framework. To make a record/resultset
+Earlier we saw how :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a built-in integration with the caching component provided by the framework. To make a record/resultset
 cacheable we pass the key 'cache' in the array of parameters:
 
 .. code-block:: php
@@ -764,7 +764,7 @@ The first is create a custom builder, so we can generate a totally customized qu
         }
     }
 
-Instead of directly returning a Phalcon\\Mvc\\Model\\Query, our custom builder returns a CustomQuery instance,
+Instead of directly returning a :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`, our custom builder returns a CustomQuery instance,
 this class looks like:
 
 .. code-block:: php
