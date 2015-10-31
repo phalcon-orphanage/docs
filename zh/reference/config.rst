@@ -17,7 +17,7 @@
 
 原生数组（Native Arrays）
 -------------------------
-下面的例子展示如何将本地数组导入 Phalcon\\Config 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。
+下面的例子展示如何将本地数组导入 :doc:`Phalcon\\Config <../api/Phalcon_Config>` 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。
 
 .. code-block:: php
 
@@ -60,7 +60,7 @@
 
 读取 INI 文件（Reading INI Files）
 ----------------------------------
-INI文件是存储设置的常用方法。Phalcon\\Config 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。
+INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config <../api/Phalcon_Config>` 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。
 
 .. code-block:: ini
 
@@ -95,7 +95,7 @@ INI文件是存储设置的常用方法。Phalcon\\Config 采用优化的PHP函�
 
 合并配置（Merging Configurations）
 ----------------------------------
-Phalcon\\Config 允许合并配置对象到另一个:
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` 允许合并配置对象到另一个:
 
 .. code-block:: php
 

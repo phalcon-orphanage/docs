@@ -17,7 +17,7 @@ Os adaptadores disponíveis são:
 
 Arrays Nativos
 --------------
-O próximo exemplo mostra como converter arrays nativos em objetos Phalcon\\Config. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
+O próximo exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
 
 .. code-block:: php
 
@@ -60,7 +60,7 @@ Se você deseja uma melhor organização do seu projeto, você pode salvar o arr
 
 Lendo arquivos INI
 ------------------
-Arquivo INI são usados comumente para armazenar configurações. O Phalcon\\Config usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
+Arquivo INI são usados comumente para armazenar configurações. O :doc:`Phalcon\\Config <../api/Phalcon_Config>` usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
 
 .. code-block:: ini
 
@@ -95,7 +95,7 @@ Você pode ler o arquivo como no exemplo a seguir:
 
 Mesclando Configurações
 -----------------------
-O Phalcon\\Config permite mesclar um objeto de configuração em outro, recursivamente:
+O :doc:`Phalcon\\Config <../api/Phalcon_Config>` permite mesclar um objeto de configuração em outro, recursivamente:
 
 .. code-block:: php
 
