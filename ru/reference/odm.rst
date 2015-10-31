@@ -284,7 +284,7 @@ With this option is easy perform tasks such as totaling or averaging field value
 
 Creating Updating/Records
 -------------------------
-The :code:`Phalcon\\Mvc\\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection
+The :code:`Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection
 associated with a model. The :code:`save()` method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
 
 Also the method executes associated validators and events that are defined in the model:
@@ -658,7 +658,7 @@ The idea of creating validators is to make them reusable across several models. 
 
 Deleting Records
 ----------------
-The :code:`Phalcon\\Mvc\\Collection::delete()` method allows you to delete a document. You can use it as follows:
+The :code:`Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
 .. code-block:: php
 
@@ -725,7 +725,7 @@ Another type of events is available when the data validation process finds any i
 
 Implicit Ids vs. User Primary Keys
 ----------------------------------
-By default :code:`Phalcon\\Mvc\\Collection` assumes that the :code:`_id` attribute is automatically generated using MongoIds_.
+By default :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` assumes that the :code:`_id` attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overridden:
 
 .. code-block:: php
