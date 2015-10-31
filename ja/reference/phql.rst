@@ -816,7 +816,7 @@ to potential SQL injections:
     $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
     $result = $manager->executeQuery($phql);
 
-If $login is changed to ' OR '' = ', the produced PHQL is:
+If :code:`$login` is changed to :code:`' OR '' = '`, the produced PHQL is:
 
 .. code-block:: sql
 
