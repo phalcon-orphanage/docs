@@ -69,7 +69,7 @@ Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt 
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
 It will not take too long before you become familiar with Volt.
 
-The SessionController::startAction function (app/controllers/SessionController.php) has the task of validating the
+The :code:`SessionController::startAction` function (app/controllers/SessionController.php) has the task of validating the
 data entered in the form including checking for a valid user in the database:
 
 .. code-block:: php

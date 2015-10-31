@@ -68,7 +68,7 @@
 шаблонизатор, вдохновленный Jinja_, предоставляющий простой и удобный синтаксис создания шаблонов.
 Знакомство с Volt не займет много времени.
 
-SessionController::startAction (app/controllers/SessionController.phtml) будет проверять полученные данные на соответствие
+:code:`SessionController::startAction` (app/controllers/SessionController.phtml) будет проверять полученные данные на соответствие
 хранимым в базе данных:
 
 .. code-block:: php
