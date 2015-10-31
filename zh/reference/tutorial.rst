@@ -355,7 +355,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 还提供了有用的方法来构建表单元素。
 
-:code:`Phalcon\\Tag::form` 方法只接受一个参数实例, 一个相对uri到这个应用的一个控制器/动作。
+:code:`Phalcon\Tag::form()` 方法只接受一个参数实例, 一个相对uri到这个应用的一个控制器/动作。
 
 通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 public/index.php 文件抛出这个异常：
 

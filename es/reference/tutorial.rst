@@ -329,7 +329,7 @@ Visualizando el formulario en tu navegador mostrará algo como esto:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` también proporciona métodos para definir formularios.
 
-El método :code:`Phalcon\\Tag::form` recibe un parámetro, una URI relativa a el controlador/acción en la aplicación.
+El método :code:`Phalcon\Tag::form()` recibe un parámetro, una URI relativa a el controlador/acción en la aplicación.
 
 Al hacer click en el botón "Registrarme", verás que el framework lanza una excepción indicando que
 nos hace falta definir la acción "register" en el controlador "signup":
