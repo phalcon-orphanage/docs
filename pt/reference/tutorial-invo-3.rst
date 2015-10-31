@@ -242,7 +242,7 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using :code:`Phalcon\\Tag::select`.
+Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
 Once the form is passed to the view, it can be rendered and presented to the user:
 
 .. code-block:: html+jinja

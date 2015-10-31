@@ -243,7 +243,7 @@ Other elements are also used in this form:
         )
     );
 
-Note that ProductTypes::find() contains the data necessary to fill the SELECT tag using :code:`Phalcon\\Tag::select`.
+Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
 Once the form is passed to the view, it can be rendered and presented to the user:
 
 .. code-block:: html+jinja
@@ -711,7 +711,7 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
         }
     }
 
-El método "Tag::setDefault" nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
+El método :code:`Tag::setDefault()` nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
 Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos usando la acción "save":
 
 .. code-block:: php
