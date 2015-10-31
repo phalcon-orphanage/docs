@@ -172,7 +172,7 @@ Phalcon будет вынужден обрабатывать данные по �
 
 Security Layer
 --------------
-Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:
 
 .. code-block:: php
@@ -204,7 +204,7 @@ a malicious prepared string is used as parameter this would allow to execute any
 If '../processes/important-process.php' is a valid file, an external user could execute the file without
 authorization.
 
-To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invalid character from the class name
+To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes any invalid character from the class name
 reducing the possibility of being attacked.
 
 События автозагрузки классов
