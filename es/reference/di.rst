@@ -930,7 +930,7 @@ to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface
         }
     }
 
-Then once the service is resolved, the :code:`$di` will be passed to setDi automatically:
+Then once the service is resolved, the :code:`$di` will be passed to :code:`setDi()` automatically:
 
 .. code-block:: php
 
