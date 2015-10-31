@@ -1,7 +1,7 @@
 Assets Management
 =================
 
-Phalcon\\Assets is a component that allows you to manage static resources
+:code:`Phalcon\Assets` is a component that allows you to manage static resources
 such as CSS stylesheets or JavaScript libraries in a web application.
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` is available in the services
@@ -186,7 +186,7 @@ A chainable syntax is available too:
 
 Minification/Filtering
 ----------------------
-Phalcon\\Assets provides built-in minification of JavaScript and CSS resources. You can create a collection of
+:code:`Phalcon\Assets` provides built-in minification of JavaScript and CSS resources. You can create a collection of
 resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are.
 In addition to the above, Jsmin by Douglas Crockford is part of the core extension offering minification of JavaScript files
 for maximum performance. In the CSS land, CSSMin by Ryan Day is also available to minify CSS files:
@@ -286,13 +286,13 @@ Built-In Filters
 Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide
 the minimum overhead to perform this task:
 
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------+
-| Filter                            | Description                                                                                                  |
-+===================================+==============================================================================================================+
-| Phalcon\\Assets\\Filters\\Jsmin   | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------+
-| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
-+-----------------------------------+--------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Filter                                                                          | Description                                                                                                  |
++=================================================================================+==============================================================================================================+
+| :doc:`Phalcon\\Assets\\Filters\\Jsmin <../api/Phalcon_Assets_Filters_Jsmin>`    | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
++---------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Assets\\Filters\\Cssmin <../api/Phalcon_Assets_Filters_Cssmin>`  | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
++---------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
 
 Custom Filters
 ^^^^^^^^^^^^^^
