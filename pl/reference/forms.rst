@@ -1,7 +1,7 @@
 Forms
 =====
 
-Phalcon\\Forms is a component that aids you in the creation and maintenance of forms in web applications.
+:code:`Phalcon\Forms` is a component that aids you in the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
 
@@ -383,7 +383,7 @@ give you more freedom to produce values:
 
 Form Elements
 -------------
-Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\\Forms\\Element namespace:
+Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the :doc:`Phalcon\\Forms\\Element <../api/Phalcon_Forms_Element>` namespace:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
