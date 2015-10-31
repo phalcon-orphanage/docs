@@ -25,7 +25,7 @@ Phalcon主要使用这个异常类来包装这些功能，以方便开发者或�
 
     }
 
-try/catch块内发生的异常会被捕获然后放入 $e 变量。 开发者可以使用 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` （扩展自 `Exception class`_ ）来确定异常信息是来自Phalcon还是PHP本身。
+try/catch块内发生的异常会被捕获然后放入 :code:`$e` 变量。 开发者可以使用 :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` （扩展自 `Exception class`_ ）来确定异常信息是来自Phalcon还是PHP本身。
 PHP产生的所有异常都是基于 `Exception class`_ ， 且至少含有如下元素：
 
 .. code-block:: php
