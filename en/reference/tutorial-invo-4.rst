@@ -98,7 +98,7 @@ we are currently working. This is achieved in each controller initializer:
         // ...
     }
 
-Note, that the method parent::initialize() is also called, it adds more data to the title:
+Note, that the method :code:`parent::initialize()` is also called, it adds more data to the title:
 
 .. code-block:: php
 
