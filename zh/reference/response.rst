@@ -114,9 +114,9 @@ how you can redirect using a route you have defined in your application:
     );
 
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
-will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
+will be executed anyway. You can disable the view from a controller by executing :code:`$this->view->disable()`;
 
-值得注意的时候重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 $this->view->disable() 来禁用view。
+值得注意的时候重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 :code:`$this->view->disable()` 来禁用view。
 
 HTTP 缓存（HTTP Cache）
 -----------------------
