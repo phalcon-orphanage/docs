@@ -11,7 +11,7 @@ A seguir existem possíveis configurações que você pode utilizar para configu
 
 Configuração Básica
 ^^^^^^^^^^^^^^^^^^^
-Utilizando $_GET['_url'] como fonte das URIs:
+Utilizando :code:`$_GET['_url']` como fonte das URIs:
 
 .. code-block:: nginx
 
@@ -51,7 +51,7 @@ Utilizando $_GET['_url'] como fonte das URIs:
         }
     }
 
-Utilizando $_SERVER['REQUEST_URI'] como fonte das URIs:
+Utilizando :code:`$_SERVER['REQUEST_URI']` como fonte das URIs:
 
 .. code-block:: nginx
 
