@@ -14,10 +14,10 @@ This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` t
 
 コンテンツのドキュメントタイプ
 ------------------------------
-Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
+Phalcon provides :code:`Phalcon\Tag::setDoctype()` helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
 For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
-Available document type constants in Phalcon\\Tag namespace are:
+Available document type constants in :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` namespace are:
 
 +----------------------+------------------------+
 | Constant             | Document type          |
@@ -161,7 +161,7 @@ Phalcon also provides a :doc:`form builder <forms>` to create forms in an object
 
 フォーム要素を生成するヘルパー
 ---------------------------------
-Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the getPost() and getQuery() methods on the request object ($this->request).
+Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the :code:`getPost()` and :code:`getQuery()` methods on the request object (:code:`$this->request`).
 
 .. code-block::  html+php
 
@@ -198,8 +198,8 @@ Volt syntax:
 
 セレクトボックスの作成
 ----------------------
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\\Tag::select() and Phalcon\\Tag::selectStatic().
-Phalcon\\Tag::select() has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while Phalcon\\Tag::selectStatic() can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are :code:`Phalcon\Tag::select()` and :code:`Phalcon\Tag::selectStatic()`.
+:code:`Phalcon\Tag::select()` has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while :code:`Phalcon\Tag::selectStatic()` can with PHP arrays.
 
 .. code-block:: php
 
@@ -334,7 +334,7 @@ The following HTML is generated:
 コントローラで設定する
 ^^^^^^^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
-You can set those values directly from the controller using Phalcon\\Tag::setDefault().
+You can set those values directly from the controller using :code:`Phalcon\Tag::setDefault()`.
 This helper preloads a value for any helpers present in the view. If any helper in the view has
 a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.
 
@@ -701,4 +701,4 @@ Now you are ready to use your new helper within your views:
     </body>
 
 In next chapter, we'll talk about :doc:`Volt <volt>` a faster template engine for PHP, where you can use a
-more friendly syntax for using helpers provided by Phalcon\\Tag.
+more friendly syntax for using helpers provided by :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`.
