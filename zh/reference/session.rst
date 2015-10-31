@@ -180,7 +180,7 @@ In a component:
         }
     }
 
-The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
+The data added to the session (:code:`$this->session`) are available throughout the application, while persistent (:code:`$this->persistent`)
 can only be accessed in the scope of the current class.
 
 自定义适配器（Implementing your own adapters）

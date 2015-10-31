@@ -186,7 +186,7 @@ Dans un composant :
         }
     }
 
-Les données ajoutés à la session ($this->session) sont disponibles à travers toute l'application, tandis qu'avec $this->persistant, on ne peux y accéder qu'à
+Les données ajoutés à la session (:code:`$this->session`) sont disponibles à travers toute l'application, tandis qu'avec :code:`$this->persistant`, on ne peux y accéder qu'à
 partir de la portée de la classe courante.
 
 Implémenter son propre adaptateur
