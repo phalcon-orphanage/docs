@@ -49,7 +49,7 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
     }
 
 The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
-how to pass the $postId parameter to the respective view template.
+how to pass the :code:`$postId` parameter to the respective view template.
 
 Hierarchical Rendering
 ----------------------
@@ -104,7 +104,7 @@ next view level in the hierarchy of files. If all three view files are implement
         </body>
     </html>
 
-Note the lines where the method *$this->getContent()* was called. This method instructs :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
+Note the lines where the method :code:`$this->getContent()` was called. This method instructs :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
 on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
 
 .. figure:: ../_static/img/views-1.png
@@ -297,7 +297,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 Control Rendering Levels
 ^^^^^^^^^^^^^^^^^^^^^^^^
 As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
-produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
+produced by the view component. The method :code:`Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
 This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
 
@@ -398,7 +398,7 @@ Or disable temporarily in some part of the application:
 Picking Views
 ^^^^^^^^^^^^^
 As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
-the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\\Mvc\\View::pick() method:
+the view rendered is the one related with the last controller and action executed. You could override this by using the :code:`Phalcon\Mvc\View::pick()` method:
 
 .. code-block:: php
 
@@ -583,8 +583,8 @@ Method partial() does accept a second parameter as an array of variables/paramet
 
 Transfer values from the controller to views
 --------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
-use that object to set variables directly to the view from a controller action by using the setVar() method.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable (:code:`$this->view`). You can
+use that object to set variables directly to the view from a controller action by using the :code:`setVar()` method.
 
 .. code-block:: php
 
@@ -660,7 +660,7 @@ Sometimes when you develop dynamic websites and some areas of them are not updat
 the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
 rendered output to increase performance.
 
-:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
 to cache output fragments. You could manually set the cache handler or set a global handler:
 
 .. code-block:: php
@@ -747,7 +747,7 @@ The service name convention for this service is "viewCache":
     });
 
 .. highlights::
-    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
+    The frontend must always be :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` and the service 'viewCache' must be registered as
     always open (not shared) in the services container (DI).
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
@@ -809,10 +809,10 @@ Creating your own Template Engine Adapter
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
-Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
+Usually it only needs two methods implemented: :code:`__construct()` and :code:`render()`. The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
 instance that creates the engine adapter and the DI container used by the application.
 
-The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it
+The method :code:`render()` accepts an absolute path to the view file and the view parameters set using :code:`$this->view->setVar()`. You could read or require it
 when it's necessary.
 
 .. code-block:: php
@@ -888,11 +888,11 @@ You can replace or add more a template engine from the controller as follows:
         }
     }
 
-You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
+You can replace the template engine completely or use more than one template engine at the same time. The method :code:`Phalcon\Mvc\View::registerEngines()`
 accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
 Template files related to the particular engine must have those extensions.
 
-The order that the template engines are defined with \Phalcon\\Mvc\\View::registerEngines() defines the relevance of execution. If
+The order that the template engines are defined with :code:`Phalcon\Mvc\View::registerEngines()` defines the relevance of execution. If
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
 
 If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:

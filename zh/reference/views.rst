@@ -45,7 +45,7 @@
         }
     }
 
-setVar允许我们创建视图变量，这样可以在视图模板中使用它们。上面的示例演示了如何传递 $postId 参数到相应的视图模板。
+setVar允许我们创建视图变量，这样可以在视图模板中使用它们。上面的示例演示了如何传递 :code:`$postId` 参数到相应的视图模板。
 
 分层渲染（Hierarchical Rendering）
 ----------------------------------
@@ -97,7 +97,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         </body>
     </html>
 
-注意方法 *$this->getContent()* 被调用的这行。这种方法指示 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 在这里注入前面视图层次结构执行的内容。在上面的示例中，输出将会是：
+注意方法 :code:`$this->getContent()` 被调用的这行。这种方法指示 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 在这里注入前面视图层次结构执行的内容。在上面的示例中，输出将会是：
 
 .. figure:: ../_static/img/views-1.png
    :align: center
@@ -288,7 +288,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
 渲染级别控制（Control Rendering Levels）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-如上所述，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 支持视图分层。你可能需要控制视图组件的渲染级别。方法 Phalcon\Mvc\\View::setRenderLevel() 提供这个功能。
+如上所述，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 支持视图分层。你可能需要控制视图组件的渲染级别。方法 :code:`Phalcon\Mvc\View::setRenderLevel()` 提供这个功能。
 
 这种方法可以从控制器调用或是从上级视图层干涉渲染过程。
 
@@ -388,7 +388,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
 选择视图（Picking Views）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-如上所述, 当 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 由 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 视图渲染的是最后的一个相关的控制器和执行动作。你可以使用 Phalcon\\Mvc\\View::pick() 方法覆盖它。
+如上所述, 当 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 由 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 视图渲染的是最后的一个相关的控制器和执行动作。你可以使用 :code:`Phalcon\Mvc\View::pick()` 方法覆盖它。
 
 .. code-block:: php
 
@@ -570,7 +570,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 控制器传值给视图（Transfer values from the controller to views）
 ----------------------------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 可以在每个控制器中使用视图变量 ($this->view)。 你可以在控制器动作中使用视图对象的setVar()方法直接设置视图变量。
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 可以在每个控制器中使用视图变量 (:code:`$this->view`)。 你可以在控制器动作中使用视图对象的 :code:`setVar()` 方法直接设置视图变量。
 
 .. code-block:: php
 
@@ -642,7 +642,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 --------------------------------------
 有时当你开发动态网站和一些区域不会经常更新，请求的输出是完全相同的。 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供缓存全部或部分的渲染输出来提高性能。
 
-将 :doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` 配合 :doc:`Phalcon\\Cache <cache>` 能提供一种更简单的方法缓存输出片段。你可以手动设置缓存处理程序或一个全局处理程序。
+将 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 配合 :doc:`Phalcon\\Cache <cache>` 能提供一种更简单的方法缓存输出片段。你可以手动设置缓存处理程序或一个全局处理程序。
 
 .. code-block:: php
 
@@ -728,7 +728,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     });
 
 .. highlights::
-    前端 Phalcon\\Cache\\Frontend\\Output 和服务 'viewCache' 必须在服务容器（DI）注册为
+    前端 :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` 和服务 'viewCache' 必须在服务容器（DI）注册为
     总是开放的（不共享 not shared）
 
 在视图中使用视图缓存也是有用的，以防止控制器执行过程所产生的数据被显示。
@@ -786,9 +786,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 有很多模板引擎，你可能想整合或建立一个自己的。开始使用一个外部的模板引擎的第一步是创建一个适配器。
 
 模板引擎的适配器是一个类，作为 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和模板引擎本身之间的桥梁。
-通常它只需要实现两个方法: __construct() and render()。首先接收 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和应用程序使用的DI容器来创建引擎适配器实例。
+通常它只需要实现两个方法: :code:`__construct()` and :code:`render()`。首先接收 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和应用程序使用的DI容器来创建引擎适配器实例。
 
-方法render()接受一个到视图文件的绝对路径和视图参数，设置使用$this->view->setVar()。必要的时候，你可以读入或引入它。
+方法 :code:`render()` 接受一个到视图文件的绝对路径和视图参数，设置使用 :code:`$this->view->setVar()`。必要的时候，你可以读入或引入它。
 
 .. code-block:: php
 
@@ -863,9 +863,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         }
     }
 
-你可以完全更换模板引擎或同时使用多个模板引擎。方法 \Phalcon\\Mvc\\View::registerEngines() 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
+你可以完全更换模板引擎或同时使用多个模板引擎。方法 :code:`Phalcon\Mvc\View::registerEngines()` 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
 
-\Phalcon\\Mvc\\View::registerEngines() 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
+:code:`Phalcon\Mvc\View::registerEngines()` 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
 
 如果你想在应用程序的每个请求中注册一个或一组模板引擎。你可以在创建视图时注册服务：
 
