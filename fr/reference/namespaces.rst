@@ -10,7 +10,7 @@ Mise en place
 Utiliser les espaces de nom a quelques implications quand on charge le controlleur approprié.
 Pour ajuster le comportement du framework aux namespaces, il est nécessaire de faire une (ou toutes)les tâches suivante:
 
-Utiliser un autoload qui prends en compte les espaces de nom, par exemple Phalcon\\Loader:
+Utiliser un autoload qui prends en compte les espaces de nom, par exemple :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`:
 
 .. code-block:: php
 

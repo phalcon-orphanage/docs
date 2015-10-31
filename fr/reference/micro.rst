@@ -46,7 +46,7 @@ a route for the method GET:
         echo "<h1>Hello! $name</h1>";
     });
 
-The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
+The "get" method indicates that the associated HTTP method is GET. The route :code:`/say/hello/{name}` also has a parameter :code:`{$name}` that is passed
 directly to the route handler (the anonymous function). Handlers are executed when a route is matched. A handler could be
 any callable item in the PHP userland. The following example shows how to define different types of handlers:
 
@@ -101,7 +101,7 @@ which the route is constrained for:
     // Matches if the HTTP method is GET or POST
     $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
-To access the HTTP method data `$app` needs to be passed into the closure:
+To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 .. code-block:: php
 

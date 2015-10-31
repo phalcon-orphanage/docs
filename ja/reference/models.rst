@@ -320,33 +320,33 @@ Namespaces make part of model names when they are within strings:
 
 利用可能なクエリオプションは次のとおり:
 
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
-+=============+====================================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | "columns" => "id, name"                                                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | "bind" => array("status" => "A", "type" => "some-time")                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | "bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | "order" => "name DESC, status"                                          |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                         | "limit" => 10                                                           |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| offset      | Offset the results of the query by a certain amount                                                                                                                                                | "offset" => 5                                                           |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | "group" => "name, status"                                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                              | "for_update" => true                                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                 | "shared_lock" => true                                                   |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                                                          | Example                                                                 |
++=============+======================================================================================================================================================================================================================================+=========================================================================+
+| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                            | "columns" => "id, name"                                                 |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                           | "bind" => array("status" => "A", "type" => "some-time")                 |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                           | "bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                           | "order" => "name DESC, status"                                          |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| limit       | Limit the results of the query to results to certain range                                                                                                                                                                           | "limit" => 10                                                           |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| offset      | Offset the results of the query by a certain amount                                                                                                                                                                                  | "offset" => 5                                                           |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                                                          | "group" => "name, status"                                               |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                                                                | "for_update" => true                                                    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                                                   | "shared_lock" => true                                                   |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                         | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                          | "hydration" => Resultset::HYDRATE_OBJECTS                               |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 必要に応じて、パラメータの配列を使用する代わりに、オブジェクト指向の方法でクエリを作成する方法があります:
 
@@ -387,7 +387,7 @@ An example is in order, so taking our Robots model mentioned earlier :
         public $price;
     }
 
-We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in
+We have three properties to work with here. :code:`$id`, :code:`$name` and :code:`$price`. So, let's say you want to retrieve the first record in
 the table with the name 'Terminator'. This could be written like:
 
 .. code-block:: php
@@ -403,7 +403,7 @@ the table with the name 'Terminator'. This could be written like:
         echo "There were no robots found in our table with the name " . $name . ".";
     }
 
-Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name
+Notice that we used 'Name' in the method call and passed the variable :code:`$name` to it, which contains the name
 we are looking for in our table. Notice also that when we find a match with our query, all the other properties
 are available to us as well.
 
@@ -601,7 +601,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
 .. highlights::
 
-    Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
+    Since the default bind-type is :code:`Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the
     "bindTypes" parameter if all of the columns are of that type.
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
@@ -1491,7 +1491,7 @@ Hydration mode can also be passed as a parameter of 'find':
 
 レコードの作成、更新
 -------------------------
-The method :code:`Phalcon\\Mvc\\Model::save()` allows you to create/update records according to whether they already exist in the table
+The method :code:`Phalcon\Mvc\Model::save()` allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
 should be updated or created.
@@ -1516,7 +1516,7 @@ Also the method executes associated validators, virtual foreign keys and events 
         echo "Great, a new robot was saved successfully!";
     }
 
-An array could be passed to "save" to avoid assign every column manually. Phalcon\\Mvc\\Model will check if there are setters implemented for
+An array could be passed to "save" to avoid assign every column manually. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will check if there are setters implemented for
 the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 .. code-block:: php
@@ -1569,7 +1569,7 @@ the mass assignment:
 確実に作成／更新する
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use :code:`Phalcon\\Mvc\\Model::save()` to persist the records in the database. If we want to be absolutely
+could happen if we use :code:`Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely
 sure that a record is created or updated, we can change the :code:`save()` call with :code:`create()` or :code:`update()`:
 
 .. code-block:: php
@@ -1687,9 +1687,9 @@ passed back to the user for information regarding any errors.
 
 Note: Adding related entities by overloading the following methods is not possible:
 
- - :code:`Phalcon\\Mvc\\Model::beforeSave()`
- - :code:`Phalcon\\Mvc\\Model::beforeCreate()`
- - :code:`Phalcon\\Mvc\\Model::beforeUpdate()`
+ - :code:`Phalcon\Mvc\Model::beforeSave()`
+ - :code:`Phalcon\Mvc\Model::beforeCreate()`
+ - :code:`Phalcon\Mvc\Model::beforeUpdate()`
 
 You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from within a model.
 
@@ -2055,8 +2055,8 @@ In addition to the built-in validators, you can create your own validators:
 
 .. highlights::
 
-    *NOTE* Up to version 2.0.4 `$model` must be `\\Phalcon\\Mvc\\ModelInterface`
-    instance (`public function validate(\\Phalcon\\Mvc\\ModelInterface $model)`).
+    *NOTE* Up to version 2.0.4 :code:`$model` must be :doc:`Phalcon\\Mvc\\ModelInterface <../api/Phalcon_Mvc_ModelInterface>`
+    instance (:code:`public function validate(Phalcon\Mvc\ModelInterface $model)`).
 
 Adding the validator to a model:
 
@@ -2172,7 +2172,7 @@ The good news is that Phalcon do this for you automatically:
 
 Skipping Columns
 ----------------
-To tell Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
+To tell :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that always omits some fields in the creation and/or update of records in order
 to delegate the database system the assignation of the values by a trigger or a default:
 
 .. code-block:: php
@@ -2247,7 +2247,7 @@ A callback also can be used to create a conditional assignment of automatic defa
 
 .. highlights::
 
-    Never use a \\Phalcon\\Db\\RawValue to assign external data (such as user input)
+    Never use a :doc:`Phalcon\\Db\\RawValue <../api/Phalcon_Db_RawValue>` to assign external data (such as user input)
     or variable data. The value of these fields is ignored when binding parameters to the query.
     So it could be used to attack the application injecting SQL.
 
@@ -2276,7 +2276,7 @@ this specially helps when the table has blob/text fields:
 
 レコードの削除
 ----------------
-The method :code:`Phalcon\\Mvc\\Model::delete()` allows to delete a record. You can use it as follows:
+The method :code:`Phalcon\Mvc\Model::delete()` allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 
@@ -2534,7 +2534,7 @@ Note that you need to specify the deleted condition in your queries to effective
 独自の振る舞いの作成
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also, Phalcon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+Also, :doc:`Phalcon\\Mvc\\Model\\Behavior <../api/Phalcon_Mvc_Model_Behavior>` provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blameable behavior which helps identify the user
 that is performed operations over a model:
@@ -3201,21 +3201,21 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+----------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                      | Default |
-+=====================+==================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models    | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                             | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| lateStateBinding    | Enables/Disables late state binding of the method Mvc\Model::cloneResultMap      | false   |
-+---------------------+----------------------------------------------------------------------------------+---------+
++---------------------+---------------------------------------------------------------------------------------+---------+
+| Option              | Description                                                                           | Default |
++=====================+=======================================================================================+=========+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | true    |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| columnRenaming      | Enables/Disables the column renaming                                                  | true    |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | true    |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | true    |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
++---------------------+---------------------------------------------------------------------------------------+---------+
 
 スタンドアロン・コンポーネント
 ------------------------------

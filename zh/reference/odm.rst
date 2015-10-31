@@ -277,7 +277,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
 创建和更新记录（Creating Updating/Records）
 -------------------------------------------
-Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根据当前数据库中的数据来对比以确定是新加一条数据还是更新数据。在Phalcon内部会直接使用
+:code:`Phalcon\Mvc\Collection::save()` 方法可以用来保存数据，Phalcon会根据当前数据库中的数据来对比以确定是新加一条数据还是更新数据。在Phalcon内部会直接使用
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` 的save或update方法来进行操作。
 
 当然这个方法内部也会调用我们在模型中定义的验证方法或事件等：
@@ -645,7 +645,7 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
 删除记录（Deleting Records）
 ----------------------------
-:code:`Phalcon\\Mvc\\Collection::delete()` 方法用来删除记录条目。我们可以如下使用：
+:code:`Phalcon\Mvc\Collection::delete()` 方法用来删除记录条目。我们可以如下使用：
 
 .. code-block:: php
 
@@ -712,7 +712,7 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
 固有 Id 和 用户主键（Implicit Ids vs. User Primary Keys）
 ---------------------------------------------------------
-默认Phalcon\\Mvc\\Collection会使用MongoIds_来产生_id.如果用户想自定义主键也可以只需：
+默认 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` 会使用MongoIds_来产生 :code:`_id`.如果用户想自定义主键也可以只需：
 
 .. code-block:: php
 

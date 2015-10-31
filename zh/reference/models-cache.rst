@@ -273,7 +273,7 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
 强制缓存（Forcing Cache）
 -------------------------
-前面的例子中我们在Phalcon\\Mvc\\Model中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
+前面的例子中我们在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
 
 .. code-block:: php
 
@@ -738,7 +738,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
         }
     }
 
-这里我们返回的是CustomQuery而不是不直接的返回Phalcon\\Mvc\\Model\\Query， 类定义如下所示：
+这里我们返回的是CustomQuery而不是不直接的返回 :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`， 类定义如下所示：
 
 .. code-block:: php
 

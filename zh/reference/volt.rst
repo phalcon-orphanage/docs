@@ -112,7 +112,7 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using Phalcon\\Mvc\\View you can pass variables from the controller to the views.
+Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` you can pass variables from the controller to the views.
 In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
 
 .. code-block:: php
@@ -168,15 +168,15 @@ The following is the list of available built-in filters in Volt:
 +--------------------------+------------------------------------------------------------------------------+
 | Filter                   | Description                                                                  |
 +==========================+==============================================================================+
-| :code:`e`                | Applies :code:`Phalcon\\Escaper->escapeHtml()` to the value                  |
+| :code:`e`                | Applies :code:`Phalcon\Escaper->escapeHtml()` to the value                   |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`escape`           | Applies :code:`Phalcon\\Escaper->escapeHtml()` to the value                  |
+| :code:`escape`           | Applies :code:`Phalcon\Escaper->escapeHtml()` to the value                   |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`escape_css`       | Applies :code:`Phalcon\\Escaper->escapeCss()` to the value                   |
+| :code:`escape_css`       | Applies :code:`Phalcon\Escaper->escapeCss()` to the value                    |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`escape_js`        | Applies :code:`Phalcon\\Escaper->escapeJs()` to the value                    |
+| :code:`escape_js`        | Applies :code:`Phalcon\Escaper->escapeJs()` to the value                     |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`escape_attr`      | Applies :code:`Phalcon\\Escaper->escapeHtmlAttr()` to the value              |
+| :code:`escape_attr`      | Applies :code:`Phalcon\Escaper->escapeHtmlAttr()` to the value               |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`trim`             | Applies the trim_ PHP function to the value. Removing extra spaces           |
 +--------------------------+------------------------------------------------------------------------------+
@@ -864,52 +864,52 @@ The following PHP is generated:
 
     {{ end_form() }}
 
-To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
+To call a :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helper, you only need to call an uncamelized version of the method:
 
 +-----------------------------------------+----------------------------+
 | Method                                  | Volt function              |
 +=========================================+============================+
-| :code:`Phalcon\\Tag::linkTo`            | :code:`link_to`            |
+| :code:`Phalcon\Tag::linkTo`             | :code:`link_to`            |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::textField`         | :code:`text_field`         |
+| :code:`Phalcon\Tag::textField`          | :code:`text_field`         |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::passwordField`     | :code:`password_field`     |
+| :code:`Phalcon\Tag::passwordField`      | :code:`password_field`     |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::hiddenField`       | :code:`hidden_field`       |
+| :code:`Phalcon\Tag::hiddenField`        | :code:`hidden_field`       |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::fileField`         | :code:`file_field`         |
+| :code:`Phalcon\Tag::fileField`          | :code:`file_field`         |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::checkField`        | :code:`check_field`        |
+| :code:`Phalcon\Tag::checkField`         | :code:`check_field`        |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::radioField`        | :code:`radio_field`        |
+| :code:`Phalcon\Tag::radioField`         | :code:`radio_field`        |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::dateField`         | :code:`date_field`         |
+| :code:`Phalcon\Tag::dateField`          | :code:`date_field`         |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::emailField`        | :code:`email_field`        |
+| :code:`Phalcon\Tag::emailField`         | :code:`email_field`        |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::numericField`      | :code:`numeric_field`      |
+| :code:`Phalcon\Tag::numericField`       | :code:`numeric_field`      |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::submitButton`      | :code:`submit_button`      |
+| :code:`Phalcon\Tag::submitButton`       | :code:`submit_button`      |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::selectStatic`      | :code:`select_static`      |
+| :code:`Phalcon\Tag::selectStatic`       | :code:`select_static`      |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::select`            | :code:`select`             |
+| :code:`Phalcon\Tag::select`             | :code:`select`             |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::textArea`          | :code:`text_area`          |
+| :code:`Phalcon\Tag::textArea`           | :code:`text_area`          |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::form`              | :code:`form`               |
+| :code:`Phalcon\Tag::form`               | :code:`form`               |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::endForm`           | :code:`end_form`           |
+| :code:`Phalcon\Tag::endForm`            | :code:`end_form`           |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::getTitle`          | :code:`get_title`          |
+| :code:`Phalcon\Tag::getTitle`           | :code:`get_title`          |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::stylesheetLink`    | :code:`stylesheet_link`    |
+| :code:`Phalcon\Tag::stylesheetLink`     | :code:`stylesheet_link`    |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::javascriptInclude` | :code:`javascript_include` |
+| :code:`Phalcon\Tag::javascriptInclude`  | :code:`javascript_include` |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::image`             | :code:`image`              |
+| :code:`Phalcon\Tag::image`              | :code:`image`              |
 +-----------------------------------------+----------------------------+
-| :code:`Phalcon\\Tag::friendlyTitle`     | :code:`friendly_title`     |
+| :code:`Phalcon\Tag::friendlyTitle`      | :code:`friendly_title`     |
 +-----------------------------------------+----------------------------+
 
 函数（Functions）
@@ -1313,7 +1313,7 @@ function. Always is required that the chosen strategy returns a valid PHP string
     // This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
     $compiler->addFunction('shuffle', 'str_shuffle');
 
-Register the function with an anonymous function. This case we use $resolvedArgs to pass the arguments exactly
+Register the function with an anonymous function. This case we use :code:`$resolvedArgs` to pass the arguments exactly
 as were passed in the arguments:
 
 .. code-block:: php

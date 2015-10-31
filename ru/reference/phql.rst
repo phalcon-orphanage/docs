@@ -802,7 +802,7 @@ any validation messages you should check the status code returned:
     $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
     $result = $manager->executeQuery($phql);
 
-Если значение $login заменить на ' OR '' = ', то получим следующий PHQL:
+Если значение :code:`$login` заменить на :code:`' OR '' = '`, то получим следующий PHQL:
 
 .. code-block:: sql
 

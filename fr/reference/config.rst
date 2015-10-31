@@ -18,7 +18,7 @@ Les adaptateurs disponibles sont :
 
 Les Array natifs
 ----------------
-L'exemple suivant montre comment convertir les arrays natifs en objets Phalcon\\Config.
+L'exemple suivant montre comment convertir les arrays natifs en objets :doc:`Phalcon\\Config <../api/Phalcon_Config>`.
 Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu pendant la requête.
 
 .. code-block:: php
@@ -63,7 +63,7 @@ Si vous voulez mieux organiser votre projet vous pouvez sauvegarder l'array dans
 Lire les fichiers INI
 ---------------------
 Les fichiers INI sont un moyen habituel pour stoquer des paramètres.
-Phalcon\\Config utilise la fonction parse_ini_file optimisé pour lire ces fichiers.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` utilise la fonction parse_ini_file optimisé pour lire ces fichiers.
 Les sections sont parsé en sous-paramètres pour un accès simplifié.
 
 .. code-block:: ini
@@ -99,7 +99,7 @@ Vous pouvez lire le fichier comme cela :
 
 Configuration de fusion
 -----------------------
-Phalcon\\Config permet de fusionner une configuration objet en un autre de manière récursif :
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` permet de fusionner une configuration objet en un autre de manière récursif :
 
 .. code-block:: php
 

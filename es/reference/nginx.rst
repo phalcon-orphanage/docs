@@ -11,7 +11,7 @@ Lo siguiente son definiciones de configuraciones que puedes usar para configurar
 
 Configuración básica
 ^^^^^^^^^^^^^^^^^^^^
-Using $_GET['_url'] as source of URIs:
+Using :code:`$_GET['_url']` as source of URIs:
 
 .. code-block:: nginx
 
@@ -51,7 +51,7 @@ Using $_GET['_url'] as source of URIs:
         }
     }
 
-Using $_SERVER['REQUEST_URI'] as source of URIs:
+Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
 
 .. code-block:: nginx
 

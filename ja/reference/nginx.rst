@@ -15,7 +15,7 @@ PhalconのためのNginxの設定
 
 基本的な設定
 ^^^^^^^^^^^^^^^^^^^
-$_GET['_url'] をURIsとする場合:
+:code:`$_GET['_url']` をURIsとする場合:
 
 .. code-block:: nginx
 
@@ -55,7 +55,7 @@ $_GET['_url'] をURIsとする場合:
         }
     }
 
-$_SERVER['REQUEST_URI'] をURIsとする場合:
+:code:`$_SERVER['REQUEST_URI']` をURIsとする場合:
 
 .. code-block:: nginx
 

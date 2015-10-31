@@ -116,7 +116,7 @@ You can use this component also to create URLs without mod-rewrite:
     // This produce: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
 
-You can also use $_SERVER["REQUEST_URI"]:
+You can also use :code:`$_SERVER["REQUEST_URI"]`:
 
 .. code-block:: php
 

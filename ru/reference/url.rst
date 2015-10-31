@@ -113,7 +113,7 @@
     // Получится: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
 
-Вы так же можете использовать $_SERVER["REQUEST_URI"]:
+Вы так же можете использовать :code:`$_SERVER["REQUEST_URI"]`:
 
 .. code-block:: php
 

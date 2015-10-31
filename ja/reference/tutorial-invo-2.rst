@@ -63,7 +63,7 @@ Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt 
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
 It will not take too long before you become familiar with Volt.
 
-SessionController::startAction (app/controllers/SessionController.php) が、フォームに入力されたデータのバリデーションを行います。これには、データベース内の有効なユーザーかの確認も含まれます:
+:code:`SessionController::startAction` (app/controllers/SessionController.php) が、フォームに入力されたデータのバリデーションを行います。これには、データベース内の有効なユーザーかの確認も含まれます:
 
 .. code-block:: php
 

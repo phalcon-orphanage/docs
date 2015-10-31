@@ -1,7 +1,7 @@
 验证（Validation）
 ==================
 
-Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。
 当然也可以用来对非模型内的数据进行验证。
 
 下面的例子展示了一些基本的使用方法：
@@ -54,7 +54,7 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
 
 初始化验证（Initializing Validation）
 -------------------------------------
-我们可以直接在Phalcon\\Validation初始化时添加验证链。我们可以把验证器放在一个单独的文件中以提高代码的重用率及可组织性：
+我们可以直接在 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 初始化时添加验证链。我们可以把验证器放在一个单独的文件中以提高代码的重用率及可组织性：
 
 .. code-block:: php
 

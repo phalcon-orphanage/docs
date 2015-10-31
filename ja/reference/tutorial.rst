@@ -323,7 +323,7 @@ Viewへのアウトプットの送信
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
-:code:`Phalcon\\Tag::form` メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
+:code:`Phalcon\Tag::form()` メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
 
 送信ボタンをクリックすると、「signup」コントローラーの「register」アクションが見つからない、という例外が投げられることに気づくはずです。 public/index.php が以下の例外を投げています：
 

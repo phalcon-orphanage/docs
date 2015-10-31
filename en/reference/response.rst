@@ -112,7 +112,7 @@ how you can redirect using a route you have defined in your application:
     );
 
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
-will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
+will be executed anyway. You can disable the view from a controller by executing :code:`$this->view->disable()`;
 
 HTTP Cache
 ----------

@@ -6,7 +6,7 @@ A instalação de uma extensão PHP é levemente diferente dos métodos tradicio
     Phalcon é compilado do PHP 5.3.1, como as versões antigas do PHP causavam bugs relacionados à falha de memória, recomendamos fortemente utilizar pelo menos uma versão 5.3.11 ou maior.
 
 .. highlights::
-    Versões do PHP abaixo da 5.3.9 tem várias falhas de segurança e essas versões não são recomendadas para sites em produção.`Saiba Mais <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+    Versões do PHP abaixo da 5.3.9 tem várias falhas de segurança e essas versões não são recomendadas para sites em produção. `Saiba Mais <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------

@@ -11,7 +11,7 @@ The following are potential configurations you can use to setup nginx with Phalc
 
 Basic configuration
 ^^^^^^^^^^^^^^^^^^^
-Using $_GET['_url'] as source of URIs:
+Using :code:`$_GET['_url']` as source of URIs:
 
 .. code-block:: nginx
 
@@ -51,7 +51,7 @@ Using $_GET['_url'] as source of URIs:
         }
     }
 
-Using $_SERVER['REQUEST_URI'] as source of URIs:
+Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
 
 .. code-block:: nginx
 

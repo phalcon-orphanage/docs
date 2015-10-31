@@ -25,13 +25,13 @@ information of the request, allowing you to access it in an object-oriented way.
 
 Getting Values
 --------------
-PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
+PHP automatically fills the superglobal arrays :code:`$_GET` and :code:`$_POST` depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
 `Cross Site Scripting (XSS)`_ attacks.
 
-:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
-$_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the :code:`$_REQUEST`,
+:code:`$_GET` and :code:`$_POST` arrays and sanitize or filter them with the 'filter' service, (by default
 :doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
 
 .. code-block:: php
@@ -62,7 +62,7 @@ Accessing the Request from Controllers
 --------------------------------------
 The most common place to access the request environment is in an action of a controller. To access the
 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
-the $this->request public property of the controller:
+the :code:`$this->request` public property of the controller:
 
 .. code-block:: php
 
@@ -121,8 +121,8 @@ an object-oriented way to achieve this task:
         }
     }
 
-Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instance of the
-:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` class. Using the $_FILES superglobal
+Each object returned by :code:`Phalcon\Http\Request::getUploadedFiles()` is an instance of the
+:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` class. Using the :code:`$_FILES` superglobal
 array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates
 only the information related to each file uploaded with the request.
 

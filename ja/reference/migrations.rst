@@ -42,7 +42,7 @@ By default :doc:`Phalcon Developer Tools <tools>` uses the *app/migrations* dire
 
 マイグレーションクラスの構造
 -----------------------------
-Each file contains a unique class that extends the :code:`Phalcon\\Mvc\\Model\\Migration` class. These classes normally have two methods: :code:`up()` and :code:`down()`. :code:`up()` performs the migration, while :code:`down()` rolls it back.
+Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: :code:`up()` and :code:`down()`. :code:`up()` performs the migration, while :code:`down()` rolls it back.
 
 :code:`up()` also contains the *magic* method :code:`morphTable()`. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
 
@@ -174,24 +174,24 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 
 Database migrations support the following database column types:
 
-* :code:`Phalcon\\Db\\Column::TYPE_INTEGER`
-* :code:`Phalcon\\Db\\Column::TYPE_VARCHAR`
-* :code:`Phalcon\\Db\\Column::TYPE_CHAR`
-* :code:`Phalcon\\Db\\Column::TYPE_DATE`
-* :code:`Phalcon\\Db\\Column::TYPE_DATETIME`
-* :code:`Phalcon\\Db\\Column::TYPE_TIMESTAMP`
-* :code:`Phalcon\\Db\\Column::TYPE_DECIMAL`
-* :code:`Phalcon\\Db\\Column::TYPE_TEXT`
-* :code:`Phalcon\\Db\\Column::TYPE_BOOLEAN`
-* :code:`Phalcon\\Db\\Column::TYPE_FLOAT`
-* :code:`Phalcon\\Db\\Column::TYPE_DOUBLE`
-* :code:`Phalcon\\Db\\Column::TYPE_TINYBLOB`
-* :code:`Phalcon\\Db\\Column::TYPE_BLOB`
-* :code:`Phalcon\\Db\\Column::TYPE_MEDIUMBLOB`
-* :code:`Phalcon\\Db\\Column::TYPE_LONGBLOB`
-* :code:`Phalcon\\Db\\Column::TYPE_JSON`
-* :code:`Phalcon\\Db\\Column::TYPE_JSONB`
-* :code:`Phalcon\\Db\\Column::TYPE_BIGINTEGER`
+* :code:`Phalcon\Db\Column::TYPE_INTEGER`
+* :code:`Phalcon\Db\Column::TYPE_VARCHAR`
+* :code:`Phalcon\Db\Column::TYPE_CHAR`
+* :code:`Phalcon\Db\Column::TYPE_DATE`
+* :code:`Phalcon\Db\Column::TYPE_DATETIME`
+* :code:`Phalcon\Db\Column::TYPE_TIMESTAMP`
+* :code:`Phalcon\Db\Column::TYPE_DECIMAL`
+* :code:`Phalcon\Db\Column::TYPE_TEXT`
+* :code:`Phalcon\Db\Column::TYPE_BOOLEAN`
+* :code:`Phalcon\Db\Column::TYPE_FLOAT`
+* :code:`Phalcon\Db\Column::TYPE_DOUBLE`
+* :code:`Phalcon\Db\Column::TYPE_TINYBLOB`
+* :code:`Phalcon\Db\Column::TYPE_BLOB`
+* :code:`Phalcon\Db\Column::TYPE_MEDIUMBLOB`
+* :code:`Phalcon\Db\Column::TYPE_LONGBLOB`
+* :code:`Phalcon\Db\Column::TYPE_JSON`
+* :code:`Phalcon\Db\Column::TYPE_JSONB`
+* :code:`Phalcon\Db\Column::TYPE_BIGINTEGER`
 
 インデックスの定義
 ^^^^^^^^^^^^^^^^^^

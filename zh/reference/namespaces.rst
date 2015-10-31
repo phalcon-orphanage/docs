@@ -9,7 +9,7 @@ Namespaces_ 可以用来避免类名的冲突，比如如果在一个应用中�
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
 to perform one or all of the following tasks:
 
-Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
+Use an autoload strategy that takes into account the namespaces, for example with :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`:
 
 .. code-block:: php
 

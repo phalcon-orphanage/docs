@@ -98,7 +98,7 @@ Cela est réalisé dans l'"initializer" de chaque contrôleur.
         // ...
     }
 
-Notez que la méthode parent::initialize() est aussi appelée, cela ajoute plus de donnée à la suite du titre:
+Notez que la méthode :code:`parent::initialize()` est aussi appelée, cela ajoute plus de donnée à la suite du titre:
 
 .. code-block:: php
 

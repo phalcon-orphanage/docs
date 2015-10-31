@@ -18,7 +18,7 @@ The adapters available are:
 
 配列
 -------------
-The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
+The next example shows how to convert native arrays into :doc:`Phalcon\\Config <../api/Phalcon_Config>` objects. This option offers the best performance since no files are
 read during this request.
 
 .. code-block:: php
@@ -62,7 +62,7 @@ If you want to better organize your project you can save the array in another fi
 
 INIファイルの読み込み
 ---------------------
-Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+Ini files are a common way to store settings. :doc:`Phalcon\\Config <../api/Phalcon_Config>` uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
 
 .. code-block:: ini
 
@@ -97,7 +97,7 @@ You can read the file as follows:
 
 設定のマージ
 ----------------------
-Phalcon\\Config can recursively merge the properties of one configuration object into another.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` can recursively merge the properties of one configuration object into another.
 New properties are added and existing properties are updated.
 
 .. code-block:: php

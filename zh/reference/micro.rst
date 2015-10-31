@@ -42,7 +42,7 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
         echo "<h1>Hello! $name</h1>";
     });
 
-get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} 中含有一个参数 {$name}, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
+get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{name}` 中含有一个参数 :code:`{$name}`, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
 处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：
 
 .. code-block:: php
@@ -95,7 +95,7 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     // 匹配HTTP GET 或 POST方法
     $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
 
-To access the HTTP method data `$app` needs to be passed into the closure:
+To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 .. code-block:: php
 

@@ -177,19 +177,19 @@ You can set PDO options at connection time by passing the parameters 'options':
     // Get only the first row
     $robot = $connection->fetchOne($sql);
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon\\Db\\Result::setFetchMode(). This method receives a constant, defining which kind of index is required.
+By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using :code:`Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
 
-+--------------------------+-----------------------------------------------------------+
-| Constant                 | Description                                               |
-+==========================+===========================================================+
-| Phalcon\\Db::FETCH_NUM   | Return an array with numeric indexes                      |
-+--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_ASSOC | Return an array with associative indexes                  |
-+--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_BOTH  | Return an array with both associative and numeric indexes |
-+--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_OBJ   | Return an object instead of an array                      |
-+--------------------------+-----------------------------------------------------------+
++---------------------------------+-----------------------------------------------------------+
+| Constant                        | Description                                               |
++=================================+===========================================================+
+| :code:`Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
++---------------------------------+-----------------------------------------------------------+
+| :code:`Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
++---------------------------------+-----------------------------------------------------------+
+| :code:`Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
++---------------------------------+-----------------------------------------------------------+
+| :code:`Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
++---------------------------------+-----------------------------------------------------------+
 
 .. code-block:: php
 
@@ -203,7 +203,7 @@ By default these calls create arrays with both associative and numeric indexes. 
        echo $robot[0];
     }
 
-The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+The :code:`Phalcon\Db::query()` returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 .. code-block:: php
 
@@ -379,7 +379,7 @@ often increase the performance on most database systems:
         $connection->rollback();
     }
 
-In addition to standard transactions, Phalcon\\Db provides built-in support for `nested transactions`_
+In addition to standard transactions, :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides built-in support for `nested transactions`_
 (if the database system used supports them). When you call begin() for a second time a nested transaction
 is created:
 
@@ -445,7 +445,7 @@ is created:
 | commitTransaction   | Before a transaction is committed                         | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
 
-Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
+Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalcon_Db>` will trigger the events with the type "db":
 
 .. code-block:: php
 
@@ -619,7 +619,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 独自ロガーの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
-The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
+The method needs to accept a string as the first argument. You can then pass your logging object to :code:`Phalcon\Db::setLogger()`,
 and from then on any SQL statement executed will call that method to log the results.
 
 Describing Tables/Views
@@ -733,13 +733,13 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon\\Db::createTable() accepts an associative array describing the table. Columns are defined with the class
+:code:`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class
 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
+| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -762,17 +762,17 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 | "after"         | Column must be placed after indicated column                                                                                               | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Phalcon\\Db supports the following database column types:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` supports the following database column types:
 
-* Phalcon\\Db\\Column::TYPE_INTEGER
-* Phalcon\\Db\\Column::TYPE_DATE
-* Phalcon\\Db\\Column::TYPE_VARCHAR
-* Phalcon\\Db\\Column::TYPE_DECIMAL
-* Phalcon\\Db\\Column::TYPE_DATETIME
-* Phalcon\\Db\\Column::TYPE_CHAR
-* Phalcon\\Db\\Column::TYPE_TEXT
+* :code:`Phalcon\Db\Column::TYPE_INTEGER`
+* :code:`Phalcon\Db\Column::TYPE_DATE`
+* :code:`Phalcon\Db\Column::TYPE_VARCHAR`
+* :code:`Phalcon\Db\Column::TYPE_DECIMAL`
+* :code:`Phalcon\Db\Column::TYPE_DATETIME`
+* :code:`Phalcon\Db\Column::TYPE_CHAR`
+* :code:`Phalcon\Db\Column::TYPE_TEXT`
 
-The associative array passed in Phalcon\\Db::createTable() can have the possible keys:
+The associative array passed in :code:`Phalcon\Db::createTable()` can have the possible keys:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional |

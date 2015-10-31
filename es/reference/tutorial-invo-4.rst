@@ -100,7 +100,7 @@ donde estamos trabajando actualmente. Esto se logra en el método inicializador 
         // ...
     }
 
-El método parent::initialize() en la clase padre se llama igualmente, esté agrega más información al título:
+El método :code:`parent::initialize()` en la clase padre se llama igualmente, esté agrega más información al título:
 
 .. code-block:: php
 
