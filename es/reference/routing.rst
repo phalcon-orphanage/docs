@@ -1063,7 +1063,7 @@ For annotations that add routes, the following parameters are supported:
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to :code:`Phalcon\\Mvc\\Router::add()`                      | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
+| paths        | An array of paths like the one passed to :code:`Phalcon\Mvc\Router::add()`                        | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
