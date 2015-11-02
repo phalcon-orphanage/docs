@@ -98,16 +98,18 @@
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Dispatcher;
 
     class PostsController extends Controller
     {
-        public function beforeExecuteRoute($dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // 在每一个找到的动作前执行
         }
 
-        public function afterExecuteRoute($dispatcher)
+        public function afterExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // 在每一个找到的动作后执行
         }

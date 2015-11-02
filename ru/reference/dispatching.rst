@@ -96,16 +96,18 @@
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Dispatcher;
 
     class PostsController extends Controller
     {
-        public function beforeExecuteRoute($dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Выполняется перед каждым найденным действием
         }
 
-        public function afterExecuteRoute($dispatcher)
+        public function afterExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Выполняется после каждого выполненного действия
         }
