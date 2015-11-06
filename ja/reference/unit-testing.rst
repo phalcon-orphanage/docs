@@ -159,13 +159,16 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
          */
         private $_loaded = false;
 
-        public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+        public function setUp()
         {
+            parent::setUp();
+
             // テスト中に必要になる追加のサービスを読み込み
-            $di = DI::getDefault();
+            $di = Di::getDefault();
 
             // ここで必要なDIコンポーネントを取得する。config があるなら、それを parent に渡すことを忘れずに
-            parent::setUp($di);
+
+            $this->setDi($di);
 
             $this->_loaded = true;
         }

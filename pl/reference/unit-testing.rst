@@ -160,14 +160,16 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
          */
         private $_loaded = false;
 
-        public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+        public function setUp()
         {
+            parent::setUp();
+
             // Load any additional services that might be required during testing
-            $di = DI::getDefault();
+            $di = Di::getDefault();
 
             // Get any DI components here. If you have a config, be sure to pass it to the parent
 
-            parent::setUp($di);
+            $this->setDi($di);
 
             $this->_loaded = true;
         }

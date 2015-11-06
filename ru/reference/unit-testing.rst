@@ -160,14 +160,16 @@ This will run any tests under the tests/ directory.
          */
         private $_loaded = false;
 
-        public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+        public function setUp()
         {
+            parent::setUp();
+
             // Загрузка дополнительных сервисов, которые могут потребоваться во время тестирования
-            $di = DI::getDefault();
+            $di = Di::getDefault();
 
             // получаем любые компоненты DI, если у вас есть настройки, не забудьте передать их родителю
 
-            parent::setUp($di);
+            $this->setDi($di);
 
             $this->_loaded = true;
         }
