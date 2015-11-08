@@ -528,7 +528,7 @@ Then add the instance to the application:
 
 ハンドラでコントローラの使用
 -----------------------------
-Micro\\MVCを使用した中規模アプリケーションでは、コントローラーを使用する場合があると思います。
+:code:`Mvc\Micro` を使用した中規模アプリケーションでは、コントローラーを使用する場合があると思います。
 :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` を使用することによって、コントローラーのグルーピングができます。
 
 .. code-block:: php
