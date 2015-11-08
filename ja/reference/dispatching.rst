@@ -270,7 +270,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 パラメータの取得
 ------------------
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends
-:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+:doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>`.
 
 .. code-block:: php
 

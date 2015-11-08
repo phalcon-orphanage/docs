@@ -269,7 +269,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 Получение параметров
 --------------------
 Если текущий маршрут содержит именованные параметры, вы можете получить их в контроллере, представлении или любом другом компоненте,
-расширяющим :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+расширяющим :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>`.
 
 .. code-block:: php
 

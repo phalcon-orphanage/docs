@@ -213,9 +213,9 @@
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
-    $di = new DI();
+    $di = new Di();
 
     $di->set('storage', function () {
         return new Storage('/some/directory');

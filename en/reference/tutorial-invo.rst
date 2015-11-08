@@ -194,7 +194,7 @@ Dependency Injection
 --------------------
 Look at the first line of the code block above, the Application class constructor is receiving the variable
 :code:`$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework,
-so we need a component that acts as glue to make everything work together. That component is :doc:`Phalcon\\DI <../api/Phalcon_DI>`.
+so we need a component that acts as glue to make everything work together. That component is :doc:`Phalcon\\Di <../api/Phalcon_DI>`.
 It is a service container that also performs dependency injection and service location,
 instantiating all components as they are needed by the application.
 
@@ -227,14 +227,14 @@ was registered using the name "session". This is a convention that will allow th
 service in the services container.
 
 A request can use many services and registering each service individually can be a cumbersome task. For that reason,
-the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` whose task is to register
+the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` whose task is to register
 all services providing a full-stack framework.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     // ...
 

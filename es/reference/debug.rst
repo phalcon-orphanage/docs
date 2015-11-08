@@ -90,9 +90,9 @@ generating the exception:
         Phalcon\Db\Adapter\Pdo->__construct(Array)
     #3 [internal function]: {closure}()
     #4 [internal function]: call_user_func_array(Object(Closure), Array)
-    #5 [internal function]: Phalcon\DI->_factory(Object(Closure), Array)
-    #6 [internal function]: Phalcon\DI->get('db', Array)
-    #7 [internal function]: Phalcon\DI->getShared('db')
+    #5 [internal function]: Phalcon\Di->_factory(Object(Closure), Array)
+    #6 [internal function]: Phalcon\Di->get('db', Array)
+    #7 [internal function]: Phalcon\Di->getShared('db')
     #8 [internal function]: Phalcon\Mvc\Model->getConnection()
     #9 [internal function]: Phalcon\Mvc\Model::_getOrCreateResultset('Users', Array, true)
     #10 /Applications/MAMP/htdocs/invo/app/controllers/SessionController.php(83):

@@ -36,7 +36,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -76,7 +76,7 @@ If namespaces are used, the following bootstrap can be used:
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -199,7 +199,7 @@ A special bootstrap file is required to load a multi-module MVC architecture:
 
     use Phalcon\Mvc\Router;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 

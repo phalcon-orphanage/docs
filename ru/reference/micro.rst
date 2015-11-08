@@ -271,7 +271,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 Работа с Внедрением зависимостей (Dependency Injector)
 ------------------------------------------------------
-В микроприложении сервисы контейнера :doc:`Phalcon\\DI\\FactoryDefault <di>` создаются неявно;
+В микроприложении сервисы контейнера :doc:`Phalcon\\Di\\FactoryDefault <di>` создаются неявно;
 Кроме того, вы можете создать за пределами своего приложения контейнер, который будет
 манипулировать этими сервисами:
 
@@ -280,7 +280,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();

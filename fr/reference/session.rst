@@ -35,7 +35,7 @@ Grâce au conteneur de services, on peux s'assurer que les sessions sont accessi
 
 Stocker/Récupérer les données en session
 ----------------------------------------
-A partir d'un contrôleur, d'une vue ou de n'importe quel autre composant qui hérite de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` vous pourrez
+A partir d'un contrôleur, d'une vue ou de n'importe quel autre composant qui hérite de :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` vous pourrez
 accéder aux services de session et stocker/récupérer des informations de cette manière :
 
 .. code-block:: php
@@ -138,7 +138,7 @@ automatiquement les données dans la session :
 
 Données persistantes dans les composants
 ----------------------------------------
-Les contrôleurs, composants et classes qui héritent de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` peuvent injecter un :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.
+Les contrôleurs, composants et classes qui héritent de :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` peuvent injecter un :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.
 Cette classe isole les variables pour chaque classes.
 Grace à cela, vous pouvez faire durer vos données entre les requêtes de chaque classes de manière indépendantes.
 

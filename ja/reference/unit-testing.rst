@@ -40,8 +40,8 @@ PHPunitヘルパーファイル
 
     <?php
 
-    use Phalcon\DI;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di;
+    use Phalcon\Di\FactoryDefault;
 
     ini_set('display_errors',1);
     error_reporting(E_ALL);
@@ -71,11 +71,11 @@ PHPunitヘルパーファイル
     $loader->register();
 
     $di = new FactoryDefault();
-    DI::reset();
+    Di::reset();
 
     // 必要なサービスをDIに登録する
 
-    DI::setDefault($di);
+    Di::setDefault($di);
 
 独自ライブラリのコンポーネントをテストするなら、それらをオートローダーに登録するか、アプリケーション本体のオートローダを使用してください。
 
@@ -139,7 +139,7 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
     use Phalcon\Test\UnitTestCase as PhalconTestCase;
 
     abstract class UnitTestCase extends PhalconTestCase

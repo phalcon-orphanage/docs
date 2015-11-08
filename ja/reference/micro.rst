@@ -266,7 +266,7 @@ URisのrewriteは、以下のようにApacheで制限します。
 
 Interacting with the Dependency Injector
 ----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
+In the micro application, a :doc:`Phalcon\\Di\\FactoryDefault <di>` services container is created implicitly; additionally you
 can create outside the application a container to manipulate its services:
 
 .. code-block:: php
@@ -274,7 +274,7 @@ can create outside the application a container to manipulate its services:
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();

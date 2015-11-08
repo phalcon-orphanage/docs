@@ -102,7 +102,7 @@ tutorial/public/index.php は次のようになります。
         ))->register();
 
         // DIコンテナを作る
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // ビューのコンポーネントの組み立て
         $di->set('view', function () {
@@ -149,16 +149,16 @@ bootstrapの最初の部分では、オートローダを登録しています�
 ^^^^^^^^^^^^
 Phalconで開発する際に、理解するべき非常に重要なコンセプトは :doc:`dependency injection container <di>` です。それは複雑に聞こえますが、実際にはシンプルで実用的なものです。
 
-サービスコンテナは、アプリケーションが機能するために使用するサービスをグローバルに保存する入れ物です。フレームワークはコンポーネントを必要とするたびに、サービスに決められた名称でコンテナに問い合わせます。Phalconはとても疎結合なフレームワークです。:doc:`Phalcon\\DI <../api/Phalcon_DI>` は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
+サービスコンテナは、アプリケーションが機能するために使用するサービスをグローバルに保存する入れ物です。フレームワークはコンポーネントを必要とするたびに、サービスに決められた名称でコンテナに問い合わせます。Phalconはとても疎結合なフレームワークです。:doc:`Phalcon\\Di <../api/Phalcon_DI>` は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
 
 .. code-block:: php
 
     <?php
 
     // Create a DI
-    $di = new Phalcon\DI\FactoryDefault();
+    $di = new Phalcon\Di\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` は :doc:`Phalcon\\DI <../api/Phalcon_DI>` の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` は :doc:`Phalcon\\Di <../api/Phalcon_DI>` の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
 
 次のパートでは、フレームワークがviewファイルを探すディレクトリを示す "view" サービスを登録します。 viewファイルはクラスでないため、オートローダで補完されません。
 
@@ -396,7 +396,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
         ))->register();
 
         // Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // データベースサービスのセットアップ
         $di->set('db', function () {

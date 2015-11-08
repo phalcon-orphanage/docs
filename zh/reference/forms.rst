@@ -119,7 +119,7 @@ HTML的属性也可以在创建时指定：
         }
     }
 
-由于 :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` 实现了 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 接口，
+由于 :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` 实现了 :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` 接口，
 所以开发者可以根据自己的需要访问应用中的服务。
 
 .. code-block:: php

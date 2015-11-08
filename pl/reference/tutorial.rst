@@ -101,7 +101,7 @@ Plik tutorial/public/index.php powinien wyglądać następująco:
         ))->register();
 
         // Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // Setup the view component
         $di->set('view', function () {
@@ -149,16 +149,16 @@ Zarządzanie zależnościami
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Bardzo ważnym pojęciem, które musi być zrozumiane podczas pracy z Phalconem jest jego :doc:`dependency injection container <di>`. Może to brzmieć bardzo skomplikowanie, ale jest bardzo proste i praktyczne.
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\DI <../api/Phalcon_DI>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_DI>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
 .. code-block:: php
 
     <?php
 
     // Stwórz DI
-    $di = new Phalcon\DI\FactoryDefault();
+    $di = new Phalcon\Di\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
@@ -396,7 +396,7 @@ In order to be able to use a database connection and subsequently access data th
         ))->register();
 
         // Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // Setup the database service
         $di->set('db', function () {

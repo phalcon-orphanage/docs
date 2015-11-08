@@ -257,14 +257,14 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
 与依赖注入的交互（Interacting with the Dependency Injector）
 ------------------------------------------------------------
-微应用中， :doc:`Phalcon\\DI\\FactoryDefault <di>` 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：
+微应用中， :doc:`Phalcon\\Di\\FactoryDefault <di>` 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();

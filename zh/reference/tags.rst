@@ -654,7 +654,7 @@ After creating our custom helper, we will autoload the new directory that contai
 
     use Phalcon\Loader;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault();
+    use Phalcon\Di\FactoryDefault();
     use Phalcon\Exception as PhalconException;
 
     try {
