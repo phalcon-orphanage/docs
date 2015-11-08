@@ -22,7 +22,7 @@ Below is a sample bootstrap that is being used for this example.
     <?php
 
     use Phalcon\Di\FactoryDefault\CLI as CliDI,
-        Phalcon\CLI\Console as ConsoleApp;
+        Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
@@ -98,7 +98,7 @@ Below is an example of the app/tasks/MainTask.php file:
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -116,7 +116,7 @@ If you run the the application with the following parameters and action:
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -166,7 +166,7 @@ Then you can use the console inside of any task. Below is an example of a modifi
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {

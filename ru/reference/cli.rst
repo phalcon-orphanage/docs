@@ -23,7 +23,7 @@ index.php, как в веб-приложениях, мы используем cl
     <?php
 
     use Phalcon\Di\FactoryDefault\CLI as CliDI,
-        Phalcon\CLI\Console as ConsoleApp;
+        Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
@@ -102,7 +102,7 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -121,7 +121,7 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -171,7 +171,7 @@ We can then run the following command:
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
