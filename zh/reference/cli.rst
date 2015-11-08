@@ -21,7 +21,7 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\CLI as CliDI,
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
         Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');

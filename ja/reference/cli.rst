@@ -21,7 +21,7 @@ Below is a sample bootstrap that is being used for this example.
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\CLI as CliDI,
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
         Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
