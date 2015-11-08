@@ -827,7 +827,7 @@ when it's necessary.
          * Adapter constructor
          *
          * @param \Phalcon\Mvc\View $view
-         * @param \Phalcon\DI $di
+         * @param \Phalcon\Di $di
          */
         public function __construct($view, $di)
         {
@@ -924,7 +924,7 @@ There are adapters available for several template engines on the `Phalcon Incuba
 
 Injecting services in View
 --------------------------
-Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
+Every view executed is included inside a :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
 to the application's service container.
 
 The following example shows how to write a jQuery `ajax request`_ using a URL with the framework conventions.

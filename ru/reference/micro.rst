@@ -271,7 +271,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 Работа с Внедрением зависимостей (Dependency Injector)
 ------------------------------------------------------
-В микроприложении сервисы контейнера :doc:`Phalcon\\DI\\FactoryDefault <di>` создаются неявно;
+В микроприложении сервисы контейнера :doc:`Phalcon\\Di\\FactoryDefault <di>` создаются неявно;
 Кроме того, вы можете создать за пределами своего приложения контейнер, который будет
 манипулировать этими сервисами:
 
@@ -280,7 +280,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
@@ -534,7 +534,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
 Использование контроллеров и обработчиков
 -----------------------------------------
-При создании приложений среднего уровня через Micro\\MVC может потребоваться определённой организации обработчиков в контроллерах.
+При создании приложений среднего уровня через :code:`Mvc\Micro` может потребоваться определённой организации обработчиков в контроллерах.
 Вы можете использовать :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>`, чтобы группировать обработчики в контроллерах:
 
 .. code-block:: php

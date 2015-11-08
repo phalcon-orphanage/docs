@@ -180,7 +180,7 @@ Now, we must set up a connection to be used by this model and load it within our
 
     use Phalcon\Loader;
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Use Loader() to autoload our model

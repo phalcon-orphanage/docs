@@ -181,7 +181,7 @@
 
     use Phalcon\Loader;
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Используем Loader() для автозагрузки нашей модели

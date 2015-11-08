@@ -107,7 +107,7 @@ El archivo public/index.php debería verse así:
         ))->register();
 
         // Crear un Inyector de dependencias
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // Configurar el componente de vistas
         $di->set('view', function () {
@@ -152,7 +152,7 @@ Puede sonar complejo pero en realidad es muy sencillo y práctico.
 
 Un contenedor de servicios es una bolsa donde globalmente registramos los servicios que nuestra aplicación necesita para trabajar.
 Cada vez que requerimos un componente, le solicitaremos al contenedor el servicio usando un nombre previamente convenido.
-Ya que Phalcon es un framework libremente acoplado, :doc:`Phalcon\\DI <../api/Phalcon_DI>` actúa como intermediario facilitando la integración
+Ya que Phalcon es un framework libremente acoplado, :doc:`Phalcon\\Di <../api/Phalcon_DI>` actúa como intermediario facilitando la integración
 de los diferentes componentes logrando que trabajen juntos de manera transparente.
 
 .. code-block:: php
@@ -160,9 +160,9 @@ de los diferentes componentes logrando que trabajen juntos de manera transparent
     <?php
 
     // Crear un DI
-    $di = new Phalcon\DI\FactoryDefault();
+    $di = new Phalcon\Di\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` es una variante de :doc:`Phalcon\\DI <../api/Phalcon_DI>`.
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` es una variante de :doc:`Phalcon\\Di <../api/Phalcon_DI>`.
 Para hacer las cosas más fáciles, él ya tiene registrado la mayoría de componentes que vienen con Phalcon.
 De esta manera no debemos registrarlos uno a uno. Puedes reemplazar un componente por otro en cualquier momento que lo desees.
 
@@ -411,7 +411,7 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
         ))->register();
 
         // Crear un DI
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // Establecer el servicio de base de datos
         $di->set('db', function () {

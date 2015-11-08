@@ -178,7 +178,7 @@ Maintenant nous devons mettre en place la connexion qui sera utilisée par le mo
 
     use Phalcon\Loader;
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Use Loader() to autoload our model

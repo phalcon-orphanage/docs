@@ -32,7 +32,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -72,7 +72,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -195,7 +195,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     use Phalcon\Mvc\Router;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 

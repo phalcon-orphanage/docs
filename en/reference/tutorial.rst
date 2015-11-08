@@ -99,7 +99,7 @@ The tutorial/public/index.php file should look like:
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
@@ -164,20 +164,20 @@ Dependency Management
 ^^^^^^^^^^^^^^^^^^^^^
 A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\DI <../api/Phalcon_DI>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_DI>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     // ...
 
     // Create a DI
     $di = new FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>`. To make things easier,
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>`. To make things easier,
 it has registered most of the components that come with Phalcon. Thus we should not register them one by one.
 Later there will be no problem in replacing a factory service.
 
@@ -440,7 +440,7 @@ In order to be able to use a database connection and subsequently access data th
     <?php
 
     use Phalcon\Loader;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
     use Phalcon\Mvc\Url as UrlProvider;

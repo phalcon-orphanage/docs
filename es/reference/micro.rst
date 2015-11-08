@@ -268,7 +268,7 @@ by this way the "url" service can produce the corresponding URL:
 
 Interacting with the Dependency Injector
 ----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
+In the micro application, a :doc:`Phalcon\\Di\\FactoryDefault <di>` services container is created implicitly; additionally you
 can create outside the application a container to manipulate its services:
 
 .. code-block:: php
@@ -276,7 +276,7 @@ can create outside the application a container to manipulate its services:
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
@@ -530,7 +530,7 @@ The following middleware events are available:
 
 Using Controllers as Handlers
 -----------------------------
-Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
+Medium applications using the :code:`Mvc\Micro` approach may require organize handlers in controllers.
 You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
 
 .. code-block:: php

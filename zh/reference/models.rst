@@ -3241,13 +3241,13 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Manager as ModelsManager;
     use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
     use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
-    $di = new DI();
+    $di = new Di();
 
     // Setup a connection
     $di->set(

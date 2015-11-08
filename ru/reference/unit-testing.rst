@@ -40,8 +40,8 @@
 
     <?php
 
-    use Phalcon\DI;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di;
+    use Phalcon\Di\FactoryDefault;
 
     ini_set('display_errors',1);
     error_reporting(E_ALL);
@@ -71,11 +71,11 @@
     $loader->register();
 
     $di = new FactoryDefault();
-    DI::reset();
+    Di::reset();
 
     // здесь можно добавить любые необходимые сервисы в контейнер зависимостей
 
-    DI::setDefault($di);
+    Di::setDefault($di);
 
 Если вам необходимо протестировать любой компонент из вашей библиотеки, добавьте их в автозагрузку или используйте загрузчик вашего основного приложения.
 
@@ -140,7 +140,7 @@ This will run any tests under the tests/ directory.
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
     use Phalcon\Test\UnitTestCase as PhalconTestCase;
 
     abstract class UnitTestCase extends PhalconTestCase

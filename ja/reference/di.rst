@@ -275,7 +275,7 @@
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
     class SomeComponent
     {
@@ -304,7 +304,7 @@
         }
     }
 
-    $di = new DI();
+    $di = new Di();
 
     // 「db」サービスをコンテナに登録する
     $di->set('db', function () {
@@ -337,9 +337,9 @@
 
 私たちのアプローチ
 ==================
-:doc:`Phalcon\\DI <../api/Phalcon_DI>` は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
+:doc:`Phalcon\\Di <../api/Phalcon_DI>` は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
 
-Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalcon_DI>` はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
+Phalconが高度に分離されているため、:doc:`Phalcon\\Di <../api/Phalcon_DI>` はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
 
 基本的には、このコンポーネントは、`コントロールの反転`パターンを実装しています。
 
@@ -366,7 +366,7 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalc
     use Phalcon\Http\Request;
 
     // 依存性を注入するコンテナ（DIコンテナ）を作成する
-    $di = new Phalcon\DI();
+    $di = new Phalcon\Di();
 
     // クラス名で登録
     $di->set("request", 'Phalcon\Http\Request');
@@ -396,7 +396,7 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalc
     use Phalcon\Http\Request;
 
     // 依存性を注入するコンテナ（DIコンテナ）を作成する
-    $di = new Phalcon\DI();
+    $di = new Phalcon\Di();
 
     // クラス名で登録
     $di["request"] = 'Phalcon\Http\Request';
@@ -420,7 +420,7 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\DI <../api/Phalc
 
 文字列でのサービス登録は、シンプルですが、柔軟性に欠けます。配列でのサービス登録は、より柔軟ですが、コードが複雑になります。無名関数にはこの2つの中間的なバランスの良さがありますが、意外とメンテナンスが大変です。
 
-:doc:`Phalcon\\DI <../api/Phalcon_DI>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
+:doc:`Phalcon\\Di <../api/Phalcon_DI>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
 
 簡単な登録
 ----------
@@ -874,13 +874,13 @@ for it.
 Automatic Injecting of the DI itself
 ====================================
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
-to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
+to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\InjectionAwareInterface;
+    use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
@@ -957,28 +957,28 @@ If needed you can access the latest DI created in a static function in the follo
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
     class SomeComponent
     {
         public static function someMethod()
         {
             // Get the session service
-            $session = DI::getDefault()->getSession();
+            $session = Di::getDefault()->getSession();
         }
     }
 
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 
