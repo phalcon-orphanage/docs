@@ -61,7 +61,7 @@
     // Установка напрямую
     $response->setRawHeader("HTTP/1.1 200 OK");
 
-Объект :doc:`Phalcon\\HTTP\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` содержит в себе все заголовки и средства для их управления.
+Объект :doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` содержит в себе все заголовки и средства для их управления.
 Этот класс позволяет управлять заголовками до их отправки клиенту:
 
 .. code-block:: php
@@ -76,7 +76,7 @@
 
 Создание перенаправлений (редиректы)
 ------------------------------------
-С помощью :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` вы можете выполнять переадресования HTTP:
+С помощью :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` вы можете выполнять переадресования HTTP:
 
 .. code-block:: php
 
