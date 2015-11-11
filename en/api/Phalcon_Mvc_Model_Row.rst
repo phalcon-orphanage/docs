@@ -32,7 +32,7 @@ Gets a record in a specific position of the row
 
 
 
-public  **offsetSet** (*string|int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
+public  **offsetSet** (*string|int* $index, :doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $value)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

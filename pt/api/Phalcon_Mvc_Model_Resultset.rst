@@ -47,7 +47,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+public  **__construct** (*\\Phalcon\\Db\\ResultInterface|false* $result, [:doc:`\\Phalcon\\Cache\\BackendInterface <_Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -101,7 +101,7 @@ Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
+public  **offsetSet** (*int* $index, :doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -179,7 +179,7 @@ Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
+public *\Phalcon\Mvc\Model[]*  **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires 
 

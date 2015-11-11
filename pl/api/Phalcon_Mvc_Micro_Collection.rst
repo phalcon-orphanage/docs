@@ -53,7 +53,7 @@ Returns the registered handlers
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setHandler** (*mixed* $handler, [*boolean* $lazy])
+public *\Phalcon\Mvc\Micro\Collection*  **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
 Sets the main handler
 
@@ -77,49 +77,49 @@ Returns the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **map** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **map** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **get** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **get** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **post** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **post** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **put** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **put** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **head** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **head** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **options** (*string* $routePattern, *callable* $handler, [*unknown* $name])
+public *\Phalcon\Mvc\Micro\Collection*  **options** (*string* $routePattern, *callable* $handler, [*unknown* $name])
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 

@@ -57,7 +57,7 @@ Sets a custom events manager for a specific model
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public *\Phalcon\Events\ManagerInterface*  **getCustomEventsManager** (:doc:`\\Phalcon\\Mvc\\CollectionInterface <_Phalcon_Mvc_CollectionInterface>` $model)
 
 Returns a custom events manager related to a model
 
@@ -99,7 +99,7 @@ Checks if a model is using implicit object ids
 
 
 
-public *\Mongo*  **getConnection** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public *\Mongo*  **getConnection** (:doc:`\\Phalcon\\Mvc\\CollectionInterface <_Phalcon_Mvc_CollectionInterface>` $model)
 
 Returns the connection related to a model
 

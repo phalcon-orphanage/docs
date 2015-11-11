@@ -112,7 +112,7 @@ Returns the default module name
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*string* $uri])
+public *\Phalcon\Http\ResponseInterface|boolean*  **handle** ([*string* $uri])
 
 Handles a MVC request
 

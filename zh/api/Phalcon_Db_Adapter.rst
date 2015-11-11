@@ -62,7 +62,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
+public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -318,7 +318,7 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
 
 Creates a view
 
