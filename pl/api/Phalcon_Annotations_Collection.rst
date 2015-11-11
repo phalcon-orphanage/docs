@@ -48,7 +48,7 @@ Rewinds the internal iterator
 
 
 
-public *\Phalcon\Annotations\Annotation*  **current** ()
+public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **current** ()
 
 Returns the current annotation in the iterator
 

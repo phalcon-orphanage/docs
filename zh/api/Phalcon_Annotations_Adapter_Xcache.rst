@@ -23,7 +23,7 @@ Stores the parsed annotations to XCache. This adapter is suitable for production
 Methods
 -------
 
-public *\Phalcon\Annotations\Reflection*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
 Reads parsed annotations from XCache
 

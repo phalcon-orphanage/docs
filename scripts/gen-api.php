@@ -521,10 +521,12 @@ foreach ($classes as $className) {
             $code .= implode(' ', Reflection::getModifierNames($method->getModifiers())) . ' ';
 
             if (isset($ret['return'])) {
-                if (preg_match('/^(Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
+                if (preg_match('/^(\\\\?Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
                     if (class_exists($matches[0]) || interface_exists($matches[0])) {
-                        $extendsPath = str_replace("\\", "_", $matches[1]);
-                        $extendsName = str_replace("\\", "\\\\", $matches[1]);
+                        $extendsPath = preg_replace('/^\\\\/', '', $matches[1]);
+                        $extendsPath = str_replace("\\", "_", $extendsPath);
+                        $extendsName = preg_replace('/^\\\\/', '', $matches[1]);
+                        $extendsName = str_replace("\\", "\\\\", $extendsName);
                         $code .= str_replace(
                             $matches[1],
                             ':doc:`' . $extendsName . ' <' . $extendsPath . '>` ',
@@ -548,8 +550,10 @@ foreach ($classes as $className) {
                 if (isset($ret['parameters'][$name])) {
                     if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
                         if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
-                            $parameterPath = str_replace("\\", "_", $ret['parameters'][$name]);
-                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
+                            $parameterPath = preg_replace('/^\\\\/', '', $ret['parameters'][$name]);
+                            $parameterPath = str_replace("\\", "_", $parameterPath);
+                            $parameterName = preg_replace('/^\\\\/', '', $ret['parameters'][$name]);
+                            $parameterName = str_replace("\\", "\\\\", $parameterName);
                             if (!$parameter->isOptional()) {
                                 $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
                             } else {

@@ -158,13 +158,13 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** (:doc:`\\Phalcon\\Assets\\Collection <_Phalcon_Assets_Collection>` $collection, *callback* $callback, *string* $type)
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, *string* $type)
 
 Traverses a collection calling the callback to generate its HTML
 
 
 
-public  **outputInline** (:doc:`\\Phalcon\\Assets\\Collection <_Phalcon_Assets_Collection>` $collection, *string* $type)
+public  **outputInline** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *string* $type)
 
 Traverses a collection and generate its HTML
 

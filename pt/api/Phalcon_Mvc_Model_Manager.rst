@@ -270,7 +270,7 @@ Merge two arrays of find parameters
 
 
 
-public *\Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false*  **getRelationRecords** (*unknown* $relation, *unknown* $method, *unknown* $record, [*unknown* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>` |Phalcon\Mvc\Model\Resultset\Simple|false **getRelationRecords** (*unknown* $relation, *unknown* $method, *unknown* $record, [*unknown* $parameters])
 
 Helper method to query records based on a relation definition
 

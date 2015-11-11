@@ -68,7 +68,7 @@ Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*array* $parameters], [:doc:`\\Phalcon\\DiInterface <_Phalcon_DiInterface>` $dependencyInjector])
+public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 

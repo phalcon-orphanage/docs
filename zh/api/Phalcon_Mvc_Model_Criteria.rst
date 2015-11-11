@@ -69,7 +69,7 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 
 
-public *\Phalcon\Mvc\Model\Criteria*  **columns** (*string|array* $columns)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **columns** (*string|array* $columns)
 
 Sets the columns to be queried 
 

@@ -98,7 +98,7 @@ Adds a inline CSS to the collection
 
 
 
-public *\Phalcon\Assets\Collection*  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the collection
 

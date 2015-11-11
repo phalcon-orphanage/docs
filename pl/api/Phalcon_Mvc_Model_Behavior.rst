@@ -36,7 +36,7 @@ This method receives the notifications from the EventsManager
 
 
 
-public  **missingMethod** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments])
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments])
 
 Acts as fallbacks when a missing method is called on the model
 

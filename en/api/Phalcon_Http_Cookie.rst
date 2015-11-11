@@ -32,7 +32,7 @@ Returns the internal dependency injector
 
 
 
-public *\Phalcon\Http\Cookie*  **setValue** (*string* $value)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*string* $value)
 
 Sets the cookie's value
 

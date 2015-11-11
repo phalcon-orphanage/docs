@@ -68,7 +68,7 @@ Alias of detachAll
 
 
 
-final public *mixed*  **fireQueue** (*\SplPriorityQueue|array* $queue, :doc:`\\Phalcon\\Events\\Event <_Phalcon_Events_Event>` $event)
+final public *mixed*  **fireQueue** (*\SplPriorityQueue|array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
 Internal handler to call a queue of events
 

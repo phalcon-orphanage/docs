@@ -25,7 +25,7 @@ Sends logs to FirePHP
 Methods
 -------
 
-public *\Phalcon\Logger\FormatterInterface*  **getFormatter** ()
+public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
 
 Returns the internal formatter
 

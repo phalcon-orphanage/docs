@@ -85,7 +85,7 @@ Handles routing information received from command-line arguments
 
 
 
-public *\Phalcon\Cli\Router\Route*  **add** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router 
 
@@ -146,7 +146,7 @@ Returns all the routes defined in the router
 
 
 
-public *\Phalcon\Cli\Router\Route*  **getRouteById** (*int* $id)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getRouteById** (*int* $id)
 
 Returns a route object by its id
 

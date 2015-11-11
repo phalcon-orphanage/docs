@@ -18,7 +18,7 @@ Generates a SELECT tag
 
 
 
-private static  **_optionsFromResultset** (:doc:`\\Phalcon\\Mvc\\Model\\Resultset <_Phalcon_Mvc_Model_Resultset>` $resultset, *array* $using, *mixed* $value, *string* $closeOption)
+private static  **_optionsFromResultset** (:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` $resultset, *array* $using, *mixed* $value, *string* $closeOption)
 
 Generate the OPTION tags based on a resultset
 

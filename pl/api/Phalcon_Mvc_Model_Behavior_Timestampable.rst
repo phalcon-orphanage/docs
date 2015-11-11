@@ -40,7 +40,7 @@ Returns the behavior options related to an event
 
 
 
-public  **missingMethod** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Acts as fallbacks when a missing method is called on the model
 

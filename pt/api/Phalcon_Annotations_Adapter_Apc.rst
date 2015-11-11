@@ -29,7 +29,7 @@ Phalcon\\Annotations\\Adapter\\Apc constructor
 
 
 
-public *\Phalcon\Annotations\Reflection*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
 Reads parsed annotations from APC
 

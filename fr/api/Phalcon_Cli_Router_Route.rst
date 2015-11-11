@@ -62,7 +62,7 @@ Sets the route's name
 
 
 
-public *\Phalcon\Cli\Router\Route*  **beforeMatch** (*callback* $callback)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **beforeMatch** (*callback* $callback)
 
 Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
@@ -104,7 +104,7 @@ Returns the paths using positions as keys and names as values
 
 
 
-public *\Phalcon\Cli\Router\Route*  **convert** (*string* $name, *callable* $converter)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **convert** (*string* $name, *callable* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 

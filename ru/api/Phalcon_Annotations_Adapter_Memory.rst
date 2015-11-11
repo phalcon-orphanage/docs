@@ -16,7 +16,7 @@ Stores the parsed annotations in memory. This adapter is the suitable developmen
 Methods
 -------
 
-public *\Phalcon\Annotations\Reflection*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
 Reads parsed annotations from memory
 

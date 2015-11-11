@@ -41,49 +41,49 @@ Sets the DependencyInjector container
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **map** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **map** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler without any HTTP method constraint
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **get** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **get** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **post** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **post** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **put** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **put** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **patch** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **patch** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **head** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **head** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **delete** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **delete** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public *\Phalcon\Mvc\Router\RouteInterface*  **options** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **options** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
@@ -95,13 +95,13 @@ Mounts a collection of handlers
 
 
 
-public *\Phalcon\Mvc\Micro*  **notFound** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
 
 
-public *\Phalcon\Mvc\Micro*  **error** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **error** (*callable* $handler)
 
 Sets a handler that will be called when an exception is thrown handling the route
 
@@ -113,7 +113,7 @@ Returns the internal router used by the application
 
 
 
-public *\Phalcon\Di\ServiceInterface*  **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
 Sets a service from the DI
 
@@ -205,19 +205,19 @@ Removes a service from the internal services container using the array syntax
 
 
 
-public *\Phalcon\Mvc\Micro*  **before** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **before** (*callable* $handler)
 
 Appends a before middleware to be called before execute the route
 
 
 
-public *\Phalcon\Mvc\Micro*  **after** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **after** (*callable* $handler)
 
 Appends an 'after' middleware to be called after execute the route
 
 
 
-public *\Phalcon\Mvc\Micro*  **finish** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
 
 Appends a 'finish' middleware to be called when the request is finished
 

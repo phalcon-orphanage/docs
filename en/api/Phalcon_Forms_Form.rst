@@ -32,7 +32,7 @@ Phalcon\\Forms\\Form constructor
 
 
 
-public *\Phalcon\Forms\Form*  **setAction** (*string* $action)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setAction** (*string* $action)
 
 Sets the form's action
 
@@ -44,7 +44,7 @@ Returns the form's action
 
 
 
-public *\Phalcon\Forms\Form*  **setUserOption** (*string* $option, *mixed* $value)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the form
 
@@ -68,7 +68,7 @@ Returns the options for the element
 
 
 
-public *\Phalcon\Forms\Form*  **setEntity** (*object* $entity)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEntity** (*object* $entity)
 
 Sets the entity related to the model
 
@@ -86,7 +86,7 @@ Returns the form elements added to the form
 
 
 
-public *\Phalcon\Forms\Form*  **bind** (*array* $data, *object* $entity, [*array* $whitelist])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
 Binds data to the entity
 
@@ -104,7 +104,7 @@ Returns the messages generated in the validation
 
 
 
-public *\Phalcon\Validation\Message\Group*  **getMessagesFor** (*string* $name)
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessagesFor** (*string* $name)
 
 Returns the messages generated for a specific element
 
@@ -116,7 +116,7 @@ Check if messages were generated for a specific element
 
 
 
-public *\Phalcon\Forms\Form*  **add** (:doc:`\\Phalcon\\Forms\\ElementInterface <_Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
 
 Adds an element to the form
 
@@ -164,7 +164,7 @@ Removes an element from the form
 
 
 
-public *\Phalcon\Forms\Form*  **clear** ([*array* $fields])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ([*array* $fields])
 
 Clears every element in the form to its default value
 

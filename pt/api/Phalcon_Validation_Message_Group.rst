@@ -20,7 +20,7 @@ Phalcon\\Validation\\Message\\Group constructor
 
 
 
-public *\Phalcon\Validation\Message*  **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **offsetGet** (*int* $index)
 
 Gets an attribute a message using the array syntax 
 
@@ -33,7 +33,7 @@ Gets an attribute a message using the array syntax
 
 
 
-public  **offsetSet** (*int* $index, :doc:`\\Phalcon\\Validation\\Message <_Phalcon_Validation_Message>` $message)
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
 Sets an attribute using the array-syntax 
 
@@ -116,7 +116,7 @@ Rewinds the internal iterator
 
 
 
-public *\Phalcon\Validation\Message*  **current** ()
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **current** ()
 
 Returns the current message in the iterator
 
@@ -140,7 +140,7 @@ Check if the current message in the iterator is valid
 
 
 
-public static *\Phalcon\Validation\Message\Group*  **__set_state** (*array* $group)
+public static :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **__set_state** (*array* $group)
 
 Magic __set_state helps to re-build messages variable when exporting
 
