@@ -105,7 +105,7 @@ Renders a partial view
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*array* $options)
+public *\Phalcon\Mvc\View\Simple*  **setCacheOptions** (*array* $options)
 
 Sets the cache options
 

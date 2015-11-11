@@ -157,7 +157,7 @@ Sets the render level for the view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableLevel** (*int|array* $level)
+public *\Phalcon\Mvc\View*  **disableLevel** (*int|array* $level)
 
 Disables a specific level of rendering 
 
@@ -210,7 +210,7 @@ Returns the name of the main view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateBefore** (*string|array* $templateBefore)
+public *\Phalcon\Mvc\View*  **setTemplateBefore** (*string|array* $templateBefore)
 
 Sets a template before the controller layout
 
@@ -222,7 +222,7 @@ Resets any "template before" layouts
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateAfter** (*string|array* $templateAfter)
+public *\Phalcon\Mvc\View*  **setTemplateAfter** (*string|array* $templateAfter)
 
 Sets a "template after" controller layout
 
@@ -234,7 +234,7 @@ Resets any template before layouts
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setParamToView** (*string* $key, *mixed* $value)
+public *\Phalcon\Mvc\View*  **setParamToView** (*string* $key, *mixed* $value)
 
 Adds parameters to views (alias of setVar) 
 
@@ -247,7 +247,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVars** (*array* $params, [*boolean* $merge])
+public *\Phalcon\Mvc\View*  **setVars** (*array* $params, [*boolean* $merge])
 
 Set all the render params 
 
@@ -260,7 +260,7 @@ Set all the render params
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVar** (*string* $key, *mixed* $value)
+public *\Phalcon\Mvc\View*  **setVar** (*string* $key, *mixed* $value)
 
 Set a single view parameter 
 
@@ -315,7 +315,7 @@ Loads registered template engines, if none is registered it will use Phalcon\\Mv
 
 
 
-protected  **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+protected  **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [:doc:`\\Phalcon\\Cache\\BackendInterface <_Phalcon_Cache_BackendInterface>` $cache])
 
 Checks whether view exists on registered extensions and render it
 
@@ -358,7 +358,7 @@ Executes render process from dispatching data
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **pick** (*string|array* $renderView)
+public *\Phalcon\Mvc\View*  **pick** (*string|array* $renderView)
 
 Choose a different view to render instead of last-controller/last-action 
 
@@ -461,7 +461,7 @@ Returns the cache instance used to cache
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cache** ([*boolean|array* $options])
+public *\Phalcon\Mvc\View*  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level 
 

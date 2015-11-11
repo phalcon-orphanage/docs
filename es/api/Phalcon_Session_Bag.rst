@@ -60,7 +60,7 @@ Destroyes the session bag
 
 
 
-public  **set** (*string* $property, *string* $value)
+public  **set** (*unknown* $property, *unknown* $value)
 
 Sets a value in the session bag 
 
@@ -73,7 +73,7 @@ Sets a value in the session bag
 
 
 
-public  **__set** (*string* $property, *string* $value)
+public  **__set** (*unknown* $property, *unknown* $value)
 
 Magic setter to assign values to the session bag 
 
@@ -86,7 +86,7 @@ Magic setter to assign values to the session bag
 
 
 
-public *mixed*  **get** (*string* $property, [*string* $defaultValue])
+public  **get** (*unknown* $property, [*unknown* $defaultValue])
 
 Obtains a value from the session bag optionally setting a default value 
 
@@ -99,7 +99,7 @@ Obtains a value from the session bag optionally setting a default value
 
 
 
-public *mixed*  **__get** (*string* $property)
+public  **__get** (*unknown* $property)
 
 Magic getter to obtain values from the session bag 
 

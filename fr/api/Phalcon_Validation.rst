@@ -27,7 +27,7 @@ Phalcon\\Validation constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** ([*array|object* $data], [*object* $entity])
+public *\Phalcon\Validation\Message\Group*  **validate** ([*array|object* $data], [*object* $entity])
 
 Validate a set of data according to a set of rules
 
@@ -51,7 +51,7 @@ Adds the validators to a field
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setFilters** (*string* $field, *array|string* $filters)
+public *\Phalcon\Validation*  **setFilters** (*string* $field, *array|string* $filters)
 
 Adds filters to the field
 
@@ -111,7 +111,7 @@ Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*object* $entity, *array|object* $data)
+public *\Phalcon\Validation*  **bind** (*object* $entity, *array|object* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 

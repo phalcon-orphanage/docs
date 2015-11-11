@@ -210,7 +210,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*unknown* $dataColumnMap], [*array* $whiteList])
+public *\Phalcon\Mvc\Model*  **assign** (*array* $data, [*unknown* $dataColumnMap], [*array* $whiteList])
 
 Assigns values to a model from an array 
 
@@ -237,7 +237,7 @@ Assigns values to a model from an array
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static *\Phalcon\Mvc\Model*  **cloneResultMap** (*\\Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -260,7 +260,7 @@ Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*int* $dirtyState])
+public static *\Phalcon\Mvc\ModelInterface*  **cloneResult** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -308,7 +308,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*string|array* $parameters])
+public static *\Phalcon\Mvc\Model*  **findFirst** ([*string|array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -337,13 +337,13 @@ Create a criteria for a specific model
 
 
 
-protected *boolean*  **_exists** (:doc:`Phalcon\\Mvc\\Model\\MetadataInterface <Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, [*string|array* $table])
+protected *boolean*  **_exists** (:doc:`\\Phalcon\\Mvc\\Model\\MetadataInterface <_Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`\\Phalcon\\Db\\AdapterInterface <_Phalcon_Db_AdapterInterface>` $connection, [*string|array* $table])
 
 Checks if the current record already exists or not
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** (*unknown* $functionName, *string* $alias, *array* $parameters)
+protected static *\Phalcon\Mvc\Model\ResultsetInterface*  **_groupResult** (*unknown* $functionName, *string* $alias, *array* $parameters)
 
 Generate a PHQL SELECT statement for an aggregate
 
@@ -597,19 +597,19 @@ Executes internal events after save a record
 
 
 
-protected *boolean*  **_doLowInsert** (:doc:`Phalcon\\Mvc\\Model\\MetadataInterface <Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table, *boolean|string* $identityField)
+protected *boolean*  **_doLowInsert** (:doc:`\\Phalcon\\Mvc\\Model\\MetadataInterface <_Phalcon_Mvc_Model_MetadataInterface>` $metaData, :doc:`\\Phalcon\\Db\\AdapterInterface <_Phalcon_Db_AdapterInterface>` $connection, *string|array* $table, *boolean|string* $identityField)
 
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-protected *boolean*  **_doLowUpdate** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table)
+protected *boolean*  **_doLowUpdate** (:doc:`\\Phalcon\\Mvc\\Model\\MetaDataInterface <_Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`\\Phalcon\\Db\\AdapterInterface <_Phalcon_Db_AdapterInterface>` $connection, *string|array* $table)
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean*  **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *Phalcon\\Mvc\\ModelInterface[]* $related)
+protected *boolean*  **_preSaveRelatedRecords** (:doc:`\\Phalcon\\Db\\AdapterInterface <_Phalcon_Db_AdapterInterface>` $connection, *\\Phalcon\\Mvc\\ModelInterface[]* $related)
 
 Saves related records that must be stored prior to save the master record
 
@@ -1039,7 +1039,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
+public *\Phalcon\Mvc\Model\ResultsetInterface*  **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
 
@@ -1051,7 +1051,7 @@ Returns related records defined relations depending on the method name
 
 
 
-final protected static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` []|:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` |boolean **_invokeFinder** (*string* $method, *array* $arguments)
+final protected static *\Phalcon\Mvc\ModelInterface[]|\Phalcon\Mvc\ModelInterface|boolean*  **_invokeFinder** (*string* $method, *array* $arguments)
 
 Try to check if the query must invoke a finder
 
@@ -1075,7 +1075,7 @@ Magic method to assign values to the the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*string* $property)
+public *\Phalcon\Mvc\Model\Resultset|Phalcon\Mvc\Model*  **__get** (*string* $property)
 
 Magic method to get related records using the relation alias as a property
 

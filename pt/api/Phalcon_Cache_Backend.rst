@@ -42,7 +42,7 @@ public  **setLastKey** (*unknown* $lastKey)
 ...
 
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
+public  **__construct** (:doc:`\\Phalcon\\Cache\\FrontendInterface <_Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend constructor
 

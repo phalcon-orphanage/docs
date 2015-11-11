@@ -296,7 +296,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -552,7 +552,7 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Creates a view
 

@@ -122,7 +122,7 @@ public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backe
 ...
 
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
+public  **__construct** (:doc:`\\Phalcon\\Cache\\FrontendInterface <_Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
 

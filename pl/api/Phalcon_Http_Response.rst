@@ -86,13 +86,13 @@ Sets a cookies bag for the response externally
 
 
 
-public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **getCookies** ()
+public *\Phalcon\Http\Response\CookiesInterface*  **getCookies** ()
 
 Returns coookies set by the user
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setHeader** (*string* $name, *string* $value)
+public *\Phalcon\Http\Response*  **setHeader** (*string* $name, *string* $value)
 
 Overwrites a header in the response 
 
@@ -156,7 +156,7 @@ Sends a Not-Modified response
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setContentType** (*string* $contentType, [*string* $charset])
+public *\Phalcon\Http\Response*  **setContentType** (*string* $contentType, [*string* $charset])
 
 Sets the response content-type mime, optionally the charset 
 
@@ -183,7 +183,7 @@ Set a custom ETag
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **redirect** ([*string|array* $location], [*boolean* $externalRedirect], [*int* $statusCode])
+public *\Phalcon\Http\Response*  **redirect** ([*string|array* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
 
@@ -219,7 +219,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setJsonContent** (*mixed* $content, [*int* $jsonOptions], [*unknown* $depth])
+public *\Phalcon\Http\Response*  **setJsonContent** (*mixed* $content, [*int* $jsonOptions], [*unknown* $depth])
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -232,7 +232,7 @@ Sets HTTP response body. The parameter is automatically converted to JSON
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **appendContent** (*string* $content)
+public *\Phalcon\Http\Response*  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
 
@@ -268,7 +268,7 @@ Prints out HTTP response to the client
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
+public *\Phalcon\Http\Response*  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
 
 Sets an attached file to be sent at the end of the request
 

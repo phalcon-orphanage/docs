@@ -147,19 +147,19 @@ Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection, *boolean* $unique)
+protected static *array*  **_getResultset** (*array* $params, :doc:`\\Phalcon\\Mvc\\Collection <_Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection)
+protected static *int*  **_getGroupResultset** (*array* $params, :doc:`\\Phalcon\\Mvc\\Collection <_Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection)
 
 Perform a count over a resultset
 
 
 
-final protected *boolean*  **_preSave** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
+final protected *boolean*  **_preSave** (:doc:`\\Phalcon\\DiInterface <_Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
@@ -308,7 +308,7 @@ Creates/Updates a collection based on the values in the attributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
+public static *\Phalcon\Mvc\Collection*  **findById** (*string|\MongoId* $id)
 
 Find a document by its id (_id)
 
