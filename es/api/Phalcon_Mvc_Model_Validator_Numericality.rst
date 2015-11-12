@@ -38,13 +38,13 @@ Allows to validate if a field has a valid numeric format
 Methods
 -------
 
-public  **validate** (*unknown* $record)
+public  **validate** (:doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>` $record)
 
 Executes the validator
 
 
 
-public  **__construct** (*unknown* $options) inherited from Phalcon\\Mvc\\Model\\Validator
+public  **__construct** (*array* $options) inherited from Phalcon\\Mvc\\Model\\Validator
 
 Phalcon\\Mvc\\Model\\Validator constructor
 

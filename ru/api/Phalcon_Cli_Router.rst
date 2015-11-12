@@ -33,7 +33,7 @@ Phalcon\\Cli\\Router constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -63,7 +63,7 @@ Sets the default action name
 
 
 
-public  **setDefaults** (*unknown* $defaults)
+public  **setDefaults** (*array* $defaults)
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 

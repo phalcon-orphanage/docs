@@ -55,7 +55,7 @@ public  **getLifetime** ()
 ...
 
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Session\\Adapter\\Memcache constructor
 
@@ -101,7 +101,7 @@ Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Session\\Adapter
+public  **setOptions** (*array* $options) inherited from Phalcon\\Session\\Adapter
 
 Sets session's options 
 

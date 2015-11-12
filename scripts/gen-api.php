@@ -548,44 +548,38 @@ foreach ($classes as $className) {
             foreach ($method->getParameters() as $parameter) {
                 $name = '$' . $parameter->name;
                 if (isset($ret['parameters'][$name])) {
-                    if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
-                        if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
-                            $parameterPath = preg_replace('/^\\\\/', '', $ret['parameters'][$name]);
-                            $parameterPath = str_replace("\\", "_", $parameterPath);
-                            $parameterName = preg_replace('/^\\\\/', '', $ret['parameters'][$name]);
-                            $parameterName = str_replace("\\", "\\\\", $parameterName);
-                            if (!$parameter->isOptional()) {
-                                $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
-                            } else {
-                                $cp[] = '[:doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name . ']';
-                            }
+                    $parameterType = $ret['parameters'][$name];
+                } else if (!is_null($parameter->getClass())) {
+                    $parameterType = $parameter->getClass()->name;
+                } else if ($parameter->isArray()) {
+                    $parameterType = 'array';
+                } else {
+                    $parameterType = 'unknown';
+                }
+                if (strpos($parameterType, 'Phalcon') !== false) {
+                    if (class_exists($parameterType) || interface_exists($parameterType)) {
+                        $parameterPath = preg_replace('/^\\\\/', '', $parameterType);
+                        $parameterPath = str_replace("\\", "_", $parameterPath);
+                        $parameterName = preg_replace('/^\\\\/', '', $parameterType);
+                        $parameterName = str_replace("\\", "\\\\", $parameterName);
+                        if (!$parameter->isOptional()) {
+                            $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
                         } else {
-                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
-                            if (!$parameter->isOptional()) {
-                                $cp[] = '*' . $parameterName . '* ' . $name;
-                            } else {
-                                $cp[] = '[*' . $parameterName . '* ' . $name . ']';
-                            }
+                            $cp[] = '[:doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name . ']';
                         }
                     } else {
+                        $parameterName = str_replace("\\", "\\\\", $parameterType);
                         if (!$parameter->isOptional()) {
-                            $cp[] = '*' . $ret['parameters'][$name] . '* ' . $name;
+                            $cp[] = '*' . $parameterName . '* ' . $name;
                         } else {
-                            $cp[] = '[*' . $ret['parameters'][$name] . '* ' . $name . ']';
+                            $cp[] = '[*' . $parameterName . '* ' . $name . ']';
                         }
                     }
                 } else {
-                    /**
-                     * if ($className != 'Phalcon\Kernel') {
-                     * if ($simpleClassName == $docClassName) {
-                     * throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
-                     * }
-                     * }
-                     */
                     if (!$parameter->isOptional()) {
-                        $cp[] = '*unknown* ' . $name;
+                        $cp[] = '*' . $parameterType . '* ' . $name;
                     } else {
-                        $cp[] = '[*unknown* ' . $name . ']';
+                        $cp[] = '[*' . $parameterType . '* ' . $name . ']';
                     }
                 }
             }

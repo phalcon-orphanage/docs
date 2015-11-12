@@ -9,7 +9,7 @@ Interface **Phalcon\\Logger\\AdapterInterface**
 Methods
 -------
 
-abstract public  **setFormatter** (*unknown* $formatter)
+abstract public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **getLogLevel** ()
 ...
 
 
-abstract public  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context])
+abstract public  **log** (*unknown* $type, [*unknown* $message], [*array* $context])
 
 ...
 
@@ -54,37 +54,37 @@ abstract public  **close** ()
 ...
 
 
-abstract public  **debug** (*unknown* $message, [*unknown* $context])
+abstract public  **debug** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **error** (*unknown* $message, [*unknown* $context])
+abstract public  **error** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **info** (*unknown* $message, [*unknown* $context])
+abstract public  **info** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **notice** (*unknown* $message, [*unknown* $context])
+abstract public  **notice** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **warning** (*unknown* $message, [*unknown* $context])
+abstract public  **warning** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **alert** (*unknown* $message, [*unknown* $context])
+abstract public  **alert** (*unknown* $message, [*array* $context])
 
 ...
 
 
-abstract public  **emergency** (*unknown* $message, [*unknown* $context])
+abstract public  **emergency** (*unknown* $message, [*array* $context])
 
 ...
 

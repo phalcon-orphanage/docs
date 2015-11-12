@@ -22,7 +22,7 @@ Phalcon\\Di\\FactoryDefault constructor
 
 
 
-public  **setInternalEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di
+public  **setInternalEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di
 
 Sets the internal event manager
 
@@ -58,7 +58,7 @@ Attempts to register a service in the services container Only is successful if a
 
 
 
-public  **setRaw** (*unknown* $name, *unknown* $rawDefinition) inherited from Phalcon\\Di
+public  **setRaw** (*unknown* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition) inherited from Phalcon\\Di
 
 Sets a service using a raw Phalcon\\Di\\Service definition
 
@@ -150,7 +150,7 @@ Magic method to get or set services using setters/getters
 
 
 
-public static  **setDefault** (*unknown* $dependencyInjector) inherited from Phalcon\\Di
+public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di
 
 Set a default dependency injection container to be obtained into static methods
 

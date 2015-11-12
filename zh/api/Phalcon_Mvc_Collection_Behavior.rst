@@ -30,13 +30,13 @@ Returns the behavior options related to an event
 
 
 
-public  **notify** (*unknown* $type, *unknown* $model)
+public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 This method receives the notifications from the EventsManager
 
 
 
-public  **missingMethod** (*unknown* $model, *unknown* $method, [*unknown* $arguments])
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $method, [*unknown* $arguments])
 
 Acts as fallbacks when a missing method is called on the collection
 

@@ -33,7 +33,7 @@ Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Sets session's options 
 

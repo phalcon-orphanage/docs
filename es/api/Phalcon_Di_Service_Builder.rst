@@ -18,7 +18,7 @@ Resolves a constructor/call parameter
 
 
 
-private  **_buildParameters** (*unknown* $dependencyInjector, *unknown* $arguments)
+private  **_buildParameters** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *array* $arguments)
 
 Resolves an array of parameters
 

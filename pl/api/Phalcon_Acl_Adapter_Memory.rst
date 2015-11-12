@@ -237,7 +237,7 @@ Active access which the list is checking if some role can access it
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Acl\\Adapter
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Acl\\Adapter
 
 Sets the events manager
 

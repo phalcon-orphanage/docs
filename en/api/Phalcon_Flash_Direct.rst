@@ -46,7 +46,7 @@ Set if the output must be implicitly formatted with HTML
 
 
 
-public  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\\Flash
+public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 

@@ -160,7 +160,7 @@ Returns the hostname restriction if any
 
 
 
-public  **setGroup** (*unknown* $group)
+public  **setGroup** (:doc:`Phalcon\\Mvc\\Router\\GroupInterface <Phalcon_Mvc_Router_GroupInterface>` $group)
 
 Sets the group associated with the route
 

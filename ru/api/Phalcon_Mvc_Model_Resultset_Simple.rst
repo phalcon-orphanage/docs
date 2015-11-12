@@ -179,7 +179,7 @@ Updates every record in the resultset
 
 
 
-public  **delete** ([*unknown* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Deletes every record in the resultset
 

@@ -9,12 +9,12 @@ Interface **Phalcon\\Mvc\\ModuleDefinitionInterface**
 Methods
 -------
 
-abstract public  **registerAutoloaders** ([*unknown* $dependencyInjector])
+abstract public  **registerAutoloaders** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 ...
 
 
-abstract public  **registerServices** (*unknown* $dependencyInjector)
+abstract public  **registerServices** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 ...
 

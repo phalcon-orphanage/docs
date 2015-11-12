@@ -39,7 +39,7 @@ abstract public  **getConnection** ()
 ...
 
 
-abstract public static  **cloneResult** (*unknown* $collection, *unknown* $document)
+abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection, *array* $document)
 
 ...
 
@@ -64,7 +64,7 @@ abstract public  **getMessages** ()
 ...
 
 
-abstract public  **appendMessage** (*unknown* $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 ...
 
@@ -79,17 +79,17 @@ abstract public static  **findById** (*unknown* $id)
 ...
 
 
-abstract public static  **findFirst** ([*unknown* $parameters])
+abstract public static  **findFirst** ([*array* $parameters])
 
 ...
 
 
-abstract public static  **find** ([*unknown* $parameters])
+abstract public static  **find** ([*array* $parameters])
 
 ...
 
 
-abstract public static  **count** ([*unknown* $parameters])
+abstract public static  **count** ([*array* $parameters])
 
 ...
 

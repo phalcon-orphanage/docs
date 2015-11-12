@@ -30,7 +30,7 @@ Validates that a string has the specified maximum and minimum constraints The te
 Methods
 -------
 
-public  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
 
 Executes the validation
 

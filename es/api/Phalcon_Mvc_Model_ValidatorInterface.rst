@@ -14,7 +14,7 @@ abstract public  **getMessages** ()
 ...
 
 
-abstract public  **validate** (*unknown* $record)
+abstract public  **validate** (:doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>` $record)
 
 ...
 

@@ -39,7 +39,7 @@ Check that a field is unique in the related table
 Methods
 -------
 
-public  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
 
 Executes the validation
 

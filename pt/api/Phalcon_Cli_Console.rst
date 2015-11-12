@@ -14,13 +14,13 @@ This component allows to create CLI applications using Phalcon
 Methods
 -------
 
-public  **__construct** ([*unknown* $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Cli\\Console constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -32,7 +32,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the events manager
 
@@ -44,7 +44,7 @@ Returns the internal event manager
 
 
 
-public  **registerModules** (*unknown* $modules)
+public  **registerModules** (*array* $modules)
 
 Register an array of modules present in the console 
 
@@ -66,7 +66,7 @@ Register an array of modules present in the console
 
 
 
-public  **addModules** (*unknown* $modules)
+public  **addModules** (*array* $modules)
 
 Merge modules with the existing ones 
 
@@ -90,13 +90,13 @@ Return the modules registered in the console
 
 
 
-public  **handle** ([*unknown* $arguments])
+public  **handle** ([*array* $arguments])
 
 Handle the whole command-line tasks
 
 
 
-public  **setArgument** ([*unknown* $arguments], [*unknown* $str], [*unknown* $shift])
+public  **setArgument** ([*array* $arguments], [*unknown* $str], [*unknown* $shift])
 
 Set an specific argument
 

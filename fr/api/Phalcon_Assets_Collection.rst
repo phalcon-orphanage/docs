@@ -74,13 +74,13 @@ public  **getSourcePath** ()
 ...
 
 
-public  **add** (*unknown* $resource)
+public  **add** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
 Adds a resource to the collection
 
 
 
-public  **addInline** (*unknown* $code)
+public  **addInline** (:doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
 Adds a inline code to the collection
 
@@ -176,13 +176,13 @@ Sets if the collection uses local resources by default
 
 
 
-public  **setAttributes** (*unknown* $attributes)
+public  **setAttributes** (*array* $attributes)
 
 Sets extra HTML attributes
 
 
 
-public  **setFilters** (*unknown* $filters)
+public  **setFilters** (*array* $filters)
 
 Sets an array of filters in the collection
 
@@ -206,7 +206,7 @@ Returns the complete location where the joined/filtered collection must be writt
 
 
 
-public  **addFilter** (*unknown* $filter)
+public  **addFilter** (:doc:`Phalcon\\Assets\\FilterInterface <Phalcon_Assets_FilterInterface>` $filter)
 
 Adds a filter to the collection
 

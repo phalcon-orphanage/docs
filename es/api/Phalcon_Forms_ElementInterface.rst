@@ -9,7 +9,7 @@ Interface **Phalcon\\Forms\\ElementInterface**
 Methods
 -------
 
-abstract public  **setForm** (*unknown* $form)
+abstract public  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 ...
 
@@ -44,12 +44,12 @@ abstract public  **getFilters** ()
 ...
 
 
-abstract public  **addValidators** (*unknown* $validators, [*unknown* $merge])
+abstract public  **addValidators** (*array* $validators, [*unknown* $merge])
 
 ...
 
 
-abstract public  **addValidator** (*unknown* $validator)
+abstract public  **addValidator** (:doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 ...
 
@@ -74,7 +74,7 @@ abstract public  **getAttribute** (*unknown* $attribute, [*unknown* $defaultValu
 ...
 
 
-abstract public  **setAttributes** (*unknown* $attributes)
+abstract public  **setAttributes** (*array* $attributes)
 
 ...
 
@@ -144,12 +144,12 @@ abstract public  **hasMessages** ()
 ...
 
 
-abstract public  **setMessages** (*unknown* $group)
+abstract public  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group)
 
 ...
 
 
-abstract public  **appendMessage** (*unknown* $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
 
 ...
 

@@ -54,7 +54,7 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 -------
 
-public  **__construct** ([*unknown* $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 
 
@@ -66,7 +66,7 @@ By default. The view is implicitly buffering all the output You can full disable
 
 
 
-public  **registerModules** (*unknown* $modules, [*unknown* $merge])
+public  **registerModules** (*array* $modules, [*unknown* $merge])
 
 Register an array of modules present in the application 
 
@@ -118,7 +118,7 @@ Handles a MVC request
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -130,7 +130,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

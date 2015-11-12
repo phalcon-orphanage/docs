@@ -74,7 +74,7 @@ Magic __toString method returns verbose message
 
 
 
-public static  **__set_state** (*unknown* $message)
+public static  **__set_state** (*array* $message)
 
 Magic __set_state helps to recover messsages from serialization
 

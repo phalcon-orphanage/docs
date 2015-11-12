@@ -39,17 +39,17 @@ abstract public  **getDefinition** ()
 ...
 
 
-abstract public  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
+abstract public  **resolve** ([*unknown* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 ...
 
 
-abstract public  **setParameter** (*unknown* $position, *unknown* $parameter)
+abstract public  **setParameter** (*unknown* $position, *array* $parameter)
 
 ...
 
 
-abstract public static  **__set_state** (*unknown* $attributes)
+abstract public static  **__set_state** (*array* $attributes)
 
 ...
 

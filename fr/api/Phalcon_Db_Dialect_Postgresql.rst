@@ -16,19 +16,19 @@ Generates database specific SQL for the PostgreSQL RDBMS
 Methods
 -------
 
-public  **getColumnDefinition** (*unknown* $column)
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in PostgreSQL
 
 
 
-public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Generates SQL to add a column to a table
 
 
 
-public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
+public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
 
 Generates SQL to modify a column in a table
 
@@ -40,7 +40,7 @@ Generates SQL to delete a column from a table
 
 
 
-public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add an index to a table
 
@@ -52,7 +52,7 @@ Generates SQL to delete an index from a table
 
 
 
-public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add the primary key to a table
 
@@ -64,7 +64,7 @@ Generates SQL to delete primary key from a table
 
 
 
-public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 Generates SQL to add an index to a table
 
@@ -76,7 +76,7 @@ Generates SQL to delete a foreign key from a table
 
 
 
-public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
+public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition)
 
 Generates SQL to create a table
 
@@ -88,7 +88,7 @@ Generates SQL to drop a view
 
 
 
-public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
+public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName])
 
 Generates SQL to create a view
 
@@ -170,7 +170,7 @@ Generates the SQL to describe the table creation options
 
 
 
-protected  **_getTableOptions** (*unknown* $definition)
+protected  **_getTableOptions** (*array* $definition)
 
 ...
 
@@ -238,7 +238,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-final public  **getColumnList** (*unknown* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final public  **getColumnList** (*array* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Gets a list of columns with escaped identifiers 
 
@@ -257,7 +257,7 @@ Resolve Column expressions
 
 
 
-public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+public  **getSqlExpression** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Transforms an intermediate representation for a expression into a database system valid expression
 
@@ -269,7 +269,7 @@ Transform an intermediate representation of a schema/table into a database syste
 
 
 
-public  **select** (*unknown* $definition) inherited from Phalcon\\Db\\Dialect
+public  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement
 
@@ -305,67 +305,67 @@ Generate SQL to rollback a savepoint
 
 
 
-final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionScalar** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve Column expressions
 
 
 
-final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionObject** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve object expressions
 
 
 
-final protected  **getSqlExpressionQualified** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionQualified** (*array* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Resolve qualified expressions
 
 
 
-final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionBinaryOperations** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve binary operations expressions
 
 
 
-final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionUnaryOperations** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve unary operations expressions
 
 
 
-final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, *unknown* $escapeChar, [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionFunctionCall** (*array* $expression, *unknown* $escapeChar, [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve function calls
 
 
 
-final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionList** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve Lists
 
 
 
-final protected  **getSqlExpressionAll** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionAll** (*array* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Resolve *
 
 
 
-final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionCastValue** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CAST of values
 
 
 
-final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionConvertValue** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CONVERT of values encodings
 
 
 
-final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionCase** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CASE expressions
 

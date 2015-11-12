@@ -12,12 +12,12 @@ Base class for Phalcon\\Translate adapters
 Methods
 -------
 
-public  **__construct** (*unknown* $options)
+public  **__construct** (*array* $options)
 
 ...
 
 
-public  **setInterpolator** (*unknown* $interpolator)
+public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Phalcon_Translate_InterpolatorInterface>` $interpolator)
 
 ...
 

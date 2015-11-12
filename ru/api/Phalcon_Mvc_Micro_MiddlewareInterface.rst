@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Micro\\MiddlewareInterface**
 Methods
 -------
 
-abstract public  **call** (*unknown* $application)
+abstract public  **call** (:doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>` $application)
 
 ...
 

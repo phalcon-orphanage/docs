@@ -84,7 +84,7 @@ Throws an internal exception
 
 
 
-protected  **_handleException** (*unknown* $exception)
+protected  **_handleException** (*Exception* $exception)
 
 Handles a user exception
 
@@ -102,7 +102,7 @@ Returns the active task in the dispatcher
 
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Set the options to be dispatched
 
@@ -114,7 +114,7 @@ Get dispatched options
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Dispatcher
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
@@ -126,7 +126,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 

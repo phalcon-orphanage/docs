@@ -14,7 +14,7 @@ abstract public  **start** ()
 ...
 
 
-abstract public  **setOptions** (*unknown* $options)
+abstract public  **setOptions** (*array* $options)
 
 ...
 

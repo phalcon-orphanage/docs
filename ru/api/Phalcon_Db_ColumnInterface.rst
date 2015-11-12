@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\ColumnInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $columnName, *unknown* $definition)
+abstract public  **__construct** (*unknown* $columnName, *array* $definition)
 
 ...
 
@@ -99,7 +99,7 @@ abstract public  **hasDefault** ()
 ...
 
 
-abstract public static  **__set_state** (*unknown* $data)
+abstract public static  **__set_state** (*array* $data)
 
 ...
 

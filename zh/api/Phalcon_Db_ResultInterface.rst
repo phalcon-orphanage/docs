@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\ResultInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $connection, *unknown* $result, [*unknown* $sqlStatement], [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *PDOStatement* $result, [*unknown* $sqlStatement], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 ...
 

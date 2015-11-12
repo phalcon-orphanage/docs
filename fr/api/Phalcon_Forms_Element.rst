@@ -20,7 +20,7 @@ Phalcon\\Forms\\Element constructor
 
 
 
-public  **setForm** (*unknown* $form)
+public  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Sets the parent form to the element
 
@@ -62,13 +62,13 @@ Returns the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*unknown* $validators, [*unknown* $merge])
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*unknown* $merge])
 
 Adds a group of validators
 
 
 
-public  **addValidator** (*unknown* $validator)
+public  **addValidator** (:doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 Adds a validator to the element
 
@@ -98,7 +98,7 @@ Returns the value of an attribute if present
 
 
 
-public  **setAttributes** (*unknown* $attributes)
+public  **setAttributes** (*array* $attributes)
 
 Sets default attributes for the element
 
@@ -182,13 +182,13 @@ Checks whether there are messages attached to the element
 
 
 
-public  **setMessages** (*unknown* $group)
+public  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group)
 
 Sets the validation messages related to the element
 
 
 
-public  **appendMessage** (*unknown* $message)
+public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
 
 Appends a message to the internal message list
 

@@ -82,7 +82,7 @@ Returns the default value to make the RBDM use the default value declared in the
 
 
 
-public  **__construct** (*unknown* $descriptor) inherited from Phalcon\\Db\\Adapter\\Pdo
+public  **__construct** (*array* $descriptor) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Constructor for Phalcon\\Db\\Adapter\\Pdo
 
@@ -193,7 +193,7 @@ Escapes a value to avoid SQL injections according to the active charset in the c
 
 
 
-public  **convertBoundParams** (*unknown* $sql, [*unknown* $params]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public  **convertBoundParams** (*unknown* $sql, [*array* $params]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
@@ -295,7 +295,7 @@ Active SQL bound parameter variables
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Db\\Adapter
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Db\\Adapter
 
 Sets the event manager
 
@@ -307,7 +307,7 @@ Returns the internal event manager
 
 
 
-public  **setDialect** (*unknown* $dialect) inherited from Phalcon\\Db\\Adapter
+public  **setDialect** (:doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>` $dialect) inherited from Phalcon\\Db\\Adapter
 
 Sets the dialect used to produce the SQL
 
@@ -563,7 +563,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition) inherited from Phalcon\\Db\\Adapter
+public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition) inherited from Phalcon\\Db\\Adapter
 
 Creates a table
 
@@ -575,7 +575,7 @@ Drops a table from a schema/database
 
 
 
-public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Creates a view
 
@@ -587,13 +587,13 @@ Drops a view
 
 
 
-public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column) inherited from Phalcon\\Db\\Adapter
+public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Adds a column to a table
 
 
 
-public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn]) inherited from Phalcon\\Db\\Adapter
+public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn]) inherited from Phalcon\\Db\\Adapter
 
 Modifies a table column based on a definition
 
@@ -605,7 +605,7 @@ Drops a column from a table
 
 
 
-public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index) inherited from Phalcon\\Db\\Adapter
+public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds an index to a table
 
@@ -617,7 +617,7 @@ Drop an index from a table
 
 
 
-public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index) inherited from Phalcon\\Db\\Adapter
+public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds a primary key to a table
 
@@ -629,7 +629,7 @@ Drops a table's primary key
 
 
 
-public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference) inherited from Phalcon\\Db\\Adapter
+public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference) inherited from Phalcon\\Db\\Adapter
 
 Adds a foreign key to a table
 
@@ -641,7 +641,7 @@ Drops a foreign key from a table
 
 
 
-public  **getColumnDefinition** (*unknown* $column) inherited from Phalcon\\Db\\Adapter
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Returns the SQL column definition from a column
 

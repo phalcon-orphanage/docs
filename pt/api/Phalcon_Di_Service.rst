@@ -74,7 +74,7 @@ Resolves the service
 
 
 
-public  **setParameter** (*unknown* $position, *unknown* $parameter)
+public  **setParameter** (*unknown* $position, *array* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
@@ -92,7 +92,7 @@ Returns true if the service was resolved
 
 
 
-public static  **__set_state** (*unknown* $attributes)
+public static  **__set_state** (*array* $attributes)
 
 Restore the internal state of a service
 

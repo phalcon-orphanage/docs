@@ -29,13 +29,13 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 -------
 
-public  **__construct** ([*unknown* $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Micro constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -89,7 +89,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public  **mount** (*unknown* $collection)
+public  **mount** (:doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>` $collection)
 
 Mounts a collection of handlers
 
@@ -235,7 +235,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

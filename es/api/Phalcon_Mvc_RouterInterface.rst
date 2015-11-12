@@ -24,7 +24,7 @@ abstract public  **setDefaultAction** (*unknown* $actionName)
 ...
 
 
-abstract public  **setDefaults** (*unknown* $defaults)
+abstract public  **setDefaults** (*array* $defaults)
 
 ...
 
@@ -74,7 +74,7 @@ abstract public  **addHead** (*unknown* $pattern, [*unknown* $paths])
 ...
 
 
-abstract public  **mount** (*unknown* $group)
+abstract public  **mount** (:doc:`Phalcon\\Mvc\\Router\\GroupInterface <Phalcon_Mvc_Router_GroupInterface>` $group)
 
 ...
 

@@ -12,7 +12,7 @@ Represents a single annotation in an annotations collection
 Methods
 -------
 
-public  **__construct** (*unknown* $reflectionData)
+public  **__construct** (*array* $reflectionData)
 
 Phalcon\\Annotations\\Annotation constructor
 

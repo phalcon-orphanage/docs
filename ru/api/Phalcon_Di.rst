@@ -37,7 +37,7 @@ Phalcon\\Di constructor
 
 
 
-public  **setInternalEventsManager** (*unknown* $eventsManager)
+public  **setInternalEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the internal event manager
 
@@ -73,7 +73,7 @@ Attempts to register a service in the services container Only is successful if a
 
 
 
-public  **setRaw** (*unknown* $name, *unknown* $rawDefinition)
+public  **setRaw** (*unknown* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
 
 Sets a service using a raw Phalcon\\Di\\Service definition
 
@@ -165,7 +165,7 @@ Magic method to get or set services using setters/getters
 
 
 
-public static  **setDefault** (*unknown* $dependencyInjector)
+public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 

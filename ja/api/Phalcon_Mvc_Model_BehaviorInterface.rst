@@ -14,12 +14,12 @@ abstract public  **__construct** ([*unknown* $options])
 ...
 
 
-abstract public  **notify** (*unknown* $type, *unknown* $model)
+abstract public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **missingMethod** (*unknown* $model, *unknown* $method, [*unknown* $arguments])
+abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $method, [*unknown* $arguments])
 
 ...
 

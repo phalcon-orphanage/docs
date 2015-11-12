@@ -12,7 +12,7 @@ This is a base class for Phalcon\\Mvc\\Model validators
 Methods
 -------
 
-public  **__construct** (*unknown* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Mvc\\Model\\Validator constructor
 

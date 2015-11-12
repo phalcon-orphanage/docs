@@ -173,7 +173,7 @@ Updates every record in the resultset
 
 
 
-public  **delete** ([*unknown* $conditionCallback])
+public  **delete** ([*Closure* $conditionCallback])
 
 Deletes every record in the resultset
 

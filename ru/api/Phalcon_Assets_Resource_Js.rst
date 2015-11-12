@@ -84,7 +84,7 @@ Sets if the resource must be filtered or not
 
 
 
-public  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Assets\\Resource
+public  **setAttributes** (*array* $attributes) inherited from Phalcon\\Assets\\Resource
 
 Sets extra HTML attributes
 

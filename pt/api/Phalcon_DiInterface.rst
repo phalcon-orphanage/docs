@@ -41,7 +41,7 @@ abstract public  **getShared** (*unknown* $name, [*unknown* $parameters])
 ...
 
 
-abstract public  **setRaw** (*unknown* $name, *unknown* $rawDefinition)
+abstract public  **setRaw** (*unknown* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
 
 ...
 
@@ -71,7 +71,7 @@ abstract public  **getServices** ()
 ...
 
 
-abstract public static  **setDefault** (*unknown* $dependencyInjector)
+abstract public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 ...
 

@@ -39,13 +39,13 @@ Helps to create PHQL queries using an OO interface
 Methods
 -------
 
-public  **__construct** ([*unknown* $params], [*unknown* $dependencyInjector])
+public  **__construct** ([*unknown* $params], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -282,7 +282,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public  **inWhere** (*unknown* $expr, *unknown* $values)
+public  **inWhere** (*unknown* $expr, *array* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -295,7 +295,7 @@ Appends an IN condition to the current conditions
 
 
 
-public  **notInWhere** (*unknown* $expr, *unknown* $values)
+public  **notInWhere** (*unknown* $expr, *array* $values)
 
 Appends a NOT IN condition to the current conditions 
 

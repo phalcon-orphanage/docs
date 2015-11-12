@@ -18,7 +18,7 @@ public  **__construct** ([*array* $options])
 
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Sets the manager options
 
@@ -76,7 +76,7 @@ Adds a inline javascript to the 'js' collection
 
 
 
-public  **addResourceByType** (*unknown* $type, *unknown* $resource)
+public  **addResourceByType** (*unknown* $type, :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
 Adds a resource by its type 
 
@@ -89,13 +89,13 @@ Adds a resource by its type
 
 
 
-public  **addInlineCodeByType** (*unknown* $type, *unknown* $code)
+public  **addInlineCodeByType** (*unknown* $type, :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
 Adds a inline code by its type
 
 
 
-public  **addResource** (*unknown* $resource)
+public  **addResource** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
 Adds a raw resource to the manager 
 
@@ -108,13 +108,13 @@ Adds a raw resource to the manager
 
 
 
-public  **addInlineCode** (*unknown* $code)
+public  **addInlineCode** (:doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
 Adds a raw inline code to the manager
 
 
 
-public  **set** (*unknown* $id, *unknown* $collection)
+public  **set** (*unknown* $id, :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection)
 
 Sets a collection in the Assets Manager 
 

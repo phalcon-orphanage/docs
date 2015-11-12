@@ -27,7 +27,7 @@ Checks if a value has a valid creditcard number
 Methods
 -------
 
-public  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
 
 Executes the validation
 
