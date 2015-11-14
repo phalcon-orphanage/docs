@@ -143,7 +143,7 @@ A very important concept that must be understood when working with Phalcon is it
 actually very simple and practical.
 
 A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, it will
-ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_DI>` acts as glue facilitating the integration of the
+ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_Di>` acts as glue facilitating the integration of the
 different components achieving their work together in a transparent manner.
 
 .. code-block:: php
@@ -153,7 +153,7 @@ different components achieving their work together in a transparent manner.
     // Create a DI
     $di = new Phalcon\Di\FactoryDefault();
 
-:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>`. To make things easier, it has registered most of the components
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>`. To make things easier, it has registered most of the components
 that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes,
