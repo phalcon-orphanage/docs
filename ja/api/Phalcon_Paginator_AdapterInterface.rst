@@ -9,7 +9,7 @@ Interface **Phalcon\\Paginator\\AdapterInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $config)
+abstract public  **__construct** (*array* $config)
 
 ...
 

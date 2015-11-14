@@ -60,7 +60,7 @@ Phalcon\\Cache\\Multiple constructor
 
 
 
-public  **push** (*unknown* $backend)
+public  **push** (:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $backend)
 
 Adds a backend
 

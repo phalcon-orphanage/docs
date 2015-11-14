@@ -49,7 +49,7 @@ abstract public  **__toString** ()
 ...
 
 
-abstract public static  **__set_state** (*unknown* $message)
+abstract public static  **__set_state** (*array* $message)
 
 ...
 

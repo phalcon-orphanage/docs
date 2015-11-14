@@ -34,7 +34,7 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 Methods
 -------
 
-public  **__construct** ([*unknown* $arrayConfig])
+public  **__construct** ([*array* $arrayConfig])
 
 Phalcon\\Config constructor
 
@@ -105,7 +105,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (*unknown* $config)
+public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config)
 
 Merges a configuration into the current one 
 
@@ -153,7 +153,7 @@ or
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static  **__set_state** (*array* $data)
 
 Restores the state of a Phalcon\\Config object
 

@@ -38,7 +38,7 @@ Set if the output must be implicitly formatted with HTML
 
 
 
-public  **setCssClasses** (*unknown* $cssClasses)
+public  **setCssClasses** (*array* $cssClasses)
 
 Set an array with CSS classes to format the messages
 

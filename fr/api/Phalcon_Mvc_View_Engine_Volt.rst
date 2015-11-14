@@ -16,7 +16,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 Methods
 -------
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Set Volt's options
 
@@ -64,19 +64,19 @@ Extracts a slice from a string/array/traversable object value
 
 
 
-public  **sort** (*unknown* $value)
+public  **sort** (*array* $value)
 
 Sorts an array
 
 
 
-public  **callMacro** (*unknown* $name, *unknown* $arguments)
+public  **callMacro** (*unknown* $name, *array* $arguments)
 
 Checks if a macro is defined and calls it
 
 
 
-public  **__construct** (*unknown* $view, [*unknown* $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -100,7 +100,7 @@ Returns the view component related to the adapter
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -112,7 +112,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

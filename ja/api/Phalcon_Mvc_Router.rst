@@ -50,7 +50,7 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -62,7 +62,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the events manager
 
@@ -123,7 +123,7 @@ Sets the default action name
 
 
 
-public  **setDefaults** (*unknown* $defaults)
+public  **setDefaults** (*array* $defaults)
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
@@ -221,7 +221,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public  **mount** (*unknown* $group)
+public  **mount** (:doc:`Phalcon\\Mvc\\Router\\GroupInterface <Phalcon_Mvc_Router_GroupInterface>` $group)
 
 Mounts a group of routes in the router
 

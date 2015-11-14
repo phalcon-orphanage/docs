@@ -106,7 +106,7 @@ abstract public  **start** ()
 ...
 
 
-abstract public  **registerEngines** (*unknown* $engines)
+abstract public  **registerEngines** (*array* $engines)
 
 ...
 

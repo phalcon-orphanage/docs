@@ -16,7 +16,7 @@ Class Gettext
 Methods
 -------
 
-public  **__construct** (*unknown* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Translate\\Adapter\\Gettext constructor
 
@@ -94,7 +94,7 @@ Gets locale category
 
 
 
-protected  **prepareOptions** (*unknown* $options)
+protected  **prepareOptions** (*array* $options)
 
 Validator for constructor
 
@@ -106,7 +106,7 @@ Gets default options
 
 
 
-public  **setInterpolator** (*unknown* $interpolator) inherited from Phalcon\\Translate\\Adapter
+public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Phalcon_Translate_InterpolatorInterface>` $interpolator) inherited from Phalcon\\Translate\\Adapter
 
 ...
 

@@ -30,7 +30,7 @@ Phalcon\\Http\\Response constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -68,7 +68,7 @@ Returns the status code
 
 
 
-public  **setHeaders** (*unknown* $headers)
+public  **setHeaders** (:doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>` $headers)
 
 Sets a headers bag for the response externally
 
@@ -80,7 +80,7 @@ Returns headers set by the user
 
 
 
-public  **setCookies** (*unknown* $cookies)
+public  **setCookies** (:doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>` $cookies)
 
 Sets a cookies bag for the response externally
 
@@ -124,7 +124,7 @@ Resets all the stablished headers
 
 
 
-public  **setExpires** (*unknown* $datetime)
+public  **setExpires** (*DateTime* $datetime)
 
 Sets a Expires header to use HTTP cache 
 

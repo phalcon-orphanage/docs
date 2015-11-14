@@ -25,13 +25,13 @@ This class reads and compiles Volt templates into PHP plain code
 Methods
 -------
 
-public  **__construct** ([*unknown* $view])
+public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>` $view])
 
 
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -43,7 +43,7 @@ Returns the internal dependency injector
 
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Sets the compiler options
 
@@ -121,31 +121,31 @@ Return a unique prefix to be used as prefix for compiled variables and contexts
 
 
 
-public  **attributeReader** (*unknown* $expr)
+public  **attributeReader** (*array* $expr)
 
 Resolves attribute reading
 
 
 
-public  **functionCall** (*unknown* $expr)
+public  **functionCall** (*array* $expr)
 
 Resolves function intermediate code into PHP function calls
 
 
 
-public  **resolveTest** (*unknown* $test, *unknown* $left)
+public  **resolveTest** (*array* $test, *unknown* $left)
 
 Resolves filter intermediate code into a valid PHP expression
 
 
 
-final protected  **resolveFilter** (*unknown* $filter, *unknown* $left)
+final protected  **resolveFilter** (*array* $filter, *unknown* $left)
 
 Resolves filter intermediate code into PHP function calls
 
 
 
-final public  **expression** (*unknown* $expr)
+final public  **expression** (*array* $expr)
 
 Resolves an expression node in an AST volt tree
 
@@ -157,7 +157,7 @@ Compiles a block of statements
 
 
 
-public  **compileForeach** (*unknown* $statement, [*unknown* $extendsMode])
+public  **compileForeach** (*array* $statement, [*unknown* $extendsMode])
 
 Compiles a "foreach" intermediate code representation into plain PHP code
 
@@ -169,43 +169,43 @@ Generates a 'forelse' PHP code
 
 
 
-public  **compileIf** (*unknown* $statement, [*unknown* $extendsMode])
+public  **compileIf** (*array* $statement, [*unknown* $extendsMode])
 
 Compiles a 'if' statement returning PHP code
 
 
 
-public  **compileElseIf** (*unknown* $statement)
+public  **compileElseIf** (*array* $statement)
 
 Compiles a "elseif" statement returning PHP code
 
 
 
-public  **compileCache** (*unknown* $statement, [*unknown* $extendsMode])
+public  **compileCache** (*array* $statement, [*unknown* $extendsMode])
 
 Compiles a "cache" statement returning PHP code
 
 
 
-public  **compileSet** (*unknown* $statement)
+public  **compileSet** (*array* $statement)
 
 Compiles a "set" statement returning PHP code
 
 
 
-public  **compileDo** (*unknown* $statement)
+public  **compileDo** (*array* $statement)
 
 Compiles a "do" statement returning PHP code
 
 
 
-public  **compileReturn** (*unknown* $statement)
+public  **compileReturn** (*array* $statement)
 
 Compiles a "return" statement returning PHP code
 
 
 
-public  **compileAutoEscape** (*unknown* $statement, *unknown* $extendsMode)
+public  **compileAutoEscape** (*array* $statement, *unknown* $extendsMode)
 
 Compiles a "autoescape" statement returning PHP code
 
@@ -217,13 +217,13 @@ Compiles a '{{' '}}' statement returning PHP code
 
 
 
-public  **compileInclude** (*unknown* $statement)
+public  **compileInclude** (*array* $statement)
 
 Compiles a 'include' statement returning PHP code
 
 
 
-public  **compileMacro** (*unknown* $statement, *unknown* $extendsMode)
+public  **compileMacro** (*array* $statement, *unknown* $extendsMode)
 
 Compiles macros
 
@@ -235,7 +235,7 @@ Compiles calls to macros
 
 
 
-final protected  **_statementList** (*unknown* $statements, [*unknown* $extendsMode])
+final protected  **_statementList** (*array* $statements, [*unknown* $extendsMode])
 
 Traverses a statement list compiling each of its nodes
 

@@ -135,7 +135,7 @@ Default column value
 
 
 
-public  **__construct** (*unknown* $name, *unknown* $definition)
+public  **__construct** (*unknown* $name, *array* $definition)
 
 Phalcon\\Db\\Column constructor
 
@@ -189,7 +189,7 @@ Returns the type of bind handling
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static  **__set_state** (*array* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
 

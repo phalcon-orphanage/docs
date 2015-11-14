@@ -9,17 +9,17 @@ Interface **Phalcon\\Mvc\\Collection\\ManagerInterface**
 Methods
 -------
 
-abstract public  **setCustomEventsManager** (*unknown* $model, *unknown* $eventsManager)
+abstract public  **setCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 ...
 
 
-abstract public  **getCustomEventsManager** (*unknown* $model)
+abstract public  **getCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 
 
-abstract public  **initialize** (*unknown* $model)
+abstract public  **initialize** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 
@@ -34,32 +34,32 @@ abstract public  **getLastInitialized** ()
 ...
 
 
-abstract public  **setConnectionService** (*unknown* $model, *unknown* $connectionService)
+abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $connectionService)
 
 ...
 
 
-abstract public  **useImplicitObjectIds** (*unknown* $model, *unknown* $useImplicitObjectIds)
+abstract public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $useImplicitObjectIds)
 
 ...
 
 
-abstract public  **isUsingImplicitObjectIds** (*unknown* $model)
+abstract public  **isUsingImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 
 
-abstract public  **getConnection** (*unknown* $model)
+abstract public  **getConnection** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 
 
-abstract public  **notifyEvent** (*unknown* $eventName, *unknown* $model)
+abstract public  **notifyEvent** (*unknown* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 
 
-abstract public  **addBehavior** (*unknown* $model, *unknown* $behavior)
+abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, :doc:`Phalcon\\Mvc\\Collection\\BehaviorInterface <Phalcon_Mvc_Collection_BehaviorInterface>` $behavior)
 
 ...
 

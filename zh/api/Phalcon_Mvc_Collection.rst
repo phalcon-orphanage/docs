@@ -25,7 +25,7 @@ Constants
 Methods
 -------
 
-final public  **__construct** ([*unknown* $dependencyInjector], [*unknown* $modelsManager])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Collection constructor
 
@@ -43,7 +43,7 @@ Returns the value of the _id property
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -55,7 +55,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** (*unknown* $eventsManager)
+protected  **setEventsManager** (:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $eventsManager)
 
 Sets a custom events manager
 
@@ -141,7 +141,7 @@ Writes an attribute value by its name
 
 
 
-public static  **cloneResult** (*unknown* $collection, *unknown* $document)
+public static  **cloneResult** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection, *array* $document)
 
 Returns a cloned collection
 
@@ -171,7 +171,7 @@ Executes internal events after save a document
 
 
 
-protected  **validate** (*unknown* $validator)
+protected  **validate** (:doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>` $validator)
 
 Executes validators on every validation call 
 
@@ -277,7 +277,7 @@ Returns all the validation messages
 
 
 
-public  **appendMessage** (*unknown* $message)
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -314,7 +314,7 @@ Find a document by its id (_id)
 
 
 
-public static  **findFirst** ([*unknown* $parameters])
+public static  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -342,7 +342,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static  **find** ([*unknown* $parameters])
+public static  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -382,7 +382,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static  **count** ([*unknown* $parameters])
+public static  **count** ([*array* $parameters])
 
 Perform a count over a collection 
 
@@ -395,7 +395,7 @@ Perform a count over a collection
 
 
 
-public static  **aggregate** ([*unknown* $parameters])
+public static  **aggregate** ([*array* $parameters])
 
 Perform an aggregation using the Mongo aggregation framework
 
@@ -425,7 +425,7 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 
 
-protected  **addBehavior** (*unknown* $behavior)
+protected  **addBehavior** (:doc:`Phalcon\\Mvc\\Collection\\BehaviorInterface <Phalcon_Mvc_Collection_BehaviorInterface>` $behavior)
 
 Sets up a behavior in a collection
 

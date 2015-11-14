@@ -43,13 +43,13 @@ Obtains the 'escaper' service if required
 
 
 
-public static  **renderAttributes** (*unknown* $code, *unknown* $attributes)
+public static  **renderAttributes** (*unknown* $code, *array* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
 
 
-public static  **setDI** (*unknown* $dependencyInjector)
+public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector container.
 
@@ -96,7 +96,7 @@ Assigns default values to generated tags by helpers
 
 
 
-public static  **setDefaults** (*unknown* $values, [*unknown* $merge])
+public static  **setDefaults** (*array* $values, [*unknown* $merge])
 
 Assigns default values to generated tags by helpers 
 

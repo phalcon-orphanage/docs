@@ -24,7 +24,7 @@ Returns the current log level
 
 
 
-public  **setFormatter** (*unknown* $formatter)
+public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
 Sets the message formatter
 
@@ -54,55 +54,55 @@ Returns the whether the logger is currently in an active transaction or not
 
 
 
-public  **critical** (*unknown* $message, [*unknown* $context])
+public  **critical** (*unknown* $message, [*array* $context])
 
 Sends/Writes a critical message to the log
 
 
 
-public  **emergency** (*unknown* $message, [*unknown* $context])
+public  **emergency** (*unknown* $message, [*array* $context])
 
 Sends/Writes an emergency message to the log
 
 
 
-public  **debug** (*unknown* $message, [*unknown* $context])
+public  **debug** (*unknown* $message, [*array* $context])
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*unknown* $message, [*unknown* $context])
+public  **error** (*unknown* $message, [*array* $context])
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*unknown* $message, [*unknown* $context])
+public  **info** (*unknown* $message, [*array* $context])
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*unknown* $message, [*unknown* $context])
+public  **notice** (*unknown* $message, [*array* $context])
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*unknown* $message, [*unknown* $context])
+public  **warning** (*unknown* $message, [*array* $context])
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*unknown* $message, [*unknown* $context])
+public  **alert** (*unknown* $message, [*array* $context])
 
 Sends/Writes an alert message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*mixed* $type, [*mixed* $message], [*mixed* $context])
+public  **log** (*unknown* $type, [*unknown* $message], [*array* $context])
 
 Logs messages to the internal logger. Appends logs to the logger
 

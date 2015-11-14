@@ -26,7 +26,7 @@ Encapsulates request information for easy and secure access from application con
 Methods
 -------
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -109,7 +109,7 @@ Gets variable from $_GET superglobal applying filters if needed If no parameters
 
 
 
-final protected  **getHelper** (*unknown* $source, [*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+final protected  **getHelper** (*array* $source, [*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
 
 Helper to get data from superglobals, applying filters if needed. If no parameters are given the superglobal is returned.
 
@@ -307,7 +307,7 @@ Gets attached files as Phalcon\\Http\\Request\\File instances
 
 
 
-final protected  **smoothFiles** (*unknown* $names, *unknown* $types, *unknown* $tmp_names, *unknown* $sizes, *unknown* $errors, *unknown* $prefix)
+final protected  **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *unknown* $prefix)
 
 Smooth out $_FILES to have plain array with all files uploaded
 
@@ -331,7 +331,7 @@ Process a request header and return an array of values with their qualities
 
 
 
-final protected  **_getBestQuality** (*unknown* $qualityParts, *unknown* $name)
+final protected  **_getBestQuality** (*array* $qualityParts, *unknown* $name)
 
 Process a request header and return the one with best quality
 

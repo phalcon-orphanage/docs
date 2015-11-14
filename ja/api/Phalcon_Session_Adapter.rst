@@ -33,7 +33,7 @@ Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*array* $options)
 
 Sets session's options 
 
@@ -72,7 +72,7 @@ public  **regenerateId** ([*unknown* $deleteOldSession])
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove])
+public  **get** (*unknown* $index, [*unknown* $defaultValue], [*unknown* $remove])
 
 Gets a session variable from an application context 
 
@@ -85,7 +85,7 @@ Gets a session variable from an application context
 
 
 
-public  **set** (*string* $index, *string* $value)
+public  **set** (*unknown* $index, *unknown* $value)
 
 Sets a session variable in an application context 
 
@@ -195,13 +195,13 @@ Returns the status of the current session. For PHP 5.3 this function will always
 
 
 
-public *mixed*  **__get** (*string* $index)
+public  **__get** (*unknown* $index)
 
 Alias: Gets a session variable from an application context
 
 
 
-public  **__set** (*string* $index, *string* $value)
+public  **__set** (*unknown* $index, *unknown* $value)
 
 Alias: Sets a session variable in an application context
 

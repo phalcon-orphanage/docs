@@ -34,7 +34,7 @@ abstract public  **reset** ()
 ...
 
 
-abstract public static  **__set_state** (*unknown* $data)
+abstract public static  **__set_state** (*array* $data)
 
 ...
 

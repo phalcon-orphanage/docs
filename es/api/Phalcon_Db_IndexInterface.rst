@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\IndexInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $indexName, *unknown* $columns, [*unknown* $type])
+abstract public  **__construct** (*unknown* $indexName, *array* $columns, [*unknown* $type])
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **getType** ()
 ...
 
 
-abstract public static  **__set_state** (*unknown* $data)
+abstract public static  **__set_state** (*array* $data)
 
 ...
 

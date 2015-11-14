@@ -19,12 +19,12 @@ abstract public  **getModelName** ()
 ...
 
 
-abstract public  **bind** (*unknown* $bindParams)
+abstract public  **bind** (*array* $bindParams)
 
 ...
 
 
-abstract public  **bindTypes** (*unknown* $bindTypes)
+abstract public  **bindTypes** (*array* $bindTypes)
 
 ...
 
@@ -79,12 +79,12 @@ abstract public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unkn
 ...
 
 
-abstract public  **inWhere** (*unknown* $expr, *unknown* $values)
+abstract public  **inWhere** (*unknown* $expr, *array* $values)
 
 ...
 
 
-abstract public  **notInWhere** (*unknown* $expr, *unknown* $values)
+abstract public  **notInWhere** (*unknown* $expr, *array* $values)
 
 ...
 

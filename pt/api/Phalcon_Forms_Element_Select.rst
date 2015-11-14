@@ -46,7 +46,7 @@ Renders the element widget returning html
 
 
 
-public  **setForm** (*unknown* $form) inherited from Phalcon\\Forms\\Element
+public  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form) inherited from Phalcon\\Forms\\Element
 
 Sets the parent form to the element
 
@@ -88,13 +88,13 @@ Returns the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*unknown* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
 
 Adds a group of validators
 
 
 
-public  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
+public  **addValidator** (:doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator) inherited from Phalcon\\Forms\\Element
 
 Adds a validator to the element
 
@@ -124,7 +124,7 @@ Returns the value of an attribute if present
 
 
 
-public  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Forms\\Element
+public  **setAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
 
 Sets default attributes for the element
 
@@ -208,13 +208,13 @@ Checks whether there are messages attached to the element
 
 
 
-public  **setMessages** (*unknown* $group) inherited from Phalcon\\Forms\\Element
+public  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group) inherited from Phalcon\\Forms\\Element
 
 Sets the validation messages related to the element
 
 
 
-public  **appendMessage** (*unknown* $message) inherited from Phalcon\\Forms\\Element
+public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message) inherited from Phalcon\\Forms\\Element
 
 Appends a message to the internal message list
 

@@ -27,7 +27,7 @@ Check for a valid numeric value
 Methods
 -------
 
-public  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
 
 Executes the validation
 

@@ -14,7 +14,7 @@ Encapsulates validation info generated in the validation process
 Methods
 -------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*unknown* $code])
+public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type], [*unknown* $code])
 
 Phalcon\\Validation\\Message constructor
 
@@ -74,7 +74,7 @@ Magic __toString method returns verbose message
 
 
 
-public static  **__set_state** (*unknown* $message)
+public static  **__set_state** (*array* $message)
 
 Magic __set_state helps to recover messsages from serialization
 

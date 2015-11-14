@@ -78,7 +78,7 @@ Constants
 Methods
 -------
 
-public static  **setup** (*unknown* $options)
+public static  **setup** (*array* $options)
 
 Enables/disables options in the Database component
 

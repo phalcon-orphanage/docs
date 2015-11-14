@@ -28,7 +28,7 @@ Check if a value is included into a list of values
 Methods
 -------
 
-public  **validate** (*unknown* $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
 
 Executes the validation
 

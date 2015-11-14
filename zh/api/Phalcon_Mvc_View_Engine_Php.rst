@@ -22,7 +22,7 @@ Renders a view using the template engine
 
 
 
-public  **__construct** (*unknown* $view, [*unknown* $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -46,7 +46,7 @@ Returns the view component related to the adapter
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -58,7 +58,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

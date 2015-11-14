@@ -9,12 +9,12 @@ Interface **Phalcon\\Mvc\\Model\\MetaData\\StrategyInterface**
 Methods
 -------
 
-abstract public  **getMetaData** (*unknown* $model, *unknown* $dependencyInjector)
+abstract public  **getMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 ...
 
 
-abstract public  **getColumnMaps** (*unknown* $model, *unknown* $dependencyInjector)
+abstract public  **getColumnMaps** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 ...
 

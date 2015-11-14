@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\AdapterInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $descriptor)
+abstract public  **__construct** (*array* $descriptor)
 
 ...
 
@@ -24,7 +24,7 @@ abstract public  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*un
 ...
 
 
-abstract public  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes])
+abstract public  **insert** (*unknown* $table, *array* $values, [*unknown* $fields], [*unknown* $dataTypes])
 
 ...
 
@@ -69,7 +69,7 @@ abstract public  **sharedLock** (*unknown* $sqlQuery)
 ...
 
 
-abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
+abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition)
 
 ...
 
@@ -79,7 +79,7 @@ abstract public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [
 ...
 
 
-abstract public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
+abstract public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName])
 
 ...
 
@@ -89,12 +89,12 @@ abstract public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*u
 ...
 
 
-abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 ...
 
 
-abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
 
 ...
 
@@ -104,7 +104,7 @@ abstract public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *u
 ...
 
 
-abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 ...
 
@@ -114,7 +114,7 @@ abstract public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *un
 ...
 
 
-abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 ...
 
@@ -124,7 +124,7 @@ abstract public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName
 ...
 
 
-abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 ...
 
@@ -134,7 +134,7 @@ abstract public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName
 ...
 
 
-abstract public  **getColumnDefinition** (*unknown* $column)
+abstract public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 ...
 

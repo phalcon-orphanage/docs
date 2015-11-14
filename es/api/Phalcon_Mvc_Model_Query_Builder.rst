@@ -39,13 +39,13 @@ Helps to create PHQL queries using an OO interface
 Methods
 -------
 
-public  **__construct** ([*unknown* $params], [*unknown* $dependencyInjector])
+public  **__construct** ([*unknown* $params], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -57,7 +57,7 @@ Returns the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **distinct** (*bool|null* $distinct)
+public  **distinct** (*unknown* $distinct)
 
 Sets SELECT DISTINCT / SELECT ALL flag 
 
@@ -77,7 +77,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*string|array* $columns)
+public  **columns** (*unknown* $columns)
 
 Sets the columns to be queried 
 
@@ -98,7 +98,7 @@ Return the columns to be queried
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **from** (*string|array* $models)
+public  **from** (*unknown* $models)
 
 Sets the models who makes part of the query 
 
@@ -113,7 +113,7 @@ Sets the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias], [*unknown* $with])
+public  **addFrom** (*unknown* $model, [*unknown* $alias], [*unknown* $with])
 
 Add a model to take part of the query 
 
@@ -282,7 +282,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public  **inWhere** (*unknown* $expr, *unknown* $values)
+public  **inWhere** (*unknown* $expr, *array* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -295,7 +295,7 @@ Appends an IN condition to the current conditions
 
 
 
-public  **notInWhere** (*unknown* $expr, *unknown* $values)
+public  **notInWhere** (*unknown* $expr, *array* $values)
 
 Appends a NOT IN condition to the current conditions 
 
