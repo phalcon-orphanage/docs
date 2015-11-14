@@ -186,7 +186,7 @@ Injection de dépendances
 ------------------------
 Regardez à la premiére ligne du code juste au dessus, la variable :code:`$app` reçoit une autre variable :code:`$di` dans son constructeur.
 Quel est le but de cette variable ? Phalcon est un framework fortement découplé, donc on a besoin d'un composant qui agit comme une sorte de colle pour que tout fonctionne ensemble, correctement.
-Ce composant est :doc:`Phalcon\\Di <../api/Phalcon_DI>`. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
+Ce composant est :doc:`Phalcon\\Di <../api/Phalcon_Di>`. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
 
 Il y a différents moyens d'enregistrer les services dans un conteneur. Dans INVO la plupart des services ont été enregistrés en utilisant des fonctions anonymes.
 Grace à cela, les objets sont instanciés paresseusement (= uniquement lorsque nécessaire) , ce qui réduit les ressources requises par l'application.
@@ -214,7 +214,7 @@ Dans cette situation, on a la possibilité de changer l'adaptateur, de faire des
 Notez que le service est enregistré avec le nom "session", c'est une convention qui va permettre au framework d'identifier le service actifdans le conteneur de service.
 
 Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peux être une lourde tâche.
-Pour cette raison le framework fournit une variante à :doc:`Phalcon\\Di <../api/Phalcon_DI>` appelée :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
+Pour cette raison le framework fournit une variante à :doc:`Phalcon\\Di <../api/Phalcon_Di>` appelée :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
 
 .. code-block:: php
 

@@ -356,9 +356,9 @@ their behavior or any other aspect of them and that would not affect the compone
 
 Our approach
 ============
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, :doc:`Phalcon\\Di <../api/Phalcon_DI>` is essential to integrate the different components of the framework. The developer can
+Since Phalcon is highly decoupled, :doc:`Phalcon\\Di <../api/Phalcon_Di>` is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
 Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
@@ -444,7 +444,7 @@ developer and the particular requirements that will designate which one is used.
 Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
 code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
 in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 Simple Registration
@@ -787,7 +787,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 Events
 ------
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is able to send events to an :doc:`EventsManager <events>` if it is present.
 Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
 The following events are supported:
 
@@ -899,7 +899,7 @@ for it.
 Automatic Injecting of the DI itself
 ====================================
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
-to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
+to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
 
@@ -996,7 +996,7 @@ If needed you can access the latest DI created in a static function in the follo
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
