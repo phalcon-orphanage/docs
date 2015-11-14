@@ -19,7 +19,7 @@ This component makes use of adapters to define the behavior of the messages afte
 Usage
 -----
 Usually the Flash Messaging service is requested from the services container,
-if you're using :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`
+if you're using :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`
 then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automatically registered as "flash" service:
 
 .. code-block:: php

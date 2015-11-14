@@ -164,7 +164,7 @@ Dependency Management
 ^^^^^^^^^^^^^^^^^^^^^
 A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_DI>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, :doc:`Phalcon\\Di <../api/Phalcon_Di>` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
 .. code-block:: php
 
@@ -177,7 +177,7 @@ A service container is a bag where we globally store the services that our appli
     // Create a DI
     $di = new FactoryDefault();
 
-:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>`. To make things easier,
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` is a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>`. To make things easier,
 it has registered most of the components that come with Phalcon. Thus we should not register them one by one.
 Later there will be no problem in replacing a factory service.
 

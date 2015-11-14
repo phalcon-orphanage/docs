@@ -40,7 +40,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | Name       | Description                                         | API                                                                            |
 +============+=====================================================+================================================================================+
-| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           |
+| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+

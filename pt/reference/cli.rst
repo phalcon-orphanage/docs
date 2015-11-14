@@ -186,4 +186,4 @@ Then you can use the console inside of any task. Below is an example of a modifi
         }
     }
 
-However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>` and implement this kind of logic there.
+However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` and implement this kind of logic there.

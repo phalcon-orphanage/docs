@@ -195,7 +195,7 @@ Inyección de Dependencias
 En el código anterior, la variable :code:`$di` es pasada al constructor de :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`.
 ¿Cuál es el proposito de esta variable? Como Phalcon es un framework altamente desacoplado, necesitamos un componente
 que actúe como intermediario entre los distintos componentes para hacer que todo trabaje junto de una manera sencilla.
-Este componente es :doc:`Phalcon\\Di <../api/Phalcon_DI>`. Es un contenedor de servicios que también permite injeccción de dependencias,
+Este componente es :doc:`Phalcon\\Di <../api/Phalcon_Di>`. Es un contenedor de servicios que también permite injeccción de dependencias,
 instanciando e inicializando todos los componentes a medida que son requeridos por la aplicación.
 
 Hay muchas formas de registrar servicios en el contenedor. En INVO, la mayoría de servicios han sido registrados
@@ -227,7 +227,7 @@ Ten en cuenta que el servicio se registró usando el nombre "session". Esta es u
 componentes a solicitar el servicio correcto en el contenedor de servicios.
 
 Una petición puede usar muchos servicios, registrar cada servicio puede ser tedioso. Por esta razón,
-el framework proporciona una variante :doc:`Phalcon\\Di <../api/Phalcon_DI>` llamada :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` cuyo objetivo es registrar
+el framework proporciona una variante :doc:`Phalcon\\Di <../api/Phalcon_Di>` llamada :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` cuyo objetivo es registrar
 todos los servicios proporcionados por un framework full-stack.
 
 .. code-block:: php

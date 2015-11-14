@@ -120,7 +120,7 @@ classes implementing the form in a separated file:
         }
     }
 
-:doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>`
+:doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>`
 so you have access to the application services if needed:
 
 .. code-block:: php

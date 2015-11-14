@@ -19,7 +19,7 @@
 
 Использование
 -------------
-Обычно компонент всплывающих сообщений доступен из контейнера сервисов. Если вы используете :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`,
+Обычно компонент всплывающих сообщений доступен из контейнера сервисов. Если вы используете :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`,
 то :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` будет автоматически зарегистрирован как "flash" сервис:
 
 .. code-block:: php
