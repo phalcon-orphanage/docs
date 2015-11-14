@@ -340,9 +340,9 @@
 
 实现方法（Our approach）
 ========================
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` 是一个实现依赖注入和定位服务的组件，而且它本身就是一个装载它们的容器。
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` 是一个实现依赖注入和定位服务的组件，而且它本身就是一个装载它们的容器。
 
-因为Phalcon是高度解构的，整合框架的不同组件，使用 :doc:`Phalcon\\Di <../api/Phalcon_DI>` 是必不可少的。开发者也可以使用这个组件去注入依赖和管理的应用程序中来自不同类的全局实例。
+因为Phalcon是高度解构的，整合框架的不同组件，使用 :doc:`Phalcon\\Di <../api/Phalcon_Di>` 是必不可少的。开发者也可以使用这个组件去注入依赖和管理的应用程序中来自不同类的全局实例。
 
 基本上，这个组件实现了 [控制反转](http://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC) 的模式。使用这种模式，组件的对象不用再使用setter或者构造函数去接受依赖实例，而是使用请求服务的依赖注入。这减少了总的复杂性，因为在组件内，只有一个方法去获取所需的依赖实例。
 
@@ -422,7 +422,7 @@
 
 通过字符串设置一个服务是很简单，但是缺乏灵活性。通过数组设置服务提供了更加灵活的方式，但是使代码更复杂。匿名函数是上述两者之间的一个很好的平衡，但是会导致比预期的更多维护。
 
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` 对每个储存的服务提供了延迟加载。除非开发者选择直接实例化一个对象并将其存储在容器中，任何储存在里面的对象(通过数组，字符串等等设置的)都将延迟加载，即只要当使用到时才实例化。
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` 对每个储存的服务提供了延迟加载。除非开发者选择直接实例化一个对象并将其存储在容器中，任何储存在里面的对象(通过数组，字符串等等设置的)都将延迟加载，即只要当使用到时才实例化。
 
 简单的注册（Simple Registration）
 ---------------------------------
@@ -753,7 +753,7 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
 Events
 ------
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is able to send events to an :doc:`EventsManager <events>` if it is present.
 Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
 The following events are supported:
 
@@ -862,7 +862,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
 自动注入 DI（Automatic Injecting of the DI itself）
 ===================================================
-如果一个类或者组件需要用到DI服务，你需要在你的类中实现 :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` 接口，
+如果一个类或者组件需要用到DI服务，你需要在你的类中实现 :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` 接口，
 这样就可以在实例化这个类的对象时自动注入DI的服务:
 
 .. code-block:: php
@@ -958,7 +958,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 注入器默认工厂（Factory Default DI）
 ====================================
 尽管Phalcon的解耦性质为我们提供了很大的自由度和灵活性，也许我们只是单纯的想使用它作为一个全栈框架。
-为了达到这点，框架提供了变种的 :doc:`Phalcon\\Di <../api/Phalcon_DI>` 叫 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` 。这个类会自动注册相应的服务，并捆绑在一起作为一个全栈框架。
+为了达到这点，框架提供了变种的 :doc:`Phalcon\\Di <../api/Phalcon_Di>` 叫 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` 。这个类会自动注册相应的服务，并捆绑在一起作为一个全栈框架。
 
 .. code-block:: php
 

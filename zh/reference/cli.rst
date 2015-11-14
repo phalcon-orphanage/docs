@@ -186,4 +186,4 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
         }
     }
 
-当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>` 来实现如上操作会是一个更好主意。
+当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` 来实现如上操作会是一个更好主意。

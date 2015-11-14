@@ -896,7 +896,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 注入服务到视图（Injecting services in View）
 --------------------------------------------
-每个视图执行内部包含一个 :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` 实例, 提供方便地方式访问应用程序的服务容器。
+每个视图执行内部包含一个 :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` 实例, 提供方便地方式访问应用程序的服务容器。
 
 下面的示例演示如何用一个框架约定好的URL服务写一个 jQuery `ajax request`_ 。
 "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) 服务被注入在视图由相同名称的属性访问：

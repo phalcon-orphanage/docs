@@ -19,7 +19,7 @@
 使用（Usage）
 -------------
 通常闪存消息都是来自服务容器的请求，
-如果你正在使用 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` ，
+如果你正在使用 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` ，
 那么 :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` 将会作为 "flash" 服务自动注册：
 
 .. code-block:: php
