@@ -356,10 +356,10 @@ o cualquier otro aspecto no afectarán el componente.
 
 Our approach
 ============
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
 es un contenedor para ellos.
 
-Ya que Phalcon es altamente desacoplado, :doc:`Phalcon\\Di <../api/Phalcon_DI>` es esencial para integrar los diferentes componentes del framework.
+Ya que Phalcon es altamente desacoplado, :doc:`Phalcon\\Di <../api/Phalcon_Di>` es esencial para integrar los diferentes componentes del framework.
 El desarrollador puede usar este componente para inyectar dependencias y administrar instancias globales de las distintas
 clases usadas en el framework.
 
@@ -451,7 +451,7 @@ un array ofrece más flexibilidad pero puede ser un poco más complicado.
 La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización
 sino es editando directamente su código.
 
-La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\Di <../api/Phalcon_DI>` inicializan los servicios solo la primera vez
+La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\Di <../api/Phalcon_Di>` inicializan los servicios solo la primera vez
 que son requeridas.
 
 Registro simple
@@ -792,7 +792,7 @@ Los argumentos se pueden pasar al constructor agregando un array como parámetro
 
 Events
 ------
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is able to send events to an :doc:`EventsManager <events>` if it is present.
 Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
 The following events are supported:
 
@@ -907,7 +907,7 @@ for it.
 Automatic Injecting of the DI itself
 ====================================
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
-to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
+to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
 
@@ -1004,7 +1004,7 @@ If needed you can access the latest DI created in a static function in the follo
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_DI>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
