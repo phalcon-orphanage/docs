@@ -121,7 +121,7 @@ html-атрибуты вторым параметром:
         }
     }
 
-Формы :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` наследуются от :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>`,
+Формы :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` наследуются от :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>`,
 предоставляя доступ к службам приложения, если это необходимо:
 
 .. code-block:: php
