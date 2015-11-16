@@ -5,7 +5,7 @@ Apache_ es un servidor web muy popular disponible para numerosas plataformas.
 
 Configurando Apache para Phalcon
 --------------------------------
-Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación en Apache. Estas notas están enfocadas en la configuración del modulo mod-rewrite para usar URL amistosas y
+Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación en Apache. Estas notas están enfocadas en la configuración del modulo mod_rewrite para usar URL amistosas y
 :doc:`router component <routing>`. Por lo general una aplicación posee esta estructura:
 
 

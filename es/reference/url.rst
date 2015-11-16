@@ -96,9 +96,9 @@ A URL can be generated in the following way:
         )
     );
 
-Producing URLs without Mod-Rewrite
+Producing URLs without mod_rewrite
 ----------------------------------
-You can use this component also to create URLs without mod-rewrite:
+You can use this component also to create URLs without mod_rewrite:
 
 .. code-block:: php
 
