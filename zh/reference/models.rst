@@ -881,7 +881,7 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->parts->name, "\n";
     }
 
-Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
+Phalcon uses the magic methods :code:`__set`/:code:`__get`/:code:`__call` to store or retrieve related data using relationships.
 
 By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
