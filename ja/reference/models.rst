@@ -1749,7 +1749,7 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
                         $messages[] = 'The record cannot be created because it already exists';
                         break;
                     case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it already exists';
+                        $messages[] = 'The record cannot be updated because it doesn't exist';
                         break;
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
@@ -2533,7 +2533,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 独自の振る舞いの作成
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`.
 Also, :doc:`Phalcon\\Mvc\\Model\\Behavior <../api/Phalcon_Mvc_Model_Behavior>` provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blameable behavior which helps identify the user
@@ -2558,7 +2558,7 @@ that is performed operations over a model:
 
                     $userName = // ... get the current user from session
 
-                    // Store in a log the username - event type and primary key
+                    // Store in a log the username, event type and primary key
                     file_put_contents(
                         'logs/blamable-log.txt',
                         $userName . ' ' . $eventType . ' ' . $model->id
@@ -2919,7 +2919,7 @@ in the application's services container. You can overwrite this service setting 
         );
     });
 
-Then, in the Initialize method, we define the connection service for the model:
+Then, in the initialize method, we define the connection service for the model:
 
 .. code-block:: php
 
