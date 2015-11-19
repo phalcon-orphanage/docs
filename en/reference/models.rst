@@ -1767,7 +1767,7 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
                         $messages[] = 'The record cannot be created because it already exists';
                         break;
                     case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it doesn't exist';
+                        $messages[] = 'The record cannot be updated because it doesn\'t exist';
                         break;
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
