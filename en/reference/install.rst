@@ -43,7 +43,7 @@ Specific packages for common platforms:
 
 .. code-block:: bash
 
-    #Ubuntu
+    # Ubuntu
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
@@ -78,7 +78,7 @@ Add extension to your PHP configuration:
     # Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
-    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
+    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
     extension=phalcon.so
 
 Restart the webserver.
@@ -131,8 +131,7 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration:
-
+Add extension to your PHP configuration.
 
 FreeBSD
 -------

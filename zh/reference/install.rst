@@ -2,15 +2,11 @@
 ====================
 作为PHP C拓展形式的Phalcon，需要一个略微不同于传统PHP的库或框架的安装方法。你可以选择一个当前系统的一个二进制包下载，或者使用源代码构建它。
 
-.. highlights::
-    Phalcon 可编译在PHP 5.3.1及以上版本，但是因为老PHP版本错误导致内存泄漏，我们强烈推荐你使用PHP 5.3.11或更高版本。
-
-.. highlights::
-    PHP 5.3.9版本以前有几个安全漏洞，不建议在生产网站中使用。`学习更多 <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
-
 Windows
 -------
 要在Windows上使用Phalcon，你可以下载一个DLL库。编辑php.ini文件，并且在最后附加上：
+
+.. code-block:: bash
 
     extension=php_phalcon.dll
 
@@ -30,23 +26,23 @@ Windows
     xampp
     wamp
 
-Linux/Solaris/Mac
------------------
-在Linux/Solaris/Mac系统下，你能很轻易从源代码编译和安装这个拓展:
+Linux/Solaris
+-------------
+在Linux/Solaris系统下，你能很轻易从源代码编译和安装这个拓展:
 
 基本要求（Requirements）
 ^^^^^^^^^^^^^^^^^^^^^^^^
 必要的包:
 
-* PHP 5.3.x/5.4.x/5.5.x development resources
-* GCC compiler (Linux/Solaris) or Xcode (Mac)
+* PHP >= 5.3 development resources
+* GCC compiler (Linux/Solaris)
 * Git (如果不是已经安装在你的系统，且你没有从Github上下载这个包并通过FTP/SFTP上传到你的服务器上)
 
 通用平台下安装指定的软件包：
 
 .. code-block:: bash
 
-    #Ubuntu
+    # Ubuntu
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
@@ -55,7 +51,7 @@ Linux/Solaris/Mac
     # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
+    # Solaris
     pkg install gcc-45 php-53 apache-php53
 
 编译（Compilation）
@@ -81,7 +77,7 @@ Linux/Solaris/Mac
     # Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
-    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
+    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
     extension=phalcon.so
 
 重启Web服务器.
@@ -134,8 +130,7 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration:
-
+Add extension to your PHP configuration.
 
 FreeBSD
 -------
