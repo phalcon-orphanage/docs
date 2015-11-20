@@ -46,7 +46,7 @@ Linux/Solaris
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
-    sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
     # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
@@ -68,21 +68,24 @@ Linux/Solaris
 
 .. code-block:: bash
 
-    # Suse: Add this line in your php.ini
+    # Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
-    # Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    # CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
-    # Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
+    # Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
     extension=phalcon.so
 
-    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    # Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    extension=phalcon.so
+
+    # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
     extension=phalcon.so
 
 重启Web服务器.
 
-如果你在 Debian 下使用 php5-fpm，重启命令为：
+如果你在 Ubuntu/Debian 下使用 php5-fpm，重启命令为：
 
 .. code-block:: bash
 

@@ -47,7 +47,7 @@ Specyficzne pakiety dla wspólnych platform:
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
-    sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
     # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
@@ -69,21 +69,24 @@ Dodaj rozszerzenie do swojej konfiguracji PHP:
 
 .. code-block:: bash
 
-    # Suse: Dodaj ta linię do swojego pliku php.ini
+    # Suse: Stwórz plik o nazwie phalcon.ini w /etc/php5/conf.d/ z następującą zawartością:
     extension=phalcon.so
 
-    # Centos/RedHat/Fedora: Stwórz plik o nazwie phalcon.ini w /etc/php.d/ z następującą zawartością:
+    # CentOS/RedHat/Fedora: Stwórz plik o nazwie phalcon.ini w /etc/php.d/ z następującą zawartością:
     extension=phalcon.so
 
-    # Ubuntu/Debian: Stwórz plik o nazwie 30-phalcon.ini w /etc/php.d/ z następującą zawartością:
+    # Ubuntu/Debian z apache2: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/apache2/conf.d/ z następującą zawartością:
     extension=phalcon.so
 
-    # Debian z php5-fpm: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/fpm/conf.d/ z następującą zawartością:
+    # Ubuntu/Debian z php5-fpm: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/fpm/conf.d/ z następującą zawartością:
+    extension=phalcon.so
+
+    # Ubuntu/Debian z php5-cli: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/cli/conf.d/ z następującą zawartością:
     extension=phalcon.so
 
 Zrestartuj serwer.
 
-If you are running Debian with php5-fpm, restart it:
+If you are running Ubuntu/Debian with php5-fpm, restart it:
 
 .. code-block:: bash
 

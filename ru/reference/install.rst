@@ -47,7 +47,7 @@ Linux/Solaris
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
-    sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
     # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
@@ -69,21 +69,24 @@ Linux/Solaris
 
 .. code-block:: bash
 
-    # Suse: добавьте эту строку в php.ini
+    # Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
     extension=phalcon.so
 
-    # Centos/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
+    # CentOS/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
     extension=phalcon.so
 
-    # Ubuntu/Debian: создайте файл 30-phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
+    # Ubuntu/Debian с apache2: создайте файл 30-phalcon.ini в /etc/php5/apache2/conf.d/ со следующим содержимым:
     extension=phalcon.so
 
-    # Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
+    # Ubuntu/Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
+    extension=phalcon.so
+
+    # Ubuntu/Debian с php5-cli: создайте файл 30-phalcon.ini в /etc/php5/cli/conf.d/ со следующим содержимым:
     extension=phalcon.so
 
 Перезапустите веб-сервер.
 
-Если вы используете Debian с php5-fpm, то перезапустите и его:
+Если вы используете Ubuntu/Debian с php5-fpm, то перезапустите и его:
 
 .. code-block:: bash
 
