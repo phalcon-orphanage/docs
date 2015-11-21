@@ -786,7 +786,8 @@ If this function return :code:`false`, the route will be treated as non-matched:
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // Check if the request was made with Ajax
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             return false;
         }
         return true;
@@ -802,7 +803,7 @@ You can re-use these extra conditions in classes:
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
         }
     }
 
