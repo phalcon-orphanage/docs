@@ -780,7 +780,8 @@ This is typically for an Error 404 page.
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // Проверим, что это был Ajax-запрос
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             return false;
         }
         return true;
@@ -796,7 +797,7 @@ This is typically for an Error 404 page.
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
         }
     }
 

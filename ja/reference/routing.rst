@@ -742,7 +742,8 @@ Not Found パス
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // リクエストがAjaxによって生成されたかチェック
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             return false;
         }
         return true;
@@ -758,7 +759,7 @@ Not Found パス
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
         }
     }
 
