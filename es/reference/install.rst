@@ -3,15 +3,11 @@ Instalación
 Las extensiones de PHP requieren un método diferente de instalación a los frameworks o bibliotecas tradicionales.
 Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el código fuente.
 
-.. highlights::
-    Phalcon puede ser compilado como mínimo para la version 5.3.1 de PHP, pero debido a errores antiguos de PHP que causan fallos y fugas de memoria, recomendamos usar al menos 5.3.11.
-
-.. highlights::
-    Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Más información <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
-
 Windows
 -------
 Para usar Phalcon en Windows debes descargar_ un DLL y ubicarlo en el directorio de extensiones. Edita el php.ini y agrega al final:
+
+.. code-block:: bash
 
     extension=php_phalcon.dll
 
@@ -25,44 +21,39 @@ El siguiente video explica como instalar Phalcon en Windows paso a paso, el mate
 
 Guías Relacionadas
 ^^^^^^^^^^^^^^^^^^
-
 .. toctree::
     :maxdepth: 1
 
     xampp
     wamp
 
-Linux/Solaris/Mac
------------------
-En un sistema Linux/Solaris/Mac puedes compilar e instalar la extensión fácilmente desde la fuente del repositorio:
+Linux/Solaris
+-------------
+En un sistema Linux/Solaris puedes compilar e instalar la extensión fácilmente desde la fuente del repositorio:
 
 Requerimientos
 ^^^^^^^^^^^^^^
 Los paquetes requeridos son:
 
-* PHP 5.3.x/5.4.x fuentes de desarrollo (development resources)
-* Compilador GCC (Linux/Solaris) o Xcode (Mac)
+* PHP >= 5.3 fuentes de desarrollo (development resources)
+* Compilador GCC (Linux/Solaris)
 * Git (a menos que descargues el paquete manualmente desde Github)
 
 Paquetes específicos para plataformas comunes:
 
 .. code-block:: bash
 
-    #Ubuntu
-    sudo apt-get install git-core gcc autoconf
-    sudo apt-get install php5-dev php5-mysql
+    # Ubuntu
+    sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
-    #Suse
-    sudo yast -i gcc make autoconf2.13
-    sudo yast -i php5-devel php5-mysql
+    # Suse
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
-    #CentOS/RedHat
-    sudo yum install gcc make
-    sudo yum install php-devel
+    # CentOS/RedHat/Fedora
+    sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
-    pkg install gcc-45
-    pkg install php-53 apache-php53
+    # Solaris
+    pkg install gcc-45 php-53 apache-php53
 
 Compilación
 ^^^^^^^^^^^
@@ -70,25 +61,80 @@ Compilando la extensión:
 
 .. code-block:: bash
 
-    git clone git://github.com/phalcon/cphalcon.git
+    git clone --depth=1 git://github.com/phalcon/cphalcon.git
     cd cphalcon/build
     sudo ./install
 
-Añadiendo la extensión a php.ini
+Añadiendo la extensión a php.ini:
 
 .. code-block:: bash
 
+    # Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+    extension=phalcon.so
+
+    # CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    extension=phalcon.so
+
+    # Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+    extension=phalcon.so
+
+    # Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    extension=phalcon.so
+
+    # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
     extension=phalcon.so
 
 Reiniciando el servidor web.
+
+If you are running Ubuntu/Debian with php5-fpm, restart it:
+
+.. code-block:: bash
+
+    sudo service php5-fpm restart
 
 Phalcon automáticamente detecta tu arquitectura de procesador, sin embargo, puedes forzar la compilación para la arquitectura deseada:
 
 .. code-block:: bash
 
+    cd cphalcon/build
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
+
+If the automatic installer fails try building the extension manually:
+
+.. code-block:: bash
+
+    cd cphalcon/build/64bits
+    export CFLAGS="-O2 --fvisibility=hidden"
+    ./configure --enable-phalcon
+    make && sudo make install
+
+Mac OS X
+--------
+On a Mac OS X system you can compile and install the extension from the source code:
+
+Requirements
+^^^^^^^^^^^^
+Prerequisite packages are:
+
+* PHP >= 5.4 development resources
+* XCode
+
+.. code-block:: bash
+
+    # brew
+    brew tap homebrew/homebrew-php
+    brew install php54-phalcon
+    brew install php55-phalcon
+    brew install php56-phalcon
+
+    # MacPorts
+    sudo port install php54-phalcon
+    sudo port install php55-phalcon
+    sudo port install php56-phalcon
+
+Add extension to your PHP configuration.
 
 FreeBSD
 -------
@@ -102,12 +148,11 @@ o
 
 .. code-block:: bash
 
-    export CFLAGS="-O2 -fno-delete-null-pointer-checks"
+    export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
 Notas para la instalación
 -------------------------
-
 Notas para los servidores web:
 
 .. toctree::
