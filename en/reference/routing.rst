@@ -786,7 +786,7 @@ If this function return :code:`false`, the route will be treated as non-matched:
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // Check if the request was made with Ajax
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             return false;
         }
         return true;
