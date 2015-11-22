@@ -1,13 +1,13 @@
 Notas para la instalación en Nginx
 ==================================
 
-Nginx_ es un servidor HTTP libre de código abierto con muy alto rendimiento, puede actuar ademas como servidor proxy inversy y como proxy para MAP/POP3. A diferencia de los servidores tradicionales, Nginx_ no se basa en hilos para manejar las peticiones. En su lugar usa una arquitectura más escalable event-driven(asíncrona). Esta arquitectura usa pequeños espacios de memoria, pero aún más importante puede predecir el tamaño de la memoria a ser cargada.
+Nginx_ es un servidor HTTP libre de código abierto con muy alto rendimiento, puede actuar ademas como servidor proxy inversy y como proxy para IMAP/POP3. A diferencia de los servidores tradicionales, Nginx_ no se basa en hilos para manejar las peticiones. En su lugar usa una arquitectura más escalable event-driven (asíncrona). Esta arquitectura usa pequeños espacios de memoria, pero aún más importante puede predecir el tamaño de la memoria a ser cargada.
 
 El `PHP-FPM`_ (FastCGI Process Manager) es generalmente usado para permitir a Nginx_ procesar ficheros PHP. Actualmente, `PHP-FPM`_ se encuentra en paquetes de cualquier distribución Unix PHP. Phalcon + Nginx_ + `PHP-FPM`_ provee un poderoso conjunto que ofrece el máximo rendimiento para tus applications PHP.
 
 Configurando Nginx para Phalcon
 -------------------------------
-Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación.
+Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación:
 
 Configuración básica
 ^^^^^^^^^^^^^^^^^^^^
