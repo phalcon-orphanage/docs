@@ -7,7 +7,7 @@ To start the server type:
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root
+    php -S localhost:8000 -t /public
 
 If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
 
