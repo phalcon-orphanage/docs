@@ -17,12 +17,12 @@ Extract the library from the archive to get the Phalcon DLL:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the c:\\xampp folder, the extension needs to be in c:\\xampp\\php\\ext
+Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the C:\\xampp folder, the extension needs to be in C:\\xampp\\php\\ext
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
-Edit the php.ini file, it is located at ﻿C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.
+Edit the php.ini file, it is located at C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center
@@ -57,4 +57,4 @@ Related Guides
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
 
-.. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
+.. _XAMPP: https://www.apachefriends.org/fr/download.html
