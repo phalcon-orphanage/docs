@@ -17,19 +17,19 @@ Wypakuj bibliotekę z archiwum, aby otrzymać Phalcon DLL:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze C:\\wamp, rozszerzenie musi być w C:\\wamp\\bin\\php\\php5.3.10\\ext
+Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze C:\\wamp, rozszerzenie musi być w C:\\wamp\\bin\\php\\php5.5.12\\ext
 
 .. figure:: ../_static/img/wamp-1.png
     :align: center
 
-Edytuj plik php.ini, jest zlokalizowany w C:\\wamp\\bin\\php\\php5.3.10\\php.ini. Możesz go edytować Notatnikiem lub innym, podobnym programem. Polecamy Nodepad++, aby uniknąć problemów z zakończeniami linii. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
+Edytuj plik php.ini, jest zlokalizowany w C:\\wamp\\bin\\php\\php5.5.12\\php.ini. Możesz go edytować Notatnikiem lub innym, podobnym programem. Polecamy Nodepad++, aby uniknąć problemów z zakończeniami linii. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
 
 .. figure:: ../_static/img/wamp-2.png
     :align: center
 
-Edytuj jeszcze jeden plik php.ini, który zlokalizowany jest w C:\\wamp\\bin\\apache\\Apache2.2.21\\bin\\php.ini. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
+Edytuj jeszcze jeden plik php.ini, który zlokalizowany jest w C:\\wamp\\bin\\apache\\apache2.4.9\\bin\\php.ini. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
 
-Zrestartuj serwer Apache. Kliknij pojedyńczo na ikonie WampServer w prawym dolnym rogu paska zadań. Z menu podręcznego wybierz "Restart All Services". Ikona na pasku zadań będzie znowu  zielona.
+Zrestartuj serwer Apache. Kliknij pojedyńczo na ikonie WampServer w prawym dolnym rogu paska zadań. Z menu podręcznego wybierz "Restart All Services". Ikona na pasku zadań będzie znowu zielona.
 
 .. figure:: ../_static/img/wamp-3.png
     :align: center

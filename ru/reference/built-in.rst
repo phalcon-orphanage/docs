@@ -7,7 +7,7 @@
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root
+    php -S localhost:8000 -t /public
 
 Если вы хотите перенаправлять запросы на файл index.php, добавьте файл .htrouter.php со следующим кодом:
 
@@ -23,7 +23,7 @@
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root .htrouter.php
+    php -S localhost:8000 -t /public .htrouter.php
 
 Откройте свой браузер и перейдите по адресу http://localhost:8000/, чтобы убедиться, что всё работает.
 
