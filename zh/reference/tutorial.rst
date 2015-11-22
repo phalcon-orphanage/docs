@@ -93,9 +93,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Mvc\Application;
     use Phalcon\Di\FactoryDefault;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     try {
 
@@ -129,7 +130,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         echo $application->handle()->getContent();
 
     } catch (\Exception $e) {
-         echo "PhalconException: ", $e->getMessage();
+         echo "Exception: ", $e->getMessage();
     }
 
 自动加载（Autoloaders）
@@ -244,7 +245,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         {
             echo "<h1>Hello!</h1>";
         }
-
     }
 
 该控制器类必须有“Controller”后缀，且控制器动作必须有“Action”后缀。如果你从浏览器访问应用程序，你应该看到这样的事情：
@@ -277,7 +277,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         {
 
         }
-
     }
 
 浏览器输出应该保持不变。当这个动作已经执行结束 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 静态组件会自动创建。
@@ -293,7 +292,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     echo "<h1>Hello!</h1>";
 
-    echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
+    echo $this->tag->linkTo("signup", "Sign Up Here!");
 
 生成的HTML代码显示一个锚 ("a") HTML标签链接到一个新的控制器：
 
@@ -321,7 +320,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         {
 
         }
-
     }
 
 这个空index动作整洁的传递了表单定义给一个视图 (app/views/signup/index.phtml):
@@ -359,7 +357,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 public/index.php 文件抛出这个异常：
 
-    PhalconException: Action "register" was not found on controller "signup"
+    Exception: Action "register" was not found on handler "signup"
 
 实现该方法将移除异常：
 
@@ -381,7 +379,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         {
 
         }
-
     }
 
 如果你再点击“Send”按钮,您将看到一个空白页。提供的名称和电子邮件的输入的这个用户应该被存储在数据库中。根据MVC的指导方针,必须通过数据库交互模型，确保整洁的面向对象的代码。
@@ -411,7 +408,11 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     class Users extends Model
     {
+        public $id;
 
+        public $name;
+
+        public $email;
     }
 
 设置数据库连接（Setting a Database Connection）
@@ -513,7 +514,6 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
             $this->view->disable();
         }
-
     }
 
 然后我们实例化用户类，它对应于一个用户记录。类的公共属性映射到用户表中的记录的字段。在新记录中设置相应的值并调用save()将在数据库中存储的数据记录。save()方法返回一个布尔值，表示存储的数据是否成功。
@@ -527,10 +527,6 @@ ORM自动转义输入以防止SQL注入，所以我们只需要将请求传递�
 
 结束语（Conclusion）
 --------------------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
-
-.. _anonymous function: http://php.net/manual/en/functions.anonymous.php
-
 这是一个非常简单的教程，正如你所看到的，使用Phalcon很容易开始构建应用程序。Phalcon是一个在你的web服务器上没有干扰、易于开发、特性优良的扩展。我们邀请你继续阅读手册，这样你就可以发现Phalcon提供的附加功能!
+
+.. _anonymous function: http://php.net/manual/zh/functions.anonymous.php
