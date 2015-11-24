@@ -46,11 +46,11 @@
 .. figure:: ../_static/img/mac-4.png
    :align: center
 
-Сохраните изменения и закройте файл. Потом в терминале, введите следующие команды для создания символической ссылки на скрипт phalcon.sh:
+Сохраните изменения и закройте файл. Потом в терминале, введите следующие команды для создания символической ссылки на скрипт phalcon.php:
 
 .. code-block:: bash
 
-    ln -s ~/phalcon-tools/phalcon.sh ~/phalcon-tools/phalcon
+    ln -s ~/phalcon-tools/phalcon.php ~/phalcon-tools/phalcon
     chmod +x ~/phalcon-tools/phalcon
 
 Введите команду "phalcon" и вы должны увидеть нечто подобное:
