@@ -15,14 +15,18 @@
         app/
             config/
             controllers/
-            library/
             forms/
+            library/
+            logs/
             models/
             plugins/
             views/
+        cache/
+            volt/
+        docs/
         public/
-            bootstrap/
             css/
+            fonts/
             js/
         schemas/
 
@@ -76,12 +80,22 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
     libraryDir     = app/library/
     baseUri        = /invo/
 
-
 Phalconには、定義済みの慣習的な設定は全くありません。セクション名を付けておくと、オプションを適切に構成する助けになります。このファイルには3つのセクションが含まれ、後で使用されます。
 
 オートローダ
 ------------
-ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
+ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Auto-loader configuration
+     */
+    require APP_PATH . 'app/config/loader.php';
+
+オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
 
 .. code-block:: php
 

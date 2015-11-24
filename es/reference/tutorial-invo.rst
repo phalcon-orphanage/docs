@@ -1,8 +1,8 @@
 Tutorial 2: Introducing INVO
 ============================
 
-En este segundo tutorial, explicaremos una aplicación más completa con el objetivo de profundizar en el desarrollo
-con Phalcon. INVO es una de las aplicaciones que hemos creado como ejemplo. INVO es un pequeño sitio web que permite a sus clientes
+En este segundo tutorial, explicaremos una aplicación más completa con el objetivo de profundizar en el desarrollo con Phalcon.
+INVO es una de las aplicaciones que hemos creado como ejemplo. INVO es un pequeño sitio web que permite a sus clientes
 generar facturas, además de otras tareas como administrar clientes y productos. Puedes clonar su código fuente de Github_.
 
 Adicionalmente, INVO fue creada con `Bootstrap`_ como framework en el cliente. A pesar que la aplicación
@@ -18,14 +18,18 @@ Una vez clones el proyecto en tu raíz de directorios verás la siguiente estruc
         app/
             config/
             controllers/
-            library/
             forms/
+            library/
+            logs/
             models/
             plugins/
             views/
+        cache/
+            volt/
+        docs/
         public/
-            bootstrap/
             css/
+            fonts/
             js/
         schemas/
 
@@ -43,12 +47,11 @@ donde un usuario registrado puede administrar sus productos y clientes.
 
 Enrutamiento
 ------------
-INVO usa la forma estándar de enrutar que viene con el componente de enrutamiento. Estas rutas
-usán el patrón que viene con el componente Router. El patrón es: /:controller/:action/:params.
-Esto significa que la primera parte de la URI es el controlador, la segunda la acción y el resto
-son los parámetros.
+INVO usa la forma estándar de enrutar que viene con el componente de enrutamiento. Estas rutas usán el
+patrón que viene con el componente Router. El patrón es: /:controller/:action/:params. Esto significa que
+la primera parte de la URI es el controlador, la segunda la acción y el resto son los parámetros.
 
-La ruta /session/register ejecuta el controlador "SessionController" y su acción "registerAction".
+La ruta `/session/register` ejecuta el controlador SessionController y su acción registerAction.
 
 Configuración
 -------------
@@ -66,8 +69,9 @@ Este archivo es leído en las primeras líneas del bootstrap (public/index.php):
     // Leer la configuración
     $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` nos permite manipular el archivo usando programación orientada a objetos.
-El archivo de configuración contiene la siguiente configuración.
+:doc:`Phalcon\\Config <config>` nos permite manipular el archivo
+usando programación orientada a objetos. El archivo de configuración
+contiene la siguiente configuración:
 
 .. code-block:: ini
 
@@ -123,7 +127,7 @@ the classes that it eventually will need.
     )->register();
 
 Lo que se ha hecho es registrar los directorios que están definidos en el archivo de configuración. El único
-directorio que no está registrado es el viewsDir', porque estas no contienen clases sino HTML y PHP.
+directorio que no está registrado es el viewsDir, porque estas no contienen clases sino HTML y PHP.
 Also, note that we have using a constant called APP_PATH, this constant is defined in the bootstrap
 (public/index.php) to allow us have a reference to the root of our project:
 
