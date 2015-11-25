@@ -18,14 +18,18 @@ Once you clone the project in your document root you'll see the following struct
         app/
             config/
             controllers/
-            library/
             forms/
+            library/
+            logs/
             models/
             plugins/
             views/
+        cache/
+            volt/
+        docs/
         public/
-            bootstrap/
             css/
+            fonts/
             js/
         schemas/
 
