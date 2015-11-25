@@ -135,7 +135,7 @@ The tutorial/public/index.php file should look like:
         echo $application->handle()->getContent();
 
     } catch (\Exception $e) {
-         echo "PhalconException: ", $e->getMessage();
+         echo "Exception: ", $e->getMessage();
     }
 
 Autoloaders
@@ -291,7 +291,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
         }
     }
 
-The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
+The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>`.
 
 Designing a sign up form
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -315,7 +315,7 @@ To generate the tag we use the class :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. T
 us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI
 we use :code:`$this->tag` to access it.
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -373,7 +373,7 @@ the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
 
-    PhalconException: Action "register" was not found on controller "signup"
+    Exception: Action "register" was not found on handler "signup"
 
 Implementing that method will remove the exception:
 
