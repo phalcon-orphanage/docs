@@ -95,7 +95,7 @@ de manera apropiada. En este archivo hay trés secciones que se usarán luego.
 
 Autocargadores
 --------------
-Una segunda parte que aparece en el bootstrap (public/index.php) es el autocargador (autoloader). Este registra un conjunto de directorios que la aplicación utilizará para cargar las clases que eventualmente necesitará.
+Una segunda parte que aparece en el bootstrap (public/index.php) es el autocargador (autoloader):
 
 .. code-block:: php
 
@@ -106,8 +106,8 @@ Una segunda parte que aparece en el bootstrap (public/index.php) es el autocarga
      */
     require APP_PATH . 'app/config/loader.php';
 
-The autoloader registers a set of directories in which the application will look for
-the classes that it eventually will need.
+Este registra un conjunto de directorios que la aplicación utilizará para cargar
+las clases que eventualmente necesitará.
 
 .. code-block:: php
 
