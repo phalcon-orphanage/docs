@@ -95,10 +95,9 @@ Cada controlador implementa las siguientes acciones:
 
 Formulario de Buscar
 ^^^^^^^^^^^^^^^^^^^^
-Cada CRUD inicia con un formulario de búsqueda. Este formulario muestra cada campo que tiene la tabla (productos),
-permitiendo al usuario crear un criterio de búsqueda por cada campo. La tabla "productos" tiene una relación
-a la tabla "product_types". En este caso, previamente consultamos los registros en esta tabla para facilitar al usuario
-su búsqueda por este campo.
+Cada CRUD inicia con un formulario de búsqueda. Este formulario muestra cada campo que tiene la tabla (productos), permitiendo al usuario
+crear un criterio de búsqueda por cada campo. La tabla "productos" tiene una relación a la tabla "product_types".
+En este caso, previamente consultamos los registros en esta tabla para facilitar al usuario su búsqueda por este campo:
 
 .. code-block:: php
 
@@ -348,10 +347,11 @@ de manera inteligente basada en los tipos de datos enviados en el formulario:
 
     $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
 
-Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y los toma en cuenta para crear el criterio de búsqueda
+Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y los toma en cuenta para crear el criterio
+de búsqueda:
 
-* Si el campo tiene un tipo de dato de texto o similar (char, varchar, text, etc.) Usa el operador SQL "like" para filtrar los resultados
-* Si el tipo de dato no es texto, entonces usará el operador "="
+* Si el campo tiene un tipo de dato de texto o similar (char, varchar, text, etc.) Usa el operador SQL "like" para filtrar los resultados.
+* Si el tipo de dato no es texto, entonces usará el operador "=".
 
 Adicionalmente, "Criteria" ignora todas las variables :code:`$_POST` que no correspondan a campos en la tabla.
 Los valores son automáticamente escapados usando "bound parameters" evitando inyecciones de SQL.
@@ -380,8 +380,8 @@ Luego, basado en los parámetros construidos anteriormente:
         return $this->forward("products/index");
     }
 
-Si la búsqueda no retorna ningún producto, redireccionamos al usuario a la vista de inicio nuevamente.
-Supongamos que retornó registros, entonces creamos un páginador para navegar fácilmente a través de ellos:
+Si la búsqueda no retorna ningún producto, redireccionamos al usuario a la vista de inicio nuevamente. Supongamos que
+retornó registros, entonces creamos un páginador para navegar fácilmente a través de ellos:
 
 .. code-block:: php
 
@@ -410,7 +410,8 @@ Finalmente pasamos la página devuelta a la vista:
 
     $this->view->page = $page;
 
-En la vista (app/views/products/search.volt), recorremos los resultados correspondientes de la página actual:
+En la vista (app/views/products/search.volt), recorremos
+los resultados correspondientes de la página actual:
 
 .. code-block:: html+jinja
 
@@ -493,14 +494,14 @@ in "product" is printed accordingly:
 .. code-block:: html+jinja
 
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.productTypes.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
-      </tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.productTypes.name }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ "%.2f"|format(product.price) }}</td>
+      <td>{{ product.getActiveDetail() }}</td>
+      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+    </tr>
 
 As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
@@ -585,9 +586,8 @@ This method is defined in the model.
 
 Creando y Actualizando Registros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Ahora vemos como en un CRUD se puede crear y actualizar registros. Desde las vistas "new" y "edit" los datos
-son ingresados por el usuario y enviados a las acciones "create" y "save" que realizan las acciones de crear y
-actualizar productos respectivamente.
+Ahora vemos como en un CRUD se puede crear y actualizar registros. Desde las vistas "new" y "edit" los datos son ingresados por el usuario
+y enviados a las acciones "create" y "save" que realizan las acciones de crear y actualizar productos respectivamente.
 
 En el caso de creación, recuperamos los datos enviados y los asignamos a una nueva instancia de "Products":
 
@@ -674,7 +674,6 @@ Finally, if the form does not return any validation message we can save the prod
     // ...
 
     if ($product->save() == false) {
-        // Guardar falló, mostrar los mensajes
         foreach ($product->getMessages() as $message) {
             $this->flash->error($message);
         }
@@ -711,8 +710,8 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
         }
     }
 
-El método :code:`Tag::setDefault()` nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
-Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos usando la acción "save":
+The data found is bound to the form passing the model as first parameter. Gracias a esto,
+un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos usando la acción "save":
 
 .. code-block:: php
 
@@ -729,7 +728,6 @@ Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vue
 
         $id = $this->request->getPost("id", "int");
 
-        // Buscar el producto a actualizar
         $product = Products::findFirstById($id);
         if (!$product) {
             $this->flash->error("Product does not exist");
@@ -765,5 +763,4 @@ Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vue
 We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
 In next chapter, we will see how to add custom HTML elements like a menu.
 
-.. _Jinja: http://jinja.pocoo.org/
-.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _CRUD: https://es.wikipedia.org/wiki/CRUD
