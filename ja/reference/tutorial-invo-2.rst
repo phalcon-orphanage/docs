@@ -300,7 +300,7 @@ When a "beforeException" is triggered then other plugin is notified:
      */
     $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
-Securityプラグインは (app/plugins/Security.php) にあるクラスです。このクラスは "beforeDispatch" メソッドを実装しています。これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
+Securityプラグインは (app/plugins/SecurityPlugin.php) にあるクラスです。このクラスは "beforeExecuteRoute" メソッドを実装しています。これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
 
 .. code-block:: php
 
@@ -460,5 +460,4 @@ ACLリストの提供
 can customize it.
 
 .. _jinja: http://jinja.pocoo.org/
-.. _sha1: http://php.net/manual/en/function.sha1.php
-.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
+.. _sha1: http://php.net/manual/ja/function.sha1.php
