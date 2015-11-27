@@ -7,9 +7,8 @@ and changing the title according to the controller executed.
 Componentes de Usuario
 ----------------------
 Todos los elementos visuales en la aplicación han sido logrados usando mayormente con `Bootstrap`_.
-Algunos elementos, como la barra de navegación cambian de acuerdo al estado actual de la aplicación.
-Por ejemplo, en la esquina superior derecha, el link "Log in / Sign Up" cambia a "Log out" si un
-usuario ha iniciado sesión en la aplicación.
+Algunos elementos, como la barra de navegación cambian de acuerdo al estado actual de la aplicación. Por ejemplo,
+en la esquina superior derecha, el link "Log in / Sign Up" cambia a "Log out" si un usuario ha iniciado sesión en la aplicación.
 
 Esta parte de la aplicación es implementada en el componente de usuario "Elements" (app/library/Elements.php).
 
@@ -45,9 +44,8 @@ esta clase en el contenedor de servicios:
         return new Elements();
     });
 
-Así como los controladores, plugins o componentes, dentro de una vista, este componente también puede
-acceder a los servicios de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
-servicio previamente registrado:
+Así como los controladores, plugins o componentes, dentro de una vista, este componente también puede acceder a los servicios
+de la aplicación simplemente accediendo a un atributo con el mismo nombre de un servicio previamente registrado:
 
 .. code-block:: html+jinja
 
