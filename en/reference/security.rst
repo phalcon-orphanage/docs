@@ -63,6 +63,7 @@ its encryption will be slow. We can check if the password is correct as follows:
                     // The password is valid
                 }
             } else {
+                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
                 $this->security->hash(rand());
             }
 

@@ -61,6 +61,9 @@ Security
                 if ($this->security->checkHash($password, $user->password)) {
                     // Пароль верный
                 }
+            } else {
+                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
+                $this->security->hash(rand());
             }
 
             // неудачная проверка
