@@ -338,7 +338,8 @@ Pour différencier la méthode (GET ou POST), nous utilisons le composant :doc:`
         // ...
     }
 
-Avec l'aide de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ,nous pouvons créer les conditions de recherche basé sur les types de données envoyé via le formulaire :
+Avec l'aide de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ,nous pouvons créer
+les conditions de recherche basé sur les types de données envoyé via le formulaire :
 
 .. code-block:: php
 
@@ -346,10 +347,11 @@ Avec l'aide de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Cri
 
     $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
 
-Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prends en compte pour créer les critères de recherche :
+Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prends en compte pour créer
+les critères de recherche :
 
 * Si le champs de données est "text" ou similaire (char, varchar, text, etc.). L'opérateur "like" sera utilisé pour filtrer les résultats.
-* Si le type de donnée est différent, l'opérateur "=" sera utilisé
+* Si le type de donnée est différent, l'opérateur "=" sera utilisé.
 
 De plus, "Criteria" ignore toutes les variables :code:`$_POST` qui ne correspondent à aucun champs de la table.
 Les valeurs seront automatiquement échappées en utilisant les paramètres liés (bond parameters).
@@ -363,7 +365,8 @@ Maintenant, on va stoquer les paramètres dans le "sac" de session du contrôleu
     $this->persistent->searchParams = $query->getParams();
 
 Un sac de session est un attribut particulier dans un contrôleur qui est sauvegardé entre les requêtes.
-Quand on y accède, cet attribut injecte un service :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` qui est indépendant de chaque contrôleur.
+Quand on y accède, cet attribut injecte un service :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+qui est indépendant de chaque contrôleur.
 
 Puis, basé sur les paramètres passé, on génère la requête :
 
@@ -377,8 +380,8 @@ Puis, basé sur les paramètres passé, on génère la requête :
         return $this->forward("products/index");
     }
 
-Si la recherche ne retourne aucun produit, on transfert l'utilisateur à l'action index. Si la recherche retourne des résultats,
-on créé un paginateur pour se déplacer à travers les pages facilement :
+Si la recherche ne retourne aucun produit, on transfert l'utilisateur à l'action index. Si la
+recherche retourne des résultats, on créé un paginateur pour se déplacer à travers les pages facilement :
 
 .. code-block:: php
 
@@ -407,7 +410,8 @@ Enfin, on passe la page retournée à la vue:
 
     $this->view->page = $page;
 
-Dans la vue (app/views/products/search.volt), on affiche le résultat correspondant à la page actuelle :
+Dans la vue (app/views/products/search.volt), on affiche
+le résultat correspondant à la page actuelle :
 
 .. code-block:: html+jinja
 
@@ -490,14 +494,14 @@ in "product" is printed accordingly:
 .. code-block:: html+jinja
 
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.productTypes.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
-      </tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.productTypes.name }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ "%.2f"|format(product.price) }}</td>
+      <td>{{ product.getActiveDetail() }}</td>
+      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+    </tr>
 
 As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
@@ -612,8 +616,8 @@ Dans la page de création, on récupère les données envoyés et on leur assign
         // ...
     }
 
-Les données sont filtrés avant d'être assignés à l'objet. Ce filtrage est optionnel, l'ORM échappe les données entrées et
-caste les données en fonction des types des champs:
+Les données sont filtrés avant d'être assignés à l'objet :code:`$product`.
+Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les données en fonction des types des champs:
 
 .. code-block:: php
 
@@ -706,8 +710,8 @@ Maintenant, dans le cas de la modification de produit, on doit présenter les do
         }
     }
 
-L'helper "setDefault" entre les valeurs du produit dans les champs qui portent le même nom comme valeur par défaut.
-Grace à cela, l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifications à la base de données avec l'action "save":
+L'helper "setDefault" entre les valeurs du produit dans les champs qui portent le même nom comme valeur par défaut. Grace à cela,
+l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifications à la base de données avec l'action "save":
 
 .. code-block:: php
 
@@ -759,5 +763,4 @@ Grace à cela, l'utilisateur peut changer n'importe quelle valeur et ensuite env
 We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
 In next chapter, we will see how to add custom HTML elements like a menu.
 
-.. _Jinja: http://jinja.pocoo.org/
-.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _CRUD: https://fr.wikipedia.org/wiki/CRUD
