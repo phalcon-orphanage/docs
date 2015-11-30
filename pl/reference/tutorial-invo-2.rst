@@ -326,7 +326,7 @@ When a "beforeException" is triggered then other plugin is notified:
     $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
 SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This class implements the method
-"beforeDispatch". This is the same name as one of the events produced in the Dispatcher:
+"beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
 
 .. code-block:: php
 
@@ -494,4 +494,3 @@ can customize it.
 
 .. _jinja: http://jinja.pocoo.org/
 .. _sha1: http://php.net/manual/en/function.sha1.php
-.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
