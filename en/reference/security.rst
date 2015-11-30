@@ -62,6 +62,8 @@ its encryption will be slow. We can check if the password is correct as follows:
                 if ($this->security->checkHash($password, $user->password)) {
                     // The password is valid
                 }
+            } else {
+                $this->security->hash(rand());
             }
 
             // The validation has failed
