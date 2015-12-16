@@ -179,7 +179,7 @@
         // ...
     }
 
-Namespaces make part of model names when they are within strings:
+在如下情况中，命令空间也是模型名称的一部分:
 
 .. code-block:: php
 
