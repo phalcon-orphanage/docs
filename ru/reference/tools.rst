@@ -283,7 +283,7 @@ Options:
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Автоматическая генерация CRUD интерфейса (Scaffolding)
 ------------------------------------------------------
@@ -339,7 +339,7 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Интеграция в PhpStorm IDE
 --------------------------
@@ -347,7 +347,7 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Заключение
 ----------
