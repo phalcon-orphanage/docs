@@ -278,7 +278,7 @@ Options:
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 生成基本的 CRUD（Scaffold a CRUD）
 --------------------------------------
@@ -330,7 +330,7 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 集成工具到 PhpStorm（Integrating Tools with PhpStorm IDE）
 ----------------------------------------------------------
@@ -338,7 +338,7 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 结束语（Conclusion）
 --------------------

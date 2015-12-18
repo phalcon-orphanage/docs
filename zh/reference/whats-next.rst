@@ -138,7 +138,7 @@ mod_pagespeed_ 可以加速网站的运行速度及减少网站的加载时间�
 .. _XDebug: http://xdebug.org/docs
 .. _Xhprof: https://github.com/facebook/xhprof
 .. _Speed Tracer: https://developers.google.com/web-toolkit/speedtracer/
-.. _Webgrind: http://github.com/jokkedk/webgrind/
+.. _Webgrind: https://github.com/jokkedk/webgrind/
 .. _APC: http://php.net/manual/en/book.apc.php
 .. _mod_pagespeed: https://developers.google.com/speed/pagespeed/mod
 .. _ngx_pagespeed: https://developers.google.com/speed/pagespeed/ngx
