@@ -24,10 +24,8 @@ Using :code:`$_GET['_url']` as source of URIs:
 
         root /var/www/phalcon/public;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -40,10 +38,6 @@ Using :code:`$_GET['_url']` as source of URIs:
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -77,10 +71,6 @@ Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
                 include fastcgi_params;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
-        }
-
         location ~ /\.ht {
             deny all;
         }
@@ -90,47 +80,39 @@ Instancias dedicadas
 ^^^^^^^^^^^^^^^^^^^^
 .. code-block:: nginx
 
-    server {
-        listen       80;
-        server_name  localhost;
+server {
+    listen      80;
 
-        charset      utf-8;
+    server_name localhost;
 
-        #access_log  /var/log/nginx/host.access.log  main;
+    root        /var/www/$host/public;
 
-        location / {
-            root   /srv/www/htdocs/phalcon-website/public;
-            index  index.php index.html index.htm;
+    access_log  /var/log/nginx/$host-access.log;
+    error_log   /var/log/nginx/$host-error.log error;
 
-            # if file exists return it right away
-            if (-f $request_filename) {
-                break;
-            }
+    index index.php index.html index.htm;
 
-            # otherwise rewrite it
-            if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
-                break;
-            }
-        }
-
-        location ~ \.php {
-            # try_files    $uri =404;
-
-            fastcgi_index  /index.php;
-            fastcgi_pass   127.0.0.1:9000;
-
-            include fastcgi_params;
-            fastcgi_split_path_info       ^(.+\.php)(/.+)$;
-            fastcgi_param PATH_INFO       $fastcgi_path_info;
-            fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /srv/www/htdocs/phalcon-website/public;
-        }
+    location / {
+      try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
+
+    location ~ \.php {
+        # try_files    $uri =404;
+
+        fastcgi_index  /index.php;
+        fastcgi_pass   127.0.0.1:9000;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param PATH_INFO       $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
 
 Configuración por Host
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -150,10 +132,8 @@ Esta configuración te permite tener varias configuraciones por Host:
 
         index index.php index.html index.htm;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -167,10 +147,6 @@ Esta configuración te permite tener varias configuraciones por Host:
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/$host/public;
         }
 
         location ~ /\.ht {

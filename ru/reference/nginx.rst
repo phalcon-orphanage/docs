@@ -24,10 +24,8 @@ Nginx_ - это свободный, с открытым исходным код�
 
         root /var/www/phalcon/public;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -40,10 +38,6 @@ Nginx_ - это свободный, с открытым исходным код�
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -77,10 +71,6 @@ Nginx_ - это свободный, с открытым исходным код�
                 include fastcgi_params;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
-        }
-
         location ~ /\.ht {
             deny all;
         }
@@ -96,22 +86,14 @@ Nginx_ - это свободный, с открытым исходным код�
 
         charset      utf-8;
 
+        root   /srv/www/htdocs/phalcon-website/public;
+
         #access_log  /var/log/nginx/host.access.log  main;
 
+        index  index.php index.html index.htm;
+
         location / {
-            root   /srv/www/htdocs/phalcon-website/public;
-            index  index.php index.html index.htm;
-
-            # если запрашиваемый файл существует, то возвращаем его
-            if (-f $request_filename) {
-                break;
-            }
-
-            # иначе изменяем строку запроса
-            if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
-                break;
-            }
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -127,8 +109,8 @@ Nginx_ - это свободный, с открытым исходным код�
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /srv/www/htdocs/phalcon-website/public;
+        location ~ /\.ht {
+            deny all;
         }
     }
 
@@ -150,10 +132,8 @@ Nginx_ - это свободный, с открытым исходным код�
 
         index index.php index.html index.htm;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -167,10 +147,6 @@ Nginx_ - это свободный, с открытым исходным код�
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/$host/public;
         }
 
         location ~ /\.ht {
