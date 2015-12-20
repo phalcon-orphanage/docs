@@ -28,10 +28,8 @@ PhalconのためのNginxの設定
 
         root /var/www/phalcon/public;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -44,10 +42,6 @@ PhalconのためのNginxの設定
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -81,10 +75,6 @@ PhalconのためのNginxの設定
                 include fastcgi_params;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
-        }
-
         location ~ /\.ht {
             deny all;
         }
@@ -100,22 +90,14 @@ PhalconのためのNginxの設定
 
         charset      utf-8;
 
+        root   /srv/www/htdocs/phalcon-website/public;
+
         #access_log  /var/log/nginx/host.access.log  main;
 
+        index  index.php index.html index.htm;
+
         location / {
-            root   /srv/www/htdocs/phalcon-website/public;
-            index  index.php index.html index.htm;
-
-            # if file exists return it right away
-            if (-f $request_filename) {
-                break;
-            }
-
-            # otherwise rewrite it
-            if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
-                break;
-            }
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -131,8 +113,8 @@ PhalconのためのNginxの設定
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /srv/www/htdocs/phalcon-website/public;
+        location ~ /\.ht {
+            deny all;
         }
     }
 
@@ -154,10 +136,8 @@ PhalconのためのNginxの設定
 
         index index.php index.html index.htm;
 
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -171,10 +151,6 @@ PhalconのためのNginxの設定
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/$host/public;
         }
 
         location ~ /\.ht {
