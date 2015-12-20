@@ -24,7 +24,9 @@ Using :code:`$_GET['_url']` as source of URIs:
 
         root /var/www/phalcon/public;
 
-        try_files $uri $uri/ /index.php?_url=$uri&$args;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
+        }
 
         location ~ \.php {
             fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
@@ -88,9 +90,10 @@ Dedicated Instance
 
         #access_log  /var/log/nginx/host.access.log  main;
 
+        index  index.php index.html index.htm;
+
         location / {
-            index  index.php index.html index.htm;
-            try_files $uri $uri/ /index.php?_url=$uri&$args;
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
@@ -126,7 +129,9 @@ And this second configuration allow you to have different configurations by host
 
         index index.php index.html index.htm;
 
-        try_files $uri $uri/ /index.php?_url=$uri&$args;
+        location / {
+          try_files $uri $uri/ /index.php?_url=$uri&$args;
+        }
 
         location ~ \.php {
             # try_files    $uri =404;
