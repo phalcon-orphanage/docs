@@ -31,8 +31,8 @@ L'API comprends les méthodes suivantes :
 
 Créer l'application
 -------------------
-Comme l'application est relativement simple, nous n'allons pas implémenter un environnement MVC complet.
-Dans notre cas nous allons utiliser une :doc:`micro application <micro>`.
+Comme l'application est relativement simple, nous n'allons pas implémenter un environnement MVC complet. Dans notre cas
+nous allons utiliser une :doc:`micro application <micro>`.
 
 La structure de fichier suivante sera largement suffisante :
 
@@ -44,7 +44,8 @@ La structure de fichier suivante sera largement suffisante :
         index.php
         .htaccess
 
-Tout d'abord nous avons besoin d'un .htaccess qui va contenir toutes les règles de réécriture d'URL pour notre fichier index.php.
+Tout d'abord nous avons besoin d'un .htaccess qui va contenir toutes les règles de réécriture d'URL pour notre
+fichier index.php :
 
 .. code-block:: apacheconf
 
@@ -111,15 +112,17 @@ Maintenant, nous allons créer les routes comme défini au dessus (le tableau) :
     $app->handle();
 
 Chaque route est définie avec une méthode qui a le même nom que la requête HTTP. Le premier paramètre est le modèle de la route
-suivi par une fonction anonyme. La route suivante '/api/robots/{id:[0-9]+}', par exemple, prends un paramètre ID qui doit nécessairement avoir un format numérique.
+suivi par une fonction anonyme. La route suivante :code:`'/api/robots/{id:[0-9]+}'`,
+par exemple, prends un paramètre ID qui doit nécessairement avoir un format numérique.
 
 Quand une requête URI corresponds à une route défini, l'application exécute la fonction anonyme qui lui est liée.
 
 Créer un Model
 --------------
-Notre API fournit des informations sur les 'robots', ces données doivent donc être enregistrées dans une base de données.
-Le model suivant nous permet d'accéder à la table comme si c'était un objet. Nous avons implémenté quelques règles en utilisant
-des validateurs. Ainsi nous serons tranquilles car les données respecteront toujours les conditions nécessaires pour notre application:
+Notre API fournit des informations sur les 'robots', ces données doivent donc être enregistrées dans une base de données. Le model suivant nous permet
+d'accéder à la table comme si c'était un objet. Nous avons implémenté quelques règles en utilisant des validateurs.
+Ainsi nous serons tranquilles car les données respecteront toujours les conditions nécessaires pour notre
+application :
 
 .. code-block:: php
 
@@ -209,8 +212,8 @@ Maintenant nous devons mettre en place la connexion qui sera utilisée par le mo
 
 Récupérer les données
 ---------------------
-Le premier gestionnaire que l'on a implémenté est celui qui retourne tous les robots à partir d'une méthode GET.
-Utilisons PHQL pour exécuter une simple requête qui retourne les résultats sous forme de JSON :
+Le premier gestionnaire que l'on a implémenté est celui qui retourne tous les robots à partir d'une méthode GET. Utilisons PHQL pour
+exécuter une simple requête qui retourne les résultats sous forme de JSON :
 
 .. code-block:: php
 
@@ -234,8 +237,8 @@ Utilisons PHQL pour exécuter une simple requête qui retourne les résultats so
     });
 
 :doc:`PHQL <phql>`, nous permet d'écrire des requêtes en utilisant un dialect SQL haut niveau et orienté objet qui va
-traduire la syntaxe SQL des requêtes en fonction du système de base de données que l'on utilise.
-Le mot clé "use" dans la fonction anonyme nous permet de passer des variable golables sous forme locale facilement.
+traduire la syntaxe SQL des requêtes en fonction du système de base de données que l'on utilise. Le mot clé "use" dans la
+fonction anonyme nous permet de passer des variable golables sous forme locale facilement.
 
 La recherche par nom ressemblera à cela :
 
@@ -307,7 +310,7 @@ Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nou
 
 Ajouter des données
 -------------------
-Prenons la données comme une chaine JSON que l'on insert dans le corps de la requête. Nous allons utiliser PHQL pour l'insertion.
+Prenons la données comme une chaine JSON que l'on insert dans le corps de la requête. Nous allons utiliser PHQL pour l'insertion :
 
 .. code-block:: php
 
@@ -424,7 +427,7 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
 
 Supprimer des données
 ---------------------
-La suppression de données est relativement identique à la modification. L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être supprimé.
+La suppression de données est relativement identique à la modification. L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être supprimé :
 
 .. code-block:: php
 
@@ -472,7 +475,7 @@ La suppression de données est relativement identique à la modification. L'iden
 
 Tester notre application
 ------------------------
-En utilisant curl_ nous allons tester chaque route de notre application et vérifier que les opérations fonctionnent correctement:
+En utilisant curl_ nous allons tester chaque route de notre application et vérifier que les opérations fonctionnent correctement.
 
 Récupérer tous les robots :
 

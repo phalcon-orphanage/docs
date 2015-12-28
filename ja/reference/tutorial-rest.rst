@@ -112,7 +112,7 @@ Now we will create the routes as we defined above:
     $app->handle();
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
-followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
+followed by a handler. In this case, the handler is an anonymous function. The following route: :code:`'/api/robots/{id:[0-9]+}'`,
 by example, explicitly sets that the "id" parameter must have a numeric format.
 
 When a defined route matches the requested URI then the application executes the corresponding handler.
@@ -475,7 +475,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
 アプリケーションのテスト
 ------------------------
-Using curl_ we'll test every route in our application verifying its proper operation:
+Using curl_ we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 
