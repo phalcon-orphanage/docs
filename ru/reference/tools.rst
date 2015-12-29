@@ -353,7 +353,7 @@ Scaffolding - это быстрый способ для получения ос�
 ----------
 Phalcon Developer Tools позволяет легко генерировать код для вашего приложения, сокращая время разработки и потенциальные ошибки.
 
-.. _блогозапись: http://blog.phalconphp.com/post/23251010409
+.. _блогозапись: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

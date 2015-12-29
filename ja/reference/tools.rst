@@ -354,7 +354,7 @@ The screencast below shows how to integrate developer tools with the `PhpStorm I
 ----------
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409
+.. _blog post: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/
