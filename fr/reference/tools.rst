@@ -356,7 +356,7 @@ Conclusion
 Les outils pour développeurs Phalcon fournissent un moyen simple de générer du code pour votre application.
 Cela réduit le temps de développement et diminue le nombre potentiel d'erreur de code.
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409
+.. _blog post: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/
