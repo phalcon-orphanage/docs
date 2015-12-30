@@ -376,7 +376,7 @@ This way of working gives us many advantages:
 
 * We can easily replace a component with one created by ourselves or a third party.
 * We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-* We can get global instances of components in a structured and unified way
+* We can get global instances of components in a structured and unified way.
 
 Services can be registered using several types of definitions:
 
@@ -943,7 +943,7 @@ could add some small improvement in performance.
 
     <?php
 
-    // Resolve the object externally instead of using a definition for it:
+    // Resolve the object externally instead of using a definition for it
     $router = new MyRouter();
 
     // Pass the resolved object to the service registration
@@ -1065,4 +1065,4 @@ Implementing your own DI
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
-.. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _singletons: http://en.wikipedia.org/wiki/Singleton_pattern

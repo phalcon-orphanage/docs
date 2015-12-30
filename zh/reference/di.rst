@@ -216,7 +216,7 @@
     $some->someDbTask();
 
     // 这里我们总是传递一个新的连接实例
-    $some->someOtherDbTask(Registry::getConnection());
+    $some->someOtherDbTask(Registry::getNewConnection());
 
 到目前为止，我们已经看到依赖注入怎么解决我们的问题了。把依赖作为参数来传递，而不是建立在内部建立它们，这使我们的应用更加容易维护和更加解耦。不管怎么样，长期来说，这种形式的依赖注入有一些缺点。
 
@@ -1025,4 +1025,4 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 如果你要创建一个自定义注入器或者继承一个已有的，接口 :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` 必须被实现。
 
 .. _`Inversion of Control`: http://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC
-.. _Singletons: http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F
+.. _singletons: http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F

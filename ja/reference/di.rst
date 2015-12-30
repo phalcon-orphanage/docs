@@ -918,7 +918,7 @@ could add some small improvement in performance.
 
     <?php
 
-    // Resolve the object externally instead of using a definition for it:
+    // Resolve the object externally instead of using a definition for it
     $router = new MyRouter();
 
     // Pass the resolved object to the service registration
@@ -1040,4 +1040,4 @@ the correct (built-in) service when you need it.
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://ja.wikipedia.org/wiki/%E5%88%B6%E5%BE%A1%E3%81%AE%E5%8F%8D%E8%BB%A2
-.. _Singletons: http://ja.wikipedia.org/wiki/Singleton_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3
+.. _singletons: http://ja.wikipedia.org/wiki/Singleton_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3

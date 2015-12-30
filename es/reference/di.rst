@@ -1,14 +1,12 @@
 Inyección de Dependencias/Localización de Servicios
 ***************************************************
 
-El siguiente ejemplo es un poco largo, pero explica porqué usar un contenedor de servicios, localización de servicios e
-inyección de dependencias. Primero, pensemos que estamos creando algún componente llamado SomeComponent. Este realiza
-alguna tarea que no es importante en este momento. Nuestro componente tiene una dependencia que es una conexión a una
-base de datos.
+El siguiente ejemplo es un poco largo, pero explica porqué usar un contenedor de servicios, localización de servicios e inyección de dependencias.
+Primero, pensemos que estamos creando algún componente llamado SomeComponent. Este realiza alguna tarea que no es importante en este momento.
+Nuestro componente tiene una dependencia que es una conexión a una base de datos.
 
-En este primer ejemplo, la conexión es creada dentro del componente, esto es impráctico, ya que no podemos
-cambiar los parámetros de conexión o el tipo de sistema de base de datos externamente ya que el componente
-solo funciona como fue creado.
+En este primer ejemplo, la conexión es creada dentro del componente, esto es impráctico, ya que
+no podemos cambiar los parámetros de conexión o el tipo de sistema de base de datos externamente ya que el componente solo funciona como fue creado.
 
 .. code-block:: php
 
@@ -17,8 +15,9 @@ solo funciona como fue creado.
     class SomeComponent
     {
         /**
-         * La instanciación del componente es realizada dentro de él
-         * así que es díficil cambiar su comportamiento o parámetros
+         * La instanciación del componente es realizada
+         * dentro de él así que es díficil cambiar su
+         * comportamiento o parámetros
          */
         public function someDbTask()
         {
@@ -38,8 +37,8 @@ solo funciona como fue creado.
     $some = new SomeComponent();
     $some->someDbTask();
 
-Para solucionar esto, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Por ahora,
-esto parece ser una buena solución.
+Para solucionar esto, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Por ahora, esto parece ser
+una buena solución:
 
 .. code-block:: php
 
@@ -82,9 +81,10 @@ esto parece ser una buena solución.
 
     $some->someDbTask();
 
-Ahora pensemos que usamos este componente en distintas partes de la aplicación, por lo tanto
-vamos a requerir crear siempre la conexión y pasarla siempre al componente. Usar
-algún tipo de registro global donde obtengamos la conexión y no tengamos que crearla nuevamente:
+Ahora pensemos que usamos este componente en distintas partes de la aplicación,
+por lo tanto vamos a requerir crear siempre la conexión y pasarla siempre al componente.
+Usar algún tipo de registro global donde obtengamos la conexión y no tengamos que
+crearla nuevamente:
 
 .. code-block:: php
 
@@ -135,7 +135,7 @@ algún tipo de registro global donde obtengamos la conexión y no tengamos que c
 
     $some->someDbTask();
 
-Ahora, imaginemos que debemos implementar dos métodos en el componente, el primero siempre necesita una conexión nueva y el segundo siempre debe usar una conexión existente.
+Ahora, imaginemos que debemos implementar dos métodos en el componente, el primero siempre necesita una conexión nueva y el segundo siempre debe usar una conexión existente:
 
 .. code-block:: php
 
@@ -223,9 +223,9 @@ Ahora, imaginemos que debemos implementar dos métodos en el componente, el prim
     // Aquí, pasamos una nueva conexión
     $some->someOtherDbTask(Registry::getNewConnection());
 
-Hasta aquí hemos visto como inyectar dependencias en los componentes soluciona nuestros problemas.
-Pasar dependencias como argumentos en vez de crearlos internamente hace nuestra aplicación más mantenible y
-desacoplada. Sin embargo, a largo plazo este tipo de inyección de dependencias podría tener algunas desventajas.
+Hasta aquí hemos visto como inyectar dependencias en los componentes soluciona nuestros problemas. Pasar dependencias como argumentos en vez
+de crearlos internamente hace nuestra aplicación más mantenible y desacoplada. Sin embargo,
+a largo plazo este tipo de inyección de dependencias podría tener algunas desventajas.
 
 For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
 the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies
@@ -255,8 +255,8 @@ before using the component, every time, makes our code not as maintainable as we
 
 Piensa que debemos crear este objeto en muchas partes de nuestra aplicación, si ya no se requiere alguna dependencia
 debemos ir a cada parte y quitar el parámetro del constructor o del setter donde la inyectamos. Para resolver esto
-podríamos volver a usar el registro global para crear el componente. Sin embargo, esto agrega una nueva capa de
-abstracción antes de crear el objeto:
+podríamos volver a usar el registro global para crear el componente. Sin embargo, esto agrega una nueva capa de abstracción antes de crear
+el objeto:
 
 .. code-block:: php
 
@@ -282,12 +282,10 @@ abstracción antes de crear el objeto:
     }
 
 Si nos damos cuenta, hemos vuelto al principio, nuevamente estamos creando dependencias dentro del componente!
-Podemos dar y dar vueltas sobre este problema y veremos que caemos una y otra vez en malas prácticas. Dependiendo
-de la complejidad de nuestra aplicación esto puede ser un problema a largo plazo.
+Podemos dar y dar vueltas sobre este problema y veremos que caemos una y otra vez en malas prácticas. Dependiendo de la complejidad de nuestra aplicación esto puede ser un problema a largo plazo.
 
-Una forma práctica y elegante de solucionar estos problemas es usar un localizador de servicios.
-Los contenedores de servicios trabajan de manera similar a un registro global que vimos anteriormente.
-Usar el contenedor de dependencias como un puente para obtener las dependencias permitirá reducir la complejidad
+Una forma práctica y elegante de solucionar estos problemas es usar un localizador de servicios. Los contenedores de servicios trabajan de manera similar a un registro global que
+vimos anteriormente. Usar el contenedor de dependencias como un puente para obtener las dependencias permitirá reducir la complejidad
 del componente:
 
 .. code-block:: php
@@ -308,12 +306,14 @@ del componente:
         public function someDbTask()
         {
             // Obtener la conexión localizando el servicio
+            // Always returns a new connection
             $connection = $this->_di->get('db');
         }
 
         public function someOtherDbTask()
         {
-            // Obtener una conexión compartida
+            // Obtener una conexión compartida,
+            // this will return the same connection everytime
             $connection = $this->_di->getShared('db');
 
             // Este método también requiere el servicio de filtrado
@@ -323,7 +323,7 @@ del componente:
 
     $di = new Di();
 
-    // Registrar un servicio 'db'
+    // Registrar un servicio "db"
     $di->set('db', function () {
         return new Connection(
             array(
@@ -340,7 +340,7 @@ del componente:
         return new Filter();
     });
 
-    // Registrar un servicio 'session'
+    // Registrar un servicio "session"
     $di->set('session', function () {
         return new Session();
     });
@@ -351,35 +351,32 @@ del componente:
     $some->someDbTask();
 
 El componente simplemente accede al servicio que requiere cuando lo necesita, si no lo requiere entonces ni siquiera es inicializado
-ahorrando recursos. Por ejemplo, podemos cambiar la manera en la que las conexiones son creadas y su comportamiento
-o cualquier otro aspecto no afectarán el componente.
+ahorrando recursos. Por ejemplo, podemos cambiar la manera en la que las conexiones son creadas
+y su comportamiento o cualquier otro aspecto no afectarán el componente.
 
 Our approach
 ============
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
-es un contenedor para ellos.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera es un contenedor para ellos.
 
-Ya que Phalcon es altamente desacoplado, :doc:`Phalcon\\Di <../api/Phalcon_Di>` es esencial para integrar los diferentes componentes del framework.
-El desarrollador puede usar este componente para inyectar dependencias y administrar instancias globales de las distintas
-clases usadas en el framework.
+Ya que Phalcon es altamente desacoplado, :doc:`Phalcon\\Di <../api/Phalcon_Di>` es esencial para integrar los diferentes componentes del framework. El desarrollador puede
+usar este componente para inyectar dependencias y administrar instancias globales de las distintas clases usadas en el framework.
 
 Basicamente, la localización de servicios significa que los objetos no reciben sus dependencias
-a partir de setters o en su constructor, sino que los solicitan al localizador.
-
-Esto reduce la complejidad ya que solo hay una manera únificada de acceder a las dependencias requeridas dentro de un componente.
+a partir de setters o en su constructor, sino que los solicitan al localizador. Esto reduce la complejidad ya que solo hay
+una manera únificada de acceder a las dependencias requeridas dentro de un componente.
 
 Adicionalmente, este patrón hace el código más testeable, haciendolo menos propenso a errores.
 
 Registrar servicios en el contenedor
 ====================================
-El framework en si mismo ó el desarrollador pueden registrar servicios. Cuando un componente A requiere del componente B (o una instancia de su clase)
-para operar, puede obtener el componente B del contenedor, en vez de crear una instancia directamente del componente B.
+El framework en si mismo ó el desarrollador pueden registrar servicios. Cuando un componente A requiere del componente B (o una instancia de su clase) para operar,
+puede obtener el componente B del contenedor, en vez de crear una instancia directamente del componente B.
 
 Esta manera de trabajar nos da muchas ventajas:
 
-* Podemos facilmente reemplazar un componente con uno creado por nosotros mismos o un tercero
-* Podemos controlar la manera en la que los objetos se inicializan, permitiendonos configurarlos como se requiera antes de entregarlos a sus componentes
-* Podemos mantener instancias globales de componentes de manera estructurada y únificada
+* Podemos facilmente reemplazar un componente con uno creado por nosotros mismos o un tercero.
+* Podemos controlar la manera en la que los objetos se inicializan, permitiendonos configurarlos como se requiera antes de entregarlos a sus componentes.
+* Podemos mantener instancias globales de componentes de manera estructurada y únificada.
 
 Los servicios pueden ser registrados de distintas maneras:
 
@@ -438,18 +435,14 @@ También podemos registrar servicios en el DI usando la sintaxis de array:
         "className" => 'Phalcon\Http\Request'
     );
 
-En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará
-es solicitar un servicio identificado como 'request' en el contenedor. Este lo que hará es "resolver" el servicio requerido
-devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente,
-su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.
+En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como 'request' en el contenedor.
+Este lo que hará es "resolver" el servicio requerido devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente, su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.
 
 En el ejemplo anterior, cada uno de las formas de registrar servicios tiene ventajas y desventajas.
 Depende del desarrollador y de sus necesidades particulares escoger la que más le convenga.
 
-Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando
-un array ofrece más flexibilidad pero puede ser un poco más complicado.
-La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización
-sino es editando directamente su código.
+Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando un array ofrece más flexibilidad pero puede ser
+un poco más complicado. La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización sino es editando directamente su código.
 
 La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\Di <../api/Phalcon_Di>` inicializan los servicios solo la primera vez
 que son requeridas.
@@ -460,8 +453,8 @@ Como se vió anteriormente, hay muchos tipos de registrar servicios, a estos les
 
 String
 ^^^^^^
-Este tipo requiere un nombre de clase válido, y devuelve un objeto de la clase indicada, si la clase no está cargada
-se usará un auto-loader. Este tipo de definición no permite indicar parámetros para su constructor o setters.
+Este tipo requiere un nombre de clase válido, y devuelve un objeto de la clase indicada, si la clase no está cargada se usará un auto-loader.
+Este tipo de definición no permite indicar parámetros para su constructor o setters:
 
 .. code-block:: php
 
@@ -472,8 +465,10 @@ se usará un auto-loader. Este tipo de definición no permite indicar parámetro
 
 Objetos
 ^^^^^^^
-Este tipo requiere un objeto. Debido a que el objeto como tal ya está resuelto no necesita
-resolverse nuevamente. Es útil cuando queremos forzar el objeto sea el mismo y no pueda ser cambiado:
+Este tipo requiere un objeto. Debido a que el objeto como
+tal ya está resuelto no necesita resolverse nuevamente.
+Es útil cuando queremos forzar el objeto sea el mismo y
+no pueda ser cambiado:
 
 .. code-block:: php
 
@@ -486,8 +481,8 @@ resolverse nuevamente. Es útil cuando queremos forzar el objeto sea el mismo y 
 
 Funciones anónimas
 ^^^^^^^^^^^^^^^^^^
-Este método ofrece una gran libertad pra construir las dependencias como se requiera, sin embargo, 
-puede ser díficil cambiar la definición del servicio en runtime ó dinámicamente sin tener que cambiar la definición en código de la dependencia:
+Este método ofrece una gran libertad pra construir las dependencias como se requiera, sin embargo, puede ser díficil
+cambiar la definición del servicio en runtime ó dinámicamente sin tener que cambiar la definición en código de la dependencia:
 
 .. code-block:: php
 
@@ -529,8 +524,8 @@ Alguna de las limitaciones pueden compensarse pasando variables adicionales al c
 Registro Avanzado
 -----------------
 Si es requerido cambiar la definición del servicio sin instanciar o resolver el servicio,
-luego, necesitamos definir el servicio usando la sintaxís de array. Definir un servicio usando
-la definición de array puede requerir más código:
+luego, necesitamos definir el servicio usando la sintaxís de array. Definir un servicio usando la definición de array
+puede requerir más código:
 
 .. code-block:: php
 
@@ -751,11 +746,11 @@ Los tipos de parámetros soportados incluyen los siguientes:
 | instance    | Representa un objeto que debe ser construído por el DI   | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
 +-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
 
-Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas
-inicialmente. Sin embargo, estas proporcionan una estrategía más robusta para inyectar servicios:
+Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas inicialmente. Sin embargo,
+estas proporcionan una estrategía más robusta para inyectar servicios.
 
-Mezclar distintos tipos de definiciones está permitido, cada quien puede decidir cuál es la forma más apropiada de acuerdo
-a las necesidades de la aplicación.
+Mezclar distintos tipos de definiciones está permitido, cada quien puede decidir cuál es la forma más apropiada
+de acuerdo a las necesidades de la aplicación.
 
 Resolver Servicios
 ==================
@@ -806,8 +801,8 @@ The following events are supported:
 
 Servicios Compartidos
 =====================
-Los servicios pueden ser registrados como compartidos esto significa que actuarán como singletons_. Una vez el servicio
-se resuelva por primera vez la misma instancia será retornada cada vez que alguien consuma el servicio en el contenedor:
+Los servicios pueden ser registrados como compartidos esto significa que actuarán como singletons_. Una vez el servicio se resuelva por primera vez
+la misma instancia será retornada cada vez que alguien consuma el servicio en el contenedor:
 
 .. code-block:: php
 
@@ -836,8 +831,8 @@ Una manera alternativa de registrar un servicio compartido es pasar "true" como 
         // ...
     }, true);
 
-Si un servicio no está registrado como compartido y lo que quieres es estar seguro que una instancia compartida
-será siempre devuelta , entonces debes usar el método 'getShared':
+Si un servicio no está registrado como compartido y lo que quieres es estar seguro que una instancia compartida será siempre devuelta,
+entonces debes usar el método 'getShared':
 
 .. code-block:: php
 
@@ -867,18 +862,15 @@ Una vez un servicio está registrado en el contenedor de servicios, puedes obten
     });
 
     // Volverlo compartido
-    $request->setShared(true);
+    $requestService->setShared(true);
 
-    // Resolver el servicio (devuelve una instancia de MyRequest)
+    // Resolver el servicio (devuelve una instancia de Phalcon\Http\Request)
     $request = $requestService->resolve();
 
 Instanciar clases via el contenedor de servicios
 ================================================
-Cuando solicitas un servicio al contenedor de servicios y este no ha sido registrado con ese nombre, el tratará de obtener
-un nombre de clase con el mismo nombre. Con este comportamiento
-
-When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with
-the same name. With this behavior we can replace any class by another simply by registering a service with its name:
+Cuando solicitas un servicio al contenedor de servicios y este no ha sido registrado con ese nombre, el tratará de obtener un nombre de clase con
+el mismo nombre. With this behavior we can replace any class by another simply by registering a service with its name:
 
 .. code-block:: php
 
@@ -951,7 +943,7 @@ could add some small improvement in performance.
 
     <?php
 
-    // Resolve the object externally instead of using a definition for it:
+    // Resolve the object externally instead of using a definition for it
     $router = new MyRouter();
 
     // Pass the resolved object to the service registration
@@ -1073,4 +1065,4 @@ Implementing your own DI
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://es.wikipedia.org/wiki/Inversi%C3%B3n_de_control
-.. _Singletons: http://es.wikipedia.org/wiki/Singleton
+.. _singletons: http://es.wikipedia.org/wiki/Singleton
