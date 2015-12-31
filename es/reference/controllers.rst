@@ -440,4 +440,4 @@ you to implement hook points before/after the actions are executed:
         }
     }
 
-.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
+.. _DRY: https://es.wikipedia.org/wiki/No_te_repitas
