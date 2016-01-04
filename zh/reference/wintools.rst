@@ -1,68 +1,68 @@
 Windows 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Windows）
 =========================================================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Windows.
+下面这些步骤将指导您在 windows 上完成安装 Phalcon 开发者工具。
 
 预备知识（Prerequisites）
 -------------------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
+运行 Phalcon 工具必须先安装 PHP Phalcon 扩展包。如果您还没有安装，请参考安装指南 :doc:`Installation <install>`
 
 下载（Download）
 ----------------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
+你可以从 Download_ 部分下载一个包含开发工具的跨平台软件包，你也可以从 Github_ 克隆。
 
-On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\phalcon-tools*. You will need this path in the steps below. Edit the file "phalcon.bat" by right clicking on the file and selecting "Edit":
+在Windows平台下，你需要把 Phalcon 工具作为 PHP 可执行文件配置到系统路径。如果你下载了 Phalcon 工具的zip压缩文件，提取它到本地的任何路径，例如：*c:\\phalcon-tools*。你需要按照下面步骤继续操作。选择"phalcon.bat" 文件，鼠标右键"编辑"：
 
 .. figure:: ../_static/img/path-0.png
    :align: center
 
-Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
+把路径设为你安装 Phalcon 工具的路径（设置 PTOOLSPATH=C:\phalcon-tools\）：
 
 .. figure:: ../_static/img/path-01.png
    :align: center
 
-Save the changes.
+保存修改。
 
 添加 PHP 以及工具所在路径到系统环境变量 PATH （Adding PHP and Tools to your system PATH）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\wamp\bin\\php\\php5.3.10\\php.exe*.
+因为脚本是用PHP编写的，你需要在自己的机器上安装PHP。由于你安装了PHP，可执行文件可以位于不同的地方。搜索php.exe文件，复制它的路径。例如，如果你使用最新的 WAMP, PHP 的路径为： *C:\\wamp\bin\\php\\php5.3.10\\php.exe* 。
 
-From the Windows start menu, right mouse click on the "Computer" icon and select "Properties":
+找到桌面的"计算机"图标，右键选择"属性"：
 
 .. figure:: ../_static/img/path-1.png
    :align: center
 
-Click the "Advanced" tab and then the button "Environment Variables":
+选择"高级系统设置"，然后点击"环境变量"的按钮。
 
 .. figure:: ../_static/img/path-2.png
    :align: center
 
-At the bottom, look for the section "System variables" and edit the variable "Path":
+找到"path"
 
 .. figure:: ../_static/img/path-3.png
    :align: center
 
-Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the ";" character to separate the different paths in the variable:
+这一步要非常小心！你需要在很长的路径字符串找到 php.exe，在它后面添加 Phalcon 工具的路径。使用";"来分隔不同的路径。
 
 .. figure:: ../_static/img/path-4.png
    :align: center
 
-Accept the changes made by clicking "OK" and close the dialogs opened. From the start menu click on the option "Run". If you can't find this option, press "Windows Key" + "R".
+点击"确定"，然后关闭对话框。按"Windows Key" + "R"，键
 
 .. figure:: ../_static/img/path-5.png
    :align: center
 
-Type "cmd" and press enter to open the windows command line utility:
+输入"cmd"，按回车键打开 windows 命令行程序：
 
 .. figure:: ../_static/img/path-6.png
    :align: center
 
-Type the commands "php -v" and "phalcon" and you will see something like this:
+输入"php -v" 和 "phalcon"，然后你将看到类似下面的效果：
 
 .. figure:: ../_static/img/path-7.png
    :align: center
 
-Congratulations you now have Phalcon tools installed!
+祝贺你现在完成了Phalcon 工具的安装。
 
 相关指南（Related Guides）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
