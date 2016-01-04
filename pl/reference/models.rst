@@ -3219,21 +3219,21 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                           | Default |
-+=====================+=======================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                                  | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
-+---------------------+---------------------------------------------------------------------------------------+---------+
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| Option              | Description                                                                           | Default       |
++=====================+=======================================================================================+===============+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| columnRenaming      | Enables/Disables the column renaming                                                  | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
++---------------------+---------------------------------------------------------------------------------------+---------------+
 
 Stand-Alone component
 ---------------------
@@ -3276,7 +3276,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     // Use the model
     echo Robots::count();
 
-.. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
+.. _PDO: http://php.net/manual/en/pdo.prepared-statements.php
 .. _date: http://php.net/manual/en/function.date.php
 .. _time: http://php.net/manual/en/function.time.php
 .. _Traits: http://php.net/manual/en/language.oop5.traits.php

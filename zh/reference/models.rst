@@ -157,10 +157,8 @@
         }
     }
 
-
 公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
 开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
-
 
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -405,9 +403,9 @@ Namespaces make part of model names when they are within strings:
     $robot = Robots::findFirstByName($name);
 
     if ($robot) {
-        $this->flash->success("The first robot with the name " . $name . " cost " . $robot->price ".");
+        echo "The first robot with the name " . $name . " cost " . $robot->price . ".";
     } else {
-        $this->flash->error("There were no robots found in our table with the name " . $name ".");
+        echo "There were no robots found in our table with the name " . $name . ".";
     }
 
 请注意我们在方法调用中用的是 'Name'，并向它传递了变量 :code:`$name`， :code:`$name` 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
@@ -708,13 +706,10 @@ accessed:
 
 模型关系（Relationships between Models）
 ----------------------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
-unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
+有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
 The model manager manages foreign key constraints for these relationships, the definition of these helps referential
 integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
 it is easy to access data in related models from each record in a uniform way.
-
-有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
 
 单向关系（Unidirectional relationships）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1728,7 +1723,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -2864,8 +2859,6 @@ In models that have this feature activated you can check what fields changed:
 
 设置模式（Pointing to a different schema）
 ------------------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
-
 如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 getSchema 方法去定义它：
 
 .. code-block:: php
@@ -2884,10 +2877,6 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
 设置多个数据库（Setting multiple databases）
 --------------------------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
-
 在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 initialize 方法内重写这个服务的设置。
 
@@ -2922,9 +2911,7 @@ in the application's services container. You can overwrite this service setting 
         );
     });
 
-Then, in the initialize method, we define the connection service for the model:
-
-然后，在 Initialize 方法内，我们为这个模型定义数据库连接。
+然后，在 initialize 方法内，我们为这个模型定义数据库连接。
 
 .. code-block:: php
 
@@ -2939,9 +2926,6 @@ Then, in the initialize method, we define the connection service for the model:
             $this->setConnectionService('dbPostgres');
         }
     }
-
-But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
-to balance the load to your databases implementing a master-slave architecture:
 
 另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。
 （译者注：EvaEngine项目为使用Phalcon提供了更多的灵活性，推荐了解和使用）
@@ -2960,9 +2944,6 @@ to balance the load to your databases implementing a master-slave architecture:
             $this->setWriteConnectionService('dbMaster');
         }
     }
-
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
-according to the current query conditions:
 
 另外ORM还可以通过根据当前查询条件来实现一个 'shard' 选择器，来实现水平切分的功能。
 
@@ -3006,9 +2987,6 @@ according to the current query conditions:
             return $this->getDI()->get('dbShard0');
         }
     }
-
-The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
-query executed:
 
 'selectReadConnection' 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
 
@@ -3168,8 +3146,6 @@ Each generated profile contains the duration in milliseconds that each instructi
 
 注入服务到模型（Injecting services into Models）
 ------------------------------------------------
-You may be required to access the application services within a model, the following example explains how to do that:
-
 你可能需要在模型中用到应用中注入的服务，下面的例子会教你如何去做：
 
 .. code-block:: php
@@ -3191,9 +3167,6 @@ You may be required to access the application services within a model, the follo
             }
         }
     }
-
-The "notSaved" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
 每当 "create" 或者 "update" 操作失败时会触发 "notSave" 事件。所以我们从DI中获取 "flash" 服务并推送确认消息。这样的话，我们不需要每次在save之后去打印信息。
 
@@ -3217,21 +3190,21 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                           | Default |
-+=====================+=======================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                                  | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
-+---------------------+---------------------------------------------------------------------------------------+---------+
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| Option              | Description                                                                           | Default       |
++=====================+=======================================================================================+===============+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| columnRenaming      | Enables/Disables the column renaming                                                  | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
++---------------------+---------------------------------------------------------------------------------------+---------------+
 
 独立的组件（Stand-Alone component）
 -----------------------------------
@@ -3274,7 +3247,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     // Use the model
     echo Robots::count();
 
-.. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
-.. _date: http://php.net/manual/en/function.date.php
-.. _time: http://php.net/manual/en/function.time.php
-.. _Traits: http://php.net/manual/en/language.oop5.traits.php
+.. _PDO: http://php.net/manual/zh/pdo.prepared-statements.php
+.. _date: http://php.net/manual/zh/function.date.php
+.. _time: http://php.net/manual/zh/function.time.php
+.. _Traits: http://php.net/manual/zh/language.oop5.traits.php
