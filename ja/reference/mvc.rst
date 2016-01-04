@@ -10,7 +10,7 @@ MVC benefits include:
 * Isolation of business logic from the user interface and the database layer
 * Making it clear where different types of code belong for easier maintenance
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC_ architecture.
+If you decide to use MVC, every request to your application resources will be managed by the MVC architecture.
 Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
 モデル (Models)
