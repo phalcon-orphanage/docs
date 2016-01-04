@@ -389,7 +389,7 @@ Another use case for conversors is binding a model into a route. This allows the
         ))
         ->convert('id', function ($id) {
             // Fetch the model
-            return Product::findFirst($id);
+            return Product::findFirstById($id);
         });
 
 Groups of Routes
