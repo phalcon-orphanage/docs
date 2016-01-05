@@ -371,6 +371,23 @@ URL: /admin/users/edit/sonny, будут обработан как:
             return str_replace('-', '', $slug);
         });
 
+Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
+
+.. code-block:: php
+
+    <?php
+
+    // This example works off the assumption that the ID is being used as parameter in the url: /products/4
+    $router
+        ->add('/products/{id}', array(
+            'controller' => 'products',
+            'action'     => 'show'
+        ))
+        ->convert('id', function ($id) {
+            // Fetch the model
+            return Product::findFirstById($id);
+        });
+
 Группы маршрутов
 ^^^^^^^^^^^^^^^^
 Если наборы маршрутов имеют общие пути, они могут быть сгруппированы для легкой поддержки:
