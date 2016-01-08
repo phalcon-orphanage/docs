@@ -28,15 +28,14 @@ A extensão Phalcon deve aparecer como parte da saídat:
 
 Criando um projeto
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code
-`here <https://github.com/phalcon/tutorial>`_.
+A melhor maneira de usar este guia é seguir cada passo de cada vez. Você pode obter o código completo
+`aqui <https://github.com/phalcon/tutorial>`_.
 
-File structure
+Estrutura de arquivos
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is
-loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon não impõe uma estrutura de arquivo específico para desenvolvimento de aplicativos. Devido ao fato de que ele é de baixo acoplamento, você pode implementar aplicativos Phalcon alimentado com uma estrutura de arquivo do modo que sej mais fácil para você.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+Para fins deste tutorial e como ponto de partida, sugerimos essa estrutura muito simples:
 
 .. code-block:: php
 
@@ -50,8 +49,7 @@ For the purposes of this tutorial and as a starting point, we suggest this very 
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory,
-ready for you to use.
+Note que você não precisa de qualquer diretório "library" relacionado com Phalcon. A estrutura está disponível na memória, prontos para usar.
 
 Beautiful URLs
 ^^^^^^^^^^^^^^
