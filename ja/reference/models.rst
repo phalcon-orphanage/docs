@@ -29,7 +29,7 @@
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 it is recommended declare each column that makes part of the model in order to save
+    If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
 デフォルトでは、モデル "Robots" はテーブル "robots" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 :code:`getSource()` メソッドを使用することができます:
@@ -48,7 +48,7 @@
         }
     }
 
-モデル Robots は現在、「 the_robots 」テーブルにマップされています。上記の方法に加えて、 'initialize' メソッドが提供されています。カスタム動作、言い換えれば別のテーブルを使用してモデルをセットアップする方法を支援します:
+モデル Robots は現在、「 the_robots 」テーブルにマップされています。上記の方法に加えて、 :code:`initialize()` メソッドが提供されています。カスタム動作、言い換えれば別のテーブルを使用してモデルをセットアップする方法を支援します:
 
 .. code-block:: php
 
@@ -364,9 +364,6 @@ Namespaces make part of model names when they are within strings:
 静的メソッドの :code:`query()` が返す :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` オブジェクトは、IDE オートコンプリートと相性が良いです。
 
 すべてのクエリは、内部で :doc:`PHQL <phql>` クエリとして処理されます。 PHQLは、高レベル、オブジェクト指向やSQLに似た言語です。この言語はあなたに他のモデルを結合するようなクエリを実行するための多くの機能を提供し、グループを定義し、集計などを追加します。
-
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
 Lastly, there is the :code:`findFirstBy<property-name>()` method. This method expands on the :code:`findFirst()` method mentioned earlier. It allows you to quickly perform a
 retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
@@ -3201,21 +3198,21 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                           | Default |
-+=====================+=======================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                                  | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
-+---------------------+---------------------------------------------------------------------------------------+---------+
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| Option              | Description                                                                           | Default       |
++=====================+=======================================================================================+===============+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| columnRenaming      | Enables/Disables the column renaming                                                  | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
++---------------------+---------------------------------------------------------------------------------------+---------------+
 
 スタンドアロン・コンポーネント
 ------------------------------
@@ -3258,7 +3255,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     // Use the model
     echo Robots::count();
 
-.. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
-.. _date: http://php.net/manual/en/function.date.php
-.. _time: http://php.net/manual/en/function.time.php
-.. _Traits: http://php.net/manual/en/language.oop5.traits.php
+.. _PDO: http://php.net/manual/ja/pdo.prepared-statements.php
+.. _date: http://php.net/manual/ja/function.date.php
+.. _time: http://php.net/manual/ja/function.time.php
+.. _Traits: http://php.net/manual/ja/language.oop5.traits.php
