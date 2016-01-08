@@ -143,7 +143,7 @@ Objects as role name and resource name
 --------------------------------------
 You can pass objects as :code:`roleName` and :code:`resourceName`. Your classes must implement :doc:`Phalcon\\Acl\\RoleAware <../api/Phalcon_Acl_RoleAware>` for :code:`roleName` and :doc:`Phalcon\\Acl\\ResourceAware <../api/Phalcon_Acl_ResourceAware>` for :code:`resourceName`.
 
-Our :code:`User` class:
+Our :code:`User` class
 
 .. code-block:: php
 
