@@ -1,19 +1,17 @@
-Tutorial 1: Let's learn by example
+Tutorial 1: Vamos aprender pelo exemplo
 ==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration
-form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested
-in automatic code generation tools for Phalcon, you can check our :doc:`developer tools <tools>`.
+Ao longo deste primeiro tutorial, nós vamos guiará através de da criação de um aplicativo com um simples formulário de registro a partir do zero. Também iráemos explicar os aspectos básicos do comportamento do framework. Se você estiver interessado em utilizar ferramentas automáticas de geração de código para Phalcon, utilize nosso :doc:`developer tools <tools>`.
 
-Checking your installation
+Verificar a sua instalação
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
-or execute the code snippet below:
+Vamos supor que você tem Phalcon já instalado. Verifique o phpinfo() de saída para ver se tem uma seção de referência com o nome "Phalcon"
+ou execute o código abaixo:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+A extensão Phalcon deve aparecer como parte da saídat:
 
 .. code-block:: php
 
@@ -28,17 +26,16 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
+Criando um projeto
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code
-`here <https://github.com/phalcon/tutorial>`_.
+A melhor maneira de usar este guia é seguir cada passo de cada vez. Você pode obter o código completo
+`aqui <https://github.com/phalcon/tutorial>`_.
 
-File structure
+Estrutura de arquivos
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is
-loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon não impõe uma estrutura de arquivo específico para desenvolvimento de aplicativos. Devido ao fato de que ele é de baixo acoplamento, você pode implementar aplicativos Phalcon alimentado com uma estrutura de arquivo do modo que sej mais fácil para você.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+Para fins deste tutorial e como ponto de partida, sugerimos essa estrutura muito simples:
 
 .. code-block:: php
 
@@ -52,8 +49,7 @@ For the purposes of this tutorial and as a starting point, we suggest this very 
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory,
-ready for you to use.
+Note que você não precisa de qualquer diretório "library" relacionado com Phalcon. A estrutura está disponível na memória, prontos para usar.
 
 Beautiful URLs
 ^^^^^^^^^^^^^^
