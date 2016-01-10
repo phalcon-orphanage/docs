@@ -356,7 +356,7 @@
 
 Наш подход
 ==========
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` — это компонент, реализующий внедрение зависимостей и локацию сервисов, и он же является контейнером для них.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` — это компонент, реализующий паттерны `Dependency Injection`_ и `Service Locator`_, и являющийся контейнером для зависимостей.
 
 Поскольку Phalcon обладает низкой связанностью, :doc:`Phalcon\\Di <../api/Phalcon_Di>` необходимо обеспечить интеграцию различных компонентов фреймворка. Разработчики также могут
 использовать этот компонент для внедрения зависимостей и использования глобальных экземпляров различных классов, используемых в приложении.
@@ -1065,4 +1065,6 @@ Factory Default DI
 Для создания собственного DI необходимо реализовать интерфейс :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>`, или использовать наследование и переопределить стандартный компонент Phalcon.
 
 .. _`Инверсии управления`: http://ru.wikipedia.org/wiki/Инверсия_управления
+.. _`Service Locator`: https://en.wikipedia.org/wiki/Service_locator_pattern
+.. _`Dependency Injection`: https://en.wikipedia.org/wiki/Dependency_injection
 .. _синглтонами: http://ru.wikipedia.org/wiki/Одиночка_(шаблон_проектирования)
