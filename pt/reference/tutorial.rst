@@ -51,11 +51,13 @@ Para fins deste tutorial e como ponto de partida, sugerimos essa estrutura muito
 
 Note que você não precisa de qualquer diretório "library" relacionado com Phalcon. A estrutura está disponível na memória, prontos para usar.
 
-Beautiful URLs
+URLs Amigáveis
 ^^^^^^^^^^^^^^
-We'll use pretty (friendly) URLs for this tutorial. Friendly URLs are better for SEO as well as being easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easily develop without them.
+Usaremos URLs amigáveis neste tutorial. URLs amigáveis são melhores para SEO, além de ser fácil para os usuários lembrarem. Phalcon suporta modulo rewrite fornecidos pelos servidores web mais populares. 
+Utilizar URLs amigáveis no seu aplicativo não é uma exigência e você pode facilmente desenvolver sem elas.
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /tutorial/.htaccess file:
+
+Neste exemplo, usaremos o módulo rewrite para o Apache. Vamos criar um par de regras no arquivo /tutorial/.htaccess:
 
 .. code-block:: apacheconf
 
@@ -66,9 +68,9 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus eliminates security threats of this kind.
+Todas as solicitações para o projeto será direcionado para o diretório public/ assim tornando-se a raiz do projeto. Esta etapa garante que as pastas internas do projeto permanecem ocultos da visão pública e, portanto, eliminando ameaças deste tipo de segurança.
 
-The second set of rules will check if the requested file exists and, if it does, it doesn't have to be rewritten by the web server module:
+O segundo conjunto de regras irá verificar se o arquivo solicitado existe e, se isso acontecer, ele não tem que ser reescrito pelo módulo do servidor web:
 
 .. code-block:: apacheconf
 
@@ -80,13 +82,12 @@ The second set of rules will check if the requested file exists and, if it does,
         RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-Bootstrap
+Autoinicialização
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves
-as the base of your application, giving you control of all aspects of it. In this file you can implement
-initialization of components as well as application behavior.
+O primeiro arquivo que você precisa para criar é o arquivo de inicialização. Este arquivo é muito importante; uma vez que serve como a base de sua aplicação, o que lhe dá o controle de todos os aspectos do mesmo. Neste arquivo você pode implementar
+a inicialização de componentes, bem como o comportamento do aplicativo.
 
-The tutorial/public/index.php file should look like:
+O arquivo tutorial/public/index.php deve ser igual a este:
 
 .. code-block:: php
 
