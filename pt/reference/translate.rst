@@ -1,12 +1,12 @@
-Multi-lingual Support
+Suporte multilíngue
 =====================
 
-The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications.
-Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+O componente :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` auxilia na criação de aplicações multilíngues.
+Os aplicativos que usam este componente, exibi o conteúdo em diferentes línguas, com base no idioma escolhido pelo usuário e suportado pelo aplicativo.
 
-Adapters
+Adaptadores
 --------
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Este componente faz uso de adaptadores para ler mensagens de tradução de diferentes fontes em uma forma unificada.
 
 +-------------+-----------------------------------------------------------------------------------------+
 | Adapter     | Description                                                                             |
@@ -14,10 +14,9 @@ This component makes use of adapters to read translation messages from different
 | NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 +-------------+-----------------------------------------------------------------------------------------+
 
-Component Usage
+Uso de componentes
 ---------------
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
-to organize your translation strings. A simple structure could be:
+As palavras traduzidas são armazenados em arquivos. A estrutura destes ficheiros pode variar dependendo do adaptador usado. Phalcon lhe dá a liberdade para organizar suas seqüências de tradução como você desejar. Uma estrutura simples seria:
 
 .. code-block:: bash
 
