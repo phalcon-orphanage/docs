@@ -40,7 +40,7 @@ time you use the table. This could be done caching the meta-data using any of th
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | XCache  | This adapter uses `XCache`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Xcache <../api/Phalcon_Mvc_Model_MetaData_Xcache>`   |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
+| Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced.                                                                                                                                                                                                     | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
 As other ORM's dependencies, the metadata manager is requested from the services container:
@@ -277,5 +277,5 @@ The following example shows how to define the meta-data manually:
         }
     }
 
-.. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
+.. _Alternative PHP Cache (APC): http://www.php.net/manual/fr/book.apc.php
 .. _XCache: http://xcache.lighttpd.net/
