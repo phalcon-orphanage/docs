@@ -412,7 +412,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     <?php
 
-    use Phalcon\Mvc\Form;
+    use Phalcon\Forms\Form;
 
     class ContactForm extends Form
     {

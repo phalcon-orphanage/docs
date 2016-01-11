@@ -419,7 +419,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    use Phalcon\Mvc\Form;
+    use Phalcon\Forms\Form;
 
     class ContactForm extends Form
     {
