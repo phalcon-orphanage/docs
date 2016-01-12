@@ -25,8 +25,7 @@ As palavras traduzidas são armazenados em arquivos. A estrutura destes ficheiro
     app/messages/fr.php
     app/messages/zh.php
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in
-different files, where keys remain the same and values contain the translated strings depending on each language.
+Cada arquivo contém um conjunto de forma chave/valor para tradução. Para cada arquivo de tradução, as chaves são únicas. A mesma disposição é usada em arquivos diferentes, onde as chaves permanecem os mesmos valores e contêm as mensagens traduzidas dependendo de cada idioma.
 
 .. code-block:: php
 
@@ -52,11 +51,9 @@ different files, where keys remain the same and values contain the translated st
         "song"    => "La chanson est %song%"
     );
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
-automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Aplicar o mecanismo de tradução em seu aplicativo é trivial, mas depende de como você deseja implementá-lo. Você pode usar uma detecção automática do idioma do navegador do usuário ou você pode fornecer uma página de configurações de onde o usuário pode selecionar seu idioma.
 
-A simple way of detecting the user's language is to parse the :code:`$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it
-directly by calling :code:`$this->request->getBestLanguage()` from an action/controller:
+Uma maneira simples de detectar o idioma do usuário é para analisar o conteudo do :code:`$_SERVER['HTTP_ACCEPT_LANGUAGE']` , ou, se desejar, acessá-lo diretamente através de uma chamada :code:`$this->request->getBestLanguage()` no action do controller:
 
 .. code-block:: php
 
@@ -95,8 +92,7 @@ directly by calling :code:`$this->request->getBestLanguage()` from an action/con
         }
     }
 
-The :code:`_getTranslation()` method is available for all actions that require translations. The :code:`$t` variable is passed to the views, and with it,
-we can translate strings in that layer:
+O método :code:`_getTranslation()` está disponível para todas as ações que requerem traduções. A variável :code:`$t` é passado para os pontos das views, e com ela, podemos traduzir as seqüências em camada::
 
 .. code-block:: html+php
 
