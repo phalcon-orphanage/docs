@@ -14,7 +14,7 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 Methods
 -------
 
-public  **attach** (*string* $eventType, *object|callable* $handler, [*int* $priority])
+public  **attach** (*string* $eventType, *object* $handler, [*int* $priority])
 
 Attach a listener to the events manager
 
