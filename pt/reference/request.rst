@@ -21,7 +21,7 @@ informações do pedido, permitindo que você acessá-lo de uma forma orientada 
         }
     }
 
-Getting Values
+Obtendo Valores
 --------------
 PHP automatically fills the superglobal arrays :code:`$_GET` and :code:`$_POST` depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
