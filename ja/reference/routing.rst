@@ -879,7 +879,7 @@ URIのソース
     // ...
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // $_GET['_url'] を使う(デフォルト)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // $_SERVER['REQUEST_URI'] を使う(デフォルト)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // $_SERVER['REQUEST_URI'] を使う
 
 あるいは、自分で 'handle' メソッドにURIを渡すこともできます:
 

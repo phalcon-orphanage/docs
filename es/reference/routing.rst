@@ -925,7 +925,7 @@ Phalcon, you can also use :code:`$_SERVER['REQUEST_URI']` if required:
     // ...
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI'] (default)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI']
 
 Or you can manually pass a URI to the :code:`handle()` method:
 
