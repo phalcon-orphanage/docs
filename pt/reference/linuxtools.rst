@@ -9,7 +9,7 @@ A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você nã
 
 Download
 --------
-Você pode baixar um pacote de plataforma que contém as ferramentas de desenvolvedor da seção de Download. Também você pode cloná-lo a partir de Github_.
+Você pode baixar um pacote de plataforma que contém as ferramentas de desenvolvedor da seção de Download_. Também você pode cloná-lo a partir de Github_.
 
 Abra um terminal e digite os comandos abaixo:
 
