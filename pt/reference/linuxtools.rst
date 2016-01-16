@@ -1,28 +1,27 @@
-Phalcon Developer Tools on Linux
+Ferramentas Phalcon Developer em Linux
 ================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+Esses passos irá guiá-lo através do processo de instalação de Ferramentas Phalcon Developer para Linux.
 
-Prerequisites
+Pré-requisitos
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>`
-section for instructions.
+A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você não tiver instalado ainda, por favor consulte o :doc:`Intalação <install>` para obter instruções.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
+Você pode baixar um pacote de plataforma que contém as ferramentas de desenvolvedor da seção de Download_. Também você pode cloná-lo a partir de Github_.
 
-Open a terminal and type the commands below:
+Abra um terminal e digite os comandos abaixo:
 
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
-Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+Em seguida, digite a pasta onde as ferramentas foram clonados e execute ". ./phalcon.sh", (não se esqueça do ponto no início do comando):
 
 .. figure:: ../_static/img/linux-2.png
    :align: center
 
-Create a symbolink link to the phalcon.php script:
+Criar uma referência simbólica para o script phalcon.php:
 
 .. code-block:: bash
 
@@ -30,13 +29,14 @@ Create a symbolink link to the phalcon.php script:
 
     chmod ugo+x /usr/bin/phalcon
 
-Congratulations you now have Phalcon tools installed!
+Parabéns, você agora tem Phalcon tools instalado!
 
-Related Guides
+
+Guias relacionados
 ^^^^^^^^^^^^^^
-* :doc:`Using Developer Tools <tools>`
-* :doc:`Installation on Windows <wintools>`
-* :doc:`Installation on Mac <mactools>`
+* :doc:`Usando Ferramentas de Desenvolvimento <tools>`
+* :doc:`Instalação no Windows <wintools>`
+* :doc:`Instalação on Mac <mactools>`
 
 .. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools
