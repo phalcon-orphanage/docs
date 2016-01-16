@@ -1,8 +1,7 @@
-Working with Models
+Trabalhando com modelos
 ===================
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
+Um modelo representa as informações (dados) da aplicação e as regras para manipular os dados. Os modelos são usados principalmente para gerenciar as regras de interação com uma tabela de banco de dados correspondente. In most cases, each table in your database will correspond to one model in
 your application. The bulk of your application's business logic will be concentrated in the models.
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
