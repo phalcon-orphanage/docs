@@ -1,15 +1,13 @@
-Contextual Escaping
+Escape de contexto
 ===================
 
-Websites and web applications are vulnerable to XSS_ attacks and although PHP provides escaping functionality, in some contexts
-it is not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping and is written in Zephir, providing
-the minimal overhead when escaping different kinds of texts.
+Sites e aplicações web são vulneráveis a ataques XSS_ e, embora PHP fornece funcionalidade de escapar, em alguns contextos, ainda não é suficiente ou adequado. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` fornece escapar contextual e é escrito em Zephir, fornecendo o mínimo de sobrecarga ao escapar diferentes tipos de textos.
 
-We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_.
+Nós projetamos este componente baseado no `XSS (Cross Site Scripting) Prevenção de Fraude Sheet`_ criado pela OWASP_.
 
-Additionally, this component relies on mbstring_ to support almost any charset.
+Além disso, este componente depende mbstring_ para suportar quase todo o conjunto de caracteres.
 
-To illustrate how this component works and why it is important, consider the following example:
+Para ilustrar como este componente funciona e por que é importante, considere o seguinte exemplo:
 
 .. code-block:: html+php
 
@@ -56,12 +54,12 @@ To illustrate how this component works and why it is important, consider the fol
     </body>
     </html>
 
-Which produces the following:
+Que produz o seguinte:
 
 .. figure:: ../_static/img/escape.jpeg
     :align: center
 
-Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
+Todo texto tem escapado de acordo com o seu contexto. Use o contexto apropriado para evitar ataques XSS.
 
 Escaping HTML
 -------------
