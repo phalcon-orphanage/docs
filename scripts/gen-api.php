@@ -554,7 +554,7 @@ foreach ($classes as $className) {
                 } else if ($parameter->isArray()) {
                     $parameterType = 'array';
                 } else {
-                    $parameterType = 'unknown';
+                    $parameterType = 'mixed';
                 }
                 if (strpos($parameterType, 'Phalcon') !== false) {
                     if (class_exists($parameterType) || interface_exists($parameterType)) {
