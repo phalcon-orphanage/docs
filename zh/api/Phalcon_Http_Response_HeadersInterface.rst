@@ -9,17 +9,17 @@ Interface **Phalcon\\Http\\Response\\HeadersInterface**
 Methods
 -------
 
-abstract public  **set** (*unknown* $name, *unknown* $value)
+abstract public  **set** (*mixed* $name, *mixed* $value)
 
 ...
 
 
-abstract public  **get** (*unknown* $name)
+abstract public  **get** (*mixed* $name)
 
 ...
 
 
-abstract public  **setRaw** (*unknown* $header)
+abstract public  **setRaw** (*mixed* $header)
 
 ...
 

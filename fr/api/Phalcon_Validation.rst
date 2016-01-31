@@ -3,7 +3,7 @@ Class **Phalcon\\Validation**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\ValidationInterface <Phalcon_ValidationInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -16,7 +16,7 @@ Allows to validate data using custom or built-in validators
 Methods
 -------
 
-public  **setValidators** (*unknown* $validators)
+public  **setValidators** (*mixed* $validators)
 
 ...
 
@@ -33,19 +33,19 @@ Validate a set of data according to a set of rules
 
 
 
-public  **add** (*unknown* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
+public  **add** (*mixed* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 Adds a validator to a field
 
 
 
-public  **rule** (*unknown* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
+public  **rule** (*mixed* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 Alias of `add` method
 
 
 
-public  **rules** (*unknown* $field, *array* $validators)
+public  **rules** (*mixed* $field, *array* $validators)
 
 Adds the validators to a field
 
@@ -66,6 +66,12 @@ Returns all the filters or a specific one
 public  **getValidators** ()
 
 Returns the validators added to the validation
+
+
+
+public  **setEntity** (*object* $entity)
+
+Sets the bound entity
 
 
 
@@ -123,6 +129,12 @@ Gets the a value to validate in the array/object data source
 
 
 
+protected  **preChecking** (*mixed* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
+
+Internal validations, if it returns true, then skip the current validator
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
@@ -147,7 +159,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

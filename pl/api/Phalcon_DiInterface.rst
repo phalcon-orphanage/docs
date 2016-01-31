@@ -11,52 +11,52 @@ Interface **Phalcon\\DiInterface**
 Methods
 -------
 
-abstract public  **set** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
+abstract public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
 
 
-abstract public  **setShared** (*unknown* $name, *unknown* $definition)
+abstract public  **setShared** (*mixed* $name, *mixed* $definition)
 
 ...
 
 
-abstract public  **remove** (*unknown* $name)
+abstract public  **remove** (*mixed* $name)
 
 ...
 
 
-abstract public  **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
+abstract public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
 
 
-abstract public  **get** (*unknown* $name, [*unknown* $parameters])
+abstract public  **get** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getShared** (*unknown* $name, [*unknown* $parameters])
+abstract public  **getShared** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **setRaw** (*unknown* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
+abstract public  **setRaw** (*mixed* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
 
 ...
 
 
-abstract public  **getRaw** (*unknown* $name)
+abstract public  **getRaw** (*mixed* $name)
 
 ...
 
 
-abstract public  **getService** (*unknown* $name)
+abstract public  **getService** (*mixed* $name)
 
 ...
 
 
-abstract public  **has** (*unknown* $name)
+abstract public  **has** (*mixed* $name)
 
 ...
 
@@ -86,22 +86,22 @@ abstract public static  **reset** ()
 ...
 
 
-abstract public  **offsetExists** (*unknown* $offset) inherited from ArrayAccess
+abstract public  **offsetExists** (*mixed* $offset) inherited from ArrayAccess
 
 ...
 
 
-abstract public  **offsetGet** (*unknown* $offset) inherited from ArrayAccess
+abstract public  **offsetGet** (*mixed* $offset) inherited from ArrayAccess
 
 ...
 
 
-abstract public  **offsetSet** (*unknown* $offset, *unknown* $value) inherited from ArrayAccess
+abstract public  **offsetSet** (*mixed* $offset, *mixed* $value) inherited from ArrayAccess
 
 ...
 
 
-abstract public  **offsetUnset** (*unknown* $offset) inherited from ArrayAccess
+abstract public  **offsetUnset** (*mixed* $offset) inherited from ArrayAccess
 
 ...
 

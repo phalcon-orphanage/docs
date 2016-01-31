@@ -43,43 +43,43 @@ Constants
 Methods
 -------
 
-public  **addResource** (*unknown* $handler, [*unknown* $prefix])
+public  **addResource** (*mixed* $handler, [*mixed* $prefix])
 
 Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 
 
-public  **addModuleResource** (*unknown* $module, *unknown* $handler, [*unknown* $prefix])
+public  **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
 Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 
 
-public  **handle** ([*unknown* $uri])
+public  **handle** ([*mixed* $uri])
 
 Produce the routing parameters from the rewrite information
 
 
 
-public  **processControllerAnnotation** (*unknown* $handler, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
+public  **processControllerAnnotation** (*mixed* $handler, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
 
 Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*unknown* $module, *unknown* $namespaceName, *unknown* $controller, *unknown* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
+public  **processActionAnnotation** (*mixed* $module, *mixed* $namespaceName, *mixed* $controller, *mixed* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
 
 Checks for annotations in the public methods of the controller
 
 
 
-public  **setControllerSuffix** (*unknown* $controllerSuffix)
+public  **setControllerSuffix** (*mixed* $controllerSuffix)
 
 Changes the controller class suffix
 
 
 
-public  **setActionSuffix** (*unknown* $actionSuffix)
+public  **setActionSuffix** (*mixed* $actionSuffix)
 
 Changes the action method suffix
 
@@ -91,7 +91,7 @@ Return the registered resources
 
 
 
-public  **__construct** ([*unknown* $defaultRoutes]) inherited from Phalcon\\Mvc\\Router
+public  **__construct** ([*mixed* $defaultRoutes]) inherited from Phalcon\\Mvc\\Router
 
 Phalcon\\Mvc\\Router constructor
 
@@ -127,7 +127,7 @@ Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the 
 
 
 
-public  **setUriSource** (*unknown* $uriSource) inherited from Phalcon\\Mvc\\Router
+public  **setUriSource** (*mixed* $uriSource) inherited from Phalcon\\Mvc\\Router
 
 Sets the URI source. One of the URI_SOURCE_* constants 
 
@@ -140,31 +140,31 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 
 
-public  **removeExtraSlashes** (*unknown* $remove) inherited from Phalcon\\Mvc\\Router
+public  **removeExtraSlashes** (*mixed* $remove) inherited from Phalcon\\Mvc\\Router
 
 Set whether router must remove the extra slashes in the handled routes
 
 
 
-public  **setDefaultNamespace** (*unknown* $namespaceName) inherited from Phalcon\\Mvc\\Router
+public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from Phalcon\\Mvc\\Router
 
 Sets the name of the default namespace
 
 
 
-public  **setDefaultModule** (*unknown* $moduleName) inherited from Phalcon\\Mvc\\Router
+public  **setDefaultModule** (*mixed* $moduleName) inherited from Phalcon\\Mvc\\Router
 
 Sets the name of the default module
 
 
 
-public  **setDefaultController** (*unknown* $controllerName) inherited from Phalcon\\Mvc\\Router
+public  **setDefaultController** (*mixed* $controllerName) inherited from Phalcon\\Mvc\\Router
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\Mvc\\Router
+public  **setDefaultAction** (*mixed* $actionName) inherited from Phalcon\\Mvc\\Router
 
 Sets the default action name
 
@@ -192,7 +192,7 @@ Returns an array of default parameters
 
 
 
-public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router without any HTTP constraint 
 
@@ -209,43 +209,43 @@ Adds a route to the router without any HTTP constraint
 
 
 
-public  **addGet** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public  **addPost** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public  **addPut** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public  **addPatch** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public  **addDelete** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public  **addOptions** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public  **addHead** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
+public  **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is HEAD
 
@@ -257,7 +257,7 @@ Mounts a group of routes in the router
 
 
 
-public  **notFound** (*unknown* $paths) inherited from Phalcon\\Mvc\\Router
+public  **notFound** (*mixed* $paths) inherited from Phalcon\\Mvc\\Router
 
 Set a group of paths to be returned when none of the defined routes are matched
 
@@ -323,13 +323,13 @@ Returns all the routes defined in the router
 
 
 
-public  **getRouteById** (*unknown* $id) inherited from Phalcon\\Mvc\\Router
+public  **getRouteById** (*mixed* $id) inherited from Phalcon\\Mvc\\Router
 
 Returns a route object by its id
 
 
 
-public  **getRouteByName** (*unknown* $name) inherited from Phalcon\\Mvc\\Router
+public  **getRouteByName** (*mixed* $name) inherited from Phalcon\\Mvc\\Router
 
 Returns a route object by its name
 

@@ -37,7 +37,7 @@ Phalcon\\Mvc\\View\\Simple constructor
 
 
 
-public  **setViewsDir** (*unknown* $viewsDir)
+public  **setViewsDir** (*mixed* $viewsDir)
 
 Sets views directory. Depending of your platform, always add a trailing slash or backslash
 
@@ -129,7 +129,7 @@ Returns the cache instance used to cache
 
 
 
-public  **cache** ([*unknown* $options])
+public  **cache** ([*mixed* $options])
 
 Cache the actual view render to certain level 
 
@@ -142,7 +142,7 @@ Cache the actual view render to certain level
 
 
 
-public  **setParamToView** (*unknown* $key, *unknown* $value)
+public  **setParamToView** (*mixed* $key, *mixed* $value)
 
 Adds parameters to views (alias of setVar) 
 
@@ -155,7 +155,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public  **setVars** (*array* $params, [*unknown* $merge])
+public  **setVars** (*array* $params, [*mixed* $merge])
 
 Set all the render params 
 
@@ -168,7 +168,7 @@ Set all the render params
 
 
 
-public  **setVar** (*unknown* $key, *unknown* $value)
+public  **setVar** (*mixed* $key, *mixed* $value)
 
 Set a single view parameter 
 
@@ -193,7 +193,7 @@ Returns parameters to views
 
 
 
-public  **setContent** (*unknown* $content)
+public  **setContent** (*mixed* $content)
 
 Externally sets the view content 
 
@@ -218,7 +218,7 @@ Returns the path of the view that is currently rendered
 
 
 
-public  **__set** (*unknown* $key, *unknown* $value)
+public  **__set** (*mixed* $key, *mixed* $value)
 
 Magic method to pass variables to the views 
 

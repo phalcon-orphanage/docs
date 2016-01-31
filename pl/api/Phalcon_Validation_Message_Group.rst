@@ -116,7 +116,7 @@ Rewinds the internal iterator
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **current** ()
+public  **current** ()
 
 Returns the current message in the iterator
 

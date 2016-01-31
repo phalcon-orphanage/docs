@@ -73,7 +73,7 @@ Fires an event to registered extensions
 
 
 
-public  **addExtension** (*unknown* $extension)
+public  **addExtension** (*mixed* $extension)
 
 Registers a Volt's extension
 
@@ -85,7 +85,7 @@ Returns the list of extensions registered in Volt
 
 
 
-public  **addFunction** (*unknown* $name, *unknown* $definition)
+public  **addFunction** (*mixed* $name, *mixed* $definition)
 
 Register a new function in the compiler
 
@@ -97,7 +97,7 @@ Register the user registered functions
 
 
 
-public  **addFilter** (*unknown* $name, *unknown* $definition)
+public  **addFilter** (*mixed* $name, *mixed* $definition)
 
 Register a new filter in the compiler
 
@@ -109,7 +109,7 @@ Register the user registered filters
 
 
 
-public  **setUniquePrefix** (*unknown* $prefix)
+public  **setUniquePrefix** (*mixed* $prefix)
 
 Set a unique prefix to be used as prefix for compiled variables
 
@@ -133,13 +133,13 @@ Resolves function intermediate code into PHP function calls
 
 
 
-public  **resolveTest** (*array* $test, *unknown* $left)
+public  **resolveTest** (*array* $test, *mixed* $left)
 
 Resolves filter intermediate code into a valid PHP expression
 
 
 
-final protected  **resolveFilter** (*array* $filter, *unknown* $left)
+final protected  **resolveFilter** (*array* $filter, *mixed* $left)
 
 Resolves filter intermediate code into PHP function calls
 
@@ -157,7 +157,7 @@ Compiles a block of statements
 
 
 
-public  **compileForeach** (*array* $statement, [*unknown* $extendsMode])
+public  **compileForeach** (*array* $statement, [*mixed* $extendsMode])
 
 Compiles a "foreach" intermediate code representation into plain PHP code
 
@@ -169,7 +169,7 @@ Generates a 'forelse' PHP code
 
 
 
-public  **compileIf** (*array* $statement, [*unknown* $extendsMode])
+public  **compileIf** (*array* $statement, [*mixed* $extendsMode])
 
 Compiles a 'if' statement returning PHP code
 
@@ -181,7 +181,7 @@ Compiles a "elseif" statement returning PHP code
 
 
 
-public  **compileCache** (*array* $statement, [*unknown* $extendsMode])
+public  **compileCache** (*array* $statement, [*mixed* $extendsMode])
 
 Compiles a "cache" statement returning PHP code
 
@@ -205,7 +205,7 @@ Compiles a "return" statement returning PHP code
 
 
 
-public  **compileAutoEscape** (*array* $statement, *unknown* $extendsMode)
+public  **compileAutoEscape** (*array* $statement, *mixed* $extendsMode)
 
 Compiles a "autoescape" statement returning PHP code
 
@@ -223,7 +223,7 @@ Compiles a 'include' statement returning PHP code
 
 
 
-public  **compileMacro** (*array* $statement, *unknown* $extendsMode)
+public  **compileMacro** (*array* $statement, *mixed* $extendsMode)
 
 Compiles macros
 
@@ -235,19 +235,19 @@ Compiles calls to macros
 
 
 
-final protected  **_statementList** (*array* $statements, [*unknown* $extendsMode])
+final protected  **_statementList** (*array* $statements, [*mixed* $extendsMode])
 
 Traverses a statement list compiling each of its nodes
 
 
 
-protected  **_compileSource** (*unknown* $viewCode, [*unknown* $extendsMode])
+protected  **_compileSource** (*mixed* $viewCode, [*mixed* $extendsMode])
 
 Compiles a Volt source code returning a PHP plain version
 
 
 
-public  **compileString** (*unknown* $viewCode, [*unknown* $extendsMode])
+public  **compileString** (*mixed* $viewCode, [*mixed* $extendsMode])
 
 Compiles a template into a string 
 
@@ -273,7 +273,7 @@ Compiles a template into a file forcing the destination path
 
 
 
-public  **compile** (*unknown* $templatePath, [*unknown* $extendsMode])
+public  **compile** (*mixed* $templatePath, [*mixed* $extendsMode])
 
 Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled 
 
@@ -309,6 +309,12 @@ Parses a Volt template returning its intermediate representation
 
     print_r($compiler->parse('{{ 3 + 2 }}'));
 
+
+
+
+protected  **getFinalPath** (*mixed* $path)
+
+Gets the final path with VIEW
 
 
 

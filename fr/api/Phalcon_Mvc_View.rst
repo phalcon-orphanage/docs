@@ -74,7 +74,13 @@ Phalcon\\Mvc\\View constructor
 
 
 
-public  **setViewsDir** (*unknown* $viewsDir)
+final protected  **_isAbsolutePath** (*mixed* $path)
+
+Checks if a path is absolute or not
+
+
+
+public  **setViewsDir** (*mixed* $viewsDir)
 
 Sets the views directory. Depending of your platform, always add a trailing slash or backslash
 
@@ -86,7 +92,7 @@ Gets views directory
 
 
 
-public  **setLayoutsDir** (*unknown* $layoutsDir)
+public  **setLayoutsDir** (*mixed* $layoutsDir)
 
 Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
 
@@ -105,7 +111,7 @@ Gets the current layouts sub-directory
 
 
 
-public  **setPartialsDir** (*unknown* $partialsDir)
+public  **setPartialsDir** (*mixed* $partialsDir)
 
 Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
 
@@ -124,7 +130,7 @@ Gets the current partials sub-directory
 
 
 
-public  **setBasePath** (*unknown* $basePath)
+public  **setBasePath** (*mixed* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash 
 
@@ -143,7 +149,7 @@ Gets base path
 
 
 
-public  **setRenderLevel** (*unknown* $level)
+public  **setRenderLevel** (*mixed* $level)
 
 Sets the render level for the view 
 
@@ -171,7 +177,7 @@ Disables a specific level of rendering
 
 
 
-public  **setMainView** (*unknown* $viewPath)
+public  **setMainView** (*mixed* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
 
@@ -191,7 +197,7 @@ Returns the name of the main view
 
 
 
-public  **setLayout** (*unknown* $layout)
+public  **setLayout** (*mixed* $layout)
 
 Change the layout to be used instead of using the name of the latest controller name 
 
@@ -329,16 +335,16 @@ Register templating engines
 
     <?php
 
-    $this->view->registerEngines(array(
+     $this->view->registerEngines(array(
       ".phtml" => "Phalcon\Mvc\View\Engine\Php",
       ".volt"  => "Phalcon\Mvc\View\Engine\Volt",
       ".mhtml" => "MyCustomEngine"
-    ));
+     ));
 
 
 
 
-public  **exists** (*unknown* $view)
+public  **exists** (*mixed* $view)
 
 Checks whether view exists
 
@@ -366,15 +372,17 @@ Choose a different view to render instead of last-controller/last-action
 
     <?php
 
-     class ProductsController extends \Phalcon\Mvc\Controller
+     use Phalcon\Mvc\Controller;
+    
+     class ProductsController extends Controller
      {
     
         public function saveAction()
         {
     
-             //Do some save stuff...
+             // Do some save stuff...
     
-             //Then show the list view
+             // Then show the list view
              $this->view->pick("products/list");
         }
      }
@@ -474,7 +482,7 @@ Cache the actual view render to certain level
 
 
 
-public  **setContent** (*unknown* $content)
+public  **setContent** (*mixed* $content)
 
 Externally sets the view content 
 
@@ -559,6 +567,12 @@ Magic method to retrieve if a variable is set in the view
 
       echo isset($this->view->products);
 
+
+
+
+protected  **getViewsDirs** ()
+
+Gets views directories
 
 
 

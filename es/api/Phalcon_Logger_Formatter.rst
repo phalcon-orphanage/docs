@@ -12,7 +12,7 @@ This is a base class for logger formatters
 Methods
 -------
 
-public  **getTypeString** (*unknown* $type)
+public  **getTypeString** (*mixed* $type)
 
 Returns the string meaning of a logger constant
 

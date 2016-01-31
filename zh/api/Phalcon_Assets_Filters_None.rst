@@ -14,7 +14,7 @@ Returns the content without make any modification to the original source
 Methods
 -------
 
-public  **filter** (*unknown* $content)
+public  **filter** (*mixed* $content)
 
 Returns the content without be touched
 

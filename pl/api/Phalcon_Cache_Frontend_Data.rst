@@ -87,13 +87,13 @@ Stops output frontend
 
 
 
-public  **beforeStore** (*unknown* $data)
+public  **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public  **afterRetrieve** (*unknown* $data)
+public  **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

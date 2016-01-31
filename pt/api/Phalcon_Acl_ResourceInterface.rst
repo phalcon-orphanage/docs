@@ -9,7 +9,7 @@ Interface **Phalcon\\Acl\\ResourceInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $name, [*unknown* $description])
+abstract public  **__construct** (*mixed* $name, [*mixed* $description])
 
 ...
 

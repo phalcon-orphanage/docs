@@ -34,12 +34,12 @@ public  **getDetailed** ()
 ...
 
 
-public  **setDetailed** (*unknown* $detailed)
+public  **setDetailed** (*mixed* $detailed)
 
 ...
 
 
-public  **__construct** ([*array* $styles], [*unknown* $detailed])
+public  **__construct** ([*array* $styles], [*mixed* $detailed])
 
 Phalcon\\Debug\\Dump constructor
 
@@ -51,31 +51,31 @@ Alias of variables() method
 
 
 
-protected  **getStyle** (*unknown* $type)
+protected  **getStyle** (*mixed* $type)
 
 Get style for type
 
 
 
-public  **setStyles** ([*unknown* $styles])
+public  **setStyles** ([*mixed* $styles])
 
 Set styles for vars type
 
 
 
-public  **one** (*unknown* $variable, [*unknown* $name])
+public  **one** (*mixed* $variable, [*mixed* $name])
 
 Alias of variable() method
 
 
 
-protected  **output** (*unknown* $variable, [*unknown* $name], [*unknown* $tab])
+protected  **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
 Prepare an HTML string of information about a single variable.
 
 
 
-public  **variable** (*unknown* $variable, [*unknown* $name])
+public  **variable** (*mixed* $variable, [*mixed* $name])
 
 Returns an HTML string of information about a single variable. 
 

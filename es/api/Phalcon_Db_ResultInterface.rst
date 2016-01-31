@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\ResultInterface**
 Methods
 -------
 
-abstract public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *PDOStatement* $result, [*unknown* $sqlStatement], [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *PDOStatement* $result, [*mixed* $sqlStatement], [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
@@ -39,12 +39,12 @@ abstract public  **numRows** ()
 ...
 
 
-abstract public  **dataSeek** (*unknown* $number)
+abstract public  **dataSeek** (*mixed* $number)
 
 ...
 
 
-abstract public  **setFetchMode** (*unknown* $fetchMode)
+abstract public  **setFetchMode** (*mixed* $fetchMode)
 
 ...
 

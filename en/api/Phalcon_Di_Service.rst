@@ -38,7 +38,7 @@ Returns the service's name
 
 
 
-public  **setShared** (*unknown* $shared)
+public  **setShared** (*mixed* $shared)
 
 Sets if the service is shared or not
 
@@ -74,7 +74,7 @@ Resolves the service
 
 
 
-public  **setParameter** (*unknown* $position, *array* $parameter)
+public  **setParameter** (*mixed* $position, *array* $parameter)
 
 Changes a parameter in the definition without resolve the service
 

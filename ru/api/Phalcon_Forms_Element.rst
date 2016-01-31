@@ -32,7 +32,7 @@ Returns the parent form to the element
 
 
 
-public  **setName** (*unknown* $name)
+public  **setName** (*mixed* $name)
 
 Sets the element name
 
@@ -50,7 +50,7 @@ Sets the element filters
 
 
 
-public  **addFilter** (*unknown* $filter)
+public  **addFilter** (*mixed* $filter)
 
 Adds a filter to current list of filters
 
@@ -62,7 +62,7 @@ Returns the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*unknown* $merge])
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*mixed* $merge])
 
 Adds a group of validators
 
@@ -134,7 +134,7 @@ Returns the options for the element
 
 
 
-public  **setLabel** (*unknown* $label)
+public  **setLabel** (*mixed* $label)
 
 Sets the element label
 
@@ -206,7 +206,7 @@ Magic method __toString renders the widget without atttributes
 
 
 
-abstract public  **render** ([*unknown* $attributes]) inherited from Phalcon\\Forms\\ElementInterface
+abstract public  **render** ([*mixed* $attributes]) inherited from Phalcon\\Forms\\ElementInterface
 
 ...
 

@@ -9,12 +9,12 @@ Interface **Phalcon\\Mvc\\Model\\MessageInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type])
+abstract public  **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type])
 
 ...
 
 
-abstract public  **setType** (*unknown* $type)
+abstract public  **setType** (*mixed* $type)
 
 ...
 
@@ -24,7 +24,7 @@ abstract public  **getType** ()
 ...
 
 
-abstract public  **setMessage** (*unknown* $message)
+abstract public  **setMessage** (*mixed* $message)
 
 ...
 
@@ -34,7 +34,7 @@ abstract public  **getMessage** ()
 ...
 
 
-abstract public  **setField** (*unknown* $field)
+abstract public  **setField** (*mixed* $field)
 
 ...
 

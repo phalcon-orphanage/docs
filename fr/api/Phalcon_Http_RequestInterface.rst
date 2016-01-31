@@ -9,52 +9,52 @@ Interface **Phalcon\\Http\\RequestInterface**
 Methods
 -------
 
-abstract public  **get** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue])
+abstract public  **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **getPost** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue])
+abstract public  **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **getQuery** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue])
+abstract public  **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **getServer** (*unknown* $name)
+abstract public  **getServer** (*mixed* $name)
 
 ...
 
 
-abstract public  **has** (*unknown* $name)
+abstract public  **has** (*mixed* $name)
 
 ...
 
 
-abstract public  **hasPost** (*unknown* $name)
+abstract public  **hasPost** (*mixed* $name)
 
 ...
 
 
-abstract public  **hasPut** (*unknown* $name)
+abstract public  **hasPut** (*mixed* $name)
 
 ...
 
 
-abstract public  **hasQuery** (*unknown* $name)
+abstract public  **hasQuery** (*mixed* $name)
 
 ...
 
 
-abstract public  **hasServer** (*unknown* $name)
+abstract public  **hasServer** (*mixed* $name)
 
 ...
 
 
-abstract public  **getHeader** (*unknown* $header)
+abstract public  **getHeader** (*mixed* $header)
 
 ...
 
@@ -99,7 +99,7 @@ abstract public  **getHttpHost** ()
 ...
 
 
-abstract public  **getClientAddress** ([*unknown* $trustForwardedHeader])
+abstract public  **getClientAddress** ([*mixed* $trustForwardedHeader])
 
 ...
 
@@ -114,7 +114,7 @@ abstract public  **getUserAgent** ()
 ...
 
 
-abstract public  **isMethod** (*unknown* $methods, [*unknown* $strict])
+abstract public  **isMethod** (*mixed* $methods, [*mixed* $strict])
 
 ...
 
@@ -149,12 +149,12 @@ abstract public  **isOptions** ()
 ...
 
 
-abstract public  **hasFiles** ([*unknown* $onlySuccessful])
+abstract public  **hasFiles** ([*mixed* $onlySuccessful])
 
 ...
 
 
-abstract public  **getUploadedFiles** ([*unknown* $onlySuccessful])
+abstract public  **getUploadedFiles** ([*mixed* $onlySuccessful])
 
 ...
 

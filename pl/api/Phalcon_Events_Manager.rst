@@ -26,7 +26,7 @@ Detach the listener from the events manager
 
 
 
-public  **enablePriorities** (*unknown* $enablePriorities)
+public  **enablePriorities** (*mixed* $enablePriorities)
 
 Set if priorities are enabled in the EventsManager
 
@@ -38,7 +38,7 @@ Returns if priorities are enabled
 
 
 
-public  **collectResponses** (*unknown* $collect)
+public  **collectResponses** (*mixed* $collect)
 
 Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
 
@@ -56,15 +56,9 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 
 
 
-public  **detachAll** ([*unknown* $type])
+public  **detachAll** ([*mixed* $type])
 
 Removes all events from the EventsManager
-
-
-
-public  **dettachAll** ([*unknown* $type])
-
-Alias of detachAll
 
 
 
@@ -87,7 +81,7 @@ Fires an event in the events manager causing the active listeners to be notified
 
 
 
-public  **hasListeners** (*unknown* $type)
+public  **hasListeners** (*mixed* $type)
 
 Check whether certain type of event has listeners
 

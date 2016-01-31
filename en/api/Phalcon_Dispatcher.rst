@@ -59,13 +59,18 @@ Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*unknown* $actionSuffix)
+public  **setActionSuffix** (*mixed* $actionSuffix)
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*unknown* $moduleName)
+public  **getActionSuffix** ()
+
+...
+
+
+public  **setModuleName** (*mixed* $moduleName)
 
 Sets the module where the controller is (only informative)
 
@@ -77,7 +82,7 @@ Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*unknown* $namespaceName)
+public  **setNamespaceName** (*mixed* $namespaceName)
 
 Sets the namespace where the controller class is
 
@@ -89,7 +94,7 @@ Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*unknown* $namespaceName)
+public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the default namespace
 
@@ -101,13 +106,13 @@ Returns the default namespace
 
 
 
-public  **setDefaultAction** (*unknown* $actionName)
+public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
 
 
-public  **setActionName** (*unknown* $actionName)
+public  **setActionName** (*mixed* $actionName)
 
 Sets the action name to be dispatched
 
@@ -165,6 +170,11 @@ public *mixed*  **getReturnedValue** ()
 
 Returns value returned by the lastest dispatched action
 
+
+
+public  **setModelBinding** (*mixed* $value)
+
+...
 
 
 public *object*  **dispatch** ()

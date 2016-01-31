@@ -46,55 +46,55 @@ Image mime type
 
 
 
-public  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master])
+public  **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
 
 Resize the image to the given size
 
 
 
-public  **liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $deltaX], [*unknown* $rigidity])
+public  **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
 
 
-public  **crop** (*unknown* $width, *unknown* $height, [*unknown* $offsetX], [*unknown* $offsetY])
+public  **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
 Crop an image to the given size
 
 
 
-public  **rotate** (*unknown* $degrees)
+public  **rotate** (*mixed* $degrees)
 
 Rotate the image by a given amount
 
 
 
-public  **flip** (*unknown* $direction)
+public  **flip** (*mixed* $direction)
 
 Flip the image along the horizontal or vertical axis
 
 
 
-public  **sharpen** (*unknown* $amount)
+public  **sharpen** (*mixed* $amount)
 
 Sharpen the image by a given amount
 
 
 
-public  **reflection** (*unknown* $height, [*unknown* $opacity], [*unknown* $fadeIn])
+public  **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
 Add a reflection to an image
 
 
 
-public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity])
+public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
 Add a watermark to an image with the specified opacity
 
 
 
-public  **text** (*unknown* $text, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
+public  **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
 
 Add a text to an image with a specified opacity
 
@@ -106,31 +106,31 @@ Composite one image onto another
 
 
 
-public  **background** (*unknown* $color, [*unknown* $opacity])
+public  **background** (*mixed* $color, [*mixed* $opacity])
 
 Set the background color of an image
 
 
 
-public  **blur** (*unknown* $radius)
+public  **blur** (*mixed* $radius)
 
 Blur image
 
 
 
-public  **pixelate** (*unknown* $amount)
+public  **pixelate** (*mixed* $amount)
 
 Pixelate image
 
 
 
-public  **save** ([*unknown* $file], [*unknown* $quality])
+public  **save** ([*mixed* $file], [*mixed* $quality])
 
 Save the image
 
 
 
-public  **render** ([*unknown* $ext], [*unknown* $quality])
+public  **render** ([*mixed* $ext], [*mixed* $quality])
 
 Render the image and return the binary string
 

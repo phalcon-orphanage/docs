@@ -26,6 +26,16 @@ Encapsulates request information for easy and secure access from application con
 Methods
 -------
 
+public  **getHttpMethodParameterOverride** ()
+
+...
+
+
+public  **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
+
+...
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
@@ -38,7 +48,7 @@ Returns the internal dependency injector
 
 
 
-public  **get** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+public  **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned 
 
@@ -55,7 +65,7 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed. If no
 
 
 
-public  **getPost** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+public  **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned 
 
@@ -72,7 +82,7 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
-public  **getPut** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+public  **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets a variable from put request 
 
@@ -89,7 +99,7 @@ Gets a variable from put request
 
 
 
-public  **getQuery** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+public  **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
 
@@ -109,49 +119,49 @@ Gets variable from $_GET superglobal applying filters if needed If no parameters
 
 
 
-final protected  **getHelper** (*array* $source, [*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+final protected  **getHelper** (*array* $source, [*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Helper to get data from superglobals, applying filters if needed. If no parameters are given the superglobal is returned.
 
 
 
-public  **getServer** (*unknown* $name)
+public  **getServer** (*mixed* $name)
 
 Gets variable from $_SERVER superglobal
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Checks whether $_REQUEST superglobal has certain index
 
 
 
-public  **hasPost** (*unknown* $name)
+public  **hasPost** (*mixed* $name)
 
 Checks whether $_POST superglobal has certain index
 
 
 
-public  **hasPut** (*unknown* $name)
+public  **hasPut** (*mixed* $name)
 
 Checks whether the PUT data has certain index
 
 
 
-public  **hasQuery** (*unknown* $name)
+public  **hasQuery** (*mixed* $name)
 
 Checks whether $_GET superglobal has certain index
 
 
 
-final public  **hasServer** (*unknown* $name)
+final public  **hasServer** (*mixed* $name)
 
 Checks whether $_SERVER superglobal has certain index
 
 
 
-final public  **getHeader** (*unknown* $header)
+final public  **getHeader** (*mixed* $header)
 
 Gets HTTP header from request data
 
@@ -187,7 +197,7 @@ Gets HTTP raw request body
 
 
 
-public  **getJsonRawBody** ([*unknown* $associative])
+public  **getJsonRawBody** ([*mixed* $associative])
 
 Gets decoded JSON HTTP raw request body
 
@@ -217,7 +227,7 @@ Gets HTTP URI which request has been made
 
 
 
-public  **getClientAddress** ([*unknown* $trustForwardedHeader])
+public  **getClientAddress** ([*mixed* $trustForwardedHeader])
 
 Gets most possible client IPv4 Address. This method search in _SERVER['REMOTE_ADDR'] and optionally in _SERVER['HTTP_X_FORWARDED_FOR']
 
@@ -225,7 +235,7 @@ Gets most possible client IPv4 Address. This method search in _SERVER['REMOTE_AD
 
 final public  **getMethod** ()
 
-Gets HTTP method which request has been made
+Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. The method is always an uppercased string.
 
 
 
@@ -235,13 +245,13 @@ Gets HTTP user agent used to made the request
 
 
 
-public  **isValidHttpMethod** (*unknown* $method)
+public  **isValidHttpMethod** (*mixed* $method)
 
 Checks if a method is a valid HTTP method
 
 
 
-public  **isMethod** (*unknown* $methods, [*unknown* $strict])
+public  **isMethod** (*mixed* $methods, [*mixed* $strict])
 
 Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
 
@@ -289,25 +299,25 @@ Checks whether HTTP method is OPTIONS. if _SERVER["REQUEST_METHOD"]==="OPTIONS"
 
 
 
-public  **hasFiles** ([*unknown* $onlySuccessful])
+public  **hasFiles** ([*mixed* $onlySuccessful])
 
 Checks whether request include attached files
 
 
 
-final protected  **hasFileHelper** (*unknown* $data, *unknown* $onlySuccessful)
+final protected  **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
 Recursively counts file in an array of files
 
 
 
-public  **getUploadedFiles** ([*unknown* $onlySuccessful])
+public  **getUploadedFiles** ([*mixed* $onlySuccessful])
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 
 
 
-final protected  **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *unknown* $prefix)
+final protected  **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *mixed* $prefix)
 
 Smooth out $_FILES to have plain array with all files uploaded
 
@@ -325,13 +335,13 @@ Gets web page that refers active request. ie: http://www.google.com
 
 
 
-final protected  **_getQualityHeader** (*unknown* $serverIndex, *unknown* $name)
+final protected  **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
 Process a request header and return an array of values with their qualities
 
 
 
-final protected  **_getBestQuality** (*array* $qualityParts, *unknown* $name)
+final protected  **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
 Process a request header and return the one with best quality
 

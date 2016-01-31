@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Micro\\CollectionInterface**
 Methods
 -------
 
-abstract public  **setPrefix** (*unknown* $prefix)
+abstract public  **setPrefix** (*mixed* $prefix)
 
 ...
 
@@ -24,12 +24,12 @@ abstract public  **getHandlers** ()
 ...
 
 
-abstract public  **setHandler** (*unknown* $handler, [*unknown* $lazy])
+abstract public  **setHandler** (*mixed* $handler, [*mixed* $lazy])
 
 ...
 
 
-abstract public  **setLazy** (*unknown* $lazy)
+abstract public  **setLazy** (*mixed* $lazy)
 
 ...
 
@@ -44,42 +44,42 @@ abstract public  **getHandler** ()
 ...
 
 
-abstract public  **map** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **map** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **get** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **get** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **post** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **post** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **put** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **put** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **patch** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **patch** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **head** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **head** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **delete** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **delete** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 
 
-abstract public  **options** (*unknown* $routePattern, *unknown* $handler, [*unknown* $name])
+abstract public  **options** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
 
 ...
 

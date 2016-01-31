@@ -86,13 +86,13 @@ Adds a inline code to the collection
 
 
 
-public  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
 Adds a CSS resource to the collection
 
 
 
-public  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
 Adds a inline CSS to the collection
 
@@ -104,7 +104,7 @@ Adds a javascript resource to the collection
 
 
 
-public  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
 Adds a inline javascript to the collection
 
@@ -146,31 +146,31 @@ Check if the current element in the iterator is valid
 
 
 
-public  **setTargetPath** (*unknown* $targetPath)
+public  **setTargetPath** (*mixed* $targetPath)
 
 Sets the target path of the file for the filtered/join output
 
 
 
-public  **setSourcePath** (*unknown* $sourcePath)
+public  **setSourcePath** (*mixed* $sourcePath)
 
 Sets a base source path for all the resources in this collection
 
 
 
-public  **setTargetUri** (*unknown* $targetUri)
+public  **setTargetUri** (*mixed* $targetUri)
 
 Sets a target uri for the generated HTML
 
 
 
-public  **setPrefix** (*unknown* $prefix)
+public  **setPrefix** (*mixed* $prefix)
 
 Sets a common prefix for all the resources
 
 
 
-public  **setLocal** (*unknown* $local)
+public  **setLocal** (*mixed* $local)
 
 Sets if the collection uses local resources by default
 
@@ -188,19 +188,19 @@ Sets an array of filters in the collection
 
 
 
-public  **setTargetLocal** (*unknown* $targetLocal)
+public  **setTargetLocal** (*mixed* $targetLocal)
 
 Sets the target local
 
 
 
-public  **join** (*unknown* $join)
+public  **join** (*mixed* $join)
 
 Sets if all filtered resources in the collection must be joined in a single result file
 
 
 
-public  **getRealTargetPath** (*unknown* $basePath)
+public  **getRealTargetPath** (*mixed* $basePath)
 
 Returns the complete location where the joined/filtered collection must be written
 

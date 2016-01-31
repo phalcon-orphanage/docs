@@ -74,7 +74,7 @@ API Indice
    Phalcon_Db_Adapter_Pdo_Sqlite
    Phalcon_Db_Column
    Phalcon_Db_Dialect
-   Phalcon_Db_Dialect_MySQL
+   Phalcon_Db_Dialect_Mysql
    Phalcon_Db_Dialect_Oracle
    Phalcon_Db_Dialect_Postgresql
    Phalcon_Db_Dialect_Sqlite
@@ -288,7 +288,9 @@ API Indice
    Phalcon_Validation_Validator_Url
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
+   Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface
+   Phalcon_Acl_RoleAware
    Phalcon_Acl_RoleInterface
    Phalcon_Annotations_AdapterInterface
    Phalcon_Annotations_ReaderInterface
@@ -307,6 +309,7 @@ API Indice
    Phalcon_Di_ServiceInterface
    Phalcon_DispatcherInterface
    Phalcon_EscaperInterface
+   Phalcon_Events_EventInterface
    Phalcon_Events_EventsAwareInterface
    Phalcon_Events_ManagerInterface
    Phalcon_FilterInterface
@@ -326,6 +329,7 @@ API Indice
    Phalcon_Mvc_Collection_BehaviorInterface
    Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
+   Phalcon_Mvc_Controller_BindModelInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_EntityInterface
    Phalcon_Mvc_Micro_CollectionInterface
@@ -359,5 +363,6 @@ API Indice
    Phalcon_Session_BagInterface
    Phalcon_Translate_AdapterInterface
    Phalcon_Translate_InterpolatorInterface
+   Phalcon_ValidationInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface

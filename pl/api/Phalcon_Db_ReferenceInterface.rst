@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\ReferenceInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $referenceName, *array* $definition)
+abstract public  **__construct** (*mixed* $referenceName, *array* $definition)
 
 ...
 

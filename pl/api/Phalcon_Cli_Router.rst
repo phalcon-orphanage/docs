@@ -27,7 +27,7 @@ Phalcon\\Cli\\Router is the standard framework router. Routing is the process of
 Methods
 -------
 
-public  **__construct** ([*unknown* $defaultRoutes])
+public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Cli\\Router constructor
 
@@ -45,19 +45,19 @@ Returns the internal dependency injector
 
 
 
-public  **setDefaultModule** (*unknown* $moduleName)
+public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
 
 
 
-public  **setDefaultTask** (*unknown* $taskName)
+public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*unknown* $actionName)
+public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
@@ -152,7 +152,7 @@ Returns a route object by its id
 
 
 
-public  **getRouteByName** (*unknown* $name)
+public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
 

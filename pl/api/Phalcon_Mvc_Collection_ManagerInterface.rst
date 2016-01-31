@@ -24,7 +24,7 @@ abstract public  **initialize** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalco
 ...
 
 
-abstract public  **isInitialized** (*unknown* $modelName)
+abstract public  **isInitialized** (*mixed* $modelName)
 
 ...
 
@@ -34,12 +34,12 @@ abstract public  **getLastInitialized** ()
 ...
 
 
-abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $connectionService)
+abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $connectionService)
 
 ...
 
 
-abstract public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $useImplicitObjectIds)
+abstract public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $useImplicitObjectIds)
 
 ...
 
@@ -54,7 +54,7 @@ abstract public  **getConnection** (:doc:`Phalcon\\Mvc\\CollectionInterface <Pha
 ...
 
 
-abstract public  **notifyEvent** (*unknown* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+abstract public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 ...
 

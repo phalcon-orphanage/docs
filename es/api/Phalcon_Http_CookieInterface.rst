@@ -9,12 +9,12 @@ Interface **Phalcon\\Http\\CookieInterface**
 Methods
 -------
 
-abstract public  **setValue** (*unknown* $value)
+abstract public  **setValue** (*mixed* $value)
 
 ...
 
 
-abstract public  **getValue** ([*unknown* $filters], [*unknown* $defaultValue])
+abstract public  **getValue** ([*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **delete** ()
 ...
 
 
-abstract public  **useEncryption** (*unknown* $useEncryption)
+abstract public  **useEncryption** (*mixed* $useEncryption)
 
 ...
 
@@ -39,7 +39,7 @@ abstract public  **isUsingEncryption** ()
 ...
 
 
-abstract public  **setExpiration** (*unknown* $expire)
+abstract public  **setExpiration** (*mixed* $expire)
 
 ...
 
@@ -49,7 +49,7 @@ abstract public  **getExpiration** ()
 ...
 
 
-abstract public  **setPath** (*unknown* $path)
+abstract public  **setPath** (*mixed* $path)
 
 ...
 
@@ -64,7 +64,7 @@ abstract public  **getPath** ()
 ...
 
 
-abstract public  **setDomain** (*unknown* $domain)
+abstract public  **setDomain** (*mixed* $domain)
 
 ...
 
@@ -74,7 +74,7 @@ abstract public  **getDomain** ()
 ...
 
 
-abstract public  **setSecure** (*unknown* $secure)
+abstract public  **setSecure** (*mixed* $secure)
 
 ...
 
@@ -84,7 +84,7 @@ abstract public  **getSecure** ()
 ...
 
 
-abstract public  **setHttpOnly** (*unknown* $httpOnly)
+abstract public  **setHttpOnly** (*mixed* $httpOnly)
 
 ...
 

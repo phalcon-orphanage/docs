@@ -19,7 +19,7 @@ abstract public  **has** ()
 ...
 
 
-abstract public  **get** ([*unknown* $autoBegin])
+abstract public  **get** ([*mixed* $autoBegin])
 
 ...
 
@@ -34,7 +34,7 @@ abstract public  **commit** ()
 ...
 
 
-abstract public  **rollback** ([*unknown* $collect])
+abstract public  **rollback** ([*mixed* $collect])
 
 ...
 

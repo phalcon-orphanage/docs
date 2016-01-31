@@ -14,7 +14,7 @@ Minify the css - removes comments removes newlines and line feeds keeping remove
 Methods
 -------
 
-public  **filter** (*unknown* $content)
+public  **filter** (*mixed* $content)
 
 Filters the content using CSSMIN
 

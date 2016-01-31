@@ -39,7 +39,7 @@ Returns the DependencyInjector container
 
 
 
-public  **setModelName** (*unknown* $modelName)
+public  **setModelName** (*mixed* $modelName)
 
 Set a model on which the query will be executed
 
@@ -63,7 +63,7 @@ Sets the bind types in the criteria This method replaces all previously set boun
 
 
 
-public  **distinct** (*unknown* $distinct)
+public  **distinct** (*mixed* $distinct)
 
 Sets SELECT DISTINCT / SELECT ALL flag
 
@@ -82,7 +82,7 @@ Sets the columns to be queried
 
 
 
-public  **join** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias], [*unknown* $type])
+public  **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
 Adds a INNER join to the query 
 
@@ -98,7 +98,7 @@ Adds a INNER join to the query
 
 
 
-public  **innerJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+public  **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 Adds a INNER join to the query 
 
@@ -113,7 +113,7 @@ Adds a INNER join to the query
 
 
 
-public  **leftJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+public  **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 Adds a LEFT join to the query 
 
@@ -126,7 +126,7 @@ Adds a LEFT join to the query
 
 
 
-public  **rightJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+public  **rightJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 Adds a RIGHT join to the query 
 
@@ -139,31 +139,31 @@ Adds a RIGHT join to the query
 
 
 
-public  **where** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Sets the conditions parameter in the criteria
 
 
 
-public  **addWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **addWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator (deprecated)
 
 
 
-public  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator
 
 
 
-public  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Appends a condition to the current conditions using an OR operator
 
 
 
-public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+public  **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 Appends a BETWEEN condition to the current conditions 
 
@@ -176,7 +176,7 @@ Appends a BETWEEN condition to the current conditions
 
 
 
-public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+public  **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 Appends a NOT BETWEEN condition to the current conditions 
 
@@ -189,7 +189,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public  **inWhere** (*unknown* $expr, *array* $values)
+public  **inWhere** (*mixed* $expr, *array* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -202,7 +202,7 @@ Appends an IN condition to the current conditions
 
 
 
-public  **notInWhere** (*unknown* $expr, *array* $values)
+public  **notInWhere** (*mixed* $expr, *array* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -215,49 +215,49 @@ Appends a NOT IN condition to the current conditions
 
 
 
-public  **conditions** (*unknown* $conditions)
+public  **conditions** (*mixed* $conditions)
 
 Adds the conditions parameter to the criteria
 
 
 
-public  **order** (*unknown* $orderColumns)
+public  **order** (*mixed* $orderColumns)
 
 Adds the order-by parameter to the criteria (deprecated)
 
 
 
-public  **orderBy** (*unknown* $orderColumns)
+public  **orderBy** (*mixed* $orderColumns)
 
 Adds the order-by clause to the criteria
 
 
 
-public  **groupBy** (*unknown* $group)
+public  **groupBy** (*mixed* $group)
 
 Adds the group-by clause to the criteria
 
 
 
-public  **having** (*unknown* $having)
+public  **having** (*mixed* $having)
 
 Adds the having clause to the criteria
 
 
 
-public  **limit** (*unknown* $limit, [*unknown* $offset])
+public  **limit** (*mixed* $limit, [*mixed* $offset])
 
 Adds the limit parameter to the criteria
 
 
 
-public  **forUpdate** ([*unknown* $forUpdate])
+public  **forUpdate** ([*mixed* $forUpdate])
 
 Adds the "for_update" parameter to the criteria
 
 
 
-public  **sharedLock** ([*unknown* $sharedLock])
+public  **sharedLock** ([*mixed* $sharedLock])
 
 Adds the "shared_lock" parameter to the criteria
 
@@ -293,7 +293,7 @@ Returns the limit parameter in the criteria, which will be an integer if limit w
 
 
 
-public  **getOrder** ()
+public  **getOrderBy** ()
 
 Returns the order clause in the criteria
 
@@ -317,7 +317,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *unknown* $modelName, *array* $data, [*unknown* $operator])
+public static  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like _POST
 
