@@ -138,7 +138,7 @@ access to certain options, redirect users to other screens or simply reuse code.
             // Forward flow to the index action
             $this->dispatcher->forward(
                 array(
-                    "controller" => "post",
+                    "controller" => "posts",
                     "action"     => "index"
                 )
             );
