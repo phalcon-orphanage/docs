@@ -1,7 +1,7 @@
 WAMP 下安装（Installation on WAMP）
 ===================================
 
-WampServer_ is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+WampServer_ 是一个windows版 Web 开发环境. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 下载正确的 Phalcon 版本（Download the right version of Phalcon）
 ----------------------------------------------------------------
