@@ -100,7 +100,7 @@ Phalcon自动检测你的系统架构，然而，您可以强制编译为一个�
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+如果自动安装失败，请尝试手动编译安装：
 
 .. code-block:: bash
 
@@ -111,7 +111,7 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+在Mac OS X系统中你可以通过源代码来编译和安装扩展：
 
 Requirements
 ^^^^^^^^^^^^
@@ -133,7 +133,7 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration.
+添加扩展到你的PHP配置文件。
 
 FreeBSD
 -------
