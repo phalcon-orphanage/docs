@@ -1,7 +1,7 @@
 XAMPP 下的安装（Installation on XAMPP）
 =======================================
 
-XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. 一旦你下载了 XAMPP, 你所要做的将其解压并且使用它。下面是如何在Windows版XAMPP上面安装Phalcon的详细说明。强烈建议使用最新版本的XAMPP。
+XAMPP_ 是一个包含MySQL，PHP和Perl的易于安装的Apache发行版。一旦你下载了 XAMPP, 你所要做的将其解压并且使用它。下面是如何在Windows版XAMPP上面安装Phalcon的详细说明。强烈建议使用最新版本的XAMPP。
 
 下载正确的 Phalcon 版本（Download the right version of Phalcon）
 ----------------------------------------------------------------
