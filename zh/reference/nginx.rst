@@ -11,7 +11,7 @@ Niginx 下配置 Phalcon（Configuring Nginx for Phalcon）
 
 基础配置（Basic configuration）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Using :code:`$_GET['_url']` as source of URIs:
+使用 `$_GET['_url']` 作为 URLs的源：
 
 .. code-block:: nginx
 
@@ -41,7 +41,7 @@ Using :code:`$_GET['_url']` as source of URIs:
         }
     }
 
-Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
+使用 `$_SERVER['REQUEST_URI']` 作为 URLs的源：
 
 .. code-block:: nginx
 
