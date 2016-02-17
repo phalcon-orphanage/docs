@@ -17,7 +17,7 @@ XAMPP总是发布32位版本的Apache和PHP。你需要从下面页面下载wind
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-复制 php_phalcon.dll 文件到PHP扩展目录。如果你安装XAMPP在C:\\xampp文件夹，那么该文件需要放在C:\\xampp\\php\\ext目录中：
+复制 php_phalcon.dll 文件到PHP扩展目录。如果你安装的XAMPP在C:\\xampp文件夹，那么该文件需要放在C:\\xampp\\php\\ext目录中：
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
