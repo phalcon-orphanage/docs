@@ -42,7 +42,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 
 路由（Routing）
 ---------------
-INVO使用内置的标准路由。 :doc:`Router <routing>` 组件. 路由符合以下格式：/:controller/:action/:params. 这就意味着第一部分URI是控制器，第二部分是方法，剩余的是参数。
+INVO使用内置的标准路由。  :doc:`Router <routing>` 组件. 路由符合以下格式：/:controller/:action/:params. 这就意味着第一部分URI是控制器，第二部分是方法，剩余的是参数。
 
 下面的路由 `/session/register` 执行的是 SessionController 控制器和它的 registerAction方法。
 
