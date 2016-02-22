@@ -48,8 +48,7 @@ INVO使用内置的标准路由。  :doc:`Router <routing>` 组件. 路由符合
 
 配置（Configuration）
 ---------------------
-INVO has a configuration file that sets general parameters in the application. This file is located at
-app/config/config.ini and it's loaded in the very first lines of the application bootstrap (public/index.php):
+INVO有一个设置应用常规参数的配置文件。这个文件位于 app/config/config.ini，并且他在应用引导文件的最开始就开始加载 (public/index.php)：
 
 .. code-block:: php
 
@@ -62,9 +61,7 @@ app/config/config.ini and it's loaded in the very first lines of the application
     // Read the configuration
     $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
-In this example, we're using a ini file as configuration, however, there are more adapters supported
-for configuration files. The configuration file contains the following settings:
+:doc:`Phalcon\\Config <config>` 允许我们使用面向对象的方式来操作文件。在这个例子中，我们使用ini文件作为配置文件，然而，它对于配置文件有更多的适配支持。这个配置文件包含以下配置：
 
 .. code-block:: ini
 
@@ -83,7 +80,7 @@ for configuration files. The configuration file contains the following settings:
     libraryDir     = app/library/
     baseUri        = /invo/
 
-Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate.
+Phalcon没有任何提前预约好的惯例配置。Sections help us to organize the options as appropriate.
 In this file there are two sections to be used later "application" and "database".
 
 自动加载（Autoloaders）
