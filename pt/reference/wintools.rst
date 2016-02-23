@@ -5,13 +5,11 @@ Estas medidas irão guiá-lo através do processo de instalação da Phalcon Dev
 
 Pré-requisitos
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
 A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você não tiver instalado ainda, por favor consulte o: doc:`Instalação <install>` seção para obter instruções.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 Você pode baixar um pacote da plataforma que contém as ferramentas de desenvolvimento a partir da seção Download_ . Também você pode cloná-lo do Github_.
 
 Na plataforma Windows, você precisa configurar o caminho do sistema para incluir Phalcon tools, bem como o executável no PHP. Se você baixar Phalcon Tools como um arquivo zip, extraia-o em qualquer caminho de sua unidade local ou seja, *c:\\phalcon-tools*. Você terá este caminho nos passos abaixo. Editar o arquivo "phalcon.bat" clicando com o botão direito no arquivo e selecione "Editar":
@@ -60,7 +58,6 @@ Digite "cmd" e pressione Enter para abrir o utilitário Windows linha de comando
 .. figure:: ../_static/img/path-6.png
    :align: center
 
-Type the commands "php -v" and "phalcon" and you will see something like this:
 Digite os comandos "php -v" e "Phalcon" e você vai ver algo como isto:
 
 .. figure:: ../_static/img/path-7.png
