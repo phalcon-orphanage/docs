@@ -1,7 +1,7 @@
-List of examples
+Lista de exemplos
 ================
 
-Following examples are full applications you can use to learn more about Phalcon and use them as base for your own websites/applications:
+Os seguintes exemplos são aplicativos completos que você pode usar para aprender mais sobre Phalcon e usá-los como base para seus próprios sites/aplicativos:
 
 .. raw:: html
 
