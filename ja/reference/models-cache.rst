@@ -246,7 +246,7 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
         return self::$_cache[$key];
     }
 
-This gives you full control on how the the caches must be implemented for each model, if this strategy is common to several models
+This gives you full control on how the caches must be implemented for each model, if this strategy is common to several models
 you can create a base class for all of them:
 
 .. code-block:: php
