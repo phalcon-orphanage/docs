@@ -1,16 +1,14 @@
-教程 2：Introducing INVO（Tutorial 2: Introducing INVO）
+教程 2：INVO简介（Tutorial 2: Introducing INVO）
 ========================================================
 
-In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
-INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
-generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
+在第二部分，我们将会说明一个完整的应用用来加深Phalcon的开发。
+INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用户生成发票的网站，并且可以做其他的任务，比如管理他们的客户或者产品。你可以从 Github_ 中复制它的代码。
 
-Also, INVO was made with `Bootstrap`_ as client-side framework. Although the application does not generate
-invoices, it still serves as an example to understand how the framework works.
+同样，INVO使用 `Bootstrap`_ 做的前端框架。虽然这个应用不能生成发票，但是它仍然可以作为一个例子来理解框架是如何工作的。
 
 项目结构（Project Structure）
 -----------------------------
-Once you clone the project in your document root you'll see the following structure:
+一旦你从你的文档根目录复制了这个项目，你将会看到以下结构：
 
 .. code-block:: bash
 
@@ -33,30 +31,24 @@ Once you clone the project in your document root you'll see the following struct
             js/
         schemas/
 
-As you know, Phalcon does not impose a particular file structure for application development. This project
-provides a simple MVC structure and a public document root.
+正如你所知道的，Phalcon不会强求应用程序使用特定的文件结构。 这个项目提供了一个简单的MVC模型和公共文档根目录。
 
-Once you open the application in your browser http://localhost/invo you'll see something like this:
+一旦你打开浏览器输入 http://localhost/invo 浏览应用程序你将会看到下面这样：
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided into two parts, a frontend, that is a public part where visitors can receive information
-about INVO and request contact information. The second part is the backend, an administrative area where a
-registered user can manage his/her products and customers.
+这个应用分为两部分，一部分是前端，这个是一个公开的部分，浏览者可以接收关于INVO的信息，也可以请求联系人信息。第二部分是后端，一个管理员区域，一个注册用户可以管理他/她的产品和客户。
 
 路由（Routing）
 ---------------
-INVO uses the standard route that is built-in with the :doc:`Router <routing>` component. These routes match the following
-pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
-action and the rest are the parameters.
+INVO使用内置的标准路由。  :doc:`Router <routing>` 组件. 路由符合以下格式：/:controller/:action/:params. 这就意味着第一部分URI是控制器，第二部分是方法，剩余的是参数。
 
-The following route `/session/register` executes the controller SessionController and its action registerAction.
+下面的路由 `/session/register` 执行的是 SessionController 控制器和它的 registerAction方法。
 
 配置（Configuration）
 ---------------------
-INVO has a configuration file that sets general parameters in the application. This file is located at
-app/config/config.ini and it's loaded in the very first lines of the application bootstrap (public/index.php):
+INVO有一个设置应用常规参数的配置文件。这个文件位于 app/config/config.ini，并且他在应用引导文件的最开始就开始加载 (public/index.php)：
 
 .. code-block:: php
 
@@ -69,9 +61,7 @@ app/config/config.ini and it's loaded in the very first lines of the application
     // Read the configuration
     $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
-In this example, we're using a ini file as configuration, however, there are more adapters supported
-for configuration files. The configuration file contains the following settings:
+:doc:`Phalcon\\Config <config>` 允许我们使用面向对象的方式来操作文件。在这个例子中，我们使用ini文件作为配置文件，然而，它对于配置文件有更多的适配支持。这个配置文件包含以下配置：
 
 .. code-block:: ini
 
@@ -90,7 +80,7 @@ for configuration files. The configuration file contains the following settings:
     libraryDir     = app/library/
     baseUri        = /invo/
 
-Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate.
+Phalcon没有任何提前预约好的惯例配置。Sections help us to organize the options as appropriate.
 In this file there are two sections to be used later "application" and "database".
 
 自动加载（Autoloaders）

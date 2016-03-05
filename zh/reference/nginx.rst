@@ -1,17 +1,17 @@
 Nginx 安装说明（Nginx Installation Notes）
 ==========================================
 
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Nginx_ 是一个免费的，开源的高性能的HTTP服务器和反向代理服务器，同样也可作为IMAP/POP3代理服务器。不同于传统的服务器，Nginx_ 不依赖线程去处理请求。相反，它使用一个高扩展的事件驱动（异步）架构。 This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications.
+`PHP-FPM`_ (FastCGI 进程管理器)通常用来允许 Nginx_ 来处理PHP文件。到了如今，`PHP-FPM`_ 已经捆绑在所有的PHP发行版中。Phalcon + Nginx_ + `PHP-FPM`_ 提供了一套强大的工具集，为你的PHP应用提供最强大性能。
 
 Niginx 下配置 Phalcon（Configuring Nginx for Phalcon）
 ------------------------------------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+下面是nginx可以合Phalcon配合使用的大概配置：
 
 基础配置（Basic configuration）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Using :code:`$_GET['_url']` as source of URIs:
+使用 `$_GET['_url']` 作为 URLs的源：
 
 .. code-block:: nginx
 
@@ -41,7 +41,7 @@ Using :code:`$_GET['_url']` as source of URIs:
         }
     }
 
-Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
+使用 `$_SERVER['REQUEST_URI']` 作为 URLs的源：
 
 .. code-block:: nginx
 
@@ -108,7 +108,7 @@ Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
 
 使用 Host 配置（Configuration by Host）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-And this second configuration allow you to have different configurations by host:
+第二个配置允许在主机中拥有不同的配置：
 
 .. code-block:: nginx
 
