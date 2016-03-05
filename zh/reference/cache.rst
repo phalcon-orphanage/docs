@@ -115,7 +115,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
-    // of the value for the folder
+    // the value for the folder
     $cache = new BackFile(
         $frontCache,
         array(
