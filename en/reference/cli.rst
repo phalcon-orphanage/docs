@@ -110,7 +110,7 @@ Processing action parameters
 ----------------------------
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
-If you run the the application with the following parameters and action:
+If you run the application with the following parameters and action:
 
 .. code-block:: php
 
