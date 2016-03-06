@@ -1,15 +1,14 @@
-Pagination
+Paginação
 ==========
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. :code:`Phalcon\Paginator` offers a
-fast and convenient way to split these sets of data into browsable pages.
+O processo de paginação ocorre quando precisamos apresentar grandes grupos de dados arbitrários gradualmente :code:`Phalcon\Paginator` oferece uma maneira rápida e conveniente de dividir esses conjuntos de dados em páginas navegáveis.
 
-Data Adapters
+Adaptadores de dados
 -------------
-This component makes use of adapters to encapsulate different sources of data:
+Este componente faz uso de adaptadores para encapsular diferentes fontes de dados:
 
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter                                                             | Description                                                                                                                                                                                                               |
+| Adapter                                                             | Descrição                                                                                                                                                                                                              |
 +=====================================================================+===========================================================================================================================================================================================================================+
 | :doc:`NativeArray <../api/Phalcon_Paginator_Adapter_NativeArray>`   | Use a PHP array as source data                                                                                                                                                                                            |
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -18,9 +17,9 @@ This component makes use of adapters to encapsulate different sources of data:
 | :doc:`QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
 +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Examples
+Exemplos
 --------
-In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
+No exemplo abaixo, o paginador usará o resultado de uma consulta a partir de um modelo de como a sua fonte de dados, e limitar os dados exibidos a 10 registros por página:
 
 .. code-block:: php
 
@@ -29,7 +28,7 @@ In the example below, the paginator will use the result of a query from a model 
     use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
     // Current page to show
-    // In a controller this can be:
+    // Em um controlador este pode ser:
     // $this->request->getQuery('page', 'int'); // GET
     // $this->request->getPost('page', 'int'); // POST
     $currentPage = (int) $_GET["page"];
@@ -49,8 +48,8 @@ In the example below, the paginator will use the result of a query from a model 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-The :code:`$currentPage` variable controls the page to be displayed. The :code:`$paginator->getPaginate()` returns a :code:`$page`
-object that contains the paginated data. It can be used for generating the pagination:
+O :code:`$currentPage` variável controla a página a ser exibida. O :code:`$paginator->getPaginate()` retorna uma :code:`$page`
+objeto que contém os dados paginados. Ele pode ser usado para gerar a paginação:
 
 .. code-block:: html+php
 
@@ -69,7 +68,7 @@ object that contains the paginated data. It can be used for generating the pagin
         <?php } ?>
     </table>
 
-The :code:`$page` object also contains navigation data:
+The :code:`$page` objeto também contém dados de navegação:
 
 .. code-block:: html+php
 
@@ -82,7 +81,7 @@ The :code:`$page` object also contains navigation data:
 
 Adapters Usage
 --------------
-An example of the source data that must be used for each adapter:
+Um exemplo da fonte de dados que devem ser usados para cada adapter:
 
 .. code-block:: php
 
@@ -133,29 +132,29 @@ An example of the source data that must be used for each adapter:
 
 Page Attributes
 ---------------
-The :code:`$page` object has the following attributes:
+O :code:`$page` objeto tem os seguintes atributos:
 
 +-------------+--------------------------------------------------------+
-| Attribute   | Description                                            |
+| Atibuto   | Descrição                                            |
 +=============+========================================================+
-| items       | The set of records to be displayed at the current page |
+| items       | O conjunto de registros a serem exibidos na página atual |
 +-------------+--------------------------------------------------------+
-| current     | The current page                                       |
+| atual    | A página atual                                  |
 +-------------+--------------------------------------------------------+
-| before      | The previous page to the current one                   |
+| anterior      | A página anterior à atual                 |
 +-------------+--------------------------------------------------------+
-| next        | The next page to the current one                       |
+| proxima        | A proxima página à atual                   |
 +-------------+--------------------------------------------------------+
-| last        | The last page in the set of records                    |
+| ultimo      | A última página do conjunto de registros                  |
 +-------------+--------------------------------------------------------+
-| total_pages | The number of pages                                    |
+| total_pages | O número de páginas                                  |
 +-------------+--------------------------------------------------------+
-| total_items | The number of items in the source data                 |
+| total_items | O número de itens nos dados de origem             |
 +-------------+--------------------------------------------------------+
 
-Implementing your own adapters
+Implementar seus próprios adaptadores
 ------------------------------
-The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+O :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface devem ser implementados a fim de criar seus próprios adaptadores de paginação ou ampliar os já existentes:
 
 .. code-block:: php
 
