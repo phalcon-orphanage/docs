@@ -157,7 +157,7 @@ MVC Приложения
         /**
          * Регистрация автозагрузчика, специфичного для текущего модуля
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di = null)
         {
             $loader = new Loader();
 

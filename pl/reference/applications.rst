@@ -156,7 +156,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         /**
          * Register a specific autoloader for the module
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di = null)
         {
             $loader = new Loader();
 

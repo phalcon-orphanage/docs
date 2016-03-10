@@ -152,7 +152,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         /**
          * Register a specific autoloader for the module
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di = null)
         {
             $loader = new Loader();
 
