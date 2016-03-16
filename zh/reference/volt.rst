@@ -7,10 +7,8 @@ Volt 是一个用C为PHP编写的超快的并且对设计师友好的模板语�
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
-territory using the same syntax they have been using with similar template engines. Volt's syntax and features
-have been enhanced with more elements and of course with the performance that developers have been
-accustomed to while working with Phalcon.
+Volt 的灵感来自与 Jinja_ ， 最开始由 `Armin Ronacher`_ 创造，因此很多开发者可能会感觉跟他们之前常用的模板引擎有非常类似的语法。Volt的
+语法和特性加强了很多，它提供了更多的元素，并且在与Phalcon一起使用时性能也相当棒。
 
 简介（Introduction）
 --------------------
@@ -33,8 +31,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 启用 Volt（Activating Volt）
 ----------------------------
-As with other templating engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+跟使用其他模板引擎一样，你需要先在视图组件中注册Volt，并且分配一个新的扩展名，或者干脆重用标配的 .phtml：
 
 .. code-block:: php
 
@@ -61,7 +58,7 @@ reusing the standard .phtml:
         }
     );
 
-Use the standard ".phtml" extension:
+使用 ".phtml" 作为扩展名：
 
 .. code-block:: php
 
@@ -75,11 +72,10 @@ Use the standard ".phtml" extension:
 
 基本用法（Basic Usage）
 -----------------------
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. :code:`{% ... %}` is used to execute statements such as for-loops or assign values and :code:`{{ ... }}`,
-prints the result of an expression to the template.
+视图由 Volt 代码、PHP和HTML组成。由一组特定的分隔符来界定Volt模式。:code:`{% ... %}` 用来执行诸如 for-loops 或者变量赋值这类
+表达式， :code:`{{ ... }}` 用来在模板中显示一个表达式的值。
 
-Below is a minimal template that illustrates a few basics:
+下面是一个简单的例子:
 
 .. code-block:: html+jinja
 
@@ -112,8 +108,8 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
+你可以通过 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`  在控制器中将变量传递到视图里面来。在上面的例子中，有三个变量
+传递到了视图中： :code:`title`, :code:`menu` and :code:`post` ：
 
 .. code-block:: php
 
@@ -144,8 +140,8 @@ In the above example, three variables were passed to the view: :code:`title`, :c
 
 变量（Variables）
 -----------------
-Object variables may have attributes which can be accessed using the syntax: :code:`foo.bar`.
-If you are passing arrays, you have to use the square bracket syntax: :code:`foo['bar']`
+对象变量可能有属性，这些可以通过这样的语法访问：:code:`foo.bar` 。
+如果传的是数组，那么必须使用方括号：:code:`foo['bar']` 。
 
 .. code-block:: jinja
 
@@ -154,8 +150,7 @@ If you are passing arrays, you have to use the square bracket syntax: :code:`foo
 
 过滤器（Filters）
 -----------------
-Variables can be formatted or modified using filters. The pipe operator :code:`|` is used to apply filters to
-variables:
+变量可以通过过滤器来修改或者格式化。管道操作符 :code:`|` 可以用来为变量附加过滤器：
 
 .. code-block:: jinja
 
@@ -163,7 +158,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+下表是Volt引擎内建的过滤器列表：
 
 +--------------------------+------------------------------------------------------------------------------+
 | Filter                   | Description                                                                  |
@@ -222,7 +217,7 @@ The following is the list of available built-in filters in Volt:
 | :code:`convert_encoding` | Converts a string from one charset to another                                |
 +--------------------------+------------------------------------------------------------------------------+
 
-Examples:
+举例：
 
 .. code-block:: jinja
 
@@ -284,7 +279,7 @@ Examples:
 
 注释（Comments）
 ----------------
-Comments may also be added to a template using the :code:`{# ... #}` delimiters. All text inside them is just ignored in the final output:
+可以使用 :code:`{# ... #}` 分隔符在模板中添加注释。在分隔符中间的内容在最终输出的时候都会被忽略。
 
 .. code-block:: jinja
 
@@ -294,11 +289,11 @@ Comments may also be added to a template using the :code:`{# ... #}` delimiters.
 
 流程控制列表（List of Control Structures）
 ------------------------------------------
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt 为模板中提供了一组基础但是很强大的流程控制结构。
 
 循环语句 For
 ^^^^^^^^^^^^
-Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
+循环一个序列中的每一个元素。下面的例子演示如何从一组 "robots" 中打印他们的名字：
 
 .. code-block:: html+jinja
 
@@ -311,7 +306,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
         {% endfor %}
     </ul>
 
-for-loops can also be nested:
+For循环还可以嵌套使用：
 
 .. code-block:: html+jinja
 
@@ -322,7 +317,7 @@ for-loops can also be nested:
         {% endfor %}
     {% endfor %}
 
-You can get the element "keys" as in the PHP counterpart using the following syntax:
+你还可以用跟在PHP中类似的方法获取键值：
 
 .. code-block:: html+jinja
 
@@ -332,7 +327,7 @@ You can get the element "keys" as in the PHP counterpart using the following syn
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-An "if" evaluation can be optionally set:
+你还可以在后面添加一个 "if" 表达式来进行筛选：
 
 .. code-block:: html+jinja
 
@@ -346,7 +341,7 @@ An "if" evaluation can be optionally set:
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
+如果在For语句中有一个 'else', 那么如果循环的对象0迭代的时候，它将被执行：
 
 .. code-block:: html+jinja
 
@@ -357,7 +352,7 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
         There are no robots to show
     {% endfor %}
 
-Alternative syntax:
+另一种写法：
 
 .. code-block:: html+jinja
 
@@ -370,7 +365,7 @@ Alternative syntax:
 
 循环控制（Loop Controls）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
+'break' 和 'continue' 语句可以用来退出当前循环或者强制进入下一个迭代：
 
 .. code-block:: html+jinja
 
@@ -394,7 +389,7 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
 
 条件判断语句 If
 ^^^^^^^^^^^^^^^
-As PHP, an "if" statement checks if an expression is evaluated as true or false:
+跟PHP一样， "if" 语句用来检查表达式的值的真假(true or false)：
 
 .. code-block:: html+jinja
 
@@ -407,7 +402,7 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
         {% endfor %}
     </ul>
 
-The else clause is also supported:
+Volt同样也支持 else 子句：
 
 .. code-block:: html+jinja
 
@@ -422,7 +417,7 @@ The else clause is also supported:
         {% endfor %}
     </ul>
 
-The 'elseif' control flow structure can be used together with if to emulate a 'switch' block:
+'if' 结合 'elseif'  流程控制结构一起使用，可以模仿实现 'switch' 这样的效果：
 
 .. code-block:: html+jinja
 
@@ -436,7 +431,7 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
 
 循环上下文（Loop Context）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-A special variable is available inside 'for' loops providing you information about
+在 'for' 循环中，可以用一个特殊的变量来获取一些信息：
 
 +------------------------+---------------------------------------------------------------+
 | Variable               | Description                                                   |
@@ -479,27 +474,27 @@ A special variable is available inside 'for' loops providing you information abo
 
 赋值（Assignments）
 -------------------
-Variables may be changed in a template using the instruction "set":
+在模板中可以用 "set" 来改变变量的值：
 
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'] %}
     {% set name = robot.name %}
 
-Multiple assignments are allowed in the same instruction:
+多重赋值一样可以：
 
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
 
-Additionally, you can use compound assignment operators:
+同样的，你也可以使用复合赋值运算符：
 
 .. code-block:: html+jinja
 
     {% set price += 100.00 %}
     {% set age *= 5 %}
 
-The following operators are available:
+下面是可用赋值操作符的列表：
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
