@@ -1,7 +1,7 @@
 Flashing Messages
 =================
 
-As mensagens flash são usados para notificar o usuário sobre o estado das ações que ele / ela fez ou simplesmente mostrar informações para os usuários. Estes tipos de mensagens podem ser gerados utilizando este componente.
+As mensagens flash são usadas para notificar o usuário sobre o estado das ações que ele / ela fez ou simplesmente mostrar informações para os usuários. Estes tipos de mensagens podem ser gerados utilizando este componente.
 
 Adapters
 --------
