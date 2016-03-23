@@ -644,10 +644,11 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 获取记录的初始化以及准备（Initializing/Preparing fetched records）
 ------------------------------------------------------------------
-有时候从数据库中获取了一条记录之后，在被应用程序使用之前，需要对数据进行初始化。
 May be the case that after obtaining a record from the database is necessary to initialise the data before
 being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
 will be executed just after create the instance and assign the data to it:
+有时候从数据库中获取了一条记录之后，在被应用程序使用之前，需要对数据进行初始化。
+你可以在模型中实现"afterFetch"方法，在模型实例化之后会执行这个方法，并将数据分配给它
 
 .. code-block:: php
 
@@ -684,6 +685,7 @@ will be executed just after create the instance and assign the data to it:
 
 If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
 accessed:
+如果使用getters/setters方法代替公共属性的取/赋值，你能在它被访问的时候，对成员属性进行初始化
 
 .. code-block:: php
 
@@ -1488,6 +1490,8 @@ Hydration mode can also be passed as a parameter of 'find':
 
 创建与更新记录（Creating Updating/Records）
 -------------------------------------------
+:code:`Phalcon\Mvc\Model::save()` 方法会判断数据是否存在于表中，而选择插入新数据或者更新相关记录. 这个方法是在内部调用create或者update方法（:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`）.
+所以必须要定义一个主键以确定相关记录是更新还是创建.
 The method :code:`Phalcon\Mvc\Model::save()` allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
