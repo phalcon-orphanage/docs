@@ -560,11 +560,14 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
     );
 
 如果是数字占位符，则必须把它们定义成整型（如1或者2）。若是字符串型（如"1"或者"2"），那么这个占位符不会被替换。
+(When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be successfully replaced.)
 
 使用PDO的方式会自动转义字符串。它依赖于字符集编码，因此建议在连接参数或者数据库配置中设置正确的字符集编码。
 若是设置错误的字符集编码，在存储数据或检索数据时，可能会出现乱码。
+(Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.)
 
 另外你可以设置参数的“bindTypes”，这允许你根据数据类型来定义参数应该如何绑定：
+(Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:)
 
 .. code-block:: php
 
@@ -596,8 +599,10 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 .. highlights::
 
 	默认的参数绑定类型是:code:`Phalcon\Db\Column::BIND_PARAM_STR`, 若所有字段都是string类型，则不用特意去设置参数的“bindTypes”.
+	(Since the default bind-type is :code:`Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.)
 
 如果你的绑定参数是array数组，那么数组索引必须从数字0开始:
+(If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:)
 
 .. code-block:: php
 
@@ -623,8 +628,11 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 	参数绑定的方式适用于所有查询相关的方法，如:code:`find()` and :code:`findFirst()`, 
 	同时也适用于与计算相关的方法，如:code:`count()`, :code:`sum()`, :code:`average()`.
+	(Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
+    methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.)
 
 若使用如下方式，phalcon也会自动为你进行参数绑定:
+(If you're using "finders", bound parameters are automatically used for you:)
 
 
 .. code-block:: php
@@ -644,11 +652,11 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 获取记录的初始化以及准备（Initializing/Preparing fetched records）
 ------------------------------------------------------------------
-May be the case that after obtaining a record from the database is necessary to initialise the data before
-being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
-will be executed just after create the instance and assign the data to it:
 有时候从数据库中获取了一条记录之后，在被应用程序使用之前，需要对数据进行初始化。
-你可以在模型中实现"afterFetch"方法，在模型实例化之后会执行这个方法，并将数据分配给它
+你可以在模型中实现"afterFetch"方法，在模型实例化之后会执行这个方法，并将数据分配给它:
+(May be the case that after obtaining a record from the database is necessary to initialise the data before
+being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
+will be executed just after create the instance and assign the data to it:)
 
 .. code-block:: php
 
@@ -683,9 +691,10 @@ will be executed just after create the instance and assign the data to it:
         }
     }
 
-If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
-accessed:
-如果使用getters/setters方法代替公共属性的取/赋值，你能在它被访问的时候，对成员属性进行初始化
+
+如果使用getters/setters方法代替公共属性的取/赋值，你能在它被访问的时候，对成员属性进行初始化:
+(If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
+accessed:)
 
 .. code-block:: php
 
