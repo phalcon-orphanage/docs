@@ -180,6 +180,7 @@
     }
 
 在如下情况中，命令空间也是模型名称的一部分:
+(Namespaces make part of model names when they are within strings:)
 
 .. code-block:: php
 
@@ -284,6 +285,7 @@
 .. highlights::
 
     如果需要通过外部数据（比如用户输入）或可变数据来查询记录，则必须要通过`Binding Parameters`（绑定参数）的方式.
+	(If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.)
 
 你可以使用 :code:`findFirst()` 方法获取第一条符合查询条件的结果：
 
