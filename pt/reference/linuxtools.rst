@@ -1,10 +1,10 @@
 Ferramentas Phalcon Developer em Linux
-================================
+======================================
 
 Esses passos irá guiá-lo através do processo de instalação de Ferramentas Phalcon Developer para Linux.
 
 Pré-requisitos
--------------
+--------------
 A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você não tiver instalado ainda, por favor consulte o :doc:`Intalação <install>` para obter instruções.
 
 Download
@@ -33,7 +33,7 @@ Parabéns, você agora tem Phalcon tools instalado!
 
 
 Guias relacionados
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 * :doc:`Usando Ferramentas de Desenvolvimento <tools>`
 * :doc:`Instalação no Windows <wintools>`
 * :doc:`Instalação on Mac <mactools>`
