@@ -4,7 +4,7 @@ Phalcon Developer Tools no Windows
 Estas medidas irão guiá-lo através do processo de instalação da Phalcon Developer Tools para Windows.
 
 Pré-requisitos
--------------
+--------------
 
 A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você não tiver instalado ainda, por favor consulte o: doc:`Instalação <install>` seção para obter instruções.
 
@@ -25,7 +25,7 @@ Altere o caminho para onde você instalou o Phalcon tools (set PTOOLSPATH=C:\pha
 Salvar as alterações.
 
 Adicionando PHP e ferramentas para o seu caminho do sistema
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Porque os scripts são escritos em PHP, você precisa instalá-lo em sua máquina. Dependendo de sua instalação PHP, o executável pode ser localizado em vários lugares. . Procure o php.exe arquivo e copie o caminho que está localizado em por exemplo, se estiver usando a mais recente pilha WAMP, PHP está localizado em: *C:\\wamp\bin\\php\\php5.3.10\\php .exe*.
 
 A partir do menu Iniciar do Windows, botão direito do mouse clique no ícone "Computador" e selecione "Propriedades":

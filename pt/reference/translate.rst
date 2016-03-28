@@ -1,11 +1,11 @@
 Suporte multilíngue
-=====================
+===================
 
 O componente :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` auxilia na criação de aplicações multilíngues.
 Os aplicativos que usam este componente, exibi o conteúdo em diferentes línguas, com base no idioma escolhido pelo usuário e suportado pelo aplicativo.
 
 Adaptadores
---------
+-----------
 Este componente faz uso de adaptadores para ler mensagens de tradução de diferentes fontes em uma forma unificada.
 
 +-------------+-----------------------------------------------------------------------------------------+
@@ -15,7 +15,7 @@ Este componente faz uso de adaptadores para ler mensagens de tradução de difer
 +-------------+-----------------------------------------------------------------------------------------+
 
 Uso de componentes
----------------
+------------------
 As palavras traduzidas são armazenados em arquivos. A estrutura destes ficheiros pode variar dependendo do adaptador usado. Phalcon lhe dá a liberdade para organizar suas seqüências de tradução como você desejar. Uma estrutura simples seria:
 
 .. code-block:: bash

@@ -34,7 +34,7 @@ Os exemplos de identificadores incluem:
 * fr-CA, fr-FR (French for Canada and France respectively)
 
 A formatação de mensagens com base na localidade
------------------------------------
+------------------------------------------------
 Parte da criação de uma aplicação localizada é produzir mensagens concatenadas, de idioma neutro. O MessageFormatter_ permite a
 produção dessas mensagens.
 

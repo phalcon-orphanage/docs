@@ -1,5 +1,5 @@
 Trabalhando com Namespaces
-=======================
+==========================
 
 Namespaces_ pode ser usado para evitar colisões de nomes de classe; isto significa que se você tem dois controladores em uma aplicação com o mesmo nome,
 um namespace pode ser usado para diferenciá-los. Os namespaces também são úteis para a criação de bundles or modules.
