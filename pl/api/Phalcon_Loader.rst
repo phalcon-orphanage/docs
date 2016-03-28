@@ -65,10 +65,15 @@ Returns the file extensions registered in the loader
 
 
 
-public  **registerNamespaces** (*array* $namespaces, [*unknown* $merge])
+public  **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
 Register namespaces and their related directories
 
+
+
+protected  **prepareNamespace** (*array* $namespace)
+
+...
 
 
 public  **getNamespaces** ()
@@ -77,19 +82,7 @@ Returns the namespaces currently registered in the autoloader
 
 
 
-public  **registerPrefixes** (*array* $prefixes, [*unknown* $merge])
-
-Register directories in which "not found" classes could be found
-
-
-
-public  **getPrefixes** ()
-
-Returns the prefixes currently registered in the autoloader
-
-
-
-public  **registerDirs** (*array* $directories, [*unknown* $merge])
+public  **registerDirs** (*array* $directories, [*mixed* $merge])
 
 Register directories in which "not found" classes could be found
 
@@ -101,7 +94,7 @@ Returns the directories currently registered in the autoloader
 
 
 
-public  **registerClasses** (*array* $classes, [*unknown* $merge])
+public  **registerClasses** (*array* $classes, [*mixed* $merge])
 
 Register classes and their locations
 
@@ -125,7 +118,7 @@ Unregister the autoload method
 
 
 
-public  **autoLoad** (*unknown* $className)
+public  **autoLoad** (*mixed* $className)
 
 Autoloads the registered classes
 

@@ -96,7 +96,7 @@ Handle the whole command-line tasks
 
 
 
-public  **setArgument** ([*array* $arguments], [*unknown* $str], [*unknown* $shift])
+public  **setArgument** ([*array* $arguments], [*mixed* $str], [*mixed* $shift])
 
 Set an specific argument
 

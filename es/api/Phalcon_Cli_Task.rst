@@ -19,7 +19,7 @@ Every command-line task should extend this class that encapsulates all the task 
     class HelloTask extends \Phalcon\Cli\Task
     {
     
-      //This action will be executed by default
+      // This action will be executed by default
       public function mainAction()
       {
     
@@ -67,7 +67,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

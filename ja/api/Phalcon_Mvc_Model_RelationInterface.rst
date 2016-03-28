@@ -9,12 +9,12 @@ Interface **Phalcon\\Mvc\\Model\\RelationInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $type, *unknown* $referencedModel, *unknown* $fields, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **__construct** (*mixed* $type, *mixed* $referencedModel, *mixed* $fields, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **setIntermediateRelation** (*unknown* $intermediateFields, *unknown* $intermediateModel, *unknown* $intermediateReferencedFields)
+abstract public  **setIntermediateRelation** (*mixed* $intermediateFields, *mixed* $intermediateModel, *mixed* $intermediateReferencedFields)
 
 ...
 
@@ -45,6 +45,11 @@ abstract public  **getReferencedFields** ()
 
 
 abstract public  **getOptions** ()
+
+...
+
+
+abstract public  **getOption** (*mixed* $name)
 
 ...
 

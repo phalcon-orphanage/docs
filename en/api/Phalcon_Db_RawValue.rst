@@ -34,7 +34,7 @@ Raw value without quoting or formating
 
 
 
-public  **__construct** (*unknown* $value)
+public  **__construct** (*mixed* $value)
 
 Phalcon\\Db\\RawValue constructor
 

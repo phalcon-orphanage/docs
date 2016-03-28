@@ -12,7 +12,7 @@ This class identifies each profile in a Phalcon\\Db\\Profiler
 Methods
 -------
 
-public  **setSqlStatement** (*unknown* $sqlStatement)
+public  **setSqlStatement** (*mixed* $sqlStatement)
 
 SQL statement related to the profile
 
@@ -24,7 +24,7 @@ SQL statement related to the profile
 
 
 
-public  **setSqlVariables** (*unknown* $sqlVariables)
+public  **setSqlVariables** (*array* $sqlVariables)
 
 SQL variables related to the profile
 
@@ -36,7 +36,7 @@ SQL variables related to the profile
 
 
 
-public  **setSqlBindTypes** (*unknown* $sqlBindTypes)
+public  **setSqlBindTypes** (*array* $sqlBindTypes)
 
 SQL bind types related to the profile
 
@@ -48,7 +48,7 @@ SQL bind types related to the profile
 
 
 
-public  **setInitialTime** (*unknown* $initialTime)
+public  **setInitialTime** (*mixed* $initialTime)
 
 Timestamp when the profile started
 
@@ -60,7 +60,7 @@ Timestamp when the profile started
 
 
 
-public  **setFinalTime** (*unknown* $finalTime)
+public  **setFinalTime** (*mixed* $finalTime)
 
 Timestamp when the profile ended
 

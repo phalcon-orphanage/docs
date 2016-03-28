@@ -37,13 +37,13 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 -------
 
-public  **__construct** (*string* $message, [*string|array* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
+public  **__construct** (*string* $message, [*string|array* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model], [*int|null* $code])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
 
 
-public  **setType** (*unknown* $type)
+public  **setType** (*mixed* $type)
 
 Sets message type
 
@@ -55,7 +55,7 @@ Returns message type
 
 
 
-public  **setMessage** (*unknown* $message)
+public  **setMessage** (*mixed* $message)
 
 Sets verbose message
 
@@ -67,7 +67,7 @@ Returns verbose message
 
 
 
-public  **setField** (*unknown* $field)
+public  **setField** (*mixed* $field)
 
 Sets field name related to message
 
@@ -85,9 +85,21 @@ Set the model who generates the message
 
 
 
+public  **setCode** (*mixed* $code)
+
+Sets code for the message
+
+
+
 public  **getModel** ()
 
 Returns the model that produced the message
+
+
+
+public  **getCode** ()
+
+Returns the message code
 
 
 

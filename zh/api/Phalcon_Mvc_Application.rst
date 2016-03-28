@@ -60,13 +60,13 @@ public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dep
 
 
 
-public  **useImplicitView** (*unknown* $implicitView)
+public  **useImplicitView** (*mixed* $implicitView)
 
 By default. The view is implicitly buffering all the output You can full disable the view component using this method
 
 
 
-public  **registerModules** (*array* $modules, [*unknown* $merge])
+public  **registerModules** (*array* $modules, [*mixed* $merge])
 
 Register an array of modules present in the application 
 
@@ -100,7 +100,7 @@ Gets the module definition registered in the application via module name
 
 
 
-public  **setDefaultModule** (*unknown* $defaultModule)
+public  **setDefaultModule** (*mixed* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
 
@@ -142,7 +142,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

@@ -75,7 +75,7 @@ Returns the options
 
 
 
-public  **getOption** (*unknown* $name)
+public  **getOption** (*mixed* $name)
 
 Returns an option by the specified name If the option doesn't exist null is returned
 

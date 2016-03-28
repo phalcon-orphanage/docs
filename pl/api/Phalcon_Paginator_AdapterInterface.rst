@@ -14,7 +14,7 @@ abstract public  **__construct** (*array* $config)
 ...
 
 
-abstract public  **setCurrentPage** (*unknown* $page)
+abstract public  **setCurrentPage** (*mixed* $page)
 
 ...
 
@@ -24,7 +24,7 @@ abstract public  **getPaginate** ()
 ...
 
 
-abstract public  **setLimit** (*unknown* $limit)
+abstract public  **setLimit** (*mixed* $limit)
 
 ...
 

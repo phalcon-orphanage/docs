@@ -14,7 +14,7 @@ This class will be thrown to exit a try/catch block for isolated transactions
 Methods
 -------
 
-public  **__construct** (*unknown* $message, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record])
+public  **__construct** (*mixed* $message, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record])
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
@@ -36,11 +36,6 @@ final private *Exception*  **__clone** () inherited from Exception
 
 Clone the exception
 
-
-
-public  **__wakeup** () inherited from Exception
-
-...
 
 
 final public *string*  **getMessage** () inherited from Exception

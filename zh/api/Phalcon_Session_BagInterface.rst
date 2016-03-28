@@ -19,32 +19,32 @@ abstract public  **destroy** ()
 ...
 
 
-abstract public  **set** (*unknown* $property, *unknown* $value)
+abstract public  **set** (*mixed* $property, *mixed* $value)
 
 ...
 
 
-abstract public  **get** (*unknown* $property, [*unknown* $defaultValue])
+abstract public  **get** (*mixed* $property, [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **has** (*unknown* $property)
+abstract public  **has** (*mixed* $property)
 
 ...
 
 
-abstract public  **__set** (*unknown* $property, *unknown* $value)
+abstract public  **__set** (*mixed* $property, *mixed* $value)
 
 ...
 
 
-abstract public  **__get** (*unknown* $property)
+abstract public  **__get** (*mixed* $property)
 
 ...
 
 
-abstract public  **__isset** (*unknown* $property)
+abstract public  **__isset** (*mixed* $property)
 
 ...
 

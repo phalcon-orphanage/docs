@@ -43,7 +43,7 @@ Obtains the 'escaper' service if required
 
 
 
-public static  **renderAttributes** (*unknown* $code, *array* $attributes)
+public static  **renderAttributes** (*mixed* $code, *array* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
@@ -73,7 +73,7 @@ Returns an Escaper service from the default DI
 
 
 
-public static  **setAutoescape** (*unknown* $autoescape)
+public static  **setAutoescape** (*mixed* $autoescape)
 
 Set autoescape mode in generated html
 
@@ -96,7 +96,7 @@ Assigns default values to generated tags by helpers
 
 
 
-public static  **setDefaults** (*array* $values, [*unknown* $merge])
+public static  **setDefaults** (*array* $values, [*mixed* $merge])
 
 Assigns default values to generated tags by helpers 
 
@@ -328,6 +328,14 @@ Builds a HTML input[type="check"] tag
 
      echo Phalcon\Tag::checkField(array("terms", "value" => "Y"));
 
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ check_field("terms") }}
+
 
 
 
@@ -482,7 +490,7 @@ Builds a HTML close FORM tag
 
 
 
-public static  **setTitle** (*unknown* $title)
+public static  **setTitle** (*mixed* $title)
 
 Set the title of view content 
 
@@ -495,7 +503,7 @@ Set the title of view content
 
 
 
-public static  **setTitleSeparator** (*unknown* $titleSeparator)
+public static  **setTitleSeparator** (*mixed* $titleSeparator)
 
 Set the title separator of view content 
 
@@ -508,19 +516,19 @@ Set the title separator of view content
 
 
 
-public static  **appendTitle** (*unknown* $title)
+public static  **appendTitle** (*mixed* $title)
 
 Appends a text to current document title
 
 
 
-public static  **prependTitle** (*unknown* $title)
+public static  **prependTitle** (*mixed* $title)
 
 Prepends a text to current document title
 
 
 
-public static  **getTitle** ([*unknown* $tags])
+public static  **getTitle** ([*mixed* $tags])
 
 Gets the current document title 
 
@@ -641,7 +649,7 @@ Converts texts into URL-friendly titles
 
 
 
-public static  **setDocType** (*unknown* $doctype)
+public static  **setDocType** (*mixed* $doctype)
 
 Set the document type of content
 
@@ -666,7 +674,7 @@ Builds a HTML tag
 
 
 
-public static  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
+public static  **tagHtmlClose** (*mixed* $tagName, [*mixed* $useEol])
 
 Builds a HTML tag closing tag 
 

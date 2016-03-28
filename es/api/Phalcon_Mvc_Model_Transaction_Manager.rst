@@ -66,7 +66,7 @@ Returns the dependency injection container
 
 
 
-public  **setDbService** (*unknown* $service)
+public  **setDbService** (*mixed* $service)
 
 Sets the database service used to run the isolated transactions
 
@@ -78,7 +78,7 @@ Returns the database service used to isolate the transaction
 
 
 
-public  **setRollbackPendent** (*unknown* $rollbackPendent)
+public  **setRollbackPendent** (*mixed* $rollbackPendent)
 
 Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
@@ -96,13 +96,13 @@ Checks whether the manager has an active transaction
 
 
 
-public  **get** ([*unknown* $autoBegin])
+public  **get** ([*mixed* $autoBegin])
 
 Returns a new \\Phalcon\\Mvc\\Model\\Transaction or an already created once This method registers a shutdown function to rollback active connections
 
 
 
-public  **getOrCreateTransaction** ([*unknown* $autoBegin])
+public  **getOrCreateTransaction** ([*mixed* $autoBegin])
 
 Create/Returns a new transaction or an existing one
 

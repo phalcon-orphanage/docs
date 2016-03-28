@@ -58,7 +58,7 @@ Returns the parent form to the element
 
 
 
-public  **setName** (*unknown* $name) inherited from Phalcon\\Forms\\Element
+public  **setName** (*mixed* $name) inherited from Phalcon\\Forms\\Element
 
 Sets the element name
 
@@ -76,7 +76,7 @@ Sets the element filters
 
 
 
-public  **addFilter** (*unknown* $filter) inherited from Phalcon\\Forms\\Element
+public  **addFilter** (*mixed* $filter) inherited from Phalcon\\Forms\\Element
 
 Adds a filter to current list of filters
 
@@ -88,7 +88,7 @@ Returns the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*mixed* $merge]) inherited from Phalcon\\Forms\\Element
 
 Adds a group of validators
 
@@ -160,7 +160,7 @@ Returns the options for the element
 
 
 
-public  **setLabel** (*unknown* $label) inherited from Phalcon\\Forms\\Element
+public  **setLabel** (*mixed* $label) inherited from Phalcon\\Forms\\Element
 
 Sets the element label
 

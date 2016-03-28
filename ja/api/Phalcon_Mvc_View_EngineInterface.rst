@@ -14,12 +14,12 @@ abstract public  **getContent** ()
 ...
 
 
-abstract public  **partial** (*unknown* $partialPath, [*unknown* $params])
+abstract public  **partial** (*mixed* $partialPath, [*mixed* $params])
 
 ...
 
 
-abstract public  **render** (*unknown* $path, *unknown* $params, [*unknown* $mustClean])
+abstract public  **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
 ...
 

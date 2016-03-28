@@ -44,7 +44,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $defaultRoutes])
+public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Mvc\\Router constructor
 
@@ -80,7 +80,7 @@ Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the 
 
 
 
-public  **setUriSource** (*unknown* $uriSource)
+public  **setUriSource** (*mixed* $uriSource)
 
 Sets the URI source. One of the URI_SOURCE_* constants 
 
@@ -93,31 +93,31 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 
 
-public  **removeExtraSlashes** (*unknown* $remove)
+public  **removeExtraSlashes** (*mixed* $remove)
 
 Set whether router must remove the extra slashes in the handled routes
 
 
 
-public  **setDefaultNamespace** (*unknown* $namespaceName)
+public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the name of the default namespace
 
 
 
-public  **setDefaultModule** (*unknown* $moduleName)
+public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
 
 
 
-public  **setDefaultController** (*unknown* $controllerName)
+public  **setDefaultController** (*mixed* $controllerName)
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*unknown* $actionName)
+public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
@@ -145,7 +145,7 @@ Returns an array of default parameters
 
 
 
-public  **handle** ([*unknown* $uri])
+public  **handle** ([*mixed* $uri])
 
 Handles routing information received from the rewrite engine 
 
@@ -162,7 +162,7 @@ Handles routing information received from the rewrite engine
 
 
 
-public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods], [*unknown* $position])
+public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
 Adds a route to the router without any HTTP constraint 
 
@@ -179,43 +179,43 @@ Adds a route to the router without any HTTP constraint
 
 
 
-public  **addGet** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public  **addPost** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public  **addPut** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public  **addPatch** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public  **addDelete** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public  **addOptions** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public  **addHead** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
+public  **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is HEAD
 
@@ -227,7 +227,7 @@ Mounts a group of routes in the router
 
 
 
-public  **notFound** (*unknown* $paths)
+public  **notFound** (*mixed* $paths)
 
 Set a group of paths to be returned when none of the defined routes are matched
 
@@ -293,13 +293,13 @@ Returns all the routes defined in the router
 
 
 
-public  **getRouteById** (*unknown* $id)
+public  **getRouteById** (*mixed* $id)
 
 Returns a route object by its id
 
 
 
-public  **getRouteByName** (*unknown* $name)
+public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
 

@@ -43,13 +43,13 @@ Returns a slice of the resultset to show in the pagination
 
 
 
-public  **setCurrentPage** (*unknown* $page) inherited from Phalcon\\Paginator\\Adapter
+public  **setCurrentPage** (*mixed* $page) inherited from Phalcon\\Paginator\\Adapter
 
 Set the current page number
 
 
 
-public  **setLimit** (*unknown* $limitRows) inherited from Phalcon\\Paginator\\Adapter
+public  **setLimit** (*mixed* $limitRows) inherited from Phalcon\\Paginator\\Adapter
 
 Set current rows limit
 

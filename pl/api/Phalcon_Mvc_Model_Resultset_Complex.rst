@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-*implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
+*implements* JsonSerializable, Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -53,7 +53,7 @@ Serializing a resultset will dump all related rows into a big array
 
 
 
-public  **unserialize** (*unknown* $data)
+public  **unserialize** (*mixed* $data)
 
 Unserializing a resultset will allow to only works on the rows present in the saved state
 
@@ -83,7 +83,7 @@ Rewinds resultset to its beginning
 
 
 
-final public  **seek** (*unknown* $position) inherited from Phalcon\\Mvc\\Model\\Resultset
+final public  **seek** (*mixed* $position) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
 
@@ -95,13 +95,13 @@ Counts how many rows are in the resultset
 
 
 
-public  **offsetExists** (*unknown* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetExists** (*mixed* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Checks whether offset exists in the resultset
 
 
 
-public  **offsetGet** (*unknown* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetGet** (*mixed* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Gets row in a specific position of the resultset
 
@@ -113,7 +113,7 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 
 
 
-public  **offsetUnset** (*unknown* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetUnset** (*mixed* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -137,7 +137,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*unknown* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **setIsFresh** (*mixed* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Set if the resultset is fresh or an old one cached
 
@@ -149,7 +149,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public  **setHydrateMode** (*unknown* $hydrateMode) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **setHydrateMode** (*mixed* $hydrateMode) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Sets the hydration mode in the resultset
 
@@ -198,6 +198,20 @@ Filters a resultset returning only those the developer requires
     		return $robot;
     	}
     });
+
+
+
+
+public *array*  **jsonSerialize** () inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
+
+.. code-block:: php
+
+    <?php
+
+     $robots = Robots::find();
+     echo json_encode($robots);
 
 
 

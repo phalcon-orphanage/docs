@@ -23,7 +23,7 @@ Phalcon\\Cli\\Router\\Route constructor
 
 
 
-public  **compilePattern** (*unknown* $pattern)
+public  **compilePattern** (*mixed* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
 
@@ -47,7 +47,7 @@ Returns the route's name
 
 
 
-public  **setName** (*unknown* $name)
+public  **setName** (*mixed* $name)
 
 Sets the route's name 
 
@@ -122,7 +122,7 @@ Resets the internal route id generator
 
 
 
-public static  **delimiter** ([*unknown* $delimiter])
+public static  **delimiter** ([*mixed* $delimiter])
 
 Set the routing delimiter
 

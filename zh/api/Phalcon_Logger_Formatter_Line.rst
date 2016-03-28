@@ -22,7 +22,7 @@ Default date format
 
 
 
-public  **setDateFormat** (*unknown* $dateFormat)
+public  **setDateFormat** (*mixed* $dateFormat)
 
 Default date format
 
@@ -34,7 +34,7 @@ Format applied to each message
 
 
 
-public  **setFormat** (*unknown* $format)
+public  **setFormat** (*mixed* $format)
 
 Format applied to each message
 
@@ -52,7 +52,7 @@ Applies a format to a message before sent it to the internal log
 
 
 
-public  **getTypeString** (*unknown* $type) inherited from Phalcon\\Logger\\Formatter
+public  **getTypeString** (*mixed* $type) inherited from Phalcon\\Logger\\Formatter
 
 Returns the string meaning of a logger constant
 

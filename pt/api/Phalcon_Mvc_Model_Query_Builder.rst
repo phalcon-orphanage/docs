@@ -39,7 +39,7 @@ Helps to create PHQL queries using an OO interface
 Methods
 -------
 
-public  **__construct** ([*unknown* $params], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*mixed* $params], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
@@ -57,7 +57,7 @@ Returns the DependencyInjector container
 
 
 
-public  **distinct** (*unknown* $distinct)
+public  **distinct** (*mixed* $distinct)
 
 Sets SELECT DISTINCT / SELECT ALL flag 
 
@@ -77,7 +77,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 
 
 
-public  **columns** (*unknown* $columns)
+public  **columns** (*mixed* $columns)
 
 Sets the columns to be queried 
 
@@ -98,7 +98,7 @@ Return the columns to be queried
 
 
 
-public  **from** (*unknown* $models)
+public  **from** (*mixed* $models)
 
 Sets the models who makes part of the query 
 
@@ -113,7 +113,7 @@ Sets the models who makes part of the query
 
 
 
-public  **addFrom** (*unknown* $model, [*unknown* $alias], [*unknown* $with])
+public  **addFrom** (*mixed* $model, [*mixed* $alias], [*mixed* $with])
 
 Add a model to take part of the query 
 
@@ -256,7 +256,7 @@ Appends a condition to the current conditions using a OR operator
 
 
 
-public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+public  **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 Appends a BETWEEN condition to the current conditions 
 
@@ -269,7 +269,7 @@ Appends a BETWEEN condition to the current conditions
 
 
 
-public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+public  **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 Appends a NOT BETWEEN condition to the current conditions 
 
@@ -282,7 +282,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public  **inWhere** (*unknown* $expr, *array* $values)
+public  **inWhere** (*mixed* $expr, *array* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -295,7 +295,7 @@ Appends an IN condition to the current conditions
 
 
 
-public  **notInWhere** (*unknown* $expr, *array* $values)
+public  **notInWhere** (*mixed* $expr, *array* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -334,7 +334,7 @@ Returns the set ORDER BY clause
 
 
 
-public  **having** (*unknown* $having)
+public  **having** (*mixed* $having)
 
 Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
 
@@ -347,7 +347,7 @@ Sets a HAVING condition clause. You need to escape PHQL reserved words using [ a
 
 
 
-public  **forUpdate** (*unknown* $forUpdate)
+public  **forUpdate** (*mixed* $forUpdate)
 
 Sets a FOR UPDATE clause 
 
@@ -366,7 +366,7 @@ Return the current having clause
 
 
 
-public  **limit** ([*unknown* $limit], [*unknown* $offset])
+public  **limit** ([*mixed* $limit], [*mixed* $offset])
 
 Sets a LIMIT clause, optionally a offset clause 
 
@@ -386,7 +386,7 @@ Returns the current LIMIT clause
 
 
 
-public  **offset** (*unknown* $offset)
+public  **offset** (*mixed* $offset)
 
 Sets an OFFSET clause 
 

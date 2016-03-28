@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\Query\\StatusInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public  **__construct** (*mixed* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 

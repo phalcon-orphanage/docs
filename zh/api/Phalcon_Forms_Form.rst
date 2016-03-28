@@ -16,7 +16,7 @@ This component allows to build forms using an object-oriented interface
 Methods
 -------
 
-public  **setValidation** (*unknown* $validation)
+public  **setValidation** (*mixed* $validation)
 
 ...
 
@@ -98,7 +98,7 @@ Validates the form
 
 
 
-public  **getMessages** ([*unknown* $byItemName])
+public  **getMessages** ([*mixed* $byItemName])
 
 Returns the messages generated in the validation
 
@@ -116,7 +116,7 @@ Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*mixed* $type])
 
 Adds an element to the form
 
@@ -128,19 +128,19 @@ Renders a specific item in the form
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Returns an element added to the form by its name
 
 
 
-public  **label** (*unknown* $name, [*array* $attributes])
+public  **label** (*mixed* $name, [*array* $attributes])
 
 Generate the label of a element added to the form including HTML
 
 
 
-public  **getLabel** (*unknown* $name)
+public  **getLabel** (*mixed* $name)
 
 Returns a label for an element
 
@@ -152,13 +152,13 @@ Gets a value from the internal related entity or from the default value
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Check if the form contains an element
 
 
 
-public  **remove** (*unknown* $name)
+public  **remove** (*mixed* $name)
 
 Removes an element from the form
 
@@ -230,7 +230,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

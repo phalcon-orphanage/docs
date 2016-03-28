@@ -62,7 +62,7 @@ Returns internal dialect instance
 
 
 
-public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -255,7 +255,7 @@ Gets a list of columns
 
 
 
-public  **limit** (*unknown* $sqlQuery, *unknown* $number)
+public  **limit** (*mixed* $sqlQuery, *mixed* $number)
 
 Appends a LIMIT clause to $sqlQuery argument 
 
@@ -268,7 +268,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
+public  **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -281,7 +281,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
+public  **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -294,91 +294,91 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-public  **forUpdate** (*unknown* $sqlQuery)
+public  **forUpdate** (*mixed* $sqlQuery)
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-public  **sharedLock** (*unknown* $sqlQuery)
+public  **sharedLock** (*mixed* $sqlQuery)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition)
+public  **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 Creates a table
 
 
 
-public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
+public  **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 Drops a table from a schema/database
 
 
 
-public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName])
+public  **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 Creates a view
 
 
 
-public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
+public  **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 Drops a view
 
 
 
-public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Adds a column to a table
 
 
 
-public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
+public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
 
 Modifies a table column based on a definition
 
 
 
-public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
+public  **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
 Drops a column from a table
 
 
 
-public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds an index to a table
 
 
 
-public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
+public  **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
 Drop an index from a table
 
 
 
-public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds a primary key to a table
 
 
 
-public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
+public  **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
 Drops a table's primary key
 
 
 
-public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 Adds a foreign key to a table
 
 
 
-public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
+public  **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
 Drops a foreign key from a table
 
@@ -390,7 +390,7 @@ Returns the SQL column definition from a column
 
 
 
-public  **listTables** ([*unknown* $schemaName])
+public  **listTables** ([*mixed* $schemaName])
 
 List all tables on a database 
 
@@ -403,7 +403,7 @@ List all tables on a database
 
 
 
-public  **listViews** ([*unknown* $schemaName])
+public  **listViews** ([*mixed* $schemaName])
 
 List all views on a database 
 
@@ -429,7 +429,7 @@ Lists table indexes
 
 
 
-public  **describeReferences** (*unknown* $table, [*unknown* $schema])
+public  **describeReferences** (*mixed* $table, [*mixed* $schema])
 
 Lists table references 
 
@@ -442,7 +442,7 @@ Lists table references
 
 
 
-public  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
+public  **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
 Gets creation options from a table 
 
@@ -455,25 +455,25 @@ Gets creation options from a table
 
 
 
-public  **createSavepoint** (*unknown* $name)
+public  **createSavepoint** (*mixed* $name)
 
 Creates a new savepoint
 
 
 
-public  **releaseSavepoint** (*unknown* $name)
+public  **releaseSavepoint** (*mixed* $name)
 
 Releases given savepoint
 
 
 
-public  **rollbackSavepoint** (*unknown* $name)
+public  **rollbackSavepoint** (*mixed* $name)
 
 Rollbacks given savepoint
 
 
 
-public  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
+public  **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
 Set if nested transactions should use savepoints
 

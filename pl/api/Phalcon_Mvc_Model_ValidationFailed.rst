@@ -38,11 +38,6 @@ Clone the exception
 
 
 
-public  **__wakeup** () inherited from Exception
-
-...
-
-
 final public *string*  **getMessage** () inherited from Exception
 
 Gets the Exception message

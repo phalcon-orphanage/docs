@@ -60,13 +60,13 @@ Returns an argument in a specific position
 
 
 
-public *mixed*  **getNamedArgument** (*unknown* $name)
+public *mixed*  **getNamedArgument** (*mixed* $name)
 
 Returns a named argument
 
 
 
-public *mixed*  **getNamedParameter** (*unknown* $name)
+public *mixed*  **getNamedParameter** (*mixed* $name)
 
 Returns a named parameter
 

@@ -45,13 +45,13 @@ Phalcon\\Assets\\Inline constructor
 
 
 
-public  **setType** (*unknown* $type)
+public  **setType** (*mixed* $type)
 
 Sets the inline's type
 
 
 
-public  **setFilter** (*unknown* $filter)
+public  **setFilter** (*mixed* $filter)
 
 Sets if the resource must be filtered or not
 

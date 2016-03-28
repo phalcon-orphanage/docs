@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Router\\GroupInterface**
 Methods
 -------
 
-abstract public  **setHostname** (*unknown* $hostname)
+abstract public  **setHostname** (*mixed* $hostname)
 
 ...
 
@@ -19,7 +19,7 @@ abstract public  **getHostname** ()
 ...
 
 
-abstract public  **setPrefix** (*unknown* $prefix)
+abstract public  **setPrefix** (*mixed* $prefix)
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **getPrefix** ()
 ...
 
 
-abstract public  **beforeMatch** (*unknown* $beforeMatch)
+abstract public  **beforeMatch** (*mixed* $beforeMatch)
 
 ...
 
@@ -39,7 +39,7 @@ abstract public  **getBeforeMatch** ()
 ...
 
 
-abstract public  **setPaths** (*unknown* $paths)
+abstract public  **setPaths** (*mixed* $paths)
 
 ...
 
@@ -54,42 +54,42 @@ abstract public  **getRoutes** ()
 ...
 
 
-abstract public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+abstract public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 ...
 
 
-abstract public  **addGet** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPost** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPost** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPut** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPatch** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPatch** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addDelete** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addDelete** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addOptions** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addOptions** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addHead** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addHead** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 

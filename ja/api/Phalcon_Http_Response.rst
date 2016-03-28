@@ -42,7 +42,7 @@ Returns the internal dependency injector
 
 
 
-public  **setStatusCode** (*unknown* $code, [*unknown* $message])
+public  **setStatusCode** (*mixed* $code, [*mixed* $message])
 
 Sets the HTTP response code 
 
@@ -105,7 +105,7 @@ Overwrites a header in the response
 
 
 
-public  **setRawHeader** (*unknown* $header)
+public  **setRawHeader** (*mixed* $header)
 
 Send a raw header to the response 
 
@@ -137,7 +137,7 @@ Sets a Expires header to use HTTP cache
 
 
 
-public  **setCache** (*unknown* $minutes)
+public  **setCache** (*mixed* $minutes)
 
 Sets Cache headers to use HTTP cache 
 
@@ -170,7 +170,7 @@ Sets the response content-type mime, optionally the charset
 
 
 
-public  **setEtag** (*unknown* $etag)
+public  **setEtag** (*mixed* $etag)
 
 Set a custom ETag 
 
@@ -206,7 +206,7 @@ Redirect by HTTP to another action or URL
 
 
 
-public  **setContent** (*unknown* $content)
+public  **setContent** (*mixed* $content)
 
 Sets HTTP response body 
 
@@ -219,9 +219,9 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setJsonContent** (*mixed* $content, [*int* $jsonOptions], [*unknown* $depth])
+public  **setJsonContent** (*mixed* $content, [*mixed* $jsonOptions], [*mixed* $depth])
 
-Sets HTTP response body. The parameter is automatically converted to JSON 
+Sets HTTP response body. The parameter is automatically converted to JSON and also sets default header: Content-Type: "application/json; charset=UTF-8" 
 
 .. code-block:: php
 
@@ -268,7 +268,7 @@ Prints out HTTP response to the client
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*mixed* $attachment])
 
 Sets an attached file to be sent at the end of the request
 

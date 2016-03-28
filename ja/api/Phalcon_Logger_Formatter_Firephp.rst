@@ -16,13 +16,13 @@ Formats messages so that they can be sent to FirePHP
 Methods
 -------
 
-public  **getTypeString** (*unknown* $type)
+public  **getTypeString** (*mixed* $type)
 
 Returns the string meaning of a logger constant
 
 
 
-public  **setShowBacktrace** ([*unknown* $isShow])
+public  **setShowBacktrace** ([*mixed* $isShow])
 
 Returns the string meaning of a logger constant
 
@@ -34,7 +34,7 @@ Returns the string meaning of a logger constant
 
 
 
-public  **enableLabels** ([*unknown* $isEnable])
+public  **enableLabels** ([*mixed* $isEnable])
 
 Returns the string meaning of a logger constant
 

@@ -65,25 +65,25 @@ Phalcon\\Assets\\Resource constructor
 
 
 
-public  **setType** (*unknown* $type)
+public  **setType** (*mixed* $type)
 
 Sets the resource's type
 
 
 
-public  **setPath** (*unknown* $path)
+public  **setPath** (*mixed* $path)
 
 Sets the resource's path
 
 
 
-public  **setLocal** (*unknown* $local)
+public  **setLocal** (*mixed* $local)
 
 Sets if the resource is local or external
 
 
 
-public  **setFilter** (*unknown* $filter)
+public  **setFilter** (*mixed* $filter)
 
 Sets if the resource must be filtered or not
 
@@ -95,25 +95,25 @@ Sets extra HTML attributes
 
 
 
-public  **setTargetUri** (*unknown* $targetUri)
+public  **setTargetUri** (*mixed* $targetUri)
 
 Sets a target uri for the generated HTML
 
 
 
-public  **setSourcePath** (*unknown* $sourcePath)
+public  **setSourcePath** (*mixed* $sourcePath)
 
 Sets the resource's source path
 
 
 
-public  **setTargetPath** (*unknown* $targetPath)
+public  **setTargetPath** (*mixed* $targetPath)
 
 Sets the resource's target path
 
 
 
-public  **getContent** ([*unknown* $basePath])
+public  **getContent** ([*mixed* $basePath])
 
 Returns the content of the resource as an string Optionally a base path where the resource is located can be set
 
@@ -125,13 +125,13 @@ Returns the real target uri for the generated HTML
 
 
 
-public  **getRealSourcePath** ([*unknown* $basePath])
+public  **getRealSourcePath** ([*mixed* $basePath])
 
 Returns the complete location where the resource is located
 
 
 
-public  **getRealTargetPath** ([*unknown* $basePath])
+public  **getRealTargetPath** ([*mixed* $basePath])
 
 Returns the complete location where the resource must be written
 

@@ -79,13 +79,13 @@ Returns an array with reserved properties that cannot be part of the insert/upda
 
 
 
-protected  **useImplicitObjectIds** (*unknown* $useImplicitObjectIds)
+protected  **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
 Sets if a model must use implicit objects ids
 
 
 
-protected  **setSource** (*unknown* $source)
+protected  **setSource** (*mixed* $source)
 
 Sets collection name which model should be mapped
 
@@ -97,7 +97,7 @@ Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** (*unknown* $connectionService)
+public  **setConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name
 
@@ -165,7 +165,7 @@ Executes internal hooks before save a document
 
 
 
-final protected  **_postSave** (*unknown* $disableEvents, *unknown* $success, *unknown* $exists)
+final protected  **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
 Executes internal events after save a document
 
@@ -229,19 +229,19 @@ Check whether validation process has generated any messages
 
 
 
-public  **fireEvent** (*unknown* $eventName)
+public  **fireEvent** (*mixed* $eventName)
 
 Fires an internal event
 
 
 
-public  **fireEventCancel** (*unknown* $eventName)
+public  **fireEventCancel** (*mixed* $eventName)
 
 Fires an internal event that cancels the operation
 
 
 
-protected  **_cancelOperation** (*unknown* $disableEvents)
+protected  **_cancelOperation** (*mixed* $disableEvents)
 
 Cancel the current operation
 
@@ -401,7 +401,7 @@ Perform an aggregation using the Mongo aggregation framework
 
 
 
-public static  **summatory** (*unknown* $field, [*unknown* $conditions], [*unknown* $finalize])
+public static  **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
 Allows to perform a summatory group for a column in the collection
 
@@ -431,7 +431,7 @@ Sets up a behavior in a collection
 
 
 
-public  **skipOperation** (*unknown* $skip)
+public  **skipOperation** (*mixed* $skip)
 
 Skips the current operation forcing a success state
 
@@ -456,7 +456,7 @@ Serializes the object ignoring connections or protected properties
 
 
 
-public  **unserialize** (*unknown* $data)
+public  **unserialize** (*mixed* $data)
 
 Unserializes the object from a serialized string
 

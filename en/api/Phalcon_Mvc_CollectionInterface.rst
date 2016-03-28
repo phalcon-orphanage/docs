@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\CollectionInterface**
 Methods
 -------
 
-abstract public  **setId** (*unknown* $id)
+abstract public  **setId** (*mixed* $id)
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **getSource** ()
 ...
 
 
-abstract public  **setConnectionService** (*unknown* $connectionService)
+abstract public  **setConnectionService** (*mixed* $connectionService)
 
 ...
 
@@ -44,12 +44,12 @@ abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\CollectionInterface
 ...
 
 
-abstract public  **fireEvent** (*unknown* $eventName)
+abstract public  **fireEvent** (*mixed* $eventName)
 
 ...
 
 
-abstract public  **fireEventCancel** (*unknown* $eventName)
+abstract public  **fireEventCancel** (*mixed* $eventName)
 
 ...
 
@@ -74,7 +74,7 @@ abstract public  **save** ()
 ...
 
 
-abstract public static  **findById** (*unknown* $id)
+abstract public static  **findById** (*mixed* $id)
 
 ...
 

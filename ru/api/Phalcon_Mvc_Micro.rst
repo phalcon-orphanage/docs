@@ -119,7 +119,7 @@ Sets a service from the DI
 
 
 
-public  **hasService** (*unknown* $serviceName)
+public  **hasService** (*mixed* $serviceName)
 
 Checks if a service is registered in the DI
 
@@ -247,7 +247,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

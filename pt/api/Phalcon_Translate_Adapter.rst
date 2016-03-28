@@ -40,7 +40,7 @@ Sets a translation value
 
 
 
-public  **offsetExists** (*unknown* $translateKey)
+public  **offsetExists** (*mixed* $translateKey)
 
 Check whether a translation key exists
 
@@ -58,7 +58,7 @@ Returns the translation related to the given key
 
 
 
-protected  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders])
+protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
 Replaces placeholders by the values passed
 

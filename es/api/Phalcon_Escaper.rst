@@ -23,7 +23,7 @@ Escapes different kinds of text securing them. By using this component you may p
 Methods
 -------
 
-public  **setEncoding** (*unknown* $encoding)
+public  **setEncoding** (*mixed* $encoding)
 
 Sets the encoding to be used by the escaper 
 
@@ -42,7 +42,7 @@ Returns the internal encoding used by the escaper
 
 
 
-public  **setHtmlQuoteType** (*unknown* $quoteType)
+public  **setHtmlQuoteType** (*mixed* $quoteType)
 
 Sets the HTML quoting type for htmlspecialchars 
 
@@ -55,43 +55,43 @@ Sets the HTML quoting type for htmlspecialchars
 
 
 
-final public  **detectEncoding** (*unknown* $str)
+final public  **detectEncoding** (*mixed* $str)
 
 Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
 
 
-final public  **normalizeEncoding** (*unknown* $str)
+final public  **normalizeEncoding** (*mixed* $str)
 
 Utility to normalize a string's encoding to UTF-32.
 
 
 
-public  **escapeHtml** (*unknown* $text)
+public  **escapeHtml** (*mixed* $text)
 
 Escapes a HTML string. Internally uses htmlspecialchars
 
 
 
-public  **escapeHtmlAttr** (*unknown* $attribute)
+public  **escapeHtmlAttr** (*mixed* $attribute)
 
 Escapes a HTML attribute string
 
 
 
-public  **escapeCss** (*unknown* $css)
+public  **escapeCss** (*mixed* $css)
 
 Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 
-public  **escapeJs** (*unknown* $js)
+public  **escapeJs** (*mixed* $js)
 
 Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 
-public  **escapeUrl** (*unknown* $url)
+public  **escapeUrl** (*mixed* $url)
 
 Escapes a URL. Internally uses rawurlencode
 

@@ -38,7 +38,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName)
+public  **__get** (*mixed* $propertyName)
 
 Magic method __get
 

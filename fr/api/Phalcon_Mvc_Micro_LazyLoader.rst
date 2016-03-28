@@ -12,7 +12,7 @@ Lazy-Load of handlers for Mvc\\Micro using auto-loading
 Methods
 -------
 
-public  **__construct** (*unknown* $definition)
+public  **__construct** (*mixed* $definition)
 
 Phalcon\\Mvc\\Micro\\LazyLoader constructor
 

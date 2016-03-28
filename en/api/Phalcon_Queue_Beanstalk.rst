@@ -6,7 +6,7 @@ Class **Phalcon\\Queue\\Beanstalk**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/queue/beanstalk.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-* Phalcon\\Queue\\Beanstalk * * Class to access the beanstalk queue service. * Partially implements the protocol version 1.2 *
+Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
 
 Methods
@@ -30,19 +30,19 @@ Inserts jobs into the queue
 
 
 
-public  **reserve** ([*unknown* $timeout])
+public  **reserve** ([*mixed* $timeout])
 
 Reserves a job in the queue
 
 
 
-public  **choose** (*unknown* $tube)
+public  **choose** (*mixed* $tube)
 
 Change the active tube. By default the tube is "default"
 
 
 
-public  **watch** (*unknown* $tube)
+public  **watch** (*mixed* $tube)
 
 Change the active tube. By default the tube is "default"
 
@@ -54,7 +54,7 @@ Get stats of the Beanstalk server.
 
 
 
-public  **statsTube** (*unknown* $tube)
+public  **statsTube** (*mixed* $tube)
 
 Get stats of a tube.
 
@@ -90,13 +90,13 @@ Fetch a YAML payload from the Beanstalkd server
 
 
 
-public *string|boolean Data or `false` on error.*  **read** ([*unknown* $length])
+public *string|boolean Data or `false` on error.*  **read** ([*mixed* $length])
 
 Reads a packet from the socket. Prior to reading from the socket will check for availability of the connection.
 
 
 
-protected  **write** (*unknown* $data)
+protected  **write** (*mixed* $data)
 
 Writes data to the socket. Performs a connection if none is available
 

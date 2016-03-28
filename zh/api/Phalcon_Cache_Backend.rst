@@ -17,7 +17,7 @@ public  **getFrontend** ()
 ...
 
 
-public  **setFrontend** (*unknown* $frontend)
+public  **setFrontend** (*mixed* $frontend)
 
 ...
 
@@ -27,7 +27,7 @@ public  **getOptions** ()
 ...
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*mixed* $options)
 
 ...
 
@@ -37,7 +37,7 @@ public  **getLastKey** ()
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey)
+public  **setLastKey** (*mixed* $lastKey)
 
 ...
 
@@ -54,7 +54,7 @@ Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer])
+public  **stop** ([*mixed* $stopBuffer])
 
 Stops the frontend without store any cached content
 
