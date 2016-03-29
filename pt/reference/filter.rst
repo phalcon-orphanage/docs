@@ -1,4 +1,4 @@
-Filtrando e limpeza
+Filtrando e Normalizando
 ========================
 
 Limpar a entrada do usuário é uma parte crítica do desenvolvimento de software. Confiando nos dados passados pelo usuário pode levar ao acesso não autorizado ao conteúdo de sua aplicação, principalmente os dados do usuário, ou até mesmo o servidor o aplicativo está hospedado.
@@ -6,14 +6,14 @@ Limpar a entrada do usuário é uma parte crítica do desenvolvimento de softwar
 .. figure:: ../_static/img/sql.png
    :align: center
 
-`Full image (from xkcd)`_
+`Imagem completa (de xkcd)`_
 
-The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+O componente :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` provê um conjunto de filtros e normalizadores. Fornece uma camada orientada a objetos em torno da extensão filter do PHP.
 
-Sanitizing data
----------------
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
-By sanitizing input we ensure that application integrity will be intact.
+Normalizando dados
+------------------
+Normalização é o processo que remove caracteres específicos de um valor, que não são requeridos ou desejados pelo usuário ou aplicação.
+Pelas entradas de normalização de dados podemos garantir que a integridade da aplicação estará intacta.
 
 .. code-block:: php
 
@@ -36,10 +36,10 @@ By sanitizing input we ensure that application integrity will be intact.
     $filter->sanitize("!100a019.01a", "float");
 
 
-Sanitizing from Controllers
----------------------------
-You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
-(through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+Normalizando a partir de Controladores
+--------------------------------------
+Você pode usar um objeto :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` a partir de seus controladores quando estiver acessando dados de entrada via GET ou POST
+(pelo objeto de requisição). O primeiro parâmetro é o nome da variável que foi obtida; o segundo parâmetro é o filtro a ser aplicado.
 
 .. code-block:: php
 
@@ -64,9 +64,9 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
         }
     }
 
-Filtering Action Parameters
----------------------------
-The next example shows you how to sanitize the action parameters within a controller action:
+Filtrando parâmetros de uma action
+----------------------------------
+O próximo exemplo mostra como você normaliza parâmetros passados para uma "action" de um controlador:
 
 .. code-block:: php
 
@@ -87,10 +87,10 @@ The next example shows you how to sanitize the action parameters within a contro
         }
     }
 
-Filtering data
---------------
-In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
-the format we expect.
+Filtrando dados
+---------------
+Além de normalização, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` também disponhe de filtragem por remoção ou modificação de dados de entrada para
+o formato que esperamos.
 
 .. code-block:: php
 
@@ -107,35 +107,35 @@ the format we expect.
     $filter->sanitize("  Hello   ", "trim");
 
 
-Types of Built-in Filters
--------------------------
-The following are the built-in filters provided by this component:
+Tipos de Filtros imbutidos
+--------------------------
+Os seguintes filtros imbutidos estão disponíveis por esse componente:
 
-+-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
-+===========+===========================================================================+
-| string    | Strip tags and escapes HTML entities, including single and double quotes. |
-+-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
-+-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
-+-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
-+-----------+---------------------------------------------------------------------------+
++-----------+------------------------------------------------------------------------------+
+| Nome      | Descrição                                                                    |
++===========+==============================================================================+
+| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
++-----------+------------------------------------------------------------------------------+
+| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
++-----------+------------------------------------------------------------------------------+
+| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
++-----------+------------------------------------------------------------------------------+
+| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
++-----------+------------------------------------------------------------------------------+
+| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
++-----------+------------------------------------------------------------------------------+
+| striptags | Aplica a função strip_tags_                                                  |
++-----------+------------------------------------------------------------------------------+
+| trim      | Aplica a função trim_                                                        |
++-----------+------------------------------------------------------------------------------+
+| lower     | Aplica a função strtolower_                                                  |
++-----------+------------------------------------------------------------------------------+
+| upper     | Aplica a função strtoupper_                                                  |
++-----------+------------------------------------------------------------------------------+
 
-Creating your own Filters
--------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonymous function:
+Criando seus próprios filtros
+-----------------------------
+Você pode adicionar seus próprios filtros em :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. O filtro pode ser uma função anônima (lambda, closure):
 
 .. code-block:: php
 
@@ -153,7 +153,7 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
     // Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
-Or, if you prefer, you can implement the filter in a class:
+Ou, se preferir, você pode implementar uma classe filtro:
 
 .. code-block:: php
 
@@ -177,18 +177,17 @@ Or, if you prefer, you can implement the filter in a class:
     // Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
-Complex Sanitizing and Filtering
---------------------------------
-PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
+Filtragem e normalização complexa
+---------------------------------
+O PHP provê uma excelente extensão de filtros, você pode usá-la. Consulte a documentação: `Filtragem de Dados na Documentação PHP`_
 
-Implementing your own Filter
-----------------------------
-The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
-replacing the one provided by Phalcon.
+Implementando seu próprio componente Filtro
+-------------------------------------------
+A :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface precisa ser implementada para criar seu próprio serviço de filtragem, substituindo o provido pelo Phalcon.
 
-.. _Full image (from xkcd): http://xkcd.com/327/
-.. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
-.. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
-.. _trim: http://www.php.net/manual/en/function.trim.php
-.. _strtolower: http://www.php.net/manual/en/function.strtolower.php
-.. _strtoupper: http://www.php.net/manual/en/function.strtoupper.php
+.. _Imagem completa (de xkcd): http://xkcd.com/327/
+.. _Filtragem de Dados na Documentação PHP: http://www.php.net/manual/pt_BR/book.filter.php
+.. _strip_tags: http://www.php.net/manual/pt_BR/function.strip-tags.php
+.. _trim: http://www.php.net/manual/pt_BR/function.trim.php
+.. _strtolower: http://www.php.net/manual/pt_BR/function.strtolower.php
+.. _strtoupper: http://www.php.net/manual/pt_BR/function.strtoupper.php
