@@ -593,7 +593,7 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 .. highlights::
 
-	默认的参数绑定类型是:code:`Phalcon\Db\Column::BIND_PARAM_STR`, 若所有字段都是string类型，则不用特意去设置参数的“bindTypes”.
+	默认的参数绑定类型是 :code:`Phalcon\Db\Column::BIND_PARAM_STR` , 若所有字段都是string类型，则不用特意去设置参数的“bindTypes”.
 
 如果你的绑定参数是array数组，那么数组索引必须从数字0开始:
 
