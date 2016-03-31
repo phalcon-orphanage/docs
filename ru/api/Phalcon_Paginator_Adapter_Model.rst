@@ -31,7 +31,7 @@ This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as a 
 Methods
 -------
 
-public  **__construct** (*unknown* $config)
+public  **__construct** (*array* $config)
 
 Phalcon\\Paginator\\Adapter\\Model constructor
 

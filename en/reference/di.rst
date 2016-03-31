@@ -292,7 +292,7 @@ of our component:
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
     class SomeComponent
     {
@@ -321,7 +321,7 @@ of our component:
         }
     }
 
-    $di = new DI();
+    $di = new Di();
 
     // Register a "db" service in the container
     $di->set('db', function () {
@@ -356,9 +356,9 @@ their behavior or any other aspect of them and that would not affect the compone
 
 Our approach
 ============
-:doc:`Phalcon\\DI <../api/Phalcon_DI>` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, :doc:`Phalcon\\DI <../api/Phalcon_DI>` is essential to integrate the different components of the framework. The developer can
+Since Phalcon is highly decoupled, :doc:`Phalcon\\Di <../api/Phalcon_Di>` is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
 Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
@@ -376,7 +376,7 @@ This way of working gives us many advantages:
 
 * We can easily replace a component with one created by ourselves or a third party.
 * We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-* We can get global instances of components in a structured and unified way
+* We can get global instances of components in a structured and unified way.
 
 Services can be registered using several types of definitions:
 
@@ -387,7 +387,7 @@ Services can be registered using several types of definitions:
     use Phalcon\Http\Request;
 
     // Create the Dependency Injector Container
-    $di = new Phalcon\DI();
+    $di = new Phalcon\Di();
 
     // By its class name
     $di->set("request", 'Phalcon\Http\Request');
@@ -417,7 +417,7 @@ The array syntax is also allowed to register services:
     use Phalcon\Http\Request;
 
     // Create the Dependency Injector Container
-    $di = new Phalcon\DI();
+    $di = new Phalcon\Di();
 
     // By its class name
     $di["request"] = 'Phalcon\Http\Request';
@@ -444,7 +444,7 @@ developer and the particular requirements that will designate which one is used.
 Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
 code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
-:doc:`Phalcon\\DI <../api/Phalcon_DI>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
 in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 Simple Registration
@@ -787,7 +787,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 Events
 ------
-:doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` is able to send events to an :doc:`EventsManager <events>` if it is present.
 Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
 The following events are supported:
 
@@ -899,13 +899,13 @@ for it.
 Automatic Injecting of the DI itself
 ====================================
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
-to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
+to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\InjectionAwareInterface;
+    use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
@@ -943,7 +943,7 @@ could add some small improvement in performance.
 
     <?php
 
-    // Resolve the object externally instead of using a definition for it:
+    // Resolve the object externally instead of using a definition for it
     $router = new MyRouter();
 
     // Pass the resolved object to the service registration
@@ -982,28 +982,28 @@ If needed you can access the latest DI created in a static function in the follo
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
     class SomeComponent
     {
         public static function someMethod()
         {
             // Get the session service
-            $session = DI::getDefault()->getSession();
+            $session = Di::getDefault()->getSession();
         }
     }
 
 Factory Default DI
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\DI <../api/Phalcon_DI>` called :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`. This class automatically
+framework. To achieve this, the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`. This class automatically
 registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 
@@ -1065,4 +1065,4 @@ Implementing your own DI
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
-.. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _singletons: http://en.wikipedia.org/wiki/Singleton_pattern

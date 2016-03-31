@@ -32,7 +32,7 @@ Pagination using a PHQL query builder as source of data
 Methods
 -------
 
-public  **__construct** (*unknown* $config)
+public  **__construct** (*array* $config)
 
 
 
@@ -44,7 +44,7 @@ Get the current page number
 
 
 
-public  **setQueryBuilder** (*unknown* $builder)
+public  **setQueryBuilder** (:doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` $builder)
 
 Set query builder object
 

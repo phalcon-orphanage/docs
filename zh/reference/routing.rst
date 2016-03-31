@@ -377,6 +377,23 @@ The following examples show how to use them:
             return str_replace('-', '', $slug);
         });
 
+Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
+
+.. code-block:: php
+
+    <?php
+
+    // This example works off the assumption that the ID is being used as parameter in the url: /products/4
+    $router
+        ->add('/products/{id}', array(
+            'controller' => 'products',
+            'action'     => 'show'
+        ))
+        ->convert('id', function ($id) {
+            // Fetch the model
+            return Product::findFirstById($id);
+        });
+
 路由分组（Groups of Routes）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If a set of routes have common paths they can be grouped to easily maintain them:
@@ -790,7 +807,8 @@ If this function return :code:`false`, the route will be treated as non-matched:
         'controller' => 'session'
     ))->beforeMatch(function ($uri, $route) {
         // Check if the request was made with Ajax
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
             return false;
         }
         return true;
@@ -806,7 +824,7 @@ You can re-use these extra conditions in classes:
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
         }
     }
 
@@ -911,7 +929,7 @@ Phalcon, you can also use :code:`$_SERVER['REQUEST_URI']` if required:
     // ...
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI'] (default)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI']
 
 Or you can manually pass a URI to the :code:`handle()` method:
 
@@ -1040,37 +1058,37 @@ Since this component has no dependencies, you can create a file as shown below t
 
 只有标记了格式正确的注解的方法才能被用作路由。Phalcon支持如下注解：
 
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| 名称         | 描述                                                                                              | 用法                                                               |
-+==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Get          | This annotation marks a method as a route restricting the HTTP method to GET                      | @Get("/api/products/search")                                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Post         | This annotation marks a method as a route restricting the HTTP method to POST                     | @Post("/api/products/save")                                        |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Put          | This annotation marks a method as a route restricting the HTTP method to PUT                      | @Put("/api/products/save")                                         |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Delete       | This annotation marks a method as a route restricting the HTTP method to DELETE                   | @Delete("/api/products/delete/{id}")                               |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | @Option("/api/products/info")                                      |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| 名称         | 描述                                                                                              | 用法                                                                       |
++==============+===================================================================================================+============================================================================+
+| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | :code:`@RoutePrefix("/api/products")`                                      |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | :code:`@Route("/api/products/show")`                                       |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Get          | This annotation marks a method as a route restricting the HTTP method to GET                      | :code:`@Get("/api/products/search")`                                       |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Post         | This annotation marks a method as a route restricting the HTTP method to POST                     | :code:`@Post("/api/products/save")`                                        |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Put          | This annotation marks a method as a route restricting the HTTP method to PUT                      | :code:`@Put("/api/products/save")`                                         |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Delete       | This annotation marks a method as a route restricting the HTTP method to DELETE                   | :code:`@Delete("/api/products/delete/{id}")`                               |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | :code:`@Option("/api/products/info")`                                      |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 用来添加路由的注解支持如下参数：
 
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| 名称         | 描述                                                                                              | 用法                                                               |
-+==============+===================================================================================================+====================================================================+
-| methods      | Define one or more HTTP method that route must meet with                                          | @Route("/api/products", methods={"GET", "POST"})                   |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to :code:`Phalcon\Mvc\Router::add()`                        | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| 名称         | 描述                                                                                              | 用法                                                                       |
++==============+===================================================================================================+============================================================================+
+| methods      | Define one or more HTTP method that route must meet with                                          | :code:`@Route("/api/products", methods={"GET", "POST"})`                   |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| name         | Define a name for the route                                                                       | :code:`@Route("/api/products", name="get-products")`                       |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| paths        | An array of paths like the one passed to :code:`Phalcon\Mvc\Router::add()`                        | :code:`@Route("/posts/{id}/{slug}", paths={module="backend"})`             |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| conversors   | A hash of conversors to be applied to the parameters                                              | :code:`@Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"})` |
++--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 如果路由对应的控制器属于一个模块，使用 :code:`addModuleResource()` 效果更佳：
 

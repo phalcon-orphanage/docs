@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\ModelInterface**
 Methods
 -------
 
-abstract public  **setTransaction** (*unknown* $transaction)
+abstract public  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 ...
 
@@ -69,22 +69,22 @@ abstract public  **getDirtyState** ()
 ...
 
 
-abstract public  **assign** (*unknown* $data, [*unknown* $dataColumnMap], [*unknown* $whiteList])
+abstract public  **assign** (*array* $data, [*unknown* $dataColumnMap], [*unknown* $whiteList])
 
 ...
 
 
-abstract public static  **cloneResultMap** (*unknown* $base, *unknown* $data, *unknown* $columnMap, [*unknown* $dirtyState], [*unknown* $keepSnapshots])
+abstract public static  **cloneResultMap** (*unknown* $base, *array* $data, *unknown* $columnMap, [*unknown* $dirtyState], [*unknown* $keepSnapshots])
 
 ...
 
 
-abstract public static  **cloneResult** (*unknown* $base, *unknown* $data, [*unknown* $dirtyState])
+abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*unknown* $dirtyState])
 
 ...
 
 
-abstract public static  **cloneResultMapHydrate** (*unknown* $data, *unknown* $columnMap, *unknown* $hydrationMode)
+abstract public static  **cloneResultMapHydrate** (*array* $data, *unknown* $columnMap, *unknown* $hydrationMode)
 
 ...
 
@@ -99,7 +99,7 @@ abstract public static  **findFirst** ([*unknown* $parameters])
 ...
 
 
-abstract public static  **query** ([*unknown* $dependencyInjector])
+abstract public static  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 ...
 
@@ -139,7 +139,7 @@ abstract public  **fireEventCancel** (*unknown* $eventName)
 ...
 
 
-abstract public  **appendMessage** (*unknown* $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 ...
 
@@ -194,7 +194,7 @@ abstract public  **getRelated** (*unknown* $alias, [*unknown* $arguments])
 ...
 
 
-abstract public  **setSnapshotData** (*unknown* $data, [*unknown* $columnMap])
+abstract public  **setSnapshotData** (*array* $data, [*unknown* $columnMap])
 
 ...
 

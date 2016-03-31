@@ -213,9 +213,9 @@
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
-    $di = new DI();
+    $di = new Di();
 
     $di->set('storage', function () {
         return new Storage('/some/directory');
@@ -435,4 +435,4 @@
         }
     }
 
-.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
+.. _DRY: https://zh.wikipedia.org/wiki/%E4%B8%80%E6%AC%A1%E4%B8%94%E4%BB%85%E4%B8%80%E6%AC%A1

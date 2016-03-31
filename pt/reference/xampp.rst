@@ -17,12 +17,12 @@ Extraia a biblioteca DLL do phalcon do arquivo zip:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copie o arquivo php_phalcon.dll para o diretório de extensões do PHP. Se você tiver o XAMPP instalado no c:\\xampp, a extensão precisa estar no c:\\xampp\\php\\ext.
+Copie o arquivo php_phalcon.dll para o diretório de extensões do PHP. Se você tiver o XAMPP instalado no C:\\xampp, a extensão precisa estar no C:\\xampp\\php\\ext.
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
-Edite o arquivo php.ini localizado no diretório ﻿C:\\xampp\\php\\php.ini. Esse arquivo pode ser editado com o Notepad ou outro programa similar. Nós recomendamos o Notepad++ para evitar problemas com caracteres de controle de final de linha. Acrescente no final do arquivo a seguinte instrução: extension=php_phalcon.dll e salve-o.
+Edite o arquivo php.ini localizado no diretório C:\\xampp\\php\\php.ini. Esse arquivo pode ser editado com o Notepad ou outro programa similar. Nós recomendamos o Notepad++ para evitar problemas com caracteres de controle de final de linha. Acrescente no final do arquivo a seguinte instrução: extension=php_phalcon.dll e salve-o.
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center
@@ -50,11 +50,11 @@ O seguinte screencast é um guia passo-a-passo para instalação do Phalcon no W
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Guias Relacionados
 ------------------
 * :doc:`Instalação Geral </reference/install>`
 * :doc:`Instalação Detalhada do WAMP para Windows </reference/wamp>`
 
-.. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
+.. _XAMPP: https://www.apachefriends.org/pt_br/download.html

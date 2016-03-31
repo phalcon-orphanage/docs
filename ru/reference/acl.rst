@@ -107,6 +107,167 @@
     $acl->isAllowed("Guests", "Customers", "search"); // Возвращает 1
     $acl->isAllowed("Guests", "Customers", "create"); // Возвращает 1
 
+Function based access
+---------------------
+Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use :code:`isAllowed()` method. You can pass parameters as associative array to :code:`isAllowed()` method as 4th argument where key is parameter name in our defined function.
+
+.. code-block:: php
+
+    <?php
+    // Set access level for role into resources with custom function
+    $acl->allow("Guests", "Customers", "search",function($a){
+        return $a % 2 == 0;
+    });
+
+    // Check whether role has access to the operation with custom function
+    $acl->isAllowed("Guests","Customers","search",['a'=>4]); // Returns true
+    $acl->isAllowed("Guests","Customers","search",['a'=>3]); // Returns false
+
+Also if you don't provide any parameters in :code:`isAllowed()` method then default behaviour will be :code:`Acl::ALLOW`. You can change it by using method :code:`setNoArgumentsDefaultAction()`.
+
+.. code-block:: php
+
+    <?php
+    // Set access level for role into resources with custom function
+    $acl->allow("Guests", "Customers", "search",function($a){
+        return $a % 2 == 0;
+    });
+
+    // Check whether role has access to the operation with custom function
+    $acl->isAllowed("Guests","Customers","search"); // Returns true
+    // Change no arguments default action
+    $acl->setNoArgumentsDefaultAction(Acl::DENY);
+    $acl->isAllowed("Guests","Customers","search"); // Returns false
+
+Objects as role name and resource name
+--------------------------------------
+You can pass objects as :code:`roleName` and :code:`resourceName`. Your classes must implement :doc:`Phalcon\\Acl\\RoleAware <../api/Phalcon_Acl_RoleAware>` for :code:`roleName` and :doc:`Phalcon\\Acl\\ResourceAware <../api/Phalcon_Acl_ResourceAware>` for :code:`resourceName`.
+
+Our :code:`UserRole` class
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl\RoleAware;
+
+    // Create our class which will be used as roleName
+    class UserRole implements RoleAware
+    {
+        protected $id;
+        protected $roleName;
+
+        public function __construct($id,$roleName)
+        {
+            $this->id=$id;
+            $this->roleName=$roleName;
+        }
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        // Implemented function from RoleAware Interface
+        public function getRoleName()
+        {
+            return $this->roleName;
+        }
+    }
+
+And our :code:`ModelResource` class
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl\ResourceAware;
+
+    // Create our class which will be used as resourceName
+    class ModelResource implements ResourceAware
+    {
+        protected $id;
+        protected $resourceName;
+        protected $userId;
+
+        public function __construct($id,$resourceName,$userId)
+        {
+            $this->id=$id;
+            $this->resourceName=$resourceName;
+            $this->userId=$userId;
+        }
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function getUserId()
+        {
+            return $this->userId;
+        }
+
+        // Implemented function from ResourceAware Interface
+        public function getResourceName()
+        {
+            return $this->resourceName;
+        }
+    }
+
+Then you can use them in :code:`isAllowed()` method.
+
+.. code-block:: php
+
+    <?php
+
+    use UserRole;
+    use ModelResource;
+
+    // Set access level for role into resources
+    $acl->allow("Guests", "Customers", "search");
+    $acl->allow("Guests", "Customers", "create");
+    $acl->deny("Guests", "Customers", "update");
+
+    // Create our objects providing roleName and resourceName
+    $customer = new ModelResource(1,"Customers",2);
+    $designer = new UserRole(1,"Designers");
+    $guest = new UserRole(2,"Guests");
+    $anotherGuest = new UserRole(3,"Guests");
+
+    // Check whether our user objects have access to the operation on model object
+    $acl->isAllowed($designer,$customer,"search") // Returns false
+    $acl->isAllowed($guest,$customer,"search") // Returns true
+    $acl->isAllowed($anotherGuest,$customer,"search") // Returns true
+
+Also you can access those objects in your custom function in :code:`allow()` or :code:`deny()`. They are automatically bind to parameters by type in function.
+
+.. code-block:: php
+
+    <?php
+
+    use UserRole;
+    use ModelResource;
+
+    // Set access level for role into resources with custom function
+    $acl->allow("Guests", "Customers", "search",function(UserRole $user,ModelResource $model){ // User and Model classes are necessary
+        return $user->getId == $model->getUserId();
+    });
+    $acl->allow("Guests", "Customers", "create");
+    $acl->deny("Guests", "Customers", "update");
+
+    // Create our objects providing roleName and resourceName
+    $customer = new ModelResource(1,"Customers",2);
+    $designer = new UserRole(1,"Designers");
+    $guest = new UserRole(2,"Guests");
+    $anotherGuest = new UserRole(3,"Guests");
+
+    // Check whether our user objects have access to the operation on model object
+    $acl->isAllowed($designer,$customer,"search") // Returns false
+    $acl->isAllowed($guest,$customer,"search") // Returns true
+    $acl->isAllowed($anotherGuest,$customer,"search") // Returns false
+
+You can still add any custom parameters to function and pass associative array in :code:`isAllowed()` method. Also order doesn't matter.
+
 Наследование ролей
 ------------------
 Вы можете строить сложные структуры ролей используя наследование, которое предоставляет класс

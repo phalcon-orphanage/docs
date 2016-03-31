@@ -285,7 +285,7 @@ La vidéo suivante vous montre comment cela fonctionne :
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 L'échaffaudage d'un CRUD
 ------------------------
@@ -340,7 +340,7 @@ Regardez la vidéo suivante pour voir comment faire :
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Intégrer les outils sur PhpStorm
 --------------------------------
@@ -349,14 +349,14 @@ La configuration peut facilement être adaptée à d'autres IDE pour PHP.
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Conclusion
 ----------
 Les outils pour développeurs Phalcon fournissent un moyen simple de générer du code pour votre application.
 Cela réduit le temps de développement et diminue le nombre potentiel d'erreur de code.
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409
+.. _blog post: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

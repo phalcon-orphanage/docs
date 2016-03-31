@@ -9,7 +9,7 @@ Interface **Phalcon\\Events\\EventsAwareInterface**
 Methods
 -------
 
-abstract public  **setEventsManager** (*unknown* $eventsManager)
+abstract public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 ...
 

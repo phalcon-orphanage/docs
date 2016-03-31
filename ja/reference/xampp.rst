@@ -1,7 +1,7 @@
 XAMPPへのインストール
 =====================
 
-XAMPP_はApache、MySQL、PHP、Perlを簡単にインストールできます。
+XAMPP_\ はApache、MySQL、PHP、Perlを簡単にインストールできます。
 まず、XAMPPをダウンロードし、解凍を行い、起動させます。
 以下では、Windows版XAMPPを使用する場合のPhalconのインストール方法を記載しています。
 XAMPPは最新のバージョンを使用するようにしてください。
@@ -22,7 +22,7 @@ Phalconライブラリをダウンロードすると、以下のようなzipフ�
     :align: center
 
 PHPエクステンションにphp_phalcon.dllをコピーしてください。
-c:\\xampp folder にXAMPPがインストールされている場合、エクステンションのパスは、c:\\xampp\\php\\ext となっているはずです。
+C:\\xampp folder にXAMPPがインストールされている場合、エクステンションのパスは、C:\\xampp\\php\\ext となっているはずです。
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
@@ -58,11 +58,11 @@ phpinfo()でphalconのバージョンが表示されていれば、インスト�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 関連ガイド
 --------------
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
 
-.. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
+.. _XAMPP: https://www.apachefriends.org/jp/download.html

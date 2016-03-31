@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\TransactionInterface**
 Methods
 -------
 
-abstract public  **setTransactionManager** (*unknown* $manager)
+abstract public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
 
 ...
 
@@ -59,7 +59,7 @@ abstract public  **isValid** ()
 ...
 
 
-abstract public  **setRollbackedRecord** (*unknown* $record)
+abstract public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 ...
 

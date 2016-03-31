@@ -283,7 +283,7 @@ Options:
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Автоматическая генерация CRUD интерфейса (Scaffolding)
 ------------------------------------------------------
@@ -339,7 +339,7 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Интеграция в PhpStorm IDE
 --------------------------
@@ -347,13 +347,13 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Заключение
 ----------
 Phalcon Developer Tools позволяет легко генерировать код для вашего приложения, сокращая время разработки и потенциальные ошибки.
 
-.. _блогозапись: http://blog.phalconphp.com/post/23251010409
+.. _блогозапись: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

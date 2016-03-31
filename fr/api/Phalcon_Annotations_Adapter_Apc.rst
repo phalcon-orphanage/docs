@@ -35,13 +35,13 @@ Reads parsed annotations from APC
 
 
 
-public  **write** (*unknown* $key, *unknown* $data)
+public  **write** (*unknown* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
 
 Writes parsed annotations to APC
 
 
 
-public  **setReader** (*unknown* $reader) inherited from Phalcon\\Annotations\\Adapter
+public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from Phalcon\\Annotations\\Adapter
 
 Sets the annotations parser
 

@@ -57,6 +57,9 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
                 if ($this->security->checkHash($password, $user->password)) {
                     // The password is valid
                 }
+            } else {
+                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
+                $this->security->hash(rand());
             }
 
             // The validation has failed

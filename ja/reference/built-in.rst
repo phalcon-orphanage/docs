@@ -7,7 +7,7 @@ PHP5.4.0以降では、PHPの組み込みのWebサーバーを開発用に使う
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root
+    php -S localhost:8000 -t /public
 
 index.phpに渡されるURIを書き換えたいなら、以下のルーターファイル(.htrouter.php)を使用してください。
 
@@ -23,8 +23,8 @@ index.phpに渡されるURIを書き換えたいなら、以下のルーター�
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root .htrouter.php
+    php -S localhost:8000 -t /public .htrouter.php
 
 ブラウザで http://localhost:8000/ にアクセスし、正常に動作していることを確認してください。
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php
+.. _built-in: http://php.net/manual/ja/features.commandline.webserver.php

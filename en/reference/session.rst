@@ -29,7 +29,7 @@ Thanks to the service container, we can ensure that the session is accessed only
 
 Storing/Retrieving data in Session
 ----------------------------------
-From a controller, a view or any other component that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
+From a controller, a view or any other component that extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` you can access the session service
 and store items and retrieve them in the following way:
 
 .. code-block:: php
@@ -132,7 +132,7 @@ it's automatically stored in session:
 
 Persistent Data in Components
 -----------------------------
-Controller, components and classes that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
+Controller, components and classes that extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` may inject
 a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
 Thanks to this you can persist data between requests in every class in an independent way.
 

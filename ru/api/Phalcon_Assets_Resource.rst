@@ -89,7 +89,7 @@ Sets if the resource must be filtered or not
 
 
 
-public  **setAttributes** (*unknown* $attributes)
+public  **setAttributes** (*array* $attributes)
 
 Sets extra HTML attributes
 

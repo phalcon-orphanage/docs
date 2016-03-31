@@ -22,8 +22,8 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    use Phalcon\DI\FactoryDefault\CLI as CliDI,
-        Phalcon\CLI\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
+        Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
@@ -102,7 +102,7 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -121,7 +121,7 @@ index.php, как в веб-приложениях, мы используем cl
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -171,7 +171,7 @@ We can then run the following command:
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -191,4 +191,4 @@ We can then run the following command:
         }
     }
 
-Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>`, и реализовать такую логику там.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>`, и реализовать такую логику там.

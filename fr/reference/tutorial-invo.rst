@@ -2,10 +2,11 @@ Tutoriel 2: Introducing INVO
 ============================
 
 Dans ce second tutoriel, nous allons expliquer une application plus complète de manière à approfondir le développement de Phalcon.
-INVO est l'une des applications que nous avons créé en tant qu'exemples. INVO est un petit site web qui permet aux utilisateur de générer des factures et faire
-d'autres tâches comme gérer ses clients et ses produits. Vous pouvez cloner son code à partir de Github_.
+INVO est l'une des applications que nous avons créé en tant qu'exemples. INVO est un petit site web qui permet aux utilisateur
+de générer des factures et faire d'autres tâches comme gérer ses clients et ses produits. Vous pouvez cloner son code à partir de Github_.
 
-Aussi, INVO utilise `Bootstrap`_ comme framework côté client. Même si l'application ne génère pas de factures, cela donne un exemple pour comprendre comment le framework fonctionne.
+Aussi, INVO utilise `Bootstrap`_ comme framework côté client. Même si l'application ne génère pas
+de factures, cela donne un exemple pour comprendre comment le framework fonctionne.
 
 Structure du projet
 -------------------
@@ -17,38 +18,45 @@ Une fois que vous avez cloné le projet, à partir de la racine, vous verrez la 
         app/
             config/
             controllers/
-            library/
             forms/
+            library/
+            logs/
             models/
             plugins/
             views/
+        cache/
+            volt/
+        docs/
         public/
-            bootstrap/
             css/
+            fonts/
             js/
         schemas/
 
-Comme vous l'avez vu précédemment, Phalcon n'impose pas de structure particulière pour développer une application.
-Ce projet fournit une simple structure MVC et un document public à la racine.
+Comme vous l'avez vu précédemment, Phalcon n'impose pas de structure particulière pour développer une application. Ce projet
+fournit une simple structure MVC et un document public à la racine.
 
 Une fois l'application ouverte dans votre navigateur à l'adresse : http://localhost/invo vous verrez quelque chose comme ça :
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-Cette application est divisé en deux parties, un frontend, qui est une partie publique où les visiteurs peuvent obtenir des informations à propos d'INVO et des informations de contact.
-La seconde partie est le backend, une zone administrative où un utilisateur enregistré peu gérer ses produits et ses clients.
+Cette application est divisé en deux parties, un frontend, qui est une partie publique où les visiteurs peuvent obtenir des informations
+à propos d'INVO et des informations de contact. La seconde partie est le backend, une zone administrative où un
+utilisateur enregistré peu gérer ses produits et ses clients.
 
 Routage
 -------
-INVO utilise le routage standard qui est construit avec le composant Router. Ces routes correspondent au schéma suivant : /:controller/:action/:params.
-Cela signifie que la première partie de l'URI est le controller, la seconde est l'action et la suite sont les paramètres.
+INVO utilise le routage standard qui est construit avec le composant Router. Ces routes correspondent au schéma
+suivant : /:controller/:action/:params. Cela signifie que la première partie de l'URI est le controller, la seconde est
+l'action et la suite sont les paramètres.
 
-La route suivante `/session/register` exécute le controlleur "SessionController" et son action "registerAction".
+La route suivante `/session/register` exécute le controlleur SessionController et son action registerAction.
 
 Configuration
 -------------
-INVO a un fichier de configuration qui définit les paramètres génèraux de l'application. Ce fichier est lu par les premières lignes du fichier boostrap (public/index.php) :
+INVO a un fichier de configuration qui définit les paramètres génèraux de l'application. Ce fichier
+est lu par les premières lignes du fichier boostrap (public/index.php) :
 
 .. code-block:: php
 
@@ -61,7 +69,9 @@ INVO a un fichier de configuration qui définit les paramètres génèraux de l'
     // Read the configuration
     $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` nous permet de manipuler le fichier comme un objet. Le fichier de configuration contient les paramètres suivants :
+:doc:`Phalcon\\Config <config>` nous permet de manipuler
+le fichier comme un objet. Le fichier de configuration
+contient les paramètres suivants :
 
 .. code-block:: ini
 
@@ -80,7 +90,8 @@ INVO a un fichier de configuration qui définit les paramètres génèraux de l'
     libraryDir     = app/library/
     baseUri        = /invo/
 
-Phalcon n'a pas de convention de codage défini. Les sections nous permettent d'organiser les options de manière appropriée. Dans ce fichier il y a trois sections que l'on utilisera plus tard.
+Phalcon n'a pas de convention de codage défini. Les sections nous permettent d'organiser les options de manière appropriée.
+Dans ce fichier il y a trois sections que l'on utilisera plus tard.
 
 Autoloaders
 -----------
@@ -95,7 +106,8 @@ La seconde partie du fichier boostrap (public/index.php) est l'autoloader (méca
      */
     require APP_PATH . 'app/config/loader.php';
 
-L'autoloader enregistre un ensemble de dossies où l'application va chercher les classes dont il va avoir besoin.
+L'autoloader enregistre un ensemble de dossies où l'application va chercher
+les classes dont il va avoir besoin.
 
 .. code-block:: php
 
@@ -184,14 +196,18 @@ cette classe initialise et exécute tous ce qui est nécessaire pour faire tourn
 
 Injection de dépendances
 ------------------------
-Regardez à la premiére ligne du code juste au dessus, la variable :code:`$app` reçoit une autre variable :code:`$di` dans son constructeur.
-Quel est le but de cette variable ? Phalcon est un framework fortement découplé, donc on a besoin d'un composant qui agit comme une sorte de colle pour que tout fonctionne ensemble, correctement.
-Ce composant est :doc:`Phalcon\\DI <../api/Phalcon_DI>`. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
+Regardez à la premiére ligne du code juste au dessus, la variable :code:`$app` reçoit une autre variable
+:code:`$di` dans son constructeur. Quel est le but de cette variable ? Phalcon est un framework fortement découplé,
+donc on a besoin d'un composant qui agit comme une sorte de colle pour que tout fonctionne ensemble, correctement. Ce composant est :doc:`Phalcon\\Di <../api/Phalcon_Di>`.
+C'est un conteneur de services qui fait des injections de dépendances et qui
+instancie tous les composants quand ils sont nécessaires pour l'application.
 
-Il y a différents moyens d'enregistrer les services dans un conteneur. Dans INVO la plupart des services ont été enregistrés en utilisant des fonctions anonymes.
-Grace à cela, les objets sont instanciés paresseusement (= uniquement lorsque nécessaire) , ce qui réduit les ressources requises par l'application.
+Il y a différents moyens d'enregistrer les services dans un conteneur. Dans INVO la plupart des services ont été enregistrés en utilisant
+des fonctions anonymes. Grace à cela, les objets sont instanciés paresseusement (= uniquement lorsque nécessaire) , ce qui réduit les ressources requises
+par l'application.
 
-Par exemple, dans l'extrait suivant, le service de session est enregistré, la fonction anonyme sera appelée uniquement lorsque l'application aura besoin d'accéder aux données de la session:
+Par exemple, dans l'extrait suivant, le service de session est enregistré, la fonction anonyme sera
+appelée uniquement lorsque l'application aura besoin d'accéder aux données de la session:
 
 .. code-block:: php
 
@@ -211,16 +227,18 @@ Par exemple, dans l'extrait suivant, le service de session est enregistré, la f
     });
 
 Dans cette situation, on a la possibilité de changer l'adaptateur, de faire des initialisation supplémentaires ainsi que beaucoup d'autres choses.
-Notez que le service est enregistré avec le nom "session", c'est une convention qui va permettre au framework d'identifier le service actifdans le conteneur de service.
+Notez que le service est enregistré avec le nom "session", c'est une convention qui va permettre au framework d'identifier
+le service actifdans le conteneur de service.
 
-Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peux être une lourde tâche.
-Pour cette raison le framework fournit une variante à :doc:`Phalcon\\DI <../api/Phalcon_DI>` appelée :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
+Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peux être une lourde tâche. Pour cette raison
+le framework fournit une variante à :doc:`Phalcon\\Di <../api/Phalcon_Di>` appelée :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` qui a pour mission d'enregistrer
+tous les services, fournissant ainsi un framework complet.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     // ...
 
@@ -228,8 +246,9 @@ Pour cette raison le framework fournit une variante à :doc:`Phalcon\\DI <../api
     // right services providing a full-stack framework
     $di = new FactoryDefault();
 
-Cet extrait enregistre la majorité des services avec les composants fournis par le framework. Si on a besoin d'outrepasser la définition de certains services
-on pourrait le modifier comme on l'a fait pour la "session" au dessus. C'est l'intérêt de la variable :code:`$di`.
+Cet extrait enregistre la majorité des services avec les composants fournis par le framework. Si on a besoin
+d'outrepasser la définition de certains services on pourrait le modifier comme on l'a fait pour la "session" au dessus.
+C'est l'intérêt de la variable :code:`$di`.
 
 In next chapter, we will see how to authentication and authorization is implemented in INVO.
 

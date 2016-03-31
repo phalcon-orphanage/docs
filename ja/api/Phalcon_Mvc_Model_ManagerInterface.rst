@@ -9,62 +9,62 @@ Interface **Phalcon\\Mvc\\Model\\ManagerInterface**
 Methods
 -------
 
-abstract public  **initialize** (*unknown* $model)
+abstract public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **setModelSource** (*unknown* $model, *unknown* $source)
+abstract public  **setModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $source)
 
 ...
 
 
-abstract public  **getModelSource** (*unknown* $model)
+abstract public  **getModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **setModelSchema** (*unknown* $model, *unknown* $schema)
+abstract public  **setModelSchema** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $schema)
 
 ...
 
 
-abstract public  **getModelSchema** (*unknown* $model)
+abstract public  **getModelSchema** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **setConnectionService** (*unknown* $model, *unknown* $connectionService)
+abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
 
 ...
 
 
-abstract public  **setReadConnectionService** (*unknown* $model, *unknown* $connectionService)
+abstract public  **setReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
 
 ...
 
 
-abstract public  **getReadConnectionService** (*unknown* $model)
+abstract public  **getReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **setWriteConnectionService** (*unknown* $model, *unknown* $connectionService)
+abstract public  **setWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
 
 ...
 
 
-abstract public  **getWriteConnectionService** (*unknown* $model)
+abstract public  **getWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getReadConnection** (*unknown* $model)
+abstract public  **getReadConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getWriteConnection** (*unknown* $model)
+abstract public  **getWriteConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
@@ -84,17 +84,17 @@ abstract public  **load** (*unknown* $modelName, [*unknown* $newInstance])
 ...
 
 
-abstract public  **addHasOne** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
 ...
 
 
-abstract public  **addBelongsTo** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
 ...
 
 
-abstract public  **addHasMany** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
 ...
 
@@ -114,37 +114,37 @@ abstract public  **existsHasOne** (*unknown* $modelName, *unknown* $modelRelatio
 ...
 
 
-abstract public  **getBelongsToRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
+abstract public  **getBelongsToRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
 
 ...
 
 
-abstract public  **getHasManyRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
+abstract public  **getHasManyRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
 
 ...
 
 
-abstract public  **getHasOneRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
+abstract public  **getHasOneRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
 
 ...
 
 
-abstract public  **getBelongsTo** (*unknown* $model)
+abstract public  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getHasMany** (*unknown* $model)
+abstract public  **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getHasOne** (*unknown* $model)
+abstract public  **getHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getHasOneAndHasMany** (*unknown* $model)
+abstract public  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
@@ -174,17 +174,17 @@ abstract public  **createBuilder** ([*unknown* $params])
 ...
 
 
-abstract public  **addBehavior** (*unknown* $model, *unknown* $behavior)
+abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
 
 ...
 
 
-abstract public  **notifyEvent** (*unknown* $eventName, *unknown* $model)
+abstract public  **notifyEvent** (*unknown* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **missingMethod** (*unknown* $model, *unknown* $eventName, *unknown* $data)
+abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $eventName, *unknown* $data)
 
 ...
 

@@ -41,7 +41,7 @@ Phalcon\\Loader constructor
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the events manager
 
@@ -53,7 +53,7 @@ Returns the internal event manager
 
 
 
-public  **setExtensions** (*unknown* $extensions)
+public  **setExtensions** (*array* $extensions)
 
 Sets an array of file extensions that the loader must try in each attempt to locate the file
 
@@ -65,7 +65,7 @@ Returns the file extensions registered in the loader
 
 
 
-public  **registerNamespaces** (*unknown* $namespaces, [*unknown* $merge])
+public  **registerNamespaces** (*array* $namespaces, [*unknown* $merge])
 
 Register namespaces and their related directories
 
@@ -77,7 +77,7 @@ Returns the namespaces currently registered in the autoloader
 
 
 
-public  **registerPrefixes** (*unknown* $prefixes, [*unknown* $merge])
+public  **registerPrefixes** (*array* $prefixes, [*unknown* $merge])
 
 Register directories in which "not found" classes could be found
 
@@ -89,7 +89,7 @@ Returns the prefixes currently registered in the autoloader
 
 
 
-public  **registerDirs** (*unknown* $directories, [*unknown* $merge])
+public  **registerDirs** (*array* $directories, [*unknown* $merge])
 
 Register directories in which "not found" classes could be found
 
@@ -101,7 +101,7 @@ Returns the directories currently registered in the autoloader
 
 
 
-public  **registerClasses** (*unknown* $classes, [*unknown* $merge])
+public  **registerClasses** (*array* $classes, [*unknown* $merge])
 
 Register classes and their locations
 

@@ -7,7 +7,7 @@
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root
+    php -S localhost:8000 -t /public
 
 如果你想重写URI并指向index.php文件，可以使用以下路由文件（.htrouter.php）：
 
@@ -23,8 +23,8 @@
 
 .. code-block:: bash
 
-    php -S localhost:8000 -t /web_root .htrouter.php
+    php -S localhost:8000 -t /public .htrouter.php
 
 最然打开浏览器输入并跳转到 http://localhost:8000/，检测是否可以正常访问。
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php
+.. _built-in: http://php.net/manual/zh/features.commandline.webserver.php

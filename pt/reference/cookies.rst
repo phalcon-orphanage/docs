@@ -1,15 +1,15 @@
-Cookies Management
-==================
+Gerenciamento de Cookies
+========================
 
-Cookies_ are a very useful way to store small pieces of data on the client's machine that can be retrieved even
-if the user closes his/her browser. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
-acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent
-automatically at the end of the request.
+Cookies_ são um caminho muito útil para armazenar pequenas partes de dados nas máquinas dos clientes que podem
+ser recuperados mesmo se o usuário fechar seu navegador. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
+age como um recipiente global para os cookies. Os cookies são armazenados nesse recipiente durante a execução da requisição e são
+enviados automaticamente no fim da requisição.
 
-Basic Usage
------------
-You can set/get cookies by just accessing the 'cookies' service in any part of the application where services can be
-accessed:
+Uso Básico
+----------
+Você pode setar/recuperar cookies acessando o serviço 'cookies' em qualquer parte da aplicação onde os serviços
+podem ser acessados:
 
 .. code-block:: php
 
@@ -44,13 +44,13 @@ accessed:
         }
     }
 
-Encryption/Decryption of Cookies
---------------------------------
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user.
-This protection allows unauthorized users to see the cookies' contents in the client (browser).
-Despite this protection, sensitive data should not be stored in cookies.
+Encriptação/Decriptação de Cookies
+----------------------------------
+Por padrão, cookies são automaticamente encriptados antes de serem enviados ao cliente e são decriptados quando recuperados do usuário.
+Essa proteção evita que usuários não autorizados vejam o conteúdo dos cookies no cliente (navegador).
+Apesar dessa proteção, dados sensíveis não devem ser armazenados em cookies.
 
-You can disable encryption in the following way:
+Você pode desabilitar a encriptação da seguinte forma:
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ You can disable encryption in the following way:
         return $cookies;
     });
 
-If you wish to use encryption, a global key must be set in the 'crypt' service:
+Se você deseja user encriptação, uma chave global precisa ser setada no serviço 'crypt':
 
 .. code-block:: php
 
@@ -84,9 +84,9 @@ If you wish to use encryption, a global key must be set in the 'crypt' service:
 
 .. highlights::
 
-    Sending cookies data without encryption to clients including complex objects structures, resultsets,
-    service information, etc. could expose internal application details that could be used by an attacker
-    to attack the application. If you do not want to use encryption, we highly recommend you only send very
-    basic cookie data like numbers or small string literals.
+    Enviando dados de cookies sem encriptação para os clientes, incluindo objetos com estrutura complexa, resultsets,
+    service information, etc; pode expor detalhes internos da aplicação que podem ser usados por um invasor
+    para explorar a aplicação. Se você não quer usar encriptação, nós altamente recomendamos que você somente envie dados
+    simples via cookie, como numeros ou pequenas strings literais.
 
 .. _Cookies: http://en.wikipedia.org/wiki/HTTP_cookie

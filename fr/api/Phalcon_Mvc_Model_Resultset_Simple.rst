@@ -29,7 +29,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
+public  **__construct** (*array* $columnMap, *\\Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $model, *\\Phalcon\\Db\\Result\\Pdo|null* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
@@ -179,7 +179,7 @@ Updates every record in the resultset
 
 
 
-public  **delete** ([*unknown* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Deletes every record in the resultset
 

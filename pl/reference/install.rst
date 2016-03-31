@@ -17,7 +17,7 @@ Poniższy filmik jest przewodnikiem "krok po kroku" jak zainstalować Phalcon na
 
 .. raw:: html
 
-    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+    <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Powiązane Przewodniki
 ^^^^^^^^^^^^^^^^^^^^^
@@ -29,30 +29,30 @@ Powiązane Przewodniki
 
 Linux/Solaris
 -------------
-Na systemach Linux/Solaris/Mac możesz w łatwy sposób skompilować i zainstalować rozszerzenie z kodu źródłowego:
+Na systemach Linux/Solaris możesz w łatwy sposób skompilować i zainstalować rozszerzenie z kodu źródłowego:
 
 Wymagania
 ^^^^^^^^^
 Wstępnie wymagane pakiety:
 
-* Pliki źródłowe PHP 5.3.x/5.4.x/5.5.x
-* Kompilator GCC (Linux/Solaris) lub Xcode (Mac)
+* Pliki źródłowe PHP >= 5.3
+* Kompilator GCC (Linux/Solaris)
 * Git (jeśli nie jest jeszcze zainstalowany na twoim systemie - chyba ze pobierzesz pakiet z GitHub i prześlesz go na swój serwer przez FTP/SFTP)
 
 Specyficzne pakiety dla wspólnych platform:
 
 .. code-block:: bash
 
-    #Ubuntu
+    # Ubuntu
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
-    #Suse
-    sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
+    # Suse
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
-    #CentOS/RedHat/Fedora
+    # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
+    # Solaris
     pkg install gcc-45 php-53 apache-php53
 
 Kompilacja
@@ -69,16 +69,28 @@ Dodaj rozszerzenie do swojej konfiguracji PHP:
 
 .. code-block:: bash
 
-    #Suse: Dodaj ta linię do swojego pliku php.ini
+    # Suse: Stwórz plik o nazwie phalcon.ini w /etc/php5/conf.d/ z następującą zawartością:
     extension=phalcon.so
 
-    #Centos/RedHat/Fedora: Stwórz plik o nazwie phalcon.ini w /etc/php.d/ z następującą zawartością:
+    # CentOS/RedHat/Fedora: Stwórz plik o nazwie phalcon.ini w /etc/php.d/ z następującą zawartością:
     extension=phalcon.so
 
-    #Ubuntu/Debian: Stwórz plik o nazwie 30-phalcon.ini w /etc/php.d/ z następującą zawartością:
+    # Ubuntu/Debian z apache2: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/apache2/conf.d/ z następującą zawartością:
+    extension=phalcon.so
+
+    # Ubuntu/Debian z php5-fpm: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/fpm/conf.d/ z następującą zawartością:
+    extension=phalcon.so
+
+    # Ubuntu/Debian z php5-cli: Stwórz plik o nazwie 30-phalcon.ini w /etc/php5/cli/conf.d/ z następującą zawartością:
     extension=phalcon.so
 
 Zrestartuj serwer.
+
+If you are running Ubuntu/Debian with php5-fpm, restart it:
+
+.. code-block:: bash
+
+    sudo service php5-fpm restart
 
 Phalcon automatycznie wykrywa architekturę twojego systemu, możesz jednak wymusić kompilację dla konkretnej architektury:
 
@@ -106,23 +118,23 @@ Wymagania
 ^^^^^^^^^
 Wstępnie wymagane pakiety:
 
-* Pliki źródłowe PHP 5.3.x lub nowsze
+* Pliki źródłowe PHP >= 5.4
 * XCode
 
 .. code-block:: bash
 
-    #brew
-    sudo brew install php53-phalcon
-    sudo brew install php54-phalcon
-    sudo brew install php55-phalcon
+    # brew
+    brew tap homebrew/homebrew-php
+    brew install php54-phalcon
+    brew install php55-phalcon
+    brew install php56-phalcon
 
-    #MacPorts
-    sudo port install php53-phalcon
+    # MacPorts
     sudo port install php54-phalcon
     sudo port install php55-phalcon
+    sudo port install php56-phalcon
 
-Dodaj rozszerzenie do swojej konfiguracji PHP:
-
+Dodaj rozszerzenie do swojej konfiguracji PHP.
 
 FreeBSD
 -------

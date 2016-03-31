@@ -79,7 +79,7 @@ Returns field name related to message
 
 
 
-public  **setModel** (*unknown* $model)
+public  **setModel** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Set the model who generates the message
 
@@ -97,7 +97,7 @@ Magic __toString method returns verbose message
 
 
 
-public static  **__set_state** (*unknown* $message)
+public static  **__set_state** (*array* $message)
 
 Magic __set_state helps to re-build messages variable exporting
 

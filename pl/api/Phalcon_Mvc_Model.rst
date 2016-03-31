@@ -49,13 +49,13 @@ Constants
 Methods
 -------
 
-final public  **__construct** ([*unknown* $dependencyInjector], [*unknown* $modelsManager])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -67,7 +67,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** (*unknown* $eventsManager)
+protected  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets a custom events manager
 
@@ -91,7 +91,7 @@ Returns the models manager related to the entity instance
 
 
 
-public  **setTransaction** (*unknown* $transaction)
+public  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -237,7 +237,7 @@ Assigns values to a model from an array
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*\\Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -331,7 +331,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static  **query** ([*unknown* $dependencyInjector])
+public static  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Create a criteria for a specific model
 
@@ -462,7 +462,7 @@ Cancel the current operation
 
 
 
-public  **appendMessage** (*unknown* $message)
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -487,7 +487,7 @@ Appends a customized message on the validation process
 
 
 
-protected  **validate** (*unknown* $validator)
+protected  **validate** (:doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>` $validator)
 
 Executes validators on every validation call 
 
@@ -585,7 +585,7 @@ Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys 
 
 
 
-protected  **_preSave** (*unknown* $metaData, *unknown* $exists, *unknown* $identityField)
+protected  **_preSave** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, *unknown* $exists, *unknown* $identityField)
 
 Executes internal hooks before save a record
 
@@ -609,7 +609,7 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean*  **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *Phalcon\\Mvc\\ModelInterface[]* $related)
+protected *boolean*  **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\\Phalcon\\Mvc\\ModelInterface[]* $related)
 
 Saves related records that must be stored prior to save the master record
 
@@ -748,7 +748,7 @@ Writes an attribute value by its name
 
 
 
-protected  **skipAttributes** (*unknown* $attributes)
+protected  **skipAttributes** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement 
 
@@ -770,7 +770,7 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
 
 
 
-protected  **skipAttributesOnCreate** (*unknown* $attributes)
+protected  **skipAttributesOnCreate** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the generated INSERT statement 
 
@@ -792,7 +792,7 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
 
 
 
-protected  **skipAttributesOnUpdate** (*unknown* $attributes)
+protected  **skipAttributesOnUpdate** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the generated UPDATE statement 
 
@@ -814,7 +814,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-protected  **allowEmptyStringValues** (*unknown* $attributes)
+protected  **allowEmptyStringValues** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the generated UPDATE statement 
 
@@ -933,7 +933,7 @@ Setup a relation n-n between two models through an intermediate relation
 
 
 
-public  **addBehavior** (*unknown* $behavior)
+public  **addBehavior** (:doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
 
 Setups a behavior in a model 
 
@@ -1125,7 +1125,7 @@ Returns the instance as an array representation
 
 
 
-public static  **setup** (*unknown* $options)
+public static  **setup** (*array* $options)
 
 Enables/disables options in the ORM
 

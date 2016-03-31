@@ -56,7 +56,7 @@ Returns the value of an option if present
 
 
 
-public  **setUserOptions** (*unknown* $options)
+public  **setUserOptions** (*array* $options)
 
 Sets options for the element
 
@@ -134,7 +134,7 @@ Returns an element added to the form by its name
 
 
 
-public  **label** (*unknown* $name, [*unknown* $attributes])
+public  **label** (*unknown* $name, [*array* $attributes])
 
 Generate the label of a element added to the form including HTML
 
@@ -206,7 +206,7 @@ Check if the current element in the iterator is valid
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -218,7 +218,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

@@ -157,10 +157,8 @@
         }
     }
 
-
 公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
 开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
-
 
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -331,33 +329,33 @@
 
 可用的查询选项如下：
 
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
-+=============+====================================================================================================================================================================================================+=========================================================================+
-| conditions  | 查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 假定第一个参数就是查询条件。                                              | "conditions" => "name LIKE 'steve%'"                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| columns     | 只返回指定的字段，而不是模型所有的字段。 当用这个选项时，返回的是一个不完整的对象。                                                                                                                | "columns" => "id, name"                                                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | 绑定与选项一起使用，通过替换占位符以及转义字段值从而增加安全性。                                                                                                                                   | "bind" => array("status" => "A", "type" => "some-time")                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | 当绑定参数时，可以使用这个参数为绑定参数定义额外的类型限制从而更加增强安全性。                                                                                                                     | "bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | 用于结果排序。使用一个或者多个字段，逗号分隔。                                                                                                                                                     | "order" => "name DESC, status"                                          |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | 限制查询结果的数量在一定范围内。                                                                                                                                                                   | "limit" => 10                                                           |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| offset      | Offset the results of the query by a certain amount                                                                                                                                                | "offset" => 5                                                           |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | 从多条记录中获取数据并且根据一个或多个字段对结果进行分组。                                                                                                                                         | "group" => "name, status"                                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置独占锁。                                                                         | "for_update" => true                                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置共享锁。                                                                         | "shared_lock" => true                                                   |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | 缓存结果集，减少了连续访问数据库。                                                                                                                                                                 | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| 参数        | 描述                                                                                                                                                                                               | 举例                                                                            |
++=============+====================================================================================================================================================================================================+=================================================================================+
+| conditions  | 查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 假定第一个参数就是查询条件。                                              | :code:`"conditions" => "name LIKE 'steve%'"`                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| columns     | 只返回指定的字段，而不是模型所有的字段。 当用这个选项时，返回的是一个不完整的对象。                                                                                                                | :code:`"columns" => "id, name"`                                                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| bind        | 绑定与选项一起使用，通过替换占位符以及转义字段值从而增加安全性。                                                                                                                                   | :code:`"bind" => array("status" => "A", "type" => "some-time")`                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| bindTypes   | 当绑定参数时，可以使用这个参数为绑定参数定义额外的类型限制从而更加增强安全性。                                                                                                                     | :code:`"bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)`    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| order       | 用于结果排序。使用一个或者多个字段，逗号分隔。                                                                                                                                                     | :code:`"order" => "name DESC, status"`                                          |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| limit       | 限制查询结果的数量在一定范围内。                                                                                                                                                                   | :code:`"limit" => 10`                                                           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| offset      | Offset the results of the query by a certain amount                                                                                                                                                | :code:`"offset" => 5`                                                           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| group       | 从多条记录中获取数据并且根据一个或多个字段对结果进行分组。                                                                                                                                         | :code:`"group" => "name, status"`                                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| for_update  | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置独占锁。                                                                         | :code:`"for_update" => true`                                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| shared_lock | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置共享锁。                                                                         | :code:`"shared_lock" => true`                                                   |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| cache       | 缓存结果集，减少了连续访问数据库。                                                                                                                                                                 | :code:`"cache" => array("lifetime" => 3600, "key" => "my-find-key")`            |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | :code:`"hydration" => Resultset::HYDRATE_OBJECTS`                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 如果你愿意，除了使用数组作为查询参数外，还可以通过一种面向对象的方式来创建查询：
 
@@ -376,7 +374,7 @@
 
 所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
 
-最后，还有一个 findFirstBy<property-name>() 方法。这个方法扩展了前面提及的 "findFirst()" 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
+最后，还有一个 :code:`findFirstBy<property-name>()` 方法。这个方法扩展了前面提及的 :code:`findFirst()` 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
 
 还是用上面用过的 Robots 模型来举例说明：
 
@@ -405,9 +403,9 @@
     $robot = Robots::findFirstByName($name);
 
     if ($robot) {
-        $this->flash->success("The first robot with the name " . $name . " cost " . $robot->price ".");
+        echo "The first robot with the name " . $name . " cost " . $robot->price . ".";
     } else {
-        $this->flash->error("There were no robots found in our table with the name " . $name ".");
+        echo "There were no robots found in our table with the name " . $name . ".";
     }
 
 请注意我们在方法调用中用的是 'Name'，并向它传递了变量 :code:`$name`， :code:`$name` 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
@@ -704,13 +702,10 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 模型关系（Relationships between Models）
 ----------------------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
-unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
+有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
 The model manager manages foreign key constraints for these relationships, the definition of these helps referential
 integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
 it is easy to access data in related models from each record in a uniform way.
-
-有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
 
 单向关系（Unidirectional relationships）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -877,7 +872,7 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->parts->name, "\n";
     }
 
-Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
+Phalcon uses the magic methods :code:`__set`/:code:`__get`/:code:`__call` to store or retrieve related data using relationships.
 
 By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
@@ -1724,7 +1719,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -1743,7 +1738,7 @@ The :code:`getMessages()` method can be overridden in a model to replace/transla
                         $messages[] = 'The record cannot be created because it already exists';
                         break;
                     case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it already exists';
+                        $messages[] = 'The record cannot be updated because it doesn\'t exist';
                         break;
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
@@ -2527,7 +2522,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 创建行为（Creating your own behaviors）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`.
 Also, :doc:`Phalcon\\Mvc\\Model\\Behavior <../api/Phalcon_Mvc_Model_Behavior>` provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blameable behavior which helps identify the user
@@ -2552,7 +2547,7 @@ that is performed operations over a model:
 
                     $userName = // ... get the current user from session
 
-                    // Store in a log the username - event type and primary key
+                    // Store in a log the username, event type and primary key
                     file_put_contents(
                         'logs/blamable-log.txt',
                         $userName . ' ' . $eventType . ' ' . $model->id
@@ -2860,8 +2855,6 @@ In models that have this feature activated you can check what fields changed:
 
 设置模式（Pointing to a different schema）
 ------------------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
-
 如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 getSchema 方法去定义它：
 
 .. code-block:: php
@@ -2880,10 +2873,6 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
 设置多个数据库（Setting multiple databases）
 --------------------------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
-
 在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 initialize 方法内重写这个服务的设置。
 
@@ -2918,9 +2907,7 @@ in the application's services container. You can overwrite this service setting 
         );
     });
 
-Then, in the Initialize method, we define the connection service for the model:
-
-然后，在 Initialize 方法内，我们为这个模型定义数据库连接。
+然后，在 initialize 方法内，我们为这个模型定义数据库连接。
 
 .. code-block:: php
 
@@ -2935,9 +2922,6 @@ Then, in the Initialize method, we define the connection service for the model:
             $this->setConnectionService('dbPostgres');
         }
     }
-
-But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
-to balance the load to your databases implementing a master-slave architecture:
 
 另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。
 （译者注：EvaEngine项目为使用Phalcon提供了更多的灵活性，推荐了解和使用）
@@ -2956,9 +2940,6 @@ to balance the load to your databases implementing a master-slave architecture:
             $this->setWriteConnectionService('dbMaster');
         }
     }
-
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
-according to the current query conditions:
 
 另外ORM还可以通过根据当前查询条件来实现一个 'shard' 选择器，来实现水平切分的功能。
 
@@ -3002,9 +2983,6 @@ according to the current query conditions:
             return $this->getDI()->get('dbShard0');
         }
     }
-
-The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
-query executed:
 
 'selectReadConnection' 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
 
@@ -3164,8 +3142,6 @@ Each generated profile contains the duration in milliseconds that each instructi
 
 注入服务到模型（Injecting services into Models）
 ------------------------------------------------
-You may be required to access the application services within a model, the following example explains how to do that:
-
 你可能需要在模型中用到应用中注入的服务，下面的例子会教你如何去做：
 
 .. code-block:: php
@@ -3187,9 +3163,6 @@ You may be required to access the application services within a model, the follo
             }
         }
     }
-
-The "notSaved" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
 每当 "create" 或者 "update" 操作失败时会触发 "notSave" 事件。所以我们从DI中获取 "flash" 服务并推送确认消息。这样的话，我们不需要每次在save之后去打印信息。
 
@@ -3213,21 +3186,21 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                           | Default |
-+=====================+=======================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                                  | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
-+---------------------+---------------------------------------------------------------------------------------+---------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
-+---------------------+---------------------------------------------------------------------------------------+---------+
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| Option              | Description                                                                           | Default       |
++=====================+=======================================================================================+===============+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| columnRenaming      | Enables/Disables the column renaming                                                  | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
++---------------------+---------------------------------------------------------------------------------------+---------------+
+| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
++---------------------+---------------------------------------------------------------------------------------+---------------+
 
 独立的组件（Stand-Alone component）
 -----------------------------------
@@ -3237,13 +3210,13 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Manager as ModelsManager;
     use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
     use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
-    $di = new DI();
+    $di = new Di();
 
     // Setup a connection
     $di->set(
@@ -3270,7 +3243,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     // Use the model
     echo Robots::count();
 
-.. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
-.. _date: http://php.net/manual/en/function.date.php
-.. _time: http://php.net/manual/en/function.time.php
-.. _Traits: http://php.net/manual/en/language.oop5.traits.php
+.. _PDO: http://php.net/manual/zh/pdo.prepared-statements.php
+.. _date: http://php.net/manual/zh/function.date.php
+.. _time: http://php.net/manual/zh/function.time.php
+.. _Traits: http://php.net/manual/zh/language.oop5.traits.php

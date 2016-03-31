@@ -494,14 +494,14 @@ in "product" is printed accordingly:
 .. code-block:: html+jinja
 
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.productTypes.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
-      </tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.productTypes.name }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ "%.2f"|format(product.price) }}</td>
+      <td>{{ product.getActiveDetail() }}</td>
+      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+    </tr>
 
 As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
 we made the same with product.name and so on. Other fields are rendered differently,
@@ -763,5 +763,4 @@ the user can change any value and then sent it back to the database through to t
 We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
 In next chapter, we will see how to add custom HTML elements like a menu.
 
-.. _Jinja: http://jinja.pocoo.org/
-.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _CRUD: https://pt.wikipedia.org/wiki/CRUD

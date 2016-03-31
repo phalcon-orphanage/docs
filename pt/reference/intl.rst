@@ -1,19 +1,19 @@
-Internationalization
+Internacionalização
 ====================
 
-Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
-Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
+Phalcon é escrito em C como uma extensão para o PHP. Há uma extensão PECL_ que oferece funções de internacionalização de aplicações PHP chamada intl_.
+A partir do PHP 5.4 / 5.5 esta extensão é fornecido com PHP. Sua documentação pode ser encontrada na pagina oficial do `PHP manual`_.
 
-Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
+Phalcon não oferece essa funcionalidade, uma vez que a criação de um tal componente seria replicar código existente.
 
-In the examples below, we will show you how to implement the intl_ extension's functionality into Phalcon powered applications.
+Nos exemplos a seguir, vamos mostrar-lhe como implementar a funcionalidade de extensão intl_ em aplicações Phalcon alimentados.
 
 .. highlights::
-   This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
+   Este guia não se destina a ser uma documentação completa da extensão intl_. Por favor, visite a documentation_ da extensão para uma referência.
 
 Find out best available Locale
 ------------------------------
-There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
+Existem várias maneiras de descobrir o melhor local disponível usando intl_. Um deles é verificar o HTTP "Accept-Language" no cabeçalho:
 
 .. code-block:: php
 
@@ -24,21 +24,21 @@ There are several ways to find out the best available locale using intl_. One of
     // Locale could be something like "en_GB" or "en"
     echo $locale;
 
-Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
+O método abaixo retorna uma localidade identificada. Ele é usado para obter idioma, cultura ou comportamento específico-regional da API Locale.
 
-Examples of identifiers include:
+Os exemplos de identificadores incluem:
 
 * en-US (English, United States)
 * ru-RU (Russian, Russia)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
-Formatting messages based on Locale
------------------------------------
-Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
-production of those messages.
+A formatação de mensagens com base na localidade
+------------------------------------------------
+Parte da criação de uma aplicação localizada é produzir mensagens concatenadas, de idioma neutro. O MessageFormatter_ permite a
+produção dessas mensagens.
 
-Printing numbers formatted based on some locale:
+Imprimir números formatados com base em alguma localidade:
 
 .. code-block:: php
 
@@ -56,7 +56,7 @@ Printing numbers formatted based on some locale:
     $formatter = new MessageFormatter("es_AR", "ARS$ {0, number}");
     echo $formatter->format(array(1250.25));
 
-Message formatting using time and date patterns:
+Formatação de uma mensagem usando padrões de data e hora:
 
 .. code-block:: php
 
@@ -78,8 +78,7 @@ Message formatting using time and date patterns:
 
 Locale-Sensitive comparison
 ---------------------------
-The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
-examples below on the usage of this class:
+A classe Collator_ fornece capacidade de comparação de string com suporte para orderings classificar sensíveis à localidade apropriadas. Verifique um exemplo abaixo sobre o uso desta classe:
 
 .. code-block:: php
 

@@ -7,13 +7,15 @@ an access control list (ACL) managed by Phalcon.
 
 Se connecter à l'application
 ----------------------------
-Se connecter va nous premettre de travailler sur les controlleurs du backend. La séparation entre les controlleurs du backend et du frontend sont purement d'ordre logique,
-car tous les contrôleurs sont localisés dans le même dossier (app/controllers/).
+Se connecter va nous premettre de travailler sur les controlleurs du backend. La séparation entre les controlleurs du backend et
+du frontend sont purement d'ordre logique, car tous les contrôleurs sont localisés dans le même dossier (app/controllers/).
 
-Pour se connecter il faut un nom d'utilsateur et un mot de passe valide. Les utilisateurs sont stockés dans la table "users" de la base de données "invo".
+Pour se connecter il faut un nom d'utilsateur et un mot de passe valide. Les utilisateurs sont stockés dans la table "users"
+de la base de données "invo".
 
-Avant de pouvoir commencer une session, nous devons configurer la connexion à la base de données. Un service appelé "db" est utilisé dans le conteneur de service avec cette information.
-Pour ce qui est de l'autoloader, on prends en paramètres les informations du fichier de configuration de manière à configurer le service :
+Avant de pouvoir commencer une session, nous devons configurer la connexion à la base de données. Un service
+appelé "db" est utilisé dans le conteneur de service avec cette information. Pour ce qui est de l'autoloader, on
+prends en paramètres les informations du fichier de configuration de manière à configurer le service :
 
 .. code-block:: php
 
@@ -35,8 +37,8 @@ Pour ce qui est de l'autoloader, on prends en paramètres les informations du fi
         );
     });
 
-Ici on retourne une instance de l'adaptateur de connexion à MySQL.
-Si nécessaire on pourrait faire des actions supplémentaire tel qu'ajouter un logger, un profileur ou changer l'adaptateur, ...
+Ici on retourne une instance de l'adaptateur de connexion à MySQL. Si nécessaire on pourrait faire des actions supplémentaire tel qu'ajouter un
+logger, un profileur ou changer l'adaptateur, ...
 
 Le formulaire (app/views/session/index.volt) demande les informations de connexion.
 Certaines lignes HTML ont été supprimés dans l'extrait suivant pour rendre l'exemple plus concis:
@@ -67,7 +69,8 @@ Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt 
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
 It will not take too long before you become familiar with Volt.
 
-Le :code:`SessionController::startAction` (app/controllers/SessionController.php) a pour tâche de valider les données entrées à la recherche d'un utilisateur valide dans la base de données :
+Le :code:`SessionController::startAction` (app/controllers/SessionController.php) a pour tâche de valider les
+données entrées à la recherche d'un utilisateur valide dans la base de données :
 
 .. code-block:: php
 
@@ -138,13 +141,15 @@ Le :code:`SessionController::startAction` (app/controllers/SessionController.php
         }
     }
 
-Pour des raisons de simplicité, nous avons utilisé "sha1_" pour stocker le mot de passe hashé dans la base de données, cependant cet algorithme n'est pas recommandé pour une vraie application,
-il est préférable d'utiliser ":doc:`bcrypt <security>`" à la place.
+Pour des raisons de simplicité, nous avons utilisé "sha1_" pour stocker le mot de passe hashé dans la base de données, cependant cet algorithme
+n'est pas recommandé pour une vraie application, il est préférable d'utiliser ":doc:`bcrypt <security>`" à la place.
 
 Veuillez noter que plusieurs attributs public sont accessibles dans le contrôleur avec :code:`$this->flash`, :code:`$this->request` ou :code:`$this->session`.
-Ceux-ci sont des servies défini dans le conteneur de service de tout à l'heure. Quand ils sont accédés pour la première fois, ils sont insérés dans le controlleur.
+Ceux-ci sont des servies défini dans le conteneur de service de tout à l'heure (app/config/services.php).
+Quand ils sont accédés pour la première fois, ils sont insérés dans le controlleur.
 
-Ces services sont partagés, ce qui signifie qu'on accéde à la même instance sans tenir compte de l'endroit où on les a créés.
+Ces services sont partagés, ce qui signifie qu'on accéde à la même instance sans tenir compte de l'endroit
+où on les a créés.
 
 Par exemple, ici on créé le service de sessions et on enregistre l'identité de utilisateur dans la variable "auth":
 
@@ -221,20 +226,26 @@ If the user does not exist we forward the user back again to action where the fo
 
 Sécuriser le Backend
 --------------------
-Le backend est une zone privé où seul les personnes enregistrés ont accès. Par conséquent il est nécessaire de vérifier que seul les utilisateurs enregistrés ont accés à ces contrôleurs.
-Si vous n'êtes pas connectés à l'application et que vous essayez d'accéder au contrôleur product, par exemple, vous verrez le message suivant :
+Le backend est une zone privé où seul les personnes enregistrés ont accès. Par conséquent il est nécessaire
+de vérifier que seul les utilisateurs enregistrés ont accés à ces contrôleurs. Si vous n'êtes pas connectés
+à l'application et que vous essayez d'accéder au contrôleur product, par exemple,
+vous verrez le message suivant :
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-A chaque fois que quelqu'un essaye d'accéder à n'importe quel contrôleur/action, l'application va vérifier que le rôle de l'utilisateur (en session) lui permet d'y accéder,
-sinon il affiche un message comme celui du dessus et transfert le flux à la page d'accueil.
+A chaque fois que quelqu'un essaye d'accéder à n'importe quel contrôleur/action, l'application va vérifier que
+le rôle de l'utilisateur (en session) lui permet d'y accéder, sinon il affiche un message comme celui du dessus et
+transfert le flux à la page d'accueil.
 
-Maintenant, découvrons comment l'application fait cela. La première chose à savoir est qu'il y a un composant appelé :doc:`Dispatcher <dispatching>`.
-Il est informé de la route trouvé par le composant :doc:`Routing <routing>`. Puis, il est responsable de charger le contrôleur approprié et d'exécuter l'action correspondante.
+Maintenant, découvrons comment l'application fait cela. La première chose à savoir est qu'il
+y a un composant appelé :doc:`Dispatcher <dispatching>`. Il est informé de la route
+trouvé par le composant :doc:`Routing <routing>`. Puis, il est responsable de charger
+le contrôleur approprié et d'exécuter l'action correspondante.
 
-En temps normal, le framework créé le dispatcher automatiquement. Dans notre cas, nous voulons faire une vérification avant d'exécuter l'action requise,
-vérifier si l'utilisateur y a accès ou pas. Pour faire cela, nous avons remplacé le composant en créant une fonction dans le bootstrap (public/index.php):
+En temps normal, le framework créé le dispatcher automatiquement. Dans notre cas, nous voulons faire une vérification
+avant d'exécuter l'action requise, vérifier si l'utilisateur y a accès ou pas. Pour faire cela, nous avons
+remplacé le composant en créant une fonction dans le bootstrap (public/index.php):
 
 .. code-block:: php
 
@@ -256,15 +267,15 @@ vérifier si l'utilisateur y a accès ou pas. Pour faire cela, nous avons rempla
         return $dispatcher;
     });
 
-Nous avons maintenant un contrôle complet sur le dispatcher utilisé dans notre application.
-Plusieurs composants du framework déclenchent des évènements qui nous autorisent à modifier le flux interne des opérations.
-Comme l'injecteur de dépendances agit comme une "colle" pour composants, un nouveau composant appelé :doc:`EventsManager <events>`
-nous aide à intercepter les évènements produits par un composant routant les évènements aux listeners.
+Nous avons maintenant un contrôle complet sur le dispatcher utilisé dans notre application. Plusieurs composants du framework déclenchent
+des évènements qui nous autorisent à modifier le flux interne des opérations. Comme l'injecteur de dépendances agit comme une "colle"
+pour composants, un nouveau composant appelé :doc:`EventsManager <events>` nous aide à intercepter les évènements produits
+par un composant routant les évènements aux listeners.
 
 Gestion des évènements
 ^^^^^^^^^^^^^^^^^^^^^^
-Un :doc:`EventsManager <events>` (gestionnaire d'évènement) nous permet d'attacher un ou plusieurs listeners à un type particulier d'évènement.
-Le type d'évènement qui nous intéresse actuellement est le "dispatch", la code suivant filtre tous les évènements produit par le dispatcher :
+Un :doc:`EventsManager <events>` (gestionnaire d'évènement) nous permet d'attacher un ou plusieurs listeners à un type particulier d'évènement. Le type
+d'évènement qui nous intéresse actuellement est le "dispatch", la code suivant filtre tous les évènements produit par le dispatcher :
 
 .. code-block:: php
 
@@ -314,8 +325,8 @@ When a "beforeException" is triggered then other plugin is notified:
      */
     $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
-Le plugin de sécurité est une classe situé dans (app/plugins/SecurityPlugin.php). Cette classe implémente une méthode "beforeDispatch".
-C'est le même nom qu'un des évènement produit dans le dispatcer :
+Le plugin de sécurité est une classe situé dans (app/plugins/SecurityPlugin.php). Cette classe implémente une méthode
+"beforeExecuteRoute". C'est le même nom qu'un des évènement produit dans le dispatcer :
 
 .. code-block:: php
 
@@ -336,8 +347,9 @@ C'est le même nom qu'un des évènement produit dans le dispatcer :
     }
 
 Les évènements "hooks" reçoivent toujours un premier paramètre qui contient le contexte de l'information de l'évènement produit (:code:`$event`)
-et un second paramètre qui est l'objet produit par l'évènement lui-même (:code:`$dispatcher`). Il n'est pas obligatoire de faire étendre le plugin de la classe
-:doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, mais en faisant ainsi on a un accès facilité aux services disponibles de l'application.
+et un second paramètre qui est l'objet produit par l'évènement lui-même (:code:`$dispatcher`). Il n'est pas obligatoire
+de faire étendre le plugin de la classe :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, mais en faisant ainsi on a un accès facilité aux services
+disponibles de l'application.
 
 Maintenant nous allons vérifier le rôle de la session courrante, vérifier si l'utilisateur a accès en utilisant les listes ACL (access control list).
 S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme expliqué précédemment.
@@ -421,7 +433,8 @@ implémentée dans Plugin. Maintenant nous allons expliquer étape par étape co
         $acl->addRole($role);
     }
 
-On défini les ressources pour chaque zone. Le nom des contrôleurs sont des ressources et leurs actions sont accédées pour les ressources :
+On défini les ressources pour chaque zone. Le nom des contrôleurs sont des ressources et leurs actions sont
+accédées pour les ressources :
 
 .. code-block:: php
 
@@ -455,8 +468,8 @@ On défini les ressources pour chaque zone. Le nom des contrôleurs sont des res
         $acl->addResource(new Resource($resource), $actions);
     }
 
-Les ACL ont maintenant connaissance des contrôleurs et de leurs actions. Le rôle "Users" a accès à toutes les ressources du
-backend et du frontend. Le rôle "Guest" en revanche n'a accès qu'à la partie publique :
+Les ACL ont maintenant connaissance des contrôleurs et de leurs actions. Le rôle "Users" a accès à
+toutes les ressources du backend et du frontend. Le rôle "Guest" en revanche n'a accès qu'à la partie publique :
 
 .. code-block:: php
 
@@ -480,5 +493,4 @@ Hooray!, les ACL sont maintenant terminés. In next chapter, we will see how a C
 can customize it.
 
 .. _jinja: http://jinja.pocoo.org/
-.. _sha1: http://php.net/manual/en/function.sha1.php
-.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
+.. _sha1: http://php.net/manual/fr/function.sha1.php

@@ -16,7 +16,7 @@ Allows to define translation lists using PHP arrays
 Methods
 -------
 
-public  **__construct** (*unknown* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Translate\\Adapter\\NativeArray constructor
 
@@ -34,7 +34,7 @@ Check whether is defined a translation key in the internal array
 
 
 
-public  **setInterpolator** (*unknown* $interpolator) inherited from Phalcon\\Translate\\Adapter
+public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Phalcon_Translate_InterpolatorInterface>` $interpolator) inherited from Phalcon\\Translate\\Adapter
 
 ...
 

@@ -1,15 +1,14 @@
-Contextual Escaping
+Escape de contexto
 ===================
 
-Websites and web applications are vulnerable to XSS_ attacks and although PHP provides escaping functionality, in some contexts
-it is not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping and is written in Zephir, providing
-the minimal overhead when escaping different kinds of texts.
+Sites e aplicações web são vulneráveis a ataques XSS_ e, embora o PHP fornecer funcionalidades para escapar, em alguns contextos, ainda não é suficiente ou adequado.
+:doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` fornece um escape de contexto e é escrito em Zephir, fornecendo o mínimo de sobrecarga ao escapar diferentes tipos de textos.
 
-We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_.
+Nós projetamos este componente baseado no `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ criado pela OWASP_.
 
-Additionally, this component relies on mbstring_ to support almost any charset.
+Além disso, este componente depende mbstring_ para suportar quase todo o conjunto de caracteres.
 
-To illustrate how this component works and why it is important, consider the following example:
+Para ilustrar como este componente funciona e por que é importante, considere o seguinte exemplo:
 
 .. code-block:: html+php
 
@@ -56,103 +55,103 @@ To illustrate how this component works and why it is important, consider the fol
     </body>
     </html>
 
-Which produces the following:
+Que produz o seguinte:
 
 .. figure:: ../_static/img/escape.jpeg
     :align: center
 
-Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
+Todo texto tem escapado de acordo com o seu contexto. Use o contexto apropriado para evitar ataques XSS.
 
-Escaping HTML
--------------
-The most common situation when inserting unsafe data is between HTML tags:
+Escapando HTML
+--------------
+A situação mais comum quando inserimos dados inseguros entre tags HTML:
 
 .. code-block:: html
 
     <div class="comments"><!-- Escape untrusted data here! --></div>
 
-You can escape those data using the :code:`escapeHtml` method:
+Você pode escapar esses dados usando o método :code:`escapeHtml`:
 
 .. code-block:: html+php
 
     <div class="comments"><?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?></div>
 
-Which produces:
+Que produz:
 
 .. code-block:: html
 
     <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
 
-Escaping HTML Attributes
+Escapando atributos HTML
 ------------------------
-Escaping HTML attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric
-character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
+Escapando atributos HTML é diferente que escapar conteúdo HTML. O escapador trabalha sempre alterando caracteres não alfa-numéricos
+no formulário. Esse tipo de escape se destina a muitos atributos simples, excluindo complexos como 'href' ou 'url':
 
 .. code-block:: html
 
     <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
-You can escape a HTML attribute by using the :code:`escapeHtmlAttr` method:
+Você pode escapar um atributo HTML usando o método :code:`escapeHtmlAttr`:
 
 .. code-block:: html+php
 
     <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>"><tr><td>Hello</td></tr></table>
 
-Which produces:
+Que produz:
 
 .. code-block:: html
 
     <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
 
-Escaping URLs
--------------
-Some HTML attributes like 'href' or 'url' need to be escaped differently:
+Escapando URLs
+--------------
+Muitos atributos HTML como 'href' ou 'url' precisam ser escapados de forma diferente:
 
 .. code-block:: html
 
     <a href="Escape untrusted data here!">Some link</a>
 
-You can escape a HTML attribute by using the :code:`escapeUrl` method:
+Você pode escapar um atributo HTML usando o método :code:`escapeUrl`
 
 .. code-block:: html+php
 
     <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
 
-Which produces:
+Que produz:
 
 .. code-block:: html
 
     <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
 
-Escaping CSS
-------------
-CSS identifiers/values can be escaped too:
+Escapando CSS
+-------------
+Indentificadores/valores CSS podem ser escapados também:
 
 .. code-block:: html
 
     <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape a HTML attribute by using the :code:`escapeCss` method:
+Você pode escapar um atributo HTML usando o método :code:`escapeCss`:
 
 .. code-block:: html+php
 
     <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
 
-Which produces:
+Que produz:
 
 .. code-block:: html
 
     <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
 
-Escaping JavaScript
--------------------
-Strings to be inserted into JavaScript code also must be properly escaped:
+Escapando JavaScript
+--------------------
+Textos podem ser inseridos no código JavaScript, também devem ser devidamente escapados:
 
 .. code-block:: html
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape a HTML attribute by using the :code:`escapeJs` method:
+Você pode escapar um atributo HTML  usando o método :code:`escapeJs`:
 
 .. code-block:: html+php
 
@@ -165,4 +164,4 @@ You can escape a HTML attribute by using the :code:`escapeJs` method:
 .. _OWASP: https://www.owasp.org
 .. _XSS: https://www.owasp.org/index.php/XSS
 .. _`XSS (Cross Site Scripting) Prevention Cheat Sheet`: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
-.. _mbstring: http://php.net/manual/en/book.mbstring.php
+.. _mbstring: http://php.net/manual/pt_BR/book.mbstring.php

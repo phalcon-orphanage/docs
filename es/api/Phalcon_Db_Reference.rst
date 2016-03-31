@@ -72,13 +72,13 @@ ON UPDATE
 
 
 
-public  **__construct** (*unknown* $name, *unknown* $definition)
+public  **__construct** (*unknown* $name, *array* $definition)
 
 Phalcon\\Db\\Reference constructor
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Reference object from export
 

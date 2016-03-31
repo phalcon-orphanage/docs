@@ -78,7 +78,7 @@ Escapes a string with htmlentities
 
 
 
-protected  **_getArrayDump** (*unknown* $argument, [*unknown* $n])
+protected  **_getArrayDump** (*array* $argument, [*unknown* $n])
 
 Produces a recursive representation of an array
 
@@ -114,7 +114,7 @@ Returns the javascript sources
 
 
 
-final protected  **showTraceItem** (*unknown* $n, *unknown* $trace)
+final protected  **showTraceItem** (*unknown* $n, *array* $trace)
 
 Shows a backtrace item
 
@@ -126,7 +126,7 @@ Throws an exception when a notice or warning is raised
 
 
 
-public  **onUncaughtException** (*unknown* $exception)
+public  **onUncaughtException** (*Exception* $exception)
 
 Handles uncaught exceptions
 

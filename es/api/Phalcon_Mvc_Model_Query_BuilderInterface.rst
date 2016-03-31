@@ -84,12 +84,12 @@ abstract public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unkn
 ...
 
 
-abstract public  **inWhere** (*unknown* $expr, *unknown* $values)
+abstract public  **inWhere** (*unknown* $expr, *array* $values)
 
 ...
 
 
-abstract public  **notInWhere** (*unknown* $expr, *unknown* $values)
+abstract public  **notInWhere** (*unknown* $expr, *array* $values)
 
 ...
 

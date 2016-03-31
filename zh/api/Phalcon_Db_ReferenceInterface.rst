@@ -9,7 +9,7 @@ Interface **Phalcon\\Db\\ReferenceInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $referenceName, *unknown* $definition)
+abstract public  **__construct** (*unknown* $referenceName, *array* $definition)
 
 ...
 
@@ -54,7 +54,7 @@ abstract public  **getOnUpdate** ()
 ...
 
 
-abstract public static  **__set_state** (*unknown* $data)
+abstract public static  **__set_state** (*array* $data)
 
 ...
 

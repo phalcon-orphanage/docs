@@ -321,7 +321,7 @@ Checks whether view exists on registered extensions and render it
 
 
 
-public  **registerEngines** (*unknown* $engines)
+public  **registerEngines** (*array* $engines)
 
 Register templating engines 
 
@@ -562,7 +562,7 @@ Magic method to retrieve if a variable is set in the view
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -574,7 +574,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

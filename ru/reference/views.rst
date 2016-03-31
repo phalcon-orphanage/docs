@@ -799,7 +799,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
          * Конструктор адаптера
          *
          * @param \Phalcon\Mvc\View $view
-         * @param \Phalcon\DI $di
+         * @param \Phalcon\Di $di
          */
         public function __construct($view, $di)
         {
@@ -893,7 +893,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 Внедрение сервисов в Представление
 ----------------------------------
-Каждое представление, исполняемое внутри экземпляра :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` получает простой доступ к сервисам приложения.
+Каждое представление, исполняемое внутри экземпляра :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` получает простой доступ к сервисам приложения.
 
 Следующий пример демонстрирует как можно написать `ajax request`_ на jQuery используя URL из фреймворка.
 Сервис "url" (обычно это :doc:`Phalcon\\Mvc\\Url <url>`) внедрён в представление и доступен как свойство с таким же именем:

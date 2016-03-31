@@ -1,14 +1,14 @@
-Encryption/Decryption
-=====================
+Encriptação/Decriptação
+=======================
 
-Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
-This class offers simple object-oriented wrappers to the mcrypt_ PHP's encryption library.
+Phalcon provê utilitários de encriptação pelo componente :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
+Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca mcrypt_ do PHP.
 
-By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
+Por padrão, esse componente provê uma encriptação segura usando AES-256 (rijndael-256-cbc).
 
-Basic Usage
------------
-This component is designed to provide a very simple usage:
+Uso Básico
+----------
+Esse componente foi projetado para fornecer um uso muito simples:
 
 .. code-block:: php
 
@@ -26,7 +26,7 @@ This component is designed to provide a very simple usage:
 
     echo $crypt->decrypt($encrypted, $key);
 
-You can use the same instance to encrypt/decrypt several times:
+Você pode usar a mesma instância para encriptar/decriptar várias vezes:
 
 .. code-block:: php
 
@@ -51,19 +51,20 @@ You can use the same instance to encrypt/decrypt several times:
         echo $crypt->decrypt($encrypted, $key);
     }
 
-Encryption Options
-------------------
-The following options are available to change the encryption behavior:
+Opções de Encriptação
+---------------------
+As seguintes opções estão disponíveis para alterar o comportamento da encriptação:
 
-+------------+---------------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                       |
-+============+===================================================================================================+
-| Cipher     | The cipher is one of the encryption algorithms supported by libmcrypt. You can see a list here_   |
-+------------+---------------------------------------------------------------------------------------------------+
-| Mode       | One of the encryption modes supported by libmcrypt (ecb, cbc, cfb, ofb)                           |
-+------------+---------------------------------------------------------------------------------------------------+
++------------+--------------------------------------------------------------------------------------------------------------+
+| Nome       | Descrição                                                                                                    |
++============+==============================================================================================================+
+| Cipher     | É um dos tipos de algoritmo de encriptografia suportados pela libmcrypt. Você pode ver a lista aqui_         |
++------------+--------------------------------------------------------------------------------------------------------------+
+| Mode       | Um modo de encriptação suportado pela libmcrypt (ecb, cbc, cfb, ofb)                                         |
++------------+--------------------------------------------------------------------------------------------------------------+
 
-Example:
+
+Exemplo:
 
 .. code-block:: php
 
@@ -82,9 +83,9 @@ Example:
 
     echo $crypt->encrypt($text, $key);
 
-Base64 Support
---------------
-In order for encryption to be properly transmitted (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
+Suporte a Base64
+----------------
+Para que a criptografia possa ser trafegada (emails, urls) ou exibida (navegadores), normalmente aplicamos nos textos a codificação base64_.
 
 .. code-block:: php
 
@@ -102,9 +103,9 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     echo $crypt->decryptBase64($encrypt, $key);
 
-Setting up an Encryption service
---------------------------------
-You can set up the encryption component in the services container in order to use it from any part of the application:
+Configurando um serviço de Encriptação
+--------------------------------------
+Você pode configurar um componente de encriptação no container de serviços para usá-lo em qualquer parte da aplicação:
 
 .. code-block:: php
 
@@ -122,7 +123,7 @@ You can set up the encryption component in the services container in order to us
         return $crypt;
     }, true);
 
-Then, for example, in a controller you can use it as follows:
+Então, por exemplo, em um controlador você pode usá-lo da seguinte forma:
 
 .. code-block:: php
 
@@ -147,5 +148,5 @@ Then, for example, in a controller you can use it as follows:
     }
 
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
-.. _here: http://www.php.net/manual/en/mcrypt.ciphers.php
+.. _aqui: http://www.php.net/manual/en/mcrypt.ciphers.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

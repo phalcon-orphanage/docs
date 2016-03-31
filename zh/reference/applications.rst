@@ -35,7 +35,7 @@ MVC 应用（MVC Applications）
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -75,7 +75,7 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -155,7 +155,7 @@ MVC 应用（MVC Applications）
         /**
          * 注册自定义加载器
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di = null)
         {
             $loader = new Loader();
 
@@ -198,7 +198,7 @@ MVC 应用（MVC Applications）
 
     use Phalcon\Mvc\Router;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 

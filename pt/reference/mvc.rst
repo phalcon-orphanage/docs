@@ -1,33 +1,26 @@
-The MVC Architecture
+A arquitetura MVC
 ====================
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture
-(often referred to as MVC_) in your application. This design pattern is widely used by other web frameworks
-and desktop applications.
+Phalcon oferece as classes orientadas a objeto, necessárias para implementar o Model, View, Controller architecture (muitas vezes referida como MVC_) em sua aplicação. Este padrão de projeto é amplamente utilizado por outros frameworks web e aplicações desktop.
 
-MVC benefits include:
+Os benefícios MVC incluem: 
 
-* Isolation of business logic from the user interface and the database layer
-* Making it clear where different types of code belong for easier maintenance
+* Isolamento de lógica de negócios a partir da interface do usuário e a camada de banco de dados
+* Deixando claro onde diferentes tipos de código pertencem para facilitar a manutenção
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC_ architecture.
-Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
+If you decide to use MVC, every request to your application resources will be managed by the MVC architecture.
+As classes Phalcon são escritas na linguagem C, oferecendo uma abordagem de alto desempenho deste padrão em um aplicativo baseado em PHP.
 
 Models
 ------
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for
-managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond
-to one model in your application. The bulk of your application's business logic will be concentrated in the models. :doc:`Learn more <models>`
+Um modelo representa as informações (dados) da aplicação e as regras para manipular esses dados. Modelos são utilizados principalmente para gerir as regras de interação com uma tabela de banco de dados correspondente. Na maioria dos casos, cada tabela no banco de dados corresponderá a um modelo em seu aplicativo. A maior parte da sua lógica de negócios do aplicativo será concentrada nos modelos. :doc:`Learn more <models>`
 
 Views
 -----
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks
-related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
-is used to make requests from your application. :doc:`Learn more <views>`
+Views representam a interface do usuário do seu aplicativo. As views são arquivos frequentemente HTML com código PHP embutido que executam tarefas referem-se exclusivamente à apresentação dos dados. Views lidam com o trabalho de fornecer dados para o navegador web ou outra ferramenta que é usado para fazer solicitações do seu aplicativo. :doc:`Learn more <views>`
 
 Controllers
 -----------
-The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests
-from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
+Os controladores fornecem o "fluxo" entre os model e as views. Controladores são responsáveis pelo processamento dos pedidos recebidos a partir do navegador web, interrogar os models para dados, e passando os dados as views para a apresentação. :doc:`Learn more <controllers>`
 
 .. _MVC: http://pt.wikipedia.org/wiki/MVC

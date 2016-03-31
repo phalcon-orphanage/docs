@@ -2,15 +2,11 @@
 ====================
 作为PHP C拓展形式的Phalcon，需要一个略微不同于传统PHP的库或框架的安装方法。你可以选择一个当前系统的一个二进制包下载，或者使用源代码构建它。
 
-.. highlights::
-    Phalcon 可编译在PHP 5.3.1及以上版本，但是因为老PHP版本错误导致内存泄漏，我们强烈推荐你使用PHP 5.3.11或更高版本。
-
-.. highlights::
-    PHP 5.3.9版本以前有几个安全漏洞，不建议在生产网站中使用。`学习更多 <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
-
 Windows
 -------
 要在Windows上使用Phalcon，你可以下载一个DLL库。编辑php.ini文件，并且在最后附加上：
+
+.. code-block:: bash
 
     extension=php_phalcon.dll
 
@@ -20,7 +16,7 @@ Windows
 
 .. raw:: html
 
-    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+    <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 相关指南（Related Guides）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,32 +26,32 @@ Windows
     xampp
     wamp
 
-Linux/Solaris/Mac
------------------
-在Linux/Solaris/Mac系统下，你能很轻易从源代码编译和安装这个拓展:
+Linux/Solaris
+-------------
+在Linux/Solaris系统下，你能很轻易从源代码编译和安装这个拓展:
 
 基本要求（Requirements）
 ^^^^^^^^^^^^^^^^^^^^^^^^
 必要的包:
 
-* PHP 5.3.x/5.4.x/5.5.x development resources
-* GCC compiler (Linux/Solaris) or Xcode (Mac)
+* PHP >= 5.3 development resources
+* GCC compiler (Linux/Solaris)
 * Git (如果不是已经安装在你的系统，且你没有从Github上下载这个包并通过FTP/SFTP上传到你的服务器上)
 
 通用平台下安装指定的软件包：
 
 .. code-block:: bash
 
-    #Ubuntu
+    # Ubuntu
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
     # Suse
-    sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
     # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
+    # Solaris
     pkg install gcc-45 php-53 apache-php53
 
 编译（Compilation）
@@ -72,21 +68,24 @@ Linux/Solaris/Mac
 
 .. code-block:: bash
 
-    # Suse: Add this line in your php.ini
+    # Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
-    # Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    # CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
-    # Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
+    # Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
     extension=phalcon.so
 
-    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
+    # Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    extension=phalcon.so
+
+    # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
     extension=phalcon.so
 
 重启Web服务器.
 
-如果你在 Debian 下使用 php5-fpm，重启命令为：
+如果你在 Ubuntu/Debian 下使用 php5-fpm，重启命令为：
 
 .. code-block:: bash
 
@@ -101,7 +100,7 @@ Phalcon自动检测你的系统架构，然而，您可以强制编译为一个�
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+如果自动安装失败，请尝试手动编译安装：
 
 .. code-block:: bash
 
@@ -112,7 +111,7 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+在Mac OS X系统中你可以通过源代码来编译和安装扩展：
 
 Requirements
 ^^^^^^^^^^^^
@@ -134,8 +133,7 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration:
-
+添加扩展到你的PHP配置文件。
 
 FreeBSD
 -------

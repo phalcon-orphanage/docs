@@ -493,5 +493,4 @@ Hooray!, the ACL is now complete. In next chapter, we will see how a CRUD is imp
 can customize it.
 
 .. _jinja: http://jinja.pocoo.org/
-.. _sha1: http://php.net/manual/en/function.sha1.php
-.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
+.. _sha1: http://php.net/manual/pt_BR/function.sha1.php

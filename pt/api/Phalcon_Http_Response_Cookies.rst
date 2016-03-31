@@ -14,7 +14,7 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 Methods
 -------
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -38,7 +38,7 @@ Returns if the bag is automatically encrypting/decrypting cookies
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **set** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
+public  **set** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
 
 Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
 

@@ -39,7 +39,7 @@ abstract public  **reflection** (*unknown* $height, [*unknown* $opacity], [*unkn
 ...
 
 
-abstract public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity])
+abstract public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity])
 
 ...
 
@@ -49,7 +49,7 @@ abstract public  **text** (*unknown* $text, [*unknown* $offsetX], [*unknown* $of
 ...
 
 
-abstract public  **mask** (*unknown* $watermark)
+abstract public  **mask** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark)
 
 ...
 

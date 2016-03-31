@@ -1,9 +1,9 @@
 Volt: Template Engine
 =====================
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
+Volt é uma linguagem de templates ultra-rápida e designer amigável escrito em C para PHP. Ele fornece um conjunto de
+ajudantes para escrever views em uma maneira fácil. Volt é altamente integrado com outros componentes da Phalcon,
+assim como você pode usá-lo como um componente autônomo em suas aplicações.
 
 .. figure:: ../_static/img/volt.jpg
    :align: center

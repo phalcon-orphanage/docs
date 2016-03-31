@@ -39,13 +39,13 @@ Phalcon\\Mvc\\Model\\Validator\\InclusionIn  Check if a value is included into a
 Methods
 -------
 
-public  **validate** (*unknown* $record)
+public  **validate** (:doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>` $record)
 
 Executes validator
 
 
 
-public  **__construct** (*unknown* $options) inherited from Phalcon\\Mvc\\Model\\Validator
+public  **__construct** (*array* $options) inherited from Phalcon\\Mvc\\Model\\Validator
 
 Phalcon\\Mvc\\Model\\Validator constructor
 

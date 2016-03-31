@@ -35,7 +35,7 @@ Pagination using a PHP array as source of data
 Methods
 -------
 
-public  **__construct** (*unknown* $config)
+public  **__construct** (*array* $config)
 
 Phalcon\\Paginator\\Adapter\\NativeArray constructor
 

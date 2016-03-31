@@ -10,7 +10,7 @@ Class **Phalcon\\Mvc\\Application**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.  
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 .. code-block:: php
 
@@ -18,16 +18,16 @@ This component encapsulates all the complex operations behind instantiating ever
 
      class Application extends \Phalcon\Mvc\Application
      {
-    
+
     	/**
     	 * Register the services here to make them general or register
     	 * in the ModuleDefinition to make them module-specific
     	 */
     	protected function _registerServices()
     	{
-    
+
     	}
-    
+
     	/**
     	 * This method registers all the modules in the application
     	 */
@@ -45,7 +45,7 @@ This component encapsulates all the complex operations behind instantiating ever
     		));
     	}
     }
-    
+
     $application = new Application();
     $application->main();
 
@@ -54,7 +54,7 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 -------
 
-public  **__construct** ([*unknown* $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 
 
@@ -66,9 +66,9 @@ By default. The view is implicitly buffering all the output You can full disable
 
 
 
-public  **registerModules** (*unknown* $modules, [*unknown* $merge])
+public  **registerModules** (*array* $modules, [*unknown* $merge])
 
-Register an array of modules present in the application 
+Register an array of modules present in the application
 
 .. code-block:: php
 
@@ -112,13 +112,13 @@ Returns the default module name
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` |boolean **handle** ([*string* $uri])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` \|boolean **handle** ([*string* $uri])
 
 Handles a MVC request
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -130,7 +130,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 
@@ -145,6 +145,3 @@ Returns the internal event manager
 public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
-
-
-

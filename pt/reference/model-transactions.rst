@@ -1,9 +1,7 @@
 Model Transactions
 ==================
 
-When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can
-be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-is committed to the database.
+Quando um processo realiza várias operações da base de dados, pode ser importante que cada passo é completado com sucesso, de modo que a integridade dos dados pode ser mantida. Transações oferece a capacidade de garantir que todas as operações de banco de dados ter sido executado com sucesso antes dos dados está comprometida com o banco de dados.
 
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 

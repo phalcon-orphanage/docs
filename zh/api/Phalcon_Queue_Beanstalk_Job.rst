@@ -22,7 +22,7 @@ public  **getBody** ()
 ...
 
 
-public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *string* $id, *string* $body)
+public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *unknown* $id, *unknown* $body)
 
 
 

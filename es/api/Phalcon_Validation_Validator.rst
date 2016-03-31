@@ -44,7 +44,7 @@ Sets an option in the validator
 
 
 
-abstract public  **validate** (*unknown* $validation, *unknown* $attribute)
+abstract public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $attribute)
 
 Executes the validation
 

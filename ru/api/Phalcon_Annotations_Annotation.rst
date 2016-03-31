@@ -12,7 +12,7 @@ Represents a single annotation in an annotations collection
 Methods
 -------
 
-public  **__construct** (*unknown* $reflectionData)
+public  **__construct** (*array* $reflectionData)
 
 Phalcon\\Annotations\\Annotation constructor
 
@@ -60,13 +60,13 @@ Returns an argument in a specific position
 
 
 
-public *mixed*  **getNamedArgument** (*string* $name)
+public *mixed*  **getNamedArgument** (*unknown* $name)
 
 Returns a named argument
 
 
 
-public *mixed*  **getNamedParameter** (*string* $name)
+public *mixed*  **getNamedParameter** (*unknown* $name)
 
 Returns a named parameter
 

@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\MetaDataInterface**
 Methods
 -------
 
-abstract public  **setStrategy** (*unknown* $strategy)
+abstract public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\StrategyInterface <Phalcon_Mvc_Model_MetaData_StrategyInterface>` $strategy)
 
 ...
 
@@ -19,117 +19,117 @@ abstract public  **getStrategy** ()
 ...
 
 
-abstract public  **readMetaData** (*unknown* $model)
+abstract public  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **readMetaDataIndex** (*unknown* $model, *unknown* $index)
+abstract public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
 
 ...
 
 
-abstract public  **writeMetaDataIndex** (*unknown* $model, *unknown* $index, *unknown* $data)
+abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index, *unknown* $data)
 
 ...
 
 
-abstract public  **readColumnMap** (*unknown* $model)
+abstract public  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **readColumnMapIndex** (*unknown* $model, *unknown* $index)
+abstract public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
 
 ...
 
 
-abstract public  **getAttributes** (*unknown* $model)
+abstract public  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getPrimaryKeyAttributes** (*unknown* $model)
+abstract public  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getNonPrimaryKeyAttributes** (*unknown* $model)
+abstract public  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getNotNullAttributes** (*unknown* $model)
+abstract public  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getDataTypes** (*unknown* $model)
+abstract public  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getDataTypesNumeric** (*unknown* $model)
+abstract public  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getIdentityField** (*unknown* $model)
+abstract public  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getBindTypes** (*unknown* $model)
+abstract public  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getAutomaticCreateAttributes** (*unknown* $model)
+abstract public  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getAutomaticUpdateAttributes** (*unknown* $model)
+abstract public  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **setAutomaticCreateAttributes** (*unknown* $model, *unknown* $attributes)
+abstract public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
 ...
 
 
-abstract public  **setAutomaticUpdateAttributes** (*unknown* $model, *unknown* $attributes)
+abstract public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
 ...
 
 
-abstract public  **setEmptyStringAttributes** (*unknown* $model, *unknown* $attributes)
+abstract public  **setEmptyStringAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
 ...
 
 
-abstract public  **getEmptyStringAttributes** (*unknown* $model)
+abstract public  **getEmptyStringAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getDefaultValues** (*unknown* $model)
+abstract public  **getDefaultValues** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getColumnMap** (*unknown* $model)
+abstract public  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **getReverseColumnMap** (*unknown* $model)
+abstract public  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **hasAttribute** (*unknown* $model, *unknown* $attribute)
+abstract public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
 
 ...
 

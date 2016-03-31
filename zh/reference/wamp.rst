@@ -1,49 +1,49 @@
 WAMP 下安装（Installation on WAMP）
 ===================================
 
-WampServer_ is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+WampServer_ 是一个windows版 Web 开发环境。它允许你通过使用Apache2，PHP和一个MySQL数据库来创建一个WEB应用。 下面是介绍如何在Windows版的WampServer上安装Phalcon的详细说明。强烈推荐使用最新版本的WampServer版本。
 
 下载正确的 Phalcon 版本（Download the right version of Phalcon）
 ----------------------------------------------------------------
-WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.
+WAMP包含32位和64位版本。从下载页面，你可以根据你要的架构来选择下载不同的Windows版Phalcon。
 
-After download the Phalcon library you will have a zip file like the one shown below:
+下载Phalcon扩展之后，你将会看到一个如下图所示的zip文件：
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center
 
-Extract the library from the archive to get the Phalcon DLL:
+解压zip文件，你将会发现多了一个Phalcon DLL文件:
 
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copy the file php_phalcon.dll to the PHP extensions. If WAMP is installed in the C:\\wamp folder, the extension needs to be in C:\\wamp\\bin\\php\\php5.3.10\\ext
+复制 php_phalcon.dll 文件到PHP扩展目录。如果你安装的WAMP在C:\wamp文件夹，那么该扩展需要放在C:\\wamp\\bin\\php\\php5.5.12\\ext目录中：
 
 .. figure:: ../_static/img/wamp-1.png
     :align: center
 
-Edit the php.ini file, it is located at C:\\wamp\\bin\\php\\php5.3.10\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.
+编辑 php.ini 文件， 它位于 C:\\wamp\\bin\\php\\php5.5.12\\php.ini。它可以使用记事本或者类似程序来编辑它。我们推荐使用Notepad++，来避免行尾问题。在文件的结束部分加上 extension=php_phalcon.dll 然后保存该文件。
 
 .. figure:: ../_static/img/wamp-2.png
     :align: center
 
-Also edit another php.ini file, which is located at C:\\wamp\\bin\\apache\\Apache2.2.21\\bin\\php.ini. Append at the end of the file: extension=php_phalcon.dll and save it.
+同样也需要编辑另外一个php.ini文件，它位于C:\\wamp\\bin\\apache\\apache2.4.9\\bin\\php.ini。在文件的结束部分加上 extension=php_phalcon.dll 然后保存该文件。
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose "Restart All Services" from the pop-up menu. Check out that tray icon will become green again.
+重启Apache Web 服务器。 请在系统托盘部分点击WAMP图标。从快捷菜单中选择“Restart All Services”（重新启动所有服务），检测系统图标是否再一次的变成绿色。
 
 .. figure:: ../_static/img/wamp-3.png
     :align: center
 
-Open your browser to navigate to http://localhost. The WAMP welcome page will appear. Look at the section "extensions loaded" to check if phalcon was loaded.
+打开你的浏览器输入http://localhost并回车。将会出现WAMP的欢迎页面。查看“extenssion loaded”来检测Phalcon扩展是否正确加载了。
 
 .. figure:: ../_static/img/wamp-4.png
     :align: center
 
-Congrats!, You are now flying with Phalcon.
+恭喜你，你已经成功的安装Phalcon扩展。
 
 相关指南
 --------------
-* :doc:`General Installation </reference/install>`
-* :doc:`Detailed Installation on XAMPP for Windows </reference/xampp>`
+* :doc:`普通安装 </reference/install>`
+* :doc:`Windows版XMAPP安装说明 </reference/xampp>`
 
 .. _WampServer: http://www.wampserver.com/en/

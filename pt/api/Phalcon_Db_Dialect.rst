@@ -77,7 +77,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-final public  **getColumnList** (*unknown* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final public  **getColumnList** (*array* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Gets a list of columns with escaped identifiers 
 
@@ -96,7 +96,7 @@ Resolve Column expressions
 
 
 
-public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+public  **getSqlExpression** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Transforms an intermediate representation for a expression into a database system valid expression
 
@@ -108,7 +108,7 @@ Transform an intermediate representation of a schema/table into a database syste
 
 
 
-public  **select** (*unknown* $definition)
+public  **select** (*array* $definition)
 
 Builds a SELECT statement
 
@@ -144,67 +144,67 @@ Generate SQL to rollback a savepoint
 
 
 
-final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionScalar** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve Column expressions
 
 
 
-final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionObject** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve object expressions
 
 
 
-final protected  **getSqlExpressionQualified** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionQualified** (*array* $expression, [*unknown* $escapeChar])
 
 Resolve qualified expressions
 
 
 
-final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionBinaryOperations** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve binary operations expressions
 
 
 
-final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionUnaryOperations** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve unary operations expressions
 
 
 
-final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, *unknown* $escapeChar, [*unknown* $bindCounts])
+final protected  **getSqlExpressionFunctionCall** (*array* $expression, *unknown* $escapeChar, [*unknown* $bindCounts])
 
 Resolve function calls
 
 
 
-final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionList** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve Lists
 
 
 
-final protected  **getSqlExpressionAll** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionAll** (*array* $expression, [*unknown* $escapeChar])
 
 Resolve *
 
 
 
-final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionCastValue** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CAST of values
 
 
 
-final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionConvertValue** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CONVERT of values encodings
 
 
 
-final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
+final protected  **getSqlExpressionCase** (*array* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CASE expressions
 
@@ -270,17 +270,17 @@ Prepares qualified for this RDBMS
 
 
 
-abstract public  **getColumnDefinition** (*unknown* $column) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
 
-abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
 
-abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn]) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn]) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
@@ -290,7 +290,7 @@ abstract public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *u
 ...
 
 
-abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
@@ -300,7 +300,7 @@ abstract public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *un
 ...
 
 
-abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
@@ -310,7 +310,7 @@ abstract public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName
 ...
 
 
-abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
@@ -320,12 +320,12 @@ abstract public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName
 ...
 
 
-abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 
 
-abstract public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\DialectInterface
+abstract public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\DialectInterface
 
 ...
 

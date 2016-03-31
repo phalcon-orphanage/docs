@@ -28,8 +28,8 @@ Adiciona el comportamiento 'PHP Language' haciendo uso del asistente. Este compo
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normalmente este comportamiento no requiere configuraciones adicionales. Adiciona otro comportamiento esta vez en la sección
-'Manual Configuration' section. En 'Rule Type' selecciona 'File Exists',
+Normalmente este comportamiento no requiere configuraciones adicionales. Adiciona otro comportamiento
+esta vez en la sección 'Manual Configuration' section. En 'Rule Type' selecciona 'File Exists',
 verifica que la opción 'Match any file' esta habilitada:
 
 .. figure:: ../_static/img/cherokee-55.jpg

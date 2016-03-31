@@ -1,13 +1,13 @@
 Notas para la instalación en Nginx
 ==================================
 
-Nginx_ es un servidor HTTP libre de código abierto con muy alto rendimiento, puede actuar ademas como servidor proxy inversy y como proxy para MAP/POP3. A diferencia de los servidores tradicionales, Nginx_ no se basa en hilos para manejar las peticiones. En su lugar usa una arquitectura más escalable event-driven(asíncrona). Esta arquitectura usa pequeños espacios de memoria, pero aún más importante puede predecir el tamaño de la memoria a ser cargada.
+Nginx_ es un servidor HTTP libre de código abierto con muy alto rendimiento, puede actuar ademas como servidor proxy inversy y como proxy para IMAP/POP3. A diferencia de los servidores tradicionales, Nginx_ no se basa en hilos para manejar las peticiones. En su lugar usa una arquitectura más escalable event-driven (asíncrona). Esta arquitectura usa pequeños espacios de memoria, pero aún más importante puede predecir el tamaño de la memoria a ser cargada.
 
 El `PHP-FPM`_ (FastCGI Process Manager) es generalmente usado para permitir a Nginx_ procesar ficheros PHP. Actualmente, `PHP-FPM`_ se encuentra en paquetes de cualquier distribución Unix PHP. Phalcon + Nginx_ + `PHP-FPM`_ provee un poderoso conjunto que ofrece el máximo rendimiento para tus applications PHP.
 
 Configurando Nginx para Phalcon
 -------------------------------
-Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación.
+Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación:
 
 Configuración básica
 ^^^^^^^^^^^^^^^^^^^^
@@ -16,34 +16,24 @@ Using :code:`$_GET['_url']` as source of URIs:
 .. code-block:: nginx
 
     server {
-        listen 80;
-
+        listen      80;
         server_name localhost.dev;
+        root        /var/www/phalcon/public;
+        index       index.php index.html index.htm;
 
-        index index.php index.html index.htm;
-
-        root /var/www/phalcon/public;
-
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+            try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
-            fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+            fastcgi_pass  unix:/run/php-fpm/php-fpm.sock;
             fastcgi_index /index.php;
 
-            include /etc/nginx/fastcgi_params;
-
+            include fastcgi_params;
             fastcgi_split_path_info       ^(.+\.php)(/.+)$;
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
         }
 
         location ~ /\.ht {
@@ -56,29 +46,24 @@ Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
 .. code-block:: nginx
 
     server {
-        listen 80;
-
+        listen      80;
         server_name localhost.dev;
-
-        index index.php index.html index.htm;
-
-        root /var/www/phalcon/public;
+        root        /var/www/phalcon/public;
+        index       index.php index.html index.htm;
 
         location / {
             try_files $uri $uri/ /index.php;
         }
 
         location ~ \.php$ {
-                try_files $uri =404;
-                fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_pass 127.0.0.1:9000;
-                fastcgi_index index.php;
-                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-                include fastcgi_params;
-        }
+            try_files     $uri =404;
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/phalcon/public;
+            fastcgi_pass  127.0.0.1:9000;
+            fastcgi_index /index.php;
+
+            include fastcgi_params;
+            fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
 
         location ~ /\.ht {
@@ -91,34 +76,23 @@ Instancias dedicadas
 .. code-block:: nginx
 
     server {
-        listen       80;
-        server_name  localhost;
+        listen      80;
+        server_name localhost;
+        root        /srv/www/htdocs/phalcon-website/public;
+        index       index.php index.html index.htm;
+        charset     utf-8;
 
-        charset      utf-8;
-
-        #access_log  /var/log/nginx/host.access.log  main;
+        #access_log /var/log/nginx/host.access.log main;
 
         location / {
-            root   /srv/www/htdocs/phalcon-website/public;
-            index  index.php index.html index.htm;
-
-            # if file exists return it right away
-            if (-f $request_filename) {
-                break;
-            }
-
-            # otherwise rewrite it
-            if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
-                break;
-            }
+            try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
-            # try_files    $uri =404;
+            # try_files   $uri =404;
 
-            fastcgi_index  /index.php;
-            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_pass  127.0.0.1:9000;
+            fastcgi_index /index.php;
 
             include fastcgi_params;
             fastcgi_split_path_info       ^(.+\.php)(/.+)$;
@@ -127,8 +101,8 @@ Instancias dedicadas
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         }
 
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /srv/www/htdocs/phalcon-website/public;
+        location ~ /\.ht {
+            deny all;
         }
     }
 
@@ -140,37 +114,28 @@ Esta configuración te permite tener varias configuraciones por Host:
 
     server {
         listen      80;
-
         server_name localhost;
-
         root        /var/www/$host/public;
+        index       index.php index.html index.htm;
 
         access_log  /var/log/nginx/$host-access.log;
         error_log   /var/log/nginx/$host-error.log error;
 
-        index index.php index.html index.htm;
-
-        try_files $uri $uri/ @rewrite;
-
-        location @rewrite {
-            rewrite ^(.*)$ /index.php?_url=$1;
+        location / {
+            try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
 
         location ~ \.php {
-            # try_files    $uri =404;
+            # try_files   $uri =404;
 
-            fastcgi_index  /index.php;
-            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_pass  127.0.0.1:9000;
+            fastcgi_index /index.php;
 
             include fastcgi_params;
             fastcgi_split_path_info       ^(.+\.php)(/.+)$;
             fastcgi_param PATH_INFO       $fastcgi_path_info;
             fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-            root /var/www/$host/public;
         }
 
         location ~ /\.ht {

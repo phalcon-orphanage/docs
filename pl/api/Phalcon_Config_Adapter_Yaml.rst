@@ -45,7 +45,7 @@ Reads YAML files and converts them to Phalcon\\Config objects.  Given the follow
 Methods
 -------
 
-public  **__construct** (*unknown* $filePath, [*unknown* $callbacks])
+public  **__construct** (*unknown* $filePath, [*array* $callbacks])
 
 Phalcon\\Config\\Adapter\\Yaml constructor
 
@@ -116,7 +116,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (*unknown* $config) inherited from Phalcon\\Config
+public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config) inherited from Phalcon\\Config
 
 Merges a configuration into the current one 
 
@@ -164,7 +164,7 @@ or
 
 
 
-public static  **__set_state** (*unknown* $data) inherited from Phalcon\\Config
+public static  **__set_state** (*array* $data) inherited from Phalcon\\Config
 
 Restores the state of a Phalcon\\Config object
 

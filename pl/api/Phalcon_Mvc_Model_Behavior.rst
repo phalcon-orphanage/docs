@@ -30,7 +30,7 @@ Returns the behavior options related to an event
 
 
 
-public  **notify** (*unknown* $type, *unknown* $model)
+public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 This method receives the notifications from the EventsManager
 

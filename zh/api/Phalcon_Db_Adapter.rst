@@ -32,13 +32,13 @@ Active SQL bound parameter variables
 
 
 
-public  **__construct** (*unknown* $descriptor)
+public  **__construct** (*array* $descriptor)
 
 Phalcon\\Db\\Adapter constructor
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the event manager
 
@@ -50,7 +50,7 @@ Returns the internal event manager
 
 
 
-public  **setDialect** (*unknown* $dialect)
+public  **setDialect** (:doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>` $dialect)
 
 Sets the dialect used to produce the SQL
 
@@ -62,7 +62,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
+public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -306,7 +306,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
+public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition)
 
 Creates a table
 
@@ -318,7 +318,7 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName])
 
 Creates a view
 
@@ -330,13 +330,13 @@ Drops a view
 
 
 
-public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Adds a column to a table
 
 
 
-public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
+public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
 
 Modifies a table column based on a definition
 
@@ -348,7 +348,7 @@ Drops a column from a table
 
 
 
-public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds an index to a table
 
@@ -360,7 +360,7 @@ Drop an index from a table
 
 
 
-public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds a primary key to a table
 
@@ -372,7 +372,7 @@ Drops a table's primary key
 
 
 
-public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 Adds a foreign key to a table
 
@@ -384,7 +384,7 @@ Drops a foreign key from a table
 
 
 
-public  **getColumnDefinition** (*unknown* $column)
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Returns the SQL column definition from a column
 

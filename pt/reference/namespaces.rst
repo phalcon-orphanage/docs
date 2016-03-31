@@ -1,15 +1,15 @@
-Working with Namespaces
-=======================
+Trabalhando com Namespaces
+==========================
 
-Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
-a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+Namespaces_ pode ser usado para evitar colisões de nomes de classe; isto significa que se você tem dois controladores em uma aplicação com o mesmo nome,
+um namespace pode ser usado para diferenciá-los. Os namespaces também são úteis para a criação de bundles or modules.
 
-Setting up the framework
+Configurando o framework
 ------------------------
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
-to perform one or all of the following tasks:
+Using namespaces has some implications when loading the appropriate controller. Para ajustar o comportamento da estrutura para namespaces é necessário
+realizar uma ou todas as seguintes tarefas:
 
-Use an autoload strategy that takes into account the namespaces, for example with :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`:
+Use uma estratégia de carregador automático que leva em conta os espaços de nomes, por exemplo, com :doc:`Phalcon\\Loader <../api/Phalcon_Loader>`:
 
 .. code-block:: php
 
@@ -22,7 +22,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify it in the routes as a separate parameter in the route's paths:
+Especificá-lo nas rotas como um parâmetro separado in the route's paths:
 
 .. code-block:: php
 
@@ -37,7 +37,7 @@ Specify it in the routes as a separate parameter in the route's paths:
         )
     );
 
-Passing it as part of the route:
+Passando-o como parte da rota:
 
 .. code-block:: php
 
@@ -52,8 +52,8 @@ Passing it as part of the route:
         )
     );
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:
+Se você está apenas trabalhando com o mesmo namespace para cada controller em seu aplicativo, em seguida, você pode definir um namespace padrão
+na Dispatcher, ao fazer isso, você não precisa especificar um nome completo da classe no caminho de router:
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
 
     use Phalcon\Mvc\Dispatcher;
 
-    // Registering a dispatcher
+    // Registrando um dispatcher
     $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace("Store\\Admin\\Controllers");
@@ -70,7 +70,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
 
 Controllers in Namespaces
 -------------------------
-The following example shows how to implement a controller that use namespaces:
+O exemplo a seguir mostra como implementar um controller que usa namespaces:
 
 .. code-block:: php
 
@@ -95,7 +95,7 @@ The following example shows how to implement a controller that use namespaces:
 
 Models in Namespaces
 --------------------
-Take the following into consideration when using models in namespaces:
+Leve em consideração o seguinte quando utilizar models nos namespaces:
 
 .. code-block:: php
 
@@ -110,7 +110,7 @@ Take the following into consideration when using models in namespaces:
 
     }
 
-If models have relationships they must include the namespace too:
+Se os models têm relações que deve incluir o namespace também:
 
 .. code-block:: php
 
@@ -135,7 +135,7 @@ If models have relationships they must include the namespace too:
         }
     }
 
-In PHQL you must write the statements including namespaces:
+Em PHQL você deve escrever as declarações, incluindo namespaces:
 
 .. code-block:: php
 

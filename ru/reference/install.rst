@@ -1,67 +1,59 @@
 Установка
 =========
-Расширения для PHP устанавливаются несколько иначе чем обычные библиотеки или PHP-фреймворки. Вы можете скачать готовый бинарный
-файл для своей системы, или собрать его из исходников самостоятельно.
-
-.. highlights::
-    Phalcon работает с PHP 5.3.1, но ошибки в старых версиях PHP вызывают утечки памяти, и для надёжной работы рекомендуем использовать как минимум PHP 5.3.11 или выше.
-
-.. highlights::
-    В PHP версиях ниже 5.3.9 есть ошибки, влияющие на безопасность, эти версии не рекомендуется использовать. `Подробнее <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+Расширения для PHP устанавливаются несколько иначе, чем обычные библиотеки или PHP фреймворки.
+Вы можете скачать готовый бинарный файл для своей системы или собрать его из исходников самостоятельно.
 
 Windows
 -------
-Для использования Phalcon в среде Windows достаточно `скачать`_ DLL библиотеку и добавить в конце php.ini :
+Для использования Phalcon в Windows достаточно `скачать`_ DLL библиотеку и добавить в конце php.ini:
+
+.. code-block:: bash
 
     extension=php_phalcon.dll
 
-Перезапустить веб-сервер.
+Затем перезапустите ваш веб-сервер.
 
 Существует обучающий скринкаст с пошаговой установкой Phalcon на Windows:
 
 .. raw:: html
 
-    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+    <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Краткое руководство
 ^^^^^^^^^^^^^^^^^^^
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   xampp
-   wamp
+    xampp
+    wamp
 
-Linux/Solaris/Mac
------------------
-Пользователи Linux/Solaris/Mac могут просто собрать Phalcon из исходных файлов:
+Linux/Solaris
+-------------
+Пользователи систем Linux/Solaris могут просто собрать Phalcon из исходных файлов:
 
 Требования
 ^^^^^^^^^^
 Необходимы пакеты:
 
-* Пакеты для разработки PHP 5.3.x/5.4.x/5.5.x
-* Компилятор GCC (Linux/Solaris) или Xcode (Mac)
-* Git (если он не установлен - пакет можно загрузить с GitHub и закачать на свой сервер по FTP/SFTP)
+* Пакеты для разработки PHP >= 5.3
+* Компилятор GCC (Linux/Solaris)
+* Git (если не установлен, иначе, архив можно скачать с GitHub и затем загрузить на свой сервер по FTP/SFTP)
 
-Специфичные пакеты для разных платформ:
+Пакеты, специфичные для различных платформ:
 
 .. code-block:: bash
 
-    #Ubuntu
-    sudo apt-get install git-core gcc autoconf
-    sudo apt-get install php5-dev php5-mysql
+    # Ubuntu
+    sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
-    #Suse
-    sudo yast -i gcc make autoconf2.13
-    sudo yast -i php5-devel php5-pear php5-mysql
+    # Suse
+    sudo yast -i gcc make autoconf php5-devel php5-pear php5-mysql
 
-    #CentOS/RedHat
-    sudo yum install gcc make
-    sudo yum install php-devel
+    # CentOS/RedHat/Fedora
+    sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
-    pkg install gcc-45
-    pkg install php-53 apache-php53
+    # Solaris
+    pkg install gcc-45 php-53 apache-php53
 
 Компиляция
 ^^^^^^^^^^
@@ -69,29 +61,84 @@ Linux/Solaris/Mac
 
 .. code-block:: bash
 
-    git clone git://github.com/phalcon/cphalcon.git
+    git clone --depth=1 git://github.com/phalcon/cphalcon.git
     cd cphalcon/build
     sudo ./install
 
-Добавьте его в php.ini
+Добавьте его в вашу PHP конфигурацию:
 
 .. code-block:: bash
 
+    # Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
+    extension=phalcon.so
+
+    # CentOS/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
+    extension=phalcon.so
+
+    # Ubuntu/Debian с apache2: создайте файл 30-phalcon.ini в /etc/php5/apache2/conf.d/ со следующим содержимым:
+    extension=phalcon.so
+
+    # Ubuntu/Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
+    extension=phalcon.so
+
+    # Ubuntu/Debian с php5-cli: создайте файл 30-phalcon.ini в /etc/php5/cli/conf.d/ со следующим содержимым:
     extension=phalcon.so
 
 Перезапустите веб-сервер.
+
+Если вы используете Ubuntu/Debian с php5-fpm, то перезапустите и его:
+
+.. code-block:: bash
+
+    sudo service php5-fpm restart
 
 При компиляции Phalcon сам выявляет тип платформы, но можно указать и явно:
 
 .. code-block:: bash
 
+    cd cphalcon/build
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
 
+Если автоматическая установка завершается с ошибкой, то попробуйте собрать расширение вручную:
+
+.. code-block:: bash
+
+    cd cphalcon/build/64bits
+    export CFLAGS="-O2 --fvisibility=hidden"
+    ./configure --enable-phalcon
+    make && sudo make install
+
+Mac OS X
+--------
+В Mac OS X вы можете скомпилировать и установить расширение из исходников:
+
+Требования
+^^^^^^^^^^
+Необходимы пакеты:
+
+* Пакеты для разработки PHP >= 5.4
+* XCode
+
+.. code-block:: bash
+
+    # brew
+    brew tap homebrew/homebrew-php
+    brew install php54-phalcon
+    brew install php55-phalcon
+    brew install php56-phalcon
+
+    # MacPorts
+    sudo port install php54-phalcon
+    sudo port install php55-phalcon
+    sudo port install php56-phalcon
+
+Добавьте его в вашу PHP конфигурацию.
+
 FreeBSD
 -------
-Порт доступен для FreeBSD. Для установки служат простые команды:
+Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
 
 .. code-block:: bash
 
@@ -101,7 +148,7 @@ FreeBSD
 
 .. code-block:: bash
 
-    export CFLAGS="-O2 -fno-delete-null-pointer-checks"
+    export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
 Замечания по установке

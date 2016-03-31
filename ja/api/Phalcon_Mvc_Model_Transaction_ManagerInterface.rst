@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface**
 Methods
 -------
 
-abstract public  **__construct** ([*unknown* $dependencyInjector])
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 ...
 
@@ -39,12 +39,12 @@ abstract public  **rollback** ([*unknown* $collect])
 ...
 
 
-abstract public  **notifyRollback** (*unknown* $transaction)
+abstract public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 ...
 
 
-abstract public  **notifyCommit** (*unknown* $transaction)
+abstract public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 ...
 

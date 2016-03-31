@@ -40,8 +40,8 @@ A helper file is required to bootstrap the application for running the tests. We
 
     <?php
 
-    use Phalcon\DI;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di;
+    use Phalcon\Di\FactoryDefault;
 
     ini_set('display_errors',1);
     error_reporting(E_ALL);
@@ -71,11 +71,11 @@ A helper file is required to bootstrap the application for running the tests. We
     $loader->register();
 
     $di = new FactoryDefault();
-    DI::reset();
+    Di::reset();
 
     // Add any needed services to the DI here
 
-    DI::setDefault($di);
+    Di::setDefault($di);
 
 Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
 
@@ -140,7 +140,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
     use Phalcon\Test\UnitTestCase as PhalconTestCase;
 
     abstract class UnitTestCase extends PhalconTestCase
@@ -160,14 +160,16 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
          */
         private $_loaded = false;
 
-        public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+        public function setUp()
         {
+            parent::setUp();
+
             // Load any additional services that might be required during testing
-            $di = DI::getDefault();
+            $di = Di::getDefault();
 
             // Get any DI components here. If you have a config, be sure to pass it to the parent
 
-            parent::setUp($di);
+            $this->setDi($di);
 
             $this->_loaded = true;
         }

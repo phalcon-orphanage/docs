@@ -81,7 +81,7 @@ Execute a reflection.
 
 
 
-protected  **_watermark** (*unknown* $image, *unknown* $offsetX, *unknown* $offsetY, *unknown* $opacity)
+protected  **_watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $image, *unknown* $offsetX, *unknown* $offsetY, *unknown* $opacity)
 
 Execute a watermarking.
 
@@ -93,7 +93,7 @@ Execute a text
 
 
 
-protected  **_mask** (*unknown* $image)
+protected  **_mask** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $image)
 
 Composite one image onto another
 
@@ -223,7 +223,7 @@ Add a reflection to an image
 
 
 
-public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
 
 Add a watermark to an image with the specified opacity
 
@@ -235,7 +235,7 @@ Add a text to an image with a specified opacity
 
 
 
-public  **mask** (*unknown* $watermark) inherited from Phalcon\\Image\\Adapter
+public  **mask** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark) inherited from Phalcon\\Image\\Adapter
 
 Composite one image onto another
 

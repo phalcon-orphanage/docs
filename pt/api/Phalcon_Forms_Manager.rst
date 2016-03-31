@@ -30,7 +30,7 @@ Checks if a form is registered in the forms manager
 
 
 
-public  **set** (*unknown* $name, *unknown* $form)
+public  **set** (*unknown* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Registers a form in the Forms Manager
 

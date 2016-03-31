@@ -9,7 +9,7 @@ Interface **Phalcon\\Http\\Request\\FileInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $file, [*unknown* $key])
+abstract public  **__construct** (*array* $file, [*unknown* $key])
 
 ...
 

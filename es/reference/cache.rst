@@ -118,7 +118,7 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
 
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
-    // of the value for the folder
+    // the value for the folder
     $cache = new BackFile(
         $frontCache,
         array(

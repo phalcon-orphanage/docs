@@ -21,7 +21,7 @@ public  **setValidators** (*unknown* $validators)
 ...
 
 
-public  **__construct** ([*unknown* $validators])
+public  **__construct** ([*array* $validators])
 
 Phalcon\\Validation constructor
 
@@ -33,19 +33,19 @@ Validate a set of data according to a set of rules
 
 
 
-public  **add** (*unknown* $field, *unknown* $validator)
+public  **add** (*unknown* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 Adds a validator to a field
 
 
 
-public  **rule** (*unknown* $field, *unknown* $validator)
+public  **rule** (*unknown* $field, :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` $validator)
 
 Alias of `add` method
 
 
 
-public  **rules** (*unknown* $field, *unknown* $validators)
+public  **rules** (*unknown* $field, *array* $validators)
 
 Adds the validators to a field
 
@@ -75,7 +75,7 @@ Returns the bound entity
 
 
 
-public  **setDefaultMessages** ([*unknown* $messages])
+public  **setDefaultMessages** ([*array* $messages])
 
 Adds default messages to validators
 
@@ -93,7 +93,7 @@ Returns the registered validators
 
 
 
-public  **setLabels** (*unknown* $labels)
+public  **setLabels** (*array* $labels)
 
 Adds labels for fields
 
@@ -105,7 +105,7 @@ Get label for field
 
 
 
-public  **appendMessage** (*unknown* $message)
+public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
 
 Appends a message to the messages list
 
@@ -123,7 +123,7 @@ Gets the a value to validate in the array/object data source
 
 
 
-public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
@@ -135,7 +135,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 

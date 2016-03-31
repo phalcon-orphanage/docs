@@ -47,7 +47,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+public  **__construct** (*\\Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -173,7 +173,7 @@ Updates every record in the resultset
 
 
 
-public  **delete** ([*unknown* $conditionCallback])
+public  **delete** ([*Closure* $conditionCallback])
 
 Deletes every record in the resultset
 

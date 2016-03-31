@@ -34,7 +34,7 @@ abstract public  **resetHeaders** ()
 ...
 
 
-abstract public  **setExpires** (*unknown* $datetime)
+abstract public  **setExpires** (*DateTime* $datetime)
 
 ...
 

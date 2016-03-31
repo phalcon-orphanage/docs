@@ -52,7 +52,7 @@ Sets if the resource must be filtered or not
 
 
 
-public  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Assets\\Inline
+public  **setAttributes** (*array* $attributes) inherited from Phalcon\\Assets\\Inline
 
 Sets extra HTML attributes
 

@@ -46,11 +46,11 @@ The .profile should look like this:
 .. figure:: ../_static/img/mac-4.png
    :align: center
 
-Save your changes and close the editor. In the terminal window, type the following commands to create a symbolic link to the phalcon.sh script:
+Save your changes and close the editor. In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
 
 .. code-block:: bash
 
-    ln -s ~/phalcon-tools/phalcon.sh ~/phalcon-tools/phalcon
+    ln -s ~/phalcon-tools/phalcon.php ~/phalcon-tools/phalcon
     chmod +x ~/phalcon-tools/phalcon
 
 Type the command "phalcon" and you will see something like this:

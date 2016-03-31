@@ -7,9 +7,8 @@ and changing the title according to the controller executed.
 Composants utilisateurs
 -----------------------
 Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Bootstrap`_.
-Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté).
-Par exemple dans le coin en haut à droite, les liens "Log in/Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter)
-quand un utilisateur se connecte.
+Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté). Par exemple
+dans le coin en haut à droite, les liens "Log in / Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter) quand un utilisateur se connecte.
 
 Cette partie de l'application est implémentée en utilisant le composant "Elements" (app/library/Elements.php).
 
@@ -33,8 +32,8 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
     }
 
 Cette classe étend de :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`, il n'est pas imposé d'étendre un composant avec cette classe, mais
-cela permet d'accéder plus rapidement/facilement aux services de l'application.
-Maintenant enregistrons cette classe au conteneur de service :
+cela permet d'accéder plus rapidement/facilement aux services de l'application. Maintenant enregistrons
+cette classe au conteneur de service :
 
 .. code-block:: php
 
@@ -45,7 +44,8 @@ Maintenant enregistrons cette classe au conteneur de service :
         return new Elements();
     });
 
-Tout comme les contrôleurs, les plugins et les composants à l'intérieur des vues, ce composant à aussi accès aux services requis dans le conteneur en accédant juste à l'attribut.
+Tout comme les contrôleurs, les plugins et les composants à l'intérieur des vues, ce composant à aussi accès aux services requis
+dans le conteneur en accédant juste à l'attribut :
 
 .. code-block:: html+jinja
 
@@ -80,7 +80,7 @@ La partie la plus importante est :
 Changer le titre de manière dynamique
 -------------------------------------
 Quand vous naviguez sur le site, vous remarquerez que le titre change d'une page à l'autre.
-Cela est réalisé dans l'"initializer" de chaque contrôleur.
+Cela est réalisé dans l'"initializer" de chaque contrôleur :
 
 .. code-block:: php
 
@@ -98,7 +98,7 @@ Cela est réalisé dans l'"initializer" de chaque contrôleur.
         // ...
     }
 
-Notez que la méthode :code:`parent::initialize()` est aussi appelée, cela ajoute plus de donnée à la suite du titre:
+Notez que la méthode :code:`parent::initialize()` est aussi appelée, cela ajoute plus de donnée à la suite du titre :
 
 .. code-block:: php
 

@@ -285,7 +285,7 @@ The following screencast shows you how it works:
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 CRUDのScaffolding
 -----------------
@@ -340,7 +340,7 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 ツールとPhpStorm IDEとの統合
 -----------------------------------
@@ -348,13 +348,13 @@ The screencast below shows how to integrate developer tools with the `PhpStorm I
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 まとめ
 ----------
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409
+.. _blog post: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
 .. _Github: https://github.com/phalcon/phalcon-devtools
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

@@ -49,7 +49,7 @@ Phalcon\\Mvc\\Model\\Query constructor
 
 
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -73,25 +73,25 @@ Check if the query is programmed to get only the first row in the resultset
 
 
 
-final protected  **_getQualified** (*unknown* $expr)
+final protected  **_getQualified** (*array* $expr)
 
 Replaces the model's name to its source name in a qualifed-name expression
 
 
 
-final protected  **_getCallArgument** (*unknown* $argument)
+final protected  **_getCallArgument** (*array* $argument)
 
 Resolves a expression in a single call argument
 
 
 
-final protected  **_getCaseExpression** (*unknown* $expr)
+final protected  **_getCaseExpression** (*array* $expr)
 
 Resolves a expression in a single call argument
 
 
 
-final protected  **_getFunctionCall** (*unknown* $expr)
+final protected  **_getFunctionCall** (*array* $expr)
 
 Resolves a expression in a single call argument
 
@@ -103,7 +103,7 @@ Resolves an expression from its intermediate code into a string
 
 
 
-final protected *array*  **_getSelectColumn** (*array* $column)
+final protected  **_getSelectColumn** (*array* $column)
 
 Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
 
@@ -115,7 +115,7 @@ Resolves a table in a SELECT statement checking if the model exists
 
 
 
-final protected *array*  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $join)
+final protected  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *unknown* $join)
 
 Resolves a JOIN clause checking if the associated models exist
 
@@ -151,13 +151,13 @@ Returns a processed order clause for a SELECT statement
 
 
 
-final protected  **_getGroupClause** (*unknown* $group)
+final protected  **_getGroupClause** (*array* $group)
 
 Returns a processed group clause for a SELECT statement
 
 
 
-final protected  **_getLimitClause** (*unknown* $limitClause)
+final protected  **_getLimitClause** (*array* $limitClause)
 
 Returns a processed limit clause for a SELECT statement
 
@@ -253,7 +253,7 @@ Gets the type of PHQL statement executed
 
 
 
-public  **setBindParams** (*unknown* $bindParams, [*unknown* $merge])
+public  **setBindParams** (*array* $bindParams, [*unknown* $merge])
 
 Set default bind parameters
 
@@ -265,7 +265,7 @@ Returns default bind params
 
 
 
-public  **setBindTypes** (*unknown* $bindTypes, [*unknown* $merge])
+public  **setBindTypes** (*array* $bindTypes, [*unknown* $merge])
 
 Set default bind parameters
 
@@ -277,7 +277,7 @@ Returns default bind types
 
 
 
-public  **setIntermediate** (*unknown* $intermediate)
+public  **setIntermediate** (*array* $intermediate)
 
 Allows to set the IR to be executed
 

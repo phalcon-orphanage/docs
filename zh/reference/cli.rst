@@ -21,8 +21,8 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     <?php
 
-    use Phalcon\DI\FactoryDefault\CLI as CliDI,
-        Phalcon\CLI\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
+        Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
@@ -98,7 +98,7 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -116,7 +116,7 @@ CLI应用中， 开发者也可以在action中处理传递过来的参数， 下
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -166,7 +166,7 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -186,4 +186,4 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
         }
     }
 
-当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>` 来实现如上操作会是一个更好主意。
+当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` 来实现如上操作会是一个更好主意。

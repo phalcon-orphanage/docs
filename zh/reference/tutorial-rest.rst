@@ -1,7 +1,7 @@
 教程 7：创建简单的 REST API（Tutorial 7: Creating a Simple REST API）
 =====================================================================
 
-在这个教程中，我们会学习如何创建一个拥有 RESTful API 的应用程序，它将会使用如下的几个 HTTP 方法：
+在这个教程中，我们会学习如何创建一个拥有 RESTful_ API 的应用程序，它将会使用如下的几个 HTTP 方法：
 
 * GET - 接受、查找数据
 * POST - 添加数据
@@ -111,7 +111,7 @@ Now we will create the routes as we defined above:
     $app->handle();
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
-followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
+followed by a handler. In this case, the handler is an anonymous function. The following route: :code:`'/api/robots/{id:[0-9]+}'`,
 by example, explicitly sets that the "id" parameter must have a numeric format.
 
 When a defined route matches the requested URI then the application executes the corresponding handler.
@@ -180,7 +180,7 @@ Now, we must set up a connection to be used by this model and load it within our
 
     use Phalcon\Loader;
     use Phalcon\Mvc\Micro;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Use Loader() to autoload our model
@@ -474,7 +474,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
 测试应用（Testing our Application）
 -----------------------------------
-Using curl_ we'll test every route in our application verifying its proper operation:
+Using curl_ we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 

@@ -53,7 +53,7 @@ public  **getExtension** ()
 
 
 
-public  **__construct** (*unknown* $file, [*unknown* $key])
+public  **__construct** (*array* $file, [*unknown* $key])
 
 Phalcon\\Http\\Request\\File constructor
 

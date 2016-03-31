@@ -21,8 +21,8 @@ Below is a sample bootstrap that is being used for this example.
 
     <?php
 
-    use Phalcon\DI\FactoryDefault\CLI as CliDI,
-        Phalcon\CLI\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
+        Phalcon\Cli\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');
 
@@ -98,7 +98,7 @@ Below is an example of the app/tasks/MainTask.php file:
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -110,13 +110,13 @@ Below is an example of the app/tasks/MainTask.php file:
 ----------------------------
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
-If you run the the application with the following parameters and action:
+If you run the application with the following parameters and action:
 
 .. code-block:: php
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -166,7 +166,7 @@ Then you can use the console inside of any task. Below is an example of a modifi
 
     <?php
 
-    class MainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\Cli\Task
     {
         public function mainAction()
         {
@@ -186,4 +186,4 @@ Then you can use the console inside of any task. Below is an example of a modifi
         }
     }
 
-However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>` and implement this kind of logic there.
+However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` and implement this kind of logic there.

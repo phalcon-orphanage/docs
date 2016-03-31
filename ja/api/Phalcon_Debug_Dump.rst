@@ -39,7 +39,7 @@ public  **setDetailed** (*unknown* $detailed)
 ...
 
 
-public  **__construct** ([*unknown* $styles], [*unknown* $detailed])
+public  **__construct** ([*array* $styles], [*unknown* $detailed])
 
 Phalcon\\Debug\\Dump constructor
 

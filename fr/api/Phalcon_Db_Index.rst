@@ -32,13 +32,13 @@ Index type
 
 
 
-public  **__construct** (*unknown* $name, *unknown* $columns, [*unknown* $type])
+public  **__construct** (*unknown* $name, *array* $columns, [*unknown* $type])
 
 Phalcon\\Db\\Index constructor
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Index object from export
 

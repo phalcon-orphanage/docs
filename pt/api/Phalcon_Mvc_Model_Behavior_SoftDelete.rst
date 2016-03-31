@@ -16,7 +16,7 @@ Instead of permanently delete a record it marks the record as deleted changing t
 Methods
 -------
 
-public  **notify** (*unknown* $type, *unknown* $model)
+public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Listens for notifications from the models manager
 

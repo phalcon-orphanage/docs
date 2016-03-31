@@ -36,7 +36,7 @@ MVC Приложения
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -76,7 +76,7 @@ MVC Приложения
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $loader = new Loader();
 
@@ -157,7 +157,7 @@ MVC Приложения
         /**
          * Регистрация автозагрузчика, специфичного для текущего модуля
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di = null)
         {
             $loader = new Loader();
 
@@ -200,7 +200,7 @@ MVC Приложения
 
     use Phalcon\Mvc\Router;
     use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     $di = new FactoryDefault();
 

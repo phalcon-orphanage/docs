@@ -9,7 +9,7 @@ Interface **Phalcon\\Annotations\\AdapterInterface**
 Methods
 -------
 
-abstract public  **setReader** (*unknown* $reader)
+abstract public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader)
 
 ...
 

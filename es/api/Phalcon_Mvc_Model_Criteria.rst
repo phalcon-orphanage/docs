@@ -27,7 +27,7 @@ This class is used to build the array parameter required by Phalcon\\Mvc\\Model:
 Methods
 -------
 
-public  **setDI** (*unknown* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -51,13 +51,13 @@ Returns an internal model name on which the criteria will be applied
 
 
 
-public  **bind** (*unknown* $bindParams)
+public  **bind** (*array* $bindParams)
 
 Sets the bound parameters in the criteria This method replaces all previously set bound parameters
 
 
 
-public  **bindTypes** (*unknown* $bindTypes)
+public  **bindTypes** (*array* $bindTypes)
 
 Sets the bind types in the criteria This method replaces all previously set bound parameters
 
@@ -189,7 +189,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public  **inWhere** (*unknown* $expr, *unknown* $values)
+public  **inWhere** (*unknown* $expr, *array* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -202,7 +202,7 @@ Appends an IN condition to the current conditions
 
 
 
-public  **notInWhere** (*unknown* $expr, *unknown* $values)
+public  **notInWhere** (*unknown* $expr, *array* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -263,7 +263,7 @@ Adds the "shared_lock" parameter to the criteria
 
 
 
-public  **cache** (*unknown* $cache)
+public  **cache** (*array* $cache)
 
 Sets the cache options in the criteria This method replaces all previously set cache options
 
@@ -317,7 +317,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data, [*unknown* $operator])
+public static  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *unknown* $modelName, *array* $data, [*unknown* $operator])
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like _POST
 

@@ -15,14 +15,18 @@
         app/
             config/
             controllers/
-            library/
             forms/
+            library/
+            logs/
             models/
             plugins/
             views/
+        cache/
+            volt/
+        docs/
         public/
-            bootstrap/
             css/
+            fonts/
             js/
         schemas/
 
@@ -76,12 +80,22 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
     libraryDir     = app/library/
     baseUri        = /invo/
 
-
 Phalconには、定義済みの慣習的な設定は全くありません。セクション名を付けておくと、オプションを適切に構成する助けになります。このファイルには3つのセクションが含まれ、後で使用されます。
 
 オートローダ
 ------------
-ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
+ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Auto-loader configuration
+     */
+    require APP_PATH . 'app/config/loader.php';
+
+オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
 
 .. code-block:: php
 
@@ -168,7 +182,7 @@ We will discuss this file in depth later.
 
 依存性の注入 (Dependency Injection)
 -----------------------------------
-上記コード例の1行目を見てください。 Application クラスのコンストラクタは、:code:`$di` 変数を引数として受け取っています。この変数の目的は何でしょう？ Phalconは非常に分離された (decoupled) フレームワークなので、全てを協調して動作させる、接着剤としての役割を果たすコンポーネントが必要です。それは、 :doc:`Phalcon\\DI <../api/Phalcon_DI>` です。これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
+上記コード例の1行目を見てください。 Application クラスのコンストラクタは、:code:`$di` 変数を引数として受け取っています。この変数の目的は何でしょう？ Phalconは非常に分離された (decoupled) フレームワークなので、全てを協調して動作させる、接着剤としての役割を果たすコンポーネントが必要です。それは、 :doc:`Phalcon\\Di <../api/Phalcon_Di>` です。これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
 
 コンテナにサービスを登録するには、様々な方法があります。INVOでは、ほとんどのサービスは無名関数を使って登録されています。このおかげで、オブジェクトは必要になるまでインスタンス化されないので、アプリケーションに必要なリソースが節約できます。
 
@@ -193,13 +207,13 @@ We will discuss this file in depth later.
 
 これで、アダプタを変更して、初期化処理を追加する等を自由に行えるようになりました。サービスは "session" という名前で登録されていることに注意してください。これは、フレームワークがサービスコンテナ内の有効なサービスを見分けるための慣習です。
 
-リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。そのため、Phalconは :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` という :doc:`Phalcon\\DI <../api/Phalcon_DI>` の別バージョンを用意しています。これには、フルスタックフレームワークのための全てのサービスを登録します。
+リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。そのため、Phalconは :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` という :doc:`Phalcon\\Di <../api/Phalcon_Di>` の別バージョンを用意しています。これには、フルスタックフレームワークのための全てのサービスを登録します。
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     // ...
 

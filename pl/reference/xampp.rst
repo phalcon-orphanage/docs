@@ -7,7 +7,7 @@ Pobierz właściwą wersję Phalcona
 --------------------------------
 XAMPP wydaje zawsze 32-bitowe wersje Apache i PHP. Musisz pobrać wersję x86 Phalcona dla systemu Windows z sekcji Pobierz.
 
-Po pobraniu biblioteki Phalcon, będziesz miał plik zip jak na obrazku poniżej: :
+Po pobraniu biblioteki Phalcon, będziesz miał plik zip jak na obrazku poniżej:
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center
@@ -17,12 +17,12 @@ Wypakuj bibliotekę z archiwum aby otrzymać Phalcon DLL:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze c:\\xampp, rozszerzenie musi być w c:\\xampp\\php\\ext
+Skopiuj plik php_phalcon.dll do folderu rozszerzeń PHP. Jeżeli zainstalowałeś XAMPP w folderze C:\\xampp, rozszerzenie musi być w C:\\xampp\\php\\ext
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
-Edytuj plik php.ini, jest zlokalizowany w C:\\wamp\\bin\\php\\php5.3.10\\php.ini. Możesz go edytować Notatnikiem lub innym, podobnym programem. Polecamy Nodepad++, aby uniknąć problemów z zakończeniami linii. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
+Edytuj plik php.ini, jest zlokalizowany w C:\\xampp\\php\\php.ini. Możesz go edytować Notatnikiem lub innym, podobnym programem. Polecamy Nodepad++, aby uniknąć problemów z zakończeniami linii. Dodaj na końcu pliku: extension=php_phalcon.dll i zapisz go.
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center
@@ -50,11 +50,11 @@ Poniższy filmik jest przewodnikiem "krok po kroku" jak zainstalować Phalcona n
 
 .. raw:: html
 
-   <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+   <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 Powiązane przewodniki
 ---------------------
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
 
-.. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
+.. _XAMPP: https://www.apachefriends.org/pl/download.html

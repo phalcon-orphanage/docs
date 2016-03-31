@@ -55,7 +55,7 @@ public  **getLifetime** ()
 ...
 
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Session\\Adapter\\Memcache constructor
 
@@ -101,7 +101,7 @@ Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Session\\Adapter
+public  **setOptions** (*array* $options) inherited from Phalcon\\Session\\Adapter
 
 Sets session's options 
 
@@ -140,7 +140,7 @@ public  **regenerateId** ([*unknown* $deleteOldSession]) inherited from Phalcon\
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*boolean* $remove]) inherited from Phalcon\\Session\\Adapter
+public  **get** (*unknown* $index, [*unknown* $defaultValue], [*unknown* $remove]) inherited from Phalcon\\Session\\Adapter
 
 Gets a session variable from an application context 
 
@@ -153,7 +153,7 @@ Gets a session variable from an application context
 
 
 
-public  **set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
+public  **set** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Session\\Adapter
 
 Sets a session variable in an application context 
 
@@ -249,13 +249,13 @@ Returns the status of the current session. For PHP 5.3 this function will always
 
 
 
-public *mixed*  **__get** (*string* $index) inherited from Phalcon\\Session\\Adapter
+public  **__get** (*unknown* $index) inherited from Phalcon\\Session\\Adapter
 
 Alias: Gets a session variable from an application context
 
 
 
-public  **__set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
+public  **__set** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Session\\Adapter
 
 Alias: Sets a session variable in an application context
 

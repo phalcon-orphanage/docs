@@ -216,9 +216,9 @@ container in application. For example, if we have registered a service like this
 
     <?php
 
-    use Phalcon\DI;
+    use Phalcon\Di;
 
-    $di = new DI();
+    $di = new Di();
 
     $di->set('storage', function () {
         return new Storage('/some/directory');
@@ -440,4 +440,4 @@ you to implement hook points before/after the actions are executed:
         }
     }
 
-.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
+.. _DRY: https://es.wikipedia.org/wiki/No_te_repitas

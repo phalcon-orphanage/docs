@@ -521,10 +521,12 @@ foreach ($classes as $className) {
             $code .= implode(' ', Reflection::getModifierNames($method->getModifiers())) . ' ';
 
             if (isset($ret['return'])) {
-                if (preg_match('/^(Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
+                if (preg_match('/^(\\\\?Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
                     if (class_exists($matches[0]) || interface_exists($matches[0])) {
-                        $extendsPath = str_replace("\\", "_", $matches[1]);
-                        $extendsName = str_replace("\\", "\\\\", $matches[1]);
+                        $extendsPath = preg_replace('/^\\\\/', '', $matches[1]);
+                        $extendsPath = str_replace("\\", "_", $extendsPath);
+                        $extendsName = preg_replace('/^\\\\/', '', $matches[1]);
+                        $extendsName = str_replace("\\", "\\\\", $extendsName);
                         $code .= str_replace(
                             $matches[1],
                             ':doc:`' . $extendsName . ' <' . $extendsPath . '>` ',
@@ -546,42 +548,38 @@ foreach ($classes as $className) {
             foreach ($method->getParameters() as $parameter) {
                 $name = '$' . $parameter->name;
                 if (isset($ret['parameters'][$name])) {
-                    if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
-                        if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
-                            $parameterPath = str_replace("\\", "_", $ret['parameters'][$name]);
-                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
-                            if (!$parameter->isOptional()) {
-                                $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
-                            } else {
-                                $cp[] = '[:doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name . ']';
-                            }
+                    $parameterType = $ret['parameters'][$name];
+                } else if (!is_null($parameter->getClass())) {
+                    $parameterType = $parameter->getClass()->name;
+                } else if ($parameter->isArray()) {
+                    $parameterType = 'array';
+                } else {
+                    $parameterType = 'mixed';
+                }
+                if (strpos($parameterType, 'Phalcon') !== false) {
+                    if (class_exists($parameterType) || interface_exists($parameterType)) {
+                        $parameterPath = preg_replace('/^\\\\/', '', $parameterType);
+                        $parameterPath = str_replace("\\", "_", $parameterPath);
+                        $parameterName = preg_replace('/^\\\\/', '', $parameterType);
+                        $parameterName = str_replace("\\", "\\\\", $parameterName);
+                        if (!$parameter->isOptional()) {
+                            $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
                         } else {
-                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
-                            if (!$parameter->isOptional()) {
-                                $cp[] = '*' . $parameterName . '* ' . $name;
-                            } else {
-                                $cp[] = '[*' . $parameterName . '* ' . $name . ']';
-                            }
+                            $cp[] = '[:doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name . ']';
                         }
                     } else {
+                        $parameterName = str_replace("\\", "\\\\", $parameterType);
                         if (!$parameter->isOptional()) {
-                            $cp[] = '*' . $ret['parameters'][$name] . '* ' . $name;
+                            $cp[] = '*' . $parameterName . '* ' . $name;
                         } else {
-                            $cp[] = '[*' . $ret['parameters'][$name] . '* ' . $name . ']';
+                            $cp[] = '[*' . $parameterName . '* ' . $name . ']';
                         }
                     }
                 } else {
-                    /**
-                     * if ($className != 'Phalcon\Kernel') {
-                     * if ($simpleClassName == $docClassName) {
-                     * throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
-                     * }
-                     * }
-                     */
                     if (!$parameter->isOptional()) {
-                        $cp[] = '*unknown* ' . $name;
+                        $cp[] = '*' . $parameterType . '* ' . $name;
                     } else {
-                        $cp[] = '[*unknown* ' . $name . ']';
+                        $cp[] = '[*' . $parameterType . '* ' . $name . ']';
                     }
                 }
             }
