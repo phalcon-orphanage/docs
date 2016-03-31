@@ -619,8 +619,8 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 .. highlights::
 
-	参数绑定的方式适用于所有与查询相关的方法，如:code:`find()` , :code:`findFirst()` 等等, 
-	同时也适用于与计算相关的方法，如:code:`count()`, :code:`sum()`, :code:`average()` 等等.
+	参数绑定的方式适用于所有与查询相关的方法，如 :code:`find()` , :code:`findFirst()` 等等, 
+	同时也适用于与计算相关的方法，如 :code:`count()`, :code:`sum()`, :code:`average()` 等等.
 
 若使用如下方式，phalcon也会自动为你进行参数绑定:
 
