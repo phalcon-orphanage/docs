@@ -124,10 +124,12 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
             return $url;
         });
 
-        // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -224,7 +226,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 正如你所看到的，引导文件很短，我们并不需要引入任何其他文件。在不到30行的代码里，我们已经为自己设定一个灵活的MVC应用程序。
 
@@ -466,10 +470,12 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
             return $url;
         });
 
-        // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();

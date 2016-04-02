@@ -495,7 +495,9 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
         $application->useImplicitView(false);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();

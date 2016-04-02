@@ -59,7 +59,9 @@ MVC 应用（MVC Applications）
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -107,7 +109,9 @@ MVC 应用（MVC Applications）
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -259,7 +263,9 @@ MVC 应用（MVC Applications）
         );
 
         // 处理请求
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -324,7 +330,9 @@ MVC 应用（MVC Applications）
         // 处理请求
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo "Exception: ", $e->getMessage();
@@ -336,7 +344,7 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
 
 手动启动（Manual bootstrapping）
 --------------------------------

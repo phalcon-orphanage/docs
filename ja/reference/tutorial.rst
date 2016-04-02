@@ -127,7 +127,9 @@ tutorial/public/index.php は次のようになります。
         // リクエストを処理する
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -222,7 +224,9 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 ご覧のように、bootstrap ファイルはとても短く、追加のファイルを読み込む必要はありません。柔軟なMVCアプリケーションの設定が、30行足らずのコードで行えるのです。
 
@@ -466,7 +470,9 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
         // リクエストを処理する
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
