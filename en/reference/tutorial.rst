@@ -129,10 +129,12 @@ The tutorial/public/index.php file should look like:
             return $url;
         });
 
-        // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -234,7 +236,9 @@ it aggregates any responses and returns them when the process is complete.
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set
 ourselves a flexible MVC application in less than 30 lines of code.
@@ -482,10 +486,12 @@ In order to be able to use a database connection and subsequently access data th
             return $url;
         });
 
-        // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();

@@ -60,7 +60,9 @@ MVC Приложения
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -108,7 +110,9 @@ MVC Приложения
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -261,7 +265,9 @@ MVC Приложения
         );
 
         // Обработка запроса
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -326,7 +332,9 @@ MVC Приложения
         // Обработка запроса
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo "Exception: ", $e->getMessage();
@@ -338,7 +346,7 @@ MVC Приложения
 
     <?php
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
 
 Ручная начальная загрузка
 -------------------------

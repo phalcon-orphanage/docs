@@ -132,7 +132,9 @@ Bootstrap
         // Обрабатываем запрос
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -234,7 +236,9 @@ DI представляет из себя глобальный контейне�
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 Как можно увидеть, bootstrap-файл очень короткий, нам нет необходимости подключать какие-либо дополнительные файлы. Таким образом, мы настроили
 гибкую структуру MVC-приложения менее чем за 30 строк кода.
@@ -485,7 +489,9 @@ Phalcon содержит первую ORM для PHP, полностью нап�
         // Обрабатываем запрос
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();

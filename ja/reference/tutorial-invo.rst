@@ -176,9 +176,11 @@ We will discuss this file in depth later.
 
     // ...
 
-    $app = new Application($di);
+    $application = new Application($di);
 
-    echo $app->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 依存性の注入 (Dependency Injection)
 -----------------------------------

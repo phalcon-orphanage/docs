@@ -56,7 +56,9 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -104,7 +106,9 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -256,7 +260,9 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         );
 
         // リクエストを処理する
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -317,7 +323,9 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo "Exception: ", $e->getMessage();
@@ -329,7 +337,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
 
 手動によるブートストラップ
 --------------------------

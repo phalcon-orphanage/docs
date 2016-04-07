@@ -180,9 +180,11 @@ which initializes and executes all that is necessary to make the application run
 
     // ...
 
-    $app = new Application($di);
+    $application = new Application($di);
 
-    echo $app->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 依赖注入（Dependency Injection）
 --------------------------------
