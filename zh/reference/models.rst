@@ -593,7 +593,7 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 .. highlights::
 
-	默认的参数绑定类型是:code:`Phalcon\Db\Column::BIND_PARAM_STR`, 若所有字段都是string类型，则不用特意去设置参数的“bindTypes”.
+	默认的参数绑定类型是 :code:`Phalcon\Db\Column::BIND_PARAM_STR` , 若所有字段都是string类型，则不用特意去设置参数的“bindTypes”.
 
 如果你的绑定参数是array数组，那么数组索引必须从数字0开始:
 
@@ -619,8 +619,8 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 .. highlights::
 
-	参数绑定的方式适用于所有与查询相关的方法，如:code:`find()` , :code:`findFirst()` 等等, 
-	同时也适用于与计算相关的方法，如:code:`count()`, :code:`sum()`, :code:`average()` 等等.
+	参数绑定的方式适用于所有与查询相关的方法，如 :code:`find()` , :code:`findFirst()` 等等, 
+	同时也适用于与计算相关的方法，如 :code:`count()`, :code:`sum()`, :code:`average()` 等等.
 
 若使用如下方式，phalcon也会自动为你进行参数绑定:
 

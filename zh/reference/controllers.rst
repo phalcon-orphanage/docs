@@ -181,7 +181,7 @@
 .. highlights::
 
     “initialize”仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
-    在初始化中的应用逻辑不会在未验证的情况下执行不了。
+    在初始化中的应用逻辑在未鉴权的情况下无法执行。
 
 如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现“onConstruct”方法：
 
@@ -309,7 +309,7 @@
 
 会话数据（Session Data）
 ------------------------
-会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+会话可以帮助我们在多个请求中保持持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 以便封装需要进行持久化的数据。
 
 .. code-block:: php
@@ -352,12 +352,12 @@
         return $component;
     });
 
-创建基控制器（Creating a Base Controller）
+创建基类控制器（Creating a Base Controller）
 ------------------------------------------
 对于某些应用特性如访问控制列表（ACL），翻译，缓存，和模板引擎一般对于
-控制器都是通用的。在这种情况下，我们鼓励创建一个 “基控制器”，从而确保你的代码遵循 DRY_ 。
-基控制器可以是一个简单的类，然后继承于 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` ，并封装
-全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基控制器”以便可以直接使用通用功能操作。
+控制器都是通用的。在这种情况下，我们鼓励创建一个 “基类控制器”，从而确保你的代码遵循 DRY_ 编程原则。
+基类控制器可以是一个简单的类，然后继承于 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` ，并封装
+全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基类控制器”以便可以直接使用通用功能操作。
 
 这个基类可以放置在任何一个地方，但出于代码组织的便利我们推荐应该放置在控制器的目录下，
 如：apps/controllers/ControllerBase.php。我们可以在启动文件直接require这个文件，也可以使用自动加载：
@@ -400,7 +400,7 @@
 
 控制器中的事件（Events in Controllers）
 ---------------------------------------
-控制器会自动作为 :doc:`dispatcher <dispatching>` 事件的侦听者，使用这些事件并实现实现这些方法后，
+控制器会自动作为 :doc:`dispatcher <dispatching>` 事件的侦听者，使用这些事件并实现这些方法后，
 你便可以实现对应被执行的action的before/after钩子函数：
 
 .. code-block:: php
