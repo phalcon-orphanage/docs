@@ -132,7 +132,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 模板视图可以用来分享共同的视图代码。他们作为控制器的布局，所以你需要放在布局目录。
 
-Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
+模板视图可以在布局之前渲染(使用 :code:`$this->view->setTemplateBefore()` 方法) ，也可以布局之后渲染(使用 :code:`this->view->setTemplateAfter()` 方法)。
+下面的例子中，模板视图(layouts/common.phtml)是在布局(layouts/posts.phtml)之后渲染的:
 
 .. code-block:: php
 
@@ -243,7 +244,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
         </body>
     </html>
 
-If we had used :code:`$this->view->setTemplateBefore('common')`, this would be the final output:
+如果我们调用 :code:`$this->view->setTemplateBefore('common')` 方法, 最终输出如下:
 
 .. code-block:: html+php
 
@@ -464,7 +465,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 该组件允许开发人员控制渲染视图时，视图所在位置。
 此外，该组件可以利用从视图中继承的可用的模板引擎。比如 :doc:`Volt <volt>` 和其他的一些模板引擎。
 
-默认使用该的组件必须替换服务容器：
+默认使用该组件必须替换服务容器：
 
 .. code-block:: php
 
@@ -694,11 +695,11 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         }
     }
 
-当我们没有定义缓存的关键组件， the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
-它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
+如果我们没有定义缓存的key， 这个组件会自动创建一个 MD5_ 散列值(由当前控制器名和视图名组成"controller/view"的格式)作为key。
+为每个action定义一个单独的缓存key，这是一个好的习惯与规范，这样你可以很容易地识别与每个视图相关联的缓存。
 
-当视图组件需要缓存的东西时，就会请求缓存服务的服务容器。
-这个服务的服务名称约定为"viewCache"：
+当视图组件需要缓存一些数据时，它会从服务容器(DI)中请求缓存服务。
+这个服务的名称约定为"viewCache"：
 
 .. code-block:: php
 
@@ -833,7 +834,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 替换模版引擎（Changing the Template Engine）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-你可以想下面一样从控制器更换或者添加更多的模板引擎：
+你可以像下面一样从控制器更换或者添加更多的模板引擎：
 
 .. code-block:: php
 
