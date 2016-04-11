@@ -175,8 +175,8 @@ PHQL支持绝大多数的标准SQL语法，甚至非标准的SQL语法也支持�
 
 结果类型（Result Types）
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
-a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
+查询结果的类型依赖于我们查询时列的类型，所以结果类型是多样化的。 如果你获得了一个完整的对象，那么这个对象是 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的实例。
+这样的查询结果集是一组完整的模型对象:
 
 .. code-block:: php
 
@@ -188,7 +188,7 @@ a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Results
         echo "Name: ", $car->name, "\n";
     }
 
-This is exactly the same as:
+下面这种方式的查询结果集也是一样的:
 
 .. code-block:: php
 
@@ -204,8 +204,8 @@ This is exactly the same as:
         echo "Name: ", $car->name, "\n";
     }
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are
-other types of queries that do not return complete objects, for example:
+完整的对象中的数据可以被修改，并且可以重新保存在数据库中，因为它们在数据表里面本身就是一条完整的数据记录。
+但是如下这种查询方式，就不会返回一个完整的对象:
 
 .. code-block:: php
 
@@ -217,9 +217,8 @@ other types of queries that do not return complete objects, for example:
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
-still a resultset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
-object that only contain the two columns that were requested.
+我们只想要数据表中的一些字段，尽管返回的结果集对象仍然是 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的实例，但是却不能认为是一个完整的对象。
+上述例子中，返回的结果集中的每个对象仅仅只有两个列对应的数据。
 
 These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -259,7 +258,7 @@ Scalars are mapped as properties of each "row", while complete objects are mappe
 
 连接（Joins）
 ^^^^^^^^^^^^^
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
+通过PHQL可以非常方便的从多个模型中请求数据记录。PHQL支持绝大多数的JOIN操作。As we defined
 relationships in the models, PHQL adds these conditions automatically:
 
 .. code-block:: php
@@ -291,7 +290,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-It is also possible to manually set the conditions of the JOIN:
+也可以手动设置JOIN条件:
 
 .. code-block:: php
 
