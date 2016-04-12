@@ -4,7 +4,7 @@ Phalcon 查询语言（Phalcon Query Language (PHQL)）
 Phalcon查询语言，PhalconQL或者简单的称之为PHQL，是一种面向对象的高级SQL语言，允许使用标准化的SQL编写操作语句。
 PHQL实现了一个解析器（C编写）来把操作语句解析成RDBMS的语法。
 
-为了达到高性能，Phalcon实现了一个和SQLite_ 中相似的解析器。它只占用了非常低的内存，同时也是线程安全的。
+为了达到高性能，Phalcon实现了一个和 SQLite_ 中相似的解析器。它只占用了非常低的内存，同时也是线程安全的。
 
 The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
 finally it converts it to the respective SQL dialect of the target RDBMS.
