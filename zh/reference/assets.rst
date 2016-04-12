@@ -78,7 +78,7 @@ Volt语法：
 
 远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jQuery, Bootstrap等资源。
 
-:code:`addCss()` 和 :code:`addJs()` 方法的第二个参数的作用是申明当前资源是本地资源还是远程资源(:code:`true` 为本地资源, :code:`false` 为远程资源).
+:code:`addCss()` 和 :code:`addJs()` 方法的第二个参数的作用是申明当前资源是本地资源还是远程资源(:code:`true` 为本地资源, :code:`false` 为远程资源)。
 不传此参数时，默认为本地资源:
 
 .. code-block:: php
