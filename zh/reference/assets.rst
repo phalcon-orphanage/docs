@@ -69,7 +69,7 @@ Volt语法：
         </body>
     <html>
 
-For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
+为了提升页面加载性能，建议在页面底部（</body>标签前）加载javascript，而不是在 :code:`<head>` 处加载。
 
 本地与远程资源（Local/Remote resources）
 ----------------------------------------
@@ -78,7 +78,8 @@ For better pageload performance, it is recommended to place JavaScript at the en
 
 远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jQuery, Bootstrap等资源。
 
-The second parameter of :code:`addCss()` and :code:`addJs()` says whether the resource is local or not (:code:`true` is local, :code:`false` is remote). By default, the assets manager will assume the resource is local:
+:code:`addCss()` 和 :code:`addJs()` 方法的第二个参数的作用是申明当前资源是本地资源还是远程资源(:code:`true` 为本地资源, :code:`false` 为远程资源)。
+不传此参数时，默认为本地资源:
 
 .. code-block:: php
 
@@ -182,7 +183,7 @@ Volt语法：
 
 压缩与过滤（Minification/Filtering）
 ------------------------------------
-:code:`Phalcon\Assets` 提供了内置的js及css压缩工具。 开发者可以设定资源管理器以确定对哪些资源进行压缩啊些资源不进行压缩。除了上面这些之外
+:code:`Phalcon\Assets` 提供了内置的js及css压缩工具。 开发者可以设定资源管理器以确定对哪些资源进行压缩哪些资源不进行压缩。除了上面这些之外，
 我们还可以使用Douglas Crockford书写的Jsmin压缩工具，及Ryan Day提供的CSSMin来对js及css文件进行压缩.
 下面的例子中展示了如何使用集合对资源文件进行压缩：
 
@@ -217,12 +218,10 @@ Volt语法：
         // 使用自定义过滤器
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含JavaScript或CSS资源但不能同时包含两个。一些资源可能位于远程的服务器上
-这上结资源我们可以通过http取得。为了提高性能建议把远程的资源取到本地来，以减少加载远程资源的开销。
+开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含JavaScript或CSS资源但不能同时包含两个。一些资源可能位于远程的服务器上，
+这些资源我们可以通过http取得。为了提高性能建议把远程的资源取到本地来，以减少加载远程资源的开销。
 
-As seen above, the :code:`addJs()` method is used to add resources to the collection, the second parameter indicates
-whether the resource is external or not and the third parameter indicates whether the resource should
-be filtered or left as is:
+如上示例，:code:`addJs()` 方法用于将资源添加到集合中，第二个参数表示当前资源是否为外部资源，第三个参数表示当前资源是否需要进行压缩:
 
 .. code-block:: php
 
@@ -239,7 +238,7 @@ be filtered or left as is:
     $js->addJs('common-functions.js');
     $js->addJs('page-functions.js');
 
-过滤器被注册到集合内，我们可以注册我个过滤器，资源内容被过滤的顺序和过滤器注册的顺序是一样的。
+过滤器被注册到集合内，我们可以注册多个过滤器，资源内容被过滤的顺序和过滤器注册的顺序是一样的。
 
 .. code-block:: php
 
@@ -251,11 +250,11 @@ be filtered or left as is:
     // 使用自定义的过滤器
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-注意：不管是内置的还是自定义的过滤器对集合来说他们都是透明的。最后一步用来确定所有写到同一个文件中还是分开保存。如果要让集合中所有的文件合成
+注意：不管是内置的还是自定义的过滤器对集合来说他们都是透明的。最后一步用来确定所有的资源文件写到同一个文件中还是分开保存。如果要让集合中所有的资源文件合成
 一个文件只需要使用join函数.
 
-If resources are going to be joined, we need also to define which file will be used to store the resources
-and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`:
+如果资源被写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用 :code:`setTargetPath()`
+和 :code:`setTargetUri()` 两个函数来配置:
 
 .. code-block:: php
 
@@ -268,9 +267,6 @@ and which URI will be used to show it. These settings are set up with :code:`set
 
     // 使用此uri引用js
     $js->setTargetUri('production/final.js');
-
-如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用 :code:`setTargetPath()`
-和 :code:`setTargetUri()` 两个函数来配置。
 
 内置过滤器（Built-In Filters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

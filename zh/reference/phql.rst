@@ -1,11 +1,10 @@
 Phalcon 查询语言（Phalcon Query Language (PHQL)）
 =================================================
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
-standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+Phalcon查询语言，PhalconQL或者简单的称之为PHQL，是一种面向对象的高级SQL语言，允许使用标准化的SQL编写操作语句。
+PHQL实现了一个解析器（C编写）来把操作语句解析成RDBMS的语法。
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
-provides a small in-memory parser with a very low memory footprint that is also thread-safe.
+为了达到高性能，Phalcon实现了一个和 SQLite_ 中相似的解析器。它只占用了非常低的内存，同时也是线程安全的。
 
 The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
 finally it converts it to the respective SQL dialect of the target RDBMS.
@@ -20,7 +19,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 
 范例（Usage Example）
 ---------------------
-To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
+为了更好的说明PHQL是如何使用的，在接下的例子中，我们定义了两个模型 “Cars” and “Brands”:
 
 .. code-block:: php
 
@@ -59,7 +58,7 @@ To better explain how PHQL works consider the following example. We have two mod
         }
     }
 
-And every Car has a Brand, so a Brand has many Cars:
+然后每辆车(Car)都有一个品牌(Brand)，一个品牌(Brand)却可以有很多辆车(Car):
 
 .. code-block:: php
 
@@ -92,7 +91,7 @@ And every Car has a Brand, so a Brand has many Cars:
 
 创建 PHQL 查询（Creating PHQL Queries）
 ---------------------------------------
-PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
+PHQL查询可以通过实例化 :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>` 这个类来创建:
 
 .. code-block:: php
 
@@ -106,7 +105,7 @@ PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\
     // Execute the query returning a result if any
     $cars = $query->execute();
 
-From a controller or a view, it's easy to create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
+在控制器或者视图中，通过 :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>` 可以非常容易 create/execute PHQL查询:
 
 .. code-block:: php
 
@@ -124,7 +123,7 @@ From a controller or a view, it's easy to create/execute them using an injected 
         )
     );
 
-Or simply execute it:
+或者使用一种更简单的执行方式:
 
 .. code-block:: php
 
@@ -140,7 +139,7 @@ Or simply execute it:
 
 选取记录（Selecting Records）
 -----------------------------
-As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
+和SQL类似，PHQL也允许使用SELECT来查询记录，但必须用模型类替换语句的表名:
 
 .. code-block:: php
 
@@ -149,7 +148,7 @@ As the familiar SQL, PHQL allows querying of records using the SELECT statement 
     $query = $manager->createQuery("SELECT * FROM Cars ORDER BY Cars.name");
     $query = $manager->createQuery("SELECT Cars.name FROM Cars ORDER BY Cars.name");
 
-Classes in namespaces are also allowed:
+带命名空间的模型类名也是允许的:
 
 .. code-block:: php
 
@@ -164,7 +163,7 @@ Classes in namespaces are also allowed:
     $phql  = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
     $query = $manager->createQuery($phql);
 
-Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
+PHQL支持绝大多数的标准SQL语法，甚至非标准的SQL语法也支持，比如LIMIT:
 
 .. code-block:: php
 
@@ -176,8 +175,8 @@ Most of the SQL standard is supported by PHQL, even nonstandard directives such 
 
 结果类型（Result Types）
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
-a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
+查询结果的类型依赖于我们查询时列的类型，所以结果类型是多样化的。 如果你获得了一个完整的对象，那么这个对象是 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的实例。
+这样的查询结果集是一组完整的模型对象:
 
 .. code-block:: php
 
@@ -189,7 +188,7 @@ a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Results
         echo "Name: ", $car->name, "\n";
     }
 
-This is exactly the same as:
+下面这种方式的查询结果集也是一样的:
 
 .. code-block:: php
 
@@ -205,8 +204,8 @@ This is exactly the same as:
         echo "Name: ", $car->name, "\n";
     }
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are
-other types of queries that do not return complete objects, for example:
+完整的对象中的数据可以被修改，并且可以重新保存在数据库中，因为它们在数据表里面本身就是一条完整的数据记录。
+但是如下这种查询方式，就不会返回一个完整的对象:
 
 .. code-block:: php
 
@@ -218,9 +217,8 @@ other types of queries that do not return complete objects, for example:
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
-still a resultset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
-object that only contain the two columns that were requested.
+我们只想要数据表中的一些字段，尽管返回的结果集对象仍然是 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的实例，但是却不能认为是一个完整的对象。
+上述例子中，返回的结果集中的每个对象仅仅只有两个列对应的数据。
 
 These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -260,7 +258,7 @@ Scalars are mapped as properties of each "row", while complete objects are mappe
 
 连接（Joins）
 ^^^^^^^^^^^^^
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
+通过PHQL可以非常方便的从多个模型中请求数据记录。PHQL支持绝大多数的JOIN操作。As we defined
 relationships in the models, PHQL adds these conditions automatically:
 
 .. code-block:: php
@@ -292,7 +290,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-It is also possible to manually set the conditions of the JOIN:
+也可以手动设置JOIN条件:
 
 .. code-block:: php
 
