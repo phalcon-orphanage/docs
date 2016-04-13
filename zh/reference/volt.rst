@@ -33,8 +33,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 启用 Volt（Activating Volt）
 ----------------------------
-As with other templating engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+和其他模板引擎一样，你需要将Volt模板注册到视图组件中，并设置模板文件通用后缀名，或者直接使用标准的后缀名".phtml"才能正常使用:
 
 .. code-block:: php
 
@@ -61,7 +60,7 @@ reusing the standard .phtml:
         }
     );
 
-Use the standard ".phtml" extension:
+使用标准的".phtml" 后缀名:
 
 .. code-block:: php
 
@@ -75,11 +74,10 @@ Use the standard ".phtml" extension:
 
 基本用法（Basic Usage）
 -----------------------
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. :code:`{% ... %}` is used to execute statements such as for-loops or assign values and :code:`{{ ... }}`,
-prints the result of an expression to the template.
+视图通常由Volt模板代码和HTML代码生成，甚至也含有PHP代码。Volt模板中有一些特殊分隔符的用法: :code:`{% ... %}` 用于执行流程控制语句如if判断、for循环及赋值处理等等，
+:code:`{{ ... }}` 用于在模板中输出表达式的执行结果。
 
-Below is a minimal template that illustrates a few basics:
+下面例子介绍了一些基础用法:
 
 .. code-block:: html+jinja
 
@@ -112,8 +110,8 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
+使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 实例可以从控制器中把变量传递给视图。
+在下面的示例中，有三个变量传递给了视图: :code:`title`, :code:`menu` and :code:`post`:
 
 .. code-block:: php
 
@@ -144,8 +142,7 @@ In the above example, three variables were passed to the view: :code:`title`, :c
 
 变量（Variables）
 -----------------
-Object variables may have attributes which can be accessed using the syntax: :code:`foo.bar`.
-If you are passing arrays, you have to use the square bracket syntax: :code:`foo['bar']`
+对象变量可能有一些属性值，可以使用 :code:`foo.bar` 的方式来访问。如果传递的是一个数组变量，则必须使用 :code:`foo['bar']` 的方式来访问。
 
 .. code-block:: jinja
 
@@ -154,8 +151,7 @@ If you are passing arrays, you have to use the square bracket syntax: :code:`foo
 
 过滤器（Filters）
 -----------------
-Variables can be formatted or modified using filters. The pipe operator :code:`|` is used to apply filters to
-variables:
+模板中的变量可以通过过滤器进行格式化。操作符 :code:`|` 适用于对变量进行格式化:
 
 .. code-block:: jinja
 
@@ -163,7 +159,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+以下是Volt模板内置的过滤器列表:
 
 +--------------------------+------------------------------------------------------------------------------+
 | Filter                   | Description                                                                  |
