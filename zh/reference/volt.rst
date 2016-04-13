@@ -174,23 +174,23 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`escape_attr`      | Applies :code:`Phalcon\Escaper->escapeHtmlAttr()` to the value               |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`trim`             | 调用PHP的 trim_ 函数。移除两边多余的空格                                          |
+| :code:`trim`             | Applies the trim_ PHP function to the value. Removing extra spaces           |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`left_trim`        | 调用PHP的 ltrim_ 函数。移除左边多余的空格                                         |
+| :code:`left_trim`        | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`right_trim`       | 调用PHP的 rtrim_ 函数。移除右边多余的空格PHP                                      |
+| :code:`right_trim`       | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`striptags`        | 调用PHP的 strip_tags_ 函数.移除HTML标签                                         |
+| :code:`striptags`        | Applies the striptags_ PHP function to the value. Removing HTML tags         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`slashes`          | 调用PHP的 addslashes_ 函数.使用反斜线转义字符串                                   |
+| :code:`slashes`          | Applies the slashes_ PHP function to the value. Escaping values              |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`stripslashes`     | 调用PHP的 stripslashes_ 函数。反转义字符串                                       |
+| :code:`stripslashes`     | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`capitalize`       | 调用PHP的 ucwords_ 函数。将字符串中每个单词的首字母转换为大写                        |
+| :code:`capitalize`       | Capitalizes a string by applying the ucwords_ PHP function to the value      |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`lower`            | 将字符串转化为小写                                                              |
+| :code:`lower`            | Change the case of a string to lowercase                                     |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`upper`            | 将字符串转化为大写                                                              |
+| :code:`upper`            | Change the case of a string to uppercase                                     |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`length`           | Counts the string length or how many items are in an array or object         |
 +--------------------------+------------------------------------------------------------------------------+
@@ -200,15 +200,15 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`keys`             | Returns the array keys using array_keys_                                     |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`join`             | 调用PHP的 join_ 函数.将一维数组的值转化为字符串                                    |
+| :code:`join`             | Joins the array parts using a separator join_                                |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`format`           | 调用PHP的 sprintf_ 函数。格式化字符串                                            |
+| :code:`format`           | Formats a string using sprintf_.                                             |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`json_encode`      | 调用PHP的 JSON_ 处理函数。对变量进行JSON编码                                      |
+| :code:`json_encode`      | Converts a value into its JSON_ representation                               |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`json_decode`      | 调用PHP的 JSON_ 处理函数.对JSON格式的字符串进行解码                                |
+| :code:`json_decode`      | Converts a value from its JSON_ representation to a PHP representation       |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`abs`              | 调用PHP的 abs_ 函数.取绝对值                                                    |
+| :code:`abs`              | Applies the abs_ PHP function to a value.                                    |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`url_encode`       | Applies the urlencode_ PHP function to the value                             |
 +--------------------------+------------------------------------------------------------------------------+
