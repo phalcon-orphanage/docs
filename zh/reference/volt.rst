@@ -33,8 +33,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 启用 Volt（Activating Volt）
 ----------------------------
-As with other templating engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+和其他模板引擎一样，你需要将Volt模板注册到视图组件中，并设置模板文件通用后缀名，或者直接使用标准的后缀名".phtml"才能正常使用:
 
 .. code-block:: php
 
@@ -61,7 +60,7 @@ reusing the standard .phtml:
         }
     );
 
-Use the standard ".phtml" extension:
+使用标准的".phtml"后缀名:
 
 .. code-block:: php
 
@@ -75,11 +74,10 @@ Use the standard ".phtml" extension:
 
 基本用法（Basic Usage）
 -----------------------
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. :code:`{% ... %}` is used to execute statements such as for-loops or assign values and :code:`{{ ... }}`,
-prints the result of an expression to the template.
+视图通常由Volt模板代码和HTML代码组成，甚至也含有PHP代码。Volt模板中有一些特殊分隔符的用法: :code:`{% ... %}` 用于执行流程控制语句如if判断、for循环及赋值语句等等，
+:code:`{{ ... }}` 用于在模板中输出表达式的执行结果。
 
-Below is a minimal template that illustrates a few basics:
+下面例子中介绍了一些基础用法:
 
 .. code-block:: html+jinja
 
@@ -112,8 +110,8 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
+使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 实例可以从控制器中把变量传递给视图。
+在下面的示例中，有三个变量传递给了视图: :code:`title`, :code:`menu` and :code:`post`:
 
 .. code-block:: php
 
@@ -144,8 +142,7 @@ In the above example, three variables were passed to the view: :code:`title`, :c
 
 变量（Variables）
 -----------------
-Object variables may have attributes which can be accessed using the syntax: :code:`foo.bar`.
-If you are passing arrays, you have to use the square bracket syntax: :code:`foo['bar']`
+对象变量可能有一些属性值，可以使用 :code:`foo.bar` 的方式来访问。如果传递的是一个数组变量，则必须使用 :code:`foo['bar']` 的方式来访问。
 
 .. code-block:: jinja
 
@@ -154,8 +151,7 @@ If you are passing arrays, you have to use the square bracket syntax: :code:`foo
 
 过滤器（Filters）
 -----------------
-Variables can be formatted or modified using filters. The pipe operator :code:`|` is used to apply filters to
-variables:
+模板中的变量可以通过过滤器进行格式化。操作符 :code:`|` 适用于对变量进行格式化:
 
 .. code-block:: jinja
 
@@ -163,7 +159,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+以下是Volt模板内置的过滤器列表:
 
 +--------------------------+------------------------------------------------------------------------------+
 | Filter                   | Description                                                                  |
@@ -178,48 +174,48 @@ The following is the list of available built-in filters in Volt:
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`escape_attr`      | Applies :code:`Phalcon\Escaper->escapeHtmlAttr()` to the value               |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`trim`             | Applies the trim_ PHP function to the value. Removing extra spaces           |
+| :code:`trim`             | 调用PHP的 trim_ 函数。移除两边多余的空格                                          |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`left_trim`        | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
+| :code:`left_trim`        | 调用PHP的 ltrim_ 函数。移除左边多余的空格                                         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`right_trim`       | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
+| :code:`right_trim`       | 调用PHP的 rtrim_ 函数。移除右边多余的空格PHP                                      |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`striptags`        | Applies the striptags_ PHP function to the value. Removing HTML tags         |
+| :code:`striptags`        | 调用PHP的 strip_tags_ 函数.移除HTML标签                                         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`slashes`          | Applies the slashes_ PHP function to the value. Escaping values              |
+| :code:`slashes`          | 调用PHP的 addslashes_ 函数.使用反斜线转义字符串                                   |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`stripslashes`     | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
+| :code:`stripslashes`     | 调用PHP的 stripslashes_ 函数。反转义字符串                                       |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`capitalize`       | Capitalizes a string by applying the ucwords_ PHP function to the value      |
+| :code:`capitalize`       | 调用PHP的 ucwords_ 函数。将字符串中每个单词的首字母转换为大写                        |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`lower`            | Change the case of a string to lowercase                                     |
+| :code:`lower`            | 将字符串转化为小写                                                              |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`upper`            | Change the case of a string to uppercase                                     |
+| :code:`upper`            | 将字符串转化为大写                                                              |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`length`           | Counts the string length or how many items are in an array or object         |
+| :code:`length`           | 计算字符串的长度，或者数组 / 对象的元素个数                                         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`nl2br`            | Changes newlines \\n by line breaks (<br />). Uses the PHP function nl2br_   |
+| :code:`nl2br`            | 调用PHP的 nl2br_ 函数。在字符串所有新行之前插入HTML的换行标记(<br />)                |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`sort`             | Sorts an array using the PHP function asort_                                 |
+| :code:`sort`             | 调用PHP的 asort_ 函数。对数组进行排序并保持索引关系                                 |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`keys`             | Returns the array keys using array_keys_                                     |
+| :code:`keys`             | 调用PHP的 array_keys_ 函数。返回数组中的键名                                      |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`join`             | Joins the array parts using a separator join_                                |
+| :code:`join`             | 调用PHP的 join_ 函数.将一维数组的值转化为字符串                                    |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`format`           | Formats a string using sprintf_.                                             |
+| :code:`format`           | 调用PHP的 sprintf_ 函数。格式化字符串                                            |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`json_encode`      | Converts a value into its JSON_ representation                               |
+| :code:`json_encode`      | 调用PHP的 JSON_ 处理函数。对变量进行JSON编码                                      |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`json_decode`      | Converts a value from its JSON_ representation to a PHP representation       |
+| :code:`json_decode`      | 调用PHP的 JSON_ 处理函数.对JSON格式的字符串进行解码                                |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`abs`              | Applies the abs_ PHP function to a value.                                    |
+| :code:`abs`              | 调用PHP的 abs_ 函数.取绝对值                                                    |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`url_encode`       | Applies the urlencode_ PHP function to the value                             |
+| :code:`url_encode`       | 调用PHP的 urlencode_ 函数。编码URL字符串                                         |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`default`          | Sets a default value in case that the evaluated expression is empty          |
 |                          | (is not set or evaluates to a falsy value)                                   |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`convert_encoding` | Converts a string from one charset to another                                |
+| :code:`convert_encoding` | 转换字符的编码                                                                 |
 +--------------------------+------------------------------------------------------------------------------+
 
 Examples:
@@ -1559,7 +1555,7 @@ Using Volt in a stand-alone mode can be demonstrated below:
 .. _ltrim: http://php.net/manual/en/function.ltrim.php
 .. _rtrim: http://php.net/manual/en/function.rtrim.php
 .. _striptags: http://php.net/manual/en/function.striptags.php
-.. _slashes: http://php.net/manual/en/function.slashes.php
+.. _slashes: http://php.net/manual/en/function.strip-tags.php
 .. _stripslashes: http://php.net/manual/en/function.stripslashes.php
 .. _ucwords: http://php.net/manual/en/function.ucwords.php
 .. _nl2br: http://php.net/manual/en/function.nl2br.php
