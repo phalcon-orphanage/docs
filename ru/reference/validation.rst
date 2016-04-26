@@ -149,6 +149,7 @@ Then initialize and use your own validator:
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;

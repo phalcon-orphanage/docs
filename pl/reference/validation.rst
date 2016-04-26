@@ -149,6 +149,7 @@ The following example explains how to create additional validators for this comp
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;
