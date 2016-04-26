@@ -148,6 +148,7 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;
