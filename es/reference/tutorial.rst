@@ -129,10 +129,12 @@ El archivo tutorial/public/index.php debería verse así:
             return $url;
         });
 
-        // Atender la petición
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Atender la petición
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -234,7 +236,9 @@ respuestas para el cliente.
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 En resúmen, como puedes ver el bootstap es muy pequeño y no requiere archivos externos.
 Hemos configurado un MVC muy flexible en menos de 30 líneas de código.
@@ -482,10 +486,12 @@ Para poder conectarnos a una base de datos y por lo tanto usar nuestros modelos,
             return $url;
         });
 
-        // Atender la petición
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Atender la petición
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();

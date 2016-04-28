@@ -507,7 +507,9 @@ Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applica
 
         $application->useImplicitView(false);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();

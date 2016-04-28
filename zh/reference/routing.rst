@@ -120,7 +120,7 @@ one that matches the given URI and processes it, while ignoring the rest.
 
 参数名称（Parameters with Names）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The example below demonstrates how to define names to route parameters:
+下面的例子演示了如何定义路由参数:
 
 .. code-block:: php
 
@@ -138,9 +138,8 @@ The example below demonstrates how to define names to route parameters:
         )
     );
 
-In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced
-with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched
-by the request. Inside the controller, those named parameters can be accessed as follows:
+在上述示例中，路由规则里并没有定义 "controller" 或者 "action" 部分。它们已经被路由替换为("posts" and "show")。
+用户不会知道请求当中实际分发到的是哪个控制器。在控制器内部，可以通过如下方式来接收参数:
 
 .. code-block:: php
 
@@ -251,8 +250,7 @@ are added to the route paths according to the position on which they were define
 
 路由到模块（Routing to Modules）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can define routes whose paths include modules. This is specially suitable to multi-module applications.
-It's possible define a default route that includes a module wildcard:
+你可以在路由规则中包含模块。这种用法特别适合于多模块的应用程序。It's possible define a default route that includes a module wildcard:
 
 .. code-block:: php
 
@@ -272,8 +270,7 @@ It's possible define a default route that includes a module wildcard:
         )
     );
 
-In this case, the route always must have the module name as part of the URL. For example, the following
-URL: /admin/users/edit/sonny, will be processed as:
+在上述示例中，URL中必须总是含有模块名才能进行路由解析。比如URL: /admin/users/edit/sonny, 将会被路由解析为:
 
 +------------+---------------+
 | Module     | admin         |
@@ -285,7 +282,7 @@ URL: /admin/users/edit/sonny, will be processed as:
 | Parameter  | sonny         |
 +------------+---------------+
 
-Or you can bind specific routes to specific modules:
+你也可以将特定的路由规则绑定到特定的模块:
 
 .. code-block:: php
 
@@ -341,8 +338,8 @@ Namespaces/class names must be passed separated:
 
 限制 HTTP 请求传入方式（HTTP Method Restrictions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When you add a route using simply :code:`add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
-this is especially useful when creating RESTful applications:
+当使用 :code:`add()` 方法来添加路由规则时, 这条路由规则可以支持HTTP协议的任何数据传输方法。
+有时我们需要限制路由规则只能匹配HTTP协议的某个方法，这在创建 RESTful 风格的应用程序时特别有用:
 
 .. code-block:: php
 

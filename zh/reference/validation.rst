@@ -139,6 +139,8 @@ Phalcon的验证组件中内置了一些验证器：
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
 | Url          | Validates that field contains a valid URL | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
+| CreditCard   | Validates a credit card number            | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
++--------------+-------------------------------------------+-------------------------------------------------------------------+
 
 下面的例子中展示了如何创建自定义的验证器：
 
@@ -146,6 +148,7 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;

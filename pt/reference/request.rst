@@ -1,5 +1,5 @@
 Solicitações
-===================
+============
 
 A cada solicitação HTTP (geralmente se origina de um browser) contém informações adicionais sobre a solicitação como dados de cabeçalho, arquivos, variáveis, etc. Um aplicativo baseado na web precisa analisar essas informações de modo a proporcionar a correta resposta de volta para o solicitador. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsula a
 informações do pedido, permitindo que você acessá-lo de uma forma orientada a objetos.
@@ -22,7 +22,7 @@ informações do pedido, permitindo que você acessá-lo de uma forma orientada 
     }
 
 Obtendo Valores
---------------
+---------------
 PHP automatically fills the superglobal arrays :code:`$_GET` and :code:`$_POST` depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or

@@ -53,7 +53,7 @@ phpinfo()将会在屏幕上输出当前PHP的重要的数字信息。向下滚�
    <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 相关指南 (Related Guides)
---------------
+---------------------------
 * :doc:`普通安装 </reference/install>`
 * :doc:`在Windows版WAMP中安装详细说明 </reference/wamp>`
 

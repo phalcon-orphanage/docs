@@ -675,7 +675,10 @@ After creating our custom helper, we will autoload the new directory that contai
         });
 
         $application = new Application($di);
-        echo $application->handle()->getContent();
+
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (PhalconException $e) {
         echo "PhalconException: ", $e->getMessage();

@@ -7,8 +7,10 @@ Volt 是一个用C为PHP编写的超快的并且对设计师友好的模板语�
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt 的灵感来自与 Jinja_ ， 最开始由 `Armin Ronacher`_ 创造，因此很多开发者可能会感觉跟他们之前常用的模板引擎有非常类似的语法。Volt的
-语法和特性加强了很多，它提供了更多的元素，并且在与Phalcon一起使用时性能也相当棒。
+Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
+territory using the same syntax they have been using with similar template engines. Volt's syntax and features
+have been enhanced with more elements and of course with the performance that developers have been
+accustomed to while working with Phalcon.
 
 简介（Introduction）
 --------------------
@@ -31,7 +33,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 启用 Volt（Activating Volt）
 ----------------------------
-跟使用其他模板引擎一样，你需要先在视图组件中注册Volt，并且分配一个新的扩展名，或者干脆重用标配的 .phtml：
+和其他模板引擎一样，你需要将Volt模板注册到视图组件中，并设置模板文件通用后缀名，或者直接使用标准的后缀名".phtml"才能正常使用:
 
 .. code-block:: php
 
@@ -58,7 +60,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
         }
     );
 
-使用 ".phtml" 作为扩展名：
+使用标准的".phtml" 后缀名:
 
 .. code-block:: php
 
@@ -72,10 +74,10 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 基本用法（Basic Usage）
 -----------------------
-视图由 Volt 代码、PHP和HTML组成。由一组特定的分隔符来界定Volt模式。:code:`{% ... %}` 用来执行诸如 for-loops 或者变量赋值这类
-表达式， :code:`{{ ... }}` 用来在模板中显示一个表达式的值。
+视图通常由Volt模板代码和HTML代码生成，甚至也含有PHP代码。Volt模板中有一些特殊分隔符的用法: :code:`{% ... %}` 用于执行流程控制语句如if判断、for循环及赋值处理等等，
+:code:`{{ ... }}` 用于在模板中输出表达式的执行结果。
 
-下面是一个简单的例子:
+下面例子介绍了一些基础用法:
 
 .. code-block:: html+jinja
 
@@ -108,8 +110,8 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
         </body>
     </html>
 
-你可以通过 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`  在控制器中将变量传递到视图里面来。在上面的例子中，有三个变量
-传递到了视图中： :code:`title`, :code:`menu` and :code:`post` ：
+使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 实例可以从控制器中把变量传递给视图。
+在下面的示例中，有三个变量传递给了视图: :code:`title`, :code:`menu` and :code:`post`:
 
 .. code-block:: php
 
@@ -140,8 +142,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 变量（Variables）
 -----------------
-对象变量可能有属性，这些可以通过这样的语法访问：:code:`foo.bar` 。
-如果传的是数组，那么必须使用方括号：:code:`foo['bar']` 。
+对象变量可能有一些属性值，可以使用 :code:`foo.bar` 的方式来访问。如果传递的是一个数组变量，则必须使用 :code:`foo['bar']` 的方式来访问。
 
 .. code-block:: jinja
 
@@ -150,7 +151,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 过滤器（Filters）
 -----------------
-变量可以通过过滤器来修改或者格式化。管道操作符 :code:`|` 可以用来为变量附加过滤器：
+模板中的变量可以通过过滤器进行格式化。操作符 :code:`|` 适用于对变量进行格式化:
 
 .. code-block:: jinja
 
@@ -158,7 +159,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-下表是Volt引擎内建的过滤器列表：
+以下是Volt模板内置的过滤器列表:
 
 +--------------------------+------------------------------------------------------------------------------+
 | Filter                   | Description                                                                  |
@@ -217,7 +218,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 | :code:`convert_encoding` | Converts a string from one charset to another                                |
 +--------------------------+------------------------------------------------------------------------------+
 
-举例：
+Examples:
 
 .. code-block:: jinja
 
@@ -279,7 +280,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 注释（Comments）
 ----------------
-可以使用 :code:`{# ... #}` 分隔符在模板中添加注释。在分隔符中间的内容在最终输出的时候都会被忽略。
+Comments may also be added to a template using the :code:`{# ... #}` delimiters. All text inside them is just ignored in the final output:
 
 .. code-block:: jinja
 
@@ -289,11 +290,11 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
 流程控制列表（List of Control Structures）
 ------------------------------------------
-Volt 为模板中提供了一组基础但是很强大的流程控制结构。
+Volt provides a set of basic but powerful control structures for use in templates:
 
 循环语句 For
 ^^^^^^^^^^^^
-循环一个序列中的每一个元素。下面的例子演示如何从一组 "robots" 中打印他们的名字：
+Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
 
 .. code-block:: html+jinja
 
@@ -306,7 +307,7 @@ Volt 为模板中提供了一组基础但是很强大的流程控制结构。
         {% endfor %}
     </ul>
 
-For循环还可以嵌套使用：
+for-loops can also be nested:
 
 .. code-block:: html+jinja
 
@@ -317,7 +318,7 @@ For循环还可以嵌套使用：
         {% endfor %}
     {% endfor %}
 
-你还可以用跟在PHP中类似的方法获取键值：
+You can get the element "keys" as in the PHP counterpart using the following syntax:
 
 .. code-block:: html+jinja
 
@@ -327,7 +328,7 @@ For循环还可以嵌套使用：
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-你还可以在后面添加一个 "if" 表达式来进行筛选：
+An "if" evaluation can be optionally set:
 
 .. code-block:: html+jinja
 
@@ -341,7 +342,7 @@ For循环还可以嵌套使用：
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-如果在For语句中有一个 'else', 那么如果循环的对象0迭代的时候，它将被执行：
+If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
 
 .. code-block:: html+jinja
 
@@ -352,7 +353,7 @@ For循环还可以嵌套使用：
         There are no robots to show
     {% endfor %}
 
-另一种写法：
+Alternative syntax:
 
 .. code-block:: html+jinja
 
@@ -365,7 +366,7 @@ For循环还可以嵌套使用：
 
 循环控制（Loop Controls）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-'break' 和 'continue' 语句可以用来退出当前循环或者强制进入下一个迭代：
+The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
 
 .. code-block:: html+jinja
 
@@ -389,7 +390,7 @@ For循环还可以嵌套使用：
 
 条件判断语句 If
 ^^^^^^^^^^^^^^^
-跟PHP一样， "if" 语句用来检查表达式的值的真假(true or false)：
+As PHP, an "if" statement checks if an expression is evaluated as true or false:
 
 .. code-block:: html+jinja
 
@@ -402,7 +403,7 @@ For循环还可以嵌套使用：
         {% endfor %}
     </ul>
 
-Volt同样也支持 else 子句：
+The else clause is also supported:
 
 .. code-block:: html+jinja
 
@@ -417,7 +418,7 @@ Volt同样也支持 else 子句：
         {% endfor %}
     </ul>
 
-'if' 结合 'elseif'  流程控制结构一起使用，可以模仿实现 'switch' 这样的效果：
+The 'elseif' control flow structure can be used together with if to emulate a 'switch' block:
 
 .. code-block:: html+jinja
 
@@ -431,7 +432,7 @@ Volt同样也支持 else 子句：
 
 循环上下文（Loop Context）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-在 'for' 循环中，可以用一个特殊的变量来获取一些信息：
+A special variable is available inside 'for' loops providing you information about
 
 +------------------------+---------------------------------------------------------------+
 | Variable               | Description                                                   |
@@ -474,27 +475,27 @@ Volt同样也支持 else 子句：
 
 赋值（Assignments）
 -------------------
-在模板中可以用 "set" 来改变变量的值：
+Variables may be changed in a template using the instruction "set":
 
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'] %}
     {% set name = robot.name %}
 
-多重赋值一样可以：
+Multiple assignments are allowed in the same instruction:
 
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
 
-同样的，你也可以使用复合赋值运算符：
+Additionally, you can use compound assignment operators:
 
 .. code-block:: html+jinja
 
     {% set price += 100.00 %}
     {% set age *= 5 %}
 
-下面是可用赋值操作符的列表：
+The following operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -564,7 +565,7 @@ Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list
     {# Hash-style array #}
     {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 
-Curly braces also can be used to define arrays or hashes:
+花括号也能用来定义数组或关联数组:
 
 .. code-block:: html+jinja
 
@@ -573,7 +574,7 @@ Curly braces also can be used to define arrays or hashes:
 
 算术运算（Math）
 ^^^^^^^^^^^^^^^^
-You may make calculations in templates using the following operators:
+你可以在模板里面使用下列操作符来进行算术运算:
 
 +-----------+-------------------------------------------------------------------------------+
 | Operator  | Description                                                                   |
@@ -657,7 +658,7 @@ Additional operators seen the following operators are available:
 | :code:`--`              | Decrements a value                                                                    |
 +-------------------------+---------------------------------------------------------------------------------------+
 
-The following example shows how to use operators:
+下面的示例显示了如何使用操作符:
 
 .. code-block:: html+jinja
 
@@ -981,18 +982,18 @@ Partial vs Include
 ^^^^^^^^^^^^^^^^^^
 Keep the following points in mind when choosing to use the "partial" function or "include":
 
-* 'Partial' allows you to include templates made in Volt and in other template engines as well
-* 'Partial' allows you to pass an expression like a variable allowing to include the content of other view dynamically
-* 'Partial' is better if the content that you have to include changes frequently
+* 'Partial' 既可以引入Volt模板，也可以引入其他模板引擎的模板
+* 'Partial' 在引入模板的时候，可以传递表达式（如变量）
+* 'Partial' 更适合引入经常有变动的模板
 
-* 'Include' copies the compiled content into the view which improves the performance
-* 'Include' only allows to include templates made with Volt
-* 'Include' requires an existing template at compile time
+* 'Include' 是引入编译后的模板内容，以提升性能
+* 'Include' 只能引入Volt模板
+* 'Include' 在编译时须引入现有的模板
 
 模版的继承（Template Inheritance）
 ----------------------------------
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
-define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+你可以创建基础模板，供其他模板继承，达到代码复用的目的。在基础模板中使用 *block* 定义代码块，则子模板可以实现重写功能。
+我们假设有一个这样的基础模板:
 
 .. code-block:: html+jinja
 
@@ -1014,7 +1015,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
         </body>
     </html>
 
-From other template we could extend the base template replacing the blocks:
+其他的模板继承了基础模板后，会重写基础模板中的 *block* 代码块:
 
 .. code-block:: jinja
 
@@ -1029,7 +1030,7 @@ From other template we could extend the base template replacing the blocks:
         <p class="important">Welcome on my awesome homepage.</p>
     {% endblock %}
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+在子模板中并不需要全部重写基础模板中的 *block* 块，按需要重写部分即可。最终输出如下示例:
 
 .. code-block:: html
 
@@ -1053,7 +1054,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 多重继承（Multiple Inheritance）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Extended templates can extend other templates. The following example illustrates this:
+子模板也可以被其他模板继承，下面的示例演示了模板的多重继承:
 
 .. code-block:: html+jinja
 
@@ -1068,7 +1069,7 @@ Extended templates can extend other templates. The following example illustrates
         </body>
     </html>
 
-Template "layout.volt" extends "main.volt"
+"layout.volt" 继承 "main.volt"
 
 .. code-block:: html+jinja
 
@@ -1081,7 +1082,7 @@ Template "layout.volt" extends "main.volt"
 
     {% endblock %}
 
-Finally a view that extends "layout.volt":
+"index.volt" 又继承了 "layout.volt":
 
 .. code-block:: html+jinja
 
@@ -1099,7 +1100,7 @@ Finally a view that extends "layout.volt":
 
     {% endblock %}
 
-Rendering "index.volt" produces:
+渲染 "index.volt" 后输出:
 
 .. code-block:: html
 
@@ -1120,16 +1121,14 @@ Rendering "index.volt" produces:
         </body>
     </html>
 
-Note the call to the function :code:`super()`. With that function it's possible to render the contents of the parent block.
+注意示例中调用的 :code:`super()` 方法，此方法用于获取父模板中渲染的内容。
 
 As partials, the path set to "extends" is a relative path under the current views directory (i.e. app/views/).
 
 .. highlights::
 
-    By default, and for performance reasons, Volt only checks for changes in the children templates
-    to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
-    :code:`'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in
-    the parent templates.
+    通常情况下，出于性能方面的考虑，Volt模板引擎在重新编译模板时只会检查子模板中的内容变更。
+    所以建议设置Volt模板引擎的选项参数 :code:`'compileAlways' => true`。这样模板会实时编译，并检查父模板中的内容变更。
 
 自动编码模式（Autoescape mode）
 -------------------------------

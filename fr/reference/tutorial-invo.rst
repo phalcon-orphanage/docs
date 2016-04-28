@@ -190,9 +190,11 @@ cette classe initialise et exécute tous ce qui est nécessaire pour faire tourn
 
     // ...
 
-    $app = new Application($di);
+    $application = new Application($di);
 
-    echo $app->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 Injection de dépendances
 ------------------------

@@ -60,7 +60,9 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -108,7 +110,9 @@ If namespaces are used, the following bootstrap can be used:
 
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -260,7 +264,9 @@ A special bootstrap file is required to load a multi-module MVC architecture:
         );
 
         // Handle the request
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo $e->getMessage();
@@ -326,7 +332,9 @@ you may recognize the following bootstrap file:
         // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
         echo "Exception: ", $e->getMessage();
@@ -338,7 +346,7 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     <?php
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
 
 Manual bootstrapping
 --------------------

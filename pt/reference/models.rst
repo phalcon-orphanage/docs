@@ -1,5 +1,5 @@
 Trabalhando com modelos
-===================
+=======================
 
 Um modelo representa as informações (dados) da aplicação e as regras para manipular os dados. Os modelos são usados principalmente para gerenciar as regras de interação com uma tabela de banco de dados correspondente. In most cases, each table in your database will correspond to one model in
 your application. The bulk of your application's business logic will be concentrated in the models.
@@ -696,7 +696,7 @@ will be executed just after create the instance and assign the data to it:
             // Convert the string to an array
             $this->status = explode(',', $this->status);
         }
-        
+
         public function afterSave()
         {
             // Convert the string to an array

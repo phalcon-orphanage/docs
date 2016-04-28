@@ -1,5 +1,5 @@
 Tutorial 1: Vamos aprender pelo exemplo
-==================================
+=======================================
 Ao longo deste primeiro tutorial, nós vamos guiará através de da criação de um aplicativo com um simples formulário de registro a partir do zero. Também iráemos explicar os aspectos básicos do comportamento do framework. Se você estiver interessado em utilizar ferramentas automáticas de geração de código para Phalcon, utilize nosso :doc:`developer tools <tools>`.
 
 Verificar a sua instalação
@@ -32,7 +32,7 @@ A melhor maneira de usar este guia é seguir cada passo de cada vez. Você pode 
 `aqui <https://github.com/phalcon/tutorial>`_.
 
 Estrutura de arquivos
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 Phalcon não impõe uma estrutura de arquivo específico para desenvolvimento de aplicativos. Devido ao fato de que ele é de baixo acoplamento, você pode implementar aplicativos Phalcon alimentado com uma estrutura de arquivo do modo que sej mais fácil para você.
 
 Para fins deste tutorial e como ponto de partida, sugerimos essa estrutura muito simples:
@@ -53,7 +53,7 @@ Note que você não precisa de qualquer diretório "library" relacionado com Pha
 
 URLs Amigáveis
 ^^^^^^^^^^^^^^
-Usaremos URLs amigáveis neste tutorial. URLs amigáveis são melhores para SEO, além de ser fácil para os usuários lembrarem. Phalcon suporta modulo rewrite fornecidos pelos servidores web mais populares. 
+Usaremos URLs amigáveis neste tutorial. URLs amigáveis são melhores para SEO, além de ser fácil para os usuários lembrarem. Phalcon suporta modulo rewrite fornecidos pelos servidores web mais populares.
 Utilizar URLs amigáveis no seu aplicativo não é uma exigência e você pode facilmente desenvolver sem elas.
 
 
@@ -83,7 +83,7 @@ O segundo conjunto de regras irá verificar se o arquivo solicitado existe e, se
     </IfModule>
 
 Autoinicialização
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 O primeiro arquivo que você precisa para criar é o arquivo de inicialização. Este arquivo é muito importante; uma vez que serve como a base de sua aplicação, o que lhe dá o controle de todos os aspectos do mesmo. Neste arquivo você pode implementar
 a inicialização de componentes, bem como o comportamento do aplicativo.
 
@@ -129,7 +129,10 @@ O arquivo tutorial/public/index.php deve ser igual a este:
         // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
@@ -231,7 +234,9 @@ it aggregates any responses and returns them when the process is complete.
 
     $application = new Application($di);
 
-    echo $application->handle()->getContent();
+    $response = $application->handle();
+
+    $response->send();
 
 As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set
 ourselves a flexible MVC application in less than 30 lines of code.
@@ -479,10 +484,12 @@ In order to be able to use a database connection and subsequently access data th
             return $url;
         });
 
-        // Handle the request
         $application = new Application($di);
 
-        echo $application->handle()->getContent();
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
 
     } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();

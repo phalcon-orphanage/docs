@@ -140,6 +140,8 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| CreditCard   | Validates a credit card number                                                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
++--------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
 
@@ -147,6 +149,7 @@ The following example explains how to create additional validators for this comp
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;
