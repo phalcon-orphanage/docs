@@ -12,7 +12,11 @@ if (!extension_loaded('phalcon')) {
     throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+defined('CPHALCON_DIR') || define('CPHALCON_DIR', getenv('CPHALCON_DIR'));
+
+if (!CPHALCON_DIR) {
+    throw new Exception("Need to set CPHALCON_DIR. Fox example: 'export CPHALCON_DIR=/Users/gutierrezandresfelipe/cphalcon/ext/'")
+}
 
 if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
