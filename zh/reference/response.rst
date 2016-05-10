@@ -1,23 +1,23 @@
 返回响应（Returning Responses）
 ===============================
 
-Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
-component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` 是Phalcon中用来处理HTTP响应返回的组件。
+HTTP响应通常是由响应头和响应体组成的。下面是一些基本用法:
 
 .. code-block:: php
 
     <?php
 
-    // Getting a response instance
+    // 获取一个响应实例
     $response = new \Phalcon\Http\Response();
 
-    // Set status code
+    // 设置HTTP状态码
     $response->setStatusCode(404, "Not Found");
 
-    // Set the content of the response
+    // 设置响应内容
     $response->setContent("Sorry, the page doesn't exist");
 
-    // Send response to the client
+    // 返回响应到客户端
     $response->send();
 
 If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response
@@ -46,10 +46,9 @@ directly from a controller's action follow this example:
 
 使用头部信息（Working with Headers）
 ------------------------------------
-Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
-type of response and much more.
+在HTTP响应返回中，响应头（Headers）是非常重要的组成部分. 它包含了一些非常有用的信息，比如HTTP状态码，响应类型等等.
 
-You can set headers in the following way:
+你可以使用如下方式来设置头信息:
 
 .. code-block:: php
 
@@ -116,7 +115,7 @@ how you can redirect using a route you have defined in your application:
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
 will be executed anyway. You can disable the view from a controller by executing :code:`$this->view->disable()`;
 
-值得注意的时候重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 :code:`$this->view->disable()` 来禁用view。
+值得注意的是重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 :code:`$this->view->disable()` 来禁用view。
 
 HTTP 缓存（HTTP Cache）
 -----------------------
