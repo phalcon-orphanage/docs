@@ -1,13 +1,13 @@
 使用 Session 存储数据（Storing data in Session）
 ================================================
 
-The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
+:doc:`Phalcon\\Session <../api/Phalcon_Session>` 组件提供了一种面向对象的方式访问session数据。
 
-Reasons to use this component instead of raw-sessions:
+使用这个组件替代原生session的原因如下:
 
-* You can easily isolate session data across applications on the same domain
+* 在相同域名下的不同应用程序之间，你可以非常容易的隔离session数据
 * Intercept where session data is set/get in your application
-* Change the session adapter according to the application needs
+* 根据应用程序的需要，可以非常方便的更换session适配器
 
 启动会话（Starting the Session）
 --------------------------------
@@ -29,8 +29,8 @@ Thanks to the service container, we can ensure that the session is accessed only
 
 Session 的存储与读取（Storing/Retrieving data in Session）
 ----------------------------------------------------------
-From a controller, a view or any other component that extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` you can access the session service
-and store items and retrieve them in the following way:
+控制器，视图或者任何继承于 :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` 的组件，都可以访问session服务。
+如下示例介绍了session的存储与读取操作:
 
 .. code-block:: php
 
@@ -42,16 +42,16 @@ and store items and retrieve them in the following way:
     {
         public function indexAction()
         {
-            // Set a session variable
+            // 设置一个session变量
             $this->session->set("user-name", "Michael");
         }
 
         public function welcomeAction()
         {
-            // Check if the variable is defined
+            // 检查session变量是否已定义
             if ($this->session->has("user-name")) {
 
-                // Retrieve its value
+                // 获取session变量的值
                 $name = $this->session->get("user-name");
             }
         }
@@ -60,7 +60,7 @@ and store items and retrieve them in the following way:
 
 Sessions 的删除和销毁（Removing/Destroying Sessions）
 -----------------------------------------------------
-It's also possible remove specific variables or destroy the whole session:
+你也可以删除某个session变量，或者销毁全部session会话:
 
 .. code-block:: php
 
@@ -72,13 +72,13 @@ It's also possible remove specific variables or destroy the whole session:
     {
         public function removeAction()
         {
-            // Remove a session variable
+            // 删除session变量
             $this->session->remove("user-name");
         }
 
         public function logoutAction()
         {
-            // Destroy the whole session
+            // 销毁全部session会话
             $this->session->destroy();
         }
     }
