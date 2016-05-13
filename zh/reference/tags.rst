@@ -189,7 +189,7 @@ Volt 的语法:
 
 使用选择框（Making Select Boxes）
 ---------------------------------
-生成选择框(select)很简单,特别是当你已经把相关的数据存储在了PHP的关联数组中。生成select的助手是 :code:`Phalcon\Tag::select()` 和 :code:`Phalcon\Tag::selectStatic()` 。方法 :code:`Phalcon\Tag::select()` 与 :doc:`Phalcon\\Mvc\\Model <models>` 一起使用会更好。当然 :code:`Phalcon\Tag::selectStatic()` 也可以和PHP的数组一起工作。
+生成选择框(select)很简单,特别是当你已经把相关的数据存储在了PHP的关联数组中。生成select的方法是 :code:`Phalcon\Tag::select()` 和 :code:`Phalcon\Tag::selectStatic()` 。方法 :code:`Phalcon\Tag::select()` 与 :doc:`Phalcon\\Mvc\\Model <models>` 一起使用会更好。当然 :code:`Phalcon\Tag::selectStatic()` 也可以和PHP的数组一起工作。
 
 .. code-block:: php
 
