@@ -94,3 +94,25 @@ And this second configuration allows you to install a Phalcon application in a v
     </VirtualHost>
 
 .. _Apache: http://httpd.apache.org/
+
+Or if you are using Apache 2.4 or above:
+
+.. code-block:: apacheconf
+
+    <VirtualHost *:80>
+
+        ServerAdmin admin@example.host
+        DocumentRoot "/var/vhosts/test/public"
+        DirectoryIndex index.php
+        ServerName example.host
+        ServerAlias www.example.host
+
+        <Directory "/var/vhosts/test/public">
+            Options All
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+    </VirtualHost>
+
+.. _Apache: http://httpd.apache.org/
