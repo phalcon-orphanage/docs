@@ -21,6 +21,7 @@ The documentation is written using [reStructuredText](http://sphinx.pocoo.org/re
 * [Portuguese (pt)](https://docs.phalconphp.com/pt/latest/index.html)
 * [Russian (ru)](https://docs.phalconphp.com/ru/latest/index.html)
 * [Spanish (es)](https://docs.phalconphp.com/es/latest/index.html)
+* [Ukranian (uk)](https://docs.phalconphp.com/uk/latest/index.html)
 
 If you would like to translate the Phalcon Docs into your language, create a new folder using your language's [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), copy the contents of `en/` into it and submit it as a Pull Request.
 
