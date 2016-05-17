@@ -8,6 +8,7 @@ es/_build
 fr/_build
 pt/_build
 pl/_build
+uk/_build
 _templates
 *.komodoproject
 *.sublime-*
