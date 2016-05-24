@@ -129,6 +129,12 @@ to the data (which would be impossible otherwise) and also add validation rules 
         protected $name;
 
         protected $price;
+        
+        /*
+         * Properties with underscores (to match DB schema) require special
+         * consideration when creating their setters and getters
+         */ 
+        protected $property_with_underscores;
 
         public function getId()
         {
@@ -163,11 +169,27 @@ to the data (which would be impossible otherwise) and also add validation rules 
             // Convert the value to double before be used
             return (double) $this->price;
         }
+        
+        /*
+         * Note that setters and getters for properties with undersrores must
+         * be declared in camelCase as Phalcon will not find the property
+         * otherwise.
+         */ 
+        public function setPropertyWithUnderscores($value)
+        {
+            $this->property_with_underscores = $value;
+        }
+        public function getPropertyWithUnderscores()
+        {
+            return $this->property_with_underscores;
+        }
     }
 
 Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating. The ORM is compatible with both schemes of defining properties.
+
+Keep in mind that if you are declaring properties with underscores in their names (often times done to match a DB schema), your setters and getters must call them in camel case - i.e.: Phalcon will find the property when the getter is set as "getPropertyWithUnderscores()", but will fail to access the property if called as "getProperty_with_underscores()".
 
 Models in Namespaces
 ^^^^^^^^^^^^^^^^^^^^
