@@ -177,7 +177,7 @@ If you use underscores in your property names, you must still use camel case in 
 with magic methods. (e.g. $model->getPropertyName instead of $model->getProperty_name, $model->findByPropertyName
 instead of $model->findByProperty_name, etc.). As much of the system expects camel case, and underscores are commonly
 removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
-column map (as described above) to ensure proper mapping of your properties their database counterparts.
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
 Models in Namespaces
 ^^^^^^^^^^^^^^^^^^^^
