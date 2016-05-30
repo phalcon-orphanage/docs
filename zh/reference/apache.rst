@@ -91,3 +91,25 @@ Apache 下配置 Phalcon（Configuring Apache for Phalcon）
     </VirtualHost>
 
 .. _Apache: http://httpd.apache.org/
+
+>= Apache 2.4:
+
+.. code-block:: apacheconf
+
+    <VirtualHost *:80>
+
+        ServerAdmin admin@example.host
+        DocumentRoot "/var/vhosts/test/public"
+        DirectoryIndex index.php
+        ServerName example.host
+        ServerAlias www.example.host
+
+        <Directory "/var/vhosts/test/public">
+            Options All
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+    </VirtualHost>
+
+.. _Apache: http://httpd.apache.org/

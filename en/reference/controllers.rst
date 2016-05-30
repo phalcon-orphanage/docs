@@ -313,7 +313,7 @@ Learn more about the HTTP environment in their dedicated articles :doc:`request 
 Session Data
 ------------
 Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that need to be persistent.
+from any controller to encapsulate data that needs to be persistent.
 
 .. code-block:: php
 

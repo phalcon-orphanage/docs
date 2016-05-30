@@ -49,7 +49,7 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
 
 隐含的事务（Implicit Transactions）
 -----------------------------------
-也可以通过已有的关系来存储记录以及其相关记录，这种操作将隐式的创建一个事务来保证所有数据能够正确的保存：
+也可以通过已有的关系来存储记录以及其相关记录，这种操作将隐式地创建一个事务来保证所有数据都能够正确地保存：
 
 .. code-block:: php
 
@@ -145,7 +145,7 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         echo "Failed, reason: ", $e->getMessage();
     }
 
-事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个commit()或者一个rollback()执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局师傅管理器。
+事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个commit()或者一个rollback()执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局事务管理器。
 
 .. code-block:: php
 
@@ -182,4 +182,4 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         }
     }
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+当一个事务处于活动状态时，在整个应用中事务管理器将总是返回这个相同的事务。
