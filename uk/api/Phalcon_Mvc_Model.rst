@@ -14,18 +14,18 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
 
     <?php
 
-     $robot = new Robots();
-     $robot->type = 'mechanical';
-     $robot->name = 'Astro Boy';
-     $robot->year = 1952;
-     if ($robot->save() == false) {
-      echo "Umh, We can store robots: ";
-      foreach ($robot->getMessages() as $message) {
-     echo message;
-      }
-     } else {
-      echo "Great, a new robot was saved successfully!";
-     }
+    $robot = new Robots();
+    $robot->type = 'mechanical';
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+    if ($robot->save() == false) {
+        echo "Umh, We can store robots: ";
+        foreach ($robot->getMessages() as $message) {
+            echo message;
+        }
+    } else {
+        echo "Great, a new robot was saved successfully!";
+    }
 
 
 
@@ -104,26 +104,26 @@ Sets a transaction related to the Model instance
 
     try {
 
-      $txManager = new TxManager();
+        $txManager = new TxManager();
 
-      $transaction = $txManager->get();
+        $transaction = $txManager->get();
 
-      $robot = new Robots();
-      $robot->setTransaction($transaction);
-      $robot->name = 'WALL·E';
-      $robot->created_at = date('Y-m-d');
-      if ($robot->save() == false) {
-      $transaction->rollback("Can't save robot");
-      }
+        $robot = new Robots();
+        $robot->setTransaction($transaction);
+        $robot->name = 'WALL·E';
+        $robot->created_at = date('Y-m-d');
+        if ($robot->save() == false) {
+            $transaction->rollback("Can't save robot");
+        }
 
-      $robotPart = new RobotParts();
-      $robotPart->setTransaction($transaction);
-      $robotPart->type = 'head';
-      if ($robotPart->save() == false) {
-      $transaction->rollback("Robot part cannot be saved");
-      }
+        $robotPart = new RobotParts();
+        $robotPart->setTransaction($transaction);
+        $robotPart->type = 'head';
+        if ($robotPart->save() == false) {
+            $transaction->rollback("Robot part cannot be saved");
+        }
 
-      $transaction->commit();
+        $transaction->commit();
 
     } catch (TxFailed $e) {
       echo 'Failed, reason: ', $e->getMessage();
@@ -218,18 +218,18 @@ Assigns values to a model from an array
 
     <?php
 
-     $robot->assign(array(
-    'type' => 'mechanical',
-    'name' => 'Astro Boy',
-    'year' => 1952
-     ));
+    $robot->assign(array(
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952
+    ));
 
      //assign by db row, column map needed
-     $robot->assign($dbRow, array(
-    'db_type' => 'type',
-    'db_name' => 'name',
-    'db_year' => 'year'
-     ));
+    $robot->assign($dbRow, array(
+        'db_type' => 'type',
+        'db_name' => 'name',
+        'db_year' => 'year'
+    ));
 
      //allow assign only name and year
      $robot->assign($_POST, null, array('name', 'year');
@@ -246,9 +246,9 @@ Assigns values to a model from an array returning a new model.
     <?php
 
     $robot = \Phalcon\Mvc\Model::cloneResultMap(new Robots(), array(
-      'type' => 'mechanical',
-      'name' => 'Astro Boy',
-      'year' => 1952
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952
     ));
 
 
@@ -269,9 +269,9 @@ Assigns values to a model from an array returning a new model
     <?php
 
     $robot = Phalcon\Mvc\Model::cloneResult(new Robots(), array(
-      'type' => 'mechanical',
-      'name' => 'Astro Boy',
-      'year' => 1952
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952
     ));
 
 
@@ -285,25 +285,25 @@ Allows to query a set of records that match the specified conditions
 
     <?php
 
-     //How many robots are there?
-     $robots = Robots::find();
-     echo "There are ", count($robots), "\n";
+    //How many robots are there?
+    $robots = Robots::find();
+    echo "There are ", count($robots), "\n";
 
-     //How many mechanical robots are there?
-     $robots = Robots::find("type='mechanical'");
-     echo "There are ", count($robots), "\n";
+    //How many mechanical robots are there?
+    $robots = Robots::find("type='mechanical'");
+    echo "There are ", count($robots), "\n";
 
-     //Get and print virtual robots ordered by name
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
-     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
-     }
+    //Get and print virtual robots ordered by name
+    $robots = Robots::find(array("type='virtual'", "order" => "name"));
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
 
      //Get first 100 virtual robots ordered by name
-     $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
-     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
-     }
+    $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
 
 
 
@@ -316,17 +316,17 @@ Allows to query the first record that match the specified conditions
 
     <?php
 
-     //What's the first robot in robots table?
-     $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name;
+    //What's the first robot in robots table?
+    $robot = Robots::findFirst();
+    echo "The robot name is ", $robot->name;
 
-     //What's the first mechanical robot in robots table?
-     $robot = Robots::findFirst("type='mechanical'");
-     echo "The first mechanical robot name is ", $robot->name;
+    //What's the first mechanical robot in robots table?
+    $robot = Robots::findFirst("type='mechanical'");
+    echo "The first mechanical robot name is ", $robot->name;
 
-     //Get first virtual robot ordered by name
-     $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
-     echo "The first virtual robot name is ", $robot->name;
+    //Get first virtual robot ordered by name
+    $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
+    echo "The first virtual robot name is ", $robot->name;
 
 
 
@@ -357,13 +357,13 @@ Allows to count how many records match the specified conditions
 
     <?php
 
-     //How many robots are there?
-     $number = Robots::count();
-     echo "There are ", $number, "\n";
+    //How many robots are there?
+    $number = Robots::count();
+    echo "There are ", $number, "\n";
 
-     //How many mechanical robots are there?
-     $number = Robots::count("type = 'mechanical'");
-     echo "There are ", $number, " mechanical robots\n";
+    //How many mechanical robots are there?
+    $number = Robots::count("type = 'mechanical'");
+    echo "There are ", $number, " mechanical robots\n";
 
 
 
@@ -376,13 +376,13 @@ Allows to calculate a summatory on a column that match the specified conditions
 
     <?php
 
-     //How much are all robots?
-     $sum = Robots::sum(array('column' => 'price'));
-     echo "The total price of robots is ", $sum, "\n";
+    //How much are all robots?
+    $sum = Robots::sum(array('column' => 'price'));
+    echo "The total price of robots is ", $sum, "\n";
 
-     //How much are mechanical robots?
-     $sum = Robots::sum(array("type = 'mechanical'", 'column' => 'price'));
-     echo "The total price of mechanical robots is  ", $sum, "\n";
+    //How much are mechanical robots?
+    $sum = Robots::sum(array("type = 'mechanical'", 'column' => 'price'));
+    echo "The total price of mechanical robots is  ", $sum, "\n";
 
 
 
@@ -395,13 +395,13 @@ Allows to get the maximum value of a column that match the specified conditions
 
     <?php
 
-     //What is the maximum robot id?
-     $id = Robots::maximum(array('column' => 'id'));
-     echo "The maximum robot id is: ", $id, "\n";
+    //What is the maximum robot id?
+    $id = Robots::maximum(array('column' => 'id'));
+    echo "The maximum robot id is: ", $id, "\n";
 
-     //What is the maximum id of mechanical robots?
-     $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
-     echo "The maximum robot id of mechanical robots is ", $id, "\n";
+    //What is the maximum id of mechanical robots?
+    $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
+    echo "The maximum robot id of mechanical robots is ", $id, "\n";
 
 
 
@@ -414,13 +414,13 @@ Allows to get the minimum value of a column that match the specified conditions
 
     <?php
 
-     //What is the minimum robot id?
-     $id = Robots::minimum(array('column' => 'id'));
-     echo "The minimum robot id is: ", $id;
+    //What is the minimum robot id?
+    $id = Robots::minimum(array('column' => 'id'));
+    echo "The minimum robot id is: ", $id;
 
-     //What is the minimum id of mechanical robots?
-     $sum = Robots::minimum(array("type='mechanical'", 'column' => 'id'));
-     echo "The minimum robot id of mechanical robots is ", $id;
+    //What is the minimum id of mechanical robots?
+    $sum = Robots::minimum(array("type='mechanical'", 'column' => 'id'));
+    echo "The minimum robot id of mechanical robots is ", $id;
 
 
 
@@ -433,13 +433,13 @@ Allows to calculate the average value on a column matching the specified conditi
 
     <?php
 
-     //What's the average price of robots?
-     $average = Robots::average(array('column' => 'price'));
-     echo "The average price is ", $average, "\n";
+    //What's the average price of robots?
+    $average = Robots::average(array('column' => 'price'));
+    echo "The average price is ", $average, "\n";
 
-     //What's the average price of mechanical robots?
-     $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
-     echo "The average price of mechanical robots is ", $average, "\n";
+    //What's the average price of mechanical robots?
+    $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
+    echo "The average price of mechanical robots is ", $average, "\n";
 
 
 
@@ -470,17 +470,17 @@ Appends a customized message on the validation process
 
     <?php
 
-     use \Phalcon\Mvc\Model\Message as Message;
+    use \Phalcon\Mvc\Model\Message as Message;
 
-     class Robots extends \Phalcon\Mvc\Model
-     {
+    class Robots extends \Phalcon\Mvc\Model
+    {
 
-       public function beforeSave()
-       {
-     if ($this->name == 'Peter') {
-    	$message = new Message("Sorry, but a robot cannot be named Peter");
-    	$this->appendMessage($message);
-     }
+        public function beforeSave()
+        {
+            if ($this->name == 'Peter') {
+                $message = new Message("Sorry, but a robot cannot be named Peter");
+                $this->appendMessage($message);
+            }
        }
      }
 
@@ -500,16 +500,16 @@ Executes validators on every validation call
     class Subscriptors extends \Phalcon\Mvc\Model
     {
 
-    public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
-    		'field' => 'status',
-    		'domain' => array('A', 'I')
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
+        public function validation()
+        {
+            $this->validate(new ExclusionIn(array(
+                'field' => 'status',
+                'domain' => array('A', 'I')
+            )));
+            if ($this->validationHasFailed() == true) {
+                return false;
+            }
+        }
     }
 
 
@@ -528,16 +528,16 @@ Check whether validation process has generated any messages
     class Subscriptors extends \Phalcon\Mvc\Model
     {
 
-    public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
-    		'field' => 'status',
-    		'domain' => array('A', 'I')
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
+        public function validation()
+        {
+            $this->validate(new ExclusionIn(array(
+                'field' => 'status',
+                'domain' => array('A', 'I')
+            )));
+            if ($this->validationHasFailed() == true) {
+                return false;
+            }
+        }
     }
 
 
@@ -556,12 +556,12 @@ Returns array of validation messages
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     if ($robot->save() == false) {
-      	echo "Umh, We can't store robots right now ";
-      	foreach ($robot->getMessages() as $message) {
-    		echo $message;
-    	}
+        echo "Umh, We can't store robots right now ";
+        foreach ($robot->getMessages() as $message) {
+            echo $message;
+        }
     } else {
-      	echo "Great, a new robot was saved successfully!";
+        echo "Great, a new robot was saved successfully!";
     }
 
 
@@ -659,13 +659,13 @@ Inserts a model instance. If the instance already exists in the persistance it w
     $robot->year = 1952;
     $robot->create();
 
-      //Passing an array to create
-      $robot = new Robots();
-      $robot->create(array(
-      'type' => 'mechanical',
-      'name' => 'Astroy Boy',
-      'year' => 1952
-      ));
+    //Passing an array to create
+    $robot = new Robots();
+    $robot->create(array(
+        'type' => 'mechanical',
+        'name' => 'Astroy Boy',
+        'year' => 1952
+    ));
 
 
 
@@ -698,7 +698,7 @@ Deletes a model instance. Returning true on success or false otherwise.
     $robot->delete();
 
     foreach (Robots::find("type = 'mechanical'") as $robot) {
-       $robot->delete();
+        $robot->delete();
     }
 
 
@@ -730,7 +730,7 @@ Reads an attribute value by its name
 
     <?php
 
-     echo $robot->readAttribute('name');
+    echo $robot->readAttribute('name');
 
 
 
@@ -743,7 +743,7 @@ Writes an attribute value by its name
 
     <?php
 
-     	$robot->writeAttribute('name', 'Rosey');
+    $robot->writeAttribute('name', 'Rosey');
 
 
 
@@ -761,10 +761,10 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->skipAttributes(array('price'));
-       }
+        public function initialize()
+        {
+            $this->skipAttributes(array('price'));
+        }
     }
 
 
@@ -783,10 +783,10 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->skipAttributesOnCreate(array('created_at'));
-       }
+      public function initialize()
+      {
+          $this->skipAttributesOnCreate(array('created_at'));
+      }
     }
 
 
@@ -805,10 +805,10 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->skipAttributesOnUpdate(array('modified_in'));
-       }
+        public function initialize()
+        {
+            $this->skipAttributesOnUpdate(array('modified_in'));
+        }
     }
 
 
@@ -827,10 +827,10 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->allowEmptyStringValues(array('name'));
-       }
+        public function initialize()
+        {
+            $this->allowEmptyStringValues(array('name'));
+        }
     }
 
 
@@ -849,10 +849,10 @@ Setup a 1-1 relation between two models
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->hasOne('id', 'RobotsDescription', 'robots_id');
-       }
+        public function initialize()
+        {
+            $this->hasOne('id', 'RobotsDescription', 'robots_id');
+        }
     }
 
 
@@ -871,11 +871,10 @@ Setup a relation reverse 1-1  between two models
     class RobotsParts extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->belongsTo('robots_id', 'Robots', 'id');
-       }
-
+        public function initialize()
+        {
+            $this->belongsTo('robots_id', 'Robots', 'id');
+        }
     }
 
 
@@ -894,10 +893,10 @@ Setup a relation 1-n between two models
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       $this->hasMany('id', 'RobotsParts', 'robots_id');
-       }
+        public function initialize()
+        {
+            $this->hasMany('id', 'RobotsParts', 'robots_id');
+        }
     }
 
 
@@ -916,18 +915,18 @@ Setup a relation n-n between two models through an intermediate relation
     class Robots extends \Phalcon\Mvc\Model
     {
 
-       public function initialize()
-       {
-       //Setup a many-to-many relation to Parts through RobotsParts
-       $this->hasManyToMany(
-    		'id',
-    		'RobotsParts',
-    		'robots_id',
-    		'parts_id',
-    		'Parts',
-    		'id'
-    	);
-       }
+        public function initialize()
+        {
+            //Setup a many-to-many relation to Parts through RobotsParts
+            $this->hasManyToMany(
+                'id',
+                'RobotsParts',
+                'robots_id',
+                'parts_id',
+                'Parts',
+                'id'
+            );
+         }
     }
 
 
@@ -949,15 +948,15 @@ Setups a behavior in a model
     class Robots extends Model
     {
 
-       public function initialize()
-       {
-    	$this->addBehavior(new Timestampable(array(
-    		'onCreate' => array(
-    			'field' => 'created_at',
-    			'format' => 'Y-m-d'
-    		)
-    	)));
-       }
+        public function initialize()
+        {
+            $this->addBehavior(new Timestampable(array(
+                'onCreate' => array(
+                'field' => 'created_at',
+                'format' => 'Y-m-d'
+            )
+            )));
+        }
     }
 
 
@@ -977,10 +976,10 @@ Sets if the model must keep the original record snapshot in memory
     class Robots extends Model
     {
 
-       public function initialize()
-       {
-    	$this->keepSnapshots(true);
-       }
+        public function initialize()
+        {
+            $this->keepSnapshots(true);
+        }
     }
 
 
@@ -1030,10 +1029,10 @@ Sets if a model must use dynamic update instead of the all-field update
     class Robots extends Model
     {
 
-       public function initialize()
-       {
-    	$this->useDynamicUpdate(true);
-       }
+        public function initialize()
+        {
+            $this->useDynamicUpdate(true);
+        }
     }
 
 
@@ -1107,7 +1106,7 @@ Returns a simple representation of the object that can be used with var_dump
 
     <?php
 
-     var_dump($robot->dump());
+    var_dump($robot->dump());
 
 
 
@@ -1120,7 +1119,7 @@ Returns the instance as an array representation
 
     <?php
 
-     print_r($robot->toArray());
+    print_r($robot->toArray());
 
 
 
