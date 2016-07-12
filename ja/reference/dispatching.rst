@@ -69,6 +69,7 @@ The following example demonstrates how to attach listeners to this component:
     <?php
 
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
@@ -77,7 +78,7 @@ The following example demonstrates how to attach listeners to this component:
         $eventsManager = new EventsManager();
 
         // Attach a listener for type "dispatch"
-        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+        $eventsManager->attach("dispatch", function (Event $event, $dispatcher) {
             // ...
         });
 
@@ -96,22 +97,23 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
     <?php
 
-    use Phalcon\Events\Event;
     use Phalcon\Mvc\Controller;
     use Phalcon\Mvc\Dispatcher;
 
     class PostsController extends Controller
     {
-        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Dispatcher $dispatcher)
         {
             // Executed before every found action
         }
 
-        public function afterExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function afterExecuteRoute(Dispatcher $dispatcher)
         {
             // Executed after every found action
         }
     }
+
+.. note:: Methods on event listeners accept an :doc:`Phalcon\\Events\\Event <../api/Phalcon_Events_Event>` object as their first parameter - methods in controllers do not.
 
 他のアクションへのフォワード
 ----------------------------
