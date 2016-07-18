@@ -71,6 +71,7 @@
     <?php
 
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function () {
@@ -79,7 +80,7 @@
         $eventsManager = new EventsManager();
 
         // 为“dispatch”类型附上一个侦听者
-        $eventsManager->attach("dispatch", function ($event, $dispatcher) {
+        $eventsManager->attach("dispatch", function (Event $event, $dispatcher) {
             // ...
         });
 
@@ -98,22 +99,23 @@
 
     <?php
 
-    use Phalcon\Events\Event;
     use Phalcon\Mvc\Controller;
     use Phalcon\Mvc\Dispatcher;
 
     class PostsController extends Controller
     {
-        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Dispatcher $dispatcher)
         {
             // 在每一个找到的动作前执行
         }
 
-        public function afterExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function afterExecuteRoute(Dispatcher $dispatcher)
         {
             // 在每一个找到的动作后执行
         }
     }
+
+.. note:: Methods on event listeners accept an :doc:`Phalcon\\Events\\Event <../api/Phalcon_Events_Event>` object as their first parameter - methods in controllers do not.
 
 转发到其他动作（Forwarding to other actions）
 ---------------------------------------------
