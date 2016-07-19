@@ -56,7 +56,7 @@ Fetches an array/object of strings that corresponds to the fetched row, or FALSE
 
 public  **fetchArray** ()
 
-Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is not affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
 .. code-block:: php
 
@@ -73,7 +73,7 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
 public  **fetchAll** ([*unknown* $fetchStyle], [*unknown* $fetchArgument], [*unknown* $ctorArgs])
 
-Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+Returns an array of arrays containing all the records in the result This method is not affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
 .. code-block:: php
 
