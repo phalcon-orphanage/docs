@@ -149,3 +149,38 @@ The above code produces the following:
     )
 
 There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+
+Injecting Configuration Dependency
+----------------------------------
+You can inject configuration dependency to controller allowing us to use :doc:`Phalcon\\Config <../api/Phalcon_Config>` inside :doc:`Phalcon\\Controller <../api/Phalcon_Controller>`. To be able to do that, add following code inside your dependency injector script.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Config;
+
+    // Create a DI
+    $di = new FactoryDefault();
+
+    $di->set('config', function () {
+	$configData = require 'config/config.php';
+        return new Config($configData);
+    });
+
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+
+.. code-block:: php
+
+   <?php
+
+   use Phalcon\Mvc\Controller;
+
+   class MyController extends Controller
+   {
+
+       private function getDatabaseName() {
+           return $this->config->database->dbname;
+       }
+   }
