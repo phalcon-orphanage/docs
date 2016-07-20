@@ -77,7 +77,7 @@ table des matières
    api/index
    reference/license
 
-Other formats
+Autres formats
 -------------
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
