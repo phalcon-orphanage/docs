@@ -1,25 +1,23 @@
-Reading Configurations
-======================
+Membaca Konfigurasi
+===================
 
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
-PHP objects for use in an application.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` adalah komponen yang digunakan untuk membaca file konfigurasi beragam format (menggunakan adapter) ke dalam objek PHP untuk digunakan dalam aplikasi.
 
 File Adapters
 -------------
-The adapters available are:
+Adapter yang tersedia:
 
-+-----------+------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                    |
-+===========+================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file. |
-+-----------+------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.  |
-+-----------+------------------------------------------------------------------------------------------------+
++-----------+---------------------------------------------------------------------------------------------------------+
+| Tipe File | Keterangan                                                                                              |
++===========+=========================================================================================================+
+| Ini       | Menggunakan file INI untuk menyimpan setting. Didalamnya adapter menggunakan fungsi PHP parse_ini_file. |
++-----------+---------------------------------------------------------------------------------------------------------+
+| Array     | Menggunakan array PHP multi dimensi untuk menyimpan setting. Adapter ini menawarkan performa terbaik.   |
++-----------+---------------------------------------------------------------------------------------------------------+
 
-Native Arrays
--------------
-The next example shows how to convert native arrays into :doc:`Phalcon\\Config <../api/Phalcon_Config>` objects. This option offers the best performance since no files are
-read during this request.
+Array Native
+------------
+Contoh berikut menunjukkan bagaimana mengubah array native ke objek :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Pilihan ini menawarkan performa terbaik karena tidak ada file yang dibaca selama request.
 
 .. code-block:: php
 
@@ -49,7 +47,7 @@ read during this request.
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-If you want to better organize your project you can save the array in another file and then read it.
+Jika anda ingi mengelola projek anda lebih baik anda dapat menyimpan array ke file lain dan membacanya.
 
 .. code-block:: php
 
@@ -60,9 +58,9 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
     $config = new Config($settings);
 
-Reading INI Files
------------------
-Ini files are a common way to store settings. :doc:`Phalcon\\Config <../api/Phalcon_Config>` uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+Membaca file INI
+----------------
+File Ini adalah cara umum menyimpan setting. :doc:`Phalcon\\Config <../api/Phalcon_Config>` menggunakan fungsi PHP parse_ini_file untuk membaca file. Seksi file dipecah menjadi sub setting untuk akses lebih mudah.
 
 .. code-block:: ini
 
@@ -81,7 +79,7 @@ Ini files are a common way to store settings. :doc:`Phalcon\\Config <../api/Phal
     [models]
     metadata.adapter  = "Memory"
 
-You can read the file as follows:
+Anda dapat membaca file sebagai berikut:
 
 .. code-block:: php
 
@@ -95,10 +93,10 @@ You can read the file as follows:
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Merging Configurations
+Menggabung Konfigurasi
 ----------------------
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` can recursively merge the properties of one configuration object into another.
-New properties are added and existing properties are updated.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` dapat menggabung properti satu objek konfigurasi ke lainnya secara rekursif.
+Properti baru ditambahkan dan properti yang sudah ada diperbarui.
 
 .. code-block:: php
 
@@ -131,7 +129,7 @@ New properties are added and existing properties are updated.
 
     print_r($config);
 
-The above code produces the following:
+Kode di atas menghasilkan berikut:
 
 .. code-block:: html
 
@@ -148,4 +146,39 @@ The above code produces the following:
         [logging] => 1
     )
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+Ada lebih banyak adapter tersedia untuk komponen ini di `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+
+Injeksi ketergantungan Konfigurasi
+----------------------------------
+Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang memungkinkan kita menggunakan :doc:`Phalcon\\Config <../api/Phalcon_Config>` dalam :doc:`Phalcon\\Controller <../api/Phalcon_Controller>`. Agar dapat melakukannya, tambahkan kode berikut dalam script dependency injector.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Config;
+
+    // Buat DI
+    $di = new FactoryDefault();
+
+    $di->set('config', function () {
+	$configData = require 'config/config.php';
+        return new Config($configData);
+    });
+
+Sekarang dalam kontroller anda dapt mengakses konfigurasi memanfaatkan fitur depedency injection dengan nama `config` seperti kode berikut:
+
+.. code-block:: php
+
+   <?php
+
+   use Phalcon\Mvc\Controller;
+
+   class MyController extends Controller
+   {
+
+       private function getDatabaseName() {
+           return $this->config->database->dbname;
+       }
+   }
