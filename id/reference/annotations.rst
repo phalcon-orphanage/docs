@@ -3,28 +3,28 @@ Parser Anotasi
 
 Ini kali pertama sebuah komponen parser anotasi ditulis dalam C untuk dunia PHP. :code:`Phalcon\Annotations` adalah komponen umum yang menyediakan parsing dan caching anotasi dalam kelas PHP untuk digunakan dalam aplikasi.
 
-Anotasi dibaca dari docblocks dalam kelas, metode dan properti. Sebuah anitasi dapat ditempatkan di sembarang posisi dalam docblock:
+Anotasi dibaca dari docblocks dalam kelas, metode dan properti. Sebuah anotasi dapat ditempatkan di sembarang posisi dalam docblock:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * This is the class description
+     * Ini deskripsi kelas
      *
      * @AmazingClass(true)
      */
     class Example
     {
         /**
-         * This a property with a special feature
+         * Ini properti dengan fitur spesial
          *
          * @SpecialFeature
          */
         protected $someProperty;
 
         /**
-         * This is a method
+         * Ini metode
          *
          * @SpecialFeature
          */
