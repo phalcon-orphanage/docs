@@ -786,10 +786,32 @@ Not Found パス
 
     <?php
 
-    $router->add('/get/info/{id}', array(
+    $router->add('/get/info/{id}', [
         'controller' => 'products',
         'action'     => 'info'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+    ])->beforeMatch([new AjaxFilter(), 'check']);
+
+Since Phalcon 2.1.0 beta 1, there is another way to check this:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', [
+        'module'     => 'admin',
+        'controller' => 'session'
+    ])->beforeMatch(function ($uri, $route) {
+        /**
+         * @var string $uri
+         * @var \Phalcon\Mvc\Router\Route $route
+         * @var \Phalcon\DiInterface $this
+         * @var \Phalcon\Http\Request $request
+         */
+        $request = $this->getShared('request');
+
+        // Check if the request was made with Ajax
+        return $request->isAjax();
+    });
 
 ホスト名によるアクセス制限
 --------------------------
