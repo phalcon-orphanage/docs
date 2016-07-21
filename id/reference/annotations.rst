@@ -1,10 +1,9 @@
-Annotations Parser
-==================
+Parser Anotasi
+==============
 
-It is the first time that an annotations parser component is written in C for the PHP world. :code:`Phalcon\Annotations` is
-a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+Ini kali pertama sebuah komponen parser anotasi ditulis dalam C untuk dunia PHP. :code:`Phalcon\Annotations` adalah komponen umum yang menyediakan parsing dan caching anotasi dalam kelas PHP untuk digunakan dalam aplikasi.
 
-Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
+Anotasi dibaca dari docblocks dalam kelas, metode dan properti. Sebuah anitasi dapat ditempatkan di sembarang posisi dalam docblock:
 
 .. code-block:: php
 
@@ -35,7 +34,7 @@ Annotations are read from docblocks in classes, methods and properties. An annot
         }
     }
 
-An annotation has the following syntax:
+Sebuah anotasi memiliki sintaks berikut:
 
 .. code-block:: php
 
@@ -44,7 +43,7 @@ An annotation has the following syntax:
      * @Annotation-Name(param1, param2, ...)
      */
 
-Also, an annotation can be placed at any part of a docblock:
+sebuah anotasi dapat juga ditempatkan di sembarang bagian di sebuah docblock:
 
 .. code-block:: php
 
@@ -60,7 +59,7 @@ Also, an annotation can be placed at any part of a docblock:
      * @AnotherSpecialFeature(true)
      */
 
-The parser is highly flexible, the following docblock is valid:
+Parser nya sangat fleksibel, docblock berikut adalah sah:
 
 .. code-block:: php
 
@@ -73,7 +72,7 @@ The parser is highly flexible, the following docblock is valid:
      })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
      **/
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+Namun untuk membuat kode lebih mudah dirawat dan dipahami, disarankan untuk menempatkan anotasi di akhir docblock:
 
 .. code-block:: php
 
@@ -87,9 +86,9 @@ However, to make the code more maintainable and understandable it is recommended
      * @AnotherSpecialFeature(true)
      */
 
-Reading Annotations
--------------------
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+Membaca Anotasi
+---------------
+Sebuah reflector diimplementasi untuk mendapatkan anotasi yang didefinisi dalam sebuah kelas secara mudah menggunakan interface berorientasi objek:
 
 .. code-block:: php
 
@@ -118,16 +117,15 @@ A reflector is implemented to easily get the annotations defined on a class usin
         print_r($annotation->getArguments());
     }
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter.
-Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+Proses pembacaan anotasi sangat cepat, namun, untuk alasan performa diarankan untuk menyimpan anotasi yang sudah diparsing menggunakan adapter.
+Adapter menyimpan anotasi yang sudah diproses sehingga menghindari kebutuhan untuk melakukan parsing anotasi terus menerus.
 
-:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
-only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are
-other adapters to swap out when the application is in production stage.
+:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` dgunakan untuk contoh di atas. Adapter ini hanya menyimpan anotasi selama request berjalan 
+dan untuk alasan ini, adapter ini hanya cocok untuk tahap pengembangan. Ada adapter lain untuk ditukar ketika aplikasi berada dalam tahap produksi.
 
-Types of Annotations
---------------------
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+Jenis Anotasi
+-------------
+Anotasi dapat memiliki parameter atau tidak. Sebuah parameter dapat berupa nilai literal sederhana (string, angka, boolean, null), array, hashed list atau anotasi lain:
 
 .. code-block:: php
 
@@ -182,15 +180,15 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
      */
 
-Practical Usage
----------------
-Next we will explain some practical examples of annotations in PHP applications:
+Penggunaan Praktis
+------------------
+Berikutnya kita akan menjelaskan contoh praktis penggunaan anotasi di aplikasi PHP:
 
-Cache Enabler with Annotations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's pretend we've created the following controller and you want to create a plugin that automatically starts the
-cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service
-to be notified when a route is executed:
+Cache Enabler dengan Anotasi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Anggap kita ptelah menciptakan controller berikut dan anda ingin menciptakan plugin yang otomatis memulai cache ketika
+aksi terakhir yang dieksekusi ditandai sebagai datap di cache. Pertama, kita daftarkan sebuah plugin ke layanan Dispatcher
+untuk diberi thau ketika sebuah route dieksekusi:
 
 .. code-block:: php
 
@@ -213,7 +211,7 @@ to be notified when a route is executed:
         return $dispatcher;
     };
 
-CacheEnablerPlugin is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+CacheEnablerPlugin adalah plugin yang menyadap tiap aksi yang dieksekusi dispatcher dan menghidupkan cache jika diperlukan:
 
 .. code-block:: php
 
@@ -262,7 +260,7 @@ CacheEnablerPlugin is a plugin that intercepts every action executed in the disp
         }
     }
 
-Now, we can use the annotation in a controller:
+Kita dapat menggunakan anotasi dalam sebuah kontroller:
 
 .. code-block:: php
 
@@ -298,9 +296,9 @@ Now, we can use the annotation in a controller:
         }
     }
 
-Private/Public areas with Annotations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use annotations to tell the ACL which controllers belong to the administrative areas:
+Private/Public area dengan Anotasi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termasuk area adiminstratif:
 
 .. code-block:: php
 
@@ -361,32 +359,31 @@ You can use annotations to tell the ACL which controllers belong to the administ
         }
     }
 
-Choose the template to render
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must be rendered
-once the action has been executed:
+Memilih template untuk ditampilkan
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Di contoh ini kita akan menggunakan anotasi untuk memberi tahu :doc:`Phalcon\\Mvc\\View\\Simple <views>` template apa yang harus ditampilkan
+ketika aksi telah dieksekusi:
 
-Annotations Adapters
---------------------
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+Adapter Anotasi
+---------------
+Komponen ini menggunakan adapter untuk cache atau tidak anotasi yang terproses sehingga meningkatkan performa dan menyediakan fasilitas untuk pengembangan/pengujian:
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                                                                                      |
+| Name       | Keterangan                                                                                                                                                                                                                           | API                                                                                      |
 +============+======================================================================================================================================================================================================================================+==========================================================================================+
-| Memory     | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage                                                    | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
+| Memory     | Anotasi ini dicache di moemori saja. Ketika request berakhir cache dibersihkan dan memuat ulang anotasi di tiap request. Adapter ini cocok untuk tahap pengembangan                                                                  | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Files      | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                                                                                | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
+| Files      | Anotasi yang sudah diparsing dan diproses disimpan permanent di file PHP untuk menaikkan performa. Adapter ini harus digunakan bersama bytecode cache.                                                                               | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| APC        | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
+| APC        | Anotasi yang sudah diparsing dan diproses disimpan permanent di APC cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                                                                                              | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
+| XCache     | Anotasi yang sudah diparsing dan diproses disimpan permanent di XCache cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-Implementing your own adapters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
-annotations adapters or extend the existing ones.
+Implementasi adapter Anda
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` harus diimplementasi untuk bisa menciptakan adapter anotasi anda sendiri atau mengembangkan yang sudah ada.
 
-External Resources
-------------------
+Sumber Luar
+-----------
 * `Tutorial: Creating a custom model's initializer with Annotations <https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer>`_
