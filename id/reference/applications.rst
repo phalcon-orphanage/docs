@@ -1,5 +1,5 @@
-MVC Applications
-================
+Aplikasi MVC
+============
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
