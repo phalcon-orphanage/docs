@@ -150,7 +150,7 @@ Ada lebih banyak adapter tersedia untuk komponen ini di `Phalcon Incubator <http
 
 Injeksi ketergantungan Konfigurasi
 ----------------------------------
-Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang memungkinkan kita menggunakan :doc:`Phalcon\\Config <../api/Phalcon_Config>` dalam :doc:`Phalcon\\Controller <../api/Phalcon_Controller>`. Agar dapat melakukannya, tambahkan kode berikut dalam script dependency injector.
+Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang memungkinkan kita menggunakan :doc:`Phalcon\\Config <../api/Phalcon_Config>` dalam :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Controller>`. Agar dapat melakukannya, tambahkan kode berikut dalam script dependency injector.
 
 .. code-block:: php
 

@@ -152,7 +152,7 @@ There are more adapters available for this components in the `Phalcon Incubator 
 
 Injecting Configuration Dependency
 ----------------------------------
-You can inject configuration dependency to controller allowing us to use :doc:`Phalcon\\Config <../api/Phalcon_Config>` inside :doc:`Phalcon\\Controller <../api/Phalcon_Controller>`. To be able to do that, add following code inside your dependency injector script.
+You can inject configuration dependency to controller allowing us to use :doc:`Phalcon\\Config <../api/Phalcon_Config>` inside :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Controller>`. To be able to do that, add following code inside your dependency injector script.
 
 .. code-block:: php
 
