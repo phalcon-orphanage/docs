@@ -167,7 +167,7 @@ Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang mem
         return new Config($configData);
     });
 
-Sekarang dalam kontroller anda dapt mengakses konfigurasi memanfaatkan fitur depedency injection dengan nama `config` seperti kode berikut:
+Sekarang dalam kontroller anda dapat mengakses konfigurasi memanfaatkan fitur depedency injection dengan nama `config` seperti kode berikut:
 
 .. code-block:: php
 
