@@ -1,19 +1,19 @@
 Aplikasi MVC
 ============
 
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
-operations required in the background, instantiating every component needed and integrating it with the
-project, to allow the MVC pattern to operate as desired.
+Semua kerja keras mengatur operasi dalam MVC di Phalcon normalnya dilakukan oleh
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Komponen ini membungkus semua operasi kompleks 
+yang diperlukan dibelakang layar, menciptakan semua komponen yang diperlukan dan menyatukannnya dengan proyek, memungkinkan
+pola MVC bekerja sesuai  yang diinginkan.
 
-Single or Multi Module Applications
------------------------------------
-With this component you can run various types of MVC structures:
+Aplikasi Modul Tunggal atau Jamak
+---------------------------------
+Dengan komponen ini anda dapat menjalankan beragam tipe struktur MVC:
 
-Single Module
+Modul Tunggal
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
-An application like this would have the following file structure:
+Aplikasi MVC tunggal terdiri atas satu modul saja. Namespace dapat digunakan namun tidak wajib.
+Aplikasi seperti ini memiliki struktur file sebagai berikut:
 
 .. code-block:: php
 
@@ -27,7 +27,7 @@ An application like this would have the following file structure:
             img/
             js/
 
-If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
+Jika namespace tidak digunakan, file bootstrap berikut dapat digunakan untuk mengatur alir MVC:
 
 .. code-block:: php
 
@@ -49,7 +49,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     $di = new FactoryDefault();
 
-    // Registering the view component
+    // Daftarkan komponen view
     $di->set('view', function () {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -68,7 +68,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         echo $e->getMessage();
     }
 
-If namespaces are used, the following bootstrap can be used:
+Jika namespace digunakan, bootstrap berikut bisa dipakai:
 
 .. code-block:: php
 
@@ -82,7 +82,7 @@ If namespaces are used, the following bootstrap can be used:
 
     $loader = new Loader();
 
-    // Use autoloading with namespaces prefixes
+    // Gunakan autoloading dengan prefix namespace
     $loader->registerNamespaces(
         array(
             'Single\Controllers' => '../apps/controllers/',
@@ -92,7 +92,7 @@ If namespaces are used, the following bootstrap can be used:
 
     $di = new FactoryDefault();
 
-    // Register the default dispatcher's namespace for controllers
+    // Daftarkan naespace default untuk dispatcher bagi controller
     $di->set('dispatcher', function () {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
@@ -118,9 +118,9 @@ If namespaces are used, the following bootstrap can be used:
         echo $e->getMessage();
     }
 
-Multi Module
-^^^^^^^^^^^^
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+Modul Jamak
+^^^^^^^^^^^
+Sebuah aplikasi dengan module lebih dari satu, menggunakan document root sama untuk lebih dari satu modul. Di kasus ini, struktur file berikut dapat dipakai:
 
 .. code-block:: php
 
@@ -141,7 +141,7 @@ A multi-module application uses the same document root for more than one module.
         img/
         js/
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+Tiap direktori dalam apps/ punya struktur MVC sendiri. File Module.php disediakan untuk mengkonfigurasi setting spesifik tiap modul seperti autoloader atau custom services:
 
 .. code-block:: php
 
@@ -195,7 +195,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         }
     }
 
-A special bootstrap file is required to load a multi-module MVC architecture:
+Sebuah file bootstrap khusus diperlukan untuk memuat arsitektur MVC bermodul jamak:
 
 .. code-block:: php
 
@@ -272,7 +272,7 @@ A special bootstrap file is required to load a multi-module MVC architecture:
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the module:
+Jika anda ingin mengelola konfigurasi modul dalam file bootstrap anda dapat menggunakan fungsi anonim untuk mendaftarkan modul:
 
 .. code-block:: php
 
@@ -304,16 +304,16 @@ If you want to maintain the module configuration in the bootstrap file you can u
         )
     );
 
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
-necessary that every matched route returns a valid module. Each registered module has an associated class
-offering functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices(), they will be called by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
+Ketika :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` memiliki module yang terdaftar, penting untuk
+tiap route yang cocok mengembalikan module yang sah. Tiap modul yang terdaftar memiliki sebuah kelas terkait yang 
+menyediakan fungsi-fungsi untuk menyiapkan modul. Tiap definisi modul kelas wajib mengimplementasi dua metode:
+registerAutoloaders() dan registerServices(), yang akan dipanggil oleh
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` tergantung modul mana yang dijalankan.
 
-Understanding the default behavior
-----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
-you may recognize the following bootstrap file:
+Memahami perilaku default
+-------------------------
+Jika anda mengikuti :doc:`tutorial <tutorial>` atau membuat kode menggunakan :doc:`Phalcon Devtools <tools>`,
+anda mungkin mengenali file bootstrap berikut:
 
 .. code-block:: php
 
@@ -340,7 +340,7 @@ you may recognize the following bootstrap file:
         echo "Exception: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when handle() is invoked:
+Inti semua kerja kontroller terjadi ketika handle() dipanggil:
 
 .. code-block:: php
 
@@ -348,9 +348,9 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     $response = $application->handle();
 
-Manual bootstrapping
---------------------
-If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
+Bootstrap manual
+----------------
+Jika anda ingin menggunakan :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, kode di atas dapat diubah seperti berikut:
 
 .. code-block:: php
 
@@ -397,7 +397,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
+Pengganti :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` berikut tidak memiliki komponen view membuatnya cocok untuk Rest API:
 
 .. code-block:: php
 
@@ -428,38 +428,38 @@ The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc
         $response->send();
     }
 
-Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
+Alternatif lain adalah menangkap eksepsi yang dihasilkan oleh dispatcher dan mengarahkan ke aksi lain:
 
 .. code-block:: php
 
     <?php
 
-    // Get the 'router' service
+    // Dapatkan service 'router'
     $router = $di['router'];
 
     $router->handle();
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // Lewatkan parameter router yang telah diproses ke dispatcher
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
     try {
 
-        // Dispatch the request
+        // Kirim request
         $dispatcher->dispatch();
 
     } catch (Exception $e) {
 
         // An exception has occurred, dispatch some controller/action aimed for that
 
-        // Pass the processed router parameters to the dispatcher
+        // Lewatkan parameter router yang telah diproses ke dispatcher
         $dispatcher->setControllerName('errors');
         $dispatcher->setActionName('action503');
 
-        // Dispatch the request
+        // Kirim request
         $dispatcher->dispatch();
     }
 
@@ -473,30 +473,30 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
         $response->send();
     }
 
-Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
-should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+Meski implementasi di atas lebih banyak kodenya dibanding menggunakan :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
+ia menawarkan alternatif bootstraping aplikasi anda. Tergantung kebutuhan anda, anda mungkin ingin memiliki kendali penuh
+terhadap apa yang harus diciptakan dan yang tidak, atau mengganti komponen tertentu dengan milik anda sendiri untuk memperluas fungsionalitas defaultnya.
 
-Application Events
-------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
-(if it is present). Events are triggered using the type "application". The following events are supported:
+Event Aplikasi
+--------------
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` mampu mengeirim pesan kejadian ke :doc:`EventsManager <events>`
+(jika ada). Event dipicu menggunakan tipe "application". Event berikut didukung:
 
 +---------------------+--------------------------------------------------------------+
-| Event Name          | Triggered                                                    |
+| Nama Event          | Dipicu                                                       |
 +=====================+==============================================================+
-| boot                | Executed when the application handles its first request      |
+| boot                | Dieksekusi ketika aplikasi pertama kali menjalankan request  |
 +---------------------+--------------------------------------------------------------+
-| beforeStartModule   | Before initialize a module, only when modules are registered |
+| beforeStartModule   | Sebelum inisialisasi modul, hanya bila modul terdaftar       |
 +---------------------+--------------------------------------------------------------+
-| afterStartModule    | After initialize a module, only when modules are registered  |
+| afterStartModule    | Setelah inisialisasi modul, hanya bila modul terdaftar       |
 +---------------------+--------------------------------------------------------------+
-| beforeHandleRequest | Before execute the dispatch loop                             |
+| beforeHandleRequest | Sebelum eksekusi loop dispatch                               |
 +---------------------+--------------------------------------------------------------+
-| afterHandleRequest  | After execute the dispatch loop                              |
+| afterHandleRequest  | Setelah eksekusi loop dispatch                               |
 +---------------------+--------------------------------------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+Contoh berikut menunjukkan bagaimana memasang listener ke komponen ini:
 
 .. code-block:: php
 
@@ -515,6 +515,6 @@ The following example demonstrates how to attach listeners to this component:
         }
     );
 
-External Resources
-------------------
+Sumber Luar
+-----------
 * `MVC examples on Github <https://github.com/phalcon/mvc>`_
