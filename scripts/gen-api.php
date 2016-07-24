@@ -22,7 +22,7 @@ if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
 }
 
-$languages = array('en', 'es', 'fr', 'ja', 'pl', 'pt', 'ru', 'uk', 'zh');
+$languages = array('en', 'es', 'fr', 'id', 'ja', 'pl', 'pt', 'ru', 'uk', 'zh');
 
 /**
  * Class ApiGenerator
