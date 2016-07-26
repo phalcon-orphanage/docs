@@ -173,14 +173,14 @@ Now in your controller you can access your configuration by using dependency inj
 
 .. code-block:: php
 
-   <?php
+    <?php
 
-   use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Controller;
 
-   class MyController extends Controller
-   {
-
-       private function getDatabaseName() {
-           return $this->config->database->dbname;
-       }
-   }
+    class MyController extends Controller
+    {
+        private function getDatabaseName()
+        {
+             return $this->config->database->dbname;
+        }
+    }
