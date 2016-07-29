@@ -25,8 +25,6 @@ database engines are supported:
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 独自アダプタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,8 +43,6 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
 Implementing your own dialects
@@ -105,28 +101,6 @@ below shows how to create a connection passing both required and optional parame
 
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
-
-.. code-block:: php
-
-    <?php
-
-    // Basic configuration
-    $config = array(
-        'username' => 'scott',
-        'password' => 'tiger',
-        'dbname'   => '192.168.10.145/orcl'
-    );
-
-    // Advanced configuration
-    $config = array(
-        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
-        'username' => 'scott',
-        'password' => 'tiger',
-        'charset'  => 'AL32UTF8'
-    );
-
-    // Create a connection
-    $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
 追加のPDOオプションの設定
 ---------------------------------

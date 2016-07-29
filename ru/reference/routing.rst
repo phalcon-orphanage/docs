@@ -824,10 +824,32 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->add('/get/info/{id}', array(
+    $router->add('/get/info/{id}', [
         'controller' => 'products',
         'action'     => 'info'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+    ])->beforeMatch([new AjaxFilter(), 'check']);
+
+Начиная с Phalcon 2.1.0 beta 1, существует ещё один способ сделать эту проверку:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', [
+        'module'     => 'admin',
+        'controller' => 'session'
+    ])->beforeMatch(function ($uri, $route) {
+        /**
+         * @var string $uri
+         * @var \Phalcon\Mvc\Router\Route $route
+         * @var \Phalcon\DiInterface $this
+         * @var \Phalcon\Http\Request $request
+         */
+        $request = $this->getShared('request');
+
+        // Проверяет был ли запрос сделан с помощью Ajax
+        return $request->isAjax();
+    });
 
 Ограничение по имени хоста
 --------------------------

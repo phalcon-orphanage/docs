@@ -11,11 +11,12 @@ updated when any changes are made to this repository.
 You are welcome to fork this repository and add, correct or enhance the
 documentation yourselves.
 
-The documentation is written using [reStructuredText](http://sphinx.pocoo.org/rest.html) and is currently available in 9 different languages:
+The documentation is written using [reStructuredText](http://sphinx.pocoo.org/rest.html) and is currently available in 10 different languages:
 
 * [English (en)](https://docs.phalconphp.com/en/latest/index.html)
 * [Chinese (zh)](https://docs.phalconphp.com/zh/latest/index.html)
 * [French (fr)](https://docs.phalconphp.com/fr/latest/index.html)
+* [Indonesian (id)](https://docs.phalconphp.com/id/latest/index.html)
 * [Japanese (ja)](https://docs.phalconphp.com/ja/latest/index.html)
 * [Polish (pl)](https://docs.phalconphp.com/pl/latest/index.html)
 * [Portuguese (pt)](https://docs.phalconphp.com/pt/latest/index.html)
