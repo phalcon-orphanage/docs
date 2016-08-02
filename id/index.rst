@@ -9,7 +9,7 @@ Apa itu Phalcon?
 
 Phalcon adalah framework PHP full stack open source, ditulis sebagai ekstensi C, dioptimasi untuk performa tinggi.
 Anda tidak perlu belajar atau menggunakan bahasa C, karena fungsionalitasnya disediakan sebagai kelas PHP siap untuk Anda gunakan.
-Phalcon juga loose-coupled, memungkinkan Anda menggunakan objects sebagai komponen perekat sesuai kebutuhan aplikasi Anda.
+Phalcon juga loose-coupled, memungkinkan Anda menggunakan objek-objeknya sebagai komponen perekat sesuai kebutuhan aplikasi Anda.
 
 Phalcon tidak hanya tentang performa, tujuan kami adalah membuatnya kokoh, kaya fitur dan mudah digunakan!
 
