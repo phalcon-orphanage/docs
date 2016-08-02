@@ -1,68 +1,92 @@
-Урок 6: Vökuró
-==============
-Vökuró - еще одно приложение, с помощью которого вы сможете узнать больше о Phalcon.
-Vökuró - это небольшой сайт, показывающий, как реализовать защитный функционал и
-управление пользователями и правами доступа. Вы можете клонировать код приложения с Github_.
+Tutorial 6: Vökuró
+==================
+Vökuró is another sample application you can use to learn more about Phalcon.
+Vökuró is a small website that shows how to implement a security features and
+management of users and permissions. You can clone its code from Github_.
 
-Структура проекта
+Checking your installation
+--------------------------
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
+or execute the code snippet below:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+The Phalcon extension should appear as part of the output:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
+Project Structure
 -----------------
-После клонирования проекта вы увидите следующую структуру:
+Once you clone the project in your document root you'll see the following structure:
 
 .. code-block:: bash
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/
         schemas/
 
-Его структура весьма схожа с INVO. Открыв приложение в
-браузере http://localhost/vokuro, вы увидите что-то подобное:
+This project follows a quite similar structure to INVO. Once you open the application in your
+browser http://localhost/vokuro you'll see something like this:
 
 .. figure:: ../_static/img/vokuro-1.png
    :align: center
 
-Приложение разбито на две части: фронтенд, где посетители могут авторизоваться в сервисе,
-и бэкенд, где администраторы могут управлять зарегистрированными пользователями. Фронтенд и бэкенд
-объединены в один модуль.
+The application is divided into two parts, a frontend, where visitors can sign up the service
+and a backend where administrative users can manage registered users. Both frontend and backend
+are combined in a single module.
 
-Загрузка классов и зависимостей
--------------------------------
-Этот проект использует :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` для загрузки контроллеров, моделей, форм и так далее, и composer_
-для загрузки зависимостей проекта. Таким образом, первое, что нужно сделать перед запуском Vökuró -
-установить зависимости с помощью composer_. Если он у вас уже установлен, то введите
-команду в консоли:
+Load Classes and Dependencies
+-----------------------------
+This project uses :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` to load controllers, models, forms, etc. within the project and composer_
+to load the project's dependencies. So, the first thing you have to do before execute Vökuró is
+install its dependencies via composer_. Assuming you have it correctly installed, type the
+following command in the console:
 
 .. code-block:: bash
 
     cd vokuro
     composer install
 
-Vökuró для подтверждения регистрации пользователей отправляет письма с помощью Swift,
-composer.json выглядит следующим образом:
+Vökuró sends emails to confirm the sign up of registered users using Swift,
+the composer.json looks like:
 
 .. code-block:: json
 
     {
         "require" : {
-            "php" : ">=5.4.0",
-            "ext-phalcon" : ">=2.0.0",
-            "swiftmailer/swiftmailer" : "5.0.*",
+            "php" : ">=5.5.0",
+            "ext-phalcon" : ">=3.0.0",
+            "swiftmailer/swiftmailer" : "^5.4",
             "amazonwebservices/aws-sdk-for-php" : "~1.0"
         }
     }
 
-В файле app/config/loader.php настраивается вся автозагрузка. В конце
-этого файла можно заметить подключение автозагрузчика composer, это позволяет приложению загружать
-любой класс, указанный в зависимостях:
+Now, there is a file called app/config/loader.php where all the auto-loading stuff is set up. At the end of
+this file you can see that the composer autoloader is included enabling the application to autoload
+any of the classes in the downloaded dependencies:
 
 .. code-block:: php
 
@@ -70,12 +94,12 @@ composer.json выглядит следующим образом:
 
     // ...
 
-    // Используем автозагрузчик composer для загрузки внешних зависимостей
-    require_once __DIR__ . '/../../vendor/autoload.php';
+    // Use composer autoloader to load vendor classes
+    require_once BASE_PATH . '/vendor/autoload.php';
 
-Кроме того, Vökuró, в отличие от INVO, использует пространства имен для контроллеров и моделей,
-что является рекомендуемой практикой. Таким образом, автозагрузчик несколько
-отличается от тех, что мы видели прежде (app/config/loader.php):
+Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models
+which is the recommended practice to structure a project. This way the autoloader looks slightly
+different than the one we saw before (app/config/loader.php):
 
 .. code-block:: php
 
@@ -96,10 +120,10 @@ composer.json выглядит следующим образом:
 
     // ...
 
-Вместо registerDirectories мы используем registerNamespaces. Каждое пространство имен указывает на директорию,
-определенную в конфигурационном файле (app/config/config.php). К примеру, пространство имен Vokuro\\Controllers
-указывает на app/controllers, таким образом, классам, находящимся в этом пространстве имен,
-необходимо указывать его при определении:
+Instead of using registerDirectories, we use registerNamespaces. Every namespace points to a directory
+defined in the configuration file (app/config/config.php). For instance the namespace Vokuro\\Controllers
+points to app/controllers so all the classes required by the application within this namespace
+requires it in its definition:
 
 .. code-block:: php
 
@@ -113,10 +137,10 @@ composer.json выглядит следующим образом:
     }
 
 
-Регистрация
------------
-Во-первых, давайте посмотрим на то, как пользователи регистрируются в Vökuró. Когда пользователь нажимает на кнопку "Создать аккаунт"
-вызывается контроллер SessionController, и выполняется действие "signup":
+Sign Up
+-------
+First, let's check how users are registered in Vökuró. When a user clicks the "Create an Account" button,
+the controller SessionController is invoked and the action "signup" is executed:
 
 .. code-block:: php
 
@@ -138,14 +162,14 @@ composer.json выглядит следующим образом:
         }
     }
 
-Это действие просто передает экземпляр формы SignUpForm в представление, которое отображает форму,
-что позволяет пользователям ввести свои данные:
+This action simply pass a form instance of SignUpForm to the view, which itself is rendered to
+allow the user enter the login details:
 
 .. code-block:: html+jinja
 
     {{ form('class': 'form-search') }}
 
-        <h2>Регистрация</h2>
+        <h2>Sign Up</h2>
 
         <p>{{ form.label('name') }}</p>
         <p>
