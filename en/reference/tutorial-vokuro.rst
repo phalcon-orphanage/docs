@@ -77,7 +77,7 @@ the composer.json looks like:
 
     {
         "require" : {
-            "php" : ">=5.4.0",
+            "php" : ">=5.5.0",
             "ext-phalcon" : ">=3.0.0",
             "swiftmailer/swiftmailer" : "^5.4",
             "amazonwebservices/aws-sdk-for-php" : "~1.0"
