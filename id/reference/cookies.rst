@@ -2,8 +2,8 @@ Pengelolaan Cookies
 ===================
 
 Cookies_ adalah cara yang berguna untuk menyimpan potongan data kecil di mesin klien yang dapat dibaca meski
-bila pengguna menutup brosernya. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
-bertinfak sebagai penampung global untuk cookies. Cookies disimpan disini selama ekskusi request dan dikirim
+pengguna menutup brosernya. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
+bertindak sebagai penampung global untuk cookies. Cookies disimpan disini selama eksekusi request dan dikirim
 otomatis diakhir request.
 
 Penggunaan Dasar
@@ -66,7 +66,7 @@ Anda dapat mematikan enkripsi dengan cara berikut:
         return $cookies;
     });
 
-Jika anda ingin menggunakna enkripsi, sebuah key global harus diset di 'crypt' service:
+Jika anda ingin menggunakan enkripsi, sebuah key global harus diset di 'crypt' service:
 
 .. code-block:: php
 
