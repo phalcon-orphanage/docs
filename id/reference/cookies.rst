@@ -1,15 +1,15 @@
-Cookies Management
-==================
+Pengelolaan Cookies
+===================
 
-Cookies_ are a very useful way to store small pieces of data on the client's machine that can be retrieved even
-if the user closes his/her browser. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
-acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent
-automatically at the end of the request.
+Cookies_ adalah cara yang berguna untuk menyimpan potongan data kecil di mesin klien yang dapat dibaca meski
+bila pengguna menutup brosernya. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
+bertinfak sebagai penampung global untuk cookies. Cookies disimpan disini selama ekskusi request dan dikirim
+otomatis diakhir request.
 
-Basic Usage
------------
-You can set/get cookies by just accessing the 'cookies' service in any part of the application where services can be
-accessed:
+Penggunaan Dasar
+----------------
+Anda dapat mengubah/membaca cookies dengan mengakses 'cookies' service disembarang bagian aplikasi di mana service bisa
+diakses:
 
 .. code-block:: php
 
@@ -21,13 +21,13 @@ accessed:
     {
         public function loginAction()
         {
-            // Check if the cookie has previously set
+            // Uji apakah cookies sebelumnya sudah diset
             if ($this->cookies->has('remember-me')) {
 
-                // Get the cookie
+                // Baca cookie
                 $rememberMe = $this->cookies->get('remember-me');
 
-                // Get the cookie's value
+                // Baca isi cookie
                 $value      = $rememberMe->getValue();
             }
         }
@@ -39,18 +39,18 @@ accessed:
 
         public function logoutAction()
         {
-            // Delete the cookie
+            // Hapus cookie
             $this->cookies->get('remember-me')->delete();
         }
     }
 
-Encryption/Decryption of Cookies
---------------------------------
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user.
-This protection allows unauthorized users to see the cookies' contents in the client (browser).
-Despite this protection, sensitive data should not be stored in cookies.
+Enkripsi/Dekripsi Cookies
+-------------------------
+Secara default, cookies secara otomatis dienkripsi sebelum dikirim ke klien dan didekripsi ketika dibaca dari pengguna.
+Perlindungan ini mencegah pengguna yang tidak berhak melihat isi cookies di klien (browser).
+Meski ada perlindungan ini, data sensitif seharusnya tidak disimpan di cookies.
 
-You can disable encryption in the following way:
+Anda dapat mematikan enkripsi dengan cara berikut:
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ You can disable encryption in the following way:
         return $cookies;
     });
 
-If you wish to use encryption, a global key must be set in the 'crypt' service:
+Jika anda ingin menggunakna enkripsi, sebuah key global harus diset di 'crypt' service:
 
 .. code-block:: php
 
@@ -77,16 +77,16 @@ If you wish to use encryption, a global key must be set in the 'crypt' service:
     $di->set('crypt', function () {
         $crypt = new Crypt();
 
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
+        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Gunakan key anda sendiri!
 
         return $crypt;
     });
 
 .. highlights::
 
-    Sending cookies data without encryption to clients including complex objects structures, resultsets,
-    service information, etc. could expose internal application details that could be used by an attacker
-    to attack the application. If you do not want to use encryption, we highly recommend you only send very
-    basic cookie data like numbers or small string literals.
+    Mengirim data cookies tanpa enkripsi ke klien termasuk struktur objek kompleks, result sets,
+    informasi layanan, dan lain-lain. dapat membuka detail internal aplikasi yang dapat dimanfaatkan penyerang
+    untuk menyerang aplikasi. Jika anda tidak ingin menggunakan enkripsi, kami sarankankan anda hanya mengirim
+    data cookie sangat sederhana atau string literal kecil.
 
 .. _Cookies: http://en.wikipedia.org/wiki/HTTP_cookie
