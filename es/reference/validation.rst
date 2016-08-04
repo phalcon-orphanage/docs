@@ -1,7 +1,7 @@
 Validation
 ==========
 
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` es un componente independiente que valida un conjunto arbitrio de datos.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` es un componente independiente que valida un conjunto de datos.
 Este componente puede ser usado para implementar reglas de validación en datos de objetos que no pertenecen a un model o collection
 
 El siguiente es un ejemplo básico de uso:
