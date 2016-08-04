@@ -50,12 +50,12 @@ El siguiente es un ejemplo básico de uso:
         }
     }
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+El diseño flexible de este componente le permite crear sus propias validaciones junto con los proporcionados por el framework.
 
 Inicialización Validation
 -------------------------
 La cadena de validación puede ser inicializada directamente con sólo añadir validators al objeto  :doc:`Phalcon\\Validation <../api/Phalcon_Validation>`.
-Tu puedes poner tus validaciones en un fichero a parte para mejorar la reutilización de codigo y la organización:
+Puedes poner tus validaciones en un fichero a parte para mejorar la reutilización de codigo y la organización:
 
 .. code-block:: php
 
@@ -115,35 +115,35 @@ Then initialize and use your own validator:
 
 Validators
 ----------
-Phalcon exposes a set of built-in validators for this component:
+Phalcon da un conjunto de validators ya creados:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
+| Nombre         | Explicación                                                                                                                                                      | Ejemplo                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
+| PresenceOf   | Valida que el valor de un campo no es nulo o vacio.                                                                                                      | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_PresenceOf>`   |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
+| Identical    | Valida que el valor de un campo es igual a un valor especificado                                                                                                  | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Identical>`    |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
+| Email        | Valida que el campo contiene un email válido                                                                                                               | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Email>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
+| ExclusionIn  | Valida que el valor no coincide con una lista de valores                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
+| InclusionIn  | Valida que el valor está dentro de una lista de valores posibles/permitidos                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_InclusionIn>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
+| Regex        | Valida que el valor de un campo coincide con una expresión regular                                                                                                 | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Regex>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
+| StringLength | Valida la longitud de una cadena                                                                                                                                 | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_StringLength>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
+| Between      | Valida que el valor está entre dos valores                                                                                                                     | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Between>`      |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
+| Confirmation | Valida que el valro es el mismo a otro dado en los datos                                                                                                | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
+| Url          | Valida que el campo tiene una URL válida                                                                                                                        | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Url>`          |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| CreditCard   | Validates a credit card number                                                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
+| CreditCard   | Valida el número de tarjeta de crédito/débito                                                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_CreditCard>`   |
 +--------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-The following example explains how to create additional validators for this component:
+El siguiente ejemplo explica como crear un nuevo validator para este componente:
 
 .. code-block:: php
 
@@ -183,10 +183,10 @@ The following example explains how to create additional validators for this comp
         }
     }
 
-It is important that validators return a valid boolean value indicating if the validation was successful or not.
+Es importante que los validators devuelvan un valor booleano correcto indicando si la validación fue pasada con éxito o no.
 
-Validation Messages
--------------------
+Mensajes de validación
+----------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the validation processes.
 
