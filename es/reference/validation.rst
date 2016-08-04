@@ -187,9 +187,9 @@ Es importante que los validators devuelvan un valor booleano correcto indicando 
 
 Mensajes de validación
 ----------------------
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` tiene un subsistema que provee una forma flexible de salida o almacenar el mensaje de validación generado durante el proceso de validación.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` tiene un subsistema que provee una forma flexible de salida o de almacenar los mensajes de validación generados durante el proceso.
 
-Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. El conjunto de mensajes generados puede ser recibido win el método getMessages(). Cada mensaje provee información extendida como el atributo que lo generó o el tipo de mensaje:
+Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. El conjunto de mensajes generados puede ser recibido con el método getMessages(). Cada mensaje provee información extendida como el atributo que lo generó o el tipo de mensaje:
 
 .. code-block:: php
 
@@ -204,7 +204,7 @@ Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Me
         }
     }
 
-El método getMessages() puede ser sobreescrito en una clase para reemplazar o traducir los mensajes por defecto del validators:
+El método getMessages() puede ser sobrescrito en una clase para reemplazar o traducir los mensajes por defecto de los validators:
 
 .. code-block:: php
 
@@ -234,7 +234,7 @@ El método getMessages() puede ser sobreescrito en una clase para reemplazar o t
         }
     }
 
-O puedes pasar un parámetro 'mensaje' para cambiar el mensaje pro defecto de cada validator: 
+O puedes pasar un parámetro 'message' para cambiar el mensaje por defecto de cada validator: 
 
 .. code-block:: php
 
@@ -294,7 +294,7 @@ El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el comp
 
 Eventos de Validación
 ---------------------
-Cuando las validaciones son organizadas en clases, se puede implementar los métodos 'beforeValidation' y 'afterValidation' para ejecutar chequeos adicionales, filtros, limpiezas, etc. Si el método 'beforeValidation' devuelve false la validación es cancelado automáticamente:
+Cuando las validaciones son organizadas en clases, se puede implementar los métodos 'beforeValidation' y 'afterValidation' para ejecutar chequeos adicionales, filtros, limpiezas, etc. Si el método 'beforeValidation' devuelve false la validación es cancelada automáticamente:
 
 .. code-block:: php
 
@@ -343,7 +343,7 @@ Cuando las validaciones son organizadas en clases, se puede implementar los mét
 
 Cancelando las Validaciones
 ---------------------------
-Por defecto todos los validadores asignados a un campo son testeados regularmente por si uno de ellos ha fallado o no. Se puede cambiar este comportamiento diciendole al componente que validator podría parar la validación:
+Por defecto todos los validators asignados a un campo son testeados regularmente por si uno de ellos ha fallado o no. Se puede cambiar este comportamiento diciéndole al componente que validator podría parar la validación:
 
 .. code-block:: php
 
@@ -402,7 +402,7 @@ Si creas validators personalizados puedes parar dinámicamente la ejecución con
         }
     }
 
-Evita validad campos vacios
+Evita validar campos vacios
 ---------------------------
 Se puede pasar la opción 'allowEmpty' a todos los validators para evitar que la validación sea ejecutada si un valor vacío es pasado:
 
