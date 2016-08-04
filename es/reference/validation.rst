@@ -1,10 +1,10 @@
 Validation
 ==========
 
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` es un componente independiente que valida un conjunto arbitrio de datos.
+Este componente puede ser usado para implementar reglas de validación en datos de objetos que no pertenecen a un model o collection
 
-The following example shows its basic usage:
+El siguiente es un ejemplo básico de uso:
 
 .. code-block:: php
 
@@ -52,10 +52,10 @@ The following example shows its basic usage:
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
-Initializing Validation
------------------------
-Validation chains can be initialized in a direct manner by just adding validators to the :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` object.
-You can put your validations in a separate file for better re-use code and organization:
+Inicialización Validation
+-------------------------
+La cadena de validación puede ser inicializada directamente con sólo añadir validators al objeto  :doc:`Phalcon\\Validation <../api/Phalcon_Validation>`.
+Tu puedes poner tus validaciones en un fichero a parte para mejorar la reutilización de codigo y la organización:
 
 .. code-block:: php
 
