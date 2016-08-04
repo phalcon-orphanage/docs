@@ -1,19 +1,19 @@
-Encryption/Decryption
-=====================
+Enkripsi/Dekripsi
+=================
 
-Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
-This class offers simple object-oriented wrappers to the openssl_ PHP's encryption library.
+Phalcon menyediakan fasilitas enkripsi melalui komponen :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
+Kelas ini menawarkan pembungkus berorientasi objek sederhana ke pustaka enkripsi openssl_ milik PHP.
 
-By default, this component provides secure encryption using AES-256-CFB.
+Secara default, komponen ini menyediakan enkripsi aman menggunakan AES-256-CFB.
 
 .. highlights::
-    You must use a key length corresponding to the current algorithm.
-    For the algorithm used by default it is 32 bytes.
+    Anda harus menggunakan panjang key sesuai algoritma saat ini.
+    Untuk algoritma yang digunakan secara default ukurannya 32 bytes.
 
 
-Basic Usage
------------
-This component is designed to provide a very simple usage:
+Penggunaan Dasar
+----------------
+Komponen ini dirancang untuk menyediakan cara penggunaan sangat sederhana:
 
 .. code-block:: php
 
@@ -21,7 +21,7 @@ This component is designed to provide a very simple usage:
 
     use Phalcon\Crypt;
 
-    // Create an instance
+    // Buat instance
     $crypt     = new Crypt();
 
     $key       = 'This is a secret key (32 bytes).';
@@ -31,7 +31,7 @@ This component is designed to provide a very simple usage:
 
     echo $crypt->decrypt($encrypted, $key);
 
-You can use the same instance to encrypt/decrypt several times:
+Anda dapat menggunakan instance sama untuk enkripsi/dekripsi beberapa kali:
 
 .. code-block:: php
 
@@ -39,7 +39,7 @@ You can use the same instance to encrypt/decrypt several times:
 
     use Phalcon\Crypt;
 
-    // Create an instance
+    // Buat instance
     $crypt = new Crypt();
 
     $texts = array(
@@ -49,24 +49,24 @@ You can use the same instance to encrypt/decrypt several times:
 
     foreach ($texts as $key => $text) {
 
-        // Perform the encryption
+        // Lakukan enkripsi
         $encrypted = $crypt->encrypt($text, $key);
 
-        // Now decrypt
+        // Sekarang dekripsi
         echo $crypt->decrypt($encrypted, $key);
     }
 
-Encryption Options
-------------------
-The following options are available to change the encryption behavior:
+Opsi Enkripsi
+-------------
+Opsi berikut tersedia untuk mengubah perilaku enkripsi:
 
 +------------+---------------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                       |
+| Nama       | Keterangan                                                                                        |
 +============+===================================================================================================+
-| Cipher     | The cipher is one of the encryption algorithms supported by openssl. You can see a list here_     |
+| Cipher     | Cipher adalah algoritma enkripsi yang didukung openssl. Anda dapat melihat daftarnya di sini_     |
 +------------+---------------------------------------------------------------------------------------------------+
 
-Example:
+Contoh:
 
 .. code-block:: php
 
@@ -74,10 +74,10 @@ Example:
 
     use Phalcon\Crypt;
 
-    // Create an instance
+    // Buat instance
     $crypt = new Crypt();
 
-    // Use blowfish
+    // Gunakan blowfish
     $crypt->setCipher('bf-cbc');
 
     $key   = 'le password';
@@ -85,9 +85,9 @@ Example:
 
     echo $crypt->encrypt($text, $key);
 
-Base64 Support
---------------
-In order for encryption to be properly transmitted (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
+Dukungan Base64
+---------------
+Agar enkripsi dapat ditransmisi (email) atau ditampilkan (browser) dengan benar base64_ encoding biasanya diterapkan pada teks terenkripsi:
 
 .. code-block:: php
 
@@ -95,7 +95,7 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     use Phalcon\Crypt;
 
-    // Create an instance
+    // Buat instance
     $crypt   = new Crypt();
 
     $key     = 'le password';
@@ -105,9 +105,9 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     echo $crypt->decryptBase64($encrypt, $key);
 
-Setting up an Encryption service
---------------------------------
-You can set up the encryption component in the services container in order to use it from any part of the application:
+Menyiapkan Layanan Enkripsi
+---------------------------
+Anda dapat menyiapkan komponen enkripsi dalam service container agar dapat menggunakannya disembarang bagian aplikasi:
 
 .. code-block:: php
 
@@ -119,13 +119,13 @@ You can set up the encryption component in the services container in order to us
 
         $crypt = new Crypt();
 
-        // Set a global encryption key
+        // Set key enkripsi global
         $crypt->setKey('%31.1e$i86e$f!8jz');
 
         return $crypt;
     }, true);
 
-Then, for example, in a controller you can use it as follows:
+lalu, contohnya, dalam sebuah kontroler anda dapat menggunakannya sebagai berikut:
 
 .. code-block:: php
 
@@ -150,5 +150,5 @@ Then, for example, in a controller you can use it as follows:
     }
 
 .. _openssl: http://www.php.net/manual/en/book.openssl.php
-.. _here: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
+.. _sini: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php
