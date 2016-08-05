@@ -69,13 +69,11 @@ API Indice
    Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
-   Phalcon_Db_Adapter_Pdo_Oracle
    Phalcon_Db_Adapter_Pdo_Postgresql
    Phalcon_Db_Adapter_Pdo_Sqlite
    Phalcon_Db_Column
    Phalcon_Db_Dialect
    Phalcon_Db_Dialect_MySQL
-   Phalcon_Db_Dialect_Oracle
    Phalcon_Db_Dialect_Postgresql
    Phalcon_Db_Dialect_Sqlite
    Phalcon_Db_Exception
