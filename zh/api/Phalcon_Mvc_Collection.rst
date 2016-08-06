@@ -328,13 +328,13 @@ Allows to query the first record that match the specified conditions
     
      //What's the first mechanical robot in robots table?
      $robot = Robots::findFirst(array(
-         array("type" => "mechanical")
+         array("type = 'mechanical'")
      ));
      echo "The first mechanical robot name is ", $robot->name, "\n";
     
      //Get first virtual robot ordered by name
      $robot = Robots::findFirst(array(
-         array("type" => "mechanical"),
+         array("type = 'mechanical'"),
          "order" => array("name" => 1)
      ));
      echo "The first virtual robot name is ", $robot->name, "\n";
@@ -362,7 +362,7 @@ Allows to query a set of records that match the specified conditions
     
      //Get and print virtual robots ordered by name
      $robots = Robots::findFirst(array(
-         array("type" => "virtual"),
+         array("type = 'virtual'"),
          "order" => array("name" => 1)
      ));
      foreach ($robots as $robot) {
