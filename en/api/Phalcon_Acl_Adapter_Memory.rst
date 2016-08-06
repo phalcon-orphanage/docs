@@ -157,12 +157,15 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
     
      //Allow access to guests to search or create on customers
      $acl->allow('guests', 'customers', array('search', 'create'));
-    
+
+     // the following two options are no longer available.
+     // 'Role' and 'Resource' name has to refer a valid role/resource already present in the $acl
+     
      //Allow access to any role to browse on products
-     $acl->allow('*', 'products', 'browse');
+     //$acl->allow('*', 'products', 'browse');
     
      //Allow access to any role to browse on any resource
-     $acl->allow('*', '*', 'browse');
+     //$acl->allow('*', '*', 'browse');
 
 
 
@@ -180,12 +183,15 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
     
      //Deny access to guests to search or create on customers
      $acl->deny('guests', 'customers', array('search', 'create'));
-    
+     
+     // the following two options are no longer available.
+     // 'Role' and 'Resource' name has to refer to a valid role/resource already present in the $acl
+     
      //Deny access to any role to browse on products
-     $acl->deny('*', 'products', 'browse');
+     //$acl->deny('*', 'products', 'browse');
     
      //Deny access to any role to browse on any resource
-     $acl->deny('*', '*', 'browse');
+     //$acl->deny('*', '*', 'browse');
 
 
 
