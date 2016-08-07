@@ -15,7 +15,7 @@ if (!extension_loaded('phalcon')) {
 defined('CPHALCON_DIR') || define('CPHALCON_DIR', getenv('CPHALCON_DIR'));
 
 if (!CPHALCON_DIR) {
-    throw new Exception("Need to set CPHALCON_DIR. Fox example: 'export CPHALCON_DIR=/Users/gutierrezandresfelipe/cphalcon/ext/'")
+    throw new Exception("Need to set CPHALCON_DIR. Fox example: 'export CPHALCON_DIR=/Users/gutierrezandresfelipe/cphalcon/ext/'");
 }
 
 if (!file_exists(CPHALCON_DIR)) {
