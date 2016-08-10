@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\Di.  
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\Di.
 
 .. code-block:: php
 
@@ -16,13 +16,13 @@ This components controls the initialization of models, keeping record of relatio
 
      use Phalcon\Di;
      use Phalcon\Mvc\Model\Manager as ModelsManager;
-    
+
      $di = new Di();
-    
+
      $di->set('modelsManager', function() {
           return new ModelsManager();
      });
-    
+
      $robot = new Robots($di);
 
 
@@ -270,7 +270,7 @@ Merge two arrays of find parameters
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>` |Phalcon\Mvc\Model\Resultset\Simple|false **getRelationRecords** (:doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation, *unknown* $method, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>` \|Phalcon\Mvc\Model\Resultset\Simple|false **getRelationRecords** (:doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation, *unknown* $method, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
 
 Helper method to query records based on a relation definition
 
@@ -314,7 +314,7 @@ Gets belongsTo related records from a model
 
 public  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Gets all the belongsTo relations defined in a model 
+Gets all the belongsTo relations defined in a model
 
 .. code-block:: php
 
@@ -400,6 +400,3 @@ Returns a real namespace from its alias
 public  **getNamespaceAliases** ()
 
 Returns all the registered namespace aliases
-
-
-
