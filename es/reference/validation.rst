@@ -98,7 +98,7 @@ Puedes poner tus validaciones en un fichero a parte para mejorar la reutilizaci�
         }
     }
 
-Sólo necesitas inizializar y usar tu propio validador:
+Sólo necesitas inicializar y usar tu propio validador:
 
 .. code-block:: php
 
