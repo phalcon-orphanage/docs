@@ -313,7 +313,7 @@ of our component:
         public function someOtherDbTask()
         {
             // Get a shared connection service,
-            // this will return the same connection everytime
+            // this will return the same connection every time
             $connection = $this->_di->getShared('db');
 
             // This method also requires an input filtering service
@@ -463,8 +463,8 @@ This type of definition does not allow to specify arguments for the class constr
     // Return new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
-Object
-^^^^^^
+Class instances
+^^^^^^^^^^^^^^^
 This type expects an object. Due to the fact that object does not need to be resolved as it is
 already an object, one could say that it is not really a dependency injection,
 however it is useful if you want to force the returned dependency to always be
