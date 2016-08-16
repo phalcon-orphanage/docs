@@ -1,10 +1,10 @@
 Validation
 ==========
 
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` es un componente independiente que valida un conjunto de datos.
+Este componente puede ser usado para implementar reglas de validación en datos de objetos que no pertenecen a un model o collection
 
-The following example shows its basic usage:
+El siguiente es un ejemplo básico de uso:
 
 .. code-block:: php
 
@@ -50,12 +50,12 @@ The following example shows its basic usage:
         }
     }
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+El diseño flexible de este componente le permite crear sus propias validaciones junto con los proporcionados por el framework.
 
-Initializing Validation
------------------------
-Validation chains can be initialized in a direct manner by just adding validators to the :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` object.
-You can put your validations in a separate file for better re-use code and organization:
+Inicialización Validation
+-------------------------
+La cadena de validación puede ser inicializada directamente con sólo añadir validators al objeto  :doc:`Phalcon\\Validation <../api/Phalcon_Validation>`.
+Puedes poner tus validaciones en un fichero a parte para mejorar la reutilización de codigo y la organización:
 
 .. code-block:: php
 
@@ -98,7 +98,7 @@ You can put your validations in a separate file for better re-use code and organ
         }
     }
 
-Then initialize and use your own validator:
+Sólo necesitas inicializar y usar tu propio validador:
 
 .. code-block:: php
 
@@ -115,35 +115,35 @@ Then initialize and use your own validator:
 
 Validators
 ----------
-Phalcon exposes a set of built-in validators for this component:
+Phalcon da un conjunto de validators ya creados:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
+| Nombre         | Explicación                                                                                                                                                      | Ejemplo                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
+| PresenceOf   | Valida que el valor de un campo no es nulo o vacio.                                                                                                      | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_PresenceOf>`   |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
+| Identical    | Valida que el valor de un campo es igual a un valor especificado                                                                                                  | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Identical>`    |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
+| Email        | Valida que el campo contiene un email válido                                                                                                               | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Email>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
+| ExclusionIn  | Valida que el valor no coincide con una lista de valores                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
+| InclusionIn  | Valida que el valor está dentro de una lista de valores posibles/permitidos                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_InclusionIn>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
+| Regex        | Valida que el valor de un campo coincide con una expresión regular                                                                                                 | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Regex>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
+| StringLength | Valida la longitud de una cadena                                                                                                                                 | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_StringLength>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
+| Between      | Valida que el valor está entre dos valores                                                                                                                     | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Between>`      |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
+| Confirmation | Valida que el valro es el mismo a otro dado en los datos                                                                                                | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
+| Url          | Valida que el campo tiene una URL válida                                                                                                                        | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_Url>`          |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| CreditCard   | Validates a credit card number                                                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
+| CreditCard   | Valida el número de tarjeta de crédito/débito                                                                                                                                   | :doc:`Ejemplo <../api/Phalcon_Validation_Validator_CreditCard>`   |
 +--------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-The following example explains how to create additional validators for this component:
+El siguiente ejemplo explica como crear un nuevo validator para este componente:
 
 .. code-block:: php
 
@@ -183,16 +183,13 @@ The following example explains how to create additional validators for this comp
         }
     }
 
-It is important that validators return a valid boolean value indicating if the validation was successful or not.
+Es importante que los validators devuelvan un valor booleano correcto indicando si la validación fue pasada con éxito o no.
 
-Validation Messages
--------------------
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the validation processes.
+Mensajes de validación
+----------------------
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` tiene un subsistema que provee una forma flexible de salida o de almacenar los mensajes de validación generados durante el proceso.
 
-Each message consists of an instance of the class :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the getMessages() method. Each message provides extended information like the attribute that
-generated the message or the message type:
+Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. El conjunto de mensajes generados puede ser recibido con el método getMessages(). Cada mensaje provee información extendida como el atributo que lo generó o el tipo de mensaje:
 
 .. code-block:: php
 
@@ -207,7 +204,7 @@ generated the message or the message type:
         }
     }
 
-The getMessages() method can be overridden in a validation class to replace/translate the default messages generated by the validators:
+El método getMessages() puede ser sobrescrito en una clase para reemplazar o traducir los mensajes por defecto de los validators:
 
 .. code-block:: php
 
@@ -237,7 +234,7 @@ The getMessages() method can be overridden in a validation class to replace/tran
         }
     }
 
-Or you can pass a 'message' parameter to change the default message in each validator:
+O puedes pasar un parámetro 'message' para cambiar el mensaje por defecto de cada validator: 
 
 .. code-block:: php
 
@@ -254,8 +251,7 @@ Or you can pass a 'message' parameter to change the default message in each vali
         )
     );
 
-By default, 'getMessages' returns all the messages generated during validation. You can filter messages
-for a specific field using the 'filter' method:
+Por defecto, 'getMessages' devuelve todos los mensajes generados durante la validación. Puedes filtrar los mensajes por un campo específico usando el método 'filter':
 
 .. code-block:: php
 
@@ -269,9 +265,9 @@ for a specific field using the 'filter' method:
         }
     }
 
-Filtering of Data
+Filtrado de Datos
 -----------------
-Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
+Los datos pueden ser filtrados antes de la validación para asegurar que los datos maliciosos o incorrectos no son válidos.
 
 .. code-block:: php
 
@@ -293,13 +289,12 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
-Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
-component or use the built-in ones.
 
-Validation Events
------------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
-cancelled:
+El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el componente :doc:`filter <filter>`:. Se puede añadir más filtros a este componente o usar uno ya construido.
+
+Eventos de Validación
+---------------------
+Cuando las validaciones son organizadas en clases, se puede implementar los métodos 'beforeValidation' y 'afterValidation' para ejecutar chequeos adicionales, filtros, limpiezas, etc. Si el método 'beforeValidation' devuelve false la validación es cancelada automáticamente:
 
 .. code-block:: php
 
@@ -346,10 +341,9 @@ cancelled:
         }
     }
 
-Cancelling Validations
-----------------------
-By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
-this behavior by telling the validation component which validator may stop the validation:
+Cancelando las Validaciones
+---------------------------
+Por defecto todos los validators asignados a un campo son testeados regularmente por si uno de ellos ha fallado o no. Se puede cambiar este comportamiento diciéndole al componente que validator podría parar la validación:
 
 .. code-block:: php
 
@@ -375,10 +369,9 @@ this behavior by telling the validation component which validator may stop the v
             'min'            => 2
         )));
 
-The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
-validators in the chain are not executed.
+El primer validador tiene la opción 'cancelOnFail' con un valor a true, por tanto si el validator falla el resto de validadores del código no son ejecutados.
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the 'cancelOnFail' option:
+Si creas validators personalizados puedes parar dinámicamente la ejecución con la opción 'cancelOnFail':
 
 .. code-block:: php
 
@@ -409,9 +402,9 @@ If you are creating custom validators you can dynamically stop the validation ch
         }
     }
 
-Avoid validate empty values
+Evita validar campos vacios
 ---------------------------
-You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+Se puede pasar la opción 'allowEmpty' a todos los validators para evitar que la validación sea ejecutada si un valor vacío es pasado:
 
 .. code-block:: php
 
