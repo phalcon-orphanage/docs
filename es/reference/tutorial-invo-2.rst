@@ -28,12 +28,12 @@ autocargador también vamos a tomar los parámetros del archivo de configuració
     // La conexión a la base de datos es creada basada en los parámetros definidos en el archivo de configuración
     $di->set('db', function () use ($config) {
         return new DbAdapter(
-            array(
+            [
                 "host"     => $config->database->host,
                 "username" => $config->database->username,
                 "password" => $config->database->password,
                 "dbname"   => $config->database->name
-            )
+            ]
         );
     });
 
@@ -84,10 +84,10 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
         {
             $this->session->set(
                 'auth',
-                array(
+                [
                     'id'   => $user->id,
                     'name' => $user->name
-                )
+                ]
             );
         }
 
@@ -104,13 +104,13 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
 
                 // Buscar el usuario en la base de datos
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
+                        'bind' => [
                             'email'    => $email,
                             'password' => sha1($password)
-                        )
-                    )
+                        ]
+                    ]
                 );
 
                 if ($user != false) {
@@ -121,10 +121,10 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
 
                     // Redireccionar la ejecución si el usuario es valido
                     return $this->dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'invoices',
                             'action'     => 'index'
-                        )
+                        ]
                     );
                 }
 
@@ -133,10 +133,10 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
 
             // Redireccionar a el forma de login nuevamente
             return $this->dispatcher->forward(
-                array(
+                [
                     'controller' => 'session',
                     'action'     => 'index'
-                )
+                ]
             );
         }
     }
@@ -159,10 +159,10 @@ Por ejemplo, aquí invocamos el servicio "session" y luego almacenamos la identi
 
     $this->session->set(
         'auth',
-        array(
+        [
             'id'   => $user->id,
             'name' => $user->name
-        )
+        ]
     );
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -190,13 +190,13 @@ Now, we have to check if there is one user with the same username or email and p
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
+            'bind' => [
                 'email'    => $email,
                 'password' => sha1($password)
-            )
-        )
+            ]
+        ]
     );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
@@ -391,10 +391,10 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
                 // Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
                 $this->flash->error("No tienes acceso a este módulo.");
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 // Devolver "false" le indica al Dispatcher que debe detener la operación y evitar que la acción se ejecute
@@ -424,10 +424,10 @@ implementado en el plugin. Ahora, explicaremos paso a paso como construir la lis
 
     // Registrar dos roles, 'users' son usuarios registrados
     // y 'guests' son los usuarios sin un pérfil definido (invitados)
-    $roles = array(
+    $roles = [
         'users'  => new Role('Users'),
         'guests' => new Role('Guests')
-    );
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,25 +445,25 @@ accesos a los recursos:
     // ...
 
     // Recursos del área privada (backend)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
+    $privateResources = [
+      'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'invoices'     => ['index', 'profile')
+    ];
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
 
     // Recursos del área pública (frontend)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
+    $publicResources = [
+        'index'    => ['index'],
+        'about'    => ['index'],
+        'register' => ['index'],
+        'errors'   => ['show404', 'show500'],
+        'session'  => ['index', 'register', 'start', 'end'],
+        'contact'  => ['index', 'send']
+    ];
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }

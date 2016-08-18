@@ -24,12 +24,12 @@ an access control list (ACL) managed by Phalcon.
     // 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
     $di->set('db', function () use ($config) {
         return new DbAdapter(
-            array(
+            [
                 "host"     => $config->database->host,
                 "username" => $config->database->username,
                 "password" => $config->database->password,
                 "dbname"   => $config->database->name
-            )
+            ]
         );
     });
 
@@ -77,10 +77,10 @@ It will not take too long before you become familiar with Volt.
         {
             $this->session->set(
                 'auth',
-                array(
+                [
                     'id'   => $user->id,
                     'name' => $user->name
-                )
+                ]
             );
         }
 
@@ -97,13 +97,13 @@ It will not take too long before you become familiar with Volt.
 
                 // データベースからユーザーを検索
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
+                        'bind' => [
                             'email'    => $email,
                             'password' => sha1($password)
-                        )
-                    )
+                        ]
+                    ]
                 );
 
                 if ($user != false) {
@@ -114,10 +114,10 @@ It will not take too long before you become familiar with Volt.
 
                     // ユーザーが有効なら、'invoices' コントローラーに転送する
                     return $this->dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'invoices',
                             'action'     => 'index'
-                        )
+                        ]
                     );
                 }
 
@@ -126,10 +126,10 @@ It will not take too long before you become familiar with Volt.
 
             // ログインフォームへ再度転送
             return $this->dispatcher->forward(
-                array(
+                [
                     'controller' => 'session',
                     'action'     => 'index'
-                )
+                ]
             );
         }
     }
@@ -148,10 +148,10 @@ It will not take too long before you become familiar with Volt.
 
     $this->session->set(
         'auth',
-        array(
+        [
             'id'   => $user->id,
             'name' => $user->name
-        )
+        ]
     );
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -179,13 +179,13 @@ Now, we have to check if there is one user with the same username or email and p
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
+            'bind' => [
                 'email'    => $email,
                 'password' => sha1($password)
-            )
-        )
+            ]
+        ]
     );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
@@ -361,10 +361,10 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
                 // アクセス権が無い場合、indexコントローラーに転送する
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 // "false" を返し、ディスパッチャーに現在の処理を停止させる
@@ -393,10 +393,10 @@ ACLリストの提供
 
     // 2つのロールを登録する
     // ユーザーは登録済みユーザー、ゲストは未登録ユーザー
-    $roles = array(
+    $roles = [
         'users'  => new Role('Users'),
         'guests' => new Role('Guests')
-    );
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -413,25 +413,25 @@ ACLリストの提供
     // ...
 
     // プライベートエリアのリソース (バックエンド)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
+    $privateResources = [
+      'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'invoices'     => ['index', 'profile']
+    ];
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
 
     // 公開エリアのリソース (フロントエンド)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
+    $publicResources = [
+        'index'    => ['index'],
+        'about'    => ['index'],
+        'register' => ['index'],
+        'errors'   => ['show404', 'show500'],
+        'session'  => ['index', 'register', 'start', 'end'],
+        'contact'  => ['index', 'send']
+    ];
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }

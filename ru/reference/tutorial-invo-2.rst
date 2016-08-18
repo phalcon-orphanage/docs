@@ -28,12 +28,12 @@
     // Соединение с базой данных создается соответственно параметрам в конфигурационном файле
     $di->set('db', function () use ($config) {
         return new DbAdapter(
-            array(
+            [
                 "host"     => $config->database->host,
                 "username" => $config->database->username,
                 "password" => $config->database->password,
                 "dbname"   => $config->database->name
-            )
+            ]
         );
     });
 
@@ -84,10 +84,10 @@
         {
             $this->session->set(
                 'auth',
-                array(
+                [
                     'id'   => $user->id,
                     'name' => $user->name
-                )
+                ]
             );
         }
 
@@ -104,13 +104,13 @@
 
                 // Производим поиск в базе данных
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
+                        'bind' => [
                             'email'    => $email,
                             'password' => sha1($password)
-                        )
-                    )
+                        ]
+                    ]
                 );
 
                 if ($user != false) {
@@ -121,10 +121,10 @@
 
                     // Перенаправляем на контроллер 'invoices', если пользователь существует
                     return $this->dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'invoices',
                             'action'     => 'index'
-                        )
+                        ]
                     );
                 }
 
@@ -133,10 +133,10 @@
 
             // Снова выдаем форму авторизации
             return $this->dispatcher->forward(
-                array(
+                [
                     'controller' => 'session',
                     'action'     => 'index'
-                )
+                ]
             );
         }
     }
@@ -159,10 +159,10 @@
 
     $this->session->set(
         'auth',
-        array(
+        [
             'id'   => $user->id,
             'name' => $user->name
-        )
+        ]
     );
 
 Другой важный аспект этой главы - это то, как сверяются данные пользователя,
@@ -190,13 +190,13 @@
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
+            'bind' => [
                 'email'    => $email,
                 'password' => sha1($password)
-            )
-        )
+            ]
+        ]
     );
 
 Обратите внимание на использование 'связаннных параметров', плейсхолдеры :email: и :password: расположены там, где должны быть значения переменных,
@@ -391,10 +391,10 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
                 // Если доступа нет, перенаправляем его на контроллер "index".
                 $this->flash->error("У вас нет доступа к данному модулю");
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 // Возвращая "false" мы приказываем диспетчеру прервать текущую операцию
@@ -424,10 +424,10 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
 
     // Регистрируем две роли. Users - это зарегистрированные пользователи,
     // а Guests - неидентифицированные посетители.
-    $roles = array(
+    $roles = [
         'users'  => new Role('Users'),
         'guests' => new Role('Guests')
-    );
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,25 +445,25 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
     // ...
 
     // Приватные ресурсы (бэкенд)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
+    $privateResources = [
+      'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'invoices'     => ['index', 'profile']
+    ];
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
 
     // Публичные ресурсы (фронтенд)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
+    $publicResources = [
+        'index'    => ['index'],
+        'about'    => ['index'],
+        'register' => ['index'],
+        'errors'   => ['show404', 'show500'],
+        'session'  => ['index', 'register', 'start', 'end'],
+        'contact'  => ['index', 'send']
+    ];
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
