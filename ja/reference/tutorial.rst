@@ -102,10 +102,10 @@ tutorial/public/index.php は次のようになります。
 
         // オートローダにディレクトリを登録する
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // DIコンテナを作る
         $di = new FactoryDefault();
@@ -151,10 +151,10 @@ bootstrapの最初の部分では、オートローダを登録しています�
 
     $loader = new Loader();
     $loader->registerDirs(
-        array(
+        [
             '../app/controllers/',
             '../app/models/'
-        )
+        ]
     )->register();
 
 依存性の管理
@@ -435,22 +435,22 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
         // オートローダにディレクトリを登録する
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // DIコンテナを作る
         $di = new FactoryDefault();
 
         // データベースサービスのセットアップ
         $di->set('db', function () {
-            return new DbAdapter(array(
+            return new DbAdapter([
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            ));
+            ]);
         });
 
         // ビューのコンポーネントの組み立て
@@ -504,7 +504,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
             $user = new Users();
 
             // データを保存し、エラーをチェックする
-            $success = $user->save($this->request->getPost(), array('name', 'email'));
+            $success = $user->save($this->request->getPost(), ['name', 'email']);
 
             if ($success) {
                 echo "Thanks for registering!";

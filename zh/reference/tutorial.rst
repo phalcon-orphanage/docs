@@ -102,10 +102,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
         // Register an autoloader
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Create a DI
         $di = new FactoryDefault();
@@ -151,10 +151,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     $loader = new Loader();
     $loader->registerDirs(
-        array(
+        [
             '../app/controllers/',
             '../app/models/'
-        )
+        ]
     )->register();
 
 依赖管理（Dependency Management）
@@ -438,22 +438,22 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
         // Register an autoloader
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Create a DI
         $di = new FactoryDefault();
 
         // Setup the database service
         $di->set('db', function () {
-            return new DbAdapter(array(
+            return new DbAdapter([
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            ));
+            ]);
         });
 
         // Setup the view component
@@ -507,7 +507,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
             $user = new Users();
 
             // Store and check for errors
-            $success = $user->save($this->request->getPost(), array('name', 'email'));
+            $success = $user->save($this->request->getPost(), ['name', 'email']);
 
             if ($success) {
                 echo "Thanks for registering!";
