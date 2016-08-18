@@ -104,10 +104,10 @@ O arquivo tutorial/public/index.php deve ser igual a este:
 
         // Register an autoloader
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Create a DI
         $di = new FactoryDefault();
@@ -154,10 +154,10 @@ With it, we can load classes using various strategies but for this example we ha
 
     $loader = new Loader();
     $loader->registerDirs(
-        array(
+        [
             '../app/controllers/',
             '../app/models/'
-        )
+        ]
     )->register();
 
 Dependency Management
@@ -452,22 +452,22 @@ In order to be able to use a database connection and subsequently access data th
 
         // Register an autoloader
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Create a DI
         $di = new FactoryDefault();
 
         // Setup the database service
         $di->set('db', function () {
-            return new DbAdapter(array(
+            return new DbAdapter([
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            ));
+            ]);
         });
 
         // Setup the view component
@@ -521,7 +521,7 @@ Receiving data from the form and storing them in the table is the next step.
             $user = new Users();
 
             // Store and check for errors
-            $success = $user->save($this->request->getPost(), array('name', 'email'));
+            $success = $user->save($this->request->getPost(), ['name', 'email']);
 
             if ($success) {
                 echo "Thanks for registering!";

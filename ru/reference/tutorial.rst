@@ -107,10 +107,10 @@ Bootstrap
 
         // Регистрируем автозагрузчик
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Создаем DI
         $di = new FactoryDefault();
@@ -156,10 +156,10 @@ Bootstrap
 
     $loader = new Loader();
     $loader->registerDirs(
-        array(
+        [
             '../app/controllers/',
             '../app/models/'
-        )
+        ]
     )->register();
 
 Управление зависимостями
@@ -454,22 +454,22 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
         // Регистрируем автозагрузчик
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Создаем DI
         $di = new FactoryDefault();
 
         // Настраиваем сервис для работы с БД
         $di->set('db', function () {
-            return new DbAdapter(array(
+            return new DbAdapter([
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            ));
+            ]);
         });
 
         // Настраиваем компонент View
@@ -523,7 +523,7 @@ Phalcon содержит первую ORM для PHP, полностью нап�
             $user = new Users();
 
             // Сохраняем и проверяем на наличие ошибок
-            $success = $user->save($this->request->getPost(), array('name', 'email'));
+            $success = $user->save($this->request->getPost(), ['name', 'email']);
 
             if ($success) {
                 echo "Спасибо за регистрацию!";

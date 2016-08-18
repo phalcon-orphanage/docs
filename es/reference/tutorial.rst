@@ -107,10 +107,10 @@ El archivo tutorial/public/index.php debería verse así:
 
         // Registrar un autocargador
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Crear un Inyector de dependencias
         $di = new FactoryDefault();
@@ -156,10 +156,10 @@ Con él, podemos cargar clases usando varias estrategias, para este ejemplo vamo
 
     $loader = new Loader();
     $loader->registerDirs(
-        array(
+        [
             '../app/controllers/',
             '../app/models/'
-        )
+        ]
     )->register();
 
 Administración de Dependencias
@@ -454,22 +454,22 @@ Para poder conectarnos a una base de datos y por lo tanto usar nuestros modelos,
 
         // Registrar un autoloader
         $loader = new Loader();
-        $loader->registerDirs(array(
+        $loader->registerDirs([
             '../app/controllers/',
             '../app/models/'
-        ))->register();
+        ])->register();
 
         // Crear un DI
         $di = new FactoryDefault();
 
         // Establecer el servicio de base de datos
         $di->set('db', function () {
-            return new DbAdapter(array(
+            return new DbAdapter([
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            ));
+            ]);
         });
 
         // Establecer el servicio de vistas
@@ -523,7 +523,7 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
             $user = new Users();
 
             // Almacenar y verificar errores de validación
-            $success = $user->save($this->request->getPost(), array('name', 'email'));
+            $success = $user->save($this->request->getPost(), ['name', 'email']);
 
             if ($success) {
                 echo "Gracias por registrarte!";

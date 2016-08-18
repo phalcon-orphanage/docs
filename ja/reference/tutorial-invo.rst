@@ -106,13 +106,13 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     // 設定ファイルに書かれていたディレクトリを登録する
     $loader->registerDirs(
-        array(
+        [
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->pluginsDir,
             APP_PATH . $config->application->libraryDir,
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
-        )
+        ]
     )->register();
 
 上記コードでは、設定ファイルに定義されているディレクトリを登録していることに注意してください。viewsDirディレクトリだけは、登録しません。viewsDirにはHTMLファイルとPHPファイルが含まれますが、クラスは含まれていないからです。

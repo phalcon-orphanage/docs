@@ -117,13 +117,13 @@ the classes that it eventually will need.
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
-        array(
+        [
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->pluginsDir,
             APP_PATH . $config->application->libraryDir,
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
-        )
+        ]
     )->register();
 
 Note that the above code has registered the directories that were defined in the configuration file. The only
