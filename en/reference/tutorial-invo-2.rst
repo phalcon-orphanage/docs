@@ -28,12 +28,12 @@ again taking parameters from the configuration file in order to configure a serv
     // Database connection is created based on parameters defined in the configuration file
     $di->set('db', function () use ($config) {
         return new DbAdapter(
-            array(
+            [
                 "host"     => $config->database->host,
                 "username" => $config->database->username,
                 "password" => $config->database->password,
                 "dbname"   => $config->database->name
-            )
+            ]
         );
     });
 
@@ -84,10 +84,10 @@ data entered in the form including checking for a valid user in the database:
         {
             $this->session->set(
                 'auth',
-                array(
+                [
                     'id'   => $user->id,
                     'name' => $user->name
-                )
+                ]
             );
         }
 
@@ -104,13 +104,13 @@ data entered in the form including checking for a valid user in the database:
 
                 // Find the user in the database
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
+                        'bind' => [
                             'email'    => $email,
                             'password' => sha1($password)
-                        )
-                    )
+                        ]
+                    ]
                 );
 
                 if ($user != false) {
@@ -121,10 +121,10 @@ data entered in the form including checking for a valid user in the database:
 
                     // Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'invoices',
                             'action'     => 'index'
-                        )
+                        ]
                     );
                 }
 
@@ -133,10 +133,10 @@ data entered in the form including checking for a valid user in the database:
 
             // Forward to the login form again
             return $this->dispatcher->forward(
-                array(
+                [
                     'controller' => 'session',
                     'action'     => 'index'
-                )
+                ]
             );
         }
     }
@@ -159,10 +159,10 @@ For instance, here we invoke the "session" service and then we store the user id
 
     $this->session->set(
         'auth',
-        array(
+        [
             'id'   => $user->id,
             'name' => $user->name
-        )
+        ]
     );
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -190,13 +190,13 @@ Now, we have to check if there is one user with the same username or email and p
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
+            'bind' => [
                 'email'    => $email,
                 'password' => sha1($password)
-            )
-        )
+            ]
+        ]
     );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
@@ -391,10 +391,10 @@ If the user does not have access we redirect to the home screen as explained bef
                 // If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 // Returning "false" we tell to the dispatcher to stop the current operation
@@ -424,10 +424,10 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
 
     // Register two roles, Users is registered users
     // and guests are users without a defined identity
-    $roles = array(
+    $roles = [
         'users'  => new Role('Users'),
         'guests' => new Role('Guests')
-    );
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,25 +445,25 @@ accesses for the resources:
     // ...
 
     // Private area resources (backend)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
+    $privateResources = [
+      'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+      'invoices'     => ['index', 'profile')
+    ];
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
 
     // Public area resources (frontend)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
+    $publicResources = [
+        'index'    => ['index'],
+        'about'    => ['index'],
+        'register' => ['index'],
+        'errors'   => ['show404', 'show500'],
+        'session'  => ['index', 'register', 'start', 'end'],
+        'contact'  => ['index', 'send']
+    ];
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
