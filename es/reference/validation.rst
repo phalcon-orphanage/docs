@@ -152,9 +152,8 @@ El siguiente ejemplo explica como crear un nuevo validator para este componente:
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * Executes the validation
@@ -380,9 +379,8 @@ Si creas validators personalizados puedes parar dinámicamente la ejecución con
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * Executes the validation

@@ -151,9 +151,8 @@ Phalcon的验证组件中内置了一些验证器：
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * 执行验证
@@ -380,9 +379,8 @@ Phalcon的验证组件中内置了一些验证器：
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * 执行验证

@@ -152,9 +152,8 @@ Then initialize and use your own validator:
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * Выполнение валидации
@@ -387,9 +386,8 @@ Then initialize and use your own validator:
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * Выполняем проверку
