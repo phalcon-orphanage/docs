@@ -4,6 +4,30 @@ Vökuró is another sample application you can use to learn more about Phalcon.
 Vökuró is a small website that shows how to implement a security features and
 management of users and permissions. You can clone its code from Github_.
 
+Checking your installation
+--------------------------
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
+or execute the code snippet below:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+The Phalcon extension should appear as part of the output:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
 Project Structure
 -----------------
 Once you clone the project in your document root you'll see the following structure:
@@ -12,13 +36,13 @@ Once you clone the project in your document root you'll see the following struct
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/
@@ -53,9 +77,9 @@ the composer.json looks like:
 
     {
         "require" : {
-            "php" : ">=5.4.0",
-            "ext-phalcon" : ">=2.0.0",
-            "swiftmailer/swiftmailer" : "5.0.*",
+            "php" : ">=5.5.0",
+            "ext-phalcon" : ">=3.0.0",
+            "swiftmailer/swiftmailer" : "^5.4",
             "amazonwebservices/aws-sdk-for-php" : "~1.0"
         }
     }
@@ -71,7 +95,7 @@ any of the classes in the downloaded dependencies:
     // ...
 
     // Use composer autoloader to load vendor classes
-    require_once __DIR__ . '/../../vendor/autoload.php';
+    require_once BASE_PATH . '/vendor/autoload.php';
 
 Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models
 which is the recommended practice to structure a project. This way the autoloader looks slightly
