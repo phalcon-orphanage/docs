@@ -278,9 +278,6 @@ and which URI will be used to show it. These settings are set up with :code:`set
     // The script HTML tag is generated with this URI
     $js->setTargetUri('production/final.js');
 
-If resources are going to be joined, we need also to define which file will be used to store the resources
-and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`.
-
 Built-In Filters
 ^^^^^^^^^^^^^^^^
 Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide

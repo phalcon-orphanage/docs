@@ -132,7 +132,7 @@ CSS identifiers/values can be escaped too:
 
     <a style="color: Escape untrusted data here">Some link</a>
 
-You can escape a HTML attribute by using the :code:`escapeCss` method:
+You can escape a CSS identifiers/value by using the :code:`escapeCss` method:
 
 .. code-block:: html+php
 
@@ -152,7 +152,7 @@ Strings to be inserted into JavaScript code also must be properly escaped:
 
     <script>document.title = 'Escape untrusted data here'</script>
 
-You can escape a HTML attribute by using the :code:`escapeJs` method:
+You can escape JavaScript code by using the :code:`escapeJs` method:
 
 .. code-block:: html+php
 
