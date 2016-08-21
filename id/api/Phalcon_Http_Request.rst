@@ -169,13 +169,13 @@ Checks whether request has been made using ajax
 
 
 
-public  **isSoapRequested** ()
+public  **isSoap** ()
 
 Checks whether request has been made using SOAP
 
 
 
-public  **isSecureRequest** ()
+public  **isSecure** ()
 
 Checks whether request has been made using any secure layer
 
