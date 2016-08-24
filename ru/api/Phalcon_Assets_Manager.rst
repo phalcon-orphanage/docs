@@ -30,13 +30,13 @@ Returns the manager options
 
 
 
-public  **useImplicitOutput** (*unknown* $implicitOutput)
+public  **useImplicitOutput** (*mixed* $implicitOutput)
 
 Sets if the HTML generated must be directly printed or returned
 
 
 
-public  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
 Adds a Css resource to the 'css' collection 
 
@@ -50,13 +50,13 @@ Adds a Css resource to the 'css' collection
 
 
 
-public  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
 Adds a inline Css to the 'css' collection
 
 
 
-public  **addJs** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
 Adds a javascript resource to the 'js' collection 
 
@@ -70,13 +70,13 @@ Adds a javascript resource to the 'js' collection
 
 
 
-public  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
 Adds a inline javascript to the 'js' collection
 
 
 
-public  **addResourceByType** (*unknown* $type, :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
+public  **addResourceByType** (*mixed* $type, :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
 Adds a resource by its type 
 
@@ -89,7 +89,7 @@ Adds a resource by its type
 
 
 
-public  **addInlineCodeByType** (*unknown* $type, :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
+public  **addInlineCodeByType** (*mixed* $type, :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
 Adds a inline code by its type
 
@@ -114,7 +114,7 @@ Adds a raw inline code to the manager
 
 
 
-public  **set** (*unknown* $id, :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection)
+public  **set** (*mixed* $id, :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection)
 
 Sets a collection in the Assets Manager 
 
@@ -127,7 +127,7 @@ Sets a collection in the Assets Manager
 
 
 
-public  **get** (*unknown* $id)
+public  **get** (*mixed* $id)
 
 Returns a collection by its id 
 
@@ -152,7 +152,7 @@ Returns the CSS collection of assets
 
 
 
-public  **collection** (*unknown* $name)
+public  **collection** (*mixed* $name)
 
 Creates/Returns a collection of resources
 
@@ -197,6 +197,12 @@ Prints the HTML for inline JS
 public  **getCollections** ()
 
 Returns existing collections in the manager
+
+
+
+public  **exists** (*mixed* $id)
+
+Returns true or false if collection exists
 
 
 

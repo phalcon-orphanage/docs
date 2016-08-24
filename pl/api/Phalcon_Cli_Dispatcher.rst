@@ -3,7 +3,7 @@ Class **Phalcon\\Cli\\Dispatcher**
 
 *extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Cli\\DispatcherInterface <Phalcon_Cli_DispatcherInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -48,25 +48,19 @@ Constants
 Methods
 -------
 
-public  **__construct** ()
-
-Phalcon\\Cli\\Dispatcher constructor
-
-
-
-public  **setTaskSuffix** (*unknown* $taskSuffix)
+public  **setTaskSuffix** (*mixed* $taskSuffix)
 
 Sets the default task suffix
 
 
 
-public  **setDefaultTask** (*unknown* $taskName)
+public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default task name
 
 
 
-public  **setTaskName** (*unknown* $taskName)
+public  **setTaskName** (*mixed* $taskName)
 
 Sets the task name to be dispatched
 
@@ -78,7 +72,7 @@ Gets last dispatched task name
 
 
 
-protected  **_throwDispatchException** (*unknown* $message, [*unknown* $exceptionCode])
+protected  **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
 Throws an internal exception
 
@@ -114,6 +108,11 @@ Get dispatched options
 
 
 
+public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
+
+...
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
@@ -138,13 +137,19 @@ Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*unknown* $actionSuffix) inherited from Phalcon\\Dispatcher
+public  **setActionSuffix** (*mixed* $actionSuffix) inherited from Phalcon\\Dispatcher
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*unknown* $moduleName) inherited from Phalcon\\Dispatcher
+public  **getActionSuffix** () inherited from Phalcon\\Dispatcher
+
+Gets the default action suffix
+
+
+
+public  **setModuleName** (*mixed* $moduleName) inherited from Phalcon\\Dispatcher
 
 Sets the module where the controller is (only informative)
 
@@ -156,7 +161,7 @@ Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setNamespaceName** (*mixed* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the namespace where the controller class is
 
@@ -168,7 +173,7 @@ Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
 
@@ -180,13 +185,13 @@ Returns the default namespace
 
 
 
-public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
+public  **setDefaultAction** (*mixed* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the default action name
 
 
 
-public  **setActionName** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
+public  **setActionName** (*mixed* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the action name to be dispatched
 
@@ -222,6 +227,12 @@ Gets a param by its name or numeric index
 
 
 
+public *boolean*  **hasParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+
+Check if a param exists
+
+
+
 public  **getActiveMethod** () inherited from Phalcon\\Dispatcher
 
 Returns the current method to be/executed in the dispatcher
@@ -242,11 +253,23 @@ Sets the latest returned value by an action manually
 
 public *mixed*  **getReturnedValue** () inherited from Phalcon\\Dispatcher
 
-Returns value returned by the lastest dispatched action
+Returns value returned by the latest dispatched action
+
+
+
+public  **setModelBinding** (*boolean* $value) inherited from Phalcon\\Dispatcher
+
+Enable/Disable model binding during dispatch
 
 
 
 public *object*  **dispatch** () inherited from Phalcon\\Dispatcher
+
+Dispatches a handle action taking into account the routing parameters
+
+
+
+protected *object*  **_dispatch** () inherited from Phalcon\\Dispatcher
 
 Dispatches a handle action taking into account the routing parameters
 

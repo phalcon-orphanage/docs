@@ -14,20 +14,21 @@ Provides OO wrappers to the $_FILES superglobal
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+    
+    class PostsController extends Controller
     {
     
-    	public function uploadAction()
-    	{
-    		//Check if the user has uploaded files
-    		if ($this->request->hasFiles() == true) {
-    			//Print the real file names and their sizes
-    			foreach ($this->request->getUploadedFiles() as $file){
-    				echo $file->getName(), " ", $file->getSize(), "\n";
-    			}
-    		}
-    	}
-    
+       public function uploadAction()
+       {
+          // Check if the user has uploaded files
+          if ($this->request->hasFiles() == true) {
+            // Print the real file names and their sizes
+            foreach ($this->request->getUploadedFiles() as $file) {
+                echo $file->getName(), " ", $file->getSize(), "\n";
+            }
+        }
+       }
     }
 
 
@@ -53,7 +54,7 @@ public  **getExtension** ()
 
 
 
-public  **__construct** (*array* $file, [*unknown* $key])
+public  **__construct** (*array* $file, [*mixed* $key])
 
 Phalcon\\Http\\Request\\File constructor
 
@@ -73,7 +74,7 @@ Returns the real name of the uploaded file
 
 public  **getTempName** ()
 
-Returns the temporal name of the uploaded file
+Returns the temporary name of the uploaded file
 
 
 
@@ -95,7 +96,7 @@ Checks whether the file has been uploaded via Post.
 
 
 
-public  **moveTo** (*unknown* $destination)
+public  **moveTo** (*mixed* $destination)
 
 Moves the temporary file to a destination within the application
 

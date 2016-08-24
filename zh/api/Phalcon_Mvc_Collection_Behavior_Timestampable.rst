@@ -16,7 +16,7 @@ Allows to automatically update a model’s attribute saving the datetime when a 
 Methods
 -------
 
-public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public  **notify** (*mixed* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 Listens for notifications from the models manager
 
@@ -28,7 +28,7 @@ Phalcon\\Mvc\\Collection\\Behavior
 
 
 
-protected  **mustTakeAction** (*unknown* $eventName) inherited from Phalcon\\Mvc\\Collection\\Behavior
+protected  **mustTakeAction** (*mixed* $eventName) inherited from Phalcon\\Mvc\\Collection\\Behavior
 
 Checks whether the behavior must take action on certain event
 
@@ -40,7 +40,7 @@ Returns the behavior options related to an event
 
 
 
-public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $method, [*unknown* $arguments]) inherited from Phalcon\\Mvc\\Collection\\Behavior
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $method, [*mixed* $arguments]) inherited from Phalcon\\Mvc\\Collection\\Behavior
 
 Acts as fallbacks when a missing method is called on the collection
 

@@ -10,34 +10,39 @@ Class **Phalcon\\Cache\\Backend\\Libmemcached**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/libmemcached.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a libmemcached backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
+Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.  
 
 .. code-block:: php
 
     <?php
 
+     use Phalcon\Cache\Backend\Libmemcached;
+     use Phalcon\Cache\Frontend\Data as FrontData;
+    
      // Cache data for 2 days
-     $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 172800
-     ));
+     $frontCache = new FrontData([
+         'lifetime' => 172800
+     ]);
     
-     //Create the Cache setting memcached connection options
-     $cache = new \Phalcon\Cache\Backend\Libmemcached($frontCache, array(
-         "servers" => array(
-             array('host' => 'localhost',
-                   'port' => 11211,
-                   'weight' => 1),
-         ),
-         "client" => array(
-             Memcached::OPT_HASH => Memcached::HASH_MD5,
-             Memcached::OPT_PREFIX_KEY => 'prefix.',
-         )
-     ));
+     // Create the Cache setting memcached connection options
+     $cache = new Libmemcached($frontCache, [
+         'servers' => [
+             [
+                 'host' => 'localhost',
+                 'port' => 11211,
+                 'weight' => 1
+             ],
+         ],
+         'client' => [
+             \Memcached::OPT_HASH => Memcached::HASH_MD5,
+             \Memcached::OPT_PREFIX_KEY => 'prefix.',
+         ]
+     ]);
     
-     //Cache arbitrary data
-     $cache->save('my-data', array(1, 2, 3, 4, 5));
+     // Cache arbitrary data
+     $cache->save('my-data', [1, 2, 3, 4, 5]);
     
-     //Get data
+     // Get data
      $data = $cache->get('my-data');
 
 
@@ -57,7 +62,7 @@ Create internal connection to memcached
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 Returns a cached content
 
@@ -87,7 +92,7 @@ Checks if cache exists and it isn't expired
 
 
 
-public *long*  **increment** ([*string* $keyName], [*unknown* $value])
+public *long*  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
@@ -101,7 +106,18 @@ Decrement of $keyName by given $value
 
 public  **flush** ()
 
-Immediately invalidates all existing items.
+Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact. 
+
+.. code-block:: php
+
+    <?php
+
+     $cache = new \Phalcon\Cache\Backend\Libmemcached($frontCache, ["statsKey" => "_PHCM"]);
+     $cache->save('my-data', array(1, 2, 3, 4, 5));
+    
+     //'my-data' and all other used keys are deleted
+     $cache->flush();
+
 
 
 
@@ -110,7 +126,7 @@ public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setFrontend** (*unknown* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -120,7 +136,7 @@ public  **getOptions** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -130,7 +146,7 @@ public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -141,7 +157,7 @@ Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 

@@ -16,13 +16,17 @@ Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect
 
     <?php
 
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-    	'host' => '192.168.0.11',
-    	'username' => 'sigma',
-    	'password' => 'secret',
-    	'dbname' => 'blog',
-    	'port' => '3306'
-    ));
+     use Phalcon\Db\Adapter\Pdo\Mysql;
+    
+     $config = [
+       'host'     => 'localhost',
+       'dbname'   => 'blog',
+       'port'     => 3306,
+       'username' => 'sigma',
+       'password' => 'secret'
+     ];
+    
+     $connection = new Mysql($config);
 
 
 
@@ -35,29 +39,32 @@ Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 
 
-public *boolean*  **connect** ([*array* $descriptor])
+public  **connect** ([*array* $descriptor])
 
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection 
+This method is automatically called in \\Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection. 
 
 .. code-block:: php
 
     <?php
 
-     //Make a connection
-     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-      'host' => '192.168.0.11',
+     use Phalcon\Db\Adapter\Pdo\Mysql;
+    
+     // Make a connection
+     $connection = new Mysql([
+      'host'     => 'localhost',
       'username' => 'sigma',
       'password' => 'secret',
-      'dbname' => 'blog',
-     ));
+      'dbname'   => 'blog',
+      'port'     => 3306,
+     ]);
     
-     //Reconnect
+     // Reconnect
      $connection->connect();
 
 
 
 
-public  **prepare** (*unknown* $sqlStatement)
+public  **prepare** (*mixed* $sqlStatement)
 
 Returns a PDO prepared statement to be executed with 'executePrepared' 
 
@@ -65,8 +72,10 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
     <?php
 
+     use Phalcon\Db\Column;
+    
      $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $result = $connection->executePrepared($statement, ['name' => 'Voltron'], ['name' => Column::BIND_PARAM_INT]);
 
 
 
@@ -79,13 +88,15 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
     <?php
 
+     use Phalcon\Db\Column;
+    
      $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $result = $connection->executePrepared($statement, ['name' => 'Voltron'], ['name' => Column::BIND_PARAM_INT]);
 
 
 
 
-public  **query** (*unknown* $sqlStatement, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
@@ -100,7 +111,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 
 
-public  **execute** (*unknown* $sqlStatement, [*unknown* $bindParams], [*unknown* $bindTypes])
+public  **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows 
 
@@ -144,12 +155,12 @@ Escapes a column/table/schema name
     <?php
 
     $escapedTable = $connection->escapeIdentifier('robots');
-    $escapedTable = $connection->escapeIdentifier(array('store', 'robots'));
+    $escapedTable = $connection->escapeIdentifier(['store', 'robots']);
 
 
 
 
-public  **escapeString** (*unknown* $str)
+public  **escapeString** (*mixed* $str)
 
 Escapes a value to avoid SQL injections according to the active charset in the connection 
 
@@ -162,7 +173,7 @@ Escapes a value to avoid SQL injections according to the active charset in the c
 
 
 
-public  **convertBoundParams** (*unknown* $sql, [*array* $params])
+public  **convertBoundParams** (*mixed* $sql, [*array* $params])
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
@@ -196,19 +207,19 @@ Returns the insert id for the auto_increment/serial column inserted in the laste
 
 
 
-public  **begin** ([*unknown* $nesting])
+public  **begin** ([*mixed* $nesting])
 
 Starts a transaction in the connection
 
 
 
-public  **rollback** ([*unknown* $nesting])
+public  **rollback** ([*mixed* $nesting])
 
 Rollbacks the active transaction in the connection
 
 
 
-public  **commit** ([*unknown* $nesting])
+public  **commit** ([*mixed* $nesting])
 
 Commits the active transaction in the connection
 
@@ -288,7 +299,7 @@ Returns internal dialect instance
 
 
 
-public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public  **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -354,7 +365,7 @@ Returns the n'th field of first row in a SQL query result
 
 public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
-Inserts data into a table using custom RBDM SQL syntax 
+Inserts data into a table using custom RDBMS SQL syntax 
 
 .. code-block:: php
 
@@ -441,7 +452,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
     <?php
 
      //Updating existing robot
-     $success = $connection->update(
+     $success = $connection->updateAsDict(
      "robots",
      array(
     	  "name" => "New Astro Boy"
@@ -481,7 +492,7 @@ Gets a list of columns
 
 
 
-public  **limit** (*unknown* $sqlQuery, *unknown* $number) inherited from Phalcon\\Db\\Adapter
+public  **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from Phalcon\\Db\\Adapter
 
 Appends a LIMIT clause to $sqlQuery argument 
 
@@ -494,7 +505,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **tableExists** (*mixed* $tableName, [*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -507,7 +518,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **viewExists** (*mixed* $viewName, [*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -520,91 +531,91 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-public  **forUpdate** (*unknown* $sqlQuery) inherited from Phalcon\\Db\\Adapter
+public  **forUpdate** (*mixed* $sqlQuery) inherited from Phalcon\\Db\\Adapter
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-public  **sharedLock** (*unknown* $sqlQuery) inherited from Phalcon\\Db\\Adapter
+public  **sharedLock** (*mixed* $sqlQuery) inherited from Phalcon\\Db\\Adapter
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition) inherited from Phalcon\\Db\\Adapter
+public  **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition) inherited from Phalcon\\Db\\Adapter
 
 Creates a table
 
 
 
-public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists]) inherited from Phalcon\\Db\\Adapter
+public  **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from Phalcon\\Db\\Adapter
 
 Drops a table from a schema/database
 
 
 
-public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Creates a view
 
 
 
-public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists]) inherited from Phalcon\\Db\\Adapter
+public  **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from Phalcon\\Db\\Adapter
 
 Drops a view
 
 
 
-public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
+public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Adds a column to a table
 
 
 
-public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn]) inherited from Phalcon\\Db\\Adapter
+public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn]) inherited from Phalcon\\Db\\Adapter
 
 Modifies a table column based on a definition
 
 
 
-public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName) inherited from Phalcon\\Db\\Adapter
+public  **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName) inherited from Phalcon\\Db\\Adapter
 
 Drops a column from a table
 
 
 
-public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
+public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds an index to a table
 
 
 
-public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName) inherited from Phalcon\\Db\\Adapter
+public  **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName) inherited from Phalcon\\Db\\Adapter
 
 Drop an index from a table
 
 
 
-public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
+public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds a primary key to a table
 
 
 
-public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName) inherited from Phalcon\\Db\\Adapter
+public  **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName) inherited from Phalcon\\Db\\Adapter
 
 Drops a table's primary key
 
 
 
-public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference) inherited from Phalcon\\Db\\Adapter
+public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference) inherited from Phalcon\\Db\\Adapter
 
 Adds a foreign key to a table
 
 
 
-public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName) inherited from Phalcon\\Db\\Adapter
+public  **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName) inherited from Phalcon\\Db\\Adapter
 
 Drops a foreign key from a table
 
@@ -616,7 +627,7 @@ Returns the SQL column definition from a column
 
 
 
-public  **listTables** ([*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **listTables** ([*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 List all tables on a database 
 
@@ -629,7 +640,7 @@ List all tables on a database
 
 
 
-public  **listViews** ([*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **listViews** ([*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 List all views on a database 
 
@@ -655,7 +666,7 @@ Lists table indexes
 
 
 
-public  **describeReferences** (*unknown* $table, [*unknown* $schema]) inherited from Phalcon\\Db\\Adapter
+public  **describeReferences** (*mixed* $table, [*mixed* $schema]) inherited from Phalcon\\Db\\Adapter
 
 Lists table references 
 
@@ -668,7 +679,7 @@ Lists table references
 
 
 
-public  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName]) inherited from Phalcon\\Db\\Adapter
+public  **tableOptions** (*mixed* $tableName, [*mixed* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Gets creation options from a table 
 
@@ -681,25 +692,25 @@ Gets creation options from a table
 
 
 
-public  **createSavepoint** (*unknown* $name) inherited from Phalcon\\Db\\Adapter
+public  **createSavepoint** (*mixed* $name) inherited from Phalcon\\Db\\Adapter
 
 Creates a new savepoint
 
 
 
-public  **releaseSavepoint** (*unknown* $name) inherited from Phalcon\\Db\\Adapter
+public  **releaseSavepoint** (*mixed* $name) inherited from Phalcon\\Db\\Adapter
 
 Releases given savepoint
 
 
 
-public  **rollbackSavepoint** (*unknown* $name) inherited from Phalcon\\Db\\Adapter
+public  **rollbackSavepoint** (*mixed* $name) inherited from Phalcon\\Db\\Adapter
 
 Rollbacks given savepoint
 
 
 
-public  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints) inherited from Phalcon\\Db\\Adapter
+public  **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints) inherited from Phalcon\\Db\\Adapter
 
 Set if nested transactions should use savepoints
 
@@ -765,7 +776,7 @@ Check whether the database system requires an explicit value for identity column
 
 
 
-public *array*  **getDescriptor** () inherited from Phalcon\\Db\\Adapter
+public  **getDescriptor** () inherited from Phalcon\\Db\\Adapter
 
 Return descriptor used to connect to the active database
 

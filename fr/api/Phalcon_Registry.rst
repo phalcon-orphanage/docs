@@ -48,25 +48,25 @@ Registry constructor
 
 
 
-final public  **offsetExists** (*unknown* $offset)
+final public  **offsetExists** (*mixed* $offset)
 
 Checks if the element is present in the registry
 
 
 
-final public  **offsetGet** (*unknown* $offset)
+final public  **offsetGet** (*mixed* $offset)
 
 Returns an index in the registry
 
 
 
-final public  **offsetSet** (*unknown* $offset, *unknown* $value)
+final public  **offsetSet** (*mixed* $offset, *mixed* $value)
 
 Sets an element in the registry
 
 
 
-final public  **offsetUnset** (*unknown* $offset)
+final public  **offsetUnset** (*mixed* $offset)
 
 Unsets an element in the registry
 
@@ -108,24 +108,24 @@ Obtains the current value in the internal iterator
 
 
 
-final public  **__set** (*unknown* $key, *unknown* $value)
+final public  **__set** (*mixed* $key, *mixed* $value)
 
 Sets an element in the registry
 
 
 
-final public  **__get** (*unknown* $key)
+final public  **__get** (*mixed* $key)
 
 Returns an index in the registry
 
 
 
-final public  **__isset** (*unknown* $key)
+final public  **__isset** (*mixed* $key)
 
 ...
 
 
-final public  **__unset** (*unknown* $key)
+final public  **__unset** (*mixed* $key)
 
 ...
 

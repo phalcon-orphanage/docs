@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\ResultInterface**
 Methods
 -------
 
-abstract public  **setDirtyState** (*unknown* $dirtyState)
+abstract public  **setDirtyState** (*mixed* $dirtyState)
 
 ...
 

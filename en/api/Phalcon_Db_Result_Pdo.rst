@@ -37,7 +37,7 @@ Allows to execute the statement again. Some database systems don't support scrol
 
 
 
-public  **fetch** ([*unknown* $fetchStyle], [*unknown* $cursorOrientation], [*unknown* $cursorOffset])
+public  **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
 
 Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -56,7 +56,7 @@ Fetches an array/object of strings that corresponds to the fetched row, or FALSE
 
 public  **fetchArray** ()
 
-Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is not affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
 .. code-block:: php
 
@@ -71,9 +71,9 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
 
 
-public  **fetchAll** ([*unknown* $fetchStyle], [*unknown* $fetchArgument], [*unknown* $ctorArgs])
+public  **fetchAll** ([*mixed* $fetchStyle], [*mixed* $fetchArgument], [*mixed* $ctorArgs])
 
-Returns an array of arrays containing all the records in the result This method is not affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
 .. code-block:: php
 
@@ -99,7 +99,7 @@ Gets number of rows returned by a resultset
 
 
 
-public  **dataSeek** (*unknown* $number)
+public  **dataSeek** (*mixed* $number)
 
 Moves internal resultset cursor to another position letting us to fetch a certain row 
 
@@ -114,7 +114,7 @@ Moves internal resultset cursor to another position letting us to fetch a certai
 
 
 
-public  **setFetchMode** (*unknown* $fetchMode, [*unknown* $colNoOrClassNameOrObject], [*unknown* $ctorargs])
+public  **setFetchMode** (*mixed* $fetchMode, [*mixed* $colNoOrClassNameOrObject], [*mixed* $ctorargs])
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch() 
 

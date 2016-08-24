@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Mvc\\Model\\Behavior**
 ================================================
 
+*implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -18,7 +20,7 @@ public  **__construct** ([*array* $options])
 
 
 
-protected  **mustTakeAction** (*unknown* $eventName)
+protected  **mustTakeAction** (*mixed* $eventName)
 
 Checks whether the behavior must take action on certain event
 
@@ -30,7 +32,7 @@ Returns the behavior options related to an event
 
 
 
-public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **notify** (*mixed* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 This method receives the notifications from the EventsManager
 

@@ -22,6 +22,11 @@ public  **getFormatter** ()
 ...
 
 
+public  **getLogLevel** ()
+
+...
+
+
 public  **push** (:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger)
 
 Pushes a logger to the logger tail
@@ -34,55 +39,61 @@ Sets a global formatter
 
 
 
-public  **log** (*unknown* $type, [*unknown* $message], [*array* $context])
+public  **setLogLevel** (*mixed* $level)
+
+Sets a global level
+
+
+
+public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 Sends a message to each registered logger
 
 
 
-public  **critical** (*unknown* $message, [*array* $context])
+public  **critical** (*mixed* $message, [*array* $context])
 
 Sends/Writes an critical message to the log
 
 
 
-public  **emergency** (*unknown* $message, [*array* $context])
+public  **emergency** (*mixed* $message, [*array* $context])
 
 Sends/Writes an emergency message to the log
 
 
 
-public  **debug** (*unknown* $message, [*array* $context])
+public  **debug** (*mixed* $message, [*array* $context])
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*unknown* $message, [*array* $context])
+public  **error** (*mixed* $message, [*array* $context])
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*unknown* $message, [*array* $context])
+public  **info** (*mixed* $message, [*array* $context])
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*unknown* $message, [*array* $context])
+public  **notice** (*mixed* $message, [*array* $context])
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*unknown* $message, [*array* $context])
+public  **warning** (*mixed* $message, [*array* $context])
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*unknown* $message, [*array* $context])
+public  **alert** (*mixed* $message, [*array* $context])
 
 Sends/Writes an alert message to the log
 

@@ -24,7 +24,7 @@ abstract public  **commit** ()
 ...
 
 
-abstract public  **rollback** ([*unknown* $rollbackMessage], [*unknown* $rollbackRecord])
+abstract public  **rollback** ([*mixed* $rollbackMessage], [*mixed* $rollbackRecord])
 
 ...
 
@@ -34,12 +34,12 @@ abstract public  **getConnection** ()
 ...
 
 
-abstract public  **setIsNewTransaction** (*unknown* $isNew)
+abstract public  **setIsNewTransaction** (*mixed* $isNew)
 
 ...
 
 
-abstract public  **setRollbackOnAbort** (*unknown* $rollbackOnAbort)
+abstract public  **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
 ...
 

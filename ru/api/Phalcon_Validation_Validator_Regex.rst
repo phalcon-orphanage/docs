@@ -16,49 +16,60 @@ Allows validate if the value of a field matches a regular expression
 
     <?php
 
-    use Phalcon\Validation\Validator\Regex as RegexValidator;
+     use Phalcon\Validation\Validator\Regex as RegexValidator;
     
-    $validator->add('created_at', new RegexValidator(array(
-       'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
-       'message' => 'The creation date is invalid'
-    )));
+     $validator->add('created_at', new RegexValidator([
+         'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
+         'message' => 'The creation date is invalid'
+     ]));
+    
+     $validator->add(['created_at', 'name'], new RegexValidator([
+         'pattern' => [
+             'created_at' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
+             'name' => '/^[a-z]$/'
+         ],
+         'message' => [
+             'created_at' => 'The creation date is invalid',
+             'name' => ' 'The name is invalid'
+         ]
+     ]));
 
 
 
 Methods
 -------
 
-public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *mixed* $field)
 
 Executes the validation
 
 
 
-public  **__construct** ([*unknown* $options]) inherited from Phalcon\\Validation\\Validator
+public  **__construct** ([*array* $options]) inherited from Phalcon\\Validation\\Validator
 
 Phalcon\\Validation\\Validator constructor
 
 
 
-public  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+public  **isSetOption** (*mixed* $key) inherited from Phalcon\\Validation\\Validator
+
+Checks if an option has been defined
+
+
+
+public  **hasOption** (*mixed* $key) inherited from Phalcon\\Validation\\Validator
 
 Checks if an option is defined
 
 
 
-public  **hasOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
-
-Checks if an option is defined
-
-
-
-public  **getOption** (*unknown* $key, [*unknown* $defaultValue]) inherited from Phalcon\\Validation\\Validator
+public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from Phalcon\\Validation\\Validator
 
 Returns an option in the validator's options Returns null if the option hasn't set
 
 
 
-public  **setOption** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Validation\\Validator
+public  **setOption** (*mixed* $key, *mixed* $value) inherited from Phalcon\\Validation\\Validator
 
 Sets an option in the validator
 

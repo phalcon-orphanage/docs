@@ -43,7 +43,7 @@ Obtains the 'escaper' service if required
 
 
 
-public static  **renderAttributes** (*unknown* $code, *array* $attributes)
+public static  **renderAttributes** (*mixed* $code, *array* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
@@ -73,7 +73,7 @@ Returns an Escaper service from the default DI
 
 
 
-public static  **setAutoescape** (*unknown* $autoescape)
+public static  **setAutoescape** (*mixed* $autoescape)
 
 Set autoescape mode in generated html
 
@@ -87,16 +87,16 @@ Assigns default values to generated tags by helpers
 
     <?php
 
-     //Assigning "peter" to "name" component
+     // Assigning "peter" to "name" component
      Phalcon\Tag::setDefault("name", "peter");
     
-     //Later in the view
+     // Later in the view
      echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
 
 
-public static  **setDefaults** (*array* $values, [*unknown* $merge])
+public static  **setDefaults** (*array* $values, [*mixed* $merge])
 
 Assigns default values to generated tags by helpers 
 
@@ -104,10 +104,10 @@ Assigns default values to generated tags by helpers
 
     <?php
 
-     //Assigning "peter" to "name" component
+     // Assigning "peter" to "name" component
      Phalcon\Tag::setDefaults(array("name" => "peter"));
     
-     //Later in the view
+     // Later in the view
      echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
@@ -145,12 +145,12 @@ Builds a HTML A tag using framework conventions
 
     <?php
 
-    echo Phalcon\Tag::linkTo("signup/register", "Register Here!");
-    echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!"));
-    echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!", "class" => "btn-primary"));
-    echo Phalcon\Tag::linkTo("http://phalconphp.com/", "Phalcon", FALSE);
-    echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", FALSE));
-    echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", "local" =>FALSE));
+     echo Phalcon\Tag::linkTo("signup/register", "Register Here!");
+     echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!"));
+     echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!", "class" => "btn-primary"));
+     echo Phalcon\Tag::linkTo("http://phalconphp.com/", "Phalcon", FALSE);
+     echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", FALSE));
+     echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", "local" =>FALSE));
 
 
 
@@ -181,7 +181,7 @@ Builds a HTML input[type="text"] tag
 
     <?php
 
-    echo Phalcon\Tag::textField(array("name", "size" => 30));
+     echo Phalcon\Tag::textField(array("name", "size" => 30));
 
 
 
@@ -194,7 +194,7 @@ Builds a HTML input[type="number"] tag
 
     <?php
 
-    echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
+     echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
 
 
 
@@ -213,7 +213,7 @@ Builds a HTML input[type="email"] tag
 
     <?php
 
-    echo Phalcon\Tag::emailField("email");
+     echo Phalcon\Tag::emailField("email");
 
 
 
@@ -226,7 +226,7 @@ Builds a HTML input[type="date"] tag
 
     <?php
 
-    echo Phalcon\Tag::dateField(array("born", "value" => "14-12-1980"))
+     echo Phalcon\Tag::dateField(array("born", "value" => "14-12-1980"))
 
 
 
@@ -328,6 +328,14 @@ Builds a HTML input[type="check"] tag
 
      echo Phalcon\Tag::checkField(array("terms", "value" => "Y"));
 
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ check_field("terms") }}
+
 
 
 
@@ -402,7 +410,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
     <?php
 
-    echo Phalcon\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"))
+     echo Phalcon\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"))
 
 
 
@@ -415,11 +423,11 @@ Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
 
     <?php
 
-    echo Phalcon\Tag::select(array(
-    	"robotId",
-    	Robots::find("type = "mechanical""),
-    	"using" => array("id", "name")
-     	));
+     echo Phalcon\Tag::select([
+         "robotId",
+         Robots::find("type = "mechanical""),
+         "using" => ["id", "name"]
+     ]);
 
 Volt syntax: 
 
@@ -482,7 +490,7 @@ Builds a HTML close FORM tag
 
 
 
-public static  **setTitle** (*unknown* $title)
+public static  **setTitle** (*mixed* $title)
 
 Set the title of view content 
 
@@ -495,7 +503,7 @@ Set the title of view content
 
 
 
-public static  **setTitleSeparator** (*unknown* $titleSeparator)
+public static  **setTitleSeparator** (*mixed* $titleSeparator)
 
 Set the title separator of view content 
 
@@ -508,33 +516,33 @@ Set the title separator of view content
 
 
 
-public static  **appendTitle** (*unknown* $title)
+public static  **appendTitle** (*mixed* $title)
 
 Appends a text to current document title
 
 
 
-public static  **prependTitle** (*unknown* $title)
+public static  **prependTitle** (*mixed* $title)
 
 Prepends a text to current document title
 
 
 
-public static  **getTitle** ([*unknown* $tags])
+public static  **getTitle** ([*mixed* $tags])
 
-Gets the current document title 
-
-.. code-block:: php
-
-    <?php
-
-     	echo Phalcon\Tag::getTitle();
+Gets the current document title. The title will be automatically escaped. 
 
 .. code-block:: php
 
     <?php
 
-     	{{ get_title() }}
+     echo Phalcon\Tag::getTitle();
+
+.. code-block:: php
+
+    <?php
+
+     {{ get_title() }}
 
 
 
@@ -547,13 +555,13 @@ Gets the current document title separator
 
     <?php
 
-             echo Phalcon\Tag::getTitleSeparator();
+     echo Phalcon\Tag::getTitleSeparator();
 
 .. code-block:: php
 
     <?php
 
-             {{ get_title_separator() }}
+     {{ get_title_separator() }}
 
 
 
@@ -566,8 +574,8 @@ Builds a LINK[rel="stylesheet"] tag
 
     <?php
 
-     	echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
-     	echo Phalcon\Tag::stylesheetLink("css/style.css");
+     echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+     echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 Volt Syntax: 
 
@@ -575,8 +583,8 @@ Volt Syntax:
 
     <?php
 
-     	{{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}
-     	{{ stylesheet_link("css/style.css") }}
+     {{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}
+     {{ stylesheet_link("css/style.css") }}
 
 
 
@@ -589,8 +597,8 @@ Builds a SCRIPT[type="javascript"] tag
 
     <?php
 
-             echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-             echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+     echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false);
+     echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 Volt syntax: 
 
@@ -598,7 +606,7 @@ Volt syntax:
 
     <?php
 
-     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
+     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false) }}
      {{ javascript_include("javascript/jquery.js") }}
 
 
@@ -612,8 +620,8 @@ Builds HTML IMG tags
 
     <?php
 
-             echo Phalcon\Tag::image("img/bg.png");
-             echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
+     echo Phalcon\Tag::image("img/bg.png");
+     echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
 
 Volt Syntax: 
 
@@ -621,14 +629,14 @@ Volt Syntax:
 
     <?php
 
-             {{ image("img/bg.png") }}
-             {{ image("img/photo.jpg", "alt": "Some Photo") }}
-             {{ image("http://static.mywebsite.com/img/bg.png", false) }}
+     {{ image("img/bg.png") }}
+     {{ image("img/photo.jpg", "alt": "Some Photo") }}
+     {{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 
 
 
-public static *string*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase], [*mixed* $replace])
+public static  **friendlyTitle** (*mixed* $text, [*mixed* $separator], [*mixed* $lowercase], [*mixed* $replace])
 
 Converts texts into URL-friendly titles 
 
@@ -641,7 +649,7 @@ Converts texts into URL-friendly titles
 
 
 
-public static  **setDocType** (*unknown* $doctype)
+public static  **setDocType** (*mixed* $doctype)
 
 Set the document type of content
 
@@ -653,7 +661,7 @@ Get the document type declaration of content
 
 
 
-public static *string*  **tagHtml** (*string* $tagName, [*array* $parameters], [*boolean* $selfClose], [*boolean* $onlyStart], [*boolean* $useEol])
+public static  **tagHtml** (*mixed* $tagName, [*mixed* $parameters], [*mixed* $selfClose], [*mixed* $onlyStart], [*mixed* $useEol])
 
 Builds a HTML tag 
 
@@ -661,12 +669,12 @@ Builds a HTML tag
 
     <?php
 
-            echo Phalcon\Tag::tagHtml(name, parameters, selfClose, onlyStart, eol);
+     echo Phalcon\Tag::tagHtml(name, parameters, selfClose, onlyStart, eol);
 
 
 
 
-public static  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
+public static  **tagHtmlClose** (*mixed* $tagName, [*mixed* $useEol])
 
 Builds a HTML tag closing tag 
 
@@ -674,7 +682,7 @@ Builds a HTML tag closing tag
 
     <?php
 
-            echo Phalcon\Tag::tagHtmlClose("script", true)
+     echo Phalcon\Tag::tagHtmlClose("script", true)
 
 
 

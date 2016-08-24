@@ -9,22 +9,17 @@ Interface **Phalcon\\Validation\\ValidatorInterface**
 Methods
 -------
 
-abstract public  **isSetOption** (*unknown* $key)
+abstract public  **hasOption** (*mixed* $key)
 
 ...
 
 
-abstract public  **hasOption** (*unknown* $key)
+abstract public  **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **getOption** (*unknown* $key, [*unknown* $defaultValue])
-
-...
-
-
-abstract public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $attribute)
+abstract public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *mixed* $attribute)
 
 ...
 

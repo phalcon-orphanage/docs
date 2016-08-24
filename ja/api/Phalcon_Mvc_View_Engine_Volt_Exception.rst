@@ -3,6 +3,8 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Exception**
 
 *extends* class :doc:`Phalcon\\Mvc\\View\\Exception <Phalcon_Mvc_View_Exception>`
 
+*implements* Throwable
+
 .. role:: raw-html(raw)
    :format: html
 

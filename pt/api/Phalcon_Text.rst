@@ -25,7 +25,7 @@ Constants
 Methods
 -------
 
-public static  **camelize** (*unknown* $str)
+public static  **camelize** (*mixed* $str, [*mixed* $delimiter])
 
 Converts strings to camelize style 
 
@@ -33,12 +33,14 @@ Converts strings to camelize style
 
     <?php
 
-        echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+        echo Phalcon\Text::camelize('coco_bongo'); // CocoBongo
+        echo Phalcon\Text::camelize('co_co-bon_go', '-'); // Co_coBon_go
+        echo Phalcon\Text::camelize('co_co-bon_go', '_-'); // CoCoBonGo
 
 
 
 
-public static  **uncamelize** (*unknown* $str)
+public static  **uncamelize** (*mixed* $str, [*mixed* $delimiter])
 
 Uncamelize strings which are camelized 
 
@@ -46,12 +48,13 @@ Uncamelize strings which are camelized
 
     <?php
 
-        echo Phalcon\Text::uncamelize('CocoBongo'); //coco_bongo
+        echo Phalcon\Text::uncamelize('CocoBongo'); // coco_bongo
+        echo Phalcon\Text::uncamelize('CocoBongo', '-'); // coco-bongo
 
 
 
 
-public static  **increment** (*unknown* $str, [*unknown* $separator])
+public static  **increment** (*mixed* $str, [*mixed* $separator])
 
 Adds a number to a string or increment that number if it already is defined 
 
@@ -65,7 +68,7 @@ Adds a number to a string or increment that number if it already is defined
 
 
 
-public static  **random** ([*unknown* $type], [*unknown* $length])
+public static  **random** ([*mixed* $type], [*mixed* $length])
 
 Generates a random string based on the given type. Type is one of the RANDOM_* constants 
 
@@ -78,7 +81,7 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 
 
-public static  **startsWith** (*unknown* $str, *unknown* $start, [*unknown* $ignoreCase])
+public static  **startsWith** (*mixed* $str, *mixed* $start, [*mixed* $ignoreCase])
 
 Check if a string starts with a given string 
 
@@ -93,7 +96,7 @@ Check if a string starts with a given string
 
 
 
-public static  **endsWith** (*unknown* $str, *unknown* $end, [*unknown* $ignoreCase])
+public static  **endsWith** (*mixed* $str, *mixed* $end, [*mixed* $ignoreCase])
 
 Check if a string ends with a given string 
 
@@ -108,7 +111,7 @@ Check if a string ends with a given string
 
 
 
-public static  **lower** (*unknown* $str, [*unknown* $encoding])
+public static  **lower** (*mixed* $str, [*mixed* $encoding])
 
 Lowercases a string, this function makes use of the mbstring extension if available 
 
@@ -121,7 +124,7 @@ Lowercases a string, this function makes use of the mbstring extension if availa
 
 
 
-public static  **upper** (*unknown* $str, [*unknown* $encoding])
+public static  **upper** (*mixed* $str, [*mixed* $encoding])
 
 Uppercases a string, this function makes use of the mbstring extension if available 
 
@@ -134,7 +137,7 @@ Uppercases a string, this function makes use of the mbstring extension if availa
 
 
 
-public static  **reduceSlashes** (*unknown* $str)
+public static  **reduceSlashes** (*mixed* $str)
 
 Reduces multiple slashes in a string to single slashes 
 
@@ -162,7 +165,7 @@ Concatenates strings using the separator only once without duplication in places
 
 
 
-public static  **dynamic** (*unknown* $text, [*unknown* $leftDelimiter], [*unknown* $rightDelimiter], [*unknown* $separator])
+public static  **dynamic** (*mixed* $text, [*mixed* $leftDelimiter], [*mixed* $rightDelimiter], [*mixed* $separator])
 
 Generates random text in accordance with the template 
 
@@ -173,6 +176,35 @@ Generates random text in accordance with the template
         echo Phalcon\Text::dynamic("{Hi|Hello}, my name is a {Bob|Mark|Jon}!"); // Hi my name is a Bob
         echo Phalcon\Text::dynamic("{Hi|Hello}, my name is a {Bob|Mark|Jon}!"); // Hi my name is a Jon
         echo Phalcon\Text::dynamic("{Hi|Hello}, my name is a {Bob|Mark|Jon}!"); // Hello my name is a Bob
+        echo Phalcon\Text::dynamic("[Hi/Hello], my name is a [Zyxep/Mark]!", '[', ']', '/'); // Hello my name is a Zyxep
+
+
+
+
+public static  **underscore** (*mixed* $text)
+
+Makes a phrase underscored instead of spaced 
+
+.. code-block:: php
+
+    <?php
+
+       echo Phalcon\Text::underscore('look behind'); // 'look_behind'
+       echo Phalcon\Text::underscore('Awesome Phalcon'); // 'Awesome_Phalcon'
+
+
+
+
+public static  **humanize** (*mixed* $text)
+
+Makes an underscored or dashed phrase human-readable 
+
+.. code-block:: php
+
+    <?php
+
+       echo Phalcon\Text::humanize('start-a-horse'); // 'start a horse'
+       echo Phalcon\Text::humanize('five_cats'); // 'five cats'
 
 
 

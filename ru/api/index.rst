@@ -20,6 +20,8 @@ API Indice
    Phalcon_Annotations_Exception
    Phalcon_Annotations_Reader
    Phalcon_Annotations_Reflection
+   Phalcon_Application
+   Phalcon_Application_Exception
    Phalcon_Assets_Collection
    Phalcon_Assets_Exception
    Phalcon_Assets_Filters_Cssmin
@@ -46,6 +48,7 @@ API Indice
    Phalcon_Cache_Frontend_Data
    Phalcon_Cache_Frontend_Igbinary
    Phalcon_Cache_Frontend_Json
+   Phalcon_Cache_Frontend_Msgpack
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
@@ -73,7 +76,7 @@ API Indice
    Phalcon_Db_Adapter_Pdo_Sqlite
    Phalcon_Db_Column
    Phalcon_Db_Dialect
-   Phalcon_Db_Dialect_MySQL
+   Phalcon_Db_Dialect_Mysql
    Phalcon_Db_Dialect_Postgresql
    Phalcon_Db_Dialect_Sqlite
    Phalcon_Db_Exception
@@ -237,12 +240,12 @@ API Indice
    Phalcon_Paginator_Adapter_QueryBuilder
    Phalcon_Paginator_Exception
    Phalcon_Queue_Beanstalk
+   Phalcon_Queue_Beanstalk_Exception
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Registry
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Security_Random
-   Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Adapter_Libmemcached
@@ -263,6 +266,7 @@ API Indice
    Phalcon_Translate_Interpolator_AssociativeArray
    Phalcon_Translate_Interpolator_IndexedArray
    Phalcon_Validation
+   Phalcon_Validation_CombinedFieldsValidator
    Phalcon_Validation_Exception
    Phalcon_Validation_Message
    Phalcon_Validation_Message_Group
@@ -272,6 +276,7 @@ API Indice
    Phalcon_Validation_Validator_Between
    Phalcon_Validation_Validator_Confirmation
    Phalcon_Validation_Validator_CreditCard
+   Phalcon_Validation_Validator_Date
    Phalcon_Validation_Validator_Digit
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
@@ -286,13 +291,19 @@ API Indice
    Phalcon_Validation_Validator_Url
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
+   Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface
+   Phalcon_Acl_RoleAware
    Phalcon_Acl_RoleInterface
    Phalcon_Annotations_AdapterInterface
    Phalcon_Annotations_ReaderInterface
    Phalcon_Assets_FilterInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
+   Phalcon_Cli_DispatcherInterface
+   Phalcon_Cli_RouterInterface
+   Phalcon_Cli_Router_RouteInterface
+   Phalcon_Cli_TaskInterface
    Phalcon_CryptInterface
    Phalcon_Db_AdapterInterface
    Phalcon_Db_ColumnInterface
@@ -305,6 +316,7 @@ API Indice
    Phalcon_Di_ServiceInterface
    Phalcon_DispatcherInterface
    Phalcon_EscaperInterface
+   Phalcon_Events_EventInterface
    Phalcon_Events_EventsAwareInterface
    Phalcon_Events_ManagerInterface
    Phalcon_FilterInterface
@@ -324,6 +336,7 @@ API Indice
    Phalcon_Mvc_Collection_BehaviorInterface
    Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
+   Phalcon_Mvc_Controller_BindModelInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_EntityInterface
    Phalcon_Mvc_Micro_CollectionInterface
@@ -357,5 +370,6 @@ API Indice
    Phalcon_Session_BagInterface
    Phalcon_Translate_AdapterInterface
    Phalcon_Translate_InterpolatorInterface
+   Phalcon_ValidationInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface

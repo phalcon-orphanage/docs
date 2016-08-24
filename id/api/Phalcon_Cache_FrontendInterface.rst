@@ -34,12 +34,12 @@ abstract public  **stop** ()
 ...
 
 
-abstract public  **beforeStore** (*unknown* $data)
+abstract public  **beforeStore** (*mixed* $data)
 
 ...
 
 
-abstract public  **afterRetrieve** (*unknown* $data)
+abstract public  **afterRetrieve** (*mixed* $data)
 
 ...
 

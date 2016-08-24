@@ -79,13 +79,13 @@ Returns an array with reserved properties that cannot be part of the insert/upda
 
 
 
-protected  **useImplicitObjectIds** (*unknown* $useImplicitObjectIds)
+protected  **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
 Sets if a model must use implicit objects ids
 
 
 
-protected  **setSource** (*unknown* $source)
+protected  **setSource** (*mixed* $source)
 
 Sets collection name which model should be mapped
 
@@ -97,7 +97,7 @@ Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** (*unknown* $connectionService)
+public  **setConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name
 
@@ -165,7 +165,7 @@ Executes internal hooks before save a document
 
 
 
-final protected  **_postSave** (*unknown* $disableEvents, *unknown* $success, *unknown* $exists)
+final protected  **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
 Executes internal events after save a document
 
@@ -229,19 +229,19 @@ Check whether validation process has generated any messages
 
 
 
-public  **fireEvent** (*unknown* $eventName)
+public  **fireEvent** (*mixed* $eventName)
 
 Fires an internal event
 
 
 
-public  **fireEventCancel** (*unknown* $eventName)
+public  **fireEventCancel** (*mixed* $eventName)
 
 Fires an internal event that cancels the operation
 
 
 
-protected  **_cancelOperation** (*unknown* $disableEvents)
+protected  **_cancelOperation** (*mixed* $disableEvents)
 
 Cancel the current operation
 
@@ -302,15 +302,55 @@ Appends a customized message on the validation process
 
 
 
+protected  **prepareCU** ()
+
+Shared Code for CU Operations Prepares Collection
+
+
+
 public  **save** ()
 
 Creates/Updates a collection based on the values in the attributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
+public  **create** ()
 
-Find a document by its id (_id)
+Creates a collection based on the values in the attributes
+
+
+
+public  **createIfNotExist** (*array* $criteria)
+
+Creates a document based on the values in the attributes, if not found by criteria Preferred way to avoid duplication is to create index on attribute $robot = new Robot(); $robot->name = "MyRobot"; $robot->type = "Droid"; //create only if robot with same name and type does not exist $robot->createIfNotExist( array( "name", "type" ) );
+
+
+
+public  **update** ()
+
+Creates/Updates a collection based on the values in the attributes
+
+
+
+public static  **findById** (*mixed* $id)
+
+Find a document by its id (_id) 
+
+.. code-block:: php
+
+    <?php
+
+     // Find user by using \MongoId object
+     $user = Users::findById(new \MongoId('545eb081631d16153a293a66'));
+    
+     // Find user by using id as sting
+     $user = Users::findById('45cbc4a0e4123f6920000002');
+    
+     // Validate input
+     if ($user = Users::findById($_POST['id'])) {
+         // ...
+     }
+
 
 
 
@@ -322,22 +362,28 @@ Allows to query the first record that match the specified conditions
 
     <?php
 
-     //What's the first robot in the robots table?
+     // What's the first robot in the robots table?
      $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name, "\n";
+     echo 'The robot name is ', $robot->name, "\n";
     
-     //What's the first mechanical robot in robots table?
-     $robot = Robots::findFirst(array(
-         array("type" => "mechanical")
-     ));
-     echo "The first mechanical robot name is ", $robot->name, "\n";
+     // What's the first mechanical robot in robots table?
+     $robot = Robots::findFirst([
+         ['type' => 'mechanical']
+     ]);
+     echo 'The first mechanical robot name is ', $robot->name, "\n";
     
-     //Get first virtual robot ordered by name
-     $robot = Robots::findFirst(array(
-         array("type" => "mechanical"),
-         "order" => array("name" => 1)
-     ));
-     echo "The first virtual robot name is ", $robot->name, "\n";
+     // Get first virtual robot ordered by name
+     $robot = Robots::findFirst([
+         ['type' => 'mechanical'],
+         'order' => ['name' => 1]
+     ]);
+     echo 'The first virtual robot name is ', $robot->name, "\n";
+    
+     // Get first robot by id (_id)
+     $robot = Robots::findFirst([
+         ['_id' => new \MongoId('45cbc4a0e4123f6920000002')]
+     ]);
+     echo 'The robot id is ', $robot->_id, "\n";
 
 
 
@@ -401,7 +447,7 @@ Perform an aggregation using the Mongo aggregation framework
 
 
 
-public static  **summatory** (*unknown* $field, [*unknown* $conditions], [*unknown* $finalize])
+public static  **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
 Allows to perform a summatory group for a column in the collection
 
@@ -431,7 +477,7 @@ Sets up a behavior in a collection
 
 
 
-public  **skipOperation** (*unknown* $skip)
+public  **skipOperation** (*mixed* $skip)
 
 Skips the current operation forcing a success state
 
@@ -456,7 +502,7 @@ Serializes the object ignoring connections or protected properties
 
 
 
-public  **unserialize** (*unknown* $data)
+public  **unserialize** (*mixed* $data)
 
 Unserializes the object from a serialized string
 

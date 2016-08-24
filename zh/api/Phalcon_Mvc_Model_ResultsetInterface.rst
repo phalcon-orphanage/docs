@@ -24,7 +24,7 @@ abstract public  **getLast** ()
 ...
 
 
-abstract public  **setIsFresh** (*unknown* $isFresh)
+abstract public  **setIsFresh** (*mixed* $isFresh)
 
 ...
 

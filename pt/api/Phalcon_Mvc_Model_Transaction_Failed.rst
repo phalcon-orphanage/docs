@@ -3,6 +3,8 @@ Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 
 *extends* class :doc:`Phalcon\\Mvc\\Model\\Transaction\\Exception <Phalcon_Mvc_Model_Transaction_Exception>`
 
+*implements* Throwable
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -14,7 +16,7 @@ This class will be thrown to exit a try/catch block for isolated transactions
 Methods
 -------
 
-public  **__construct** (*unknown* $message, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record])
+public  **__construct** (*mixed* $message, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record])
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 

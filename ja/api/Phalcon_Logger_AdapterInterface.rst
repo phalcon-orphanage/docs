@@ -19,7 +19,7 @@ abstract public  **getFormatter** ()
 ...
 
 
-abstract public  **setLogLevel** (*unknown* $level)
+abstract public  **setLogLevel** (*mixed* $level)
 
 ...
 
@@ -29,7 +29,7 @@ abstract public  **getLogLevel** ()
 ...
 
 
-abstract public  **log** (*unknown* $type, [*unknown* $message], [*array* $context])
+abstract public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 ...
 
@@ -54,37 +54,37 @@ abstract public  **close** ()
 ...
 
 
-abstract public  **debug** (*unknown* $message, [*array* $context])
+abstract public  **debug** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **error** (*unknown* $message, [*array* $context])
+abstract public  **error** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **info** (*unknown* $message, [*array* $context])
+abstract public  **info** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **notice** (*unknown* $message, [*array* $context])
+abstract public  **notice** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **warning** (*unknown* $message, [*array* $context])
+abstract public  **warning** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **alert** (*unknown* $message, [*array* $context])
+abstract public  **alert** (*mixed* $message, [*array* $context])
 
 ...
 
 
-abstract public  **emergency** (*unknown* $message, [*array* $context])
+abstract public  **emergency** (*mixed* $message, [*array* $context])
 
 ...
 

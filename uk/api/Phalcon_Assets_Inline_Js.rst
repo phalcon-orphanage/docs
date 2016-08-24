@@ -40,13 +40,13 @@ public  **getAttributes** () inherited from Phalcon\\Assets\\Inline
 ...
 
 
-public  **setType** (*unknown* $type) inherited from Phalcon\\Assets\\Inline
+public  **setType** (*mixed* $type) inherited from Phalcon\\Assets\\Inline
 
 Sets the inline's type
 
 
 
-public  **setFilter** (*unknown* $filter) inherited from Phalcon\\Assets\\Inline
+public  **setFilter** (*mixed* $filter) inherited from Phalcon\\Assets\\Inline
 
 Sets if the resource must be filtered or not
 

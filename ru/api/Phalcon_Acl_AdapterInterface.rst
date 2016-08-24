@@ -9,7 +9,7 @@ Interface **Phalcon\\Acl\\AdapterInterface**
 Methods
 -------
 
-abstract public  **setDefaultAction** (*unknown* $defaultAccess)
+abstract public  **setDefaultAction** (*mixed* $defaultAccess)
 
 ...
 
@@ -19,52 +19,62 @@ abstract public  **getDefaultAction** ()
 ...
 
 
-abstract public  **addRole** (*unknown* $role, [*unknown* $accessInherits])
+abstract public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
 ...
 
 
-abstract public  **addInherit** (*unknown* $roleName, *unknown* $roleToInherit)
+abstract public  **getNoArgumentsDefaultAction** ()
 
 ...
 
 
-abstract public  **isRole** (*unknown* $roleName)
+abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
 ...
 
 
-abstract public  **isResource** (*unknown* $resourceName)
+abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
 ...
 
 
-abstract public  **addResource** (*unknown* $resourceObject, *unknown* $accessList)
+abstract public  **isRole** (*mixed* $roleName)
 
 ...
 
 
-abstract public  **addResourceAccess** (*unknown* $resourceName, *unknown* $accessList)
+abstract public  **isResource** (*mixed* $resourceName)
 
 ...
 
 
-abstract public  **dropResourceAccess** (*unknown* $resourceName, *unknown* $accessList)
+abstract public  **addResource** (*mixed* $resourceObject, *mixed* $accessList)
 
 ...
 
 
-abstract public  **allow** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
+abstract public  **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
 ...
 
 
-abstract public  **deny** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
+abstract public  **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
 ...
 
 
-abstract public  **isAllowed** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
+abstract public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
+
+...
+
+
+abstract public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
+
+...
+
+
+abstract public  **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters])
 
 ...
 

@@ -16,20 +16,23 @@ Allows to cache output fragments, PHP data and raw data using an XCache backend
 
     <?php
 
-    //Cache data for 2 days
-    $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-    	'lifetime' => 172800
-    ));
+     use Phalcon\Cache\Backend\Xcache;
+     use Phalcon\Cache\Frontend\Data as FrontData;
     
-      $cache = new \Phalcon\Cache\Backend\Xcache($frontCache, array(
-          'prefix' => 'app-data'
-      ));
+     // Cache data for 2 days
+     $frontCache = new FrontData([
+         'lifetime' => 172800
+     ]);
     
-    //Cache arbitrary data
-    $cache->save('my-data', array(1, 2, 3, 4, 5));
+     $cache = new Xcache($frontCache, [
+         'prefix' => 'app-data'
+     ]);
     
-    //Get data
-    $data = $cache->get('my-data');
+     // Cache arbitrary data
+     $cache->save('my-data', [1, 2, 3, 4, 5]);
+    
+     // Get data
+     $data = $cache->get('my-data');
 
 
 
@@ -42,7 +45,7 @@ Phalcon\\Cache\\Backend\\Xcache constructor
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 Returns a cached content
 
@@ -95,7 +98,7 @@ public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setFrontend** (*unknown* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -105,7 +108,7 @@ public  **getOptions** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -115,7 +118,7 @@ public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -126,7 +129,7 @@ Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 

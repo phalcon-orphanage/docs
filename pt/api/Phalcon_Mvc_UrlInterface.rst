@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\UrlInterface**
 Methods
 -------
 
-abstract public  **setBaseUri** (*unknown* $baseUri)
+abstract public  **setBaseUri** (*mixed* $baseUri)
 
 ...
 
@@ -19,7 +19,7 @@ abstract public  **getBaseUri** ()
 ...
 
 
-abstract public  **setBasePath** (*unknown* $basePath)
+abstract public  **setBasePath** (*mixed* $basePath)
 
 ...
 
@@ -29,12 +29,12 @@ abstract public  **getBasePath** ()
 ...
 
 
-abstract public  **get** ([*unknown* $uri], [*unknown* $args], [*unknown* $local])
+abstract public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local])
 
 ...
 
 
-abstract public  **path** ([*unknown* $path])
+abstract public  **path** ([*mixed* $path])
 
 ...
 

@@ -35,12 +35,6 @@ This component helps to load your project classes automatically based on some co
 Methods
 -------
 
-public  **__construct** ()
-
-Phalcon\\Loader constructor
-
-
-
 public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the events manager
@@ -65,10 +59,15 @@ Returns the file extensions registered in the loader
 
 
 
-public  **registerNamespaces** (*array* $namespaces, [*unknown* $merge])
+public  **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
 Register namespaces and their related directories
 
+
+
+protected  **prepareNamespace** (*array* $namespace)
+
+...
 
 
 public  **getNamespaces** ()
@@ -77,19 +76,7 @@ Returns the namespaces currently registered in the autoloader
 
 
 
-public  **registerPrefixes** (*array* $prefixes, [*unknown* $merge])
-
-Register directories in which "not found" classes could be found
-
-
-
-public  **getPrefixes** ()
-
-Returns the prefixes currently registered in the autoloader
-
-
-
-public  **registerDirs** (*array* $directories, [*unknown* $merge])
+public  **registerDirs** (*array* $directories, [*mixed* $merge])
 
 Register directories in which "not found" classes could be found
 
@@ -101,7 +88,19 @@ Returns the directories currently registered in the autoloader
 
 
 
-public  **registerClasses** (*array* $classes, [*unknown* $merge])
+public  **registerFiles** (*array* $files, [*mixed* $merge])
+
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+
+
+
+public  **getFiles** ()
+
+Returns the files currently registered in the autoloader
+
+
+
+public  **registerClasses** (*array* $classes, [*mixed* $merge])
 
 Register classes and their locations
 
@@ -125,7 +124,13 @@ Unregister the autoload method
 
 
 
-public  **autoLoad** (*unknown* $className)
+public  **loadFiles** ()
+
+Checks if a file exists and then adds the file by doing virtual require
+
+
+
+public  **autoLoad** (*mixed* $className)
 
 Autoloads the registered classes
 

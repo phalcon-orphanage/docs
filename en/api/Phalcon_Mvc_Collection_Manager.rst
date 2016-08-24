@@ -27,6 +27,16 @@ This components controls the initialization of models, keeping record of relatio
 Methods
 -------
 
+public  **getServiceName** ()
+
+...
+
+
+public  **setServiceName** (*mixed* $serviceName)
+
+...
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
@@ -57,7 +67,7 @@ Sets a custom events manager for a specific model
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public  **getCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 Returns a custom events manager related to a model
 
@@ -69,7 +79,7 @@ Initializes a model in the models manager
 
 
 
-public  **isInitialized** (*unknown* $modelName)
+public  **isInitialized** (*mixed* $modelName)
 
 Check whether a model is already initialized
 
@@ -81,13 +91,19 @@ Get the latest initialized model
 
 
 
-public  **setConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $connectionService)
+public  **setConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $connectionService)
 
 Sets a connection service for a specific model
 
 
 
-public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $useImplicitObjectIds)
+public  **getConnectionService** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+
+Gets a connection service for a specific model
+
+
+
+public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $useImplicitObjectIds)
 
 Sets whether a model must use implicit objects ids
 
@@ -105,13 +121,13 @@ Returns the connection related to a model
 
 
 
-public  **notifyEvent** (*unknown* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 
-public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $eventName, *unknown* $data)
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $eventName, *mixed* $data)
 
 Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
 

@@ -6,7 +6,7 @@ Class **Phalcon\\Security\\Random**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/security/random.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Secure random number generator class.  Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc.  It supports following secure random number generators:  - libsodium - openssl - /dev/urandom  
+Secure random number generator class.  Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc.  It supports following secure random number generators:  - random_bytes (PHP 7) - libsodium - openssl, libressl - /dev/urandom  `Phalcon\\Security\\Random` could be mainly useful for:  - Key generation (e.g. generation of complicated keys) - Generating random passwords for new user accounts - Encryption systems  
 
 .. code-block:: php
 
@@ -60,9 +60,9 @@ Secure random number generator class.  Provides secure random number generator w
 Methods
 -------
 
-public  **bytes** ([*unknown* $len])
+public  **bytes** ([*mixed* $len])
 
-Generates a random binary string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain any byte: "x00" - "xFF". 
+Generates a random binary string The `Random::bytes` method returns a string and accepts as input an int representing the length in bytes to be returned. If $len is not specified, 16 is assumed. It may be larger in future. The result may contain any byte: "x00" - "xFF". 
 
 .. code-block:: php
 
@@ -71,11 +71,13 @@ Generates a random binary string If $len is not specified, 16 is assumed. It may
       $random = new \Phalcon\Security\Random();
     
       $bytes = $random->bytes();
+      var_dump(bin2hex($bytes));
+      // possible output: string(32) "00f6c04b144b41fad6a59111c126e1ee"
 
 
 
 
-public  **hex** ([*unknown* $len])
+public  **hex** ([*mixed* $len])
 
 Generates a random hex string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. 
 
@@ -90,7 +92,7 @@ Generates a random hex string If $len is not specified, 16 is assumed. It may be
 
 
 
-public  **base58** ([*unknown* $n])
+public  **base58** ([*mixed* $n])
 
 Generates a random base58 string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain alphanumeric characters except 0, O, I and l. It is similar to Base64 but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed. 
 
@@ -105,7 +107,7 @@ Generates a random base58 string If $len is not specified, 16 is assumed. It may
 
 
 
-public  **base64** ([*unknown* $len])
+public  **base64** ([*mixed* $len])
 
 Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 *( $len / 3) and this need to be rounded up to a multiple of 4. 
 
@@ -120,7 +122,7 @@ Generates a random base64 string If $len is not specified, 16 is assumed. It may
 
 
 
-public  **base64Safe** ([*unknown* $len], [*unknown* $padding])
+public  **base64Safe** ([*mixed* $len], [*mixed* $padding])
 
 Generates a random URL-safe base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. By default, padding is not generated because "=" may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, "-" and "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64. 
 
@@ -150,7 +152,7 @@ Generates a v4 random UUID (Universally Unique IDentifier) The version 4 UUID is
 
 
 
-public  **number** (*unknown* $len)
+public  **number** (*mixed* $len)
 
 Generates a random number between 0 and $len Returns an integer: 0 <= result <= $len. 
 

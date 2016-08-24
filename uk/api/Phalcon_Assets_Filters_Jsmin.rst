@@ -14,7 +14,7 @@ Deletes the characters which are insignificant to JavaScript. Comments will be r
 Methods
 -------
 
-public  **filter** (*unknown* $content)
+public  **filter** (*mixed* $content)
 
 Filters the content using JSMIN
 

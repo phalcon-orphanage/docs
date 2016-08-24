@@ -1,33 +1,35 @@
 Class **Phalcon\\Mvc\\Application**
 ===================================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Application <Phalcon_Application>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.  
 
 .. code-block:: php
 
     <?php
 
-     class Application extends \Phalcon\Mvc\Application
+     use Phalcon\Mvc\Application;
+    
+     class MyApp extends Application
      {
-
+    
     	/**
     	 * Register the services here to make them general or register
     	 * in the ModuleDefinition to make them module-specific
     	 */
-    	protected function _registerServices()
+    	protected function registerServices()
     	{
-
+    
     	}
-
+    
     	/**
     	 * This method registers all the modules in the application
     	 */
@@ -45,8 +47,8 @@ This component encapsulates all the complex operations behind instantiating ever
     		));
     	}
     }
-
-    $application = new Application();
+    
+    $application = new MyApp();
     $application->main();
 
 
@@ -54,67 +56,81 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
-
-
-
-
-
-public  **useImplicitView** (*unknown* $implicitView)
+public  **useImplicitView** (*mixed* $implicitView)
 
 By default. The view is implicitly buffering all the output You can full disable the view component using this method
 
 
 
-public  **registerModules** (*array* $modules, [*unknown* $merge])
+public  **handle** ([*mixed* $uri])
 
-Register an array of modules present in the application
+Handles a MVC request
+
+
+
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Application
+
+Phalcon\\Application
+
+
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Application
+
+Sets the events manager
+
+
+
+public  **getEventsManager** () inherited from Phalcon\\Application
+
+Returns the internal event manager
+
+
+
+public  **registerModules** (*array* $modules, [*mixed* $merge]) inherited from Phalcon\\Application
+
+Register an array of modules present in the application 
 
 .. code-block:: php
 
     <?php
 
-    $this->registerModules(array(
-    	'frontend' => array(
-    		'className' => 'Multiple\Frontend\Module',
-    		'path' => '../apps/frontend/Module.php'
-    	),
-    	'backend' => array(
-    		'className' => 'Multiple\Backend\Module',
-    		'path' => '../apps/backend/Module.php'
-    	)
-    ));
+     $this->registerModules(
+     	[
+     		'frontend' => [
+     			'className' => 'Multiple\Frontend\Module',
+     			'path'      => '../apps/frontend/Module.php'
+     		],
+     		'backend' => [
+     			'className' => 'Multiple\Backend\Module',
+     			'path'      => '../apps/backend/Module.php'
+     		]
+     	]
+     );
 
 
 
 
-public *array*  **getModules** ()
+public  **getModules** () inherited from Phalcon\\Application
 
 Return the modules registered in the application
 
 
 
-public *array|object*  **getModule** (*string* $name)
+public  **getModule** (*mixed* $name) inherited from Phalcon\\Application
 
 Gets the module definition registered in the application via module name
 
 
 
-public  **setDefaultModule** (*unknown* $defaultModule)
+public  **setDefaultModule** (*mixed* $defaultModule) inherited from Phalcon\\Application
 
 Sets the module name to be used if the router doesn't return a valid module
 
 
 
-public  **getDefaultModule** ()
+public  **getDefaultModule** () inherited from Phalcon\\Application
 
 Returns the default module name
-
-
-
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>` \|boolean **handle** ([*string* $uri])
-
-Handles a MVC request
 
 
 
@@ -130,18 +146,9 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
-
-Sets the event manager
-
-
-
-public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
-
-Returns the internal event manager
-
-
-
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
+
+
+

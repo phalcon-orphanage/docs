@@ -3,6 +3,8 @@ Class **Phalcon\\Mvc\\Model\\ValidationFailed**
 
 *extends* class :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 
+*implements* Throwable
+
 .. role:: raw-html(raw)
    :format: html
 

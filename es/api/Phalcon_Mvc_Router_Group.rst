@@ -49,13 +49,13 @@ Helper class to create a group of routes with common attributes
 Methods
 -------
 
-public  **__construct** ([*unknown* $paths])
+public  **__construct** ([*mixed* $paths])
 
 Phalcon\\Mvc\\Router\\Group constructor
 
 
 
-public  **setHostname** (*unknown* $hostname)
+public  **setHostname** (*mixed* $hostname)
 
 Set a hostname restriction for all the routes in the group
 
@@ -67,7 +67,7 @@ Returns the hostname restriction
 
 
 
-public  **setPrefix** (*unknown* $prefix)
+public  **setPrefix** (*mixed* $prefix)
 
 Set a common uri prefix for all the routes in this group
 
@@ -79,7 +79,7 @@ Returns the common prefix for all the routes
 
 
 
-public  **beforeMatch** (*unknown* $beforeMatch)
+public  **beforeMatch** (*mixed* $beforeMatch)
 
 Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
 
@@ -91,7 +91,7 @@ Returns the 'before match' callback if any
 
 
 
-public  **setPaths** (*unknown* $paths)
+public  **setPaths** (*mixed* $paths)
 
 Set common paths for all the routes in the group
 
@@ -109,7 +109,7 @@ Returns the routes added to the group
 
 
 
-public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Adds a route to the router on any HTTP method 
 
@@ -170,7 +170,7 @@ Removes all the pre-defined routes
 
 
 
-protected  **_addRoute** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+protected  **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Adds a route applying the common attributes
 

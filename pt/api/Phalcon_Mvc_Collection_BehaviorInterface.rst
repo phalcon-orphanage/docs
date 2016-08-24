@@ -9,17 +9,12 @@ Interface **Phalcon\\Mvc\\Collection\\BehaviorInterface**
 Methods
 -------
 
-abstract public  **__construct** ([*unknown* $options])
+abstract public  **notify** (*mixed* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection)
 
 ...
 
 
-abstract public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection)
-
-...
-
-
-abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection, *unknown* $method, [*unknown* $arguments])
+abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection, *mixed* $method, [*mixed* $arguments])
 
 ...
 

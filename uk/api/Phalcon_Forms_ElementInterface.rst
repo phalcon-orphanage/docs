@@ -19,7 +19,7 @@ abstract public  **getForm** ()
 ...
 
 
-abstract public  **setName** (*unknown* $name)
+abstract public  **setName** (*mixed* $name)
 
 ...
 
@@ -29,12 +29,12 @@ abstract public  **getName** ()
 ...
 
 
-abstract public  **setFilters** (*unknown* $filters)
+abstract public  **setFilters** (*mixed* $filters)
 
 ...
 
 
-abstract public  **addFilter** (*unknown* $filter)
+abstract public  **addFilter** (*mixed* $filter)
 
 ...
 
@@ -44,7 +44,7 @@ abstract public  **getFilters** ()
 ...
 
 
-abstract public  **addValidators** (*array* $validators, [*unknown* $merge])
+abstract public  **addValidators** (*array* $validators, [*mixed* $merge])
 
 ...
 
@@ -59,17 +59,17 @@ abstract public  **getValidators** ()
 ...
 
 
-abstract public  **prepareAttributes** ([*unknown* $attributes], [*unknown* $useChecked])
+abstract public  **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
 ...
 
 
-abstract public  **setAttribute** (*unknown* $attribute, *unknown* $value)
+abstract public  **setAttribute** (*mixed* $attribute, *mixed* $value)
 
 ...
 
 
-abstract public  **getAttribute** (*unknown* $attribute, [*unknown* $defaultValue])
+abstract public  **getAttribute** (*mixed* $attribute, [*mixed* $defaultValue])
 
 ...
 
@@ -84,17 +84,17 @@ abstract public  **getAttributes** ()
 ...
 
 
-abstract public  **setUserOption** (*unknown* $option, *unknown* $value)
+abstract public  **setUserOption** (*mixed* $option, *mixed* $value)
 
 ...
 
 
-abstract public  **getUserOption** (*unknown* $option, [*unknown* $defaultValue])
+abstract public  **getUserOption** (*mixed* $option, [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **setUserOptions** (*unknown* $options)
+abstract public  **setUserOptions** (*array* $options)
 
 ...
 
@@ -104,7 +104,7 @@ abstract public  **getUserOptions** ()
 ...
 
 
-abstract public  **setLabel** (*unknown* $label)
+abstract public  **setLabel** (*mixed* $label)
 
 ...
 
@@ -119,7 +119,7 @@ abstract public  **label** ()
 ...
 
 
-abstract public  **setDefault** (*unknown* $value)
+abstract public  **setDefault** (*mixed* $value)
 
 ...
 
@@ -159,7 +159,7 @@ abstract public  **clear** ()
 ...
 
 
-abstract public  **render** ([*unknown* $attributes])
+abstract public  **render** ([*mixed* $attributes])
 
 ...
 

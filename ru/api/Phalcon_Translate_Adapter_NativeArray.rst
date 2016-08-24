@@ -22,13 +22,13 @@ Phalcon\\Translate\\Adapter\\NativeArray constructor
 
 
 
-public  **query** (*unknown* $index, [*unknown* $placeholders])
+public  **query** (*mixed* $index, [*mixed* $placeholders])
 
 Returns the translation related to the given key
 
 
 
-public  **exists** (*unknown* $index)
+public  **exists** (*mixed* $index)
 
 Check whether is defined a translation key in the internal array
 
@@ -57,7 +57,7 @@ Sets a translation value
 
 
 
-public  **offsetExists** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public  **offsetExists** (*mixed* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Check whether a translation key exists
 
@@ -75,7 +75,7 @@ Returns the translation related to the given key
 
 
 
-protected  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Replaces placeholders by the values passed
 

@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\ViewBaseInterface**
 Methods
 -------
 
-abstract public  **setViewsDir** (*unknown* $viewsDir)
+abstract public  **setViewsDir** (*mixed* $viewsDir)
 
 ...
 
@@ -19,12 +19,12 @@ abstract public  **getViewsDir** ()
 ...
 
 
-abstract public  **setParamToView** (*unknown* $key, *unknown* $value)
+abstract public  **setParamToView** (*mixed* $key, *mixed* $value)
 
 ...
 
 
-abstract public  **setVar** (*unknown* $key, *unknown* $value)
+abstract public  **setVar** (*mixed* $key, *mixed* $value)
 
 ...
 
@@ -39,12 +39,12 @@ abstract public  **getCache** ()
 ...
 
 
-abstract public  **cache** ([*unknown* $options])
+abstract public  **cache** ([*mixed* $options])
 
 ...
 
 
-abstract public  **setContent** (*unknown* $content)
+abstract public  **setContent** (*mixed* $content)
 
 ...
 
@@ -54,7 +54,7 @@ abstract public  **getContent** ()
 ...
 
 
-abstract public  **partial** (*unknown* $partialPath, [*unknown* $params])
+abstract public  **partial** (*mixed* $partialPath, [*mixed* $params])
 
 ...
 

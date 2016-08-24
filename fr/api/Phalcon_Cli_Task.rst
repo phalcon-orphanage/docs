@@ -3,7 +3,7 @@ Class **Phalcon\\Cli\\Task**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Cli\\TaskInterface <Phalcon_Cli_TaskInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -19,7 +19,7 @@ Every command-line task should extend this class that encapsulates all the task 
     class HelloTask extends \Phalcon\Cli\Task
     {
     
-      //This action will be executed by default
+      // This action will be executed by default
       public function mainAction()
       {
     
@@ -67,7 +67,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

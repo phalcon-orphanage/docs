@@ -9,11 +9,6 @@ Interface **Phalcon\\Db\\IndexInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $indexName, *array* $columns, [*unknown* $type])
-
-...
-
-
 abstract public  **getName** ()
 
 ...

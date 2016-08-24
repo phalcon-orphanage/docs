@@ -9,7 +9,7 @@ Interface **Phalcon\\Http\\Response\\CookiesInterface**
 Methods
 -------
 
-abstract public  **useEncryption** (*unknown* $useEncryption)
+abstract public  **useEncryption** (*mixed* $useEncryption)
 
 ...
 
@@ -19,22 +19,22 @@ abstract public  **isUsingEncryption** ()
 ...
 
 
-abstract public  **set** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
+abstract public  **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*mixed* $path], [*mixed* $secure], [*mixed* $domain], [*mixed* $httpOnly])
 
 ...
 
 
-abstract public  **get** (*unknown* $name)
+abstract public  **get** (*mixed* $name)
 
 ...
 
 
-abstract public  **has** (*unknown* $name)
+abstract public  **has** (*mixed* $name)
 
 ...
 
 
-abstract public  **delete** (*unknown* $name)
+abstract public  **delete** (*mixed* $name)
 
 ...
 

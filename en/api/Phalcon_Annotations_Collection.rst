@@ -78,19 +78,19 @@ Returns the internal annotations as an array
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Returns the first annotation that match a name
 
 
 
-public  **getAll** (*unknown* $name)
+public  **getAll** (*mixed* $name)
 
 Returns all the annotations that match a name
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Check if an annotation exists in a collection
 

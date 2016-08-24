@@ -16,22 +16,25 @@ Allows to cache output fragments, PHP data or raw data to a memcache backend  Th
 
     <?php
 
+     use Phalcon\Cache\Backend\Memcache;
+     use Phalcon\Cache\Frontend\Data as FrontData;
+    
      // Cache data for 2 days
-     $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 172800
-     ));
+     $frontCache = new FrontData([
+         'lifetime' => 172800
+     ]);
     
-     //Create the Cache setting memcached connection options
-     $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-    	'host' => 'localhost',
-    	'port' => 11211,
-      	'persistent' => false
-     ));
+     // Create the Cache setting memcached connection options
+     $cache = new Memcache($frontCache, [
+         'host' => 'localhost',
+         'port' => 11211,
+         'persistent' => false
+     ]);
     
-     //Cache arbitrary data
-     $cache->save('my-data', array(1, 2, 3, 4, 5));
+     // Cache arbitrary data
+     $cache->save('my-data', [1, 2, 3, 4, 5]);
     
-     //Get data
+     // Get data
      $data = $cache->get('my-data');
 
 
@@ -51,7 +54,13 @@ Create internal connection to memcached
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public  **addServers** (*mixed* $host, *mixed* $port, [*mixed* $persistent])
+
+Add servers to memcache pool
+
+
+
+public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 Returns a cached content
 
@@ -81,7 +90,7 @@ Checks if cache exists and it isn't expired
 
 
 
-public *long*  **increment** ([*string* $keyName], [*unknown* $value])
+public *long*  **increment** ([*string* $keyName], [*long* $value])
 
 Increment of given $keyName by $value
 
@@ -104,7 +113,7 @@ public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setFrontend** (*unknown* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -114,7 +123,7 @@ public  **getOptions** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -124,7 +133,7 @@ public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -135,7 +144,7 @@ Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 

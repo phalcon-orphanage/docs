@@ -9,7 +9,7 @@ Class **Phalcon\\Kernel**
 Methods
 -------
 
-public static  **preComputeHashKey** (*unknown* $key)
+public static  **preComputeHashKey** (*mixed* $key)
 
 ...
 

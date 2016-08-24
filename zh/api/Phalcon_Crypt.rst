@@ -45,13 +45,13 @@ Constants
 Methods
 -------
 
-public  **setPadding** (*int* $scheme)
+public  **setPadding** (*mixed* $scheme)
 
 Changes the padding scheme used
 
 
 
-public  **setCipher** (*unknown* $cipher)
+public  **setCipher** (*mixed* $cipher)
 
 Sets the cipher algorithm
 
@@ -63,19 +63,7 @@ Returns the current cipher
 
 
 
-public  **setMode** (*unknown* $mode)
-
-Sets the encrypt/decrypt mode
-
-
-
-public  **getMode** ()
-
-Returns the current encryption mode
-
-
-
-public  **setKey** (*unknown* $key)
+public  **setKey** (*mixed* $key)
 
 Sets the encryption key
 
@@ -87,19 +75,19 @@ Returns the encryption key
 
 
 
-protected  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+protected  **_cryptPadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize, *mixed* $paddingType)
 
 Pads texts before encryption
 
 
 
-protected  **_cryptUnpadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
+protected  **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize, *mixed* $paddingType)
 
 If the function detects that the text was not padded, it will return it unmodified
 
 
 
-public  **encrypt** (*unknown* $text, [*unknown* $key])
+public  **encrypt** (*mixed* $text, [*mixed* $key])
 
 Encrypts a text 
 
@@ -112,7 +100,7 @@ Encrypts a text
 
 
 
-public  **decrypt** (*unknown* $text, [*unknown* $key])
+public  **decrypt** (*mixed* $text, [*mixed* $key])
 
 Decrypts an encrypted text 
 
@@ -125,13 +113,13 @@ Decrypts an encrypted text
 
 
 
-public  **encryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
+public  **encryptBase64** (*mixed* $text, [*mixed* $key], [*mixed* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-public  **decryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
+public  **decryptBase64** (*mixed* $text, [*mixed* $key], [*mixed* $safe])
 
 Decrypt a text that is coded as a base64 string
 
@@ -139,13 +127,7 @@ Decrypt a text that is coded as a base64 string
 
 public  **getAvailableCiphers** ()
 
-Returns a list of available cyphers
-
-
-
-public  **getAvailableModes** ()
-
-Returns a list of available modes
+Returns a list of available ciphers
 
 
 

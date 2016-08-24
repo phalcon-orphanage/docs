@@ -18,47 +18,47 @@ public static  **check** ()
 ...
 
 
-public  **__construct** (*unknown* $file, [*unknown* $width], [*unknown* $height])
+public  **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
 ...
 
 
-protected  **_resize** (*unknown* $width, *unknown* $height)
+protected  **_resize** (*mixed* $width, *mixed* $height)
 
 ...
 
 
-protected  **_crop** (*unknown* $width, *unknown* $height, *unknown* $offsetX, *unknown* $offsetY)
+protected  **_crop** (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)
 
 ...
 
 
-protected  **_rotate** (*unknown* $degrees)
+protected  **_rotate** (*mixed* $degrees)
 
 ...
 
 
-protected  **_flip** (*unknown* $direction)
+protected  **_flip** (*mixed* $direction)
 
 ...
 
 
-protected  **_sharpen** (*unknown* $amount)
+protected  **_sharpen** (*mixed* $amount)
 
 ...
 
 
-protected  **_reflection** (*unknown* $height, *unknown* $opacity, *unknown* $fadeIn)
+protected  **_reflection** (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)
 
 ...
 
 
-protected  **_watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, *unknown* $offsetX, *unknown* $offsetY, *unknown* $opacity)
+protected  **_watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity)
 
 ...
 
 
-protected  **_text** (*unknown* $text, *unknown* $offsetX, *unknown* $offsetY, *unknown* $opacity, *unknown* $r, *unknown* $g, *unknown* $b, *unknown* $size, *unknown* $fontfile)
+protected  **_text** (*mixed* $text, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity, *mixed* $r, *mixed* $g, *mixed* $b, *mixed* $size, *mixed* $fontfile)
 
 ...
 
@@ -68,32 +68,32 @@ protected  **_mask** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $ma
 ...
 
 
-protected  **_background** (*unknown* $r, *unknown* $g, *unknown* $b, *unknown* $opacity)
+protected  **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
 
 ...
 
 
-protected  **_blur** (*unknown* $radius)
+protected  **_blur** (*mixed* $radius)
 
 ...
 
 
-protected  **_pixelate** (*unknown* $amount)
+protected  **_pixelate** (*mixed* $amount)
 
 ...
 
 
-protected  **_save** (*unknown* $file, *unknown* $quality)
+protected  **_save** (*mixed* $file, *mixed* $quality)
 
 ...
 
 
-protected  **_render** (*unknown* $ext, *unknown* $quality)
+protected  **_render** (*mixed* $ext, *mixed* $quality)
 
 ...
 
 
-protected  **_create** (*unknown* $width, *unknown* $height)
+protected  **_create** (*mixed* $width, *mixed* $height)
 
 ...
 
@@ -137,55 +137,55 @@ Image mime type
 
 
 
-public  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master]) inherited from Phalcon\\Image\\Adapter
+public  **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from Phalcon\\Image\\Adapter
 
 Resize the image to the given size
 
 
 
-public  **liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $deltaX], [*unknown* $rigidity]) inherited from Phalcon\\Image\\Adapter
+public  **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from Phalcon\\Image\\Adapter
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
 
 
-public  **crop** (*unknown* $width, *unknown* $height, [*unknown* $offsetX], [*unknown* $offsetY]) inherited from Phalcon\\Image\\Adapter
+public  **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from Phalcon\\Image\\Adapter
 
 Crop an image to the given size
 
 
 
-public  **rotate** (*unknown* $degrees) inherited from Phalcon\\Image\\Adapter
+public  **rotate** (*mixed* $degrees) inherited from Phalcon\\Image\\Adapter
 
 Rotate the image by a given amount
 
 
 
-public  **flip** (*unknown* $direction) inherited from Phalcon\\Image\\Adapter
+public  **flip** (*mixed* $direction) inherited from Phalcon\\Image\\Adapter
 
 Flip the image along the horizontal or vertical axis
 
 
 
-public  **sharpen** (*unknown* $amount) inherited from Phalcon\\Image\\Adapter
+public  **sharpen** (*mixed* $amount) inherited from Phalcon\\Image\\Adapter
 
 Sharpen the image by a given amount
 
 
 
-public  **reflection** (*unknown* $height, [*unknown* $opacity], [*unknown* $fadeIn]) inherited from Phalcon\\Image\\Adapter
+public  **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from Phalcon\\Image\\Adapter
 
 Add a reflection to an image
 
 
 
-public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+public  **watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from Phalcon\\Image\\Adapter
 
 Add a watermark to an image with the specified opacity
 
 
 
-public  **text** (*unknown* $text, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile]) inherited from Phalcon\\Image\\Adapter
+public  **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from Phalcon\\Image\\Adapter
 
 Add a text to an image with a specified opacity
 
@@ -197,31 +197,31 @@ Composite one image onto another
 
 
 
-public  **background** (*unknown* $color, [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+public  **background** (*mixed* $color, [*mixed* $opacity]) inherited from Phalcon\\Image\\Adapter
 
 Set the background color of an image
 
 
 
-public  **blur** (*unknown* $radius) inherited from Phalcon\\Image\\Adapter
+public  **blur** (*mixed* $radius) inherited from Phalcon\\Image\\Adapter
 
 Blur image
 
 
 
-public  **pixelate** (*unknown* $amount) inherited from Phalcon\\Image\\Adapter
+public  **pixelate** (*mixed* $amount) inherited from Phalcon\\Image\\Adapter
 
 Pixelate image
 
 
 
-public  **save** ([*unknown* $file], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public  **save** ([*mixed* $file], [*mixed* $quality]) inherited from Phalcon\\Image\\Adapter
 
 Save the image
 
 
 
-public  **render** ([*unknown* $ext], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public  **render** ([*mixed* $ext], [*mixed* $quality]) inherited from Phalcon\\Image\\Adapter
 
 Render the image and return the binary string
 

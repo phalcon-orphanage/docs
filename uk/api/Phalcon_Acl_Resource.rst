@@ -30,7 +30,7 @@ Resource description
 
 
 
-public  **__construct** (*unknown* $name, [*unknown* $description])
+public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\\Acl\\Resource constructor
 

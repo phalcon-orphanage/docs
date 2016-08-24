@@ -72,7 +72,7 @@ ON UPDATE
 
 
 
-public  **__construct** (*unknown* $name, *array* $definition)
+public  **__construct** (*mixed* $name, *array* $definition)
 
 Phalcon\\Db\\Reference constructor
 

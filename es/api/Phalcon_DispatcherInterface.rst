@@ -9,32 +9,37 @@ Interface **Phalcon\\DispatcherInterface**
 Methods
 -------
 
-abstract public  **setActionSuffix** (*unknown* $actionSuffix)
+abstract public  **setActionSuffix** (*mixed* $actionSuffix)
 
 ...
 
 
-abstract public  **setDefaultNamespace** (*unknown* $defaultNamespace)
+abstract public  **getActionSuffix** ()
 
 ...
 
 
-abstract public  **setDefaultAction** (*unknown* $actionName)
+abstract public  **setDefaultNamespace** (*mixed* $defaultNamespace)
 
 ...
 
 
-abstract public  **setNamespaceName** (*unknown* $namespaceName)
+abstract public  **setDefaultAction** (*mixed* $actionName)
 
 ...
 
 
-abstract public  **setModuleName** (*unknown* $moduleName)
+abstract public  **setNamespaceName** (*mixed* $namespaceName)
 
 ...
 
 
-abstract public  **setActionName** (*unknown* $actionName)
+abstract public  **setModuleName** (*mixed* $moduleName)
+
+...
+
+
+abstract public  **setActionName** (*mixed* $actionName)
 
 ...
 
@@ -44,7 +49,7 @@ abstract public  **getActionName** ()
 ...
 
 
-abstract public  **setParams** (*unknown* $params)
+abstract public  **setParams** (*mixed* $params)
 
 ...
 
@@ -54,12 +59,17 @@ abstract public  **getParams** ()
 ...
 
 
-abstract public  **setParam** (*unknown* $param, *unknown* $value)
+abstract public  **setParam** (*mixed* $param, *mixed* $value)
 
 ...
 
 
-abstract public  **getParam** (*unknown* $param, [*unknown* $filters])
+abstract public  **getParam** (*mixed* $param, [*mixed* $filters])
+
+...
+
+
+abstract public  **hasParam** (*mixed* $param)
 
 ...
 
@@ -79,7 +89,7 @@ abstract public  **dispatch** ()
 ...
 
 
-abstract public  **forward** (*unknown* $forward)
+abstract public  **forward** (*mixed* $forward)
 
 ...
 

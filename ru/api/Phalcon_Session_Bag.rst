@@ -23,7 +23,7 @@ This component helps to separate session data into "namespaces". Working by this
 Methods
 -------
 
-public  **__construct** (*unknown* $name)
+public  **__construct** (*mixed* $name)
 
 Phalcon\\Session\\Bag constructor
 
@@ -43,13 +43,13 @@ Returns the DependencyInjector container
 
 public  **initialize** ()
 
-Initializes the session bag. This method must not be called directly, the class calls it when its internal data is accesed
+Initializes the session bag. This method must not be called directly, the class calls it when its internal data is accessed
 
 
 
 public  **destroy** ()
 
-Destroyes the session bag 
+Destroys the session bag 
 
 .. code-block:: php
 
@@ -60,7 +60,7 @@ Destroyes the session bag
 
 
 
-public  **set** (*unknown* $property, *unknown* $value)
+public  **set** (*mixed* $property, *mixed* $value)
 
 Sets a value in the session bag 
 
@@ -73,7 +73,7 @@ Sets a value in the session bag
 
 
 
-public  **__set** (*unknown* $property, *unknown* $value)
+public  **__set** (*mixed* $property, *mixed* $value)
 
 Magic setter to assign values to the session bag 
 
@@ -86,7 +86,7 @@ Magic setter to assign values to the session bag
 
 
 
-public  **get** (*unknown* $property, [*unknown* $defaultValue])
+public  **get** (*mixed* $property, [*mixed* $defaultValue])
 
 Obtains a value from the session bag optionally setting a default value 
 
@@ -99,7 +99,7 @@ Obtains a value from the session bag optionally setting a default value
 
 
 
-public  **__get** (*unknown* $property)
+public  **__get** (*mixed* $property)
 
 Magic getter to obtain values from the session bag 
 
@@ -112,7 +112,7 @@ Magic getter to obtain values from the session bag
 
 
 
-public  **has** (*unknown* $property)
+public  **has** (*mixed* $property)
 
 Check whether a property is defined in the internal bag 
 
@@ -125,7 +125,7 @@ Check whether a property is defined in the internal bag
 
 
 
-public  **__isset** (*unknown* $property)
+public  **__isset** (*mixed* $property)
 
 Magic isset to check whether a property is defined in the bag 
 
@@ -138,7 +138,7 @@ Magic isset to check whether a property is defined in the bag
 
 
 
-public  **remove** (*unknown* $property)
+public  **remove** (*mixed* $property)
 
 Removes a property from the internal bag 
 
@@ -151,7 +151,7 @@ Removes a property from the internal bag
 
 
 
-public  **__unset** (*unknown* $property)
+public  **__unset** (*mixed* $property)
 
 Magic unset to remove items using the array syntax 
 
@@ -177,33 +177,29 @@ Return length of bag
 
 
 
-final public *\ArrayIterator*  **getIterator** ()
+final public  **getIterator** ()
 
  Returns the bag iterator
 
 
 
-final public  **offsetSet** (*string* $property, *mixed* $value)
+final public  **offsetSet** (*mixed* $property, *mixed* $value)
+
+...
 
 
+final public  **offsetExists** (*mixed* $property)
+
+...
 
 
+final public  **offsetUnset** (*mixed* $property)
 
-final public  **offsetExists** (*string* $property)
-
-
-
+...
 
 
-final public  **offsetUnset** (*string* $property)
+final public  **offsetGet** (*mixed* $property)
 
-
-
-
-
-final public  **offsetGet** (*string* $property)
-
-
-
+...
 
 
