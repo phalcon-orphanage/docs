@@ -51,7 +51,7 @@ Reads ini files and converts them to Phalcon\\Config objects.  Given the next co
 Methods
 -------
 
-public  **__construct** (*mixed* $filePath)
+public  **__construct** (*mixed* $filePath, [*mixed* $mode])
 
 Phalcon\\Config\\Adapter\\Ini constructor
 

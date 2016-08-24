@@ -1,6 +1,8 @@
 Class **Phalcon\\Acl\\Resource**
 ================================
 
+*implements* :doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 

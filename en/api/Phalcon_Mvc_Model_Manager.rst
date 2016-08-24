@@ -96,6 +96,19 @@ Sets the mapped source for a model
 
 
 
+final public  **isVisibleModelProperty** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $property)
+
+Check whether a model property is declared as public. 
+
+.. code-block:: php
+
+    <?php
+
+     $isPublic = $manager->isVisibleModelProperty(new Robots(), 'name');
+
+
+
+
 public  **getModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Returns the mapped source for a model

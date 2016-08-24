@@ -296,13 +296,13 @@ Allows to query a set of records that match the specified conditions
      // Get and print virtual robots ordered by name
      $robots = Robots::find(["type='virtual'", 'order' => 'name']);
      foreach ($robots as $robot) {
-         echo $robot->name, "\n";
+     echo $robot->name, "\n";
      }
     
      // Get first 100 virtual robots ordered by name
      $robots = Robots::find(["type='virtual'", 'order' => 'name', 'limit' => 100]);
      foreach ($robots as $robot) {
-         echo $robot->name, "\n";
+     echo $robot->name, "\n";
      }
 
 
@@ -533,7 +533,7 @@ Check whether validation process has generated any messages
     
     public function validation()
       {
-          $validator = new Validation();
+      $validator = new Validation();
     
      		$validator->validate('status', new ExclusionIn(array(
     		'domain' => array('A', 'I')
@@ -1082,11 +1082,6 @@ final protected *string*  **_possibleSetter** (*string* $property, *mixed* $valu
 
 Check for, and attempt to use, possible setter.
 
-
-
-final protected  **_isVisible** (*mixed* $property)
-
-...
 
 
 public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*string* $property)

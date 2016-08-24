@@ -58,7 +58,7 @@ Check whether is defined a translation key in the internal array
 
 
 
-public *string*  **nquery** (*string* $msgid1, *string* $msgid2, *int* $count, [*array* $placeholders], [*string* $domain])
+public  **nquery** (*mixed* $msgid1, *mixed* $msgid2, *mixed* $count, [*mixed* $placeholders], [*mixed* $domain])
 
 The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
 
@@ -91,12 +91,12 @@ Sets the path for a domain
     <?php
 
      // Set the directory path
-     $gettext->setDirectory("/path/to/the/messages");
+     $gettext->setDirectory('/path/to/the/messages');
     
      // Set the domains and directories path
      $gettext->setDirectory([
-        "messages" => "/path/to/the/messages",
-        "another" => "/path/to/the/another"
+        'messages' => '/path/to/the/messages',
+        'another'  => '/path/to/the/another'
      ]);
 
 
