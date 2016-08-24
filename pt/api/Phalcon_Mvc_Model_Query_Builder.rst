@@ -153,7 +153,7 @@ Return the models who makes part of the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
-Adds a INNER join to the query 
+Adds an INNER join to the query 
 
 .. code-block:: php
 
@@ -176,7 +176,7 @@ Adds a INNER join to the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a INNER join to the query 
+Adds an INNER join to the query 
 
 .. code-block:: php
 
@@ -257,7 +257,7 @@ Appends a condition to the current conditions using a AND operator
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current conditions using a OR operator 
+Appends a condition to the current conditions using an OR operator 
 
 .. code-block:: php
 
@@ -329,7 +329,7 @@ Return the conditions for the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string|array* $orderBy)
 
-Sets a ORDER BY condition clause 
+Sets an ORDER BY condition clause 
 
 .. code-block:: php
 
@@ -381,7 +381,7 @@ Return the current having clause
 
 public  **limit** ([*mixed* $limit], [*mixed* $offset])
 
-Sets a LIMIT clause, optionally a offset clause 
+Sets a LIMIT clause, optionally an offset clause 
 
 .. code-block:: php
 

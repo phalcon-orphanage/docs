@@ -136,7 +136,7 @@ Returns an element added to the form by its name
 
 public  **label** (*mixed* $name, [*array* $attributes])
 
-Generate the label of a element added to the form including HTML
+Generate the label of an element added to the form including HTML
 
 
 

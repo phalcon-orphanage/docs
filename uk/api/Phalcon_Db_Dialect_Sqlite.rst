@@ -279,7 +279,7 @@ Resolve Column expressions
 
 public  **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
-Transforms an intermediate representation for a expression into a database system valid expression
+Transforms an intermediate representation for an expression into a database system valid expression
 
 
 
@@ -423,7 +423,7 @@ Resolve a HAVING clause
 
 final protected  **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
-Resolve a ORDER BY clause
+Resolve an ORDER BY clause
 
 
 

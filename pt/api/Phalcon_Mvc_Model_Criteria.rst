@@ -84,7 +84,7 @@ Sets the columns to be queried
 
 public  **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
-Adds a INNER join to the query 
+Adds an INNER join to the query 
 
 .. code-block:: php
 
@@ -100,7 +100,7 @@ Adds a INNER join to the query
 
 public  **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a INNER join to the query 
+Adds an INNER join to the query 
 
 .. code-block:: php
 

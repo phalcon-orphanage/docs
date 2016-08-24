@@ -81,19 +81,19 @@ Replaces the model's name to its source name in a qualified-name expression
 
 final protected  **_getCallArgument** (*array* $argument)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 
 final protected  **_getCaseExpression** (*array* $expr)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 
 final protected  **_getFunctionCall** (*array* $expr)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 

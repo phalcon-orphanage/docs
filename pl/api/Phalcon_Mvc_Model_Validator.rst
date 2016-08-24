@@ -44,7 +44,7 @@ Returns an option
 
 public  **isSetOption** (*mixed* $option)
 
-Check whether a option has been defined in the validator options
+Check whether an option has been defined in the validator options
 
 
 

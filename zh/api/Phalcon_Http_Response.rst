@@ -126,7 +126,7 @@ Resets all the stablished headers
 
 public  **setExpires** (*DateTime* $datetime)
 
-Sets a Expires header to use HTTP cache 
+Sets an Expires header in the response that allows to use the HTTP cache 
 
 .. code-block:: php
 

@@ -123,13 +123,13 @@ Returns the connection related to a model
 
 public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
 
 
 
 public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
+Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that at least one was implemented
 
 
 

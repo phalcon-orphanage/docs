@@ -170,13 +170,13 @@ Returns the connection service name used to read or write data related to a mode
 
 public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
 
 
 
 public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
+Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
 
 
 

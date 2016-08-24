@@ -104,7 +104,7 @@ Returns an option
 
 public  **isSetOption** (*mixed* $option) inherited from Phalcon\\Mvc\\Model\\Validator
 
-Check whether a option has been defined in the validator options
+Check whether an option has been defined in the validator options
 
 
 
