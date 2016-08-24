@@ -1084,10 +1084,9 @@ Check for, and attempt to use, possible setter.
 
 
 
-final protected *boolean*  **_isVisible** (*string* $property)
+final protected  **_isVisible** (*mixed* $property)
 
-Check whether a property is declared private or protected. This is a stop-gap because we do not want to have to declare all properties.
-
+...
 
 
 public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*string* $property)

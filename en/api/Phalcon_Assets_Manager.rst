@@ -52,7 +52,7 @@ Adds a Css resource to the 'css' collection
 
 public  **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds a inline Css to the 'css' collection
+Adds an inline Css to the 'css' collection
 
 
 
@@ -72,7 +72,7 @@ Adds a javascript resource to the 'js' collection
 
 public  **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds a inline javascript to the 'js' collection
+Adds an inline javascript to the 'js' collection
 
 
 
@@ -91,7 +91,7 @@ Adds a resource by its type
 
 public  **addInlineCodeByType** (*mixed* $type, :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
-Adds a inline code by its type
+Adds an inline code by its type
 
 
 

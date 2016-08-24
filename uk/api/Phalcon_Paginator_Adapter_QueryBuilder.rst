@@ -16,16 +16,20 @@ Pagination using a PHQL query builder as source of data
 
     <?php
 
-      $builder = $this->modelsManager->createBuilder()
-                       ->columns('id, name')
-                       ->from('Robots')
-                       ->orderBy('name');
+     use Phalcon\Paginator\Adapter\QueryBuilder;
     
-      $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
-          "builder" => $builder,
-          "limit"=> 20,
-          "page" => 1
-      ));
+     $builder = $this->modelsManager->createBuilder()
+                     ->columns('id, name')
+                     ->from('Robots')
+                     ->orderBy('name');
+    
+     $paginator = new QueryBuilder(
+         [
+             'builder' => $builder,
+             'limit'   => 20,
+             'page'    => 1,
+         ]
+     );
 
 
 

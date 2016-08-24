@@ -82,7 +82,7 @@ Adds a resource to the collection
 
 public  **addInline** (:doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>` $code)
 
-Adds a inline code to the collection
+Adds an inline code to the collection
 
 
 
@@ -94,7 +94,7 @@ Adds a CSS resource to the collection
 
 public  **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds a inline CSS to the collection
+Adds an inline CSS to the collection
 
 
 
@@ -106,7 +106,7 @@ Adds a javascript resource to the collection
 
 public  **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds a inline javascript to the collection
+Adds an inline javascript to the collection
 
 
 
