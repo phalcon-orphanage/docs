@@ -132,7 +132,7 @@ INVO, мы подходим к созданию CRUD, очень распрос�
         /**
          * Инициализация формы
          */
-        public function initialize($entity = null, $options = array())
+        public function initialize($entity = null, $options = [])
         {
             if (!isset($options['edit'])) {
                 $element = new Text("id");
@@ -143,46 +143,46 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
             $name = new Text("name");
             $name->setLabel("Название");
-            $name->setFilters(array('striptags', 'string'));
+            $name->setFilters(['striptags', 'string']);
             $name->addValidators(
-                array(
+                [
                     new PresenceOf(
-                        array(
+                        [
                             'message' => 'Название обязательно'
-                        )
+                        ]
                     )
-                )
+                ]
             );
             $this->add($name);
 
             $type = new Select(
                 'profilesId',
                 ProductTypes::find(),
-                array(
-                    'using'      => array('id', 'name'),
+                [
+                    'using'      => ['id', 'name'],
                     'useEmpty'   => true,
                     'emptyText'  => '...',
                     'emptyValue' => ''
-                )
+                ]
             );
             $this->add($type);
 
             $price = new Text("price");
             $price->setLabel("Цена");
-            $price->setFilters(array('float'));
+            $price->setFilters(['float']);
             $price->addValidators(
-                array(
+                [
                     new PresenceOf(
-                        array(
+                        [
                             'message' => 'Цена обязательна'
-                        )
+                        ]
                     ),
                     new Numericality(
-                        array(
+                        [
                             'message' => 'Цена обязательна'
-                        )
+                        ]
                     )
-                )
+                ]
             );
             $this->add($price);
         }
@@ -202,17 +202,17 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     $name->setLabel("Название");
 
     // Перед валидацией применяем эти фильтры
-    $name->setFilters(array('striptags', 'string'));
+    $name->setFilters(['striptags', 'string']);
 
     // Применяем валидаторы
     $name->addValidators(
-        array(
+        [
             new PresenceOf(
-                array(
+                [
                     'message' => 'Название обязательно'
-                )
+                ]
             )
-        )
+        ]
     );
 
     // Добавляем элемент в форму
@@ -234,12 +234,12 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     $type = new Select(
         'profilesId',
         ProductTypes::find(),
-        array(
-            'using'      => array('id', 'name'),
+        [
+            'using'      => ['id', 'name'],
             'useEmpty'   => true,
             'emptyText'  => '...',
             'emptyValue' => ''
-        )
+        ]
     );
 
 Заметьте, что :code:`ProductTypes::find()` содержит данные, необходимые для заполнения тега SELECT с помощью :code:`Phalcon\Tag::select()`.
@@ -392,11 +392,11 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     // ...
 
     $paginator = new Paginator(
-        array(
+        [
             "data"  => $products,  // Данные для пагинации
             "limit" => 5,          // Количество записей на страницу
             "page"  => $numberPage // Активная страница
-        )
+        ]
     );
 
     // Получаем активную страницу пагинатора
@@ -530,9 +530,9 @@ INVO, мы подходим к созданию CRUD, очень распрос�
                 'product_types_id',
                 'ProductTypes',
                 'id',
-                array(
+                [
                     'reusable' => true
-                )
+                ]
             );
         }
 
@@ -551,9 +551,9 @@ ORM для инициализации модели. В данном случае
         'product_types_id',
         'ProductTypes',
         'id',
-        array(
+        [
             'reusable' => true
-        )
+        ]
     );
 
 Это значит, что локальный атрибут "product_types_id" в "Products" имеет отношение один-ко-многим с
@@ -629,17 +629,17 @@ ORM для инициализации модели. В данном случае
     $name->setLabel("Название");
 
     // Фильтры для названия
-    $name->setFilters(array('striptags', 'string'));
+    $name->setFilters(['striptags', 'string']);
 
     // Валидаторы для названия
     $name->addValidators(
-        array(
+        [
             new PresenceOf(
-                array(
+                [
                     'message' => 'Название обязательно'
-                )
+                ]
             )
-        )
+        ]
     );
 
     $this->add($name);
@@ -706,7 +706,7 @@ ORM для инициализации модели. В данном случае
                 return $this->forward("products/index");
             }
 
-            $this->view->form = new ProductsForm($product, array('edit' => true));
+            $this->view->form = new ProductsForm($product, ['edit' => true]);
         }
     }
 
