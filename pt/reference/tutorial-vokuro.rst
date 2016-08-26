@@ -12,13 +12,13 @@ Depois de clonar o projeto em sua raiz do documento você verá a seguinte estru
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/

@@ -12,13 +12,13 @@ Vökuró - это небольшой сайт, показывающий, как 
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/
