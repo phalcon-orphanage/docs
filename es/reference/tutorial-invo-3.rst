@@ -132,7 +132,7 @@ This form defines the fields that are visible to the user:
         /**
          * Initialize the products form
          */
-        public function initialize($entity = null, $options = array())
+        public function initialize($entity = null, $options = [])
         {
             if (!isset($options['edit'])) {
                 $element = new Text("id");
@@ -143,46 +143,46 @@ This form defines the fields that are visible to the user:
 
             $name = new Text("name");
             $name->setLabel("Name");
-            $name->setFilters(array('striptags', 'string'));
+            $name->setFilters(['striptags', 'string']);
             $name->addValidators(
-                array(
+                [
                     new PresenceOf(
-                        array(
+                        [
                             'message' => 'Name is required'
-                        )
+                        ]
                     )
-                )
+                ]
             );
             $this->add($name);
 
             $type = new Select(
                 'profilesId',
                 ProductTypes::find(),
-                array(
-                    'using'      => array('id', 'name'),
+                [
+                    'using'      => ['id', 'name'],
                     'useEmpty'   => true,
                     'emptyText'  => '...',
                     'emptyValue' => ''
-                )
+                ]
             );
             $this->add($type);
 
             $price = new Text("price");
             $price->setLabel("Price");
-            $price->setFilters(array('float'));
+            $price->setFilters(['float']);
             $price->addValidators(
-                array(
+                [
                     new PresenceOf(
-                        array(
+                        [
                             'message' => 'Price is required'
-                        )
+                        ]
                     ),
                     new Numericality(
-                        array(
+                        [
                             'message' => 'Price is required'
-                        )
+                        ]
                     )
-                )
+                ]
             );
             $this->add($price);
         }
@@ -202,17 +202,17 @@ Every element follows almost the same structure:
     $name->setLabel("Name");
 
     // Before validating the element apply these filters
-    $name->setFilters(array('striptags', 'string'));
+    $name->setFilters(['striptags', 'string']);
 
     // Apply this validators
     $name->addValidators(
-        array(
+        [
             new PresenceOf(
-                array(
+                [
                     'message' => 'Name is required'
-                )
+                ]
             )
-        )
+        ]
     );
 
     // Add the element to the form
@@ -234,12 +234,12 @@ Other elements are also used in this form:
     $type = new Select(
         'profilesId',
         ProductTypes::find(),
-        array(
-            'using'      => array('id', 'name'),
+        [
+            'using'      => ['id', 'name'],
             'useEmpty'   => true,
             'emptyText'  => '...',
             'emptyValue' => ''
-        )
+        ]
     );
 
 Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
@@ -392,11 +392,11 @@ retornó registros, entonces creamos un páginador para navegar fácilmente a tr
     // ...
 
     $paginator = new Paginator(
-        array(
+        [
             "data"  => $products,  // Data to paginate
             "limit" => 5,          // Rows per page
             "page"  => $numberPage // Active page
-        )
+        ]
     );
 
     // Obtener la página activa
@@ -530,9 +530,9 @@ we have to check the model Products (app/models/Products.php):
                 'product_types_id',
                 'ProductTypes',
                 'id',
-                array(
+                [
                     'reusable' => true
-                )
+                ]
             );
         }
 
@@ -551,9 +551,9 @@ has a one-to-many relationship to another model called "ProductTypes".
         'product_types_id',
         'ProductTypes',
         'id',
-        array(
+        [
             'reusable' => true
-        )
+        ]
     );
 
 Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
@@ -629,17 +629,17 @@ This filtering is optional, also the ORM escapes the input data and performs add
     $name->setLabel("Name");
 
     // Filters for name
-    $name->setFilters(array('striptags', 'string'));
+    $name->setFilters(['striptags', 'string']);
 
     // Validators for name
     $name->addValidators(
-        array(
+        [
             new PresenceOf(
-                array(
+                [
                     'message' => 'Name is required'
-                )
+                ]
             )
-        )
+        ]
     );
 
     $this->add($name);
@@ -706,7 +706,7 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
                 return $this->forward("products/index");
             }
 
-            $this->view->form = new ProductsForm($product, array('edit' => true));
+            $this->view->form = new ProductsForm($product, ['edit' => true]);
         }
     }
 

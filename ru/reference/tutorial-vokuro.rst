@@ -36,13 +36,13 @@ The Phalcon extension should appear as part of the output:
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/
