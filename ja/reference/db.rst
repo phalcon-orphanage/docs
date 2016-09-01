@@ -59,12 +59,12 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
+    $config = [
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
         "dbname"   => "test_db"
-    );
+    ];
 
     // Optional
     $config["persistent"] = false;
@@ -77,12 +77,12 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
+    $config = [
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
         "dbname"   => "template"
-    );
+    ];
 
     // Optional
     $config["schema"] = "public";
@@ -95,9 +95,9 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
+    $config = [
         "dbname" => "/path/to/database.db"
-    );
+    ];
 
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -112,16 +112,16 @@ You can set PDO options at connection time by passing the parameters 'options':
 
     // Create a connection with PDO options
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "sigma",
             "dbname"   => "test_db",
-            "options"  => array(
+            "options"  => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
                 PDO::ATTR_CASE               => PDO::CASE_LOWER
-            )
-        )
+            ]
+        ]
     );
 
 レコードの検索
@@ -210,11 +210,11 @@ injection attacks. Both string and positional placeholders are supported. Bindin
 
     // Binding with numeric placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array("Wall-E"));
+    $result = $connection->query($sql, ["Wall-E"]);
 
     // Binding with named placeholders
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+    $success = $connection->query($sql, ["name" => "Astro Boy", "year" => 1952]);
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
 are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
@@ -233,7 +233,7 @@ bound parameters are directly passed to PDO:
 
     // Binding with PDO placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
+    $result = $connection->query($sql, [1 => "Wall-E"]);
 
 レコードの登録/更新/削除
 --------------------------------
@@ -249,22 +249,22 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astro Boy', 1952));
+    $success = $connection->execute($sql, ['Astro Boy', 1952]);
 
     // Generating dynamically the necessary SQL
     $success = $connection->insert(
        "robots",
-       array("Astro Boy", 1952),
-       array("name", "year")
+       ["Astro Boy", 1952],
+       ["name", "year"]
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->insertAsDict(
        "robots",
-       array(
+       [
           "name" => "Astro Boy",
           "year" => 1952
-       )
+       ]
     );
 
     // Updating data with a raw SQL statement
@@ -273,46 +273,46 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astro Boy', 101));
+    $success = $connection->execute($sql, ['Astro Boy', 101]);
 
     // Generating dynamically the necessary SQL
     $success = $connection->update(
        "robots",
-       array("name"),
-       array("New Astro Boy"),
+       ["name"],
+       ["New Astro Boy"],
        "id = 101" // Warning! In this case values are not escaped
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->updateAsDict(
        "robots",
-       array(
+       [
           "name" => "New Astro Boy"
-       ),
+       ],
        "id = 101" // Warning! In this case values are not escaped
     );
 
     // With escaping conditions
     $success = $connection->update(
        "robots",
-       array("name"),
-       array("New Astro Boy"),
-       array(
+       ["name"],
+       ["New Astro Boy"],
+       [
           'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+          'bind' => [101],
+          'bindTypes' => [PDO::PARAM_INT] // Optional parameter
+       ]
     );
     $success = $connection->updateAsDict(
        "robots",
-       array(
+       [
           "name" => "New Astro Boy"
-       ),
-       array(
+       ],
+       [
           'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+          'bind' => [101],
+          'bindTypes' => [PDO::PARAM_INT] // Optional parameter
+       ]
     );
 
     // Deleting data with a raw SQL statement
@@ -321,10 +321,10 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "DELETE `robots` WHERE `id` = ?";
-    $success = $connection->execute($sql, array(101));
+    $success = $connection->execute($sql, [101]);
 
     // Generating dynamically the necessary SQL
-    $success = $connection->delete("robots", "id = ?", array(101));
+    $success = $connection->delete("robots", "id = ?", [101]);
 
 トランザクションとネストしたトランザクション
 --------------------------------------------
@@ -434,12 +434,12 @@ Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalc
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Assign the eventsManager to the db adapter instance
@@ -578,8 +578,8 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     // Execute some SQL statement
     $connection->insert(
         "products",
-        array("Hot pepper", 3.50),
-        array("name", "price")
+        ["Hot pepper", 3.50],
+        ["name", "price"]
     );
 
 As above, the file *app/logs/db.log* will contain something like this:
@@ -675,36 +675,36 @@ The following example shows how to create a table:
     $connection->createTable(
         "robots",
         null,
-        array(
-           "columns" => array(
+        [
+           "columns" => [
                 new Column(
                     "id",
-                    array(
+                    [
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
                         "primary"       => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "name",
-                    array(
+                    [
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",
-                    array(
+                    [
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
                         "notNull" => true,
-                    )
+                    ]
                 )
-            )
-        )
+            ]
+        ]
     );
 
 :code:`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class
@@ -778,12 +778,12 @@ is limited by these constraints.
         null,
         new Column(
             "robot_type",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
                 "after"   => "name"
-            )
+            ]
         )
     );
 
@@ -793,11 +793,11 @@ is limited by these constraints.
         null,
         new Column(
             "name",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
                 "notNull" => true
-            )
+            ]
         )
     );
 
