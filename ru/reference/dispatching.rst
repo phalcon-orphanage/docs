@@ -26,7 +26,7 @@
         $controller = new $controllerClass();
 
         // Выполнение действия
-        call_user_func_array(array($controller, $actionName . "Action"), $params);
+        call_user_func_array([$controller, $actionName . "Action"], $params);
 
         // Значение переменной должно быть изменено при необходимости запуска другого контроллера
         $finished = true;
@@ -139,10 +139,10 @@
 
             // Перенаправляем на действие index
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "post",
                     "action"     => "index"
-                )
+                ]
             );
         }
     }
@@ -159,17 +159,17 @@
 
     // Направляем поток на другое действие текущего контроллера
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search"
-        )
+        ]
     );
 
     // Направляем поток на другое действие текущего контроллера с передачей параметров
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search",
-            "params" => array(1, 2, 3)
-        )
+            "params" => [1, 2, 3]
+        ]
     );
 
 Метод forward принимает следующие параметры:
@@ -211,7 +211,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         // Attach a listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Use odd parameters as keys and even as values
@@ -249,7 +249,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         // Attach a listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Explode each parameter as key,value pairs
@@ -436,7 +436,7 @@ before dispatch the action preparing the parameter accordingly:
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
                         // Override the parameters by the model instance
-                        $dispatcher->setParams(array($model));
+                        $dispatcher->setParams([$model]);
                     }
                 }
 
@@ -479,10 +479,10 @@ A developer can improve it to inject any kind of dependency or model in actions 
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'show404'
-                    )
+                    ]
                 );
 
                 return false;
@@ -493,10 +493,10 @@ A developer can improve it to inject any kind of dependency or model in actions 
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'index',
                             'action'     => 'show404'
-                        )
+                        ]
                     );
 
                     return false;
@@ -529,18 +529,18 @@ take actions when an exception is produced in the dispatch loop:
         {
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
+                $dispatcher->forward([
                     'controller' => 'index',
                     'action'     => 'show404'
-                ));
+                ]);
                 return false;
             }
 
             // Handle other exceptions
-            $dispatcher->forward(array(
+            $dispatcher->forward([
                 'controller' => 'index',
                 'action'     => 'show503'
-            ));
+            ]);
 
             return false;
         }

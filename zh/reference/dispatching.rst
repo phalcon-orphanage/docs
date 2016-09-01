@@ -26,7 +26,7 @@
         $controller = new $controllerClass();
 
         // 执行action
-        call_user_func_array(array($controller, $actionName . "Action"), $params);
+        call_user_func_array([$controller, $actionName . "Action"], $params);
 
         // $finished应该重新加载以检测MVC流
         // 是否转发给了另一个控制器
@@ -141,10 +141,10 @@
 
             // 将流转发到index动作
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "post",
                     "action"     => "index"
-                )
+                ]
             );
         }
     }
@@ -161,18 +161,18 @@
 
     // 将流转发到当前控制器的另一个动作
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search"
-        )
+        ]
     );
 
     // 将流转发到当前控制器的另一个动作
     // 传递参数
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search",
-            "params" => array(1, 2, 3)
-        )
+            "params" => [1, 2, 3]
+        ]
     );
 
 一个转发的动作可以接受以下参数：
@@ -214,7 +214,7 @@
         // 附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // 用奇数参数作key，用偶数作值
@@ -252,7 +252,7 @@
         // 附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // 将每一个参数分解成key、值 对
@@ -440,7 +440,7 @@ http://example.com/admin/products/index.php
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
                         // 根据模型实例重写参数
-                        $dispatcher->setParams(array($model));
+                        $dispatcher->setParams([$model]);
                     }
                 }
 
@@ -483,10 +483,10 @@ http://example.com/admin/products/index.php
             // 处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'show404'
-                    )
+                    ]
                 );
 
                 return false;
@@ -497,10 +497,10 @@ http://example.com/admin/products/index.php
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'index',
                             'action'     => 'show404'
-                        )
+                        ]
                     );
 
                     return false;
@@ -532,18 +532,18 @@ http://example.com/admin/products/index.php
         {
             // 处理404异常
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
+                $dispatcher->forward([
                     'controller' => 'index',
                     'action'     => 'show404'
-                ));
+                ]);
                 return false;
             }
 
             // 处理其他异常
-            $dispatcher->forward(array(
+            $dispatcher->forward([
                 'controller' => 'index',
                 'action'     => 'show503'
-            ));
+            ]);
 
             return false;
         }

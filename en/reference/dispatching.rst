@@ -26,7 +26,7 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
         $controller = new $controllerClass();
 
         // Execute the action
-        call_user_func_array(array($controller, $actionName . "Action"), $params);
+        call_user_func_array([$controller, $actionName . "Action"], $params);
 
         // '$finished' should be reloaded to check if the flow was forwarded to another controller
         $finished = true;
@@ -139,10 +139,10 @@ access to certain options, redirect users to other screens or simply reuse code.
 
             // Forward flow to the index action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "posts",
                     "action"     => "index"
-                )
+                ]
             );
         }
     }
@@ -159,18 +159,18 @@ More forwarding examples:
 
     // Forward flow to another action in the current controller
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search"
-        )
+        ]
     );
 
     // Forward flow to another action in the current controller
     // passing parameters
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search",
-            "params" => array(1, 2, 3)
-        )
+            "params" => [1, 2, 3]
+        ]
     );
 
 A forward action accepts the following parameters:
@@ -212,7 +212,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         // Attach a listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Use odd parameters as keys and even as values
@@ -250,7 +250,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         // Attach a listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Explode each parameter as key,value pairs
@@ -439,7 +439,7 @@ before dispatch the action preparing the parameter accordingly:
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
                         // Override the parameters by the model instance
-                        $dispatcher->setParams(array($model));
+                        $dispatcher->setParams([$model]);
                     }
                 }
 
@@ -559,10 +559,10 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'show404'
-                    )
+                    ]
                 );
 
                 return false;
@@ -573,10 +573,10 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'index',
                             'action'     => 'show404'
-                        )
+                        ]
                     );
 
                     return false;
@@ -609,18 +609,18 @@ take actions when an exception is produced in the dispatch loop:
         {
             // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
+                $dispatcher->forward([
                     'controller' => 'index',
                     'action'     => 'show404'
-                ));
+                ]);
                 return false;
             }
 
             // Handle other exceptions
-            $dispatcher->forward(array(
+            $dispatcher->forward([
                 'controller' => 'index',
                 'action'     => 'show503'
-            ));
+            ]);
 
             return false;
         }
