@@ -71,7 +71,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "notNull"       => true,
                                 "autoIncrement" => true,
                                 "first"         => true
-                            )
+                            ]
                         ),
                         new Column(
                             "product_types_id",
@@ -81,7 +81,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "unsigned" => true,
                                 "notNull"  => true,
                                 "after"    => "id"
-                            )
+                            ]
                         ),
                         new Column(
                             "name",
@@ -90,7 +90,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "size"    => 70,
                                 "notNull" => true,
                                 "after"   => "product_types_id"
-                            )
+                            ]
                         ),
                         new Column(
                             "price",
@@ -100,36 +100,36 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "scale"   => 2,
                                 "notNull" => true,
                                 "after"   => "name"
-                            )
+                            ]
                         ),
-                    ),
+                    ],
                     "indexes" => array(
                         new Index(
                             "PRIMARY",
-                            array("id")
+                            array("id"]
                         ),
                         new Index(
                             "product_types_id",
-                            array("product_types_id")
+                            array("product_types_id"]
                         )
-                    ),
+                    ],
                     "references" => array(
                         new Reference(
                             "products_ibfk_1",
                             array(
                                 "referencedSchema"  => "invo",
                                 "referencedTable"   => "product_types",
-                                "columns"           => array("product_types_id"),
-                                "referencedColumns" => array("id")
-                            )
+                                "columns"           => array("product_types_id"],
+                                "referencedColumns" => array("id"]
+                            ]
                         )
-                    ),
+                    ],
                     "options" => array(
                         "TABLE_TYPE"      => "BASE TABLE",
                         "ENGINE"          => "InnoDB",
                         "TABLE_COLLATION" => "utf8_general_ci"
-                    )
-                )
+                    ]
+                ]
             );
         }
     }
@@ -233,8 +233,8 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
             self::$_connection->insert(
                 "products",
-                array("Malabar spinach", 14.50),
-                array("name", "price")
+                array("Malabar spinach", 14.50],
+                array("name", "price"]
             );
         }
     }
