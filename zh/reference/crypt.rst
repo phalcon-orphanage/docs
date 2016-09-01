@@ -36,10 +36,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     // 创建实例
     $crypt = new Crypt();
 
-    $texts = array(
+    $texts = [
         'my-key'    => 'This is a secret text',
         'other-key' => 'This is a very secret'
-    );
+    ];
 
     foreach ($texts as $key => $text) {
 
