@@ -20,12 +20,12 @@
         public function someDbTask()
         {
             $connection = new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
 
             // ...
@@ -65,12 +65,12 @@
 
     // 建立数据库连接实例
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // 向组件注入数据连接实例
@@ -93,12 +93,12 @@
         public static function getConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
     }
@@ -146,12 +146,12 @@
         protected static function _createConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
 
@@ -312,12 +312,12 @@
     // 在容器中注册一个db服务
     $di->set('db', function () {
         return new Connection(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "invo"
-            )
+            ]
         );
     });
 
@@ -383,9 +383,9 @@
     // 使用数组方式定义服务
     $di->set(
         "request",
-        array(
+        [
             "className" => 'Phalcon\Http\Request'
-        )
+        ]
     );
 
 使用数组的方式去注册服务也是可以的：
@@ -411,9 +411,9 @@
     $di["request"] = new Request();
 
     // 使用数组方式定义服务
-    $di["request"] = array(
+    $di["request"] = [
         "className" => 'Phalcon\Http\Request'
-    );
+    ];
 
 在上面的例子中，当框架需要访问request服务的内容，它会在容器里面查找名为‘request’的服务。
 在容器中将返回所需要的服务的实例。当有需要时，开发者可能最终需要替换这个组件。
@@ -464,12 +464,12 @@
 
     $di->set("db", function () {
         return new PdoMysql(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "blog"
-            )
+            ]
         );
     });
 
@@ -484,12 +484,12 @@
     // 把当前域的$config变量传递给匿名函数使用
     $di->set("db", function () use ($config) {
         return new PdoMysql(
-            array(
+            [
                 "host"     => $config->host,
                 "username" => $config->username,
                 "password" => $config->password,
                 "dbname"   => $config->name
-            )
+            ]
         );
     });
 
@@ -504,15 +504,15 @@
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // 通过类名和参数，注册logger服务
-    $di->set('logger', array(
+    $di->set('logger', [
         'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => array(
-            array(
+        'arguments' => [
+            [
                 'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
-            )
-        )
-    ));
+            ]
+        ]
+    ]);
 
     // 使用匿名函数的方式
     $di->set('logger', function () {
@@ -529,10 +529,10 @@
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     // 不用实例化就可以改变第一个参数值
-    $di->getService('logger')->setParameter(0, array(
+    $di->getService('logger')->setParameter(0, [
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
-    ));
+    ]);
 
 除了使用数组的语法注册服务，你还可以使用以下三种类型的依赖注入：
 
@@ -567,17 +567,17 @@
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
-    $di->set('someComponent', array(
+    $di->set('someComponent', [
         'className' => 'SomeApp\SomeComponent',
-        'arguments' => array(
-            array('type' => 'service', 'name' => 'response'),
-            array('type' => 'parameter', 'value' => true)
-        )
-    ));
+        'arguments' => [
+            ['type' => 'service', 'name' => 'response'],
+            ['type' => 'parameter', 'value' => true]
+        ]
+    ]);
 
 reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作为第一个参数传递给构造函数，与此同时，一个布尔类型的值(true)作为第二个参数传递。
 
@@ -616,35 +616,35 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className' => 'SomeApp\SomeComponent',
-            'calls'     => array(
-                array(
+            'calls'     => [
+                [
                     'method'    => 'setResponse',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type' => 'service',
                             'name' => 'response'
-                        )
-                    )
-                ),
-                array(
+                        ]
+                    ]
+                ],
+                [
                     'method'    => 'setFlag',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type'  => 'parameter',
                             'value' => true
-                        )
-                    )
-                )
-            )
-        )
+                        ]
+                    ]
+                ]
+            ]
+        ]
     );
 
 属性注入（Properties Injection）
@@ -674,45 +674,45 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
     $di->set(
         'response',
-        array(
+        [
             'className' => 'Phalcon\Http\Response'
-        )
+        ]
     );
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className'  => 'SomeApp\SomeComponent',
-            'properties' => array(
-                array(
+            'properties' => [
+                [
                     'name'  => 'response',
-                    'value' => array(
+                    'value' => [
                         'type' => 'service',
                         'name' => 'response'
-                    )
-                ),
-                array(
+                    ]
+                ],
+                [
                     'name'  => 'someFlag',
-                    'value' => array(
+                    'value' => [
                         'type'  => 'parameter',
                         'value' => true
-                    )
-                )
-            )
-        )
+                    ]
+                ]
+            ]
+        ]
     );
 
 支持包括下面的参数类型：
 
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| Type        | 描述                                                     | 例子                                                                                        |
-+=============+==========================================================+=============================================================================================+
-| parameter   | 表示一个文本值作为参数传递过去                           | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| service     | 表示作为服务                                             | :code:`array('type' => 'service', 'name' => 'request')`                                     |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| instance    | 表示必须动态生成的对象                                   | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Type        | 描述                                                      | 例子                                                                              |
++=============+==========================================================+===================================================================================+
+| parameter   | 表示一个文本值作为参数传递过去                                | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| service     | 表示作为服务                                               | :code:`['type' => 'service', 'name' => 'request']`                                |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| instance    | 表示必须动态生成的对象                                       | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 解析一个定义复杂的服务也许性能上稍微慢于先前看到的简单定义。但是，这提供了一个更强大的方式来定义和注入服务。
 
@@ -749,7 +749,7 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
     <?php
 
     // 将返回：new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", array("some-parameter", "other"));
+    $component = $di->get("MyComponent", ["some-parameter", "other"]);
 
 Events
 ------

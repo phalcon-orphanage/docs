@@ -22,12 +22,12 @@
         public function someDbTask()
         {
             $connection = new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
 
             // ...
@@ -68,12 +68,12 @@
 
     // Создаем соединение с БД
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Внедряем соединение в компонент
@@ -98,12 +98,12 @@
         public static function getConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
     }
@@ -151,12 +151,12 @@
         protected static function _createConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
 
@@ -326,12 +326,12 @@
     // Регистрируем в контейнере сервис "db"
     $di->set('db', function () {
         return new Connection(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "invo"
-            )
+            ]
         );
     });
 
@@ -403,9 +403,9 @@
     // Определение с помощью массива
     $di->set(
         "request",
-        array(
+        [
             "className" => 'Phalcon\Http\Request'
-        )
+        ]
     );
 
 Для регистрации сервисов можно также использовать синтаксис массивов:
@@ -431,9 +431,9 @@
     $di["request"] = new Request();
 
     // Определение с помощью массива
-    $di["request"] = array(
+    $di["request"] = [
         "className" => 'Phalcon\Http\Request'
-    );
+    ];
 
 В примере, данном выше, когда фреймворк нуждается в доступе к запрашиваемым данным, он будет запрашивать в контейнере сервис, названный 'request'.
 Контейнер, в свою очередь, возвращает экземпляр требуемого сервиса. Разработчик, в конечном итоге, может заменить компонент, когда захочет.
@@ -492,12 +492,12 @@
 
     $di->set("db", function () {
         return new PdoMysql(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "blog"
-            )
+            ]
         );
     });
 
@@ -512,12 +512,12 @@
     // Использование переменной $config в текущей области видимости
     $di->set("db", function () use ($config) {
         return new PdoMysql(
-            array(
+            [
                 "host"     => $config->host,
                 "username" => $config->username,
                 "password" => $config->password,
                 "dbname"   => $config->name
-            )
+            ]
         );
     });
 
@@ -534,15 +534,15 @@
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Регистрируем сервис 'logger' с помощью имени класса и его параметров
-    $di->set('logger', array(
+    $di->set('logger', [
         'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => array(
-            array(
+        'arguments' => [
+            [
                 'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
-            )
-        )
-    ));
+            ]
+        ]
+    ]);
 
     // Или в виде анонимной функции
     $di->set('logger', function () {
@@ -559,10 +559,10 @@
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     // Изменяем первый параметр без пересоздания экземпляра сервиса logger
-    $di->getService('logger')->setParameter(0, array(
+    $di->getService('logger')->setParameter(0, [
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
-    ));
+    ]);
 
 В дополнение к этому, используя синтаксис массивов, можно использовать три типа внедрения зависимостей:
 
@@ -598,17 +598,17 @@
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
-    $di->set('someComponent', array(
+    $di->set('someComponent', [
         'className' => 'SomeApp\SomeComponent',
-        'arguments' => array(
-            array('type' => 'service', 'name' => 'response'),
-            array('type' => 'parameter', 'value' => true)
-        )
-    ));
+        'arguments' => [
+            ['type' => 'service', 'name' => 'response'],
+            ['type' => 'parameter', 'value' => true]
+        ]
+    ]);
 
 Сервис "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) передаётся в конструктор в качестве первого параметра,
 в то время как вторым параметром передаётся булевое значение (true) без изменений.
@@ -648,35 +648,35 @@
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className' => 'SomeApp\SomeComponent',
-            'calls'     => array(
-                array(
+            'calls'     => [
+                [
                     'method'    => 'setResponse',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type' => 'service',
                             'name' => 'response'
-                        )
-                    )
-                ),
-                array(
+                        ]
+                    ]
+                ],
+                [
                     'method'    => 'setFlag',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type'  => 'parameter',
                             'value' => true
-                        )
-                    )
-                )
-            )
-        )
+                        ]
+                    ]
+                ]
+            ]
+        ]
     );
 
 Внедерение через свойства класса
@@ -706,45 +706,45 @@
 
     $di->set(
         'response',
-        array(
+        [
             'className' => 'Phalcon\Http\Response'
-        )
+        ]
     );
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className'  => 'SomeApp\SomeComponent',
-            'properties' => array(
-                array(
+            'properties' => [
+                [
                     'name'  => 'response',
-                    'value' => array(
+                    'value' => [
                         'type' => 'service',
                         'name' => 'response'
-                    )
-                ),
-                array(
+                    ]
+                ],
+                [
                     'name'  => 'someFlag',
-                    'value' => array(
+                    'value' => [
                         'type'  => 'parameter',
                         'value' => true
-                    )
-                )
-            )
-        )
+                    ]
+                ]
+            ]
+        ]
     );
 
 Поддерживаются параметры следующих типов:
 
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| Тип         | Описание                                                 | Пример                                                                                      |
-+=============+==========================================================+=============================================================================================+
-| parameter   | Буквенное значение, передаваемое в качестве параметра    | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| service     | Другой сервис в контейнере                               | :code:`array('type' => 'service', 'name' => 'request')`                                     |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| instance    | Объект, который должен создаваться динамически           | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Тип         | Описание                                                 | Пример                                                                            |
++=============+==========================================================+===================================================================================+
+| parameter   | Буквенное значение, передаваемое в качестве параметра    | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| service     | Другой сервис в контейнере                               | :code:`['type' => 'service', 'name' => 'request']`                                |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| instance    | Объект, который должен создаваться динамически           | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Получение сервисов, определение которых весьма сложно может быть немного медленнее, чем рассмотренные выше определения. Однако,
 это предоставляет больше возможностей для определения и внедрения сервисов.
@@ -783,7 +783,7 @@
     <?php
 
     // новый MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", array("some-parameter", "other"));
+    $component = $di->get("MyComponent", ["some-parameter", "other"]);
 
 События
 -------

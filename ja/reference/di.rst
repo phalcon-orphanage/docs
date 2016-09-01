@@ -19,12 +19,12 @@
         public function someDbTask()
         {
             $connection = new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
 
             // ...
@@ -64,12 +64,12 @@
 
     // DB接続を作成する
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // DB接続をコンポーネントに注入する
@@ -91,12 +91,12 @@
         public static function getConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
     }
@@ -144,12 +144,12 @@
         protected static function _createConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
 
@@ -309,12 +309,12 @@
     // 「db」サービスをコンテナに登録する
     $di->set('db', function () {
         return new Connection(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "invo"
-            )
+            ]
         );
     });
 
@@ -382,9 +382,9 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\Di <../api/Phalc
     // 配列で登録
     $di->set(
         "request",
-        array(
+        [
             "className" => 'Phalcon\Http\Request'
-        )
+        ]
     );
 
 配列の記法でサービスを登録することもできます:
@@ -410,9 +410,9 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\Di <../api/Phalc
     $di["request"] = new Request();
 
     // 配列で登録
-    $di["request"] = array(
+    $di["request"] = [
         "className" => 'Phalcon\Http\Request'
-    );
+    ];
 
 上記例では、フレームワークがリクエストのデータへのアクセスが必要になった時、コンテナの'request'という名前のサービスを求めます。コンテナは要求されたサービスのインスタンスを返します。開発者は、結果として、必要とするコンポーネントを置き換えることができます。
 
@@ -467,12 +467,12 @@ change some of the parameters externally without having to completely change the
 
     $di->set("db", function () {
         return new PdoMysql(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "blog"
-            )
+            ]
         );
     });
 
@@ -487,12 +487,12 @@ Some of the limitations can be overcome by passing additional variables to the c
     // Using the $config variable in the current scope
     $di->set("db", function () use ($config) {
         return new PdoMysql(
-            array(
+            [
                 "host"     => $config->host,
                 "username" => $config->username,
                 "password" => $config->password,
                 "dbname"   => $config->name
-            )
+            ]
         );
     });
 
@@ -509,15 +509,15 @@ can be a little more verbose:
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Register a service 'logger' with a class name and its parameters
-    $di->set('logger', array(
+    $di->set('logger', [
         'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => array(
-            array(
+        'arguments' => [
+            [
                 'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
-            )
-        )
-    ));
+            ]
+        ]
+    ]);
 
     // Using an anonymous function
     $di->set('logger', function () {
@@ -534,10 +534,10 @@ Both service registrations above produce the same result. The array definition h
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     // Change the first parameter without instantiating the logger
-    $di->getService('logger')->setParameter(0, array(
+    $di->getService('logger')->setParameter(0, [
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
-    ));
+    ]);
 
 In addition by using the array syntax you can use three types of dependency injection:
 
@@ -573,17 +573,17 @@ The service can be registered this way:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
-    $di->set('someComponent', array(
+    $di->set('someComponent', [
         'className' => 'SomeApp\SomeComponent',
-        'arguments' => array(
-            array('type' => 'service', 'name' => 'response'),
-            array('type' => 'parameter', 'value' => true)
-        )
-    ));
+        'arguments' => [
+            ['type' => 'service', 'name' => 'response'],
+            ['type' => 'parameter', 'value' => true]
+        ]
+    ]);
 
 The service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) is resolved to be passed as the first argument of the constructor,
 while the second is a boolean value (true) that is passed as it is.
@@ -623,35 +623,35 @@ A service with setter injection can be registered as follows:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className' => 'SomeApp\SomeComponent',
-            'calls'     => array(
-                array(
+            'calls'     => [
+                [
                     'method'    => 'setResponse',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type' => 'service',
                             'name' => 'response'
-                        )
-                    )
-                ),
-                array(
+                        ]
+                    ]
+                ],
+                [
                     'method'    => 'setFlag',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type'  => 'parameter',
                             'value' => true
-                        )
-                    )
-                )
-            )
-        )
+                        ]
+                    ]
+                ]
+            ]
+        ]
     );
 
 Properties Injection
@@ -681,45 +681,45 @@ A service with properties injection can be registered as follows:
 
     $di->set(
         'response',
-        array(
+        [
             'className' => 'Phalcon\Http\Response'
-        )
+        ]
     );
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className'  => 'SomeApp\SomeComponent',
-            'properties' => array(
-                array(
+            'properties' => [
+                [
                     'name'  => 'response',
-                    'value' => array(
+                    'value' => [
                         'type' => 'service',
                         'name' => 'response'
-                    )
-                ),
-                array(
+                    ]
+                ],
+                [
                     'name'  => 'someFlag',
-                    'value' => array(
+                    'value' => [
                         'type'  => 'parameter',
                         'value' => true
-                    )
-                )
-            )
-        )
+                    ]
+                ]
+            ]
+        ]
     );
 
 Supported parameter types include the following:
 
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| Type        | Description                                              | Example                                                                                     |
-+=============+==========================================================+=============================================================================================+
-| parameter   | Represents a literal value to be passed as parameter     | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| service     | Represents another service in the service container      | :code:`array('type' => 'service', 'name' => 'request')`                                     |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| instance    | Represents an object that must be built dynamically      | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Type        | Description                                              | Example                                                                           |
++=============+==========================================================+===================================================================================+
+| parameter   | Represents a literal value to be passed as parameter     | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| service     | Represents another service in the service container      | :code:`['type' => 'service', 'name' => 'request']`                                |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| instance    | Represents an object that must be built dynamically      | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However,
 these provide a more robust approach to define and inject services.
@@ -758,7 +758,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", array("some-parameter", "other"));
+    $component = $di->get("MyComponent", ["some-parameter", "other"]);
 
 Events
 ------

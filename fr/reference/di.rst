@@ -22,12 +22,12 @@ pouvons pas changer les paramètres de la connexion ou le type de SGBD parce que
         public function someDbTask()
         {
             $connection = new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
 
             // ...
@@ -68,12 +68,12 @@ ceci semble être une bonne solution:
 
     // Création de la connexion
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Injection de la connexion dans le composant
@@ -99,12 +99,12 @@ Nous pouvons résoudre ceci en créant une sorte de registre global d'où nous o
         public static function getConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
     }
@@ -152,12 +152,12 @@ Maintenant, imaginons que nous devons réaliser deux méthodes dans ce composant
         protected static function _createConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
 
@@ -326,12 +326,12 @@ permet de réduire la complexité de notre composant:
     // Inscription d'un service "db" dans le conteneur
     $di->set('db', function () {
         return new Connection(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "invo"
-            )
+            ]
         );
     });
 
@@ -403,9 +403,9 @@ Plusieurs styles de définitions permettent d'inscrire les services:
     // Avec un tableau de définition
     $di->set(
         "request",
-        array(
+        [
             "className" => 'Phalcon\Http\Request'
-        )
+        ]
     );
 
 L'écriture sous forme de tableau est possible pour inscrire des services:
@@ -431,9 +431,9 @@ L'écriture sous forme de tableau est possible pour inscrire des services:
     $di["request"] = new Request();
 
     // Avec un tableau de définition
-    $di["request"] = array(
+    $di["request"] = [
         "className" => 'Phalcon\Http\Request'
-    );
+    ];
 
 Dans les exemples précédents, lorsque le framework doit accéder aux données demandées, il interroge le service identifié en tant que 'request' dans le conteneur.
 Le conteneur retourne une instance du service demandé. Le développeur peut éventuellement remplacer les composants selon ses besoins.
@@ -492,12 +492,12 @@ de changer extérieurement sans avoir à changer complètement la définition de
 
     $di->set("db", function () {
         return new PdoMysql(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "blog"
-            )
+            ]
         );
     });
 
@@ -512,12 +512,12 @@ Certaines limites peuvent être contournées en passant des variables supplémen
     // Utilisation de la variable $config dans la portée courante.
     $di->set("db", function () use ($config) {
         return new PdoMysql(
-            array(
+            [
                 "host"     => $config->host,
                 "username" => $config->username,
                 "password" => $config->password,
                 "dbname"   => $config->name
-            )
+            ]
         );
     });
 
@@ -533,15 +533,15 @@ définir les services en utilisant la syntaxe tableau. La définition d'un servi
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Inscription d'un service "logger" avec un nom de classe et ses paramètres
-    $di->set('logger', array(
+    $di->set('logger', [
         'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => array(
-            array(
+        'arguments' => [
+            [
                 'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
-            )
-        )
-    ));
+            ]
+        ]
+    ]);
 
     // En utilisant une fonction anonyme
     $di->set('logger', function () {
@@ -559,10 +559,10 @@ permet une altération des paramètres du service si nécessaire:
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     // Changement du premier paramètre sans instancier le logger
-    $di->getService('logger')->setParameter(0, array(
+    $di->getService('logger')->setParameter(0, [
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
-    ));
+    ]);
 
 De plus, en utilisant la syntaxe tableau, vous pouvez exploiter trois type d'injection de dépendance:
 
@@ -598,17 +598,17 @@ Le service peut être inscrit de cette façon:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
-    $di->set('someComponent', array(
+    $di->set('someComponent', [
         'className' => 'SomeApp\SomeComponent',
-        'arguments' => array(
-            array('type' => 'service', 'name' => 'response'),
-            array('type' => 'parameter', 'value' => true)
-        )
-    ));
+        'arguments' => [
+            ['type' => 'service', 'name' => 'response'],
+            ['type' => 'parameter', 'value' => true]
+        ]
+    ]);
 
 Le service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) est résolu pour être transmis en premier argument au constructeur,
 alors que le second est une valeur booléenne (true) transmise telle quelle.
@@ -649,35 +649,35 @@ Un service avec une injection par accesseur peut être inscrite comme suit:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className' => 'SomeApp\SomeComponent',
-            'calls'     => array(
-                array(
+            'calls'     => [
+                [
                     'method'    => 'setResponse',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type' => 'service',
                             'name' => 'response'
-                        )
-                    )
-                ),
-                array(
+                        ]
+                    ]
+                ],
+                [
                     'method'    => 'setFlag',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type'  => 'parameter',
                             'value' => true
-                        )
-                    )
-                )
-            )
-        )
+                        ]
+                    ]
+                ]
+            ]
+        ]
     );
 
 Injection de propriétés
@@ -707,45 +707,45 @@ Un service avec un injection de propriétés peut être inscrite comme suit:
 
     $di->set(
         'response',
-        array(
+        [
             'className' => 'Phalcon\Http\Response'
-        )
+        ]
     );
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className'  => 'SomeApp\SomeComponent',
-            'properties' => array(
-                array(
+            'properties' => [
+                [
                     'name'  => 'response',
-                    'value' => array(
+                    'value' => [
                         'type' => 'service',
                         'name' => 'response'
-                    )
-                ),
-                array(
+                    ]
+                ],
+                [
                     'name'  => 'someFlag',
-                    'value' => array(
+                    'value' => [
                         'type'  => 'parameter',
                         'value' => true
-                    )
-                )
-            )
-        )
+                    ]
+                ]
+            ]
+        ]
     );
 
 Les différents types de paramètre supportés sont les suivants:
 
-+-------------+-----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| Type        | Description                                               | Exemple                                                                                     |
-+=============+===========================================================+=============================================================================================+
-| paramètre   | Représente une valeur littérale transmise en paramètre    | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
-+-------------+-----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| service     | Représente un autre service dans le conteneur de services | :code:`array('type' => 'service', 'name' => 'request')`                                     |
-+-------------+-----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| instance    | Représente un objet qui doit être construit dynamiquement | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
-+-------------+-----------------------------------------------------------+---------------------------------------------------------------------------------------------+
++-------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Type        | Description                                               | Exemple                                                                           |
++=============+===========================================================+===================================================================================+
+| paramètre   | Représente une valeur littérale transmise en paramètre    | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
++-------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| service     | Représente un autre service dans le conteneur de services | :code:`['type' => 'service', 'name' => 'request']`                                |
++-------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| instance    | Représente un objet qui doit être construit dynamiquement | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
++-------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 La résolution d'un service dont la défnition est complexe peut être légèrement plus lente que pour les définitions simples vues précédemment. Cependant,
 ceci fournit une approche plus robuste pour définir et injecter des services.
@@ -784,7 +784,7 @@ Les arguments sont transmis au constructeur en ajoutant un tableau en paramètre
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", array("some-parameter", "other"));
+    $component = $di->get("MyComponent", ["some-parameter", "other"]);
 
 Evénements
 ----------
