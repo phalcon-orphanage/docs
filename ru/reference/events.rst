@@ -51,12 +51,12 @@
     $eventsManager->attach('db', $dbListener);
 
     $connection    = new DbAdapter(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Совмещение менеджера событий с адаптером базы данных

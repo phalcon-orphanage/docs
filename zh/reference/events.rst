@@ -50,12 +50,12 @@
     $eventsManager->attach('db', $dbListener);
 
     $connection    = new DbAdapter(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // 将$eventsManager赋值给数据库甜适配器

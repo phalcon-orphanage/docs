@@ -50,12 +50,12 @@ offering hook points based on the methods we defined in our listener class:
     $eventsManager->attach('db', $dbListener);
 
     $connection    = new DbAdapter(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Assign the eventsManager to the db adapter instance
