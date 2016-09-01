@@ -22,10 +22,10 @@ Phalcon中提供了 :code:`Phalcon\Forms` 组件以方便开发者创建和维�
     $form->add(
         new Select(
             "telephoneType",
-            array(
+            [
                 'H' => 'Home',
                 'C' => 'Cell'
-            )
+            ]
         )
     );
 
@@ -65,7 +65,7 @@ Phalcon中提供了 :code:`Phalcon\Forms` 组件以方便开发者创建和维�
 
     <p>
         <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
+        <?php echo $form->render("name", ['maxlength' => 30, 'placeholder' => 'Type your name']); ?>
     </p>
 
 HTML的属性也可以在创建时指定：
@@ -77,10 +77,10 @@ HTML的属性也可以在创建时指定：
     $form->add(
         new Text(
             "name",
-            array(
+            [
                 'maxlength'   => 30,
                 'placeholder' => 'Type your name'
-            )
+            ]
         )
     );
 
@@ -108,12 +108,12 @@ HTML的属性也可以在创建时指定：
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
-                    array(
-                        'using' => array(
+                    [
+                        'using' => [
                             'id',
                             'name'
-                        )
-                    )
+                        ]
+                    ]
                 )
             );
         }
@@ -191,9 +191,9 @@ HTML的属性也可以在创建时指定：
 
     $form = new UsersForm(
         new Users(),
-        array(
+        [
             'edit' => true
-        )
+        ]
     );
 
 验证（Validation）
@@ -212,18 +212,18 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     $name->addValidator(
         new PresenceOf(
-            array(
+            [
                 'message' => 'The name is required'
-            )
+            ]
         )
     );
 
     $name->addValidator(
         new StringLength(
-            array(
+            [
                 'min'            => 10,
                 'messageMinimum' => 'The name is too short'
-            )
+            ]
         )
     );
 
@@ -334,22 +334,22 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
     $form->add(
         new Select(
             "timezone",
-            array(
+            [
                 'America/New_York'  => 'New York',
                 'Europe/Amsterdam'  => 'Amsterdam',
                 'America/Sao_Paulo' => 'Sao Paulo',
                 'Asia/Tokyo'        => 'Tokyo'
-            )
+            ]
         )
     );
 
     $form->add(
         new Select(
             "receiveEmails",
-            array(
+            [
                 'Yes' => 'Yes, please!',
                 'No'  => 'No, thanks'
-            )
+            ]
         )
     );
 
