@@ -61,7 +61,7 @@ get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{n
 
     //  对象内的方法
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($myController, "someAction"));
+    $app->get('/say/hello/{name}', [$myController, "someAction"]);
 
     // 匿名函数
     $app->get('/say/hello/{name}', function ($name) {
@@ -93,7 +93,7 @@ get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{n
     $app->patch('/api/products/update/{id}', "info_product");
 
     // 匹配HTTP GET 或 POST方法
-    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(['GET', 'POST']);
 
 To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
@@ -166,11 +166,11 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     // 返回JSON
     $app->get('/get/some-json', function () {
         echo json_encode(
-            array(
+            [
                 "some",
                 "important",
                 "data"
-            )
+            ]
         );
     });
 
@@ -246,11 +246,11 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(
-            array(
+            [
                 'for'   => 'show-post',
                 'title' => 'php-is-a-great-framework',
                 'year'  => 2015
-            )
+            ]
         ), '">Show the post</a>';
 
     });
@@ -300,12 +300,12 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     // 设置数据库服务实例
     $app['db'] = function () {
         return new MysqlAdapter(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            )
+            ]
         );
     };
 
@@ -340,9 +340,9 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(
-        array(
+        [
             __DIR__ . '/models/'
-        )
+        ]
     )->register();
 
     $app = new \Phalcon\Mvc\Micro();
@@ -433,9 +433,9 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     });
 
     $app->map('/api/robots', function () {
-        return array(
+        return [
             'status' => 'OK'
-        );
+        ];
     });
 
     $app->after(function () use ($app) {
@@ -615,10 +615,10 @@ PostsController形如下：
     $app->get('/products/show', function () use ($app) {
 
         // 渲染视图时传递参数
-        echo $app['view']->render('products/show', array(
+        echo $app['view']->render('products/show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 
@@ -641,10 +641,10 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
     $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products', 'show', array(
+        echo $app['view']->render('products', 'show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 
