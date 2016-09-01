@@ -94,12 +94,12 @@ das mensagens no navegador. As classes CSS pode ser substituído, por exemplo, s
     // Register the flash service with custom CSS classes
     $di->set('flash', function () {
         $flash = new FlashDirect(
-            array(
+            [
                 'error'   => 'alert alert-danger',
                 'success' => 'alert alert-success',
                 'notice'  => 'alert alert-info',
                 'warning' => 'alert alert-warning'
-            )
+            ]
         );
 
         return $flash;
@@ -142,9 +142,9 @@ se você fizer um "forward" não é necessário armazenar as mensagens na sessã
 
             // Forward to the index action
             return $this->dispatcher->forward(
-                array(
+                [
                     "action" => "index"
-                )
+                ]
             );
         }
     }

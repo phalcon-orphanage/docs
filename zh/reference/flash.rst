@@ -96,12 +96,12 @@
     // 利用自定义的CSS类来注册flash服务
     $di->set('flash', function () {
         $flash = new FlashDirect(
-            array(
+            [
                 'error'   => 'alert alert-danger',
                 'success' => 'alert alert-success',
                 'notice'  => 'alert alert-info',
                 'warning' => 'alert alert-warning'
-            )
+            ]
         );
 
         return $flash;
@@ -144,9 +144,9 @@
 
             // 转发到index动作
             return $this->dispatcher->forward(
-                array(
+                [
                     "action" => "index"
-                )
+                ]
             );
         }
     }
