@@ -39,9 +39,9 @@ index.php, как в веб-приложениях, мы используем cl
      */
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(
-        array(
+        [
             APPLICATION_PATH . '/tasks'
-        )
+        ]
     );
     $loader->register();
 
@@ -58,7 +58,7 @@ index.php, как в веб-приложениях, мы используем cl
     /**
      * Определяем консольные аргументы
      */
-    $arguments = array();
+    $arguments = [];
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
@@ -178,10 +178,10 @@ We can then run the following command:
             echo "\nThis is the default task and the default action \n";
 
             $this->console->handle(
-                array(
+                [
                     'task'   => 'main',
                     'action' => 'test'
-                )
+                ]
             );
         }
 

@@ -38,9 +38,9 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
      */
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(
-        array(
+        [
             APPLICATION_PATH . '/tasks'
-        )
+        ]
     );
     $loader->register();
 
@@ -57,7 +57,7 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
     /**
      * 处理console应用参数
      */
-    $arguments = array();
+    $arguments = [];
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
@@ -173,10 +173,10 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
             echo "\nThis is the default task and the default action \n";
 
             $this->console->handle(
-                array(
+                [
                     'task'   => 'main',
                     'action' => 'test'
-                )
+                ]
             );
         }
 
