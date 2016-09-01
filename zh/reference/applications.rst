@@ -40,10 +40,10 @@ MVC 应用（MVC Applications）
     $loader = new Loader();
 
     $loader->registerDirs(
-        array(
+        [
             '../apps/controllers/',
             '../apps/models/'
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -83,10 +83,10 @@ MVC 应用（MVC Applications）
 
     // 根据命名空间前缀加载
     $loader->registerNamespaces(
-        array(
+        [
             'Single\Controllers' => '../apps/controllers/',
             'Single\Models'      => '../apps/models/',
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -164,10 +164,10 @@ MVC 应用（MVC Applications）
             $loader = new Loader();
 
             $loader->registerNamespaces(
-                array(
+                [
                     'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
                     'Multiple\Backend\Models'      => '../apps/backend/models/',
-                )
+                ]
             );
 
             $loader->register();
@@ -216,28 +216,28 @@ MVC 应用（MVC Applications）
 
         $router->add(
             "/login",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'login',
                 'action'     => 'index'
-            )
+            ]
         );
 
         $router->add(
             "/admin/products/:action",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         $router->add(
             "/products/:action",
-            array(
+            [
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         return $router;
@@ -250,16 +250,16 @@ MVC 应用（MVC Applications）
 
         // 注册模块
         $application->registerModules(
-            array(
-                'frontend' => array(
+            [
+                'frontend' => [
                     'className' => 'Multiple\Frontend\Module',
                     'path'      => '../apps/frontend/Module.php',
-                ),
-                'backend'  => array(
+                ],
+                'backend'  => [
                     'className' => 'Multiple\Backend\Module',
                     'path'      => '../apps/backend/Module.php',
-                )
-            )
+                ]
+            ]
         );
 
         // 处理请求
@@ -287,7 +287,7 @@ MVC 应用（MVC Applications）
 
     // Register the installed modules
     $application->registerModules(
-        array(
+        [
             'frontend' => function ($di) use ($view) {
                 $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
@@ -300,7 +300,7 @@ MVC 应用（MVC Applications）
                     return $view;
                 });
             }
-        )
+        ]
     );
 
 当 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 有多个模块注册时，通常
