@@ -348,11 +348,11 @@ Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由
     // 添加/启用YUI压缩器
     $css->addFilter(
         new CssYUICompressor(
-            array(
+            [
                 'java-bin'      => '/usr/local/bin/java',
                 'yui'           => '/some/path/yuicompressor-x.y.z.jar',
                 'extra-options' => '--charset utf8'
-            )
+            ]
         )
     );
 

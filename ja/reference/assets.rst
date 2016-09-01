@@ -344,11 +344,11 @@ Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するため�
     // コレクションにYUIコンプレッサーフィルタを追加/有効にする
     $css->addFilter(
         new CssYUICompressor(
-            array(
+            [
                 'java-bin'      => '/usr/local/bin/java',
                 'yui'           => '/some/path/yuicompressor-x.y.z.jar',
                 'extra-options' => '--charset utf8'
-            )
+            ]
         )
     );
 
