@@ -34,18 +34,18 @@ First, you must register it as a service in the services container:
 
         // Cache data for one day by default
         $frontCache = new FrontendData(
-            array(
+            [
                 "lifetime" => 86400
-            )
+            ]
         );
 
         // Memcached connection settings
         $cache = new BackendMemcache(
             $frontCache,
-            array(
+            [
                 "host" => "localhost",
                 "port" => "11211"
-            )
+            ]
         );
 
         return $cache;
@@ -63,28 +63,28 @@ as an anonymous function. Once the cache setup is properly defined you could cac
 
     // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-cache"
-            )
-        )
+            ]
+        ]
     );
 
     // Cache the resultset for only for 5 minutes
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
     // Using a custom cache
     $products = Products::find(
-        array(
+        [
             "cache" => $myCache
-        )
+        ]
     );
 
 Caching could be also applied to resultsets generated using relationships:
@@ -98,21 +98,21 @@ Caching could be also applied to resultsets generated using relationships:
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-key"
-            )
-        )
+            ]
+        ]
     );
 
     // Get comments related to a post, setting lifetime
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-key",
                 "lifetime" => 3600
-            )
-        )
+            ]
+        ]
     );
 
 When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
@@ -158,7 +158,7 @@ a static property to avoid that a record would be queried several times in a sam
 
     class Robots extends Model
     {
-        protected static $_cache = array();
+        protected static $_cache = [];
 
         /**
          * Implement a method that returns a string key based
@@ -166,7 +166,7 @@ a static property to avoid that a record would be queried several times in a sam
          */
         protected static function _createKey($parameters)
         {
-            $uniqueKey = array();
+            $uniqueKey = [];
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
@@ -295,12 +295,12 @@ cacheable we pass the key 'cache' in the array of parameters:
 
     // Cache the resultset for only for 5 minutes
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
 This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
@@ -323,16 +323,16 @@ we can override the find/findFirst method to force every query to be cached:
         {
             // Convert the parameters to an array
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             // Check if a cache key wasn't passed
             // and create the cache parameters
             if (!isset($parameters['cache'])) {
-                $parameters['cache'] = array(
+                $parameters['cache'] = [
                     "key"      => self::_createKey($parameters),
                     "lifetime" => 300
-                );
+                ];
             }
 
             return parent::find($parameters);
@@ -359,16 +359,16 @@ This language gives you much more freedom to create all kinds of queries. Of cou
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(
-        array(
+        [
             "key"      => "cars-by-name",
             "lifetime" => 300
-        )
+        ]
     );
 
     $cars = $query->execute(
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
 If you don't want to use the implicit cache just save the resultset into your favorite cache backend:
@@ -381,9 +381,9 @@ If you don't want to use the implicit cache just save the resultset into your fa
 
     $cars = $this->modelsManager->executeQuery(
         $phql,
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
     apc_store('my-cars', $cars);
@@ -442,9 +442,9 @@ the records instead of re-querying them again and again:
                 "customers_id",
                 "Customer",
                 "id",
-                array(
+                [
                     'reusable' => true
-                )
+                ]
             );
         }
     }
@@ -596,7 +596,7 @@ to obtain all entities:
                 return $results;
             }
 
-            $results = array();
+            $results = [];
 
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
@@ -651,10 +651,10 @@ Note that this process can also be performed with PHQL following an alternative 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
-                array(
+                [
                     "key"      => self::_createKey($conditions, $params),
                     "lifetime" => 300
-                )
+                ]
             );
 
             return $query->execute($params);
@@ -691,34 +691,34 @@ The easiest way is adding a static method to the model that chooses the right ca
         {
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo1'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo2'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial > 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo3'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
         }
@@ -736,11 +736,11 @@ a more complicated method. Additionally, this method does not work if the data i
     $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
 
     $robots = Robots::find(
-        array(
+        [
             '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => array(100, 2000),
+            'bind'  => [100, 2000],
             'order' => 'type'
-        )
+        ]
     );
 
 To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and
@@ -896,7 +896,7 @@ Finally, we can replace the find method in the Robots model to use the custom cl
         public static function find($parameters = null)
         {
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             $builder = new CustomQueryBuilder($parameters);
@@ -940,7 +940,7 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $this->modelsManager->executeQuery($phql, array($i));
+        $robots = $this->modelsManager->executeQuery($phql, [$i]);
 
         // ...
     }
@@ -956,7 +956,7 @@ Performance can be also improved reusing the PHQL query:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $query->execute($phql, array($i));
+        $robots = $query->execute($phql, [$i]);
 
         // ...
     }

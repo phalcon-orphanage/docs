@@ -34,18 +34,18 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         // По умолчанию данные кэша хранятся один день
         $frontCache = new FrontendData(
-            array(
+            [
                 "lifetime" => 86400
-            )
+            ]
         );
 
         // Настройки соединения с memcached
         $cache = new BackendMemcache(
             $frontCache,
-            array(
+            [
                 "host" => "localhost",
                 "port" => "11211"
-            )
+            ]
         );
 
         return $cache;
@@ -63,28 +63,28 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     // Используем кэширование наборов данных. Кэш остается в памяти в течении 1 часа (3600 секунд).
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-cache"
-            )
-        )
+            ]
+        ]
     );
 
     // Кэш набора данных хранится всего 5 минут
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
     // Использование пользовательского кэша
     $products = Products::find(
-        array(
+        [
             "cache" => $myCache
-        )
+        ]
     );
 
 Кэш может быть также применен к набору данных, генерируемых с помощью отношений:
@@ -98,21 +98,21 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     // Получаем комментарии, относящиеся к сообщению, и кэшируем их
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-key"
-            )
-        )
+            ]
+        ]
     );
 
     // Получаем комментарии, относящиеся к сообщению и устанавливаем срок их хранения
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-key",
                 "lifetime" => 3600
-            )
-        )
+            ]
+        ]
     );
 
 Когда кэшируемые наборы данных должны быть признаны недействительными, вы можете просто удалить их из кэша с
@@ -161,7 +161,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     class Robots extends Model
     {
-        protected static $_cache = array();
+        protected static $_cache = [];
 
         /**
          * Реализация метода, который возвращает
@@ -169,7 +169,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
          */
         protected static function _createKey($parameters)
         {
-            $uniqueKey = array();
+            $uniqueKey = [];
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
@@ -302,12 +302,12 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     // Кэшируем результирующий набор всего на 5 минут
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
 Это дает нам свободу для кэширования конкретных запросов, поэтому, если мы хотим кэшировать
@@ -331,16 +331,16 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         {
             // Преобразование параметров в массив
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             // Проверяем, что ключ кэша не был передан
             // и создаем параметры кэша
             if (!isset($parameters['cache'])) {
-                $parameters['cache'] = array(
+                $parameters['cache'] = [
                     "key"      => self::_createKey($parameters),
                     "lifetime" => 300
-                );
+                ];
             }
 
             return parent::find($parameters);
@@ -369,16 +369,16 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(
-        array(
+        [
             "key"      => "cars-by-name",
             "lifetime" => 300
-        )
+        ]
     );
 
     $cars = $query->execute(
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
 Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор в предпочтительный для вас серверный кэш:
@@ -391,9 +391,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     $cars = $this->modelsManager->executeQuery(
         $phql,
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
     apc_store('my-cars', $cars);
@@ -455,9 +455,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                 "customers_id",
                 "Customer",
                 "id",
-                array(
+                [
                     'reusable' => true
-                )
+                ]
             );
         }
     }
@@ -612,7 +612,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                 return $results;
             }
 
-            $results = array();
+            $results = [];
 
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
@@ -668,10 +668,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
-                array(
+                [
                     "key"      => self::_createKey($conditions, $params),
                     "lifetime" => 300
-                )
+                ]
             );
 
             return $query->execute($params);
@@ -708,34 +708,34 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         {
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo1'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo2'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial > 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo3'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
         }
@@ -755,11 +755,11 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
 
     $robots = Robots::find(
-        array(
+        [
             '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => array(100, 2000),
+            'bind'  => [100, 2000],
             'order' => 'type'
-        )
+        ]
     );
 
 Для достижения этой цели мы должны перехватить промежуточное представление (IR),
@@ -919,7 +919,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public static function find($parameters = null)
         {
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             $builder = new CustomQueryBuilder($parameters);
@@ -963,7 +963,7 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $this->modelsManager->executeQuery($phql, array($i));
+        $robots = $this->modelsManager->executeQuery($phql, [$i]);
 
         // ...
     }
@@ -979,7 +979,7 @@ Performance can be also improved reusing the PHQL query:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $query->execute($phql, array($i));
+        $robots = $query->execute($phql, [$i]);
 
         // ...
     }
