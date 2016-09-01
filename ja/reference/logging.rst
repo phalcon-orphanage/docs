@@ -215,9 +215,9 @@ If the file does not exist, an attempt will be made to create it. You can change
     // Create the file logger in 'w' mode
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
+        [
             'mode' => 'w'
-        )
+        ]
     );
 
 Syslog ロガー
@@ -236,10 +236,10 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     // Setting ident/mode/facility
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
+        [
             'option'   => LOG_NDELAY,
             'facility' => LOG_MAIL
-        )
+        ]
     );
 
 FirePHP ロガー

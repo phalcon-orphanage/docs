@@ -209,9 +209,9 @@ Jika file tidak ada, maka file akan dicoba dibuat. Anda dapat mengubah mode ini 
     // Buat file logger dalam mode 'w'
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
+        [
             'mode' => 'w'
-        )
+        ]
     );
 
 Syslog Logger
@@ -230,10 +230,10 @@ Logger ini mengirim pesan ke system logger. Perilaku syslog bisa jadi berbeda an
     // Setting ident/mode/facility
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
+        [
             'option'   => LOG_NDELAY,
             'facility' => LOG_MAIL
-        )
+        ]
     );
 
 FirePHP Logger

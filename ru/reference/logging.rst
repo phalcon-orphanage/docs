@@ -217,9 +217,9 @@ File Logger
     // Создание регистратора с поддержкой записи
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
+        [
             'mode' => 'w'
-        )
+        ]
     );
 
 Syslog Logger
@@ -238,10 +238,10 @@ Syslog Logger
     // Установка ident/mode/facility
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
+        [
             'option'   => LOG_NDELAY,
             'facility' => LOG_MAIL
-        )
+        ]
     );
 
 FirePHP Logger
