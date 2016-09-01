@@ -31,11 +31,11 @@
 
     // Регистрация пространств имён
     $loader->registerNamespaces(
-        array(
+        [
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
            "Example"         => "vendor/example/"
-        )
+        ]
     );
 
     // Регистрация автозагрузчика
@@ -61,11 +61,11 @@
 
     // Регистрация некоторых префиксов
     $loader->registerPrefixes(
-        array(
+        [
             "Example_Base"    => "vendor/example/base/",
             "Example_Adapter" => "vendor/example/adapter/",
             "Example_"        => "vendor/example/"
-        )
+        ]
     );
 
     // Регистрация автозагрузчика
@@ -91,12 +91,12 @@ Phalcon будет вынужден обрабатывать данные по �
 
     // Регистрация каталогов
     $loader->registerDirs(
-        array(
+        [
             "library/MyComponent/",
             "library/OtherComponent/Other/",
             "vendor/example/adapters/",
             "vendor/example/"
-        )
+        ]
     );
 
     // Регистрация автозагрузчика
@@ -123,10 +123,10 @@ Phalcon будет вынужден обрабатывать данные по �
 
     // Регистрация классов
     $loader->registerClasses(
-        array(
+        [
             "Some"         => "library/OtherComponent/Other/Some.php",
             "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
-        )
+        ]
     );
 
     // Регистрация автозагрузчика
@@ -149,7 +149,7 @@ Phalcon будет вынужден обрабатывать данные по �
     $loader = new \Phalcon\Loader();
 
     // Установка расширений файлов для поиска классов
-    $loader->setExtensions(array("php", "inc", "phb"));
+    $loader->setExtensions(["php", "inc", "phb"]);
 
 Изменение текущей стратегии
 ---------------------------
@@ -161,10 +161,10 @@ Phalcon будет вынужден обрабатывать данные по �
 
     // Регистрация дополнительных каталогов
     $loader->registerDirs(
-        array(
+        [
             "../app/library/",
             "../app/plugins/"
-        ),
+        ],
         true
     );
 
@@ -220,11 +220,11 @@ reducing the possibility of being attacked.
     $loader = new \Phalcon\Loader();
 
     $loader->registerNamespaces(
-        array(
+        [
             'Example\\Base'    => 'vendor/example/base/',
             'Example\\Adapter' => 'vendor/example/adapter/',
             'Example'          => 'vendor/example/'
-        )
+        ]
     );
 
     // Прослушивание всех событий загрузчика

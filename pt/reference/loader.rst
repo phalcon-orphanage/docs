@@ -33,11 +33,11 @@ the end of the paths.
 
     // Register some namespaces
     $loader->registerNamespaces(
-        array(
+        [
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
            "Example"         => "vendor/example/"
-        )
+        ]
     );
 
     // Register autoloader
@@ -64,11 +64,11 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     // Register some prefixes
     $loader->registerPrefixes(
-        array(
+        [
             "Example_Base"    => "vendor/example/base/",
             "Example_Adapter" => "vendor/example/adapter/",
             "Example_"        => "vendor/example/"
-        )
+        ]
     );
 
     // Register autoloader
@@ -95,12 +95,12 @@ It's important to register the directories in relevance order. Remember always a
 
     // Register some directories
     $loader->registerDirs(
-        array(
+        [
             "library/MyComponent/",
             "library/OtherComponent/Other/",
             "vendor/example/adapters/",
             "vendor/example/"
-        )
+        ]
     );
 
     // Register autoloader
@@ -129,10 +129,10 @@ maintenance of the class list very cumbersome and it is not recommended.
 
     // Register some classes
     $loader->registerClasses(
-        array(
+        [
             "Some"         => "library/OtherComponent/Other/Some.php",
             "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
-        )
+        ]
     );
 
     // Register autoloader
@@ -156,7 +156,7 @@ are using additional extensions you could set it with the method "setExtensions"
     $loader = new \Phalcon\Loader();
 
     // Set file extensions to check
-    $loader->setExtensions(array("php", "inc", "phb"));
+    $loader->setExtensions(["php", "inc", "phb"]);
 
 Modifying current strategies
 ----------------------------
@@ -171,7 +171,7 @@ Additional auto-loading data can be added to existing values in the following wa
         array(
             "../app/library/",
             "../app/plugins/"
-        ),
+        ],
         true
     );
 
@@ -231,7 +231,7 @@ In the following example, the EventsManager is working with the class loader, al
             'Example\\Base'    => 'vendor/example/base/',
             'Example\\Adapter' => 'vendor/example/adapter/',
             'Example'          => 'vendor/example/'
-        )
+        ]
     );
 
     // Listen all the loader events
