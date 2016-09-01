@@ -244,7 +244,7 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
                 // 获取注释单元的‘lifetime’参数
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
-                $options = array('lifetime' => $lifetime);
+                $options = ['lifetime' => $lifetime];
 
                 // 检查注释单元中是否有用户定义的‘key’参数
                 if ($annotation->hasNamedParameter('key')) {
@@ -341,10 +341,10 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'session',
                             'action'     => 'login'
-                        )
+                        ]
                     );
 
                     return false;

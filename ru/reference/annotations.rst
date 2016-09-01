@@ -249,7 +249,7 @@ CacheEnablerPlugin это плагин, который перехватывае�
                 // Получить время жизни кэша
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
-                $options = array('lifetime' => $lifetime);
+                $options = ['lifetime' => $lifetime];
 
                 // Проверить, есть ли определенный пользователем ключ кэша
                 if ($annotation->hasNamedParameter('key')) {
@@ -346,10 +346,10 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'session',
                             'action'     => 'login'
-                        )
+                        ]
                     );
 
                     return false;

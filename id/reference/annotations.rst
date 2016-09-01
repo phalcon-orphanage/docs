@@ -120,7 +120,7 @@ Sebuah reflector diimplementasi untuk mendapatkan anotasi yang didefinisi dalam 
 Proses pembacaan anotasi sangat cepat, namun, untuk alasan performa diarankan untuk menyimpan anotasi yang sudah diparsing menggunakan adapter.
 Adapter menyimpan anotasi yang sudah diproses sehingga menghindari kebutuhan untuk melakukan parsing anotasi terus menerus.
 
-:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` dgunakan untuk contoh di atas. Adapter ini hanya menyimpan anotasi selama request berjalan 
+:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` dgunakan untuk contoh di atas. Adapter ini hanya menyimpan anotasi selama request berjalan
 dan untuk alasan ini, adapter ini hanya cocok untuk tahap pengembangan. Ada adapter lain untuk ditukar ketika aplikasi berada dalam tahap produksi.
 
 Jenis Anotasi
@@ -247,7 +247,7 @@ CacheEnablerPlugin adalah plugin yang menyadap tiap aksi yang dieksekusi dispatc
                 // Get the lifetime
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
-                $options = array('lifetime' => $lifetime);
+                $options = ['lifetime' => $lifetime];
 
                 // Check if there is a user defined cache key
                 if ($annotation->hasNamedParameter('key')) {
@@ -344,10 +344,10 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'session',
                             'action'     => 'login'
-                        )
+                        ]
                     );
 
                     return false;

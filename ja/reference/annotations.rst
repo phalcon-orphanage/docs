@@ -243,7 +243,7 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
                 // キャッシュの有効期限を取得
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
-                $options = array('lifetime' => $lifetime);
+                $options = ['lifetime' => $lifetime];
 
                 // ユーザーが定義したキャッシュのキーがあるか確認する
                 if ($annotation->hasNamedParameter('key')) {
@@ -340,10 +340,10 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'session',
                             'action'     => 'login'
-                        )
+                        ]
                     );
 
                     return false;

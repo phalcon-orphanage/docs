@@ -249,7 +249,7 @@ CacheEnablerPlugin is a plugin that intercepts every action executed in the disp
                 // Get the lifetime
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
-                $options = array('lifetime' => $lifetime);
+                $options = ['lifetime' => $lifetime];
 
                 // Check if there is a user defined cache key
                 if ($annotation->hasNamedParameter('key')) {
@@ -346,10 +346,10 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'session',
                             'action'     => 'login'
-                        )
+                        ]
                     );
 
                     return false;
