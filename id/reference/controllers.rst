@@ -1,7 +1,7 @@
 Menggunakan Kontroler
 =====================
 
-Kontroler menyediakan sejumlah metode yang disebut aksi. Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua 
+Kontroler menyediakan sejumlah metode yang disebut aksi. Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua
 metode publik pada sebuah kontroler dipetakan ke aksi dan dapat diakses menggunakan sebuah URL. Aksi bertanggung jawab menerjemahkan request dan menciptakan
 respon. Respon biasanya dalam bentuk view yang dirender, namun ada juga cara lain untuk menciptakan respon.
 
@@ -115,10 +115,10 @@ eksekusi ke kontroler/aksi berbeda.
 
             // Arahkan alir ke aksi lain
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
                     "action"     => "signin"
-                )
+                ]
             );
         }
     }
@@ -144,7 +144,7 @@ Jika pengguna tidak memiliki izin untuk mengakses aksi tertentu maka mereka akan
         }
     }
 
-Tidak ada batasan jumlah "forward" yang dapat anda miliki dalam aplikasi, selama mereka tidak menyebabkan referensi sirkular, di mana dititik ini aplikasi akan dihentikan. 
+Tidak ada batasan jumlah "forward" yang dapat anda miliki dalam aplikasi, selama mereka tidak menyebabkan referensi sirkular, di mana dititik ini aplikasi akan dihentikan.
 Jika tidak ada aksi lain yang harus dikirim oleh dispatch loop, dispatcher otomatis memanggil
 lapisan view dalam MVC yang dikelola oleh :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
@@ -165,9 +165,9 @@ aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak dis
 
         public function initialize()
         {
-            $this->settings = array(
+            $this->settings = [
                 "mySetting" => "value"
-            );
+            ];
         }
 
         public function saveAction()
@@ -423,10 +423,10 @@ anda untuk mengimplementasi hook point sebelum/sesudah aksi dieksekusi:
                 $this->flash->error("You don't have permission to save posts");
 
                 $this->dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'home',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 return false;

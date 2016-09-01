@@ -115,10 +115,10 @@
 
             // Forward flow to another action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
                     "action"     => "signin"
-                )
+                ]
             );
         }
     }
@@ -165,9 +165,9 @@
 
         public function initialize()
         {
-            $this->settings = array(
+            $this->settings = [
                 "mySetting" => "value"
-            );
+            ];
         }
 
         public function saveAction()
@@ -419,10 +419,10 @@
                 $this->flash->error("You don't have permission to save posts");
 
                 $this->dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'home',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 return false;
