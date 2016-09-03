@@ -67,7 +67,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     // With a method in an object
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($myController, "someAction"));
+    $app->get('/say/hello/{name}', [$myController, "someAction"]);
 
     // Anonymous function
     $app->get('/say/hello/{name}', function ($name) {
@@ -100,7 +100,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
     $app->patch('/api/products/update/{id}', "info_product");
 
     // Matches if the HTTP method is GET or POST
-    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(['GET', 'POST']);
 
 To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
@@ -174,11 +174,11 @@ URisのrewriteは、以下のようにApacheで制限します。
     // Returning JSON
     $app->get('/get/some-json', function () {
         echo json_encode(
-            array(
+            [
                 "some",
                 "important",
                 "data"
-            )
+            ]
         );
     });
 
@@ -255,11 +255,11 @@ URisのrewriteは、以下のようにApacheで制限します。
     $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(
-            array(
+            [
                 'for'   => 'show-post',
                 'title' => 'php-is-a-great-framework',
                 'year'  => 2015
-            )
+            ]
         ), '">Show the post</a>';
 
     });
@@ -310,12 +310,12 @@ The array-syntax is allowed to easily set/get services in the internal services 
     // Setup the database service
     $app['db'] = function () {
         return new MysqlAdapter(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            )
+            ]
         );
     };
 
@@ -351,9 +351,9 @@ Not-Found ハンドラ
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(
-        array(
+        [
             __DIR__ . '/models/'
-        )
+        ]
     )->register();
 
     $app = new \Phalcon\Mvc\Micro();
@@ -445,9 +445,9 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->map('/api/robots', function () {
-        return array(
+        return [
             'status' => 'OK'
-        );
+        ];
     });
 
     $app->after(function () use ($app) {
@@ -630,10 +630,10 @@ Then add the instance to the application:
     $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products/show', array(
+        echo $app['view']->render('products/show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 
@@ -656,10 +656,10 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
     $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products', 'show', array(
+        echo $app['view']->render('products', 'show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 

@@ -116,10 +116,10 @@
 
             // Перенаправляем на другое действие
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
                     "action"     => "signin"
-                )
+                ]
             );
         }
     }
@@ -166,9 +166,9 @@ MVC слой отображения (View), управляемый компон�
 
         public function initialize()
         {
-            $this->settings = array(
+            $this->settings = [
                 "mySetting" => "value"
-            );
+            ];
         }
 
         public function saveAction()
@@ -424,10 +424,10 @@ MVC слой отображения (View), управляемый компон�
                 $this->flash->error("У вас недостаточно прав для сохранения записей");
 
                 $this->dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'home',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 return false;

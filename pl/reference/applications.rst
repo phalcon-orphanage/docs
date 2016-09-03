@@ -41,10 +41,10 @@ If namespaces are not used, the following bootstrap file could be used to orches
     $loader = new Loader();
 
     $loader->registerDirs(
-        array(
+        [
             '../apps/controllers/',
             '../apps/models/'
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -84,10 +84,10 @@ If namespaces are used, the following bootstrap can be used:
 
     // Use autoloading with namespaces prefixes
     $loader->registerNamespaces(
-        array(
+        [
             'Single\Controllers' => '../apps/controllers/',
             'Single\Models'      => '../apps/models/',
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -165,10 +165,10 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
             $loader = new Loader();
 
             $loader->registerNamespaces(
-                array(
+                [
                     'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
                     'Multiple\Backend\Models'      => '../apps/backend/models/',
-                )
+                ]
             );
 
             $loader->register();
@@ -217,28 +217,28 @@ A special bootstrap file is required to load a multi-module MVC architecture:
 
         $router->add(
             "/login",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'login',
                 'action'     => 'index'
-            )
+            ]
         );
 
         $router->add(
             "/admin/products/:action",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         $router->add(
             "/products/:action",
-            array(
+            [
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         return $router;
@@ -251,16 +251,16 @@ A special bootstrap file is required to load a multi-module MVC architecture:
 
         // Register the installed modules
         $application->registerModules(
-            array(
-                'frontend' => array(
+            [
+                'frontend' => [
                     'className' => 'Multiple\Frontend\Module',
                     'path'      => '../apps/frontend/Module.php',
-                ),
-                'backend'  => array(
+                ],
+                'backend'  => [
                     'className' => 'Multiple\Backend\Module',
                     'path'      => '../apps/backend/Module.php',
-                )
-            )
+                ]
+            ]
         );
 
         // Handle the request
@@ -288,7 +288,7 @@ If you want to maintain the module configuration in the bootstrap file you can u
 
     // Register the installed modules
     $application->registerModules(
-        array(
+        [
             'frontend' => function ($di) use ($view) {
                 $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
@@ -301,7 +301,7 @@ If you want to maintain the module configuration in the bootstrap file you can u
                     return $view;
                 });
             }
-        )
+        ]
     );
 
 When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is

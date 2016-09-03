@@ -64,7 +64,7 @@ Resource adalah objeck-objek yang aksesnya terkontrol. Normalnya dalam aplikasi 
 
     // Tambahkan resource "customers" dengan beberapa operasi
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 Menentukan Kontrol Akses
 ------------------------

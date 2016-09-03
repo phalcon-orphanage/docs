@@ -38,9 +38,9 @@ Di bawah ini adalah contoh bootstrap yang digunakan untuk contoh ini.
      */
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(
-        array(
+        [
             APPLICATION_PATH . '/tasks'
-        )
+        ]
     );
     $loader->register();
 
@@ -57,7 +57,7 @@ Di bawah ini adalah contoh bootstrap yang digunakan untuk contoh ini.
     /**
      * Proses argumen
      */
-    $arguments = array();
+    $arguments = [];
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
@@ -173,10 +173,10 @@ Lalu anda dapat menggunakan console dalam tiap tugas. Dibawah ini adalah contoh 
             echo "\nThis is the default task and the default action \n";
 
             $this->console->handle(
-                array(
+                [
                     'task'   => 'main',
                     'action' => 'test'
-                )
+                ]
             );
         }
 

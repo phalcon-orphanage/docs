@@ -22,12 +22,12 @@ kita tidak dapat mengganti parameter koneksi atau tipe sistem database karena ko
         public function someDbTask()
         {
             $connection = new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
 
             // ...
@@ -68,12 +68,12 @@ solusi bagus:
 
     // Buat koneksi
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Injeksi koneksi dalam komponen
@@ -98,12 +98,12 @@ menciptakannya lagi dan lagi dapat memecahkan hal ini:
         public static function getConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
     }
@@ -151,12 +151,12 @@ Sekarang, bayangkan kita harus mengimplementasi dua metode dalam komponen, yang 
         protected static function _createConnection()
         {
             return new Connection(
-                array(
+                [
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
                     "dbname"   => "invo"
-                )
+                ]
             );
         }
 
@@ -326,12 +326,12 @@ komponen kita:
     // Daftarkan service "db" dalam kontainer
     $di->set('db', function () {
         return new Connection(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "invo"
-            )
+            ]
         );
     });
 
@@ -361,7 +361,7 @@ Pendekatan kita
 Karena Phalcon memiliki ketergantungan minimal (highly decoupled), :doc:`Phalcon\\Di <../api/Phalcon_Di>` penting untuk mengintegrasikan beragam komponen framework. Developer dapat
 juga menggunakan komponen ini untuk menginjeksi ketergantungan dan mengelola instance global kelas-kelas berbeda yang digunakan aplikasi.
 
-Pada dasarnya, komponen ini mengimplementasi pola `Inversion of Control`_ . Dengan menerapkannya, objek-objek tidak menerima ketergantungannya menggunakan setter atau konstruktor, 
+Pada dasarnya, komponen ini mengimplementasi pola `Inversion of Control`_ . Dengan menerapkannya, objek-objek tidak menerima ketergantungannya menggunakan setter atau konstruktor,
 namun meminta service dependency injector. Ini menurunkan kompleksitias keseluruhan karena hanya ada
 satu cara untuk mendapatkan ketergantungan yang dibutuhkan dalam sebuah komponen.
 
@@ -403,9 +403,9 @@ Service dapat didaftarkan dengan beberapa jenis definisi:
     // Menggunakan definisi array
     $di->set(
         "request",
-        array(
+        [
             "className" => 'Phalcon\Http\Request'
-        )
+        ]
     );
 
 Sintaks array juga diizinkan untuk mendaftarkan service:
@@ -431,9 +431,9 @@ Sintaks array juga diizinkan untuk mendaftarkan service:
     $di["request"] = new Request();
 
     // Menggunakan definisi array
-    $di["request"] = array(
+    $di["request"] = [
         "className" => 'Phalcon\Http\Request'
-    );
+    ];
 
 Dicontoh diatas, ketika framework butuh mengakses data request, ia akan meminta service yang diidentifikasi sebagai ‘request’ dalam kontainer.
 Kontainer kemudian mengembalikan instance service yang diminta. Developer mungkin suatu saat mengganti sebuah komponen ketika mereka butuh.
@@ -465,7 +465,7 @@ Jenis definisi ini tidak mengizinkan untuk menentukan argumen untuk kontruktor k
 
 Objek
 ^^^^^
-Jenis ini mengharapkan sebuah objek. Karena fakta bahwa objek tidak perlu di resolve karena ia sudah objek, 
+Jenis ini mengharapkan sebuah objek. Karena fakta bahwa objek tidak perlu di resolve karena ia sudah objek,
 bisa dibilang ini tidak benar-benar dependency injection,
 namun ia berguna jika anda ingin memaksa ketergantungan yang diberikan selalu objek atau nilai yang sama:
 
@@ -491,12 +491,12 @@ mengubah beberapa parameter secara ekternal tanpa mengubah definisi ketergantung
 
     $di->set("db", function () {
         return new PdoMysql(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "blog"
-            )
+            ]
         );
     });
 
@@ -511,12 +511,12 @@ Beberapa keterbatasan dapat diatasi dengan melewatkan variabel tambahan ke lingk
     // Menggunakan variabel $config dalam scope saat ini
     $di->set("db", function () use ($config) {
         return new PdoMysql(
-            array(
+            [
                 "host"     => $config->host,
                 "username" => $config->username,
                 "password" => $config->password,
                 "dbname"   => $config->name
-            )
+            ]
         );
     });
 
@@ -533,15 +533,15 @@ dapat terlihat lebih ramai:
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Daftarkan service 'logger' dengan nama kelas dan parameter
-    $di->set('logger', array(
+    $di->set('logger', [
         'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => array(
-            array(
+        'arguments' => [
+            [
                 'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
-            )
-        )
-    ));
+            ]
+        ]
+    ]);
 
     // Menggunakan fungsi anonim
     $di->set('logger', function () {
@@ -558,10 +558,10 @@ Kedua registrasi service diatas menghasilkan hasil sama. Namun definisi array, m
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     // Ubah parameter pertama tanpa menciptakan logger
-    $di->getService('logger')->setParameter(0, array(
+    $di->getService('logger')->setParameter(0, [
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
-    ));
+    ]);
 
 Tambahan lagi menggunakan sintaks array anda dapat menggunakan tiga jenis dependency injection:
 
@@ -597,17 +597,17 @@ Service ini dapat didaftarkan dengan cara berikut:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
-    $di->set('someComponent', array(
+    $di->set('someComponent', [
         'className' => 'SomeApp\SomeComponent',
-        'arguments' => array(
-            array('type' => 'service', 'name' => 'response'),
-            array('type' => 'parameter', 'value' => true)
-        )
-    ));
+        'arguments' => [
+            ['type' => 'service', 'name' => 'response'],
+            ['type' => 'parameter', 'value' => true]
+        ]
+    ]);
 
 Service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) di resolve lalu dilewatkan ke argumen pertama konstruktor,
 sedangkan yang kedua adalah nilai boolean (true) yang dilewatkan apa adanya.
@@ -647,35 +647,35 @@ Service dengan injeksi setter dapat didaftarkan seperti berikut:
 
     <?php
 
-    $di->set('response', array(
+    $di->set('response', [
         'className' => 'Phalcon\Http\Response'
-    ));
+    ]);
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className' => 'SomeApp\SomeComponent',
-            'calls'     => array(
-                array(
+            'calls'     => [
+                [
                     'method'    => 'setResponse',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type' => 'service',
                             'name' => 'response'
-                        )
-                    )
-                ),
-                array(
+                        ]
+                    ]
+                ],
+                [
                     'method'    => 'setFlag',
-                    'arguments' => array(
-                        array(
+                    'arguments' => [
+                        [
                             'type'  => 'parameter',
                             'value' => true
-                        )
-                    )
-                )
-            )
-        )
+                        ]
+                    ]
+                ]
+            ]
+        ]
     );
 
 Injeksi Properti
@@ -705,45 +705,45 @@ Service dengan injeksi properti dapat didaftarkan sebagai berikut:
 
     $di->set(
         'response',
-        array(
+        [
             'className' => 'Phalcon\Http\Response'
-        )
+        ]
     );
 
     $di->set(
         'someComponent',
-        array(
+        [
             'className'  => 'SomeApp\SomeComponent',
-            'properties' => array(
-                array(
+            'properties' => [
+                [
                     'name'  => 'response',
-                    'value' => array(
+                    'value' => [
                         'type' => 'service',
                         'name' => 'response'
-                    )
-                ),
-                array(
+                    ]
+                ],
+                [
                     'name'  => 'someFlag',
-                    'value' => array(
+                    'value' => [
                         'type'  => 'parameter',
                         'value' => true
-                    )
-                )
-            )
-        )
+                    ]
+                ]
+            ]
+        ]
     );
 
 Jenis parameter yang didukung termasuk berikut ini:
 
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| Jenis       | Keterangan                                               | Contoh                                                                                      |
-+=============+==========================================================+=============================================================================================+
-| parameter   | Mewakili nilai asli yang dilewatkan sebagai parameter    | :code:`array('type' => 'parameter', 'value' => 1234)`                                       |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| service     | Mewakili service lain dalam kontainer service            | :code:`array('type' => 'service', 'name' => 'request')`                                     |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
-| instance    | Mewakili objek yang harus diciptakan dinamis             | :code:`array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now'))` |
-+-------------+----------------------------------------------------------+---------------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Jenis       | Keterangan                                               | Contoh                                                                            |
++=============+==========================================================+===================================================================================+
+| parameter   | Mewakili nilai asli yang dilewatkan sebagai parameter    | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| service     | Mewakili service lain dalam kontainer service            | :code:`['type' => 'service', 'name' => 'request']`                                |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
+| instance    | Mewakili objek yang harus diciptakan dinamis             | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
++-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Resolve service yang definisinya kompleks mungkin lebih lambat dibandingkan yang sederhana seperti yang sudah terlihat sebelumnya. Namun,
 ia menyediakan pendekatan yang lebih kokoh untuk mendefinisi dan menginjeksi service.
@@ -782,7 +782,7 @@ Argumen dapat dilewatkan ke konstruktor dengan menambahkan parameter array ke me
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", array("some-parameter", "other"));
+    $component = $di->get("MyComponent", ["some-parameter", "other"]);
 
 Event
 -----

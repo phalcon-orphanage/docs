@@ -2,7 +2,7 @@ Aplikasi MVC
 ============
 
 Semua kerja keras mengatur operasi dalam MVC di Phalcon normalnya dilakukan oleh
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Komponen ini membungkus semua operasi kompleks 
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Komponen ini membungkus semua operasi kompleks
 yang diperlukan dibelakang layar, menciptakan semua komponen yang diperlukan dan menyatukannnya dengan proyek, memungkinkan
 pola MVC bekerja sesuai  yang diinginkan.
 
@@ -41,10 +41,10 @@ Jika namespace tidak digunakan, file bootstrap berikut dapat digunakan untuk men
     $loader = new Loader();
 
     $loader->registerDirs(
-        array(
+        [
             '../apps/controllers/',
             '../apps/models/'
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -84,10 +84,10 @@ Jika namespace digunakan, bootstrap berikut bisa dipakai:
 
     // Gunakan autoloading dengan prefix namespace
     $loader->registerNamespaces(
-        array(
+        [
             'Single\Controllers' => '../apps/controllers/',
             'Single\Models'      => '../apps/models/',
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -165,10 +165,10 @@ Tiap direktori dalam apps/ punya struktur MVC sendiri. File Module.php disediaka
             $loader = new Loader();
 
             $loader->registerNamespaces(
-                array(
+                [
                     'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
                     'Multiple\Backend\Models'      => '../apps/backend/models/',
-                )
+                ]
             );
 
             $loader->register();
@@ -217,28 +217,28 @@ Sebuah file bootstrap khusus diperlukan untuk memuat arsitektur MVC bermodul jam
 
         $router->add(
             "/login",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'login',
                 'action'     => 'index'
-            )
+            ]
         );
 
         $router->add(
             "/admin/products/:action",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         $router->add(
             "/products/:action",
-            array(
+            [
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         return $router;
@@ -251,16 +251,16 @@ Sebuah file bootstrap khusus diperlukan untuk memuat arsitektur MVC bermodul jam
 
         // Register the installed modules
         $application->registerModules(
-            array(
-                'frontend' => array(
+            [
+                'frontend' => [
                     'className' => 'Multiple\Frontend\Module',
                     'path'      => '../apps/frontend/Module.php',
-                ),
-                'backend'  => array(
+                ],
+                'backend'  => [
                     'className' => 'Multiple\Backend\Module',
                     'path'      => '../apps/backend/Module.php',
-                )
-            )
+                ]
+            ]
         );
 
         // Handle the request
@@ -288,7 +288,7 @@ Jika anda ingin mengelola konfigurasi modul dalam file bootstrap anda dapat meng
 
     // Register the installed modules
     $application->registerModules(
-        array(
+        [
             'frontend' => function ($di) use ($view) {
                 $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
@@ -301,11 +301,11 @@ Jika anda ingin mengelola konfigurasi modul dalam file bootstrap anda dapat meng
                     return $view;
                 });
             }
-        )
+        ]
     );
 
 Ketika :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` memiliki module yang terdaftar, penting untuk
-tiap route yang cocok mengembalikan module yang sah. Tiap modul yang terdaftar memiliki sebuah kelas terkait yang 
+tiap route yang cocok mengembalikan module yang sah. Tiap modul yang terdaftar memiliki sebuah kelas terkait yang
 menyediakan fungsi-fungsi untuk menyiapkan modul. Tiap definisi modul kelas wajib mengimplementasi dua metode:
 registerAutoloaders() dan registerServices(), yang akan dipanggil oleh
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` tergantung modul mana yang dijalankan.

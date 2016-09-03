@@ -280,7 +280,7 @@ dan URI mana yang akan digunakan menampilkannya. Pengaturan ini diset dengan :co
 
 Filter Bawaan
 ^^^^^^^^^^^^^
-Phalcon menyediakan 2 filter bawaan untuk minifikasi JavaScript dan CSS, C-backendnya menghasilkan 
+Phalcon menyediakan 2 filter bawaan untuk minifikasi JavaScript dan CSS, C-backendnya menghasilkan
 overhead terendah untuk menjalankan tugas ini:
 
 +---------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
@@ -360,11 +360,11 @@ Penggunaan:
     // Tambahkan filter kompresor YUI ke koleksi
     $css->addFilter(
         new CssYUICompressor(
-            array(
+            [
                 'java-bin'      => '/usr/local/bin/java',
                 'yui'           => '/some/path/yuicompressor-x.y.z.jar',
                 'extra-options' => '--charset utf8'
-            )
+            ]
         )
     );
 

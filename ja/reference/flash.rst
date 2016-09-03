@@ -96,12 +96,12 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
     // Register the flash service with custom CSS classes
     $di->set('flash', function () {
         $flash = new FlashDirect(
-            array(
+            [
                 'error'   => 'alert alert-danger',
                 'success' => 'alert alert-success',
                 'notice'  => 'alert alert-info',
                 'warning' => 'alert alert-warning'
-            )
+            ]
         );
 
         return $flash;
@@ -144,9 +144,9 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
             // Forward to the index action
             return $this->dispatcher->forward(
-                array(
+                [
                     "action" => "index"
-                )
+                ]
             );
         }
     }

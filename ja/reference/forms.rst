@@ -22,10 +22,10 @@ The following example shows its basic usage:
     $form->add(
         new Select(
             "telephoneType",
-            array(
+            [
                 'H' => 'Home',
                 'C' => 'Cell'
-            )
+            ]
         )
     );
 
@@ -65,7 +65,7 @@ Each element in the form can be rendered as required by the developer. Internall
 
     <p>
         <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
+        <?php echo $form->render("name", ['maxlength' => 30, 'placeholder' => 'Type your name']); ?>
     </p>
 
 HTML attributes also can be set in the element's definition:
@@ -77,10 +77,10 @@ HTML attributes also can be set in the element's definition:
     $form->add(
         new Text(
             "name",
-            array(
+            [
                 'maxlength'   => 30,
                 'placeholder' => 'Type your name'
-            )
+            ]
         )
     );
 
@@ -109,12 +109,12 @@ classes implementing the form in a separated file:
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
-                    array(
-                        'using' => array(
+                    [
+                        'using' => [
                             'id',
                             'name'
-                        )
-                    )
+                        ]
+                    ]
                 )
             );
         }
@@ -192,9 +192,9 @@ In the form's instantiation you must use:
 
     $form = new UsersForm(
         new Users(),
-        array(
+        [
             'edit' => true
-        )
+        ]
     );
 
 バリデーション
@@ -214,18 +214,18 @@ custom validators could be set to each element:
 
     $name->addValidator(
         new PresenceOf(
-            array(
+            [
                 'message' => 'The name is required'
-            )
+            ]
         )
     );
 
     $name->addValidator(
         new StringLength(
-            array(
+            [
                 'min'            => 10,
                 'messageMinimum' => 'The name is too short'
-            )
+            ]
         )
     );
 
@@ -338,22 +338,22 @@ Using this class as entity, allows the form to take the default values from it:
     $form->add(
         new Select(
             "timezone",
-            array(
+            [
                 'America/New_York'  => 'New York',
                 'Europe/Amsterdam'  => 'Amsterdam',
                 'America/Sao_Paulo' => 'Sao Paulo',
                 'Asia/Tokyo'        => 'Tokyo'
-            )
+            ]
         )
     );
 
     $form->add(
         new Select(
             "receiveEmails",
-            array(
+            [
                 'Yes' => 'Yes, please!',
                 'No'  => 'No, thanks'
-            )
+            ]
         )
     );
 

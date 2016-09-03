@@ -37,10 +37,10 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     $loader = new Loader();
 
     $loader->registerDirs(
-        array(
+        [
             '../apps/controllers/',
             '../apps/models/'
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -80,10 +80,10 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
     // 名前空間の接頭辞を伴ったオートローディングの設定
     $loader->registerNamespaces(
-        array(
+        [
             'Single\Controllers' => '../apps/controllers/',
             'Single\Models'      => '../apps/models/',
-        )
+        ]
     )->register();
 
     $di = new FactoryDefault();
@@ -161,10 +161,10 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
             $loader = new Loader();
 
             $loader->registerNamespaces(
-                array(
+                [
                     'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
                     'Multiple\Backend\Models'      => '../apps/backend/models/',
-                )
+                ]
             );
 
             $loader->register();
@@ -213,28 +213,28 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
         $router->add(
             "/login",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'login',
                 'action'     => 'index'
-            )
+            ]
         );
 
         $router->add(
             "/admin/products/:action",
-            array(
+            [
                 'module'     => 'backend',
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         $router->add(
             "/products/:action",
-            array(
+            [
                 'controller' => 'products',
                 'action'     => 1
-            )
+            ]
         );
 
         return $router;
@@ -247,16 +247,16 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
         // モジュールを登録する
         $application->registerModules(
-            array(
-                'frontend' => array(
+            [
+                'frontend' => [
                     'className' => 'Multiple\Frontend\Module',
                     'path'      => '../apps/frontend/Module.php',
-                ),
-                'backend'  => array(
+                ],
+                'backend'  => [
                     'className' => 'Multiple\Backend\Module',
                     'path'      => '../apps/backend/Module.php',
-                )
-            )
+                ]
+            ]
         );
 
         // リクエストを処理する
@@ -284,7 +284,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     // Register the installed modules
     $application->registerModules(
-        array(
+        [
             'frontend' => function ($di) use ($view) {
                 $di->setShared('view', function () use ($view) {
                     $view->setViewsDir('../apps/frontend/views/');
@@ -297,7 +297,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
                     return $view;
                 });
             }
-        )
+        ]
     );
 
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` にモジュールが登録されている場合、マッチしたルートが有効なモジュールを返すことが常に必要になります。それぞれの登録済みモジュールは、モジュールの機能を提供するために必要な関連クラスを持っています。それぞれのモジュールのクラス定義は、registerAutoloaders() とregisterServices() という2つのメソッドを実装しなければなりません。これらは、モジュールが実行される際に :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` に呼ばれます。

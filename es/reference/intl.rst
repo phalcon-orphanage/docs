@@ -46,15 +46,15 @@ Printing numbers formatted based on some locale:
 
     // Prints € 4 560
     $formatter = new MessageFormatter("fr_FR", "€ {0, number, integer}");
-    echo $formatter->format(array(4560));
+    echo $formatter->format([4560]);
 
     // Prints USD$ 4,560.5
     $formatter = new MessageFormatter("en_US", "USD$ {0, number}");
-    echo $formatter->format(array(4560.50));
+    echo $formatter->format([4560.50]);
 
     // Prints ARS$ 1.250,25
     $formatter = new MessageFormatter("es_AR", "ARS$ {0, number}");
-    echo $formatter->format(array(1250.25));
+    echo $formatter->format([1250.25]);
 
 Message formatting using time and date patterns:
 
@@ -64,7 +64,7 @@ Message formatting using time and date patterns:
 
     // Setting parameters
     $time   = time();
-    $values = array(7, $time, $time);
+    $values = [7, $time, $time];
 
     // Prints "At 3:50:31 PM on Apr 19, 2015, there was a disturbance on planet 7."
     $pattern   = "At {1, time} on {1, date}, there was a disturbance on planet {0, number}.";

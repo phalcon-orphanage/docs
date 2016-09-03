@@ -27,21 +27,21 @@ Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu
 
     use Phalcon\Config;
 
-    $settings = array(
-        "database" => array(
+    $settings = [
+        "database" => [
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
             "dbname"   => "test_db"
-        ),
-         "app" => array(
+        ],
+         "app" => [
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
             "viewsDir"       => "../app/views/"
-        ),
+        ],
         "mysetting" => "the-value"
-    );
+    ];
 
     $config = new Config($settings);
 
@@ -108,24 +108,24 @@ Configuration de fusion
     use Phalcon\Config;
 
     $config = new Config(
-        array(
-            'database' => array(
+        [
+            'database' => [
                 'host'   => 'localhost',
                 'dbname' => 'test_db'
-            ),
+            ],
             'debug' => 1
-        )
+        ]
     );
 
     $config2 = new Config(
-        array(
-            'database' => array(
+        [
+            'database' => [
                 'dbname'   => 'production_db',
                 'username' => 'scott',
                 'password' => 'secret'
-            ),
+            ],
             'logging' => 1
-        )
+        ]
     );
 
     $config->merge($config2);

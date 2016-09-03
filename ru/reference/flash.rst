@@ -96,12 +96,12 @@
     // Регистрируем компонент сообщений с CSS классами
     $di->set('flash', function () {
         $flash = new FlashDirect(
-            array(
+            [
                 'error'   => 'alert alert-danger',
                 'success' => 'alert alert-success',
                 'notice'  => 'alert alert-info',
                 'warning' => 'alert alert-warning'
-            )
+            ]
         );
 
         return $flash;
@@ -145,9 +145,9 @@
 
             // Делаем внутреннее перенаправление на другое действие
             return $this->dispatcher->forward(
-                array(
+                [
                     "action" => "index"
-                )
+                ]
             );
         }
     }

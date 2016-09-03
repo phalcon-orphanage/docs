@@ -37,10 +37,10 @@ You can use the same instance to encrypt/decrypt several times:
     // Create an instance
     $crypt = new Crypt();
 
-    $texts = array(
+    $texts = [
         'my-key'    => 'This is a secret text',
         'other-key' => 'This is a very secret'
-    );
+    ];
 
     foreach ($texts as $key => $text) {
 

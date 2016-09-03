@@ -41,10 +41,10 @@ Phalcon предоставляет средства шифрования с по
     // Создание экземпляра
     $crypt = new Crypt();
 
-    $texts = array(
+    $texts = [
         'my-key'    => 'Это секретный текст',
         'other-key' => 'Это очень секретно'
-    );
+    ];
 
     foreach ($texts as $key => $text) {
 

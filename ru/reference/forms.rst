@@ -22,10 +22,10 @@ Forms
     $form->add(
         new Select(
             "telephoneType",
-            array(
+            [
                 'H' => 'Home',
                 'C' => 'Cell'
-            )
+            ]
         )
     );
 
@@ -66,7 +66,7 @@ html-атрибуты вторым параметром:
 
     <p>
         <label>Имя</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Введите своё имя')); ?>
+        <?php echo $form->render("name", ['maxlength' => 30, 'placeholder' => 'Введите своё имя']); ?>
     </p>
 
 Атрибуты HTML могут быть указаны в параметрах при создании элемента:
@@ -78,10 +78,10 @@ html-атрибуты вторым параметром:
     $form->add(
         new Text(
             "name",
-            array(
+            [
                 'maxlength'   => 30,
                 'placeholder' => 'Введите своё имя'
-            )
+            ]
         )
     );
 
@@ -110,12 +110,12 @@ html-атрибуты вторым параметром:
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
-                    array(
-                        'using' => array(
+                    [
+                        'using' => [
                             'id',
                             'name'
-                        )
-                    )
+                        ]
+                    ]
                 )
             );
         }
@@ -193,9 +193,9 @@ html-атрибуты вторым параметром:
 
     $form = new UsersForm(
         new Users(),
-        array(
+        [
             'edit' => true
-        )
+        ]
     );
 
 Валидация
@@ -215,18 +215,18 @@ html-атрибуты вторым параметром:
 
     $name->addValidator(
         new PresenceOf(
-            array(
+            [
                 'message' => 'Поле Name обязательно для заполнения'
-            )
+            ]
         )
     );
 
     $name->addValidator(
         new StringLength(
-            array(
+            [
                 'min'            => 10,
                 'messageMinimum' => 'Значение поля Name слишком короткое'
-            )
+            ]
         )
     );
 
@@ -339,22 +339,22 @@ html-атрибуты вторым параметром:
     $form->add(
         new Select(
             "timezone",
-            array(
+            [
                 'America/New_York'  => 'New York',
                 'Europe/Amsterdam'  => 'Amsterdam',
                 'America/Sao_Paulo' => 'Sao Paulo',
                 'Asia/Tokyo'        => 'Tokyo'
-            )
+            ]
         )
     );
 
     $form->add(
         new Select(
             "receiveEmails",
-            array(
+            [
                 'Yes' => 'Yes, please!',
                 'No'  => 'No, thanks'
-            )
+            ]
         )
     );
 

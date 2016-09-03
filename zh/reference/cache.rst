@@ -44,9 +44,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(
-        array(
+        [
             "lifetime" => 172800
-        )
+        ]
     );
 
     // Create the component that will cache from the "Output" to a "File" backend
@@ -54,9 +54,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
+        [
             "cacheDir" => "../app/cache/"
-        )
+        ]
     );
 
     // Get/Set the cache file to ../app/cache/my-cache.html
@@ -70,11 +70,11 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
         // Generate a link to the sign-up action
         echo Tag::linkTo(
-            array(
+            [
                 "user/signup",
                 "Sign Up",
                 "class" => "signup-button"
-            )
+            ]
         );
 
         // Store the output into the cache file
@@ -108,9 +108,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // Cache the files for 2 days using a Data frontend
     $frontCache = new FrontData(
-        array(
+        [
             "lifetime" => 172800
-        )
+        ]
     );
 
     // Create the component that will cache "Data" to a "File" backend
@@ -118,9 +118,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
+        [
             "cacheDir" => "../app/cache/"
-        )
+        ]
     );
 
     // Try to get cached records
@@ -131,9 +131,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
+            [
                 "order" => "id"
-            )
+            ]
         );
 
         // Store it in the cache
@@ -158,24 +158,24 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     // Cache data for one hour
     $frontCache = new FrontData(
-        array(
+        [
             "lifetime" => 3600
-        )
+        ]
     );
 
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new BackMemCached(
         $frontCache,
-        array(
-            "servers" => array(
-                array(
+        [
+            "servers" => [
+                [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
                     "weight" => "1"
-                )
-            )
-        )
+                ]
+            ]
+        ]
     );
 
     // Try to get cached records
@@ -186,9 +186,9 @@ Memcached 后端存储器例子（Memcached Backend Example）
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
+            [
                 "order" => "id"
-            )
+            ]
         );
 
         // Store it in the cache
@@ -317,48 +317,48 @@ Setting the lifetime when retrieving:
     use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
     $ultraFastFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 3600
-        )
+        ]
     );
 
     $fastFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 86400
-        )
+        ]
     );
 
     $slowFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 604800
-        )
+        ]
     );
 
     // Backends are registered from the fastest to the slower
     $cache = new Multiple(
-        array(
+        [
             new ApcCache(
                 $ultraFastFrontend,
-                array(
+                [
                     "prefix" => 'cache',
-                )
+                ]
             ),
             new MemcacheCache(
                 $fastFrontend,
-                array(
+                [
                     "prefix" => 'cache',
                     "host"   => "localhost",
                     "port"   => "11211"
-                )
+                ]
             ),
             new FileCache(
                 $slowFrontend,
-                array(
+                [
                     "prefix"   => 'cache',
                     "cacheDir" => "../app/cache/"
-                )
+                ]
             )
-        )
+        ]
     );
 
     // Save, saves in every backend

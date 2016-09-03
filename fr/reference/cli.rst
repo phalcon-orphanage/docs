@@ -38,9 +38,9 @@ Below is a sample bootstrap that is being used for this example.
      */
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(
-        array(
+        [
             APPLICATION_PATH . '/tasks'
-        )
+        ]
     );
     $loader->register();
 
@@ -57,7 +57,7 @@ Below is a sample bootstrap that is being used for this example.
     /**
      * Process the console arguments
      */
-    $arguments = array();
+    $arguments = [];
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
             $arguments['task'] = $arg;
@@ -173,10 +173,10 @@ Then you can use the console inside of any task. Below is an example of a modifi
             echo "\nThis is the default task and the default action \n";
 
             $this->console->handle(
-                array(
+                [
                     'task'   => 'main',
                     'action' => 'test'
-                )
+                ]
             );
         }
 

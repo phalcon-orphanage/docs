@@ -213,9 +213,9 @@ In the example above, only critical and emergency messages will get saved to the
     // 使用写模式打开
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
+        [
             'mode' => 'w'
-        )
+        ]
     );
 
 Syslog 日志记录器（Syslog Logger）
@@ -234,10 +234,10 @@ Syslog 日志记录器（Syslog Logger）
     // Setting ident/mode/facility 参数设置
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
+        [
             'option'   => LOG_NDELAY,
             'facility' => LOG_MAIL
-        )
+        ]
     );
 
 FirePHP 日志记录器（FirePHP Logger）

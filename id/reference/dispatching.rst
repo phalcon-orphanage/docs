@@ -26,7 +26,7 @@ dalam :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
         $controller = new $controllerClass();
 
         // Eksekusi aksi
-        call_user_func_array(array($controller, $actionName . "Action"), $params);
+        call_user_func_array([$controller, $actionName . "Action"], $params);
 
         // '$finished' should be reloaded to check if the flow was forwarded to another controller
         $finished = true;
@@ -139,10 +139,10 @@ opsi tertentu, mengarahkan user ke screen lain atau sekedar menggunakan ulang ko
 
             // Forward flow to the index action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "posts",
                     "action"     => "index"
-                )
+                ]
             );
         }
     }
@@ -159,18 +159,18 @@ Contoh forwarding:
 
     // Arahkan ali ke aksi lain dalam kontroler saat ini
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search"
-        )
+        ]
     );
 
     // Arahkan alir ke aksi lain dalam kontroler saa ini
     // dengan melewatkan parameter
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search",
-            "params" => array(1, 2, 3)
-        )
+            "params" => [1, 2, 3]
+        ]
     );
 
 Aksi forward menerima parameter berikut:
@@ -212,7 +212,7 @@ Parameter secara default dilewatkan sesuai tempatnya di URL ke aksi, anda dapat 
         // Pasang listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Gunakan paramter ganjil sebagai key dan genap sebagai value
@@ -250,7 +250,7 @@ Jika schema yang diinginkan adalah: http://example.com/controller/key1:value1/ke
         // Pasang sebuah listener
         $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
 
-            $keyParams = array();
+            $keyParams = [];
             $params    = $dispatcher->getParams();
 
             // Pisah tiap parameter sebagai pasangan key,value
@@ -439,7 +439,7 @@ sebelum mengirim aksi dan menyiapkan parameter yang sesuai:
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
                         // Override parameters menggunakan model instance
-                        $dispatcher->setParams(array($model));
+                        $dispatcher->setParams([$model]);
                     }
                 }
 
@@ -482,10 +482,10 @@ Menggunakan :doc:`EventsManager <events>` dimungkinkan untuk menyisipkan hook po
             // Tangani eksepsi 404
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'index',
                         'action'     => 'show404'
-                    )
+                    ]
                 );
 
                 return false;
@@ -496,10 +496,10 @@ Menggunakan :doc:`EventsManager <events>` dimungkinkan untuk menyisipkan hook po
                 case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                 case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                     $dispatcher->forward(
-                        array(
+                        [
                             'controller' => 'index',
                             'action'     => 'show404'
-                        )
+                        ]
                     );
 
                     return false;
@@ -532,18 +532,18 @@ mengambil aksi ketika sebuah eksepsi dihasilkan dalam dispatch loop:
         {
             // Tangani eksepsi 404
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
+                $dispatcher->forward([
                     'controller' => 'index',
                     'action'     => 'show404'
-                ));
+                ]);
                 return false;
             }
 
             // Tangani eksepsi lain
-            $dispatcher->forward(array(
+            $dispatcher->forward([
                 'controller' => 'index',
                 'action'     => 'show503'
-            ));
+            ]);
 
             return false;
         }

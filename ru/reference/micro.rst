@@ -67,7 +67,7 @@ HTTP используется, чтобы запросы путей соотве
 
     // С помощью метода объекта
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($myController, "someAction"));
+    $app->get('/say/hello/{name}', [$myController, "someAction"]);
 
     // Анонимная функция (замыкание)
     $app->get('/say/hello/{name}', function ($name) {
@@ -100,7 +100,7 @@ HTTP используется, чтобы запросы путей соотве
     $app->patch('/api/products/update/{id}', "info_product");
 
     // Совпадет, если HTTP-метод - GET или POST
-    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs', "action_product")->via(['GET', 'POST']);
 
 To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
@@ -177,11 +177,11 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     // Возврат JSON
     $app->get('/get/some-json', function () {
         echo json_encode(
-            array(
+            [
                 "some",
                 "important",
                 "data"
-            )
+            ]
         );
     });
 
@@ -260,11 +260,11 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $app->get('/', function () use ($app) {
 
         echo '<a href="', $app->url->get(
-            array(
+            [
                 'for'   => 'show-post',
                 'title' => 'php-is-a-great-framework',
                 'year'  => 2015
-            )
+            ]
         ), '">Show the post</a>';
 
     });
@@ -316,12 +316,12 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     // Установка сервиса базы данных
     $app['db'] = function () {
         return new MysqlAdapter(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            )
+            ]
         );
     };
 
@@ -357,9 +357,9 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(
-        array(
+        [
             __DIR__ . '/models/'
-        )
+        ]
     )->register();
 
     $app = new \Phalcon\Mvc\Micro();
@@ -451,9 +451,9 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     });
 
     $app->map('/api/robots', function () {
-        return array(
+        return [
             'status' => 'OK'
-        );
+        ];
     });
 
     $app->after(function () use ($app) {
@@ -636,10 +636,10 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $app->get('/products/show', function () use ($app) {
 
         // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
-        echo $app['view']->render('products/show', array(
+        echo $app['view']->render('products/show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 
@@ -662,10 +662,10 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
     $app->get('/products/show', function () use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products', 'show', array(
+        echo $app['view']->render('products', 'show', [
             'id'   => 100,
             'name' => 'Artichoke'
-        ));
+        ]);
 
     });
 

@@ -67,7 +67,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     // 为 "customers"资源添加一组操作
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 定义访问控制（Defining Access Controls）
 ----------------------------------------

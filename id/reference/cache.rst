@@ -3,7 +3,7 @@ Meningkatkan Performa dengan Cache
 
 Phalcon menyediakan kelas :doc:`Phalcon\\Cache <cache>` yang memumungkinkan akses lebih cepat ke data terproses yang sering digunakan.
 :doc:`Phalcon\\Cache <cache>` ditulis dalam C, menghasilkan performa lebih tinggi dan menurunkan overhead ketika mengambil item dari backend.
-Kelas ini menggunakan struktur internal komponen frontend dan backend. Komponen front-end bertugas sebagai sumber input atau antar muka, 
+Kelas ini menggunakan struktur internal komponen frontend dan backend. Komponen front-end bertugas sebagai sumber input atau antar muka,
 sementara komponen backend menyediakan opsi penyimpanan bagi kelas.
 
 Kapan mengimplementasi cache?
@@ -46,9 +46,9 @@ kapanpun potongan kode tersebut dipanggil.
 
     // Buat output frontend. Cache file selama 2 hari
     $frontCache = new FrontOutput(
-        array(
+        [
             "lifetime" => 172800
-        )
+        ]
     );
 
     // Buat komponen yang akan menyimpan cache "Output" ke backend "File"
@@ -56,9 +56,9 @@ kapanpun potongan kode tersebut dipanggil.
     // untuk nama folder
     $cache = new BackFile(
         $frontCache,
-        array(
+        [
             "cacheDir" => "../app/cache/"
-        )
+        ]
     );
 
     // Get/Set cache file ke ../app/cache/my-cache.html
@@ -72,11 +72,11 @@ kapanpun potongan kode tersebut dipanggil.
 
         // Buat link ke sign-up action
         echo Tag::linkTo(
-            array(
+            [
                 "user/signup",
                 "Sign Up",
                 "class" => "signup-button"
-            )
+            ]
         );
 
         // Simpan output ke file cache
@@ -111,9 +111,9 @@ Ini dikendalikan oleh opsi cacheDir yang *wajib* memiliki backslash diakhir.
 
     // Cache file selama 2 days menggunakna Data frontend
     $frontCache = new FrontData(
-        array(
+        [
             "lifetime" => 172800
-        )
+        ]
     );
 
     // Buat komponen yang akan menyimpan cache "Data" ke "File" backend
@@ -121,9 +121,9 @@ Ini dikendalikan oleh opsi cacheDir yang *wajib* memiliki backslash diakhir.
     // folder
     $cache = new BackFile(
         $frontCache,
-        array(
+        [
             "cacheDir" => "../app/cache/"
-        )
+        ]
     );
 
     // Coba ambil record yang dicache
@@ -134,9 +134,9 @@ Ini dikendalikan oleh opsi cacheDir yang *wajib* memiliki backslash diakhir.
         // $robots null karena cache kedaluwarsa atau data tidak ada
         // Buat panggilan database dan isi variabel
         $robots = Robots::find(
-            array(
+            [
                 "order" => "id"
-            )
+            ]
         );
 
         // Simpan dalam cache
@@ -161,24 +161,24 @@ Contoh di atas berubah sedikit (terutama dalam hal konfigurasi) ketika kita meng
 
     // Cache data selama satu jam
     $frontCache = new FrontData(
-        array(
+        [
             "lifetime" => 3600
-        )
+        ]
     );
 
     // Buat komponen yang akan cache "Data" ke "Memcached" backend
     // Pengaturan koneksi Memcached
     $cache = new BackMemCached(
         $frontCache,
-        array(
-            "servers" => array(
-                array(
+        [
+            "servers" => [
+                [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
                     "weight" => "1"
-                )
-            )
-        )
+                ]
+            ]
+        ]
     );
 
     // Coba ambil record yang dicache
@@ -189,9 +189,9 @@ Contoh di atas berubah sedikit (terutama dalam hal konfigurasi) ketika kita meng
         // $robots null karena cache kedaluwarsa atau karena data tidak ada
         // Buat panggilan database dan isi variabel
         $robots = Robots::find(
-            array(
+            [
                 "order" => "id"
-            )
+            ]
         );
 
         // Simpan di cache
@@ -322,48 +322,48 @@ dan berakhir di yang paling lambat hingga data kedaluwarsa:
     use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
     $ultraFastFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 3600
-        )
+        ]
     );
 
     $fastFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 86400
-        )
+        ]
     );
 
     $slowFrontend = new DataFrontend(
-        array(
+        [
             "lifetime" => 604800
-        )
+        ]
     );
 
     // Backend didaftarakan dari yang tercepat ke yang lambat
     $cache = new Multiple(
-        array(
+        [
             new ApcCache(
                 $ultraFastFrontend,
-                array(
+                [
                     "prefix" => 'cache',
-                )
+                ]
             ),
             new MemcacheCache(
                 $fastFrontend,
-                array(
+                [
                     "prefix" => 'cache',
                     "host"   => "localhost",
                     "port"   => "11211"
-                )
+                ]
             ),
             new FileCache(
                 $slowFrontend,
-                array(
+                [
                     "prefix"   => 'cache',
                     "cacheDir" => "../app/cache/"
-                )
+                ]
             )
-        )
+        ]
     );
 
     // Simpan disemua backend

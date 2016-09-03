@@ -76,7 +76,7 @@
 
     // Добавим ресурс "Customers" с несколькими операциями
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 Определение контроля доступа
 ----------------------------

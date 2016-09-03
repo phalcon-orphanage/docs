@@ -67,7 +67,7 @@ Resources are objects where access is controlled. Normally in MVC applications r
 
     // Add "customers" resource with a couple of operations
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 Defining Access Controls
 ------------------------

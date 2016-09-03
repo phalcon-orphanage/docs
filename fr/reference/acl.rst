@@ -66,7 +66,7 @@ Les ressources sont des objets dont l'accès est controlé. Dans les application
 
     // Ajoute la ressource "customers" a un couple d'opérations
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 Définition des Contrôles d'Accès
 --------------------------------

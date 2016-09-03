@@ -63,7 +63,7 @@ ACLにロールの追加
 
     // いくつかのオペレーションとともに"顧客"リソースを追加する
     $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, array("create", "update"));
+    $acl->addResource($customersResource, ["create", "update"]);
 
 アクセス制御の定義
 ------------------------

@@ -116,10 +116,10 @@ execution to a different controller/action.
 
             // Forward flow to another action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
                     "action"     => "signin"
-                )
+                ]
             );
         }
     }
@@ -166,9 +166,9 @@ action is executed on a controller. The use of the "__construct" method is not r
 
         public function initialize()
         {
-            $this->settings = array(
+            $this->settings = [
                 "mySetting" => "value"
-            );
+            ];
         }
 
         public function saveAction()
@@ -424,10 +424,10 @@ you to implement hook points before/after the actions are executed:
                 $this->flash->error("You don't have permission to save posts");
 
                 $this->dispatcher->forward(
-                    array(
+                    [
                         'controller' => 'home',
                         'action'     => 'index'
-                    )
+                    ]
                 );
 
                 return false;
