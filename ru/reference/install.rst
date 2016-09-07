@@ -149,6 +149,30 @@ FreeBSD
     export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
+Проверка установки
+------------------
+Проверьте, есть ли в результатах :code:`phpinfo()` секция "Phalcon",
+или выполните следующий код:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+В результате вы должны увидеть Phalcon в списке:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
 Замечания по установке
 ----------------------
 Установка на разные веб-сервера:

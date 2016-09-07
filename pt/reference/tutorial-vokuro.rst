@@ -4,30 +4,6 @@ Vökuró é outro exemplo de aplicativo que você pode usar para aprender mais s
 Vökuró é um pequeno site que mostra como implementar recursos de segurança e
 gerenciamento de usuários e permissões. É possível clonar o seu código do Github_.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
-or execute the code snippet below:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-The Phalcon extension should appear as part of the output:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Estrutura do Projeto
 -----------------
 Depois de clonar o projeto em sua raiz do documento você verá a seguinte estrutura:

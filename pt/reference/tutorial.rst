@@ -2,30 +2,6 @@ Tutorial 1: Vamos aprender pelo exemplo
 =======================================
 Ao longo deste primeiro tutorial, nós vamos guiará através de da criação de um aplicativo com um simples formulário de registro a partir do zero. Também iráemos explicar os aspectos básicos do comportamento do framework. Se você estiver interessado em utilizar ferramentas automáticas de geração de código para Phalcon, utilize nosso :doc:`developer tools <tools>`.
 
-Verificar a sua instalação
---------------------------
-Vamos supor que você tem Phalcon já instalado. Verifique o phpinfo() de saída para ver se tem uma seção de referência com o nome "Phalcon"
-ou execute o código abaixo:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-A extensão Phalcon deve aparecer como parte da saídat:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Criando um projeto
 ------------------
 A melhor maneira de usar este guia é seguir cada passo de cada vez. Você pode obter o código completo

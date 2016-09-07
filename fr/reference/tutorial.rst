@@ -4,30 +4,6 @@ Throughout this first tutorial, we'll walk you through the creation of an applic
 form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested
 in automatic code generation tools for Phalcon, you can check our :doc:`developer tools <tools>`.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
-or execute the code snippet below:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-The Phalcon extension should appear as part of the output:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Creating a project
 ------------------
 The best way to use this guide is to follow each step in turn. You can get the complete code

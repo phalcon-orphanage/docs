@@ -4,30 +4,6 @@
 また、フレームワークの動作の基本的な側面を説明していきます。もしあなたが Phalconのコード自動生成ツールに興味があるのでしたら、
 次のドキュメントを参照ください。 :doc:`developer tools <tools>`.
 
-インストールの確認
-------------------
-すでにPhalconはインストールされていると思います。 phpinfo() の "Phalcon"のセクションの出力を確認するか、
-次のコードスニペットを実行してみてください。
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-Phalcon拡張モジュールは下記のように出力の一部に現れるでしょう。
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 プロジェクトの作成
 ------------------
 このガイドを使用する最良の方法は、順番にそれぞれのステップに従うことです。完全なコードは、`ここ <https://github.com/phalcon/tutorial>`_ から取得することができます。

@@ -4,29 +4,6 @@
 我们也将解释框架行为的基本方面。如果您对Phalcon的自动代码生成工具有兴趣，
 您可以查看 :doc:`developer tools <tools>`。
 
-确认安装（Checking your installation）
---------------------------------------
-我们假设你已经安装了Phalcon。请检查你的phpinfo()输出了一个"Phalcon"部分引用或者执行以下代码片段:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-Phalcon 拓展应该作为输出的一部分出现:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 创建项目（Creating a project）
 ------------------------------
 使用本指南的最好方法就是依次按照每一步来做。你可以得到完整的代码 `点击这里 <https://github.com/phalcon/tutorial>`_.

@@ -148,6 +148,29 @@ FreeBSD
     export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
+确认安装（Checking your installation）
+--------------------------------------
+请检查你的:code:`phpinfo()`输出了一个"Phalcon"部分引用或者执行以下代码片段:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+Phalcon 拓展应该作为输出的一部分出现:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
 安装说明（Installation Notes）
 ------------------------------
 常见Web服务器的安装说明：

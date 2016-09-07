@@ -149,6 +149,29 @@ o
     export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
+Revisando tu instalación
+------------------------
+Revisa que la salida de tu :code:`phpinfo()` incluya una sección mencionando "Phalcon" o ejecuta el siguiente código a continuación:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+La extensión de Phalcon debe aparecer como parte de la salida:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
 Notas para la instalación
 -------------------------
 Notas para los servidores web:

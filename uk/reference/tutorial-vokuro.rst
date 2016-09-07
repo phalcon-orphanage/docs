@@ -4,30 +4,6 @@ Vökuró is another sample application you can use to learn more about Phalcon.
 Vökuró is a small website that shows how to implement a security features and
 management of users and permissions. You can clone its code from Github_.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
-or execute the code snippet below:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-The Phalcon extension should appear as part of the output:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Project Structure
 -----------------
 Once you clone the project in your document root you'll see the following structure:

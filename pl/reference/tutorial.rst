@@ -4,30 +4,6 @@ W naszym pierwszym tutorialu, przeprowadzimy Cię przez  tworzenie aplikacji z p
 Wyjaśnimy również podstawowe aspekty działania frameworka. Jeżeli jesteś zainteresowany narzędziami do automatycznego generowania kodu,
 możesz sprawdzić nasze :doc:`developer tools <tools>`.
 
-Sprawdzenie instalacji
-----------------------
-Zakładamy że masz już zainstalowanego Phalcona. Sprawdź wynik funkcji phpinfo() w poszukiwaniu sekcji zawierającej "Phalcon"
-lub uruchom poniższy kod:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-Rozszerzenie Phalcon powinno pojawić się jako część wyniku:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Tworzenie projektu
 ------------------
 Najlepszym sposobem na skorzystanie z tego tutoriala jest jego śledzenie krok po kroku. Możesz uzyskać kompletny kod

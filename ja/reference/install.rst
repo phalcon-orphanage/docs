@@ -149,6 +149,29 @@ or
     export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
+インストールの確認
+------------------
+:code:`phpinfo()` の "Phalcon"のセクションの出力を確認するか、 次のコードスニペットを実行してみてください。
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+Phalcon拡張モジュールは下記のように出力の一部に現れるでしょう。
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
+
 インストール ノート
 -------------------
 各WEBサーバーにおけるインストールノート
