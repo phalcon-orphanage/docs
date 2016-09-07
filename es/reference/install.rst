@@ -35,7 +35,7 @@ Requerimientos
 ^^^^^^^^^^^^^^
 Los paquetes requeridos son:
 
-* PHP >= 5.3 fuentes de desarrollo (development resources)
+* PHP >= 5.5 fuentes de desarrollo (development resources)
 * Compilador GCC (Linux/Solaris)
 * Git (a menos que descargues el paquete manualmente desde Github)
 
@@ -53,7 +53,7 @@ Paquetes específicos para plataformas comunes:
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
 Compilación
 ^^^^^^^^^^^
@@ -118,19 +118,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 

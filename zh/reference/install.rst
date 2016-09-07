@@ -34,7 +34,7 @@ Linux/Solaris
 ^^^^^^^^^^^^^^^^^^^^^^^^
 必要的包:
 
-* PHP >= 5.3 development resources
+* PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
 * Git (如果不是已经安装在你的系统，且你没有从Github上下载这个包并通过FTP/SFTP上传到你的服务器上)
 
@@ -52,7 +52,7 @@ Linux/Solaris
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
 编译（Compilation）
 ^^^^^^^^^^^^^^^^^^^
@@ -117,19 +117,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 

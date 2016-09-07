@@ -35,7 +35,7 @@ Linux/Solaris
 ^^^^^^^^^^
 Необходимы пакеты:
 
-* Пакеты для разработки PHP >= 5.3
+* Пакеты для разработки PHP >= 5.5
 * Компилятор GCC (Linux/Solaris)
 * Git (если не установлен, иначе, архив можно скачать с GitHub и затем загрузить на свой сервер по FTP/SFTP)
 
@@ -53,7 +53,7 @@ Linux/Solaris
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
 Компиляция
 ^^^^^^^^^^
@@ -118,19 +118,17 @@ Mac OS X
 ^^^^^^^^^^
 Необходимы пакеты:
 
-* Пакеты для разработки PHP >= 5.4
+* Пакеты для разработки PHP >= 5.5
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 

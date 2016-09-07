@@ -35,7 +35,7 @@ Linux/Solaris の環境では、簡単に拡張モジュールをソースコー
 ^^^^^^^^
 必要となるパッケージは次の通りです：
 
-* PHP >= 5.3 development resources
+* PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
@@ -53,7 +53,7 @@ Linux/Solaris の環境では、簡単に拡張モジュールをソースコー
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
 コンパイル
 ^^^^^^^^^^
@@ -118,19 +118,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
