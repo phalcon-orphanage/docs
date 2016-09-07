@@ -47,7 +47,7 @@ accessed:
 Encryption/Decryption of Cookies
 --------------------------------
 By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user.
-This protection allows unauthorized users to see the cookies' contents in the client (browser).
+This protection prevents unauthorized users to see the cookies' contents in the client (browser).
 Despite this protection, sensitive data should not be stored in cookies.
 
 You can disable encryption in the following way:
