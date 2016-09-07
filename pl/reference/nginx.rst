@@ -20,6 +20,7 @@ Using :code:`$_GET['_url']` as source of URIs:
         server_name localhost.dev;
         root        /var/www/phalcon/public;
         index       index.php index.html index.htm;
+        charset     utf-8;
 
         location / {
             try_files $uri $uri/ /index.php?_url=$uri&$args;
@@ -50,6 +51,7 @@ Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
         server_name localhost.dev;
         root        /var/www/phalcon/public;
         index       index.php index.html index.htm;
+        charset     utf-8;
 
         location / {
             try_files $uri $uri/ /index.php;
@@ -82,6 +84,7 @@ And this second configuration allow you to have different configurations by host
         server_name localhost;
         root        /var/www/$host/public;
         index       index.php index.html index.htm;
+        charset     utf-8;
 
         access_log  /var/log/nginx/$host-access.log;
         error_log   /var/log/nginx/$host-error.log error;
