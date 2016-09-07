@@ -79,41 +79,58 @@ Bootstrap
     use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
 
-        // Регистрируем автозагрузчик
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
 
-        // Создаем DI
-        $di = new FactoryDefault();
+    // Регистрируем автозагрузчик
+    $loader = new Loader();
 
-        // Настраиваем компонент View
-        $di->set('view', function () {
+    $loader->registerDirs(
+        [
+            "../app/controllers/",
+            "../app/models/",
+        ]
+    )->register();
+
+
+
+    // Создаем DI
+    $di = new FactoryDefault();
+
+    // Настраиваем компонент View
+    $di->set(
+        "view",
+        function () {
             $view = new View();
-            $view->setViewsDir('../app/views/');
+
+            $view->setViewsDir("../app/views/");
+
             return $view;
-        });
+        }
+    );
 
-        // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
-        $di->set('url', function () {
+    // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
+    $di->set(
+        "url",
+        function () {
             $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
+
+            $url->setBaseUri("/tutorial/");
+
             return $url;
-        });
+        }
+    );
 
+
+
+    $application = new Application($di);
+
+    try {
         // Обрабатываем запрос
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
+        echo "Exception: ", $e->getMessage();
     }
 
 Автозагрузка
@@ -131,10 +148,11 @@ Bootstrap
     // ...
 
     $loader = new Loader();
+
     $loader->registerDirs(
         [
-            '../app/controllers/',
-            '../app/models/'
+            "../app/controllers/",
+            "../app/models/",
         ]
     )->register();
 
@@ -173,11 +191,16 @@ DI представляет из себя глобальный контейне�
     // ...
 
     // Настраиваем компонент View
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../app/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
 
 Затем мы регистрируем базовый URI так, чтобы все URI, которые генерирует Phalcon, содержали директорию "tutorial".
 Это пригодится нам позднее в данном уроке, когда будем использовать класс :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`
@@ -192,11 +215,16 @@ DI представляет из себя глобальный контейне�
     // ...
 
     // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
-    $di->set('url', function () {
-        $url = new UrlProvider();
-        $url->setBaseUri('/tutorial/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
+
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
 
 На последнем этапе мы используем :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`.
 Данный компонент служит для инициализации окружения входящих запросов, их перенаправления и обслуживания относящихся к ним действий.
@@ -232,7 +260,6 @@ DI представляет из себя глобальный контейне�
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
             echo "<h1>Привет!</h1>";
@@ -264,7 +291,6 @@ DI представляет из себя глобальный контейне�
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -310,7 +336,6 @@ DI представляет из себя глобальный контейне�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -365,7 +390,6 @@ DI представляет из себя глобальный контейне�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -419,59 +443,22 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
     <?php
 
-    use Phalcon\Loader;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
-
-        // Регистрируем автозагрузчик
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
-
-        // Создаем DI
-        $di = new FactoryDefault();
-
-        // Настраиваем сервис для работы с БД
-        $di->set('db', function () {
-            return new DbAdapter([
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "test_db"
-            ]);
-        });
-
-        // Настраиваем компонент View
-        $di->set('view', function () {
-            $view = new View();
-            $view->setViewsDir('../app/views/');
-            return $view;
-        });
-
-        // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
-        $di->set('url', function () {
-            $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
-            return $url;
-        });
-
-        // Обрабатываем запрос
-        $application = new Application($di);
-
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
-    }
+    // Настраиваем сервис для работы с БД
+    $di->set(
+        "db",
+        function () {
+            return new DbAdapter(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "test_db",
+                ]
+            );
+        }
+    );
 
 При правильных настройках подключения наши модели будут готовы к работе и взаимодействию с остальными частями приложения.
 
@@ -487,7 +474,6 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -495,7 +481,6 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
         public function registerAction()
         {
-
             $user = new Users();
 
             // Сохраняем и проверяем на наличие ошибок

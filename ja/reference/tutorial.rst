@@ -74,41 +74,58 @@ tutorial/public/index.php は次のようになります。
     use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
 
-        // オートローダにディレクトリを登録する
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
 
-        // DIコンテナを作る
-        $di = new FactoryDefault();
+    // オートローダにディレクトリを登録する
+    $loader = new Loader();
 
-        // ビューのコンポーネントの組み立て
-        $di->set('view', function () {
+    $loader->registerDirs(
+        [
+            "../app/controllers/",
+            "../app/models/",
+        ]
+    )->register();
+
+
+
+    // DIコンテナを作る
+    $di = new FactoryDefault();
+
+    // ビューのコンポーネントの組み立て
+    $di->set(
+        "view",
+        function () {
             $view = new View();
-            $view->setViewsDir('../app/views/');
+
+            $view->setViewsDir("../app/views/");
+
             return $view;
-        });
+        }
+    );
 
-        // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
-        $di->set('url', function () {
+    // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
+    $di->set(
+        "url",
+        function () {
             $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
+
+            $url->setBaseUri("/tutorial/");
+
             return $url;
-        });
+        }
+    );
 
+
+
+    $application = new Application($di);
+
+    try {
         // リクエストを処理する
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
+        echo "Exception: ", $e->getMessage();
     }
 
 オートローダ
@@ -126,10 +143,11 @@ bootstrapの最初の部分では、オートローダを登録しています�
     // ...
 
     $loader = new Loader();
+
     $loader->registerDirs(
         [
-            '../app/controllers/',
-            '../app/models/'
+            "../app/controllers/",
+            "../app/models/",
         ]
     )->register();
 
@@ -165,11 +183,16 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
     // ...
 
     // ビューのコンポーネントの組み立て
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../app/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
 
 次に、Phalconにより生成されるすべてのURI に "tutorial" が含まれるように、base URIを登録します。 これは、このチュートリアルで、ハイパーリンクを生成するために、 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` を使用する際に重要になってきます。
 
@@ -182,11 +205,16 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
     // ...
 
     // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
-    $di->set('url', function () {
-        $url = new UrlProvider();
-        $url->setBaseUri('/tutorial/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
+
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
 
 このファイルの最後のパートで、:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を見つけるでしょう。この目的は、リクエスト環境を初期化し、リクエストのルートを決め、発見したアクションを起動することであり、処理が完了した際にレスポンスを集約し、返却することです。
 
@@ -218,7 +246,6 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
             echo "<h1>Hello!</h1>";
@@ -250,7 +277,6 @@ Viewへのアウトプットの送信
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -292,7 +318,6 @@ Viewへのアウトプットの送信
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -346,7 +371,6 @@ Viewへのアウトプットの送信
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -400,59 +424,22 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
     <?php
 
-    use Phalcon\Loader;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
-
-        // オートローダにディレクトリを登録する
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
-
-        // DIコンテナを作る
-        $di = new FactoryDefault();
-
-        // データベースサービスのセットアップ
-        $di->set('db', function () {
-            return new DbAdapter([
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "test_db"
-            ]);
-        });
-
-        // ビューのコンポーネントの組み立て
-        $di->set('view', function () {
-            $view = new View();
-            $view->setViewsDir('../app/views/');
-            return $view;
-        });
-
-        // ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
-        $di->set('url', function () {
-            $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
-            return $url;
-        });
-
-        // リクエストを処理する
-        $application = new Application($di);
-
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
-    }
+    // データベースサービスのセットアップ
+    $di->set(
+        "db",
+        function () {
+            return new DbAdapter(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "test_db",
+                ]
+            );
+        }
+    );
 
 正しいデータベースのパラメーターが設定されれば、モデルが使用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
@@ -468,7 +455,6 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -476,7 +462,6 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
         public function registerAction()
         {
-
             $user = new Users();
 
             // データを保存し、エラーをチェックする

@@ -75,41 +75,58 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
 
-        // Register an autoloader
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
 
-        // Create a DI
-        $di = new FactoryDefault();
+    // Register an autoloader
+    $loader = new Loader();
 
-        // Setup the view component
-        $di->set('view', function () {
+    $loader->registerDirs(
+        [
+            "../app/controllers/",
+            "../app/models/",
+        ]
+    )->register();
+
+
+
+    // Create a DI
+    $di = new FactoryDefault();
+
+    // Setup the view component
+    $di->set(
+        "view",
+        function () {
             $view = new View();
-            $view->setViewsDir('../app/views/');
+
+            $view->setViewsDir("../app/views/");
+
             return $view;
-        });
+        }
+    );
 
-        // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function () {
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set(
+        "url",
+        function () {
             $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
+
+            $url->setBaseUri("/tutorial/");
+
             return $url;
-        });
+        }
+    );
 
-        $application = new Application($di);
 
+
+    $application = new Application($di);
+
+    try {
         // Handle the request
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
+        echo "Exception: ", $e->getMessage();
     }
 
 自动加载（Autoloaders）
@@ -127,10 +144,11 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     $loader = new Loader();
+
     $loader->registerDirs(
         [
-            '../app/controllers/',
-            '../app/models/'
+            "../app/controllers/",
+            "../app/models/",
         ]
     )->register();
 
@@ -167,11 +185,16 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup the view component
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../app/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
 
 接下来，我们注册一个基础URI，这样通过Phalcon生成包括我们之前设置的“tutorial”文件夹在内的所有的URI。
 我们使用类  :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`  生成超链接，这将在本教程后续部分很重要。
@@ -185,11 +208,16 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function () {
-        $url = new UrlProvider();
-        $url->setBaseUri('/tutorial/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
+
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
 
 在这个文件的最后部分，我们发现 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。
 
@@ -221,7 +249,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
             echo "<h1>Hello!</h1>";
@@ -253,7 +280,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -296,7 +322,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -350,7 +375,6 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -404,59 +428,22 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     <?php
 
-    use Phalcon\Loader;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
-
-        // Register an autoloader
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
-
-        // Create a DI
-        $di = new FactoryDefault();
-
-        // Setup the database service
-        $di->set('db', function () {
-            return new DbAdapter([
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "test_db"
-            ]);
-        });
-
-        // Setup the view component
-        $di->set('view', function () {
-            $view = new View();
-            $view->setViewsDir('../app/views/');
-            return $view;
-        });
-
-        // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function () {
-            $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
-            return $url;
-        });
-
-        $application = new Application($di);
-
-        // Handle the request
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
-    }
+    // Setup the database service
+    $di->set(
+        "db",
+        function () {
+            return new DbAdapter(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "test_db",
+                ]
+            );
+        }
+    );
 
 使用正确的数据库参数，我们的模型已经准备和应用程序的其余部分工作。
 
@@ -472,7 +459,6 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -480,7 +466,6 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
         public function registerAction()
         {
-
             $user = new Users();
 
             // Store and check for errors
