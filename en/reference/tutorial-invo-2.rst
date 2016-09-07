@@ -213,7 +213,12 @@ If the user is valid we register it in session and forwards him/her to the dashb
         $this->_registerSession($user);
         $this->flash->success('Welcome ' . $user->name);
 
-        return $this->forward('invoices/index');
+        return $this->dispatcher->forward(
+                    [
+                        'controller' => 'invoices',
+                        'action'     => 'index'
+                    ]
+                );
     }
 
 If the user does not exist we forward the user back again to action where the form is displayed:
@@ -222,7 +227,12 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    return $this->forward('session/index');
+    return $this->dispatcher->forward(
+                [
+                    'controller' => 'session',
+                    'action'     => 'index'
+                ]
+            );
 
 Securing the Backend
 --------------------
