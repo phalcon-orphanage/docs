@@ -72,7 +72,7 @@ For Example if you have the following route:
 
     <?php
 
-    $route->add(
+    $router->add(
         "/blog/{year}/{month}/{title}",
         array(
             'controller' => 'posts',
