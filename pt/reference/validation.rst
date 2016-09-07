@@ -206,37 +206,7 @@ o atributo que gerou a mensagem ou o tipo de mensagem:
         }
     }
 
-O método getMessages() pode ser sobrescrito em uma classe de validação para trocar/traduzir as mensagens padrões geradas pelos validadodes:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-Ou pode passar o parametro 'message' para alterar a mensagem padrão em cada validador:
+Pode passar o parametro 'message' para alterar a mensagem padrão em cada validador:
 
 .. code-block:: php
 

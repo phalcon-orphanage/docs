@@ -206,37 +206,7 @@ Then initialize and use your own validator:
         }
     }
 
-Метод getMessages() может быть переопределен в наследующем классе для замены/перевода текста сообщения по умолчанию, это особенно актуально для автоматически создаваемых валидаторов:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'Заполнение поля ' . $message->getField() . ' обязательно';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-Или вы можете передать сообщение параметром по умолчанию в каждый валидатор:
+Вы можете передать сообщение параметром по умолчанию в каждый валидатор:
 
 .. code-block:: php
 

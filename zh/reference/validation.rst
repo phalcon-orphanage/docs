@@ -203,37 +203,7 @@ Phalcon的验证组件中内置了一些验证器：
         }
     }
 
-当然这里我们也可以对getMessages()方法进行重写， 以取得我们想要的信息：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-或我们也可以传送一个message参数以覆盖验证器中默认的信息：
+我们也可以传送一个message参数以覆盖验证器中默认的信息：
 
 .. code-block:: php
 

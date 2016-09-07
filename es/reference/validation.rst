@@ -203,37 +203,7 @@ Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Me
         }
     }
 
-El método getMessages() puede ser sobrescrito en una clase para reemplazar o traducir los mensajes por defecto de los validators:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-O puedes pasar un parámetro 'message' para cambiar el mensaje por defecto de cada validator: 
+Puedes pasar un parámetro 'message' para cambiar el mensaje por defecto de cada validator:
 
 .. code-block:: php
 
