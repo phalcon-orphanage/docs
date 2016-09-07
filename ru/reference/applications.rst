@@ -391,11 +391,8 @@ MVC Приложения
     // Передаём результат для ответа
     $response->setContent($view->getContent());
 
-    // Отправляем заголовки
-    $response->sendHeaders();
-
-    // Выводим ответ
-    echo $response->getContent();
+    // Send the response
+    $response->send();
 
 The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
 

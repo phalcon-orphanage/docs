@@ -391,11 +391,8 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
 
-    // Send the response headers
-    $response->sendHeaders();
-
-    // Print the response
-    echo $response->getContent();
+    // Send the response
+    $response->send();
 
 The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
 

@@ -382,11 +382,8 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     // ビューの出力をレスポンスに渡す
     $response->setContent($view->getContent());
 
-    // リクエストヘッダの送信
-    $response->sendHeaders();
-
-    // レスポンスを表示する
-    echo $response->getContent();
+    // Send the response
+    $response->send();
 
 以下の、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の代替となるコードは、viewコンポーネントを使用していないため、REST APIに適しています:
 

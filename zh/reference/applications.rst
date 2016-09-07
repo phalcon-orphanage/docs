@@ -389,11 +389,8 @@ MVC 应用（MVC Applications）
     // 传递视图内容给响应对象
     $response->setContent($view->getContent());
 
-    // 发送头信息
-    $response->sendHeaders();
-
-    // 输出响应内容
-    echo $response->getContent();
+    // Send the response
+    $response->send();
 
 以下代码替换了 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` ，虽然缺少了视图组件，
 但却更适合Rest风格的API接口：

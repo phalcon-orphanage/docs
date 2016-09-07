@@ -391,11 +391,8 @@ Jika anda ingin menggunakan :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
 
-    // Send the response headers
-    $response->sendHeaders();
-
-    // Print the response
-    echo $response->getContent();
+    // Send the response
+    $response->send();
 
 Pengganti :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` berikut tidak memiliki komponen view membuatnya cocok untuk Rest API:
 
