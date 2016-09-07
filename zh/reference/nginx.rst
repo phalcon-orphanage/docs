@@ -71,41 +71,6 @@ Niginx 下配置 Phalcon（Configuring Nginx for Phalcon）
         }
     }
 
-专属实例（Dedicated Instance）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: nginx
-
-    server {
-        listen      80;
-        server_name localhost;
-        root        /srv/www/htdocs/phalcon-website/public;
-        index       index.php index.html index.htm;
-        charset     utf-8;
-
-        #access_log /var/log/nginx/host.access.log main;
-
-        location / {
-            try_files $uri $uri/ /index.php?_url=$uri&$args;
-        }
-
-        location ~ \.php {
-            # try_files   $uri =404;
-
-            fastcgi_pass  127.0.0.1:9000;
-            fastcgi_index /index.php;
-
-            include fastcgi_params;
-            fastcgi_split_path_info       ^(.+\.php)(/.+)$;
-            fastcgi_param PATH_INFO       $fastcgi_path_info;
-            fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        }
-
-        location ~ /\.ht {
-            deny all;
-        }
-    }
-
 使用 Host 配置（Configuration by Host）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 第二个配置允许在主机中拥有不同的配置：
