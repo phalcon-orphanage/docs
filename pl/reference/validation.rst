@@ -17,36 +17,37 @@ The following example shows its basic usage:
     $validation = new Validation();
 
     $validation->add(
-        'name',
+        "name",
         new PresenceOf(
-            array(
-                'message' => 'The name is required'
-            )
+            [
+                "message" => "The name is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new PresenceOf(
-            array(
-                'message' => 'The e-mail is required'
-            )
+            [
+                "message" => "The e-mail is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -70,29 +71,29 @@ You can put your validations in a separate file for better re-use code and organ
         public function initialize()
         {
             $this->add(
-                'name',
+                "name",
                 new PresenceOf(
-                    array(
-                        'message' => 'The name is required'
-                    )
+                    [
+                        "message" => "The name is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new PresenceOf(
-                    array(
-                        'message' => 'The e-mail is required'
-                    )
+                    [
+                        "message" => "The e-mail is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new Email(
-                    array(
-                        'message' => 'The e-mail is not valid'
-                    )
+                    [
+                        "message" => "The e-mail is not valid",
+                    ]
                 )
             );
         }
@@ -107,9 +108,10 @@ Then initialize and use your own validator:
     $validation = new MyValidation();
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -167,13 +169,15 @@ The following example explains how to create additional validators for this comp
             $value = $validator->getValue($attribute);
 
             if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                $message = $this->getOption("message");
 
-                $message = $this->getOption('message');
                 if (!$message) {
-                    $message = 'The IP is not valid';
+                    $message = "The IP is not valid";
                 }
 
-                $validator->appendMessage(new Message($message, $attribute, 'Ip'));
+                $validator->appendMessage(
+                    new Message($message, $attribute, "Ip")
+                );
 
                 return false;
             }
@@ -198,8 +202,9 @@ generated the message or the message type:
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
-        foreach ($validation->getMessages() as $message) {
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage(), "\n";
             echo "Field: ", $message->getField(), "\n";
             echo "Type: ", $message->getType(), "\n";
@@ -215,25 +220,28 @@ You can pass a 'message' parameter to change/translate the default message in ea
     use Phalcon\Validation\Validator\Email;
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
-By default, 'getMessages' returns all the messages generated during validation. You can filter messages
-for a specific field using the 'filter' method:
+By default, the :code:`getMessages()` method returns all the messages generated during validation. You can filter messages
+for a specific field using the :code:`filter()` method:
 
 .. code-block:: php
 
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
         // Filter only the messages generated for the field 'name'
-        foreach ($validation->getMessages()->filter('name') as $message) {
+        $filteredMessages = $messages->filter("name");
+
+        foreach ($filteredMessages as $message) {
             echo $message;
         }
     }
@@ -250,17 +258,27 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 
     $validation = new Validation();
 
-    $validation
-        ->add('name', new PresenceOf(array(
-            'message' => 'The name is required'
-        )))
-        ->add('email', new PresenceOf(array(
-            'message' => 'The email is required'
-        )));
+    $validation->add(
+        "name",
+        new PresenceOf(
+            [
+                "message" => "The name is required",
+            ]
+        )
+    );
+
+    $validation->add(
+        "email",
+        new PresenceOf(
+            [
+                "message" => "The email is required",
+            ]
+        )
+    );
 
     // Filter any extra space
-    $validation->setFilters('name', 'trim');
-    $validation->setFilters('email', 'trim');
+    $validation->setFilters("name", "trim");
+    $validation->setFilters("email", "trim");
 
 Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
 component or use the built-in ones.
@@ -293,8 +311,10 @@ cancelled:
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != 'admin.mydomain.com') {
-                $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+            if ($this->request->getHttpHost() != "admin.mydomain.com") {
+                $messages->appendMessage(
+                    new Message("Only users can log on in the administration domain")
+                );
 
                 return false;
             }
@@ -330,19 +350,35 @@ this behavior by telling the validation component which validator may stop the v
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new PresenceOf(array(
-            'message'      => 'The telephone is required',
-            'cancelOnFail' => true
-        )))
-        ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )))
-        ->add('telephone', new StringLength(array(
-            'messageMinimum' => 'The telephone is too short',
-            'min'            => 2
-        )));
+    $validation->add(
+        "telephone",
+        new PresenceOf(
+            [
+                "message"      => "The telephone is required",
+                "cancelOnFail" => true,
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message" => "The telephone is required",
+                "pattern" => "/\+44 [0-9]+/",
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new StringLength(
+            [
+                "messageMinimum" => "The telephone is too short",
+                "min"            => 2,
+            ]
+        )
+    );
 
 The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
 validators in the chain are not executed.
@@ -369,8 +405,8 @@ If you are creating custom validators you can dynamically stop the validation ch
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == 'name') {
-                $validator->setOption('cancelOnFail', true);
+            if ($attribute == "name") {
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...
@@ -390,9 +426,13 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new Regex(array(
-            'message'    => 'The telephone is required',
-            'pattern'    => '/\+44 [0-9]+/',
-            'allowEmpty' => true
-        )));
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message"    => "The telephone is required",
+                "pattern"    => "/\+44 [0-9]+/",
+                "allowEmpty" => true,
+            ]
+        )
+    );
