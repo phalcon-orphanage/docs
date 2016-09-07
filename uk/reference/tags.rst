@@ -1,5 +1,5 @@
-View Helpers
-============
+View Helpers (Tags)
+===================
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to
 be taken into consideration. Phalcon deals with this complexity by offering :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`, which in turn offers

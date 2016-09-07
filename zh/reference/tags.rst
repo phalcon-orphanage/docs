@@ -1,4 +1,4 @@
-视图助手（View Helpers）
+视图助手 (Tags)（View Helpers (Tags)）
 ========================
 
 因为HTML标签的命名方式和很多标签属性，让书写HTML标签变成一项超级沉闷的工作。Phalcon提供 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 类来处理这些复杂而无趣的事情。
