@@ -17,7 +17,6 @@
 
     // 循环调度
     while (!$finished) {
-
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
@@ -26,7 +25,13 @@
         $controller = new $controllerClass();
 
         // 执行action
-        call_user_func_array([$controller, $actionName . "Action"], $params);
+        call_user_func_array(
+            [
+                $controller,
+                $actionName . "Action"
+            ],
+            $params
+        );
 
         // $finished应该重新加载以检测MVC流
         // 是否转发给了另一个控制器
@@ -74,24 +79,29 @@
     use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // 为“dispatch”类型附上一个侦听者
+            $eventsManager->attach(
+                "dispatch",
+                function (Event $event, $dispatcher) {
+                    // ...
+                }
+            );
 
-        // 为“dispatch”类型附上一个侦听者
-        $eventsManager->attach("dispatch", function (Event $event, $dispatcher) {
-            // ...
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
+            // 将$eventsManager绑定到视图组件
+            $dispatcher->setEventsManager($eventsManager);
 
-        // 将$eventsManager绑定到视图组件
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-
-    }, true);
+            return $dispatcher;
+        },
+        true
+    );
 
 一个实例化的控制器会自动作为事件调度的侦听者，所以你可以实现回调函数：
 
@@ -142,8 +152,8 @@
             // 将流转发到index动作
             $this->dispatcher->forward(
                 [
-                    "controller" => "post",
-                    "action"     => "index"
+                    "controller" => "posts",
+                    "action"     => "index",
                 ]
             );
         }
@@ -204,35 +214,45 @@
 
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // 附上一个侦听者
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $params = $dispatcher->getParams();
 
-        // 附上一个侦听者
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    $keyParams = [];
 
-            $keyParams = [];
-            $params    = $dispatcher->getParams();
+                    // 用奇数参数作key，用偶数作值
+                    foreach ($params as $i => $value) {
+                        if ($i & 1) {
+                            // Previous param
+                            $key = $params[$i - 1];
 
-            // 用奇数参数作key，用偶数作值
-            foreach ($params as $number => $value) {
-                if ($number & 1) {
-                    $keyParams[$params[$number - 1]] = $value;
+                            $keyParams[$key] = $value;
+                        }
+                    }
+
+                    // 重写参数
+                    $dispatcher->setParams($keyParams);
                 }
-            }
+            );
 
-            // 重写参数
-            $dispatcher->setParams($keyParams);
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 如果期望的链接是这样： http://example.com/controller/key1:value1/key2:value，那么就需要以下这样的代码：
 
@@ -242,34 +262,42 @@
 
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // 附上一个侦听者
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $params = $dispatcher->getParams();
 
-        // 附上一个侦听者
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    $keyParams = [];
 
-            $keyParams = [];
-            $params    = $dispatcher->getParams();
+                    // 将每一个参数分解成key、值 对
+                    foreach ($params as $number => $value) {
+                        $parts = explode(":", $value);
 
-            // 将每一个参数分解成key、值 对
-            foreach ($params as $number => $value) {
-                $parts                = explode(':', $value);
-                $keyParams[$parts[0]] = $parts[1];
-            }
+                        $keyParams[$parts[0]] = $parts[1];
+                    }
 
-            // 重写参数
-            $dispatcher->setParams($keyParams);
-        });
+                    // 重写参数
+                    $dispatcher->setParams($keyParams);
+                }
+            );
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher = new MvcDispatcher();
 
-        return $dispatcher;
-    });
+            $dispatcher->setEventsManager($eventsManager);
+
+            return $dispatcher;
+        }
+    );
 
 获取参数（Getting Parameters）
 ------------------------------
@@ -319,23 +347,32 @@
 
     use Phalcon\Text;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // Camelize动作
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $dispatcher->setActionName(
+                        Text::camelize($dispatcher->getActionName())
+                    );
+                }
+            );
 
-        // Camelize动作
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
-            $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 删除遗留的扩展名（Remove legacy extensions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -351,28 +388,36 @@ http://example.com/admin/products/index.php
     <?php
 
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // 在调度前删除扩展
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $action = $dispatcher->getActionName();
 
-        // 在调度前删除扩展
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    // 删除扩展
+                    $action = preg_replace("/\.php$/", "", $action);
 
-            // 删除扩展
-            $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
+                    // 重写动作
+                    $dispatcher->setActionName($action);
+                }
+            );
 
-            // 重写动作
-            $dispatcher->setActionName($action);
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 注入模型实例（Inject model instances）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -406,55 +451,61 @@ http://example.com/admin/products/index.php
 
     <?php
 
+    use Exception;
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
+    use ReflectionMethod;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    // 可能的控制器类名
+                    $controllerName = $dispatcher->getControllerClass();
 
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    // 可能的方法名
+                    $actionName = $dispatcher->getActiveMethod();
 
-            // 可能的控制器类名
-            $controllerName = $dispatcher->getControllerClass();
+                    try {
+                        // 从反射中获取将要被执行的方法
+                        $reflection = new ReflectionMethod($controllerName, $actionName);
 
-            // 可能的方法名
-            $actionName = $dispatcher->getActiveMethod();
+                        $parameters = $reflection->getParameters();
 
-            try {
 
-                // 从反射中获取将要被执行的方法
-                $reflection = new \ReflectionMethod($controllerName, $actionName);
+                        // 参数检查
+                        foreach ($parameters as $parameter) {
+                            // 获取期望的模型名字
+                            $className = $parameter->getClass()->name;
 
-                // 参数检查
-                foreach ($reflection->getParameters() as $parameter) {
+                            // 检查参数是否为模型的实例
+                            if (is_subclass_of($className, Model::class)) {
+                                $model = $className::findFirstById($dispatcher->getParams()[0]);
 
-                    // 获取期望的模型名字
-                    $className = $parameter->getClass()->name;
-
-                    // 检查参数是否为模型的实例
-                    if (is_subclass_of($className, Model::class)) {
-
-                        $model = $className::findFirstById($dispatcher->getParams()[0]);
-
-                        // 根据模型实例重写参数
-                        $dispatcher->setParams([$model]);
+                                // 根据模型实例重写参数
+                                $dispatcher->setParams([$model]);
+                            }
+                        }
+                    } catch (Exception $e) {
+                        // 异常触发，类或者动作不存在？
                     }
                 }
+            );
 
-            } catch (\Exception $e) {
-                // 异常触发，类或者动作不存在？
-            }
+            $dispatcher = new MvcDispatcher();
 
-        });
+            $dispatcher->setEventsManager($eventsManager);
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 上面示例出于学术目的已经作了简化。
 开发人员可以在执行动作前注入任何类型的依赖或者模型，以进行提高和强化。
@@ -463,7 +514,10 @@ From 3.0.x onwards the dispatcher also comes with an option to handle this inter
 
 .. code-block:: php
 
-    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    use Phalcon\Mvc\Dispatcher;
+
+    $dispatcher = new Dispatcher();
+
     $dispatcher->setModelBinding(true);
 
     return $dispatcher;
@@ -501,7 +555,7 @@ which will add the getModelName() method from which you can return the model nam
 
     class PostsController extends CrudController implements BindModelInterface
     {
-        static function getModelName()
+        public static function getModelName()
         {
             return Posts::class;
         }
@@ -543,54 +597,59 @@ If your project structure does not use any parent controller you can of course s
 
     <?php
 
+    use Exception;
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
-    $di->set('dispatcher', function () {
+    $di->setShared(
+        "dispatcher",
+        function () {
+            // 创建一个事件管理
+            $eventsManager = new EventsManager();
 
-        // 创建一个事件管理
-        $eventsManager = new EventsManager();
+            // 附上一个侦听者
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                function (Event $event, $dispatcher, Exception $exception) {
+                    // 处理404异常
+                    if ($exception instanceof DispatchException) {
+                        $dispatcher->forward(
+                            [
+                                "controller" => "index",
+                                "action"     => "show404",
+                            ]
+                        );
 
-        // 附上一个侦听者
-        $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
+                        return false;
+                    }
 
-            // 处理404异常
-            if ($exception instanceof DispatchException) {
-                $dispatcher->forward(
-                    [
-                        'controller' => 'index',
-                        'action'     => 'show404'
-                    ]
-                );
+                    // 代替控制器或者动作不存在时的路径
+                    switch ($exception->getCode()) {
+                        case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                        case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                            $dispatcher->forward(
+                                [
+                                    "controller" => "index",
+                                    "action"     => "show404",
+                                ]
+                            );
 
-                return false;
-            }
+                            return false;
+                    }
+                }
+            );
 
-            // 代替控制器或者动作不存在时的路径
-            switch ($exception->getCode()) {
-                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                    $dispatcher->forward(
-                        [
-                            'controller' => 'index',
-                            'action'     => 'show404'
-                        ]
-                    );
+            $dispatcher = new MvcDispatcher();
 
-                    return false;
-            }
-        });
+            // 将EventsManager绑定到调度器
+            $dispatcher->setEventsManager($eventsManager);
 
-        $dispatcher = new MvcDispatcher();
-
-        // 将EventsManager绑定到调度器
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-
-    }, true);
+            return $dispatcher;
+        }
+    );
 
 当然，这个方法也可以移至独立的插件类中，使得在循环调度产生异常时可以有超过一个类执行需要的动作：
 
@@ -598,28 +657,29 @@ If your project structure does not use any parent controller you can of course s
 
     <?php
 
+    use Exception;
     use Phalcon\Events\Event;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     class ExceptionsPlugin
     {
-        public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
+        public function beforeException(Event $event, Dispatcher $dispatcher, Exception $exception)
         {
+            // Default error action
+            $action = "show503";
+
             // 处理404异常
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward([
-                    'controller' => 'index',
-                    'action'     => 'show404'
-                ]);
-                return false;
+                $action = "show404";
             }
 
-            // 处理其他异常
-            $dispatcher->forward([
-                'controller' => 'index',
-                'action'     => 'show503'
-            ]);
+            $dispatcher->forward(
+                [
+                    "controller" => "index",
+                    "action"     => $action,
+                ]
+            );
 
             return false;
         }
