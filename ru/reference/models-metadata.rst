@@ -14,14 +14,14 @@
     $robot = new Robots();
 
     // Получаем экземпляр Phalcon\Mvc\Model\Metadata
-    $metaData = $robot->getModelsMetaData();
+    $metadata = $robot->getModelsMetaData();
 
     // Получаем имена полей робота
-    $attributes = $metaData->getAttributes($robot);
+    $attributes = $metadata->getAttributes($robot);
     print_r($attributes);
 
     // Получаем типы данных полей робота
-    $dataTypes = $metaData->getDataTypes($robot);
+    $dataTypes = $metadata->getDataTypes($robot);
     print_r($dataTypes);
 
 Кэширование метаданных
@@ -53,14 +53,14 @@
 
     $di["modelsMetadata"] = function () {
         // Создаем менеджер метаданных с APC
-        $metaData = new ApcMetaData(
+        $metadata = new ApcMetaData(
             [
                 "lifetime" => 86400,
                 "prefix"   => "my-prefix",
             ]
         );
 
-        return $metaData;
+        return $metadata;
     };
 
 Стратегии метаданных
@@ -78,7 +78,7 @@
 
     $di["modelsMetadata"] = function () {
         // Создаем адаптер метаданных
-        $metaData = new ApcMetaData(
+        $metadata = new ApcMetaData(
             [
                 "lifetime" => 86400,
                 "prefix"   => "my-prefix",
@@ -86,11 +86,11 @@
         );
 
         // Изменяем стратегию интроспекции метаданных
-        $metaData->setStrategy(
+        $metadata->setStrategy(
             new MyIntrospectionStrategy()
         );
 
-        return $metaData;
+        return $metadata;
     };
 
 Стратегия интроспекции базы данных
@@ -170,7 +170,7 @@
 
     $di["modelsMetadata"] = function () {
         // Создаем адаптер метаданных
-        $metaData = new ApcMetaData(
+        $metadata = new ApcMetaData(
             [
                 "lifetime" => 86400,
                 "prefix"   => "my-prefix",
@@ -178,11 +178,11 @@
         );
 
         // Изменяем стратегию интроспекции метаданных
-        $metaData->setStrategy(
+        $metadata->setStrategy(
             new StrategyAnnotations()
         );
 
-        return $metaData;
+        return $metadata;
     };
 
 Установка метаданных вручную
