@@ -29,21 +29,21 @@
     use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
     // Текущая страница
-    // В контроллерах можно использовать:
-    // $this->request->getQuery('page', 'int'); // GET
-    // $this->request->getPost('page', 'int'); // POST
+    // В контроллерах/component можно использовать:
+    // $this->request->getQuery("page", "int"); // GET
+    // $this->request->getPost("page", "int"); // POST
     $currentPage = (int) $_GET["page"];
 
     // Набор данных для разбивки на страницы
-    $robots      = Robots::find();
+    $robots = Robots::find();
 
     // Создаём пагинатор, отображаются 10 элементов на странице, начиная с текущей - $currentPage
-    $paginator   = new PaginatorModel(
-        array(
+    $paginator = new PaginatorModel(
+        [
             "data"  => $robots,
             "limit" => 10,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Получение результатов работы ппагинатора
@@ -94,41 +94,41 @@
 
     // Передача данных модели
     $paginator = new PaginatorModel(
-        array(
+        [
             "data"  => Products::find(),
             "limit" => 10,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Передача данных из массива
     $paginator = new PaginatorArray(
-        array(
-            "data"  => array(
-                array('id' => 1, 'name' => 'Artichoke'),
-                array('id' => 2, 'name' => 'Carrots'),
-                array('id' => 3, 'name' => 'Beet'),
-                array('id' => 4, 'name' => 'Lettuce'),
-                array('id' => 5, 'name' => '')
-            ),
+        [
+            "data"  => [
+                ["id" => 1, "name" => "Artichoke"],
+                ["id" => 2, "name" => "Carrots"],
+                ["id" => 3, "name" => "Beet"],
+                ["id" => 4, "name" => "Lettuce"],
+                ["id" => 5, "name" => ""],
+            ],
             "limit" => 2,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Передача данных QueryBuilder
 
     $builder = $this->modelsManager->createBuilder()
-        ->columns('id, name')
-        ->from('Robots')
-        ->orderBy('name');
+        ->columns("id, name")
+        ->from("Robots")
+        ->orderBy("name");
 
     $paginator = new PaginatorQueryBuilder(
-        array(
+        [
             "builder" => $builder,
             "limit"   => 20,
-            "page"    => 1
-        )
+            "page"    => 1,
+        ]
     );
 
 Атрибуты страниц
