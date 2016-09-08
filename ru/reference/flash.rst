@@ -29,9 +29,12 @@
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Устанавливаем сервис
-    $di->set('flash', function () {
-        return new FlashDirect();
-    });
+    $di->set(
+        "flash",
+        function () {
+            return new FlashDirect();
+        }
+    );
 
 Таким образом, вы можете использовать его в контроллерах или в представлениях (view):
 
@@ -61,8 +64,11 @@
     <?php
 
     $this->flash->error("too bad! the form had errors");
+
     $this->flash->success("yes!, everything went very smoothly");
+
     $this->flash->notice("this a very important information");
+
     $this->flash->warning("best check yo self, you're not looking too good.");
 
 Вы можете добавлять сообщения со своими типами:
@@ -80,8 +86,11 @@
 .. code-block:: html
 
     <div class="errorMessage">too bad! the form had errors</div>
+
     <div class="successMessage">yes!, everything went very smoothly</div>
+
     <div class="noticeMessage">this a very important information</div>
+
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
 Как видно на примере выше - используются некоторые CSS классы, которые автоматически добавляются в тег 'DIV'. Эти классы позволяют вам
@@ -94,26 +103,32 @@
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Регистрируем компонент сообщений с CSS классами
-    $di->set('flash', function () {
-        $flash = new FlashDirect(
-            [
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning'
-            ]
-        );
+    $di->set(
+        "flash",
+        function () {
+            $flash = new FlashDirect(
+                [
+                    "error"   => "alert alert-danger",
+                    "success" => "alert alert-success",
+                    "notice"  => "alert alert-info",
+                    "warning" => "alert alert-warning",
+                ]
+            );
 
-        return $flash;
-    });
+            return $flash;
+        }
+    );
 
 После этого сообщения будут выводиться таким образом:
 
 .. code-block:: html
 
     <div class="alert alert-danger">too bad! the form had errors</div>
+
     <div class="alert alert-success">yes!, everything went very smoothly</div>
+
     <div class="alert alert-info">this a very important information</div>
+
     <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Понимание разницы между адаптерами Direct и Session

@@ -28,9 +28,12 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`é automaticamen
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Set up the flash service
-    $di->set('flash', function () {
-        return new FlashDirect();
-    });
+    $di->set(
+        "flash",
+        function () {
+            return new FlashDirect();
+        }
+    );
 
 Dessa forma, você pode usá-lo em controladores ou vistas por injecção do serviço no âmbito necessários:
 .. code-block:: php
@@ -59,8 +62,11 @@ Existem quatro tipos de mensagens embutidas suportados:
     <?php
 
     $this->flash->error("too bad! the form had errors");
+
     $this->flash->success("yes!, everything went very smoothly");
+
     $this->flash->notice("this a very important information");
+
     $this->flash->warning("best check yo self, you're not looking too good.");
 
 Você pode adicionar mensagens com os seus próprios tipos:
@@ -78,8 +84,11 @@ As mensagens enviadas para o serviço de flash são automaticamente formatado co
 .. code-block:: html
 
     <div class="errorMessage">too bad! the form had errors</div>
+
     <div class="successMessage">yes!, everything went very smoothly</div>
+
     <div class="noticeMessage">this a very important information</div>
+
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
 Como você pode ver, classes CSS são adicionados automaticamente para os DIVs. Essas classes permitem definir a apresentação gráfica
@@ -92,26 +101,32 @@ das mensagens no navegador. As classes CSS pode ser substituído, por exemplo, s
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Register the flash service with custom CSS classes
-    $di->set('flash', function () {
-        $flash = new FlashDirect(
-            [
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning'
-            ]
-        );
+    $di->set(
+        "flash",
+        function () {
+            $flash = new FlashDirect(
+                [
+                    "error"   => "alert alert-danger",
+                    "success" => "alert alert-success",
+                    "notice"  => "alert alert-info",
+                    "warning" => "alert alert-warning",
+                ]
+            );
 
-        return $flash;
-    });
+            return $flash;
+        }
+    );
 
 Em seguida, as mensagens seriam impressas como é mostrado a seguir:
 
 .. code-block:: html
 
     <div class="alert alert-danger">too bad! the form had errors</div>
+
     <div class="alert alert-success">yes!, everything went very smoothly</div>
+
     <div class="alert alert-info">this a very important information</div>
+
     <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Implicit Flush vs. Session

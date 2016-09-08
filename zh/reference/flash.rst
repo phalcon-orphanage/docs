@@ -29,9 +29,12 @@
     use Phalcon\Flash\Direct as FlashDirect;
 
     // 建立flash服务
-    $di->set('flash', function () {
-        return new FlashDirect();
-    });
+    $di->set(
+        "flash",
+        function () {
+            return new FlashDirect();
+        }
+    );
 
 这样的话，你便可以在控制器或者视图中通过在必要的片段中注入此服务来使用它：
 
@@ -61,8 +64,11 @@
     <?php
 
     $this->flash->error("too bad! the form had errors");
+
     $this->flash->success("yes!, everything went very smoothly");
+
     $this->flash->notice("this a very important information");
+
     $this->flash->warning("best check yo self, you're not looking too good.");
 
 你可以用你自己的类型来添加消息：
@@ -80,8 +86,11 @@
 .. code-block:: html
 
     <div class="errorMessage">too bad! the form had errors</div>
+
     <div class="successMessage">yes!, everything went very smoothly</div>
+
     <div class="noticeMessage">this a very important information</div>
+
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
 正如你看到的，CSS的类将会自动添加到div中。这些类允许你定义消息在浏览器上的图形表现。
@@ -94,26 +103,32 @@
     use Phalcon\Flash\Direct as FlashDirect;
 
     // 利用自定义的CSS类来注册flash服务
-    $di->set('flash', function () {
-        $flash = new FlashDirect(
-            [
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning'
-            ]
-        );
+    $di->set(
+        "flash",
+        function () {
+            $flash = new FlashDirect(
+                [
+                    "error"   => "alert alert-danger",
+                    "success" => "alert alert-success",
+                    "notice"  => "alert alert-info",
+                    "warning" => "alert alert-warning",
+                ]
+            );
 
-        return $flash;
-    });
+            return $flash;
+        }
+    );
 
 然后消息会是这样输出：
 
 .. code-block:: html
 
     <div class="alert alert-danger">too bad! the form had errors</div>
+
     <div class="alert alert-success">yes!, everything went very smoothly</div>
+
     <div class="alert alert-info">this a very important information</div>
+
     <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 绝对刷送与会话（Implicit Flush vs. Session）
