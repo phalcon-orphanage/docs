@@ -32,6 +32,7 @@ Phalcon не тільки про продуктивність, наша мета
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
    reference/phql

@@ -31,6 +31,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
    reference/phql
