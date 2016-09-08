@@ -109,7 +109,8 @@ Dans notre cas, nous avons déjà demandé des enregistrements de cette table, a
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->form               = new ProductsForm;
+
+        $this->view->form = new ProductsForm();
     }
 
 An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
@@ -134,56 +135,87 @@ This form defines the fields that are visible to the user:
          */
         public function initialize($entity = null, $options = [])
         {
-            if (!isset($options['edit'])) {
+            if (!isset($options["edit"])) {
                 $element = new Text("id");
-                $this->add($element->setLabel("Id"));
+
+                $element->setLabel("Id");
+
+                $this->add(
+                    $element
+                );
             } else {
-                $this->add(new Hidden("id"));
+                $this->add(
+                    new Hidden("id")
+                );
             }
 
+
+
             $name = new Text("name");
+
             $name->setLabel("Name");
-            $name->setFilters(['striptags', 'string']);
+
+            $name->setFilters(
+                [
+                    "striptags",
+                    "string",
+                ]
+            );
+
             $name->addValidators(
                 [
                     new PresenceOf(
                         [
-                            'message' => 'Name is required'
+                            "message" => "Name is required",
                         ]
                     )
                 ]
             );
+
             $this->add($name);
 
+
+
             $type = new Select(
-                'profilesId',
+                "profilesId",
                 ProductTypes::find(),
                 [
-                    'using'      => ['id', 'name'],
-                    'useEmpty'   => true,
-                    'emptyText'  => '...',
-                    'emptyValue' => ''
+                    "using"      => ["id", "name"],
+                    "useEmpty"   => true,
+                    "emptyText"  => "...",
+                    "emptyValue" => "",
                 ]
             );
+
             $this->add($type);
 
+
+
             $price = new Text("price");
+
             $price->setLabel("Price");
-            $price->setFilters(['float']);
+
+            $price->setFilters(
+                [
+                    "float"
+                ]
+            );
+
             $price->addValidators(
                 [
                     new PresenceOf(
                         [
-                            'message' => 'Price is required'
+                            "message" => "Price is required",
                         ]
                     ),
                     new Numericality(
                         [
-                            'message' => 'Price is required'
+                            "message" => "Price is required",
                         ]
-                    )
+                    ),
                 ]
             );
+
             $this->add($price);
         }
     }
@@ -202,14 +234,19 @@ Every element follows almost the same structure:
     $name->setLabel("Name");
 
     // Before validating the element apply these filters
-    $name->setFilters(['striptags', 'string']);
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
+    );
 
     // Apply this validators
     $name->addValidators(
         [
             new PresenceOf(
                 [
-                    'message' => 'Name is required'
+                    "message" => "Name is required",
                 ]
             )
         ]
@@ -225,20 +262,22 @@ Other elements are also used in this form:
     <?php
 
     // Add a hidden input to the form
-    $this->add(new Hidden("id"));
+    $this->add(
+        new Hidden("id")
+    );
 
     // ...
 
     // Add a HTML Select (list) to the form
     // and fill it with data from "product_types"
     $type = new Select(
-        'profilesId',
+        "profilesId",
         ProductTypes::find(),
         [
-            'using'      => ['id', 'name'],
-            'useEmpty'   => true,
-            'emptyText'  => '...',
-            'emptyValue' => ''
+            "using"      => ["id", "name"],
+            "useEmpty"   => true,
+            "emptyText"  => "...",
+            "emptyValue" => "",
         ]
     );
 
@@ -255,7 +294,7 @@ Once the form is passed to the view, it can be rendered and presented to the use
 
         {% for element in form %}
             <div class="control-group">
-                {{ element.label(['class': 'control-label']) }}
+                {{ element.label(["class": "control-label"]) }}
                 <div class="controls">{{ element }}</div>
             </div>
         {% endfor %}
@@ -345,7 +384,11 @@ les conditions de recherche basé sur les types de données envoyé via le formu
 
     <?php
 
-    $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
+    $query = Criteria::fromInput(
+        $this->di,
+        "Products",
+        $this->request->getPost()
+    );
 
 Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prends en compte pour créer
 les critères de recherche :
@@ -375,8 +418,10 @@ Puis, basé sur les paramètres passé, on génère la requête :
     <?php
 
     $products = Products::find($parameters);
-    if (count($products) == 0) {
+
+    if (count($products) === 0) {
         $this->flash->notice("The search did not found any products");
+
         return $this->forward("products/index");
     }
 
@@ -393,9 +438,9 @@ recherche retourne des résultats, on créé un paginateur pour se déplacer à 
 
     $paginator = new Paginator(
         [
-            "data"  => $products,  // Data to paginate
-            "limit" => 5,          // Rows per page
-            "page"  => $numberPage // Active page
+            "data"  => $products,   // Data to paginate
+            "limit" => 5,           // Rows per page
+            "page"  => $numberPage, // Active page
         ]
     );
 
@@ -416,47 +461,49 @@ le résultat correspondant à la page actuelle :
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Product Type</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Active</th>
-            </tr>
-          </thead>
-        <tbody>
-      {% endif %}
-      <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.getProductTypes().name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
-      </tr>
-      {% if loop.last %}
-      </tbody>
-        <tbody>
-          <tr>
-            <td colspan="7">
-              <div>
-                {{ link_to("products/search", 'First') }}
-                {{ link_to("products/search?page=" ~ page.before, 'Previous') }}
-                {{ link_to("products/search?page=" ~ page.next, 'Next') }}
-                {{ link_to("products/search?page=" ~ page.last, 'Last') }}
-                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
+        {% if loop.first %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Type</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.getProductTypes().name }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ "%.2f"|format(product.price) }}</td>
+            <td>{{ product.getActiveDetail() }}</td>
+            <td width="7%">{{ link_to("products/edit/" ~ product.id, "Edit") }}</td>
+            <td width="7%">{{ link_to("products/delete/" ~ product.id, "Delete") }}</td>
+        </tr>
+
+        {% if loop.last %}
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td colspan="7">
+                            <div>
+                                {{ link_to("products/search", "First") }}
+                                {{ link_to("products/search?page=" ~ page.before, "Previous") }}
+                                {{ link_to("products/search?page=" ~ page.next, "Next") }}
+                                {{ link_to("products/search?page=" ~ page.last, "Last") }}
+                                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
     {% else %}
-      No products are recorded
+        No products are recorded
     {% endfor %}
 
 There are many things in the above example that worth detailing. First of all, active items
@@ -477,15 +524,15 @@ The whole 'for' block provides the following:
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        Executed before the first product in the loop
-      {% endif %}
-        Executed for every product of page.items
-      {% if loop.last %}
-        Executed after the last product is loop
-      {% endif %}
+        {% if loop.first %}
+            Executed before the first product in the loop
+        {% endif %}
+            Executed for every product of page.items
+        {% if loop.last %}
+            Executed after the last product is loop
+        {% endif %}
     {% else %}
-      Executed if page.items does not have any products
+        Executed if page.items does not have any products
     {% endfor %}
 
 Now you can go back to the view and find out what every block is doing. Every field
@@ -494,13 +541,13 @@ in "product" is printed accordingly:
 .. code-block:: html+jinja
 
     <tr>
-      <td>{{ product.id }}</td>
-      <td>{{ product.productTypes.name }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ "%.2f"|format(product.price) }}</td>
-      <td>{{ product.getActiveDetail() }}</td>
-      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.productTypes.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, "Edit") }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, "Delete") }}</td>
     </tr>
 
 As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
@@ -527,11 +574,11 @@ we have to check the model Products (app/models/Products.php):
         public function initialize()
         {
             $this->belongsTo(
-                'product_types_id',
-                'ProductTypes',
-                'id',
+                "product_types_id",
+                "ProductTypes",
+                "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
@@ -548,11 +595,11 @@ has a one-to-many relationship to another model called "ProductTypes".
     <?php
 
     $this->belongsTo(
-        'product_types_id',
-        'ProductTypes',
-        'id',
+        "product_types_id",
+        "ProductTypes",
+        "id",
         [
-            'reusable' => true
+            "reusable" => true,
         ]
     );
 
@@ -604,7 +651,8 @@ Dans la page de création, on récupère les données envoyés et on leur assign
             return $this->forward("products/index");
         }
 
-        $form    = new ProductsForm;
+        $form = new ProductsForm();
+
         $product = new Products();
 
         $product->id               = $this->request->getPost("id", "int");
@@ -626,17 +674,23 @@ Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les don
     // ...
 
     $name = new Text("name");
+
     $name->setLabel("Name");
 
     // Filters for name
-    $name->setFilters(['striptags', 'string']);
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
+    );
 
     // Validators for name
     $name->addValidators(
         [
             new PresenceOf(
                 [
-                    'message' => 'Name is required'
+                    "message" => "Name is required",
                 ]
             )
         ]
@@ -653,16 +707,21 @@ dans le form ProductsForm (app/forms/ProductsForm.php):
 
     // ...
 
-    $form    = new ProductsForm;
+    $form = new ProductsForm();
+
     $product = new Products();
 
     // Validate the input
     $data = $this->request->getPost();
+
     if (!$form->isValid($data, $product)) {
-        foreach ($form->getMessages() as $message) {
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
-        return $this->forward('products/new');
+
+        return $this->forward("products/new");
     }
 
 Finally, if the form does not return any validation message we can save the product instance:
@@ -673,17 +732,20 @@ Finally, if the form does not return any validation message we can save the prod
 
     // ...
 
-    if ($product->save() == false) {
-        foreach ($product->getMessages() as $message) {
+    if ($product->save() === false) {
+        $messages = $product->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
 
-        return $this->forward('products/new');
+        return $this->forward("products/new");
     }
 
     $form->clear();
 
     $this->flash->success("Product was created successfully");
+
     return $this->forward("products/index");
 
 Maintenant, dans le cas de la modification de produit, on doit présenter les données à éditer à l'utilisateur en pré-remplissant les champs:
@@ -698,15 +760,20 @@ Maintenant, dans le cas de la modification de produit, on doit présenter les do
     public function editAction($id)
     {
         if (!$this->request->isPost()) {
-
             $product = Products::findFirstById($id);
+
             if (!$product) {
                 $this->flash->error("Product was not found");
 
                 return $this->forward("products/index");
             }
 
-            $this->view->form = new ProductsForm($product, ['edit' => true]);
+            $this->view->form = new ProductsForm(
+                $product,
+                [
+                    "edit" => true,
+                ]
+            );
         }
     }
 
@@ -729,34 +796,41 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
         $id = $this->request->getPost("id", "int");
 
         $product = Products::findFirstById($id);
+
         if (!$product) {
             $this->flash->error("Product does not exist");
 
             return $this->forward("products/index");
         }
 
-        $form = new ProductsForm;
+        $form = new ProductsForm();
 
         $data = $this->request->getPost();
+
         if (!$form->isValid($data, $product)) {
-            foreach ($form->getMessages() as $message) {
+            $messages = $form->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->forward("products/new");
         }
 
-        if ($product->save() == false) {
-            foreach ($product->getMessages() as $message) {
+        if ($product->save() === false) {
+            $messages = $product->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->forward("products/new");
         }
 
         $form->clear();
 
         $this->flash->success("Product was updated successfully");
+
         return $this->forward("products/index");
     }
 

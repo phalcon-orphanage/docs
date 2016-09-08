@@ -109,7 +109,8 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->form               = new ProductsForm;
+
+        $this->view->form = new ProductsForm();
     }
 
 Экземпляр формы ProductsForm (app/forms/ProductsForm.php) передается в представление.
@@ -134,56 +135,87 @@ INVO, мы подходим к созданию CRUD, очень распрос�
          */
         public function initialize($entity = null, $options = [])
         {
-            if (!isset($options['edit'])) {
+            if (!isset($options["edit"])) {
                 $element = new Text("id");
-                $this->add($element->setLabel("Id"));
+
+                $element->setLabel("Id");
+
+                $this->add(
+                    $element
+                );
             } else {
-                $this->add(new Hidden("id"));
+                $this->add(
+                    new Hidden("id")
+                );
             }
 
+
+
             $name = new Text("name");
+
             $name->setLabel("Название");
-            $name->setFilters(['striptags', 'string']);
+
+            $name->setFilters(
+                [
+                    "striptags",
+                    "string",
+                ]
+            );
+
             $name->addValidators(
                 [
                     new PresenceOf(
                         [
-                            'message' => 'Название обязательно'
+                            "message" => "Название обязательно",
                         ]
                     )
                 ]
             );
+
             $this->add($name);
 
+
+
             $type = new Select(
-                'profilesId',
+                "profilesId",
                 ProductTypes::find(),
                 [
-                    'using'      => ['id', 'name'],
-                    'useEmpty'   => true,
-                    'emptyText'  => '...',
-                    'emptyValue' => ''
+                    "using"      => ["id", "name"],
+                    "useEmpty"   => true,
+                    "emptyText"  => "...",
+                    "emptyValue" => "",
                 ]
             );
+
             $this->add($type);
 
+
+
             $price = new Text("price");
+
             $price->setLabel("Цена");
-            $price->setFilters(['float']);
+
+            $price->setFilters(
+                [
+                    "float"
+                ]
+            );
+
             $price->addValidators(
                 [
                     new PresenceOf(
                         [
-                            'message' => 'Цена обязательна'
+                            "message" => "Цена обязательна",
                         ]
                     ),
                     new Numericality(
                         [
-                            'message' => 'Цена обязательна'
+                            "message" => "Цена обязательна",
                         ]
-                    )
+                    ),
                 ]
             );
+
             $this->add($price);
         }
     }
@@ -202,14 +234,19 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     $name->setLabel("Название");
 
     // Перед валидацией применяем эти фильтры
-    $name->setFilters(['striptags', 'string']);
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
+    );
 
     // Применяем валидаторы
     $name->addValidators(
         [
             new PresenceOf(
                 [
-                    'message' => 'Название обязательно'
+                    "message" => "Название обязательно",
                 ]
             )
         ]
@@ -232,13 +269,13 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     // Добавляем HTML Select (список) в форму
     // и заполняем его данными из "product_types"
     $type = new Select(
-        'profilesId',
+        "profilesId",
         ProductTypes::find(),
         [
-            'using'      => ['id', 'name'],
-            'useEmpty'   => true,
-            'emptyText'  => '...',
-            'emptyValue' => ''
+            "using"      => ["id", "name"],
+            "useEmpty"   => true,
+            "emptyText"  => "...",
+            "emptyValue" => "",
         ]
     );
 
@@ -255,7 +292,7 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
         {% for element in form %}
             <div class="control-group">
-                {{ element.label(['class': 'control-label']) }}
+                {{ element.label(["class": "control-label"]) }}
                 <div class="controls">{{ element }}</div>
             </div>
         {% endfor %}
@@ -345,7 +382,11 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
     <?php
 
-    $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
+    $query = Criteria::fromInput(
+        $this->di,
+        "Products",
+        $this->request->getPost()
+    );
 
 Этот метод проверяет все значения, отличные от "" (пустой строки) и null, а затем использует их для создания
 критериев поиска:
@@ -375,8 +416,10 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     <?php
 
     $products = Products::find($parameters);
-    if (count($products) == 0) {
+
+    if (count($products) === 0) {
         $this->flash->notice("Поиск не нашел никаких продуктов");
+
         return $this->forward("products/index");
     }
 
@@ -393,9 +436,9 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
     $paginator = new Paginator(
         [
-            "data"  => $products,  // Данные для пагинации
-            "limit" => 5,          // Количество записей на страницу
-            "page"  => $numberPage // Активная страница
+            "data"  => $products,   // Данные для пагинации
+            "limit" => 5,           // Количество записей на страницу
+            "page"  => $numberPage, // Активная страница
         ]
     );
 
@@ -416,47 +459,49 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Тип продукта</th>
-              <th>Название</th>
-              <th>Цена</th>
-              <th>Активен</th>
-            </tr>
-          </thead>
-        <tbody>
-      {% endif %}
-      <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.getProductTypes().name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Редактировать') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Удалить') }}</td>
-      </tr>
-      {% if loop.last %}
-      </tbody>
-        <tbody>
-          <tr>
-            <td colspan="7">
-              <div>
-                {{ link_to("products/search", 'Первая') }}
-                {{ link_to("products/search?page=" ~ page.before, 'Предыдущая') }}
-                {{ link_to("products/search?page=" ~ page.next, 'Следующая') }}
-                {{ link_to("products/search?page=" ~ page.last, 'Последняя') }}
-                <span class="help-inline">{{ page.current }} из {{ page.total_pages }}</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
+        {% if loop.first %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Тип продукта</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Активен</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.getProductTypes().name }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ "%.2f"|format(product.price) }}</td>
+            <td>{{ product.getActiveDetail() }}</td>
+            <td width="7%">{{ link_to("products/edit/" ~ product.id, "Редактировать") }}</td>
+            <td width="7%">{{ link_to("products/delete/" ~ product.id, "Удалить") }}</td>
+        </tr>
+
+        {% if loop.last %}
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td colspan="7">
+                            <div>
+                                {{ link_to("products/search", "Первая") }}
+                                {{ link_to("products/search?page=" ~ page.before, "Предыдущая") }}
+                                {{ link_to("products/search?page=" ~ page.next, "Следующая") }}
+                                {{ link_to("products/search?page=" ~ page.last, "Последняя") }}
+                                <span class="help-inline">{{ page.current }} из {{ page.total_pages }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
     {% else %}
-      В базе нет продуктов
+        В базе нет продуктов
     {% endfor %}
 
 В примере выше многое требует уточнения. Прежде всего, активные товары
@@ -477,15 +522,15 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        Выполняется до первого продукта в цикле
-      {% endif %}
-        Выполняется для каждого продукта из page.items
-      {% if loop.last %}
-        Выполняется после последнего продукта в цикле
-      {% endif %}
+        {% if loop.first %}
+            Выполняется до первого продукта в цикле
+        {% endif %}
+            Выполняется для каждого продукта из page.items
+        {% if loop.last %}
+            Выполняется после последнего продукта в цикле
+        {% endif %}
     {% else %}
-      Выполняется при отсутствии продуктов в page.items
+        Выполняется при отсутствии продуктов в page.items
     {% endfor %}
 
 Теперь вы можете вернуться к представлению и выяснить назначение каждого блока. Каждое поле
@@ -494,13 +539,13 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 .. code-block:: html+jinja
 
     <tr>
-      <td>{{ product.id }}</td>
-      <td>{{ product.productTypes.name }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ "%.2f"|format(product.price) }}</td>
-      <td>{{ product.getActiveDetail() }}</td>
-      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Редактировать') }}</td>
-      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Удалить') }}</td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.productTypes.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, "Редактировать") }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, "Удалить") }}</td>
     </tr>
 
 Как мы уже увидели, использование product.id то же, что и в PHP: :code:`$product->id`,
@@ -527,11 +572,11 @@ INVO, мы подходим к созданию CRUD, очень распрос�
         public function initialize()
         {
             $this->belongsTo(
-                'product_types_id',
-                'ProductTypes',
-                'id',
+                "product_types_id",
+                "ProductTypes",
+                "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
@@ -548,11 +593,11 @@ ORM для инициализации модели. В данном случае
     <?php
 
     $this->belongsTo(
-        'product_types_id',
-        'ProductTypes',
-        'id',
+        "product_types_id",
+        "ProductTypes",
+        "id",
         [
-            'reusable' => true
+            "reusable" => true,
         ]
     );
 
@@ -604,7 +649,8 @@ ORM для инициализации модели. В данном случае
             return $this->forward("products/index");
         }
 
-        $form    = new ProductsForm;
+        $form = new ProductsForm();
+
         $product = new Products();
 
         $product->id               = $this->request->getPost("id", "int");
@@ -626,17 +672,23 @@ ORM для инициализации модели. В данном случае
     // ...
 
     $name = new Text("name");
+
     $name->setLabel("Название");
 
     // Фильтры для названия
-    $name->setFilters(['striptags', 'string']);
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
+    );
 
     // Валидаторы для названия
     $name->addValidators(
         [
             new PresenceOf(
                 [
-                    'message' => 'Название обязательно'
+                    "message" => "Название обязательно",
                 ]
             )
         ]
@@ -653,16 +705,21 @@ ORM для инициализации модели. В данном случае
 
     // ...
 
-    $form    = new ProductsForm;
+    $form = new ProductsForm();
+
     $product = new Products();
 
     // Валидация ввода
     $data = $this->request->getPost();
+
     if (!$form->isValid($data, $product)) {
-        foreach ($form->getMessages() as $message) {
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
-        return $this->forward('products/new');
+
+        return $this->forward("products/new");
     }
 
 В итоге, если форма не возвращает каких-либо сообщений валидации, то мы можем сохранить экземпляр продукта:
@@ -673,17 +730,20 @@ ORM для инициализации модели. В данном случае
 
     // ...
 
-    if ($product->save() == false) {
-        foreach ($product->getMessages() as $message) {
+    if ($product->save() === false) {
+        $messages = $product->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
 
-        return $this->forward('products/new');
+        return $this->forward("products/new");
     }
 
     $form->clear();
 
     $this->flash->success("Продукт успешно создан");
+
     return $this->forward("products/index");
 
 Теперь, в случае обновления продукта, сперва мы должны представить пользователю данные, которые уже имеются в редактируемой записи:
@@ -698,15 +758,20 @@ ORM для инициализации модели. В данном случае
     public function editAction($id)
     {
         if (!$this->request->isPost()) {
-
             $product = Products::findFirstById($id);
+
             if (!$product) {
                 $this->flash->error("Продукт не найден");
 
                 return $this->forward("products/index");
             }
 
-            $this->view->form = new ProductsForm($product, ['edit' => true]);
+            $this->view->form = new ProductsForm(
+                $product,
+                [
+                    "edit" => true,
+                ]
+            );
         }
     }
 
@@ -729,34 +794,41 @@ ORM для инициализации модели. В данном случае
         $id = $this->request->getPost("id", "int");
 
         $product = Products::findFirstById($id);
+
         if (!$product) {
             $this->flash->error("Продукт не существует");
 
             return $this->forward("products/index");
         }
 
-        $form = new ProductsForm;
+        $form = new ProductsForm();
 
         $data = $this->request->getPost();
+
         if (!$form->isValid($data, $product)) {
-            foreach ($form->getMessages() as $message) {
+            $messages = $form->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->forward("products/new");
         }
 
-        if ($product->save() == false) {
-            foreach ($product->getMessages() as $message) {
+        if ($product->save() === false) {
+            $messages = $product->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->forward("products/new");
         }
 
         $form->clear();
 
         $this->flash->success("Продукт успешно обновлен");
+
         return $this->forward("products/index");
     }
 
