@@ -20,19 +20,21 @@ structure according to the needs of the application:
 
     <?php
 
+    use Phalcon\Queue\Beanstalk;
+
     // Connect to the queue
-    $queue = new Phalcon\Queue\Beanstalk(
-        array(
-            'host' => '192.168.0.21',
-            'port' => '11300'
-        )
+    $queue = new Beanstalk(
+        [
+            "host" => "192.168.0.21",
+            "port" => "11300",
+        ]
     );
 
     // Insert the job in the queue
     $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Available connection options are:
@@ -56,14 +58,14 @@ Additional options as time to run, priority and delay can be passed as second pa
 
     // Insert the job in the queue with options
     $queue->put(
-        array(
-            'processVideo' => 4871
-        ),
-        array(
-            'priority' => 250,
-            'delay'    => 10,
-            'ttr'      => 3600
-        )
+        [
+            "processVideo" => 4871,
+        ],
+        [
+            "priority" => 250,
+            "delay"    => 10,
+            "ttr"      => 3600,
+        ]
     );
 
 The following options are available:
@@ -85,9 +87,9 @@ Every job put into the queue returns a "job id" which you can use to track the s
     <?php
 
     $jobId = $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 メッセージの取得
@@ -100,7 +102,6 @@ the task:
     <?php
 
     while (($job = $queue->peekReady()) !== false) {
-
         $message = $job->getBody();
 
         var_dump($message);
@@ -115,8 +116,7 @@ jobs must be "reserved" so other workers don't re-process them while other worke
 
     <?php
 
-    while (($job = $queue->reserve())) {
-
+    while (($job = $queue->reserve()) !== false) {
         $message = $job->getBody();
 
         var_dump($message);
