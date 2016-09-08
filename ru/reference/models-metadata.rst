@@ -11,10 +11,10 @@
 
     <?php
 
-    $robot      = new Robots();
+    $robot = new Robots();
 
     // Получаем экземпляр Phalcon\Mvc\Model\Metadata
-    $metaData   = $robot->getModelsMetaData();
+    $metaData = $robot->getModelsMetaData();
 
     // Получаем имена полей робота
     $attributes = $metaData->getAttributes($robot);
@@ -51,14 +51,13 @@
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Создаем менеджер метаданных с APC
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         return $metaData;
@@ -77,18 +76,19 @@
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Создаем адаптер метаданных
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         // Изменяем стратегию интроспекции метаданных
-        $metaData->setStrategy(new MyIntrospectionStrategy());
+        $metaData->setStrategy(
+            new MyIntrospectionStrategy()
+        );
 
         return $metaData;
     };
@@ -168,18 +168,19 @@
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
     use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Создаем адаптер метаданных
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         // Изменяем стратегию интроспекции метаданных
-        $metaData->setStrategy(new StrategyAnnotations());
+        $metaData->setStrategy(
+            new StrategyAnnotations()
+        );
 
         return $metaData;
     };
@@ -209,70 +210,77 @@ Phalcon может получить метаданные для каждой м�
         {
             return array(
                 // Столбцы в отображаемой таблице
-                MetaData::MODELS_ATTRIBUTES => array(
-                    'id', 'name', 'type', 'year'
-                ),
+                MetaData::MODELS_ATTRIBUTES => [
+                    "id",
+                    "name",
+                    "type",
+                    "year",
+                ],
 
                 // Столбцы, являющиеся частью первичного ключа
-                MetaData::MODELS_PRIMARY_KEY => array(
-                    'id'
-                ),
+                MetaData::MODELS_PRIMARY_KEY => [
+                    "id",
+                ],
 
                 // Столбцы, которые не являются частью первичного ключа
-                MetaData::MODELS_NON_PRIMARY_KEY => array(
-                    'name', 'type', 'year'
-                ),
+                MetaData::MODELS_NON_PRIMARY_KEY => [
+                    "name",
+                    "type",
+                    "year",
+                ],
 
                 // Столбцы, которые не позволяют хранить нулевые значения
-                MetaData::MODELS_NOT_NULL => array(
-                    'id', 'name', 'type'
-                ),
+                MetaData::MODELS_NOT_NULL => [
+                    "id",
+                    "name",
+                    "type",
+                ],
 
                 // Все столбцы и их типы данных
-                MetaData::MODELS_DATA_TYPES => array(
-                    'id'   => Column::TYPE_INTEGER,
-                    'name' => Column::TYPE_VARCHAR,
-                    'type' => Column::TYPE_VARCHAR,
-                    'year' => Column::TYPE_INTEGER
-                ),
+                MetaData::MODELS_DATA_TYPES => [
+                    "id"   => Column::TYPE_INTEGER,
+                    "name" => Column::TYPE_VARCHAR,
+                    "type" => Column::TYPE_VARCHAR,
+                    "year" => Column::TYPE_INTEGER,
+                ],
 
                 // Стобцы, которые имеют числовые типы данных
-                MetaData::MODELS_DATA_TYPES_NUMERIC => array(
-                    'id'   => true,
-                    'year' => true
-                ),
+                MetaData::MODELS_DATA_TYPES_NUMERIC => [
+                    "id"   => true,
+                    "year" => true,
+                ],
 
                 // Столбец идентификатора. Используйте логическое значение FALSE,
                 // если модель не имеет столбца идентификации
-                MetaData::MODELS_IDENTITY_COLUMN => 'id',
+                MetaData::MODELS_IDENTITY_COLUMN => "id",
 
                 // К какому типу приводить каждый столбец
-                MetaData::MODELS_DATA_TYPES_BIND => array(
-                    'id'   => Column::BIND_PARAM_INT,
-                    'name' => Column::BIND_PARAM_STR,
-                    'type' => Column::BIND_PARAM_STR,
-                    'year' => Column::BIND_PARAM_INT
-                ),
+                MetaData::MODELS_DATA_TYPES_BIND => [
+                    "id"   => Column::BIND_PARAM_INT,
+                    "name" => Column::BIND_PARAM_STR,
+                    "type" => Column::BIND_PARAM_STR,
+                    "year" => Column::BIND_PARAM_INT,
+                ],
 
                 // Поля, которые должны быть проигнорированы в INSERT SQL инструкциях
-                MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
-                    'year' => true
-                ),
+                MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
+                    "year" => true,
+                ],
 
                 // Поля, которые должны быть проигнорированы в UPDATE SQL инструкциях
-                MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
-                    'year' => true
-                ),
+                MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
+                    "year" => true,
+                ],
 
                 // Значения по умолчанию для столбцов
-                MetaData::MODELS_DEFAULT_VALUES => array(
-                    'year' => '2015'
-                ),
+                MetaData::MODELS_DEFAULT_VALUES => [
+                    "year" => "2015",
+                ],
 
                 // Поля, допускающие пустые строки
-                MetaData::MODELS_EMPTY_STRING_VALUES => array(
-                    'name' => true
-                )
+                MetaData::MODELS_EMPTY_STRING_VALUES => [
+                    "name" => true,
+                ],
             );
         }
     }

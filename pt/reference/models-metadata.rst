@@ -11,10 +11,10 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
     <?php
 
-    $robot      = new Robots();
+    $robot = new Robots();
 
     // Get Phalcon\Mvc\Model\Metadata instance
-    $metaData   = $robot->getModelsMetaData();
+    $metaData = $robot->getModelsMetaData();
 
     // Get robots fields names
     $attributes = $metaData->getAttributes($robot);
@@ -51,14 +51,13 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Create a meta-data manager with APC
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         return $metaData;
@@ -77,18 +76,19 @@ You can change the default meta-data introspection in the following way:
 
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Instantiate a meta-data adapter
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         // Set a custom meta-data introspection strategy
-        $metaData->setStrategy(new MyIntrospectionStrategy());
+        $metaData->setStrategy(
+            new MyIntrospectionStrategy()
+        );
 
         return $metaData;
     };
@@ -168,18 +168,19 @@ The annotations strategy could be set up this way:
     use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
     use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
-    $di['modelsMetadata'] = function () {
-
+    $di["modelsMetadata"] = function () {
         // Instantiate a meta-data adapter
         $metaData = new ApcMetaData(
-            array(
+            [
                 "lifetime" => 86400,
-                "prefix"   => "my-prefix"
-            )
+                "prefix"   => "my-prefix",
+            ]
         );
 
         // Set a custom meta-data database introspection
-        $metaData->setStrategy(new StrategyAnnotations());
+        $metaData->setStrategy(
+            new StrategyAnnotations()
+        );
 
         return $metaData;
     };
@@ -209,70 +210,77 @@ The following example shows how to define the meta-data manually:
         {
             return array(
                 // Every column in the mapped table
-                MetaData::MODELS_ATTRIBUTES => array(
-                    'id', 'name', 'type', 'year'
-                ),
+                MetaData::MODELS_ATTRIBUTES => [
+                    "id",
+                    "name",
+                    "type",
+                    "year",
+                ],
 
                 // Every column part of the primary key
-                MetaData::MODELS_PRIMARY_KEY => array(
-                    'id'
-                ),
+                MetaData::MODELS_PRIMARY_KEY => [
+                    "id",
+                ],
 
                 // Every column that isn't part of the primary key
-                MetaData::MODELS_NON_PRIMARY_KEY => array(
-                    'name', 'type', 'year'
-                ),
+                MetaData::MODELS_NON_PRIMARY_KEY => [
+                    "name",
+                    "type",
+                    "year",
+                ],
 
                 // Every column that doesn't allows null values
-                MetaData::MODELS_NOT_NULL => array(
-                    'id', 'name', 'type'
-                ),
+                MetaData::MODELS_NOT_NULL => [
+                    "id",
+                    "name",
+                    "type",
+                ],
 
                 // Every column and their data types
-                MetaData::MODELS_DATA_TYPES => array(
-                    'id'   => Column::TYPE_INTEGER,
-                    'name' => Column::TYPE_VARCHAR,
-                    'type' => Column::TYPE_VARCHAR,
-                    'year' => Column::TYPE_INTEGER
-                ),
+                MetaData::MODELS_DATA_TYPES => [
+                    "id"   => Column::TYPE_INTEGER,
+                    "name" => Column::TYPE_VARCHAR,
+                    "type" => Column::TYPE_VARCHAR,
+                    "year" => Column::TYPE_INTEGER,
+                ],
 
                 // The columns that have numeric data types
-                MetaData::MODELS_DATA_TYPES_NUMERIC => array(
-                    'id'   => true,
-                    'year' => true
-                ),
+                MetaData::MODELS_DATA_TYPES_NUMERIC => [
+                    "id"   => true,
+                    "year" => true,
+                ],
 
                 // The identity column, use boolean false if the model doesn't have
                 // an identity column
-                MetaData::MODELS_IDENTITY_COLUMN => 'id',
+                MetaData::MODELS_IDENTITY_COLUMN => "id",
 
                 // How every column must be bound/casted
-                MetaData::MODELS_DATA_TYPES_BIND => array(
-                    'id'   => Column::BIND_PARAM_INT,
-                    'name' => Column::BIND_PARAM_STR,
-                    'type' => Column::BIND_PARAM_STR,
-                    'year' => Column::BIND_PARAM_INT
-                ),
+                MetaData::MODELS_DATA_TYPES_BIND => [
+                    "id"   => Column::BIND_PARAM_INT,
+                    "name" => Column::BIND_PARAM_STR,
+                    "type" => Column::BIND_PARAM_STR,
+                    "year" => Column::BIND_PARAM_INT,
+                ],
 
                 // Fields that must be ignored from INSERT SQL statements
-                MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
-                    'year' => true
-                ),
+                MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
+                    "year" => true,
+                ],
 
                 // Fields that must be ignored from UPDATE SQL statements
-                MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
-                    'year' => true
-                ),
+                MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
+                    "year" => true,
+                ],
 
                 // Default values for columns
-                MetaData::MODELS_DEFAULT_VALUES => array(
-                    'year' => '2015'
-                ),
+                MetaData::MODELS_DEFAULT_VALUES => [
+                    "year" => "2015",
+                ],
 
                 // Fields that allow empty strings
-                MetaData::MODELS_EMPTY_STRING_VALUES => array(
-                    'name' => true
-                )
+                MetaData::MODELS_EMPTY_STRING_VALUES => [
+                    "name" => true,
+                ],
             );
         }
     }
