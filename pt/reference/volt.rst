@@ -45,17 +45,16 @@ reusing the standard .phtml:
 
     // Registering Volt as template engine
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
-                    ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-                )
+                [
+                    ".volt" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+                ]
             );
 
             return $view;
@@ -69,9 +68,9 @@ Use the standard ".phtml" extension:
     <?php
 
     $view->registerEngines(
-        array(
-            ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
-        )
+        [
+            ".phtml" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+        ]
     );
 
 Basic Usage
@@ -485,6 +484,7 @@ Variables may be changed in a template using the instruction "set":
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'] %}
+
     {% set name = robot.name %}
 
 Multiple assignments are allowed in the same instruction:
@@ -498,6 +498,7 @@ Additionally, you can use compound assignment operators:
 .. code-block:: html+jinja
 
     {% set price += 100.00 %}
+
     {% set age *= 5 %}
 
 The following operators are available:
@@ -1009,8 +1010,10 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
             {% block head %}
                 <link rel="stylesheet" href="style.css" />
             {% endblock %}
+
             <title>{% block title %}{% endblock %} - My Webpage</title>
         </head>
+
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
 
@@ -1043,8 +1046,10 @@ Not all blocks must be replaced at a child template, only those that are needed.
     <html>
         <head>
             <style type="text/css">.important { color: #336699; }</style>
+
             <title>Index - My Webpage</title>
         </head>
+
         <body>
             <div id="content">
                 <h1>Index</h1>
@@ -1069,6 +1074,7 @@ Extended templates can extend other templates. The following example illustrates
         <head>
             <title>Title</title>
         </head>
+
         <body>
             {% block content %}{% endblock %}
         </body>
@@ -1114,6 +1120,7 @@ Rendering "index.volt" produces:
         <head>
             <title>Title</title>
         </head>
+
         <body>
 
             <h1>Table of contents</h1>
@@ -1165,16 +1172,15 @@ Volt can be configured to alter its default behavior, the following example expl
 
     // Register Volt as a service
     $di->set(
-        'voltService',
+        "voltService",
         function ($view, $di) {
-
             $volt = new Volt($view, $di);
 
             $volt->setOptions(
-                array(
+                [
                     "compiledPath"      => "../app/compiled-templates/",
-                    "compiledExtension" => ".compiled"
-                )
+                    "compiledExtension" => ".compiled",
+                ]
             );
 
             return $volt;
@@ -1183,17 +1189,16 @@ Volt can be configured to alter its default behavior, the following example expl
 
     // Register Volt as template engine
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
-                    ".volt" => 'voltService'
-                )
+                [
+                    ".volt" => "voltService",
+                ]
             );
 
             return $view;
@@ -1211,15 +1216,14 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
 
     // Register Volt as template engine with an anonymous function
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new \Phalcon\Mvc\View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
+                [
                     ".volt" => function ($view, $di) {
                         $volt = new Volt($view, $di);
 
@@ -1227,7 +1231,7 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
 
                         return $volt;
                     }
-                )
+                ]
             );
 
             return $view;
@@ -1265,26 +1269,26 @@ views directory. The following examples show how to change the compilation path 
     // Just append the .php extension to the template path
     // leaving the compiled templates in the same directory
     $volt->setOptions(
-        array(
-            'compiledPath' => function ($templatePath) {
-                return $templatePath . '.php';
+        [
+            "compiledPath" => function ($templatePath) {
+                return $templatePath . ".php";
             }
-        )
+        ]
     );
 
     // Recursively create the same structure in another directory
     $volt->setOptions(
-        array(
-            'compiledPath' => function ($templatePath) {
+        [
+            "compiledPath" => function ($templatePath) {
                 $dirName = dirname($templatePath);
 
-                if (!is_dir('cache/' . $dirName)) {
-                    mkdir('cache/' . $dirName);
+                if (!is_dir("cache/" . $dirName)) {
+                    mkdir("cache/" . $dirName);
                 }
 
-                return 'cache/' . $dirName . '/'. $templatePath . '.php';
+                return "cache/" . $dirName . "/". $templatePath . ".php";
             }
-        )
+        ]
     );
 
 Extending Volt
@@ -1312,7 +1316,7 @@ function. Always is required that the chosen strategy returns a valid PHP string
     $compiler = $volt->getCompiler();
 
     // This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
-    $compiler->addFunction('shuffle', 'str_shuffle');
+    $compiler->addFunction("shuffle", "str_shuffle");
 
 Register the function with an anonymous function. This case we use :code:`$resolvedArgs` to pass the arguments exactly
 as were passed in the arguments:
@@ -1322,9 +1326,9 @@ as were passed in the arguments:
     <?php
 
     $compiler->addFunction(
-        'widget',
+        "widget",
         function ($resolvedArgs, $exprArgs) {
-            return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+            return "MyLibrary\\Widgets::get(" . $resolvedArgs . ")";
         }
     );
 
@@ -1335,9 +1339,8 @@ Treat the arguments independently and unresolved:
     <?php
 
     $compiler->addFunction(
-        'repeat',
+        "repeat",
         function ($resolvedArgs, $exprArgs) use ($compiler) {
-
             // Resolve the first argument
             $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
@@ -1349,7 +1352,7 @@ Treat the arguments independently and unresolved:
                 $secondArgument = '10';
             }
 
-            return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
+            return "str_repeat(" . $firstArgument . ", " . $secondArgument . ")";
         }
     );
 
@@ -1360,12 +1363,12 @@ Generate the code based on some function availability:
     <?php
 
     $compiler->addFunction(
-        'contains_text',
+        "contains_text",
         function ($resolvedArgs, $exprArgs) {
-            if (function_exists('mb_stripos')) {
-                return 'mb_stripos(' . $resolvedArgs . ')';
+            if (function_exists("mb_stripos")) {
+                return "mb_stripos(" . $resolvedArgs . ")";
             } else {
-                return 'stripos(' . $resolvedArgs . ')';
+                return "stripos(" . $resolvedArgs . ")";
             }
         }
     );
@@ -1377,7 +1380,7 @@ Built-in functions can be overridden adding a function with its name:
     <?php
 
     // Replace built-in function dump
-    $compiler->addFunction('dump', 'print_r');
+    $compiler->addFunction("dump", "print_r");
 
 Filters
 ^^^^^^^
@@ -1389,16 +1392,16 @@ is similar as seen with the functions:
     <?php
 
     // This creates a filter 'hash' that uses the PHP function 'md5'
-    $compiler->addFilter('hash', 'md5');
+    $compiler->addFilter("hash", "md5");
 
 .. code-block:: php
 
     <?php
 
     $compiler->addFilter(
-        'int',
+        "int",
         function ($resolvedArgs, $exprArgs) {
-            return 'intval(' . $resolvedArgs . ')';
+            return "intval(" . $resolvedArgs . ")";
         }
     );
 
@@ -1409,7 +1412,7 @@ Built-in filters can be overridden adding a function with its name:
     <?php
 
     // Replace built-in filter 'capitalize'
-    $compiler->addFilter('capitalize', 'lcfirst');
+    $compiler->addFilter("capitalize", "lcfirst");
 
 Extensions
 ^^^^^^^^^^
@@ -1432,7 +1435,7 @@ For example, the class below allows to use any PHP function in Volt:
         public function compileFunction($name, $arguments)
         {
             if (function_exists($name)) {
-                return $name . '('. $arguments . ')';
+                return $name . "(". $arguments . ")";
             }
         }
     }
@@ -1464,7 +1467,9 @@ Volt extensions must be in registered in the compiler making them available in c
     <?php
 
     // Register the extension in the compiler
-    $compiler->addExtension(new PhpFunctionExtension());
+    $compiler->addExtension(
+        new PhpFunctionExtension()
+    );
 
 Caching view fragments
 ----------------------
@@ -1528,19 +1533,26 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
     // Optionally add some options
     $compiler->setOptions(
-        array(
+        [
             // ...
-        )
+        ]
     );
 
     // Compile a template string returning PHP code
-    echo $compiler->compileString('{{ "hello" }}');
+    echo $compiler->compileString(
+        "{{ 'hello' }}"
+    );
 
     // Compile a template in a file specifying the destination file
-    $compiler->compileFile('layouts/main.volt', 'cache/layouts/main.volt.php');
+    $compiler->compileFile(
+        "layouts/main.volt",
+        "cache/layouts/main.volt.php"
+    );
 
     // Compile a template in a file based on the options passed to the compiler
-    $compiler->compile('layouts/main.volt');
+    $compiler->compile(
+        "layouts/main.volt"
+    );
 
     // Require the compiled templated (optional)
     require $compiler->getCompiledTemplatePath();
