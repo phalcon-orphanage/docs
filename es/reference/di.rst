@@ -26,7 +26,7 @@ no podemos cambiar los parámetros de conexión o el tipo de sistema de base de 
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
 
@@ -35,6 +35,7 @@ no podemos cambiar los parámetros de conexión o el tipo de sistema de base de 
     }
 
     $some = new SomeComponent();
+
     $some->someDbTask();
 
 Para solucionar esto, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Por ahora, esto parece ser
@@ -72,7 +73,7 @@ una buena solución:
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -102,7 +103,7 @@ crearla nuevamente:
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -155,7 +156,7 @@ Ahora, imaginemos que debemos implementar dos métodos en el componente, el prim
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -165,9 +166,8 @@ Ahora, imaginemos que debemos implementar dos métodos en el componente, el prim
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null) {
-                $connection = self::_createConnection();
-                self::$_connection = $connection;
+            if (self::$_connection === null) {
+                self::$_connection = self::_createConnection();
             }
 
             return self::$_connection;
@@ -216,12 +216,16 @@ Ahora, imaginemos que debemos implementar dos métodos en el componente, el prim
     $some = new SomeComponent();
 
     // Inyectar la conexión compartida
-    $some->setConnection(Registry::getSharedConnection());
+    $some->setConnection(
+        Registry::getSharedConnection()
+    );
 
     $some->someDbTask();
 
     // Aquí, pasamos una nueva conexión
-    $some->someOtherDbTask(Registry::getNewConnection());
+    $some->someOtherDbTask(
+        Registry::getNewConnection()
+    );
 
 Hasta aquí hemos visto como inyectar dependencias en los componentes soluciona nuestros problemas. Pasar dependencias como argumentos en vez
 de crearlos internamente hace nuestra aplicación más mantenible y desacoplada. Sin embargo,
@@ -246,7 +250,6 @@ before using the component, every time, makes our code not as maintainable as we
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
     // ... O usar setters
-
     $some->setConnection($connection);
     $some->setSession($session);
     $some->setFileSystem($fileSystem);
@@ -293,12 +296,13 @@ del componente:
     <?php
 
     use Phalcon\Di;
+    use Phalcon\DiInterface;
 
     class SomeComponent
     {
         protected $_di;
 
-        public function __construct($di)
+        public function __construct(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -307,43 +311,52 @@ del componente:
         {
             // Obtener la conexión localizando el servicio
             // Always returns a new connection
-            $connection = $this->_di->get('db');
+            $connection = $this->_di->get("db");
         }
 
         public function someOtherDbTask()
         {
             // Obtener una conexión compartida,
             // this will return the same connection everytime
-            $connection = $this->_di->getShared('db');
+            $connection = $this->_di->getShared("db");
 
             // Este método también requiere el servicio de filtrado
-            $filter = $this->_di->get('filter');
+            $filter = $this->_di->get("filter");
         }
     }
 
     $di = new Di();
 
     // Registrar un servicio "db"
-    $di->set('db', function () {
-        return new Connection(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new Connection(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
     // Registrar un servicio "filter"
-    $di->set('filter', function () {
-        return new Filter();
-    });
+    $di->set(
+        "filter",
+        function () {
+            return new Filter();
+        }
+    );
 
     // Registrar un servicio "session"
-    $di->set('session', function () {
-        return new Session();
-    });
+    $di->set(
+        "session",
+        function () {
+            return new Session();
+        }
+    );
 
     // Pasar el localizador de servicios como único componente
     $some = new SomeComponent($di);
@@ -384,27 +397,37 @@ Los servicios pueden ser registrados de distintas maneras:
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Crear el inyector de dependencias
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // Por su nombre de clase
-    $di->set("request", 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
     // Usando una función anónima, la instancia se creará solo cuando el servicio sea accedido
-    $di->set("request", function () {
-        return new Request();
-    });
+    $di->set(
+        "request",
+        function () {
+            return new Request();
+        }
+    );
 
     // Registrando una instancia directamente
-    $di->set("request", new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
     // Usar una definición en un array
     $di->set(
         "request",
         [
-            "className" => 'Phalcon\Http\Request'
+            "className" => "Phalcon\\Http\\Request"
         ]
     );
 
@@ -414,13 +437,14 @@ También podemos registrar servicios en el DI usando la sintaxis de array:
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Crear el inyector de dependencias
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // Por su nombre de clase
-    $di["request"] = 'Phalcon\Http\Request';
+    $di["request"] = "Phalcon\\Http\\Request";
 
     // Usar una función anónima, la instancia se creará solo cuando el servicio sea accedido
     $di["request"] = function () {
@@ -432,7 +456,7 @@ También podemos registrar servicios en el DI usando la sintaxis de array:
 
     // Usar un array como definición
     $di["request"] = [
-        "className" => 'Phalcon\Http\Request'
+        "className" => "Phalcon\\Http\\Request"
     ];
 
 En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como 'request' en el contenedor.
@@ -461,7 +485,10 @@ Este tipo de definición no permite indicar parámetros para su constructor o se
     <?php
 
     // Devuelve new Phalcon\Http\Request();
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
 Objetos
 ^^^^^^^
@@ -477,7 +504,10 @@ no pueda ser cambiado:
     use Phalcon\Http\Request;
 
     // Devuelve new Phalcon\Http\Request();
-    $di->set('request', new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
 Funciones anónimas
 ^^^^^^^^^^^^^^^^^^
@@ -490,16 +520,19 @@ cambiar la definición del servicio en runtime ó dinámicamente sin tener que c
 
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-    $di->set("db", function () {
-        return new PdoMysql(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "blog"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new PdoMysql(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "blog",
+                ]
+            );
+        }
+    );
 
 Alguna de las limitaciones pueden compensarse pasando variables adicionales al contexto de la función anónima:
 
@@ -510,16 +543,19 @@ Alguna de las limitaciones pueden compensarse pasando variables adicionales al c
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Usar la variable $config en el contexto de la función anónima
-    $di->set("db", function () use ($config) {
-        return new PdoMysql(
-            [
-                "host"     => $config->host,
-                "username" => $config->username,
-                "password" => $config->password,
-                "dbname"   => $config->name
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new PdoMysql(
+                [
+                    "host"     => $config->host,
+                    "username" => $config->username,
+                    "password" => $config->password,
+                    "dbname"   => $config->name,
+                ]
+            );
+        }
+    );
 
 Registro Avanzado
 -----------------
@@ -534,20 +570,26 @@ puede requerir más código:
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Registrar el servicio 'logger' con un nombre de clase y sus parámetros
-    $di->set('logger', [
-        'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => [
-            [
-                'type'  => 'parameter',
-                'value' => '../apps/logs/error.log'
+    $di->set(
+        "logger",
+        [
+            "className" => "Phalcon\\Logger\\Adapter\\File",
+            "arguments" => [
+                [
+                    "type"  => "parameter",
+                    "value" => "../apps/logs/error.log",
+                ]
             ]
         ]
-    ]);
+    );
 
     // Igual pero usando una función anónima
-    $di->set('logger', function () {
-        return new LoggerFile('../apps/logs/error.log');
-    });
+    $di->set(
+        "logger",
+        function () {
+            return new LoggerFile("../apps/logs/error.log");
+        }
+    );
 
 Ambas definiciones construyen la instancia de la misma manera, sin embargo la definición de array, permite alterar los parámetros del servicio de manera más sencilla si se requiere:
 
@@ -556,13 +598,16 @@ Ambas definiciones construyen la instancia de la misma manera, sin embargo la de
     <?php
 
     // Cambiar el nombre de la clase
-    $di->getService('logger')->setClassName('MyCustomLogger');
+    $di->getService("logger")->setClassName("MyCustomLogger");
 
     // Cambiar el primer parámetro
-    $di->getService('logger')->setParameter(0, [
-        'type'  => 'parameter',
-        'value' => '../apps/logs/error.log'
-    ]);
+    $di->getService("logger")->setParameter(
+        0,
+        [
+            "type"  => "parameter",
+            "value" => "../apps/logs/error.log",
+        ]
+    );
 
 Adicionalmente, al usar la construcción avanzada de dependencias puedes usar 3 tipos de inyección de dependencias:
 
@@ -598,17 +643,23 @@ El servicio puede ser registrado de la siguiente forma:
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
-
-    $di->set('someComponent', [
-        'className' => 'SomeApp\SomeComponent',
-        'arguments' => [
-            ['type' => 'service', 'name' => 'response'],
-            ['type' => 'parameter', 'value' => true]
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
         ]
-    ]);
+    );
+
+    $di->set(
+        "someComponent",
+        [
+            "className" => "SomeApp\\SomeComponent",
+            "arguments" => [
+                ["type" => "service", "name" => "response"],
+                ["type" => "parameter", "value" => true],
+            ]
+        ]
+    );
 
 El servicio "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) es resuelto y se pasa como primer argumetno del constructor,
 mientras que el segundo es un valor booleano (true) que se pasa tal y como está.
@@ -648,30 +699,33 @@ Un servicio con inyección de setters se puede registrar así:
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
+        ]
+    );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className' => 'SomeApp\SomeComponent',
-            'calls'     => [
+            "className" => "SomeApp\\SomeComponent",
+            "calls"     => [
                 [
-                    'method'    => 'setResponse',
-                    'arguments' => [
+                    "method"    => "setResponse",
+                    "arguments" => [
                         [
-                            'type' => 'service',
-                            'name' => 'response'
+                            "type" => "service",
+                            "name" => "response",
                         ]
                     ]
                 ],
                 [
-                    'method'    => 'setFlag',
-                    'arguments' => [
+                    "method"    => "setFlag",
+                    "arguments" => [
                         [
-                            'type'  => 'parameter',
-                            'value' => true
+                            "type"  => "parameter",
+                            "value" => true,
                         ]
                     ]
                 ]
@@ -705,29 +759,29 @@ Un servicio con dependencias inyectadas en sus propiedades se puede registrar as
     <?php
 
     $di->set(
-        'response',
+        "response",
         [
-            'className' => 'Phalcon\Http\Response'
+            "className" => "Phalcon\\Http\\Response"
         ]
     );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className'  => 'SomeApp\SomeComponent',
-            'properties' => [
+            "className"  => "SomeApp\\SomeComponent",
+            "properties" => [
                 [
-                    'name'  => 'response',
-                    'value' => [
-                        'type' => 'service',
-                        'name' => 'response'
+                    "name"  => "response",
+                    "value" => [
+                        "type" => "service",
+                        "name" => "response",
                     ]
                 ],
                 [
-                    'name'  => 'someFlag',
-                    'value' => [
-                        'type'  => 'parameter',
-                        'value' => true
+                    "name"  => "someFlag",
+                    "value" => [
+                        "type"  => "parameter",
+                        "value" => true,
                     ]
                 ]
             ]
@@ -739,11 +793,11 @@ Los tipos de parámetros soportados incluyen los siguientes:
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 | Tipo        | Descripción                                              | Ejemplo                                                                           |
 +=============+==========================================================+===================================================================================+
-| parameter   | Representa un valor literal a ser inyectado              | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
+| parameter   | Representa un valor literal a ser inyectado              | :code:`["type" => "parameter", "value" => 1234]`                                  |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| service     | Representa el resultado de resolver otro servicio en DI  | :code:`['type' => 'service', 'name' => 'request']`                                |
+| service     | Representa el resultado de resolver otro servicio en DI  | :code:`["type" => "service", "name" => "request"]`                                |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| instance    | Representa un objeto que debe ser construído por el DI   | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| instance    | Representa un objeto que debe ser construído por el DI   | :code:`["type" => "instance", "className" => "DateTime", "arguments" => ["now"]]` |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas inicialmente. Sin embargo,
@@ -774,7 +828,7 @@ O usar la sintaxis de array:
 
     <?php
 
-    $request = $di['request'];
+    $request = $di["request"];
 
 Los argumentos se pueden pasar al constructor agregando un array como parámetro del método "get":
 
@@ -811,13 +865,18 @@ la misma instancia será retornada cada vez que alguien consuma el servicio en e
     use Phalcon\Session\Adapter\Files as SessionFiles;
 
     // Registrar el servicio "session" como siempre compartido
-    $di->setShared('session', function () {
-        $session = new SessionFiles();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new SessionFiles();
 
-    $session = $di->get('session'); // Localiza y resuelve el servicio por primera vez
+            $session->start();
+
+            return $session;
+        }
+    );
+
+    $session = $di->get("session"); // Localiza y resuelve el servicio por primera vez
     $session = $di->getSession();   // Devuelve el objeto instanciado inicialmente
 
 Una manera alternativa de registrar un servicio compartido es pasar "true" como tercer parámetro de "set":
@@ -827,9 +886,13 @@ Una manera alternativa de registrar un servicio compartido es pasar "true" como 
     <?php
 
     // Registrar un servicio como "siempre compartido"
-    $di->set('session', function () {
-        // ...
-    }, true);
+    $di->set(
+        "session",
+        function () {
+            // ...
+        },
+        true
+    );
 
 Si un servicio no está registrado como compartido y lo que quieres es estar seguro que una instancia compartida será siempre devuelta,
 entonces debes usar el método 'getShared':
@@ -851,15 +914,17 @@ Una vez un servicio está registrado en el contenedor de servicios, puedes obten
     use Phalcon\Http\Request;
 
     // Registrar el servicio de sesión
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set("request", "Phalcon\\Http\\Request");
 
     // Obtener el servicio como tal
-    $requestService = $di->getService('request');
+    $requestService = $di->getService("request");
 
     // Cambiar su definición
-    $requestService->setDefinition(function () {
-        return new Request();
-    });
+    $requestService->setDefinition(
+        function () {
+            return new Request();
+        }
+    );
 
     // Volverlo compartido
     $requestService->setShared(true);
@@ -877,20 +942,29 @@ el mismo nombre. With this behavior we can replace any class by another simply b
     <?php
 
     // Register a controller as a service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    }, true);
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        },
+        true
+    );
 
     // Register a controller as a service
-    $di->set('MyOtherComponent', function () {
-        // Actually returns another component
-        $component = new AnotherComponent();
-        return $component;
-    });
+    $di->set(
+        "MyOtherComponent",
+        function () {
+            // Actually returns another component
+            $component = new AnotherComponent();
+
+            return $component;
+        }
+    );
 
     // Create an instance via the service container
-    $myComponent = $di->get('MyOtherComponent');
+    $myComponent = $di->get("MyOtherComponent");
 
 You can take advantage of this, always instantiating your classes via the service container (even if they aren't registered as services). The DI will
 fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition
@@ -905,13 +979,14 @@ to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
         protected $_di;
 
-        public function setDi($di)
+        public function setDi(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -929,10 +1004,10 @@ Then once the service is resolved, the :code:`$di` will be passed to :code:`setD
     <?php
 
     // Register the service
-    $di->set('myClass', 'MyClass');
+    $di->set("myClass", "MyClass");
 
     // Resolve the service (NOTE: $myClass->setDi($di) is automatically called)
-    $myClass = $di->get('myClass');
+    $myClass = $di->get("myClass");
 
 Avoiding service resolution
 ===========================
@@ -947,7 +1022,7 @@ could add some small improvement in performance.
     $router = new MyRouter();
 
     // Pass the resolved object to the service registration
-    $di->set('router', $router);
+    $di->set("router", $router);
 
 Organizing services in files
 ============================
@@ -958,9 +1033,12 @@ doing everything in the application's bootstrap:
 
     <?php
 
-    $di->set('router', function () {
-        return include "../app/config/routes.php";
-    });
+    $di->set(
+        "router",
+        function () {
+            return include "../app/config/routes.php";
+        }
+    );
 
 Then in the file ("../app/config/routes.php") return the object resolved:
 
@@ -970,7 +1048,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
 
     $router = new MyRouter();
 
-    $router->post('/login');
+    $router->post("/login");
 
     return $router;
 

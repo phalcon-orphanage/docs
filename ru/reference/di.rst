@@ -26,7 +26,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
 
@@ -35,6 +35,7 @@
     }
 
     $some = new SomeComponent();
+
     $some->someDbTask();
 
 Чтобы решить эту проблему, создадим сеттер (setter), который внедрит внешнюю зависимость перед использованием. Теперь это похоже на
@@ -72,7 +73,7 @@
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -102,7 +103,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -155,7 +156,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -165,9 +166,8 @@
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null) {
-                $connection = self::_createConnection();
-                self::$_connection = $connection;
+            if (self::$_connection === null) {
+                self::$_connection = self::_createConnection();
             }
 
             return self::$_connection;
@@ -216,12 +216,16 @@
     $some = new SomeComponent();
 
     // Тут внедряется уже установленное (shared) соединение
-    $some->setConnection(Registry::getSharedConnection());
+    $some->setConnection(
+        Registry::getSharedConnection()
+    );
 
     $some->someDbTask();
 
     // А здесь всегда в качестве параметра передаётся новое соединение
-    $some->someOtherDbTask(Registry::getNewConnection());
+    $some->someOtherDbTask(
+        Registry::getNewConnection()
+    );
 
 До сих пор мы рассматривали случаи, когда внедрение зависимостей решает наши задачи. Передача зависимостей в качестве аргументов вместо
 создания их внутри кода делает наше приложение более гибким и уменьшает его связанность. Однако, в перспективе,
@@ -246,7 +250,6 @@
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
     // ... Или используем сеттеры
-
     $some->setConnection($connection);
     $some->setSession($session);
     $some->setFileSystem($fileSystem);
@@ -293,12 +296,13 @@
     <?php
 
     use Phalcon\Di;
+    use Phalcon\DiInterface;
 
     class SomeComponent
     {
         protected $_di;
 
-        public function __construct($di)
+        public function __construct(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -307,43 +311,52 @@
         {
             // Получение сервиса соединений
             // Всегда возвращает соединение
-            $connection = $this->_di->get('db');
+            $connection = $this->_di->get("db");
         }
 
         public function someOtherDbTask()
         {
             // Получение сервиса соединения, предназначенного для общего доступа,
             // всегда возвращает одно и то же соединение
-            $connection = $this->_di->getShared('db');
+            $connection = $this->_di->getShared("db");
 
             // Этот метод так же требует сервис фильтрации входных данных
-            $filter = $this->_di->get('filter');
+            $filter = $this->_di->get("filter");
         }
     }
 
     $di = new Di();
 
     // Регистрируем в контейнере сервис "db"
-    $di->set('db', function () {
-        return new Connection(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new Connection(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
     // Регистрируем в контейнере сервис "filter"
-    $di->set('filter', function () {
-        return new Filter();
-    });
+    $di->set(
+        "filter",
+        function () {
+            return new Filter();
+        }
+    );
 
     // Регистрируем в контейнере сервис "session"
-    $di->set('session', function () {
-        return new Session();
-    });
+    $di->set(
+        "session",
+        function () {
+            return new Session();
+        }
+    );
 
     // Передаем контейнер сервисов в качестве единственного параметра
     $some = new SomeComponent($di);
@@ -384,27 +397,37 @@
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Создем контейнер DI
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // По названию класса
-    $di->set("request", 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
     // С использованием анонимной функции для отложенной загрузки
-    $di->set("request", function () {
-        return new Request();
-    });
+    $di->set(
+        "request",
+        function () {
+            return new Request();
+        }
+    );
 
     // Регистрация экземпляра напрямую
-    $di->set("request", new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
     // Определение с помощью массива
     $di->set(
         "request",
         [
-            "className" => 'Phalcon\Http\Request'
+            "className" => "Phalcon\\Http\\Request"
         ]
     );
 
@@ -414,13 +437,14 @@
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Создем контейнер DI
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // По названию класса
-    $di["request"] = 'Phalcon\Http\Request';
+    $di["request"] = "Phalcon\\Http\\Request";
 
     // С использованием анонимной функции для отложенной загрузки
     $di["request"] = function () {
@@ -432,7 +456,7 @@
 
     // Определение с помощью массива
     $di["request"] = [
-        "className" => 'Phalcon\Http\Request'
+        "className" => "Phalcon\\Http\\Request"
     ];
 
 В примере, данном выше, когда фреймворк нуждается в доступе к запрашиваемым данным, он будет запрашивать в контейнере сервис, названный 'request'.
@@ -461,7 +485,10 @@
     <?php
 
     // Возвращает новый Phalcon\Http\Request();
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
 Объект
 ^^^^^^
@@ -477,7 +504,10 @@
     use Phalcon\Http\Request;
 
     // Возвращает новый Phalcon\Http\Request();
-    $di->set('request', new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
 Замыкания/Анонимные функции
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -490,16 +520,19 @@
 
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-    $di->set("db", function () {
-        return new PdoMysql(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "blog"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new PdoMysql(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "blog",
+                ]
+            );
+        }
+    );
 
 Некоторые ограничения можно преодолеть путём передачи дополнительных переменных в область видимости замыкания:
 
@@ -510,16 +543,19 @@
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Использование переменной $config в текущей области видимости
-    $di->set("db", function () use ($config) {
-        return new PdoMysql(
-            [
-                "host"     => $config->host,
-                "username" => $config->username,
-                "password" => $config->password,
-                "dbname"   => $config->name
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new PdoMysql(
+                [
+                    "host"     => $config->host,
+                    "username" => $config->username,
+                    "password" => $config->password,
+                    "dbname"   => $config->name,
+                ]
+            );
+        }
+    );
 
 Сложная регистрация
 -------------------
@@ -534,20 +570,26 @@
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Регистрируем сервис 'logger' с помощью имени класса и его параметров
-    $di->set('logger', [
-        'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => [
-            [
-                'type'  => 'parameter',
-                'value' => '../apps/logs/error.log'
+    $di->set(
+        "logger",
+        [
+            "className" => "Phalcon\\Logger\\Adapter\\File",
+            "arguments" => [
+                [
+                    "type"  => "parameter",
+                    "value" => "../apps/logs/error.log",
+                ]
             ]
         ]
-    ]);
+    );
 
     // Или в виде анонимной функции
-    $di->set('logger', function () {
-        return new LoggerFile('../apps/logs/error.log');
-    });
+    $di->set(
+        "logger",
+        function () {
+            return new LoggerFile("../apps/logs/error.log");
+        }
+    );
 
 Оба способа приведут к одинаковому результату. Определение же с помощью массива позволяет изменять параметры, если это необходимо:
 
@@ -556,13 +598,16 @@
     <?php
 
     // Изменяем названия класса для сервиса
-    $di->getService('logger')->setClassName('MyCustomLogger');
+    $di->getService("logger")->setClassName("MyCustomLogger");
 
     // Изменяем первый параметр без пересоздания экземпляра сервиса logger
-    $di->getService('logger')->setParameter(0, [
-        'type'  => 'parameter',
-        'value' => '../apps/logs/error.log'
-    ]);
+    $di->getService("logger")->setParameter(
+        0,
+        [
+            "type"  => "parameter",
+            "value" => "../apps/logs/error.log",
+        ]
+    );
 
 В дополнение к этому, используя синтаксис массивов, можно использовать три типа внедрения зависимостей:
 
@@ -598,17 +643,23 @@
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
-
-    $di->set('someComponent', [
-        'className' => 'SomeApp\SomeComponent',
-        'arguments' => [
-            ['type' => 'service', 'name' => 'response'],
-            ['type' => 'parameter', 'value' => true]
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
         ]
-    ]);
+    );
+
+    $di->set(
+        "someComponent",
+        [
+            "className" => "SomeApp\\SomeComponent",
+            "arguments" => [
+                ["type" => "service", "name" => "response"],
+                ["type" => "parameter", "value" => true],
+            ]
+        ]
+    );
 
 Сервис "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) передаётся в конструктор в качестве первого параметра,
 в то время как вторым параметром передаётся булевое значение (true) без изменений.
@@ -648,30 +699,33 @@
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
+        ]
+    );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className' => 'SomeApp\SomeComponent',
-            'calls'     => [
+            "className" => "SomeApp\\SomeComponent",
+            "calls"     => [
                 [
-                    'method'    => 'setResponse',
-                    'arguments' => [
+                    "method"    => "setResponse",
+                    "arguments" => [
                         [
-                            'type' => 'service',
-                            'name' => 'response'
+                            "type" => "service",
+                            "name" => "response",
                         ]
                     ]
                 ],
                 [
-                    'method'    => 'setFlag',
-                    'arguments' => [
+                    "method"    => "setFlag",
+                    "arguments" => [
                         [
-                            'type'  => 'parameter',
-                            'value' => true
+                            "type"  => "parameter",
+                            "value" => true,
                         ]
                     ]
                 ]
@@ -705,29 +759,29 @@
     <?php
 
     $di->set(
-        'response',
+        "response",
         [
-            'className' => 'Phalcon\Http\Response'
+            "className" => "Phalcon\\Http\\Response"
         ]
     );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className'  => 'SomeApp\SomeComponent',
-            'properties' => [
+            "className"  => "SomeApp\\SomeComponent",
+            "properties" => [
                 [
-                    'name'  => 'response',
-                    'value' => [
-                        'type' => 'service',
-                        'name' => 'response'
+                    "name"  => "response",
+                    "value" => [
+                        "type" => "service",
+                        "name" => "response",
                     ]
                 ],
                 [
-                    'name'  => 'someFlag',
-                    'value' => [
-                        'type'  => 'parameter',
-                        'value' => true
+                    "name"  => "someFlag",
+                    "value" => [
+                        "type"  => "parameter",
+                        "value" => true,
                     ]
                 ]
             ]
@@ -739,11 +793,11 @@
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 | Тип         | Описание                                                 | Пример                                                                            |
 +=============+==========================================================+===================================================================================+
-| parameter   | Буквенное значение, передаваемое в качестве параметра    | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
+| parameter   | Буквенное значение, передаваемое в качестве параметра    | :code:`["type" => "parameter", "value" => 1234]`                                  |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| service     | Другой сервис в контейнере                               | :code:`['type' => 'service', 'name' => 'request']`                                |
+| service     | Другой сервис в контейнере                               | :code:`["type" => "service", "name" => "request"]`                                |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| instance    | Объект, который должен создаваться динамически           | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| instance    | Объект, который должен создаваться динамически           | :code:`["type" => "instance", "className" => "DateTime", "arguments" => ["now"]]` |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Получение сервисов, определение которых весьма сложно может быть немного медленнее, чем рассмотренные выше определения. Однако,
@@ -774,7 +828,7 @@
 
     <?php
 
-    $request = $di['request'];
+    $request = $di["request"];
 
 Аргументы могут быть переданы в конструктор добавлением массива параметров в метод "get":
 
@@ -811,13 +865,18 @@
     use Phalcon\Session\Adapter\Files as SessionFiles;
 
     // Регистрируем сервис сессий для совместного доступа
-    $di->setShared('session', function () {
-        $session = new SessionFiles();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new SessionFiles();
 
-    $session = $di->get('session'); // Создает сервис в первый раз
+            $session->start();
+
+            return $session;
+        }
+    );
+
+    $session = $di->get("session"); // Создает сервис в первый раз
     $session = $di->getSession();   // Возвращает первоначальный экзмепляр объекта
 
 Также можно зарегистрировать сервис с совместным доступом, передав "true" в качестве третьего параметра метода "set":
@@ -827,9 +886,13 @@
     <?php
 
     // Регистрация сервиса сессий для совместного доступа
-    $di->set('session', function () {
-        // ...
-    }, true);
+    $di->set(
+        "session",
+        function () {
+            // ...
+        },
+        true
+    );
 
 Если сервис не был зарегистрирован для общего доступа, и вы хотите всё же получать один и тот же экземпляр каждый раз,
 то можно получать его, используя метод DI "getShared":
@@ -851,15 +914,17 @@
     use Phalcon\Http\Request;
 
     // Регистрируем сервис "request"
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set("request", "Phalcon\\Http\\Request");
 
     // Получем сервис
-    $requestService = $di->getService('request');
+    $requestService = $di->getService("request");
 
     // Изменяем его определение
-    $requestService->setDefinition(function () {
-        return new Request();
-    });
+    $requestService->setDefinition(
+        function () {
+            return new Request();
+        }
+    );
 
     // Делаем его общим
     $requestService->setShared(true);
@@ -877,20 +942,29 @@
     <?php
 
     // Регистрируем контроллер как сервис
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    }, true);
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        },
+        true
+    );
 
     // Регистрируем компонент как сервис
-    $di->set('MyOtherComponent', function () {
-        // Actually returns another component
-        $component = new AnotherComponent();
-        return $component;
-    });
+    $di->set(
+        "MyOtherComponent",
+        function () {
+            // Actually returns another component
+            $component = new AnotherComponent();
+
+            return $component;
+        }
+    );
 
     // Создаем экземпляр объекта с помощью контейнера сервисов
-    $myComponent = $di->get('MyOtherComponent');
+    $myComponent = $di->get("MyOtherComponent");
 
 Вы можете пользоваться этим, всегда создавая экземпляры объектов ваших классов с помощью контейнера сервисов (даже если они не регистрировались как сервисы). DI будет
 запускать правильный автозагрузчик для того, чтобы в итоге загрузить класс. Делая так, вы сможете легко заменить любой класс в будущем, реализовав
@@ -905,13 +979,14 @@
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
         protected $_di;
 
-        public function setDi($di)
+        public function setDi(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -929,10 +1004,10 @@
     <?php
 
     // Регистрируем сервис
-    $di->set('myClass', 'MyClass');
+    $di->set("myClass", "MyClass");
 
     // Получаем сервис (ВНИМАНИЕ: $myClass->setDi($di) вызовется автоматически)
-    $myClass = $di->get('myClass');
+    $myClass = $di->get("myClass");
 
 Избежание разрешения сервисов
 =============================
@@ -947,7 +1022,7 @@
     $router = new MyRouter();
 
     // Передаем уже созданный объект
-    $di->set('router', $router);
+    $di->set("router", $router);
 
 Размещение сервисов в файлах
 ============================
@@ -958,9 +1033,12 @@
 
     <?php
 
-    $di->set('router', function () {
-        return include "../app/config/routes.php";
-    });
+    $di->set(
+        "router",
+        function () {
+            return include "../app/config/routes.php";
+        }
+    );
 
 А файл ("../app/config/routes.php") вернёт готовый объект:
 
@@ -970,7 +1048,7 @@
 
     $router = new MyRouter();
 
-    $router->post('/login');
+    $router->post("/login");
 
     return $router;
 

@@ -26,7 +26,7 @@ kita tidak dapat mengganti parameter koneksi atau tipe sistem database karena ko
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
 
@@ -35,6 +35,7 @@ kita tidak dapat mengganti parameter koneksi atau tipe sistem database karena ko
     }
 
     $some = new SomeComponent();
+
     $some->someDbTask();
 
 Untuk memecahkan ini, kita menciptakan setter yang menginjeksi ketergantungan dari luar sebelum menggunakan. Untuk sekarang, ini sepertinya
@@ -72,7 +73,7 @@ solusi bagus:
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -102,7 +103,7 @@ menciptakannya lagi dan lagi dapat memecahkan hal ini:
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -155,7 +156,7 @@ Sekarang, bayangkan kita harus mengimplementasi dua metode dalam komponen, yang 
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -165,9 +166,8 @@ Sekarang, bayangkan kita harus mengimplementasi dua metode dalam komponen, yang 
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null) {
-                $connection = self::_createConnection();
-                self::$_connection = $connection;
+            if (self::$_connection === null) {
+                self::$_connection = self::_createConnection();
             }
 
             return self::$_connection;
@@ -216,12 +216,16 @@ Sekarang, bayangkan kita harus mengimplementasi dua metode dalam komponen, yang 
     $some = new SomeComponent();
 
     // Injeksi koneksi berbagi
-    $some->setConnection(Registry::getSharedConnection());
+    $some->setConnection(
+        Registry::getSharedConnection()
+    );
 
     $some->someDbTask();
 
     // Lewatkan koneksi baru
-    $some->someOtherDbTask(Registry::getNewConnection());
+    $some->someOtherDbTask(
+        Registry::getNewConnection()
+    );
 
 Sejauh ini kita telah melihat bagaimana dependency injection memecahkan masalah kita. Melewatkan ketergantungan sebagai argumen daripada
 menciptakannya secara internal dalam kode membuat aplikasi kita lebih mudah dikelola dan terpisah (decoupled). Namun, di jangka panjang,
@@ -246,7 +250,6 @@ sebelum menggunakan komponen, setiap kali, menjadikan kode kita tidak mudah dike
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
     // ... atau menggunakan setter
-
     $some->setConnection($connection);
     $some->setSession($session);
     $some->setFileSystem($fileSystem);
@@ -293,12 +296,13 @@ komponen kita:
     <?php
 
     use Phalcon\Di;
+    use Phalcon\DiInterface;
 
     class SomeComponent
     {
         protected $_di;
 
-        public function __construct($di)
+        public function __construct(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -307,43 +311,52 @@ komponen kita:
         {
             // Ambil service koneksi
             // selalu kembalikan koneksi baru
-            $connection = $this->_di->get('db');
+            $connection = $this->_di->get("db");
         }
 
         public function someOtherDbTask()
         {
             // ambil koneksi berbagi
             // ini akan selalu mengembalikan koneksi yang sama
-            $connection = $this->_di->getShared('db');
+            $connection = $this->_di->getShared("db");
 
             // This method also requires an input filtering service
-            $filter = $this->_di->get('filter');
+            $filter = $this->_di->get("filter");
         }
     }
 
     $di = new Di();
 
     // Daftarkan service "db" dalam kontainer
-    $di->set('db', function () {
-        return new Connection(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new Connection(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
     // Daftarkan service "filter" dalam kontainer
-    $di->set('filter', function () {
-        return new Filter();
-    });
+    $di->set(
+        "filter",
+        function () {
+            return new Filter();
+        }
+    );
 
     // Daftarkan service "session" dalam kontainer
-    $di->set('session', function () {
-        return new Session();
-    });
+    $di->set(
+        "session",
+        function () {
+            return new Session();
+        }
+    );
 
     // Lewatkan kontainer service ke komponen
     $some = new SomeComponent($di);
@@ -384,27 +397,37 @@ Service dapat didaftarkan dengan beberapa jenis definisi:
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Buat Dependency Injector Container
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // menggunakan nama kelas
-    $di->set("request", 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
     // Menggunakan fungsi anonymous function, instance akan dimuat secara lazy load
-    $di->set("request", function () {
-        return new Request();
-    });
+    $di->set(
+        "request",
+        function () {
+            return new Request();
+        }
+    );
 
     // Mendaftarkan instance langsung
-    $di->set("request", new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
     // Menggunakan definisi array
     $di->set(
         "request",
         [
-            "className" => 'Phalcon\Http\Request'
+            "className" => "Phalcon\\Http\\Request"
         ]
     );
 
@@ -414,13 +437,14 @@ Sintaks array juga diizinkan untuk mendaftarkan service:
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // Buat Dependency Injector Container
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // Menggunakan nama kelas
-    $di["request"] = 'Phalcon\Http\Request';
+    $di["request"] = "Phalcon\\Http\\Request";
 
     // Menggunakan fungsi anonymous function, instance akan dimuat secara lazy load
     $di["request"] = function () {
@@ -432,7 +456,7 @@ Sintaks array juga diizinkan untuk mendaftarkan service:
 
     // Menggunakan definisi array
     $di["request"] = [
-        "className" => 'Phalcon\Http\Request'
+        "className" => "Phalcon\\Http\\Request"
     ];
 
 Dicontoh diatas, ketika framework butuh mengakses data request, ia akan meminta service yang diidentifikasi sebagai ‘request’ dalam kontainer.
@@ -461,7 +485,10 @@ Jenis definisi ini tidak mengizinkan untuk menentukan argumen untuk kontruktor k
     <?php
 
     // mengembalikan new Phalcon\Http\Request();
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
 Objek
 ^^^^^
@@ -476,7 +503,10 @@ namun ia berguna jika anda ingin memaksa ketergantungan yang diberikan selalu ob
     use Phalcon\Http\Request;
 
     // mengembalikan new Phalcon\Http\Request();
-    $di->set('request', new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
 Closure/Fungsi Anonymous
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -489,16 +519,19 @@ mengubah beberapa parameter secara ekternal tanpa mengubah definisi ketergantung
 
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-    $di->set("db", function () {
-        return new PdoMysql(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "blog"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new PdoMysql(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "blog",
+                ]
+            );
+        }
+    );
 
 Beberapa keterbatasan dapat diatasi dengan melewatkan variabel tambahan ke lingkungan closure:
 
@@ -509,16 +542,19 @@ Beberapa keterbatasan dapat diatasi dengan melewatkan variabel tambahan ke lingk
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // Menggunakan variabel $config dalam scope saat ini
-    $di->set("db", function () use ($config) {
-        return new PdoMysql(
-            [
-                "host"     => $config->host,
-                "username" => $config->username,
-                "password" => $config->password,
-                "dbname"   => $config->name
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new PdoMysql(
+                [
+                    "host"     => $config->host,
+                    "username" => $config->username,
+                    "password" => $config->password,
+                    "dbname"   => $config->name,
+                ]
+            );
+        }
+    );
 
 Registrasi Kompleks
 -------------------
@@ -533,20 +569,26 @@ dapat terlihat lebih ramai:
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // Daftarkan service 'logger' dengan nama kelas dan parameter
-    $di->set('logger', [
-        'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => [
-            [
-                'type'  => 'parameter',
-                'value' => '../apps/logs/error.log'
+    $di->set(
+        "logger",
+        [
+            "className" => "Phalcon\\Logger\\Adapter\\File",
+            "arguments" => [
+                [
+                    "type"  => "parameter",
+                    "value" => "../apps/logs/error.log",
+                ]
             ]
         ]
-    ]);
+    );
 
     // Menggunakan fungsi anonim
-    $di->set('logger', function () {
-        return new LoggerFile('../apps/logs/error.log');
-    });
+    $di->set(
+        "logger",
+        function () {
+            return new LoggerFile("../apps/logs/error.log");
+        }
+    );
 
 Kedua registrasi service diatas menghasilkan hasil sama. Namun definisi array, memungkinkan pengubahan parameter service bila diperlukan:
 
@@ -555,13 +597,16 @@ Kedua registrasi service diatas menghasilkan hasil sama. Namun definisi array, m
     <?php
 
     // Ubah nama kelas service
-    $di->getService('logger')->setClassName('MyCustomLogger');
+    $di->getService("logger")->setClassName("MyCustomLogger");
 
     // Ubah parameter pertama tanpa menciptakan logger
-    $di->getService('logger')->setParameter(0, [
-        'type'  => 'parameter',
-        'value' => '../apps/logs/error.log'
-    ]);
+    $di->getService("logger")->setParameter(
+        0,
+        [
+            "type"  => "parameter",
+            "value" => "../apps/logs/error.log",
+        ]
+    );
 
 Tambahan lagi menggunakan sintaks array anda dapat menggunakan tiga jenis dependency injection:
 
@@ -597,17 +642,23 @@ Service ini dapat didaftarkan dengan cara berikut:
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
-
-    $di->set('someComponent', [
-        'className' => 'SomeApp\SomeComponent',
-        'arguments' => [
-            ['type' => 'service', 'name' => 'response'],
-            ['type' => 'parameter', 'value' => true]
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
         ]
-    ]);
+    );
+
+    $di->set(
+        "someComponent",
+        [
+            "className" => "SomeApp\\SomeComponent",
+            "arguments" => [
+                ["type" => "service", "name" => "response"],
+                ["type" => "parameter", "value" => true],
+            ]
+        ]
+    );
 
 Service "response" (:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`) di resolve lalu dilewatkan ke argumen pertama konstruktor,
 sedangkan yang kedua adalah nilai boolean (true) yang dilewatkan apa adanya.
@@ -647,30 +698,33 @@ Service dengan injeksi setter dapat didaftarkan seperti berikut:
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
+        ]
+    );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className' => 'SomeApp\SomeComponent',
-            'calls'     => [
+            "className" => "SomeApp\\SomeComponent",
+            "calls"     => [
                 [
-                    'method'    => 'setResponse',
-                    'arguments' => [
+                    "method"    => "setResponse",
+                    "arguments" => [
                         [
-                            'type' => 'service',
-                            'name' => 'response'
+                            "type" => "service",
+                            "name" => "response",
                         ]
                     ]
                 ],
                 [
-                    'method'    => 'setFlag',
-                    'arguments' => [
+                    "method"    => "setFlag",
+                    "arguments" => [
                         [
-                            'type'  => 'parameter',
-                            'value' => true
+                            "type"  => "parameter",
+                            "value" => true,
                         ]
                     ]
                 ]
@@ -704,29 +758,29 @@ Service dengan injeksi properti dapat didaftarkan sebagai berikut:
     <?php
 
     $di->set(
-        'response',
+        "response",
         [
-            'className' => 'Phalcon\Http\Response'
+            "className" => "Phalcon\\Http\\Response"
         ]
     );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className'  => 'SomeApp\SomeComponent',
-            'properties' => [
+            "className"  => "SomeApp\\SomeComponent",
+            "properties" => [
                 [
-                    'name'  => 'response',
-                    'value' => [
-                        'type' => 'service',
-                        'name' => 'response'
+                    "name"  => "response",
+                    "value" => [
+                        "type" => "service",
+                        "name" => "response",
                     ]
                 ],
                 [
-                    'name'  => 'someFlag',
-                    'value' => [
-                        'type'  => 'parameter',
-                        'value' => true
+                    "name"  => "someFlag",
+                    "value" => [
+                        "type"  => "parameter",
+                        "value" => true,
                     ]
                 ]
             ]
@@ -738,11 +792,11 @@ Jenis parameter yang didukung termasuk berikut ini:
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 | Jenis       | Keterangan                                               | Contoh                                                                            |
 +=============+==========================================================+===================================================================================+
-| parameter   | Mewakili nilai asli yang dilewatkan sebagai parameter    | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
+| parameter   | Mewakili nilai asli yang dilewatkan sebagai parameter    | :code:`["type" => "parameter", "value" => 1234]`                                  |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| service     | Mewakili service lain dalam kontainer service            | :code:`['type' => 'service', 'name' => 'request']`                                |
+| service     | Mewakili service lain dalam kontainer service            | :code:`["type" => "service", "name" => "request"]`                                |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| instance    | Mewakili objek yang harus diciptakan dinamis             | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| instance    | Mewakili objek yang harus diciptakan dinamis             | :code:`["type" => "instance", "className" => "DateTime", "arguments" => ["now"]]` |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 Resolve service yang definisinya kompleks mungkin lebih lambat dibandingkan yang sederhana seperti yang sudah terlihat sebelumnya. Namun,
@@ -773,7 +827,7 @@ Atau menggunakan sintaks akses array:
 
     <?php
 
-    $request = $di['request'];
+    $request = $di["request"];
 
 Argumen dapat dilewatkan ke konstruktor dengan menambahkan parameter array ke metode "get":
 
@@ -810,13 +864,18 @@ instance sama dikembalikan tiap kali konsumer meminta service dari kontainer:
     use Phalcon\Session\Adapter\Files as SessionFiles;
 
     // daftarkan service session sebagai "always shared"
-    $di->setShared('session', function () {
-        $session = new SessionFiles();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new SessionFiles();
 
-    $session = $di->get('session'); // Temukan service untuk pertama kali
+            $session->start();
+
+            return $session;
+        }
+    );
+
+    $session = $di->get("session"); // Temukan service untuk pertama kali
     $session = $di->getSession();   // Mengembalikan objek yang sudah diciptakan pertama kali
 
 Cara lain mendaftarkan shared service adalah melewatkan "true" sebagai parameter ketiga "set":
@@ -826,9 +885,13 @@ Cara lain mendaftarkan shared service adalah melewatkan "true" sebagai parameter
     <?php
 
     // Daftarkan service session sebagai "always shared"
-    $di->set('session', function () {
-        // ...
-    }, true);
+    $di->set(
+        "session",
+        function () {
+            // ...
+        },
+        true
+    );
 
 Ketika sebuah service tidak didaftarkan sebagai service berbagi dan anda ingin memastikan instance yang sama diakses tiap kali
 service diambil dari DI, anda dapat menggunakan metode 'getShared':
@@ -850,15 +913,17 @@ Setelah service didaftarkan dalam kontainer service, anda dapat mengambilnya unt
     use Phalcon\Http\Request;
 
     // Daftarkan service "request"
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set("request", "Phalcon\\Http\\Request");
 
     // Ambil service
-    $requestService = $di->getService('request');
+    $requestService = $di->getService("request");
 
     // Ubah definisi
-    $requestService->setDefinition(function () {
-        return new Request();
-    });
+    $requestService->setDefinition(
+        function () {
+            return new Request();
+        }
+    );
 
     // Ubah menjadi berbagi
     $requestService->setShared(true);
@@ -876,20 +941,29 @@ dengan nama sama. Dengan perilaku ini kita dapat mengganti sembarang kelas denga
     <?php
 
     // Daftarkan kontroler sebagai service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    }, true);
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        },
+        true
+    );
 
     // Daftarkan kontroler sebagai service
-    $di->set('MyOtherComponent', function () {
-        // Kembalikan komponen lain
-        $component = new AnotherComponent();
-        return $component;
-    });
+    $di->set(
+        "MyOtherComponent",
+        function () {
+            // Kembalikan komponen lain
+            $component = new AnotherComponent();
+
+            return $component;
+        }
+    );
 
     // Buat instance melalui service container
-    $myComponent = $di->get('MyOtherComponent');
+    $myComponent = $di->get("MyOtherComponent");
 
 Anda dapat memanfaatkan ini, dengan selalu menciptakan kelas anda melalui service container (bahkan jika mereka tidak didaftarkan sebagai service). DI akan
 fallback ke autoloader yang valid yang akhirnya memuat kelas tersebut. Dengan melakukan ini, anda dapat mengganti sembarang kelas dimasa datang dengan mengimplementasi
@@ -904,13 +978,14 @@ untuk melakukan ini, anda butuh mengimplementasi :doc:`Phalcon\\Di\\InjectionAwa
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
         protected $_di;
 
-        public function setDi($di)
+        public function setDi(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -928,10 +1003,10 @@ lalu setelah service diresolve, :code:`$di` akan dilewatkan ke :code:`setDi()` o
     <?php
 
     // Daftarkan service
-    $di->set('myClass', 'MyClass');
+    $di->set("myClass", "MyClass");
 
     // Resolve service (Catatan: $myClass->setDi($di) dipanggil otomatis)
-    $myClass = $di->get('myClass');
+    $myClass = $di->get("myClass");
 
 Menghindari service resolution
 ==============================
@@ -946,7 +1021,7 @@ dapat menambah sedikit peningkatan performa.
     $router = new MyRouter();
 
     // Lewatkan objek yang sudah dibuat ke service registration
-    $di->set('router', $router);
+    $di->set("router", $router);
 
 Mengelola service dalam file
 ============================
@@ -957,9 +1032,12 @@ melakukan semua dalam bootstrap aplikasi:
 
     <?php
 
-    $di->set('router', function () {
-        return include "../app/config/routes.php";
-    });
+    $di->set(
+        "router",
+        function () {
+            return include "../app/config/routes.php";
+        }
+    );
 
 Lalu dalam file ("../app/config/routes.php") kembalikan objek yang diresolve:
 
@@ -969,7 +1047,7 @@ Lalu dalam file ("../app/config/routes.php") kembalikan objek yang diresolve:
 
     $router = new MyRouter();
 
-    $router->post('/login');
+    $router->post("/login");
 
     return $router;
 

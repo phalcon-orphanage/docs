@@ -24,7 +24,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
 
@@ -33,6 +33,7 @@
     }
 
     $some = new SomeComponent();
+
     $some->someDbTask();
 
 为了解决这样的情况，我们建立一个setter，在使用前注入独立外部依赖。现在，看起来似乎是一个不错的解决办法：
@@ -69,7 +70,7 @@
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -97,7 +98,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -150,7 +151,7 @@
                     "host"     => "localhost",
                     "username" => "root",
                     "password" => "secret",
-                    "dbname"   => "invo"
+                    "dbname"   => "invo",
                 ]
             );
         }
@@ -160,9 +161,8 @@
          */
         public static function getSharedConnection()
         {
-            if (self::$_connection===null) {
-                $connection = self::_createConnection();
-                self::$_connection = $connection;
+            if (self::$_connection === null) {
+                self::$_connection = self::_createConnection();
             }
 
             return self::$_connection;
@@ -211,12 +211,16 @@
     $some = new SomeComponent();
 
     // 注入共享连接实例
-    $some->setConnection(Registry::getSharedConnection());
+    $some->setConnection(
+        Registry::getSharedConnection()
+    );
 
     $some->someDbTask();
 
     // 这里我们总是传递一个新的连接实例
-    $some->someOtherDbTask(Registry::getNewConnection());
+    $some->someOtherDbTask(
+        Registry::getNewConnection()
+    );
 
 到目前为止，我们已经看到依赖注入怎么解决我们的问题了。把依赖作为参数来传递，而不是建立在内部建立它们，这使我们的应用更加容易维护和更加解耦。不管怎么样，长期来说，这种形式的依赖注入有一些缺点。
 
@@ -238,7 +242,6 @@
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
     // ... 或者使用setter
-
     $some->setConnection($connection);
     $some->setSession($session);
     $some->setFileSystem($fileSystem);
@@ -279,12 +282,13 @@
     <?php
 
     use Phalcon\Di;
+    use Phalcon\DiInterface;
 
     class SomeComponent
     {
         protected $_di;
 
-        public function __construct($di)
+        public function __construct(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -293,43 +297,52 @@
         {
             // 获得数据库连接实例
             // 总是返回一个新的连接
-            $connection = $this->_di->get('db');
+            $connection = $this->_di->get("db");
         }
 
         public function someOtherDbTask()
         {
             // 获得共享连接实例
             // 每次请求都返回相同的连接实例
-            $connection = $this->_di->getShared('db');
+            $connection = $this->_di->getShared("db");
 
             // 这个方法也需要一个输入过滤的依赖服务
-            $filter = $this->_di->get('filter');
+            $filter = $this->_di->get("filter");
         }
     }
 
     $di = new Di();
 
     // 在容器中注册一个db服务
-    $di->set('db', function () {
-        return new Connection(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new Connection(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
     // 在容器中注册一个filter服务
-    $di->set('filter', function () {
-        return new Filter();
-    });
+    $di->set(
+        "filter",
+        function () {
+            return new Filter();
+        }
+    );
 
     // 在容器中注册一个session服务
-    $di->set('session', function () {
-        return new Session();
-    });
+    $di->set(
+        "session",
+        function () {
+            return new Session();
+        }
+    );
 
     // 把传递服务的容器作为唯一参数传递给组件
     $some = new SomeComponent($di);
@@ -364,27 +377,37 @@
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // 创建一个依赖注入容器
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // 通过类名称设置服务
-    $di->set("request", 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
     // 使用匿名函数去设置服务，这个实例将被延迟加载
-    $di->set("request", function () {
-        return new Request();
-    });
+    $di->set(
+        "request",
+        function () {
+            return new Request();
+        }
+    );
 
     // 直接注册一个实例
-    $di->set("request", new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
     // 使用数组方式定义服务
     $di->set(
         "request",
         [
-            "className" => 'Phalcon\Http\Request'
+            "className" => "Phalcon\\Http\\Request"
         ]
     );
 
@@ -394,13 +417,14 @@
 
     <?php
 
+    use Phalcon\Di;
     use Phalcon\Http\Request;
 
     // 创建一个依赖注入容器
-    $di = new Phalcon\Di();
+    $di = new Di();
 
     // 通过类名称设置服务
-    $di["request"] = 'Phalcon\Http\Request';
+    $di["request"] = "Phalcon\\Http\\Request";
 
     // 使用匿名函数去设置服务，这个实例将被延迟加载
     $di["request"] = function () {
@@ -412,7 +436,7 @@
 
     // 使用数组方式定义服务
     $di["request"] = [
-        "className" => 'Phalcon\Http\Request'
+        "className" => "Phalcon\\Http\\Request"
     ];
 
 在上面的例子中，当框架需要访问request服务的内容，它会在容器里面查找名为‘request’的服务。
@@ -437,7 +461,10 @@
     <?php
 
     // 返回 new Phalcon\Http\Request(); 对象
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
 
 对象（Object）
 ^^^^^^^^^^^^^^
@@ -450,7 +477,10 @@
     use Phalcon\Http\Request;
 
     // 返回 Phalcon\Http\Request(); 对象
-    $di->set('request', new Request());
+    $di->set(
+        "request",
+        new Request()
+    );
 
 闭包与匿名函数（Closures/Anonymous functions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -462,16 +492,19 @@
 
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-    $di->set("db", function () {
-        return new PdoMysql(
-            [
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "blog"
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new PdoMysql(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "blog",
+                ]
+            );
+        }
+    );
 
 这些限制是可以克服的，通过传递额外的变量到闭包函数里面：
 
@@ -482,16 +515,19 @@
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
     // 把当前域的$config变量传递给匿名函数使用
-    $di->set("db", function () use ($config) {
-        return new PdoMysql(
-            [
-                "host"     => $config->host,
-                "username" => $config->username,
-                "password" => $config->password,
-                "dbname"   => $config->name
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new PdoMysql(
+                [
+                    "host"     => $config->host,
+                    "username" => $config->username,
+                    "password" => $config->password,
+                    "dbname"   => $config->name,
+                ]
+            );
+        }
+    );
 
 复杂的注册（Complex Registration）
 ----------------------------------
@@ -504,20 +540,26 @@
     use Phalcon\Logger\Adapter\File as LoggerFile;
 
     // 通过类名和参数，注册logger服务
-    $di->set('logger', [
-        'className' => 'Phalcon\Logger\Adapter\File',
-        'arguments' => [
-            [
-                'type'  => 'parameter',
-                'value' => '../apps/logs/error.log'
+    $di->set(
+        "logger",
+        [
+            "className" => "Phalcon\\Logger\\Adapter\\File",
+            "arguments" => [
+                [
+                    "type"  => "parameter",
+                    "value" => "../apps/logs/error.log",
+                ]
             ]
         ]
-    ]);
+    );
 
     // 使用匿名函数的方式
-    $di->set('logger', function () {
-        return new LoggerFile('../apps/logs/error.log');
-    });
+    $di->set(
+        "logger",
+        function () {
+            return new LoggerFile("../apps/logs/error.log");
+        }
+    );
 
 上面两种注册服务的方式的结果是一样的。然而，使用数组定义的话，在需要的时候可以变更注册服务的参数：
 
@@ -526,13 +568,16 @@
     <?php
 
     // 改变logger服务的类名
-    $di->getService('logger')->setClassName('MyCustomLogger');
+    $di->getService("logger")->setClassName("MyCustomLogger");
 
     // 不用实例化就可以改变第一个参数值
-    $di->getService('logger')->setParameter(0, [
-        'type'  => 'parameter',
-        'value' => '../apps/logs/error.log'
-    ]);
+    $di->getService("logger")->setParameter(
+        0,
+        [
+            "type"  => "parameter",
+            "value" => "../apps/logs/error.log",
+        ]
+    );
 
 除了使用数组的语法注册服务，你还可以使用以下三种类型的依赖注入：
 
@@ -567,17 +612,23 @@
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
-
-    $di->set('someComponent', [
-        'className' => 'SomeApp\SomeComponent',
-        'arguments' => [
-            ['type' => 'service', 'name' => 'response'],
-            ['type' => 'parameter', 'value' => true]
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
         ]
-    ]);
+    );
+
+    $di->set(
+        "someComponent",
+        [
+            "className" => "SomeApp\\SomeComponent",
+            "arguments" => [
+                ["type" => "service", "name" => "response"],
+                ["type" => "parameter", "value" => true],
+            ]
+        ]
+    );
 
 reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作为第一个参数传递给构造函数，与此同时，一个布尔类型的值(true)作为第二个参数传递。
 
@@ -616,30 +667,33 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
     <?php
 
-    $di->set('response', [
-        'className' => 'Phalcon\Http\Response'
-    ]);
+    $di->set(
+        "response",
+        [
+            "className" => "Phalcon\\Http\\Response"
+        ]
+    );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className' => 'SomeApp\SomeComponent',
-            'calls'     => [
+            "className" => "SomeApp\\SomeComponent",
+            "calls"     => [
                 [
-                    'method'    => 'setResponse',
-                    'arguments' => [
+                    "method"    => "setResponse",
+                    "arguments" => [
                         [
-                            'type' => 'service',
-                            'name' => 'response'
+                            "type" => "service",
+                            "name" => "response",
                         ]
                     ]
                 ],
                 [
-                    'method'    => 'setFlag',
-                    'arguments' => [
+                    "method"    => "setFlag",
+                    "arguments" => [
                         [
-                            'type'  => 'parameter',
-                            'value' => true
+                            "type"  => "parameter",
+                            "value" => true,
                         ]
                     ]
                 ]
@@ -673,29 +727,29 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
     <?php
 
     $di->set(
-        'response',
+        "response",
         [
-            'className' => 'Phalcon\Http\Response'
+            "className" => "Phalcon\\Http\\Response"
         ]
     );
 
     $di->set(
-        'someComponent',
+        "someComponent",
         [
-            'className'  => 'SomeApp\SomeComponent',
-            'properties' => [
+            "className"  => "SomeApp\\SomeComponent",
+            "properties" => [
                 [
-                    'name'  => 'response',
-                    'value' => [
-                        'type' => 'service',
-                        'name' => 'response'
+                    "name"  => "response",
+                    "value" => [
+                        "type" => "service",
+                        "name" => "response",
                     ]
                 ],
                 [
-                    'name'  => 'someFlag',
-                    'value' => [
-                        'type'  => 'parameter',
-                        'value' => true
+                    "name"  => "someFlag",
+                    "value" => [
+                        "type"  => "parameter",
+                        "value" => true,
                     ]
                 ]
             ]
@@ -707,11 +761,11 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 | Type        | 描述                                                      | 例子                                                                              |
 +=============+==========================================================+===================================================================================+
-| parameter   | 表示一个文本值作为参数传递过去                                | :code:`['type' => 'parameter', 'value' => 1234]`                                  |
+| parameter   | 表示一个文本值作为参数传递过去                                | :code:`["type" => "parameter", "value" => 1234]`                                  |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| service     | 表示作为服务                                               | :code:`['type' => 'service', 'name' => 'request']`                                |
+| service     | 表示作为服务                                               | :code:`["type" => "service", "name" => "request"]`                                |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
-| instance    | 表示必须动态生成的对象                                       | :code:`['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| instance    | 表示必须动态生成的对象                                       | :code:`["type" => "instance", "className" => "DateTime", "arguments" => ["now"]]` |
 +-------------+----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 解析一个定义复杂的服务也许性能上稍微慢于先前看到的简单定义。但是，这提供了一个更强大的方式来定义和注入服务。
@@ -740,7 +794,7 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
     <?php
 
-    $request = $di['request'];
+    $request = $di["request"];
 
 参数可以传递到构造函数中，通过添加一个数组的参数到get方法中：
 
@@ -777,13 +831,18 @@ The following events are supported:
     use Phalcon\Session\Adapter\Files as SessionFiles;
 
     // 把session服务注册成“shared”类型
-    $di->setShared('session', function () {
-        $session = new SessionFiles();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new SessionFiles();
 
-    $session = $di->get('session'); // 第一次获取session服务时，session服务将实例化
+            $session->start();
+
+            return $session;
+        }
+    );
+
+    $session = $di->get("session"); // 第一次获取session服务时，session服务将实例化
     $session = $di->getSession();   // 第二次获取时，不再实例化，直接返回第一次实例化的对象
 
 另一种方式去注册一个“shared”类型的服务是，传递“set”服务的时候，把true作为第三个参数传递过去：
@@ -793,9 +852,13 @@ The following events are supported:
     <?php
 
     // 把session服务注册成“shared”类型
-    $di->set('session', function () {
-        // ...
-    }, true);
+    $di->set(
+        "session",
+        function () {
+            // ...
+        },
+        true
+    );
 
 如果一个服务不是注册成“shared”类型，而你又想从DI中获取服务的“shared”实例，你可以使用getShared方法：
 
@@ -816,15 +879,17 @@ The following events are supported:
     use Phalcon\Http\Request;
 
     // 注册request服务
-    $di->set('request', 'Phalcon\Http\Request');
+    $di->set("request", "Phalcon\\Http\\Request");
 
     // 获取服务
-    $requestService = $di->getService('request');
+    $requestService = $di->getService("request");
 
     // 改变它的定义
-    $requestService->setDefinition(function () {
-        return new Request();
-    });
+    $requestService->setDefinition(
+        function () {
+            return new Request();
+        }
+    );
 
     // 修改成shared类型
     $requestService->setShared(true);
@@ -842,20 +907,29 @@ The following events are supported:
     <?php
 
     // 把一个控制器注册为服务
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    }, true);
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        },
+        true
+    );
 
     // 把一个控制器注册为服务
-    $di->set('MyOtherComponent', function () {
-        // 实际上返回另外一个组件
-        $component = new AnotherComponent();
-        return $component;
-    });
+    $di->set(
+        "MyOtherComponent",
+        function () {
+            // 实际上返回另外一个组件
+            $component = new AnotherComponent();
+
+            return $component;
+        }
+    );
 
     // 获取通过服务容器创建的对象
-    $myComponent = $di->get('MyOtherComponent');
+    $myComponent = $di->get("MyOtherComponent");
 
 你可以利用这种方式，通过服务容器来总是实例化你的类(即是他们没有注册为服务)，
 DI会回退到一个有效的自动加载类中，去加载这个类。通过这样做，以后你可以轻松替换任意的类通过为它实现一个定义。
@@ -869,13 +943,14 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Di\InjectionAwareInterface;
 
     class MyClass implements InjectionAwareInterface
     {
         protected $_di;
 
-        public function setDi($di)
+        public function setDi(DiInterface $di)
         {
             $this->_di = $di;
         }
@@ -893,10 +968,10 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
     <?php
 
     // 注册服务
-    $di->set('myClass', 'MyClass');
+    $di->set("myClass", "MyClass");
 
     // 解析服务（注意：将自动调用$myClass->setDi($di)方法）
-    $myClass = $di->get('myClass');
+    $myClass = $di->get("myClass");
 
 避免服务解析（Avoiding service resolution）
 ===========================================
@@ -910,7 +985,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
     $router = new MyRouter();
 
     // 把已解析的对象设置到注册服务中
-    $di->set('router', $router);
+    $di->set("router", $router);
 
 使用文件组织服务（Organizing services in files）
 ================================================
@@ -920,9 +995,12 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     <?php
 
-    $di->set('router', function () {
-        return include "../app/config/routes.php";
-    });
+    $di->set(
+        "router",
+        function () {
+            return include "../app/config/routes.php";
+        }
+    );
 
 这样，在文件("../app/config/routes.php")中，返回已解析的对象：
 
@@ -932,7 +1010,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
     $router = new MyRouter();
 
-    $router->post('/login');
+    $router->post("/login");
 
     return $router;
 
