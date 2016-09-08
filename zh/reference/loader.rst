@@ -25,11 +25,15 @@ Consider the following example:
     <?php
 
     // Basic autoloader
-    spl_autoload_register(function ($className) {
-        if (file_exists($className . '.php')) {
-            require $className . '.php';
+    spl_autoload_register(
+        function ($className) {
+            $filepath = $className . ".php";
+
+            if (file_exists($filepath)) {
+                require $filepath;
+            }
         }
-    });
+    );
 
 The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
@@ -39,7 +43,7 @@ a malicious prepared string is used as parameter this would allow to execute any
     <?php
 
     // This variable is not filtered and comes from an insecure source
-    $className = '../processes/important-process';
+    $className = "../processes/important-process";
 
     // Check if the class exists triggering the auto-loader
     if (class_exists($className)) {
@@ -73,7 +77,7 @@ the end of the paths.
         [
            "Example\Base"    => "vendor/example/base/",
            "Example\Adapter" => "vendor/example/adapter/",
-           "Example"         => "vendor/example/"
+           "Example"         => "vendor/example/",
         ]
     );
 
@@ -82,7 +86,7 @@ the end of the paths.
 
     // The required class will automatically include the
     // file vendor/example/adapter/Some.php
-    $some = new Example\Adapter\Some();
+    $some = new \Example\Adapter\Some();
 
 注册前缀（Registering Prefixes）
 --------------------------------
@@ -104,7 +108,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
         [
             "Example_Base"    => "vendor/example/base/",
             "Example_Adapter" => "vendor/example/adapter/",
-            "Example_"        => "vendor/example/"
+            "Example_"        => "vendor/example/",
         ]
     );
 
@@ -113,7 +117,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     // The required class will automatically include the
     // file vendor/example/adapter/Some.php
-    $some = new Example_Adapter_Some();
+    $some = new \Example_Adapter_Some();
 
 注册文件夹（Registering Directories）
 -------------------------------------
@@ -136,7 +140,7 @@ It's important to register the directories in relevance order. Remember always a
             "library/MyComponent/",
             "library/OtherComponent/Other/",
             "vendor/example/adapters/",
-            "vendor/example/"
+            "vendor/example/",
         ]
     );
 
@@ -146,7 +150,7 @@ It's important to register the directories in relevance order. Remember always a
     // The required class will automatically include the file from
     // the first directory where it has been located
     // i.e. library/OtherComponent/Other/Some.php
-    $some = new Some();
+    $some = new \Some();
 
 注册类名（Registering Classes）
 -------------------------------
@@ -168,7 +172,7 @@ maintenance of the class list very cumbersome and it is not recommended.
     $loader->registerClasses(
         [
             "Some"         => "library/OtherComponent/Other/Some.php",
-            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php"
+            "Example\Base" => "vendor/example/adapters/Example/BaseClass.php",
         ]
     );
 
@@ -178,7 +182,7 @@ maintenance of the class list very cumbersome and it is not recommended.
     // Requiring a class will automatically include the file it references
     // in the associative array
     // i.e. library/OtherComponent/Other/Some.php
-    $some = new Some();
+    $some = new \Some();
 
 额外的扩展名（Additional file extensions）
 ------------------------------------------
@@ -189,11 +193,19 @@ are using additional extensions you could set it with the method "setExtensions"
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Set file extensions to check
-    $loader->setExtensions(["php", "inc", "phb"]);
+    $loader->setExtensions(
+        [
+            "php",
+            "inc",
+            "phb",
+        ]
+    );
 
 修改当前策略（Modifying current strategies）
 --------------------------------------------
@@ -207,7 +219,7 @@ Additional auto-loading data can be added to existing values in the following wa
     $loader->registerDirs(
         [
             "../app/library/",
-            "../app/plugins/"
+            "../app/plugins/",
         ],
         true
     );
@@ -222,24 +234,29 @@ In the following example, the EventsManager is working with the class loader, al
 
     <?php
 
-    $eventsManager = new \Phalcon\Events\Manager();
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Loader;
 
-    $loader = new \Phalcon\Loader();
+    $eventsManager = new EventsManager();
+
+    $loader = new Loader();
 
     $loader->registerNamespaces(
         [
-            'Example\\Base'    => 'vendor/example/base/',
-            'Example\\Adapter' => 'vendor/example/adapter/',
-            'Example'          => 'vendor/example/'
+            "Example\\Base"    => "vendor/example/base/",
+            "Example\\Adapter" => "vendor/example/adapter/",
+            "Example"          => "vendor/example/",
         ]
     );
 
     // Listen all the loader events
-    $eventsManager->attach('loader', function ($event, $loader) {
-        if ($event->getType() == 'beforeCheckPath') {
+    $eventsManager->attach(
+        "loader:beforeCheckPath",
+        function (Event $event, Loader $loader) {
             echo $loader->getCheckedPath();
         }
-    });
+    );
 
     $loader->setEventsManager($eventsManager);
 
