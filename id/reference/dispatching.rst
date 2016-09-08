@@ -458,6 +458,82 @@ sebelum mengirim aksi dan menyiapkan parameter yang sesuai:
 Contoh di atas telah disederhanakan untuk tujuan akademis.
 Developer dapat memperbaikinya dengan menginjek sembarang ketergantungan atau model dalam aksi sebelum dieksekusi.
 
+From 3.0.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action.
+
+.. code-block:: php
+
+    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher->setModelBinding(true);
+
+    return $dispatcher;
+
+It also introduces a new interface :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>` which allows you to define the controllers associated model
+to allow model binding in base controllers.
+
+For example, you have a base CrudController which your PostsController extends from. Your CrudController looks something like this:
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Model;
+
+    class CrudController extends Controller
+    {
+        /**
+         * Show action
+         *
+         * @param Model $model
+         */
+        public function showAction(Model $model)
+        {
+            $this->view->model = $model;
+        }
+    }
+
+In your PostsController you need to define which model the controller is associated with. This is done by implementing the :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>`
+which will add the getModelName() method from which you can return the model name.
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller\BindModelInterface;
+    use Models\Posts;
+
+    class PostsController extends CrudController implements BindModelInterface
+    {
+        static function getModelName()
+        {
+            return Posts::class;
+        }
+    }
+
+By declaring the model associated with the PostsController the dispatcher can check the controller for the getModelName() method before passing
+the defined model into the parent show action.
+
+If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller;
+    use Models\Posts;
+
+    class PostsController extends Controller
+    {
+        /**
+         * Shows posts
+         *
+         * @param Posts $post
+         */
+        public function showAction(Posts $post)
+        {
+            $this->view->post = $post;
+        }
+    }
+
+.. highlights::
+
+    Currently the dispatchers internal model binding will only use the models primary key to perform a findFirst() on.
+    An example route for the above would be /posts/show/{1}
+
 Menangani Eksepsi tidak ditemukan
 ---------------------------------
 Menggunakan :doc:`EventsManager <events>` dimungkinkan untuk menyisipkan hook point sebelum dispatcher melemparkan eksepsi ketika kombinasi kontroler/aksi tidak ditemukan:

@@ -458,7 +458,7 @@ before dispatch the action preparing the parameter accordingly:
 The above example has been simplified for academic purposes.
 A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
-From 2.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action.
+From 3.0.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action.
 
 .. code-block:: php
 
@@ -533,7 +533,6 @@ If your project structure does not use any parent controller you can of course s
 
     Currently the dispatchers internal model binding will only use the models primary key to perform a findFirst() on.
     An example route for the above would be /posts/show/{1}
-
 
 Handling Not-Found Exceptions
 -----------------------------
