@@ -44,17 +44,17 @@
     $eventsManager = new EventsManager();
 
     // 创建一个数据库侦听
-    $dbListener    = new MyDbListener();
+    $dbListener = new MyDbListener();
 
     // 侦听全部数据库事件
-    $eventsManager->attach('db', $dbListener);
+    $eventsManager->attach("db", $dbListener);
 
-    $connection    = new DbAdapter(
+    $connection = new DbAdapter(
         [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -62,7 +62,9 @@
     $connection->setEventsManager($eventsManager);
 
     // 发送一个SQL命令到数据库服务器
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
 为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
 第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。
@@ -71,6 +73,8 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as Logger;
 
     class MyDbListener
@@ -82,9 +86,12 @@
             $this->_logger = new Logger("../apps/logs/db.log");
         }
 
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
         }
     }
 
@@ -95,6 +102,7 @@
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -116,17 +124,23 @@
         /**
          * 如果事件触发器是'beforeQuery'，此函数将会被执行
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * 如果事件触发器是'afterQuery'，此函数将会被执行
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -143,7 +157,9 @@
     <?php
 
     // 发送一个SQL命令到数据库服务器
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL语句: ", $profile->getSQLStatement(), "\n";
@@ -158,12 +174,17 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // 侦听全部数据加事件
-    $eventsManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            if ($event->getType() == "afterQuery") {
+                echo $connection->getSQLStatement();
+            }
         }
-    });
+    );
 
 创建组件触发事件（Creating components that trigger Events）
 -----------------------------------------------------------
@@ -176,12 +197,13 @@
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -209,14 +231,16 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "这里, beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "这里, afterSomeTask\n";
         }
@@ -234,13 +258,16 @@
     $eventsManager = new EventsManager();
 
     // 创建MyComponent实例
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // 将事件管理器绑定到创建MyComponent实例实例
     $myComponent->setEventsManager($eventsManager);
 
     // 为事件管理器附上侦听者
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // 执行组件的方法
     $myComponent->someTask();
@@ -267,15 +294,23 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // 从第三个参数接收数据
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
     // 从事件上下文中接收数据
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
 如果一个侦听者仅是对某个特定类型的事件感兴趣，你要吧直接附上一个侦听者：
 
@@ -283,10 +318,15 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // 这个处理器只会在“beforeSomeTask”事件触发时才被执行
-    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    $eventsManager->attach(
+        "my-component:beforeSomeTask",
+        function (Event $event, $component) {
+            // ...
+        }
+    );
 
 事件传播与取消（Event Propagation/Cancellation）
 ------------------------------------------------
@@ -297,17 +337,20 @@
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // 如果可以取消，我们就终止此事件
-        if ($event->isCancelable()) {
-            // 终止事件，这样的话其他侦听都就不会再收到此通知
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // 如果可以取消，我们就终止此事件
+            if ($event->isCancelable()) {
+                // 终止事件，这样的话其他侦听都就不会再收到此通知
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 默认情况下全部的事件都是可以取消的，甚至框架提供的事件也是可以取消的。
 你可以通过在 :code:`fire()` 中的第四个参数中传递 :code:`false` 来指明这是一个不可取消的事件：
@@ -326,11 +369,11 @@
 
     <?php
 
-    $evManager->enablePriorities(true);
+    $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // 高优先级
-    $eventsManager->attach('db', new DbListener(), 100); // 正常优先级
-    $eventsManager->attach('db', new DbListener(), 50);  // 低优先级
+    $eventsManager->attach("db", new DbListener(), 150); // 高优先级
+    $eventsManager->attach("db", new DbListener(), 100); // 正常优先级
+    $eventsManager->attach("db", new DbListener(), 50);  // 低优先级
 
 收集响应（Collecting Responses）
 --------------------------------
@@ -348,17 +391,23 @@
     $eventsManager->collectResponses(true);
 
     // 附上一个侦听者
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // 附上一个侦听者
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // 执行fire事件
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // 获取全部收集到的响应
     print_r($eventsManager->getResponses());

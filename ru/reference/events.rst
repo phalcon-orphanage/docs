@@ -45,17 +45,17 @@
     $eventsManager = new EventsManager();
 
     // Создание слушателя базы данных
-    $dbListener    = new MyDbListener();
+    $dbListener = new MyDbListener();
 
     // Слушать все события базы данных
-    $eventsManager->attach('db', $dbListener);
+    $eventsManager->attach("db", $dbListener);
 
-    $connection    = new DbAdapter(
+    $connection = new DbAdapter(
         [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -63,7 +63,9 @@
     $connection->setEventsManager($eventsManager);
 
     // Выполнение SQL запроса
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
 Для того, чтобы получать все SQL-запросы, выполненные в нашем приложении, мы должны использовать событие “afterQuery”. Первый передаваемый слушателю параметр
 содержит контекстную информацию о текущем событии, второй параметр - само соединение.
@@ -72,6 +74,8 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as Logger;
 
     class MyDbListener
@@ -83,9 +87,12 @@
             $this->_logger = new Logger("../apps/logs/db.log");
         }
 
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
         }
     }
 
@@ -96,6 +103,7 @@
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -117,17 +125,23 @@
         /**
          * Этот метод будет запущен, если будет вызван метод 'beforeQuery'
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * Этот метод будет запущен, если будет вызван метод 'afterQuery'
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -144,7 +158,9 @@
     <?php
 
     // Выполнение SQL запроса
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -159,12 +175,17 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Слушаем все события базы данных
-    $eventManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            if ($event->getType() == "afterQuery") {
+                echo $connection->getSQLStatement();
+            }
         }
-    });
+    );
 
 Создание компонентов с поддержкой событий
 -----------------------------------------
@@ -177,12 +198,13 @@
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -211,14 +233,16 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "Выполняется beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "Выполняется afterSomeTask\n";
         }
@@ -236,13 +260,16 @@
     $eventsManager = new EventsManager();
 
     // Создаём экземпляр MyComponent
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // Связываем компонент и менеджер событий
     $myComponent->setEventsManager($eventsManager);
 
     // Связываем слушателя и менеджер событий
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // Выполняем метод нашего компонента
     $myComponent->someTask();
@@ -269,15 +296,23 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Получение данных из третьего параметра
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
     // Получение данных из контекста события
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
 Если слушать необходимо только определённое событие, вы можете указать его в момент связывания:
 
@@ -285,10 +320,15 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Обработчик выполнится только при наступлении события "beforeSomeTask"
-    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    $eventsManager->attach(
+        "my-component:beforeSomeTask",
+        function (Event $event, $component) {
+            // ...
+        }
+    );
 
 Остановка/Продолжение событий
 -----------------------------
@@ -300,17 +340,20 @@
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Если событие поддерживает прекращение
-        if ($event->isCancelable()) {
-            // Прекращение события, остальные слушатели его не получат
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // Если событие поддерживает прекращение
+            if ($event->isCancelable()) {
+                // Прекращение события, остальные слушатели его не получат
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 По умолчанию все события поддерживают прекращение, большинство событий, выполняемых в ядре фреймворка, тоже поддерживают прекращение. Вы можете
 указать, что событие не прекращаемое передавая :code:`false` в четвертый параметр вызова :code:`fire()`:
@@ -332,9 +375,9 @@
     // активация установки приоритетов
     $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // Высокий приоритет
-    $eventsManager->attach('db', new DbListener(), 100); // Нормальный приоритет
-    $eventsManager->attach('db', new DbListener(), 50);  // Низкий приоритет
+    $eventsManager->attach("db", new DbListener(), 150); // Высокий приоритет
+    $eventsManager->attach("db", new DbListener(), 100); // Нормальный приоритет
+    $eventsManager->attach("db", new DbListener(), 50);  // Низкий приоритет
 
 Сбор ответов
 ------------
@@ -352,17 +395,23 @@
     $eventsManager->collectResponses(true);
 
     // Добавления слушателя
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // Добавления еще одного слушателя
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // Выполнение события
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // Получаем все ответы
     print_r($eventsManager->getResponses());

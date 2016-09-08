@@ -44,17 +44,17 @@ offering hook points based on the methods we defined in our listener class:
     $eventsManager = new EventsManager();
 
     // Create a database listener
-    $dbListener    = new MyDbListener();
+    $dbListener = new MyDbListener();
 
     // Listen all the database events
-    $eventsManager->attach('db', $dbListener);
+    $eventsManager->attach("db", $dbListener);
 
-    $connection    = new DbAdapter(
+    $connection = new DbAdapter(
         [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -62,7 +62,9 @@ offering hook points based on the methods we defined in our listener class:
     $connection->setEventsManager($eventsManager);
 
     // Send a SQL command to the database server
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
 In order to log all the SQL statements executed by our application, we need to use the event “afterQuery”. The first parameter passed to
 the event listener contains contextual information about the event that is running, the second is the connection itself.
@@ -71,6 +73,8 @@ the event listener contains contextual information about the event that is runni
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as Logger;
 
     class MyDbListener
@@ -82,9 +86,12 @@ the event listener contains contextual information about the event that is runni
             $this->_logger = new Logger("../apps/logs/db.log");
         }
 
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
         }
     }
 
@@ -95,6 +102,7 @@ As part of this example, we will also implement the :doc:`Phalcon\\Db\\Profiler 
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -116,17 +124,23 @@ As part of this example, we will also implement the :doc:`Phalcon\\Db\\Profiler 
         /**
          * This is executed if the event triggered is 'beforeQuery'
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * This is executed if the event triggered is 'afterQuery'
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -143,7 +157,9 @@ The resulting profile data can be obtained from the listener:
     <?php
 
     // Send a SQL command to the database server
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -158,12 +174,17 @@ In a similar manner we can register a lambda function to perform the task instea
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            if ($event->getType() == "afterQuery") {
+                echo $connection->getSQLStatement();
+            }
         }
-    });
+    );
 
 Creating components that trigger Events
 ---------------------------------------
@@ -176,12 +197,13 @@ This component is EventsManager aware (it implements :doc:`Phalcon\\Events\\Even
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -210,14 +232,16 @@ the same name. Now let's create a listener to this component:
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "Here, beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "Here, afterSomeTask\n";
         }
@@ -235,13 +259,16 @@ A listener is simply a class that implements any of all the events triggered by 
     $eventsManager = new EventsManager();
 
     // Create the MyComponent instance
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // Bind the eventsManager to the instance
     $myComponent->setEventsManager($eventsManager);
 
     // Attach the listener to the EventsManager
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // Execute methods in the component
     $myComponent->someTask();
@@ -268,15 +295,23 @@ In a listener the third parameter also receives this data:
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Receiving the data in the third parameter
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
     // Receiving the data from the event context
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
 If a listener it is only interested in listening to a specific type of event you can attach a listener directly:
 
@@ -284,10 +319,15 @@ If a listener it is only interested in listening to a specific type of event you
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // The handler will only be executed if the event triggered is "beforeSomeTask"
-    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    $eventsManager->attach(
+        "my-component:beforeSomeTask",
+        function (Event $event, $component) {
+            // ...
+        }
+    );
 
 Event Propagation/Cancellation
 ------------------------------
@@ -299,17 +339,20 @@ these may be stopped preventing other listeners are notified about the event:
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // We stop the event if it is cancelable
-        if ($event->isCancelable()) {
-            // Stop the event, so other listeners will not be notified about this
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // We stop the event if it is cancelable
+            if ($event->isCancelable()) {
+                // Stop the event, so other listeners will not be notified about this
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
 by passing :code:`false` in the fourth parameter of :code:`fire()`:
@@ -331,9 +374,9 @@ in which they must be called:
 
     $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // More priority
-    $eventsManager->attach('db', new DbListener(), 100); // Normal priority
-    $eventsManager->attach('db', new DbListener(), 50);  // Less priority
+    $eventsManager->attach("db", new DbListener(), 150); // More priority
+    $eventsManager->attach("db", new DbListener(), 100); // Normal priority
+    $eventsManager->attach("db", new DbListener(), 50);  // Less priority
 
 Collecting Responses
 --------------------
@@ -351,17 +394,23 @@ The events manager can collect every response returned by every notified listene
     $eventsManager->collectResponses(true);
 
     // Attach a listener
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // Attach a listener
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // Fire the event
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // Get all the collected responses
     print_r($eventsManager->getResponses());
