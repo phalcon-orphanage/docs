@@ -8,8 +8,10 @@ component designed to achieve this task. HTTP responses are usually composed by 
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Getting a response instance
-    $response = new \Phalcon\Http\Response();
+    $response = new Response();
 
     // Set status code
     $response->setStatusCode(404, "Not Found");
@@ -27,17 +29,22 @@ directly from a controller's action follow this example:
 
     <?php
 
-    class FeedController extends Phalcon\Mvc\Controller
+    use Phalcon\Http\Response;
+    use Phalcon\Mvc\Controller;
+
+    class FeedController extends Controller
     {
         public function getAction()
         {
             // Getting a response instance
-            $response = new \Phalcon\Http\Response();
+            $response = new Response();
 
-            $feed     = // ... Load here the feed
+            $feed = // ... Load here the feed
 
             // Set the content of the response
-            $response->setContent($feed->asString());
+            $response->setContent(
+                $feed->asString()
+            );
 
             // Return the response
             return $response;
@@ -73,7 +80,7 @@ retrieves the headers before sending it to client:
     $headers = $response->getHeaders();
 
     // Get a header by its name
-    $contentType = $response->getHeaders()->get("Content-Type");
+    $contentType = $headers->get("Content-Type");
 
 Making Redirections
 -------------------
@@ -104,11 +111,11 @@ how you can redirect using a route you have defined in your application:
 
     // Redirect based on a named route
     return $response->redirect(
-        array(
+        [
             "for"        => "index-lang",
             "lang"       => "jp",
-            "controller" => "index"
-        )
+            "controller" => "index",
+        ]
     );
 
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
@@ -136,10 +143,10 @@ in the browser cache. Until this date expires no new content will be requested f
 
     <?php
 
-    $expireDate = new DateTime();
-    $expireDate->modify('+2 months');
+    $expiryDate = new DateTime();
+    $expiryDate->modify("+2 months");
 
-    $response->setExpires($expireDate);
+    $response->setExpires($expiryDate);
 
 The Response component automatically shows the date in GMT timezone as expected in an Expires header.
 
@@ -149,10 +156,10 @@ If we set this value to a date in the past the browser will always refresh the r
 
     <?php
 
-    $expireDate = new DateTime();
-    $expireDate->modify('-10 minutes');
+    $expiryDate = new DateTime();
+    $expiryDate->modify("-10 minutes");
 
-    $response->setExpires($expireDate);
+    $response->setExpires($expiryDate);
 
 Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to
 make pages expire and this may represent a limitation for this cache mechanism.
@@ -167,7 +174,7 @@ how long it must keep the page in its cache:
     <?php
 
     // Starting from now, cache the page for one day
-    $response->setHeader('Cache-Control', 'max-age=86400');
+    $response->setHeader("Cache-Control", "max-age=86400");
 
 The opposite effect (avoid page caching) is achieved in this way:
 
@@ -176,7 +183,7 @@ The opposite effect (avoid page caching) is achieved in this way:
     <?php
 
     // Never cache the served page
-    $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
+    $response->setHeader("Cache-Control", "private, max-age=0, must-revalidate");
 
 E-Tag
 ^^^^^
@@ -188,8 +195,13 @@ The identifier must be calculated taking into account that this must change if t
     <?php
 
     // Calculate the E-Tag based on the modification time of the latest news
-    $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag       = md5($recentDate);
+    $mostRecentDate = News::maximum(
+        [
+            "column" => "created_at"
+        ]
+    );
+
+    $eTag = md5($mostRecentDate);
 
     // Send an E-Tag header
-    $response->setHeader('E-Tag', $eTag);
+    $response->setHeader("E-Tag", $eTag);
