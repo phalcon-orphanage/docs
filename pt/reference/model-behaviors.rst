@@ -25,12 +25,12 @@ A behavior must be added in the model initializer, a model can have zero or more
         {
             $this->addBehavior(
                 new Timestampable(
-                    array(
-                        'beforeCreate' => array(
-                            'field'  => 'created_at',
-                            'format' => 'Y-m-d'
-                        )
-                    )
+                    [
+                        "beforeCreate" => [
+                            "field"  => "created_at",
+                            "format" => "Y-m-d",
+                        ]
+                    ]
                 )
             );
         }
@@ -60,12 +60,12 @@ This behavior receives an array of options, the first level key must be an event
     {
         $this->addBehavior(
             new Timestampable(
-                array(
-                    'beforeCreate' => array(
-                        'field'  => 'created_at',
-                        'format' => 'Y-m-d'
-                    )
-                )
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ]
+                ]
             )
         );
     }
@@ -77,21 +77,26 @@ as format of the PHP's function date_, format can also be an anonymous function 
 
     <?php
 
+    use DateTime;
+    use DateTimeZone;
     use Phalcon\Mvc\Model\Behavior\Timestampable;
 
     public function initialize()
     {
         $this->addBehavior(
             new Timestampable(
-                array(
-                    'beforeCreate' => array(
-                        'field'  => 'created_at',
-                        'format' => function () {
-                            $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
-                            return $datetime->format('Y-m-d H:i:sP');
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => function () {
+                            $datetime = new Datetime(
+                                new DateTimeZone("Europe/Stockholm")
+                            );
+
+                            return $datetime->format("Y-m-d H:i:sP");
                         }
-                    )
-                )
+                    ]
+                ]
             )
         );
     }
@@ -111,9 +116,11 @@ This behavior can be used in the following way:
 
     class Users extends Model
     {
-        const DELETED = 'D';
+        const DELETED = "D";
 
-        const NOT_DELETED = 'N';
+        const NOT_DELETED = "N";
+
+
 
         public $id;
 
@@ -121,14 +128,16 @@ This behavior can be used in the following way:
 
         public $status;
 
+
+
         public function initialize()
         {
             $this->addBehavior(
                 new SoftDelete(
-                    array(
-                        'field' => 'status',
-                        'value' => Users::DELETED
-                    )
+                    [
+                        "field" => "status",
+                        "value" => Users::DELETED,
+                    ]
                 )
             );
         }
@@ -192,16 +201,16 @@ that is performed operations over a model:
         {
             switch ($eventType) {
 
-                case 'afterCreate':
-                case 'afterDelete':
-                case 'afterUpdate':
+                case "afterCreate":
+                case "afterDelete":
+                case "afterUpdate":
 
                     $userName = // ... get the current user from session
 
                     // Store in a log the username, event type and primary key
                     file_put_contents(
-                        'logs/blamable-log.txt',
-                        $userName . ' ' . $eventType . ' ' . $model->id
+                        "logs/blamable-log.txt",
+                        $userName . " " . $eventType . " " . $model->id
                     );
 
                     break;
@@ -224,7 +233,9 @@ The former is a very simple behavior, but it illustrates how to create a behavio
     {
         public function initialize()
         {
-            $this->addBehavior(new Blameable());
+            $this->addBehavior(
+                new Blameable()
+            );
         }
     }
 
@@ -240,10 +251,10 @@ A behavior is also capable of intercepting missing methods on your models:
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
-        public function missingMethod($model, $method, $arguments = array())
+        public function missingMethod($model, $method, $arguments = [])
         {
             // If the method is 'getSlug' convert the title
-            if ($method == 'getSlug') {
+            if ($method == "getSlug") {
                 return Tag::friendlyTitle($model->title);
             }
         }
@@ -270,12 +281,12 @@ custom behaviors. The following trait implements a simple version of the Timesta
     {
         public function beforeCreate()
         {
-            $this->created_at = date('r');
+            $this->created_at = date("r");
         }
 
         public function beforeUpdate()
         {
-            $this->updated_at = date('r');
+            $this->updated_at = date("r");
         }
     }
 

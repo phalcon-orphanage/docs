@@ -25,12 +25,12 @@ Model Behaviors
         {
             $this->addBehavior(
                 new Timestampable(
-                    array(
-                        'beforeCreate' => array(
-                            'field'  => 'created_at',
-                            'format' => 'Y-m-d'
-                        )
-                    )
+                    [
+                        "beforeCreate" => [
+                            "field"  => "created_at",
+                            "format" => "Y-m-d",
+                        ]
+                    ]
                 )
             );
         }
@@ -60,12 +60,12 @@ Timestampable
     {
         $this->addBehavior(
             new Timestampable(
-                array(
-                    'beforeCreate' => array(
-                        'field'  => 'created_at',
-                        'format' => 'Y-m-d'
-                    )
-                )
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ]
+                ]
             )
         );
     }
@@ -77,21 +77,26 @@ Timestampable
 
     <?php
 
+    use DateTime;
+    use DateTimeZone;
     use Phalcon\Mvc\Model\Behavior\Timestampable;
 
     public function initialize()
     {
         $this->addBehavior(
             new Timestampable(
-                array(
-                    'beforeCreate' => array(
-                        'field'  => 'created_at',
-                        'format' => function () {
-                            $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
-                            return $datetime->format('Y-m-d H:i:sP');
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => function () {
+                            $datetime = new Datetime(
+                                new DateTimeZone("Europe/Stockholm")
+                            );
+
+                            return $datetime->format("Y-m-d H:i:sP");
                         }
-                    )
-                )
+                    ]
+                ]
             )
         );
     }
@@ -111,9 +116,11 @@ SoftDelete
 
     class Users extends Model
     {
-        const DELETED = 'D';
+        const DELETED = "D";
 
-        const NOT_DELETED = 'N';
+        const NOT_DELETED = "N";
+
+
 
         public $id;
 
@@ -121,14 +128,16 @@ SoftDelete
 
         public $status;
 
+
+
         public function initialize()
         {
             $this->addBehavior(
                 new SoftDelete(
-                    array(
-                        'field' => 'status',
-                        'value' => Users::DELETED
-                    )
+                    [
+                        "field" => "status",
+                        "value" => Users::DELETED,
+                    ]
                 )
             );
         }
@@ -192,16 +201,16 @@ ORM предоставляет API для создания собственно�
         {
             switch ($eventType) {
 
-                case 'afterCreate':
-                case 'afterDelete':
-                case 'afterUpdate':
+                case "afterCreate":
+                case "afterDelete":
+                case "afterUpdate":
 
                     $userName = // ... получаем текущего пользователя из сессии
 
                     // Сохраняем в логах имя пользователя, тип события и идентификатор записи
                     file_put_contents(
-                        'logs/blamable-log.txt',
-                        $userName . ' ' . $eventType . ' ' . $model->id
+                        "logs/blamable-log.txt",
+                        $userName . " " . $eventType . " " . $model->id
                     );
 
                     break;
@@ -224,7 +233,9 @@ ORM предоставляет API для создания собственно�
     {
         public function initialize()
         {
-            $this->addBehavior(new Blameable());
+            $this->addBehavior(
+                new Blameable()
+            );
         }
     }
 
@@ -240,10 +251,10 @@ ORM предоставляет API для создания собственно�
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
-        public function missingMethod($model, $method, $arguments = array())
+        public function missingMethod($model, $method, $arguments = [])
         {
             // Если метод - 'getSlug', то преобразуем заголовок
-            if ($method == 'getSlug') {
+            if ($method == "getSlug") {
                 return Tag::friendlyTitle($model->title);
             }
         }
@@ -270,12 +281,12 @@ ORM предоставляет API для создания собственно�
     {
         public function beforeCreate()
         {
-            $this->created_at = date('r');
+            $this->created_at = date("r");
         }
 
         public function beforeUpdate()
         {
-            $this->updated_at = date('r');
+            $this->updated_at = date("r");
         }
     }
 
