@@ -2963,6 +2963,3 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     echo Robots::count();
 
 .. _PDO: http://php.net/manual/ja/pdo.prepared-statements.php
-.. _date: http://php.net/manual/ja/function.date.php
-.. _time: http://php.net/manual/ja/function.time.php
-.. _Traits: http://php.net/manual/ja/language.oop5.traits.php

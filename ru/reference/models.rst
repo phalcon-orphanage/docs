@@ -2984,6 +2984,3 @@ ORM также предоставляет возможность горизон�
     echo Robots::count();
 
 .. _PDO: http://php.net/manual/ru/pdo.prepared-statements.php
-.. _date: http://php.net/manual/ru/function.date.php
-.. _time: http://php.net/manual/ru/function.time.php
-.. _Traits: http://php.net/manual/ru/language.oop5.traits.php
