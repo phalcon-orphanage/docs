@@ -13,6 +13,43 @@
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` поддерживает 4 варианта правил автозагрузки классов. Вы можете использовать их по отдельности, или комбинировать.
 
+Security Layer
+--------------
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+Consider the following example:
+
+.. code-block:: php
+
+    <?php
+
+    // Basic autoloader
+    spl_autoload_register(function ($className) {
+        if (file_exists($className . '.php')) {
+            require $className . '.php';
+        }
+    });
+
+The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
+
+.. code-block:: php
+
+    <?php
+
+    // This variable is not filtered and comes from an insecure source
+    $className = '../processes/important-process';
+
+    // Check if the class exists triggering the auto-loader
+    if (class_exists($className)) {
+        // ...
+    }
+
+If '../processes/important-process.php' is a valid file, an external user could execute the file without
+authorization.
+
+To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes any invalid character from the class name
+reducing the possibility of being attacked.
+
 Регистрация пространств имён
 ----------------------------
 Если организация вашего кода подразумевает пространства имён, или использованы внешние библиотеки с их использованием, то для регистрации
@@ -169,43 +206,6 @@ Phalcon будет вынужден обрабатывать данные по �
     );
 
 Использование "true" в качестве второго параметра позволит добавить новые значения к уже имеющимся.
-
-Security Layer
---------------
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
-Consider the following example:
-
-.. code-block:: php
-
-    <?php
-
-    // Basic autoloader
-    spl_autoload_register(function ($className) {
-        if (file_exists($className . '.php')) {
-            require $className . '.php';
-        }
-    });
-
-The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
-a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
-
-.. code-block:: php
-
-    <?php
-
-    // This variable is not filtered and comes from an insecure source
-    $className = '../processes/important-process';
-
-    // Check if the class exists triggering the auto-loader
-    if (class_exists($className)) {
-        // ...
-    }
-
-If '../processes/important-process.php' is a valid file, an external user could execute the file without
-authorization.
-
-To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes any invalid character from the class name
-reducing the possibility of being attacked.
 
 События автозагрузки классов
 ----------------------------
