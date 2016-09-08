@@ -56,6 +56,7 @@ Jika anda ingi mengelola projek anda lebih baik anda dapat menyimpan array ke fi
     use Phalcon\Config;
 
     require "config/config.php";
+
     $config = new Config($settings);
 
 Membaca file INI
@@ -106,22 +107,22 @@ Properti baru ditambahkan dan properti yang sudah ada diperbarui.
 
     $config = new Config(
         [
-            'database' => [
-                'host'   => 'localhost',
-                'dbname' => 'test_db'
+            "database" => [
+                "host"   => "localhost",
+                "dbname" => "test_db",
             ],
-            'debug' => 1
+            "debug" => 1,
         ]
     );
 
     $config2 = new Config(
         [
-            'database' => [
-                'dbname'   => 'production_db',
-                'username' => 'scott',
-                'password' => 'secret'
+            "database" => [
+                "dbname"   => "production_db",
+                "username" => "scott",
+                "password" => "secret",
             ],
-            'logging' => 1
+            "logging" => 1,
         ]
     );
 
@@ -162,23 +163,27 @@ Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang mem
     // Buat DI
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-	$configData = require 'config/config.php';
-        return new Config($configData);
-    });
+    $di->set(
+        "config",
+        function () {
+            $configData = require "config/config.php";
+
+            return new Config($configData);
+        }
+    );
 
 Sekarang dalam kontroller anda dapat mengakses konfigurasi memanfaatkan fitur depedency injection dengan nama `config` seperti kode berikut:
 
 .. code-block:: php
 
-   <?php
+    <?php
 
-   use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Controller;
 
-   class MyController extends Controller
-   {
-
-       private function getDatabaseName() {
-           return $this->config->database->dbname;
-       }
-   }
+    class MyController extends Controller
+    {
+        private function getDatabaseName()
+        {
+            return $this->config->database->dbname;
+        }
+    }

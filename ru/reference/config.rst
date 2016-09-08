@@ -58,6 +58,7 @@ Reading Configurations
     use Phalcon\Config;
 
     require "config/config.php";
+
     $config = new Config($settings);
 
 Чтение INI-файлов
@@ -108,22 +109,22 @@ Ini-файлы являются довольно распространённы�
 
     $config = new Config(
         [
-            'database' => [
-                'host'   => 'localhost',
-                'dbname' => 'test_db'
+            "database" => [
+                "host"   => "localhost",
+                "dbname" => "test_db",
             ],
-            'debug' => 1
+            "debug" => 1,
         ]
     );
 
     $config2 = new Config(
         [
-            'database' => [
-                'dbname'   => 'production_db',
-                'username' => 'scott',
-                'password' => 'secret'
+            "database" => [
+                "dbname"   => "production_db",
+                "username" => "scott",
+                "password" => "secret",
             ],
-            'logging' => 1
+            "logging" => 1,
         ]
     );
 
@@ -164,10 +165,14 @@ You can inject configuration dependency to controller allowing us to use :doc:`P
     // Create a DI
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-	$configData = require 'config/config.php';
-        return new Config($configData);
-    });
+    $di->set(
+        "config",
+        function () {
+            $configData = require "config/config.php";
+
+            return new Config($configData);
+        }
+    );
 
 Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
