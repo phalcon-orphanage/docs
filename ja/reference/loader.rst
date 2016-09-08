@@ -1,5 +1,5 @@
-Universal Class Loader
-======================
+Class Autoloader
+================
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` is a component that allows you to load project classes automatically,
 based on some predefined rules. Since this component is written in C, it provides the lowest overhead in
