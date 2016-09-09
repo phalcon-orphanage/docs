@@ -393,84 +393,6 @@ This way of working gives us many advantages:
 
 Services can be registered using several types of definitions:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Create the Dependency Injector Container
-    $di = new Di();
-
-    // By its class name
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // Using an anonymous function, the instance will be lazy loaded
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // Registering an instance directly
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // Using an array definition
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-The array syntax is also allowed to register services:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Create the Dependency Injector Container
-    $di = new Di();
-
-    // By its class name
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // Using an anonymous function, the instance will be lazy loaded
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // Registering an instance directly
-    $di["request"] = new Request();
-
-    // Using an array definition
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-In the examples above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
-The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
-
-Each of the methods (demonstrated in the examples above) used to set/register a service has advantages and disadvantages. It is up to the
-developer and the particular requirements that will designate which one is used.
-
-Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
-code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
-
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
-
 Simple Registration
 -------------------
 As seen before, there are several ways to register services. These we call simple:
@@ -805,6 +727,48 @@ these provide a more robust approach to define and inject services.
 
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
 according to the application needs.
+
+Array Syntax
+------------
+The array syntax is also allowed to register services:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // Create the Dependency Injector Container
+    $di = new Di();
+
+    // By its class name
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // Using an anonymous function, the instance will be lazy loaded
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // Registering an instance directly
+    $di["request"] = new Request();
+
+    // Using an array definition
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+In the examples above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
+The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+
+Each of the methods (demonstrated in the examples above) used to set/register a service has advantages and disadvantages. It is up to the
+developer and the particular requirements that will designate which one is used.
+
+Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
+code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
+in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 Resolving Services
 ==================

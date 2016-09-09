@@ -393,84 +393,6 @@ Esta manera de trabajar nos da muchas ventajas:
 
 Los servicios pueden ser registrados de distintas maneras:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Crear el inyector de dependencias
-    $di = new Di();
-
-    // Por su nombre de clase
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // Usando una función anónima, la instancia se creará solo cuando el servicio sea accedido
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // Registrando una instancia directamente
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // Usar una definición en un array
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-También podemos registrar servicios en el DI usando la sintaxis de array:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Crear el inyector de dependencias
-    $di = new Di();
-
-    // Por su nombre de clase
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // Usar una función anónima, la instancia se creará solo cuando el servicio sea accedido
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // Registrar la instancia directamente
-    $di["request"] = new Request();
-
-    // Usar un array como definición
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como 'request' en el contenedor.
-Este lo que hará es "resolver" el servicio requerido devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente, su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.
-
-En el ejemplo anterior, cada uno de las formas de registrar servicios tiene ventajas y desventajas.
-Depende del desarrollador y de sus necesidades particulares escoger la que más le convenga.
-
-Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando un array ofrece más flexibilidad pero puede ser
-un poco más complicado. La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización sino es editando directamente su código.
-
-La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\Di <../api/Phalcon_Di>` inicializan los servicios solo la primera vez
-que son requeridas.
-
 Registro simple
 ---------------
 Como se vió anteriormente, hay muchos tipos de registrar servicios, a estos les denomiamos simples:
@@ -805,6 +727,48 @@ estas proporcionan una estrategía más robusta para inyectar servicios.
 
 Mezclar distintos tipos de definiciones está permitido, cada quien puede decidir cuál es la forma más apropiada
 de acuerdo a las necesidades de la aplicación.
+
+Array Syntax
+------------
+También podemos registrar servicios en el DI usando la sintaxis de array:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // Crear el inyector de dependencias
+    $di = new Di();
+
+    // Por su nombre de clase
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // Usar una función anónima, la instancia se creará solo cuando el servicio sea accedido
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // Registrar la instancia directamente
+    $di["request"] = new Request();
+
+    // Usar un array como definición
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como 'request' en el contenedor.
+Este lo que hará es "resolver" el servicio requerido devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente, su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.
+
+En el ejemplo anterior, cada uno de las formas de registrar servicios tiene ventajas y desventajas.
+Depende del desarrollador y de sus necesidades particulares escoger la que más le convenga.
+
+Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando un array ofrece más flexibilidad pero puede ser
+un poco más complicado. La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización sino es editando directamente su código.
+
+La mayoría de estrategias para registrar servicios en :doc:`Phalcon\\Di <../api/Phalcon_Di>` inicializan los servicios solo la primera vez
+que son requeridas.
 
 Resolver Servicios
 ==================

@@ -394,84 +394,6 @@ Cette façon de faire procure plusieurs avangages:
 
 Plusieurs styles de définitions permettent d'inscrire les services:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Création du conteneur d'Injection de Dépendance
-    $di = new Di();
-
-    // D'après son nom
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // Chargement tardif avec une fonction anonyme
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // En inscrivant directement une instance
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // Avec un tableau de définition
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-L'écriture sous forme de tableau est possible pour inscrire des services:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Création du conteneur d'Injection de Dépendance
-    $di = new Di();
-
-    // D'après son nom
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // Chargement tardif avec une fonction anonyme
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // En inscrivant directement une instance
-    $di["request"] = new Request();
-
-    // Avec un tableau de définition
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-Dans les exemples précédents, lorsque le framework doit accéder aux données demandées, il interroge le service identifié en tant que 'request' dans le conteneur.
-Le conteneur retourne une instance du service demandé. Le développeur peut éventuellement remplacer les composants selon ses besoins.
-
-Chacune des méthodes (vues dans les exemples précédents) utilisée pour définir/inscrire un service a ses avantages et ses inconvénients. C'est au
-développeur de choisir laquelle utiliser en fonction des éxigences.
-
-Définir un service par une chaîne de caractères est simple mais manque de souplesse. Définir un service par un tableau offre plus de flexibilité mais
-rend le code plus compliqué. La fonction lambda est un bon équilibre entre les deux mais risque de nécessiter plus de maintenance que nécessaire.
-
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` offre un chargement tardif pour chaque service qu'il stocke. A moins que le développeur choisisse d'instancier directement et de le stocker
-dans le conteneur, chaque objet qui lui est confié (via tableau, chaîne de caractères, etc.) sera chargé tardivement c.à.d instancié lors de la demande.
-
 Inscription simple
 ------------------
 Comme vu précédemment, il existe plusieurs façons d'inscrire un service. Voici ceux que nous appelons "simple":
@@ -807,6 +729,48 @@ ceci fournit une approche plus robuste pour définir et injecter des services.
 
 Le mélange de différents types de définitions est permis. Chacun décide de la méthode d'inscription des service la plus appropriée en
 fonction des besoins de l'application.
+
+Array Syntax
+------------
+L'écriture sous forme de tableau est possible pour inscrire des services:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // Création du conteneur d'Injection de Dépendance
+    $di = new Di();
+
+    // D'après son nom
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // Chargement tardif avec une fonction anonyme
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // En inscrivant directement une instance
+    $di["request"] = new Request();
+
+    // Avec un tableau de définition
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+Dans les exemples précédents, lorsque le framework doit accéder aux données demandées, il interroge le service identifié en tant que 'request' dans le conteneur.
+Le conteneur retourne une instance du service demandé. Le développeur peut éventuellement remplacer les composants selon ses besoins.
+
+Chacune des méthodes (vues dans les exemples précédents) utilisée pour définir/inscrire un service a ses avantages et ses inconvénients. C'est au
+développeur de choisir laquelle utiliser en fonction des éxigences.
+
+Définir un service par une chaîne de caractères est simple mais manque de souplesse. Définir un service par un tableau offre plus de flexibilité mais
+rend le code plus compliqué. La fonction lambda est un bon équilibre entre les deux mais risque de nécessiter plus de maintenance que nécessaire.
+
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` offre un chargement tardif pour chaque service qu'il stocke. A moins que le développeur choisisse d'instancier directement et de le stocker
+dans le conteneur, chaque objet qui lui est confié (via tableau, chaîne de caractères, etc.) sera chargé tardivement c.à.d instancié lors de la demande.
 
 Résolution de services
 ======================

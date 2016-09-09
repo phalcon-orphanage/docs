@@ -372,80 +372,6 @@ Phalconが高度に分離されているため、:doc:`Phalcon\\Di <../api/Phalc
 
 サービスの登録には複数の書き方があります:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // 依存性を注入するコンテナ（DIコンテナ）を作成する
-    $di = new Di();
-
-    // クラス名で登録
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // 無名関数を使うと、インスタンスは遅延読み込みされる
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // インスタンスを直接登録する
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // 配列で登録
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-配列の記法でサービスを登録することもできます:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // 依存性を注入するコンテナ（DIコンテナ）を作成する
-    $di = new Di();
-
-    // クラス名で登録
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // 無名関数を使うと、インスタンスは遅延読み込みされる
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // インスタンスを直接登録する
-    $di["request"] = new Request();
-
-    // 配列で登録
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-上記例では、フレームワークがリクエストのデータへのアクセスが必要になった時、コンテナの'request'という名前のサービスを求めます。コンテナは要求されたサービスのインスタンスを返します。開発者は、結果として、必要とするコンポーネントを置き換えることができます。
-
-(上記例で使用された) サービス登録方法には、それぞれに利点と欠点があります。どの方法を使うかは、必要に応じて、開発者が決定します。
-
-文字列でのサービス登録は、シンプルですが、柔軟性に欠けます。配列でのサービス登録は、より柔軟ですが、コードが複雑になります。無名関数にはこの2つの中間的なバランスの良さがありますが、意外とメンテナンスが大変です。
-
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
-
 簡単な登録
 ----------
 As seen before, there are several ways to register services. These we call simple:
@@ -780,6 +706,44 @@ these provide a more robust approach to define and inject services.
 
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
 according to the application needs.
+
+Array Syntax
+------------
+配列の記法でサービスを登録することもできます:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // 依存性を注入するコンテナ（DIコンテナ）を作成する
+    $di = new Di();
+
+    // クラス名で登録
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // 無名関数を使うと、インスタンスは遅延読み込みされる
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // インスタンスを直接登録する
+    $di["request"] = new Request();
+
+    // 配列で登録
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+上記例では、フレームワークがリクエストのデータへのアクセスが必要になった時、コンテナの'request'という名前のサービスを求めます。コンテナは要求されたサービスのインスタンスを返します。開発者は、結果として、必要とするコンポーネントを置き換えることができます。
+
+(上記例で使用された) サービス登録方法には、それぞれに利点と欠点があります。どの方法を使うかは、必要に応じて、開発者が決定します。
+
+文字列でのサービス登録は、シンプルですが、柔軟性に欠けます。配列でのサービス登録は、より柔軟ですが、コードが複雑になります。無名関数にはこの2つの中間的なバランスの良さがありますが、意外とメンテナンスが大変です。
+
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
 
 サービスの解決
 ==============

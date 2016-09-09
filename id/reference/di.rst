@@ -393,84 +393,6 @@ Cara kerja ini memberi kita banyak keuntungan:
 
 Service dapat didaftarkan dengan beberapa jenis definisi:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Buat Dependency Injector Container
-    $di = new Di();
-
-    // menggunakan nama kelas
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // Menggunakan fungsi anonymous function, instance akan dimuat secara lazy load
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // Mendaftarkan instance langsung
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // Menggunakan definisi array
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-Sintaks array juga diizinkan untuk mendaftarkan service:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // Buat Dependency Injector Container
-    $di = new Di();
-
-    // Menggunakan nama kelas
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // Menggunakan fungsi anonymous function, instance akan dimuat secara lazy load
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // Mendaftarkan instance langsung
-    $di["request"] = new Request();
-
-    // Menggunakan definisi array
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-Dicontoh diatas, ketika framework butuh mengakses data request, ia akan meminta service yang diidentifikasi sebagai ‘request’ dalam kontainer.
-Kontainer kemudian mengembalikan instance service yang diminta. Developer mungkin suatu saat mengganti sebuah komponen ketika mereka butuh.
-
-Tiap metode (ditunjukkan di contoh diatas) yang digunakan untuk mengatur/mendaftarkan service punya kelebihan dan kekurangan. Tergantung
-developer dan kebutuhan tertentu yang mengarahkan mana yang digunakan.
-
-Mengatur service dengan string mudah, namun kurang fleksibilitas. Mengatur service dengan array menawarkan lebih banyak fleksibilitas, namun menjadikan kode
-lebih rumit. Fungsi lambda adalah keseimbangan bagus diantara keduanya, namun dapat menyebabkan lebih banyak maintenance dari yang diharapkan.
-
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` menawarkan lazy loading untuk semua service yang disimpan. Kecuali developer memilih menciptakan objek langsung dan menyimpannya
-dalam kontainer, tiap objek yang disimpan didalamnya (melalui array, string dan lain-lain) akan di muat secara lazy load yakni hanya akan diciptakan ketika diminta.
-
 Regitrasi Sederhana
 -------------------
 Seperti terlihat sebelumnya, ada beberapa cara untuk mendaftarkan service. Ini kita sebut sederhana:
@@ -804,6 +726,48 @@ ia menyediakan pendekatan yang lebih kokoh untuk mendefinisi dan menginjeksi ser
 
 Mencampur jenis definisi berbeda diizinkan, semua orang dapat memutuskan cara apa yang paling cocok mendaftarkan service
 tergantung kebutuhan aplikasi.
+
+Array Syntax
+------------
+Sintaks array juga diizinkan untuk mendaftarkan service:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // Buat Dependency Injector Container
+    $di = new Di();
+
+    // Menggunakan nama kelas
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // Menggunakan fungsi anonymous function, instance akan dimuat secara lazy load
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // Mendaftarkan instance langsung
+    $di["request"] = new Request();
+
+    // Menggunakan definisi array
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+Dicontoh diatas, ketika framework butuh mengakses data request, ia akan meminta service yang diidentifikasi sebagai ‘request’ dalam kontainer.
+Kontainer kemudian mengembalikan instance service yang diminta. Developer mungkin suatu saat mengganti sebuah komponen ketika mereka butuh.
+
+Tiap metode (ditunjukkan di contoh diatas) yang digunakan untuk mengatur/mendaftarkan service punya kelebihan dan kekurangan. Tergantung
+developer dan kebutuhan tertentu yang mengarahkan mana yang digunakan.
+
+Mengatur service dengan string mudah, namun kurang fleksibilitas. Mengatur service dengan array menawarkan lebih banyak fleksibilitas, namun menjadikan kode
+lebih rumit. Fungsi lambda adalah keseimbangan bagus diantara keduanya, namun dapat menyebabkan lebih banyak maintenance dari yang diharapkan.
+
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` menawarkan lazy loading untuk semua service yang disimpan. Kecuali developer memilih menciptakan objek langsung dan menyimpannya
+dalam kontainer, tiap objek yang disimpan didalamnya (melalui array, string dan lain-lain) akan di muat secara lazy load yakni hanya akan diciptakan ketika diminta.
 
 Resolving Services
 ==================

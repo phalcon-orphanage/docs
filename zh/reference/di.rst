@@ -373,81 +373,6 @@
 
 服务可以使用不同方式去定义：
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // 创建一个依赖注入容器
-    $di = new Di();
-
-    // 通过类名称设置服务
-    $di->set(
-        "request",
-        "Phalcon\\Http\\Request"
-    );
-
-    // 使用匿名函数去设置服务，这个实例将被延迟加载
-    $di->set(
-        "request",
-        function () {
-            return new Request();
-        }
-    );
-
-    // 直接注册一个实例
-    $di->set(
-        "request",
-        new Request()
-    );
-
-    // 使用数组方式定义服务
-    $di->set(
-        "request",
-        [
-            "className" => "Phalcon\\Http\\Request"
-        ]
-    );
-
-使用数组的方式去注册服务也是可以的：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Di;
-    use Phalcon\Http\Request;
-
-    // 创建一个依赖注入容器
-    $di = new Di();
-
-    // 通过类名称设置服务
-    $di["request"] = "Phalcon\\Http\\Request";
-
-    // 使用匿名函数去设置服务，这个实例将被延迟加载
-    $di["request"] = function () {
-        return new Request();
-    };
-
-    // 直接注册一个实例
-    $di["request"] = new Request();
-
-    // 使用数组方式定义服务
-    $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
-    ];
-
-在上面的例子中，当框架需要访问request服务的内容，它会在容器里面查找名为‘request’的服务。
-在容器中将返回所需要的服务的实例。当有需要时，开发者可能最终需要替换这个组件。
-
-每个方法（在上面的例子证明）用于设置/注册服务方面具都具有优势和劣势。这是由开发者和特别的要求决定具体使用哪个。
-
-通过字符串设置一个服务是很简单，但是缺乏灵活性。通过数组设置服务提供了更加灵活的方式，但是使代码更复杂。匿名函数是上述两者之间的一个很好的平衡，但是会导致比预期的更多维护。
-
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` 对每个储存的服务提供了延迟加载。除非开发者选择直接实例化一个对象并将其存储在容器中，任何储存在里面的对象(通过数组，字符串等等设置的)都将延迟加载，即只要当使用到时才实例化。
-
 简单的注册（Simple Registration）
 ---------------------------------
 就像你之前看到的那样，这里有几种方法去注册服务。下面是简单调用的例子：
@@ -771,6 +696,45 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 解析一个定义复杂的服务也许性能上稍微慢于先前看到的简单定义。但是，这提供了一个更强大的方式来定义和注入服务。
 
 混合不同类型的定义是可以的，每个人可以应用需要决定什么样的注册服务的方式是最适当的。
+
+Array Syntax
+------------
+使用数组的方式去注册服务也是可以的：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di;
+    use Phalcon\Http\Request;
+
+    // 创建一个依赖注入容器
+    $di = new Di();
+
+    // 通过类名称设置服务
+    $di["request"] = "Phalcon\\Http\\Request";
+
+    // 使用匿名函数去设置服务，这个实例将被延迟加载
+    $di["request"] = function () {
+        return new Request();
+    };
+
+    // 直接注册一个实例
+    $di["request"] = new Request();
+
+    // 使用数组方式定义服务
+    $di["request"] = [
+        "className" => "Phalcon\\Http\\Request"
+    ];
+
+在上面的例子中，当框架需要访问request服务的内容，它会在容器里面查找名为‘request’的服务。
+在容器中将返回所需要的服务的实例。当有需要时，开发者可能最终需要替换这个组件。
+
+每个方法（在上面的例子证明）用于设置/注册服务方面具都具有优势和劣势。这是由开发者和特别的要求决定具体使用哪个。
+
+通过字符串设置一个服务是很简单，但是缺乏灵活性。通过数组设置服务提供了更加灵活的方式，但是使代码更复杂。匿名函数是上述两者之间的一个很好的平衡，但是会导致比预期的更多维护。
+
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` 对每个储存的服务提供了延迟加载。除非开发者选择直接实例化一个对象并将其存储在容器中，任何储存在里面的对象(通过数组，字符串等等设置的)都将延迟加载，即只要当使用到时才实例化。
 
 服务解疑（Resolving Services）
 ==============================
