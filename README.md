@@ -34,4 +34,8 @@ The API is automatically generated from the C source code using the following co
 
     php scripts/gen-api.php
 
-If you find an error or want to improve it, please send a pull request to https://github.com/phalcon/docs (documentation) or https://github.com/phalcon/cphalcon (source code).
+If you find an error or want to improve it, please send a pull request:
+* Phalcon source code: https://github.com/phalcon/cphalcon
+* Documentation: https://github.com/phalcon/docs
+* Devtools: https://github.com/phalcon/phalcon-devtools
+* Zephir documentation: https://github.com/phalcon/zephir-docs
