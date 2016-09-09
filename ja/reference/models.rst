@@ -152,6 +152,16 @@
 
 パブリックプロパティは、開発中の複雑さを少なくします。しかしゲッター/セッターは、アプリケーションのテスト容易性、拡張性と保守性を大きく向上させることができます。開発者は、作成しているアプリケーションに、より適している戦略を決定することができます。 ORMは定義するプロパティの両方の方式に対応しています。
 
+.. highlights::
+
+    Underscores in property names can be problematic when using getters and setters.
+
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
+with magic methods. (e.g. $model->getPropertyName instead of $model->getProperty_name, $model->findByPropertyName
+instead of $model->findByProperty_name, etc.). As much of the system expects camel case, and underscores are commonly
+removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+
 名前空間内のモデル
 ^^^^^^^^^^^^^^^^^^^^
 名前空間は、クラス名の衝突を回避するために使用することができます。マップされたテーブルはクラス名から取得されます、この場合は 'Robots':

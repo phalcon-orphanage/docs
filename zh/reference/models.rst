@@ -160,6 +160,16 @@
 公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
 开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
 
+.. highlights::
+
+    Underscores in property names can be problematic when using getters and setters.
+
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
+with magic methods. (e.g. $model->getPropertyName instead of $model->getProperty_name, $model->findByPropertyName
+instead of $model->findByProperty_name, etc.). As much of the system expects camel case, and underscores are commonly
+removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 命名空间可以用来避免类名的冲突。ORM通过类名来映射相应的表名。比如 'Robots'：

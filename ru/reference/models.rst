@@ -169,6 +169,16 @@ CRUD операции, расширенные поисковые возможн�
 расширяемым и удобным в сопровождении. Разработчик вправе сам определить способ описания модели.
 ORM совместим с обоими способами.
 
+.. highlights::
+
+    Underscores in property names can be problematic when using getters and setters.
+
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
+with magic methods. (e.g. $model->getPropertyName instead of $model->getProperty_name, $model->findByPropertyName
+instead of $model->findByProperty_name, etc.). As much of the system expects camel case, and underscores are commonly
+removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+
 Модели в пространствах имен
 ---------------------------
 Вы можете использовать пространства имен, чтобы избежать конфликтов, связанных с именами классов. В этом случае, имя таблицы, из которой модель получает данные, соответствует имени класса (преобразуется в нижний регистр).
