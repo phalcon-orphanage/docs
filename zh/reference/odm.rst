@@ -105,13 +105,15 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     $robot = Robots::findFirst(
-        array(
-            array(
-                'name' => 'Astro Boy'
-            )
-        )
+        [
+            [
+                "name" => "Astro Boy",
+            ]
+        ]
     );
+
     $robot->name = "Voltron";
+
     $robot->save();
 
 设置连接（Setting a Connection）
@@ -123,16 +125,28 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function () {
-        $mongo = new MongoClient();
-        return $mongo->selectDB("store");
-    }, true);
+    $di->set(
+        "mongo",
+        function () {
+            $mongo = new MongoClient();
+
+            return $mongo->selectDB("store");
+        },
+        true
+    );
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function () {
-        $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-        return $mongo->selectDB("store");
-    }, true);
+    $di->set(
+        "mongo",
+        function () {
+            $mongo = new MongoClient(
+                "mongodb:///tmp/mongodb-27017.sock,localhost:27017"
+            );
+
+            return $mongo->selectDB("store");
+        },
+        true
+    );
 
 查找文档（Finding Documents）
 -----------------------------
@@ -150,24 +164,24 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // How many mechanical robots are there?
     $robots = Robots::find(
-        array(
-            array(
+        [
+            [
                 "type" => "mechanical"
-            )
-        )
+            ]
+        ]
     );
     echo "There are ", count($robots), "\n";
 
     // Get and print mechanical robots ordered by name upward
     $robots = Robots::find(
-        array(
-            array(
+        [
+            [
                 "type" => "mechanical"
-            ),
-            "sort" => array(
+            ],
+            "sort" => [
                 "name" => 1
-            )
-        )
+            ]
+        ]
     );
 
     foreach ($robots as $robot) {
@@ -176,15 +190,15 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // Get first 100 mechanical robots ordered by name
     $robots = Robots::find(
-        array(
-            array(
+        [
+            [
                 "type" => "mechanical"
-            ),
-            "sort"  => array(
+            ],
+            "sort"  => [
                 "name" => 1
-            ),
-            "limit" => 100
-        )
+            ],
+            "limit" => 100,
+        ]
     );
 
     foreach ($robots as $robot) {
@@ -203,11 +217,11 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // What's the first mechanical robot in robots collection?
     $robot = Robots::findFirst(
-        array(
-            array(
+        [
+            [
                 "type" => "mechanical"
-            )
-        )
+            ]
+        ]
     );
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
@@ -219,20 +233,24 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // First robot where type = "mechanical" and year = "1999"
     $robot = Robots::findFirst(
-        array(
-            "conditions" => array(
+        [
+            "conditions" => [
                 "type" => "mechanical",
                 "year" => "1999"
-            )
-        )
+            ]
+        ]
     );
 
     // All virtual robots ordered by name downward
     $robots = Robots::find(
-        array(
-            "conditions" => array("type" => "virtual"),
-            "sort"       => array("name" => -1)
-        )
+        [
+            "conditions" => [
+                "type" => "virtual"
+            ],
+            "sort" => [
+                "name" => -1
+            ],
+        ]
     );
 
 可用的查询选项：
@@ -262,17 +280,23 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     $data = Article::aggregate(
-        array(
-            array(
-                '$project' => array('category' => 1)
-            ),
-            array(
-                '$group' => array(
-                    '_id' => array('category' => '$category'),
-                    'id'  => array('$max' => '$_id')
-                )
-            )
-        )
+        [
+            [
+                "$project" => [
+                    "category" => 1
+                ]
+            ],
+            [
+                "$group" => [
+                    "_id" => [
+                        "category" => "$category"
+                    ],
+                    'id'  => [
+                        "$max" => "$_id"
+                    ]
+                ]
+            ]
+        ]
     );
 
 创建和更新记录（Creating Updating/Records）
@@ -286,12 +310,15 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
-    $robot       = new Robots();
+    $robot = new Robots();
+
     $robot->type = "mechanical";
     $robot->name = "Astro Boy";
     $robot->year = 1952;
-    if ($robot->save() == false) {
+
+    if ($robot->save() === false) {
         echo "Umh, We can't store robots right now: \n";
+
         foreach ($robot->getMessages() as $message) {
             echo $message, "\n";
         }
@@ -306,6 +333,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     $robot->save();
+
     echo "The generated id is: ", $robot->getId();
 
 验证信息（Validation Messages）
@@ -320,7 +348,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     <?php
 
     if ($robot->save() == false) {
-        foreach ($robot->getMessages() as $message) {
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage();
             echo "Field: ", $message->getField();
             echo "Type: ", $message->getType();
@@ -390,13 +420,13 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
         public function beforeCreate()
         {
             // Set the creation date
-            $this->created_at = date('Y-m-d H:i:s');
+            $this->created_at = date("Y-m-d H:i:s");
         }
 
         public function beforeUpdate()
         {
             // Set the modification date
-            $this->modified_in = date('Y-m-d H:i:s');
+            $this->modified_in = date("Y-m-d H:i:s");
         }
     }
 
@@ -406,27 +436,32 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $eventsManager = new EventsManager();
 
     // Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function ($event, $robot) {
-        if ($event->getType() == 'beforeSave') {
-            if ($robot->name == 'Scooby Doo') {
+    $eventsManager->attach(
+        "collection:beforeSave",
+        function (Event $event, $robot) {
+            if ($robot->name === "Scooby Doo") {
                 echo "Scooby Doo isn't a robot!";
 
                 return false;
             }
+
+            return true;
         }
+    );
 
-        return true;
-    });
+    $robot = new Robots();
 
-    $robot       = new Robots();
     $robot->setEventsManager($eventsManager);
-    $robot->name = 'Scooby Doo';
+
+    $robot->name = "Scooby Doo";
     $robot->year = 1969;
+
     $robot->save();
 
 上面的例子中EventsManager仅在对象和监听器（匿名函数）之间扮演了一个桥接器的角色。如果我们想在创建应用时使用同一个EventsManager,我们需要把这个EventsManager对象设置到 collectionManager服务中：
@@ -435,27 +470,25 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Collection\Manager as CollectionManager;
 
     // Registering the collectionManager service
     $di->set(
-        'collectionManager',
+        "collectionManager",
         function () {
-
             $eventsManager = new EventsManager();
 
             // Attach an anonymous function as a listener for "model" events
             $eventsManager->attach(
-                'collection',
-                function ($event, $model) {
-                    if (get_class($model) == 'Robots') {
-                        if ($event->getType() == 'beforeSave') {
-                            if ($model->name == 'Scooby Doo') {
-                                echo "Scooby Doo isn't a robot!";
+                "collection:beforeSave",
+                function (Event $event, $model) {
+                    if (get_class($model) == "Robots") {
+                        if ($model->name == "Scooby Doo") {
+                            echo "Scooby Doo isn't a robot!";
 
-                                return false;
-                            }
+                            return false;
                         }
                     }
 
@@ -522,24 +555,27 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
         {
             $this->validate(
                 new InclusionIn(
-                    array(
+                    [
                         "field"   => "type",
                         "message" => "Type must be: mechanical or virtual",
-                        "domain"  => array("Mechanical", "Virtual")
-                    )
+                        "domain"  => [
+                            "Mechanical",
+                            "Virtual",
+                        ],
+                    ]
                 )
             );
 
             $this->validate(
                 new Numericality(
-                    array(
+                    [
                         "field"   => "price",
-                        "message" => "Price must be numeric"
-                    )
+                        "message" => "Price must be numeric",
+                    ]
                 )
             );
 
-            return $this->validationHasFailed() != true;
+            return $this->validationHasFailed() !== true;
         }
     }
 
@@ -574,12 +610,18 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     {
         public function validate($model)
         {
-            $field = $this->getOption('field');
+            $field = $this->getOption("field");
 
-            $value    = $model->$field;
+            $value = $model->$field;
+
             $filtered = filter_var($value, FILTER_VALIDATE_URL);
+
             if (!$filtered) {
-                $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+                $this->appendMessage(
+                    "The URL is invalid",
+                    $field,
+                    "UrlValidator"
+                );
 
                 return false;
             }
@@ -602,13 +644,13 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
         {
             $this->validate(
                 new UrlValidator(
-                    array(
+                    [
                         "field"  => "url",
-                    )
+                    ]
                 )
             );
 
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -627,7 +669,7 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     {
         public function validation()
         {
-            if ($this->type == "Old") {
+            if ($this->type === "Old") {
                 $message = new ModelMessage(
                     "Sorry, old robots are not allowed anymore",
                     "type",
@@ -652,9 +694,11 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     <?php
 
     $robot = Robots::findFirst();
-    if ($robot != false) {
-        if ($robot->delete() == false) {
+
+    if ($robot !== false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
+
             foreach ($robot->getMessages() as $message) {
                 echo $message, "\n";
             }
@@ -670,17 +714,20 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     <?php
 
     $robots = Robots::find(
-        array(
-            array(
-                "type" => "mechanical"
-            )
-        )
+        [
+            [
+                "type" => "mechanical",
+            ]
+        ]
     );
 
     foreach ($robots as $robot) {
         if ($robot->delete() == false) {
             echo "Sorry, we can't delete the robot right now: \n";
-            foreach ($robot->getMessages() as $message) {
+
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -739,9 +786,11 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
 
     // This service returns a mongo database at 192.168.1.100
     $di->set(
-        'mongo1',
+        "mongo1",
         function () {
-            $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+            $mongo = new MongoClient(
+                "mongodb://scott:nekhen@192.168.1.100"
+            );
 
             return $mongo->selectDB("management");
         },
@@ -750,9 +799,11 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
 
     // This service returns a mongo database at localhost
     $di->set(
-        'mongo2',
+        "mongo2",
         function () {
-            $mongo = new MongoClient("mongodb://localhost");
+            $mongo = new MongoClient(
+                "mongodb://localhost"
+            );
 
             return $mongo->selectDB("invoicing");
         },
@@ -771,7 +822,7 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
     {
         public function initialize()
         {
-            $this->setConnectionService('mongo1');
+            $this->setConnectionService("mongo1");
         }
     }
 
@@ -790,11 +841,15 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
         public function notSave()
         {
             // Obtain the flash service from the DI container
-            $flash = $this->getDI()->getShared('flash');
+            $flash = $this->getDI()->getShared("flash");
+
+            $messages = $this->getMessages();
 
             // Show validation messages
-            foreach ($this->getMessages() as $message) {
-                $flash->error((string) $message);
+            foreach ($messages as $message) {
+                $flash->error(
+                    (string) $message
+                );
             }
         }
     }
