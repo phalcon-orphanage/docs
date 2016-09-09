@@ -4,6 +4,15 @@
 此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。
 这些钩子允许开发者获得状态信息，操纵数据或者改变某个组件进程中的执行流向。
 
+Naming Convention
+-----------------
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create
+your own as you see fit. Event names are formatted as "component:event". For example, as :doc:`Phalcon\\Db <../api/Phalcon_Db>`: occupies the "db"
+namespace, its "afterQuery" event's full name is "db:afterQuery".
+
+When attaching event listeners to the events manager, you can use "component" to catch all events from that component (eg. "db" to catch all of the
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`: events) or "component:event" to target a specific event (eg. "db:afterQuery").
+
 使用示例（Usage Example）
 -------------------------
 以下面示例中，我们使用EventsManager来侦听在 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 管理下的MySQL连接中产生的事件。
