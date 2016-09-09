@@ -239,7 +239,7 @@ As :code:`someTask()` is executed, the two methods in the listener will be execu
     Here, someTask
     Here, afterSomeTask
 
-Additional data may also passed when triggering an event using the third parameter of :code:`fire()`:
+Additional data may also be passed when triggering an event using the third parameter of :code:`fire()`:
 
 .. code-block:: php
 
@@ -273,9 +273,9 @@ In a listener the third parameter also receives this data:
 
 Event Propagation/Cancellation
 ------------------------------
-Many listeners may be added to the same event manager. This means that for the same type of event many listeners can be notified.
+Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified.
 The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
-these may be stopped preventing other listeners are notified about the event:
+these may be stopped preventing other listeners from being notified about the event:
 
 .. code-block:: php
 
@@ -296,7 +296,7 @@ these may be stopped preventing other listeners are notified about the event:
         }
     );
 
-By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
+By default, events are cancelable - even most of the events produced by the framework are cancelables. You can fire a not-cancelable event
 by passing :code:`false` in the fourth parameter of :code:`fire()`:
 
 .. code-block:: php
