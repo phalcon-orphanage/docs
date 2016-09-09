@@ -105,6 +105,7 @@
 
     <?php
 
+    use InvalidArgumentException;
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -124,8 +125,11 @@
         {
             // 名前が短すぎる？
             if (strlen($name) < 10) {
-                throw new \InvalidArgumentException('The name is too short');
+                throw new InvalidArgumentException(
+                    "The name is too short"
+                );
             }
+
             $this->name = $name;
         }
 
@@ -138,8 +142,11 @@
         {
             // マイナスの価格が許可されていません
             if ($price < 0) {
-                throw new \InvalidArgumentException('Price can\'t be negative');
+                throw new InvalidArgumentException(
+                    "Price can't be negative"
+                );
             }
+
             $this->price = $price;
         }
 
@@ -197,7 +204,11 @@ Namespaces make part of model names when they are within strings:
 
         public function initialize()
         {
-            $this->hasMany('id', 'Store\Toys\RobotsParts', 'robots_id');
+            $this->hasMany(
+                "id",
+                "Store\\Toys\\RobotsParts",
+                "robots_id"
+            );
         }
     }
 
@@ -235,8 +246,10 @@ Namespaces make part of model names when they are within strings:
 
     <?php
 
-    $robot       = Robots::findFirst(3);
+    $robot = Robots::findFirst(3);
+
     $robot->name = "RoboCop";
+
     $robot->save();
 
 ご覧のように、生のSQL文を使用する必要はありません。  :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` は、Webアプリケーションのための高いデータベース抽象化を提供します。
@@ -259,10 +272,10 @@ Namespaces make part of model names when they are within strings:
 
     // name 順に並べた virtual robots を取得し印刷
     $robots = Robots::find(
-        array(
+        [
             "type = 'virtual'",
-            "order" => "name"
-        )
+            "order" => "name",
+        ]
     );
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
@@ -270,11 +283,11 @@ Namespaces make part of model names when they are within strings:
 
     // virtual robotsのname順の最初の100件を取得
     $robots = Robots::find(
-        array(
+        [
             "type = 'virtual'",
             "order" => "name",
-            "limit" => 100
-        )
+            "limit" => 100,
+        ]
     );
     foreach ($robots as $robot) {
        echo $robot->name, "\n";
@@ -300,10 +313,10 @@ Namespaces make part of model names when they are within strings:
 
     // virtual robotsのname順の最初を取得
     $robot = Robots::findFirst(
-        array(
+        [
             "type = 'virtual'",
-            "order" => "name"
-        )
+            "order" => "name",
+        ]
     );
     echo "The first virtual robot name is ", $robot->name, "\n";
 
@@ -314,49 +327,51 @@ Namespaces make part of model names when they are within strings:
     <?php
 
     $robot = Robots::findFirst(
-        array(
+        [
             "type = 'virtual'",
             "order" => "name DESC",
-            "limit" => 30
-        )
+            "limit" => 30,
+        ]
     );
 
     $robots = Robots::find(
-        array(
+        [
             "conditions" => "type = ?1",
-            "bind"       => array(1 => "virtual")
-        )
+            "bind"       => [
+                1 => "virtual",
+            ]
+        ]
     );
 
 利用可能なクエリオプションは次のとおり:
 
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                                                          | Example                                                                         |
-+=============+======================================================================================================================================================================================================================================+=================================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` assumes the first parameter are the conditions. | :code:`"conditions" => "name LIKE 'steve%'"`                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                            | :code:`"columns" => "id, name"`                                                 |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                           | :code:`"bind" => array("status" => "A", "type" => "some-time")`                 |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                           | :code:`"bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)`    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                           | :code:`"order" => "name DESC, status"`                                          |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                                                           | :code:`"limit" => 10`                                                           |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| offset      | Offset the results of the query by a certain amount                                                                                                                                                                                  | :code:`"offset" => 5`                                                           |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                                                          | :code:`"group" => "name, status"`                                               |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                                                                | :code:`"for_update" => true`                                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                                                   | :code:`"shared_lock" => true`                                                   |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                         | :code:`"cache" => array("lifetime" => 3600, "key" => "my-find-key")`            |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                          | :code:`"hydration" => Resultset::HYDRATE_OBJECTS`                               |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                                                          | Example                                                                    |
++=============+======================================================================================================================================================================================================================================+============================================================================+
+| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` assumes the first parameter are the conditions. | :code:`"conditions" => "name LIKE 'steve%'"`                               |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                            | :code:`"columns" => "id, name"`                                            |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                           | :code:`"bind" => ["status" => "A", "type" => "some-time"]`                 |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                           | :code:`"bindTypes" => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]`    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                           | :code:`"order" => "name DESC, status"`                                     |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| limit       | Limit the results of the query to results to certain range                                                                                                                                                                           | :code:`"limit" => 10`                                                      |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| offset      | Offset the results of the query by a certain amount                                                                                                                                                                                  | :code:`"offset" => 5`                                                      |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                                                          | :code:`"group" => "name, status"`                                          |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                                                                | :code:`"for_update" => true`                                               |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                                                   | :code:`"shared_lock" => true`                                              |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                         | :code:`"cache" => ["lifetime" => 3600, "key" => "my-find-key"]`            |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                          | :code:`"hydration" => Resultset::HYDRATE_OBJECTS`                          |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 必要に応じて、パラメータの配列を使用する代わりに、オブジェクト指向の方法でクエリを作成する方法があります:
 
@@ -367,7 +382,7 @@ Namespaces make part of model names when they are within strings:
     $robots = Robots::query()
         ->where("type = :type:")
         ->andWhere("year < 2000")
-        ->bind(array("type" => "mechanical"))
+        ->bind(["type" => "mechanical"])
         ->order("name")
         ->execute();
 
@@ -401,7 +416,8 @@ the table with the name 'Terminator'. This could be written like:
 
     <?php
 
-    $name  = "Terminator";
+    $name = "Terminator";
+
     $robot = Robots::findFirstByName($name);
 
     if ($robot) {
@@ -437,9 +453,12 @@ is that at any time there is only one record in memory. This greatly helps in me
 
     // Traversing with a while
     $robots->rewind();
+
     while ($robots->valid()) {
         $robot = $robots->current();
+
         echo $robot->name, "\n";
+
         $robots->next();
     }
 
@@ -451,6 +470,7 @@ is that at any time there is only one record in memory. This greatly helps in me
 
     // Move the internal cursor to the third robot
     $robots->seek(2);
+
     $robot = $robots->current();
 
     // Access a robot by its position in the resultset
@@ -487,10 +507,15 @@ thus consuming more memory while this process takes place.
     $parts = Parts::find();
 
     // Store the resultset into a file
-    file_put_contents("cache.txt", serialize($parts));
+    file_put_contents(
+        "cache.txt",
+        serialize($parts)
+    );
 
     // Get parts from file
-    $parts = unserialize(file_get_contents("cache.txt"));
+    $parts = unserialize(
+        file_get_contents("cache.txt")
+    );
 
     // Traverse the parts
     foreach ($parts as $part) {
@@ -506,9 +531,10 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
     <?php
 
-    $customers = Customers::find()->filter(
-        function ($customer) {
+    $customers = Customers::find();
 
+    $customers = $customers->filter(
+        function ($customer) {
             // Return only customers with a valid e-mail
             if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
                 return $customer;
@@ -530,44 +556,49 @@ Both string and integer placeholders are supported. Binding parameters can simpl
     $conditions = "name = :name: AND type = :type:";
 
     // Parameters whose keys are the same as placeholders
-    $parameters = array(
+    $parameters = [
         "name" => "Robotina",
-        "type" => "maid"
-    );
+        "type" => "maid",
+    ];
 
     // Perform the query
     $robots = Robots::find(
-        array(
+        [
             $conditions,
-            "bind" => $parameters
-        )
+            "bind" => $parameters,
+        ]
     );
 
     // Query robots binding parameters with integer placeholders
     $conditions = "name = ?1 AND type = ?2";
-    $parameters = array(1 => "Robotina", 2 => "maid");
-    $robots     = Robots::find(
-        array(
+
+    $parameters = [
+        1 => "Robotina",
+        2 => "maid",
+    ];
+
+    $robots = Robots::find(
+        [
             $conditions,
-            "bind" => $parameters
-        )
+            "bind" => $parameters,
+        ]
     );
 
     // Query robots binding parameters with both string and integer placeholders
     $conditions = "name = :name: AND type = ?1";
 
     // Parameters whose keys are the same as placeholders
-    $parameters = array(
+    $parameters = [
         "name" => "Robotina",
-        1      => "maid"
-    );
+        1      => "maid",
+    ];
 
     // Perform the query
     $robots = Robots::find(
-        array(
+        [
             $conditions,
-            "bind" => $parameters
-        )
+            "bind" => $parameters,
+        ]
     );
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
@@ -586,24 +617,24 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     use Phalcon\Db\Column;
 
     // Bind parameters
-    $parameters = array(
+    $parameters = [
         "name" => "Robotina",
-        "year" => 2008
-    );
+        "year" => 2008,
+    ];
 
     // Casting Types
-    $types = array(
+    $types = [
         "name" => Column::BIND_PARAM_STR,
-        "year" => Column::BIND_PARAM_INT
-    );
+        "year" => Column::BIND_PARAM_INT,
+    ];
 
     // Query robots binding parameters with string placeholders
     $robots = Robots::find(
-        array(
+        [
             "name = :name: AND year = :year:",
             "bind"      => $parameters,
-            "bindTypes" => $types
-        )
+            "bindTypes" => $types,
+        ]
     );
 
 .. highlights::
@@ -625,12 +656,12 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
     $array = array_values($array); // $array: [[0] => "a", [1] => "c"]
 
     $robots = Robots::find(
-        array(
+        [
             'letter IN ({letter:array})',
-            'bind' => array(
+            'bind' => [
                 'letter' => $array
-            )
-        )
+            ]
+        ]
     );
 
 .. highlights::
@@ -646,10 +677,12 @@ If you're using "finders", bound parameters are automatically used for you:
 
     // Explicit query using bound parameters
     $robots = Robots::find(
-        array(
+        [
             "name = ?0",
-            "bind" => ["Ultron"],
-        )
+            "bind" => [
+                "Ultron",
+            ],
+        ]
     );
 
     // Implicit query using bound parameters
@@ -678,19 +711,19 @@ will be executed just after create the instance and assign the data to it:
         public function beforeSave()
         {
             // Convert the array into a string
-            $this->status = join(',', $this->status);
+            $this->status = join(",", $this->status);
         }
 
         public function afterFetch()
         {
             // Convert the string to an array
-            $this->status = explode(',', $this->status);
+            $this->status = explode(",", $this->status);
         }
         
         public function afterSave()
         {
             // Convert the string to an array
-            $this->status = explode(',', $this->status);
+            $this->status = explode(",", $this->status);
         }
     }
 
@@ -713,7 +746,7 @@ accessed:
 
         public function getStatus()
         {
-            return explode(',', $this->status);
+            return explode(",", $this->status);
         }
     }
 
@@ -805,7 +838,11 @@ The models with their relations could be implemented as follows:
 
         public function initialize()
         {
-            $this->hasMany("id", "RobotsParts", "robots_id");
+            $this->hasMany(
+                "id",
+                "RobotsParts",
+                "robots_id"
+            );
         }
     }
 
@@ -823,7 +860,11 @@ The models with their relations could be implemented as follows:
 
         public function initialize()
         {
-            $this->hasMany("id", "RobotsParts", "parts_id");
+            $this->hasMany(
+                "id",
+                "RobotsParts",
+                "parts_id"
+            );
         }
     }
 
@@ -843,8 +884,17 @@ The models with their relations could be implemented as follows:
 
         public function initialize()
         {
-            $this->belongsTo("robots_id", "Robots", "id");
-            $this->belongsTo("parts_id", "Parts", "id");
+            $this->belongsTo(
+                "robots_id",
+                "Robots",
+                "id"
+            );
+
+            $this->belongsTo(
+                "parts_id",
+                "Parts",
+                "id"
+            );
         }
     }
 
@@ -886,6 +936,7 @@ When explicitly defining the relationships between models, it is easy to find re
     <?php
 
     $robot = Robots::findFirst(2);
+
     foreach ($robot->robotsParts as $robotPart) {
         echo $robotPart->parts->name, "\n";
     }
@@ -898,8 +949,10 @@ By accessing an attribute with the same name as the relationship will retrieve a
 
     <?php
 
-    $robot       = Robots::findFirst();
-    $robotsParts = $robot->robotsParts; // All the related records in RobotsParts
+    $robot = Robots::findFirst();
+
+    // All the related records in RobotsParts
+    $robotsParts = $robot->robotsParts;
 
 Also, you can use a magic getter:
 
@@ -907,9 +960,17 @@ Also, you can use a magic getter:
 
     <?php
 
-    $robot       = Robots::findFirst();
-    $robotsParts = $robot->getRobotsParts(); // All the related records in RobotsParts
-    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Passing parameters
+    $robot = Robots::findFirst();
+
+    // All the related records in RobotsParts
+    $robotsParts = $robot->getRobotsParts();
+
+    // Passing parameters
+    $robotsParts = $robot->getRobotsParts(
+        [
+            "limit" => 5,
+        ]
+    );
 
 If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
 :code:`findFirst()`/:code:`find()` result. The following example compares retrieving related results with using magic methods
@@ -919,7 +980,7 @@ and without:
 
     <?php
 
-    $robot       = Robots::findFirst(2);
+    $robot = Robots::findFirst(2);
 
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts then
@@ -930,15 +991,15 @@ and without:
 
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(
-        array(
+        [
             "created_at = :date:",
-            "bind" => array(
+            "bind" => [
                 "date" => "2015-03-15"
-            )
-        )
+            ]
+        ]
     );
 
-    $robotPart   = RobotsParts::findFirst(1);
+    $robotPart = RobotsParts::findFirst(1);
 
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
@@ -950,22 +1011,26 @@ Getting related records manually:
 
     <?php
 
-    $robot       = Robots::findFirst(2);
+    $robot = Robots::findFirst(2);
 
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts, then
-    $robotsParts = RobotsParts::find("robots_id = '" . $robot->id . "'");
+    $robotsParts = RobotsParts::find(
+        "robots_id = '" . $robot->id . "'"
+    );
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
         "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
-    $robotPart   = RobotsParts::findFirst(1);
+    $robotPart = RobotsParts::findFirst(1);
 
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
-    $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
+    $robot = Robots::findFirst(
+        "id = '" . $robotPart->robots_id . "'"
+    );
 
 
 The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
@@ -990,6 +1055,7 @@ You can also use "count" prefix to return an integer denoting the count of the r
     <?php
 
     $robot = Robots::findFirst(2);
+
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
 
 Aliasing Relationships
@@ -1025,8 +1091,17 @@ A model that maps this table and its relationships is the following:
     {
         public function initialize()
         {
-            $this->belongsTo('robots_id', 'Robots', 'id');
-            $this->belongsTo('similar_robots_id', 'Robots', 'id');
+            $this->belongsTo(
+                "robots_id",
+                "Robots",
+                "id"
+            );
+
+            $this->belongsTo(
+                "similar_robots_id",
+                "Robots",
+                "id"
+            );
         }
     }
 
@@ -1059,21 +1134,21 @@ The aliases allow us to rename both relationships to solve these problems:
         public function initialize()
         {
             $this->belongsTo(
-                'robots_id',
-                'Robots',
-                'id',
-                array(
-                    'alias' => 'Robot'
-                )
+                "robots_id",
+                "Robots",
+                "id",
+                [
+                    "alias" => "Robot",
+                ]
             );
 
             $this->belongsTo(
-                'similar_robots_id',
-                'Robots',
-                'id',
-                array(
-                    'alias' => 'SimilarRobot'
-                )
+                "similar_robots_id",
+                "Robots",
+                "id",
+                [
+                    "alias" => "SimilarRobot",
+                ]
             );
         }
     }
@@ -1114,7 +1189,11 @@ docblocks helping the IDE to produce a better auto-completion:
 
         public function initialize()
         {
-            $this->hasMany("id", "RobotsParts", "robots_id");
+            $this->hasMany(
+                "id",
+                "RobotsParts",
+                "robots_id"
+            );
         }
 
         /**
@@ -1124,7 +1203,7 @@ docblocks helping the IDE to produce a better auto-completion:
          */
         public function getRobotsParts($parameters = null)
         {
-            return $this->getRelated('RobotsParts', $parameters);
+            return $this->getRelated("RobotsParts", $parameters);
         }
     }
 
@@ -1156,20 +1235,20 @@ The RobotsPart model can be changed to demonstrate this feature:
                 "robots_id",
                 "Robots",
                 "id",
-                array(
+                [
                     "foreignKey" => true
-                )
+                ]
             );
 
             $this->belongsTo(
                 "parts_id",
                 "Parts",
                 "id",
-                array(
-                    "foreignKey" => array(
+                [
+                    "foreignKey" => [
                         "message" => "The part_id does not exist on the Parts model"
-                    )
-                )
+                    ]
+                ]
             );
         }
     }
@@ -1192,11 +1271,11 @@ if that record is used on a referenced model.
                 "id",
                 "RobotsParts",
                 "parts_id",
-                array(
-                    "foreignKey" => array(
-                        "message" => "The part cannot be deleted because other robots are using it"
-                    )
-                )
+                [
+                    "foreignKey" => [
+                        "message" => "The part cannot be deleted because other robots are using it",
+                    ]
+                ]
             );
         }
     }
@@ -1223,12 +1302,12 @@ A virtual foreign key can be set up to allow null values as follows:
                 "parts_id",
                 "Parts",
                 "id",
-                array(
-                    "foreignKey" => array(
+                [
+                    "foreignKey" => [
                         "allowNulls" => true,
-                        "message"    => "The part_id does not exist on the Parts model"
-                    )
-                )
+                        "message"    => "The part_id does not exist on the Parts model",
+                    ]
+                ]
             );
         }
     }
@@ -1256,14 +1335,14 @@ to maintain the integrity of data:
         public function initialize()
         {
             $this->hasMany(
-                'id',
-                'Store\\Models\\Parts',
-                'robots_id',
-                array(
-                    'foreignKey' => array(
-                        'action' => Relation::ACTION_CASCADE
-                    )
-                )
+                "id",
+                "Store\\Models\\Parts",
+                "robots_id",
+                [
+                    "foreignKey" => [
+                        "action" => Relation::ACTION_CASCADE,
+                    ]
+                ]
             );
         }
     }
@@ -1286,9 +1365,9 @@ Count examples:
 
     // How many different areas are assigned to employees?
     $rowcount = Employees::count(
-        array(
-            "distinct" => "area"
-        )
+        [
+            "distinct" => "area",
+        ]
     );
 
     // How many employees are in the Testing area?
@@ -1298,9 +1377,9 @@ Count examples:
 
     // Count employees grouping results by their area
     $group = Employees::count(
-        array(
-            "group" => "area"
-        )
+        [
+            "group" => "area",
+        ]
     );
     foreach ($group as $row) {
        echo "There are ", $row->rowcount, " in ", $row->area;
@@ -1308,18 +1387,20 @@ Count examples:
 
     // Count employees grouping by their area and ordering the result by count
     $group = Employees::count(
-        array(
+        [
             "group" => "area",
-            "order" => "rowcount"
-        )
+            "order" => "rowcount",
+        ]
     );
 
     // Avoid SQL injections using bound parameters
     $group = Employees::count(
-        array(
+        [
             "type > ?0",
-            "bind" => array($type)
-        )
+            "bind" => [
+                $type
+            ],
+        ]
     );
 
 Sum examples:
@@ -1330,25 +1411,25 @@ Sum examples:
 
     // How much are the salaries of all employees?
     $total = Employees::sum(
-        array(
-            "column" => "salary"
-        )
+        [
+            "column" => "salary",
+        ]
     );
 
     // How much are the salaries of all employees in the Sales area?
     $total = Employees::sum(
-        array(
+        [
             "column"     => "salary",
-            "conditions" => "area = 'Sales'"
-        )
+            "conditions" => "area = 'Sales'",
+        ]
     );
 
     // Generate a grouping of the salaries of each area
     $group = Employees::sum(
-        array(
+        [
             "column" => "salary",
-            "group"  => "area"
-        )
+            "group"  => "area",
+        ]
     );
     foreach ($group as $row) {
        echo "The sum of salaries of the ", $row->area, " is ", $row->sumatory;
@@ -1357,19 +1438,21 @@ Sum examples:
     // Generate a grouping of the salaries of each area ordering
     // salaries from higher to lower
     $group = Employees::sum(
-        array(
+        [
             "column" => "salary",
             "group"  => "area",
-            "order"  => "sumatory DESC"
-        )
+            "order"  => "sumatory DESC",
+        ]
     );
 
     // Avoid SQL injections using bound parameters
     $group = Employees::sum(
-        array(
+        [
             "conditions" => "area > ?0",
-            "bind"       => array($area)
-        )
+            "bind"       => [
+                $area
+            ],
+        ]
     );
 
 Average examples:
@@ -1380,26 +1463,28 @@ Average examples:
 
     // What is the average salary for all employees?
     $average = Employees::average(
-        array(
-            "column" => "salary"
-        )
+        [
+            "column" => "salary",
+        ]
     );
 
     // What is the average salary for the Sales's area employees?
     $average = Employees::average(
-        array(
+        [
             "column"     => "salary",
-            "conditions" => "area = 'Sales'"
-        )
+            "conditions" => "area = 'Sales'",
+        ]
     );
 
     // Avoid SQL injections using bound parameters
     $average = Employees::average(
-        array(
+        [
             "column"     => "age",
             "conditions" => "area > ?0",
-            "bind"       => array($area)
-        )
+            "bind"       => [
+                $area
+            ],
+        ]
     );
 
 Max/Min examples:
@@ -1410,24 +1495,24 @@ Max/Min examples:
 
     // What is the oldest age of all employees?
     $age = Employees::maximum(
-        array(
-            "column" => "age"
-        )
+        [
+            "column" => "age",
+        ]
     );
 
     // What is the oldest of employees from the Sales area?
     $age = Employees::maximum(
-        array(
+        [
             "column"     => "age",
-            "conditions" => "area = 'Sales'"
-        )
+            "conditions" => "area = 'Sales'",
+        ]
     );
 
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(
-        array(
-            "column" => "salary"
-        )
+        [
+            "column" => "salary",
+        ]
     );
 
 Hydration Modes
@@ -1439,9 +1524,12 @@ representing a row in the database. These objects can be modified and saved agai
 
     <?php
 
+    $robots = Robots::find();
+
     // Manipulating a resultset of complete objects
-    foreach (Robots::find() as $robot) {
+    foreach ($robots as $robot) {
         $robot->year = 2000;
+
         $robot->save();
     }
 
@@ -1458,21 +1546,27 @@ returned in a resultset is called 'hydration mode':
     $robots = Robots::find();
 
     // Return every robot as an array
-    $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
+    $robots->setHydrateMode(
+        Resultset::HYDRATE_ARRAYS
+    );
 
     foreach ($robots as $robot) {
-        echo $robot['year'], PHP_EOL;
+        echo $robot["year"], PHP_EOL;
     }
 
     // Return every robot as a stdClass
-    $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
+    $robots->setHydrateMode(
+        Resultset::HYDRATE_OBJECTS
+    );
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
     // Return every robot as a Robots instance
-    $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
+    $robots->setHydrateMode(
+        Resultset::HYDRATE_RECORDS
+    );
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
@@ -1487,13 +1581,13 @@ Hydration mode can also be passed as a parameter of 'find':
     use Phalcon\Mvc\Model\Resultset;
 
     $robots = Robots::find(
-        array(
-            'hydration' => Resultset::HYDRATE_ARRAYS
-        )
+        [
+            "hydration" => Resultset::HYDRATE_ARRAYS,
+        ]
     );
 
     foreach ($robots as $robot) {
-        echo $robot['year'], PHP_EOL;
+        echo $robot["year"], PHP_EOL;
     }
 
 レコードの作成、更新
@@ -1509,14 +1603,18 @@ Also the method executes associated validators, virtual foreign keys and events 
 
     <?php
 
-    $robot       = new Robots();
+    $robot = new Robots();
+
     $robot->type = "mechanical";
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    if ($robot->save() == false) {
+    if ($robot->save() === false) {
         echo "Umh, We can't store robots right now: \n";
-        foreach ($robot->getMessages() as $message) {
+
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo $message, "\n";
         }
     } else {
@@ -1533,11 +1631,11 @@ the columns passed in the array giving priority to them instead of assign direct
     $robot = new Robots();
 
     $robot->save(
-        array(
+        [
             "type" => "mechanical",
             "name" => "Astro Boy",
-            "year" => 1952
-        )
+            "year" => 1952,
+        ]
     );
 
 Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
@@ -1548,6 +1646,7 @@ an insecure array without worrying about possible SQL injections:
     <?php
 
     $robot = new Robots();
+
     $robot->save($_POST);
 
 .. highlights::
@@ -1567,10 +1666,10 @@ the mass assignment:
 
     $robot->save(
         $_POST,
-        array(
-            'name',
-            'type'
-        )
+        [
+            "name",
+            "type",
+        ]
     );
 
 確実に作成／更新する
@@ -1583,15 +1682,19 @@ sure that a record is created or updated, we can change the :code:`save()` call 
 
     <?php
 
-    $robot       = new Robots();
+    $robot = new Robots();
+
     $robot->type = "mechanical";
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
     // This record only must be created
-    if ($robot->create() == false) {
+    if ($robot->create() === false) {
         echo "Umh, We can't store robots right now: \n";
-        foreach ($robot->getMessages() as $message) {
+
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo $message, "\n";
         }
     } else {
@@ -1643,13 +1746,15 @@ Magic properties can be used to store a records and its related properties:
     <?php
 
     // Create an artist
-    $artist          = new Artists();
-    $artist->name    = 'Shinichi Osawa';
-    $artist->country = 'Japan';
+    $artist = new Artists();
+
+    $artist->name    = "Shinichi Osawa";
+    $artist->country = "Japan";
 
     // Create an album
-    $album         = new Albums();
-    $album->name   = 'The One';
+    $album = new Albums();
+
+    $album->name   = "The One";
     $album->artist = $artist; // Assign the artist
     $album->year   = 2008;
 
@@ -1663,24 +1768,27 @@ Saving a record and its related records in a has-many relation:
     <?php
 
     // Get an existing artist
-    $artist = Artists::findFirst('name = "Shinichi Osawa"');
+    $artist = Artists::findFirst(
+        "name = 'Shinichi Osawa'"
+    );
 
     // Create an album
-    $album         = new Albums();
-    $album->name   = 'The One';
+    $album = new Albums();
+
+    $album->name   = "The One";
     $album->artist = $artist;
 
-    $songs = array();
+    $songs = [];
 
     // Create a first song
     $songs[0]           = new Songs();
-    $songs[0]->name     = 'Star Guitar';
-    $songs[0]->duration = '5:54';
+    $songs[0]->name     = "Star Guitar";
+    $songs[0]->duration = "5:54";
 
     // Create a second song
     $songs[1]           = new Songs();
-    $songs[1]->name     = 'Last Days';
-    $songs[1]->duration = '4:29';
+    $songs[1]->name     = "Last Days";
+    $songs[1]->duration = "4:29";
 
     // Assign the songs array
     $album->songs = $songs;
@@ -1713,8 +1821,10 @@ generated the message or the message type:
 
     <?php
 
-    if ($robot->save() == false) {
-        foreach ($robot->getMessages() as $message) {
+    if ($robot->save() === false) {
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage();
             echo "Field: ", $message->getField();
             echo "Type: ", $message->getType();
@@ -1749,17 +1859,20 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
     {
         public function getMessages()
         {
-            $messages = array();
+            $messages = [];
+
             foreach (parent::getMessages() as $message) {
                 switch ($message->getType()) {
-                    case 'InvalidCreateAttempt':
-                        $messages[] = 'The record cannot be created because it already exists';
+                    case "InvalidCreateAttempt":
+                        $messages[] = "The record cannot be created because it already exists";
                         break;
-                    case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it doesn\'t exist';
+
+                    case "InvalidUpdateAttempt":
+                        $messages[] = "The record cannot be updated because it doesn't exist";
                         break;
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+
+                    case "PresenceOf":
+                        $messages[] = "The field " . $message->getField() . " is mandatory";
                         break;
                 }
             }
@@ -1834,13 +1947,13 @@ Events can be useful to assign values before performing an operation, for exampl
         public function beforeCreate()
         {
             // Set the creation date
-            $this->created_at = date('Y-m-d H:i:s');
+            $this->created_at = date("Y-m-d H:i:s");
         }
 
         public function beforeUpdate()
         {
             // Set the modification date
-            $this->modified_in = date('Y-m-d H:i:s');
+            $this->modified_in = date("Y-m-d H:i:s");
         }
     }
 
@@ -1854,6 +1967,7 @@ this means we can create listeners that run when an event is triggered.
     <?php
 
     use Phalcon\Mvc\Model;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     class Robots extends Model
@@ -1863,16 +1977,18 @@ this means we can create listeners that run when an event is triggered.
             $eventsManager = new EventsManager();
 
             // Attach an anonymous function as a listener for "model" events
-            $eventsManager->attach('model', function ($event, $robot) {
-                if ($event->getType() == 'beforeSave') {
-                    if ($robot->name == 'Scooby Doo') {
+            $eventsManager->attach(
+                "model:beforeSave",
+                function (Event $event, $robot) {
+                    if ($robot->name == "Scooby Doo") {
                         echo "Scooby Doo isn't a robot!";
+
                         return false;
                     }
-                }
 
-                return true;
-            });
+                    return true;
+                }
+            );
 
             // Attach the events manager to the event
             $this->setEventsManager($eventsManager);
@@ -1886,8 +2002,9 @@ Events will be fired to the listener when 'robots' are saved:
 
     <?php
 
-    $robot       = new Robots();
-    $robot->name = 'Scooby Doo';
+    $robot = new Robots();
+
+    $robot->name = "Scooby Doo";
     $robot->year = 1969;
 
     $robot->save();
@@ -1898,34 +2015,40 @@ If we want all objects created in our application use the same EventsManager, th
 
     <?php
 
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
+
     // Registering the modelsManager service
-    $di->setShared('modelsManager', function () {
+    $di->setShared(
+        "modelsManager",
+        function () {
+            $eventsManager = new EventsManager();
 
-        $eventsManager = new \Phalcon\Events\Manager();
+            // Attach an anonymous function as a listener for "model" events
+            $eventsManager->attach(
+                "model:beforeSave",
+                function (Event $event, $model) {
+                    // Catch events produced by the Robots model
+                    if (get_class($model) === "Robots") {
+                        if ($model->name === "Scooby Doo") {
+                            echo "Scooby Doo isn't a robot!";
 
-        // Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('model', function ($event, $model) {
-
-            // Catch events produced by the Robots model
-            if (get_class($model) == 'Robots') {
-
-                if ($event->getType() == 'beforeSave') {
-                    if ($model->name == 'Scooby Doo') {
-                        echo "Scooby Doo isn't a robot!";
-                        return false;
+                            return false;
+                        }
                     }
+
+                    return true;
                 }
-            }
+            );
 
-            return true;
-        });
+            // Setting a default EventsManager
+            $modelsManager = new ModelsManager();
 
-        // Setting a default EventsManager
-        $modelsManager = new ModelsManager();
-        $modelsManager->setEventsManager($eventsManager);
+            $modelsManager->setEventsManager($eventsManager);
 
-        return $modelsManager;
-    });
+            return $modelsManager;
+        }
+    );
 
 If a listener returns false that will stop the operation that is executing currently.
 
@@ -1951,6 +2074,7 @@ The following example implements an event that validates the year cannot be smal
         {
             if ($this->year < 0) {
                 echo "Year cannot be smaller than zero!";
+
                 return false;
             }
         }
@@ -1980,23 +2104,26 @@ The following example shows how to use it:
         {
             $this->validate(
                 new InclusionIn(
-                    array(
+                    [
                         "field"  => "type",
-                        "domain" => array("Mechanical", "Virtual")
-                    )
+                        "domain" => [
+                            "Mechanical",
+                            "Virtual",
+                        ]
+                    ]
                 )
             );
 
             $this->validate(
                 new Uniqueness(
-                    array(
+                    [
                         "field"   => "name",
-                        "message" => "The robot name must be unique"
-                    )
+                        "message" => "The robot name must be unique",
+                    ]
                 )
             );
 
-            return $this->validationHasFailed() != true;
+            return $this->validationHasFailed() !== true;
         }
     }
 
@@ -2039,10 +2166,10 @@ In addition to the built-in validators, you can create your own validators:
     {
         public function validate(EntityInterface $model)
         {
-            $field = $this->getOption('field');
+            $field = $this->getOption("field");
 
-            $min   = $this->getOption('min');
-            $max   = $this->getOption('max');
+            $min   = $this->getOption("min");
+            $max   = $this->getOption("max");
 
             $value = $model->$field;
 
@@ -2079,15 +2206,15 @@ Adding the validator to a model:
         {
             $this->validate(
                 new MaxMinValidator(
-                    array(
+                    [
                         "field" => "price",
                         "min"   => 10,
-                        "max"   => 100
-                    )
+                        "max"   => 100,
+                    ]
                 )
             );
 
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -2106,7 +2233,7 @@ The idea of creating validators is make them reusable between several models. A 
     {
         public function validation()
         {
-            if ($this->type == "Old") {
+            if ($this->type === "Old") {
                 $message = new Message(
                     "Sorry, old robots are not allowed anymore",
                     "type",
@@ -2148,18 +2275,38 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     <?php
 
-    $name           = 'Artichoke';
+    $name           = "Artichoke";
     $price          = 10.5;
-    $active         = 'Y';
+    $active         = "Y";
     $productTypesId = 1;
 
-    $sql = 'INSERT INTO products VALUES (null, :productTypesId, :name, :price, :active)';
+    $sql = "INSERT INTO products VALUES (null, :productTypesId, :name, :price, :active)";
+
     $sth = $dbh->prepare($sql);
 
-    $sth->bindParam(':productTypesId', $productTypesId, PDO::PARAM_INT);
-    $sth->bindParam(':name', $name, PDO::PARAM_STR, 70);
-    $sth->bindParam(':price', doubleval($price));
-    $sth->bindParam(':active', $active, PDO::PARAM_STR, 1);
+    $sth->bindParam(
+        ":productTypesId",
+        $productTypesId,
+        PDO::PARAM_INT
+    );
+
+    $sth->bindParam(
+        ":name",
+        $name,
+        PDO::PARAM_STR,
+        70
+    );
+
+    $sth->bindParam(
+        ":price",
+        doubleval($price)
+    );
+
+    $sth->bindParam(
+        ":active",
+        $active,
+        PDO::PARAM_STR, 1
+    );
 
     $sth->execute();
 
@@ -2169,11 +2316,12 @@ The good news is that Phalcon do this for you automatically:
 
     <?php
 
-    $product                   = new Products();
+    $product = new Products();
+
     $product->product_types_id = 1;
-    $product->name             = 'Artichoke';
+    $product->name             = "Artichoke";
     $product->price            = 10.5;
-    $product->active           = 'Y';
+    $product->active           = "Y";
 
     $product->create();
 
@@ -2194,24 +2342,24 @@ to delegate the database system the assignation of the values by a trigger or a 
         {
             // Skips fields/columns on both INSERT/UPDATE operations
             $this->skipAttributes(
-                array(
-                    'year',
-                    'price'
-                )
+                [
+                    "year",
+                    "price",
+                ]
             );
 
             // Skips only when inserting
             $this->skipAttributesOnCreate(
-                array(
-                    'created_at'
-                )
+                [
+                    "created_at",
+                ]
             );
 
             // Skips only when updating
             $this->skipAttributesOnUpdate(
-                array(
-                    'modified_in'
-                )
+                [
+                    "modified_in",
+                ]
             );
         }
     }
@@ -2226,10 +2374,11 @@ for replacement. Forcing a default value can be done in the following way:
 
     use Phalcon\Db\RawValue;
 
-    $robot             = new Robots();
-    $robot->name       = 'Bender';
+    $robot = new Robots();
+
+    $robot->name       = "Bender";
     $robot->year       = 1999;
-    $robot->created_at = new RawValue('default');
+    $robot->created_at = new RawValue("default");
 
     $robot->create();
 
@@ -2247,7 +2396,7 @@ A callback also can be used to create a conditional assignment of automatic defa
         public function beforeCreate()
         {
             if ($this->price > 10000) {
-                $this->type = new RawValue('default');
+                $this->type = new RawValue("default");
             }
         }
     }
@@ -2291,11 +2440,13 @@ The method :code:`Phalcon\Mvc\Model::delete()` allows to delete a record. You ca
 
     $robot = Robots::findFirst(11);
 
-    if ($robot != false) {
-        if ($robot->delete() == false) {
+    if ($robot !== false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
-            foreach ($robot->getMessages() as $message) {
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -2309,11 +2460,17 @@ You can also delete many records by traversing a resultset with a foreach:
 
     <?php
 
-    foreach (Robots::find("type='mechanical'") as $robot) {
-        if ($robot->delete() == false) {
+    $robots = Robots::find(
+        "type = 'mechanical'"
+    );
+
+    foreach ($robots as $robot) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
-            foreach ($robot->getMessages() as $message) {
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -2344,7 +2501,7 @@ With the above events can also define business rules in the models:
     {
         public function beforeDelete()
         {
-            if ($this->status == 'A') {
+            if ($this->status == "A") {
                 echo "The robot is active, it can't be deleted";
 
                 return false;
@@ -2393,12 +2550,12 @@ in the code. A change in the column map in the model will take care of the rest.
         {
             // Keys are the real names in the table and
             // the values their names in the application
-            return array(
-                'id'       => 'code',
-                'the_name' => 'theName',
-                'the_type' => 'theType',
-                'the_year' => 'theYear'
-            );
+            return [
+                "id"       => "code",
+                "the_name" => "theName",
+                "the_type" => "theType",
+                "the_year" => "theYear",
+            ];
         }
     }
 
@@ -2409,24 +2566,29 @@ Then you can use the new names naturally in your code:
     <?php
 
     // Find a robot by its name
-    $robot = Robots::findFirst("theName = 'Voltron'");
+    $robot = Robots::findFirst(
+        "theName = 'Voltron'"
+    );
+
     echo $robot->theName, "\n";
 
     // Get robots ordered by type
     $robot = Robots::find(
-        array(
-            'order' => 'theType DESC'
-        )
+        [
+            "order" => "theType DESC",
+        ]
     );
+
     foreach ($robots as $robot) {
-        echo 'Code: ', $robot->code, "\n";
+        echo "Code: ", $robot->code, "\n";
     }
 
     // Create a robot
-    $robot          = new Robots();
-    $robot->code    = '10101';
-    $robot->theName = 'Bender';
-    $robot->theType = 'Industrial';
+    $robot = new Robots();
+
+    $robot->code    = "10101";
+    $robot->theName = "Bender";
+    $robot->theType = "Industrial";
     $robot->theYear = 2999;
 
     $robot->save();
@@ -2454,12 +2616,16 @@ Instead of doing this:
 
     <?php
 
-    foreach ($robots->getParts() as $part) {
+    $parts = $robots->getParts();
+
+    foreach ($parts as $part) {
         $part->stock      = 100;
         $part->updated_at = time();
 
-        if ($part->update() == false) {
-            foreach ($part->getMessages() as $message) {
+        if ($part->update() === false) {
+            $messages = $part->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message;
             }
 
@@ -2474,10 +2640,10 @@ you can do this:
     <?php
 
     $robots->getParts()->update(
-        array(
-            'stock'      => 100,
-            'updated_at' => time()
-        )
+        [
+            "stock"      => 100,
+            "updated_at" => time(),
+        ]
     );
 
 'update' also accepts an anonymous function to filter what records must be updated:
@@ -2486,19 +2652,22 @@ you can do this:
 
     <?php
 
-    $data = array(
-        'stock'      => 100,
-        'updated_at' => time()
-    );
+    $data = [
+        "stock"      => 100,
+        "updated_at" => time(),
+    ];
 
     // Update all the parts except those whose type is basic
-    $robots->getParts()->update($data, function ($part) {
-        if ($part->type == Part::TYPE_BASIC) {
-            return false;
-        }
+    $robots->getParts()->update(
+        $data,
+        function ($part) {
+            if ($part->type === Part::TYPE_BASIC) {
+                return false;
+            }
 
-        return true;
-    });
+            return true;
+        }
+    );
 
 関連するレコードの削除
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2508,9 +2677,13 @@ Instead of doing this:
 
     <?php
 
-    foreach ($robots->getParts() as $part) {
-        if ($part->delete() == false) {
-            foreach ($part->getMessages() as $message) {
+    $parts = $robots->getParts();
+
+    foreach ($parts as $part) {
+        if ($part->delete() === false) {
+            $messages = $part->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message;
             }
 
@@ -2533,14 +2706,15 @@ you can do this:
     <?php
 
     // Delete only whose stock is greater or equal than zero
-    $robots->getParts()->delete(function ($part) {
-        if ($part->stock < 0) {
-            return false;
+    $robots->getParts()->delete(
+        function ($part) {
+            if ($part->stock < 0) {
+                return false;
+            }
+
+            return true;
         }
-
-        return true;
-    });
-
+    );
 
 レコードのスナップショット
 --------------------------
@@ -2572,11 +2746,13 @@ In models that have this feature activated you can check what fields changed:
     $robot = Robots::findFirst();
 
     // Change a column
-    $robot->name = 'Other name';
+    $robot->name = "Other name";
 
-    var_dump($robot->getChangedFields()); // ['name']
-    var_dump($robot->hasChanged('name')); // true
-    var_dump($robot->hasChanged('type')); // false
+    var_dump($robot->getChangedFields()); // ["name"]
+
+    var_dump($robot->hasChanged("name")); // true
+
+    var_dump($robot->hasChanged("type")); // false
 
 別のスキーマの指定
 ------------------------------
@@ -2610,28 +2786,34 @@ in the application's services container. You can overwrite this service setting 
     use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
     // This service returns a MySQL database
-    $di->set('dbMysql', function () {
-        return new MysqlPdo(
-            array(
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            )
-        );
-    });
+    $di->set(
+        "dbMysql",
+        function () {
+            return new MysqlPdo(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
     // This service returns a PostgreSQL database
-    $di->set('dbPostgres', function () {
-        return new PostgreSQLPdo(
-            array(
-                "host"     => "localhost",
-                "username" => "postgres",
-                "password" => "",
-                "dbname"   => "invo"
-            )
-        );
-    });
+    $di->set(
+        "dbPostgres",
+        function () {
+            return new PostgreSQLPdo(
+                [
+                    "host"     => "localhost",
+                    "username" => "postgres",
+                    "password" => "",
+                    "dbname"   => "invo",
+                ]
+            );
+        }
+    );
 
 Then, in the initialize method, we define the connection service for the model:
 
@@ -2645,7 +2827,7 @@ Then, in the initialize method, we define the connection service for the model:
     {
         public function initialize()
         {
-            $this->setConnectionService('dbPostgres');
+            $this->setConnectionService("dbPostgres");
         }
     }
 
@@ -2662,8 +2844,9 @@ to balance the load to your databases implementing a master-slave architecture:
     {
         public function initialize()
         {
-            $this->setReadConnectionService('dbSlave');
-            $this->setWriteConnectionService('dbMaster');
+            $this->setReadConnectionService("dbSlave");
+
+            $this->setWriteConnectionService("dbMaster");
         }
     }
 
@@ -2688,26 +2871,25 @@ according to the current query conditions:
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
             // Check if there is a 'where' clause in the select
-            if (isset($intermediate['where'])) {
-
-                $conditions = $intermediate['where'];
+            if (isset($intermediate["where"])) {
+                $conditions = $intermediate["where"];
 
                 // Choose the possible shard according to the conditions
-                if ($conditions['left']['name'] == 'id') {
-                    $id = $conditions['right']['value'];
+                if ($conditions["left"]["name"] == "id") {
+                    $id = $conditions["right"]["value"];
 
                     if ($id > 0 && $id < 10000) {
-                        return $this->getDI()->get('dbShard1');
+                        return $this->getDI()->get("dbShard1");
                     }
 
                     if ($id > 10000) {
-                        return $this->getDI()->get('dbShard2');
+                        return $this->getDI()->get("dbShard2");
                     }
                 }
             }
 
             // Use a default shard
-            return $this->getDI()->get('dbShard0');
+            return $this->getDI()->get("dbShard0");
         }
     }
 
@@ -2737,33 +2919,39 @@ statements as they happen.
     use Phalcon\Logger\Adapter\File as FileLogger;
     use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
-    $di->set('db', function () {
+    $di->set(
+        "db",
+        function () {
+            $eventsManager = new EventsManager();
 
-        $eventsManager = new EventsManager();
+            $logger = new FileLogger("app/logs/debug.log");
 
-        $logger = new FileLogger("app/logs/debug.log");
+            // Listen all the database events
+            $eventsManager->attach(
+                "db:beforeQuery",
+                function ($event, $connection) use ($logger) {
+                    $logger->log(
+                        $connection->getSQLStatement(),
+                        Logger::INFO
+                    );
+                }
+            );
 
-        // Listen all the database events
-        $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-            if ($event->getType() == 'beforeQuery') {
-                $logger->log($connection->getSQLStatement(), Logger::INFO);
-            }
-        });
+            $connection = new Connection(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
 
-        $connection = new Connection(
-            array(
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            )
-        );
+            // Assign the eventsManager to the db adapter instance
+            $connection->setEventsManager($eventsManager);
 
-        // Assign the eventsManager to the db adapter instance
-        $connection->setEventsManager($eventsManager);
-
-        return $connection;
-    });
+            return $connection;
+        }
+    );
 
 As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
 
@@ -2771,11 +2959,12 @@ As models access the default database connection, all SQL statements that are se
 
     <?php
 
-    $robot             = new Robots();
+    $robot = new Robots();
+
     $robot->name       = "Robby the Robot";
     $robot->created_at = "1956-07-21";
 
-    if ($robot->save() == false) {
+    if ($robot->save() === false) {
         echo "Cannot save robot";
     }
 
@@ -2800,42 +2989,53 @@ this you can diagnose performance problems and to discover bottlenecks.
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
 
-    $di->set('profiler', function () {
-        return new ProfilerDb();
-    }, true);
+    $di->set(
+        "profiler",
+        function () {
+            return new ProfilerDb();
+        },
+        true
+    );
 
-    $di->set('db', function () use ($di) {
+    $di->set(
+        "db",
+        function () use ($di) {
+            $eventsManager = new EventsManager();
 
-        $eventsManager = new EventsManager();
+            // Get a shared instance of the DbProfiler
+            $profiler = $di->getProfiler();
 
-        // Get a shared instance of the DbProfiler
-        $profiler      = $di->getProfiler();
+            // Listen all the database events
+            $eventsManager->attach(
+                "db",
+                function ($event, $connection) use ($profiler) {
+                    if ($event->getType() === "beforeQuery") {
+                        $profiler->startProfile(
+                            $connection->getSQLStatement()
+                        );
+                    }
 
-        // Listen all the database events
-        $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-            if ($event->getType() == 'beforeQuery') {
-                $profiler->startProfile($connection->getSQLStatement());
-            }
+                    if ($event->getType() === "afterQuery") {
+                        $profiler->stopProfile();
+                    }
+                }
+            );
 
-            if ($event->getType() == 'afterQuery') {
-                $profiler->stopProfile();
-            }
-        });
+            $connection = new MysqlPdo(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "invo",
+                ]
+            );
 
-        $connection = new MysqlPdo(
-            array(
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "invo"
-            )
-        );
+            // Assign the eventsManager to the db adapter instance
+            $connection->setEventsManager($eventsManager);
 
-        // Assign the eventsManager to the db adapter instance
-        $connection->setEventsManager($eventsManager);
-
-        return $connection;
-    });
+            return $connection;
+        }
+    );
 
 Profiling some queries:
 
@@ -2845,19 +3045,21 @@ Profiling some queries:
 
     // Send some SQL statements to the database
     Robots::find();
+
     Robots::find(
-        array(
-            "order" => "name"
-        )
+        [
+            "order" => "name",
+        ]
     );
+
     Robots::find(
-        array(
-            "limit" => 30
-        )
+        [
+            "limit" => 30,
+        ]
     );
 
     // Get the generated profiles from the profiler
-    $profiles = $di->get('profiler')->getProfiles();
+    $profiles = $di->get("profiler")->getProfiles();
 
     foreach ($profiles as $profile) {
        echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -2885,8 +3087,10 @@ You may be required to access the application services within a model, the follo
             // Obtain the flash service from the DI container
             $flash = $this->getDI()->getFlash();
 
+            $messages = $this->getMessages();
+
             // Show validation messages
-            foreach ($this->getMessages() as $message) {
+            foreach ($messages as $message) {
                 $flash->error($message);
             }
         }
@@ -2907,10 +3111,10 @@ According to how you use the ORM you can disable that you aren't using. These op
     use Phalcon\Mvc\Model;
 
     Model::setup(
-        array(
-            'events'         => false,
-            'columnRenaming' => false
-        )
+        [
+            "events"         => false,
+            "columnRenaming" => false,
+        ]
     );
 
 The available options are:
@@ -2949,19 +3153,25 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     // Setup a connection
     $di->set(
-        'db',
+        "db",
         new Connection(
-            array(
-                "dbname" => "sample.db"
-            )
+            [
+                "dbname" => "sample.db",
+            ]
         )
     );
 
     // Set a models manager
-    $di->set('modelsManager', new ModelsManager());
+    $di->set(
+        "modelsManager",
+        new ModelsManager()
+    );
 
     // Use the memory meta-data adapter or other
-    $di->set('modelsMetadata', new MetaData());
+    $di->set(
+        "modelsMetadata",
+        new MetaData()
+    );
 
     // Create a model
     class Robots extends Model
