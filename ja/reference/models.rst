@@ -32,23 +32,7 @@
     If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-デフォルトでは、モデル "Robots" はテーブル "robots" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 :code:`getSource()` メソッドを使用することができます:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public function getSource()
-        {
-            return "the_robots";
-        }
-    }
-
-モデル Robots は現在、「 the_robots 」テーブルにマップされています。上記の方法に加えて、 :code:`initialize()` メソッドが提供されています。カスタム動作、言い換えれば別のテーブルを使用してモデルをセットアップする方法を支援します:
+デフォルトでは、モデル "Robots" はテーブル "robots" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 :code:`setSource()` メソッドを使用することができます:
 
 .. code-block:: php
 
@@ -63,6 +47,8 @@
             $this->setSource("the_robots");
         }
     }
+
+モデル Robots は現在、「 the_robots 」テーブルにマップされています。上記の方法に加えて、 :code:`initialize()` メソッドが提供されています。
 
 :code:`initialize()` メソッドはリクエストの間に一度だけ呼び出され、アプリケーション内で作成されたモデルのすべてのインスタンスに適用するために初期化を実行します。もし、あなたが、すべてのインスタンスで初期化処理を実行したい場合 'onConstruct' でできます:
 
@@ -2756,7 +2742,7 @@ In models that have this feature activated you can check what fields changed:
 
 別のスキーマの指定
 ------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the :code:`setSchema()` method to define that:
 
 .. code-block:: php
 
@@ -2766,9 +2752,9 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     class Robots extends Model
     {
-        public function getSchema()
+        public function initialize()
         {
-            return "toys";
+            $this->setSchema("toys");
         }
     }
 

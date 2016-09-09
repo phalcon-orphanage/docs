@@ -42,24 +42,7 @@ with each other.
     memory and reduce the memory allocation.
 
 By default, the model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the :code:`getSource()` method:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public function getSource()
-        {
-            return "the_robots";
-        }
-    }
-
-The model Robots now maps to "the_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
-The :code:`initialize()` method is only called once during the request.
+you can use the :code:`setSource()` method:
 
 .. code-block:: php
 
@@ -74,6 +57,8 @@ The :code:`initialize()` method is only called once during the request.
             $this->setSource("the_robots");
         }
     }
+
+The model Robots now maps to "the_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
 
 The :code:`initialize()` method is only called once during the request, it's intended to perform initializations that apply for
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
@@ -2777,7 +2762,7 @@ In models that have this feature activated you can check what fields changed:
 
 Pointing to a different schema
 ------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the :code:`setSchema()` method to define that:
 
 .. code-block:: php
 
@@ -2787,9 +2772,9 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     class Robots extends Model
     {
-        public function getSchema()
+        public function initialize()
         {
-            return "toys";
+            $this->setSchema("toys");
         }
     }
 

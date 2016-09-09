@@ -37,24 +37,7 @@
 
     如果使用 PHP 5.4/5.5 建议在模型中预先定义好所有的列，这样可以减少模型内存的开销以及内存分配。
 
-默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 :code:`getSource()` 方法：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public function getSource()
-        {
-            return "the_robots";
-        }
-    }
-
-模型 Robots 现在映射到了 "the_robots" 表。:code:`initialize()` 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
-:code:`initialize()` 方法在请求期间只被调用一次。
+默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 :code:`setSource()` 方法：
 
 .. code-block:: php
 
@@ -69,6 +52,8 @@
             $this->setSource("the_robots");
         }
     }
+
+模型 Robots 现在映射到了 "the_robots" 表。:code:`initialize()` 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
 
 :code:`initialize()` 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
 可以使用 'onConstruct' 事件：
@@ -2747,7 +2732,7 @@ In models that have this feature activated you can check what fields changed:
 
 设置模式（Pointing to a different schema）
 ------------------------------------------
-如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 getSchema 方法去定义它：
+如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 :code:`setSchema()` 方法去定义它：
 
 .. code-block:: php
 
@@ -2757,9 +2742,9 @@ In models that have this feature activated you can check what fields changed:
 
     class Robots extends Model
     {
-        public function getSchema()
+        public function initialize()
         {
-            return "toys";
+            $this->setSchema("toys");
         }
     }
 
