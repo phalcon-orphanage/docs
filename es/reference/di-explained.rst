@@ -1,5 +1,5 @@
 Dependency Injection Explained
-******************************
+==============================
 
 El siguiente ejemplo es un poco largo, pero explica porqué usar un contenedor de servicios, localización de servicios e inyección de dependencias.
 Primero, pensemos que estamos creando algún componente llamado SomeComponent. Este realiza alguna tarea que no es importante en este momento.

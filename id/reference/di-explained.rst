@@ -1,5 +1,5 @@
 Dependency Injection Explained
-******************************
+==============================
 
 Contoh berikut ini agak panjang, namun ia mencoba menjelaskan mengapa Phalcon menggunakan lokasi service (service location) dan injeksi ketergantungan (dependency injection).
 Pertama, anggap kita mengembangkan sebuah komponen bernama SomeComponent. Ia mengerjakan tugas yang saat ini tidak penting.

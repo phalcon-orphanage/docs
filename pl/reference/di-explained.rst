@@ -1,5 +1,5 @@
 Dependency Injection Explained
-******************************
+==============================
 
 The following example is a bit lengthy, but it attempts to explain why Phalcon uses service location and dependency injection.
 First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.

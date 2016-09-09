@@ -1,5 +1,5 @@
 Dependency Injection Explained
-******************************
+==============================
 
 L'exemple qui suit est un peut long, mais il tente d'expliquer pourquoi Phalcon utilise la localisation de service et l'injection de dépendance.
 Pour commencer, imaginons que nous avons développé un composant appelé SomeComponent. La tâche qu'il réalise n'a pas d'importance maintenant.
