@@ -829,7 +829,7 @@ This is typically for an Error 404 page.
         'action'     => 'info'
     ])->beforeMatch([new AjaxFilter(), 'check']);
 
-Начиная с Phalcon 2.1.0 beta 1, существует ещё один способ сделать эту проверку:
+Начиная с Phalcon 3, существует ещё один способ сделать эту проверку:
 
 .. code-block:: php
 

@@ -835,6 +835,28 @@ And use this class instead of the anonymous function:
         'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
+As of Phalcon 3, there is another way to check this:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', [
+        'module'     => 'admin',
+        'controller' => 'session'
+    ])->beforeMatch(function ($uri, $route) {
+        /**
+         * @var string $uri
+         * @var \Phalcon\Mvc\Router\Route $route
+         * @var \Phalcon\DiInterface $this
+         * @var \Phalcon\Http\Request $request
+         */
+        $request = $this->getShared('request');
+
+        // Check if the request was made with Ajax
+        return $request->isAjax();
+    });
+
 Hostname Constraints
 --------------------
 The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted

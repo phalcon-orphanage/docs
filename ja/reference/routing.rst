@@ -791,7 +791,7 @@ Not Found パス
         'action'     => 'info'
     ])->beforeMatch([new AjaxFilter(), 'check']);
 
-Since Phalcon 2.1.0 beta 1, there is another way to check this:
+As of Phalcon 3, there is another way to check this:
 
 .. code-block:: php
 
