@@ -184,9 +184,7 @@ This component is EventsManager aware (it implements :doc:`Phalcon\\Events\\Even
         }
     }
 
-Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us
-identify events that are generated from certain component. You can even generate events outside the component with
-the same name. Now let's create a listener to this component:
+Notice that in this example, we're using the "my-component" event namespace. Now we need to create an event listener for this component:
 
 .. code-block:: php
 
@@ -207,7 +205,7 @@ the same name. Now let's create a listener to this component:
         }
     }
 
-A listener is simply a class that implements any of all the events triggered by the component. Now let's make everything work together:
+Now let's make everything work together:
 
 .. code-block:: php
 
@@ -270,22 +268,6 @@ In a listener the third parameter also receives this data:
         "my-component",
         function (Event $event, $component) {
             print_r($event->getData());
-        }
-    );
-
-If a listener it is only interested in listening to a specific type of event you can attach a listener directly:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-
-    // The handler will only be executed if the event triggered is "beforeSomeTask"
-    $eventsManager->attach(
-        "my-component:beforeSomeTask",
-        function (Event $event, $component) {
-            // ...
         }
     );
 

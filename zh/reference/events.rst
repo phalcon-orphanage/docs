@@ -183,8 +183,8 @@ Attaching an event listener to the events manager is as simple as:
         }
     }
 
-注意到这个组件产生的事件都以“my-component”为前缀。这是一个唯一的关键词，可以帮助我们区分各个组件产生的事件。
-你甚至可以在组件的外面生成相同名字的事件。现在让我们来为这个组件创建一个侦听者：
+Notice that in this example, we're using the "my-component" event namespace.
+现在让我们来为这个组件创建一个侦听者：
 
 .. code-block:: php
 
@@ -205,7 +205,7 @@ Attaching an event listener to the events manager is as simple as:
         }
     }
 
-侦听者可以是简单的一个实现了全部组件触发事件的类。现在让我们把全部的东西整合起来：
+现在让我们把全部的东西整合起来：
 
 .. code-block:: php
 
@@ -268,22 +268,6 @@ Attaching an event listener to the events manager is as simple as:
         "my-component",
         function (Event $event, $component) {
             print_r($event->getData());
-        }
-    );
-
-如果一个侦听者仅是对某个特定类型的事件感兴趣，你要吧直接附上一个侦听者：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-
-    // 这个处理器只会在“beforeSomeTask”事件触发时才被执行
-    $eventsManager->attach(
-        "my-component:beforeSomeTask",
-        function (Event $event, $component) {
-            // ...
         }
     );
 

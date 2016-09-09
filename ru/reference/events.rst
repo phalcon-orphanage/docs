@@ -184,8 +184,7 @@ Attaching an event listener to the events manager is as simple as:
         }
     }
 
-Обратите внимание, что события, создаваемые нашим компонентом, имеют префикс "my-component". Это уникальное слово для разделения событий,
-которые формируются из разных компонентов. Вы можете создавать события вне компонента с таким же именем, оно ни от чего не зависит.
+Notice that in this example, we're using the "my-component" event namespace.
 Теперь давайте создадим слушателя для нашего компонента:
 
 .. code-block:: php
@@ -207,7 +206,7 @@ Attaching an event listener to the events manager is as simple as:
         }
     }
 
-Слушатель - это просто класс, который реализует все события, вызываемые в компоненте. Давайте заставим их работать вместе:
+Давайте заставим их работать вместе:
 
 .. code-block:: php
 
@@ -270,22 +269,6 @@ Attaching an event listener to the events manager is as simple as:
         "my-component",
         function (Event $event, $component) {
             print_r($event->getData());
-        }
-    );
-
-Если слушать необходимо только определённое событие, вы можете указать его в момент связывания:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-
-    // Обработчик выполнится только при наступлении события "beforeSomeTask"
-    $eventsManager->attach(
-        "my-component:beforeSomeTask",
-        function (Event $event, $component) {
-            // ...
         }
     );
 
