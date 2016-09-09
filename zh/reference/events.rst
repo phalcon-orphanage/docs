@@ -15,48 +15,25 @@ When attaching event listeners to the events manager, you can use "component" to
 
 使用示例（Usage Example）
 -------------------------
-以下面示例中，我们使用EventsManager来侦听在 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 管理下的MySQL连接中产生的事件。
-首先，我们需要一个侦听者对象来完成这部分的工作。我们创建了一个类，这个类有我们需要侦听事件所对应的方法：
+In the following example, we will use the EventsManager to listen for the "afterQuery" event produced in a MySQL connection managed by
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`:
 
 .. code-block:: php
 
     <?php
 
-    class MyDbListener
-    {
-        public function afterConnect()
-        {
-
-        }
-
-        public function beforeQuery()
-        {
-
-        }
-
-        public function afterQuery()
-        {
-
-        }
-    }
-
-这个新的类可能有点啰嗦，但我们需要这样做。
-事件管理器在组件和我们的侦听类之间充当着接口角色，并提供了基于在我们侦听类中所定义方法的钩子：
-
-.. code-block:: php
-
-    <?php
-
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
-    // 创建一个数据库侦听
-    $dbListener = new MyDbListener();
-
-    // 侦听全部数据库事件
-    $eventsManager->attach("db", $dbListener);
+    $eventsManager->attach(
+        "db:afterQuery",
+        function (Event $event, $connection) {
+            echo $connection->getSQLStatement();
+        }
+    );
 
     $connection = new DbAdapter(
         [
@@ -75,35 +52,11 @@ When attaching event listeners to the events manager, you can use "component" to
         "SELECT * FROM products p WHERE p.status = 1"
     );
 
-为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
+Now every time a query is executed, the SQL statement will be echoed out.
 第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。
+A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-    use Phalcon\Logger;
-    use Phalcon\Logger\Adapter\File as Logger;
-
-    class MyDbListener
-    {
-        protected $_logger;
-
-        public function __construct()
-        {
-            $this->_logger = new Logger("../apps/logs/db.log");
-        }
-
-        public function afterQuery(Event $event, $connection)
-        {
-            $this->_logger->log(
-                $connection->getSQLStatement(),
-                Logger::INFO
-            );
-        }
-    }
-
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
@@ -159,6 +112,21 @@ When attaching event listeners to the events manager, you can use "component" to
         }
     }
 
+Attaching an event listener to the events manager is as simple as:
+
+.. code-block:: php
+
+    <?php
+
+    // 创建一个数据库侦听
+    $dbListener = new MyDbListener();
+
+    // 侦听全部数据库事件
+    $eventsManager->attach(
+        "db",
+        $dbListener
+    );
+
 可以从侦听者中获取结果分析数据：
 
 .. code-block:: php
@@ -176,24 +144,6 @@ When attaching event listeners to the events manager, you can use "component" to
         echo "结束时间: ", $profile->getFinalTime(), "\n";
         echo "总共执行的时间: ", $profile->getTotalElapsedSeconds(), "\n";
     }
-
-类似地，我们可以注册一个匿名函数来执行这些任务，而不是再分离出一个侦听类（如上面看到的）：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-
-    // 侦听全部数据加事件
-    $eventsManager->attach(
-        "db",
-        function (Event $event, $connection) {
-            if ($event->getType() == "afterQuery") {
-                echo $connection->getSQLStatement();
-            }
-        }
-    );
 
 创建组件触发事件（Creating components that trigger Events）
 -----------------------------------------------------------

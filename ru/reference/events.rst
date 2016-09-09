@@ -16,48 +16,25 @@ When attaching event listeners to the events manager, you can use "component" to
 
 Пример использования
 --------------------
-В следующем примере, мы используем менеджер событий для прослушивания событий вызываемых в MySQL соединении управляемым :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-Для начала нам необходимо создать объект слушателя. Методы класса являются событиями, которые необходимо прослушивать.
+In the following example, we will use the EventsManager to listen for the "afterQuery" event produced in a MySQL connection managed by
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`:
 
 .. code-block:: php
 
     <?php
 
-    class MyDbListener
-    {
-        public function afterConnect()
-        {
-
-        }
-
-        public function beforeQuery()
-        {
-
-        }
-
-        public function afterQuery()
-        {
-
-        }
-    }
-
-Такой класс может реализовывать необходимые нам события. Менеджер событий будет взаимодействовать между компонентом и нашим классом,
-вызывая события, реализованные методами класса и поддерживаемые компонентом.
-
-.. code-block:: php
-
-    <?php
-
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
-    // Создание слушателя базы данных
-    $dbListener = new MyDbListener();
-
-    // Слушать все события базы данных
-    $eventsManager->attach("db", $dbListener);
+    $eventsManager->attach(
+        "db:afterQuery",
+        function (Event $event, $connection) {
+            echo $connection->getSQLStatement();
+        }
+    );
 
     $connection = new DbAdapter(
         [
@@ -76,35 +53,11 @@ When attaching event listeners to the events manager, you can use "component" to
         "SELECT * FROM products p WHERE p.status = 1"
     );
 
-Для того, чтобы получать все SQL-запросы, выполненные в нашем приложении, мы должны использовать событие “afterQuery”. Первый передаваемый слушателю параметр
-содержит контекстную информацию о текущем событии, второй параметр - само соединение.
+Now every time a query is executed, the SQL statement will be echoed out.
+Первый передаваемый слушателю параметр содержит контекстную информацию о текущем событии, второй параметр - само соединение.
+A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-    use Phalcon\Logger;
-    use Phalcon\Logger\Adapter\File as Logger;
-
-    class MyDbListener
-    {
-        protected $_logger;
-
-        public function __construct()
-        {
-            $this->_logger = new Logger("../apps/logs/db.log");
-        }
-
-        public function afterQuery(Event $event, $connection)
-        {
-            $this->_logger->log(
-                $connection->getSQLStatement(),
-                Logger::INFO
-            );
-        }
-    }
-
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 В рамках этого примера, мы будем также использовать профайлер :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` для обнаружения SQL-запросов с длительным временем выполнения:
 
 .. code-block:: php
@@ -160,6 +113,21 @@ When attaching event listeners to the events manager, you can use "component" to
         }
     }
 
+Attaching an event listener to the events manager is as simple as:
+
+.. code-block:: php
+
+    <?php
+
+    // Создание слушателя базы данных
+    $dbListener = new MyDbListener();
+
+    // Слушать все события базы данных
+    $eventsManager->attach(
+        "db",
+        $dbListener
+    );
+
 Результирующие данные о работе профайлера могут быть получены из слушателя:
 
 .. code-block:: php
@@ -177,24 +145,6 @@ When attaching event listeners to the events manager, you can use "component" to
         echo "Final Time: ", $profile->getFinalTime(), "\n";
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
-
-Подобным образом мы можем зарегистрировать лямбда-функцию для выполнения этой задачи, без использования отдельного класса слушателя (как в примере выше):
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Events\Event;
-
-    // Слушаем все события базы данных
-    $eventsManager->attach(
-        "db",
-        function (Event $event, $connection) {
-            if ($event->getType() == "afterQuery") {
-                echo $connection->getSQLStatement();
-            }
-        }
-    );
 
 Создание компонентов с поддержкой событий
 -----------------------------------------
