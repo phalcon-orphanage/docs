@@ -1008,21 +1008,6 @@ lalu setelah service diresolve, :code:`$di` akan dilewatkan ke :code:`setDi()` o
     // Resolve service (Catatan: $myClass->setDi($di) dipanggil otomatis)
     $myClass = $di->get("myClass");
 
-Menghindari service resolution
-==============================
-Beberapa service digunakan ditiap request ke aplikasi, dengan menghapus proses resolving service
-dapat menambah sedikit peningkatan performa.
-
-.. code-block:: php
-
-    <?php
-
-    // Resolve objek dari luar daripada menggunakan definisinya
-    $router = new MyRouter();
-
-    // Lewatkan objek yang sudah dibuat ke service registration
-    $di->set("router", $router);
-
 Mengelola service dalam file
 ============================
 Anda dapat mengelola lebih baik aplikasi anda dengan memindahkan pendaftaran service ke file terpisah daripada

@@ -1012,21 +1012,6 @@ Une fois que le service est résolu, la variable :code:`$di` sera transmise auto
     // Résolution du service (NOTE: $myClass->setDi($di) est automatiquement appélée)
     $myClass = $di->get("myClass");
 
-Eviter la résolution de service
-===============================
-Certains service sont exploités à chaque requête faite à l'application. L'élimination du processus de résolution de service
-peut apporter une petite amélioration des performances.
-
-.. code-block:: php
-
-    <?php
-
-    // Résolution externe de l'objet au lieu d'utiliser sa définition
-    $router = new MyRouter();
-
-    // Transmission de l'objet déjà résolu à l'inscription de service
-    $di->set("router", $router);
-
 Organisation des services en fichiers
 =====================================
 Vous pouvez mieux organiser votre application en déplaçant l'inscription des services dans des fichiers distincts

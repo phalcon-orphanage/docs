@@ -984,21 +984,6 @@ Then once the service is resolved, the :code:`$di` will be passed to :code:`setD
     // Resolve the service (NOTE: $myClass->setDi($di) is automatically called)
     $myClass = $di->get("myClass");
 
-Avoiding service resolution
-===========================
-Some services are used in each of the requests made to the application, eliminate the process of resolving the service
-could add some small improvement in performance.
-
-.. code-block:: php
-
-    <?php
-
-    // Resolve the object externally instead of using a definition for it
-    $router = new MyRouter();
-
-    // Pass the resolved object to the service registration
-    $di->set("router", $router);
-
 Organizing services in files
 ============================
 You can better organize your application by moving the service registration to individual files instead of
