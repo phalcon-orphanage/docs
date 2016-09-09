@@ -26,6 +26,7 @@ Tabela do Conteúdo
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
+   reference/di-explained
    reference/di
    reference/mvc
    reference/controllers

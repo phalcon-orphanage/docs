@@ -34,6 +34,7 @@ Phalcon заботится не только о производительнос
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
+   reference/di-explained
    reference/di
    reference/mvc
    reference/controllers
