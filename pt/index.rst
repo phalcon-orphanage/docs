@@ -42,6 +42,7 @@ Tabela do Conteúdo
    reference/assets
    reference/volt
    reference/applications
+   reference/applications-explained
    reference/routing
    reference/dispatching
    reference/micro
