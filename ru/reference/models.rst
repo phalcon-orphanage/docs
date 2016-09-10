@@ -17,12 +17,13 @@ CRUD операции, расширенные поисковые возможн�
 
 Создание модели
 ---------------
-Модель это класс, который расширяет :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Файл с моделью должен быть помещен в директорию models.
-Файл должен содержать только один класс; его имя должно быть записано в CamelCase стиле:
+Модель это класс, который расширяет :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Его имя должно быть записано в CamelCase стиле:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -31,22 +32,19 @@ CRUD операции, расширенные поисковые возможн�
 
     }
 
-Пример выше демонстрирует реализацию модели "Robots". Обратите внимание, что класс Robots наследуется от :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-Данный компонент предоставляет большой набор функционала для модели, которая наследует его, включая основные
-операции CRUD (Create, Read, Update, Delete), валидацию данных, а также поддержку усложненного поиска и возможность связывать несколько моделей
-друг с другом.
-
 .. highlights::
 
     Если вы используете PHP 5.4/5.5 рекомендовано объявлять каждый столбец базы данных, который входит в модель в целях экономии
     памяти и уменьшения общего выделения памяти на выполнение.
 
-По умолчанию модель "Robots" будет ссылаться на таблицу 'robots'. Если вы захотите вручную указать другое имя для маппинга таблицы,
+По умолчанию модель "Store\\Toys\\Robots" будет ссылаться на таблицу 'robots'. Если вы захотите вручную указать другое имя для маппинга таблицы,
 вы можете использовать метод :code:`setSource()`:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -54,19 +52,21 @@ CRUD операции, расширенные поисковые возможн�
     {
         public function initialize()
         {
-            $this->setSource("the_robots");
+            $this->setSource("toys_robots");
         }
     }
 
-Теперь модель Robots отображается на таблицу "the_robots". Метод :code:`initialize()` помогает в создании модели с пользовательским поведением, т.е. использовании другой таблицы.
+Теперь модель Robots отображается на таблицу "toys_robots". Метод :code:`initialize()` помогает в создании модели с пользовательским поведением, т.е. использовании другой таблицы.
 
 Метод :code:`initialize()` вызывается один раз при обработке запроса к приложению и предназначен для инициализации
 экземпляров модели в приложении. Если вам необходимо произвести некоторые настройки экземпляра объекта
-после того, как он создан, вы можете использовать метод 'onConstruct':
+после того, как он создан, вы можете использовать метод :code:`onConstruct()`:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -87,6 +87,8 @@ CRUD операции, расширенные поисковые возможн�
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -104,6 +106,8 @@ CRUD операции, расширенные поисковые возможн�
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use InvalidArgumentException;
     use Phalcon\Mvc\Model;
@@ -171,49 +175,6 @@ instead of $model->findByProperty_name, etc.). As much of the system expects cam
 removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
 column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
-Модели в пространствах имен
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Вы можете использовать пространства имен, чтобы избежать конфликтов, связанных с именами классов. В этом случае, имя таблицы, из которой модель получает данные, соответствует имени класса (преобразуется в нижний регистр).
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        // ...
-    }
-
-Пространства имен являются частью имени модели, если оно используется в строке:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public $id;
-
-        public $name;
-
-        public function initialize()
-        {
-            $this->hasMany(
-                "id",
-                "Store\\Toys\\RobotsParts",
-                "robots_id"
-            );
-        }
-    }
-
 Понимание записей в объектах
 ----------------------------
 Каждый экземпляр объекта модели представляет собой строку таблицы базы данных. Вы можете легко получить доступ к любой записи, считывая свойство объекта. К примеру,
@@ -237,6 +198,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Найти запись с id = 3
     $robot = Robots::findFirst(3);
 
@@ -248,6 +211,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(3);
 
@@ -266,6 +231,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Сколько роботов есть?
     $robots = Robots::find();
@@ -308,6 +275,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Первый робот в таблице роботов
     $robot = Robots::findFirst();
     echo "Название робота: ", $robot->name, "\n";
@@ -330,6 +299,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(
         [
@@ -384,6 +355,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robots = Robots::query()
         ->where("type = :type:")
         ->andWhere("year < 2000")
@@ -404,6 +377,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -421,6 +396,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $name = "Terminator";
 
@@ -448,6 +425,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Получить всех роботов
     $robots = Robots::find();
@@ -558,6 +537,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Запрос роботов с параметрами, привязанными к строковым заполнителям
     // Параметры с ключами, идентичными заполнителям
     $robots = Robots::find(
@@ -607,6 +588,7 @@ column map (as described above) to ensure proper mapping of your properties to t
     <?php
 
     use Phalcon\Db\Column;
+    use Store\Toys\Robots;
 
     // Привязка параметров
     $parameters = [
@@ -640,6 +622,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     $array = ["a","b","c"]; // $array: [[0] => "a", [1] => "b", [2] => "c"]
 
     unset($array[1]); // $array: [[0] => "a", [2] => "c"]
@@ -667,6 +651,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Запрос с явной привязкой параметров
     $robots = Robots::find(
         [
@@ -689,6 +675,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -725,6 +713,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -820,6 +810,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -878,7 +870,7 @@ column map (as described above) to ensure proper mapping of your properties to t
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
 
@@ -898,6 +890,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -927,6 +921,8 @@ column map (as described above) to ensure proper mapping of your properties to t
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = Robots::findFirst(2);
 
     foreach ($robot->robotsParts as $robotPart) {
@@ -941,6 +937,8 @@ Phalcon использует магические методы :code:`__set`/:co
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = Robots::findFirst();
 
     // все связанные записи в RobotsParts
@@ -951,6 +949,8 @@ Phalcon использует магические методы :code:`__set`/:co
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst();
 
@@ -971,6 +971,8 @@ Phalcon использует магические методы :code:`__set`/:co
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(2);
 
@@ -1002,6 +1004,8 @@ Phalcon использует магические методы :code:`__set`/:co
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(2);
 
@@ -1045,6 +1049,8 @@ Phalcon использует магические методы :code:`__set`/:co
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(2);
 
@@ -1127,7 +1133,7 @@ Phalcon использует магические методы :code:`__set`/:co
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "alias" => "Robot",
@@ -1136,7 +1142,7 @@ Phalcon использует магические методы :code:`__set`/:co
 
             $this->belongsTo(
                 "similar_robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "alias" => "SimilarRobot",
@@ -1170,6 +1176,8 @@ doc-блоками, помогая IDE лучше выполнять автод�
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -1225,7 +1233,7 @@ doc-блоками, помогая IDE лучше выполнять автод�
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "foreignKey" => true
@@ -1313,7 +1321,7 @@ Cascade/restrict действия
 
     <?php
 
-    namespace Store\Models;
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Relation;
@@ -1328,7 +1336,7 @@ Cascade/restrict действия
         {
             $this->hasMany(
                 "id",
-                "Store\\Models\\Parts",
+                "Parts",
                 "robots_id",
                 [
                     "foreignKey" => [
@@ -1516,6 +1524,8 @@ Cascade/restrict действия
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robots = Robots::find();
 
     // Изменение и сохранение полученных обектов модели роботов
@@ -1534,6 +1544,7 @@ Cascade/restrict действия
     <?php
 
     use Phalcon\Mvc\Model\Resultset;
+    use Store\Toys\Robots;
 
     $robots = Robots::find();
 
@@ -1571,6 +1582,7 @@ Cascade/restrict действия
     <?php
 
     use Phalcon\Mvc\Model\Resultset;
+    use Store\Toys\Robots;
 
     $robots = Robots::find(
         [
@@ -1594,6 +1606,8 @@ Cascade/restrict действия
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1620,6 +1634,8 @@ Cascade/restrict действия
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = new Robots();
 
     $robot->save(
@@ -1637,6 +1653,8 @@ Cascade/restrict действия
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = new Robots();
 
     $robot->save($_POST);
@@ -1653,6 +1671,8 @@ Cascade/restrict действия
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1673,6 +1693,8 @@ Cascade/restrict действия
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1718,6 +1740,8 @@ PostgreSQL использует последовательности для со
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -1845,6 +1869,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -1916,6 +1942,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -1958,6 +1986,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
     use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
@@ -1993,6 +2023,8 @@ PostgreSQL использует последовательности для со
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -2058,6 +2090,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2085,6 +2119,8 @@ PostgreSQL использует последовательности для со
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Validation;
@@ -2134,6 +2170,8 @@ PostgreSQL использует последовательности для со
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Message;
@@ -2243,6 +2281,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2281,6 +2321,8 @@ PostgreSQL использует последовательности для со
 
     <?php
 
+    use Store\Toys\Robots;
+
     use Phalcon\Db\RawValue;
 
     $robot = new Robots();
@@ -2296,6 +2338,8 @@ PostgreSQL использует последовательности для со
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Db\RawValue;
@@ -2329,6 +2373,8 @@ SQL операторы UPDATE по умолчанию включают в себ
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2346,6 +2392,8 @@ SQL операторы UPDATE по умолчанию включают в себ
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(11);
 
@@ -2368,6 +2416,8 @@ SQL операторы UPDATE по умолчанию включают в себ
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robots = Robots::find(
         "type = 'mechanical'"
@@ -2403,6 +2453,8 @@ SQL операторы UPDATE по умолчанию включают в себ
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2443,6 +2495,8 @@ ORM поддерживает независимую карту столбцов,
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2473,6 +2527,8 @@ ORM поддерживает независимую карту столбцов,
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Найти робота по имени
     $robot = Robots::findFirst(
@@ -2634,6 +2690,8 @@ ORM поддерживает независимую карту столбцов,
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2670,6 +2728,8 @@ ORM поддерживает независимую карту столбцов,
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2730,6 +2790,8 @@ ORM поддерживает независимую карту столбцов,
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2746,6 +2808,8 @@ ORM поддерживает независимую карту столбцов,
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2765,6 +2829,8 @@ ORM также предоставляет возможность горизон�
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2808,6 +2874,8 @@ ORM также предоставляет возможность горизон�
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst('id = 101');
 
@@ -2867,6 +2935,8 @@ ORM также предоставляет возможность горизон�
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -2952,6 +3022,8 @@ ORM также предоставляет возможность горизон�
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Отправим несколько SQL запросов в базу данных
     Robots::find();
 
@@ -2986,6 +3058,8 @@ ORM также предоставляет возможность горизон�
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 

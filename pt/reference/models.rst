@@ -16,12 +16,13 @@ methods dynamically to the respective database engine operations.
 
 Creating Models
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Its class name should be in camel case notation:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -30,22 +31,19 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Delete) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
-
 .. highlights::
 
     If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-By default, the model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
+By default, the model "Store\\Toys\\Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
 you can use the :code:`setSource()` method:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -53,19 +51,21 @@ you can use the :code:`setSource()` method:
     {
         public function initialize()
         {
-            $this->setSource("the_robots");
+            $this->setSource("toys_robots");
         }
     }
 
-The model Robots now maps to "the_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
+The model Robots now maps to "toys_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
 
 The :code:`initialize()` method is only called once during the request, it's intended to perform initializations that apply for
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
+created you can use the :code:`onConstruct()` method:
 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -86,6 +86,8 @@ from any part of the code that has instantiated that model class without any res
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -103,6 +105,8 @@ to the data (which would be impossible otherwise) and also add validation rules 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use InvalidArgumentException;
     use Phalcon\Mvc\Model;
@@ -170,49 +174,6 @@ instead of $model->findByProperty_name, etc.). As much of the system expects cam
 removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
 column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
-Models in Namespaces
-^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        // ...
-    }
-
-Namespaces make part of model names when they are within strings:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public $id;
-
-        public $name;
-
-        public function initialize()
-        {
-            $this->hasMany(
-                "id",
-                "Store\\Toys\\RobotsParts",
-                "robots_id"
-            );
-        }
-    }
-
 Understanding Records To Objects
 --------------------------------
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
@@ -236,6 +197,8 @@ You could find a certain record by its primary key and then print its name:
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Find record with id = 3
     $robot = Robots::findFirst(3);
 
@@ -247,6 +210,8 @@ Once the record is in memory, you can make modifications to its data and then sa
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(3);
 
@@ -265,6 +230,8 @@ how to query one or more records from a model:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // How many robots are there?
     $robots = Robots::find();
@@ -307,6 +274,8 @@ You could also use the :code:`findFirst()` method to get only the first record m
 
     <?php
 
+    use Store\Toys\Robots;
+
     // What's the first robot in robots table?
     $robot = Robots::findFirst();
     echo "The robot name is ", $robot->name, "\n";
@@ -329,6 +298,8 @@ Both :code:`find()` and :code:`findFirst()` methods accept an associative array 
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(
         [
@@ -383,6 +354,8 @@ If you prefer, there is also available a way to create queries in an object-orie
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robots = Robots::query()
         ->where("type = :type:")
         ->andWhere("year < 2000")
@@ -403,6 +376,8 @@ An example is in order, so taking our Robots model mentioned earlier:
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -420,6 +395,8 @@ the table with the name 'Terminator'. This could be written like:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $name = "Terminator";
 
@@ -447,6 +424,8 @@ is that at any time there is only one record in memory. This greatly helps in me
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Get all robots
     $robots = Robots::find();
@@ -557,6 +536,8 @@ Both string and integer placeholders are supported. Binding parameters can simpl
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Query robots binding parameters with string placeholders
     // Parameters whose keys are the same as placeholders
     $robots = Robots::find(
@@ -606,6 +587,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     <?php
 
     use Phalcon\Db\Column;
+    use Store\Toys\Robots;
 
     // Bind parameters
     $parameters = [
@@ -639,6 +621,8 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
     <?php
 
+    use Store\Toys\Robots;
+
     $array = ["a","b","c"]; // $array: [[0] => "a", [1] => "b", [2] => "c"]
 
     unset($array[1]); // $array: [[0] => "a", [2] => "c"]
@@ -666,6 +650,8 @@ If you're using "finders", bound parameters are automatically used for you:
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Explicit query using bound parameters
     $robots = Robots::find(
         [
@@ -688,6 +674,8 @@ will be executed just after create the instance and assign the data to it:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -724,6 +712,8 @@ accessed:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -819,6 +809,8 @@ The models with their relations could be implemented as follows:
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -877,7 +869,7 @@ The models with their relations could be implemented as follows:
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
 
@@ -897,6 +889,8 @@ Many to many relationships require 3 models and define the attributes involved i
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -926,6 +920,8 @@ When explicitly defining the relationships between models, it is easy to find re
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = Robots::findFirst(2);
 
     foreach ($robot->robotsParts as $robotPart) {
@@ -940,6 +936,8 @@ By accessing an attribute with the same name as the relationship will retrieve a
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = Robots::findFirst();
 
     // All the related records in RobotsParts
@@ -950,6 +948,8 @@ Also, you can use a magic getter:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst();
 
@@ -970,6 +970,8 @@ and without:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(2);
 
@@ -1001,6 +1003,8 @@ Getting related records manually:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(2);
 
@@ -1045,6 +1049,8 @@ You can also use "count" prefix to return an integer denoting the count of the r
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = Robots::findFirst(2);
 
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
@@ -1084,13 +1090,13 @@ A model that maps this table and its relationships is the following:
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
 
             $this->belongsTo(
                 "similar_robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
         }
@@ -1126,7 +1132,7 @@ The aliases allow us to rename both relationships to solve these problems:
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "alias" => "Robot",
@@ -1135,7 +1141,7 @@ The aliases allow us to rename both relationships to solve these problems:
 
             $this->belongsTo(
                 "similar_robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "alias" => "SimilarRobot",
@@ -1169,6 +1175,8 @@ docblocks helping the IDE to produce a better auto-completion:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -1224,7 +1232,7 @@ The RobotsPart model can be changed to demonstrate this feature:
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id",
                 [
                     "foreignKey" => true
@@ -1312,7 +1320,7 @@ to maintain the integrity of data:
 
     <?php
 
-    namespace Store\Models;
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Relation;
@@ -1327,7 +1335,7 @@ to maintain the integrity of data:
         {
             $this->hasMany(
                 "id",
-                "Store\\Models\\Parts",
+                "Parts",
                 "robots_id",
                 [
                     "foreignKey" => [
@@ -1515,6 +1523,8 @@ representing a row in the database. These objects can be modified and saved agai
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robots = Robots::find();
 
     // Manipulating a resultset of complete objects
@@ -1533,6 +1543,7 @@ returned in a resultset is called 'hydration mode':
     <?php
 
     use Phalcon\Mvc\Model\Resultset;
+    use Store\Toys\Robots;
 
     $robots = Robots::find();
 
@@ -1570,6 +1581,7 @@ Hydration mode can also be passed as a parameter of 'find':
     <?php
 
     use Phalcon\Mvc\Model\Resultset;
+    use Store\Toys\Robots;
 
     $robots = Robots::find(
         [
@@ -1593,6 +1605,8 @@ Also the method executes associated validators, virtual foreign keys and events 
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1619,6 +1633,8 @@ the columns passed in the array giving priority to them instead of assign direct
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = new Robots();
 
     $robot->save(
@@ -1636,6 +1652,8 @@ an insecure array without worrying about possible SQL injections:
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = new Robots();
 
     $robot->save($_POST);
@@ -1652,6 +1670,8 @@ the mass assignment:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1672,6 +1692,8 @@ sure that a record is created or updated, we can change the :code:`save()` call 
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -1717,6 +1739,8 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -1844,6 +1868,8 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -1915,6 +1941,8 @@ The easier way to make a model react to events is implement a method with the sa
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -1957,6 +1985,8 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
     use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
@@ -1993,6 +2023,8 @@ Events will be fired to the listener when 'robots' are saved:
 
     <?php
 
+    use Store\Toys\Robots;
+
     $robot = new Robots();
 
     $robot->name = "Scooby Doo";
@@ -2020,7 +2052,7 @@ If we want all objects created in our application use the same EventsManager, th
                 "model:beforeSave",
                 function (Event $event, $model) {
                     // Catch events produced by the Robots model
-                    if (get_class($model) === "Robots") {
+                    if (get_class($model) === "Store\\Toys\\Robots") {
                         if ($model->name === "Scooby Doo") {
                             echo "Scooby Doo isn't a robot!";
 
@@ -2057,6 +2089,8 @@ The following example implements an event that validates the year cannot be smal
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2084,6 +2118,8 @@ The following example shows how to use it:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Validation;
@@ -2133,6 +2169,8 @@ The idea of creating validators is make them reusable between several models. A 
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Message;
@@ -2242,6 +2280,8 @@ to delegate the database system the assignation of the values by a trigger or a 
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2280,6 +2320,8 @@ for replacement. Forcing a default value can be done in the following way:
 
     <?php
 
+    use Store\Toys\Robots;
+
     use Phalcon\Db\RawValue;
 
     $robot = new Robots();
@@ -2295,6 +2337,8 @@ A callback also can be used to create a conditional assignment of automatic defa
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
     use Phalcon\Db\RawValue;
@@ -2328,6 +2372,8 @@ this specially helps when the table has blob/text fields:
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2345,6 +2391,8 @@ The method :code:`Phalcon\Mvc\Model::delete()` allows to delete a record. You ca
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst(11);
 
@@ -2367,6 +2415,8 @@ You can also delete many records by traversing a resultset with a foreach:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robots = Robots::find(
         "type = 'mechanical'"
@@ -2402,6 +2452,8 @@ With the above events can also define business rules in the models:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2442,6 +2494,8 @@ in the code. A change in the column map in the model will take care of the rest.
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2472,6 +2526,8 @@ Then you can use the new names naturally in your code:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Find a robot by its name
     $robot = Robots::findFirst(
@@ -2633,6 +2689,8 @@ fields are changed according to the data queried from the persistence:
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2649,6 +2707,8 @@ In models that have this feature activated you can check what fields changed:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Get a record from the database
     $robot = Robots::findFirst();
@@ -2669,6 +2729,8 @@ If a model is mapped to a table that is in a different schemas/databases than th
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2729,6 +2791,8 @@ Then, in the initialize method, we define the connection service for the model:
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
 
     class Robots extends Model
@@ -2745,6 +2809,8 @@ to balance the load to your databases implementing a master-slave architecture:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2764,6 +2830,8 @@ according to the current query conditions:
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -2807,6 +2875,8 @@ query executed:
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = Robots::findFirst('id = 101');
 
@@ -2866,6 +2936,8 @@ As models access the default database connection, all SQL statements that are se
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     $robot = new Robots();
 
@@ -2951,6 +3023,8 @@ Profiling some queries:
 
     <?php
 
+    use Store\Toys\Robots;
+
     // Send some SQL statements to the database
     Robots::find();
 
@@ -2985,6 +3059,8 @@ You may be required to access the application services within a model, the follo
 .. code-block:: php
 
     <?php
+
+    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
