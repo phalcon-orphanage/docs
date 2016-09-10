@@ -38,28 +38,33 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
     $loader->registerDirs(
         [
-            '../apps/controllers/',
-            '../apps/models/'
+            "../apps/controllers/",
+            "../apps/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
     // viewコンポーネントを登録
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../apps/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../apps/views/");
+
+            return $view;
+        }
+    );
+
+    $application = new Application($di);
 
     try {
-
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -81,35 +86,45 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
     // 名前空間の接頭辞を伴ったオートローディングの設定
     $loader->registerNamespaces(
         [
-            'Single\Controllers' => '../apps/controllers/',
-            'Single\Models'      => '../apps/models/',
+            "Single\\Controllers" => "../apps/controllers/",
+            "Single\\Models"      => "../apps/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
     // コントローラーの名前空間を設定してディスパッチャに登録
-    $di->set('dispatcher', function () {
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDefaultNamespace('Single\Controllers');
-        return $dispatcher;
-    });
+    $di->set(
+        "dispatcher",
+        function () {
+            $dispatcher = new Dispatcher();
+
+            $dispatcher->setDefaultNamespace("Single\\Controllers");
+
+            return $dispatcher;
+        }
+    );
 
     // Register the view component
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../apps/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../apps/views/");
+
+            return $view;
+        }
+    );
+
+    $application = new Application($di);
 
     try {
-
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -162,8 +177,8 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
             $loader->registerNamespaces(
                 [
-                    'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
-                    'Multiple\Backend\Models'      => '../apps/backend/models/',
+                    "Multiple\\Backend\\Controllers" => "../apps/backend/controllers/",
+                    "Multiple\\Backend\\Models"      => "../apps/backend/models/",
                 ]
             );
 
@@ -176,18 +191,28 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         public function registerServices(DiInterface $di)
         {
             // ディスパッチャを登録
-            $di->set('dispatcher', function () {
-                $dispatcher = new Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
-                return $dispatcher;
-            });
+            $di->set(
+                "dispatcher",
+                function () {
+                    $dispatcher = new Dispatcher();
+
+                    $dispatcher->setDefaultNamespace("Multiple\\Backend\\Controllers");
+
+                    return $dispatcher;
+                }
+            );
 
             // Registering the view component
-            $di->set('view', function () {
-                $view = new View();
-                $view->setViewsDir('../apps/backend/views/');
-                return $view;
-            });
+            $di->set(
+                "view",
+                function () {
+                    $view = new View();
+
+                    $view->setViewsDir("../apps/backend/views/");
+
+                    return $view;
+                }
+            );
         }
     }
 
@@ -205,65 +230,65 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     // モジュールのルーティング設定
     // More information how to set the router up https://docs.phalconphp.com/ja/latest/reference/routing.html
-    $di->set('router', function () {
+    $di->set(
+        "router",
+        function () {
+            $router = new Router();
 
-        $router = new Router();
+            $router->setDefaultModule("frontend");
 
-        $router->setDefaultModule("frontend");
+            $router->add(
+                "/login",
+                [
+                    "module"     => "backend",
+                    "controller" => "login",
+                    "action"     => "index",
+                ]
+            );
 
-        $router->add(
-            "/login",
-            [
-                'module'     => 'backend',
-                'controller' => 'login',
-                'action'     => 'index'
+            $router->add(
+                "/admin/products/:action",
+                [
+                    "module"     => "backend",
+                    "controller" => "products",
+                    "action"     => 1,
+                ]
+            );
+
+            $router->add(
+                "/products/:action",
+                [
+                    "controller" => "products",
+                    "action"     => 1,
+                ]
+            );
+
+            return $router;
+        }
+    );
+
+    // アプリケーションを初期化
+    $application = new Application($di);
+
+    // モジュールを登録する
+    $application->registerModules(
+        [
+            "frontend" => [
+                "className" => "Multiple\\Frontend\\Module",
+                "path"      => "../apps/frontend/Module.php",
+            ],
+            "backend"  => [
+                "className" => "Multiple\\Backend\\Module",
+                "path"      => "../apps/backend/Module.php",
             ]
-        );
-
-        $router->add(
-            "/admin/products/:action",
-            [
-                'module'     => 'backend',
-                'controller' => 'products',
-                'action'     => 1
-            ]
-        );
-
-        $router->add(
-            "/products/:action",
-            [
-                'controller' => 'products',
-                'action'     => 1
-            ]
-        );
-
-        return $router;
-    });
+        ]
+    );
 
     try {
-
-        // アプリケーションを初期化
-        $application = new Application($di);
-
-        // モジュールを登録する
-        $application->registerModules(
-            [
-                'frontend' => [
-                    'className' => 'Multiple\Frontend\Module',
-                    'path'      => '../apps/frontend/Module.php',
-                ],
-                'backend'  => [
-                    'className' => 'Multiple\Backend\Module',
-                    'path'      => '../apps/backend/Module.php',
-                ]
-            ]
-        );
-
         // リクエストを処理する
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -285,17 +310,25 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     // Register the installed modules
     $application->registerModules(
         [
-            'frontend' => function ($di) use ($view) {
-                $di->setShared('view', function () use ($view) {
-                    $view->setViewsDir('../apps/frontend/views/');
-                    return $view;
-                });
+            "frontend" => function ($di) use ($view) {
+                $di->setShared(
+                    "view",
+                    function () use ($view) {
+                        $view->setViewsDir("../apps/frontend/views/");
+
+                        return $view;
+                    }
+                );
             },
-            'backend' => function ($di) use ($view) {
-                $di->setShared('view', function () use ($view) {
-                    $view->setViewsDir('../apps/backend/views/');
-                    return $view;
-                });
+            "backend" => function ($di) use ($view) {
+                $di->setShared(
+                    "view",
+                    function () use ($view) {
+                        $view->setViewsDir("../apps/backend/views/");
+
+                        return $view;
+                    }
+                );
             }
         ]
     );
@@ -312,21 +345,19 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     use Phalcon\Mvc\Application;
 
+    // オートローダにディレクトリを登録する
+    // ...
+
+    // サービスを登録する
+    // ...
+
+    // Handle the request
+    $application = new Application($di);
+
     try {
-
-        // オートローダにディレクトリを登録する
-        // ...
-
-        // サービスを登録する
-        // ...
-
-        // Handle the request
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo "Exception: ", $e->getMessage();
     }
@@ -348,18 +379,27 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     <?php
 
     // 「router」サービスを取得
-    $router = $di['router'];
+    $router = $di["router"];
 
     $router->handle();
 
-    $view = $di['view'];
+    $view = $di["view"];
 
-    $dispatcher = $di['dispatcher'];
+    $dispatcher = $di["dispatcher"];
 
     // 処理済みのルートパラメータをディスパッチャに渡す
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
+
+    $dispatcher->setControllerName(
+        $router->getControllerName()
+    );
+
+    $dispatcher->setActionName(
+        $router->getActionName()
+    );
+
+    $dispatcher->setParams(
+        $router->getParams()
+    );
 
     // viewの開始
     $view->start();
@@ -377,10 +417,12 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     // viewの終了
     $view->finish();
 
-    $response = $di['response'];
+    $response = $di["response"];
 
     // ビューの出力をレスポンスに渡す
-    $response->setContent($view->getContent());
+    $response->setContent(
+        $view->getContent()
+    );
 
     // Send the response
     $response->send();
@@ -391,17 +433,28 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
+    use Phalcon\Http\ResponseInterface;
+
     // Get the 'router' service
-    $router = $di['router'];
+    $router = $di["router"];
 
     $router->handle();
 
-    $dispatcher = $di['dispatcher'];
+    $dispatcher = $di["dispatcher"];
 
     // Pass the processed router parameters to the dispatcher
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
+
+    $dispatcher->setControllerName(
+        $router->getControllerName()
+    );
+
+    $dispatcher->setActionName(
+        $router->getActionName()
+    );
+
+    $dispatcher->setParams(
+        $router->getParams()
+    );
 
     // Dispatch the request
     $dispatcher->dispatch();
@@ -410,8 +463,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     $response = $dispatcher->getReturnedValue();
 
     // 返り値がResponseオブジェクトのインスタンスか確認する
-    if ($response instanceof Phalcon\Http\ResponseInterface) {
-
+    if ($response instanceof ResponseInterface) {
         // リクエストを送信する
         $response->send();
     }
@@ -422,30 +474,38 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
+    use Phalcon\Http\ResponseInterface;
+
     // Get the 'router' service
-    $router = $di['router'];
+    $router = $di["router"];
 
     $router->handle();
 
-    $dispatcher = $di['dispatcher'];
+    $dispatcher = $di["dispatcher"];
 
     // Pass the processed router parameters to the dispatcher
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
+
+    $dispatcher->setControllerName(
+        $router->getControllerName()
+    );
+
+    $dispatcher->setActionName(
+        $router->getActionName()
+    );
+
+    $dispatcher->setParams(
+        $router->getParams()
+    );
 
     try {
-
         // Dispatch the request
         $dispatcher->dispatch();
-
     } catch (Exception $e) {
-
         // 例外が発生した場合、それに対応するコントローラーとアクションを実行する
 
         // Pass the processed router parameters to the dispatcher
-        $dispatcher->setControllerName('errors');
-        $dispatcher->setActionName('action503');
+        $dispatcher->setControllerName("errors");
+        $dispatcher->setActionName("action503");
 
         // Dispatch the request
         $dispatcher->dispatch();
@@ -455,8 +515,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     $response = $dispatcher->getReturnedValue();
 
     // Check if the action returned is a 'response' object
-    if ($response instanceof Phalcon\Http\ResponseInterface) {
-
+    if ($response instanceof ResponseInterface) {
         // Send the response
         $response->send();
     }
@@ -487,6 +546,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $eventsManager = new EventsManager();
@@ -495,7 +555,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
     $eventsManager->attach(
         "application",
-        function ($event, $application) {
+        function (Event $event, $application) {
             // ...
         }
     );
