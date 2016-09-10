@@ -108,7 +108,7 @@ Compile from source
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
 
     cd cphalcon/build
 
