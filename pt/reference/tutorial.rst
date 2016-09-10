@@ -86,7 +86,9 @@ O arquivo tutorial/public/index.php deve ser igual a este:
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 
 
@@ -151,7 +153,9 @@ With it, we can load classes using various strategies but for this example we ha
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 Dependency Management
 ^^^^^^^^^^^^^^^^^^^^^

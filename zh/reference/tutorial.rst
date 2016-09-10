@@ -85,7 +85,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 
 
@@ -150,7 +152,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 依赖管理（Dependency Management）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

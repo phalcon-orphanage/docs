@@ -89,7 +89,9 @@ Bootstrap
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 
 
@@ -154,7 +156,9 @@ Bootstrap
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 Управление зависимостями
 ^^^^^^^^^^^^^^^^^^^^^^^^

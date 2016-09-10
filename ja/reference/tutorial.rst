@@ -84,7 +84,9 @@ tutorial/public/index.php は次のようになります。
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 
 
@@ -149,7 +151,9 @@ bootstrapの最初の部分では、オートローダを登録しています�
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 依存性の管理
 ^^^^^^^^^^^^

@@ -89,7 +89,9 @@ Plik tutorial/public/index.php powinien wyglądać następująco:
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 
 
@@ -154,7 +156,9 @@ Dzięki niemu, możemy załadować klasy z zastosowaniem różnych strategii, je
             "../app/controllers/",
             "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 Zarządzanie zależnościami
 ^^^^^^^^^^^^^^^^^^^^^^^^^
