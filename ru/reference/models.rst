@@ -559,51 +559,37 @@ column map (as described above) to ensure proper mapping of your properties to t
     <?php
 
     // Запрос роботов с параметрами, привязанными к строковым заполнителям
-    $conditions = "name = :name: AND type = :type:";
-
     // Параметры с ключами, идентичными заполнителям
-    $parameters = [
-        "name" => "Robotina",
-        "type" => "maid",
-    ];
-
-    // Выполнение запроса
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = :name: AND type = :type:",
+            "bind" => [
+                "name" => "Robotina",
+                "type" => "maid",
+            ],
         ]
     );
 
     // Запрос роботов с параметрами, привязанными к числовым заполнителям
-    $conditions = "name = ?1 AND type = ?2";
-
-    $parameters = [
-        1 => "Robotina",
-        2 => "maid",
-    ];
-
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = ?1 AND type = ?2",
+            "bind" => [
+                1 => "Robotina",
+                2 => "maid",
+            ],
         ]
     );
 
     // Запрос роботов с параметрами, привязанными к строковым и числовым заполнителям
-    $conditions = "name = :name: AND type = ?1";
-
     // Параметры с ключами, идентичными заполнителям
-    $parameters = [
-        "name" => "Robotina",
-        1      => "maid",
-    ];
-
-    // Выполнение запроса
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = :name: AND type = ?1",
+            "bind" => [
+                "name" => "Robotina",
+                1      => "maid",
+            ],
         ]
     );
 

@@ -535,51 +535,37 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
     <?php
 
     // Query robots binding parameters with string placeholders
-    $conditions = "name = :name: AND type = :type:";
-
     // Parameters whose keys are the same as placeholders
-    $parameters = [
-        "name" => "Robotina",
-        "type" => "maid",
-    ];
-
-    // Perform the query
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = :name: AND type = :type:",
+            "bind" => [
+                "name" => "Robotina",
+                "type" => "maid",
+            ],
         ]
     );
 
     // Query robots binding parameters with integer placeholders
-    $conditions = "name = ?1 AND type = ?2";
-
-    $parameters = [
-        1 => "Robotina",
-        2 => "maid",
-    ];
-
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = ?1 AND type = ?2",
+            "bind" => [
+                1 => "Robotina",
+                2 => "maid",
+            ],
         ]
     );
 
     // Query robots binding parameters with both string and integer placeholders
-    $conditions = "name = :name: AND type = ?1";
-
     // Parameters whose keys are the same as placeholders
-    $parameters = [
-        "name" => "Robotina",
-        1      => "maid",
-    ];
-
-    // Perform the query
     $robots = Robots::find(
         [
-            $conditions,
-            "bind" => $parameters,
+            "name = :name: AND type = ?1",
+            "bind" => [
+                "name" => "Robotina",
+                1      => "maid",
+            ],
         ]
     );
 
