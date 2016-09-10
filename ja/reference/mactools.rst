@@ -20,36 +20,17 @@ Copy & Paste the commands below in your terminal:
 
 .. code-block:: bash
 
-    wget -q --no-check-certificate -O phalcon-tools.zip http://github.com/phalcon/phalcon-devtools/zipball/master
+    git clone git://github.com/phalcon/phalcon-devtools.git
 
-    unzip -q phalcon-tools.zip
-
-    mv phalcon-phalcon-devtools-* phalcon-tools
-
-Check where the phalcon-tools directory was installed using a *pwd* command in your terminal:
-
-.. figure:: ../_static/img/mac-2.png
-   :align: center
-
-On the Mac platform, you need to configure your user PATH to include Phalcon tools. Edit your .profile and append the Phalcon tools path to the environment variable PATH:
-
-.. figure:: ../_static/img/mac-3.png
-   :align: center
-
-Insert these two lines at the end of the file:
+Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
 
 .. code-block:: bash
 
-    export PATH=$PATH:/Users/scott/phalcon-tools
+    cd phalcon-devtools/
 
-    export PTOOLSPATH=/Users/scott/phalcon-tools
+    . ./phalcon.sh
 
-The .profile should look like this:
-
-.. figure:: ../_static/img/mac-4.png
-   :align: center
-
-Save your changes and close the editor. In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
+In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
 
 .. code-block:: bash
 
