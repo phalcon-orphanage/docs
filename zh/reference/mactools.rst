@@ -70,5 +70,5 @@ Congratulations you now have Phalcon tools installed!
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
 
-.. _Download: http://phalconphp.com/download>
+.. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools
