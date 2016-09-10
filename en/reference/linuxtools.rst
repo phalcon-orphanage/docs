@@ -12,12 +12,22 @@ Download
 --------
 You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 
-Open a terminal and type the commands below:
+Open a terminal and type the command below:
+
+.. code-block:: bash
+
+    git clone git://github.com/phalcon/phalcon-devtools.git
 
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
 Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+
+.. code-block:: bash
+
+    cd phalcon-devtools/
+
+    . ./phalcon.sh
 
 .. figure:: ../_static/img/linux-2.png
    :align: center
