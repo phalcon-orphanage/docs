@@ -5,8 +5,8 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 a simple command, allowing you to easily develop applications using Phalcon.
 
 .. highlights::
-    **Important:** Phalcon Framework version 0.5.0 or greater is needed to use developer tools. It is highly recommended
-    to use PHP 5.4 or greater. If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
+
+    If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
 
 Download
 --------

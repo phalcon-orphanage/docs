@@ -5,8 +5,8 @@ Ces outils sont une collection de scripts utiles pour générer un squelette de 
 Des composants principaux de votre application peuvent être générés avec une simple commande, vous permettant de développer des applications facilement avec phalcon.
 
 .. highlights::
-    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs. Il est fortement recommandé
-    d'utilisé PHP 5.4 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
+
+    Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
 
 Téléchargement
 --------------
