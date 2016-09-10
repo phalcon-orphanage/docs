@@ -21,7 +21,9 @@
 .. code-block:: bash
 
     wget -q --no-check-certificate -O phalcon-tools.zip http://github.com/phalcon/phalcon-devtools/zipball/master
+
     unzip -q phalcon-tools.zip
+
     mv phalcon-phalcon-devtools-* phalcon-tools
 
 Проверьте, куда будут установлены Инструменты разработчика Phalcon, используя команду *pwd*:
@@ -39,6 +41,7 @@
 .. code-block:: bash
 
     export PATH=$PATH:/Users/scott/phalcon-tools
+
     export PTOOLSPATH=/Users/scott/phalcon-tools
 
 Файл .profile должен быть примерно таким:
@@ -51,6 +54,7 @@
 .. code-block:: bash
 
     ln -s ~/phalcon-tools/phalcon.php ~/phalcon-tools/phalcon
+
     chmod +x ~/phalcon-tools/phalcon
 
 Введите команду "phalcon" и вы должны увидеть нечто подобное:

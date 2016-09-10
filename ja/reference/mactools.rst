@@ -1,5 +1,6 @@
 Phalcon 開発者ツール / Mac OS X向け
 ===================================
+
 These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
 
 Prerequisites
@@ -20,7 +21,9 @@ Copy & Paste the commands below in your terminal:
 .. code-block:: bash
 
     wget -q --no-check-certificate -O phalcon-tools.zip http://github.com/phalcon/phalcon-devtools/zipball/master
+
     unzip -q phalcon-tools.zip
+
     mv phalcon-phalcon-devtools-* phalcon-tools
 
 Check where the phalcon-tools directory was installed using a *pwd* command in your terminal:
@@ -38,6 +41,7 @@ Insert these two lines at the end of the file:
 .. code-block:: bash
 
     export PATH=$PATH:/Users/scott/phalcon-tools
+
     export PTOOLSPATH=/Users/scott/phalcon-tools
 
 The .profile should look like this:
@@ -50,6 +54,7 @@ Save your changes and close the editor. In the terminal window, type the followi
 .. code-block:: bash
 
     ln -s ~/phalcon-tools/phalcon.php ~/phalcon-tools/phalcon
+
     chmod +x ~/phalcon-tools/phalcon
 
 Type the command "phalcon" and you will see something like this:
