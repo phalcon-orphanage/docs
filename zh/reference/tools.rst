@@ -28,19 +28,20 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 
 .. code-block:: sh
 
-   $ phalcon commands
+    $ phalcon commands
 
-   Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
-   Available commands:
-     commands         (alias of: list, enumerate)
-     controller       (alias of: create-controller)
-     model            (alias of: create-model)
-     all-models       (alias of: create-all-models)
-     project          (alias of: create-project)
-     scaffold         (alias of: create-scaffold)
-     migration        (alias of: create-migration)
-     webtools         (alias of: create-webtools)
+    Available commands:
+      commands         (alias of: list, enumerate)
+      controller       (alias of: create-controller)
+      module           (alias of: create-module)
+      model            (alias of: create-model)
+      all-models       (alias of: create-all-models)
+      project          (alias of: create-project)
+      scaffold         (alias of: create-scaffold)
+      migration        (alias of: create-migration)
+      webtools         (alias of: create-webtools)
 
 生成项目框架（Generating a Project Skeleton）
 ---------------------------------------------
@@ -66,7 +67,7 @@ web服务器根目录下输入如下命令：
 
     $ phalcon project --help
 
-    Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
     Help:
       Creates a project 创建项目
