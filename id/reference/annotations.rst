@@ -359,11 +359,6 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
         }
     }
 
-Memilih template untuk ditampilkan
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Di contoh ini kita akan menggunakan anotasi untuk memberi tahu :doc:`Phalcon\\Mvc\\View\\Simple <views>` template apa yang harus ditampilkan
-ketika aksi telah dieksekusi:
-
 Adapter Anotasi
 ---------------
 Komponen ini menggunakan adapter untuk cache atau tidak anotasi yang terproses sehingga meningkatkan performa dan menyediakan fasilitas untuk pengembangan/pengujian:

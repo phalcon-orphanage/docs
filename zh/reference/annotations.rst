@@ -356,10 +356,6 @@ You can use annotations to tell the ACL which controllers belong to the administ
         }
     }
 
-选择渲染模版（Choose the template to render）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:`Phalcon\\Mvc\\View\\Simple <views>`，哪一个模板文件需要渲染：
-
 注释适配器（Annotations Adapters）
 ----------------------------------
 这些组件利用了适配器去缓存或者不缓存已经解析和处理过的注释内容，从而提升了性能或者为开发环境提供了开发/测试的适配器：

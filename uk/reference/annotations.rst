@@ -361,11 +361,6 @@ You can use annotations to tell the ACL which controllers belong to the administ
         }
     }
 
-Choose the template to render
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must be rendered
-once the action has been executed:
-
 Annotations Adapters
 --------------------
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
