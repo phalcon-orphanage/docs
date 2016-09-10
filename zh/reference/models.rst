@@ -2071,17 +2071,20 @@ The following example shows how to use it:
     <?php
 
     use Phalcon\Mvc\Model;
-    use Phalcon\Mvc\Model\Validator\Uniqueness;
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Uniqueness;
+    use Phalcon\Validation\Validator\InclusionIn;
 
     class Robots extends Model
     {
         public function validation()
         {
-            $this->validate(
+            $validator = new Validation();
+
+            $validator->validate(
+                "type",
                 new InclusionIn(
                     [
-                        "field"  => "type",
                         "domain" => [
                             "Mechanical",
                             "Virtual",
@@ -2090,111 +2093,25 @@ The following example shows how to use it:
                 )
             );
 
-            $this->validate(
+            $validator->validate(
+                "name",
                 new Uniqueness(
                     [
-                        "field"   => "name",
                         "message" => "The robot name must be unique",
                     ]
                 )
             );
 
-            return $this->validationHasFailed() !== true;
+            return $this->validate($validator);
         }
     }
 
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                          |
-+==============+==================================================================================================================================================================+==================================================================+
-| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`          |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-
-In addition to the built-in validators, you can create your own validators:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Validator;
-    use Phalcon\Mvc\Model\ValidatorInterface;
-    use Phalcon\Mvc\EntityInterface;
-
-    class MaxMinValidator extends Validator implements ValidatorInterface
-    {
-        public function validate(EntityInterface $model)
-        {
-            $field = $this->getOption("field");
-
-            $min   = $this->getOption("min");
-            $max   = $this->getOption("max");
-
-            $value = $model->$field;
-
-            if ($min <= $value && $value <= $max) {
-                $this->appendMessage(
-                    "The field doesn't have the right range of values",
-                    $field,
-                    "MaxMinValidator"
-                );
-
-                return false;
-            }
-
-            return true;
-        }
-    }
-
 .. highlights::
 
-    *NOTE* Up to version 2.0.4 :code:`$model` must be :doc:`Phalcon\\Mvc\\ModelInterface <../api/Phalcon_Mvc_ModelInterface>`
-    instance (:code:`public function validate(Phalcon\Mvc\ModelInterface $model)`).
-
-Adding the validator to a model:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Customers extends Model
-    {
-        public function validation()
-        {
-            $this->validate(
-                new MaxMinValidator(
-                    [
-                        "field" => "price",
-                        "min"   => 10,
-                        "max"   => 100,
-                    ]
-                )
-            );
-
-            if ($this->validationHasFailed() === true) {
-                return false;
-            }
-        }
-    }
+    For more information on validators, see the :doc:`Validation documentation <validation>`.
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
