@@ -23,8 +23,12 @@ Defaultnya :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` mengizinkan akses ke aksi pa
 
     <?php
 
+    use Phalcon\Acl;
+
     // Aksi default adalah deny access
-    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
 Menambahkan Role ke ACL
 -----------------------
@@ -63,8 +67,19 @@ Resource adalah objeck-objek yang aksesnya terkontrol. Normalnya dalam aplikasi 
     $customersResource = new Resource("Customers");
 
     // Tambahkan resource "customers" dengan beberapa operasi
-    $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, ["create", "update"]);
+
+    $acl->addResource(
+        $customersResource,
+        "search"
+    );
+
+    $acl->addResource(
+        $customersResource,
+        [
+            "create",
+            "update",
+        ]
+    );
 
 Menentukan Kontrol Akses
 ------------------------
@@ -75,8 +90,11 @@ Sekarang kita punya role dan resource, saatnya untuk mendefinisikan ACL (yaitu r
     <?php
 
     // Set level akses role ke resource
+
     $acl->allow("Guests", "Customers", "search");
+
     $acl->allow("Guests", "Customers", "create");
+
     $acl->deny("Guests", "Customers", "update");
 
 Metode :code:`allow()` memberikan role tersebut akses ke resource tertentu. Metode :code:`deny()` melakukan sebaliknya.
@@ -90,9 +108,15 @@ Setelah daftar sudah terdefinisi. Kita dapat bertanya untuk menguji apakah sebua
     <?php
 
     // Uji apakah role punya akses ke operasi
-    $acl->isAllowed("Guests", "Customers", "edit");   // Mengembalikan 0
-    $acl->isAllowed("Guests", "Customers", "search"); // Mengembalikan 1
-    $acl->isAllowed("Guests", "Customers", "create"); // Mengembalikan 1
+
+    // Mengembalikan 0
+    $acl->isAllowed("Guests", "Customers", "edit");
+
+    // Mengembalikan 1
+    $acl->isAllowed("Guests", "Customers", "search");
+
+    // Mengembalikan 1
+    $acl->isAllowed("Guests", "Customers", "create");
 
 Akses berbasis Fungsi
 ---------------------
@@ -102,29 +126,74 @@ Anda dapat juga menambahkan parameter ke-4 berupa fungsi kustom yang mengembalik
 
     <?php
     // Set level akses role ke resource menggunakan fungsi kustom
-    $acl->allow("Guests", "Customers", "search",function($a){
-        return $a % 2 == 0;
-    });
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function ($a) {
+            return $a % 2 == 0;
+        }
+    );
 
     // Uji apakah role punya akses ke operasi menggunakan fungsi kustom
-    $acl->isAllowed("Guests","Customers","search",['a'=>4]); // Mengembalikan true
-    $acl->isAllowed("Guests","Customers","search",['a'=>3]); // Mengembalikan false
+
+    // Mengembalikan true
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search",
+        [
+            "a" => 4,
+        ]
+    );
+
+    // Mengembalikan false
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search",
+        [
+            "a" => 3,
+        ]
+    );
 
 Jika anda tidak menyediakan parameter di metode :code:`isAllowed()` maka perilaku defaultnya adalah :code:`Acl::ALLOW`. Anda dapat mengubahnya dengan menggunakan :code:`setNoArgumentsDefaultAction()`.
 
 .. code-block:: php
 
+    use Phalcon\Acl;
+
     <?php
     // Set level akses role ke resource engan fungsi kustom
-    $acl->allow("Guests", "Customers", "search",function($a){
-        return $a % 2 == 0;
-    });
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function ($a) {
+            return $a % 2 == 0;
+        }
+    );
 
     // Uji apakah role punya akses ke operasi menggunakan fungsi kustom
-    $acl->isAllowed("Guests","Customers","search"); // Mengembalikan true
+
+    // Mengembalikan true
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search"
+    );
+
     // Ubah aksi default tanpa argumen
-    $acl->setNoArgumentsDefaultAction(Acl::DENY);
-    $acl->isAllowed("Guests","Customers","search"); // Mengembalikan false
+    $acl->setNoArgumentsDefaultAction(
+        Acl::DENY
+    );
+
+    // Mengembalikan false
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search"
+    );
 
 Objek sebagai nama role dan nama resource
 -----------------------------------------
@@ -142,12 +211,13 @@ Kelas :code:`UserRole` kita
     class UserRole implements RoleAware
     {
         protected $id;
+
         protected $roleName;
 
-        public function __construct($id,$roleName)
+        public function __construct($id, $roleName)
         {
-            $this->id=$id;
-            $this->roleName=$roleName;
+            $this->id       = $id;
+            $this->roleName = $roleName;
         }
 
         public function getId()
@@ -174,14 +244,16 @@ dan kelas :code:`ModelResource`
     class ModelResource implements ResourceAware
     {
         protected $id;
+
         protected $resourceName;
+
         protected $userId;
 
-        public function __construct($id,$resourceName,$userId)
+        public function __construct($id, $resourceName, $userId)
         {
-            $this->id=$id;
-            $this->resourceName=$resourceName;
-            $this->userId=$userId;
+            $this->id           = $id;
+            $this->resourceName = $resourceName;
+            $this->userId       = $userId;
         }
 
         public function getId()
@@ -216,15 +288,50 @@ Selanjutnya anda dapat menggunakannya dalam metode :code:`isAllowed()`.
     $acl->deny("Guests", "Customers", "update");
 
     // Buat objek yang menyediakan roleName dan resourceName
-    $customer = new ModelResource(1,"Customers",2);
-    $designer = new UserRole(1,"Designers");
-    $guest = new UserRole(2,"Guests");
-    $anotherGuest = new UserRole(3,"Guests");
+
+    $customer = new ModelResource(
+        1,
+        "Customers",
+        2
+    );
+
+    $designer = new UserRole(
+        1,
+        "Designers"
+    );
+
+    $guest = new UserRole(
+        2,
+        "Guests"
+    );
+
+    $anotherGuest = new UserRole(
+        3,
+        "Guests"
+    );
 
     // Uji apakah objek user memiliki akses ke operasi pada objek model
-    $acl->isAllowed($designer,$customer,"search") // Mengembalikan false
-    $acl->isAllowed($guest,$customer,"search") // Mengembalikan true
-    $acl->isAllowed($anotherGuest,$customer,"search") // Mengembalikan true
+
+    // Mengembalikan false
+    $acl->isAllowed(
+        $designer,
+        $customer,
+        "search"
+    );
+
+    // Mengembalikan true
+    $acl->isAllowed(
+        $guest,
+        $customer,
+        "search"
+    );
+
+    // Mengembalikan true
+    $acl->isAllowed(
+        $anotherGuest,
+        $customer,
+        "search"
+    );
 
 Anda dapt mengakses objektersebut dalam fungsi kustom Anda di :code:`allow()` atau :code:`deny()`. Mereka otomatis akan diikat ke parameter menggunakan tipe dalam fungsi.
 
@@ -236,22 +343,72 @@ Anda dapt mengakses objektersebut dalam fungsi kustom Anda di :code:`allow()` at
     use ModelResource;
 
     // Set level akses role ke resource dengan fungsi kustom
-    $acl->allow("Guests", "Customers", "search",function(UserRole $user,ModelResource $model){ // Kelas User dan Model wajib
-        return $user->getId == $model->getUserId();
-    });
-    $acl->allow("Guests", "Customers", "create");
-    $acl->deny("Guests", "Customers", "update");
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function (UserRole $user, ModelResource $model) { // Kelas User dan Model wajib
+            return $user->getId == $model->getUserId();
+        }
+    );
+
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "create"
+    );
+
+    $acl->deny(
+        "Guests",
+        "Customers",
+        "update"
+    );
 
     // Buat objek yang menyediakan roleName and resourceName
-    $customer = new ModelResource(1,"Customers",2);
-    $designer = new UserRole(1,"Designers");
-    $guest = new UserRole(2,"Guests");
-    $anotherGuest = new UserRole(3,"Guests");
+
+    $customer = new ModelResource(
+        1,
+        "Customers",
+        2
+    );
+
+    $designer = new UserRole(
+        1,
+        "Designers"
+    );
+
+    $guest = new UserRole(
+        2,
+        "Guests"
+    );
+
+    $anotherGuest = new UserRole(
+        3,
+        "Guests"
+    );
 
     // Uji apakah objek user memiliki akses ke operasi pada objek model
-    $acl->isAllowed($designer,$customer,"search") // Mengembalikan false
-    $acl->isAllowed($guest,$customer,"search") // Mengembalikan true
-    $acl->isAllowed($anotherGuest,$customer,"search") // Mengembalikan false
+
+    // Mengembalikan false
+    $acl->isAllowed(
+        $designer,
+        $customer,
+        "search"
+    );
+
+    // Mengembalikan true
+    $acl->isAllowed(
+        $guest,
+        $customer,
+        "search"
+    );
+
+    // Mengembalikan false
+    $acl->isAllowed(
+        $anotherGuest,
+        $customer,
+        "search"
+    );
 
 Anda dapat menambah parameter kustom ke fungsi dan melewatkan array asosiatif dalam metode :code:`isAllowed()`. Urutannya juga tidak penting.
 
@@ -268,7 +425,9 @@ Anda dapat membangun struktur role kompleks menggunakan inheritansi yang disedia
     // ...
 
     // Buat beberapa role
+
     $roleAdmins = new Role("Administrators", "Super-User role");
+
     $roleGuests = new Role("Guests");
 
     // Tambahkan role "Guests" ke ACL
@@ -291,17 +450,20 @@ Untuk meningkatkan performa instance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` da
 
     // Uji apakah data ACL sudah ada
     if (!is_file("app/security/acl.data")) {
-
         $acl = new AclList();
 
         // ... Definisi role, resource, akses, dan lain-lain
 
         // Simpan daftar terserialisasi ke plain file
-        file_put_contents("app/security/acl.data", serialize($acl));
+        file_put_contents(
+            "app/security/acl.data",
+            serialize($acl)
+        );
     } else {
-
-         // Restore ACL object dari serialized file
-         $acl = unserialize(file_get_contents("app/security/acl.data"));
+        // Restore ACL object dari serialized file
+        $acl = unserialize(
+            file_get_contents("app/security/acl.data")
+        );
     }
 
     // Gunakan ACL list seperlunya
@@ -332,6 +494,7 @@ Contoh berikut menunjukkan bagaimana memasang listener ke komponen ini:
     <?php
 
     use Phalcon\Acl\Adapter\Memory as AclList;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     // ...
@@ -340,13 +503,16 @@ Contoh berikut menunjukkan bagaimana memasang listener ke komponen ini:
     $eventsManager = new EventsManager();
 
     // Pasangkan listener tipe "acl"
-    $eventsManager->attach("acl", function ($event, $acl) {
-        if ($event->getType() == "beforeCheckAccess") {
-             echo   $acl->getActiveRole(),
-                    $acl->getActiveResource(),
-                    $acl->getActiveAccess();
+    $eventsManager->attach(
+        "acl:beforeCheckAccess",
+        function (Event $event, $acl) {
+            echo $acl->getActiveRole();
+
+            echo $acl->getActiveResource();
+
+            echo $acl->getActiveAccess();
         }
-    });
+    );
 
     $acl = new AclList();
 

@@ -30,8 +30,12 @@
 
     <?php
 
+    use Phalcon\Acl;
+
     // Указываем "запрещено" по умолчанию для тех объектов, которые не были занесены в список контроля доступа
-    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
 Добавление ролей
 ----------------
@@ -75,8 +79,19 @@
     $customersResource = new Resource("Customers");
 
     // Добавим ресурс "Customers" с несколькими операциями
-    $acl->addResource($customersResource, "search");
-    $acl->addResource($customersResource, ["create", "update"]);
+
+    $acl->addResource(
+        $customersResource,
+        "search"
+    );
+
+    $acl->addResource(
+        $customersResource,
+        [
+            "create",
+            "update",
+        ]
+    );
 
 Определение контроля доступа
 ----------------------------
@@ -88,8 +103,11 @@
     <?php
 
     // Задаем уровень доступа для ролей на определенный ресурс
+
     $acl->allow("Guests", "Customers", "search");
+
     $acl->allow("Guests", "Customers", "create");
+
     $acl->deny("Guests", "Customers", "update");
 
 Метод "allow" определяет, что данная роль имеет доступ к действию над ресурсом. Метод "deny" делает обратное.
@@ -103,9 +121,15 @@
     <?php
 
     // Проверяем, имеет ли роль "Guests" доступ к разным операциям по отношению к ресурсу "Customers"
-    $acl->isAllowed("Guests", "Customers", "edit");   // Возвращает 0
-    $acl->isAllowed("Guests", "Customers", "search"); // Возвращает 1
-    $acl->isAllowed("Guests", "Customers", "create"); // Возвращает 1
+
+    // Возвращает 0
+    $acl->isAllowed("Guests", "Customers", "edit");
+
+    // Возвращает 1
+    $acl->isAllowed("Guests", "Customers", "search");
+
+    // Возвращает 1
+    $acl->isAllowed("Guests", "Customers", "create");
 
 Function based access
 ---------------------
@@ -115,29 +139,74 @@ Also you can add as 4th parameter your custom function which must return boolean
 
     <?php
     // Set access level for role into resources with custom function
-    $acl->allow("Guests", "Customers", "search",function($a){
-        return $a % 2 == 0;
-    });
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function ($a) {
+            return $a % 2 == 0;
+        }
+    );
 
     // Check whether role has access to the operation with custom function
-    $acl->isAllowed("Guests","Customers","search",['a'=>4]); // Returns true
-    $acl->isAllowed("Guests","Customers","search",['a'=>3]); // Returns false
+
+    // Returns true
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search",
+        [
+            "a" => 4,
+        ]
+    );
+
+    // Returns false
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search",
+        [
+            "a" => 3,
+        ]
+    );
 
 Also if you don't provide any parameters in :code:`isAllowed()` method then default behaviour will be :code:`Acl::ALLOW`. You can change it by using method :code:`setNoArgumentsDefaultAction()`.
 
 .. code-block:: php
 
+    use Phalcon\Acl;
+
     <?php
     // Set access level for role into resources with custom function
-    $acl->allow("Guests", "Customers", "search",function($a){
-        return $a % 2 == 0;
-    });
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function ($a) {
+            return $a % 2 == 0;
+        }
+    );
 
     // Check whether role has access to the operation with custom function
-    $acl->isAllowed("Guests","Customers","search"); // Returns true
+
+    // Returns true
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search"
+    );
+
     // Change no arguments default action
-    $acl->setNoArgumentsDefaultAction(Acl::DENY);
-    $acl->isAllowed("Guests","Customers","search"); // Returns false
+    $acl->setNoArgumentsDefaultAction(
+        Acl::DENY
+    );
+
+    // Returns false
+    $acl->isAllowed(
+        "Guests",
+        "Customers",
+        "search"
+    );
 
 Objects as role name and resource name
 --------------------------------------
@@ -155,12 +224,13 @@ Our :code:`UserRole` class
     class UserRole implements RoleAware
     {
         protected $id;
+
         protected $roleName;
 
-        public function __construct($id,$roleName)
+        public function __construct($id, $roleName)
         {
-            $this->id=$id;
-            $this->roleName=$roleName;
+            $this->id       = $id;
+            $this->roleName = $roleName;
         }
 
         public function getId()
@@ -187,14 +257,16 @@ And our :code:`ModelResource` class
     class ModelResource implements ResourceAware
     {
         protected $id;
+
         protected $resourceName;
+
         protected $userId;
 
-        public function __construct($id,$resourceName,$userId)
+        public function __construct($id, $resourceName, $userId)
         {
-            $this->id=$id;
-            $this->resourceName=$resourceName;
-            $this->userId=$userId;
+            $this->id           = $id;
+            $this->resourceName = $resourceName;
+            $this->userId       = $userId;
         }
 
         public function getId()
@@ -229,15 +301,50 @@ Then you can use them in :code:`isAllowed()` method.
     $acl->deny("Guests", "Customers", "update");
 
     // Create our objects providing roleName and resourceName
-    $customer = new ModelResource(1,"Customers",2);
-    $designer = new UserRole(1,"Designers");
-    $guest = new UserRole(2,"Guests");
-    $anotherGuest = new UserRole(3,"Guests");
+
+    $customer = new ModelResource(
+        1,
+        "Customers",
+        2
+    );
+
+    $designer = new UserRole(
+        1,
+        "Designers"
+    );
+
+    $guest = new UserRole(
+        2,
+        "Guests"
+    );
+
+    $anotherGuest = new UserRole(
+        3,
+        "Guests"
+    );
 
     // Check whether our user objects have access to the operation on model object
-    $acl->isAllowed($designer,$customer,"search") // Returns false
-    $acl->isAllowed($guest,$customer,"search") // Returns true
-    $acl->isAllowed($anotherGuest,$customer,"search") // Returns true
+
+    // Returns false
+    $acl->isAllowed(
+        $designer,
+        $customer,
+        "search"
+    );
+
+    // Returns true
+    $acl->isAllowed(
+        $guest,
+        $customer,
+        "search"
+    );
+
+    // Returns true
+    $acl->isAllowed(
+        $anotherGuest,
+        $customer,
+        "search"
+    );
 
 Also you can access those objects in your custom function in :code:`allow()` or :code:`deny()`. They are automatically bind to parameters by type in function.
 
@@ -249,22 +356,72 @@ Also you can access those objects in your custom function in :code:`allow()` or 
     use ModelResource;
 
     // Set access level for role into resources with custom function
-    $acl->allow("Guests", "Customers", "search",function(UserRole $user,ModelResource $model){ // User and Model classes are necessary
-        return $user->getId == $model->getUserId();
-    });
-    $acl->allow("Guests", "Customers", "create");
-    $acl->deny("Guests", "Customers", "update");
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "search",
+        function (UserRole $user, ModelResource $model) { // User and Model classes are necessary
+            return $user->getId == $model->getUserId();
+        }
+    );
+
+    $acl->allow(
+        "Guests",
+        "Customers",
+        "create"
+    );
+
+    $acl->deny(
+        "Guests",
+        "Customers",
+        "update"
+    );
 
     // Create our objects providing roleName and resourceName
-    $customer = new ModelResource(1,"Customers",2);
-    $designer = new UserRole(1,"Designers");
-    $guest = new UserRole(2,"Guests");
-    $anotherGuest = new UserRole(3,"Guests");
+
+    $customer = new ModelResource(
+        1,
+        "Customers",
+        2
+    );
+
+    $designer = new UserRole(
+        1,
+        "Designers"
+    );
+
+    $guest = new UserRole(
+        2,
+        "Guests"
+    );
+
+    $anotherGuest = new UserRole(
+        3,
+        "Guests"
+    );
 
     // Check whether our user objects have access to the operation on model object
-    $acl->isAllowed($designer,$customer,"search") // Returns false
-    $acl->isAllowed($guest,$customer,"search") // Returns true
-    $acl->isAllowed($anotherGuest,$customer,"search") // Returns false
+
+    // Returns false
+    $acl->isAllowed(
+        $designer,
+        $customer,
+        "search"
+    );
+
+    // Returns true
+    $acl->isAllowed(
+        $guest,
+        $customer,
+        "search"
+    );
+
+    // Returns false
+    $acl->isAllowed(
+        $anotherGuest,
+        $customer,
+        "search"
+    );
 
 You can still add any custom parameters to function and pass associative array in :code:`isAllowed()` method. Also order doesn't matter.
 
@@ -283,7 +440,9 @@ You can still add any custom parameters to function and pass associative array i
     // ...
 
     // Создаем несколько ролей
+
     $roleAdmins = new Role("Administrators", "Super-User role");
+
     $roleGuests = new Role("Guests");
 
     // Добавляем роль "Guests"
@@ -308,17 +467,20 @@ You can still add any custom parameters to function and pass associative array i
 
     // Проверяем существует ли сериализованный файл
     if (!is_file("app/security/acl.data")) {
-
         $acl = new AclList();
 
         // ... Определяем роли, ресурсы, доступ и т.д.
 
         // Сохраняем сериализованный объект в файл
-        file_put_contents("app/security/acl.data", serialize($acl));
+        file_put_contents(
+            "app/security/acl.data",
+            serialize($acl)
+        );
     } else {
-
-         // Восстанавливаем ACL объект из текстового файла
-         $acl = unserialize(file_get_contents("app/security/acl.data"));
+        // Восстанавливаем ACL объект из текстового файла
+        $acl = unserialize(
+            file_get_contents("app/security/acl.data")
+        );
     }
 
     // Используем ACL
@@ -351,6 +513,7 @@ It's recommended to use the Memory adapter during development and use one of the
     <?php
 
     use Phalcon\Acl\Adapter\Memory as AclList;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     // ...
@@ -359,13 +522,16 @@ It's recommended to use the Memory adapter during development and use one of the
     $eventsManager = new EventsManager();
 
     // Прикрепляем слушателя (функцию/callback) к типу "acl"
-    $eventsManager->attach("acl", function ($event, $acl) {
-        if ($event->getType() == "beforeCheckAccess") {
-             echo   $acl->getActiveRole(),
-                    $acl->getActiveResource(),
-                    $acl->getActiveAccess();
+    $eventsManager->attach(
+        "acl:beforeCheckAccess",
+        function (Event $event, $acl) {
+            echo $acl->getActiveRole();
+
+            echo $acl->getActiveResource();
+
+            echo $acl->getActiveAccess();
         }
-    });
+    );
 
     $acl = new AclList();
 
