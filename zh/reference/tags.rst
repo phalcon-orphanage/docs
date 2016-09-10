@@ -87,10 +87,10 @@ Volt 语法:
     <?= $this->tag->linkTo("products/search", "Search") ?>
 
     <!-- with CSS attributes -->
-    <?= $this->tag->linkTo(array('products/edit/10', 'Edit', 'class' => 'edit-btn')) ?>
+    <?= $this->tag->linkTo(["products/edit/10", "Edit", "class" => "edit-btn"]) ?>
 
     <!-- for a named route -->
-    <?= $this->tag->linkTo(array(array('for' => 'show-product', 'title' => 123, 'name' => 'carrots'), 'Show')) ?>
+    <?= $this->tag->linkTo([["for" => "show-product", "title" => 123, "name" => "carrots"], "Show"]) ?>
 
 事实上，上例所有URL都是被 :doc:`Phalcon\\Mvc\\Url <url>` 生成的。
 
@@ -102,10 +102,10 @@ Volt 语法:
     {{ link_to("products/search", "Search") }}
 
     <!-- for a named route -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
+    {{ link_to(["for": "show-product", "id": 123, "name": "carrots"], "Show") }}
 
     <!-- for a named route with a HTML class -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show', 'class': 'edit-btn') }}
+    {{ link_to(["for": "show-product", "id": 123, "name": "carrots"], "Show", "class": "edit-btn") }}
 
 创建表单（Creating Forms）
 --------------------------
@@ -116,14 +116,18 @@ Volt 语法:
     <!-- Sending the form by method POST -->
     <?= $this->tag->form("products/search") ?>
         <label for="q">Search:</label>
+
         <?= $this->tag->textField("q") ?>
+
         <?= $this->tag->submitButton("Search") ?>
     <?= $this->tag->endForm() ?>
 
     <!-- Specifying another method or attributes for the FORM tag -->
-    <?= $this->tag->form(array("products/search", "method" => "get")); ?>
+    <?= $this->tag->form(["products/search", "method" => "get"]); ?>
         <label for="q">Search:</label>
+
         <?= $this->tag->textField("q"); ?>
+
         <?= $this->tag->submitButton("Search"); ?>
     <?= $this->tag->endForm() ?>
 
@@ -132,9 +136,11 @@ Volt 语法:
 .. code-block:: html
 
     <form action="/store/products/search/" method="get">
-         <label for="q">Search:</label>
-         <input type="text" id="q" value="" name="q" />
-         <input type="submit" value="Search" />
+        <label for="q">Search:</label>
+
+        <input type="text" id="q" value="" name="q" />
+
+        <input type="submit" value="Search" />
     </form>
 
 使用Volt生成表单:
@@ -144,7 +150,9 @@ Volt 语法:
     <!-- Specifying another method or attributes for the FORM tag -->
     {{ form("products/search", "method": "get") }}
         <label for="q">Search:</label>
+
         {{ text_field("q") }}
+
         {{ submit_button("Search") }}
     {{ endForm() }}
 
@@ -158,22 +166,28 @@ Phalcon 提供了一系列的方法去生成例如文本域(text)，按钮(butto
 
     <?php echo $this->tag->textField("username") ?>
 
-    <?php echo $this->tag->textArea(array(
-        "comment",
-        "This is the content of the text-area",
-        "cols" => "6",
-        "rows" => 20
-    )) ?>
+    <?php echo $this->tag->textArea(
+        [
+            "comment",
+            "This is the content of the text-area",
+            "cols" => "6",
+            "rows" => 20,
+        ]
+    ) ?>
 
-    <?php echo $this->tag->passwordField(array(
-        "password",
-        "size" => 30
-    )) ?>
+    <?php echo $this->tag->passwordField(
+        [
+            "password",
+            "size" => 30,
+        ]
+    ) ?>
 
-    <?php echo $this->tag->hiddenField(array(
-        "parent_id",
-        "value"=> "5"
-    )) ?>
+    <?php echo $this->tag->hiddenField(
+        [
+            "parent_id",
+            "value" => "5",
+        ]
+    ) ?>
 
 Volt 的语法:
 
@@ -195,24 +209,29 @@ Volt 的语法:
 
     <?php
 
+    $products = Products::find("type = 'vegetables'");
+
     // Using data from a resultset
     echo $this->tag->select(
-        array(
+        [
             "productId",
-            Products::find("type = 'vegetables'"),
-            "using" => array("id", "name")
-        )
+            $products,
+            "using" => [
+                "id",
+                "name",
+            ]
+        ]
     );
 
     // Using data from an array
     echo $this->tag->selectStatic(
-        array(
+        [
             "status",
-            array(
+            [
                 "A" => "Active",
                 "I" => "Inactive",
-            )
-        )
+            ]
+        ]
     );
 
 以下HTML代码将会被生成:
@@ -236,14 +255,19 @@ Volt 的语法:
 
     <?php
 
+    $products = Products::find("type = 'vegetables'");
+
     // Creating a Select Tag with an empty option
     echo $this->tag->select(
-        array(
+        [
             "productId",
-            Products::find("type = 'vegetables'"),
-            "using"    => array("id", "name"),
-            "useEmpty" => true
-        )
+            $products,
+            "using"    => [
+                "id",
+                "name",
+            ],
+            "useEmpty" => true,
+        ]
     );
 
 生成的HTML如下:
@@ -261,16 +285,21 @@ Volt 的语法:
 
     <?php
 
+    $products = Products::find("type = 'vegetables'");
+
     // Creating a Select Tag with an empty option with default text
     echo $this->tag->select(
-        array(
-            'productId',
-            Products::find("type = 'vegetables'"),
-            'using'      => array('id', "name"),
-            'useEmpty'   => true,
-            'emptyText'  => 'Please, choose one...',
-            'emptyValue' => '@'
-        )
+        [
+            "productId",
+            $products,
+            "using"      => [
+                "id",
+                "name",
+            ],
+            "useEmpty"   => true,
+            "emptyText"  => "Please, choose one...",
+            "emptyValue" => "@",
+        ]
     );
 
 .. code-block:: html
@@ -297,12 +326,12 @@ Volt 的语法:
 .. code-block:: html+php
 
     <?php $this->tag->textField(
-        array(
+        [
             "price",
             "size"        => 20,
             "maxlength"   => 30,
-            "placeholder" => "Enter a price"
-        )
+            "placeholder" => "Enter a price",
+        ]
     ) ?>
 
 Volt语法:
@@ -346,14 +375,14 @@ Volt语法:
     <?php
 
     echo $this->tag->selectStatic(
-        array(
+        [
             "color",
-            array(
+            [
                 "Yellow" => "Yellow",
                 "Blue"   => "Blue",
-                "Red"    => "Red"
-            )
-        )
+                "Red"    => "Red",
+            ]
+        ]
     );
 
 当这个选择框被生成的时候，"Blue"将被默认选中。
@@ -403,6 +432,7 @@ Volt语法:
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <body>
 
         </body>
@@ -437,10 +467,10 @@ Volt语法:
 
     // Generate <img alt="alternative text" src="/your-app/img/hello.gif">
     echo $this->tag->image(
-        array(
+        [
            "img/hello.gif",
-           "alt" => "alternative text"
-        )
+           "alt" => "alternative text",
+        ]
     );
 
 Volt 语法:
@@ -509,7 +539,7 @@ Phalcon 提供了一个通用的方法去生成任何HTML的元素。在这个�
     // <canvas id="canvas1" width="300" class="cnvclass">
     // This is my canvas
     // </canvas>
-    echo $this->tag->tagHtml("canvas", array("id" => "canvas1", "width" => "300", "class" => "cnvclass"), false, true, true);
+    echo $this->tag->tagHtml("canvas", ["id" => "canvas1", "width" => "300", "class" => "cnvclass"], false, true, true);
     echo "This is my canvas";
     echo $this->tag->tagHtmlClose("canvas");
 
@@ -531,7 +561,7 @@ Volt 语法：
 
 .. code-block:: php
 
-    <?php echo $this->tag->linkTo('pages/about', 'About') ?>
+    <?php echo $this->tag->linkTo("pages/about", "About") ?>
 
 在服务容器中我们可以很容易的添加一个新的组件去替换'tag'组件。
 
@@ -546,13 +576,13 @@ Volt 语法：
         // ...
 
         // Create a new helper
-        static public function myAmazingHelper($parameters)
+        public static function myAmazingHelper($parameters)
         {
             // ...
         }
 
         // Override an existing method
-        static public function textField($parameters)
+        public static function textField($parameters)
         {
             // ...
         }
@@ -564,7 +594,7 @@ Volt 语法：
 
     <?php
 
-    $di['tag'] = function () {
+    $di["tag"] = function () {
         return new MyTags();
     };
 
@@ -586,11 +616,11 @@ Volt 语法：
          * @param array
          * @return string
          */
-        static public function audioField($parameters)
+        public static function audioField($parameters)
         {
             // Converting parameters to array if it is not
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             // Determining attributes "id" and "name"
@@ -599,6 +629,7 @@ Volt 语法：
             }
 
             $id = $parameters[0];
+
             if (!isset($parameters["name"])) {
                 $parameters["name"] = $id;
             } else {
@@ -611,18 +642,21 @@ Volt 语法：
             // \Phalcon\Tag::setDefault() allows to set the widget value
             if (isset($parameters["value"])) {
                 $value = $parameters["value"];
+
                 unset($parameters["value"]);
             } else {
                 $value = self::getValue($id);
             }
 
             // Generate the tag code
-            $code = '<audio id="'.$id.'" value="'.$value.'" ';
+            $code = '<audio id="' . $id . '" value="' . $value . '" ';
+
             foreach ($parameters as $key => $attributeValue) {
                 if (!is_integer($key)) {
-                    $code.= $key.'="'.$attributeValue.'" ';
+                    $code.= $key . '="' . $attributeValue . '" ';
                 }
             }
+
             $code.=" />";
 
             return $code;
@@ -641,27 +675,33 @@ Volt 语法：
     use Phalcon\Exception as PhalconException;
 
     try {
-
         $loader = new Loader();
-        $loader->registerDirs(array(
-            '../app/controllers',
-            '../app/models',
-            '../app/customhelpers' // Add the new helpers folder
-        ))->register();
+
+        $loader->registerDirs(
+            [
+                "../app/controllers",
+                "../app/models",
+                "../app/customhelpers", // Add the new helpers folder
+            ]
+        );
+
+        $loader->register();
 
         $di = new FactoryDefault();
 
         // Assign our new tag a definition so we can call it
-        $di->set('MyTags', function () {
-            return new MyTags();
-        });
+        $di->set(
+            "MyTags",
+            function () {
+                return new MyTags();
+            }
+        );
 
         $application = new Application($di);
 
         $response = $application->handle();
 
         $response->send();
-
     } catch (PhalconException $e) {
         echo "PhalconException: ", $e->getMessage();
     }
@@ -675,11 +715,11 @@ Volt 语法：
         <?php
 
         echo MyTags::audioField(
-            array(
-                'name' => 'test',
-                'id'   => 'audio_test',
-                'src'  => '/path/to/audio.mp3'
-            )
+            [
+                "name" => "test",
+                "id"   => "audio_test",
+                "src"  => "/path/to/audio.mp3",
+            ]
         );
 
         ?>
