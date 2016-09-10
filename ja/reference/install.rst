@@ -109,7 +109,9 @@ Linux/Solaris の環境では、簡単に拡張モジュールをソースコー
 .. code-block:: bash
 
     git clone --depth=1 git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 php.iniに拡張モジュールを追加します。
@@ -144,6 +146,8 @@ Phalconは自動的にシステムのアーキテクチャを判定しますが�
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -153,8 +157,11 @@ If the automatic installer fails try building the extension manually:
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -194,7 +201,10 @@ or
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
 
 インストールの確認
 ------------------
