@@ -16,10 +16,27 @@ Phalcon не тільки про продуктивність, наша мета
 Зміст
 -----------------
 
+Installation
+^^^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 3
 
    reference/install
+   reference/nginx
+   reference/apache
+   reference/cherokee
+   reference/tools
+   reference/linuxtools
+   reference/mactools
+   reference/wintools
+
+Tutorials
+^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/tutorial
    reference/tutorial-invo
    reference/tutorial-invo-2
@@ -28,7 +45,13 @@ Phalcon не тільки про продуктивність, наша мета
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
-   reference/di-explained
+
+Components
+^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/di
    reference/mvc
    reference/controllers
@@ -44,7 +67,6 @@ Phalcon не тільки про продуктивність, наша мета
    reference/assets
    reference/volt
    reference/applications
-   reference/applications-explained
    reference/routing
    reference/dispatching
    reference/micro
@@ -76,10 +98,32 @@ Phalcon не тільки про продуктивність, наша мета
    reference/intl
    reference/migrations
    reference/debug
-   reference/tools
-   reference/whats-next
    reference/unit-testing
+
+In Depth Explanations / Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
+   reference/whats-next
+   reference/di-explained
+   reference/applications-explained
+
+API
+^^^
+
+.. toctree::
+   :maxdepth: 1
+
    api/index
+
+Legal
+^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/license
 
 Other formats
