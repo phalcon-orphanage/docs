@@ -15,51 +15,88 @@ To illustrate how this component works and why it is important, consider the fol
 
     <?php
 
-        // Document title with malicious extra HTML tags
-        $maliciousTitle = '</title><script>alert(1)</script>';
+    use Phalcon\Escaper;
 
-        // Malicious CSS class name
-        $className      = ';`(';
+    // Document title with malicious extra HTML tags
+    $maliciousTitle = "</title><script>alert(1)</script>";
 
-        // Malicious CSS font name
-        $fontName       = 'Verdana"</style>';
+    // Malicious CSS class name
+    $className = ";`(";
 
-        // Malicious Javascript text
-        $javascriptText = "';</script>Hello";
+    // Malicious CSS font name
+    $fontName = "Verdana\"</style>";
 
-        // Create an escaper
-        $e              = new Phalcon\Escaper();
+    // Malicious Javascript text
+    $javascriptText = "';</script>Hello";
+
+    // Create an escaper
+    $e = new Escaper();
 
     ?>
 
     <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title><?php echo $e->escapeHtml($maliciousTitle); ?></title>
+            <title>
+                <?php echo $e->escapeHtml($maliciousTitle); ?>
+            </title>
 
-        <style type="text/css">
-        .<?php echo $e->escapeCss($className); ?> {
-            font-family: "<?php echo $e->escapeCss($fontName); ?>";
-            color: red;
-        }
-        </style>
+            <style type="text/css">
+                .<?php echo $e->escapeCss($className); ?> {
+                    font-family: "<?php echo $e->escapeCss($fontName); ?>";
+                    color: red;
+                }
+            </style>
 
-    </head>
+        </head>
 
-    <body>
+        <body>
 
-        <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>hello</div>
+            <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>
+                hello
+            </div>
 
-        <script>var some = '<?php echo $e->escapeJs($javascriptText); ?>'</script>
+            <script>
+                var some = '<?php echo $e->escapeJs($javascriptText); ?>';
+            </script>
 
-    </body>
+        </body>
     </html>
 
 Which produces the following:
 
-.. figure:: ../_static/img/escape.jpeg
-    :align: center
+.. code-block:: html
+
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+            <title>
+                &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+            </title>
+
+            <style type="text/css">
+                .\3c \2f style\3e {
+                    font-family: "Verdana\22 \3c \2f style\3e";
+                    color: red;
+                }
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class='&#x3c &#x2f style&#x3e '>
+                hello
+            </div>
+
+            <script>
+                var some = '\x27\x3b\x3c\2fscript\x3eHello';
+            </script>
+
+        </body>
+    </html>
 
 Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
 
@@ -69,19 +106,25 @@ The most common situation when inserting unsafe data is between HTML tags:
 
 .. code-block:: html
 
-    <div class="comments"><!-- Escape untrusted data here! --></div>
+    <div class="comments">
+        <!-- Escape untrusted data here! -->
+    </div>
 
 You can escape those data using the :code:`escapeHtml` method:
 
 .. code-block:: html+php
 
-    <div class="comments"><?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?></div>
+    <div class="comments">
+        <?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?>
+    </div>
 
 Which produces:
 
 .. code-block:: html
 
-    <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
+    <div class="comments">
+        &gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;
+    </div>
 
 Escaping HTML Attributes
 ------------------------
@@ -90,19 +133,37 @@ character to the form. This kind of escaping is intended to most simpler attribu
 
 .. code-block:: html
 
-    <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
+    <table width="Escape untrusted data here!">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 You can escape a HTML attribute by using the :code:`escapeHtmlAttr` method:
 
 .. code-block:: html+php
 
-    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>"><tr><td>Hello</td></tr></table>
+    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 Which produces:
 
 .. code-block:: html
 
-    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
+    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 Escaping URLs
 -------------
@@ -110,19 +171,25 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
 .. code-block:: html
 
-    <a href="Escape untrusted data here!">Some link</a>
+    <a href="Escape untrusted data here!">
+        Some link
+    </a>
 
 You can escape a HTML attribute by using the :code:`escapeUrl` method:
 
 .. code-block:: html+php
 
-    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
+    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">
+        Some link
+    </a>
 
 Which produces:
 
 .. code-block:: html
 
-    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
+    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">
+        Some link
+    </a>
 
 Escaping CSS
 ------------
@@ -130,19 +197,25 @@ CSS identifiers/values can be escaped too:
 
 .. code-block:: html
 
-    <a style="color: Escape untrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">
+        Some link
+    </a>
 
 You can escape a CSS identifiers/value by using the :code:`escapeCss` method:
 
 .. code-block:: html+php
 
-    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
+    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">
+        Some link
+    </a>
 
 Which produces:
 
 .. code-block:: html
 
-    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
+    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">
+        Some link
+    </a>
 
 Escaping JavaScript
 -------------------
@@ -150,17 +223,23 @@ Strings to be inserted into JavaScript code also must be properly escaped:
 
 .. code-block:: html
 
-    <script>document.title = 'Escape untrusted data here'</script>
+    <script>
+        document.title = 'Escape untrusted data here';
+    </script>
 
 You can escape JavaScript code by using the :code:`escapeJs` method:
 
 .. code-block:: html+php
 
-    <script>document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>'</script>
+    <script>
+        document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>';
+    </script>
 
 .. code-block:: html
 
-    <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
+    <script>
+        document.title = '\x27; alert(100); var x\x3d\x27';
+    </script>
 
 .. _OWASP: https://www.owasp.org
 .. _XSS: https://www.owasp.org/index.php/XSS
