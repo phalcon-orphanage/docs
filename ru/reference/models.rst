@@ -436,7 +436,7 @@ column map (as described above) to ensure proper mapping of your properties to t
         echo $robot->name, "\n";
     }
 
-    // Обход в  while
+    // Обход в while
     $robots->rewind();
 
     while ($robots->valid()) {
@@ -1091,13 +1091,13 @@ Phalcon использует магические методы :code:`__set`/:co
         {
             $this->belongsTo(
                 "robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
 
             $this->belongsTo(
                 "similar_robots_id",
-                "Robots",
+                "Store\\Toys\\Robots",
                 "id"
             );
         }
@@ -1529,7 +1529,7 @@ Cascade/restrict действия
     $robots = Robots::find();
 
     // Изменение и сохранение полученных обектов модели роботов
-    foreach ($robots) as $robot) {
+    foreach ($robots as $robot) {
         $robot->year = 2000;
 
         $robot->save();
@@ -2053,7 +2053,7 @@ PostgreSQL использует последовательности для со
                 "model:beforeSave",
                 function (Event $event, $model) {
                     // Перехватываем события, производимые моделью Robots
-                    if (get_class($model) === "Robots") {
+                    if (get_class($model) === "Store\\Toys\\Robots") {
                         if ($model->name === "Scooby Doo") {
                             echo "Scooby Doo не робот!";
 
@@ -2632,6 +2632,8 @@ ORM поддерживает независимую карту столбцов,
 .. code-block:: php
 
     <?php
+
+    use Store\Toys\Robots;
 
     // Получаем запись из базы данных
     $robot = Robots::findFirst();
