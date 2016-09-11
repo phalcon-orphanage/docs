@@ -7,7 +7,7 @@
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
+    Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the
     :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
 
 モデルの作成
@@ -374,7 +374,7 @@ An example is in order, so taking our Robots model mentioned earlier:
         public $price;
     }
 
-We have three properties to work with here. :code:`$id`, :code:`$name` and :code:`$price`. So, let's say you want to retrieve the first record in
+We have three properties to work with here: :code:`$id`, :code:`$name` and :code:`$price`. So, let's say you want to retrieve the first record in
 the table with the name 'Terminator'. This could be written like:
 
 .. code-block:: php
@@ -461,8 +461,8 @@ to a specific position. Note that some database systems don't support scrollable
 in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
 is traversed several times, the query must be executed the same number of times.
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
+As storing large query results in memory could consume many resources, resultsets are obtained
+from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
 Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
@@ -653,7 +653,7 @@ If you're using "finders", bound parameters are automatically used for you:
 取得したレコードの初期化／準備
 --------------------------------------
 May be the case that after obtaining a record from the database is necessary to initialise the data before
-being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
+being used by the rest of the application. You can implement the :code:`afterFetch()` method in a model, this event
 will be executed just after create the instance and assign the data to it:
 
 .. code-block:: php
@@ -1014,7 +1014,7 @@ Getting related records manually:
 
 
 The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
-'find' or 'findFirst':
+:code:`find()` or :code:`findFirst()`:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 | Type                | Description                                                                                                                | Implicit Method        |
@@ -1028,7 +1028,7 @@ The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. 
 | Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 
-You can also use "count" prefix to return an integer denoting the count of the related records:
+You can also use the "count" prefix to return an integer denoting the count of the related records:
 
 .. code-block:: php
 
@@ -1580,7 +1580,7 @@ Hydration mode can also be passed as a parameter of 'find':
 
 レコードの作成、更新
 -------------------------
-The method :code:`Phalcon\Mvc\Model::save()` allows you to create/update records according to whether they already exist in the table
+The :code:`Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
 should be updated or created.
@@ -1719,7 +1719,7 @@ Always after creating a record, the identity field will be registered with the v
 serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
 
 PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+for example: robots_id_seq, if that sequence has a different name, the :code:`getSequenceName()` method needs to be implemented:
 
 .. code-block:: php
 
@@ -1739,7 +1739,7 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
 関連レコードの保存
 ^^^^^^^^^^^^^^^^^^^^^^^
-Magic properties can be used to store a records and its related properties:
+Magic properties can be used to store a record and its related properties:
 
 .. code-block:: php
 
@@ -1813,8 +1813,8 @@ You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from wit
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method :code:`getMessages()`. Each message provides extended information like the field name that
+Each message is an instance of :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>` and the set of
+messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the field name that
 generated the message or the message type:
 
 .. code-block:: php
@@ -1847,7 +1847,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -1885,8 +1885,7 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
 
 イベントとイベント・マネージャ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
@@ -1920,7 +1919,7 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 
 モデルクラス内でのイベントの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
+The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
 .. code-block:: php
 
@@ -1938,7 +1937,7 @@ The easier way to make a model react to events is implement a method with the sa
         }
     }
 
-Events can be useful to assign values before performing an operation, for example:
+Events can be used to assign values before performing an operation, for example:
 
 .. code-block:: php
 
@@ -2295,7 +2294,7 @@ this specially helps when the table has blob/text fields:
 
 レコードの削除
 ----------------
-The method :code:`Phalcon\Mvc\Model::delete()` allows to delete a record. You can use it as follows:
+The :code:`Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 
@@ -2572,7 +2571,7 @@ you can do this:
 
     $robots->getParts()->delete();
 
-'delete' also accepts an anonymous function to filter what records must be deleted:
+:code:`delete()` also accepts an anonymous function to filter what records must be deleted:
 
 .. code-block:: php
 
@@ -2655,7 +2654,7 @@ If a model is mapped to a table that is in a different schemas/databases than th
 --------------------------
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
+in the application's services container. You can overwrite this service setting it in the :code:`initialize()` method:
 
 .. code-block:: php
 
@@ -2694,7 +2693,7 @@ in the application's services container. You can overwrite this service setting 
         }
     );
 
-Then, in the initialize method, we define the connection service for the model:
+Then, in the :code:`initialize()` method, we define the connection service for the model:
 
 .. code-block:: php
 
@@ -2778,7 +2777,7 @@ according to the current query conditions:
         }
     }
 
-The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
+The :code:`selectReadConnection()` method is called to choose the right connection, this method intercepts any new
 query executed:
 
 .. code-block:: php
@@ -3025,7 +3024,7 @@ The available options are:
 +---------------------+---------------------------------------------------------------------------------------+---------------+
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
 +---------------------+---------------------------------------------------------------------------------------+---------------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
+| lateStateBinding    | Enables/Disables late state binding of the :code:`Mvc\Model::cloneResultMap()` method | :code:`false` |
 +---------------------+---------------------------------------------------------------------------------------+---------------+
 
 スタンドアロン・コンポーネント

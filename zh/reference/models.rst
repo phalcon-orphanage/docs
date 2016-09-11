@@ -1002,7 +1002,7 @@ Getting related records manually:
 
 
 The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
-'find' or 'findFirst':
+:code:`find()` or :code:`findFirst()`:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 | Type                | Description                                                                                                                | Implicit Method        |
@@ -1016,7 +1016,7 @@ The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. 
 | Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 
-You can also use "count" prefix to return an integer denoting the count of the related records:
+You can also use the "count" prefix to return an integer denoting the count of the related records:
 
 .. code-block:: php
 
@@ -1566,9 +1566,9 @@ Hydration mode can also be passed as a parameter of 'find':
         echo $robot["year"], PHP_EOL;
     }
 
-创建与更新记录（Creating Updating/Records）
+创建与更新记录（Creating/Updating Records）
 -------------------------------------------
-The method :code:`Phalcon\Mvc\Model::save()` allows you to create/update records according to whether they already exist in the table
+The :code:`Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
 should be updated or created.
@@ -1707,7 +1707,7 @@ Always after creating a record, the identity field will be registered with the v
 serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
 
 PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+for example: robots_id_seq, if that sequence has a different name, the :code:`getSequenceName()` method needs to be implemented:
 
 .. code-block:: php
 
@@ -1835,7 +1835,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -2283,7 +2283,7 @@ this specially helps when the table has blob/text fields:
 
 删除记录（Deleting Records）
 ----------------------------
-The method :code:`Phalcon\Mvc\Model::delete()` allows to delete a record. You can use it as follows:
+The :code:`Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 
@@ -2560,7 +2560,7 @@ you can do this:
 
     $robots->getParts()->delete();
 
-'delete' also accepts an anonymous function to filter what records must be deleted:
+:code:`delete()` also accepts an anonymous function to filter what records must be deleted:
 
 .. code-block:: php
 
@@ -2642,7 +2642,7 @@ In models that have this feature activated you can check what fields changed:
 设置多个数据库（Setting multiple databases）
 --------------------------------------------
 在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 initialize 方法内重写这个服务的设置。
+需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 :code:`initialize()` 方法内重写这个服务的设置。
 
 .. code-block:: php
 
@@ -2681,7 +2681,7 @@ In models that have this feature activated you can check what fields changed:
         }
     );
 
-然后，在 initialize 方法内，我们为这个模型定义数据库连接。
+然后，在 :code:`initialize()` 方法内，我们为这个模型定义数据库连接。
 
 .. code-block:: php
 
@@ -2764,7 +2764,7 @@ In models that have this feature activated you can check what fields changed:
         }
     }
 
-'selectReadConnection' 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
+:code:`selectReadConnection()` 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
 
 .. code-block:: php
 
@@ -3009,7 +3009,7 @@ The available options are:
 +---------------------+---------------------------------------------------------------------------------------+---------------+
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
 +---------------------+---------------------------------------------------------------------------------------+---------------+
-| lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | :code:`false` |
+| lateStateBinding    | Enables/Disables late state binding of the :code:`Mvc\Model::cloneResultMap()` method | :code:`false` |
 +---------------------+---------------------------------------------------------------------------------------+---------------+
 
 独立的组件（Stand-Alone component）
