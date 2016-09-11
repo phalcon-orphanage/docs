@@ -23,7 +23,6 @@ Table of Contents
 .. toctree::
    :maxdepth: 3
 
-   reference/motivation
    reference/install
    reference/tutorial
    reference/tutorial-invo
