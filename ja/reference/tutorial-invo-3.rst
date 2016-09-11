@@ -1,11 +1,11 @@
 Tutorial 4: CRUDを使用した作業
 =================================
 
-Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
+Backends usually provide forms to allow users to manipulate data. Continuing the explanation of
 INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
 using forms, validations, paginators and more.
 
-Most options that manipulate data in INVO (companies, products and types of products), were developed
+Most options that manipulate data in INVO (companies, products and types of products) were developed
 using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
 
 .. code-block:: bash
@@ -93,8 +93,8 @@ Each controller has the following actions:
 
 検索フォーム
 ^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
-to create a search criteria from any field. Table "products" has a relationship to the table "products_types".
+Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user
+to create a search criteria for any field. The "products" table has a relationship with the table "products_types".
 In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
 .. code-block:: php
@@ -111,7 +111,7 @@ In this case, we previously queried the records in this table in order to facili
         $this->view->form = new ProductsForm();
     }
 
-An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
+An instance of the ProductsForm form (app/forms/ProductsForm.php) is passed to the view.
 This form defines the fields that are visible to the user:
 
 .. code-block:: php
@@ -378,13 +378,13 @@ This produces the following HTML:
 
     </form>
 
-When the form is submitted, the action "search" is executed in the controller performing the search
+When the form is submitted, the "search" action is executed in the controller performing the search
 based on the data entered by the user.
 
 検索の実行
 ^^^^^^^^^^
-The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
-form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
+The "search" action has two behaviors. When accessed via POST, it performs a search based on the data sent from the
+form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods,
 we check it using the :doc:`Request <request>` component:
 
 .. code-block:: php
@@ -623,10 +623,10 @@ in "product" is printed accordingly:
         </td>
     </tr>
 
-As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
-we made the same with product.name and so on. Other fields are rendered differently,
-for instance, let's focus in product.productTypes.name. To understand this part,
-we have to check the model Products (app/models/Products.php):
+As we seen before using :code:`product.id` is the same as in PHP as doing: :code:`$product->id`,
+we made the same with :code:`product.name` and so on. Other fields are rendered differently,
+for instance, let's focus in :code:`product.productTypes.name`. To understand this part,
+we have to check the Products model (app/models/Products.php):
 
 .. code-block:: php
 
@@ -659,7 +659,7 @@ we have to check the model Products (app/models/Products.php):
         // ...
     }
 
-A model, can have a method called "initialize", this method is called once per request and it serves
+A model can have a method called :code:`initialize()`, this method is called once per request and it serves
 the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
 has a one-to-many relationship to another model called "ProductTypes".
 
@@ -677,7 +677,7 @@ has a one-to-many relationship to another model called "ProductTypes".
     );
 
 Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
+the "ProductTypes" model in its attribute "id". By defining this relationship we can access the name of
 the product type by using:
 
 .. code-block:: html+jinja
@@ -690,7 +690,7 @@ The field "price" is printed by its formatted using a Volt filter:
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-What in PHP would be:
+In plain PHP, this would be:
 
 .. code-block:: php
 
@@ -706,10 +706,10 @@ This method is defined in the model.
 
 レコードの登録と更新
 ^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+Now let's see how the CRUD creates and updates records. From the "new" and "edit" views, the data entered by the user
+is sent to the "create" and "save" actions that perform actions of "creating" and "updating" products, respectively.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+In the creation case, we recover the data submitted and assign them to a new "Products" instance:
 
 .. code-block:: php
 
@@ -738,7 +738,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     }
 
 Remember the filters we defined in the Products form? Data is filtered before being assigned to the object :code:`$product`.
-This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
+This filtering is optional; the ORM also escapes the input data and performs additional casting according to the column types:
 
 .. code-block:: php
 
@@ -771,8 +771,8 @@ This filtering is optional, also the ORM escapes the input data and performs add
 
     $this->add($name);
 
-When saving we'll know whether the data conforms to the business rules and validations implemented
-in the form ProductsForm (app/forms/ProductsForm.php):
+When saving, we'll know whether the data conforms to the business rules and validations implemented
+in the form ProductsForm form (app/forms/ProductsForm.php):
 
 .. code-block:: php
 
@@ -823,7 +823,7 @@ Finally, if the form does not return any validation message we can save the prod
 
     return $this->forward("products/index");
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+Now, in the case of updating a product, we must first present the user with the data that is currently in the edited record:
 
 .. code-block:: php
 
@@ -854,7 +854,7 @@ Now, in the case of product updating, first we must present to the user the data
         }
     }
 
-The data found is bound to the form passing the model as first parameter. Thanks to this,
+The data found is bound to the form by passing the model as first parameter. Thanks to this,
 the user can change any value and then sent it back to the database through to the "save" action:
 
 .. code-block:: php

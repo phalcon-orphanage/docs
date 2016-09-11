@@ -1,7 +1,7 @@
 Tutorial 4: Travailler avec le CRUD
 ===================================
 
-Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
+Backends usually provide forms to allow users to manipulate data. Continuing the explanation of
 INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
 using forms, validations, paginators and more.
 
@@ -111,7 +111,7 @@ Dans notre cas, nous avons déjà demandé des enregistrements de cette table, a
         $this->view->form = new ProductsForm();
     }
 
-An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
+An instance of the ProductsForm form (app/forms/ProductsForm.php) is passed to the view.
 This form defines the fields that are visible to the user:
 
 .. code-block:: php
@@ -378,7 +378,7 @@ This produces the following HTML:
 
     </form>
 
-When the form is submitted, the action "search" is executed in the controller performing the search
+When the form is submitted, the "search" action is executed in the controller performing the search
 based on the data entered by the user.
 
 Exécuter une recherche
@@ -623,10 +623,10 @@ in "product" is printed accordingly:
         </td>
     </tr>
 
-As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
-we made the same with product.name and so on. Other fields are rendered differently,
-for instance, let's focus in product.productTypes.name. To understand this part,
-we have to check the model Products (app/models/Products.php):
+As we seen before using :code:`product.id` is the same as in PHP as doing: :code:`$product->id`,
+we made the same with :code:`product.name` and so on. Other fields are rendered differently,
+for instance, let's focus in :code:`product.productTypes.name`. To understand this part,
+we have to check the Products model (app/models/Products.php):
 
 .. code-block:: php
 
@@ -659,7 +659,7 @@ we have to check the model Products (app/models/Products.php):
         // ...
     }
 
-A model, can have a method called "initialize", this method is called once per request and it serves
+A model can have a method called :code:`initialize()`, this method is called once per request and it serves
 the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
 has a one-to-many relationship to another model called "ProductTypes".
 
@@ -677,7 +677,7 @@ has a one-to-many relationship to another model called "ProductTypes".
     );
 
 Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
+the "ProductTypes" model in its attribute "id". By defining this relationship we can access the name of
 the product type by using:
 
 .. code-block:: html+jinja
@@ -690,7 +690,7 @@ The field "price" is printed by its formatted using a Volt filter:
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-What in PHP would be:
+In plain PHP, this would be:
 
 .. code-block:: php
 
