@@ -26,14 +26,12 @@
         public function index()
         {
             // Добавляем некоторые локальные таблицы стилей
-            $this->assets
-                ->addCss('css/style.css')
-                ->addCss('css/index.css');
+            $this->assets->addCss("css/style.css");
+            $this->assets->addCss("css/index.css");
 
             // и JavaScript'ы
-            $this->assets
-                ->addJs('js/jquery.js')
-                ->addJs('js/bootstrap.min.js');
+            $this->assets->addJs("js/jquery.js");
+            $this->assets->addJs("js/bootstrap.min.js");
         }
     }
 
@@ -44,13 +42,14 @@
     <html>
         <head>
             <title>Некоторый удивительный веб-сайт</title>
-            <?php $this->assets->outputCss() ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputCss(); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs() ?>
+            <?php $this->assets->outputJs(); ?>
         </body>
     <html>
 
@@ -61,10 +60,11 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
+
             {{ assets.outputCss() }}
         </head>
-        <body>
 
+        <body>
             <!-- ... -->
 
             {{ assets.outputJs() }}
@@ -88,10 +88,9 @@ For better pageload performance, it is recommended to place JavaScript at the en
     public function indexAction()
     {
         // Добавляем некоторые локальные и удаленные ресурсы
-        $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true)
-            ->addCss('css/extra.css');
+        $this->assets->addCss("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css", false);
+        $this->assets->addCss("css/style.css", true);
+        $this->assets->addCss("css/extra.css");
     }
 
 Коллекции
@@ -104,16 +103,16 @@ For better pageload performance, it is recommended to place JavaScript at the en
     <?php
 
     // Javascript'ы в заголовке
-    $this->assets
-        ->collection('header')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $headerCollection = $this->assets->collection("header");
+
+    $headerCollection->addJs("js/jquery.js");
+    $headerCollection->addJs("js/bootstrap.min.js");
 
     // Javascript'ы в "подвале"
-    $this->assets
-        ->collection('footer')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $footerCollection = $this->assets->collection("footer");
+
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 затем в представлении:
 
@@ -122,13 +121,14 @@ For better pageload performance, it is recommended to place JavaScript at the en
     <html>
         <head>
             <title>Некоторый удивительный веб-сайт</title>
-            <?php $this->assets->outputJs('header') ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputJs("header"); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs('footer') ?>
+            <?php $this->assets->outputJs("footer"); ?>
         </body>
     <html>
 
@@ -139,13 +139,14 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-            {{ assets.outputCss('header') }}
-        </head>
-        <body>
 
+            {{ assets.outputCss("header") }}
+        </head>
+
+        <body>
             <!-- ... -->
 
-            {{ assets.outputJs('footer') }}
+            {{ assets.outputJs("footer") }}
         </body>
     <html>
 
@@ -157,16 +158,16 @@ Volt syntax:
 
     <?php
 
-    $scripts = $this->assets->collection('footer');
+    $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == 'development') {
-        $scripts->setPrefix('/');
+    if ($config->environment == "development") {
+        $footerCollection->setPrefix("/");
     } else {
-        $scripts->setPrefix('http:://cdn.example.com/');
+        $footerCollection->setPrefix("http:://cdn.example.com/");
     }
 
-    $scripts->addJs('js/jquery.js')
-            ->addJs('js/bootstrap.min.js');
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 Также, доступен синтаксис цепочки (chainable):
 
@@ -174,13 +175,12 @@ Volt syntax:
 
     <?php
 
-    $scripts = $assets
-        ->collection('header')
-        ->setPrefix('http://cdn.example.com/')
+    $headerCollection = $assets
+        ->collection("header")
+        ->setPrefix("http://cdn.example.com/")
         ->setLocal(false)
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
-
+        ->addJs("js/jquery.js")
+        ->addJs("js/bootstrap.min.js");
 
 Минимизация/ Фильтрация
 -----------------------
@@ -200,29 +200,33 @@ Volt syntax:
     $manager
 
         // Этот javascript расположен внизу страницы
-        ->collection('jsFooter')
+        ->collection("jsFooter")
 
         // Название получаемого файла
-        ->setTargetPath('final.js')
+        ->setTargetPath("final.js")
 
         // С таким URI генерируется тэг html
-        ->setTargetUri('production/final.js')
+        ->setTargetUri("production/final.js")
 
         // Это удаленный ресурс, не нуждающийся в фильтрации
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
+        ->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false)
 
         // Это локальные ресурсы, к которым необходимо применить фильтры
-        ->addJs('common-functions.js')
-        ->addJs('page-functions.js')
+        ->addJs("common-functions.js")
+        ->addJs("page-functions.js")
 
         // Объединяем все ресурсы в один файл
         ->join(true)
 
         // Используем встроенный фильтр Jsmin
-        ->addFilter(new Phalcon\Assets\Filters\Jsmin())
+        ->addFilter(
+            new Phalcon\Assets\Filters\Jsmin()
+        )
 
         // Используем пользовательский фильтр
-        ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+        ->addFilter(
+            new MyApp\Assets\Filters\LicenseStamper()
+        );
 
 Менеджер начинает получать набор ресурсов от Assets Manager, который может содержать либо JavaScript,
 либо CSS, но не оба типа ресурсов. Некоторые ресурсы могут быть удаленными, то есть, полученными с
@@ -238,14 +242,14 @@ be filtered or left as is:
     <?php
 
     // Этот javascript расположен внизу
-    $js = $manager->collection('jsFooter');
+    $jsFooterCollection = $manager->collection("jsFooter");
 
     // Это удаленный ресурс, не нуждающийся в фильтрации
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
+    $jsFooterCollection->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false);
 
     // Это локальные ресурсы, к которым необходимо применить фильтры
-    $js->addJs('common-functions.js');
-    $js->addJs('page-functions.js');
+    $jsFooterCollection->addJs("common-functions.js");
+    $jsFooterCollection->addJs("page-functions.js");
 
 Фильтры регистрируются в коллекции, допускается регистрировать несколько фильтров. Ресурсы в наборе
 фильтруются в том же порядке, в каком были зарегистрированы фильтры:
@@ -255,10 +259,14 @@ be filtered or left as is:
     <?php
 
     // Используем встроенный фильтр Jsmin
-    $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
+    $jsFooterCollection->addFilter(
+        new Phalcon\Assets\Filters\Jsmin()
+    );
 
     // Используем пользовательский фильтр
-    $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+    $jsFooterCollection->addFilter(
+        new MyApp\Assets\Filters\LicenseStamper()
+    );
 
 Заметим, что встроенные и пользовательские фильтры могут сразу применяться к набору ресурсов.
 Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать
@@ -272,13 +280,13 @@ and which URI will be used to show it. These settings are set up with :code:`set
 
     <?php
 
-    $js->join(true);
+    $jsFooterCollection->join(true);
 
     // Название получаемого файла
-    $js->setTargetPath('public/production/final.js');
+    $jsFooterCollection->setTargetPath("public/production/final.js");
 
     // С таким URI генерируется тэг HTML
-    $js->setTargetUri('production/final.js');
+    $jsFooterCollection->setTargetUri("production/final.js");
 
 Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для
 хранения ресурсов и по какому URI он будет доступен. Эти параметры настраиваются с помощью методов
@@ -323,7 +331,7 @@ Phalcon имеет два встроенных фильтра минимизац
          *
          * @param array $options
          */
-        public function __construct($options)
+        public function __construct(array $options)
         {
             $this->_options = $options;
         }
@@ -332,21 +340,22 @@ Phalcon имеет два встроенных фильтра минимизац
          * Do the filtering
          *
          * @param string $contents
+         *
          * @return string
          */
         public function filter($contents)
         {
             // Write the string contents into a temporal file
-            file_put_contents('temp/my-temp-1.css', $contents);
+            file_put_contents("temp/my-temp-1.css", $contents);
 
             system(
-                $this->_options['java-bin'] .
-                ' -jar ' .
-                $this->_options['yui'] .
-                ' --type css '.
-                'temp/my-temp-file-1.css ' .
-                $this->_options['extra-options'] .
-                ' -o temp/my-temp-file-2.css'
+                $this->_options["java-bin"] .
+                " -jar " .
+                $this->_options["yui"] .
+                " --type css " .
+                "temp/my-temp-file-1.css " .
+                $this->_options["extra-options"] .
+                " -o temp/my-temp-file-2.css"
             );
 
             // Return the contents of file
@@ -361,15 +370,15 @@ Phalcon имеет два встроенных фильтра минимизац
     <?php
 
     // Get some CSS collection
-    $css = $this->assets->get('head');
+    $css = $this->assets->get("head");
 
     // Add/Enable the YUI compressor filter in the collection
     $css->addFilter(
         new CssYUICompressor(
             [
-                'java-bin'      => '/usr/local/bin/java',
-                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-                'extra-options' => '--charset utf8'
+                "java-bin"      => "/usr/local/bin/java",
+                "yui"           => "/some/path/yuicompressor-x.y.z.jar",
+                "extra-options" => "--charset utf8",
             ]
         )
     );
@@ -386,6 +395,7 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
      * Adds a license message to the top of the file
      *
      * @param string $contents
+     *
      * @return string
      */
     class LicenseStamper implements FilterInterface
@@ -415,8 +425,12 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
 
     use Phalcon\Tag;
 
-    foreach ($this->assets->collection('js') as $resource) {
-        echo Tag::javascriptInclude($resource->getPath());
+    $jsCollection = $this->assets->collection("js");
+
+    foreach ($jsCollection as $resource) {
+        echo Tag::javascriptInclude(
+            $resource->getPath()
+        );
     }
 
 .. _YUI: http://yui.github.io/yuicompressor/

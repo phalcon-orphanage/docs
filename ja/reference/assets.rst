@@ -22,14 +22,12 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
         public function index()
         {
             // CSSのローカルリソースを追加します
-            $this->assets
-                ->addCss('css/style.css')
-                ->addCss('css/index.css');
+            $this->assets->addCss("css/style.css");
+            $this->assets->addCss("css/index.css");
 
             // JavaScriptのローカルリソースを追加します
-            $this->assets
-                ->addJs('js/jquery.js')
-                ->addJs('js/bootstrap.min.js');
+            $this->assets->addJs("js/jquery.js");
+            $this->assets->addJs("js/bootstrap.min.js");
         }
     }
 
@@ -40,13 +38,14 @@ AssetsはCSSとJavaScriptをビルドインリソースとしてサポートし�
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputCss() ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputCss(); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs() ?>
+            <?php $this->assets->outputJs(); ?>
         </body>
     <html>
 
@@ -57,10 +56,11 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
+
             {{ assets.outputCss() }}
         </head>
-        <body>
 
+        <body>
             <!-- ... -->
 
             {{ assets.outputJs() }}
@@ -84,10 +84,9 @@ The second parameter of :code:`addCss()` and :code:`addJs()` says whether the re
     public function indexAction()
     {
         // Add some local CSS resources
-        $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true)
-            ->addCss('css/extra.css');
+        $this->assets->addCss("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css", false);
+        $this->assets->addCss("css/style.css", true);
+        $this->assets->addCss("css/extra.css");
     }
 
 コレクション
@@ -99,16 +98,16 @@ The second parameter of :code:`addCss()` and :code:`addJs()` says whether the re
     <?php
 
     // ヘッダーのJavaScript
-    $this->assets
-        ->collection('header')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $headerCollection = $this->assets->collection("header");
+
+    $headerCollection->addJs("js/jquery.js");
+    $headerCollection->addJs("js/bootstrap.min.js");
 
     // フッターのJavaScript
-    $this->assets
-        ->collection('footer')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $footerCollection = $this->assets->collection("footer");
+
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 ビューへ配置：
 
@@ -117,13 +116,14 @@ The second parameter of :code:`addCss()` and :code:`addJs()` says whether the re
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputJs('header') ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputJs("header"); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs('footer') ?>
+            <?php $this->assets->outputJs("footer"); ?>
         </body>
     <html>
 
@@ -134,13 +134,14 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-            {{ assets.outputCss('header') }}
-        </head>
-        <body>
 
+            {{ assets.outputCss("header") }}
+        </head>
+
+        <body>
             <!-- ... -->
 
-            {{ assets.outputJs('footer') }}
+            {{ assets.outputJs("footer") }}
         </body>
     <html>
 
@@ -152,16 +153,16 @@ Volt syntax:
 
     <?php
 
-    $scripts = $this->assets->collection('footer');
+    $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == 'development') {
-        $scripts->setPrefix('/');
+    if ($config->environment == "development") {
+        $footerCollection->setPrefix("/");
     } else {
-        $scripts->setPrefix('http:://cdn.example.com/');
+        $footerCollection->setPrefix("http:://cdn.example.com/");
     }
 
-    $scripts->addJs('js/jquery.js')
-            ->addJs('js/bootstrap.min.js');
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 メソッドチェインも使用できます:
 
@@ -169,12 +170,12 @@ Volt syntax:
 
     <?php
 
-    $scripts = $assets
-        ->collection('header')
-        ->setPrefix('http://cdn.example.com/')
+    $headerCollection = $assets
+        ->collection("header")
+        ->setPrefix("http://cdn.example.com/")
         ->setLocal(false)
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+        ->addJs("js/jquery.js")
+        ->addJs("js/bootstrap.min.js");
 
 圧縮/フィルター
 ----------------------
@@ -189,29 +190,33 @@ Volt syntax:
     $manager
 
         // これらのJavaScriptはページ下部に配置されます
-        ->collection('jsFooter')
+        ->collection("jsFooter")
 
         // 最終的に出力されるファイル名
-        ->setTargetPath('final.js')
+        ->setTargetPath("final.js")
 
         // このURIで生成されたscriptタグ
-        ->setTargetUri('production/final.js')
+        ->setTargetUri("production/final.js")
 
         // これはフィルタリングを必要としないリモートリソースです
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
+        ->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false)
 
         // これらはフィルタリングを必要とするローカルリソースです
-        ->addJs('common-functions.js')
-        ->addJs('page-functions.js')
+        ->addJs("common-functions.js")
+        ->addJs("page-functions.js")
 
         // 全てのリソースを1つのファイルに結合します
         ->join(true)
 
         // 組み込みのJsminフィルターを使います
-        ->addFilter(new Phalcon\Assets\Filters\Jsmin())
+        ->addFilter(
+            new Phalcon\Assets\Filters\Jsmin()
+        )
 
         // カスタムフィルターを使います
-        ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+        ->addFilter(
+            new MyApp\Assets\Filters\LicenseStamper()
+        );
 
 これは、アセットマネージャーからリソースのコレクションの取得を始めます。javascript や css のリソースを含むことができるコレクションですが、両方を含むことはできません。いくつかのリソースはリモートにあるかもしれません、すなわち、それらはさらなるフィルタリングのためにリモートのソースからHTTPを介して取得されます。取得のオーバーヘッドを排除するため、外部のリソースをローカルに変換することが推奨されています。
 
@@ -224,14 +229,14 @@ be filtered or left as is:
     <?php
 
     // These Javascripts are located in the page's bottom
-    $js = $manager->collection('jsFooter');
+    $jsFooterCollection = $manager->collection("jsFooter");
 
     // これはフィルタリングする必要のないリモートのリソースです
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
+    $jsFooterCollection->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false);
 
     // These are local resources that must be filtered
-    $js->addJs('common-functions.js');
-    $js->addJs('page-functions.js');
+    $jsFooterCollection->addJs("common-functions.js");
+    $jsFooterCollection->addJs("page-functions.js");
 
 フィルタはコレクションに登録されています。複数のフィルタを利用でき、リソースの中のコンテンツは、フィルタを登録した順と同じ順序でフィルタにかけられます:
 
@@ -240,10 +245,14 @@ be filtered or left as is:
     <?php
 
     // Use the built-in Jsmin filter
-    $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
+    $jsFooterCollection->addFilter(
+        new Phalcon\Assets\Filters\Jsmin()
+    );
 
     // Use a custom filter
-    $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+    $jsFooterCollection->addFilter(
+        new MyApp\Assets\Filters\LicenseStamper()
+    );
 
 ビルトインのフィルタとカスタムフィルタのどちらも、コレクションに対して透過的に適用されることに留意してください。最後のステップでは、コレクションのすべてのリソースを単一のファイル含めるのか、別々のものに振り分けるのかを決めます。コレクションにすべてのリソースをまとめる指示するには、「:code:`join()`」メソッドを利用できます.
 
@@ -254,13 +263,13 @@ and which URI will be used to show it. These settings are set up with :code:`set
 
     <?php
 
-    $js->join(true);
+    $jsFooterCollection->join(true);
 
     // 最後のファイルパスの名前です
-    $js->setTargetPath('public/production/final.js');
+    $jsFooterCollection->setTargetPath("public/production/final.js");
 
     // このスクリプトのHTMLタグがこのURIで生成されます
-    $js->setTargetUri('production/final.js');
+    $jsFooterCollection->setTargetUri("production/final.js");
 
 もしリソースをまとめようとしているなら、私たちはリソースを保存するのに使うファイルがどれか、それを表示するのに使うファイルがどれかを定義する必要があります。これらの設定は、:code:`setTargetPath()` と :code:`setTargetUri()` で設定できます。
 
@@ -301,7 +310,7 @@ Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するため�
          *
          * @param array $options
          */
-        public function __construct($options)
+        public function __construct(array $options)
         {
             $this->_options = $options;
         }
@@ -310,21 +319,22 @@ Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するため�
          * Do the filtering
          *
          * @param string $contents
+         *
          * @return string
          */
         public function filter($contents)
         {
             // 文字列のコンテンツを一時ファイルに書き出す
-            file_put_contents('temp/my-temp-1.css', $contents);
+            file_put_contents("temp/my-temp-1.css", $contents);
 
             system(
-                $this->_options['java-bin'] .
-                ' -jar ' .
-                $this->_options['yui'] .
-                ' --type css '.
-                'temp/my-temp-file-1.css ' .
-                $this->_options['extra-options'] .
-                ' -o temp/my-temp-file-2.css'
+                $this->_options["java-bin"] .
+                " -jar " .
+                $this->_options["yui"] .
+                " --type css " .
+                "temp/my-temp-file-1.css " .
+                $this->_options["extra-options"] .
+                " -o temp/my-temp-file-2.css"
             );
 
             // ファイルのコンテンツを返す
@@ -339,15 +349,15 @@ Phalcon は、JavaScript と CSS のそれぞれに対して圧縮するため�
     <?php
 
     // CSSコレクションを取得する
-    $css = $this->assets->get('head');
+    $css = $this->assets->get("head");
 
     // コレクションにYUIコンプレッサーフィルタを追加/有効にする
     $css->addFilter(
         new CssYUICompressor(
             [
-                'java-bin'      => '/usr/local/bin/java',
-                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-                'extra-options' => '--charset utf8'
+                "java-bin"      => "/usr/local/bin/java",
+                "yui"           => "/some/path/yuicompressor-x.y.z.jar",
+                "extra-options" => "--charset utf8",
             ]
         )
     );
@@ -364,6 +374,7 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
      * Adds a license message to the top of the file
      *
      * @param string $contents
+     *
      * @return string
      */
     class LicenseStamper implements FilterInterface
@@ -392,8 +403,12 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
 
     use Phalcon\Tag;
 
-    foreach ($this->assets->collection('js') as $resource) {
-        echo Tag::javascriptInclude($resource->getPath());
+    $jsCollection = $this->assets->collection("js");
+
+    foreach ($jsCollection as $resource) {
+        echo Tag::javascriptInclude(
+            $resource->getPath()
+        );
     }
 
 .. _YUI: http://yui.github.io/yuicompressor/

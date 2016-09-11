@@ -27,14 +27,12 @@ You can easily add resources to these collections like follows:
         public function index()
         {
             // Add some local CSS resources
-            $this->assets
-                ->addCss('css/style.css')
-                ->addCss('css/index.css');
+            $this->assets->addCss("css/style.css");
+            $this->assets->addCss("css/index.css");
 
             // And some local JavaScript resources
-            $this->assets
-                ->addJs('js/jquery.js')
-                ->addJs('js/bootstrap.min.js');
+            $this->assets->addJs("js/jquery.js");
+            $this->assets->addJs("js/bootstrap.min.js");
         }
     }
 
@@ -45,13 +43,14 @@ Then in a view, these resources can be printed:
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputCss() ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputCss(); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs() ?>
+            <?php $this->assets->outputJs(); ?>
         </body>
     <html>
 
@@ -62,10 +61,11 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
+
             {{ assets.outputCss() }}
         </head>
-        <body>
 
+        <body>
             <!-- ... -->
 
             {{ assets.outputJs() }}
@@ -91,10 +91,9 @@ The second parameter of :code:`addCss()` and :code:`addJs()` says whether the re
     public function indexAction()
     {
         // Add some local CSS resources
-        $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true)
-            ->addCss('css/extra.css');
+        $this->assets->addCss("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css", false);
+        $this->assets->addCss("css/style.css", true);
+        $this->assets->addCss("css/extra.css");
     }
 
 Collections
@@ -107,16 +106,16 @@ You can create additional collections to group specific resources to make it eas
     <?php
 
     // Javascripts in the header
-    $this->assets
-        ->collection('header')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $headerCollection = $this->assets->collection("header");
+
+    $headerCollection->addJs("js/jquery.js");
+    $headerCollection->addJs("js/bootstrap.min.js");
 
     // Javascripts in the footer
-    $this->assets
-        ->collection('footer')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $footerCollection = $this->assets->collection("footer");
+
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 Then in the views:
 
@@ -125,13 +124,14 @@ Then in the views:
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputJs('header') ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputJs("header"); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs('footer') ?>
+            <?php $this->assets->outputJs("footer"); ?>
         </body>
     <html>
 
@@ -142,13 +142,14 @@ Volt syntax:
     <html>
         <head>
             <title>Some amazing website</title>
-            {{ assets.outputCss('header') }}
-        </head>
-        <body>
 
+            {{ assets.outputCss("header") }}
+        </head>
+
+        <body>
             <!-- ... -->
 
-            {{ assets.outputJs('footer') }}
+            {{ assets.outputJs("footer") }}
         </body>
     <html>
 
@@ -160,16 +161,16 @@ Collections can be URL-prefixed, this enables you to easily change from one serv
 
     <?php
 
-    $scripts = $this->assets->collection('footer');
+    $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == 'development') {
-        $scripts->setPrefix('/');
+    if ($config->environment == "development") {
+        $footerCollection->setPrefix("/");
     } else {
-        $scripts->setPrefix('http:://cdn.example.com/');
+        $footerCollection->setPrefix("http:://cdn.example.com/");
     }
 
-    $scripts->addJs('js/jquery.js')
-            ->addJs('js/bootstrap.min.js');
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 A chainable syntax is available too:
 
@@ -177,12 +178,12 @@ A chainable syntax is available too:
 
     <?php
 
-    $scripts = $assets
-        ->collection('header')
-        ->setPrefix('http://cdn.example.com/')
+    $headerCollection = $assets
+        ->collection("header")
+        ->setPrefix("http://cdn.example.com/")
         ->setLocal(false)
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+        ->addJs("js/jquery.js")
+        ->addJs("js/bootstrap.min.js");
 
 Minification/Filtering
 ----------------------
@@ -200,29 +201,33 @@ The following example shows how to minify a collection of resources:
     $manager
 
         // These JavaScripts are located in the page's bottom
-        ->collection('jsFooter')
+        ->collection("jsFooter")
 
         // The name of the final output
-        ->setTargetPath('final.js')
+        ->setTargetPath("final.js")
 
         // The script tag is generated with this URI
-        ->setTargetUri('production/final.js')
+        ->setTargetUri("production/final.js")
 
         // This is a remote resource that does not need filtering
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
+        ->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false)
 
         // These are local resources that must be filtered
-        ->addJs('common-functions.js')
-        ->addJs('page-functions.js')
+        ->addJs("common-functions.js")
+        ->addJs("page-functions.js")
 
         // Join all the resources in a single file
         ->join(true)
 
         // Use the built-in Jsmin filter
-        ->addFilter(new Phalcon\Assets\Filters\Jsmin())
+        ->addFilter(
+            new Phalcon\Assets\Filters\Jsmin()
+        )
 
         // Use a custom filter
-        ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+        ->addFilter(
+            new MyApp\Assets\Filters\LicenseStamper()
+        );
 
 A collection can contain JavaScript or CSS
 resources but not both. Some resources may be remote, that is, they're obtained by HTTP from a remote source
@@ -237,14 +242,14 @@ be filtered or left as is:
     <?php
 
     // These Javascripts are located in the page's bottom
-    $js = $manager->collection('jsFooter');
+    $jsFooterCollection = $manager->collection("jsFooter");
 
     // This a remote resource that does not need filtering
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
+    $jsFooterCollection->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false);
 
     // These are local resources that must be filtered
-    $js->addJs('common-functions.js');
-    $js->addJs('page-functions.js');
+    $jsFooterCollection->addJs("common-functions.js");
+    $jsFooterCollection->addJs("page-functions.js");
 
 Filters are registered in the collection, multiple filters are allowed, content in resources are filtered
 in the same order as filters were registered:
@@ -254,10 +259,14 @@ in the same order as filters were registered:
     <?php
 
     // Use the built-in Jsmin filter
-    $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
+    $jsFooterCollection->addFilter(
+        new Phalcon\Assets\Filters\Jsmin()
+    );
 
     // Use a custom filter
-    $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+    $jsFooterCollection->addFilter(
+        new MyApp\Assets\Filters\LicenseStamper()
+    );
 
 Note that both built-in and custom filters can be transparently applied to collections.
 The last step is to decide if all the resources in the collection must be joined into a single file or serve each of them
@@ -270,13 +279,13 @@ and which URI will be used to show it. These settings are set up with :code:`set
 
     <?php
 
-    $js->join(true);
+    $jsFooterCollection->join(true);
 
     // The name of the final file path
-    $js->setTargetPath('public/production/final.js');
+    $jsFooterCollection->setTargetPath("public/production/final.js");
 
     // The script HTML tag is generated with this URI
-    $js->setTargetUri('production/final.js');
+    $jsFooterCollection->setTargetUri("production/final.js");
 
 If resources are going to be joined, we need also to define which file will be used to store the resources
 and which URI will be used to show it. These settings are set up with :code:`setTargetPath()` and :code:`setTargetUri()`.
@@ -320,7 +329,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
          *
          * @param array $options
          */
-        public function __construct($options)
+        public function __construct(array $options)
         {
             $this->_options = $options;
         }
@@ -329,21 +338,22 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
          * Do the filtering
          *
          * @param string $contents
+         *
          * @return string
          */
         public function filter($contents)
         {
             // Write the string contents into a temporal file
-            file_put_contents('temp/my-temp-1.css', $contents);
+            file_put_contents("temp/my-temp-1.css", $contents);
 
             system(
-                $this->_options['java-bin'] .
-                ' -jar ' .
-                $this->_options['yui'] .
-                ' --type css '.
-                'temp/my-temp-file-1.css ' .
-                $this->_options['extra-options'] .
-                ' -o temp/my-temp-file-2.css'
+                $this->_options["java-bin"] .
+                " -jar " .
+                $this->_options["yui"] .
+                " --type css " .
+                "temp/my-temp-file-1.css " .
+                $this->_options["extra-options"] .
+                " -o temp/my-temp-file-2.css"
             );
 
             // Return the contents of file
@@ -358,15 +368,15 @@ Usage:
     <?php
 
     // Get some CSS collection
-    $css = $this->assets->get('head');
+    $css = $this->assets->get("head");
 
     // Add/Enable the YUI compressor filter in the collection
     $css->addFilter(
         new CssYUICompressor(
             [
-                'java-bin'      => '/usr/local/bin/java',
-                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-                'extra-options' => '--charset utf8'
+                "java-bin"      => "/usr/local/bin/java",
+                "yui"           => "/some/path/yuicompressor-x.y.z.jar",
+                "extra-options" => "--charset utf8",
             ]
         )
     );
@@ -383,6 +393,7 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
      * Adds a license message to the top of the file
      *
      * @param string $contents
+     *
      * @return string
      */
     class LicenseStamper implements FilterInterface
@@ -412,8 +423,12 @@ You can override this method or print the resources manually in the following wa
 
     use Phalcon\Tag;
 
-    foreach ($this->assets->collection('js') as $resource) {
-        echo Tag::javascriptInclude($resource->getPath());
+    $jsCollection = $this->assets->collection("js");
+
+    foreach ($jsCollection as $resource) {
+        echo Tag::javascriptInclude(
+            $resource->getPath()
+        );
     }
 
 .. _YUI: http://yui.github.io/yuicompressor/
