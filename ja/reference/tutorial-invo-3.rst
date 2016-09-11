@@ -1,12 +1,10 @@
-Tutorial 4: Using CRUDs
-=======================
+Tutorial 4: CRUDを使用した作業
+=================================
 
 Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
 INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
 using forms, validations, paginators and more.
 
-CRUDを使用した作業
-------------------
 Most options that manipulate data in INVO (companies, products and types of products), were developed
 using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
 

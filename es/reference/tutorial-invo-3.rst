@@ -1,12 +1,10 @@
-Tutorial 4: Using CRUDs
-=======================
+Tutorial 4: Trabajando con CRUDs
+================================
 
 Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
 INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
 using forms, validations, paginators and more.
 
-Trabajando con CRUDs
---------------------
 La mayor parte de opciones que manipulan datos (compañias, productos y tipos de productos), han sido desarrollados
 usando un básico y común CRUD_ (Create, Read, Update and Delete). Cada CRUD contiene los siguientes archivos:
 
