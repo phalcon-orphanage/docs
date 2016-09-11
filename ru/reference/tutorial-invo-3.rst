@@ -178,7 +178,10 @@ INVO, мы подходим к созданию CRUD, очень распрос�
                 "profilesId",
                 ProductTypes::find(),
                 [
-                    "using"      => ["id", "name"],
+                    "using"      => [
+                        "id",
+                        "name",
+                    ],
                     "useEmpty"   => true,
                     "emptyText"  => "...",
                     "emptyValue" => "",
@@ -195,7 +198,7 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
             $price->setFilters(
                 [
-                    "float"
+                    "float",
                 ]
             );
 
@@ -260,17 +263,24 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     <?php
 
     // Добавляем скрытое поле в форму
-    $this->add(new Hidden("id"));
+    $this->add(
+        new Hidden("id")
+    );
 
     // ...
+
+    $productTypes = ProductTypes::find();
 
     // Добавляем HTML Select (список) в форму
     // и заполняем его данными из "product_types"
     $type = new Select(
         "profilesId",
-        ProductTypes::find(),
+        $productTypes,
         [
-            "using"      => ["id", "name"],
+            "using"      => [
+                "id",
+                "name",
+            ],
             "useEmpty"   => true,
             "emptyText"  => "...",
             "emptyValue" => "",
@@ -284,22 +294,31 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
     {{ form("products/search") }}
 
-    <h2>Поиск продуктов</h2>
+        <h2>
+            Поиск продуктов
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        {% for element in form %}
+            {% for element in form %}
+                <div class="control-group">
+                    {{ element.label(["class": "control-label"]) }}
+
+                    <div class="controls">
+                        {{ element }}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
             <div class="control-group">
-                {{ element.label(["class": "control-label"]) }}
-                <div class="controls">{{ element }}</div>
+                {{ submit_button("Search", "class": "btn btn-primary") }}
             </div>
-        {% endfor %}
 
-        <div class="control-group">
-            {{ submit_button("Search", "class": "btn btn-primary") }}
-        </div>
+        </fieldset>
 
-    </fieldset>
+    {{ endForm() }}
 
 Это генерирует следующий HTML:
 
@@ -307,43 +326,57 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 
     <form action="/invo/products/search" method="post">
 
-    <h2>Поиск продуктов</h2>
+        <h2>
+            Поиск продуктов
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        <div class="control-group">
-            <label for="id" class="control-label">Id</label>
-            <div class="controls"><input type="text" id="id" name="id" /></div>
-        </div>
+            <div class="control-group">
+                <label for="id" class="control-label">Id</label>
 
-        <div class="control-group">
-            <label for="name" class="control-label">Название</label>
-            <div class="controls">
-                <input type="text" id="name" name="name" />
+                <div class="controls">
+                    <input type="text" id="id" name="id" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="profilesId" class="control-label">profilesId</label>
-            <div class="controls">
-                <select id="profilesId" name="profilesId">
-                    <option value="">...</option>
-                    <option value="1">Овощи</option>
-                    <option value="2">Фрукты</option>
-                </select>
+            <div class="control-group">
+                <label for="name" class="control-label">Название</label>
+
+                <div class="controls">
+                    <input type="text" id="name" name="name" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="price" class="control-label">Цена</label>
-            <div class="controls"><input type="text" id="price" name="price" /></div>
-        </div>
+            <div class="control-group">
+                <label for="profilesId" class="control-label">profilesId</label>
 
-        <div class="control-group">
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
+                <div class="controls">
+                    <select id="profilesId" name="profilesId">
+                        <option value="">...</option>
+                        <option value="1">Овощи</option>
+                        <option value="2">Фрукты</option>
+                    </select>
+                </div>
+            </div>
 
-    </fieldset>
+            <div class="control-group">
+                <label for="price" class="control-label">Цена</label>
+
+                <div class="controls">
+                    <input type="text" id="price" name="price" />
+                </div>
+            </div>
+
+
+
+            <div class="control-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+
+        </fieldset>
+
+    </form>
 
 Когда форма отправлена, в контроллере выполняется действие "search", производя поиск
 на основе данных, введенных пользователем.
@@ -416,7 +449,9 @@ INVO, мы подходим к созданию CRUD, очень распрос�
     $products = Products::find($parameters);
 
     if (count($products) === 0) {
-        $this->flash->notice("Поиск не нашел никаких продуктов");
+        $this->flash->notice(
+            "Поиск не нашел никаких продуктов"
+        );
 
         return $this->forward("products/index");
     }
@@ -472,13 +507,33 @@ INVO, мы подходим к созданию CRUD, очень распрос�
         {% endif %}
 
         <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.getProductTypes().name }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ "%.2f"|format(product.price) }}</td>
-            <td>{{ product.getActiveDetail() }}</td>
-            <td width="7%">{{ link_to("products/edit/" ~ product.id, "Редактировать") }}</td>
-            <td width="7%">{{ link_to("products/delete/" ~ product.id, "Удалить") }}</td>
+            <td>
+                {{ product.id }}
+            </td>
+
+            <td>
+                {{ product.getProductTypes().name }}
+            </td>
+
+            <td>
+                {{ product.name }}
+            </td>
+
+            <td>
+                {{ "%.2f"|format(product.price) }}
+            </td>
+
+            <td>
+                {{ product.getActiveDetail() }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/edit/" ~ product.id, "Редактировать") }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/delete/" ~ product.id, "Удалить") }}
+            </td>
         </tr>
 
         {% if loop.last %}
@@ -523,7 +578,9 @@ INVO, мы подходим к созданию CRUD, очень распрос�
         {% if loop.first %}
             Выполняется до первого продукта в цикле
         {% endif %}
-            Выполняется для каждого продукта из page.items
+
+        Выполняется для каждого продукта из page.items
+
         {% if loop.last %}
             Выполняется после последнего продукта в цикле
         {% endif %}
@@ -537,13 +594,33 @@ INVO, мы подходим к созданию CRUD, очень распрос�
 .. code-block:: html+jinja
 
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.productTypes.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, "Редактировать") }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, "Удалить") }}</td>
+        <td>
+            {{ product.id }}
+        </td>
+
+        <td>
+            {{ product.productTypes.name }}
+        </td>
+
+        <td>
+            {{ product.name }}
+        </td>
+
+        <td>
+            {{ "%.2f"|format(product.price) }}
+        </td>
+
+        <td>
+            {{ product.getActiveDetail() }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/edit/" ~ product.id, "Редактировать") }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/delete/" ~ product.id, "Удалить") }}
+        </td>
     </tr>
 
 Как мы уже увидели, использование product.id то же, что и в PHP: :code:`$product->id`,
@@ -740,7 +817,9 @@ ORM для инициализации модели. В данном случае
 
     $form->clear();
 
-    $this->flash->success("Продукт успешно создан");
+    $this->flash->success(
+        "Продукт успешно создан"
+    );
 
     return $this->forward("products/index");
 
@@ -759,7 +838,9 @@ ORM для инициализации модели. В данном случае
             $product = Products::findFirstById($id);
 
             if (!$product) {
-                $this->flash->error("Продукт не найден");
+                $this->flash->error(
+                    "Продукт не найден"
+                );
 
                 return $this->forward("products/index");
             }
@@ -794,7 +875,9 @@ ORM для инициализации модели. В данном случае
         $product = Products::findFirstById($id);
 
         if (!$product) {
-            $this->flash->error("Продукт не существует");
+            $this->flash->error(
+                "Продукт не существует"
+            );
 
             return $this->forward("products/index");
         }
@@ -825,7 +908,9 @@ ORM для инициализации модели. В данном случае
 
         $form->clear();
 
-        $this->flash->success("Продукт успешно обновлен");
+        $this->flash->success(
+            "Продукт успешно обновлен"
+        );
 
         return $this->forward("products/index");
     }

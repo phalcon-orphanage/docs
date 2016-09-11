@@ -178,7 +178,10 @@ This form defines the fields that are visible to the user:
                 "profilesId",
                 ProductTypes::find(),
                 [
-                    "using"      => ["id", "name"],
+                    "using"      => [
+                        "id",
+                        "name",
+                    ],
                     "useEmpty"   => true,
                     "emptyText"  => "...",
                     "emptyValue" => "",
@@ -195,7 +198,7 @@ This form defines the fields that are visible to the user:
 
             $price->setFilters(
                 [
-                    "float"
+                    "float",
                 ]
             );
 
@@ -266,13 +269,18 @@ Other elements are also used in this form:
 
     // ...
 
+    $productTypes = ProductTypes::find();
+
     // Add a HTML Select (list) to the form
     // and fill it with data from "product_types"
     $type = new Select(
         "profilesId",
-        ProductTypes::find(),
+        $productTypes,
         [
-            "using"      => ["id", "name"],
+            "using"      => [
+                "id",
+                "name",
+            ],
             "useEmpty"   => true,
             "emptyText"  => "...",
             "emptyValue" => "",
@@ -286,22 +294,31 @@ Once the form is passed to the view, it can be rendered and presented to the use
 
     {{ form("products/search") }}
 
-    <h2>Search products</h2>
+        <h2>
+            Search products
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        {% for element in form %}
+            {% for element in form %}
+                <div class="control-group">
+                    {{ element.label(["class": "control-label"]) }}
+
+                    <div class="controls">
+                        {{ element }}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
             <div class="control-group">
-                {{ element.label(["class": "control-label"]) }}
-                <div class="controls">{{ element }}</div>
+                {{ submit_button("Search", "class": "btn btn-primary") }}
             </div>
-        {% endfor %}
 
-        <div class="control-group">
-            {{ submit_button("Search", "class": "btn btn-primary") }}
-        </div>
+        </fieldset>
 
-    </fieldset>
+    {{ endForm() }}
 
 This produces the following HTML:
 
@@ -309,43 +326,57 @@ This produces the following HTML:
 
     <form action="/invo/products/search" method="post">
 
-    <h2>Search products</h2>
+        <h2>
+            Search products
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        <div class="control-group">
-            <label for="id" class="control-label">Id</label>
-            <div class="controls"><input type="text" id="id" name="id" /></div>
-        </div>
+            <div class="control-group">
+                <label for="id" class="control-label">Id</label>
 
-        <div class="control-group">
-            <label for="name" class="control-label">Name</label>
-            <div class="controls">
-                <input type="text" id="name" name="name" />
+                <div class="controls">
+                    <input type="text" id="id" name="id" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="profilesId" class="control-label">profilesId</label>
-            <div class="controls">
-                <select id="profilesId" name="profilesId">
-                    <option value="">...</option>
-                    <option value="1">Vegetables</option>
-                    <option value="2">Fruits</option>
-                </select>
+            <div class="control-group">
+                <label for="name" class="control-label">Name</label>
+
+                <div class="controls">
+                    <input type="text" id="name" name="name" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="price" class="control-label">Price</label>
-            <div class="controls"><input type="text" id="price" name="price" /></div>
-        </div>
+            <div class="control-group">
+                <label for="profilesId" class="control-label">profilesId</label>
 
-        <div class="control-group">
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
+                <div class="controls">
+                    <select id="profilesId" name="profilesId">
+                        <option value="">...</option>
+                        <option value="1">Vegetables</option>
+                        <option value="2">Fruits</option>
+                    </select>
+                </div>
+            </div>
 
-    </fieldset>
+            <div class="control-group">
+                <label for="price" class="control-label">Price</label>
+
+                <div class="controls">
+                    <input type="text" id="price" name="price" />
+                </div>
+            </div>
+
+
+
+            <div class="control-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+
+        </fieldset>
+
+    </form>
 
 When the form is submitted, the action "search" is executed in the controller performing the search
 based on the data entered by the user.
@@ -418,7 +449,9 @@ Luego, basado en los parámetros construidos anteriormente:
     $products = Products::find($parameters);
 
     if (count($products) === 0) {
-        $this->flash->notice("No se encontraron productos para la búsqueda realizada.");
+        $this->flash->notice(
+            "No se encontraron productos para la búsqueda realizada."
+        );
 
         return $this->forward("products/index");
     }
@@ -474,13 +507,33 @@ los resultados correspondientes de la página actual:
         {% endif %}
 
         <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.getProductTypes().name }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ "%.2f"|format(product.price) }}</td>
-            <td>{{ product.getActiveDetail() }}</td>
-            <td width="7%">{{ link_to("products/edit/" ~ product.id, "Edit") }}</td>
-            <td width="7%">{{ link_to("products/delete/" ~ product.id, "Delete") }}</td>
+            <td>
+                {{ product.id }}
+            </td>
+
+            <td>
+                {{ product.getProductTypes().name }}
+            </td>
+
+            <td>
+                {{ product.name }}
+            </td>
+
+            <td>
+                {{ "%.2f"|format(product.price) }}
+            </td>
+
+            <td>
+                {{ product.getActiveDetail() }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/edit/" ~ product.id, "Edit") }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/delete/" ~ product.id, "Delete") }}
+            </td>
         </tr>
 
         {% if loop.last %}
@@ -525,7 +578,9 @@ The whole 'for' block provides the following:
         {% if loop.first %}
             Executed before the first product in the loop
         {% endif %}
-            Executed for every product of page.items
+
+        Executed for every product of page.items
+
         {% if loop.last %}
             Executed after the last product is loop
         {% endif %}
@@ -539,13 +594,33 @@ in "product" is printed accordingly:
 .. code-block:: html+jinja
 
     <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.productTypes.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, "Edit") }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, "Delete") }}</td>
+        <td>
+            {{ product.id }}
+        </td>
+
+        <td>
+            {{ product.productTypes.name }}
+        </td>
+
+        <td>
+            {{ product.name }}
+        </td>
+
+        <td>
+            {{ "%.2f"|format(product.price) }}
+        </td>
+
+        <td>
+            {{ product.getActiveDetail() }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/edit/" ~ product.id, "Edit") }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/delete/" ~ product.id, "Delete") }}
+        </td>
     </tr>
 
 As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
@@ -742,7 +817,9 @@ Finally, if the form does not return any validation message we can save the prod
 
     $form->clear();
 
-    $this->flash->success("Product was created successfully");
+    $this->flash->success(
+        "Product was created successfully"
+    );
 
     return $this->forward("products/index");
 
@@ -761,7 +838,9 @@ Ahora, en el caso de la actualización, primero debemos presentar al usuario los
             $product = Products::findFirstById($id);
 
             if (!$product) {
-                $this->flash->error("Product was not found");
+                $this->flash->error(
+                    "Product was not found"
+                );
 
                 return $this->forward("products/index");
             }
@@ -796,7 +875,9 @@ un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de
         $product = Products::findFirstById($id);
 
         if (!$product) {
-            $this->flash->error("Product does not exist");
+            $this->flash->error(
+                "Product does not exist"
+            );
 
             return $this->forward("products/index");
         }
@@ -827,7 +908,9 @@ un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de
 
         $form->clear();
 
-        $this->flash->success("Product was updated successfully");
+        $this->flash->success(
+            "Product was updated successfully"
+        );
 
         return $this->forward("products/index");
     }
