@@ -658,6 +658,8 @@ any validation messages you should check the status code returned:
 
 .. code-block:: php
 
+    <?php
+
     // Deleting multiple rows
     $phql = "DELETE FROM Cars WHERE id > 100";
 
@@ -731,7 +733,7 @@ More examples of the builder:
             ->from("Robots");
 
     // 'SELECT id, name FROM Robots';
-    $builder->columns(["id", "name]))
+    $builder->columns(["id", "name"])
             ->from("Robots");
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"';
