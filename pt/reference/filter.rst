@@ -134,7 +134,7 @@ o formato que esperamos.
 
 Combining Filters
 -----------------
-You can also run multiple filters on a string at the same time by passing an array of filter identifies as the second parameter:
+You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
 .. code-block:: php
 
