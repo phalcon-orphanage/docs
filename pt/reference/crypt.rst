@@ -2,9 +2,13 @@ Encriptação/Decriptação
 =======================
 
 Phalcon provê utilitários de encriptação pelo componente :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
-Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca mcrypt_ do PHP.
+Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca openssl_ do PHP.
 
-Por padrão, esse componente provê uma encriptação segura usando AES-256 (rijndael-256-cbc).
+Por padrão, esse componente provê uma encriptação segura usando AES-256.
+
+.. highlights::
+    You must use a key length corresponding to the current algorithm.
+    For the algorithm used by default it is 32 bytes.
 
 Uso Básico
 ----------
@@ -19,8 +23,8 @@ Esse componente foi projetado para fornecer um uso muito simples:
     // Create an instance
     $crypt     = new Crypt();
 
-    $key       = 'le password';
-    $text      = 'This is a secret text';
+    $key  = "This is a secret key (32 bytes).";
+    $text = "This is the text that you want to encrypt.";
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -55,14 +59,11 @@ Opções de Encriptação
 ---------------------
 As seguintes opções estão disponíveis para alterar o comportamento da encriptação:
 
-+------------+--------------------------------------------------------------------------------------------------------------+
-| Nome       | Descrição                                                                                                    |
-+============+==============================================================================================================+
-| Cipher     | É um dos tipos de algoritmo de encriptografia suportados pela libmcrypt. Você pode ver a lista aqui_         |
-+------------+--------------------------------------------------------------------------------------------------------------+
-| Mode       | Um modo de encriptação suportado pela libmcrypt (ecb, cbc, cfb, ofb)                                         |
-+------------+--------------------------------------------------------------------------------------------------------------+
-
++--------+------------------------------------------------------------------------------------------------------+
+| Nome   | Descrição                                                                                            |
++========+======================================================================================================+
+| Cipher | É um dos tipos de algoritmo de encriptografia suportados pela libmcrypt. Você pode ver a lista aqui_ |
++--------+------------------------------------------------------------------------------------------------------+
 
 Exemplo:
 
@@ -76,7 +77,7 @@ Exemplo:
     $crypt = new Crypt();
 
     // Use blowfish
-    $crypt->setCipher('blowfish');
+    $crypt->setCipher("bf-cbc");
 
     $key   = 'le password';
     $text  = 'This is a secret text';
@@ -147,6 +148,6 @@ Então, por exemplo, em um controlador você pode usá-lo da seguinte forma:
         }
     }
 
-.. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
-.. _aqui: http://www.php.net/manual/en/mcrypt.ciphers.php
+.. _openssl: http://www.php.net/manual/en/book.openssl.php
+.. _here: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

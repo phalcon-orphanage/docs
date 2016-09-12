@@ -23,8 +23,8 @@ Phalcon предоставляет средства шифрования с по
     // Создание экземпляра
     $crypt     = new Crypt();
 
-    $key       = 'This is a secret key (32 bytes).';
-    $text      = 'Это секретный текст, который Вы хотите зашифровать.';
+    $key  = "This is a secret key (32 bytes).";
+    $text = "Это секретный текст, который Вы хотите зашифровать.";
 
     $encrypted = $crypt->encrypt($text, $key);
 

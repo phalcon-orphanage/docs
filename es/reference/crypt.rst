@@ -2,9 +2,13 @@ Encryption/Decryption
 =====================
 
 Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
-This class offers simple object-oriented wrappers to the mcrypt_ PHP's encryption library.
+This class offers simple object-oriented wrappers to the openssl_ PHP's encryption library.
 
-By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
+By default, this component provides secure encryption using AES-256-CFB.
+
+.. highlights::
+    You must use a key length corresponding to the current algorithm.
+    For the algorithm used by default it is 32 bytes.
 
 Basic Usage
 -----------
@@ -19,8 +23,8 @@ This component is designed to provide a very simple usage:
     // Create an instance
     $crypt     = new Crypt();
 
-    $key       = 'le password';
-    $text      = 'This is a secret text';
+    $key  = "This is a secret key (32 bytes).";
+    $text = "This is the text that you want to encrypt.";
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -58,9 +62,7 @@ The following options are available to change the encryption behavior:
 +------------+---------------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                       |
 +============+===================================================================================================+
-| Cipher     | The cipher is one of the encryption algorithms supported by libmcrypt. You can see a list here_   |
-+------------+---------------------------------------------------------------------------------------------------+
-| Mode       | One of the encryption modes supported by libmcrypt (ecb, cbc, cfb, ofb)                           |
+| Cipher     | The cipher is one of the encryption algorithms supported by openssl. You can see a list here_     |
 +------------+---------------------------------------------------------------------------------------------------+
 
 Example:
@@ -75,7 +77,7 @@ Example:
     $crypt = new Crypt();
 
     // Use blowfish
-    $crypt->setCipher('blowfish');
+    $crypt->setCipher("bf-cbc");
 
     $key   = 'le password';
     $text  = 'This is a secret text';
@@ -146,6 +148,6 @@ Then, for example, in a controller you can use it as follows:
         }
     }
 
-.. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
-.. _here: http://www.php.net/manual/en/mcrypt.ciphers.php
+.. _openssl: http://www.php.net/manual/en/book.openssl.php
+.. _here: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

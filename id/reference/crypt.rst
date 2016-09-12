@@ -10,7 +10,6 @@ Secara default, komponen ini menyediakan enkripsi aman menggunakan AES-256-CFB.
     Anda harus menggunakan panjang key sesuai algoritma saat ini.
     Untuk algoritma yang digunakan secara default ukurannya 32 bytes.
 
-
 Penggunaan Dasar
 ----------------
 Komponen ini dirancang untuk menyediakan cara penggunaan sangat sederhana:

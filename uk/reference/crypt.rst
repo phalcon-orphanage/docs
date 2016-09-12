@@ -10,7 +10,6 @@ By default, this component provides secure encryption using AES-256-CFB.
     You must use a key length corresponding to the current algorithm.
     For the algorithm used by default it is 32 bytes.
 
-
 Basic Usage
 -----------
 This component is designed to provide a very simple usage:
