@@ -693,7 +693,7 @@ The following example shows how to create a table:
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",

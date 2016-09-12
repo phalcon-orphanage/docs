@@ -101,6 +101,8 @@ You can also set a log level using the :code:`setLogLevel()` method. This method
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 

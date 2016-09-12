@@ -100,6 +100,8 @@ Anda dapat mengatur level log menggunakan metode :code:`setLogLevel()`. Metode i
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 

@@ -301,7 +301,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
           'conditions' => 'id = ?',
           'bind' => [101],
           'bindTypes' => [PDO::PARAM_INT] // Optional parameter
-       )
+       ]
     );
     $success = $connection->updateAsDict(
        "robots",
