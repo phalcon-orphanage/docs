@@ -33,25 +33,25 @@ different files, where keys remain the same and values contain the translated st
 
     <?php
 
-    // app/messages/es.php
-    $messages = array(
+    // app/messages/en.php
+    $messages = [
         "hi"      => "Hello",
         "bye"     => "Good Bye",
         "hi-name" => "Hello %name%",
-        "song"    => "This song is %song%"
-    );
+        "song"    => "This song is %song%",
+    ];
 
 .. code-block:: php
 
     <?php
 
     // app/messages/fr.php
-    $messages = array(
+    $messages = [
         "hi"      => "Bonjour",
         "bye"     => "Au revoir",
         "hi-name" => "Bonjour %name%",
-        "song"    => "La chanson est %song%"
-    );
+        "song"    => "La chanson est %song%",
+    ];
 
 Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
 automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
@@ -73,9 +73,11 @@ directly by calling :code:`$this->request->getBestLanguage()` from an action/con
             // Ask browser what is the best language
             $language = $this->request->getBestLanguage();
 
+            $translationFile = "app/messages/" . $language . ".php";
+
             // Check if we have a translation file for that lang
-            if (file_exists("app/messages/" . $language . ".php")) {
-                require "app/messages/" . $language . ".php";
+            if (file_exists($translationFile)) {
+                require $translationFile;
             } else {
                 // Fallback to some default
                 require "app/messages/en.php";
@@ -83,9 +85,9 @@ directly by calling :code:`$this->request->getBestLanguage()` from an action/con
 
             // Return a translation object
             return new NativeArray(
-                array(
-                    "content" => $messages
-                )
+                [
+                    "content" => $messages,
+                ]
             );
         }
 
@@ -113,7 +115,7 @@ are in the form of a key/value array, where the key matches the placeholder name
 
     <!-- welcome -->
     <!-- String: hi-name => 'Hello %name%' -->
-    <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
+    <p><?php echo $t->_("hi-name", ["name" => $name]); ?></p>
 
 Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
 this by using a :doc:`Router <routing>`.

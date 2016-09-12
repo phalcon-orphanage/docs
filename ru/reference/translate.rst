@@ -34,24 +34,24 @@
     <?php
 
     // app/messages/en.php
-    $messages = array(
+    $messages = [
         "hi"      => "Hello",
         "bye"     => "Good Bye",
         "hi-name" => "Hello %name%",
-        "song"    => "This song is %song%"
-    );
+        "song"    => "This song is %song%",
+    ];
 
 .. code-block:: php
 
     <?php
 
     // app/messages/ru.php
-    $messages = array(
+    $messages = [
         "hi"      => "Здарова",
         "bye"     => "Прощай",
         "hi-name" => "Здарова %name%",
-        "song"    => "Композиция %song%"
-    );
+        "song"    => "Композиция %song%",
+    ];
 
 Механизм осуществления перевода в приложении тривиален, но зависит от того, как вы хотите реализовать ее. Вы можете использовать
 автоматическое определение языка из браузера пользователя, или вы можете предоставить выбор языка пользователю.
@@ -73,9 +73,11 @@
             // Получение оптимального языка из браузера
             $language = $this->request->getBestLanguage();
 
+            $translationFile = "app/messages/" . $language . ".php";
+
             // Проверка существования перевода для полученного языка
-            if (file_exists("app/messages/" . $language . ".php")) {
-                require "app/messages/" . $language . ".php";
+            if (file_exists($translationFile)) {
+                require $translationFile;
             } else {
                 // Переключение на язык по умолчанию
                 require "app/messages/en.php";
@@ -83,9 +85,9 @@
 
             // Возвращение объекта работы с переводом
             return new NativeArray(
-                array(
-                    "content" => $messages
-                )
+                [
+                    "content" => $messages,
+                ]
             );
         }
 
@@ -113,7 +115,7 @@
 
     <!-- welcome -->
     <!-- String: hi-name => 'Hello %name%' -->
-    <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
+    <p><?php echo $t->_("hi-name", ["name" => $name]); ?></p>
 
 Существуют так же приложения с многоязычностью основанной на параметрах в URL, например как http://www.mozilla.org/**es-ES**/firefox/.
 Реализовать такую схему на Phalcon можно используя компонент :doc:`Router <routing>`.
