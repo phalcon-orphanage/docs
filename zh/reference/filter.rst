@@ -145,9 +145,12 @@
     $filter = new Filter();
 
     // 使用匿名函数
-    $filter->add('md5', function ($value) {
-        return preg_replace('/[^0-9a-f]/', '', $value);
-    });
+    $filter->add(
+        "md5",
+        function ($value) {
+            return preg_replace("/[^0-9a-f]/", "", $value);
+        }
+    );
 
     // 利用md5过滤器清理
     $filtered = $filter->sanitize($possibleMd5, "md5");
@@ -171,7 +174,10 @@
     $filter = new Filter();
 
     // 使用对象
-    $filter->add('ipv4', new IPv4Filter());
+    $filter->add(
+        "ipv4",
+        new IPv4Filter()
+    );
 
     // 利用"ipv4"过滤器清理
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");

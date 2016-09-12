@@ -145,9 +145,12 @@ Você pode adicionar seus próprios filtros em :doc:`Phalcon\\Filter <../api/Pha
     $filter = new Filter();
 
     // Using an anonymous function
-    $filter->add('md5', function ($value) {
-        return preg_replace('/[^0-9a-f]/', '', $value);
-    });
+    $filter->add(
+        "md5",
+        function ($value) {
+            return preg_replace("/[^0-9a-f]/", "", $value);
+        }
+    );
 
     // Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
@@ -171,7 +174,10 @@ Ou, se preferir, você pode implementar uma classe filtro:
     $filter = new Filter();
 
     // Using an object
-    $filter->add('ipv4', new IPv4Filter());
+    $filter->add(
+        "ipv4",
+        new IPv4Filter()
+    );
 
     // Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
