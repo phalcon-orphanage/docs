@@ -132,6 +132,27 @@ o formato que esperamos.
     // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
+Combining Filters
+-----------------
+You can also run multiple filters on a string at the same time by passing an array of filter identifies as the second parameter:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Filter;
+
+    $filter = new Filter();
+
+    // Returns "Hello"
+    $filter->sanitize(
+        "   <h1> Hello </h1>   ",
+        [
+            "striptags",
+            "trim",
+        ]
+    );
+
 Criando seus próprios filtros
 -----------------------------
 Você pode adicionar seus próprios filtros em :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. O filtro pode ser uma função anônima (lambda, closure):
