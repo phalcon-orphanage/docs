@@ -33,7 +33,7 @@ Consider the following example:
         }
     );
 
-The above auto-loader lacks any kind of security check. If a function mistakenly launches the auto-loader and
+The above auto-loader lacks any kind of security. If a function mistakenly launches the auto-loader and
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
 
 .. code-block:: php
@@ -202,7 +202,7 @@ Phalcon будет вынужден обрабатывать данные по �
 
 Изменение текущей стратегии
 ---------------------------
-Дополнительные данные могут быть добавлены к существующим значениям стратегии следующим образом:
+Additional auto-loading data can be added to existing values by passing "true" as the second parameter:
 
 .. code-block:: php
 
@@ -216,8 +216,6 @@ Phalcon будет вынужден обрабатывать данные по �
         ],
         true
     );
-
-Использование "true" в качестве второго параметра позволит добавить новые значения к уже имеющимся.
 
 События автозагрузки классов
 ----------------------------
