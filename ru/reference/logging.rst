@@ -35,21 +35,54 @@
 
     $logger = new FileAdapter("app/logs/test.log");
 
+
+
     // These are the different log levels available:
-    $logger->critical("This is a critical message");
-    $logger->emergency("This is an emergency message");
-    $logger->debug("This is a debug message");
-    $logger->error("This is an error message");
-    $logger->info("This is an info message");
-    $logger->notice("This is a notice message");
-    $logger->warning("This is a warning message");
-    $logger->alert("This is an alert message");
+
+    $logger->critical(
+        "This is a critical message"
+    );
+
+    $logger->emergency(
+        "This is an emergency message"
+    );
+
+    $logger->debug(
+        "This is a debug message"
+    );
+
+    $logger->error(
+        "This is an error message"
+    );
+
+    $logger->info(
+        "This is an info message"
+    );
+
+    $logger->notice(
+        "This is a notice message"
+    );
+
+    $logger->warning(
+        "This is a warning message"
+    );
+
+    $logger->alert(
+        "This is an alert message"
+    );
+
+
 
     // You can also use the log() method with a Logger constant:
-    $logger->log("Это тоже про ошибку", Logger::ERROR);
+    $logger->log(
+        "Это тоже про ошибку",
+        Logger::ERROR
+    );
 
     // If no constant is given, DEBUG is assumed.
-    $logger->log("Это сообщение");
+    $logger->log(
+        "Это сообщение"
+    );
 
 Результат кода:
 
@@ -75,7 +108,9 @@ You can also set a log level using the :code:`setLogLevel()` method. This method
 
     $logger = new FileAdapter("app/logs/test.log");
 
-    $logger->setLogLevel(Logger::CRITICAL);
+    $logger->setLogLevel(
+        Logger::CRITICAL
+    );
 
 In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
@@ -98,8 +133,14 @@ In the example above, only critical and emergency messages will get saved to the
     $logger->begin();
 
     // Добавление записей
-    $logger->alert("This is an alert");
-    $logger->error("This is another error");
+
+    $logger->alert(
+        "This is an alert"
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
     // Размещение записей в файл
     $logger->commit();
@@ -119,12 +160,30 @@ In the example above, only critical and emergency messages will get saved to the
 
     $logger = new MultipleStream();
 
-    $logger->push(new FileAdapter('test.log'));
-    $logger->push(new StreamAdapter('php://stdout'));
 
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+    $logger->push(
+        new FileAdapter("test.log")
+    );
+
+    $logger->push(
+        new StreamAdapter("php://stdout")
+    );
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Сообщения отправляются на обработчик в порядке их регистраций.
 
@@ -174,8 +233,9 @@ In the example above, only critical and emergency messages will get saved to the
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    // Установка формата сообщений в логе
     $formatter = new LineFormatter("%date% - %message%");
+
+    // Установка формата сообщений в логе
     $logger->setFormatter($formatter);
 
 Реализация собственного оформителя
@@ -218,7 +278,7 @@ File Logger
     $logger = new FileAdapter(
         "app/logs/test.log",
         [
-            'mode' => 'w'
+            "mode" => "w",
         ]
     );
 
@@ -239,8 +299,8 @@ Syslog Logger
     $logger = new SyslogAdapter(
         "ident-name",
         [
-            'option'   => LOG_NDELAY,
-            'facility' => LOG_MAIL
+            "option"   => LOG_NDELAY,
+            "facility" => LOG_MAIL,
         ]
     );
 
@@ -257,9 +317,21 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Реализация собственных адаптеров
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

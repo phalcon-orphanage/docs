@@ -32,21 +32,54 @@ Contoh berikut menunjukkan bagaimana menciptakan sebuah log dan menambah pesan k
 
     $logger = new FileAdapter("app/logs/test.log");
 
+
+
     // Ini adalah bermacam level log yang tersedia:
-    $logger->critical("This is a critical message");
-    $logger->emergency("This is an emergency message");
-    $logger->debug("This is a debug message");
-    $logger->error("This is an error message");
-    $logger->info("This is an info message");
-    $logger->notice("This is a notice message");
-    $logger->warning("This is a warning message");
-    $logger->alert("This is an alert message");
+
+    $logger->critical(
+        "This is a critical message"
+    );
+
+    $logger->emergency(
+        "This is an emergency message"
+    );
+
+    $logger->debug(
+        "This is a debug message"
+    );
+
+    $logger->error(
+        "This is an error message"
+    );
+
+    $logger->info(
+        "This is an info message"
+    );
+
+    $logger->notice(
+        "This is a notice message"
+    );
+
+    $logger->warning(
+        "This is a warning message"
+    );
+
+    $logger->alert(
+        "This is an alert message"
+    );
+
+
 
     // Anda dapat menggunakan metode log() dengan Logger constant:
-    $logger->log("This is another error message", Logger::ERROR);
+    $logger->log(
+        "This is another error message",
+        Logger::ERROR
+    );
 
     // Jika tidak ditentukan diasumsikan Logger::DEBUG.
-    $logger->log("This is a message");
+    $logger->log(
+        "This is a message"
+    );
 
 Log yang dihasilkan seperti berikut:
 
@@ -72,7 +105,9 @@ Anda dapat mengatur level log menggunakan metode :code:`setLogLevel()`. Metode i
 
     $logger = new FileAdapter("app/logs/test.log");
 
-    $logger->setLogLevel(Logger::CRITICAL);
+    $logger->setLogLevel(
+        Logger::CRITICAL
+    );
 
 Di contoh di atas, hanya pesan kritis dan darurat yang akan disimpan di log. Defaultnya, semua disimpan.
 
@@ -93,8 +128,14 @@ Logging data ke adapter misal File (file system) adalah operasi mahal ditinjau d
     $logger->begin();
 
     // Tambahkan pesan
-    $logger->alert("This is an alert");
-    $logger->error("This is another error");
+
+    $logger->alert(
+        "This is an alert"
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
     // Commit pesan ke file
     $logger->commit();
@@ -114,12 +155,30 @@ Logging ke Handlers lebih dari satu
 
     $logger = new MultipleStream();
 
-    $logger->push(new FileAdapter('test.log'));
-    $logger->push(new StreamAdapter('php://stdout'));
 
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+    $logger->push(
+        new FileAdapter("test.log")
+    );
+
+    $logger->push(
+        new StreamAdapter("php://stdout")
+    );
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Pesan tersebut akan dikirim ke handler sesuai urutan pendaftarannya.
 
@@ -167,8 +226,9 @@ Contoh di bawah menunjukkan bagaimana mengubah format log:
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    // Ubah format logger
     $formatter = new LineFormatter("%date% - %message%");
+
+    // Ubah format logger
     $logger->setFormatter($formatter);
 
 Membuat formatter Anda sendiri
@@ -210,7 +270,7 @@ Jika file tidak ada, maka file akan dicoba dibuat. Anda dapat mengubah mode ini 
     $logger = new FileAdapter(
         "app/logs/test.log",
         [
-            'mode' => 'w'
+            "mode" => "w",
         ]
     );
 
@@ -231,8 +291,8 @@ Logger ini mengirim pesan ke system logger. Perilaku syslog bisa jadi berbeda an
     $logger = new SyslogAdapter(
         "ident-name",
         [
-            'option'   => LOG_NDELAY,
-            'facility' => LOG_MAIL
+            "option"   => LOG_NDELAY,
+            "facility" => LOG_MAIL,
         ]
     );
 
@@ -249,9 +309,21 @@ sebuah ekstensi `Firebug <http://getfirebug.com/>`_ untuk Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Membuat adapter anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
