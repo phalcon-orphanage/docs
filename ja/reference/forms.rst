@@ -15,16 +15,24 @@ The following example shows its basic usage:
 
     $form = new Form();
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("telephone"));
+    $form->add(
+        new Text(
+            "telephone"
+        )
+    );
 
     $form->add(
         new Select(
             "telephoneType",
             [
-                'H' => 'Home',
-                'C' => 'Cell'
+                "H" => "Home",
+                "C" => "Cell",
             ]
         )
     );
@@ -33,24 +41,37 @@ Forms can be rendered based on the form definition:
 
 .. code-block:: html+php
 
-    <h1>Contacts</h1>
+    <h1>
+        Contacts
+    </h1>
 
     <form method="post">
 
         <p>
-            <label>Name</label>
+            <label>
+                Name
+            </label>
+
             <?php echo $form->render("name"); ?>
         </p>
 
         <p>
-            <label>Telephone</label>
+            <label>
+                Telephone
+            </label>
+
             <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
-            <label>Type</label>
+            <label>
+                Type
+            </label>
+
             <?php echo $form->render("telephoneType"); ?>
         </p>
+
+
 
         <p>
             <input type="submit" value="Save" />
@@ -64,8 +85,11 @@ Each element in the form can be rendered as required by the developer. Internall
 .. code-block:: html+php
 
     <p>
-        <label>Name</label>
-        <?php echo $form->render("name", ['maxlength' => 30, 'placeholder' => 'Type your name']); ?>
+        <label>
+            Name
+        </label>
+
+        <?php echo $form->render("name", ["maxlength" => 30, "placeholder" => "Type your name"]); ?>
     </p>
 
 HTML attributes also can be set in the element's definition:
@@ -78,8 +102,8 @@ HTML attributes also can be set in the element's definition:
         new Text(
             "name",
             [
-                'maxlength'   => 30,
-                'placeholder' => 'Type your name'
+                "maxlength"   => 30,
+                "placeholder" => "Type your name",
             ]
         )
     );
@@ -101,18 +125,26 @@ classes implementing the form in a separated file:
     {
         public function initialize()
         {
-            $this->add(new Text("name"));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
 
-            $this->add(new Text("telephone"));
+            $this->add(
+                new Text(
+                    "telephone"
+                )
+            );
 
             $this->add(
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
                     [
-                        'using' => [
-                            'id',
-                            'name'
+                        "using" => [
+                            "id",
+                            "name",
                         ]
                     ]
                 )
@@ -147,10 +179,18 @@ so you have access to the application services if needed:
             $this->setEntity($this);
 
             // Add a text element to capture the 'email'
-            $this->add(new Text("email"));
+            $this->add(
+                new Text(
+                    "email"
+                )
+            );
 
             // Add a text element to put a hidden CSRF
-            $this->add(new Hidden("csrf"));
+            $this->add(
+                new Hidden(
+                    "csrf"
+                )
+            );
         }
     }
 
@@ -172,15 +212,27 @@ The associated entity added to the form in the initialization and custom user op
          * @param Users $user
          * @param array $options
          */
-        public function initialize(Users $user, $options)
+        public function initialize(Users $user, array $options)
         {
-            if ($options['edit']) {
-                $this->add(new Hidden('id'));
+            if ($options["edit"]) {
+                $this->add(
+                    new Hidden(
+                        "id"
+                    )
+                );
             } else {
-                $this->add(new Text('id'));
+                $this->add(
+                    new Text(
+                        "id"
+                    )
+                );
             }
 
-            $this->add(new Text('name'));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
         }
     }
 
@@ -193,7 +245,7 @@ In the form's instantiation you must use:
     $form = new UsersForm(
         new Users(),
         [
-            'edit' => true
+            "edit" => true,
         ]
     );
 
@@ -210,12 +262,14 @@ custom validators could be set to each element:
     use Phalcon\Validation\Validator\PresenceOf;
     use Phalcon\Validation\Validator\StringLength;
 
-    $name = new Text("name");
+    $name = new Text(
+        "name"
+    );
 
     $name->addValidator(
         new PresenceOf(
             [
-                'message' => 'The name is required'
+                "message" => "The name is required",
             ]
         )
     );
@@ -223,8 +277,8 @@ custom validators could be set to each element:
     $name->addValidator(
         new StringLength(
             [
-                'min'            => 10,
-                'messageMinimum' => 'The name is too short'
+                "min"            => 10,
+                "messageMinimum" => "The name is too short",
             ]
         )
     );
@@ -238,8 +292,10 @@ Then you can validate the form according to the input entered by the user:
     <?php
 
     if (!$form->isValid($_POST)) {
-        foreach ($form->getMessages() as $message) {
-            echo $message, '<br>';
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
+            echo $message, "<br>";
         }
     }
 
@@ -253,10 +309,10 @@ you can change this behavior to get the messages separated by the field:
     <?php
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
-        echo 'Messages generated by ', $attribute, ':', "\n";
+        echo "Messages generated by ", $attribute, ":", "\n";
 
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -266,8 +322,10 @@ Or get specific messages for an element:
 
     <?php
 
-    foreach ($form->getMessagesFor('name') as $message) {
-        echo $message, '<br>';
+    $messages = $form->getMessagesFor("name");
+
+    foreach ($messages as $message) {
+        echo $message, "<br>";
     }
 
 フィルタリング
@@ -289,15 +347,23 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form = new Form($robot);
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("year"));
+    $form->add(
+        new Text(
+            "year"
+        )
+    );
 
 Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name'); ?>
+    <?php echo $form->render("name"); ?>
 
 You can validate the form and assign the values from the user input in the following way:
 
@@ -309,7 +375,6 @@ You can validate the form and assign the values from the user input in the follo
 
     // Check if the form is valid
     if ($form->isValid()) {
-
         // Save the entity
         $robot->save();
     }
@@ -322,9 +387,9 @@ Setting up a plain class as entity also is possible:
 
     class Preferences
     {
-        public $timezone = 'Europe/Amsterdam';
+        public $timezone = "Europe/Amsterdam";
 
-        public $receiveEmails = 'No';
+        public $receiveEmails = "No";
     }
 
 Using this class as entity, allows the form to take the default values from it:
@@ -333,16 +398,18 @@ Using this class as entity, allows the form to take the default values from it:
 
     <?php
 
-    $form = new Form(new Preferences());
+    $form = new Form(
+        new Preferences()
+    );
 
     $form->add(
         new Select(
             "timezone",
             [
-                'America/New_York'  => 'New York',
-                'Europe/Amsterdam'  => 'Amsterdam',
-                'America/Sao_Paulo' => 'Sao Paulo',
-                'Asia/Tokyo'        => 'Tokyo'
+                "America/New_York"  => "New York",
+                "Europe/Amsterdam"  => "Amsterdam",
+                "America/Sao_Paulo" => "Sao Paulo",
+                "Asia/Tokyo"        => "Tokyo",
             ]
         )
     );
@@ -351,8 +418,8 @@ Using this class as entity, allows the form to take the default values from it:
         new Select(
             "receiveEmails",
             [
-                'Yes' => 'Yes, please!',
-                'No'  => 'No, thanks'
+                "Yes" => "Yes, please!",
+                "No"  => "No, thanks",
             ]
         )
     );
@@ -370,14 +437,16 @@ give you more freedom to produce values:
 
         public $receiveEmails;
 
+
+
         public function getTimezone()
         {
-            return 'Europe/Amsterdam';
+            return "Europe/Amsterdam";
         }
 
         public function getReceiveEmails()
         {
-            return 'No';
+            return "No";
         }
     }
 
@@ -438,29 +507,37 @@ You can render the form with total flexibility, the following example shows how 
 
     <form method="post">
         <?php
+
             // Traverse the form
             foreach ($form as $element) {
-
                 // Get any generated messages for the current element
-                $messages = $form->getMessagesFor($element->getName());
+                $messages = $form->getMessagesFor(
+                    $element->getName()
+                );
 
                 if (count($messages)) {
                     // Print each element
                     echo '<div class="messages">';
+
                     foreach ($messages as $message) {
                         echo $message;
                     }
-                    echo '</div>';
+
+                    echo "</div>";
                 }
 
-                echo '<p>';
-                echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
-                echo $element;
-                echo '</p>';
+                echo "<p>";
 
+                echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
+                echo $element;
+
+                echo "</p>";
             }
+
         ?>
-        <input type="submit" value="Send"/>
+
+        <input type="submit" value="Send" />
     </form>
 
 Or reuse the logic in your form class:
@@ -483,21 +560,28 @@ Or reuse the logic in your form class:
             $element  = $this->get($name);
 
             // Get any generated messages for the current element
-            $messages = $this->getMessagesFor($element->getName());
+            $messages = $this->getMessagesFor(
+                $element->getName()
+            );
 
             if (count($messages)) {
                 // Print each element
                 echo '<div class="messages">';
+
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
                 }
-                echo '</div>';
+
+                echo "</div>";
             }
 
-            echo '<p>';
-            echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+            echo "<p>";
+
+            echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
             echo $element;
-            echo '</p>';
+
+            echo "</p>";
         }
     }
 
@@ -507,9 +591,9 @@ In the view:
 
     <?php
 
-    echo $element->renderDecorated('name');
+    echo $element->renderDecorated("name");
 
-    echo $element->renderDecorated('telephone');
+    echo $element->renderDecorated("telephone");
 
 フォーム要素の作成
 ----------------------
@@ -526,6 +610,7 @@ In addition to the form elements provided by Phalcon you can create your own cus
         public function render($attributes = null)
         {
             $html = // ... Produce some HTML
+
             return $html;
         }
     }
@@ -540,7 +625,7 @@ This component provides a forms manager that can be used by the developer to reg
 
     use Phalcon\Forms\Manager as FormsManager;
 
-    $di['forms'] = function () {
+    $di["forms"] = function () {
         return new FormsManager();
     };
 
@@ -550,7 +635,10 @@ Forms are added to the forms manager and referenced by a unique name:
 
     <?php
 
-    $this->forms->set('login', new LoginForm());
+    $this->forms->set(
+        "login",
+        new LoginForm()
+    );
 
 Using the unique name, forms can be accessed in any part of the application:
 
@@ -558,7 +646,9 @@ Using the unique name, forms can be accessed in any part of the application:
 
     <?php
 
-    echo $this->forms->get('login')->render();
+    $loginForm = $this->forms->get("login");
+
+    echo $loginForm->render();
 
 外部資料
 ------------------

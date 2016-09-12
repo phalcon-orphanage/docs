@@ -15,16 +15,24 @@ Forms
 
     $form = new Form();
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("telephone"));
+    $form->add(
+        new Text(
+            "telephone"
+        )
+    );
 
     $form->add(
         new Select(
             "telephoneType",
             [
-                'H' => 'Home',
-                'C' => 'Cell'
+                "H" => "Home",
+                "C" => "Cell",
             ]
         )
     );
@@ -33,24 +41,37 @@ Forms
 
 .. code-block:: html+php
 
-    <h1>Контакты</h1>
+    <h1>
+        Контакты
+    </h1>
 
     <form method="post">
 
         <p>
-            <label>Имя</label>
+            <label>
+                Имя
+            </label>
+
             <?php echo $form->render("name"); ?>
         </p>
 
         <p>
-            <label>Телефон</label>
+            <label>
+                Телефон
+            </label>
+
             <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
-            <label>Тип телефона</label>
+            <label>
+                Тип телефона
+            </label>
+
             <?php echo $form->render("telephoneType"); ?>
         </p>
+
+
 
         <p>
             <input type="submit" value="Сохранить" />
@@ -65,8 +86,11 @@ html-атрибуты вторым параметром:
 .. code-block:: html+php
 
     <p>
-        <label>Имя</label>
-        <?php echo $form->render("name", ['maxlength' => 30, 'placeholder' => 'Введите своё имя']); ?>
+        <label>
+            Имя
+        </label>
+
+        <?php echo $form->render("name", ["maxlength" => 30, "placeholder" => "Введите своё имя"]); ?>
     </p>
 
 Атрибуты HTML могут быть указаны в параметрах при создании элемента:
@@ -79,8 +103,8 @@ html-атрибуты вторым параметром:
         new Text(
             "name",
             [
-                'maxlength'   => 30,
-                'placeholder' => 'Введите своё имя'
+                "maxlength"   => 30,
+                "placeholder" => "Введите своё имя",
             ]
         )
     );
@@ -102,18 +126,26 @@ html-атрибуты вторым параметром:
     {
         public function initialize()
         {
-            $this->add(new Text("name"));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
 
-            $this->add(new Text("telephone"));
+            $this->add(
+                new Text(
+                    "telephone"
+                )
+            );
 
             $this->add(
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
                     [
-                        'using' => [
-                            'id',
-                            'name'
+                        "using" => [
+                            "id",
+                            "name",
                         ]
                     ]
                 )
@@ -148,10 +180,18 @@ html-атрибуты вторым параметром:
             $this->setEntity($this);
 
             // Установка поля 'email'
-            $this->add(new Text("email"));
+            $this->add(
+                new Text(
+                    "email"
+                )
+            );
 
             // Добавление скрытого поля CSRF
-            $this->add(new Hidden("csrf"));
+            $this->add(
+                new Hidden(
+                    "csrf"
+                )
+            );
         }
     }
 
@@ -173,15 +213,27 @@ html-атрибуты вторым параметром:
          * @param Users $user
          * @param array $options
          */
-        public function initialize(Users $user, $options)
+        public function initialize(Users $user, array $options)
         {
-            if ($options['edit']) {
-                $this->add(new Hidden('id'));
+            if ($options["edit"]) {
+                $this->add(
+                    new Hidden(
+                        "id"
+                    )
+                );
             } else {
-                $this->add(new Text('id'));
+                $this->add(
+                    new Text(
+                        "id"
+                    )
+                );
             }
 
-            $this->add(new Text('name'));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
         }
     }
 
@@ -194,7 +246,7 @@ html-атрибуты вторым параметром:
     $form = new UsersForm(
         new Users(),
         [
-            'edit' => true
+            "edit" => true,
         ]
     );
 
@@ -211,12 +263,14 @@ html-атрибуты вторым параметром:
     use Phalcon\Validation\Validator\PresenceOf;
     use Phalcon\Validation\Validator\StringLength;
 
-    $name = new Text("name");
+    $name = new Text(
+        "name"
+    );
 
     $name->addValidator(
         new PresenceOf(
             [
-                'message' => 'Поле Name обязательно для заполнения'
+                "message" => "Поле Name обязательно для заполнения",
             ]
         )
     );
@@ -224,8 +278,8 @@ html-атрибуты вторым параметром:
     $name->addValidator(
         new StringLength(
             [
-                'min'            => 10,
-                'messageMinimum' => 'Значение поля Name слишком короткое'
+                "min"            => 10,
+                "messageMinimum" => "Значение поля Name слишком короткое",
             ]
         )
     );
@@ -239,8 +293,10 @@ html-атрибуты вторым параметром:
     <?php
 
     if (!$form->isValid($_POST)) {
-        foreach ($form->getMessages() as $message) {
-            echo $message, '<br>';
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
+            echo $message, "<br>";
         }
     }
 
@@ -254,10 +310,10 @@ html-атрибуты вторым параметром:
     <?php
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
-        echo 'Сообщение создано ', $attribute, ':', "\n";
+        echo "Messages generated by ", $attribute, ":", "\n";
 
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -267,8 +323,10 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    foreach ($form->getMessagesFor('name') as $message) {
-        echo $message, '<br>';
+    $messages = $form->getMessagesFor("name");
+
+    foreach ($messages as $message) {
+        echo $message, "<br>";
     }
 
 Фильтрация
@@ -290,15 +348,23 @@ html-атрибуты вторым параметром:
 
     $form = new Form($robot);
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("year"));
+    $form->add(
+        new Text(
+            "year"
+        )
+    );
 
 При отображении формы, если нет значений по умолчанию для элементов, будут использованы значения из сущностей:
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name'); ?>
+    <?php echo $form->render("name"); ?>
 
 Проверить введённые пользователем значения в форму можно следующим образом:
 
@@ -310,7 +376,6 @@ html-атрибуты вторым параметром:
 
     // Проверка правильности введённых данных формы
     if ($form->isValid()) {
-
         // Сохранение сущности
         $robot->save();
     }
@@ -323,9 +388,9 @@ html-атрибуты вторым параметром:
 
     class Preferences
     {
-        public $timezone = 'Europe/Amsterdam';
+        public $timezone = "Europe/Amsterdam";
 
-        public $receiveEmails = 'No';
+        public $receiveEmails = "No";
     }
 
 Использование данного класса в виде сущности позволяет форме брать из него значения по умолчанию:
@@ -334,16 +399,18 @@ html-атрибуты вторым параметром:
 
     <?php
 
-    $form = new Form(new Preferences());
+    $form = new Form(
+        new Preferences()
+    );
 
     $form->add(
         new Select(
             "timezone",
             [
-                'America/New_York'  => 'New York',
-                'Europe/Amsterdam'  => 'Amsterdam',
-                'America/Sao_Paulo' => 'Sao Paulo',
-                'Asia/Tokyo'        => 'Tokyo'
+                "America/New_York"  => "New York",
+                "Europe/Amsterdam"  => "Amsterdam",
+                "America/Sao_Paulo" => "Sao Paulo",
+                "Asia/Tokyo"        => "Tokyo",
             ]
         )
     );
@@ -352,8 +419,8 @@ html-атрибуты вторым параметром:
         new Select(
             "receiveEmails",
             [
-                'Yes' => 'Yes, please!',
-                'No'  => 'No, thanks'
+                "Yes" => "Yes, please!",
+                "No"  => "No, thanks",
             ]
         )
     );
@@ -371,14 +438,16 @@ html-атрибуты вторым параметром:
 
         public $receiveEmails;
 
+
+
         public function getTimezone()
         {
-            return 'Europe/Amsterdam';
+            return "Europe/Amsterdam";
         }
 
         public function getReceiveEmails()
         {
-            return 'No';
+            return "No";
         }
     }
 
@@ -439,29 +508,37 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <form method="post">
         <?php
+
             // Проходим через форму
             foreach ($form as $element) {
-
                 // Собираем все сгенерированные сообщения для текущего элемента
-                $messages = $form->getMessagesFor($element->getName());
+                $messages = $form->getMessagesFor(
+                    $element->getName()
+                );
 
                 if (count($messages)) {
                     // Выводим каждый элемент
                     echo '<div class="messages">';
+
                     foreach ($messages as $message) {
                         echo $message;
                     }
-                    echo '</div>';
+
+                    echo "</div>";
                 }
 
-                echo '<p>';
-                echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
-                echo $element;
-                echo '</p>';
+                echo "<p>";
 
+                echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
+                echo $element;
+
+                echo "</p>";
             }
+
         ?>
-        <input type="submit" value="Send"/>
+
+        <input type="submit" value="Send" />
     </form>
 
 Или повторно использовать логику в классе формы:
@@ -484,21 +561,28 @@ beforeValidation и afterValidation. Данные методы позволяю�
             $element  = $this->get($name);
 
             // Собираем все сгенерированные сообщения для текущего элемента
-            $messages = $this->getMessagesFor($element->getName());
+            $messages = $this->getMessagesFor(
+                $element->getName()
+            );
 
             if (count($messages)) {
                 // Выводим каждый элемент
                 echo '<div class="messages">';
+
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
                 }
-                echo '</div>';
+
+                echo "</div>";
             }
 
-            echo '<p>';
-            echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+            echo "<p>";
+
+            echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
             echo $element;
-            echo '</p>';
+
+            echo "</p>";
         }
     }
 
@@ -508,9 +592,9 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    echo $element->renderDecorated('name');
+    echo $element->renderDecorated("name");
 
-    echo $element->renderDecorated('telephone');
+    echo $element->renderDecorated("telephone");
 
 Создание элементов форм
 -----------------------
@@ -527,6 +611,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
         public function render($attributes = null)
         {
             $html = // ... немного HTML-кода
+
             return $html;
         }
     }
@@ -542,7 +627,7 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     use Phalcon\Forms\Manager as FormsManager;
 
-    $di['forms'] = function () {
+    $di["forms"] = function () {
         return new FormsManager();
     };
 
@@ -552,7 +637,10 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    $this->forms->set('login', new LoginForm());
+    $this->forms->set(
+        "login",
+        new LoginForm()
+    );
 
 С помощью уникального имени формы могут быть доступны в любой части приложения:
 
@@ -560,7 +648,9 @@ beforeValidation и afterValidation. Данные методы позволяю�
 
     <?php
 
-    echo $this->forms->get('login')->render();
+    $loginForm = $this->forms->get("login");
+
+    echo $loginForm->render();
 
 Внешние источники
 -----------------
