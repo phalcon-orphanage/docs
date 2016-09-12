@@ -11,6 +11,32 @@ access to the content of your application, mainly user data, or even the server 
 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
+ビルトイン・フィルタの種類
+--------------------------
+The following are the built-in filters provided by this component:
+
++-----------+---------------------------------------------------------------------------+
+| Name      | Description                                                               |
++===========+===========================================================================+
+| string    | Strip tags and escapes HTML entities, including single and double quotes. |
++-----------+---------------------------------------------------------------------------+
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
++-----------+---------------------------------------------------------------------------+
+| int       | Remove all characters except digits, plus and minus sign.                 |
++-----------+---------------------------------------------------------------------------+
+| float     | Remove all characters except digits, dot, plus and minus sign.            |
++-----------+---------------------------------------------------------------------------+
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
++-----------+---------------------------------------------------------------------------+
+| striptags | Applies the strip_tags_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| trim      | Applies the trim_ function                                                |
++-----------+---------------------------------------------------------------------------+
+| lower     | Applies the strtolower_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| upper     | Applies the strtoupper_ function                                          |
++-----------+---------------------------------------------------------------------------+
+
 データのサニタイズ
 ------------------
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
@@ -106,33 +132,6 @@ the format we expect.
 
     // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
-
-
-ビルトイン・フィルタの種類
---------------------------
-The following are the built-in filters provided by this component:
-
-+-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
-+===========+===========================================================================+
-| string    | Strip tags and escapes HTML entities, including single and double quotes. |
-+-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
-+-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
-+-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
-+-----------+---------------------------------------------------------------------------+
 
 独自フィルタの作成
 -------------------------

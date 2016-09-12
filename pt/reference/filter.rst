@@ -10,6 +10,32 @@ Limpar a entrada do usuário é uma parte crítica do desenvolvimento de softwar
 
 O componente :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` provê um conjunto de filtros e normalizadores. Fornece uma camada orientada a objetos em torno da extensão filter do PHP.
 
+Tipos de Filtros imbutidos
+--------------------------
+Os seguintes filtros imbutidos estão disponíveis por esse componente:
+
++-----------+------------------------------------------------------------------------------+
+| Nome      | Descrição                                                                    |
++===========+==============================================================================+
+| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
++-----------+------------------------------------------------------------------------------+
+| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
++-----------+------------------------------------------------------------------------------+
+| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
++-----------+------------------------------------------------------------------------------+
+| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
++-----------+------------------------------------------------------------------------------+
+| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
++-----------+------------------------------------------------------------------------------+
+| striptags | Aplica a função strip_tags_                                                  |
++-----------+------------------------------------------------------------------------------+
+| trim      | Aplica a função trim_                                                        |
++-----------+------------------------------------------------------------------------------+
+| lower     | Aplica a função strtolower_                                                  |
++-----------+------------------------------------------------------------------------------+
+| upper     | Aplica a função strtoupper_                                                  |
++-----------+------------------------------------------------------------------------------+
+
 Normalizando dados
 ------------------
 Normalização é o processo que remove caracteres específicos de um valor, que não são requeridos ou desejados pelo usuário ou aplicação.
@@ -105,33 +131,6 @@ o formato que esperamos.
 
     // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
-
-
-Tipos de Filtros imbutidos
---------------------------
-Os seguintes filtros imbutidos estão disponíveis por esse componente:
-
-+-----------+------------------------------------------------------------------------------+
-| Nome      | Descrição                                                                    |
-+===========+==============================================================================+
-| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
-+-----------+------------------------------------------------------------------------------+
-| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
-+-----------+------------------------------------------------------------------------------+
-| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
-+-----------+------------------------------------------------------------------------------+
-| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
-+-----------+------------------------------------------------------------------------------+
-| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
-+-----------+------------------------------------------------------------------------------+
-| striptags | Aplica a função strip_tags_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| trim      | Aplica a função trim_                                                        |
-+-----------+------------------------------------------------------------------------------+
-| lower     | Aplica a função strtolower_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| upper     | Aplica a função strtoupper_                                                  |
-+-----------+------------------------------------------------------------------------------+
 
 Criando seus próprios filtros
 -----------------------------
