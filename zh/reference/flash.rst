@@ -18,21 +18,32 @@
 
 使用（Usage）
 -------------
-通常闪存消息都是来自服务容器的请求，
+通常闪存消息都是来自服务容器的请求.
 如果你正在使用 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` ，
-那么 :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` 将会作为 "flash" 服务自动注册：
+那么 :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` 将会作为 "flash" 服务自动注册 和
+:doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>` 将会作为 "flashSession" 服务自动注册.
+You can also manually register it:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Flash\Direct as FlashDirect;
+    use Phalcon\Flash\Session as FlashSession;
 
     // 建立flash服务
     $di->set(
         "flash",
         function () {
             return new FlashDirect();
+        }
+    );
+
+    // 建立flashSession服务
+    $di->set(
+        "flashSession",
+        function () {
+            return new FlashSession();
         }
     );
 
@@ -93,8 +104,8 @@
 
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-正如你看到的，CSS的类将会自动添加到div中。这些类允许你定义消息在浏览器上的图形表现。
-此CSS类可以被重写，例如，如果你正在使用Twitter的bootstrap，对应的类可以这样配置：
+正如你看到的，CSS的类将会自动添加到:code:`<div>`中。这些类允许你定义消息在浏览器上的图形表现。
+此CSS类可以被重写，例如，如果你正在使用Twitter的Bootstrap，对应的类可以这样配置：
 
 .. code-block:: php
 

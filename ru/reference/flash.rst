@@ -19,20 +19,32 @@
 
 Использование
 -------------
-Обычно компонент всплывающих сообщений доступен из контейнера сервисов. Если вы используете :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`,
-то :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` будет автоматически зарегистрирован как "flash" сервис:
+Обычно компонент всплывающих сообщений доступен из контейнера сервисов.
+Если вы используете :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`,
+то :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` будет автоматически зарегистрирован как "flash" сервис и
+:doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>` будет автоматически зарегистрирован как "flashSession" сервис.
+You can also manually register it:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Flash\Direct as FlashDirect;
+    use Phalcon\Flash\Session as FlashSession;
 
     // Устанавливаем сервис
     $di->set(
         "flash",
         function () {
             return new FlashDirect();
+        }
+    );
+
+    // Set up the flash session service
+    $di->set(
+        "flashSession",
+        function () {
+            return new FlashSession();
         }
     );
 
@@ -71,7 +83,7 @@
 
     $this->flash->warning("best check yo self, you're not looking too good.");
 
-Вы можете добавлять сообщения со своими типами:
+Вы также можете добавлять сообщения со своими типами с помощью: код: `сообщение ()` метод:
 
 .. code-block:: php
 
@@ -93,7 +105,7 @@
 
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-Как видно на примере выше - используются некоторые CSS классы, которые автоматически добавляются в тег 'DIV'. Эти классы позволяют вам
+Как видно на примере выше - используются некоторые CSS классы, которые автоматически добавляются в тег :code:<div>`. Эти классы позволяют вам
 видоизменять вывод сообщений. CSS классы могут быть изменены, например, если вы используете Twitter Bootstrap, то можно указать следующие классы:
 
 .. code-block:: php
