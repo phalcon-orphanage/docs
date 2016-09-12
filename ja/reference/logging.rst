@@ -8,17 +8,17 @@
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface
 which provides the ability to easily switch backends if necessary. The adapters supported are:
 
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Adapter | Description               | API                                                                              |
-+=========+===========================+==================================================================================+
-| File    | Logs to a plain text file | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Stream  | Logs to a PHP Streams     | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Syslog  | Logs to the system logger | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Firephp | Logs to the FirePHP       | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
-+---------+---------------------------+----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+---------------------------+
+| Adapter                                                                          | Description               |
++==================================================================================+===========================+
+| :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       | Logs to a plain text file |
++----------------------------------------------------------------------------------+---------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   | Logs to a PHP Streams     |
++----------------------------------------------------------------------------------+---------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   | Logs to the system logger |
++----------------------------------------------------------------------------------+---------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` | Logs to the FirePHP       |
++----------------------------------------------------------------------------------+---------------------------+
 
 ログの作成
 --------------
@@ -130,17 +130,17 @@ The messages are sent to the handlers in the order they were registered.
 ----------------------
 This component makes use of 'formatters' to format messages before sending them to the backend. The formatters available are:
 
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Adapter | Description                                              | API                                                                                  |
-+=========+==========================================================+======================================================================================+
-| Line    | Formats the messages using a one-line string             | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Firephp | Formats the messages so that they can be sent to FirePHP | :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Json    | Prepares a message to be encoded with JSON               | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Syslog  | Prepares a message to be sent to syslog                  | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| Adapter                                                                              | Description                                              |
++======================================================================================+==========================================================+
+| :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       | Formats the messages using a one-line string             |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` | Formats the messages so that they can be sent to FirePHP |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       | Prepares a message to be encoded with JSON               |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   | Prepares a message to be sent to syslog                  |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
 
 行フォーマット
 ^^^^^^^^^^^^^^
