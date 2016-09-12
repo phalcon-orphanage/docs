@@ -1,24 +1,12 @@
 設定の読み込み
 ======================
 
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to convert configuration files of various formats (using adapters) into
 PHP objects for use in an application.
-
-ファイル アダプタ
------------------
-The adapters available are:
-
-+-----------+------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                    |
-+===========+================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file. |
-+-----------+------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.  |
-+-----------+------------------------------------------------------------------------------------------------+
 
 配列
 -------------
-The next example shows how to convert native arrays into :doc:`Phalcon\\Config <../api/Phalcon_Config>` objects. This option offers the best performance since no files are
+The first example shows how to convert native arrays into :doc:`Phalcon\\Config <../api/Phalcon_Config>` objects. This option offers the best performance since no files are
 read during this request.
 
 .. code-block:: php
@@ -60,6 +48,22 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
 
     $config = new Config($settings);
+
+ファイル アダプタ
+-----------------
+The adapters available are:
+
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+| Class                                                                      | Description                                                                                    |
++============================================================================+================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file. |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                             |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.  |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                             |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
 
 INIファイルの読み込み
 ---------------------

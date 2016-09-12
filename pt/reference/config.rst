@@ -3,21 +3,9 @@ Lendo Configurações
 
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler e transformar arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
 
-Adaptadores de Arquivo
-----------------------
-Os adaptadores disponíveis são:
-
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo | Descrição                                                                                                   |
-+=================+=============================================================================================================+
-| Ini             | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file. |
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-| Array           | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho       |
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-
 Arrays Nativos
 --------------
-O próximo exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
+O primeiro exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
 
 .. code-block:: php
 
@@ -58,6 +46,22 @@ Se você deseja uma melhor organização do seu projeto, você pode salvar o arr
     require "config/config.php";
 
     $config = new Config($settings);
+
+Adaptadores de Arquivo
+----------------------
+Os adaptadores disponíveis são:
+
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| Class                                                                      | Descrição                                                                                                   |
++============================================================================+=============================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file. |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                          |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.               |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                          |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
 
 Lendo arquivos INI
 ------------------

@@ -4,18 +4,6 @@ Configuration de lecture
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` est un composant utilisé pour lire des fichiers de configuration sous différents formats
 (en utilisant des adaptateurs) et transformer le contenu en objet PHP pour pouvoir l'utiliser dans une application.
 
-Adaptateur de fichier
----------------------
-Les adaptateurs disponibles sont :
-
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                                          |
-+===========+======================================================================================================================+
-| Ini       | Utilise des fichiers INI pour stoquer des paramètres.  L'adaptateur utilise la fonction PHP parse_ini_files          |
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-| Array     | Utilise les arrays multi-dimensionnel pour stoquer les paramètres. Cet adaptateur offre les meilleures performances. |
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-
 Les Array natifs
 ----------------
 L'exemple suivant montre comment convertir les arrays natifs en objets :doc:`Phalcon\\Config <../api/Phalcon_Config>`.
@@ -60,6 +48,22 @@ Si vous voulez mieux organiser votre projet vous pouvez sauvegarder l'array dans
     require "config/config.php";
 
     $config = new Config($settings);
+
+Adaptateur de fichier
+---------------------
+Les adaptateurs disponibles sont :
+
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| File Type                                                                  | Description                                                                                                |
++============================================================================+============================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Utilise des fichiers INI pour stoquer des paramètres. L'adaptateur utilise la fonction PHP parse_ini_files |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.              |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 Lire les fichiers INI
 ---------------------
