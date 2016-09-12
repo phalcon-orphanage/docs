@@ -21,62 +21,74 @@ Di bawah ini adalah contoh bootstrap yang digunakan untuk contoh ini.
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\Cli as CliDI,
-        Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI;
+    use Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Loader;
 
-    define('VERSION', '1.0.0');
+
 
     // Menggunakan service container factory default CLI
     $di = new CliDI();
 
-    // Tentukan direktori aplikasi
-    defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+
 
     /**
      * Daftarkan autoloade dan daftarkan direktori task
      */
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
+
     $loader->registerDirs(
         [
-            APPLICATION_PATH . '/tasks'
+            __DIR__ . "/tasks",
         ]
     );
+
     $loader->register();
 
+
+
     // Muat file konfigurasi (bila ada)
-    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
-        $config = include APPLICATION_PATH . '/config/config.php';
-        $di->set('config', $config);
+
+    $configFile = __DIR__ . "/config/config.php";
+
+    if (is_readable($configFile)) {
+        $config = include $configFile;
+
+        $di->set("config", $config);
     }
+
+
 
     // Buat aplikasi konsol
     $console = new ConsoleApp();
+
     $console->setDI($di);
+
+
 
     /**
      * Proses argumen
      */
     $arguments = [];
+
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
-            $arguments['task'] = $arg;
+            $arguments["task"] = $arg;
         } elseif ($k == 2) {
-            $arguments['action'] = $arg;
+            $arguments["action"] = $arg;
         } elseif ($k >= 3) {
-            $arguments['params'][] = $arg;
+            $arguments["params"][] = $arg;
         }
     }
 
-    // Definisikan konstan global untuk tugas dan aksi saat ini
-    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
-    define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
+
 
     try {
         // Handle argumen yang masuk
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -98,11 +110,13 @@ Di bawah ini adalah contoh file app/tasks/MainTask.php:
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
     }
 
@@ -116,11 +130,13 @@ Jika aplikasi jalan dengan parameter dan aksi berikut:
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
 
         /**
@@ -128,8 +144,19 @@ Jika aplikasi jalan dengan parameter dan aksi berikut:
          */
         public function testAction(array $params)
         {
-            echo sprintf('hello %s', $params[0]) . PHP_EOL;
-            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+            echo sprintf(
+                "hello %s",
+                $params[0]
+            );
+
+            echo PHP_EOL;
+
+            echo sprintf(
+                "best regards, %s",
+                $params[1]
+            );
+
+            echo PHP_EOL;
         }
     }
 
@@ -150,13 +177,14 @@ Dimungkinkan juga menjalankan tugas secara berantai jika diperlukan. Untuk menca
 
     <?php
 
-    $di->setShared('console', $console);
+    $di->setShared("console", $console);
 
     try {
         // Handle incoming arguments
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -166,23 +194,25 @@ Lalu anda dapat menggunakan console dalam tiap tugas. Dibawah ini adalah contoh 
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
 
             $this->console->handle(
                 [
-                    'task'   => 'main',
-                    'action' => 'test'
+                    "task"   => "main",
+                    "action" => "test",
                 ]
             );
         }
 
         public function testAction()
         {
-            echo "\nI will get printed too!\n";
+            echo "I will get printed too!" . PHP_EOL;
         }
     }
 

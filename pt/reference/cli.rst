@@ -21,62 +21,74 @@ Below is a sample bootstrap that is being used for this example.
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\Cli as CliDI,
-        Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI;
+    use Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Loader;
 
-    define('VERSION', '1.0.0');
+
 
     // Using the CLI factory default services container
     $di = new CliDI();
 
-    // Define path to application directory
-    defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+
 
     /**
      * Register the autoloader and tell it to register the tasks directory
      */
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
+
     $loader->registerDirs(
         [
-            APPLICATION_PATH . '/tasks'
+            __DIR__ . "/tasks",
         ]
     );
+
     $loader->register();
 
+
+
     // Load the configuration file (if any)
-    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
-        $config = include APPLICATION_PATH . '/config/config.php';
-        $di->set('config', $config);
+
+    $configFile = __DIR__ . "/config/config.php";
+
+    if (is_readable($configFile)) {
+        $config = include $configFile;
+
+        $di->set("config", $config);
     }
+
+
 
     // Create a console application
     $console = new ConsoleApp();
+
     $console->setDI($di);
+
+
 
     /**
      * Process the console arguments
      */
     $arguments = [];
+
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
-            $arguments['task'] = $arg;
+            $arguments["task"] = $arg;
         } elseif ($k == 2) {
-            $arguments['action'] = $arg;
+            $arguments["action"] = $arg;
         } elseif ($k >= 3) {
-            $arguments['params'][] = $arg;
+            $arguments["params"][] = $arg;
         }
     }
 
-    // Define global constants for the current task and action
-    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
-    define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
+
 
     try {
         // Handle incoming arguments
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -98,11 +110,13 @@ Below is an example of the app/tasks/MainTask.php file:
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
     }
 
@@ -116,11 +130,13 @@ If you run the application with the following parameters and action:
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
 
         /**
@@ -128,8 +144,19 @@ If you run the application with the following parameters and action:
          */
         public function testAction(array $params)
         {
-            echo sprintf('hello %s', $params[0]) . PHP_EOL;
-            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+            echo sprintf(
+                "hello %s",
+                $params[0]
+            );
+
+            echo PHP_EOL;
+
+            echo sprintf(
+                "best regards, %s",
+                $params[1]
+            );
+
+            echo PHP_EOL;
         }
     }
 
@@ -150,13 +177,14 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 
     <?php
 
-    $di->setShared('console', $console);
+    $di->setShared("console", $console);
 
     try {
         // Handle incoming arguments
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -166,23 +194,25 @@ Then you can use the console inside of any task. Below is an example of a modifi
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
 
             $this->console->handle(
                 [
-                    'task'   => 'main',
-                    'action' => 'test'
+                    "task"   => "main",
+                    "action" => "test",
                 ]
             );
         }
 
         public function testAction()
         {
-            echo "\nI will get printed too!\n";
+            echo "I will get printed too!" . PHP_EOL;
         }
     }
 
