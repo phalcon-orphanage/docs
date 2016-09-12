@@ -100,14 +100,13 @@
     $reader = new MemoryAdapter();
 
     // Отразить аннотации в классе Example
-    $reflector = $reader->get('Example');
+    $reflector = $reader->get("Example");
 
     // Прочесть аннотации в блоке документации класса
     $annotations = $reflector->getClassAnnotations();
 
     // Произвести обход всех аннотаций
     foreach ($annotations as $annotation) {
-
         // Вывести название аннотации
         echo $annotation->getName(), PHP_EOL;
 
@@ -199,12 +198,14 @@
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function () {
-
+    $di["dispatcher"] = function () {
         $eventsManager = new EventsManager();
 
         // Привязать плагин к событию 'dispatch'
-        $eventsManager->attach('dispatch', new CacheEnablerPlugin());
+        $eventsManager->attach(
+            "dispatch",
+            new CacheEnablerPlugin()
+        );
 
         $dispatcher = new MvcDispatcher();
 
@@ -241,19 +242,20 @@ CacheEnablerPlugin это плагин, который перехватывае�
             );
 
             // Проверить, имеет ли метод аннотацию 'Cache'
-            if ($annotations->has('Cache')) {
-
+            if ($annotations->has("Cache")) {
                 // Метод имеет аннотацию 'Cache'
-                $annotation = $annotations->get('Cache');
+                $annotation = $annotations->get("Cache");
 
                 // Получить время жизни кэша
-                $lifetime = $annotation->getNamedParameter('lifetime');
+                $lifetime = $annotation->getNamedParameter("lifetime");
 
-                $options = ['lifetime' => $lifetime];
+                $options = [
+                    "lifetime" => $lifetime,
+                ];
 
                 // Проверить, есть ли определенный пользователем ключ кэша
-                if ($annotation->hasNamedParameter('key')) {
-                    $options['key'] = $annotation->getNamedParameter('key');
+                if ($annotation->hasNamedParameter("key")) {
+                    $options["key"] = $annotation->getNamedParameter("key");
                 }
 
                 // Включить кэш для текущего метода
@@ -315,8 +317,6 @@ You can use annotations to tell the ACL which controllers belong to the administ
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     /**
-     * SecurityAnnotationsPlugin
-     *
      * This is the security plugin which controls that users only have access to the modules they're assigned to
      */
     class SecurityAnnotationsPlugin extends Plugin
@@ -339,16 +339,15 @@ You can use annotations to tell the ACL which controllers belong to the administ
             $annotations = $this->annotations->get($controllerName);
 
             // The controller is private?
-            if ($annotations->getClassAnnotations()->has('Private')) {
-
+            if ($annotations->getClassAnnotations()->has("Private")) {
                 // Check if the session variable is active?
-                if (!$this->session->get('auth')) {
+                if (!$this->session->get("auth")) {
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
                         [
-                            'controller' => 'session',
-                            'action'     => 'login'
+                            "controller" => "session",
+                            "action"     => "login",
                         ]
                     );
 

@@ -99,14 +99,13 @@ Sebuah reflector diimplementasi untuk mendapatkan anotasi yang didefinisi dalam 
     $reader = new MemoryAdapter();
 
     // Reflect the annotations in the class Example
-    $reflector = $reader->get('Example');
+    $reflector = $reader->get("Example");
 
     // Read the annotations in the class' docblock
     $annotations = $reflector->getClassAnnotations();
 
     // Traverse the annotations
     foreach ($annotations as $annotation) {
-
         // Print the annotation name
         echo $annotation->getName(), PHP_EOL;
 
@@ -197,12 +196,14 @@ untuk diberi thau ketika sebuah route dieksekusi:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function () {
-
+    $di["dispatcher"] = function () {
         $eventsManager = new EventsManager();
 
         // Attach the plugin to 'dispatch' events
-        $eventsManager->attach('dispatch', new CacheEnablerPlugin());
+        $eventsManager->attach(
+            "dispatch",
+            new CacheEnablerPlugin()
+        );
 
         $dispatcher = new MvcDispatcher();
 
@@ -239,19 +240,20 @@ CacheEnablerPlugin adalah plugin yang menyadap tiap aksi yang dieksekusi dispatc
             );
 
             // Check if the method has an annotation 'Cache'
-            if ($annotations->has('Cache')) {
-
+            if ($annotations->has("Cache")) {
                 // The method has the annotation 'Cache'
-                $annotation = $annotations->get('Cache');
+                $annotation = $annotations->get("Cache");
 
                 // Get the lifetime
-                $lifetime = $annotation->getNamedParameter('lifetime');
+                $lifetime = $annotation->getNamedParameter("lifetime");
 
-                $options = ['lifetime' => $lifetime];
+                $options = [
+                    "lifetime" => $lifetime,
+                ];
 
                 // Check if there is a user defined cache key
-                if ($annotation->hasNamedParameter('key')) {
-                    $options['key'] = $annotation->getNamedParameter('key');
+                if ($annotation->hasNamedParameter("key")) {
+                    $options["key"] = $annotation->getNamedParameter("key");
                 }
 
                 // Enable the cache for the current method
@@ -313,8 +315,6 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     /**
-     * SecurityAnnotationsPlugin
-     *
      * This is the security plugin which controls that users only have access to the modules they're assigned to
      */
     class SecurityAnnotationsPlugin extends Plugin
@@ -337,16 +337,15 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
             $annotations = $this->annotations->get($controllerName);
 
             // The controller is private?
-            if ($annotations->getClassAnnotations()->has('Private')) {
-
+            if ($annotations->getClassAnnotations()->has("Private")) {
                 // Check if the session variable is active?
-                if (!$this->session->get('auth')) {
+                if (!$this->session->get("auth")) {
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
                         [
-                            'controller' => 'session',
-                            'action'     => 'login'
+                            "controller" => "session",
+                            "action"     => "login",
                         ]
                     );
 

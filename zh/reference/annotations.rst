@@ -100,14 +100,13 @@
     $reader = new MemoryAdapter();
 
     // 反射在Example类的注释
-    $reflector = $reader->get('Example');
+    $reflector = $reader->get("Example");
 
     // 读取类中注释块中的注释
     $annotations = $reflector->getClassAnnotations();
 
     // 遍历注释
     foreach ($annotations as $annotation) {
-
         // 打印注释名称
         echo $annotation->getName(), PHP_EOL;
 
@@ -195,12 +194,14 @@
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function () {
-
+    $di["dispatcher"] = function () {
         $eventsManager = new EventsManager();
 
         // 添加插件到dispatch事件中
-        $eventsManager->attach('dispatch', new CacheEnablerPlugin());
+        $eventsManager->attach(
+            "dispatch",
+            new CacheEnablerPlugin()
+        );
 
         $dispatcher = new MvcDispatcher();
 
@@ -236,19 +237,20 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
             );
 
             // 检查是否方法中带有注释名称‘Cache’的注释单元
-            if ($annotations->has('Cache')) {
-
+            if ($annotations->has("Cache")) {
                 // 这个方法带有‘Cache’注释单元
-                $annotation = $annotations->get('Cache');
+                $annotation = $annotations->get("Cache");
 
                 // 获取注释单元的‘lifetime’参数
-                $lifetime = $annotation->getNamedParameter('lifetime');
+                $lifetime = $annotation->getNamedParameter("lifetime");
 
-                $options = ['lifetime' => $lifetime];
+                $options = [
+                    "lifetime" => $lifetime,
+                ];
 
                 // 检查注释单元中是否有用户定义的‘key’参数
-                if ($annotation->hasNamedParameter('key')) {
-                    $options['key'] = $annotation->getNamedParameter('key');
+                if ($annotation->hasNamedParameter("key")) {
+                    $options["key"] = $annotation->getNamedParameter("key");
                 }
 
                 // 为当前dispatcher访问的方法开启cache
@@ -310,8 +312,6 @@ You can use annotations to tell the ACL which controllers belong to the administ
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     /**
-     * SecurityAnnotationsPlugin
-     *
      * This is the security plugin which controls that users only have access to the modules they're assigned to
      */
     class SecurityAnnotationsPlugin extends Plugin
@@ -334,16 +334,15 @@ You can use annotations to tell the ACL which controllers belong to the administ
             $annotations = $this->annotations->get($controllerName);
 
             // The controller is private?
-            if ($annotations->getClassAnnotations()->has('Private')) {
-
+            if ($annotations->getClassAnnotations()->has("Private")) {
                 // Check if the session variable is active?
-                if (!$this->session->get('auth')) {
+                if (!$this->session->get("auth")) {
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
                         [
-                            'controller' => 'session',
-                            'action'     => 'login'
+                            "controller" => "session",
+                            "action"     => "login",
                         ]
                     );
 
