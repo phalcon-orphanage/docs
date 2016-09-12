@@ -16,15 +16,15 @@ Adapter Database
 Komponen ini menggunakan adapter untuk membungkus detil spesifik sistem database. Phalcon menggunakan PDO_ untuk menyambung ke database. Engine
 database berikut didukung:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Nama       | Keterangan                                                                                                                                                                                                                           | API                                                                                     |
-+============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | Sistem manajemen database relasional (RDBMS) yang paling banyak digunakan di dunia yang berjalan sebagai sebuah server yang meneyediakan akses banyak pengguna ke sejumlah database                                                  | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL adalah sistem database relasional open source yang bertenaga. Ia aktif dikembangkan lebih dari 15 tahun dan memiliki arsitektur teruji yang telah memperoleh reputasi untuk keandalan, integritasi data dan kebenaran.    | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite adalah pustaka software yang mengimplementasi engine SQL database transaksional yang berdiri sendiri, tanpa server dan tanpa konfigurasi                                                                                      | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                   | Keterangan                                                                                                                                                                                                                        |
++=========================================================================================+===================================================================================================================================================================================================================================+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           | Sistem manajemen database relasional (RDBMS) yang paling banyak digunakan di dunia yang berjalan sebagai sebuah server yang meneyediakan akses banyak pengguna ke sejumlah database                                               |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` | PostgreSQL adalah sistem database relasional open source yang bertenaga. Ia aktif dikembangkan lebih dari 15 tahun dan memiliki arsitektur teruji yang telah memperoleh reputasi untuk keandalan, integritasi data dan kebenaran. |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         | SQLite adalah pustaka software yang mengimplementasi engine SQL database transaksional yang berdiri sendiri, tanpa server dan tanpa konfigurasi                                                                                   |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Mengimplementasi Adapter anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,15 +35,15 @@ Dialek Database
 ---------------
 Phalcon membungkus detil spesifik tiap engine database dalam dialek. Mereka menyediakan fungsi umum dan pembangkit SQL untuk adapter.
 
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Nama       | Keterangan                                          | API                                                                            |
-+============+=====================================================+================================================================================+
-| MySQL      | Dialek SQL spesifik untuk sistem database MySQL     | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | Dialek SQL spesifik untuk sistem database PostgreSQL| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | Dialek SQL spesifik untuk sistem database SQLite    | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| Class                                                                          | Keterangan                                          |
++================================================================================+=====================================================+
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           | Dialek SQL spesifik untuk sistem database MySQL     |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | Dialek SQL spesifik untuk sistem database PostgreSQL|
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         | Dialek SQL spesifik untuk sistem database SQLite    |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
 
 Mengimplementasi dialek anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
