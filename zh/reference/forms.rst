@@ -329,6 +329,43 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 -----------------
 表单元素可以在进行验证前先进行过滤， 开发者可以为每个元素设置过滤器：
 
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Element\Text;
+
+    $name = new Text(
+        "name"
+    );
+
+    // Set multiple filters
+    $name->setFilters(
+        [
+            "string",
+            "trim",
+        ]
+    );
+
+    $form->add($name);
+
+
+
+    $email = new Text(
+        "email"
+    );
+
+    // Set one filter
+    $email->setFilters(
+        "email"
+    );
+
+    $form->add($email);
+
+.. highlights::
+
+    Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
+
 设置用户选项（Setting User Options）
 ------------------------------------
 表单与实体（Forms + Entities）

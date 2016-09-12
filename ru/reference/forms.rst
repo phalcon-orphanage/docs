@@ -333,6 +333,43 @@ html-атрибуты вторым параметром:
 ----------
 Форма может фильтровать данные до валидации, вы можете установить фильтры в каждом из элементов:
 
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Element\Text;
+
+    $name = new Text(
+        "name"
+    );
+
+    // Set multiple filters
+    $name->setFilters(
+        [
+            "string",
+            "trim",
+        ]
+    );
+
+    $form->add($name);
+
+
+
+    $email = new Text(
+        "email"
+    );
+
+    // Set one filter
+    $email->setFilters(
+        "email"
+    );
+
+    $form->add($email);
+
+.. highlights::
+
+    Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
+
 Настройка пользовательских параметров
 -------------------------------------
 Формы и сущности

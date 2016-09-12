@@ -332,6 +332,43 @@ Or get specific messages for an element:
 --------------
 A form is also able to filter data before it is validated. You can set filters in each element:
 
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Element\Text;
+
+    $name = new Text(
+        "name"
+    );
+
+    // Set multiple filters
+    $name->setFilters(
+        [
+            "string",
+            "trim",
+        ]
+    );
+
+    $form->add($name);
+
+
+
+    $email = new Text(
+        "email"
+    );
+
+    // Set one filter
+    $email->setFilters(
+        "email"
+    );
+
+    $form->add($email);
+
+.. highlights::
+
+    Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
+
 オプションのセット
 --------------------
 Forms + Entities
