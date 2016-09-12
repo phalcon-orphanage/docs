@@ -33,7 +33,7 @@ Consider the following example:
         }
     );
 
-The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+The above auto-loader lacks any kind of security check. If a function mistakenly launches the auto-loader and
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
 
 .. code-block:: php
@@ -51,13 +51,13 @@ a malicious prepared string is used as parameter this would allow to execute any
 If '../processes/important-process.php' is a valid file, an external user could execute the file without
 authorization.
 
-To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes any invalid character from the class name
+To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes invalid characters from the class name,
 reducing the possibility of being attacked.
 
 Регистрация пространств имён
 ----------------------------
 Если организация вашего кода подразумевает пространства имён, или использованы внешние библиотеки с их использованием, то для регистрации
-стоит использовать метод registerNamespaces(). Метод принимает ассоциативный массив, в котором ключами являются префиксы пространств имен,
+стоит использовать метод :code:`registerNamespaces()`. Метод принимает ассоциативный массив, в котором ключами являются префиксы пространств имен,
 а их значениями - каталоги в которых эти классы расположены. Разделитель пространства имен (namespace) ("\\"), будет заменен разделителем
 директорий ("/"), во время поиска класса загрузчиком. Не забывайте всегда добавлять заключительный слеш в конце пути каталогов:
 
@@ -136,7 +136,7 @@ Phalcon будет вынужден обрабатывать данные по �
             "library/MyComponent/",
             "library/OtherComponent/Other/",
             "vendor/example/adapters/",
-            "vendor/example/"
+            "vendor/example/",
         ]
     );
 

@@ -35,7 +35,7 @@ Consider the following example:
         }
     );
 
-The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+The above auto-loader lacks any kind of security check. If a function mistakenly launches the auto-loader and
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
 
 .. code-block:: php
@@ -53,14 +53,14 @@ a malicious prepared string is used as parameter this would allow to execute any
 If '../processes/important-process.php' is a valid file, an external user could execute the file without
 authorization.
 
-To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes any invalid character from the class name
+To avoid these or most sophisticated attacks, :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` removes invalid characters from the class name,
 reducing the possibility of being attacked.
 
 注册命名空间（Registering Namespaces）
 --------------------------------------
-If you're organizing your code using namespaces, or external libraries do so, the registerNamespaces() provides the autoloading mechanism. It
+If you're organizing your code using namespaces, or external libraries do so, the :code:`registerNamespaces()` method provides the autoloading mechanism. It
 takes an associative array, which keys are namespace prefixes and their values are directories where the classes are located in. The namespace
-separator will be replaced by the directory separator when the loader try to find the classes. Remember always to add a trailing slash at
+separator will be replaced by the directory separator when the loader tries to find the classes. Always remember to add a trailing slash at
 the end of the paths.
 
 .. code-block:: php
