@@ -21,10 +21,10 @@ Komponen ini dirancang untuk menyediakan cara penggunaan sangat sederhana:
     use Phalcon\Crypt;
 
     // Buat instance
-    $crypt     = new Crypt();
+    $crypt = new Crypt();
 
-    $key       = 'This is a secret key (32 bytes).';
-    $text      = 'This is the text that you want to encrypt.';
+    $key  = "This is a secret key (32 bytes).";
+    $text = "This is the text that you want to encrypt.";
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -42,12 +42,11 @@ Anda dapat menggunakan instance sama untuk enkripsi/dekripsi beberapa kali:
     $crypt = new Crypt();
 
     $texts = [
-        'my-key'    => 'This is a secret text',
-        'other-key' => 'This is a very secret'
+        "my-key"    => "This is a secret text",
+        "other-key" => "This is a very secret",
     ];
 
     foreach ($texts as $key => $text) {
-
         // Lakukan enkripsi
         $encrypted = $crypt->encrypt($text, $key);
 
@@ -77,10 +76,10 @@ Contoh:
     $crypt = new Crypt();
 
     // Gunakan blowfish
-    $crypt->setCipher('bf-cbc');
+    $crypt->setCipher("bf-cbc");
 
-    $key   = 'le password';
-    $text  = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     echo $crypt->encrypt($text, $key);
 
@@ -95,10 +94,10 @@ Agar enkripsi dapat ditransmisi (email) atau ditampilkan (browser) dengan benar 
     use Phalcon\Crypt;
 
     // Buat instance
-    $crypt   = new Crypt();
+    $crypt = new Crypt();
 
-    $key     = 'le password';
-    $text    = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -114,15 +113,20 @@ Anda dapat menyiapkan komponen enkripsi dalam service container agar dapat mengg
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt = new Crypt();
+            // Set key enkripsi global
+            $crypt->setKey(
+                "%31.1e$i86e$f!8jz"
+            );
 
-        // Set key enkripsi global
-        $crypt->setKey('%31.1e$i86e$f!8jz');
-
-        return $crypt;
-    }, true);
+            return $crypt;
+        },
+        true
+    );
 
 lalu, contohnya, dalam sebuah kontroler anda dapat menggunakannya sebagai berikut:
 
@@ -138,12 +142,14 @@ lalu, contohnya, dalam sebuah kontroler anda dapat menggunakannya sebagai beriku
         {
             $secret = new Secrets();
 
-            $text = $this->request->getPost('text');
+            $text = $this->request->getPost("text");
 
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Secret was successfully created!');
+                $this->flash->success(
+                    "Secret was successfully created!"
+                );
             }
         }
     }

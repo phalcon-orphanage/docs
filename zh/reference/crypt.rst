@@ -20,7 +20,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     use Phalcon\Crypt;
 
     // Create an instance
-    $crypt     = new Crypt();
+    $crypt = new Crypt();
 
     $key  = "This is a secret key (32 bytes).";
     $text = "This is the text that you want to encrypt.";
@@ -41,12 +41,11 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     $crypt = new Crypt();
 
     $texts = [
-        'my-key'    => 'This is a secret text',
-        'other-key' => 'This is a very secret'
+        "my-key"    => "This is a secret text",
+        "other-key" => "This is a very secret",
     ];
 
     foreach ($texts as $key => $text) {
-
         // 加密
         $encrypted = $crypt->encrypt($text, $key);
 
@@ -56,7 +55,6 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
 加密选项（Encryption Options）
 ------------------------------
-
 下面的选项可以改变加密的行为：
 
 +------------+------------------------------------------------------------------+
@@ -79,8 +77,8 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     // 使用 blowfish
     $crypt->setCipher("bf-cbc");
 
-    $key   = 'le password';
-    $text  = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     echo $crypt->encrypt($text, $key);
 
@@ -95,10 +93,10 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     use Phalcon\Crypt;
 
     // 创建实例
-    $crypt   = new Crypt();
+    $crypt = new Crypt();
 
-    $key     = 'le password';
-    $text    = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -114,15 +112,20 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
+    $di->set(
+        'crypt',
+        function () {
+            $crypt = new Crypt();
 
-        $crypt = new Crypt();
+            // 设置全局加密密钥
+            $crypt->setKey(
+                "%31.1e$i86e$f!8jz"
+            );
 
-        // 设置全局加密密钥
-        $crypt->setKey('%31.1e$i86e$f!8jz');
-
-        return $crypt;
-    }, true);
+            return $crypt;
+        },
+        true
+    );
 
 然后，例如，我们可以在控制器中使用它了：
 
@@ -138,12 +141,14 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
         {
             $secret = new Secrets();
 
-            $text = $this->request->getPost('text');
+            $text = $this->request->getPost("text");
 
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Secret was successfully created!');
+                $this->flash->success(
+                    "Secret was successfully created!"
+                );
             }
         }
     }

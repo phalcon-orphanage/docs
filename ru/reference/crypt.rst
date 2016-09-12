@@ -21,7 +21,7 @@ Phalcon предоставляет средства шифрования с по
     use Phalcon\Crypt;
 
     // Создание экземпляра
-    $crypt     = new Crypt();
+    $crypt = new Crypt();
 
     $key  = "This is a secret key (32 bytes).";
     $text = "Это секретный текст, который Вы хотите зашифровать.";
@@ -42,12 +42,11 @@ Phalcon предоставляет средства шифрования с по
     $crypt = new Crypt();
 
     $texts = [
-        'my-key'    => 'Это секретный текст',
-        'other-key' => 'Это очень секретно'
+        "my-key"    => "Это секретный текст",
+        "other-key" => "Это очень секретно",
     ];
 
     foreach ($texts as $key => $text) {
-
         // Зашифровываем
         $encrypted = $crypt->encrypt($text, $key);
 
@@ -77,10 +76,10 @@ Phalcon предоставляет средства шифрования с по
     $crypt = new Crypt();
 
     // Используем алгоритм blowfish
-    $crypt->setCipher('bf-cbc');
+    $crypt->setCipher("bf-cbc");
 
-    $key   = 'это пароль';
-    $text  = 'Это секретный текст';
+    $key  = "это пароль";
+    $text = "Это секретный текст";
 
     echo $crypt->encrypt($text, $key);
 
@@ -96,10 +95,10 @@ Phalcon предоставляет средства шифрования с по
     use Phalcon\Crypt;
 
     // Создаем экземпляр
-    $crypt   = new Crypt();
+    $crypt = new Crypt();
 
-    $key     = 'это пароль';
-    $text    = 'Это секретный текст';
+    $key  = "это пароль";
+    $text = "Это секретный текст";
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -115,15 +114,20 @@ Phalcon предоставляет средства шифрования с по
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt = new Crypt();
+            // Устанавливаем глобальный ключ шифрования
+            $crypt->setKey(
+                "%31.1e$i86e$f!8jz"
+            );
 
-        // Устанавливаем глобальный ключ шифрования
-        $crypt->setKey('%31.1e$i86e$f!8jz');
-
-        return $crypt;
-    }, true);
+            return $crypt;
+        },
+        true
+    );
 
 Затем, как пример, Вы можете использовать его в контроллере следующим образом:
 
@@ -139,12 +143,14 @@ Phalcon предоставляет средства шифрования с по
         {
             $secret = new Secrets();
 
-            $text = $this->request->getPost('text');
+            $text = $this->request->getPost("text");
 
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Секрет успешно создан!');
+                $this->flash->success(
+                    "Secret was successfully created!"
+                );
             }
         }
     }

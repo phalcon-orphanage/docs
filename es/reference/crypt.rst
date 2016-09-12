@@ -21,7 +21,7 @@ This component is designed to provide a very simple usage:
     use Phalcon\Crypt;
 
     // Create an instance
-    $crypt     = new Crypt();
+    $crypt = new Crypt();
 
     $key  = "This is a secret key (32 bytes).";
     $text = "This is the text that you want to encrypt.";
@@ -42,12 +42,11 @@ You can use the same instance to encrypt/decrypt several times:
     $crypt = new Crypt();
 
     $texts = [
-        'my-key'    => 'This is a secret text',
-        'other-key' => 'This is a very secret'
+        "my-key"    => "This is a secret text",
+        "other-key" => "This is a very secret",
     ];
 
     foreach ($texts as $key => $text) {
-
         // Perform the encryption
         $encrypted = $crypt->encrypt($text, $key);
 
@@ -79,8 +78,8 @@ Example:
     // Use blowfish
     $crypt->setCipher("bf-cbc");
 
-    $key   = 'le password';
-    $text  = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     echo $crypt->encrypt($text, $key);
 
@@ -95,10 +94,10 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
     use Phalcon\Crypt;
 
     // Create an instance
-    $crypt   = new Crypt();
+    $crypt = new Crypt();
 
-    $key     = 'le password';
-    $text    = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -114,15 +113,20 @@ You can set up the encryption component in the services container in order to us
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt = new Crypt();
+            // Set a global encryption key
+            $crypt->setKey(
+                "%31.1e$i86e$f!8jz"
+            );
 
-        // Set a global encryption key
-        $crypt->setKey('%31.1e$i86e$f!8jz');
-
-        return $crypt;
-    }, true);
+            return $crypt;
+        },
+        true
+    );
 
 Then, for example, in a controller you can use it as follows:
 
@@ -138,12 +142,14 @@ Then, for example, in a controller you can use it as follows:
         {
             $secret = new Secrets();
 
-            $text = $this->request->getPost('text');
+            $text = $this->request->getPost("text");
 
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Secret was successfully created!');
+                $this->flash->success(
+                    "Secret was successfully created!"
+                );
             }
         }
     }
