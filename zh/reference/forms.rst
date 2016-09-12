@@ -366,8 +366,6 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
 
-设置用户选项（Setting User Options）
-------------------------------------
 表单与实体（Forms + Entities）
 ------------------------------
 我们可以把 model/collection/plain 设置到表单对象中， 这样 phalcon 会自动的设置表单元素的值：

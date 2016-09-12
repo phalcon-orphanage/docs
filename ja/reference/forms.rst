@@ -369,8 +369,6 @@ A form is also able to filter data before it is validated. You can set filters i
 
     Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
 
-オプションのセット
---------------------
 Forms + Entities
 ----------------
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
