@@ -47,7 +47,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     // Создание frontend для выходных данных. Кэшируем файлы на 2 дня
     $frontCache = new FrontOutput(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -56,7 +56,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
@@ -65,7 +65,6 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     // Если $content является значением NULL, значит данных в кэше нет и их надо сгенерировать
     if ($content === null) {
-
         // Выводим дату и время
         echo date("r");
 
@@ -74,15 +73,13 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
             [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
+                "class" => "signup-button",
             ]
         );
 
         // Сохраняем вывод в кэш
         $cache->save();
-
     } else {
-
         // Ввыводим кэшируемые данные
         echo $content;
     }
@@ -111,7 +108,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     // Кэшируем данные на 2 дня
     $frontCache = new FrontData(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -120,20 +117,21 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
-    // Пробуем получить закэшированные записи
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Пробуем получить закэшированные записи
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует
         // Получим данные из БД
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -160,7 +158,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     // Кэшируем данные на 1 час
     $frontCache = new FrontData(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
@@ -173,22 +171,23 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
                 [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
+                    "weight" => "1",
                 ]
             ]
         ]
     );
 
-    // Пробуем получить закэшированные записи
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Пробуем получить закэшированные записи
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует
         // Получим данные из БД
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -222,14 +221,15 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     // Получаем все ключи, которые хранятся в кэше
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Получаем все ключи, которые начинаются с префикса "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 Удаление данных из кэша
 -----------------------
@@ -243,8 +243,9 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     // Удаляем элемент по определенному ключу
     $cache->delete("someKey");
 
-    // Удаляем все из кэша
     $keys = $cache->queryKeys();
+
+    // Удаляем все из кэша
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -275,12 +276,12 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Получаем кэш и задаем время жизни
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Сохраняем в кэше
@@ -293,11 +294,11 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Задаем время жизни, сохраняя данные
@@ -322,19 +323,19 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
 
     $ultraFastFrontend = new DataFrontend(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
     $fastFrontend = new DataFrontend(
         [
-            "lifetime" => 86400
+            "lifetime" => 86400,
         ]
     );
 
     $slowFrontend = new DataFrontend(
         [
-            "lifetime" => 604800
+            "lifetime" => 604800,
         ]
     );
 
@@ -344,29 +345,29 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
             new ApcCache(
                 $ultraFastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                 ]
             ),
             new MemcacheCache(
                 $fastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
+                    "port"   => "11211",
                 ]
             ),
             new FileCache(
                 $slowFrontend,
                 [
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
                 ]
-            )
+            ),
         ]
     );
 
     // Сохраняем, сохраняется сразу во все адаптеры кэширования
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 Frontend Адаптеры
 -----------------

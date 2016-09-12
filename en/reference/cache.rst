@@ -47,7 +47,7 @@ call whenever this piece of code is called.
     // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -57,7 +57,7 @@ call whenever this piece of code is called.
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
@@ -66,7 +66,6 @@ call whenever this piece of code is called.
 
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
-
         // Print date and time
         echo date("r");
 
@@ -75,15 +74,13 @@ call whenever this piece of code is called.
             [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
+                "class" => "signup-button",
             ]
         );
 
         // Store the output into the cache file
         $cache->save();
-
     } else {
-
         // Echo the cached output
         echo $content;
     }
@@ -112,7 +109,7 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
     // Cache the files for 2 days using a Data frontend
     $frontCache = new FrontData(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -122,20 +119,21 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -162,7 +160,7 @@ The above example changes slightly (especially in terms of configuration) when w
     // Cache data for one hour
     $frontCache = new FrontData(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
@@ -175,22 +173,23 @@ The above example changes slightly (especially in terms of configuration) when w
                 [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
+                    "weight" => "1",
                 ]
             ]
         ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -224,14 +223,15 @@ If you want to know which keys are stored in the cache you could call the queryK
 
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 Deleting data from the cache
 ----------------------------
@@ -245,8 +245,9 @@ The only requirement is to know the key that the data have been stored with.
     // Delete an item with a specific key
     $cache->delete("someKey");
 
-    // Delete all items from the cache
     $keys = $cache->queryKeys();
+
+    // Delete all items from the cache
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -276,12 +277,12 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Store it in the cache
@@ -294,11 +295,11 @@ Setting the lifetime when saving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Setting the cache when saving data
@@ -323,19 +324,19 @@ the faster adapter and ending with the slowest one until the data expires:
 
     $ultraFastFrontend = new DataFrontend(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
     $fastFrontend = new DataFrontend(
         [
-            "lifetime" => 86400
-
+            "lifetime" => 86400,
+        ]
     );
 
     $slowFrontend = new DataFrontend(
         [
-            "lifetime" => 604800
+            "lifetime" => 604800,
         ]
     );
 
@@ -345,29 +346,29 @@ the faster adapter and ending with the slowest one until the data expires:
             new ApcCache(
                 $ultraFastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                 ]
             ),
             new MemcacheCache(
                 $fastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
+                    "port"   => "11211",
                 ]
             ),
             new FileCache(
                 $slowFrontend,
                 [
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
                 ]
-            )
+            ),
         ]
     );
 
     // Save, saves in every backend
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 Frontend Adapters
 -----------------

@@ -47,7 +47,7 @@ kapanpun potongan kode tersebut dipanggil.
     // Buat output frontend. Cache file selama 2 hari
     $frontCache = new FrontOutput(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -57,7 +57,7 @@ kapanpun potongan kode tersebut dipanggil.
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
@@ -66,7 +66,6 @@ kapanpun potongan kode tersebut dipanggil.
 
     // Jika $content null maka isi akan dibuat untuk cache
     if ($content === null) {
-
         // Cetak tanggal dan waktu
         echo date("r");
 
@@ -75,15 +74,13 @@ kapanpun potongan kode tersebut dipanggil.
             [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
+                "class" => "signup-button",
             ]
         );
 
         // Simpan output ke file cache
         $cache->save();
-
     } else {
-
         // Echo output yang dicache
         echo $content;
     }
@@ -112,7 +109,7 @@ Ini dikendalikan oleh opsi cacheDir yang *wajib* memiliki backslash diakhir.
     // Cache file selama 2 days menggunakna Data frontend
     $frontCache = new FrontData(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -122,20 +119,21 @@ Ini dikendalikan oleh opsi cacheDir yang *wajib* memiliki backslash diakhir.
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
-    // Coba ambil record yang dicache
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Coba ambil record yang dicache
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots null karena cache kedaluwarsa atau data tidak ada
         // Buat panggilan database dan isi variabel
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -162,7 +160,7 @@ Contoh di atas berubah sedikit (terutama dalam hal konfigurasi) ketika kita meng
     // Cache data selama satu jam
     $frontCache = new FrontData(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
@@ -175,22 +173,23 @@ Contoh di atas berubah sedikit (terutama dalam hal konfigurasi) ketika kita meng
                 [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
+                    "weight" => "1",
                 ]
             ]
         ]
     );
 
-    // Coba ambil record yang dicache
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Coba ambil record yang dicache
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots null karena cache kedaluwarsa atau karena data tidak ada
         // Buat panggilan database dan isi variabel
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -224,14 +223,15 @@ Jika anda ingin tahu key mana yang disimpan di cache, anda dapat memanggil metod
 
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 Menghapus data dari cache
 -------------------------
@@ -245,8 +245,9 @@ Yang diperlukan hanya key ke data yang disimpan bersamanya.
     // Hapus sebuah item dengan key spesifik
     $cache->delete("someKey");
 
-    // Hapus semua item dari cache
     $keys = $cache->queryKeys();
+
+    // Hapus semua item dari cache
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -276,12 +277,12 @@ Mengatur ,asa hidup ketika mengambil:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Mengatur cache ketika mengambil result
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Simpan dicache
@@ -294,11 +295,11 @@ Mengatur masa hidup ketika menyimpan:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Atur cache saat menyimpan
@@ -323,19 +324,19 @@ dan berakhir di yang paling lambat hingga data kedaluwarsa:
 
     $ultraFastFrontend = new DataFrontend(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
     $fastFrontend = new DataFrontend(
         [
-            "lifetime" => 86400
+            "lifetime" => 86400,
         ]
     );
 
     $slowFrontend = new DataFrontend(
         [
-            "lifetime" => 604800
+            "lifetime" => 604800,
         ]
     );
 
@@ -345,29 +346,29 @@ dan berakhir di yang paling lambat hingga data kedaluwarsa:
             new ApcCache(
                 $ultraFastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                 ]
             ),
             new MemcacheCache(
                 $fastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
+                    "port"   => "11211",
                 ]
             ),
             new FileCache(
                 $slowFrontend,
                 [
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
                 ]
-            )
+            ),
         ]
     );
 
     // Simpan disemua backend
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 Adapter Frontend
 ----------------

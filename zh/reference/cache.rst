@@ -45,7 +45,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -55,7 +55,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
@@ -64,7 +64,6 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
-
         // Print date and time
         echo date("r");
 
@@ -73,15 +72,13 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
             [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
+                "class" => "signup-button",
             ]
         );
 
         // Store the output into the cache file
         $cache->save();
-
     } else {
-
         // Echo the cached output
         echo $content;
     }
@@ -109,7 +106,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // Cache the files for 2 days using a Data frontend
     $frontCache = new FrontData(
         [
-            "lifetime" => 172800
+            "lifetime" => 172800,
         ]
     );
 
@@ -119,20 +116,21 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     $cache = new BackFile(
         $frontCache,
         [
-            "cacheDir" => "../app/cache/"
+            "cacheDir" => "../app/cache/",
         ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -159,7 +157,7 @@ Memcached 后端存储器例子（Memcached Backend Example）
     // Cache data for one hour
     $frontCache = new FrontData(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
@@ -172,22 +170,23 @@ Memcached 后端存储器例子（Memcached Backend Example）
                 [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
+                    "weight" => "1",
                 ]
             ]
         ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
             [
-                "order" => "id"
+                "order" => "id",
             ]
         );
 
@@ -220,14 +219,15 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 删除缓存数据（Deleting data from the cache）
 --------------------------------------------
@@ -241,8 +241,9 @@ Memcached 后端存储器例子（Memcached Backend Example）
     // Delete an item with a specific key
     $cache->delete("someKey");
 
-    // Delete all items from the cache
     $keys = $cache->queryKeys();
+
+    // Delete all items from the cache
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -272,12 +273,12 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Store it in the cache
@@ -290,11 +291,11 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Setting the cache when saving data
@@ -318,19 +319,19 @@ Setting the lifetime when retrieving:
 
     $ultraFastFrontend = new DataFrontend(
         [
-            "lifetime" => 3600
+            "lifetime" => 3600,
         ]
     );
 
     $fastFrontend = new DataFrontend(
         [
-            "lifetime" => 86400
+            "lifetime" => 86400,
         ]
     );
 
     $slowFrontend = new DataFrontend(
         [
-            "lifetime" => 604800
+            "lifetime" => 604800,
         ]
     );
 
@@ -340,29 +341,29 @@ Setting the lifetime when retrieving:
             new ApcCache(
                 $ultraFastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                 ]
             ),
             new MemcacheCache(
                 $fastFrontend,
                 [
-                    "prefix" => 'cache',
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
+                    "port"   => "11211",
                 ]
             ),
             new FileCache(
                 $slowFrontend,
                 [
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
                 ]
-            )
+            ),
         ]
     );
 
     // Save, saves in every backend
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 前端适配器（Frontend Adapters）
 -------------------------------
