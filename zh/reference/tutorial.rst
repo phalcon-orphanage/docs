@@ -4,12 +4,10 @@
 我们也将解释框架行为的基本方面。如果您对Phalcon的自动代码生成工具有兴趣，
 您可以查看 :doc:`developer tools <tools>`。
 
-创建项目（Creating a project）
-------------------------------
 使用本指南的最好方法就是依次按照每一步来做。你可以得到完整的代码 `点击这里 <https://github.com/phalcon/tutorial>`_.
 
 文件结构（File structure）
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因为它是松散耦合的，你可以实现Phalcon驱动的应用程序，以及使用对你来说最舒服的文件结构。
 
 本教程的目的以此为起点，我们建议使用以下结构：
@@ -28,108 +26,18 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 需要注意的是，你不需要任何有关Phalcon的 "library" 目录。该框架已经被加载到内存中，供您使用。
 
-优美的 URL（Beautiful URLs）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在本教程中，我们将使用相当（友好）URL。友好的URL不但利于SEO而且便于用户记忆。Phalcon支持一些最流行的Web服务器提供重写模块。让你的应用程序的URL友好不是必要的，没有它们你可以同样轻松地开发。
-
-在这个例子中，我们将使用Apache的重写模块。 让我们在 /tutorial/.htaccess 文件中创建几个重写规则:
-
-.. code-block:: apacheconf
-
-    #/tutorial/.htaccess
-    <IfModule mod_rewrite.c>
-        RewriteEngine on
-        RewriteRule  ^$ public/    [L]
-        RewriteRule  ((?s).*) public/$1 [L]
-    </IfModule>
-
-对该项目的所有请求都将被重定向到为public/文档根目录。此步骤可确保内部项目的文件夹仍然对公共访客隐藏，从而消除了一些安全威胁。
-
-第二组规则将检查是否存在所请求的文件，如果存在所要请求的文件，就不需要Web服务器模块来重写：
-
-.. code-block:: apacheconf
-
-    #/tutorial/public/.htaccess
-    <IfModule mod_rewrite.c>
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-    </IfModule>
+Before continuing, please be sure you've successfully :doc:`installed Phalcon <install>` and have setup either :doc:`Nginx <nginx>`, :doc:`Apache <apache>` or :doc:`Cherokee <cherokee>`.
 
 引导程序（Bootstrap）
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 你需要创建的第一个文件是引导文件。这个文件很重要; 因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
 在这个文件中，你可以实现组件的初始化和应用程序的行为。
 
-这个引导文件 tutorial/public/index.php 文件应该看起来像:
+Ultimately, it is responsible for doing 3 things:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Loader;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\Url as UrlProvider;
-    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
-
-
-    // Register an autoloader
-    $loader = new Loader();
-
-    $loader->registerDirs(
-        [
-            "../app/controllers/",
-            "../app/models/",
-        ]
-    );
-
-    $loader->register();
-
-
-
-    // Create a DI
-    $di = new FactoryDefault();
-
-    // Setup the view component
-    $di->set(
-        "view",
-        function () {
-            $view = new View();
-
-            $view->setViewsDir("../app/views/");
-
-            return $view;
-        }
-    );
-
-    // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set(
-        "url",
-        function () {
-            $url = new UrlProvider();
-
-            $url->setBaseUri("/tutorial/");
-
-            return $url;
-        }
-    );
-
-
-
-    $application = new Application($di);
-
-    try {
-        // Handle the request
-        $response = $application->handle();
-
-        $response->send();
-    } catch (\Exception $e) {
-        echo "Exception: ", $e->getMessage();
-    }
+1. Setting up the autoloader.
+2. Configuring the Dependency Injector.
+3. Handling the application request.
 
 自动加载（Autoloaders）
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -223,6 +131,8 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         }
     );
 
+Handling the application request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在这个文件的最后部分，我们发现 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。
 
 .. code-block:: php
@@ -239,10 +149,81 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     $response->send();
 
+Putting everything together
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+这个引导文件 tutorial/public/index.php 文件应该看起来像:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
+
+
+    // Register an autoloader
+    $loader = new Loader();
+
+    $loader->registerDirs(
+        [
+            "../app/controllers/",
+            "../app/models/",
+        ]
+    );
+
+    $loader->register();
+
+
+
+    // Create a DI
+    $di = new FactoryDefault();
+
+    // Setup the view component
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
+
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
+
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
+
+
+
+    $application = new Application($di);
+
+    try {
+        // Handle the request
+        $response = $application->handle();
+
+        $response->send();
+    } catch (\Exception $e) {
+        echo "Exception: ", $e->getMessage();
+    }
+
 正如你所看到的，引导文件很短，我们并不需要引入任何其他文件。在不到30行的代码里，我们已经为自己设定一个灵活的MVC应用程序。
 
 创建控制器（Creating a Controller）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 默认情况下Phalcon会寻找一个名为“Index”的控制器。当请求中没有控制器或动作时，则使用“Index”控制器作为起点。这个“Index”控制器 (app/controllers/IndexController.php) 看起来类似：
 
 .. code-block:: php
@@ -267,7 +248,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 恭喜, 让Phalcon带你飞!
 
 输出到视图（Sending output to a view）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 从控制器发送输出到屏幕上有时是必要的，但是在MVC社区，大多数纯粹主义者证明这样做不可取。一切必须传递给视图，视图负责在屏幕上输出数据。Phalcon将在最后执行的控制器的同名目录中，查找最后执行的动作的同名的视图。在我们的例子 (app/views/index/index.phtml) ：
 
 .. code-block:: php
@@ -294,7 +275,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 学习更多关于 :doc:`视图使用教程 <views>` 。
 
 设计注册表单（Designing a sign up form）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 现在我们将改变index.phtml视图文件，添加一个链接到一个名为“signup”的新控制器。我们的目标是在应用程序中允许用户注册。
 
 .. code-block:: php
@@ -393,7 +374,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 如果你再点击“Send”按钮,您将看到一个空白页。提供的名称和电子邮件的输入的这个用户应该被存储在数据库中。根据MVC的指导方针,必须通过数据库交互模型，确保整洁的面向对象的代码。
 
 创建模型（Creating a Model）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发， 而不是增加了开发的复杂性。
 
 创建我们的第一个模型之前，我们需要在Phalcon以外创建一个数据库表。一个用来存储注册用户的简单表，可以这样定义：
@@ -425,7 +406,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
     }
 
 设置数据库连接（Setting a Database Connection）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------
 为了能够使用一个数据库连接，然后通过我们的模型访问数据，我们需要在我们的引导过程指定它。数据库连接是我们的应用程序可以使用的数个组件中的另一个服务：
 
 .. code-block:: php
@@ -452,7 +433,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 使用正确的数据库参数，我们的模型已经准备和应用程序的其余部分工作。
 
 使用模型保存数据（Storing data using models）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------
 下一个步骤是从表单接收数据存储在表中。
 
 .. code-block:: php
