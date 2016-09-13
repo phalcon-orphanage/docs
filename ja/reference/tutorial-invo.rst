@@ -58,7 +58,9 @@ INVOには、アプリケーションの一般的なパラメーターをセッ�
     // ...
 
     // 設定の読み込み
-    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
+    $config = new ConfigIni(
+        APP_PATH . "app/config/config.ini"
+    );
 
 :doc:`Phalcon\\Config <config>` を使うと設定ファイルをオブジェクト指向のやり方で操作できます。
 
@@ -94,7 +96,7 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
     /**
      * Auto-loader configuration
      */
-    require APP_PATH . 'app/config/loader.php';
+    require APP_PATH . "app/config/loader.php";
 
 オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
 
@@ -113,7 +115,9 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 上記コードでは、設定ファイルに定義されているディレクトリを登録していることに注意してください。viewsDirディレクトリだけは、登録しません。viewsDirにはHTMLファイルとPHPファイルが含まれますが、クラスは含まれていないからです。
 また、APP_PATHという定数を使っていることに注意してください。この定数はブートストラップファイル(public/index.php)で定義されているもので、プロジェクトのルートパスを参照することができます。
@@ -124,7 +128,10 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
 
     // ...
 
-    define('APP_PATH', realpath('..') . '/');
+    define(
+        "APP_PATH",
+        realpath("..") . "/"
+    );
 
 サービスの登録
 --------------------
@@ -138,7 +145,7 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
     /**
      * アプリケーションサービスをロードする
 	 */
-    require APP_PATH . 'app/config/services.php';
+    require APP_PATH . "app/config/services.php";
 
 
 .. code-block:: php
@@ -150,15 +157,20 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
     // ...
 
     /**
-	 * URLコンポーネントはこのアプリケーションにおける全てのURLを生成するために使われます
+     * URLコンポーネントはこのアプリケーションにおける全てのURLを生成するために使われます
      */
-    $di->set('url', function () use ($config) {
-        $url = new UrlProvider();
+    $di->set(
+        "url",
+        function () use ($config) {
+            $url = new UrlProvider();
 
-        $url->setBaseUri($config->application->baseUri);
+            $url->setBaseUri(
+                $config->application->baseUri
+            );
 
-        return $url;
-    });
+            return $url;
+        }
+    );
 
 後で、我々はこのファイルについてより深く論じます。
 
@@ -197,13 +209,16 @@ Phalconには、定義済みの慣習的な設定は全くありません。セ�
     // ...
 
     // コンポーネントがsessionサービスを最初に要求した時に、セッションを開始する
-    $di->set('session', function () {
-        $session = new Session();
+    $di->set(
+        "session",
+        function () {
+            $session = new Session();
 
-        $session->start();
+            $session->start();
 
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 これで、アダプタを変更して、初期化処理を追加する等を自由に行えるようになりました。サービスは "session" という名前で登録されていることに注意してください。これは、フレームワークがサービスコンテナ内の有効なサービスを見分けるための慣習です。
 

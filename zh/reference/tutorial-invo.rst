@@ -59,7 +59,9 @@ INVO有一个设置应用常规参数的配置文件。这个文件位于 app/co
     // ...
 
     // Read the configuration
-    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
+    $config = new ConfigIni(
+        APP_PATH . "app/config/config.ini"
+    );
 
 :doc:`Phalcon\\Config <config>` 允许我们使用面向对象的方式来操作文件。在这个例子中，我们使用ini文件作为配置文件，然而，它对于配置文件有更多的适配支持。这个配置文件包含以下配置：
 
@@ -94,7 +96,7 @@ The second part that appears in the bootstrap file (public/index.php) is the aut
     /**
      * Auto-loader configuration
      */
-    require APP_PATH . 'app/config/loader.php';
+    require APP_PATH . "app/config/loader.php";
 
 The autoloader registers a set of directories in which the application will look for
 the classes that it eventually will need.
@@ -114,7 +116,9 @@ the classes that it eventually will need.
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 Note that the above code has registered the directories that were defined in the configuration file. The only
 directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
@@ -127,7 +131,10 @@ Also, note that we have using a constant called APP_PATH, this constant is defin
 
     // ...
 
-    define('APP_PATH', realpath('..') . '/');
+    define(
+        "APP_PATH",
+        realpath("..") . "/"
+    );
 
 注册服务(Registering services)
 --------------------
@@ -141,7 +148,7 @@ us to organize the services that INVO does use.
     /**
      * Load application services
      */
-    require APP_PATH . 'app/config/services.php';
+    require APP_PATH . "app/config/services.php";
 
 Service registration is achieved as in the previous tutorial, making use of a closure to lazily loads
 the required components:
@@ -157,13 +164,18 @@ the required components:
     /**
      * The URL component is used to generate all kind of URLs in the application
      */
-    $di->set('url', function () use ($config) {
-        $url = new UrlProvider();
+    $di->set(
+        "url",
+        function () use ($config) {
+            $url = new UrlProvider();
 
-        $url->setBaseUri($config->application->baseUri);
+            $url->setBaseUri(
+                $config->application->baseUri
+            );
 
-        return $url;
-    });
+            return $url;
+        }
+    );
 
 We will discuss this file in depth later.
 
@@ -210,13 +222,16 @@ called when the application requires access to the session data:
     // ...
 
     // Start the session the first time a component requests the session service
-    $di->set('session', function () {
-        $session = new Session();
+    $di->set(
+        "session",
+        function () {
+            $session = new Session();
 
-        $session->start();
+            $session->start();
 
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
 was registered using the name "session". This is a convention that will allow the framework to identify the active
