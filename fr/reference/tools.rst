@@ -52,11 +52,11 @@ Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votr
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 La structure suivante sera générée :
 
@@ -105,7 +105,7 @@ Il est important de faire cette commande à l'intérieur du dossier qui contient
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 Le code suivant sera généré par le script :
 
@@ -113,7 +113,9 @@ Le code suivant sera généré par le script :
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -166,11 +168,11 @@ La manière la plus simple de générer un model est d'écrire cela:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 Tous les champs de la table seront déclarés public pour un accès direct.
 
@@ -178,7 +180,9 @@ Tous les champs de la table seront déclarés public pour un accès direct.
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -188,7 +192,7 @@ Tous les champs de la table seront déclarés public pour un accès direct.
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -217,7 +221,9 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -227,7 +233,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -252,6 +258,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
         /**
          * Method to set the value of field id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -260,18 +267,20 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
         }
 
         /**
-         * Method to set the value of field types_id
-         * @param integer $types_id
+         * Method to set the value of field typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Returns the value of field status
+         *
          * @return string
          */
         public function getStatus()
@@ -299,7 +308,7 @@ Sur l'exemple de code suivant illustre le liner sur la base de la table "product
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 Le générateur d'échaffaudage va créer plusieurs fichiers/dossiers dans votre application. Voici un aperçu de ce qui sera généré:
 

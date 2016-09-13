@@ -50,11 +50,11 @@ web服务器根目录下输入如下命令：
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 执行命令后会生成如下的文档结构的项目：
 
@@ -102,7 +102,7 @@ web服务器根目录下输入如下命令：
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 上面的命令会生成如下代码：
 
@@ -110,7 +110,9 @@ web服务器根目录下输入如下命令：
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -161,11 +163,11 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 所有的字段设置为公有：
 
@@ -173,7 +175,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -183,7 +187,7 @@ Options:
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -212,7 +216,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -222,7 +228,7 @@ Options:
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -247,6 +253,7 @@ Options:
 
         /**
          * Method to set the value of field id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -255,18 +262,20 @@ Options:
         }
 
         /**
-         * Method to set the value of field types_id
-         * @param integer $types_id
+         * Method to set the value of field typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Returns the value of field status
+         *
          * @return string
          */
         public function getStatus()
@@ -290,7 +299,7 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：
 

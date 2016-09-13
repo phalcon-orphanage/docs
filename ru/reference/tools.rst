@@ -51,11 +51,11 @@
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 Проект создастся с полной рекомендованной структурой:
 
@@ -103,7 +103,7 @@
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 Команда выше сформирует следующий код:
 
@@ -111,7 +111,9 @@
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -164,11 +166,11 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 Созданная модель содержит публичные атрибуты для прямого доступа.
 
@@ -176,7 +178,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -186,7 +190,7 @@ Options:
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -216,7 +220,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -226,7 +232,7 @@ Options:
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -251,6 +257,7 @@ Options:
 
         /**
          * Метод установки значения для поля id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -259,18 +266,20 @@ Options:
         }
 
         /**
-         * Метод установки значения для поля types_id
-         * @param integer $types_id
+         * Метод установки значения для поля typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Возвращает значение статуса поля
+         *
          * @return string
          */
         public function getStatus()
@@ -297,7 +306,7 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 Генератор создаст несколько файлов в вашем приложении, и каталоги для них. Вот краткий обзор того, что будет сгенерировано:
 
