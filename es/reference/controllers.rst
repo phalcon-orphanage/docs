@@ -1,7 +1,7 @@
 Using Controllers
 =================
 
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
+Actions are methods on a controller that handle requests. By default all
 public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
@@ -94,7 +94,7 @@ Parameters are assigned in the same order as they were passed in the route. You 
 Dispatch Loop
 -------------
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
-action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
+action was executed. Now we'll see how the :code:`forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding
 execution to a different controller/action.
 
 .. code-block:: php
@@ -126,7 +126,7 @@ execution to a different controller/action.
         }
     }
 
-If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action.
+If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
 
 .. code-block:: php
 
@@ -153,8 +153,8 @@ the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Ph
 
 Initializing Controllers
 ------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
-action is executed on a controller. The use of the "__construct" method is not recommended.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the :code:`initialize()` method, which is executed first, before any
+action is executed on a controller. The use of the :code:`__construct()` method is not recommended.
 
 .. code-block:: php
 
@@ -183,11 +183,11 @@ action is executed on a controller. The use of the "__construct" method is not r
 
 .. highlights::
 
-    Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
+    The :code:`initialize()` method is only called if the 'beforeExecuteRoute' event is executed with success. This avoid
     that application logic in the initializer cannot be executed without authorization.
 
-If you want to execute some initialization logic just after build the controller object you can implement the
-method 'onConstruct':
+If you want to execute some initialization logic just after the controller object is constructed then you can implement the
+:code:`onConstruct()` method:
 
 .. code-block:: php
 
@@ -205,9 +205,9 @@ method 'onConstruct':
 
 .. highlights::
 
-    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
+    Be aware that :code:`onConstruct()` method is executed even if the action to be executed doesn't exist
     in the controller or the user does not have access to it (according to custom control access
-    provided by developer).
+    provided by the developer).
 
 Injecting Services
 ------------------
@@ -232,7 +232,7 @@ container in application. For example, if we have registered a service like this
         true
     );
 
-Then, we can access to that service in several ways:
+Then, we can access that service in several ways:
 
 .. code-block:: php
 
@@ -320,8 +320,8 @@ Learn more about the HTTP environment in their dedicated articles :doc:`request 
 
 Session Data
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that needs to be persistent.
+Sessions help us maintain persistent data between requests. You can access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+from any controller to encapsulate data that needs to be persistent:
 
 .. code-block:: php
 
@@ -373,7 +373,7 @@ any other class registered with its name can easily replace a controller:
 
 Creating a Base Controller
 --------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many
+Some application features like access control lists, translation, caching and template engines are often common to many
 controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
 controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
 the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
@@ -389,7 +389,7 @@ loaded using any autoloader:
 
     require "../app/controllers/ControllerBase.php";
 
-The implementation of common components (actions, methods, properties etc.) resides in this file:
+Common components (actions, methods, properties etc.) can be implemented in this class:
 
 .. code-block:: php
 
@@ -408,7 +408,7 @@ The implementation of common components (actions, methods, properties etc.) resi
         }
     }
 
-Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
+Now, any controller that extends ControllerBase automatically gains access to the common components (discussed above):
 
 .. code-block:: php
 

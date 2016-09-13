@@ -1,7 +1,7 @@
 Menggunakan Kontroler
 =====================
 
-Kontroler menyediakan sejumlah metode yang disebut aksi. Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua
+Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua
 metode publik pada sebuah kontroler dipetakan ke aksi dan dapat diakses menggunakan sebuah URL. Aksi bertanggung jawab menerjemahkan request dan menciptakan
 respon. Respon biasanya dalam bentuk view yang dirender, namun ada juga cara lain untuk menciptakan respon.
 
@@ -93,7 +93,7 @@ Parameter disalin dengan urutan sama ketika dilewatkan dalam sebuah route. Anda 
 Dispatch Loop
 -------------
 Dispatch loop akan dijalankan dalam Dispatcher sampai tidak ada aksi tersisa untuk dijalankan. Di contoh sebelumnya hanya satu
-aksi yang dijalankan. Kita akan melihat bagaimana "forward" dapat menyediakan alir operasi yang lebih kompleks dalam dispatch loop, dengan mengarahkan
+aksi yang dijalankan. Kita akan melihat bagaimana :code:`forward()` dapat menyediakan alir operasi yang lebih kompleks dalam dispatch loop, dengan mengarahkan
 eksekusi ke kontroler/aksi berbeda.
 
 .. code-block:: php
@@ -152,8 +152,8 @@ lapisan view dalam MVC yang dikelola oleh :doc:`Phalcon\\Mvc\\View <../api/Phalc
 
 Inisialiasi Kontroler
 ---------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` menawarkan metode initialize, yang dijalankan pertama kali, sebelum semua
-aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak disarankan.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` menawarkan metode :code:`initialize()`, yang dijalankan pertama kali, sebelum semua
+aksi dieksekusi pada sebuah kontroler. Penggunaan metode :code:`__construct()` tidak disarankan.
 
 .. code-block:: php
 
@@ -182,11 +182,11 @@ aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak dis
 
 .. highlights::
 
-    Metode 'initialize' hanya dipanggil jika event 'beforeExecuteRoute' dieksekusi dengan sukses. Ini mencegah
+    Metode :code:`initialize()` hanya dipanggil jika event 'beforeExecuteRoute' dieksekusi dengan sukses. Ini mencegah
     kode aplikasi dalam initializer tidak dapat dieksekusi tanpa otorisasi.
 
 Jika anda ingin menjalankan kode inisialiasi tepat setelah menciptakan objek kontroler anda dapat mengimplementasi
-metode 'onConstruct':
+metode :code:`onConstruct()`:
 
 .. code-block:: php
 
@@ -204,7 +204,7 @@ metode 'onConstruct':
 
 .. highlights::
 
-    Ketahui bahwa metode 'onConstruct' dijalankan bahkan bila aksi yang harus dijalankan tidak ada
+    Ketahui bahwa metode :code:`onConstruct()` dijalankan bahkan bila aksi yang harus dijalankan tidak ada
     dalam kontroler atau user tidak punya akses ke sana (berdasarkan kontrol akses kustom yang disediakan
     oleh developer).
 

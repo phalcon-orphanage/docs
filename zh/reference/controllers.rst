@@ -93,7 +93,7 @@
 循环调度（Dispatch Loop）
 -------------------------
 循环调度将会在分发器执行，直到没有action需要执行为止。在上面的例子中，只有一个action
-被执行到。现在让我们来看下“forward”（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
+被执行到。现在让我们来看下:code:`forward()`（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
 另一个controller/action。
 
 .. code-block:: php
@@ -182,10 +182,10 @@
 
 .. highlights::
 
-    “initialize”仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
+    :code:`initialize()`仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
     在初始化中的应用逻辑在未鉴权的情况下无法执行。
 
-如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现“onConstruct”方法：
+如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现:code:`onConstruct()`”方法：
 
 .. code-block:: php
 
