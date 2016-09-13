@@ -36,9 +36,12 @@ and changing the title according to the controller executed.
     <?php
 
     // Register a user component
-    $di->set('elements', function () {
-        return new Elements();
-    });
+    $di->set(
+        "elements",
+        function () {
+            return new Elements();
+        }
+    );
 
 As controllers, plugins or components within a view, this component also has access to the services registered
 in the container and by just accessing an attribute with the same name as a previously registered service:
@@ -53,7 +56,9 @@ in the container and by just accessing an attribute with the same name as a prev
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+
                 <a class="brand" href="#">INVO</a>
+
                 {{ elements.getMenu() }}
             </div>
         </div>
@@ -61,7 +66,9 @@ in the container and by just accessing an attribute with the same name as a prev
 
     <div class="container">
         {{ content() }}
+
         <hr>
+
         <footer>
             <p>&copy; Company 2015</p>
         </footer>
@@ -69,7 +76,7 @@ in the container and by just accessing an attribute with the same name as a prev
 
 The important part is:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     {{ elements.getMenu() }}
 
@@ -87,7 +94,10 @@ we are currently working. This is achieved in each controller initializer:
         public function initialize()
         {
             // Set the document title
-            $this->tag->setTitle('Manage your product types');
+            $this->tag->setTitle(
+                "Manage your product types"
+            );
+
             parent::initialize();
         }
 
@@ -107,7 +117,9 @@ Note, that the method :code:`parent::initialize()` is also called, it adds more 
         protected function initialize()
         {
             // Prepend the application name to the title
-            $this->tag->prependTitle('INVO | ');
+            $this->tag->prependTitle(
+                "INVO | "
+            );
         }
 
         // ...
@@ -122,6 +134,7 @@ Finally, the title is printed in the main view (app/views/index.volt):
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <!-- ... -->
     </html>
 

@@ -40,9 +40,12 @@ esta clase en el contenedor de servicios:
     <?php
 
     // Registrar un componente de usuario
-    $di->set('elements', function () {
-        return new Elements();
-    });
+    $di->set(
+        "elements",
+        function () {
+            return new Elements();
+        }
+    );
 
 Así como los controladores, plugins o componentes, dentro de una vista, este componente también puede acceder a los servicios
 de la aplicación simplemente accediendo a un atributo con el mismo nombre de un servicio previamente registrado:
@@ -57,7 +60,9 @@ de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+
                 <a class="brand" href="#">INVO</a>
+
                 {{ elements.getMenu() }}
             </div>
         </div>
@@ -65,7 +70,9 @@ de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
 
     <div class="container">
         {{ content() }}
+
         <hr>
+
         <footer>
             <p>&copy; Company 2015</p>
         </footer>
@@ -73,7 +80,7 @@ de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
 
 La parte relevante es:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     {{ elements.getMenu() }}
 
@@ -91,7 +98,10 @@ donde estamos trabajando actualmente. Esto se logra en el método inicializador 
         public function initialize()
         {
             // Establecer el título de la página
-            $this->tag->setTitle('Manage your product types');
+            $this->tag->setTitle(
+                "Manage your product types"
+            );
+
             parent::initialize();
         }
 
@@ -111,7 +121,9 @@ El método :code:`parent::initialize()` en la clase padre se llama igualmente, e
         protected function initialize()
         {
             // Agregar el nombre de la aplicación al principio del título
-            $this->tag->prependTitle('INVO | ');
+            $this->tag->prependTitle(
+                "INVO | "
+            );
         }
 
         // ...
@@ -126,6 +138,7 @@ Finalmente, el título se imprime en la vista principal (app/views/index.volt):
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <!-- ... -->
     </html>
 
