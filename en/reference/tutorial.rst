@@ -294,13 +294,22 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo "<h1>Hello!</h1>";
 
-    echo $this->tag->linkTo("signup", "Sign Up Here!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Sign Up Here!"
+    );
 
 The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
+    <h1>Hello!</h1>
+
+    <a href="/tutorial/signup">Sign Up Here!</a>
 
 To generate the tag we use the class :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows
 us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI
@@ -331,23 +340,33 @@ The empty index action gives the clean pass to a view with the form definition (
 
 .. code-block:: html+php
 
-    <h2>Sign up using this form</h2>
+    <h2>
+        Sign up using this form
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Name</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Name
+            </label>
 
-     <p>
-        <label for="email">E-Mail</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Register") ?>
-     </p>
+        <p>
+            <label for="email">
+                E-Mail
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Register"); ?>
+        </p>
 
     </form>
 
@@ -397,10 +416,11 @@ Before creating our first model, we need to create a database table outside of P
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 A model should be located in the app/models directory (app/models/Users.php). The model maps to the "users" table:
@@ -469,13 +489,22 @@ Receiving data from the form and storing them in the table is the next step.
             $user = new Users();
 
             // Store and check for errors
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Thanks for registering!";
             } else {
                 echo "Sorry, the following problems were generated: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }

@@ -294,13 +294,22 @@ Ahora cambiaremos el archivo index.phtml para agregar un enlace a un nuevo contr
 
     echo "<h1>Hello!</h1>";
 
-    echo $this->tag->linkTo("signup", "Sign Up Here!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Sign Up Here!"
+    );
 
 El HTML generado muestra una eqiqueta ("a") enlazando al nuevo controlador:
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
+    <h1>Hello!</h1>
+
+    <a href="/tutorial/signup">Sign Up Here!</a>
 
 Para generar la etiqueta hemos usado la clase :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Esta es una clase utilitaria que nos permite
 construir código HTML teniendo en cuenta las convenciones del framework. As this class is a also a service registered in the DI
@@ -331,23 +340,33 @@ Al encontrarce la acción 'index' vacía se da paso a la vista, la cual contiene
 
 .. code-block:: html+php
 
-    <h2>Registrate haciendo uso de este formulario</h2>
+    <h2>
+        Registrate haciendo uso de este formulario
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Nombre</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Nombre
+            </label>
 
-     <p>
-        <label for="email">Correo electrónico</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Registrarme") ?>
-     </p>
+        <p>
+            <label for="email">
+                Correo electrónico
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Registrarme"); ?>
+        </p>
 
     </form>
 
@@ -397,10 +416,11 @@ Antes de crear nuestro primer modelo, necesitamos una tabla que el modelo use pa
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 Según como hemos organizado esta aplicación, un modelo debe ser ubicado en el directorio app/models (app/models/Users.php). El modelo que mapea a la tabla "users" es:
@@ -469,13 +489,22 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
             $user = new Users();
 
             // Almacenar y verificar errores de validación
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Gracias por registrarte!";
             } else {
                 echo "Lo sentimos, los siguientes errores ocurrieron mientras te dabamos de alta: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }

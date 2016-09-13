@@ -294,13 +294,22 @@ Putting everything together
 
     echo "<h1>Привет!</h1>";
 
-    echo $this->tag->linkTo("signup", "Регистрируйся!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Регистрируйся!"
+    );
 
 Сгенерированный код HTML будет выводить тэг ("a"), указывающий на наш новый контроллер:
 
 .. code-block:: html
 
-    <h1>Привет!</h1> <a href="/tutorial/signup">Регистрируйся!</a>
+    <h1>Привет!</h1>
+
+    <a href="/tutorial/signup">Регистрируйся!</a>
 
 Для генерации тэга мы воспользовались встроенным классом :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Это служебный класс, позволяющий
 конструировать HTML-разметку в Phalcon-подобном стиле. Этот класс также является сервисом, зарегистрированным в DI,
@@ -331,23 +340,33 @@ Putting everything together
 
 .. code-block:: html+php
 
-    <h2>Зарегистрируйтесь, используя эту форму</h2>
+    <h2>
+        Зарегистрируйтесь, используя эту форму
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Имя</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Имя
+            </label>
 
-     <p>
-        <label for="email">E-Mail</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Регистрация") ?>
-     </p>
+        <p>
+            <label for="email">
+                E-Mail
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Регистрация"); ?>
+        </p>
 
     </form>
 
@@ -397,10 +416,11 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 Файлы моделей должны находиться в папке app/models (app/models/Users.php). Модель, представляющая таблицу "users", выглядит следующим образом:
@@ -469,13 +489,22 @@ Phalcon содержит первую ORM для PHP, полностью нап�
             $user = new Users();
 
             // Сохраняем и проверяем на наличие ошибок
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Спасибо за регистрацию!";
             } else {
                 echo "К сожалению, возникли следующие проблемы: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }

@@ -280,13 +280,22 @@ Viewへのアウトプットの送信
 
     echo "<h1>Hello!</h1>";
 
-    echo $this->tag->linkTo("signup", "Sign Up Here!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Sign Up Here!"
+    );
 
 生成されたHTMLコードは、新しいコントローラーへリンクをしているアンカー("a")タグです。
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
+    <h1>Hello!</h1>
+
+    <a href="/tutorial/signup">Sign Up Here!</a>
 
 タグを生成するためには、 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` を使用します。このユーティリティクラスによって、フレームワークの規約に従ったHTMLタグを生成することができます。HTML生成機能の詳細については、 :doc:`found here <tags>` を参照してください。
 
@@ -313,23 +322,33 @@ Viewへのアウトプットの送信
 
 .. code-block:: html+php
 
-    <h2>Sign up using this form</h2>
+    <h2>
+        Sign up using this form
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Name</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Name
+            </label>
 
-     <p>
-        <label for="email">E-Mail</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Register") ?>
-     </p>
+        <p>
+            <label for="email">
+                E-Mail
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Register"); ?>
+        </p>
 
     </form>
 
@@ -378,10 +397,11 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 モデルは app/models ディレクトリに配置してください (app/models/Users.php)。モデルは「users」テーブルをマッピングします:
@@ -450,13 +470,22 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
             $user = new Users();
 
             // データを保存し、エラーをチェックする
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Thanks for registering!";
             } else {
                 echo "Sorry, the following problems were generated: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }

@@ -284,13 +284,22 @@ Putting everything together
 
     echo "<h1>Hello!</h1>";
 
-    echo $this->tag->linkTo("signup", "Sign Up Here!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Sign Up Here!"
+    );
 
 生成的HTML代码显示一个锚 ("a") HTML标签链接到一个新的控制器：
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
+    <h1>Hello!</h1>
+
+    <a href="/tutorial/signup">Sign Up Here!</a>
 
 我们使用类 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 去生成标记。 这是一个让我们构建HTML标记的实用类。 关于生成HTML更详细的文章可以查看 :doc:`视图助手 <tags>`
 
@@ -317,23 +326,33 @@ Putting everything together
 
 .. code-block:: html+php
 
-    <h2>Sign up using this form</h2>
+    <h2>
+        Sign up using this form
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Name</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Name
+            </label>
 
-     <p>
-        <label for="email">E-Mail</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Register") ?>
-     </p>
+        <p>
+            <label for="email">
+                E-Mail
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Register"); ?>
+        </p>
 
     </form>
 
@@ -382,10 +401,11 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 模型应该位于 app/models 目录 (app/models/Users.php). 这个模型对应“users”表:
@@ -454,13 +474,22 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
             $user = new Users();
 
             // Store and check for errors
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Thanks for registering!";
             } else {
                 echo "Sorry, the following problems were generated: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }
