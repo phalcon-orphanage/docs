@@ -63,7 +63,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -86,8 +86,8 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
@@ -112,13 +112,15 @@ execution to a different controller/action.
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Forward flow to another action
             $this->dispatcher->forward(
                 [
                     "controller" => "users",
-                    "action"     => "signin"
+                    "action"     => "signin",
                 ]
             );
         }
@@ -167,13 +169,13 @@ action is executed on a controller. The use of the "__construct" method is not r
         public function initialize()
         {
             $this->settings = [
-                "mySetting" => "value"
+                "mySetting" => "value",
             ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -220,9 +222,15 @@ container in application. For example, if we have registered a service like this
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 Then, we can access to that service in several ways:
 
@@ -237,19 +245,19 @@ Then, we can access to that service in several ways:
         public function saveAction()
         {
             // Injecting the service by just accessing the property with the same name
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // Accessing the service from the DI
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // Another way to access the service using the magic getter
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // Another way to access the service using the magic getter
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // Using the array-syntax
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -277,7 +285,7 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
         public function saveAction()
         {
             // Check if request has made with POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // Access POST data
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -313,7 +321,7 @@ Learn more about the HTTP environment in their dedicated articles :doc:`request 
 セッションデータ
 ----------------
 Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that need to be persistent.
+from any controller to encapsulate data that needs to be persistent.
 
 .. code-block:: php
 
@@ -344,16 +352,24 @@ any other class registered with its name can easily replace a controller:
     <?php
 
     // Register a controller as a service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
 ベース・コントローラの作成
 --------------------------
@@ -419,14 +435,15 @@ you to implement hook points before/after the actions are executed:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
                     [
-                        'controller' => 'home',
-                        'action'     => 'index'
+                        "controller" => "home",
+                        "action"     => "index",
                     ]
                 );
 

@@ -63,7 +63,7 @@
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'другой заголовок по умолчанию')
+        public function showAction($year = 2015, $postTitle = "другой заголовок по умолчанию")
         {
 
         }
@@ -86,8 +86,8 @@
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
@@ -112,13 +112,15 @@
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("У вас недостаточно прав для выполнения этого действия");
+            $this->flash->error(
+                "У вас недостаточно прав для выполнения этого действия"
+            );
 
             // Перенаправляем на другое действие
             $this->dispatcher->forward(
                 [
                     "controller" => "users",
-                    "action"     => "signin"
+                    "action"     => "signin",
                 ]
             );
         }
@@ -167,13 +169,13 @@ MVC слой отображения (View), управляемый компон�
         public function initialize()
         {
             $this->settings = [
-                "mySetting" => "value"
+                "mySetting" => "value",
             ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -220,9 +222,15 @@ MVC слой отображения (View), управляемый компон�
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 Доступ к этому сервису можно получить несколькими способами:
 
@@ -237,19 +245,19 @@ MVC слой отображения (View), управляемый компон�
         public function saveAction()
         {
             // Прямой доступ по имени, используя его как свойство
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // С использованием сервиса DI
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // Используя магический метод
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // Еще больше магических методов для получения всей цепочки
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // Используя синтаксис работы с массивами
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -277,7 +285,7 @@ MVC слой отображения (View), управляемый компон�
         public function saveAction()
         {
             // Проверяем, что данные пришли методом POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // Получаем POST данные
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -344,16 +352,24 @@ MVC слой отображения (View), управляемый компон�
     <?php
 
     // Регистрируем контроллер как сервис
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // Регистрируем контроллер из пространства имен в качестве сервиса
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
 Создание базового контроллера
 -----------------------------
@@ -419,14 +435,15 @@ MVC слой отображения (View), управляемый компон�
         public function beforeExecuteRoute($dispatcher)
         {
             // Выполняется до запуска любого найденного действия
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("У вас недостаточно прав для сохранения записей");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "У вас недостаточно прав для сохранения записей"
+                );
 
                 $this->dispatcher->forward(
                     [
-                        'controller' => 'home',
-                        'action'     => 'index'
+                        "controller" => "home",
+                        "action"     => "index",
                     ]
                 );
 

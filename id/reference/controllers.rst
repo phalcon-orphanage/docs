@@ -62,7 +62,7 @@ Parameter tanpa nilai default ditangani seperlunya. Pengaturan nilai opsional un
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -85,8 +85,8 @@ Parameter disalin dengan urutan sama ketika dilewatkan dalam sebuah route. Anda 
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
@@ -111,13 +111,15 @@ eksekusi ke kontroler/aksi berbeda.
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Arahkan alir ke aksi lain
             $this->dispatcher->forward(
                 [
                     "controller" => "users",
-                    "action"     => "signin"
+                    "action"     => "signin",
                 ]
             );
         }
@@ -166,13 +168,13 @@ aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak dis
         public function initialize()
         {
             $this->settings = [
-                "mySetting" => "value"
+                "mySetting" => "value",
             ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -219,9 +221,15 @@ container dalam aplikasi. Contoh, jika kita mendaftarkan sebuah service seperti 
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 Anda dapat mengakses service tersebut dengan beberapa cara:
 
@@ -236,19 +244,19 @@ Anda dapat mengakses service tersebut dengan beberapa cara:
         public function saveAction()
         {
             // Menginjeksi service dengan mengakses property bernama sama
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // Mengakses service dari DI
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // Cara lain mengakses service dengan magic getter
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // Cara lain mengakses service dengan magic getter
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // Menggunkana sintaks array
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -276,7 +284,7 @@ berisi :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` mewakili ap
         public function saveAction()
         {
             // Uji apakah request dibuat dengan POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // Akses data POST
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -343,16 +351,24 @@ tiap kelas lain yang terdaftar dengan nama sama dapat dengan mudah mengganti seb
     <?php
 
     // Daftarkan kontroler sebagai service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // Daftarkan kontroler dengan namespace sebagai service
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
 Menciptakan Kontroler Dasar
 ---------------------------
@@ -418,14 +434,15 @@ anda untuk mengimplementasi hook point sebelum/sesudah aksi dieksekusi:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
                     [
-                        'controller' => 'home',
-                        'action'     => 'index'
+                        "controller" => "home",
+                        "action"     => "index",
                     ]
                 );
 
