@@ -27,14 +27,12 @@ Anda dapat menambah resource ke kumpulan seperti berikut:
         public function index()
         {
             // Tambahkan beberapa CSS lokal
-            $this->assets
-                ->addCss('css/style.css')
-                ->addCss('css/index.css');
+            $this->assets->addCss("css/style.css");
+            $this->assets->addCss("css/index.css");
 
             // Tambahkan beberapa Javascript
-            $this->assets
-                ->addJs('js/jquery.js')
-                ->addJs('js/bootstrap.min.js');
+            $this->assets->addJs("js/jquery.js");
+            $this->assets->addJs("js/bootstrap.min.js");
         }
     }
 
@@ -45,13 +43,14 @@ di sebuah view, resource ini lalu dapat dicetak:
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputCss() ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputCss(); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs() ?>
+            <?php $this->assets->outputJs(); ?>
         </body>
     <html>
 
@@ -62,10 +61,11 @@ Sintaks Volt:
     <html>
         <head>
             <title>Some amazing website</title>
+
             {{ assets.outputCss() }}
         </head>
-        <body>
 
+        <body>
             <!-- ... -->
 
             {{ assets.outputJs() }}
@@ -91,10 +91,9 @@ Parameter kedua :code:`addCss()` dan :code:`addJs()` menyatakan apakah resource 
     public function indexAction()
     {
         // Tambahkan resource CSS local
-        $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true)
-            ->addCss('css/extra.css');
+        $this->assets->addCss("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css", false);
+        $this->assets->addCss("css/style.css", true);
+        $this->assets->addCss("css/extra.css");
     }
 
 Koleksi
@@ -107,16 +106,16 @@ Anda dapat menciptakan koleksi tambahah untuk mengelompokkan resource tertentu a
     <?php
 
     // Javascripts di header
-    $this->assets
-        ->collection('header')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $headerCollection = $this->assets->collection("header");
+
+    $headerCollection->addJs("js/jquery.js");
+    $headerCollection->addJs("js/bootstrap.min.js");
 
     // Javascripts di footer
-    $this->assets
-        ->collection('footer')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $footerCollection = $this->assets->collection("footer");
+
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 dalam view:
 
@@ -125,13 +124,14 @@ dalam view:
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputJs('header') ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputJs("header"); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs('footer') ?>
+            <?php $this->assets->outputJs("footer"); ?>
         </body>
     <html>
 
@@ -142,13 +142,14 @@ Sintaks Volt:
     <html>
         <head>
             <title>Some amazing website</title>
-            {{ assets.outputCss('header') }}
-        </head>
-        <body>
 
+            {{ assets.outputCss("header") }}
+        </head>
+
+        <body>
             <!-- ... -->
 
-            {{ assets.outputJs('footer') }}
+            {{ assets.outputJs("footer") }}
         </body>
     <html>
 
@@ -160,16 +161,16 @@ Koleksi dapat diberi prefix URL, memungkinkan anda mengubah satu server ke lainn
 
     <?php
 
-    $scripts = $this->assets->collection('footer');
+    $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == 'development') {
-        $scripts->setPrefix('/');
+    if ($config->environment == "development") {
+        $footerCollection->setPrefix("/");
     } else {
-        $scripts->setPrefix('http:://cdn.example.com/');
+        $footerCollection->setPrefix("http:://cdn.example.com/");
     }
 
-    $scripts->addJs('js/jquery.js')
-            ->addJs('js/bootstrap.min.js');
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 Sintaks berantai tersedia pula:
 
@@ -178,11 +179,11 @@ Sintaks berantai tersedia pula:
     <?php
 
     $scripts = $assets
-        ->collection('header')
-        ->setPrefix('http://cdn.example.com/')
+        ->collection("header")
+        ->setPrefix("http://cdn.example.com/")
         ->setLocal(false)
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+        ->addJs("js/jquery.js")
+        ->addJs("js/bootstrap.min.js");
 
 Penyaringan dan Minifikasi
 --------------------------
@@ -200,29 +201,33 @@ Contoh berikut menunjukkan bagaimana melakukan minifikasi pada koleksi resource:
     $manager
 
         // JavaScript berikut terletak di bawah
-        ->collection('jsFooter')
+        ->collection("jsFooter")
 
         // Nama file akhir
-        ->setTargetPath('final.js')
+        ->setTargetPath("final.js")
 
         // Script tag dibuat dengan URI ini
-        ->setTargetUri('production/final.js')
+        ->setTargetUri("production/final.js")
 
         // INi adalah resource remote yang tidak perlu difilter
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
+        ->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false)
 
         // Ini adalah resource lokal yang harus difilter
-        ->addJs('common-functions.js')
-        ->addJs('page-functions.js')
+        ->addJs("common-functions.js")
+        ->addJs("page-functions.js")
 
         // Gabung semuanya menjadi satu file
         ->join(true)
 
         // menggunakan filter bawaan Jsmin
-        ->addFilter(new Phalcon\Assets\Filters\Jsmin())
+        ->addFilter(
+            new Phalcon\Assets\Filters\Jsmin()
+        )
 
         // Menggunakan filter kustom
-        ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+        ->addFilter(
+            new MyApp\Assets\Filters\LicenseStamper()
+        );
 
 Sebuah koleksi dapat berisi resource JavaScript atau CSS
 namun tidak keduanya. Beberapa resource mungkin remote, yakni, mereka diperoleh melalui HTTP dari sumber remote
@@ -237,14 +242,14 @@ dibiarkan apa adanya:
     <?php
 
     // JavaScript ini terletak di bagian bawah halaman
-    $js = $manager->collection('jsFooter');
+    $jsFooterCollection = $manager->collection("jsFooter");
 
     // resource remote berikut tidak perlu difilter
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
+    $jsFooterCollection->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false);
 
     // Resource lokal ini harus difilter
-    $js->addJs('common-functions.js');
-    $js->addJs('page-functions.js');
+    $jsFooterCollection->addJs("common-functions.js");
+    $jsFooterCollection->addJs("page-functions.js");
 
 Filter didaftarkan di koleksi, filter lebih dari satu diizinkan, konten resource difilter
 dengan urutan sama seperti urutan registrasi filter:
@@ -254,10 +259,14 @@ dengan urutan sama seperti urutan registrasi filter:
     <?php
 
     // gunakan filter Jsmin bawaan
-    $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
+    $jsFooterCollection->addFilter(
+        new Phalcon\Assets\Filters\Jsmin()
+    );
 
     // Gunakan filter custom
-    $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+    $jsFooterCollection->addFilter(
+        new MyApp\Assets\Filters\LicenseStamper()
+    );
 
 Kedua filter bawaan dan kustom dapat diterapkan secara transparan pada koleksi.
 Langkah terakhir adalah menentukan apakah semua resource dalam koleksi harus digabung menjadi file tunggal or masing-masing
@@ -270,17 +279,17 @@ dan URI mana yang akan digunakan menampilkannya. Pengaturan ini diset dengan :co
 
     <?php
 
-    $js->join(true);
+    $jsFooterCollection->join(true);
 
     // Nama file akhir
-    $js->setTargetPath('public/production/final.js');
+    $jsFooterCollection->setTargetPath("public/production/final.js");
 
     // script HTML tag dibuat dengan URI ini
-    $js->setTargetUri('production/final.js');
+    $jsFooterCollection->setTargetUri("production/final.js");
 
 Filter Bawaan
 ^^^^^^^^^^^^^
-Phalcon menyediakan 2 filter bawaan untuk minifikasi JavaScript dan CSS, C-backendnya menghasilkan 
+Phalcon menyediakan 2 filter bawaan untuk minifikasi JavaScript dan CSS, C-backendnya menghasilkan
 overhead terendah untuk menjalankan tugas ini:
 
 +---------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
@@ -317,7 +326,7 @@ tool yang sudah dan lebih canggih seperti YUI_, Sass_, Closure_, dan lain-lain.:
          *
          * @param array $options
          */
-        public function __construct($options)
+        public function __construct(array $options)
         {
             $this->_options = $options;
         }
@@ -326,21 +335,22 @@ tool yang sudah dan lebih canggih seperti YUI_, Sass_, Closure_, dan lain-lain.:
          * Lakukan filtering
          *
          * @param string $contents
+         *
          * @return string
          */
         public function filter($contents)
         {
             // Tulis konten string ke file sementara
-            file_put_contents('temp/my-temp-1.css', $contents);
+            file_put_contents("temp/my-temp-1.css", $contents);
 
             system(
-                $this->_options['java-bin'] .
-                ' -jar ' .
-                $this->_options['yui'] .
-                ' --type css '.
-                'temp/my-temp-file-1.css ' .
-                $this->_options['extra-options'] .
-                ' -o temp/my-temp-file-2.css'
+                $this->_options["java-bin"] .
+                " -jar " .
+                $this->_options["yui"] .
+                " --type css " .
+                "temp/my-temp-file-1.css " .
+                $this->_options["extra-options"] .
+                " -o temp/my-temp-file-2.css"
             );
 
             // Kembalikan isi file sementara
@@ -355,16 +365,16 @@ Penggunaan:
     <?php
 
     // Ambil koleksi CSS
-    $css = $this->assets->get('head');
+    $css = $this->assets->get("head");
 
     // Tambahkan filter kompresor YUI ke koleksi
     $css->addFilter(
         new CssYUICompressor(
-            array(
-                'java-bin'      => '/usr/local/bin/java',
-                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-                'extra-options' => '--charset utf8'
-            )
+            [
+                "java-bin"      => "/usr/local/bin/java",
+                "yui"           => "/some/path/yuicompressor-x.y.z.jar",
+                "extra-options" => "--charset utf8",
+            ]
         )
     );
 
@@ -380,6 +390,7 @@ di contoh sebelumnya, kita menggunakan filter kustom bernama :code:`LicenseStamp
      * Tambahkan pesan lisensi di awal file
      *
      * @param string $contents
+     *
      * @return string
      */
     class LicenseStamper implements FilterInterface
@@ -409,8 +420,12 @@ Anda dapat mengubah metode ini atau mencetak resource secara manual dengan cara 
 
     use Phalcon\Tag;
 
-    foreach ($this->assets->collection('js') as $resource) {
-        echo Tag::javascriptInclude($resource->getPath());
+    $jsCollection = $this->assets->collection("js");
+
+    foreach ($jsCollection as $resource) {
+        echo Tag::javascriptInclude(
+            $resource->getPath()
+        );
     }
 
 .. _YUI: http://yui.github.io/yuicompressor/

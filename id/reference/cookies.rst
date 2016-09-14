@@ -22,25 +22,30 @@ diakses:
         public function loginAction()
         {
             // Uji apakah cookies sebelumnya sudah diset
-            if ($this->cookies->has('remember-me')) {
-
+            if ($this->cookies->has("remember-me")) {
                 // Baca cookie
-                $rememberMe = $this->cookies->get('remember-me');
+                $rememberMeCookie = $this->cookies->get("remember-me");
 
                 // Baca isi cookie
-                $value      = $rememberMe->getValue();
+                $value = $rememberMeCookie->getValue();
             }
         }
 
         public function startAction()
         {
-            $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
+            $this->cookies->set(
+                "remember-me",
+                "some value",
+                time() + 15 * 86400
+            );
         }
 
         public function logoutAction()
         {
+            $rememberMeCookie = $this->cookies->get("remember-me");
+
             // Hapus cookie
-            $this->cookies->get('remember-me')->delete();
+            $rememberMe->delete();
         }
     }
 
@@ -58,13 +63,16 @@ Anda dapat mematikan enkripsi dengan cara berikut:
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function () {
-        $cookies = new Cookies();
+    $di->set(
+        "cookies",
+        function () {
+            $cookies = new Cookies();
 
-        $cookies->useEncryption(false);
+            $cookies->useEncryption(false);
 
-        return $cookies;
-    });
+            return $cookies;
+        }
+    );
 
 Jika anda ingin menggunakan enkripsi, sebuah key global harus diset di 'crypt' service:
 
@@ -74,13 +82,16 @@ Jika anda ingin menggunakan enkripsi, sebuah key global harus diset di 'crypt' s
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
-        $crypt = new Crypt();
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Gunakan key anda sendiri!
+            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Gunakan key anda sendiri!
 
-        return $crypt;
-    });
+            return $crypt;
+        }
+    );
 
 .. highlights::
 

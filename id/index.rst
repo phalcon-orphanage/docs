@@ -16,10 +16,27 @@ Phalcon tidak hanya tentang performa, tujuan kami adalah membuatnya kokoh, kaya 
 Daftar Isi
 ----------
 
+Installation
+^^^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 3
 
    reference/install
+   reference/nginx
+   reference/apache
+   reference/cherokee
+   reference/tools
+   reference/linuxtools
+   reference/mactools
+   reference/wintools
+
+Tutorials
+^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/tutorial
    reference/tutorial-invo
    reference/tutorial-invo-2
@@ -28,10 +45,18 @@ Daftar Isi
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
+
+Components
+^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/di
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
    reference/phql
@@ -73,10 +98,32 @@ Daftar Isi
    reference/intl
    reference/migrations
    reference/debug
-   reference/tools
-   reference/whats-next
    reference/unit-testing
+
+In Depth Explanations / Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
+   reference/whats-next
+   reference/di-explained
+   reference/applications-explained
+
+API
+^^^
+
+.. toctree::
+   :maxdepth: 2
+
    api/index
+
+Legal
+^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/license
 
 Format lain

@@ -16,10 +16,10 @@ Use uma estratégia de carregador automático que leva em conta os espaços de n
     <?php
 
     $loader->registerNamespaces(
-        array(
+        [
            "Store\\Admin\\Controllers" => "../bundles/admin/controllers/",
-           "Store\\Admin\\Models"      => "../bundles/admin/models/"
-        )
+           "Store\\Admin\\Models"      => "../bundles/admin/models/",
+        ]
     );
 
 Especificá-lo nas rotas como um parâmetro separado in the route's paths:
@@ -30,11 +30,11 @@ Especificá-lo nas rotas como um parâmetro separado in the route's paths:
 
     $router->add(
         "/admin/users/my-profile",
-        array(
+        [
             "namespace"  => "Store\\Admin",
             "controller" => "Users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
 Passando-o como parte da rota:
@@ -45,11 +45,11 @@ Passando-o como parte da rota:
 
     $router->add(
         "/:namespace/admin/users/my-profile",
-        array(
+        [
             "namespace"  => 1,
             "controller" => "Users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
 Se você está apenas trabalhando com o mesmo namespace para cada controller em seu aplicativo, em seguida, você pode definir um namespace padrão
@@ -62,11 +62,18 @@ na Dispatcher, ao fazer isso, você não precisa especificar um nome completo da
     use Phalcon\Mvc\Dispatcher;
 
     // Registrando um dispatcher
-    $di->set('dispatcher', function () {
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDefaultNamespace("Store\\Admin\\Controllers");
-        return $dispatcher;
-    });
+    $di->set(
+        "dispatcher",
+        function () {
+            $dispatcher = new Dispatcher();
+
+            $dispatcher->setDefaultNamespace(
+                "Store\\Admin\\Controllers"
+            );
+
+            return $dispatcher;
+        }
+    );
 
 Controllers in Namespaces
 -------------------------
@@ -128,9 +135,9 @@ Se os models têm relações que deve incluir o namespace também:
                 "id",
                 "Store\\Models\\Parts",
                 "robots_id",
-                array(
-                    "alias" => "parts"
-                )
+                [
+                    "alias" => "parts",
+                ]
             );
         }
     }
@@ -141,6 +148,6 @@ Em PHQL você deve escrever as declarações, incluindo namespaces:
 
     <?php
 
-    $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
+    $phql = "SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p";
 
 .. _Namespaces: http://php.net/manual/en/language.namespaces.php

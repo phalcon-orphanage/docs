@@ -10,6 +10,32 @@ Limpar a entrada do usuário é uma parte crítica do desenvolvimento de softwar
 
 O componente :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` provê um conjunto de filtros e normalizadores. Fornece uma camada orientada a objetos em torno da extensão filter do PHP.
 
+Tipos de Filtros imbutidos
+--------------------------
+Os seguintes filtros imbutidos estão disponíveis por esse componente:
+
++-----------+------------------------------------------------------------------------------+
+| Nome      | Descrição                                                                    |
++===========+==============================================================================+
+| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
++-----------+------------------------------------------------------------------------------+
+| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
++-----------+------------------------------------------------------------------------------+
+| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
++-----------+------------------------------------------------------------------------------+
+| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
++-----------+------------------------------------------------------------------------------+
+| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
++-----------+------------------------------------------------------------------------------+
+| striptags | Aplica a função strip_tags_                                                  |
++-----------+------------------------------------------------------------------------------+
+| trim      | Aplica a função trim_                                                        |
++-----------+------------------------------------------------------------------------------+
+| lower     | Aplica a função strtolower_                                                  |
++-----------+------------------------------------------------------------------------------+
+| upper     | Aplica a função strtoupper_                                                  |
++-----------+------------------------------------------------------------------------------+
+
 Normalizando dados
 ------------------
 Normalização é o processo que remove caracteres específicos de um valor, que não são requeridos ou desejados pelo usuário ou aplicação.
@@ -106,32 +132,26 @@ o formato que esperamos.
     // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
+Combining Filters
+-----------------
+You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
-Tipos de Filtros imbutidos
---------------------------
-Os seguintes filtros imbutidos estão disponíveis por esse componente:
+.. code-block:: php
 
-+-----------+------------------------------------------------------------------------------+
-| Nome      | Descrição                                                                    |
-+===========+==============================================================================+
-| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
-+-----------+------------------------------------------------------------------------------+
-| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
-+-----------+------------------------------------------------------------------------------+
-| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
-+-----------+------------------------------------------------------------------------------+
-| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
-+-----------+------------------------------------------------------------------------------+
-| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
-+-----------+------------------------------------------------------------------------------+
-| striptags | Aplica a função strip_tags_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| trim      | Aplica a função trim_                                                        |
-+-----------+------------------------------------------------------------------------------+
-| lower     | Aplica a função strtolower_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| upper     | Aplica a função strtoupper_                                                  |
-+-----------+------------------------------------------------------------------------------+
+    <?php
+
+    use Phalcon\Filter;
+
+    $filter = new Filter();
+
+    // Returns "Hello"
+    $filter->sanitize(
+        "   <h1> Hello </h1>   ",
+        [
+            "striptags",
+            "trim",
+        ]
+    );
 
 Criando seus próprios filtros
 -----------------------------
@@ -146,9 +166,12 @@ Você pode adicionar seus próprios filtros em :doc:`Phalcon\\Filter <../api/Pha
     $filter = new Filter();
 
     // Using an anonymous function
-    $filter->add('md5', function ($value) {
-        return preg_replace('/[^0-9a-f]/', '', $value);
-    });
+    $filter->add(
+        "md5",
+        function ($value) {
+            return preg_replace("/[^0-9a-f]/", "", $value);
+        }
+    );
 
     // Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
@@ -172,7 +195,10 @@ Ou, se preferir, você pode implementar uma classe filtro:
     $filter = new Filter();
 
     // Using an object
-    $filter->add('ipv4', new IPv4Filter());
+    $filter->add(
+        "ipv4",
+        new IPv4Filter()
+    );
 
     // Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");

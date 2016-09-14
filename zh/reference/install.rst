@@ -28,13 +28,62 @@ Windows
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+To add the repository to your distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # or for PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM distributions (i.e. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To add the repository to our distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # or for PHP 7
+
+    sudo yum install php70u-phalcon
+
+Compile from source
+^^^^^^^^^^^^^^^^^^^
 在Linux/Solaris系统下，你能很轻易从源代码编译和安装这个拓展:
 
-基本要求（Requirements）
-^^^^^^^^^^^^^^^^^^^^^^^^
 必要的包:
 
-* PHP >= 5.3 development resources
+* PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
 * Git (如果不是已经安装在你的系统，且你没有从Github上下载这个包并通过FTP/SFTP上传到你的服务器上)
 
@@ -52,16 +101,16 @@ Linux/Solaris
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-编译（Compilation）
-^^^^^^^^^^^^^^^^^^^
 创建扩展:
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 添加扩展到你的php配置文件:
@@ -96,6 +145,8 @@ Phalcon自动检测你的系统架构，然而，您可以强制编译为一个�
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -105,8 +156,11 @@ Phalcon自动检测你的系统架构，然而，您可以强制编译为一个�
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -117,19 +171,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -148,7 +200,33 @@ FreeBSD
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+确认安装（Checking your installation）
+--------------------------------------
+请检查你的:code:`phpinfo()`输出了一个"Phalcon"部分引用或者执行以下代码片段:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+Phalcon 拓展应该作为输出的一部分出现:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 安装说明（Installation Notes）
 ------------------------------

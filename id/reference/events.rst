@@ -4,6 +4,15 @@ Events Manager
 Tugas komponen ini adalah mengintersepsi eksekusi sebagian besar komponen lain dalam framework dengan menciptakan "hook points". Hook
 point ini memungkinkan developer mendapatkan informasi status, manipulasi data atau  mengubah alir eksekusi selama proses sebuah komponen.
 
+Konvensi Penamaan
+-----------------
+Event Phalcon menggunakan namespace untuk menghindari tabrakan penamaan. Tiap komponen dalam Phalcon menempati sebuah namespace berbeda dan anda bebas menciptakan
+milik anda sesuai kebutuhan. Nama kejadian diformat sebagai "component:event". Contoh, karena :doc:`Phalcon\\Db <../api/Phalcon_Db>` menempati namespace "db", 
+nama lengkap event "afterQuery" adalah "db:afterQuery".
+
+Ketika memasang event listener ke event manager, anda dapat menggunakan "component" untuk menangkap semua kejadian dari komponen tersebut (contoh "db" untuk menangkap semua
+kejadian :doc:`Phalcon\\Db <../api/Phalcon_Db>`) atau "component:event" untuk mengacu kejadian tertentu(contoh "db:afterQuery").
+
 Contoh Penggunaan
 -------------
 Di contoh berikut, kita menggunakan EventsManager untuk mendengarkan kejadian yabg dihasilkan oleh koneksi MySQL yang dikelola :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
@@ -13,88 +22,50 @@ Pertama, kita perlu sebuah objek listener untuk melakukannya. Kita menciptakan s
 
     <?php
 
-    class MyDbListener
-    {
-        public function afterConnect()
-        {
-
-        }
-
-        public function beforeQuery()
-        {
-
-        }
-
-        public function afterQuery()
-        {
-
-        }
-    }
-
-Kelas baru ini bisa sebanyak yang kita mau. EventsManager akan menghubungkan komponen dan kelas listener kita sehingga menyediakan,
-hook points berdasarkan metode yag kita definisi di kelas listener kita:
-
-.. code-block:: php
-
-    <?php
-
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
-    // Buat sebuah listener database
-    $dbListener    = new MyDbListener();
+    $eventsManager->attach(
+        "db:afterQuery",
+        function (Event $event, $connection) {
+            echo $connection->getSQLStatement();
+        }
+    );
 
-    // Dengarkan semua kejadian database
-    $eventsManager->attach('db', $dbListener);
-
-    $connection    = new DbAdapter(
-        array(
+    $connection = new DbAdapter(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
     // Pasang eventsManager ke instance adapter db
     $connection->setEventsManager($eventsManager);
 
     // Kirim perintah SQL ke server database
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
-Untuk dapat mencatat semua perintah SQl yang dieksekusi oleh aplikasi kita, kita perlu menggunakan event “afterQuery”. Parameter pertama yang dilewatkan ke
-event listener berisi informasi kontekstual tentang event  yang sedang berjalan, kedua adalah koneksinya.
+Sekarang tiap tiap kali sebuah query dieksekusi, pernyataan SQL akan dicetak. Parameter pertama yang dilewatkan ke fungsi lambda berisi informasi 
+kontekstual tentang kejadian yang berjalan, yang kedua adalah sumber kejadian (dalam hal ini koneksi itu sendiri). Parameter ketiga dapat
+juga ditentukan yang akan berisi data sembarang terkait kejadian.
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Logger\Adapter\File as Logger;
-
-    class MyDbListener
-    {
-        protected $_logger;
-
-        public function __construct()
-        {
-            $this->_logger = new Logger("../apps/logs/db.log");
-        }
-
-        public function afterQuery($event, $connection)
-        {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
-        }
-    }
-
-Sebagai bagian dari contoh ini, kita akan mengimplementasi :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` untuk mendeteksi perintah SQL yang butuh waktu lama dari biasanya:
+Selain menggunakan fungsi lambda, anda dapat menggunakan kelas event listener. Event listener juga memungkinkan anda untuk mendengarkan kejadian lebih dari satu. Di
+contoh ini, kita akan mengimplementasi :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` untuk mendeteksi pernyataan SQL yang butuh waktu lama
+untuk dieksekusi dari perkiraan:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -116,17 +87,23 @@ Sebagai bagian dari contoh ini, kita akan mengimplementasi :doc:`Phalcon\\Db\\Pr
         /**
          * Ini dieksekusi ketika event dipicu adalah 'beforeQuery'
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * Ini dieksekusi ketika event dipicu adalah 'afterQuery'
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -136,14 +113,31 @@ Sebagai bagian dari contoh ini, kita akan mengimplementasi :doc:`Phalcon\\Db\\Pr
         }
     }
 
-Data profile yang dihasilkan dapat diperoleh dari listener:
+Memasang sebuah event listener ke event manager sesederhana berikut ini:
+
+.. code-block:: php
+
+    <?php
+
+    // Buat listener database
+    $dbListener = new MyDbListener();
+
+    // Dengarkan semua kejadian database
+    $eventsManager->attach(
+        "db",
+        $dbListener
+    );
+
+Profile data yang dihasilkan dapat diperoleh dari listener:
 
 .. code-block:: php
 
     <?php
 
     // Kirim perintah SQL ke server database
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -151,19 +145,6 @@ Data profile yang dihasilkan dapat diperoleh dari listener:
         echo "Final Time: ", $profile->getFinalTime(), "\n";
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
-
-Dengan cara yang sama, kita dapat mendaftarkan fungsi lambda untuk menjalankan tugas daripada menggunakan kelas listener terpisah (seperti yang terlihat di atas):
-
-.. code-block:: php
-
-    <?php
-
-    // Dengarkan semua kejadian database
-    $eventsManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
-        }
-    });
 
 Menciptakan komponen yang memicu kejadian
 -----------------------------------------
@@ -176,12 +157,13 @@ Komponen ini peduli EventsManager (ia mengimplementasi :doc:`Phalcon\\Events\\Ev
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -202,28 +184,28 @@ Komponen ini peduli EventsManager (ia mengimplementasi :doc:`Phalcon\\Events\\Ev
         }
     }
 
-Perhatikan bahwa kejadian yang dihasilkan komponen ini diawali dengan "my-component". Ini adalah kata unik yang membantu kita
-mengenali kejadian yang dibangkitkan komponen tertentu. Anda bahkan dapat menghasilkan kejadian diluar komponen dengan
-nama sama. Sekarang buat sebuah listener untuk komponen ini:
+Perhatikan di contoh ini kita menggunakan namespace event "my-component". Sekarang kita butuh menciptakan event listener untuk komponen ini:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "Here, beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "Here, afterSomeTask\n";
         }
     }
 
-Sebuah listener hanyalah sebuah kelas yang mengimplementasi salah satu kejadian yang dipicu oleh komponen. Sekarang mari kita buat semuanya bekerja bersama:
+Sekarang mari bkita buat semuanya bekerja bersama:
 
 .. code-block:: php
 
@@ -235,13 +217,16 @@ Sebuah listener hanyalah sebuah kelas yang mengimplementasi salah satu kejadian 
     $eventsManager = new EventsManager();
 
     // Buat instance MyComponent
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // Ikat eventsManager ke instance tersebut
     $myComponent->setEventsManager($eventsManager);
 
     // Pasangkan listener ke EventsManager
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // Eksekusi metode dalam komponen
     $myComponent->someTask();
@@ -268,26 +253,22 @@ Dalam sebuah listener parameter ketiga juga menerima data ini:
 
     <?php
 
-    // Terima data dalam parameter ketiga
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    use Phalcon\Events\Event;
 
-    // Terima data dak konteks kejadian
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
-Jika sebuah listener hanya tertarik mendengarkan jenis kejadian tertentu, anda dapat memasang sebuah listener langsung:
-
-.. code-block:: php
-
-    <?php
-
-    // Handler hanya akan dieksekusi jika kejadian yang dipicu adalah "beforeSomeTask"
-    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    // Terima data dari konteks kejadian
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
 Perambatan/Pembatalan Event
 ---------------------------
@@ -299,17 +280,20 @@ ini bisa dihentikan sehingga mencegah listener lain diberitahu kejadian ini:
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Kita stop kejadian jika dapat dibatalkan
-        if ($event->isCancelable()) {
-            // Stop kejadian, sehingga listener lain tidak diberitahu tentang kejadian ini
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // We stop the event if it is cancelable
+            if ($event->isCancelable()) {
+                // Stop the event, so other listeners will not be notified about this
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 Defaultnya, event dapat dibatalkan, bahkan sebagian besar kejadian yang dihasilkan oleh framework dapat dibatalkan. Anda dapat memicu kejadian yang tidak dapat dibatalkan
 dengan melewatkan :code:`false` di parameter keempat :code:`fire()`:
@@ -331,9 +315,9 @@ mereka harus dipanggil:
 
     $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // More priority
-    $eventsManager->attach('db', new DbListener(), 100); // Normal priority
-    $eventsManager->attach('db', new DbListener(), 50);  // Less priority
+    $eventsManager->attach("db", new DbListener(), 150); // More priority
+    $eventsManager->attach("db", new DbListener(), 100); // Normal priority
+    $eventsManager->attach("db", new DbListener(), 50);  // Less priority
 
 Mengumpulkan Response
 ---------------------
@@ -351,17 +335,23 @@ Event manager dapat mengumpulkan tiap response yang dikembalikan oleh semua list
     $eventsManager->collectResponses(true);
 
     // Pasang sebuah listener
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // Pasang listener
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // Picu kejadian
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // Ambil semua response yang terkumpul
     print_r($eventsManager->getResponses());

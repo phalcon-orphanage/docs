@@ -4,90 +4,59 @@
 此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。
 这些钩子允许开发者获得状态信息，操纵数据或者改变某个组件进程中的执行流向。
 
+Naming Convention
+-----------------
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create
+your own as you see fit. Event names are formatted as "component:event". For example, as :doc:`Phalcon\\Db <../api/Phalcon_Db>` occupies the "db"
+namespace, its "afterQuery" event's full name is "db:afterQuery".
+
+When attaching event listeners to the events manager, you can use "component" to catch all events from that component (eg. "db" to catch all of the
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` events) or "component:event" to target a specific event (eg. "db:afterQuery").
+
 使用示例（Usage Example）
 -------------------------
-以下面示例中，我们使用EventsManager来侦听在 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 管理下的MySQL连接中产生的事件。
-首先，我们需要一个侦听者对象来完成这部分的工作。我们创建了一个类，这个类有我们需要侦听事件所对应的方法：
+In the following example, we will use the EventsManager to listen for the "afterQuery" event produced in a MySQL connection managed by
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`:
 
 .. code-block:: php
 
     <?php
 
-    class MyDbListener
-    {
-        public function afterConnect()
-        {
-
-        }
-
-        public function beforeQuery()
-        {
-
-        }
-
-        public function afterQuery()
-        {
-
-        }
-    }
-
-这个新的类可能有点啰嗦，但我们需要这样做。
-事件管理器在组件和我们的侦听类之间充当着接口角色，并提供了基于在我们侦听类中所定义方法的钩子：
-
-.. code-block:: php
-
-    <?php
-
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
-    // 创建一个数据库侦听
-    $dbListener    = new MyDbListener();
+    $eventsManager->attach(
+        "db:afterQuery",
+        function (Event $event, $connection) {
+            echo $connection->getSQLStatement();
+        }
+    );
 
-    // 侦听全部数据库事件
-    $eventsManager->attach('db', $dbListener);
-
-    $connection    = new DbAdapter(
-        array(
+    $connection = new DbAdapter(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
     // 将$eventsManager赋值给数据库甜适配器
     $connection->setEventsManager($eventsManager);
 
     // 发送一个SQL命令到数据库服务器
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
-为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
+Now every time a query is executed, the SQL statement will be echoed out.
 第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。
+A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Logger\Adapter\File as Logger;
-
-    class MyDbListener
-    {
-        protected $_logger;
-
-        public function __construct()
-        {
-            $this->_logger = new Logger("../apps/logs/db.log");
-        }
-
-        public function afterQuery($event, $connection)
-        {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
-        }
-    }
-
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
@@ -95,6 +64,7 @@
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -116,17 +86,23 @@
         /**
          * 如果事件触发器是'beforeQuery'，此函数将会被执行
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * 如果事件触发器是'afterQuery'，此函数将会被执行
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -136,6 +112,21 @@
         }
     }
 
+Attaching an event listener to the events manager is as simple as:
+
+.. code-block:: php
+
+    <?php
+
+    // 创建一个数据库侦听
+    $dbListener = new MyDbListener();
+
+    // 侦听全部数据库事件
+    $eventsManager->attach(
+        "db",
+        $dbListener
+    );
+
 可以从侦听者中获取结果分析数据：
 
 .. code-block:: php
@@ -143,7 +134,9 @@
     <?php
 
     // 发送一个SQL命令到数据库服务器
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL语句: ", $profile->getSQLStatement(), "\n";
@@ -151,19 +144,6 @@
         echo "结束时间: ", $profile->getFinalTime(), "\n";
         echo "总共执行的时间: ", $profile->getTotalElapsedSeconds(), "\n";
     }
-
-类似地，我们可以注册一个匿名函数来执行这些任务，而不是再分离出一个侦听类（如上面看到的）：
-
-.. code-block:: php
-
-    <?php
-
-    // 侦听全部数据加事件
-    $eventsManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
-        }
-    });
 
 创建组件触发事件（Creating components that trigger Events）
 -----------------------------------------------------------
@@ -176,12 +156,13 @@
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -202,27 +183,29 @@
         }
     }
 
-注意到这个组件产生的事件都以“my-component”为前缀。这是一个唯一的关键词，可以帮助我们区分各个组件产生的事件。
-你甚至可以在组件的外面生成相同名字的事件。现在让我们来为这个组件创建一个侦听者：
+Notice that in this example, we're using the "my-component" event namespace.
+现在让我们来为这个组件创建一个侦听者：
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "这里, beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "这里, afterSomeTask\n";
         }
     }
 
-侦听者可以是简单的一个实现了全部组件触发事件的类。现在让我们把全部的东西整合起来：
+现在让我们把全部的东西整合起来：
 
 .. code-block:: php
 
@@ -234,13 +217,16 @@
     $eventsManager = new EventsManager();
 
     // 创建MyComponent实例
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // 将事件管理器绑定到创建MyComponent实例实例
     $myComponent->setEventsManager($eventsManager);
 
     // 为事件管理器附上侦听者
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // 执行组件的方法
     $myComponent->someTask();
@@ -267,26 +253,23 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // 从第三个参数接收数据
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
     // 从事件上下文中接收数据
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
-
-如果一个侦听者仅是对某个特定类型的事件感兴趣，你要吧直接附上一个侦听者：
-
-.. code-block:: php
-
-    <?php
-
-    // 这个处理器只会在“beforeSomeTask”事件触发时才被执行
-    $eventManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
 事件传播与取消（Event Propagation/Cancellation）
 ------------------------------------------------
@@ -297,17 +280,20 @@
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // 如果可以取消，我们就终止此事件
-        if ($event->isCancelable()) {
-            // 终止事件，这样的话其他侦听都就不会再收到此通知
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // 如果可以取消，我们就终止此事件
+            if ($event->isCancelable()) {
+                // 终止事件，这样的话其他侦听都就不会再收到此通知
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 默认情况下全部的事件都是可以取消的，甚至框架提供的事件也是可以取消的。
 你可以通过在 :code:`fire()` 中的第四个参数中传递 :code:`false` 来指明这是一个不可取消的事件：
@@ -326,11 +312,11 @@
 
     <?php
 
-    $evManager->enablePriorities(true);
+    $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // 高优先级
-    $eventsManager->attach('db', new DbListener(), 100); // 正常优先级
-    $eventsManager->attach('db', new DbListener(), 50);  // 低优先级
+    $eventsManager->attach("db", new DbListener(), 150); // 高优先级
+    $eventsManager->attach("db", new DbListener(), 100); // 正常优先级
+    $eventsManager->attach("db", new DbListener(), 50);  // 低优先级
 
 收集响应（Collecting Responses）
 --------------------------------
@@ -348,17 +334,23 @@
     $eventsManager->collectResponses(true);
 
     // 附上一个侦听者
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // 附上一个侦听者
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // 执行fire事件
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // 获取全部收集到的响应
     print_r($eventsManager->getResponses());

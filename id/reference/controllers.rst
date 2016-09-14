@@ -1,7 +1,7 @@
 Menggunakan Kontroler
 =====================
 
-Kontroler menyediakan sejumlah metode yang disebut aksi. Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua 
+Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua
 metode publik pada sebuah kontroler dipetakan ke aksi dan dapat diakses menggunakan sebuah URL. Aksi bertanggung jawab menerjemahkan request dan menciptakan
 respon. Respon biasanya dalam bentuk view yang dirender, namun ada juga cara lain untuk menciptakan respon.
 
@@ -62,7 +62,7 @@ Parameter tanpa nilai default ditangani seperlunya. Pengaturan nilai opsional un
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -85,15 +85,15 @@ Parameter disalin dengan urutan sama ketika dilewatkan dalam sebuah route. Anda 
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
 Dispatch Loop
 -------------
 Dispatch loop akan dijalankan dalam Dispatcher sampai tidak ada aksi tersisa untuk dijalankan. Di contoh sebelumnya hanya satu
-aksi yang dijalankan. Kita akan melihat bagaimana "forward" dapat menyediakan alir operasi yang lebih kompleks dalam dispatch loop, dengan mengarahkan
+aksi yang dijalankan. Kita akan melihat bagaimana :code:`forward()` dapat menyediakan alir operasi yang lebih kompleks dalam dispatch loop, dengan mengarahkan
 eksekusi ke kontroler/aksi berbeda.
 
 .. code-block:: php
@@ -111,14 +111,16 @@ eksekusi ke kontroler/aksi berbeda.
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Arahkan alir ke aksi lain
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
-                    "action"     => "signin"
-                )
+                    "action"     => "signin",
+                ]
             );
         }
     }
@@ -144,14 +146,14 @@ Jika pengguna tidak memiliki izin untuk mengakses aksi tertentu maka mereka akan
         }
     }
 
-Tidak ada batasan jumlah "forward" yang dapat anda miliki dalam aplikasi, selama mereka tidak menyebabkan referensi sirkular, di mana dititik ini aplikasi akan dihentikan. 
+Tidak ada batasan jumlah "forward" yang dapat anda miliki dalam aplikasi, selama mereka tidak menyebabkan referensi sirkular, di mana dititik ini aplikasi akan dihentikan.
 Jika tidak ada aksi lain yang harus dikirim oleh dispatch loop, dispatcher otomatis memanggil
 lapisan view dalam MVC yang dikelola oleh :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
 Inisialiasi Kontroler
 ---------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` menawarkan metode initialize, yang dijalankan pertama kali, sebelum semua
-aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak disarankan.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` menawarkan metode :code:`initialize()`, yang dijalankan pertama kali, sebelum semua
+aksi dieksekusi pada sebuah kontroler. Penggunaan metode :code:`__construct()` tidak disarankan.
 
 .. code-block:: php
 
@@ -165,14 +167,14 @@ aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak dis
 
         public function initialize()
         {
-            $this->settings = array(
-                "mySetting" => "value"
-            );
+            $this->settings = [
+                "mySetting" => "value",
+            ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -180,11 +182,11 @@ aksi dieksekusi pada sebuah kontroler. Penggunaan metode "__construct" tidak dis
 
 .. highlights::
 
-    Metode 'initialize' hanya dipanggil jika event 'beforeExecuteRoute' dieksekusi dengan sukses. Ini mencegah
+    Metode :code:`initialize()` hanya dipanggil jika event 'beforeExecuteRoute' dieksekusi dengan sukses. Ini mencegah
     kode aplikasi dalam initializer tidak dapat dieksekusi tanpa otorisasi.
 
 Jika anda ingin menjalankan kode inisialiasi tepat setelah menciptakan objek kontroler anda dapat mengimplementasi
-metode 'onConstruct':
+metode :code:`onConstruct()`:
 
 .. code-block:: php
 
@@ -202,7 +204,7 @@ metode 'onConstruct':
 
 .. highlights::
 
-    Ketahui bahwa metode 'onConstruct' dijalankan bahkan bila aksi yang harus dijalankan tidak ada
+    Ketahui bahwa metode :code:`onConstruct()` dijalankan bahkan bila aksi yang harus dijalankan tidak ada
     dalam kontroler atau user tidak punya akses ke sana (berdasarkan kontrol akses kustom yang disediakan
     oleh developer).
 
@@ -219,9 +221,15 @@ container dalam aplikasi. Contoh, jika kita mendaftarkan sebuah service seperti 
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 Anda dapat mengakses service tersebut dengan beberapa cara:
 
@@ -236,19 +244,19 @@ Anda dapat mengakses service tersebut dengan beberapa cara:
         public function saveAction()
         {
             // Menginjeksi service dengan mengakses property bernama sama
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // Mengakses service dari DI
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // Cara lain mengakses service dengan magic getter
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // Cara lain mengakses service dengan magic getter
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // Menggunkana sintaks array
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -276,7 +284,7 @@ berisi :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` mewakili ap
         public function saveAction()
         {
             // Uji apakah request dibuat dengan POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // Akses data POST
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -343,16 +351,24 @@ tiap kelas lain yang terdaftar dengan nama sama dapat dengan mudah mengganti seb
     <?php
 
     // Daftarkan kontroler sebagai service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // Daftarkan kontroler dengan namespace sebagai service
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
 Menciptakan Kontroler Dasar
 ---------------------------
@@ -418,15 +434,16 @@ anda untuk mengimplementasi hook point sebelum/sesudah aksi dieksekusi:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
-                    array(
-                        'controller' => 'home',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "home",
+                        "action"     => "index",
+                    ]
                 );
 
                 return false;

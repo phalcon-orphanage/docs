@@ -29,13 +29,62 @@ Windows上でPhalconを使用するには、DLLライブラリをダウンロー
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+To add the repository to your distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # or for PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM distributions (i.e. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To add the repository to our distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # or for PHP 7
+
+    sudo yum install php70u-phalcon
+
+Compile from source
+^^^^^^^^^^^^^^^^^^^
 Linux/Solaris の環境では、簡単に拡張モジュールをソースコードからコンパイルしてインストールすることができます。
 
-必要条件
-^^^^^^^^
 必要となるパッケージは次の通りです：
 
-* PHP >= 5.3 development resources
+* PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
@@ -53,16 +102,16 @@ Linux/Solaris の環境では、簡単に拡張モジュールをソースコー
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-コンパイル
-^^^^^^^^^^
 拡張モジュールの作成：
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 php.iniに拡張モジュールを追加します。
@@ -97,6 +146,8 @@ Phalconは自動的にシステムのアーキテクチャを判定しますが�
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -106,8 +157,11 @@ If the automatic installer fails try building the extension manually:
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -118,19 +172,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -149,7 +201,33 @@ or
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+インストールの確認
+------------------
+:code:`phpinfo()` の "Phalcon"のセクションの出力を確認するか、 次のコードスニペットを実行してみてください。
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+Phalcon拡張モジュールは下記のように出力の一部に現れるでしょう。
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 インストール ノート
 -------------------

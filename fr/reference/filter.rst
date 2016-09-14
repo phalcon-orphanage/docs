@@ -11,6 +11,32 @@ access to the content of your application, mainly user data, or even the server 
 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
+Types of Built-in Filters
+-------------------------
+The following are the built-in filters provided by this component:
+
++-----------+---------------------------------------------------------------------------+
+| Name      | Description                                                               |
++===========+===========================================================================+
+| string    | Strip tags and escapes HTML entities, including single and double quotes. |
++-----------+---------------------------------------------------------------------------+
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
++-----------+---------------------------------------------------------------------------+
+| int       | Remove all characters except digits, plus and minus sign.                 |
++-----------+---------------------------------------------------------------------------+
+| float     | Remove all characters except digits, dot, plus and minus sign.            |
++-----------+---------------------------------------------------------------------------+
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
++-----------+---------------------------------------------------------------------------+
+| striptags | Applies the strip_tags_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| trim      | Applies the trim_ function                                                |
++-----------+---------------------------------------------------------------------------+
+| lower     | Applies the strtolower_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| upper     | Applies the strtoupper_ function                                          |
++-----------+---------------------------------------------------------------------------+
+
 Sanitizing data
 ---------------
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
@@ -107,32 +133,26 @@ the format we expect.
     // Returns "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
+Combining Filters
+-----------------
+You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
-Types of Built-in Filters
--------------------------
-The following are the built-in filters provided by this component:
+.. code-block:: php
 
-+-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
-+===========+===========================================================================+
-| string    | Strip tags and escapes HTML entities, including single and double quotes. |
-+-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
-+-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
-+-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
-+-----------+---------------------------------------------------------------------------+
+    <?php
+
+    use Phalcon\Filter;
+
+    $filter = new Filter();
+
+    // Returns "Hello"
+    $filter->sanitize(
+        "   <h1> Hello </h1>   ",
+        [
+            "striptags",
+            "trim",
+        ]
+    );
 
 Creating your own Filters
 -------------------------
@@ -147,9 +167,12 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
     $filter = new Filter();
 
     // Using an anonymous function
-    $filter->add('md5', function ($value) {
-        return preg_replace('/[^0-9a-f]/', '', $value);
-    });
+    $filter->add(
+        "md5",
+        function ($value) {
+            return preg_replace("/[^0-9a-f]/", "", $value);
+        }
+    );
 
     // Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
@@ -173,7 +196,10 @@ Or, if you prefer, you can implement the filter in a class:
     $filter = new Filter();
 
     // Using an object
-    $filter->add('ipv4', new IPv4Filter());
+    $filter->add(
+        "ipv4",
+        new IPv4Filter()
+    );
 
     // Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");

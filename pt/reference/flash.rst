@@ -17,22 +17,37 @@ Este componente faz uso de adaptadores para definir o comportamento das mensagen
 
 Uso
 -----
-Normalmente, o serviço do Flash Messaging é solicitada a partir do recipiente de serviços,
-se você estiver usando :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`
-then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`é automaticamente registrado como serviço "flash":
+Normalmente, o serviço do Flash Messaging é solicitada a partir do recipiente de serviços.
+Se você estiver usando :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`
+then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`é automaticamente registrado como serviço "flash" and
+:doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`é automaticamente registrado como serviço "flashSession".
+You can also manually register it:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Flash\Direct as FlashDirect;
+    use Phalcon\Flash\Session as FlashSession;
 
     // Set up the flash service
-    $di->set('flash', function () {
-        return new FlashDirect();
-    });
+    $di->set(
+        "flash",
+        function () {
+            return new FlashDirect();
+        }
+    );
 
-Dessa forma, você pode usá-lo em controladores ou vistas por injecção do serviço no âmbito necessários:
+    // Set up the flash session service
+    $di->set(
+        "flashSession",
+        function () {
+            return new FlashSession();
+        }
+    );
+
+Dessa forma, você pode usá-lo em controladores ou vistas:
+
 .. code-block:: php
 
     <?php
@@ -59,11 +74,14 @@ Existem quatro tipos de mensagens embutidas suportados:
     <?php
 
     $this->flash->error("too bad! the form had errors");
+
     $this->flash->success("yes!, everything went very smoothly");
+
     $this->flash->notice("this a very important information");
+
     $this->flash->warning("best check yo self, you're not looking too good.");
 
-Você pode adicionar mensagens com os seus próprios tipos:
+Você pode adicionar mensagens com os seus próprios tipos usando o :code:`message()` método:
 
 .. code-block:: php
 
@@ -78,12 +96,15 @@ As mensagens enviadas para o serviço de flash são automaticamente formatado co
 .. code-block:: html
 
     <div class="errorMessage">too bad! the form had errors</div>
+
     <div class="successMessage">yes!, everything went very smoothly</div>
+
     <div class="noticeMessage">this a very important information</div>
+
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-Como você pode ver, classes CSS são adicionados automaticamente para os DIVs. Essas classes permitem definir a apresentação gráfica
-das mensagens no navegador. As classes CSS pode ser substituído, por exemplo, se você estiver usando o Twitter de bootstrap, as classes podem ser configurados como:
+Como você pode ver, classes CSS são adicionados automaticamente para os :code:`<div>`s. Essas classes permitem definir a apresentação gráfica
+das mensagens no navegador. As classes CSS pode ser substituído, por exemplo, se você estiver usando o Twitter de Bootstrap, as classes podem ser configurados como:
 
 .. code-block:: php
 
@@ -92,26 +113,32 @@ das mensagens no navegador. As classes CSS pode ser substituído, por exemplo, s
     use Phalcon\Flash\Direct as FlashDirect;
 
     // Register the flash service with custom CSS classes
-    $di->set('flash', function () {
-        $flash = new FlashDirect(
-            array(
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning'
-            )
-        );
+    $di->set(
+        "flash",
+        function () {
+            $flash = new FlashDirect(
+                [
+                    "error"   => "alert alert-danger",
+                    "success" => "alert alert-success",
+                    "notice"  => "alert alert-info",
+                    "warning" => "alert alert-warning",
+                ]
+            );
 
-        return $flash;
-    });
+            return $flash;
+        }
+    );
 
 Em seguida, as mensagens seriam impressas como é mostrado a seguir:
 
 .. code-block:: html
 
     <div class="alert alert-danger">too bad! the form had errors</div>
+
     <div class="alert alert-success">yes!, everything went very smoothly</div>
+
     <div class="alert alert-info">this a very important information</div>
+
     <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Implicit Flush vs. Session
@@ -142,9 +169,9 @@ se você fizer um "forward" não é necessário armazenar as mensagens na sessã
 
             // Forward to the index action
             return $this->dispatcher->forward(
-                array(
+                [
                     "action" => "index"
-                )
+                ]
             );
         }
     }

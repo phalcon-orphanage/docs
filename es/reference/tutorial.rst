@@ -4,37 +4,11 @@ A lo largo de este tutorial, te guiaremos en la creación desde cero de una apli
 Además explicaremos algunos aspectos básicos del framework. Si estas interesado en la generación automática de código
 para Phalcon, puedes ver nuestro :doc:`developer tools <tools>`.
 
-Revisando tu instalación
-------------------------
-Asumiremos que ya has instalado Phalcon. Revisa que la salida de tu phpinfo() incluya una sección mencionando "Phalcon" o
-ejecuta el siguiente código a continuación:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-La extensión de Phalcon debe aparecer como parte de la salida:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
-Creando un proyecto
--------------------
 La mejor forma de usar esta guia es siguiendo cada paso. Si lo deseas puedes encontrar el código completo
 `aquí <https://github.com/phalcon/tutorial>`_.
 
 Estructura de Directorios
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 Phalcon no te impone que uses una determinada estructura de directorios para desarrollar. Gracias al hecho que es
 libremente acoplado, puedes crear aplicaciones con Phalcon con cualquier estructura con la que te sientas cómodo.
 
@@ -55,90 +29,19 @@ Para efectos de este tutorial y como punto de inicio, te sugerimos la siguiente 
 Ten en cuenta que no necesitas un directorio "library" para Phalcon. El framework está en memoria
 y listo para ser usado en cualquier parte.
 
-URLs Amigables
-^^^^^^^^^^^^^^
-Usaremos URLS bonitas o amigables para este tutorial. Estas Urls son mejores para SEO, además los usuarios las recuerdan más fácilmente. Phalcon soporta modulos de reescritura (rewrite) proporcionados por los servidores web más populares. Que tus aplicaciones tengan URLs amigables no es una obligación y también podrás desarrollar tu aplicación sin ellas.
-
-En este ejemplo usaremos el modulo rewrite para Apache. Vamos a crear una serie de reglas en el archivo /tutorial/.htaccess:
-
-.. code-block:: apacheconf
-
-    #/tutorial/.htaccess
-    <IfModule mod_rewrite.c>
-        RewriteEngine on
-        RewriteRule  ^$ public/    [L]
-        RewriteRule  ((?s).*) public/$1 [L]
-    </IfModule>
-
-Todas las peticiones al proyecto serán dirigidas al directorio public/ ejerciendo este como directorio raíz. Este paso asegura que los archivos internos del proyecto permanezcan ocultos del público evitando posibles problemas de seguridad.
-
-El segundo conjunto de reglas permitirá servir los archivos existentes y redireccionar lo demás al bootstrap de la aplicación:
-
-.. code-block:: apacheconf
-
-    #/tutorial/public/.htaccess
-    <IfModule mod_rewrite.c>
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-    </IfModule>
+Before continuing, please be sure you've successfully :doc:`installed Phalcon <install>` and have setup either :doc:`Nginx <nginx>`, :doc:`Apache <apache>` or :doc:`Cherokee <cherokee>`.
 
 Bootstrap
-^^^^^^^^^
+---------
 El primer archivo que debes crear es el bootstrap. Este archivo es muy importante, ya que sirve
 como base de tu aplicación, dándote control sobre muchos aspectos en ella. En este archivo podemos implementar
 la inicialización de componentes así como cambiar el comportamiento de la aplicación.
 
-El archivo tutorial/public/index.php debería verse así:
+Ultimately, it is responsible for doing 3 things:
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Loader;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\Url as UrlProvider;
-    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
-    try {
-
-        // Registrar un autocargador
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
-
-        // Crear un Inyector de dependencias
-        $di = new FactoryDefault();
-
-        // Configurar el componente de vistas
-        $di->set('view', function () {
-            $view = new View();
-            $view->setViewsDir('../app/views/');
-            return $view;
-        });
-
-        // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function () {
-            $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
-            return $url;
-        });
-
-        $application = new Application($di);
-
-        // Atender la petición
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
-    }
+1. Setting up the autoloader.
+2. Configuring the Dependency Injector.
+3. Handling the application request.
 
 Autocargadores
 ^^^^^^^^^^^^^^
@@ -155,12 +58,15 @@ Con él, podemos cargar clases usando varias estrategias, para este ejemplo vamo
     // ...
 
     $loader = new Loader();
+
     $loader->registerDirs(
         [
-            '../app/controllers/',
-            '../app/models/'
+            "../app/controllers/",
+            "../app/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
 Administración de Dependencias
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,11 +103,16 @@ Los servicios pueden ser registrados de muchas maneras, para nuestro tutorial us
     // ...
 
     // Configurar el componente de vistas
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../app/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
 
 Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier.
 This will become important later on in this tutorial when we use the class :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`
@@ -216,12 +127,19 @@ to generate a hyperlink.
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
-    $di->set('url', function () {
-        $url = new UrlProvider();
-        $url->setBaseUri('/tutorial/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
 
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
+
+Handling the application request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 En la última parte, encontramos a :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Su proposito
 es inicializar el entorno de la petición, enrutar, descubrir las acciones relacionadas, produciendo las
 respuestas para el cliente.
@@ -240,11 +158,82 @@ respuestas para el cliente.
 
     $response->send();
 
+Putting everything together
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+El archivo tutorial/public/index.php debería verse así:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
+
+
+    // Registrar un autocargador
+    $loader = new Loader();
+
+    $loader->registerDirs(
+        [
+            "../app/controllers/",
+            "../app/models/",
+        ]
+    );
+
+    $loader->register();
+
+
+
+    // Crear un Inyector de dependencias
+    $di = new FactoryDefault();
+
+    // Configurar el componente de vistas
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../app/views/");
+
+            return $view;
+        }
+    );
+
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    $di->set(
+        "url",
+        function () {
+            $url = new UrlProvider();
+
+            $url->setBaseUri("/tutorial/");
+
+            return $url;
+        }
+    );
+
+
+
+    $application = new Application($di);
+
+    try {
+        // Atender la petición
+        $response = $application->handle();
+
+        $response->send();
+    } catch (\Exception $e) {
+        echo "Exception: ", $e->getMessage();
+    }
+
 En resúmen, como puedes ver el bootstap es muy pequeño y no requiere archivos externos.
 Hemos configurado un MVC muy flexible en menos de 30 líneas de código.
 
 Creando un Controlador
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 Por defecto Phalcon buscará un controlador llamado "Index". Este es el punto de inicio cuando no se ha indicado una ruta o
 acción especifica en la petición. El controlador Index (app/controllers/IndexController.php) se ve así:
 
@@ -256,7 +245,6 @@ acción especifica en la petición. El controlador Index (app/controllers/IndexC
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
             echo "<h1>Hola!</h1>";
@@ -271,7 +259,7 @@ Las clases de controlador deben tener el sufijo "Controller" y las acciones el s
 Felicidades, estás volando con Phalcon!
 
 Generando salida a la vista
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 Generar salidas desde los controladores es a veces necesario pero no deseable para la mayoria de puristas del MVC. Toda información debe ser pasada a la vista la cual es responsable de imprimirla y presentarla al cliente. Phalcon buscará una vista con el mismo nombre de la última acción ejecutada dentro de un directorio con el nombre del último controlador ejecutado. En nuestro caso (app/views/index/index.phtml):
 
 .. code-block:: php
@@ -288,7 +276,6 @@ Ahora nuestro controlador (app/controllers/IndexController.php) tiene la impleme
 
     class IndexController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -298,7 +285,7 @@ Ahora nuestro controlador (app/controllers/IndexController.php) tiene la impleme
 La salida en el navagador permanece igual. El :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` es automáticamente creado y terminado cuando la petición termina. Puedes ver más sobre el :doc:`uso de vistas aquí <views>`.
 
 Diseñando una formulario de registro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 Ahora cambiaremos el archivo index.phtml para agregar un enlace a un nuevo controllador llamado "signup". El objetivo de esto es permitir a los usuarios registrarse en nuestra aplicación.
 
 .. code-block:: php
@@ -307,13 +294,22 @@ Ahora cambiaremos el archivo index.phtml para agregar un enlace a un nuevo contr
 
     echo "<h1>Hello!</h1>";
 
-    echo $this->tag->linkTo("signup", "Sign Up Here!");
+    echo PHP_EOL;
+
+    echo PHP_EOL;
+
+    echo $this->tag->linkTo(
+        "signup",
+        "Sign Up Here!"
+    );
 
 El HTML generado muestra una eqiqueta ("a") enlazando al nuevo controlador:
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
+    <h1>Hello!</h1>
+
+    <a href="/tutorial/signup">Sign Up Here!</a>
 
 Para generar la etiqueta hemos usado la clase :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Esta es una clase utilitaria que nos permite
 construir código HTML teniendo en cuenta las convenciones del framework. As this class is a also a service registered in the DI
@@ -334,7 +330,6 @@ Aquí está el controlador Signup (app/controllers/SignupController.php):
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -345,23 +340,33 @@ Al encontrarce la acción 'index' vacía se da paso a la vista, la cual contiene
 
 .. code-block:: html+php
 
-    <h2>Registrate haciendo uso de este formulario</h2>
+    <h2>
+        Registrate haciendo uso de este formulario
+    </h2>
 
     <?php echo $this->tag->form("signup/register"); ?>
 
-     <p>
-        <label for="name">Nombre</label>
-        <?php echo $this->tag->textField("name") ?>
-     </p>
+        <p>
+            <label for="name">
+                Nombre
+            </label>
 
-     <p>
-        <label for="email">Correo electrónico</label>
-        <?php echo $this->tag->textField("email") ?>
-     </p>
+            <?php echo $this->tag->textField("name"); ?>
+        </p>
 
-     <p>
-        <?php echo $this->tag->submitButton("Registrarme") ?>
-     </p>
+        <p>
+            <label for="email">
+                Correo electrónico
+            </label>
+
+            <?php echo $this->tag->textField("email"); ?>
+        </p>
+
+
+
+        <p>
+            <?php echo $this->tag->submitButton("Registrarme"); ?>
+        </p>
 
     </form>
 
@@ -389,7 +394,6 @@ Continuemos con la implementación de esta acción para no mostrar más la excep
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -404,7 +408,7 @@ Continuemos con la implementación de esta acción para no mostrar más la excep
 Si haces click nuevamente en el botón "Registrarme", verás esta vez una página en blanco. Necesitamos ahora almacenar el nombre y correo electrónico que el usuario proporcionó en una base de datos. De acuerdo con el patrón MVC, las interacciones con la base de datos deben realizarse a través de modelos (models) así también nos aseguramos que la aplicación está completamente orientada a objetos.
 
 Creando un Modelo
-^^^^^^^^^^^^^^^^^
+-----------------
 Phalcon posee el primer ORM para PHP escrito totalmente en C. En vez de aumentar la complejidad del desarrollo, la simplifica.
 
 Antes de crear nuestro primer modelo, necesitamos una tabla que el modelo use para mapearse. Una simple tabla para guardar los usuarios registrados puede ser la siguiente:
@@ -412,10 +416,11 @@ Antes de crear nuestro primer modelo, necesitamos una tabla que el modelo use pa
 .. code-block:: sql
 
     CREATE TABLE `users` (
-      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-      `name` varchar(70) NOT NULL,
-      `email` varchar(70) NOT NULL,
-      PRIMARY KEY (`id`)
+        `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
+        `name`  varchar(70)          NOT NULL,
+        `email` varchar(70)          NOT NULL,
+
+        PRIMARY KEY (`id`)
     );
 
 Según como hemos organizado esta aplicación, un modelo debe ser ubicado en el directorio app/models (app/models/Users.php). El modelo que mapea a la tabla "users" es:
@@ -436,71 +441,34 @@ Según como hemos organizado esta aplicación, un modelo debe ser ubicado en el 
     }
 
 Estableciendo la conexión a la base de datos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------
 Para poder conectarnos a una base de datos y por lo tanto usar nuestros modelos, necesitamos especificar esta configuración en el bootstrap de la aplicación. Una conexión a una base de datos es simplemente otro servicio que nuestra aplicación usará en muchos componentes:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Loader;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    try {
-
-        // Registrar un autoloader
-        $loader = new Loader();
-        $loader->registerDirs([
-            '../app/controllers/',
-            '../app/models/'
-        ])->register();
-
-        // Crear un DI
-        $di = new FactoryDefault();
-
-        // Establecer el servicio de base de datos
-        $di->set('db', function () {
-            return new DbAdapter([
-                "host"     => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname"   => "test_db"
-            ]);
-        });
-
-        // Establecer el servicio de vistas
-        $di->set('view', function () {
-            $view = new View();
-            $view->setViewsDir('../app/views/');
-            return $view;
-        });
-
-        // Setup a base URI so that all generated URIs include the "tutorial" folder
-        $di->set('url', function () {
-            $url = new UrlProvider();
-            $url->setBaseUri('/tutorial/');
-            return $url;
-        });
-
-        $application = new Application($di);
-
-        // Atender la petición
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-         echo "Exception: ", $e->getMessage();
-    }
+    // Establecer el servicio de base de datos
+    $di->set(
+        "db",
+        function () {
+            return new DbAdapter(
+                [
+                    "host"     => "localhost",
+                    "username" => "root",
+                    "password" => "secret",
+                    "dbname"   => "test_db",
+                ]
+            );
+        }
+    );
 
 Con una configuración correcta, nuestros modelos están listos para trabajar e interactuar con el resto de la aplicación.
 
 Guardando datos mediante modelos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el siguiente paso.
 
 .. code-block:: php
@@ -511,7 +479,6 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
     class SignupController extends Controller
     {
-
         public function indexAction()
         {
 
@@ -519,17 +486,25 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
         public function registerAction()
         {
-
             $user = new Users();
 
             // Almacenar y verificar errores de validación
-            $success = $user->save($this->request->getPost(), ['name', 'email']);
+            $success = $user->save(
+                $this->request->getPost(),
+                [
+                    "name",
+                    "email",
+                ]
+            );
 
             if ($success) {
                 echo "Gracias por registrarte!";
             } else {
                 echo "Lo sentimos, los siguientes errores ocurrieron mientras te dabamos de alta: ";
-                foreach ($user->getMessages() as $message) {
+
+                $messages = $user->getMessages();
+
+                foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
             }

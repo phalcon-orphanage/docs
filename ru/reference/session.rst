@@ -21,11 +21,16 @@
     use Phalcon\Session\Adapter\Files as Session;
 
     // Сессии запустятся один раз, при первом обращении к объекту
-    $di->setShared('session', function () {
-        $session = new Session();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new Session();
+
+            $session->start();
+
+            return $session;
+        }
+    );
 
 Сохранение/получение данных из сессий
 -------------------------------------
@@ -50,7 +55,6 @@
         {
             // Проверка наличия переменной сессии
             if ($this->session->has("user-name")) {
-
                 // Получение значения
                 $name = $this->session->get("user-name");
             }
@@ -96,19 +100,21 @@
     use Phalcon\Session\Adapter\Files as Session;
 
     // Изоляция данных сессий
-    $di->set('session', function () {
+    $di->set(
+        "session",
+        function () {
+            // Все переменные этого приложения будет иметь префикс "my-app-1"
+            $session = new Session(
+                [
+                    "uniqueId" => "my-app-1",
+                ]
+            );
 
-        // Все переменные этого приложения будет иметь префикс "my-app-1"
-        $session = new Session(
-            array(
-                'uniqueId' => 'my-app-1'
-            )
-        );
+            $session->start();
 
-        $session->start();
-
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 На работе это никак не скажется. Добавлять префикс вручную во время установки или чтения сессий нет необходимости.
 
@@ -124,8 +130,10 @@
 
     use Phalcon\Session\Bag as SessionBag;
 
-    $user       = new SessionBag('user');
+    $user = new SessionBag("user");
+
     $user->setDI($di);
+
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
 

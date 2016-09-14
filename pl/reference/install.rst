@@ -29,13 +29,62 @@ Powiązane Przewodniki
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+To add the repository to your distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # or for PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM distributions (i.e. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To add the repository to our distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # or for PHP 7
+
+    sudo yum install php70u-phalcon
+
+Compile from source
+^^^^^^^^^^^^^^^^^^^
 Na systemach Linux/Solaris możesz w łatwy sposób skompilować i zainstalować rozszerzenie z kodu źródłowego:
 
-Wymagania
-^^^^^^^^^
 Wstępnie wymagane pakiety:
 
-* Pliki źródłowe PHP >= 5.3
+* Pliki źródłowe PHP >= 5.5
 * Kompilator GCC (Linux/Solaris)
 * Git (jeśli nie jest jeszcze zainstalowany na twoim systemie - chyba ze pobierzesz pakiet z GitHub i prześlesz go na swój serwer przez FTP/SFTP)
 
@@ -53,16 +102,16 @@ Specyficzne pakiety dla wspólnych platform:
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-Kompilacja
-^^^^^^^^^^
 Tworzenie rozszerzenia:
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 Dodaj rozszerzenie do swojej konfiguracji PHP:
@@ -97,6 +146,8 @@ Phalcon automatycznie wykrywa architekturę twojego systemu, możesz jednak wymu
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -106,8 +157,11 @@ Jeżeli autoinstalator wyrzuca błąd, spróbuj skompilować rozszerzenie ręczn
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -118,19 +172,17 @@ Wymagania
 ^^^^^^^^^
 Wstępnie wymagane pakiety:
 
-* Pliki źródłowe PHP >= 5.4
+* Pliki źródłowe PHP >= 5.5
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -149,7 +201,34 @@ lub
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+Sprawdzenie instalacji
+----------------------
+Sprawdź wynik funkcji :code:`phpinfo()` w poszukiwaniu sekcji zawierającej "Phalcon"
+lub uruchom poniższy kod:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+Rozszerzenie Phalcon powinno pojawić się jako część wyniku:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 Uwagi instalacyjne
 ------------------

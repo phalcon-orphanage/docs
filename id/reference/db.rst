@@ -16,15 +16,15 @@ Adapter Database
 Komponen ini menggunakan adapter untuk membungkus detil spesifik sistem database. Phalcon menggunakan PDO_ untuk menyambung ke database. Engine
 database berikut didukung:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Nama       | Keterangan                                                                                                                                                                                                                           | API                                                                                     |
-+============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | Sistem manajemen database relasional (RDBMS) yang paling banyak digunakan di dunia yang berjalan sebagai sebuah server yang meneyediakan akses banyak pengguna ke sejumlah database                                                  | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL adalah sistem database relasional open source yang bertenaga. Ia aktif dikembangkan lebih dari 15 tahun dan memiliki arsitektur teruji yang telah memperoleh reputasi untuk keandalan, integritasi data dan kebenaran.    | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite adalah pustaka software yang mengimplementasi engine SQL database transaksional yang berdiri sendiri, tanpa server dan tanpa konfigurasi                                                                                      | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                   | Keterangan                                                                                                                                                                                                                        |
++=========================================================================================+===================================================================================================================================================================================================================================+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           | Sistem manajemen database relasional (RDBMS) yang paling banyak digunakan di dunia yang berjalan sebagai sebuah server yang meneyediakan akses banyak pengguna ke sejumlah database                                               |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` | PostgreSQL adalah sistem database relasional open source yang bertenaga. Ia aktif dikembangkan lebih dari 15 tahun dan memiliki arsitektur teruji yang telah memperoleh reputasi untuk keandalan, integritasi data dan kebenaran. |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         | SQLite adalah pustaka software yang mengimplementasi engine SQL database transaksional yang berdiri sendiri, tanpa server dan tanpa konfigurasi                                                                                   |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Mengimplementasi Adapter anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,15 +35,15 @@ Dialek Database
 ---------------
 Phalcon membungkus detil spesifik tiap engine database dalam dialek. Mereka menyediakan fungsi umum dan pembangkit SQL untuk adapter.
 
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Nama       | Keterangan                                          | API                                                                            |
-+============+=====================================================+================================================================================+
-| MySQL      | Dialek SQL spesifik untuk sistem database MySQL     | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | Dialek SQL spesifik untuk sistem database PostgreSQL| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | Dialek SQL spesifik untuk sistem database SQLite    | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| Class                                                                          | Keterangan                                          |
++================================================================================+=====================================================+
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           | Dialek SQL spesifik untuk sistem database MySQL     |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | Dialek SQL spesifik untuk sistem database PostgreSQL|
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         | Dialek SQL spesifik untuk sistem database SQLite    |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
 
 Mengimplementasi dialek anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,12 +59,12 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
     <?php
 
     // Wajib
-    $config = array(
+    $config = [
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
         "dbname"   => "test_db"
-    );
+    ];
 
     // Opsional
     $config["persistent"] = false;
@@ -77,12 +77,12 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
     <?php
 
     // wajib
-    $config = array(
+    $config = [
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
         "dbname"   => "template"
-    );
+    ];
 
     // Opsional
     $config["schema"] = "public";
@@ -95,9 +95,9 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
     <?php
 
     // Wajib
-    $config = array(
+    $config = [
         "dbname" => "/path/to/database.db"
-    );
+    ];
 
     // Buat koneksi
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -112,16 +112,16 @@ Anda dapat mengatur opsi PDO saat konkesi dengan melewatkan parameter 'options':
 
     // Buat koneksi dengan opsi PDO
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "sigma",
             "dbname"   => "test_db",
-            "options"  => array(
+            "options"  => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
                 PDO::ATTR_CASE               => PDO::CASE_LOWER
-            )
-        )
+            ]
+        ]
     );
 
 Mencari Row
@@ -210,11 +210,11 @@ injection. Baik string maupun positional placeholder didukung. Mengikat paramete
 
     // Mengikat dengan placeholder numerik
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array("Wall-E"));
+    $result = $connection->query($sql, ["Wall-E"]);
 
     // Mengikat dengan placeholder bernama
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+    $success = $connection->query($sql, ["name" => "Astro Boy", "year" => 1952]);
 
 Ketika menggunakan placeholder numerik, anda akan harus menentukannya sebagai integer yakni 1 atau 2. Untuk kasus "1" atau "2"
 mereka dianggap string dan bukan integer, sehingga placeholder tidak dapat diganti dengan benar. Dengan sembarang adapter
@@ -233,7 +233,7 @@ parameter terikat langsung dilewatkan ke PDO:
 
     // Mengikat placeholder PDO
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
+    $result = $connection->query($sql, [1 => "Wall-E"]);
 
 Menambah/Mengubah/Menghapus Row
 -------------------------------
@@ -249,22 +249,22 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
 
     // Dengan placeholder
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astro Boy', 1952));
+    $success = $connection->execute($sql, ['Astro Boy', 1952]);
 
     // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->insert(
        "robots",
-       array("Astro Boy", 1952),
-       array("name", "year")
+       ["Astro Boy", 1952],
+       ["name", "year"]
     );
 
     // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->insertAsDict(
        "robots",
-       array(
+       [
           "name" => "Astro Boy",
           "year" => 1952
-       )
+       ]
     );
 
     // Mengubah data dengan pernyataan SQL
@@ -273,46 +273,46 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
 
     // Dengan placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astro Boy', 101));
+    $success = $connection->execute($sql, ['Astro Boy', 101]);
 
     // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->update(
        "robots",
-       array("name"),
-       array("New Astro Boy"),
+       ["name"],
+       ["New Astro Boy"],
        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
     // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->updateAsDict(
        "robots",
-       array(
+       [
           "name" => "New Astro Boy"
-       ),
+       ],
        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
     // Dengan kondisi escape
     $success = $connection->update(
        "robots",
-       array("name"),
-       array("New Astro Boy"),
-       array(
+       ["name"],
+       ["New Astro Boy"],
+       [
           'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Parameter opsional
-       )
+          'bind' => [101],
+          'bindTypes' => [PDO::PARAM_INT] // Parameter opsional
+       ]
     );
     $success = $connection->updateAsDict(
        "robots",
-       array(
+       [
           "name" => "New Astro Boy"
-       ),
-       array(
+       ],
+       [
           'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Parameter opsional
-       )
+          'bind' => [101],
+          'bindTypes' => [PDO::PARAM_INT] // Parameter opsional
+       ]
     );
 
     // Menghapus data dengan pernyataan SQL
@@ -321,10 +321,10 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
 
     // Dengan placeholder
     $sql     = "DELETE `robots` WHERE `id` = ?";
-    $success = $connection->execute($sql, array(101));
+    $success = $connection->execute($sql, [101]);
 
     // Membangkitkan SQL yang diperlukan secara dinamis
-    $success = $connection->delete("robots", "id = ?", array(101));
+    $success = $connection->delete("robots", "id = ?", [101]);
 
 Transaksi dan Transaksi Bersarang
 ---------------------------------
@@ -434,12 +434,12 @@ Mengikat sebuah EventsManager ke sebuah koneksi mudah, :doc:`Phalcon\\Db <../api
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
             "dbname"   => "invo"
-        )
+        ]
     );
 
     // Salin eventsManager ke instance adapter db
@@ -578,8 +578,8 @@ Menggunakan komponen abstraksi level tinggi seperti :doc:`Phalcon\\Db <../api/Ph
     // Jalankan perintah SQL
     $connection->insert(
         "products",
-        array("Hot pepper", 3.50),
-        array("name", "price")
+        ["Hot pepper", 3.50],
+        ["name", "price"]
     );
 
 Kode di atas, file *app/logs/db.log* akan berisi seperti ini:
@@ -675,36 +675,36 @@ Contoh berikut menunjukkan bagaimana menciptakan sebuah tabel:
     $connection->createTable(
         "robots",
         null,
-        array(
-           "columns" => array(
+        [
+           "columns" => [
                 new Column(
                     "id",
-                    array(
+                    [
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
                         "primary"       => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "name",
-                    array(
+                    [
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",
-                    array(
+                    [
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
                         "notNull" => true,
-                    )
+                    ]
                 )
-            )
-        )
+            ]
+        ]
     );
 
 :code:`Phalcon\Db::createTable()` menerima array asosiatif yang mendeskripsikan tabel. Kolom ditentukan dengan kelas
@@ -778,12 +778,12 @@ dibatasi oleh keterbatasan ini.
         null,
         new Column(
             "robot_type",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
                 "after"   => "name"
-            )
+            ]
         )
     );
 
@@ -793,11 +793,11 @@ dibatasi oleh keterbatasan ini.
         null,
         new Column(
             "name",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
                 "notNull" => true
-            )
+            ]
         )
     );
 

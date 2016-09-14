@@ -99,14 +99,13 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
     $reader = new MemoryAdapter();
 
     // Exampleクラスのアノテーションをリフレクションする
-    $reflector = $reader->get('Example');
+    $reflector = $reader->get("Example");
 
     // クラスのコメントブロックのアノテーションを読み取り
     $annotations = $reflector->getClassAnnotations();
 
     // アノテーションをトラバースする
     foreach ($annotations as $annotation) {
-
         // アノテーション名を表示する
         echo $annotation->getName(), PHP_EOL;
 
@@ -193,12 +192,14 @@ reflectorは、オブジェクト指向のインターフェースでクラス�
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function () {
-
+    $di["dispatcher"] = function () {
         $eventsManager = new EventsManager();
 
         // プラグインを「dispatch」イベントに紐付け
-        $eventsManager->attach('dispatch', new CacheEnablerPlugin());
+        $eventsManager->attach(
+            "dispatch",
+            new CacheEnablerPlugin()
+        );
 
         $dispatcher = new MvcDispatcher();
 
@@ -235,19 +236,20 @@ CacheEnablerPluginはディスパッチャで実行された全てのアクシ�
             );
 
             // メソッドに「Cache」というアノテーションがあるか確認する
-            if ($annotations->has('Cache')) {
-
+            if ($annotations->has("Cache")) {
                 // メソッドに「Cache」というアノテーションがある場合
-                $annotation = $annotations->get('Cache');
+                $annotation = $annotations->get("Cache");
 
                 // キャッシュの有効期限を取得
-                $lifetime = $annotation->getNamedParameter('lifetime');
+                $lifetime = $annotation->getNamedParameter("lifetime");
 
-                $options = array('lifetime' => $lifetime);
+                $options = [
+                    "lifetime" => $lifetime,
+                ];
 
                 // ユーザーが定義したキャッシュのキーがあるか確認する
-                if ($annotation->hasNamedParameter('key')) {
-                    $options['key'] = $annotation->getNamedParameter('key');
+                if ($annotation->hasNamedParameter("key")) {
+                    $options["key"] = $annotation->getNamedParameter("key");
                 }
 
                 // 現在のメソッドのキャッシュを有効にする
@@ -309,8 +311,6 @@ You can use annotations to tell the ACL which controllers belong to the administ
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     /**
-     * SecurityAnnotationsPlugin
-     *
      * This is the security plugin which controls that users only have access to the modules they're assigned to
      */
     class SecurityAnnotationsPlugin extends Plugin
@@ -333,17 +333,16 @@ You can use annotations to tell the ACL which controllers belong to the administ
             $annotations = $this->annotations->get($controllerName);
 
             // The controller is private?
-            if ($annotations->getClassAnnotations()->has('Private')) {
-
+            if ($annotations->getClassAnnotations()->has("Private")) {
                 // Check if the session variable is active?
-                if (!$this->session->get('auth')) {
+                if (!$this->session->get("auth")) {
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
-                            'controller' => 'session',
-                            'action'     => 'login'
-                        )
+                        [
+                            "controller" => "session",
+                            "action"     => "login",
+                        ]
                     );
 
                     return false;
@@ -355,25 +354,21 @@ You can use annotations to tell the ACL which controllers belong to the administ
         }
     }
 
-レンダリングするテンプレートの選択
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-この例では、アノテーションを使って、 :doc:`Phalcon\\Mvc\\View\\Simple <views>` にどのテンプレートをレンダリングすべきか伝えます:
-
 アノテーションアダプタ
 ----------------------
 このコンポーネントはアダプタを利用して、パースした処理済みのアノテーションをキャッシュすることができ、パフォーマンスを向上させ開発・テストを便利にします:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                                                                                      |
-+============+======================================================================================================================================================================================================================================+==========================================================================================+
-| Memory     | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage                                                    | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Files      | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                                                                                | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| APC        | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                    | Description                                                                                                                                                                       |
++==========================================================================================+===================================================================================================================================================================================+
+| :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
++------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
++------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
++------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
++------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 独自のアダプタを実装する
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

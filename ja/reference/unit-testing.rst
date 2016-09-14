@@ -16,19 +16,19 @@ PHPUnitをまだインストールしていないなら、以下のcomposerコ�
 
 .. code-block:: json
 
-  {
-      "require-dev": {
-          "phpunit/phpunit": "~4.5"
-      }
-  }
+    {
+        "require-dev": {
+            "phpunit/phpunit": "~4.5"
+        }
+    }
 
 PHPUnitをインストールしたら、「tests」ディレクトリをルートディレクトリの直下に作成しましょう:
 
 .. code-block:: bash
 
-  app/
-  public/
-  tests/
+    app/
+    public/
+    tests/
 
 次に、ユニットテストの前にアプリケーションを立ち上げるための「ヘルパー」ファイルが必要になります。
 
@@ -42,14 +42,12 @@ PHPunitヘルパーファイル
 
     use Phalcon\Di;
     use Phalcon\Di\FactoryDefault;
+    use Phalcon\Loader;
 
-    ini_set('display_errors',1);
+    ini_set("display_errors", 1);
     error_reporting(E_ALL);
 
-    define('ROOT_PATH', __DIR__);
-    define('PATH_LIBRARY', __DIR__ . '/../app/library/');
-    define('PATH_SERVICES', __DIR__ . '/../app/services/');
-    define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
+    define("ROOT_PATH", __DIR__);
 
     set_include_path(
         ROOT_PATH . PATH_SEPARATOR . get_include_path()
@@ -60,17 +58,18 @@ PHPunitヘルパーファイル
 
     // アプリケーションのオートローダを使用してクラスをオートロードする
     // composerの依存関係をオートロードする
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     $loader->registerDirs(
-        array(
-            ROOT_PATH
-        )
+        [
+            ROOT_PATH,
+        ]
     );
 
     $loader->register();
 
     $di = new FactoryDefault();
+
     Di::reset();
 
     // 必要なサービスをDIに登録する
@@ -85,18 +84,18 @@ incubatorライブラリを使うには以下のcomposerコマンドで追加し
 
 .. code-block:: bash
 
-  composer require phalcon/incubator
+    composer require phalcon/incubator
 
 
 あるいは、composer.json に以下の記述を追加します:
 
 .. code-block:: json
 
-  {
-      "require": {
-          "phalcon/incubator": "dev-master"
-      }
-  }
+    {
+        "require": {
+            "phalcon/incubator": "dev-master"
+        }
+    }
 
 あるいは、リポジトリを上のリンクからgitでcloneすることもできます。
 
@@ -106,22 +105,22 @@ PHPunit.xml ファイル
 
 .. code-block:: xml
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <phpunit bootstrap="./TestHelper.php"
-           backupGlobals="false"
-           backupStaticAttributes="false"
-           verbose="true"
-           colors="false"
-           convertErrorsToExceptions="true"
-           convertNoticesToExceptions="true"
-           convertWarningsToExceptions="true"
-           processIsolation="false"
-           stopOnFailure="false"
-           syntaxCheck="true">
-      <testsuite name="Phalcon - Testsuite">
-          <directory>./</directory>
-      </testsuite>
-  </phpunit>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <phpunit bootstrap="./TestHelper.php"
+             backupGlobals="false"
+             backupStaticAttributes="false"
+             verbose="true"
+             colors="false"
+             convertErrorsToExceptions="true"
+             convertNoticesToExceptions="true"
+             convertWarningsToExceptions="true"
+             processIsolation="false"
+             stopOnFailure="false"
+             syntaxCheck="true">
+        <testsuite name="Phalcon - Testsuite">
+            <directory>./</directory>
+        </testsuite>
+    </phpunit>
 
 phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
@@ -145,19 +144,11 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
     abstract class UnitTestCase extends PhalconTestCase
     {
         /**
-         * @var \Voice\Cache
-         */
-        protected $_cache;
-
-        /**
-         * @var \Phalcon\Config
-         */
-        protected $_config;
-
-        /**
          * @var bool
          */
         private $_loaded = false;
+
+
 
         public function setUp()
         {
@@ -181,7 +172,9 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
         public function __destruct()
         {
             if (!$this->_loaded) {
-                throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
+                throw new \PHPUnit_Framework_IncompleteTestError(
+                    "Please run parent::setUp()."
+                );
             }
         }
     }
@@ -201,14 +194,16 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
     {
         public function testTestCase()
         {
-            $this->assertEquals('works',
-                'works',
-                'This is OK'
+            $this->assertEquals(
+                "works",
+                "works",
+                "This is OK"
             );
 
-            $this->assertEquals('works',
-                'works1',
-                'This will fail'
+            $this->assertEquals(
+                "works",
+                "works1",
+                "This will fail"
             );
         }
     }
@@ -217,28 +212,28 @@ phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
 .. code-block:: bash
 
-  $ phpunit
-  PHPUnit 3.7.23 by Sebastian Bergmann.
+    $ phpunit
+    PHPUnit 3.7.23 by Sebastian Bergmann.
 
-  Configuration read from /private/var/www/tests/phpunit.xml
+    Configuration read from /private/var/www/tests/phpunit.xml
 
-  Time: 3 ms, Memory: 3.25Mb
+    Time: 3 ms, Memory: 3.25Mb
 
-  There was 1 failure:
+    There was 1 failure:
 
-  1) Test\UnitTest::testTestCase
-  This will fail
-  Failed asserting that two strings are equal.
-  --- Expected
-  +++ Actual
-  @@ @@
-  -'works'
-  +'works1'
+    1) Test\UnitTest::testTestCase
+    This will fail
+    Failed asserting that two strings are equal.
+    --- Expected
+    +++ Actual
+    @@ @@
+    -'works'
+    +'works1'
 
-  /private/var/www/tests/Test/UnitTest.php:25
+    /private/var/www/tests/Test/UnitTest.php:25
 
-  FAILURES!
-  Tests: 1, Assertions: 2, Failures: 1.
+    FAILURES!
+    Tests: 1, Assertions: 2, Failures: 1.
 
 これで、ユニットテストを作り始めることができます。以下のリンク先に、優れたガイドがあります(PHPUnitに慣れていないなら、PHPUnitのドキュメントをあわせて読むことをおすすめします):
 

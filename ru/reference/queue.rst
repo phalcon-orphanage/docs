@@ -22,19 +22,21 @@
 
     <?php
 
+    use Phalcon\Queue\Beanstalk;
+
     // Подключение к очереди
-    $queue = new Phalcon\Queue\Beanstalk(
-        array(
-            'host' => '192.168.0.21',
-            'port' => '11300'
-        )
+    $queue = new Beanstalk(
+        [
+            "host" => "192.168.0.21",
+            "port" => "11300",
+        ]
     );
 
     // Добавляем задание
     $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Доступные варианты подключения:
@@ -58,14 +60,14 @@
 
     // Добавление задания с опциями в очереди
     $queue->put(
-        array(
-            'processVideo' => 4871
-        ),
-        array(
-            'priority' => 250,
-            'delay'    => 10,
-            'ttr'      => 3600
-        )
+        [
+            "processVideo" => 4871,
+        ],
+        [
+            "priority" => 250,
+            "delay"    => 10,
+            "ttr"      => 3600,
+        ]
     );
 
 Доступны следующие опции:
@@ -87,9 +89,9 @@
     <?php
 
     $jobId = $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Прием сообщений
@@ -102,7 +104,6 @@
     <?php
 
     while (($job = $queue->peekReady()) !== false) {
-
         $message = $job->getBody();
 
         var_dump($message);
@@ -117,8 +118,7 @@
 
     <?php
 
-    while (($job = $queue->reserve())) {
-
+    while (($job = $queue->reserve()) !== false) {
         $message = $job->getBody();
 
         var_dump($message);

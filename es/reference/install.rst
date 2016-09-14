@@ -29,13 +29,62 @@ Guías Relacionadas
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+To add the repository to your distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # or for PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM distributions (i.e. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To add the repository to our distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # or for PHP 7
+
+    sudo yum install php70u-phalcon
+
+Compile from source
+^^^^^^^^^^^^^^^^^^^
 En un sistema Linux/Solaris puedes compilar e instalar la extensión fácilmente desde la fuente del repositorio:
 
-Requerimientos
-^^^^^^^^^^^^^^
 Los paquetes requeridos son:
 
-* PHP >= 5.3 fuentes de desarrollo (development resources)
+* PHP >= 5.5 fuentes de desarrollo (development resources)
 * Compilador GCC (Linux/Solaris)
 * Git (a menos que descargues el paquete manualmente desde Github)
 
@@ -53,16 +102,16 @@ Paquetes específicos para plataformas comunes:
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-Compilación
-^^^^^^^^^^^
 Compilando la extensión:
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 Añadiendo la extensión a php.ini:
@@ -97,6 +146,8 @@ Phalcon automáticamente detecta tu arquitectura de procesador, sin embargo, pue
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -106,8 +157,11 @@ If the automatic installer fails try building the extension manually:
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -118,19 +172,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -149,7 +201,33 @@ o
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+Revisando tu instalación
+------------------------
+Revisa que la salida de tu :code:`phpinfo()` incluya una sección mencionando "Phalcon" o ejecuta el siguiente código a continuación:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+La extensión de Phalcon debe aparecer como parte de la salida:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 Notas para la instalación
 -------------------------

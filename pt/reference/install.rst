@@ -29,13 +29,62 @@ Guias Relacionados
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+To add the repository to your distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # or for PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM distributions (i.e. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To add the repository to our distribution:
+
+.. code-block:: bash
+
+    # Stable releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Nightly releases
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+
+To install Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # or for PHP 7
+
+    sudo yum install php70u-phalcon
+
+Compile from source
+^^^^^^^^^^^^^^^^^^^
 Nos sistemas Linux/Solaris você pode facilmente compilar e instalar a extensão diretamente dos códigos fontes:
 
-Requerimentos
-^^^^^^^^^^^^^
 Os pacotes pré-requisitos são:
 
-* PHP >= 5.3 recursos de desenvolvimento
+* PHP >= 5.5 recursos de desenvolvimento
 * Compilador GCC (Linux/Solaris)
 * Git (caso ainda não esteja instalado no seu sistema - a menos que você faça o download do pacote no GitHub e depois o upload para o seu servidor via FTP/SFTP)
 
@@ -53,16 +102,16 @@ Pacotes específicos para plataformas em comum:
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-Compilação
-^^^^^^^^^^
 Criando a extensão:
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 Adicione a extensão ao seu php.ini
@@ -97,6 +146,8 @@ Phalcon automaticamente detecta a sua arquitetura, no entanto, você poderá for
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -106,8 +157,11 @@ If the automatic installer fails try building the extension manually:
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -118,19 +172,17 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.4 development resources
+* PHP >= 5.5 development resources
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -149,7 +201,33 @@ ou
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+Verificar a sua instalação
+--------------------------
+Verifique o :code:`phpinfo()` de saída para ver se tem uma seção de referência com o nome "Phalcon" ou execute o código abaixo:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+A extensão Phalcon deve aparecer como parte da saídat:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 Notas de Instalação
 -------------------

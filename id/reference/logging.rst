@@ -7,17 +7,17 @@ Adapter
 -------
 Komponen ini memanfaatkan adapter untuk menyimpan pesan log. Penggunaan adapter memungkinkan antar muka umum bagi logging memudahkan berpindah backend jika diperlukan. Adapter yang didukung:
 
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Adapter | Deskripsi                 | API                                                                              |
-+=========+===========================+==================================================================================+
-| File    | Log ke plain text file    | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Stream  | Log ke PHP Streams        | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Syslog  | Log ke system logger      | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Firephp | Log ke FirePHP            | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
-+---------+---------------------------+----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+------------------------+
+| Adapter                                                                          | Deskripsi              |
++==================================================================================+========================+
+| :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       | Log ke plain text file |
++----------------------------------------------------------------------------------+------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   | Log ke PHP Streams     |
++----------------------------------------------------------------------------------+------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   | Log ke system logger   |
++----------------------------------------------------------------------------------+------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` | Log ke FirePHP         |
++----------------------------------------------------------------------------------+------------------------+
 
 Menciptakan Log
 ---------------
@@ -32,21 +32,54 @@ Contoh berikut menunjukkan bagaimana menciptakan sebuah log dan menambah pesan k
 
     $logger = new FileAdapter("app/logs/test.log");
 
+
+
     // Ini adalah bermacam level log yang tersedia:
-    $logger->critical("This is a critical message");
-    $logger->emergency("This is an emergency message");
-    $logger->debug("This is a debug message");
-    $logger->error("This is an error message");
-    $logger->info("This is an info message");
-    $logger->notice("This is a notice message");
-    $logger->warning("This is a warning message");
-    $logger->alert("This is an alert message");
+
+    $logger->critical(
+        "This is a critical message"
+    );
+
+    $logger->emergency(
+        "This is an emergency message"
+    );
+
+    $logger->debug(
+        "This is a debug message"
+    );
+
+    $logger->error(
+        "This is an error message"
+    );
+
+    $logger->info(
+        "This is an info message"
+    );
+
+    $logger->notice(
+        "This is a notice message"
+    );
+
+    $logger->warning(
+        "This is a warning message"
+    );
+
+    $logger->alert(
+        "This is an alert message"
+    );
+
+
 
     // Anda dapat menggunakan metode log() dengan Logger constant:
-    $logger->log("This is another error message", Logger::ERROR);
+    $logger->log(
+        "This is another error message",
+        Logger::ERROR
+    );
 
     // Jika tidak ditentukan diasumsikan Logger::DEBUG.
-    $logger->log("This is a message");
+    $logger->log(
+        "This is a message"
+    );
 
 Log yang dihasilkan seperti berikut:
 
@@ -67,12 +100,16 @@ Anda dapat mengatur level log menggunakan metode :code:`setLogLevel()`. Metode i
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     $logger = new FileAdapter("app/logs/test.log");
 
-    $logger->setLogLevel(Logger::CRITICAL);
+    $logger->setLogLevel(
+        Logger::CRITICAL
+    );
 
 Di contoh di atas, hanya pesan kritis dan darurat yang akan disimpan di log. Defaultnya, semua disimpan.
 
@@ -93,8 +130,14 @@ Logging data ke adapter misal File (file system) adalah operasi mahal ditinjau d
     $logger->begin();
 
     // Tambahkan pesan
-    $logger->alert("This is an alert");
-    $logger->error("This is another error");
+
+    $logger->alert(
+        "This is an alert"
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
     // Commit pesan ke file
     $logger->commit();
@@ -114,12 +157,30 @@ Logging ke Handlers lebih dari satu
 
     $logger = new MultipleStream();
 
-    $logger->push(new FileAdapter('test.log'));
-    $logger->push(new StreamAdapter('php://stdout'));
 
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+    $logger->push(
+        new FileAdapter("test.log")
+    );
+
+    $logger->push(
+        new StreamAdapter("php://stdout")
+    );
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Pesan tersebut akan dikirim ke handler sesuai urutan pendaftarannya.
 
@@ -127,17 +188,17 @@ Format Pesan
 ------------
 Komponen ini menggunakan 'formatters' untuk mengatur format pesan sebelum dikirim ke backend. Formatter yang tersedia:
 
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Adapter | Keterangan                                               | API                                                                                  |
-+=========+==========================================================+======================================================================================+
-| Line    | Format pesan dengan string satu baris                    | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Firephp | Format pesan agar dapat dikirim ke FirePHP               | :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Json    | Siapkan pesan untuk di encode sebagai JSON               | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Syslog  | Siapkan pesan untuk diirim ke syslog                     | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------+--------------------------------------------+
+| Adapter                                                                              | Keterangan                                 |
++======================================================================================+============================================+
+| :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       | Format pesan dengan string satu baris      |
++--------------------------------------------------------------------------------------+--------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` | Format pesan agar dapat dikirim ke FirePHP |
++--------------------------------------------------------------------------------------+--------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       | Siapkan pesan untuk di encode sebagai JSON |
++--------------------------------------------------------------------------------------+--------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   | Siapkan pesan untuk diirim ke syslog       |
++--------------------------------------------------------------------------------------+--------------------------------------------+
 
 Line Formatter
 ^^^^^^^^^^^^^^
@@ -167,8 +228,9 @@ Contoh di bawah menunjukkan bagaimana mengubah format log:
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    // Ubah format logger
     $formatter = new LineFormatter("%date% - %message%");
+
+    // Ubah format logger
     $logger->setFormatter($formatter);
 
 Membuat formatter Anda sendiri
@@ -209,9 +271,9 @@ Jika file tidak ada, maka file akan dicoba dibuat. Anda dapat mengubah mode ini 
     // Buat file logger dalam mode 'w'
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
-            'mode' => 'w'
-        )
+        [
+            "mode" => "w",
+        ]
     );
 
 Syslog Logger
@@ -230,10 +292,10 @@ Logger ini mengirim pesan ke system logger. Perilaku syslog bisa jadi berbeda an
     // Setting ident/mode/facility
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
-            'option'   => LOG_NDELAY,
-            'facility' => LOG_MAIL
-        )
+        [
+            "option"   => LOG_NDELAY,
+            "facility" => LOG_MAIL,
+        ]
     );
 
 FirePHP Logger
@@ -249,9 +311,21 @@ sebuah ekstensi `Firebug <http://getfirebug.com/>`_ untuk Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 Membuat adapter anda sendiri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

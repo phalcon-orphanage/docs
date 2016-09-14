@@ -11,12 +11,22 @@
 -------
 Вы можете скачать кроссплатформенный пакет инструментов разработчиков из раздела Download_. Также вы можете его слить ( git clone ) на Github_.
 
-Введите в терминале следующие команды:
+Введите в терминале следующие команда:
+
+.. code-block:: bash
+
+    git clone git://github.com/phalcon/phalcon-devtools.git
 
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
 Затем откройте папку, в которую были скопированы инструменты, и выполните команду ". ./phalcon.sh", (не забудьте точку в начале команды):
+
+.. code-block:: bash
+
+    cd phalcon-devtools/
+
+    . ./phalcon.sh
 
 .. figure:: ../_static/img/linux-2.png
    :align: center

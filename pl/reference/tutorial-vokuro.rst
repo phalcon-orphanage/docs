@@ -4,30 +4,6 @@ Vökuró is another sample application you can use to learn more about Phalcon.
 Vökuró is a small website that shows how to implement a security features and
 management of users and permissions. You can clone its code from Github_.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
-or execute the code snippet below:
-
-.. code-block:: php
-
-    <?php print_r(get_loaded_extensions()); ?>
-
-The Phalcon extension should appear as part of the output:
-
-.. code-block:: php
-
-    Array
-    (
-        [0] => Core
-        [1] => libxml
-        [2] => filter
-        [3] => SPL
-        [4] => standard
-        [5] => phalcon
-        [6] => pdo_mysql
-    )
-
 Project Structure
 -----------------
 Once you clone the project in your document root you'll see the following structure:
@@ -95,7 +71,7 @@ any of the classes in the downloaded dependencies:
     // ...
 
     // Use composer autoloader to load vendor classes
-    require_once BASE_PATH . '/vendor/autoload.php';
+    require_once BASE_PATH . "/vendor/autoload.php";
 
 Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models
 which is the recommended practice to structure a project. This way the autoloader looks slightly
@@ -105,15 +81,17 @@ different than the one we saw before (app/config/loader.php):
 
     <?php
 
-    $loader = new Phalcon\Loader();
+    use Phalcon\Loader;
+
+    $loader = new Loader();
 
     $loader->registerNamespaces(
-        array(
-            'Vokuro\Models'      => $config->application->modelsDir,
-            'Vokuro\Controllers' => $config->application->controllersDir,
-            'Vokuro\Forms'       => $config->application->formsDir,
-            'Vokuro'             => $config->application->libraryDir
-        )
+        [
+            "Vokuro\\Models"      => $config->application->modelsDir,
+            "Vokuro\\Controllers" => $config->application->controllersDir,
+            "Vokuro\\Forms"       => $config->application->formsDir,
+            "Vokuro"              => $config->application->libraryDir,
+        ]
     );
 
     $loader->register();
@@ -167,47 +145,49 @@ allow the user enter the login details:
 
 .. code-block:: html+jinja
 
-    {{ form('class': 'form-search') }}
+    {{ form("class": "form-search") }}
 
-        <h2>Sign Up</h2>
+        <h2>
+            Sign Up
+        </h2>
 
-        <p>{{ form.label('name') }}</p>
+        <p>{{ form.label("name") }}</p>
         <p>
-            {{ form.render('name') }}
-            {{ form.messages('name') }}
+            {{ form.render("name") }}
+            {{ form.messages("name") }}
         </p>
 
-        <p>{{ form.label('email') }}</p>
+        <p>{{ form.label("email") }}</p>
         <p>
-            {{ form.render('email') }}
-            {{ form.messages('email') }}
+            {{ form.render("email") }}
+            {{ form.messages("email") }}
         </p>
 
-        <p>{{ form.label('password') }}</p>
+        <p>{{ form.label("password") }}</p>
         <p>
-            {{ form.render('password') }}
-            {{ form.messages('password') }}
+            {{ form.render("password") }}
+            {{ form.messages("password") }}
         </p>
 
-        <p>{{ form.label('confirmPassword') }}</p>
+        <p>{{ form.label("confirmPassword") }}</p>
         <p>
-            {{ form.render('confirmPassword') }}
-            {{ form.messages('confirmPassword') }}
+            {{ form.render("confirmPassword") }}
+            {{ form.messages("confirmPassword") }}
         </p>
 
         <p>
-            {{ form.render('terms') }} {{ form.label('terms') }}
-            {{ form.messages('terms') }}
+            {{ form.render("terms") }} {{ form.label("terms") }}
+            {{ form.messages("terms") }}
         </p>
 
-        <p>{{ form.render('Sign Up') }}</p>
+        <p>{{ form.render("Sign Up") }}</p>
 
-        {{ form.render('csrf', ['value': security.getToken()]) }}
-        {{ form.messages('csrf') }}
+        {{ form.render("csrf", ["value": security.getToken()]) }}
+        {{ form.messages("csrf") }}
 
         <hr>
 
-    </form>
+    {{ endForm() }}
 
 .. _Github: https://github.com/phalcon/vokuro
 .. _composer: https://getcomposer.org/

@@ -22,16 +22,19 @@ an access control list (ACL) managed by Phalcon.
     // ...
 
     // 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
-    $di->set('db', function () use ($config) {
-        return new DbAdapter(
-            [
-                "host"     => $config->database->host,
-                "username" => $config->database->username,
-                "password" => $config->database->password,
-                "dbname"   => $config->database->name
-            ]
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new DbAdapter(
+                [
+                    "host"     => $config->database->host,
+                    "username" => $config->database->username,
+                    "password" => $config->database->password,
+                    "dbname"   => $config->database->name,
+                ]
+            );
+        }
+    );
 
 ここで、MySQL接続アダプタのインスタンスを返しています。ロガーやプロファイラの追加、アダプタの変更等が必要であれば、それらの処理を追加することもできます。
 
@@ -39,25 +42,35 @@ an access control list (ACL) managed by Phalcon.
 
 .. code-block:: html+jinja
 
-    {{ form('session/start') }}
+    {{ form("session/start") }}
         <fieldset>
             <div>
-                <label for="email">Username/Email</label>
+                <label for="email">
+                    Username/Email
+                </label>
+
                 <div>
-                    {{ text_field('email') }}
+                    {{ text_field("email") }}
                 </div>
             </div>
+
             <div>
-                <label for="password">Password</label>
+                <label for="password">
+                    Password
+                </label>
+
                 <div>
-                    {{ password_field('password') }}
+                    {{ password_field("password") }}
                 </div>
             </div>
+
+
+
             <div>
-                {{ submit_button('Login') }}
+                {{ submit_button("Login") }}
             </div>
         </fieldset>
-    </form>
+    {{ endForm() }}
 
 Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
@@ -76,10 +89,10 @@ It will not take too long before you become familiar with Volt.
         private function _registerSession($user)
         {
             $this->session->set(
-                'auth',
+                "auth",
                 [
-                    'id'   => $user->id,
-                    'name' => $user->name
+                    "id"   => $user->id,
+                    "name" => $user->name,
                 ]
             );
         }
@@ -90,45 +103,47 @@ It will not take too long before you become familiar with Volt.
         public function startAction()
         {
             if ($this->request->isPost()) {
-
                 // POSTで送信された変数を受け取る
-                $email    = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email    = $this->request->getPost("email");
+                $password = $this->request->getPost("password");
 
                 // データベースからユーザーを検索
                 $user = Users::findFirst(
                     [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => [
-                            'email'    => $email,
-                            'password' => sha1($password)
+                        "bind" => [
+                            "email"    => $email,
+                            "password" => sha1($password),
                         ]
                     ]
                 );
 
-                if ($user != false) {
-
+                if ($user !== false) {
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome ' . $user->name);
+                    $this->flash->success(
+                        "Welcome " . $user->name
+                    );
 
                     // ユーザーが有効なら、'invoices' コントローラーに転送する
                     return $this->dispatcher->forward(
                         [
-                            'controller' => 'invoices',
-                            'action'     => 'index'
+                            "controller" => "invoices",
+                            "action"     => "index",
                         ]
                     );
                 }
 
-                $this->flash->error('Wrong email/password');
+                $this->flash->error(
+                    "Wrong email/password"
+                );
             }
 
             // ログインフォームへ再度転送
             return $this->dispatcher->forward(
                 [
-                    'controller' => 'session',
-                    'action'     => 'index'
+                    "controller" => "session",
+                    "action"     => "index",
                 ]
             );
         }
@@ -147,10 +162,10 @@ It will not take too long before you become familiar with Volt.
     <?php
 
     $this->session->set(
-        'auth',
+        "auth",
         [
-            'id'   => $user->id,
-            'name' => $user->name
+            "id"   => $user->id,
+            "name" => $user->name,
         ]
     );
 
@@ -169,8 +184,8 @@ Then, we receive the parameters from the form:
 
     <?php
 
-    $email    = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $email    = $this->request->getPost("email");
+    $password = $this->request->getPost("password");
 
 Now, we have to check if there is one user with the same username or email and password:
 
@@ -181,9 +196,9 @@ Now, we have to check if there is one user with the same username or email and p
     $user = Users::findFirst(
         [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => [
-                'email'    => $email,
-                'password' => sha1($password)
+            "bind" => [
+                "email"    => $email,
+                "password" => sha1($password),
             ]
         ]
     );
@@ -198,11 +213,19 @@ If the user is valid we register it in session and forwards him/her to the dashb
 
     <?php
 
-    if ($user != false) {
+    if ($user !== false) {
         $this->_registerSession($user);
-        $this->flash->success('Welcome ' . $user->name);
 
-        return $this->forward('invoices/index');
+        $this->flash->success(
+            "Welcome " . $user->name
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "invoices",
+                "action"     => "index",
+            ]
+        );
     }
 
 If the user does not exist we forward the user back again to action where the form is displayed:
@@ -211,7 +234,12 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    return $this->forward('session/index');
+    return $this->dispatcher->forward(
+        [
+            "controller" => "session",
+            "action"     => "index",
+        ]
+    );
 
 バックエンドのセキュリティ保護
 ------------------------------
@@ -237,14 +265,16 @@ If the user does not exist we forward the user back again to action where the fo
     /**
      * MVC dispatcher
      */
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // ...
 
-        // ...
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 これで、アプリケーションで使用されるディスパッチャを完全に制御できるようになりました。フレーワークの多くのコンポーネントはイベントを発火するので、内部の処理の流れを変更することができます。DIコンポーネントが接着剤として機能し、 :doc:`EventsManager <events>` がコンポーネントが生み出すイベントをインターセプトし、イベントをリスナーに通知します。
 
@@ -259,24 +289,32 @@ If the user does not exist we forward the user back again to action where the fo
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Create an events manager
+            $eventsManager = new EventsManager();
 
-        // Create an events manager
-        $eventsManager = new EventsManager();
+            // Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
+            $eventsManager->attach(
+                "dispatch:beforeExecuteRoute",
+                new SecurityPlugin()
+            );
 
-        // Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
-        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+            // Handle exceptions and not-found exceptions using NotFoundPlugin
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                new NotFoundPlugin()
+            );
 
-        // Handle exceptions and not-found exceptions using NotFoundPlugin
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
+            // イベントマネージャーをディスパッチャに束縛する
+            $dispatcher->setEventsManager($eventsManager);
 
-        // イベントマネージャーをディスパッチャに束縛する
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
@@ -287,7 +325,10 @@ When an event called "beforeExecuteRoute" is triggered the following plugin will
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeExecuteRoute",
+        new SecurityPlugin()
+    );
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -298,7 +339,10 @@ When a "beforeException" is triggered then other plugin is notified:
     /**
      * Handle exceptions and not-found exceptions using NotFoundPlugin
      */
-    $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeException",
+        new NotFoundPlugin()
+    );
 
 Securityプラグインは (app/plugins/SecurityPlugin.php) にあるクラスです。このクラスは "beforeExecuteRoute" メソッドを実装しています。これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
 
@@ -340,30 +384,34 @@ ACLリストを使用してユーザーがアクセス権を持つかチェッ�
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ロールを定義するため、セッションに "auth" 変数があるかチェックする
-            $auth = $this->session->get('auth');
+            $auth = $this->session->get("auth");
+
             if (!$auth) {
-                $role = 'Guests';
+                $role = "Guests";
             } else {
-                $role = 'Users';
+                $role = "Users";
             }
 
             // ディスパッチャからアクティブなコントローラー名とアクション名を取得する
             $controller = $dispatcher->getControllerName();
-            $action = $dispatcher->getActionName();
+            $action     = $dispatcher->getActionName();
 
             // ACLリストを取得
             $acl = $this->getAcl();
 
             // ロールがコントローラー (又はリソース) にアクセス可能かチェックする
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Acl::ALLOW) {
 
+            if ($allowed !== Acl::ALLOW) {
                 // アクセス権が無い場合、indexコントローラーに転送する
-                $this->flash->error("You don't have access to this module");
+                $this->flash->error(
+                    "You don't have access to this module"
+                );
+
                 $dispatcher->forward(
                     [
-                        'controller' => 'index',
-                        'action'     => 'index'
+                        "controller" => "index",
+                        "action"     => "index",
                     ]
                 );
 
@@ -389,13 +437,15 @@ ACLリストの提供
     $acl = new AclList();
 
     // デフォルトの挙動はDENY（拒否）
-    $acl->setDefaultAction(Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
     // 2つのロールを登録する
     // ユーザーは登録済みユーザー、ゲストは未登録ユーザー
     $roles = [
-        'users'  => new Role('Users'),
-        'guests' => new Role('Guests')
+        "users"  => new Role("Users"),
+        "guests" => new Role("Guests"),
     ];
 
     foreach ($roles as $role) {
@@ -414,26 +464,36 @@ ACLリストの提供
 
     // プライベートエリアのリソース (バックエンド)
     $privateResources = [
-      'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-      'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-      'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-      'invoices'     => ['index', 'profile']
+        "companies"    => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "products"     => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "producttypes" => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "invoices"     => ["index", "profile"],
     ];
-    foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+
+    foreach ($privateResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
+
+
 
     // 公開エリアのリソース (フロントエンド)
     $publicResources = [
-        'index'    => ['index'],
-        'about'    => ['index'],
-        'register' => ['index'],
-        'errors'   => ['show404', 'show500'],
-        'session'  => ['index', 'register', 'start', 'end'],
-        'contact'  => ['index', 'send']
+        "index"    => ["index"],
+        "about"    => ["index"],
+        "register" => ["index"],
+        "errors"   => ["show404", "show500"],
+        "session"  => ["index", "register", "start", "end"],
+        "contact"  => ["index", "send"],
     ];
-    foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+
+    foreach ($publicResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
 いま、ACLは既存のコントローラーと関連するアクションの情報を知っている状態になっています。"Users" ロールはバックエンドとフロントエンド双方の全てのリソースにアクセスできます。"Guests" ロールは公開エリアにだけアクセスできます:
@@ -445,14 +505,22 @@ ACLリストの提供
     // 公開エリアのアクセス権をユーザーとゲストの双方に与える
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
-            $acl->allow($role->getName(), $resource, '*');
+            $acl->allow(
+                $role->getName(),
+                $resource,
+                "*"
+            );
         }
     }
 
     // ユーザーにだけ、プライベートエリアへのアクセス権を与える
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
-            $acl->allow('Users', $resource, $action);
+            $acl->allow(
+                "Users",
+                $resource,
+                $action
+            );
         }
     }
 

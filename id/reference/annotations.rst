@@ -99,14 +99,13 @@ Sebuah reflector diimplementasi untuk mendapatkan anotasi yang didefinisi dalam 
     $reader = new MemoryAdapter();
 
     // Reflect the annotations in the class Example
-    $reflector = $reader->get('Example');
+    $reflector = $reader->get("Example");
 
     // Read the annotations in the class' docblock
     $annotations = $reflector->getClassAnnotations();
 
     // Traverse the annotations
     foreach ($annotations as $annotation) {
-
         // Print the annotation name
         echo $annotation->getName(), PHP_EOL;
 
@@ -120,7 +119,7 @@ Sebuah reflector diimplementasi untuk mendapatkan anotasi yang didefinisi dalam 
 Proses pembacaan anotasi sangat cepat, namun, untuk alasan performa diarankan untuk menyimpan anotasi yang sudah diparsing menggunakan adapter.
 Adapter menyimpan anotasi yang sudah diproses sehingga menghindari kebutuhan untuk melakukan parsing anotasi terus menerus.
 
-:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` dgunakan untuk contoh di atas. Adapter ini hanya menyimpan anotasi selama request berjalan 
+:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` dgunakan untuk contoh di atas. Adapter ini hanya menyimpan anotasi selama request berjalan
 dan untuk alasan ini, adapter ini hanya cocok untuk tahap pengembangan. Ada adapter lain untuk ditukar ketika aplikasi berada dalam tahap produksi.
 
 Jenis Anotasi
@@ -197,12 +196,14 @@ untuk diberi thau ketika sebuah route dieksekusi:
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di['dispatcher'] = function () {
-
+    $di["dispatcher"] = function () {
         $eventsManager = new EventsManager();
 
         // Attach the plugin to 'dispatch' events
-        $eventsManager->attach('dispatch', new CacheEnablerPlugin());
+        $eventsManager->attach(
+            "dispatch",
+            new CacheEnablerPlugin()
+        );
 
         $dispatcher = new MvcDispatcher();
 
@@ -239,19 +240,20 @@ CacheEnablerPlugin adalah plugin yang menyadap tiap aksi yang dieksekusi dispatc
             );
 
             // Check if the method has an annotation 'Cache'
-            if ($annotations->has('Cache')) {
-
+            if ($annotations->has("Cache")) {
                 // The method has the annotation 'Cache'
-                $annotation = $annotations->get('Cache');
+                $annotation = $annotations->get("Cache");
 
                 // Get the lifetime
-                $lifetime = $annotation->getNamedParameter('lifetime');
+                $lifetime = $annotation->getNamedParameter("lifetime");
 
-                $options = array('lifetime' => $lifetime);
+                $options = [
+                    "lifetime" => $lifetime,
+                ];
 
                 // Check if there is a user defined cache key
-                if ($annotation->hasNamedParameter('key')) {
-                    $options['key'] = $annotation->getNamedParameter('key');
+                if ($annotation->hasNamedParameter("key")) {
+                    $options["key"] = $annotation->getNamedParameter("key");
                 }
 
                 // Enable the cache for the current method
@@ -313,8 +315,6 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     /**
-     * SecurityAnnotationsPlugin
-     *
      * This is the security plugin which controls that users only have access to the modules they're assigned to
      */
     class SecurityAnnotationsPlugin extends Plugin
@@ -337,17 +337,16 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
             $annotations = $this->annotations->get($controllerName);
 
             // The controller is private?
-            if ($annotations->getClassAnnotations()->has('Private')) {
-
+            if ($annotations->getClassAnnotations()->has("Private")) {
                 // Check if the session variable is active?
-                if (!$this->session->get('auth')) {
+                if (!$this->session->get("auth")) {
 
                     // The user is no logged redirect to login
                     $dispatcher->forward(
-                        array(
-                            'controller' => 'session',
-                            'action'     => 'login'
-                        )
+                        [
+                            "controller" => "session",
+                            "action"     => "login",
+                        ]
                     );
 
                     return false;
@@ -359,26 +358,21 @@ Anda dapat menggunakan anotasi untuk memberitahu ACL kontroller mana yang termas
         }
     }
 
-Memilih template untuk ditampilkan
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Di contoh ini kita akan menggunakan anotasi untuk memberi tahu :doc:`Phalcon\\Mvc\\View\\Simple <views>` template apa yang harus ditampilkan
-ketika aksi telah dieksekusi:
-
 Adapter Anotasi
 ---------------
 Komponen ini menggunakan adapter untuk cache atau tidak anotasi yang terproses sehingga meningkatkan performa dan menyediakan fasilitas untuk pengembangan/pengujian:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Name       | Keterangan                                                                                                                                                                                                                           | API                                                                                      |
-+============+======================================================================================================================================================================================================================================+==========================================================================================+
-| Memory     | Anotasi ini dicache di moemori saja. Ketika request berakhir cache dibersihkan dan memuat ulang anotasi di tiap request. Adapter ini cocok untuk tahap pengembangan                                                                  | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Files      | Anotasi yang sudah diparsing dan diproses disimpan permanent di file PHP untuk menaikkan performa. Adapter ini harus digunakan bersama bytecode cache.                                                                               | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| APC        | Anotasi yang sudah diparsing dan diproses disimpan permanent di APC cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                                                                                              | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| XCache     | Anotasi yang sudah diparsing dan diproses disimpan permanent di XCache cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                    | Keterangan                                                                                                                                                          |
++==========================================================================================+=====================================================================================================================================================================+
+| :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` | Anotasi ini dicache di moemori saja. Ketika request berakhir cache dibersihkan dan memuat ulang anotasi di tiap request. Adapter ini cocok untuk tahap pengembangan |
++------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   | Anotasi yang sudah diparsing dan diproses disimpan permanent di file PHP untuk menaikkan performa. Adapter ini harus digunakan bersama bytecode cache.              |
++------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       | Anotasi yang sudah diparsing dan diproses disimpan permanent di APC cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                             |
++------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` | Anotasi yang sudah diparsing dan diproses disimpan permanent di XCache cache untuk menaikkan performa. Ini adalah adapter yang lebih cepat                          |
++------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Implementasi adapter Anda
 ^^^^^^^^^^^^^^^^^^^^^^^^^
