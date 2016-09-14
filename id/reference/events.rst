@@ -52,7 +52,7 @@ Pertama, kita perlu sebuah objek listener untuk melakukannya. Kita menciptakan s
         "SELECT * FROM products p WHERE p.status = 1"
     );
 
-Sekarang tiap tiap kali sebuah query dieksekusi, pernyataan SQL akan dicetak. Parameter pertama yang dilewatkan ke fungsi lambda berisi informasi 
+Sekarang tiap kali sebuah query dieksekusi, pernyataan SQL akan dicetak. Parameter pertama yang dilewatkan ke fungsi lambda berisi informasi 
 kontekstual tentang kejadian yang berjalan, yang kedua adalah sumber kejadian (dalam hal ini koneksi itu sendiri). Parameter ketiga dapat
 juga ditentukan yang akan berisi data sembarang terkait kejadian.
 
