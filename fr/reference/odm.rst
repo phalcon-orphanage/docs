@@ -593,21 +593,21 @@ The following example shows how to use it:
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                      | Example                                                           |
-+==============+==================================================================+===================================================================+
-| Email        | Validates that field contains a valid email format               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Name                                                                                                  | Explanation                                                      |
++=======================================================================================================+==================================================================+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Email <../api/Phalcon_Mvc_Model_Validator_Email>`               | Validates that field contains a valid email format               |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Exclusionin <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   | Validates that a value is not within a list of possible values   |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Inclusionin <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   | Validates that a value is within a list of possible values       |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Numericality <../api/Phalcon_Mvc_Model_Validator_Numericality>` | Validates that a field has a numeric format                      |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Regex <../api/Phalcon_Mvc_Model_Validator_Regex>`               | Validates that the value of a field matches a regular expression |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\StringLength <../api/Phalcon_Mvc_Model_Validator_StringLength>` | Validates the length of a string                                 |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
 In addition to the built-in validators, you can create your own validators:
 
