@@ -33,7 +33,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     如果PHP版本为5.4/5.5或更高版本，为了提高性能节省内存开销，最好在模型类文件中定义每个字段。
 
-    模型Robots默认和数据库中的robots表格映射。如果想使用别的名字映射数据库中的表格则只需要重写 :code:`getSource()` 方法即可：
+    模型Robots默认和数据库中的robots表格映射。如果想使用别的名字映射数据库中的表格则只需要重写 :code:`setSource()` 方法即可：
 
 .. code-block:: php
 
@@ -43,9 +43,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "the_robots";
+            $this->setSource("the_robots");
         }
     }
 
@@ -68,7 +68,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
 模型中使用命名空间（Models in Namespaces）
 ------------------------------------------
-我们在这里可以使用命名空间来避免类名冲突。这个例子中我们使用getSource方法来标明要使用的数据库表：
+我们在这里可以使用命名空间来避免类名冲突。这个例子中我们使用:code:`setSource()`方法来标明要使用的数据库表：
 
 .. code-block:: php
 
@@ -80,9 +80,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "robots";
+            $this->setSource("robots");
         }
     }
 

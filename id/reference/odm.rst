@@ -37,7 +37,7 @@ file must contain a single class; its class name should be in camel case notatio
     memory and reduce the memory allocation.
 
 By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
-you can use the :code:`getSource()` method:
+you can use the :code:`setSource()` method:
 
 .. code-block:: php
 
@@ -47,9 +47,9 @@ you can use the :code:`getSource()` method:
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "the_robots";
+            $this->setSource("the_robots");
         }
     }
 
@@ -73,7 +73,7 @@ for a collection "robots" with the documents:
 
 Models in Namespaces
 --------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:
+Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the :code:`setSource()` method:
 
 .. code-block:: php
 
@@ -85,9 +85,9 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "robots";
+            $this->setSource("robots");
         }
     }
 
