@@ -16,19 +16,21 @@ Pagination using a PHP array as source of data
 
     <?php
 
-    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
-    	array(
-    		"data"  => array(
-    			array('id' => 1, 'name' => 'Artichoke'),
-    			array('id' => 2, 'name' => 'Carrots'),
-    			array('id' => 3, 'name' => 'Beet'),
-    			array('id' => 4, 'name' => 'Lettuce'),
-    			array('id' => 5, 'name' => '')
-    		),
-    		"limit" => 2,
-    		"page"  => $currentPage
-    	)
-    );
+     use Phalcon\Paginator\Adapter\NativeArray;
+    
+     $paginator = new NativeArray(
+         [
+             'data'  => array(
+                 ['id' => 1, 'name' => 'Artichoke'],
+                 ['id' => 2, 'name' => 'Carrots'],
+                 ['id' => 3, 'name' => 'Beet'],
+                 ['id' => 4, 'name' => 'Lettuce'],
+                 ['id' => 5, 'name' => '']
+             ],
+             'limit' => 2,
+             'page'  => $currentPage,
+         ]
+     );
 
 
 
@@ -47,13 +49,13 @@ Returns a slice of the resultset to show in the pagination
 
 
 
-public  **setCurrentPage** (*unknown* $page) inherited from Phalcon\\Paginator\\Adapter
+public  **setCurrentPage** (*mixed* $page) inherited from Phalcon\\Paginator\\Adapter
 
 Set the current page number
 
 
 
-public  **setLimit** (*unknown* $limitRows) inherited from Phalcon\\Paginator\\Adapter
+public  **setLimit** (*mixed* $limitRows) inherited from Phalcon\\Paginator\\Adapter
 
 Set current rows limit
 

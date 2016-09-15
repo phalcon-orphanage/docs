@@ -46,9 +46,9 @@ call whenever this piece of code is called.
 
     // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(
-        array(
-            "lifetime" => 172800
-        )
+        [
+            "lifetime" => 172800,
+        ]
     );
 
     // Create the component that will cache from the "Output" to a "File" backend
@@ -56,9 +56,9 @@ call whenever this piece of code is called.
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
-            "cacheDir" => "../app/cache/"
-        )
+        [
+            "cacheDir" => "../app/cache/",
+        ]
     );
 
     // Get/Set the cache file to ../app/cache/my-cache.html
@@ -66,24 +66,21 @@ call whenever this piece of code is called.
 
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
-
         // Print date and time
         echo date("r");
 
         // Generate a link to the sign-up action
         echo Tag::linkTo(
-            array(
+            [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
-            )
+                "class" => "signup-button",
+            ]
         );
 
         // Store the output into the cache file
         $cache->save();
-
     } else {
-
         // Echo the cached output
         echo $content;
     }
@@ -111,9 +108,9 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
 
     // Cache the files for 2 days using a Data frontend
     $frontCache = new FrontData(
-        array(
-            "lifetime" => 172800
-        )
+        [
+            "lifetime" => 172800,
+        ]
     );
 
     // Create the component that will cache "Data" to a "File" backend
@@ -121,22 +118,23 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
-            "cacheDir" => "../app/cache/"
-        )
+        [
+            "cacheDir" => "../app/cache/",
+        ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
-                "order" => "id"
-            )
+            [
+                "order" => "id",
+            ]
         );
 
         // Store it in the cache
@@ -161,37 +159,38 @@ The above example changes slightly (especially in terms of configuration) when w
 
     // Cache data for one hour
     $frontCache = new FrontData(
-        array(
-            "lifetime" => 3600
-        )
+        [
+            "lifetime" => 3600,
+        ]
     );
 
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new BackMemCached(
         $frontCache,
-        array(
-            "servers" => array(
-                array(
+        [
+            "servers" => [
+                [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
-                )
-            )
-        )
+                    "weight" => "1",
+                ]
+            ]
+        ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
-                "order" => "id"
-            )
+            [
+                "order" => "id",
+            ]
         );
 
         // Store it in the cache
@@ -224,14 +223,15 @@ If you want to know which keys are stored in the cache you could call the queryK
 
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 Deleting data from the cache
 ----------------------------
@@ -245,8 +245,9 @@ The only requirement is to know the key that the data have been stored with.
     // Delete an item with a specific key
     $cache->delete("someKey");
 
-    // Delete all items from the cache
     $keys = $cache->queryKeys();
+
+    // Delete all items from the cache
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -276,12 +277,12 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Store it in the cache
@@ -294,11 +295,11 @@ Setting the lifetime when saving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Setting the cache when saving data
@@ -322,72 +323,72 @@ the faster adapter and ending with the slowest one until the data expires:
     use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
     $ultraFastFrontend = new DataFrontend(
-        array(
-            "lifetime" => 3600
-        )
+        [
+            "lifetime" => 3600,
+        ]
     );
 
     $fastFrontend = new DataFrontend(
-        array(
-            "lifetime" => 86400
-        )
+        [
+            "lifetime" => 86400,
+        ]
     );
 
     $slowFrontend = new DataFrontend(
-        array(
-            "lifetime" => 604800
-        )
+        [
+            "lifetime" => 604800,
+        ]
     );
 
     // Backends are registered from the fastest to the slower
     $cache = new Multiple(
-        array(
+        [
             new ApcCache(
                 $ultraFastFrontend,
-                array(
-                    "prefix" => 'cache',
-                )
+                [
+                    "prefix" => "cache",
+                ]
             ),
             new MemcacheCache(
                 $fastFrontend,
-                array(
-                    "prefix" => 'cache',
+                [
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
-                )
+                    "port"   => "11211",
+                ]
             ),
             new FileCache(
                 $slowFrontend,
-                array(
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
-                )
-            )
-        )
+                [
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
+                ]
+            ),
+        ]
     );
 
     // Save, saves in every backend
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 フロントエンド・アダプタ
 -------------------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter  | Description                                                                                                                                                          | Example                                                                            |
-+==========+======================================================================================================================================================================+====================================================================================+
-| Output   | Read input data from standard PHP output                                                                                                                             | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Data     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                           | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Base64   | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                          | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Json     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks.       | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| IgBinary | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using IgBinary before be stored in the backend.                         | :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| None     | It's used to cache any kind of PHP data without serializing them.                                                                                                    | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter                                                                            | Description                                                                                                                                                    |
++====================================================================================+================================================================================================================================================================+
+| :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     | Read input data from standard PHP output                                                                                                                       |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                    |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using IgBinary before be stored in the backend.                   |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         | It's used to cache any kind of PHP data without serializing them.                                                                                              |
++------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Implementing your own Frontend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -397,21 +398,21 @@ Backend Adapters
 ----------------
 The backend adapters available to store cache data are:
 
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Adapter   | Description                                    | Info       | Required Extensions | Example                                                                           |
-+===========+================================================+============+=====================+===================================================================================+
-| File      | Stores data to local plain files               |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Memcached | Stores data to a memcached server              | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| APC       | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Mongo     | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| XCache    | Stores data in XCache                          | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_  | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| Adapter                                                                          | Description                                    | Info       | Required Extensions |
++==================================================================================+================================================+============+=====================+
+| :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`         | Stores data to local plain files               |            |                     |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>` | Stores data to a memcached server              | Memcached_ | memcache_           |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`           | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`       | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`     | Stores data in XCache                          | XCache_    | `xcache extension`_ |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`       | Stores data in Redis                           | Redis_     | `redis extension`_  |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
 
 Implementing your own Backend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

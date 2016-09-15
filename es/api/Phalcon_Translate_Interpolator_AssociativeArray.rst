@@ -11,7 +11,7 @@ Class **Phalcon\\Translate\\Interpolator\\AssociativeArray**
 Methods
 -------
 
-public  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders])
+public  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
 Replaces placeholders by the values passed
 

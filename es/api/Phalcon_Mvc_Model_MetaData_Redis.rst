@@ -3,26 +3,29 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Redis**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores model meta-data in the Redis.  By default meta-data is stored for 48 hours (172800 seconds)   
+Stores model meta-data in the Redis.  By default meta-data is stored for 48 hours (172800 seconds)  
 
 .. code-block:: php
 
     <?php
 
-    $metaData = new Phalcon\Mvc\Model\Metadata\Redis(array(
-    	'prefix' => 'my-app-id',
-    	'lifetime' => 86400,
-    	'host' => 'localhost',
-    	'port' => 6379,
-      	'persistent' => false
-    ));
+     use Phalcon\Mvc\Model\Metadata\Redis;
+    
+     $metaData = new Redis([
+         'host'       => '127.0.0.1',
+         'port'       => 6379,
+         'persistent' => 0,
+         'statsKey'   => '_PHCM_MM',
+         'lifetime'   => 172800,
+         'index'      => 2,
+     ]);
 
 
 
@@ -70,13 +73,13 @@ Phalcon\\Mvc\\Model\\MetaData\\Redis constructor
 
 
 
-public  **read** (*unknown* $key)
+public  **read** (*mixed* $key)
 
 Reads metadata from Redis
 
 
 
-public  **write** (*unknown* $key, *unknown* $data)
+public  **write** (*mixed* $key, *mixed* $data)
 
 Writes the metadata to Redis
 
@@ -88,7 +91,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 
 
-final protected  **_initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $key, *unknown* $table, *unknown* $schema) inherited from Phalcon\\Mvc\\Model\\MetaData
+final protected  **_initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $key, *mixed* $table, *mixed* $schema) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Initialize the metadata for certain table
 
@@ -131,7 +134,7 @@ Reads the complete meta-data for certain model
 
 
 
-final public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+final public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Reads meta-data for certain model 
 
@@ -144,7 +147,7 @@ Reads meta-data for certain model
 
 
 
-final public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index, *unknown* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
+final public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -170,7 +173,7 @@ Reads the ordered/reversed column map for certain model
 
 
 
-final public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+final public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Reads column-map information for certain model using a MODEL_* constant 
 
@@ -404,7 +407,7 @@ Returns the reverse column map if any
 
 
 
-public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Check if a model has certain attribute 
 

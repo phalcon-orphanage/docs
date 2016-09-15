@@ -16,22 +16,25 @@ Sends logs to FirePHP
 
     <?php
 
-     $logger = new \Phalcon\Logger\Adapter\Firephp("");
-     $logger->log(\Phalcon\Logger::ERROR, "This is an error");
-     $logger->error("This is another error");
+     use Phalcon\Logger\Adapter\Firephp;
+     use Phalcon\Logger;
+    
+     $logger = new Firephp();
+     $logger->log(Logger::ERROR, 'This is an error');
+     $logger->error('This is another error');
 
 
 
 Methods
 -------
 
-public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
+public  **getFormatter** ()
 
 Returns the internal formatter
 
 
 
-public  **logInternal** (*string* $message, *int* $type, *int* $time, *array* $context)
+public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the stream itself
 
@@ -43,7 +46,7 @@ Closes the logger
 
 
 
-public  **setLogLevel** (*unknown* $level) inherited from Phalcon\\Logger\\Adapter
+public  **setLogLevel** (*mixed* $level) inherited from Phalcon\\Logger\\Adapter
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
@@ -85,55 +88,55 @@ Returns the whether the logger is currently in an active transaction or not
 
 
 
-public  **critical** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **critical** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a critical message to the log
 
 
 
-public  **emergency** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **emergency** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an emergency message to the log
 
 
 
-public  **debug** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **debug** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **error** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **info** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **notice** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **warning** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*unknown* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **alert** (*mixed* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an alert message to the log
 
 
 
-public  **log** (*unknown* $type, [*unknown* $message], [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+public  **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Logs messages to the internal logger. Appends logs to the logger
 

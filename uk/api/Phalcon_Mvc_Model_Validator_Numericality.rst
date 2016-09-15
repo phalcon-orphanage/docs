@@ -68,15 +68,15 @@ Returns all the options from the validator
 
 
 
-public  **getOption** (*unknown* $option, [*unknown* $defaultValue]) inherited from Phalcon\\Mvc\\Model\\Validator
+public  **getOption** (*mixed* $option, [*mixed* $defaultValue]) inherited from Phalcon\\Mvc\\Model\\Validator
 
 Returns an option
 
 
 
-public  **isSetOption** (*unknown* $option) inherited from Phalcon\\Mvc\\Model\\Validator
+public  **isSetOption** (*mixed* $option) inherited from Phalcon\\Mvc\\Model\\Validator
 
-Check whether a option has been defined in the validator options
+Check whether an option has been defined in the validator options
 
 
 

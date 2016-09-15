@@ -44,9 +44,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // Create an Output frontend. Cache the files for 2 days
     $frontCache = new FrontOutput(
-        array(
-            "lifetime" => 172800
-        )
+        [
+            "lifetime" => 172800,
+        ]
     );
 
     // Create the component that will cache from the "Output" to a "File" backend
@@ -54,9 +54,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
-            "cacheDir" => "../app/cache/"
-        )
+        [
+            "cacheDir" => "../app/cache/",
+        ]
     );
 
     // Get/Set the cache file to ../app/cache/my-cache.html
@@ -64,24 +64,21 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // If $content is null then the content will be generated for the cache
     if ($content === null) {
-
         // Print date and time
         echo date("r");
 
         // Generate a link to the sign-up action
         echo Tag::linkTo(
-            array(
+            [
                 "user/signup",
                 "Sign Up",
-                "class" => "signup-button"
-            )
+                "class" => "signup-button",
+            ]
         );
 
         // Store the output into the cache file
         $cache->save();
-
     } else {
-
         // Echo the cached output
         echo $content;
     }
@@ -108,9 +105,9 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     // Cache the files for 2 days using a Data frontend
     $frontCache = new FrontData(
-        array(
-            "lifetime" => 172800
-        )
+        [
+            "lifetime" => 172800,
+        ]
     );
 
     // Create the component that will cache "Data" to a "File" backend
@@ -118,22 +115,23 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
     // the value for the folder
     $cache = new BackFile(
         $frontCache,
-        array(
-            "cacheDir" => "../app/cache/"
-        )
+        [
+            "cacheDir" => "../app/cache/",
+        ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
-                "order" => "id"
-            )
+            [
+                "order" => "id",
+            ]
         );
 
         // Store it in the cache
@@ -158,37 +156,38 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     // Cache data for one hour
     $frontCache = new FrontData(
-        array(
-            "lifetime" => 3600
-        )
+        [
+            "lifetime" => 3600,
+        ]
     );
 
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new BackMemCached(
         $frontCache,
-        array(
-            "servers" => array(
-                array(
+        [
+            "servers" => [
+                [
                     "host"   => "127.0.0.1",
                     "port"   => "11211",
-                    "weight" => "1"
-                )
-            )
-        )
+                    "weight" => "1",
+                ]
+            ]
+        ]
     );
 
-    // Try to get cached records
-    $cacheKey = 'robots_order_id.cache';
-    $robots   = $cache->get($cacheKey);
-    if ($robots === null) {
+    $cacheKey = "robots_order_id.cache";
 
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
         // $robots is null because of cache expiration or data does not exist
         // Make the database call and populate the variable
         $robots = Robots::find(
-            array(
-                "order" => "id"
-            )
+            [
+                "order" => "id",
+            ]
         );
 
         // Store it in the cache
@@ -220,14 +219,15 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
+
     foreach ($keys as $key) {
         $data = $cache->get($key);
+
         echo "Key=", $key, " Data=", $data;
     }
 
     // Query keys in the cache that begins with "my-prefix"
     $keys = $cache->queryKeys("my-prefix");
-
 
 删除缓存数据（Deleting data from the cache）
 --------------------------------------------
@@ -241,8 +241,9 @@ Memcached 后端存储器例子（Memcached Backend Example）
     // Delete an item with a specific key
     $cache->delete("someKey");
 
-    // Delete all items from the cache
     $keys = $cache->queryKeys();
+
+    // Delete all items from the cache
     foreach ($keys as $key) {
         $cache->delete($key);
     }
@@ -272,12 +273,12 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     // Setting the cache when getting a result
     $robots = $cache->get($cacheKey, 3600);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Store it in the cache
@@ -290,11 +291,11 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    $cacheKey = 'my.cache';
+    $cacheKey = "my.cache";
 
     $robots = $cache->get($cacheKey);
-    if ($robots === null) {
 
+    if ($robots === null) {
         $robots = "some robots";
 
         // Setting the cache when saving data
@@ -317,72 +318,72 @@ Setting the lifetime when retrieving:
     use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
     $ultraFastFrontend = new DataFrontend(
-        array(
-            "lifetime" => 3600
-        )
+        [
+            "lifetime" => 3600,
+        ]
     );
 
     $fastFrontend = new DataFrontend(
-        array(
-            "lifetime" => 86400
-        )
+        [
+            "lifetime" => 86400,
+        ]
     );
 
     $slowFrontend = new DataFrontend(
-        array(
-            "lifetime" => 604800
-        )
+        [
+            "lifetime" => 604800,
+        ]
     );
 
     // Backends are registered from the fastest to the slower
     $cache = new Multiple(
-        array(
+        [
             new ApcCache(
                 $ultraFastFrontend,
-                array(
-                    "prefix" => 'cache',
-                )
+                [
+                    "prefix" => "cache",
+                ]
             ),
             new MemcacheCache(
                 $fastFrontend,
-                array(
-                    "prefix" => 'cache',
+                [
+                    "prefix" => "cache",
                     "host"   => "localhost",
-                    "port"   => "11211"
-                )
+                    "port"   => "11211",
+                ]
             ),
             new FileCache(
                 $slowFrontend,
-                array(
-                    "prefix"   => 'cache',
-                    "cacheDir" => "../app/cache/"
-                )
-            )
-        )
+                [
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
+                ]
+            ),
+        ]
     );
 
     // Save, saves in every backend
-    $cache->save('my-key', $data);
+    $cache->save("my-key", $data);
 
 前端适配器（Frontend Adapters）
 -------------------------------
 作为缓存的接口或者输入源的前端适配器有：
 
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| 适配器   | 描述                                                                                                                                                                 | 示例                                                                               |
-+==========+======================================================================================================================================================================+====================================================================================+
-| Output   | 从标准PHP输出读取输入数据                                                                                                                                            | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Data     | 可用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据将会被序列化。                                                                                  | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Base64   | 可用于缓存二进制数据。在存入后端前数据会以base64_encode编码进行序列化。                                                                                              | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Json     | 在存入后端前数据使用JSON编码。从缓存获取后进行JSON解码。此前端适配器可用于跨语言和跨框架共享数据。                                                                   | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| IgBinary | 用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据会使用IgBinary进行序列化。                                                                        | :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| None     | 用于缓存任何类型的PHP数据而不作任何序列化操作。                                                                                                                      | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         |
-+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| 适配器                                                                             | 描述                                                                                               |
++====================================================================================+=====================================================================================================+
+| :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     | 从标准PHP输出读取输入数据                                                                           |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         | 可用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据将会被序列化。                 |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     | 可用于缓存二进制数据。在存入后端前数据会以base64_encode编码进行序列化。                             |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         | 在存入后端前数据使用JSON编码。从缓存获取后进行JSON解码。此前端适配器可用于跨语言和跨框架共享数据。 |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` | 用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据会使用IgBinary进行序列化。       |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         | 用于缓存任何类型的PHP数据而不作任何序列化操作。                                                    |
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
 
 自定义前端适配器（Implementing your own Frontend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -393,21 +394,21 @@ Setting the lifetime when retrieving:
 ------------------------------
 用于存放缓存数据的后端适配器有：
 
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| 适配器    | 描述                                           | 信息       | 需要的扩展          | 示例                                                                              |
-+===========+================================================+============+=====================+===================================================================================+
-| File      | 在本地绝对路径的文件上存放数据                 |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Memcached | 在memcached服务器存放数据                      | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| APC       | 在opcode缓存           （APC）中存放数据       | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Mongo     | 在Mongo数据库中存放数据                        | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| XCache    | 在XCache中存放数据                             | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_  | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| 适配器                                                                           | 描述                                           | 信息       | 需要的扩展          |
++==================================================================================+================================================+============+=====================+
+| :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`         | 在本地绝对路径的文件上存放数据                 |            |                     |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>` | 在memcached服务器存放数据                      | Memcached_ | memcache_           |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`           | 在opcode缓存           （APC）中存放数据       | APC_       | `APC extension`_    |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`       | 在Mongo数据库中存放数据                        | MongoDb_   | `Mongo`_            |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`     | 在XCache中存放数据                             | XCache_    | `xcache extension`_ |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
+| :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`       | Stores data in Redis                           | Redis_     | `redis extension`_  |
++----------------------------------------------------------------------------------+------------------------------------------------+------------+---------------------+
 
 自定义后端适配器（Implementing your own Backend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

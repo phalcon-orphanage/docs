@@ -20,11 +20,27 @@ Phalcon no es solo sobre rendimiento, nuestro objetivo es hacerlo robusto, compl
 Table of Contents
 -----------------
 
+Installation
+^^^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 3
 
-   reference/motivation
    reference/install
+   reference/nginx
+   reference/apache
+   reference/cherokee
+   reference/tools
+   reference/linuxtools
+   reference/mactools
+   reference/wintools
+
+Tutorials
+^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/tutorial
    reference/tutorial-invo
    reference/tutorial-invo-2
@@ -33,10 +49,18 @@ Table of Contents
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
+
+Components
+^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/di
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
    reference/phql
@@ -78,10 +102,32 @@ Table of Contents
    reference/intl
    reference/migrations
    reference/debug
-   reference/tools
-   reference/whats-next
    reference/unit-testing
+
+In Depth Explanations / Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
+   reference/whats-next
+   reference/di-explained
+   reference/applications-explained
+
+API
+^^^
+
+.. toctree::
+   :maxdepth: 2
+
    api/index
+
+Legal
+^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/license
 
 Otros Formatos

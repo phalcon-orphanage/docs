@@ -40,7 +40,7 @@ Phalcon\\Config constructor
 
 
 
-public  **offsetExists** (*unknown* $index)
+public  **offsetExists** (*mixed* $index)
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -53,7 +53,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public  **get** (*unknown* $index, [*unknown* $defaultValue])
+public  **get** (*mixed* $index, [*mixed* $defaultValue])
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -66,7 +66,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public  **offsetGet** (*unknown* $index)
+public  **offsetGet** (*mixed* $index)
 
 Gets an attribute using the array-syntax 
 
@@ -79,7 +79,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value)
+public  **offsetSet** (*mixed* $index, *mixed* $value)
 
 Sets an attribute using the array-syntax 
 
@@ -92,7 +92,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*unknown* $index)
+public  **offsetUnset** (*mixed* $index)
 
 Unsets an attribute using the array-syntax 
 
@@ -114,7 +114,7 @@ Merges a configuration into the current one
     <?php
 
      $appConfig = new \Phalcon\Config(array('database' => array('host' => 'localhost')));
-     $globalConfig->merge($config2);
+     $globalConfig->merge($appConfig);
 
 
 
@@ -159,7 +159,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-final protected *Config merged config*  **_merge** (*Config* $config, [*unknown* $instance])
+final protected *Config merged config*  **_merge** (*Config* $config, [*mixed* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
 

@@ -16,22 +16,25 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
     <?php
 
+     use Phalcon\Cache\Backend\Mongo;
+     use Phalcon\Cache\Frontend\Base64;
+    
      // Cache data for 2 days
-     $frontCache = new \Phalcon\Cache\Frontend\Base64(array(
-    	"lifetime" => 172800
-     ));
+     $frontCache = new Base64([
+         'lifetime' => 172800
+     ]);
     
-     //Create a MongoDB cache
-     $cache = new \Phalcon\Cache\Backend\Mongo($frontCache, array(
-    	'server' => "mongodb://localhost",
-          'db' => 'caches',
-    	'collection' => 'images'
-     ));
+     // Create a MongoDB cache
+     $cache = new Mongo($frontCache, [
+         'server' => "mongodb://localhost",
+         'db' => 'caches',
+         'collection' => 'images'
+     ]);
     
-     //Cache arbitrary data
+     // Cache arbitrary data
      $cache->save('my-data', file_get_contents('some-image.jpg'));
     
-     //Get data
+     // Get data
      $data = $cache->get('my-data');
 
 
@@ -51,7 +54,7 @@ Returns a MongoDb collection based on the backend parameters
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 Returns a cached content
 
@@ -110,7 +113,7 @@ public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setFrontend** (*unknown* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -120,7 +123,7 @@ public  **getOptions** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setOptions** (*unknown* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -130,7 +133,7 @@ public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
 
 ...
 
@@ -141,7 +144,7 @@ Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 

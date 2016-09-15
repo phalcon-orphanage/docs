@@ -14,15 +14,17 @@ Methods
 
 public  **getId** ()
 
-...
+
+
 
 
 public  **getBody** ()
 
-...
 
 
-public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *unknown* $id, *unknown* $body)
+
+
+public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *mixed* $id, *mixed* $body)
 
 
 
@@ -34,13 +36,13 @@ Removes a job from the server entirely
 
 
 
-public  **release** ([*unknown* $priority], [*unknown* $delay])
+public  **release** ([*mixed* $priority], [*mixed* $delay])
 
 The release command puts a reserved job back into the ready queue (and marks its state as "ready") to be run by any client. It is normally used when the job fails because of a transitory error.
 
 
 
-public  **bury** ([*unknown* $priority])
+public  **bury** ([*mixed* $priority])
 
 The bury command puts a job into the "buried" state. Buried jobs are put into a FIFO linked list and will not be touched by the server again until a client kicks them with the "kick" command.
 
@@ -60,7 +62,7 @@ Move the job to the ready queue if it is delayed or buried.
 
 public  **stats** ()
 
-Get stats of the job.
+Gives statistical information about the specified job if it exists.
 
 
 

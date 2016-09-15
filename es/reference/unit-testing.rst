@@ -42,14 +42,12 @@ A helper file is required to bootstrap the application for running the tests. We
 
     use Phalcon\Di;
     use Phalcon\Di\FactoryDefault;
+    use Phalcon\Loader;
 
-    ini_set('display_errors',1);
+    ini_set("display_errors", 1);
     error_reporting(E_ALL);
 
-    define('ROOT_PATH', __DIR__);
-    define('PATH_LIBRARY', __DIR__ . '/../app/library/');
-    define('PATH_SERVICES', __DIR__ . '/../app/services/');
-    define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
+    define("ROOT_PATH", __DIR__);
 
     set_include_path(
         ROOT_PATH . PATH_SEPARATOR . get_include_path()
@@ -60,17 +58,18 @@ A helper file is required to bootstrap the application for running the tests. We
 
     // Use the application autoloader to autoload the classes
     // Autoload the dependencies found in composer
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     $loader->registerDirs(
-        array(
-            ROOT_PATH
-        )
+        [
+            ROOT_PATH,
+        ]
     );
 
     $loader->register();
 
     $di = new FactoryDefault();
+
     Di::reset();
 
     // Add any needed services to the DI here
@@ -146,19 +145,11 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
     abstract class UnitTestCase extends PhalconTestCase
     {
         /**
-         * @var \Voice\Cache
-         */
-        protected $_cache;
-
-        /**
-         * @var \Phalcon\Config
-         */
-        protected $_config;
-
-        /**
          * @var bool
          */
         private $_loaded = false;
+
+
 
         public function setUp()
         {
@@ -182,7 +173,9 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
         public function __destruct()
         {
             if (!$this->_loaded) {
-                throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
+                throw new \PHPUnit_Framework_IncompleteTestError(
+                    "Please run parent::setUp()."
+                );
             }
         }
     }
@@ -202,14 +195,16 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
     {
         public function testTestCase()
         {
-            $this->assertEquals('works',
-                'works',
-                'This is OK'
+            $this->assertEquals(
+                "works",
+                "works",
+                "This is OK"
             );
 
-            $this->assertEquals('works',
-                'works1',
-                'This will fail'
+            $this->assertEquals(
+                "works",
+                "works1",
+                "This will fail"
             );
         }
     }

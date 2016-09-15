@@ -36,15 +36,15 @@ Returns all the options from the validator
 
 
 
-public  **getOption** (*unknown* $option, [*unknown* $defaultValue])
+public  **getOption** (*mixed* $option, [*mixed* $defaultValue])
 
 Returns an option
 
 
 
-public  **isSetOption** (*unknown* $option)
+public  **isSetOption** (*mixed* $option)
 
-Check whether a option has been defined in the validator options
+Check whether an option has been defined in the validator options
 
 
 

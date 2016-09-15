@@ -22,7 +22,7 @@ Applies a format to a message before sent it to the internal log
 
 
 
-public  **getTypeString** (*unknown* $type) inherited from Phalcon\\Logger\\Formatter
+public  **getTypeString** (*mixed* $type) inherited from Phalcon\\Logger\\Formatter
 
 Returns the string meaning of a logger constant
 

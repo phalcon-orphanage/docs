@@ -37,7 +37,7 @@ Returns the DependencyInjector container
 
 
 
-public  **setBaseUri** (*unknown* $baseUri)
+public  **setBaseUri** (*mixed* $baseUri)
 
 Sets a prefix for all the URIs to be generated 
 
@@ -51,7 +51,7 @@ Sets a prefix for all the URIs to be generated
 
 
 
-public  **setStaticBaseUri** (*unknown* $staticBaseUri)
+public  **setStaticBaseUri** (*mixed* $staticBaseUri)
 
 Sets a prefix for all static URLs generated 
 
@@ -76,7 +76,7 @@ Returns the prefix for all the generated static urls. By default /
 
 
 
-public  **setBasePath** (*unknown* $basePath)
+public  **setBasePath** (*mixed* $basePath)
 
 Sets a base path for all the generated paths 
 
@@ -95,7 +95,7 @@ Returns the base path
 
 
 
-public  **get** ([*unknown* $uri], [*unknown* $args], [*unknown* $local], [*unknown* $baseUri])
+public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
 Generates a URL 
 
@@ -108,11 +108,17 @@ Generates a URL
     
      //Generate a URL for a predefined route
      echo $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2015'));
+    
+     // Generate a URL with GET arguments (/show/products?id=1&name=Carrots)
+     echo $url->get('show/products', array('id' => 1, 'name' => 'Carrots'));
+    
+     // Generate an absolute URL by setting the third parameter as false.
+     echo $url->get('https://phalconphp.com/', null, false);
 
 
 
 
-public  **getStatic** ([*unknown* $uri])
+public  **getStatic** ([*mixed* $uri])
 
 Generates a URL for a static resource 
 
@@ -129,7 +135,7 @@ Generates a URL for a static resource
 
 
 
-public  **path** ([*unknown* $path])
+public  **path** ([*mixed* $path])
 
 Generates a local path
 

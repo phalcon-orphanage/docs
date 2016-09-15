@@ -3,7 +3,7 @@ Class **Phalcon\\Flash\\Session**
 
 *extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -16,19 +16,7 @@ Temporarily stores the messages in session, then messages can be printed in the 
 Methods
 -------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the dependency injector
-
-
-
-public  **getDI** ()
-
-Returns the internal dependency injector
-
-
-
-protected  **_getSessionMessages** (*unknown* $remove)
+protected  **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
 Returns the messages stored in session
 
@@ -40,25 +28,25 @@ Stores the messages in session
 
 
 
-public  **message** (*unknown* $type, *unknown* $message)
+public  **message** (*mixed* $type, *mixed* $message)
 
 Adds a message to the session flasher
 
 
 
-public  **has** ([*unknown* $type])
+public  **has** ([*mixed* $type])
 
 Checks whether there are messages
 
 
 
-public  **getMessages** ([*unknown* $type], [*unknown* $remove])
+public  **getMessages** ([*mixed* $type], [*mixed* $remove])
 
 Returns the messages in the session flasher
 
 
 
-public  **output** ([*unknown* $remove])
+public  **output** ([*mixed* $remove])
 
 Prints the messages in the session flasher
 
@@ -70,19 +58,55 @@ Clear messages in the session messenger
 
 
 
-public  **__construct** ([*unknown* $cssClasses]) inherited from Phalcon\\Flash
+public  **__construct** ([*mixed* $cssClasses]) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public  **getAutoescape** () inherited from Phalcon\\Flash
+
+Returns the autoescape mode in generated html
+
+
+
+public  **setAutoescape** (*mixed* $autoescape) inherited from Phalcon\\Flash
+
+Set the autoescape mode in generated html
+
+
+
+public  **getEscaperService** () inherited from Phalcon\\Flash
+
+Returns the Escaper Service
+
+
+
+public  **setEscaperService** (:doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>` $escaperService) inherited from Phalcon\\Flash
+
+Sets the Escaper Service
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Flash
+
+Sets the dependency injector
+
+
+
+public  **getDI** () inherited from Phalcon\\Flash
+
+Returns the internal dependency injector
+
+
+
+public  **setImplicitFlush** (*mixed* $implicitFlush) inherited from Phalcon\\Flash
 
 Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\\Flash
+public  **setAutomaticHtml** (*mixed* $automaticHtml) inherited from Phalcon\\Flash
 
 Set if the output must be implicitly formatted with HTML
 
@@ -94,7 +118,7 @@ Set an array with CSS classes to format the messages
 
 
 
-public  **error** (*unknown* $message) inherited from Phalcon\\Flash
+public  **error** (*mixed* $message) inherited from Phalcon\\Flash
 
 Shows a HTML error message 
 
@@ -107,7 +131,7 @@ Shows a HTML error message
 
 
 
-public  **notice** (*unknown* $message) inherited from Phalcon\\Flash
+public  **notice** (*mixed* $message) inherited from Phalcon\\Flash
 
 Shows a HTML notice/information message 
 
@@ -120,7 +144,7 @@ Shows a HTML notice/information message
 
 
 
-public  **success** (*unknown* $message) inherited from Phalcon\\Flash
+public  **success** (*mixed* $message) inherited from Phalcon\\Flash
 
 Shows a HTML success message 
 
@@ -133,7 +157,7 @@ Shows a HTML success message
 
 
 
-public  **warning** (*unknown* $message) inherited from Phalcon\\Flash
+public  **warning** (*mixed* $message) inherited from Phalcon\\Flash
 
 Shows a HTML warning message 
 
@@ -146,7 +170,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *string|array* $message) inherited from Phalcon\\Flash
+public *string|void*  **outputMessage** (*mixed* $type, *string|array* $message) inherited from Phalcon\\Flash
 
 Outputs a message formatting it with HTML 
 

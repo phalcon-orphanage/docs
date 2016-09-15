@@ -38,18 +38,26 @@ Reads ini files and converts them to Phalcon\\Config objects.  Given the next co
      echo $config->phalcon->controllersDir;
      echo $config->database->username;
 
+  PHP constants may also be parsed in the ini file, so if you define a constant as an ini value before calling the constructor, the constant's value will be integrated into the results. To use it this way you must specify the optional second parameter as INI_SCANNER_NORMAL when calling the constructor:  
+
+.. code-block:: php
+
+    <?php
+
+      $config = new Phalcon\Config\Adapter\Ini("path/config-with-constants.ini", INI_SCANNER_NORMAL);
+
 
 
 Methods
 -------
 
-public  **__construct** (*unknown* $filePath)
+public  **__construct** (*mixed* $filePath, [*mixed* $mode])
 
 Phalcon\\Config\\Adapter\\Ini constructor
 
 
 
-protected  **_parseIniString** (*unknown* $path, *unknown* $value)
+protected  **_parseIniString** (*mixed* $path, *mixed* $value)
 
 Build multidimensional array from string 
 
@@ -71,7 +79,13 @@ Build multidimensional array from string
 
 
 
-public  **offsetExists** (*unknown* $index) inherited from Phalcon\\Config
+private  **_cast** (*mixed* $ini)
+
+We have to cast values manually because parse_ini_file() has a poor implementation.
+
+
+
+public  **offsetExists** (*mixed* $index) inherited from Phalcon\\Config
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -84,7 +98,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public  **get** (*unknown* $index, [*unknown* $defaultValue]) inherited from Phalcon\\Config
+public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from Phalcon\\Config
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -97,7 +111,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public  **offsetGet** (*unknown* $index) inherited from Phalcon\\Config
+public  **offsetGet** (*mixed* $index) inherited from Phalcon\\Config
 
 Gets an attribute using the array-syntax 
 
@@ -110,7 +124,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from Phalcon\\Config
 
 Sets an attribute using the array-syntax 
 
@@ -123,7 +137,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*unknown* $index) inherited from Phalcon\\Config
+public  **offsetUnset** (*mixed* $index) inherited from Phalcon\\Config
 
 Unsets an attribute using the array-syntax 
 
@@ -190,7 +204,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-final protected *Config merged config*  **_merge** (*Config* $config, [*unknown* $instance]) inherited from Phalcon\\Config
+final protected *Config merged config*  **_merge** (*Config* $config, [*mixed* $instance]) inherited from Phalcon\\Config
 
 Helper method for merge configs (forwarding nested config instance)
 

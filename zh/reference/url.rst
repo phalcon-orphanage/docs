@@ -21,6 +21,7 @@ Execute the following code to know the base URI detected by Phalcon:
     use Phalcon\Mvc\Url;
 
     $url = new Url();
+
     echo $url->getBaseUri();
 
 By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application
@@ -35,13 +36,13 @@ is recommended setting up it manually:
     $url = new Url();
 
     // Setting a relative base URI
-    $url->setBaseUri('/invo/');
+    $url->setBaseUri("/invo/");
 
     // Setting a full domain as base URI
-    $url->setBaseUri('//my.domain.com/');
+    $url->setBaseUri("//my.domain.com/");
 
     // Setting a full domain as base URI
-    $url->setBaseUri('http://my.domain.com/my-app/');
+    $url->setBaseUri("http://my.domain.com/my-app/");
 
 Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
 
@@ -51,11 +52,16 @@ Usually, this component must be registered in the Dependency Injector container,
 
     use Phalcon\Mvc\Url;
 
-    $di->set('url', function () {
-        $url = new Url();
-        $url->setBaseUri('/invo/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new Url();
+
+            $url->setBaseUri("/invo/");
+
+            return $url;
+        }
+    );
 
 生成 URI（Generating URIs）
 ---------------------------
@@ -74,13 +80,13 @@ For Example if you have the following route:
 
     <?php
 
-    $route->add(
+    $router->add(
         "/blog/{year}/{month}/{title}",
-        array(
-            'controller' => 'posts',
-            'action'     => 'show'
-        )
-    )->setName('show-post');
+        [
+            "controller" => "posts",
+            "action"     => "show",
+        ]
+    )->setName("show-post");
 
 A URL can be generated in the following way:
 
@@ -90,12 +96,12 @@ A URL can be generated in the following way:
 
     // This produces: /blog/2015/01/some-blog-post
     $url->get(
-        array(
-            'for'   => 'show-post',
-            'year'  => 2015,
-            'month' => '01',
-            'title' => 'some-blog-post'
-        )
+        [
+            "for"   => "show-post",
+            "year"  => "2015",
+            "month" => "01",
+            "title" => "some-blog-post",
+        ]
     );
 
 没有伪静态状态下的生成 URL（Producing URLs without mod_rewrite）
@@ -111,7 +117,7 @@ You can use this component also to create URLs without mod_rewrite:
     $url = new Url();
 
     // Pass the URI in $_GET["_url"]
-    $url->setBaseUri('/invo/index.php?_url=/');
+    $url->setBaseUri("/invo/index.php?_url=/");
 
     // This produce: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
@@ -127,10 +133,10 @@ You can also use :code:`$_SERVER["REQUEST_URI"]`:
     $url = new Url();
 
     // Pass the URI in $_GET["_url"]
-    $url->setBaseUri('/invo/index.php?_url=/');
+    $url->setBaseUri("/invo/index.php?_url=/");
 
     // Pass the URI using $_SERVER["REQUEST_URI"]
-    $url->setBaseUri('/invo/index.php/');
+    $url->setBaseUri("/invo/index.php/");
 
 In this case, it's necessary to manually handle the required URI in the Router:
 
@@ -144,7 +150,8 @@ In this case, it's necessary to manually handle the required URI in the Router:
 
     // ... Define routes
 
-    $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
+    $uri = str_replace($_SERVER["SCRIPT_NAME"], "", $_SERVER["REQUEST_URI"]);
+
     $router->handle($uri);
 
 The produced routes would look like:
@@ -183,10 +190,10 @@ This component allow you to set up a different base URI for static resources in 
     $url = new Url();
 
     // Dynamic URIs are
-    $url->setBaseUri('/');
+    $url->setBaseUri("/");
 
     // Static resources go through a CDN
-    $url->setStaticBaseUri('http://static.mywebsite.com/');
+    $url->setStaticBaseUri("http://static.mywebsite.com/");
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 

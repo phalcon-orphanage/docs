@@ -60,7 +60,7 @@ Returns the raw parsing intermediate definitions used to construct the reflectio
 
 
 
-public static *array data*  **__set_state** (*unknown* $data)
+public static *array data*  **__set_state** (*mixed* $data)
 
 Restores the state of a Phalcon\\Annotations\\Reflection variable export
 

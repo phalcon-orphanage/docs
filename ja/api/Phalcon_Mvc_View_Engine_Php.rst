@@ -16,7 +16,7 @@ Adapter to use PHP itself as templating engine
 Methods
 -------
 
-public  **render** (*unknown* $path, *unknown* $params, [*unknown* $mustClean])
+public  **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
 Renders a view using the template engine
 
@@ -70,7 +70,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

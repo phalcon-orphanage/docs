@@ -62,7 +62,7 @@
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -85,15 +85,15 @@
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
 循环调度（Dispatch Loop）
 -------------------------
 循环调度将会在分发器执行，直到没有action需要执行为止。在上面的例子中，只有一个action
-被执行到。现在让我们来看下“forward”（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
+被执行到。现在让我们来看下:code:`forward()`（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
 另一个controller/action。
 
 .. code-block:: php
@@ -111,14 +111,16 @@
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Forward flow to another action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
-                    "action"     => "signin"
-                )
+                    "action"     => "signin",
+                ]
             );
         }
     }
@@ -165,14 +167,14 @@
 
         public function initialize()
         {
-            $this->settings = array(
-                "mySetting" => "value"
-            );
+            $this->settings = [
+                "mySetting" => "value",
+            ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -180,10 +182,10 @@
 
 .. highlights::
 
-    “initialize”仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
+    :code:`initialize()`仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
     在初始化中的应用逻辑在未鉴权的情况下无法执行。
 
-如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现“onConstruct”方法：
+如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现:code:`onConstruct()`”方法：
 
 .. code-block:: php
 
@@ -217,9 +219,15 @@
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 那么，我们可以通常多种方式来访问这个服务：
 
@@ -234,19 +242,19 @@
         public function saveAction()
         {
             // 以和服务相同名字的类属性访问
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // 通过DI访问服务
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // 另一种方式：使用魔法getter来访问
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // 另一种方式：使用魔法getter来访问
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // 使用数组下标
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -274,7 +282,7 @@
         public function saveAction()
         {
             // 检查请求是否为POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // 获取POST数据
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -341,16 +349,24 @@
     <?php
 
     // 将一个控制器作为服务进行注册
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // 将一个命名空间下的控制器作为服务进行注册
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
 创建基类控制器（Creating a Base Controller）
 ------------------------------------------
@@ -414,15 +430,16 @@
         public function beforeExecuteRoute($dispatcher)
         {
             // 这个方法会在每一个能找到的action前执行
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
-                    array(
-                        'controller' => 'home',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "home",
+                        "action"     => "index",
+                    ]
                 );
 
                 return false;

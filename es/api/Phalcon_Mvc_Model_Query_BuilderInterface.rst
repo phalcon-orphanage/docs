@@ -6,15 +6,17 @@ Interface **Phalcon\\Mvc\\Model\\Query\\BuilderInterface**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/query/builderinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
+Constants
+---------
+
+*string* **OPERATOR_OR**
+
+*string* **OPERATOR_AND**
+
 Methods
 -------
 
-abstract public  **__construct** ([*unknown* $params])
-
-...
-
-
-abstract public  **columns** (*unknown* $columns)
+abstract public  **columns** (*mixed* $columns)
 
 ...
 
@@ -24,12 +26,12 @@ abstract public  **getColumns** ()
 ...
 
 
-abstract public  **from** (*unknown* $models)
+abstract public  **from** (*mixed* $models)
 
 ...
 
 
-abstract public  **addFrom** (*unknown* $model, [*unknown* $alias])
+abstract public  **addFrom** (*mixed* $model, [*mixed* $alias])
 
 ...
 
@@ -39,57 +41,62 @@ abstract public  **getFrom** ()
 ...
 
 
-abstract public  **join** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+abstract public  **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 ...
 
 
-abstract public  **innerJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+abstract public  **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 ...
 
 
-abstract public  **leftJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+abstract public  **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 ...
 
 
-abstract public  **rightJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
+abstract public  **rightJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 ...
 
 
-abstract public  **where** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **getJoins** ()
 
 ...
 
 
-abstract public  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
 
-abstract public  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
 
-abstract public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+abstract public  **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
 
-abstract public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+abstract public  **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
 ...
 
 
-abstract public  **inWhere** (*unknown* $expr, *array* $values)
+abstract public  **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
 ...
 
 
-abstract public  **notInWhere** (*unknown* $expr, *array* $values)
+abstract public  **inWhere** (*mixed* $expr, *array* $values, [*mixed* $operator])
+
+...
+
+
+abstract public  **notInWhere** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
 ...
 
@@ -99,7 +106,7 @@ abstract public  **getWhere** ()
 ...
 
 
-abstract public  **orderBy** (*unknown* $orderBy)
+abstract public  **orderBy** (*mixed* $orderBy)
 
 ...
 
@@ -109,7 +116,7 @@ abstract public  **getOrderBy** ()
 ...
 
 
-abstract public  **having** (*unknown* $having)
+abstract public  **having** (*mixed* $having)
 
 ...
 
@@ -119,7 +126,7 @@ abstract public  **getHaving** ()
 ...
 
 
-abstract public  **limit** (*unknown* $limit, [*unknown* $offset])
+abstract public  **limit** (*mixed* $limit, [*mixed* $offset])
 
 ...
 
@@ -129,7 +136,7 @@ abstract public  **getLimit** ()
 ...
 
 
-abstract public  **groupBy** (*unknown* $group)
+abstract public  **groupBy** (*mixed* $group)
 
 ...
 

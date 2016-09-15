@@ -27,18 +27,18 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
         // 默认缓存时间为一天
         $frontCache = new FrontendData(
-            array(
+            [
                 "lifetime" => 86400
-            )
+            ]
         );
 
         // Memcached连接配置 这里使用的是Memcache适配器
         $cache = new BackendMemcache(
             $frontCache,
-            array(
+            [
                 "host" => "localhost",
                 "port" => "11211"
-            )
+            ]
         );
 
         return $cache;
@@ -55,28 +55,28 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     // 缓存查询结果.缓存时间为默认1天。
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-cache"
-            )
-        )
+            ]
+        ]
     );
 
     // 缓存查询结果时间为300秒
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
     // 使用自定义缓存
     $products = Products::find(
-        array(
+        [
             "cache" => $myCache
-        )
+        ]
     );
 
     这里我们也可以缓存关联表的数据:
@@ -90,21 +90,21 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key" => "my-key"
-            )
-        )
+            ]
+        ]
     );
 
     // Get comments related to a post, setting lifetime
     $comments = $post->getComments(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-key",
                 "lifetime" => 3600
-            )
-        )
+            ]
+        ]
     );
 
 如果想删除已经缓存的结果，则只需要使用前面指定的缓存的键值进行删除即可。
@@ -147,7 +147,7 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     class Robots extends Model
     {
-        protected static $_cache = array();
+        protected static $_cache = [];
 
         /**
          * Implement a method that returns a string key based
@@ -155,7 +155,7 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
          */
         protected static function _createKey($parameters)
         {
-            $uniqueKey = array();
+            $uniqueKey = [];
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
@@ -281,12 +281,12 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
     // 缓存查询结果5分钟
     $products = Products::find(
-        array(
-            "cache" => array(
+        [
+            "cache" => [
                 "key"      => "my-cache",
                 "lifetime" => 300
-            )
-        )
+            ]
+        ]
     );
 
 这给了我们自由选择需要缓存的查询结果，但是如果我们想对模型中的所有查询结果进行缓存，那么我们可以重写find/findFirst方法：
@@ -308,16 +308,16 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
         {
             // Convert the parameters to an array
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             // Check if a cache key wasn't passed
             // and create the cache parameters
             if (!isset($parameters['cache'])) {
-                $parameters['cache'] = array(
+                $parameters['cache'] = [
                     "key"      => self::_createKey($parameters),
                     "lifetime" => 300
-                );
+                ];
             }
 
             return parent::find($parameters);
@@ -343,16 +343,16 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(
-        array(
+        [
             "key"      => "cars-by-name",
             "lifetime" => 300
-        )
+        ]
     );
 
     $cars = $query->execute(
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
 如果不想使用隐式的缓存，尽管使用你想用的缓存方式：
@@ -365,9 +365,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     $cars = $this->modelsManager->executeQuery(
         $phql,
-        array(
+        [
             'name' => 'Audi'
-        )
+        ]
     );
 
     apc_store('my-cars', $cars);
@@ -425,9 +425,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
                 "customers_id",
                 "Customer",
                 "id",
-                array(
+                [
                     'reusable' => true
-                )
+                ]
             );
         }
     }
@@ -575,7 +575,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
                 return $results;
             }
 
-            $results = array();
+            $results = [];
 
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
@@ -629,10 +629,10 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
-                array(
+                [
                     "key"      => self::_createKey($conditions, $params),
                     "lifetime" => 300
-                )
+                ]
             );
 
             return $query->execute($params);
@@ -668,34 +668,34 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         {
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo1'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo2'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
 
             if ($initial > 20000) {
                 return self::find(
-                    array(
+                    [
                         'id >= ' . $initial,
-                        'cache' => array(
+                        'cache' => [
                             'service' => 'mongo3'
-                        )
-                    )
+                        ]
+                    ]
                 );
             }
         }
@@ -712,11 +712,11 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
 
     $robots = Robots::find(
-        array(
+        [
             '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => array(100, 2000),
+            'bind'  => [100, 2000],
             'order' => 'type'
-        )
+        ]
     );
 
 为了实现这个，我们需要拦截中间语言解析，然后书写相关的代码以定制缓存：
@@ -868,7 +868,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public static function find($parameters = null)
         {
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             $builder = new CustomQueryBuilder($parameters);
@@ -909,7 +909,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $this->modelsManager->executeQuery($phql, array($i));
+        $robots = $this->modelsManager->executeQuery($phql, [$i]);
 
         // ...
     }
@@ -925,7 +925,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $robots = $query->execute($phql, array($i));
+        $robots = $query->execute($phql, [$i]);
 
         // ...
     }

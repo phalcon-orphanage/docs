@@ -9,12 +9,12 @@ Interface **Phalcon\\Mvc\\EntityInterface**
 Methods
 -------
 
-abstract public  **readAttribute** (*unknown* $attribute)
+abstract public  **readAttribute** (*mixed* $attribute)
 
 ...
 
 
-abstract public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+abstract public  **writeAttribute** (*mixed* $attribute, *mixed* $value)
 
 ...
 

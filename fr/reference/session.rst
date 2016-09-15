@@ -27,11 +27,16 @@ Grâce au conteneur de services, on peux s'assurer que les sessions sont accessi
     use Phalcon\Session\Adapter\Files as Session;
 
     // Start the session the first time when some component request the session service
-    $di->setShared('session', function () {
-        $session = new Session();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new Session();
+
+            $session->start();
+
+            return $session;
+        }
+    );
 
 Stocker/Récupérer les données en session
 ----------------------------------------
@@ -56,7 +61,6 @@ accéder aux services de session et stocker/récupérer des informations de cett
         {
             // Check if the variable is defined
             if ($this->session->has("user-name")) {
-
                 // Retrieve its value
                 $name = $this->session->get("user-name");
             }
@@ -102,19 +106,21 @@ Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions 
     use Phalcon\Session\Adapter\Files as Session;
 
     // Isolating the session data
-    $di->set('session', function () {
+    $di->set(
+        "session",
+        function () {
+            // All variables created will prefixed with "my-app-1"
+            $session = new Session(
+                [
+                    "uniqueId" => "my-app-1",
+                ]
+            );
 
-        // All variables created will prefixed with "my-app-1"
-        $session = new Session(
-            array(
-                'uniqueId' => 'my-app-1'
-            )
-        );
+            $session->start();
 
-        $session->start();
-
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 Adding a unique ID is not necessary.
 
@@ -130,8 +136,10 @@ automatiquement les données dans la session :
 
     use Phalcon\Session\Bag as SessionBag;
 
-    $user       = new SessionBag('user');
+    $user = new SessionBag("user");
+
     $user->setDI($di);
+
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
 

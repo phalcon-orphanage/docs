@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\Resultset**
 =================================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
 
 .. role:: raw-html(raw)
    :format: html
@@ -14,19 +14,19 @@ This component allows to Phalcon\\Mvc\\Model returns large resultsets with the m
 
     <?php
 
-     //Using a standard foreach
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
+     // Using a standard foreach
+     $robots = Robots::find(["type='virtual'", 'order' => 'name']);
      foreach ($robots as robot) {
-      echo robot->name, "\n";
+         echo robot->name, "\n";
      }
     
-     //Using a while
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
+     // Using a while
+     $robots = Robots::find(["type='virtual'", 'order' => 'name');
      $robots->rewind();
      while ($robots->valid()) {
-      $robot = $robots->current();
-      echo $robot->name, "\n";
-      $robots->next();
+         $robot = $robots->current();
+         echo $robot->name, "\n";
+         $robots->next();
      }
 
 
@@ -77,7 +77,7 @@ Rewinds resultset to its beginning
 
 
 
-final public  **seek** (*unknown* $position)
+final public  **seek** (*mixed* $position)
 
 Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
 
@@ -89,13 +89,13 @@ Counts how many rows are in the resultset
 
 
 
-public  **offsetExists** (*unknown* $index)
+public  **offsetExists** (*mixed* $index)
 
 Checks whether offset exists in the resultset
 
 
 
-public  **offsetGet** (*unknown* $index)
+public  **offsetGet** (*mixed* $index)
 
 Gets row in a specific position of the resultset
 
@@ -107,7 +107,7 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 
 
 
-public  **offsetUnset** (*unknown* $offset)
+public  **offsetUnset** (*mixed* $offset)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -131,7 +131,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*unknown* $isFresh)
+public  **setIsFresh** (*mixed* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
@@ -143,7 +143,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public  **setHydrateMode** (*unknown* $hydrateMode)
+public  **setHydrateMode** (*mixed* $hydrateMode)
 
 Sets the hydration mode in the resultset
 
@@ -196,6 +196,20 @@ Filters a resultset returning only those the developer requires
 
 
 
+public *array*  **jsonSerialize** ()
+
+Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
+
+.. code-block:: php
+
+    <?php
+
+     $robots = Robots::find();
+     echo json_encode($robots);
+
+
+
+
 abstract public  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
 
 ...
@@ -211,7 +225,7 @@ abstract public  **serialize** () inherited from Serializable
 ...
 
 
-abstract public  **unserialize** (*unknown* $serialized) inherited from Serializable
+abstract public  **unserialize** (*mixed* $serialized) inherited from Serializable
 
 ...
 

@@ -29,12 +29,6 @@ Constants
 Methods
 -------
 
-public  **__construct** ()
-
-Phalcon\\Dispatcher constructor
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
@@ -59,13 +53,19 @@ Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*unknown* $actionSuffix)
+public  **setActionSuffix** (*mixed* $actionSuffix)
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*unknown* $moduleName)
+public  **getActionSuffix** ()
+
+Gets the default action suffix
+
+
+
+public  **setModuleName** (*mixed* $moduleName)
 
 Sets the module where the controller is (only informative)
 
@@ -77,7 +77,7 @@ Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*unknown* $namespaceName)
+public  **setNamespaceName** (*mixed* $namespaceName)
 
 Sets the namespace where the controller class is
 
@@ -89,7 +89,7 @@ Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*unknown* $namespaceName)
+public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the default namespace
 
@@ -101,13 +101,13 @@ Returns the default namespace
 
 
 
-public  **setDefaultAction** (*unknown* $actionName)
+public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
 
 
-public  **setActionName** (*unknown* $actionName)
+public  **setActionName** (*mixed* $actionName)
 
 Sets the action name to be dispatched
 
@@ -143,6 +143,12 @@ Gets a param by its name or numeric index
 
 
 
+public *boolean*  **hasParam** (*mixed* $param)
+
+Check if a param exists
+
+
+
 public  **getActiveMethod** ()
 
 Returns the current method to be/executed in the dispatcher
@@ -163,11 +169,23 @@ Sets the latest returned value by an action manually
 
 public *mixed*  **getReturnedValue** ()
 
-Returns value returned by the lastest dispatched action
+Returns value returned by the latest dispatched action
+
+
+
+public  **setModelBinding** (*boolean* $value)
+
+Enable/Disable model binding during dispatch
 
 
 
 public *object*  **dispatch** ()
+
+Dispatches a handle action taking into account the routing parameters
+
+
+
+protected *object*  **_dispatch** ()
 
 Dispatches a handle action taking into account the routing parameters
 
@@ -196,6 +214,11 @@ public  **getHandlerClass** ()
 
 Possible class name that will be located to dispatch the request
 
+
+
+public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
+
+...
 
 
 protected  **_resolveEmptyProperties** ()

@@ -9,22 +9,27 @@ Interface **Phalcon\\Mvc\\Router\\RouteInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+abstract public  **setHostname** (*mixed* $hostname)
 
 ...
 
 
-abstract public  **compilePattern** (*unknown* $pattern)
+abstract public  **getHostname** ()
 
 ...
 
 
-abstract public  **via** (*unknown* $httpMethods)
+abstract public  **compilePattern** (*mixed* $pattern)
 
 ...
 
 
-abstract public  **reConfigure** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **via** (*mixed* $httpMethods)
+
+...
+
+
+abstract public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
@@ -34,12 +39,12 @@ abstract public  **getName** ()
 ...
 
 
-abstract public  **setName** (*unknown* $name)
+abstract public  **setName** (*mixed* $name)
 
 ...
 
 
-abstract public  **setHttpMethods** (*unknown* $httpMethods)
+abstract public  **setHttpMethods** (*mixed* $httpMethods)
 
 ...
 

@@ -15,14 +15,14 @@ if (!extension_loaded('phalcon')) {
 defined('CPHALCON_DIR') || define('CPHALCON_DIR', getenv('CPHALCON_DIR'));
 
 if (!CPHALCON_DIR) {
-    throw new Exception("Need to set CPHALCON_DIR. Fox example: 'export CPHALCON_DIR=/Users/gutierrezandresfelipe/cphalcon/ext/'")
+    throw new Exception("Need to set CPHALCON_DIR. Fox example: 'export CPHALCON_DIR=/Users/gutierrezandresfelipe/cphalcon/ext/'");
 }
 
 if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
 }
 
-$languages = array('en', 'es', 'fr', 'ja', 'pl', 'pt', 'ru', 'uk', 'zh');
+$languages = array('en', 'es', 'fr', 'id', 'ja', 'pl', 'pt', 'ru', 'uk', 'zh');
 
 /**
  * Class ApiGenerator

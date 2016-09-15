@@ -9,11 +9,6 @@ Interface **Phalcon\\Db\\ColumnInterface**
 Methods
 -------
 
-abstract public  **__construct** (*unknown* $columnName, *array* $definition)
-
-...
-
-
 abstract public  **getSchemaName** ()
 
 ...

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Row**
 ==================================
 
-*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, ArrayAccess
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, ArrayAccess, JsonSerializable
 
 .. role:: raw-html(raw)
    :format: html
@@ -14,7 +14,7 @@ This component allows Phalcon\\Mvc\\Model to return rows without an associated e
 Methods
 -------
 
-public  **setDirtyState** (*unknown* $dirtyState)
+public  **setDirtyState** (*mixed* $dirtyState)
 
 Set the current object's state
 
@@ -73,6 +73,12 @@ Writes an attribute value by its name
 public *array*  **toArray** ()
 
 Returns the instance as an array representation
+
+
+
+public *array*  **jsonSerialize** ()
+
+Serializes the object for json_encode
 
 
 

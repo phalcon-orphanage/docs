@@ -19,19 +19,19 @@
     // ルートの定義
     $router->add(
         "/admin/users/my-profile",
-        array(
+        [
             "controller" => "users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
     // 別のルートを定義
     $router->add(
         "/admin/users/change-password",
-        array(
+        [
             "controller" => "users",
-            "action"     => "changePassword"
-        )
+            "action"     => "changePassword",
+        ]
     );
 
     $router->handle();
@@ -52,11 +52,11 @@ add()メソッドは、第1引数にURIのパターン、第2引数にパスを�
     // ルートの定義
     $router->add(
         "/admin/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
 上記コード例では、ワイルドカードを使って多くのURIで有効なルートを作っています。例えば、次のURL(/admin/users/a/delete/dave/301)でアクセスすると、コントローラーとパラメーターは以下の表のようになります。
@@ -107,14 +107,14 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     $router->add(
         "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4  // :params
-        )
+            "params"     => 4, // :params
+        ]
     );
 
 上の例では、ルートは "controller" や "action" の部分を含みません。これらは、固定された値( "posts" と "show" )に置き換えられています。リクエストによってどのコントローラーに実際に処理が割り当てられるかは、ユーザーにはわかりません。コントローラーの内部では、名前付きパラメーターに以下のようにしてアクセスできます:
@@ -155,10 +155,10 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     $router->add(
         "/documentation/{chapter}/{name}.{type:[a-z]+}",
-        array(
+        [
             "controller" => "documentation",
-            "action"     => "show"
-        )
+            "action"     => "show",
+        ]
     );
 
 これらの値には、前述したのと同じ方法でアクセスできます:
@@ -192,17 +192,20 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
     <?php
 
     // 短い書き方
-    $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
+    $router->add(
+        "/posts/{year:[0-9]+}/{title:[a-z\-]+}",
+        "Posts::show"
+    );
 
     // 配列を使う書き方
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
-        array(
+        [
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2
-        )
+           "title"      => 2,
+        ]
     );
 
 配列と短縮記法の混合
@@ -215,11 +218,12 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     // 'country' という名前付きパラメーターが使用されているため
     // 1番目のパラメーターは使用してはならない
-    $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
-        array(
-            'section' => 2, // 連番は2から始める
-            'article' => 3
-        )
+    $router->add(
+        "/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])",
+        [
+            "section" => 2, // 連番は2から始める
+            "article" => 3,
+        ]
     );
 
 モジュールへのルーティング
@@ -235,13 +239,13 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
     $router = new Router(false);
 
     $router->add(
-        '/:module/:controller/:action/:params',
-        array(
-            'module'     => 1,
-            'controller' => 2,
-            'action'     => 3,
-            'params'     => 4
-        )
+        "/:module/:controller/:action/:params",
+        [
+            "module"     => 1,
+            "controller" => 2,
+            "action"     => 3,
+            "params"     => 4,
+        ]
     );
 
 この場合、ルートは必ずURLの一部にモジュール名を含まなければなりません。例えば、 /admin/users/edit/sonny のようなURLです。これは、以下のように処理されます：
@@ -264,20 +268,20 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     $router->add(
         "/login",
-        array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "module"     => "backend",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'module'     => 'frontend',
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "module"     => "frontend",
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
 また、特定の名前空間に紐付けることもできます:
@@ -288,11 +292,11 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     $router->add(
         "/:namespace/login",
-        array(
-            'namespace'  => 1,
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => 1,
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 名前空間とクラス名は、別々に渡す必要があります:
@@ -303,11 +307,11 @@ add() メソッドを使うことで好きなだけルートを追加するこ�
 
     $router->add(
         "/login",
-        array(
-            'namespace'  => 'Backend\Controllers',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => "Backend\\Controllers",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 HTTP メソッドの制限
@@ -319,13 +323,27 @@ HTTP メソッドの制限
     <?php
 
     // HTTPメソッドがGETの場合にだけマッチ
-    $router->addGet("/products/edit/{id}", "Products::edit");
+    $router->addGet(
+        "/products/edit/{id}",
+        "Products::edit"
+    );
 
     // HTTPメソッドがPOSTの場合だけマッチ
-    $router->addPost("/products/save", "Products::save");
+    $router->addPost(
+        "/products/save",
+        "Products::save"
+    );
 
     // HTTPメソッドがPOST又はPUTの場合にだけマッチ
-    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
+    $router->add(
+        "/products/update",
+        "Products::update"
+    )->via(
+        [
+            "POST",
+            "PUT",
+        ]
+    );
 
 convertの使用
 ^^^^^^^^^^^^^^^^^
@@ -336,15 +354,21 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     <?php
 
     // アクションの名前にはダッシュが許可されているので、アクションは次のようになる: /products/new-ipod-nano-4-generation
-    $router
-        ->add('/products/{slug:[a-z\-]+}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('slug', function ($slug) {
+    $route = $router->add(
+        "/products/{slug:[a-z\-]+}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "slug",
+        function ($slug) {
             // ダッシュを取り除く
-            return str_replace('-', '', $slug);
-        });
+            return str_replace("-", "", $slug);
+        }
+    );
 
 Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
 
@@ -353,15 +377,21 @@ Another use case for conversors is binding a model into a route. This allows the
     <?php
 
     // This example works off the assumption that the ID is being used as parameter in the url: /products/4
-    $router
-        ->add('/products/{id}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('id', function ($id) {
+    $route = $router->add(
+        "/products/{id}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "id",
+        function ($id) {
             // Fetch the model
             return Product::findFirstById($id);
-        });
+        }
+    );
 
 ルートのグループ
 ^^^^^^^^^^^^^^^^
@@ -378,38 +408,38 @@ Another use case for conversors is binding a model into a route. This allows the
 
     // 共通のモジュールとコントローラーのグループを作る
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'index'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "index",
+        ]
     );
 
     // /blog から始まる全てのルート
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // ルートをグループに追加する
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // もう一つルートをグループに追加する
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // このルートはデフォルトとは異なるルートにマッピングする
     $blog->add(
-        '/blog',
-        array(
-            'controller' => 'blog',
-            'action'     => 'index'
-        )
+        "/blog",
+        [
+            "controller" => "blog",
+            "action"     => "index",
+        ]
     );
 
     // グループをルーターに追加
@@ -429,38 +459,38 @@ Another use case for conversors is binding a model into a route. This allows the
         {
             // デフォルトパス
             $this->setPaths(
-                array(
-                    'module'    => 'blog',
-                    'namespace' => 'Blog\Controllers'
-                )
+                [
+                    "module"    => "blog",
+                    "namespace" => "Blog\\Controllers",
+                ]
             );
 
             // All the routes start with /blog
-            $this->setPrefix('/blog');
+            $this->setPrefix("/blog");
 
             // Add a route to the group
             $this->add(
-                '/save',
-                array(
-                    'action' => 'save'
-                )
+                "/save",
+                [
+                    "action" => "save",
+                ]
             );
 
             // Add another route to the group
             $this->add(
-                '/edit/{id}',
-                array(
-                    'action' => 'edit'
-                )
+                "/edit/{id}",
+                [
+                    "action" => "edit",
+                ]
             );
 
             // This route maps to a controller different than the default
             $this->add(
-                '/blog',
-                array(
-                    'controller' => 'blog',
-                    'action'     => 'index'
-                )
+                "/blog",
+                [
+                    "controller" => "blog",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -472,7 +502,9 @@ Another use case for conversors is binding a model into a route. This allows the
     <?php
 
     // Add the group to the router
-    $router->mount(new BlogRoutes());
+    $router->mount(
+        new BlogRoutes()
+    );
 
 ルートのマッチ
 ---------------
@@ -522,13 +554,12 @@ Another use case for conversors is binding a model into a route. This allows the
 
     <?php
 
-    $route = $router->add("/posts/{year}/{title}", "Posts::show");
+    $route = $router->add(
+        "/posts/{year}/{title}",
+        "Posts::show"
+    );
 
     $route->setName("show-posts");
-
-    // または単に
-
-    $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
 次に、例えば :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` コンポーネントを使って、名前からルートを組み立てることができます:
 
@@ -538,11 +569,11 @@ Another use case for conversors is binding a model into a route. This allows the
 
     // /posts/2012/phalcon-1-0-released を返す
     echo $url->get(
-        array(
+        [
             "for"   => "show-posts",
             "year"  => "2012",
-            "title" => "phalcon-1-0-released"
-        )
+            "title" => "phalcon-1-0-released",
+        ]
     );
 
 使用例
@@ -556,63 +587,63 @@ Another use case for conversors is binding a model into a route. This allows the
     // "/system/admin/a/edit/7001" にマッチ
     $router->add(
         "/system/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
     // "/es/news" にマッチ
     $router->add(
         "/([a-z]{2})/:controller",
-        array(
+        [
             "controller" => 2,
             "action"     => "index",
-            "language"   => 1
-        )
+            "language"   => 1,
+        ]
     );
 
     // "/es/news" にマッチ
     $router->add(
         "/{language:[a-z]{2}}/:controller",
-        array(
+        [
             "controller" => 2,
-            "action"     => "index"
-        )
+            "action"     => "index",
+        ]
     );
 
     // "/admin/posts/edit/100" にマッチ
     $router->add(
         "/admin/:controller/:action/:int",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "id"         => 3
-        )
+            "id"         => 3,
+        ]
     );
 
     // "/posts/2015/02/some-cool-content" にマッチ
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4
-        )
+            "title"      => 4,
+        ]
     );
 
     // "/manual/en/translate.adapter.html" にマッチ
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
-        array(
+        [
             "controller" => "manual",
             "action"     => "show",
             "language"   => 1,
-            "file"       => 2
-        )
+            "file"       => 2,
+        ]
     );
 
     // /feed/fr/le-robots-hot-news.atom にマッチ
@@ -623,12 +654,12 @@ Another use case for conversors is binding a model into a route. This allows the
 
     // /api/v1/users/peter.json にマッチ
     $router->add(
-        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
-        array(
-            'controller' => 'api',
-            'version'    => 1,
-            'format'     => 4
-        )
+        "/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)",
+        [
+            "controller" => "api",
+            "version"    => 1,
+            "format"     => 4,
+        ]
     );
 
 .. highlights::
@@ -672,10 +703,10 @@ Another use case for conversors is binding a model into a route. This allows the
 
     $router->add(
         "/",
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 Not Found パス
@@ -688,10 +719,10 @@ Not Found パス
 
     // 404のパスをセット
     $router->notFound(
-        array(
+        [
             "controller" => "index",
-            "action"     => "route404"
-        )
+            "action"     => "route404",
+        ]
     );
 
 デフォルトパスの設定
@@ -703,17 +734,17 @@ Not Found パス
     <?php
 
     // デフォルト設定
-    $router->setDefaultModule('backend');
-    $router->setDefaultNamespace('Backend\Controllers');
-    $router->setDefaultController('index');
-    $router->setDefaultAction('index');
+    $router->setDefaultModule("backend");
+    $router->setDefaultNamespace("Backend\\Controllers");
+    $router->setDefaultController("index");
+    $router->setDefaultAction("index");
 
     // 配列の使用
     $router->setDefaults(
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 余分なスラッシュの扱い
@@ -739,11 +770,11 @@ Not Found パス
 
     // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
-        '/{language:[a-z]{2}}/:controller[/]{0,1}',
-        array(
-            'controller' => 2,
-            'action'     => 'index'
-        )
+        "/{language:[a-z]{2}}/:controller[/]{0,1}",
+        [
+            "controller" => 2,
+            "action"     => "index",
+        ]
     );
 
 マッチングのコールバック
@@ -754,17 +785,23 @@ Not Found パス
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session'
-    ))->beforeMatch(function ($uri, $route) {
-        // リクエストがAjaxによって生成されたかチェック
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-            return false;
+    $route = $router->add("/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            // リクエストがAjaxによって生成されたかチェック
+            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
+                return false;
+            }
+
+            return true;
         }
-        return true;
-    });
+    );
 
 追加条件は、クラスにすることで再利用できます:
 
@@ -776,7 +813,7 @@ Not Found パス
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+            return $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest";
         }
     }
 
@@ -786,10 +823,49 @@ Not Found パス
 
     <?php
 
-    $router->add('/get/info/{id}', array(
-        'controller' => 'products',
-        'action'     => 'info'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+    $route = $router->add(
+        "/get/info/{id}",
+        [
+            "controller" => "products",
+            "action"     => "info",
+        ]
+    );
+
+    $route->beforeMatch(
+        [
+            new AjaxFilter(),
+            "check"
+        ]
+    );
+
+As of Phalcon 3, there is another way to check this:
+
+.. code-block:: php
+
+    <?php
+
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            /**
+             * @var string $uri
+             * @var \Phalcon\Mvc\Router\Route $route
+             * @var \Phalcon\DiInterface $this
+             * @var \Phalcon\Http\Request $request
+             */
+            $request = $this->getShared("request");
+
+            // Check if the request was made with Ajax
+            return $request->isAjax();
+        }
+    );
 
 ホスト名によるアクセス制限
 --------------------------
@@ -799,11 +875,16 @@ Not Found パス
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('admin.company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("admin.company.com");
 
 ホスト名は正規表現にすることもできます:
 
@@ -811,11 +892,16 @@ Not Found パス
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('([a-z]+).company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("([a-z]+).company.com");
 
 ルートのグループの中で、グループの全てのルートに適用されるホスト名の制限を設定することもできます:
 
@@ -827,40 +913,40 @@ Not Found パス
 
     // Create a group with a common module and controller
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'posts'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "posts",
+        ]
     );
 
     // ホスト名制限
-    $blog->setHostName('blog.mycompany.com');
+    $blog->setHostName("blog.mycompany.com");
 
     // All the routes start with /blog
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // デフォルトルート
     $blog->add(
-        '/',
-        array(
-            'action' => 'index'
-        )
+        "/",
+        [
+            "action" => "index",
+        ]
     );
 
     // Add a route to the group
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // Add another route to the group
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // Add the group to the router
@@ -878,8 +964,15 @@ URIのソース
 
     // ...
 
-    $router->setUriSource(Router::URI_SOURCE_GET_URL); // $_GET['_url'] を使う(デフォルト)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // $_SERVER['REQUEST_URI'] を使う
+    // $_GET["_url"] を使う(デフォルト)
+    $router->setUriSource(
+        Router::URI_SOURCE_GET_URL
+    );
+
+    // $_SERVER["REQUEST_URI"] を使う
+    $router->setUriSource(
+        Router::URI_SOURCE_SERVER_REQUEST_URI
+    );
 
 あるいは、自分で 'handle' メソッドにURIを渡すこともできます:
 
@@ -887,7 +980,7 @@ URIのソース
 
     <?php
 
-    $router->handle('/some/route/to/handle');
+    $router->handle("/some/route/to/handle");
 
 ルートのテスト
 -------------------
@@ -900,15 +993,15 @@ URIのソース
     use Phalcon\Mvc\Router;
 
     // これらのルートによって、実際のURIをシミュレートする
-    $testRoutes = array(
-        '/',
-        '/index',
-        '/index/index',
-        '/index/test',
-        '/products',
-        '/products/index/',
-        '/products/show/101',
-    );
+    $testRoutes = [
+        "/",
+        "/index",
+        "/index/index",
+        "/index/test",
+        "/products",
+        "/products/index/",
+        "/products/show/101",
+    ];
 
     $router = new Router();
 
@@ -917,21 +1010,20 @@ URIのソース
 
     // それぞれのルートをテスト
     foreach ($testRoutes as $testRoute) {
-
         // ルートの処理
         $router->handle($testRoute);
 
-        echo 'Testing ', $testRoute, '<br>';
+        echo "Testing ", $testRoute, "<br>";
 
         // ルートがマッチしたかチェック
         if ($router->wasMatched()) {
-            echo 'Controller: ', $router->getControllerName(), '<br>';
-            echo 'Action: ', $router->getActionName(), '<br>';
+            echo "Controller: ", $router->getControllerName(), "<br>";
+            echo "Action: ", $router->getActionName(), "<br>";
         } else {
-            echo 'The route wasn\'t matched by any route<br>';
+            echo "The route wasn't matched by any route<br>";
         }
 
-        echo '<br>';
+        echo "<br>";
     }
 
 アノテーションによるルーター
@@ -944,13 +1036,12 @@ URIのソース
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // アノテーションルーターを使う
         $router = new RouterAnnotations(false);
 
         // URIが /api/products から始まるときは、 ProductsController からアノテーションを読み取る
-        $router->addResource('Products', '/api/products');
+        $router->addResource("Products", "/api/products");
 
         return $router;
     };
@@ -967,7 +1058,9 @@ URIのソース
     class ProductsController
     {
         /**
-         * @Get("/")
+         * @Get(
+         *     "/"
+         * )
          */
         public function indexAction()
         {
@@ -975,7 +1068,10 @@ URIのソース
         }
 
         /**
-         * @Get("/edit/{id:[0-9]+}", name="edit-robot")
+         * @Get(
+         *     "/edit/{id:[0-9]+}",
+         *     name="edit-robot"
+         * )
          */
         public function editAction($id)
         {
@@ -983,7 +1079,11 @@ URIのソース
         }
 
         /**
-         * @Route("/save", methods={"POST", "PUT"}, name="save-robot")
+         * @Route(
+         *     "/save",
+         *     methods={"POST", "PUT"},
+         *     name="save-robot"
+         * )
          */
         public function saveAction()
         {
@@ -991,8 +1091,13 @@ URIのソース
         }
 
         /**
-         * @Route("/delete/{id:[0-9]+}", methods="DELETE",
-         *      conversors={id="MyConversors::checkId"})
+         * @Route(
+         *     "/delete/{id:[0-9]+}",
+         *     methods="DELETE",
+         *     conversors={
+         *         id="MyConversors::checkId"
+         *     }
+         * )
          */
         public function deleteAction($id)
         {
@@ -1047,13 +1152,12 @@ URIのソース
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // Use the annotations router
         $router = new RouterAnnotations(false);
 
         // URIが /api/products から始まる場合、 Backend\Controllers\ProductsController からアノテーションを読み取る
-        $router->addModuleResource('backend', 'Products', '/api/products');
+        $router->addModuleResource("backend", "Products", "/api/products");
 
         return $router;
     };
@@ -1070,9 +1174,9 @@ PhalconのDIコンテナへのサービス登録の際、ルーターを登録�
      * Add routing capabilities
      */
     $di->set(
-        'router',
+        "router",
         function () {
-            require __DIR__.'/../app/config/routes.php';
+            require __DIR__ . "/../app/config/routes.php";
 
             return $router;
         }
@@ -1090,18 +1194,18 @@ app/config/routes.php を作って、以下のような初期化コードを追�
 
     $router->add(
         "/login",
-        array(
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
     return $router;

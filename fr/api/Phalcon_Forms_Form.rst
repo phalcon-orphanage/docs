@@ -16,7 +16,7 @@ This component allows to build forms using an object-oriented interface
 Methods
 -------
 
-public  **setValidation** (*unknown* $validation)
+public  **setValidation** (*mixed* $validation)
 
 ...
 
@@ -32,7 +32,7 @@ Phalcon\\Forms\\Form constructor
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setAction** (*string* $action)
+public  **setAction** (*mixed* $action)
 
 Sets the form's action
 
@@ -44,13 +44,13 @@ Returns the form's action
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*string* $option, *mixed* $value)
+public  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the form
 
 
 
-public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
+public  **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
@@ -62,13 +62,13 @@ Sets options for the element
 
 
 
-public *array*  **getUserOptions** ()
+public  **getUserOptions** ()
 
 Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEntity** (*object* $entity)
+public  **setEntity** (*object* $entity)
 
 Sets the entity related to the model
 
@@ -86,85 +86,85 @@ Returns the form elements added to the form
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **bind** (*array* $data, *object* $entity, [*array* $whitelist])
+public  **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
 Binds data to the entity
 
 
 
-public *boolean*  **isValid** ([*array* $data], [*object* $entity])
+public  **isValid** ([*array* $data], [*object* $entity])
 
 Validates the form
 
 
 
-public  **getMessages** ([*unknown* $byItemName])
+public  **getMessages** ([*mixed* $byItemName])
 
 Returns the messages generated in the validation
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessagesFor** (*string* $name)
+public  **getMessagesFor** (*mixed* $name)
 
 Returns the messages generated for a specific element
 
 
 
-public *boolean*  **hasMessagesFor** (*string* $name)
+public  **hasMessagesFor** (*mixed* $name)
 
 Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
+public  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*mixed* $position], [*mixed* $type])
 
 Adds an element to the form
 
 
 
-public *string*  **render** (*string* $name, [*array* $attributes])
+public  **render** (*string* $name, [*array* $attributes])
 
 Renders a specific item in the form
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Returns an element added to the form by its name
 
 
 
-public  **label** (*unknown* $name, [*array* $attributes])
+public  **label** (*mixed* $name, [*array* $attributes])
 
-Generate the label of a element added to the form including HTML
+Generate the label of an element added to the form including HTML
 
 
 
-public  **getLabel** (*unknown* $name)
+public  **getLabel** (*mixed* $name)
 
 Returns a label for an element
 
 
 
-public *mixed*  **getValue** (*string* $name)
+public  **getValue** (*mixed* $name)
 
 Gets a value from the internal related entity or from the default value
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Check if the form contains an element
 
 
 
-public  **remove** (*unknown* $name)
+public  **remove** (*mixed* $name)
 
 Removes an element from the form
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ([*array* $fields])
+public  **clear** ([*array* $fields])
 
 Clears every element in the form to its default value
 
@@ -230,7 +230,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

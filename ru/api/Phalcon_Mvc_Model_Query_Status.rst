@@ -32,7 +32,7 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
 Methods
 -------
 
-public  **__construct** (*unknown* $success, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
+public  **__construct** (*mixed* $success, [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
 
 
 

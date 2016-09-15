@@ -34,31 +34,31 @@ Returns the Volt's compiler
 
 
 
-public  **render** (*unknown* $templatePath, *unknown* $params, [*unknown* $mustClean])
+public  **render** (*mixed* $templatePath, *mixed* $params, [*mixed* $mustClean])
 
 Renders a view using the template engine
 
 
 
-public  **length** (*unknown* $item)
+public  **length** (*mixed* $item)
 
 Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 
 
-public  **isIncluded** (*unknown* $needle, *unknown* $haystack)
+public  **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
 Checks if the needle is included in the haystack
 
 
 
-public  **convertEncoding** (*unknown* $text, *unknown* $from, *unknown* $to)
+public  **convertEncoding** (*mixed* $text, *mixed* $from, *mixed* $to)
 
 Performs a string conversion
 
 
 
-public  **slice** (*unknown* $value, [*unknown* $start], [*unknown* $end])
+public  **slice** (*mixed* $value, [*mixed* $start], [*mixed* $end])
 
 Extracts a slice from a string/array/traversable object value
 
@@ -70,7 +70,7 @@ Sorts an array
 
 
 
-public  **callMacro** (*unknown* $name, *array* $arguments)
+public  **callMacro** (*mixed* $name, [*array* $arguments])
 
 Checks if a macro is defined and calls it
 
@@ -124,7 +124,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

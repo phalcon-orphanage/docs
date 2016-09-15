@@ -21,62 +21,74 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\Cli as CliDI,
-        Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI;
+    use Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Loader;
 
-    define('VERSION', '1.0.0');
+
 
     // 使用CLI工厂类作为默认的服务容器
     $di = new CliDI();
 
-    // 定义应用目录路径
-    defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+
 
     /**
      * 注册类自动加载器
      */
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
+
     $loader->registerDirs(
-        array(
-            APPLICATION_PATH . '/tasks'
-        )
+        [
+            __DIR__ . "/tasks",
+        ]
     );
+
     $loader->register();
 
+
+
     // 加载配置文件（如果存在）
-    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
-        $config = include APPLICATION_PATH . '/config/config.php';
-        $di->set('config', $config);
+
+    $configFile = __DIR__ . "/config/config.php";
+
+    if (is_readable($configFile)) {
+        $config = include $configFile;
+
+        $di->set("config", $config);
     }
+
+
 
     // 创建console应用
     $console = new ConsoleApp();
+
     $console->setDI($di);
+
+
 
     /**
      * 处理console应用参数
      */
-    $arguments = array();
+    $arguments = [];
+
     foreach ($argv as $k => $arg) {
         if ($k == 1) {
-            $arguments['task'] = $arg;
+            $arguments["task"] = $arg;
         } elseif ($k == 2) {
-            $arguments['action'] = $arg;
+            $arguments["action"] = $arg;
         } elseif ($k >= 3) {
-            $arguments['params'][] = $arg;
+            $arguments["params"][] = $arg;
         }
     }
 
-    // 定义全局的参数， 设定当前任务及动作
-    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
-    define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
+
 
     try {
         // 处理参数
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -98,11 +110,13 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
     }
 
@@ -116,11 +130,13 @@ CLI应用中， 开发者也可以在action中处理传递过来的参数， 下
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
 
         /**
@@ -128,8 +144,19 @@ CLI应用中， 开发者也可以在action中处理传递过来的参数， 下
          */
         public function testAction(array $params)
         {
-            echo sprintf('hello %s', $params[0]) . PHP_EOL;
-            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+            echo sprintf(
+                "hello %s",
+                $params[0]
+            );
+
+            echo PHP_EOL;
+
+            echo sprintf(
+                "best regards, %s",
+                $params[1]
+            );
+
+            echo PHP_EOL;
         }
     }
 
@@ -150,13 +177,14 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
 
     <?php
 
-    $di->setShared('console', $console);
+    $di->setShared("console", $console);
 
     try {
         // Handle incoming arguments
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
@@ -166,23 +194,25 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
 
             $this->console->handle(
-                array(
-                    'task'   => 'main',
-                    'action' => 'test'
-                )
+                [
+                    "task"   => "main",
+                    "action" => "test",
+                ]
             );
         }
 
         public function testAction()
         {
-            echo "\nI will get printed too!\n";
+            echo "I will get printed too!" . PHP_EOL;
         }
     }
 

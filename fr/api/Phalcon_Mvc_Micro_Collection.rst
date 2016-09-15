@@ -35,7 +35,7 @@ Internal function to add a handler to the group
 
 
 
-public  **setPrefix** (*unknown* $prefix)
+public  **setPrefix** (*mixed* $prefix)
 
 Sets a prefix for all routes added to the collection
 
@@ -59,7 +59,7 @@ Sets the main handler
 
 
 
-public  **setLazy** (*unknown* $lazy)
+public  **setLazy** (*mixed* $lazy)
 
 Sets if the main handler must be lazy loaded
 
@@ -119,7 +119,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **options** (*string* $routePattern, *callable* $handler, [*unknown* $name])
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **options** (*string* $routePattern, *callable* $handler, [*mixed* $name])
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 

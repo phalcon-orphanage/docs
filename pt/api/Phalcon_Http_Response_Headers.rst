@@ -14,25 +14,25 @@ This class is a bag to manage the response headers
 Methods
 -------
 
-public  **set** (*unknown* $name, *unknown* $value)
+public  **set** (*mixed* $name, *mixed* $value)
 
 Sets a header to be sent at the end of the request
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Gets a header value from the internal bag
 
 
 
-public  **setRaw** (*unknown* $header)
+public  **setRaw** (*mixed* $header)
 
 Sets a raw header to be sent at the end of the request
 
 
 
-public  **remove** (*unknown* $header)
+public  **remove** (*mixed* $header)
 
 Removes a header to be sent at the end of the request
 

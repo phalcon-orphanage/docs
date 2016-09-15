@@ -9,27 +9,27 @@ Interface **Phalcon\\Events\\ManagerInterface**
 Methods
 -------
 
-abstract public  **attach** (*unknown* $eventType, *unknown* $handler)
+abstract public  **attach** (*mixed* $eventType, *mixed* $handler)
 
 ...
 
 
-abstract public  **detach** (*unknown* $eventType, *unknown* $handler)
+abstract public  **detach** (*mixed* $eventType, *mixed* $handler)
 
 ...
 
 
-abstract public  **detachAll** ([*unknown* $type])
+abstract public  **detachAll** ([*mixed* $type])
 
 ...
 
 
-abstract public  **fire** (*unknown* $eventType, *unknown* $source, [*unknown* $data])
+abstract public  **fire** (*mixed* $eventType, *mixed* $source, [*mixed* $data])
 
 ...
 
 
-abstract public  **getListeners** (*unknown* $type)
+abstract public  **getListeners** (*mixed* $type)
 
 ...
 

@@ -19,6 +19,7 @@
     use Phalcon\Mvc\Url;
 
     $url = new Url();
+
     echo $url->getBaseUri();
 
 По умолчанию Phalcon самостоятельно выявляет необходимый baseUri, но в целях повышения производительности советуем указать его вручную:
@@ -32,13 +33,13 @@
     $url = new Url();
 
     // Относительный URI
-    $url->setBaseUri('/invo/');
+    $url->setBaseUri("/invo/");
 
     // Установка доменного имени
-    $url->setBaseUri('//my.domain.com/');
+    $url->setBaseUri("//my.domain.com/");
 
     // Установка корневой полной ссылки
-    $url->setBaseUri('http://my.domain.com/my-app/');
+    $url->setBaseUri("http://my.domain.com/my-app/");
 
 Компонент, как правило, регистрируется в DI-контейнере, что позволяет его легко настроить:
 
@@ -48,11 +49,16 @@
 
     use Phalcon\Mvc\Url;
 
-    $di->set('url', function () {
-        $url = new Url();
-        $url->setBaseUri('/invo/');
-        return $url;
-    });
+    $di->set(
+        "url",
+        function () {
+            $url = new Url();
+
+            $url->setBaseUri("/invo/");
+
+            return $url;
+        }
+    );
 
 Генерация ссылок
 ----------------
@@ -71,13 +77,13 @@
 
     <?php
 
-    $route->add(
+    $router->add(
         "/blog/{year}/{month}/{title}",
-        array(
-            'controller' => 'posts',
-            'action'     => 'show'
-        )
-    )->setName('show-post');
+        [
+            "controller" => "posts",
+            "action"     => "show",
+        ]
+    )->setName("show-post");
 
 Ссылку на него можно сформировать таким образом:
 
@@ -87,12 +93,12 @@
 
     // This produces: /blog/2015/01/some-blog-post
     $url->get(
-        array(
-            'for'   => 'show-post',
-            'year'  => 2015,
-            'month' => '01',
-            'title' => 'some-blog-post'
-        )
+        [
+            "for"   => "show-post",
+            "year"  => "2015",
+            "month" => "01",
+            "title" => "some-blog-post",
+        ]
     );
 
 Создание ссылок без mod_rewrite
@@ -108,7 +114,7 @@
     $url = new Url();
 
     // Указание базового адреса из $_GET["_url"]
-    $url->setBaseUri('/invo/index.php?_url=/');
+    $url->setBaseUri("/invo/index.php?_url=/");
 
     // Получится: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
@@ -124,10 +130,10 @@
     $url = new Url();
 
     // Указание базового адреса используя $_GET["_url"]
-    $url->setBaseUri('/invo/index.php?_url=/');
+    $url->setBaseUri("/invo/index.php?_url=/");
 
     // Передача URI из $_SERVER["REQUEST_URI"]
-    $url->setBaseUri('/invo/index.php/');
+    $url->setBaseUri("/invo/index.php/");
 
 В таком случае необходимо самостоятельно передать URI для обработки в Router:
 
@@ -141,7 +147,8 @@
 
     // ... указание правил маршрутизации
 
-    $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
+    $uri = str_replace($_SERVER["SCRIPT_NAME"], "", $_SERVER["REQUEST_URI"]);
+
     $router->handle($uri);
 
 Получится маршрут:
@@ -180,10 +187,10 @@
     $url = new Url();
 
     // Динамический URI
-    $url->setBaseUri('/');
+    $url->setBaseUri("/");
 
     // Статические ресурсы проходят через CDN
-    $url->setStaticBaseUri('http://static.mywebsite.com/');
+    $url->setStaticBaseUri("http://static.mywebsite.com/");
 
 :doc:`Phalcon\\Tag <tags>` будет запрашивать как динамические, так и статические URI, используя этот компонент.
 

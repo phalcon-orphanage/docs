@@ -9,127 +9,122 @@ Interface **Phalcon\\Db\\AdapterInterface**
 Methods
 -------
 
-abstract public  **__construct** (*array* $descriptor)
+abstract public  **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
 
 ...
 
 
-abstract public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $placeholders])
+abstract public  **fetchAll** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
 
 ...
 
 
-abstract public  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $placeholders])
+abstract public  **insert** (*mixed* $table, *array* $values, [*mixed* $fields], [*mixed* $dataTypes])
 
 ...
 
 
-abstract public  **insert** (*unknown* $table, *array* $values, [*unknown* $fields], [*unknown* $dataTypes])
+abstract public  **update** (*mixed* $table, *mixed* $fields, *mixed* $values, [*mixed* $whereCondition], [*mixed* $dataTypes])
 
 ...
 
 
-abstract public  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes])
+abstract public  **delete** (*mixed* $table, [*mixed* $whereCondition], [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
 
-abstract public  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes])
+abstract public  **getColumnList** (*mixed* $columnList)
 
 ...
 
 
-abstract public  **getColumnList** (*unknown* $columnList)
+abstract public  **limit** (*mixed* $sqlQuery, *mixed* $number)
 
 ...
 
 
-abstract public  **limit** (*unknown* $sqlQuery, *unknown* $number)
+abstract public  **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
 
-abstract public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
+abstract public  **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 ...
 
 
-abstract public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
+abstract public  **forUpdate** (*mixed* $sqlQuery)
 
 ...
 
 
-abstract public  **forUpdate** (*unknown* $sqlQuery)
+abstract public  **sharedLock** (*mixed* $sqlQuery)
 
 ...
 
 
-abstract public  **sharedLock** (*unknown* $sqlQuery)
+abstract public  **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 ...
 
 
-abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *array* $definition)
+abstract public  **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
 
-abstract public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
+abstract public  **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 ...
 
 
-abstract public  **createView** (*unknown* $viewName, *array* $definition, [*unknown* $schemaName])
+abstract public  **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
 
-abstract public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
+abstract public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 ...
 
 
-abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+abstract public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
 
 ...
 
 
-abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn])
+abstract public  **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
 ...
 
 
-abstract public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
+abstract public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 ...
 
 
-abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+abstract public  **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
 ...
 
 
-abstract public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
+abstract public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 ...
 
 
-abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+abstract public  **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
 ...
 
 
-abstract public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
+abstract public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 ...
 
 
-abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
-
-...
-
-
-abstract public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
+abstract public  **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
 ...
 
@@ -139,12 +134,12 @@ abstract public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Ph
 ...
 
 
-abstract public  **listTables** ([*unknown* $schemaName])
+abstract public  **listTables** ([*mixed* $schemaName])
 
 ...
 
 
-abstract public  **listViews** ([*unknown* $schemaName])
+abstract public  **listViews** ([*mixed* $schemaName])
 
 ...
 
@@ -194,17 +189,17 @@ abstract public  **getDialect** ()
 ...
 
 
-abstract public  **connect** ([*unknown* $descriptor])
+abstract public  **connect** ([*array* $descriptor])
 
 ...
 
 
-abstract public  **query** (*unknown* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
+abstract public  **query** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
 
-abstract public  **execute** (*unknown* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
+abstract public  **execute** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
@@ -219,32 +214,32 @@ abstract public  **close** ()
 ...
 
 
-abstract public  **escapeIdentifier** (*unknown* $identifier)
+abstract public  **escapeIdentifier** (*mixed* $identifier)
 
 ...
 
 
-abstract public  **escapeString** (*unknown* $str)
+abstract public  **escapeString** (*mixed* $str)
 
 ...
 
 
-abstract public  **lastInsertId** ([*unknown* $sequenceName])
+abstract public  **lastInsertId** ([*mixed* $sequenceName])
 
 ...
 
 
-abstract public  **begin** ([*unknown* $nesting])
+abstract public  **begin** ([*mixed* $nesting])
 
 ...
 
 
-abstract public  **rollback** ([*unknown* $nesting])
+abstract public  **rollback** ([*mixed* $nesting])
 
 ...
 
 
-abstract public  **commit** ([*unknown* $nesting])
+abstract public  **commit** ([*mixed* $nesting])
 
 ...
 
@@ -259,17 +254,17 @@ abstract public  **getInternalHandler** ()
 ...
 
 
-abstract public  **describeIndexes** (*unknown* $table, [*unknown* $schema])
+abstract public  **describeIndexes** (*mixed* $table, [*mixed* $schema])
 
 ...
 
 
-abstract public  **describeReferences** (*unknown* $table, [*unknown* $schema])
+abstract public  **describeReferences** (*mixed* $table, [*mixed* $schema])
 
 ...
 
 
-abstract public  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
+abstract public  **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
@@ -289,22 +284,22 @@ abstract public  **supportSequences** ()
 ...
 
 
-abstract public  **createSavepoint** (*unknown* $name)
+abstract public  **createSavepoint** (*mixed* $name)
 
 ...
 
 
-abstract public  **releaseSavepoint** (*unknown* $name)
+abstract public  **releaseSavepoint** (*mixed* $name)
 
 ...
 
 
-abstract public  **rollbackSavepoint** (*unknown* $name)
+abstract public  **rollbackSavepoint** (*mixed* $name)
 
 ...
 
 
-abstract public  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
+abstract public  **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
 ...
 
@@ -319,7 +314,7 @@ abstract public  **getNestedTransactionSavepointName** ()
 ...
 
 
-abstract public  **describeColumns** (*unknown* $table, [*unknown* $schema])
+abstract public  **describeColumns** (*mixed* $table, [*mixed* $schema])
 
 ...
 

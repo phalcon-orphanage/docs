@@ -3,6 +3,8 @@ Class **Phalcon\\Forms\\Exception**
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+*implements* Throwable
+
 .. role:: raw-html(raw)
    :format: html
 

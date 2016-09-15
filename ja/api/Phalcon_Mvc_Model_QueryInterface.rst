@@ -14,7 +14,7 @@ abstract public  **parse** ()
 ...
 
 
-abstract public  **cache** (*unknown* $cacheOptions)
+abstract public  **cache** (*mixed* $cacheOptions)
 
 ...
 
@@ -24,7 +24,7 @@ abstract public  **getCacheOptions** ()
 ...
 
 
-abstract public  **setUniqueRow** (*unknown* $uniqueRow)
+abstract public  **setUniqueRow** (*mixed* $uniqueRow)
 
 ...
 
@@ -34,7 +34,7 @@ abstract public  **getUniqueRow** ()
 ...
 
 
-abstract public  **execute** ([*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **execute** ([*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 

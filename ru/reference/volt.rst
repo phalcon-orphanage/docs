@@ -39,17 +39,16 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     // Registering Volt as template engine
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
-                    ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-                )
+                [
+                    ".volt" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+                ]
             );
 
             return $view;
@@ -63,9 +62,9 @@ Volt был написан под вдохновлением от Jinja_, кот
     <?php
 
     $view->registerEngines(
-        array(
-            ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
-        )
+        [
+            ".phtml" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+        ]
     );
 
 Основы
@@ -474,6 +473,7 @@ If
 .. code-block:: html+jinja
 
     {% set fruits = ['Apple', 'Banana', 'Orange'] %}
+
     {% set name = robot.name %}
 
 Multiple assignments are allowed in the same instruction:
@@ -487,6 +487,7 @@ Additionally, you can use compound assignment operators:
 .. code-block:: html+jinja
 
     {% set price += 100.00 %}
+
     {% set age *= 5 %}
 
 The following operators are available:
@@ -996,8 +997,10 @@ Keep the following points in mind when choosing to use the "partial" function or
             {% block head %}
                 <link rel="stylesheet" href="style.css" />
             {% endblock %}
+
             <title>{% block title %}{% endblock %} - My Webpage</title>
         </head>
+
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
 
@@ -1030,8 +1033,10 @@ Keep the following points in mind when choosing to use the "partial" function or
     <html>
         <head>
             <style type="text/css">.important { color: #336699; }</style>
+
             <title>Index - My Webpage</title>
         </head>
+
         <body>
             <div id="content">
                 <h1>Index</h1>
@@ -1056,6 +1061,7 @@ Keep the following points in mind when choosing to use the "partial" function or
         <head>
             <title>Title</title>
         </head>
+
         <body>
             {% block content %}{% endblock %}
         </body>
@@ -1101,6 +1107,7 @@ Keep the following points in mind when choosing to use the "partial" function or
         <head>
             <title>Title</title>
         </head>
+
         <body>
 
             <h1>Table of contents</h1>
@@ -1149,16 +1156,15 @@ Volt можно настроить так, чтобы изменить его п
 
     // Register Volt as a service
     $di->set(
-        'voltService',
+        "voltService",
         function ($view, $di) {
-
             $volt = new Volt($view, $di);
 
             $volt->setOptions(
-                array(
+                [
                     "compiledPath"      => "../app/compiled-templates/",
-                    "compiledExtension" => ".compiled"
-                )
+                    "compiledExtension" => ".compiled",
+                ]
             );
 
             return $volt;
@@ -1167,17 +1173,16 @@ Volt можно настроить так, чтобы изменить его п
 
     // Register Volt as template engine
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
-                    ".volt" => 'voltService'
-                )
+                [
+                    ".volt" => "voltService",
+                ]
             );
 
             return $view;
@@ -1195,15 +1200,14 @@ Volt можно настроить так, чтобы изменить его п
 
     // Регистрация Volt в качестве шаблонизатора с анонимной функцией
     $di->set(
-        'view',
+        "view",
         function () {
-
             $view = new \Phalcon\Mvc\View();
 
-            $view->setViewsDir('../app/views/');
+            $view->setViewsDir("../app/views/");
 
             $view->registerEngines(
-                array(
+                [
                     ".volt" => function ($view, $di) {
                         $volt = new Volt($view, $di);
 
@@ -1211,7 +1215,7 @@ Volt можно настроить так, чтобы изменить его п
 
                         return $volt;
                     }
-                )
+                ]
             );
 
             return $view;
@@ -1249,26 +1253,26 @@ views directory. The following examples show how to change the compilation path 
     // Just append the .php extension to the template path
     // leaving the compiled templates in the same directory
     $volt->setOptions(
-        array(
-            'compiledPath' => function ($templatePath) {
-                return $templatePath . '.php';
+        [
+            "compiledPath" => function ($templatePath) {
+                return $templatePath . ".php";
             }
-        )
+        ]
     );
 
     // Recursively create the same structure in another directory
     $volt->setOptions(
-        array(
-            'compiledPath' => function ($templatePath) {
+        [
+            "compiledPath" => function ($templatePath) {
                 $dirName = dirname($templatePath);
 
-                if (!is_dir('cache/' . $dirName)) {
-                    mkdir('cache/' . $dirName);
+                if (!is_dir("cache/" . $dirName)) {
+                    mkdir("cache/" . $dirName);
                 }
 
-                return 'cache/' . $dirName . '/'. $templatePath . '.php';
+                return "cache/" . $dirName . "/". $templatePath . ".php";
             }
-        )
+        ]
     );
 
 Расширение Volt
@@ -1292,7 +1296,7 @@ Volt-компилятор позволяет вам расширить его, �
     $compiler = $volt->getCompiler();
 
     // Тут к функции 'shuffle' в Volt привязывается PHP-функция 'str_shuffle'
-    $compiler->addFunction('shuffle', 'str_shuffle');
+    $compiler->addFunction("shuffle", "str_shuffle");
 
 При регистрации функции, как анонимной, мы используем :code:`$resolvedArgs` для передачи аргументов точно так же, как они были приняты:
 
@@ -1301,9 +1305,9 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     $compiler->addFunction(
-        'widget',
+        "widget",
         function ($resolvedArgs, $exprArgs) {
-            return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+            return "MyLibrary\\Widgets::get(" . $resolvedArgs . ")";
         }
     );
 
@@ -1314,9 +1318,8 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     $compiler->addFunction(
-        'repeat',
+        "repeat",
         function ($resolvedArgs, $exprArgs) use ($compiler) {
-
             // Получение первого параметра
             $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
@@ -1328,7 +1331,7 @@ Volt-компилятор позволяет вам расширить его, �
                 $secondArgument = '10';
             }
 
-            return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
+            return "str_repeat(" . $firstArgument . ", " . $secondArgument . ")";
         }
     );
 
@@ -1339,12 +1342,12 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     $compiler->addFunction(
-        'contains_text',
+        "contains_text",
         function ($resolvedArgs, $exprArgs) {
-            if (function_exists('mb_stripos')) {
-                return 'mb_stripos(' . $resolvedArgs . ')';
+            if (function_exists("mb_stripos")) {
+                return "mb_stripos(" . $resolvedArgs . ")";
             } else {
-                return 'stripos(' . $resolvedArgs . ')';
+                return "stripos(" . $resolvedArgs . ")";
             }
         }
     );
@@ -1356,7 +1359,7 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     // Заменяет встроенную функцию 'dump'
-    $compiler->addFunction('dump', 'print_r');
+    $compiler->addFunction("dump", "print_r");
 
 Фильтры
 ^^^^^^^
@@ -1367,16 +1370,16 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     // Создаёт фильтр 'hash', который использует функцию PHP 'md5'
-    $compiler->addFilter('hash', 'md5');
+    $compiler->addFilter("hash", "md5");
 
 .. code-block:: php
 
     <?php
 
     $compiler->addFilter(
-        'int',
+        "int",
         function ($resolvedArgs, $exprArgs) {
-            return 'intval(' . $resolvedArgs . ')';
+            return "intval(" . $resolvedArgs . ")";
         }
     );
 
@@ -1387,7 +1390,7 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     // Replace built-in filter 'capitalize'
-    $compiler->addFilter('capitalize', 'lcfirst');
+    $compiler->addFilter("capitalize", "lcfirst");
 
 Расширения
 ^^^^^^^^^^
@@ -1410,7 +1413,7 @@ Volt-компилятор позволяет вам расширить его, �
         public function compileFunction($name, $arguments)
         {
             if (function_exists($name)) {
-                return $name . '('. $arguments . ')';
+                return $name . "(". $arguments . ")";
             }
         }
     }
@@ -1442,7 +1445,9 @@ Volt-компилятор позволяет вам расширить его, �
     <?php
 
     // Register the extension in the compiler
-    $compiler->addExtension(new PhpFunctionExtension());
+    $compiler->addExtension(
+        new PhpFunctionExtension()
+    );
 
 Кэширование частей представления
 --------------------------------
@@ -1504,19 +1509,26 @@ Volt-компилятор позволяет вам расширить его, �
 
     // Добавление каких-то опций
     $compiler->setOptions(
-        array(
+        [
             // ...
-        )
+        ]
     );
 
     // Компиляция шаблона-строки, возвращающая PHP-код
-    echo $compiler->compileString('{{ "hello" }}');
+    echo $compiler->compileString(
+        "{{ 'hello' }}"
+    );
 
     // Компиляция шаблона-файла в определённый файл
-    $compiler->compileFile('layouts/main.volt', 'cache/layouts/main.volt.php');
+    $compiler->compileFile(
+        "layouts/main.volt",
+        "cache/layouts/main.volt.php"
+    );
 
     // Компиляция шаблона-файла, в файл, определённый в настройках, переданных в компилятор
-    $compiler->compile('layouts/main.volt');
+    $compiler->compile(
+        "layouts/main.volt"
+    );
 
     // Запрос собранных шаблонов (по желанию)
     require $compiler->getCompiledTemplatePath();

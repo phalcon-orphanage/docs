@@ -16,7 +16,7 @@ Instead of permanently delete a record it marks the record as deleted changing t
 Methods
 -------
 
-public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **notify** (*mixed* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Listens for notifications from the models manager
 
@@ -28,7 +28,7 @@ Phalcon\\Mvc\\Model\\Behavior
 
 
 
-protected  **mustTakeAction** (*unknown* $eventName) inherited from Phalcon\\Mvc\\Model\\Behavior
+protected  **mustTakeAction** (*mixed* $eventName) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Checks whether the behavior must take action on certain event
 

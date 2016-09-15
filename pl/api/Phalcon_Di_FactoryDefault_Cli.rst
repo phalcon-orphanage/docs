@@ -34,49 +34,49 @@ Returns the internal event manager
 
 
 
-public  **set** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
+public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from Phalcon\\Di
 
 Registers a service in the services container
 
 
 
-public  **setShared** (*unknown* $name, *unknown* $definition) inherited from Phalcon\\Di
+public  **setShared** (*mixed* $name, *mixed* $definition) inherited from Phalcon\\Di
 
 Registers an "always shared" service in the services container
 
 
 
-public  **remove** (*unknown* $name) inherited from Phalcon\\Di
+public  **remove** (*mixed* $name) inherited from Phalcon\\Di
 
 Removes a service in the services container It also removes any shared instance created for the service
 
 
 
-public  **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
+public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from Phalcon\\Di
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 
-public  **setRaw** (*unknown* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition) inherited from Phalcon\\Di
+public  **setRaw** (*mixed* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition) inherited from Phalcon\\Di
 
 Sets a service using a raw Phalcon\\Di\\Service definition
 
 
 
-public  **getRaw** (*unknown* $name) inherited from Phalcon\\Di
+public  **getRaw** (*mixed* $name) inherited from Phalcon\\Di
 
 Returns a service definition without resolving
 
 
 
-public  **getService** (*unknown* $name) inherited from Phalcon\\Di
+public  **getService** (*mixed* $name) inherited from Phalcon\\Di
 
 Returns a Phalcon\\Di\\Service instance
 
 
 
-public  **get** (*unknown* $name, [*unknown* $parameters]) inherited from Phalcon\\Di
+public  **get** (*mixed* $name, [*mixed* $parameters]) inherited from Phalcon\\Di
 
 Resolves the service based on its configuration
 
@@ -88,7 +88,7 @@ Resolves a service, the resolved service is stored in the DI, subsequent request
 
 
 
-public  **has** (*unknown* $name) inherited from Phalcon\\Di
+public  **has** (*mixed* $name) inherited from Phalcon\\Di
 
 Check whether the DI contains a service by a name
 
@@ -106,7 +106,7 @@ Return the services registered in the DI
 
 
 
-public  **offsetExists** (*unknown* $name) inherited from Phalcon\\Di
+public  **offsetExists** (*mixed* $name) inherited from Phalcon\\Di
 
 Check if a service is registered using the array syntax
 
@@ -125,7 +125,7 @@ Allows to register a shared service using the array syntax
 
 
 
-public *mixed*  **offsetGet** (*string* $name) inherited from Phalcon\\Di
+public  **offsetGet** (*mixed* $name) inherited from Phalcon\\Di
 
 Allows to obtain a shared service using the array syntax 
 
@@ -138,13 +138,13 @@ Allows to obtain a shared service using the array syntax
 
 
 
-public  **offsetUnset** (*unknown* $name) inherited from Phalcon\\Di
+public  **offsetUnset** (*mixed* $name) inherited from Phalcon\\Di
 
 Removes a service from the services container using the array syntax
 
 
 
-public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\Di
+public  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\Di
 
 Magic method to get or set services using setters/getters
 
@@ -158,7 +158,7 @@ Set a default dependency injection container to be obtained into static methods
 
 public static  **getDefault** () inherited from Phalcon\\Di
 
-Return the lastest DI created
+Return the latest DI created
 
 
 

@@ -11,17 +11,17 @@ Interface **Phalcon\\Mvc\\DispatcherInterface**
 Methods
 -------
 
-abstract public  **setControllerSuffix** (*unknown* $controllerSuffix)
+abstract public  **setControllerSuffix** (*mixed* $controllerSuffix)
 
 ...
 
 
-abstract public  **setDefaultController** (*unknown* $controllerName)
+abstract public  **setDefaultController** (*mixed* $controllerName)
 
 ...
 
 
-abstract public  **setControllerName** (*unknown* $controllerName)
+abstract public  **setControllerName** (*mixed* $controllerName)
 
 ...
 
@@ -41,32 +41,37 @@ abstract public  **getActiveController** ()
 ...
 
 
-abstract public  **setActionSuffix** (*unknown* $actionSuffix) inherited from Phalcon\\DispatcherInterface
+abstract public  **setActionSuffix** (*mixed* $actionSuffix) inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **setDefaultNamespace** (*unknown* $defaultNamespace) inherited from Phalcon\\DispatcherInterface
+abstract public  **getActionSuffix** () inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\DispatcherInterface
+abstract public  **setDefaultNamespace** (*mixed* $defaultNamespace) inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **setNamespaceName** (*unknown* $namespaceName) inherited from Phalcon\\DispatcherInterface
+abstract public  **setDefaultAction** (*mixed* $actionName) inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **setModuleName** (*unknown* $moduleName) inherited from Phalcon\\DispatcherInterface
+abstract public  **setNamespaceName** (*mixed* $namespaceName) inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **setActionName** (*unknown* $actionName) inherited from Phalcon\\DispatcherInterface
+abstract public  **setModuleName** (*mixed* $moduleName) inherited from Phalcon\\DispatcherInterface
+
+...
+
+
+abstract public  **setActionName** (*mixed* $actionName) inherited from Phalcon\\DispatcherInterface
 
 ...
 
@@ -76,7 +81,7 @@ abstract public  **getActionName** () inherited from Phalcon\\DispatcherInterfac
 ...
 
 
-abstract public  **setParams** (*unknown* $params) inherited from Phalcon\\DispatcherInterface
+abstract public  **setParams** (*mixed* $params) inherited from Phalcon\\DispatcherInterface
 
 ...
 
@@ -86,12 +91,17 @@ abstract public  **getParams** () inherited from Phalcon\\DispatcherInterface
 ...
 
 
-abstract public  **setParam** (*unknown* $param, *unknown* $value) inherited from Phalcon\\DispatcherInterface
+abstract public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\DispatcherInterface
 
 ...
 
 
-abstract public  **getParam** (*unknown* $param, [*unknown* $filters]) inherited from Phalcon\\DispatcherInterface
+abstract public  **getParam** (*mixed* $param, [*mixed* $filters]) inherited from Phalcon\\DispatcherInterface
+
+...
+
+
+abstract public  **hasParam** (*mixed* $param) inherited from Phalcon\\DispatcherInterface
 
 ...
 
@@ -111,7 +121,7 @@ abstract public  **dispatch** () inherited from Phalcon\\DispatcherInterface
 ...
 
 
-abstract public  **forward** (*unknown* $forward) inherited from Phalcon\\DispatcherInterface
+abstract public  **forward** (*mixed* $forward) inherited from Phalcon\\DispatcherInterface
 
 ...
 

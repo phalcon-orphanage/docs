@@ -21,25 +21,30 @@
         public function loginAction()
         {
             // Проверяем была ли установлена Кука ранее
-            if ($this->cookies->has('remember-me')) {
-
+            if ($this->cookies->has("remember-me")) {
                 // Извлекаем Куку
-                $rememberMe = $this->cookies->get('remember-me');
+                $rememberMeCookie = $this->cookies->get("remember-me");
 
                 // Извлекаем значение из Куки
-                $value      = $rememberMe->getValue();
+                $value = $rememberMeCookie->getValue();
             }
         }
 
         public function startAction()
         {
-            $this->cookies->set('remember-me', 'некоторое значение', time() + 15 * 86400);
+            $this->cookies->set(
+                "remember-me",
+                "некоторое значение",
+                time() + 15 * 86400
+            );
         }
 
         public function logoutAction()
         {
+            $rememberMeCookie = $this->cookies->get("remember-me");
+
             // Delete the cookie
-            $this->cookies->get('remember-me')->delete();
+            $rememberMeCookie->delete();
         }
     }
 
@@ -57,13 +62,16 @@
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function () {
-        $cookies = new Cookies();
+    $di->set(
+        "cookies",
+        function () {
+            $cookies = new Cookies();
 
-        $cookies->useEncryption(false);
+            $cookies->useEncryption(false);
 
-        return $cookies;
-    });
+            return $cookies;
+        }
+    );
 
 При использовании шифрования должен быть установлен глобальный ключ в сервисе 'crypt':
 
@@ -73,13 +81,16 @@
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
-        $crypt = new Crypt();
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Используйте свой собственный ключ!
+            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Используйте свой собственный ключ!
 
-        return $crypt;
-    });
+            return $crypt;
+        }
+    );
 
 .. highlights::
 

@@ -9,7 +9,7 @@ Interface **Phalcon\\Mvc\\Model\\CriteriaInterface**
 Methods
 -------
 
-abstract public  **setModelName** (*unknown* $modelName)
+abstract public  **setModelName** (*mixed* $modelName)
 
 ...
 
@@ -29,62 +29,62 @@ abstract public  **bindTypes** (*array* $bindTypes)
 ...
 
 
-abstract public  **where** (*unknown* $conditions)
+abstract public  **where** (*mixed* $conditions)
 
 ...
 
 
-abstract public  **conditions** (*unknown* $conditions)
+abstract public  **conditions** (*mixed* $conditions)
 
 ...
 
 
-abstract public  **orderBy** (*unknown* $orderColumns)
+abstract public  **orderBy** (*mixed* $orderColumns)
 
 ...
 
 
-abstract public  **limit** (*unknown* $limit, [*unknown* $offset])
+abstract public  **limit** (*mixed* $limit, [*mixed* $offset])
 
 ...
 
 
-abstract public  **forUpdate** ([*unknown* $forUpdate])
+abstract public  **forUpdate** ([*mixed* $forUpdate])
 
 ...
 
 
-abstract public  **sharedLock** ([*unknown* $sharedLock])
+abstract public  **sharedLock** ([*mixed* $sharedLock])
 
 ...
 
 
-abstract public  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
 
-abstract public  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
+abstract public  **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
 
 
-abstract public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+abstract public  **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 ...
 
 
-abstract public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
+abstract public  **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
 ...
 
 
-abstract public  **inWhere** (*unknown* $expr, *array* $values)
+abstract public  **inWhere** (*mixed* $expr, *array* $values)
 
 ...
 
 
-abstract public  **notInWhere** (*unknown* $expr, *array* $values)
+abstract public  **notInWhere** (*mixed* $expr, *array* $values)
 
 ...
 
@@ -104,7 +104,7 @@ abstract public  **getLimit** ()
 ...
 
 
-abstract public  **getOrder** ()
+abstract public  **getOrderBy** ()
 
 ...
 

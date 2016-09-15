@@ -9,12 +9,12 @@ Interface **Phalcon\\Annotations\\ReaderInterface**
 Methods
 -------
 
-abstract public  **parse** (*unknown* $className)
+abstract public  **parse** (*mixed* $className)
 
 ...
 
 
-abstract public static  **parseDocBlock** (*unknown* $docBlock, [*unknown* $file], [*unknown* $line])
+abstract public static  **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
 ...
 

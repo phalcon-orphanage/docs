@@ -11,12 +11,22 @@ Download
 --------
 Você pode baixar um pacote de plataforma que contém as ferramentas de desenvolvedor da seção de Download_. Também você pode cloná-lo a partir de Github_.
 
-Abra um terminal e digite os comandos abaixo:
+Abra um terminal e digite os comando abaixo:
+
+.. code-block:: bash
+
+    git clone git://github.com/phalcon/phalcon-devtools.git
 
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
 Em seguida, digite a pasta onde as ferramentas foram clonados e execute ". ./phalcon.sh", (não se esqueça do ponto no início do comando):
+
+.. code-block:: bash
+
+    cd phalcon-devtools/
+
+    . ./phalcon.sh
 
 .. figure:: ../_static/img/linux-2.png
    :align: center

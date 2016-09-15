@@ -9,7 +9,7 @@ Interface **Phalcon\\Assets\\FilterInterface**
 Methods
 -------
 
-abstract public  **filter** (*unknown* $content)
+abstract public  **filter** (*mixed* $content)
 
 ...
 

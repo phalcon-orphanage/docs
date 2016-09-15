@@ -3,6 +3,8 @@ Class **Phalcon\\Annotations\\Exception**
 
 *extends* Exception
 
+*implements* Throwable
+
 .. role:: raw-html(raw)
    :format: html
 

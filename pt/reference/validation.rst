@@ -17,36 +17,37 @@ O exemplo a seguir mostra seu uso básico:
     $validation = new Validation();
 
     $validation->add(
-        'name',
+        "name",
         new PresenceOf(
-            array(
-                'message' => 'The name is required'
-            )
+            [
+                "message" => "The name is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new PresenceOf(
-            array(
-                'message' => 'The e-mail is required'
-            )
+            [
+                "message" => "The e-mail is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -70,29 +71,29 @@ Você pode adicionar validações em um arquivo separado para melhor reutilizaç
         public function initialize()
         {
             $this->add(
-                'name',
+                "name",
                 new PresenceOf(
-                    array(
-                        'message' => 'The name is required'
-                    )
+                    [
+                        "message" => "The name is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new PresenceOf(
-                    array(
-                        'message' => 'The e-mail is required'
-                    )
+                    [
+                        "message" => "The e-mail is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new Email(
-                    array(
-                        'message' => 'The e-mail is not valid'
-                    )
+                    [
+                        "message" => "The e-mail is not valid",
+                    ]
                 )
             );
         }
@@ -107,9 +108,10 @@ Em seguida, inicializar e usar seu próprio validador:
     $validation = new MyValidation();
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -117,31 +119,31 @@ Validadores
 -----------
 Phalcon fornece um conjunto de validadores para este componente:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Nome         | Explicação                                                                                                                                                       | Exemplo                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Valida que o valor de um campo não é nulo ou vazio                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Identical    | Valida que o valor de um campo é o mesmo que o especificado                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Valida que o valor de um campo contém um email no formato válido                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Valida que um valor não está dentro de uma lista de valores possíveis                                                                                            | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Valida que um valor está dentro de uma lista de valores possíveis                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Valida que o valor de um campo corresponde a expressão regular                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Valida o tamanho da string                                                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Between      | Valida que o valor está entre dois valores                                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Valida que um valor é o mesmo que outro presente nos dados                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Valida que o valor de um campo seja uma Url válida                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| CreditCard   | Valida que o valor de um campo seja um número de cartão de crédito válido                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
-+--------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| Class                                                                                                  | Explicação                                                                |
++========================================================================================================+===========================================================================+
+| :doc:`Phalcon\\Validation\\Validator\\PresenceOf <../api/Phalcon_Validation_Validator_PresenceOf>`     | Valida que o valor de um campo não é nulo ou vazio                        |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Identical <../api/Phalcon_Validation_Validator_Identical>`       | Valida que o valor de um campo é o mesmo que o especificado               |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Email <../api/Phalcon_Validation_Validator_Email>`               | Valida que o valor de um campo contém um email no formato válido          |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\ExclusionIn <../api/Phalcon_Validation_Validator_ExclusionIn>`   | Valida que um valor não está dentro de uma lista de valores possíveis     |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\InclusionIn <../api/Phalcon_Validation_Validator_InclusionIn>`   | Valida que um valor está dentro de uma lista de valores possíveis         |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Regex <../api/Phalcon_Validation_Validator_Regex>`               | Valida que o valor de um campo corresponde a expressão regular            |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\StringLength <../api/Phalcon_Validation_Validator_StringLength>` | Valida o tamanho da string                                                |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Between <../api/Phalcon_Validation_Validator_Between>`           | Valida que o valor está entre dois valores                                |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Confirmation <../api/Phalcon_Validation_Validator_Confirmation>` | Valida que um valor é o mesmo que outro presente nos dados                |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Url <../api/Phalcon_Validation_Validator_Url>`                   | Valida que o valor de um campo seja uma Url válida                        |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Valida que o valor de um campo seja um número de cartão de crédito válido |
++--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 O exemplo abaixo explica como criar um validador adicional para este componente:
 
@@ -152,9 +154,8 @@ O exemplo abaixo explica como criar um validador adicional para este componente:
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * Executes the validation
@@ -168,13 +169,15 @@ O exemplo abaixo explica como criar um validador adicional para este componente:
             $value = $validator->getValue($attribute);
 
             if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                $message = $this->getOption("message");
 
-                $message = $this->getOption('message');
                 if (!$message) {
-                    $message = 'The IP is not valid';
+                    $message = "The IP is not valid";
                 }
 
-                $validator->appendMessage(new Message($message, $attribute, 'Ip'));
+                $validator->appendMessage(
+                    new Message($message, $attribute, "Ip")
+                );
 
                 return false;
             }
@@ -199,45 +202,16 @@ o atributo que gerou a mensagem ou o tipo de mensagem:
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
-        foreach ($validation->getMessages() as $message) {
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage(), "\n";
             echo "Field: ", $message->getField(), "\n";
             echo "Type: ", $message->getType(), "\n";
         }
     }
 
-O método getMessages() pode ser sobrescrito em uma classe de validação para trocar/traduzir as mensagens padrões geradas pelos validadodes:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-Ou pode passar o parametro 'message' para alterar a mensagem padrão em cada validador:
+Pode passar o parametro 'message' para alterar a mensagem padrão em cada validador:
 
 .. code-block:: php
 
@@ -246,15 +220,15 @@ Ou pode passar o parametro 'message' para alterar a mensagem padrão em cada val
     use Phalcon\Validation\Validator\Email;
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
-Por padrão, 'getMessages' retorna todas as mensagens geradas durante a validação. Você pode filtrar as mensagens
+Por padrão, :code:`getMessages()` retorna todas as mensagens geradas durante a validação. Você pode filtrar as mensagens
 por um campo específico usando o método 'filter':
 
 .. code-block:: php
@@ -262,9 +236,12 @@ por um campo específico usando o método 'filter':
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
         // Filter only the messages generated for the field 'name'
-        foreach ($validation->getMessages()->filter('name') as $message) {
+        $filteredMessages = $messages->filter("name");
+
+        foreach ($filteredMessages as $message) {
             echo $message;
         }
     }
@@ -281,17 +258,27 @@ Os dados podem ser filtrados antes da validação garantindo que os informaçõe
 
     $validation = new Validation();
 
-    $validation
-        ->add('name', new PresenceOf(array(
-            'message' => 'The name is required'
-        )))
-        ->add('email', new PresenceOf(array(
-            'message' => 'The email is required'
-        )));
+    $validation->add(
+        "name",
+        new PresenceOf(
+            [
+                "message" => "The name is required",
+            ]
+        )
+    );
+
+    $validation->add(
+        "email",
+        new PresenceOf(
+            [
+                "message" => "The email is required",
+            ]
+        )
+    );
 
     // Filter any extra space
-    $validation->setFilters('name', 'trim');
-    $validation->setFilters('email', 'trim');
+    $validation->setFilters("name", "trim");
+    $validation->setFilters("email", "trim");
 
 Filtragem e sanatização é realizada usando o componente :doc:`filter <filter>`:. Você pode adicionar mais filtros nesse
 componente ou usar os imbutidos.
@@ -324,8 +311,10 @@ cancelada:
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != 'admin.mydomain.com') {
-                $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+            if ($this->request->getHttpHost() != "admin.mydomain.com") {
+                $messages->appendMessage(
+                    new Message("Only users can log on in the administration domain")
+                );
 
                 return false;
             }
@@ -347,7 +336,7 @@ cancelada:
     }
 
 Cancelando Validações
-----------------------
+---------------------
 Por padrão todos os validadores atribuídos aos campos são testados independentemente, mesmo se um deles falhar ou não. Você pode
 mudar este comportamente dizendo ao componente de validação qual validador pode parar a validação:
 
@@ -361,19 +350,35 @@ mudar este comportamente dizendo ao componente de validação qual validador pod
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new PresenceOf(array(
-            'message'      => 'The telephone is required',
-            'cancelOnFail' => true
-        )))
-        ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )))
-        ->add('telephone', new StringLength(array(
-            'messageMinimum' => 'The telephone is too short',
-            'min'            => 2
-        )));
+    $validation->add(
+        "telephone",
+        new PresenceOf(
+            [
+                "message"      => "The telephone is required",
+                "cancelOnFail" => true,
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message" => "The telephone is required",
+                "pattern" => "/\+44 [0-9]+/",
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new StringLength(
+            [
+                "messageMinimum" => "The telephone is too short",
+                "min"            => 2,
+            ]
+        )
+    );
 
 O primeiro validador possui a opção 'cancelOnFail' com o valor true, portanto se este validador falhar o restante dos validadores na cadeia
 não são executados.
@@ -387,9 +392,8 @@ Se você está criando validadores próprios você pode parar a cadeia de valida
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * Executes the validation
@@ -401,8 +405,8 @@ Se você está criando validadores próprios você pode parar a cadeia de valida
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == 'name') {
-                $validator->setOption('cancelOnFail', true);
+            if ($attribute == "name") {
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...
@@ -422,9 +426,13 @@ Você pode passar a opção 'allowEmpty' para todos os validadores imbutidos par
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new Regex(array(
-            'message'    => 'The telephone is required',
-            'pattern'    => '/\+44 [0-9]+/',
-            'allowEmpty' => true
-        )));
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message"    => "The telephone is required",
+                "pattern"    => "/\+44 [0-9]+/",
+                "allowEmpty" => true,
+            ]
+        )
+    );

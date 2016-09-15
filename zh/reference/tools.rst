@@ -4,8 +4,8 @@ Phalcon 开发工具（Phalcon Developer Tools）
 Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一些程序的基本框架，生成控制器模型等。使用这个工具我们只需要一个简单的命令即可生成应用的基本框架。
 
 .. highlights::
-    **非常重要:** 要使用这个工具我们必须要安装Phalcon 0.5版本以上的扩展才行。这里我们推荐使用PHP5.4或更高版本的PHP. 如果你喜欢使用web版而非console版本的程序，那么在这里
-    `blog post`_ 可以看到更多的内容。
+
+    如果你喜欢使用web版而非console版本的程序，那么在这里 `blog post`_ 可以看到更多的内容。
 
 下载（Download）
 ----------------
@@ -28,19 +28,20 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 
 .. code-block:: sh
 
-   $ phalcon commands
+    $ phalcon commands
 
-   Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
-   Available commands:
-     commands         (alias of: list, enumerate)
-     controller       (alias of: create-controller)
-     model            (alias of: create-model)
-     all-models       (alias of: create-all-models)
-     project          (alias of: create-project)
-     scaffold         (alias of: create-scaffold)
-     migration        (alias of: create-migration)
-     webtools         (alias of: create-webtools)
+    Available commands:
+      commands         (alias of: list, enumerate)
+      controller       (alias of: create-controller)
+      module           (alias of: create-module)
+      model            (alias of: create-model)
+      all-models       (alias of: create-all-models)
+      project          (alias of: create-project)
+      scaffold         (alias of: create-scaffold)
+      migration        (alias of: create-migration)
+      webtools         (alias of: create-webtools)
 
 生成项目框架（Generating a Project Skeleton）
 ---------------------------------------------
@@ -49,11 +50,11 @@ web服务器根目录下输入如下命令：
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 执行命令后会生成如下的文档结构的项目：
 
@@ -66,7 +67,7 @@ web服务器根目录下输入如下命令：
 
     $ phalcon project --help
 
-    Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
     Help:
       Creates a project 创建项目
@@ -101,7 +102,7 @@ web服务器根目录下输入如下命令：
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 上面的命令会生成如下代码：
 
@@ -109,7 +110,9 @@ web服务器根目录下输入如下命令：
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -160,11 +163,11 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 所有的字段设置为公有：
 
@@ -172,7 +175,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -182,7 +187,7 @@ Options:
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -211,7 +216,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -221,7 +228,7 @@ Options:
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -246,6 +253,7 @@ Options:
 
         /**
          * Method to set the value of field id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -254,18 +262,20 @@ Options:
         }
 
         /**
-         * Method to set the value of field types_id
-         * @param integer $types_id
+         * Method to set the value of field typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Returns the value of field status
+         *
          * @return string
          */
         public function getStatus()
@@ -289,7 +299,7 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：
 

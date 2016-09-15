@@ -40,9 +40,12 @@
     <?php
 
     // Регистрируем пользовательский компонент
-    $di->set('elements', function () {
-        return new Elements();
-    });
+    $di->set(
+        "elements",
+        function () {
+            return new Elements();
+        }
+    );
 
 Как и контроллеры, плагины или компоненты в представлениях, этот компонент также имеет доступ к сервисам, зарегистрированным
 в контейнере, и сам будет доступен как атрибут с тем именем, с каким мы его зарегистрировали:
@@ -57,7 +60,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+
                 <a class="brand" href="#">INVO</a>
+
                 {{ elements.getMenu() }}
             </div>
         </div>
@@ -65,7 +70,9 @@
 
     <div class="container">
         {{ content() }}
+
         <hr>
+
         <footer>
             <p>&copy; Company 2015</p>
         </footer>
@@ -73,7 +80,7 @@
 
 Обратите внимание на важную часть:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     {{ elements.getMenu() }}
 
@@ -91,7 +98,10 @@
         public function initialize()
         {
             // Устанавливаем заголовок документа
-            $this->tag->setTitle('Управление типами ваших продуктов');
+            $this->tag->setTitle(
+                "Управление типами ваших продуктов"
+            );
+
             parent::initialize();
         }
 
@@ -111,7 +121,9 @@
         protected function initialize()
         {
             // Дописываем в начало заголовка название приложения
-            $this->tag->prependTitle('INVO | ');
+            $this->tag->prependTitle(
+                "INVO | "
+            );
         }
 
         // ...
@@ -126,6 +138,7 @@
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <!-- ... -->
     </html>
 

@@ -20,13 +20,13 @@ Checks whether an offset exists in the document
 
 
 
-public  **offsetGet** (*unknown* $index)
+public  **offsetGet** (*mixed* $index)
 
 Returns the value of a field using the ArrayAccess interfase
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value)
+public  **offsetSet** (*mixed* $index, *mixed* $value)
 
 Change a value using the ArrayAccess interface
 

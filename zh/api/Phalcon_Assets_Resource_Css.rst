@@ -22,27 +22,32 @@ public  **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter]
 
 public  **getType** () inherited from Phalcon\\Assets\\Resource
 
-...
+
+
 
 
 public  **getPath** () inherited from Phalcon\\Assets\\Resource
 
-...
+
+
 
 
 public  **getLocal** () inherited from Phalcon\\Assets\\Resource
 
-...
+
+
 
 
 public  **getFilter** () inherited from Phalcon\\Assets\\Resource
 
-...
+
+
 
 
 public  **getAttributes** () inherited from Phalcon\\Assets\\Resource
 
-...
+
+
 
 
 public  **getSourcePath** () inherited from Phalcon\\Assets\\Resource
@@ -60,25 +65,25 @@ public  **getTargetUri** () inherited from Phalcon\\Assets\\Resource
 ...
 
 
-public  **setType** (*unknown* $type) inherited from Phalcon\\Assets\\Resource
+public  **setType** (*mixed* $type) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's type
 
 
 
-public  **setPath** (*unknown* $path) inherited from Phalcon\\Assets\\Resource
+public  **setPath** (*mixed* $path) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's path
 
 
 
-public  **setLocal** (*unknown* $local) inherited from Phalcon\\Assets\\Resource
+public  **setLocal** (*mixed* $local) inherited from Phalcon\\Assets\\Resource
 
 Sets if the resource is local or external
 
 
 
-public  **setFilter** (*unknown* $filter) inherited from Phalcon\\Assets\\Resource
+public  **setFilter** (*mixed* $filter) inherited from Phalcon\\Assets\\Resource
 
 Sets if the resource must be filtered or not
 
@@ -90,25 +95,25 @@ Sets extra HTML attributes
 
 
 
-public  **setTargetUri** (*unknown* $targetUri) inherited from Phalcon\\Assets\\Resource
+public  **setTargetUri** (*mixed* $targetUri) inherited from Phalcon\\Assets\\Resource
 
 Sets a target uri for the generated HTML
 
 
 
-public  **setSourcePath** (*unknown* $sourcePath) inherited from Phalcon\\Assets\\Resource
+public  **setSourcePath** (*mixed* $sourcePath) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's source path
 
 
 
-public  **setTargetPath** (*unknown* $targetPath) inherited from Phalcon\\Assets\\Resource
+public  **setTargetPath** (*mixed* $targetPath) inherited from Phalcon\\Assets\\Resource
 
 Sets the resource's target path
 
 
 
-public  **getContent** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getContent** ([*mixed* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the content of the resource as an string Optionally a base path where the resource is located can be set
 
@@ -120,13 +125,13 @@ Returns the real target uri for the generated HTML
 
 
 
-public  **getRealSourcePath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getRealSourcePath** ([*mixed* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the complete location where the resource is located
 
 
 
-public  **getRealTargetPath** ([*unknown* $basePath]) inherited from Phalcon\\Assets\\Resource
+public  **getRealTargetPath** ([*mixed* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the complete location where the resource must be written
 
