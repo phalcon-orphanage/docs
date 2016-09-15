@@ -172,7 +172,7 @@ to query documents and convert them transparently to model instances:
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ]
         ]
     );
@@ -182,11 +182,11 @@ to query documents and convert them transparently to model instances:
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ],
             "sort" => [
-                "name" => 1
-            ]
+                "name" => 1,
+            ],
         ]
     );
 
@@ -198,10 +198,10 @@ to query documents and convert them transparently to model instances:
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ],
             "sort"  => [
-                "name" => 1
+                "name" => 1,
             ],
             "limit" => 100,
         ]
@@ -225,7 +225,7 @@ You could also use the :code:`findFirst()` method to get only the first record m
     $robot = Robots::findFirst(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ]
         ]
     );
@@ -242,8 +242,8 @@ Both :code:`find()` and :code:`findFirst()` methods accept an associative array 
         [
             "conditions" => [
                 "type" => "mechanical",
-                "year" => "1999"
-            ]
+                "year" => "1999",
+            ],
         ]
     );
 
@@ -251,10 +251,10 @@ Both :code:`find()` and :code:`findFirst()` methods accept an associative array 
     $robots = Robots::find(
         [
             "conditions" => [
-                "type" => "virtual"
+                "type" => "virtual",
             ],
             "sort" => [
-                "name" => -1
+                "name" => -1,
             ],
         ]
     );
@@ -289,20 +289,20 @@ With this option is easy perform tasks such as totaling or averaging field value
     $data = Article::aggregate(
         [
             [
-                "$project" => [
-                    "category" => 1
-                ]
+                "\$project" => [
+                    "category" => 1,
+                ],
             ],
             [
-                "$group" => [
+                "\$group" => [
                     "_id" => [
-                        "category" => "$category"
+                        "category" => "\$category"
                     ],
-                    'id'  => [
-                        "$max" => "$_id"
-                    ]
-                ]
-            ]
+                    "id"  => [
+                        "\$max" => "\$_id",
+                    ],
+                ],
+            ],
         ]
     );
 
@@ -326,7 +326,9 @@ Also the method executes associated validators and events that are defined in th
     if ($robot->save() === false) {
         echo "Umh, We can't store robots right now: \n";
 
-        foreach ($robot->getMessages() as $message) {
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo $message, "\n";
         }
     } else {
@@ -356,7 +358,7 @@ generated the message or the message type:
 
     <?php
 
-    if ($robot->save() == false) {
+    if ($robot->save() === false) {
         $messages = $robot->getMessages();
 
         foreach ($messages as $message) {
@@ -496,8 +498,8 @@ objects created in our application use the same EventsManager, then we need to a
             $eventsManager->attach(
                 "collection:beforeSave",
                 function (Event $event, $model) {
-                    if (get_class($model) == "Robots") {
-                        if ($model->name == "Scooby Doo") {
+                    if (get_class($model) === "Robots") {
+                        if ($model->name === "Scooby Doo") {
                             echo "Scooby Doo isn't a robot!";
 
                             return false;
@@ -712,7 +714,9 @@ The :code:`Phalcon\Mvc\Collection::delete()` method allows you to delete a docum
         if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
-            foreach ($robot->getMessages() as $message) {
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -735,7 +739,7 @@ You can also delete many documents by traversing a resultset with a :code:`forea
     );
 
     foreach ($robots as $robot) {
-        if ($robot->delete() == false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
             $messages = $robot->getMessages();

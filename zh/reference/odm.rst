@@ -166,7 +166,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ]
         ]
     );
@@ -176,11 +176,11 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ],
             "sort" => [
-                "name" => 1
-            ]
+                "name" => 1,
+            ],
         ]
     );
 
@@ -192,10 +192,10 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $robots = Robots::find(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ],
             "sort"  => [
-                "name" => 1
+                "name" => 1,
             ],
             "limit" => 100,
         ]
@@ -219,7 +219,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $robot = Robots::findFirst(
         [
             [
-                "type" => "mechanical"
+                "type" => "mechanical",
             ]
         ]
     );
@@ -236,8 +236,8 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
         [
             "conditions" => [
                 "type" => "mechanical",
-                "year" => "1999"
-            ]
+                "year" => "1999",
+            ],
         ]
     );
 
@@ -245,10 +245,10 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $robots = Robots::find(
         [
             "conditions" => [
-                "type" => "virtual"
+                "type" => "virtual",
             ],
             "sort" => [
-                "name" => -1
+                "name" => -1,
             ],
         ]
     );
@@ -282,20 +282,20 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     $data = Article::aggregate(
         [
             [
-                "$project" => [
-                    "category" => 1
-                ]
+                "\$project" => [
+                    "category" => 1,
+                ],
             ],
             [
-                "$group" => [
+                "\$group" => [
                     "_id" => [
-                        "category" => "$category"
+                        "category" => "\$category"
                     ],
-                    'id'  => [
-                        "$max" => "$_id"
-                    ]
-                ]
-            ]
+                    "id"  => [
+                        "\$max" => "\$_id",
+                    ],
+                ],
+            ],
         ]
     );
 
@@ -319,7 +319,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     if ($robot->save() === false) {
         echo "Umh, We can't store robots right now: \n";
 
-        foreach ($robot->getMessages() as $message) {
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo $message, "\n";
         }
     } else {
@@ -347,7 +349,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
-    if ($robot->save() == false) {
+    if ($robot->save() === false) {
         $messages = $robot->getMessages();
 
         foreach ($messages as $message) {
@@ -484,8 +486,8 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
             $eventsManager->attach(
                 "collection:beforeSave",
                 function (Event $event, $model) {
-                    if (get_class($model) == "Robots") {
-                        if ($model->name == "Scooby Doo") {
+                    if (get_class($model) === "Robots") {
+                        if ($model->name === "Scooby Doo") {
                             echo "Scooby Doo isn't a robot!";
 
                             return false;
@@ -699,7 +701,9 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
         if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
-            foreach ($robot->getMessages() as $message) {
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -722,7 +726,7 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     );
 
     foreach ($robots as $robot) {
-        if ($robot->delete() == false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
 
             $messages = $robot->getMessages();
