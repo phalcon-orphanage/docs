@@ -465,11 +465,9 @@ Ce mode de définition ne permet pas de spécifier des arguments pour constructe
     $di->set('request', 'Phalcon\Http\Request');
 
 
-Objet
-^^^^^
-Ce mode s'attend à un objet. Comme l'objet n'a pas besoin d'être résolu puisqu'il est déjà un objet,
-certains diront que ce n'est pas vraiment une injection de dépendance. Toutefois, cela peut être utile
-si vous souhaitez forcer la dépendance retournée à être toujours le même objet ou la même valeur:
+Instance de classe
+^^^^^^^^^^^^^^^^^^
+Ce mode s'attend à un objet. Comme l'objet n'a pas besoin d'être résolu puisqu'il est déjà un objet, certains diront que ce n'est pas vraiment une injection de dépendance. Toutefois, cela peut être utile si vous souhaitez forcer la dépendance retournée à être toujours le même objet ou la même valeur:
 
 .. code-block:: php
 
