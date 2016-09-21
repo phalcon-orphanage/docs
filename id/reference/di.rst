@@ -449,7 +449,7 @@ Event berikut didukung:
 +======================+=================================================================================================================================+=====================+====================+
 | beforeServiceResolve | Dipicu sebelum resolve service. Listener menerima nama service dan parameter yang dilewatkan.                                   | Tidak               | Listeners          |
 +----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
-| afterServiceResolve  | Dipicu sebelum resolve service. Listener menerima nama service, instance dan parameter yang dilewatkan.                         | Tidak                  | Listeners          |
+| afterServiceResolve  | Dipicu sebelum resolve service. Listener menerima nama service, instance dan parameter yang dilewatkan.                         | Tidak               | Listeners          |
 +----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
 
 Service Berbagi

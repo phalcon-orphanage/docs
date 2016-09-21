@@ -252,7 +252,7 @@ column map (as described above) to ensure proper mapping of your properties to t
 
 .. highlights::
 
-    If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.
+    If you want find record by external data (such as user input) or variable data you must use `パラメータの割り当て`_.
 
 また、:code:`findFirst()` メソッドを使用することで、与えられた条件に一致する最初のレコードだけを取得することができます:
 

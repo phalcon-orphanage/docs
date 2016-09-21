@@ -14,7 +14,7 @@ Ketika memasang event listener ke event manager, anda dapat menggunakan "compone
 kejadian :doc:`Phalcon\\Db <../api/Phalcon_Db>`) atau "component:event" untuk mengacu kejadian tertentu(contoh "db:afterQuery").
 
 Contoh Penggunaan
--------------
+-----------------
 Di contoh berikut, kita menggunakan EventsManager untuk mendengarkan kejadian yabg dihasilkan oleh koneksi MySQL yang dikelola :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 Pertama, kita perlu sebuah objek listener untuk melakukannya. Kita menciptakan sebuah kelas yang metodenya adalah event yang ingin kita dengarkan:
 

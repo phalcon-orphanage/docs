@@ -487,25 +487,25 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 +----------------------------------------------------------------------------------+----------------------------------+
 | 名称                                                                             | 描述                             |
 +==================================================================================+==================================+
-| :doc:`Phalcon\\Forms\\Element\\Text <../api/Phalcon_Forms_Element_Text>`         | 产生 INPUT[type=text] 项          |
+| :doc:`Phalcon\\Forms\\Element\\Text <../api/Phalcon_Forms_Element_Text>`         | 产生 INPUT[type=text] 项         |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Password <../api/Phalcon_Forms_Element_Password>` | 产生 INPUT[type=password] 项      |
+| :doc:`Phalcon\\Forms\\Element\\Password <../api/Phalcon_Forms_Element_Password>` | 产生 INPUT[type=password] 项     |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Select <../api/Phalcon_Forms_Element_Select>`     | 产生 SELECT tag (combo lists) 项  |
+| :doc:`Phalcon\\Forms\\Element\\Select <../api/Phalcon_Forms_Element_Select>`     | 产生 SELECT tag (combo lists) 项 |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Check <../api/Phalcon_Forms_Element_Check>`       | 产生 INPUT[type=check] 项         |
+| :doc:`Phalcon\\Forms\\Element\\Check <../api/Phalcon_Forms_Element_Check>`       | 产生 INPUT[type=check] 项        |
 +----------------------------------------------------------+-----------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\TextArea <../api/Phalcon_Forms_Element_TextArea>` | 产生 TEXTAREA 项                  |
+| :doc:`Phalcon\\Forms\\Element\\TextArea <../api/Phalcon_Forms_Element_TextArea>` | 产生 TEXTAREA 项                 |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Hidden <../api/Phalcon_Forms_Element_Hidden>`     | 产生 INPUT[type=hidden] 项        |
+| :doc:`Phalcon\\Forms\\Element\\Hidden <../api/Phalcon_Forms_Element_Hidden>`     | 产生 INPUT[type=hidden] 项       |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\File <../api/Phalcon_Forms_Element_File>`         | 产生 INPUT[type=file] 项          |
+| :doc:`Phalcon\\Forms\\Element\\File <../api/Phalcon_Forms_Element_File>`         | 产生 INPUT[type=file] 项         |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Date <../api/Phalcon_Forms_Element_Date>`         | 产生 INPUT[type=date] 项          |
+| :doc:`Phalcon\\Forms\\Element\\Date <../api/Phalcon_Forms_Element_Date>`         | 产生 INPUT[type=date] 项         |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Numeric <../api/Phalcon_Forms_Element_Numeric>`   | 产生 INPUT[type=number] 项        |
+| :doc:`Phalcon\\Forms\\Element\\Numeric <../api/Phalcon_Forms_Element_Numeric>`   | 产生 INPUT[type=number] 项       |
 +----------------------------------------------------------------------------------+----------------------------------+
-| :doc:`Phalcon\\Forms\\Element\\Submit <../api/Phalcon_Forms_Element_Submit>`     | 产生 INPUT[type=submit] 项        |
+| :doc:`Phalcon\\Forms\\Element\\Submit <../api/Phalcon_Forms_Element_Submit>`     | 产生 INPUT[type=submit] 项       |
 +----------------------------------------------------------------------------------+----------------------------------+
 
 事件回调（Event Callbacks）
