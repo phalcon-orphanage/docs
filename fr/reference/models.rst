@@ -1,24 +1,24 @@
-Working with Models
-===================
+Travailler avec les Modèles
+===========================
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
-your application. The bulk of your application's business logic will be concentrated in the models.
+Un modèle représente l'information (donnée) d'une application et les règles pour manipuler cette donnée. Les modèles sont principalement utilisés pour gérer
+les règles d'interaction avec la table correspondante dans la base données. La plupart du temps, à chaque table dans la base correspondra un modèle dans
+votre application. L'essentiel de la logique métier de votre application sera concentré dans les modèles.
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates
-methods dynamically to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` est la base de chaque modèle dans une application Phalcon. Il fournit une indépendance vis à vis de la base de données,
+une fonctionnalité _CRUD élémentaire, des capacités de recherche avancées et la possibilité de relier les modèles entre eux au travers d'autres service.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` évite la nécessité d'utiliser des instructions SQL parce qu'il traduit dynamiquement les méthodes vers
+les opérations du moteur de bases de données respectif.
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
-    :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
+    Les modèles sont prévus pour travailler sur les bases de données avec une couche élevée d'abstraction. Si vous devez exploiter des bases de données à un bas niveau
+    consultez la documentation du composant :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 
-Creating Models
----------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+Création de modèles
+-------------------
+Le modèle est une classe qui étend :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Il est placé dans dossier des modèles, le fichier ne contenant qu'une seule classe.
+Son nom de classe doit suivre la notation camel:
 
 .. code-block:: php
 
@@ -31,18 +31,18 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Delete) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
+L'exemple ci-dessus montre l'implémentation du modèle "Robots". Notez que la classe Robots hérite de :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
+Ce composant fournit beaucoup de fonctionnalités aux modèles qui en héritent, incluant des opérations
+CRUD élémentaires (Create, Read, Update, Delete), la validation de données, ainsi qu'un support de recherche complexe et la possibilité de relier plusieurs modèles
+entre eux.
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    Si vous utilisez PHP 5.4/5.5, il est recommandé que vous déclariez chaque colonne qui fait partie du modèle afin
+    de préserver la mémoire et de réduire les allocations en mémoire.
 
-By default, the model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the :code:`getSource()` method:
+Par défaut, le modèle "Robots" fait référence à la table "robots". Si vous souhaitez spécifiez un autre nom pour la table,
+vous pouvez utiliser la méthode :code:`getSource()`:
 
 .. code-block:: php
 
@@ -58,8 +58,8 @@ you can use the :code:`getSource()` method:
         }
     }
 
-The model Robots now maps to "the_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
-The :code:`initialize()` method is only called once during the request.
+Le modèle Robots est maintenant associé à la table "the_robots". La méthode :code:`initialize()` permet d'ajuster le comportement du modèle comme par exemple un autre nom de table.
+La méthode :code:`initialize()` n'est invoquée qu'une seule fois lors de la requête.
 
 .. code-block:: php
 
@@ -75,9 +75,9 @@ The :code:`initialize()` method is only called once during the request.
         }
     }
 
-The :code:`initialize()` method is only called once during the request, it's intended to perform initializations that apply for
-all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
+La méthode :code:`initialize()` n'est invoquée qu'une seule fois lors de la requête, il est destiné à effectuer des initialisations qui
+s'appliquent à toutes les instances du modèle créées au sein de l'application. Si vous voulez réaliser des tâches d'initialisation à chaque instanciation
+vous le pouvez avec 'onConstruct':
 
 .. code-block:: php
 
@@ -93,10 +93,10 @@ created you can 'onConstruct':
         }
     }
 
-Public properties vs. Setters/Getters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties of public scope, meaning that each property can be read/updated
-from any part of the code that has instantiated that model class without any restrictions:
+Propriétés publiques contre Accesseurs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les modèles peuvent être implémentés avec des propriétés à portée publique, ce qui signifie que chaque propriété peut être
+lue ou écrite sans aucune restriction à partir de n'importe quel code qui instancie le modèle:
 
 .. code-block:: php
 
@@ -113,8 +113,8 @@ from any part of the code that has instantiated that model class without any res
         public $price;
     }
 
-By using getters and setters you can control which properties are visible publicly perform various transformations
-to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
+Avec des accesseurs, vous contrôlez quelles sont les propriétés qui sont visibles publiquement et vous pouvez effectuer diverses transformations
+sur les données (qui ne seraient pas possible autrement) ainsi qu'ajouter des règles de validation sur les données portées par l'objet:
 
 .. code-block:: php
 
@@ -137,9 +137,9 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setName($name)
         {
-            // The name is too short?
+            // Le nom est-il trop court ?
             if (strlen($name) < 10) {
-                throw new \InvalidArgumentException('The name is too short');
+                throw new \InvalidArgumentException('Le nom est trop court');
             }
             $this->name = $name;
         }
@@ -151,27 +151,37 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setPrice($price)
         {
-            // Negative prices aren't allowed
+            // Les prix négatifs sont interdits
             if ($price < 0) {
-                throw new \InvalidArgumentException('Price can\'t be negative');
+                throw new \InvalidArgumentException('Le prix ne peut être négatif');
             }
             $this->price = $price;
         }
 
         public function getPrice()
         {
-            // Convert the value to double before be used
+            // Conversion de la valeur en type double avant utilisation
             return (double) $this->price;
         }
     }
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
-extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
-application they are creating. The ORM is compatible with both schemes of defining properties.
+Les propriétés publiques sont moins complexes à développer. Cependant, les accesseurs augmentent grandement la testabilité,
+l'extensibilité et la maintenabilité des applications. C'est au développeur de décider quelle est la stratégie est la plus appropriée pour
+l'application en cours de création. L'ORM est compatible avec les deux approches de définition de propriétés.
 
-Models in Namespaces
-^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
+.. highlights::
+
+    Les tirets bas (_) dans les noms de propriétés peuvent être problématiques avec les accesseurs
+
+Si vous utilisez des tirets bas dans les noms de propriété, vous devez toujours utiliser la forme camelcase pour la déclaration de vos accesseurs pour
+une utilisation des méthodes magiques (par ex. $model->getPropertyName au lieu de $model->getProperty_name, $model->findByPropertyName
+au lieu de $model->findByProperty_name, etc.). Comme le système s'attend à une forme camelcase, et que les tirets bas sont généralement
+supprimés, il est recommandé de nommer vos propriétés de la manière indiquée dans la documentation. Vous pouvez utiliser un mapping
+de colonnes (comme décrit avant) pour assurer une bonne correspondance entre vos propriétés et les homologues dans la base de données.
+
+Modèles et Espaces de Nom
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Les espaces de noms sont utilisés pour éviter les conflits dans les noms de classe. Le nom de la table associée est dérivée du nom de la classe, dans ce cas 'Robots':
 
 .. code-block:: php
 
@@ -186,7 +196,7 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
         // ...
     }
 
-Namespaces make part of model names when they are within strings:
+Les espaces de noms font partie du nom de modèle dans chaînes de caractères:
 
 .. code-block:: php
 
@@ -208,10 +218,10 @@ Namespaces make part of model names when they are within strings:
         }
     }
 
-Understanding Records To Objects
---------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
+Comprendre le lien entre les Enregistrements et les Objets
+----------------------------------------------------------
+Chaque instance d'un modèle représente une ligne dans la table. Vous accédez facilement aux données de l'enregistrement en lisant les propriétés de l'objet.
+Par exemple, pour une table "robots" avec ces enregistrements:
 
 .. code-block:: bash
 
@@ -225,19 +235,19 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
+Vous pourriez trouver un enregistrement particulier d'après sa clé primaire et imprimer son nom:
 
 .. code-block:: php
 
     <?php
 
-    // Find record with id = 3
+    // Trouve l'enrgt avec  id = 3
     $robot = Robots::findFirst(3);
 
-    // Prints "Terminator"
+    // Imprime "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Une fois que l'enregistrement est en mémoire, vous pouvez effectuer des modifications sur ces données et enregistrer les changements:
 
 .. code-block:: php
 
@@ -247,27 +257,27 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
+Comme vous pouvez le constater, il n'est pas nécessaire d'utiliser directement des instructions SQL. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` fournit
+une haute abstraction de la base de données pour les applications web.
 
-Finding Records
----------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
+Trouver des enregistrements
+---------------------------
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` offre également différentes méthodes pour chercher des enregistrements. Les exemples qui suivent vous
+montrent comment extraire un ou plusieurs enregistrements à partir d'un modèle:
 
 .. code-block:: php
 
     <?php
 
-    // How many robots are there?
+    // Combien y-a-t'il de robots ?
     $robots = Robots::find();
     echo "There are ", count($robots), "\n";
 
-    // How many mechanical robots are there?
+    // Combien y-a-t'il de robots 'mechanical' ?
     $robots = Robots::find("type = 'mechanical'");
     echo "There are ", count($robots), "\n";
 
-    // Get and print virtual robots ordered by name
+    // Récupère et imprime les robots 'virtual' par ordre de nom
     $robots = Robots::find(
         array(
             "type = 'virtual'",
@@ -278,7 +288,7 @@ how to query one or more records from a model:
         echo $robot->name, "\n";
     }
 
-    // Get first 100 virtual robots ordered by name
+    // Récupère les 100 premier robots 'virtual' par ordre de nom
     $robots = Robots::find(
         array(
             "type = 'virtual'",
@@ -292,23 +302,23 @@ how to query one or more records from a model:
 
 .. highlights::
 
-    If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.
+    Si vous voulez trouver un enregistrement d'après une donnée externe (telle qu'une entrée utilisateur) ou une variable, vous devez utiliser la `liaison de paramètres`_.
 
-You could also use the :code:`findFirst()` method to get only the first record matching the given criteria:
+Vous pouvez également utiliser la méthode :code:`findFirst()` pour récupérer le premier enregistrement qui correspond au critère fournit:
 
 .. code-block:: php
 
     <?php
 
-    // What's the first robot in robots table?
+    // Quel est le premier robot dans la table robots ?
     $robot = Robots::findFirst();
     echo "The robot name is ", $robot->name, "\n";
 
-    // What's the first mechanical robot in robots table?
+    // Quel est le premier robot 'mechanical' dans la table robots ?
     $robot = Robots::findFirst("type = 'mechanical'");
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
-    // Get first virtual robot ordered by name
+    // Récupère le premier robot 'virtual' par ordre de nom
     $robot = Robots::findFirst(
         array(
             "type = 'virtual'",
@@ -317,7 +327,7 @@ You could also use the :code:`findFirst()` method to get only the first record m
     );
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both :code:`find()` and :code:`findFirst()` methods accept an associative array specifying the search criteria:
+Les deux méthodes :code:`find()` et :code:`findFirst()` acceptent un tableau associatif spécifiant les critères de recherche:
 
 .. code-block:: php
 
@@ -338,37 +348,37 @@ Both :code:`find()` and :code:`findFirst()` methods accept an associative array 
         )
     );
 
-The available query options are:
+Les différentes options de requête sont:
 
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                                                          | Example                                                                         |
-+=============+======================================================================================================================================================================================================================================+=================================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` assumes the first parameter are the conditions. | :code:`"conditions" => "name LIKE 'steve%'"`                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                            | :code:`"columns" => "id, name"`                                                 |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                           | :code:`"bind" => array("status" => "A", "type" => "some-time")`                 |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                           | :code:`"bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)`    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                           | :code:`"order" => "name DESC, status"`                                          |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                                                           | :code:`"limit" => 10`                                                           |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| offset      | Offset the results of the query by a certain amount                                                                                                                                                                                  | :code:`"offset" => 5`                                                           |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                                                          | :code:`"group" => "name, status"`                                               |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                                                                | :code:`"for_update" => true`                                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                                                   | :code:`"shared_lock" => true`                                                   |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                         | :code:`"cache" => array("lifetime" => 3600, "key" => "my-find-key")`            |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                          | :code:`"hydration" => Resultset::HYDRATE_OBJECTS`                               |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| Paramètre   | Description                                                                                                                                                                                                                                                    | Exemple                                                                         |
++=============+================================================================================================================================================================================================================================================================+=================================================================================+
+| conditions  | Conditions pour l'opération de recherche. Il est utilisé pour extraire seulement les enregistrements qui répondent au critère spécifié. Par défaut :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` suppose que les conditions sont en premier paramètre. | :code:`"conditions" => "name LIKE 'steve%'"`                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| columns     | Spécifie les colonnes à renvoyer au lieu de toutes colonnes du modèles. Avec cette option, l'objet est incomplet lorsqu'il est retourné                                                                                                                        | :code:`"columns" => "id, name"`                                                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| bind        | Bind est utilisé conjointement avec des options en remplaçant des espaces réservés et échappant les valeurs augmentant ainsi la sécurité                                                                                                                       | :code:`"bind" => array("status" => "A", "type" => "some-time")`                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| bindTypes   | Lors de la liaison de paramètres, vous pouvez utiliser ce paramètre pour introduire une conversion de type du paramètre lié, augmentant encore la sécurité                                                                                                     | :code:`"bindTypes" => array(Column::BIND_PARAM_STR, Column::BIND_PARAM_INT)`    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| order       | Est utilisé pour trier le résultat. Un ou plusieurs champs séparés par une virgule.                                                                                                                                                                            | :code:`"order" => "name DESC, status"`                                          |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| limit       | Limite le résultat à une certaine plage                                                                                                                                                                                                                        | :code:`"limit" => 10`                                                           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| offset      | Décale le resultat d'un certain nombre de lignes.                                                                                                                                                                                                              | :code:`"offset" => 5`                                                           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| group       | Collecte les données au travers de plusieurs enregistrement et regroupe les résultats selon une ou plusieurs colonnes                                                                                                                                          | :code:`"group" => "name, status"`                                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| for_update  | Avec cette option doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` lit les dernières données disponibles en activant un verrou exclusif sur chaque enregistrement                                                                                          | :code:`"for_update" => true`                                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| shared_lock | Avec cette option doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` lit les dernières données disponibles en activant un verrou partagé sur chaque enregistrement                                                                                           | :code:`"shared_lock" => true`                                                   |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| cache       | Met en cache le résultat, réduisant les accès au système relationnel                                                                                                                                                                                           | :code:`"cache" => array("lifetime" => 3600, "key" => "my-find-key")`            |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| hydration   | Définit la stratégie d'hydratation pour alimenter chaque enregistrement du résultat                                                                                                                                                                            | :code:`"hydration" => Resultset::HYDRATE_OBJECTS`                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+Si vous préférez, il existe une façon plus orientée objet pour créer des requêtes plutôt qu'utiliser un tableau de paramètres:
 
 .. code-block:: php
 
@@ -381,14 +391,14 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method :code:`query()` returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+La méthode statique :code:`query()` retourne un objet :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` qui plus favorable à l'autocomplétion des IDE.
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+Toutes les requêtes sont gérées en interne comme des requêtes :doc:`PHQL <phql>`. PHQL est un langage de haut niveau semblable au SQL et orienté objet.
+Ce langage dispose d'autre caractéristiques pour réaliser des requêtes comme des jointures avec d'autres modèles, des regroupement, des aggrégats, etc.
 
-Lastly, there is the :code:`findFirstBy<property-name>()` method. This method expands on the :code:`findFirst()` method mentioned earlier. It allows you to quickly perform a
-retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
-An example is in order, so taking our Robots model mentioned earlier:
+Enfin, il existe la méthode :code:`findFirstBy<property-name>()`. Cette méthode étend la méthode :code:`findFirst()` mentionnée plus tôt. Elle permet de réaliser rapidement une
+restitution depuis la table en exploitant le nom de la propriété elle-même et en transmettant en paramètre les données à rechercher sur cette colonne.
+Suivons un exemple en reprenant notre modèle Robots mentionné précédemment:
 
 .. code-block:: php
 
@@ -405,8 +415,8 @@ An example is in order, so taking our Robots model mentioned earlier:
         public $price;
     }
 
-We have three properties to work with here. :code:`$id`, :code:`$name` and :code:`$price`. So, let's say you want to retrieve the first record in
-the table with the name 'Terminator'. This could be written like:
+Nous disposons de trois propriétés pour travailler avec: :code:`$id`, :code:`$name` et :code:`$price`. Bon, mettons que vous voulez récupérer le
+premier enregistrement de la table avec le nom "Terminator". Ceci peut être écrit ainsi:
 
 .. code-block:: php
 
@@ -416,37 +426,37 @@ the table with the name 'Terminator'. This could be written like:
     $robot = Robots::findFirstByName($name);
 
     if ($robot) {
-        echo "The first robot with the name " . $name . " cost " . $robot->price . ".";
+        echo "Le premier robot avec le nom " . $name . " coûte " . $robot->price . ".";
     } else {
-        echo "There were no robots found in our table with the name " . $name . ".";
+        echo "Il n'existe pas dans la table de robot avec le nom " . $name . ".";
     }
 
-Notice that we used 'Name' in the method call and passed the variable :code:`$name` to it, which contains the name
-we are looking for in our table. Notice also that when we find a match with our query, all the other properties
-are available to us as well.
+Notez que nous avons utilisé "Name" dans l'appel de la méthode et transmis la variable :code:`$name` qui contient le nom
+que nous recherchons dans notre table. Notez également que lorsque nous trouvons une correspondance avec notre requête, toutes les autres propriétés
+nous sont également disponibles.
 
-Model Resultsets
-^^^^^^^^^^^^^^^^
-While :code:`findFirst()` returns directly an instance of the called class (when there is data to be returned), the :code:`find()` method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
+Jeux de résultat de modèles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Alors que :code:`findFirst()` retourne directement une instance de la classe appelée (s'il existe des données à renvoyer), la méthode :code:`find()` retourne
+un :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. C'est un objet qui encapsule toutes les fonctionnalités
+d'un jeu d'enregistrement comme le parcours, la recherche d'enregistrements spécifiques, le décompte, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+Ces objets sont plus puissants que les tableaux standards. Une des plus intéressantes caractéristiques de :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
+est qu'à n'importe quel moment il n'y a qu'un seul enregistrement en mémoire. Ceci facilite grandement la gestion de la mémoire surtout lorsqu'on travaille avec de grands volumes de données.
 
 .. code-block:: php
 
     <?php
 
-    // Get all robots
+    // Récupère tous les robots
     $robots = Robots::find();
 
-    // Traversing with a foreach
+    // Parcours avec un foreach
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
-    // Traversing with a while
+    // Parcours avec un while
     $robots->rewind();
     while ($robots->valid()) {
         $robot = $robots->current();
@@ -454,64 +464,64 @@ is that at any time there is only one record in memory. This greatly helps in me
         $robots->next();
     }
 
-    // Count the resultset
+    // Décompte du jeu de résultat
     echo count($robots);
 
-    // Alternative way to count the resultset
+    // Une autre façon de décompter le jeu de résultat
     echo $robots->count();
 
-    // Move the internal cursor to the third robot
+    // Déplace le curseur interne au troisième robot
     $robots->seek(2);
     $robot = $robots->current();
 
-    // Access a robot by its position in the resultset
+    // Accède au robot par sa position dans le jeu de résultat
     $robot = $robots[5];
 
-    // Check if there is a record in certain position
+    // Vérifie qu'il existe un enregistrement à une certaine position
     if (isset($robots[3])) {
        $robot = $robots[3];
     }
 
-    // Get the first record in the resultset
+    // Prend le premier enregistrement dans le résultat
     $robot = $robots->getFirst();
 
-    // Get the last record
+    // Prend le dernier enregistrement
     $robot = $robots->getLast();
 
-Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
+Les jeux de résultat de Phalcon émulent les curseurs défilables. Vous pouvez prendre n'importe quel ligne juste d'après sa position, ou déplacer le pointeur interne
+à une position spécifique. Notez que certains SGBD ne supportent pas les curseurs défilables ce qui oblige à re-exécuter la requête
+pour faire repartir le curseur depuis le début et d'obtenir l'enregistrement à la position demandée. De même, si un jeu de résultat
+doit être parcouru plusieurs fois, la requête sera exécutée d'autant de fois.
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
+Le stockage en mémoire de volumineux résultats peut être gourmand en ressources, et à cause de ceci, les jeux de résultat sont extraits
+de la base données par morceaux de 32 lignes, réduisant la nécessité de re-exécuter la requête dans la plupart des cas et épargnant aussi de la mémoire.
 
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
-serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
-thus consuming more memory while this process takes place.
+Notez que les jeux de résultats peuvent être sérialisés et stockés dans un cache serveur. :doc:`Phalcon\\Cache <cache>` peut aider dans cette tâche. Cependant,
+la sérialisation de données oblige :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` à récupérer toutes les données de la base dans un tableau
+consommant ainsi plus de mémoire que nécessaire.
 
 .. code-block:: php
 
     <?php
 
-    // Query all records from model parts
+    // Demande tous les enregistrements depuis le modèle
     $parts = Parts::find();
 
-    // Store the resultset into a file
+    // Stocke le jeu de résultat dans un fichier
     file_put_contents("cache.txt", serialize($parts));
 
-    // Get parts from file
+    // Récupère les données depuis un fichier
     $parts = unserialize(file_get_contents("cache.txt"));
 
-    // Traverse the parts
+    // Parcours les données
     foreach ($parts as $part) {
         echo $part->id;
     }
 
-Filtering Resultsets
-^^^^^^^^^^^^^^^^^^^^
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
-Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+Filtrer les jeux d'enregistrement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La méthode la plus efficace pour filtrer les données est de définir des critères de recherche, les bases de données exploitant les index pour retourner les données plus rapidement.
+Phalcon vous permet de filtrer les données avec PHP en utilisant n'importe quelle ressource qui n'est pas disponible dans la base de données:
 
 .. code-block:: php
 
@@ -520,27 +530,27 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
     $customers = Customers::find()->filter(
         function ($customer) {
 
-            // Return only customers with a valid e-mail
+            // Retourne que les clients avec un e-mail valide
             if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
                 return $customer;
             }
         }
     );
 
-Binding Parameters
-^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. You are encouraged to use
-this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks.
-Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Liaison de Paramètres
+^^^^^^^^^^^^^^^^^^^^^
+La liaison de paramètres est également supportée dans :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Vous êtes encouragés à utiliser
+cette méthode pour éliminer la possibilité que votre code soit le sujet d'attaques par injection SQL.
 
 .. code-block:: php
 
     <?php
 
-    // Query robots binding parameters with string placeholders
+    // Interrogation de robots en liant les paramètres avec des marqueurs texte
+    //
     $conditions = "name = :name: AND type = :type:";
 
-    // Parameters whose keys are the same as placeholders
+    // Paramètres dont les clés sont les même que les marqueurs
     $parameters = array(
         "name" => "Robotina",
         "type" => "maid"
@@ -554,7 +564,7 @@ Both string and integer placeholders are supported. Binding parameters can simpl
         )
     );
 
-    // Query robots binding parameters with integer placeholders
+    // Interrogation de robots en liant les paramètres avec les marqueurs numériques
     $conditions = "name = ?1 AND type = ?2";
     $parameters = array(1 => "Robotina", 2 => "maid");
     $robots     = Robots::find(
@@ -564,16 +574,16 @@ Both string and integer placeholders are supported. Binding parameters can simpl
         )
     );
 
-    // Query robots binding parameters with both string and integer placeholders
+    // Interrogation de robots avec à la fois des marqueurs numériques et textuels
     $conditions = "name = :name: AND type = ?1";
 
-    // Parameters whose keys are the same as placeholders
+    // Paramètres dont les clés sont les même que les marqueurs
     $parameters = array(
         "name" => "Robotina",
         1      => "maid"
     );
 
-    // Perform the query
+    // Exécution de la requête
     $robots = Robots::find(
         array(
             $conditions,
@@ -581,14 +591,14 @@ Both string and integer placeholders are supported. Binding parameters can simpl
         )
     );
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
-and not numbers, so the placeholder could not be successfully replaced.
+En plaçant des marqueurs numériques, vous devez les écrire sous forme d'entier comme 1 ou 2. Dans ce cas "1" ou "2" sont considérés comme du texte
+et non des nombres, donc l'espace marqué ne peut pas être remplacé avec succès.
 
-Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.
+Les chaînes de caractères sont automatiquement échappées à l'aide de PDO_. Cette fonction prend en compte le jeu de caractères de la connexion, donc il est recommandé de définir
+le bon jeu de caractères dans les paramètres de la connexion ou bien dans la configuration de la base de données. Un mauvais jeu de caractères risque de produire des effets indésirables
+lors du stockage ou de la récupération des données.
 
-Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
+De plus, vous pouvez définir le paramètre "bindTypes" qui permet de définir comment les paramètres sont liés en accord avec leurs types de données.
 
 .. code-block:: php
 
@@ -596,19 +606,19 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     use Phalcon\Db\Column;
 
-    // Bind parameters
+    // Paramètre lié
     $parameters = array(
         "name" => "Robotina",
         "year" => 2008
     );
 
-    // Casting Types
+    // Conversion de type
     $types = array(
         "name" => Column::BIND_PARAM_STR,
         "year" => Column::BIND_PARAM_INT
     );
 
-    // Query robots binding parameters with string placeholders
+    // Interrogation de robots en liant les paramètres à des marqueurs textuels
     $robots = Robots::find(
         array(
             "name = :name: AND year = :year:",
@@ -619,10 +629,10 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
 .. highlights::
 
-    Since the default bind-type is :code:`Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the
-    "bindTypes" parameter if all of the columns are of that type.
+    Comme le type par défaut est :code:`Phalcon\Db\Column::BIND_PARAM_STR`, il n'est pas nécessaire de préciser
+    le paramètre "bindTypes" si toutes les colonnes sont de ce type.
 
-If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+Si vous attachez des tableaux aux paramètres liés, conservez à l'esprit que les index sont basés zéro:
 
 .. code-block:: php
 
@@ -632,7 +642,7 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
     unset($array[1]); // $array: [[0] => "a", [2] => "c"]
 
-    // Now we have to renumber the keys
+    // Maintenant nous devons réindexer le tableau
     $array = array_values($array); // $array: [[0] => "a", [1] => "c"]
 
     $robots = Robots::find(
@@ -646,16 +656,16 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 .. highlights::
 
-    Bound parameters are available for all query methods such as :code:`find()` and :code:`findFirst()` but also the calculation
-    methods like :code:`count()`, :code:`sum()`, :code:`average()` etc.
+    La liaison de paramètres est disponible pour chaque méthode de requêtage tel que :code:`find()` et :code:`findFirst()` mais aussi les méthodes
+    de calcul comme :code:`count()`, :code:`sum()`, :code:`average()`, etc.
 
-If you're using "finders", bound parameters are automatically used for you:
+Si vous utilisez les "finders", les paramètres sont automatiquement liés:
 
 .. code-block:: php
 
     <?php
 
-    // Explicit query using bound parameters
+    // Requête liant explicitement un paramètre
     $robots = Robots::find(
         array(
             "name = ?0",
@@ -663,14 +673,14 @@ If you're using "finders", bound parameters are automatically used for you:
         )
     );
 
-    // Implicit query using bound parameters
+    // Requête liant implicitement un paramètre
     $robots = Robots::findByName("Ultron");
 
-Initializing/Preparing fetched records
---------------------------------------
-May be the case that after obtaining a record from the database is necessary to initialise the data before
-being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
-will be executed just after create the instance and assign the data to it:
+Initialisation et Préparation d'Enregistrement récupéré
+-------------------------------------------------------
+Il peut arriver qu'après avoir obtenu un enregistrement depuis la base de données, il soit nécessaire d'initialiser les données avant
+qu'elles ne soient utilisées dans le reste de l'application. Vous implémentez pour cela la méthode "afterFetch" dans le modèle, cet événement
+sera exécuté juste après la création de l'instance et l'assignation des données:
 
 .. code-block:: php
 
@@ -688,25 +698,25 @@ will be executed just after create the instance and assign the data to it:
 
         public function beforeSave()
         {
-            // Convert the array into a string
+            // Conversion du tableau en chaîne de caractères
             $this->status = join(',', $this->status);
         }
 
         public function afterFetch()
         {
-            // Convert the string to an array
+            // Conversion de la chaîne de caractères en tableau
             $this->status = explode(',', $this->status);
         }
-        
+
         public function afterSave()
         {
-            // Convert the string to an array
+            // Conversion de la chaîne de caractères en tableau
             $this->status = explode(',', $this->status);
         }
     }
 
-If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
-accessed:
+Si vous utilisez les accesseurs et/ou les propriétés publiques, vous pouvez initialiser le champ une fois
+qu'il est accédé:
 
 .. code-block:: php
 
@@ -728,41 +738,41 @@ accessed:
         }
     }
 
-Relationships between Models
-----------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
-unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
-The model manager manages foreign key constraints for these relationships, the definition of these helps referential
-integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
-it is easy to access data in related models from each record in a uniform way.
+Relations entre modèles
+-----------------------
+Il existe quatre types de relations: un-à-un, un-à-plusieurs, plusieurs-à-un, plusieurs-à-plusieurs. La relation peut être
+unidirectionnelle ou bidirectionnelle, et chacune peut être simple (entre deux modèles) ou plus complexe (une combinaison de modèles).
+Le gestionnaire de modèles s'occupe des contraintes de clés étrangères pour ces relations, la définition de celles-ci contribue à l'intégrité
+référentielle aussi aisément que l'accès rapide aux enregistrements liés à un modèle. Grâce à la mise en œuvre de relations,
+il devient facile d'accéder aux données des modèles associés à chaque enregistrement d'une manière uniforme.
 
-Unidirectional relationships
+Relations Unidirectionnelles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+Les relations unidirectionnelles sont celles qui sont dirigés d'un modèle vers un autre mais pas réciproquement.
 
-Bidirectional relations
+Relations Bidirectionnelles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les relations bidirectionnelles construisent des relations entre deux modèles, et chaque modèle établit une relation réciproque à l'autre.
+
+Définition de relations
 ^^^^^^^^^^^^^^^^^^^^^^^
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
-
-Defining relationships
-^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the :code:`initialize()` method of a model. The methods :code:`belongsTo()`, :code:`hasOne()`,
-:code:`hasMany()` and :code:`hasManyToMany()` define the relationship between one or more fields from the current model to fields in
-another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+Dans Phalcon, les relations doivent être définies dans la méthode :code:`initialize()` d'un modèle. Les méthodes :code:`belongsTo()`, :code:`hasOne()`,
+:code:`hasMany()` et :code:`hasManyToMany()` définissent la relation entre un ou plusieurs champs du modèle courant vers des champs d'un
+autre modèle. Chacune de ces méthodes requiert 3 paramètres: champs locaux, modèle référencé, champs référencés.
 
 +---------------+----------------------------+
-| Method        | Description                |
+| Méthode       | Description                |
 +===============+============================+
-| hasMany       | Defines a 1-n relationship |
+| hasMany       | Définit une relation 1-n   |
 +---------------+----------------------------+
-| hasOne        | Defines a 1-1 relationship |
+| hasOne        | Définit une relation 1-1   |
 +---------------+----------------------------+
-| belongsTo     | Defines a n-1 relationship |
+| belongsTo     | Définit une relation n-1   |
 +---------------+----------------------------+
-| hasManyToMany | Defines a n-n relationship |
+| hasManyToMany | Définit une relation n-n   |
 +---------------+----------------------------+
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+Le schéma suivant montre 3 tables dont les relations vont nous servir d'exemples sur les relations:
 
 .. code-block:: sql
 
@@ -790,17 +800,17 @@ The following schema shows 3 tables whose relations will serve us as an example 
         PRIMARY KEY (`id`)
     );
 
-* The model "Robots" has many "RobotsParts".
-* The model "Parts" has many "RobotsParts".
-* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
-* The model "Robots" has a relation many-to-many to "Parts" through "RobotsParts".
+* Le modèle "Robots" a plusieurs "RobotsParts".
+* Le modèle "Parts" a plusieurs "RobotsParts".
+* Le modèle "RobotsParts" appartient aux modèles "Robots" et "Parts" dans une relation plusieurs-à-un.
+* Le modèle "Robots" a une relation plusieurs-à-plusieurs vers "Parts" au travers de "RobotsParts".
 
-Check the EER diagram to understand better the relations:
+Regardez le diagramme EER pour mieux comprendre les relations:
 
 .. figure:: ../_static/img/eer-1.png
     :align: center
 
-The models with their relations could be implemented as follows:
+Les modèles et leurs relations pourraient être implémentées comme suit:
 
 .. code-block:: php
 
@@ -859,10 +869,10 @@ The models with their relations could be implemented as follows:
         }
     }
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name
-of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+Le premier paramètre indique le champ dans le modèle local impliqué dans la relation; le deuxième indique le nom
+du modèle référencé et le troisième le nom du champ dans le modèle référencé. Vous pouvez également utiliser des tableaux pour définir plusieurs champs dans la relation.
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+Les relations de type plusieurs à plusieurs nécessitent 3 modèles et de définir les attributs impliqués dans la relation:
 
 .. code-block:: php
 
@@ -888,9 +898,9 @@ Many to many relationships require 3 models and define the attributes involved i
         }
     }
 
-Taking advantage of relationships
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+Profiter de l'avantage des relations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+En définissant explicitement les relations entre modèles, il est aisé de trouver les enregistrements relatifs à un enregistrement particulier.
 
 .. code-block:: php
 
@@ -901,30 +911,30 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->parts->name, "\n";
     }
 
-Phalcon uses the magic methods :code:`__set`/:code:`__get`/:code:`__call` to store or retrieve related data using relationships.
+Phalcon utilise les méthodes magiques :code:`__set`/:code:`__get`/:code:`__call` pour stocker ou récupérer les données relatives.
 
-By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
-
-.. code-block:: php
-
-    <?php
-
-    $robot       = Robots::findFirst();
-    $robotsParts = $robot->robotsParts; // All the related records in RobotsParts
-
-Also, you can use a magic getter:
+En accédant à un attribut du même nom que la relation, nous récupérons tous les enregistrements relatifs.
 
 .. code-block:: php
 
     <?php
 
     $robot       = Robots::findFirst();
-    $robotsParts = $robot->getRobotsParts(); // All the related records in RobotsParts
-    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Passing parameters
+    $robotsParts = $robot->robotsParts; // Tous les enregistrements relatifs dans RobotsParts
 
-If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
-:code:`findFirst()`/:code:`find()` result. The following example compares retrieving related results with using magic methods
-and without:
+De même, vous pouvez utiliser un accesseur magique:
+
+.. code-block:: php
+
+    <?php
+
+    $robot       = Robots::findFirst();
+    $robotsParts = $robot->getRobotsParts(); // Tous les enregistrements relatifs dans RobotsParts
+    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // Transmision de paramètres
+
+Si une méthode appelée porte le préfixe "get" alors :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` retournera un résultat
+:code:`findFirst()`/:code:`find()`. L'exemple suivant compare la récupération de résultats relatif avec 
+et sans les méthodes magiques:
 
 .. code-block:: php
 
@@ -932,14 +942,14 @@ and without:
 
     $robot       = Robots::findFirst(2);
 
-    // Robots model has a 1-n (hasMany)
-    // relationship to RobotsParts then
+    // Le modèle Robots a une relation 1-n
+    // (hasMany) avec RobotsParts
     $robotsParts = $robot->robotsParts;
 
-    // Only parts that match conditions
+    // Seulement les "parts" qui répondent à la condition
     $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
-    // Or using bound parameters
+    // Ou avec un paramètre lié
     $robotsParts = $robot->getRobotsParts(
         array(
             "created_at = :date:",
@@ -951,11 +961,11 @@ and without:
 
     $robotPart   = RobotsParts::findFirst(1);
 
-    // RobotsParts model has a n-1 (belongsTo)
-    // relationship to RobotsParts then
+    // le modèle RobotsParts a une relation n-1
+    // (belongsTo) avec Robots
     $robot = $robotPart->robots;
 
-Getting related records manually:
+Obtenir des enregistrements relatifs manuellement:
 
 .. code-block:: php
 
@@ -963,38 +973,37 @@ Getting related records manually:
 
     $robot       = Robots::findFirst(2);
 
-    // Robots model has a 1-n (hasMany)
-    // relationship to RobotsParts, then
+    // Le modèle Robots a une relation 1-n
+    // (hasMany) avec RobotsParts
     $robotsParts = RobotsParts::find("robots_id = '" . $robot->id . "'");
 
-    // Only parts that match conditions
+    // Seulement les "parts" qui répondent à la condition
     $robotsParts = RobotsParts::find(
         "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
     $robotPart   = RobotsParts::findFirst(1);
 
-    // RobotsParts model has a n-1 (belongsTo)
-    // relationship to RobotsParts then
+    // le modèle RobotsParts a une relation n-1
+    // (belongsTo) avec Robots
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
+Les méthodes "get" sont utilisées pour rechercher avec :code:`find()` ou :code:`findFirst()` les enregistrements associés selon
+le type de la relation:
 
-The prefix "get" is used to :code:`find()`/:code:`findFirst()` related records. Depending on the type of relation it will use
-'find' or 'findFirst':
++---------------------+------------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Type                | Description                                                                                                                  | Méthode implicite      |
++=====================+==============================================================================================================================+========================+
+| Belongs-To          | Retourne une instance du modèle de l'enregistrement directement associé                                                      | findFirst              |
++---------------------+------------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-One             | Retourne une instance du modèle de l'enregistrement directement associé                                                      | findFirst              |
++---------------------+------------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-Many            | Retourne une collection d'instances du modèle référencé                                                                      | find                   |
++---------------------+------------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-Many-to-Many    | Retourne une collection d'instances du modèle référencé. Réalise implicitement des "innner joins" avec les modèles concernés | (requête complexe)     |
++---------------------+------------------------------------------------------------------------------------------------------------------------------+------------------------+
 
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Type                | Description                                                                                                                | Implicit Method        |
-+=====================+============================================================================================================================+========================+
-| Belongs-To          | Returns a model instance of the related record directly                                                                    | findFirst              |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-One             | Returns a model instance of the related record directly                                                                    | findFirst              |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-Many            | Returns a collection of model instances of the referenced model                                                            | find                   |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-
-You can also use "count" prefix to return an integer denoting the count of the related records:
+Vous pouvez également utiliser le préfixe "count" pour retourner un entier qui indique le nombre d'enregistrements relatifs:
 
 .. code-block:: php
 
@@ -1003,11 +1012,11 @@ You can also use "count" prefix to return an integer denoting the count of the r
     $robot = Robots::findFirst(2);
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
 
-Aliasing Relationships
-^^^^^^^^^^^^^^^^^^^^^^
-To explain better how aliases work, let's check the following example:
+Alias dans les relations
+^^^^^^^^^^^^^^^^^^^^^^^^
+Pour mieux expliquer comment les alias marchent, consultez l'exemple suivant:
 
-The "robots_similar" table has the function to define what robots are similar to others:
+La table "robots_similar" contient une fonction pour indiquer comment chaque robot est similaire à d'autres:
 
 .. code-block:: bash
 
@@ -1021,12 +1030,12 @@ The "robots_similar" table has the function to define what robots are similar to
     +-------------------+------------------+------+-----+---------+----------------+
     3 rows in set (0.00 sec)
 
-Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
+Les deux champs "robots_id" and "similar_robots_id" possèdent une relation vers le modèle Robots:
 
 .. figure:: ../_static/img/eer-2.png
    :align: center
 
-A model that maps this table and its relationships is the following:
+Un modèle qui définie une association de cette table et de ses relation est le suivant:
 
 .. code-block:: php
 
@@ -1041,7 +1050,7 @@ A model that maps this table and its relationships is the following:
         }
     }
 
-Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+Tant que les deux relations pointent le même modèle (Robots), obtenir les enregistrements associés par les relations n'est pas très clair:
 
 .. code-block:: php
 
@@ -1049,15 +1058,15 @@ Since both relations point to the same model (Robots), obtain the records relate
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    // Returns the related record based on the column (robots_id)
-    // Also as is a belongsTo it's only returning one record
-    // but the name 'getRobots' seems to imply that return more than one
+    // Retourne l'enregistrement sous-jacent à la colonne robots_id
+    // Mais c'est aussi un belongsTo qui ne retourne qu'un seul enregistrement
+    // mais le nom "getRobots" semble indiquer qu'il en retourne plus d'un
     $robot = $robotsSimilar->getRobots();
 
-    // but, how to get the related record based on the column (similar_robots_id)
-    // if both relationships have the same name?
+    // Mais alors, comment récupérer l'enregistrement sous-jacent à la colonne similar_robots_id
+    // Si les deux relations possèdent le même nom ?
 
-The aliases allow us to rename both relationships to solve these problems:
+Les alias nous permettent de renommer chacune des relations, pour résoudre ce type de problèmes:
 
 .. code-block:: php
 
@@ -1089,7 +1098,7 @@ The aliases allow us to rename both relationships to solve these problems:
         }
     }
 
-With the aliasing we can get the related records easily:
+Avec ces définitions d'alias nous pouvons récupérer aisément les enregistrements relatifs:
 
 .. code-block:: php
 
@@ -1097,19 +1106,19 @@ With the aliasing we can get the related records easily:
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    // Returns the related record based on the column (robots_id)
+    // Retourne l'enregistrement sous-jacent à la colonne (robots_id)
     $robot = $robotsSimilar->getRobot();
     $robot = $robotsSimilar->robot;
 
-    // Returns the related record based on the column (similar_robots_id)
+    // Retourne l'enregistrement sous-jacent à la colonne (similar_robots_id)
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
-Magic Getters vs. Explicit methods
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters,
-instead of use the magic getters you can optionally define those methods explicitly with the corresponding
-docblocks helping the IDE to produce a better auto-completion:
+Accesseurs magiques contre méthodes explicites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La plupart des IDEs et des éditeurs ayant une autocomplétion ne peuvent pas déterminer le bon type avec les accesseurs magiques.
+Donc, au lieu d'utiliser les accesseurs magiques vous pouvez éventuellement définir explicitement ces méthodes avec leur docblock
+respectif aidant ainsi les IDE de produire une meilleur autocomplétion:
 
 .. code-block:: php
 
@@ -1139,13 +1148,13 @@ docblocks helping the IDE to produce a better auto-completion:
         }
     }
 
-Virtual Foreign Keys
---------------------
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
-value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
-when defining a relationship.
+Clés étrangères virtuelles
+--------------------------
+Par défaut, les relations n'agissent pas comme les clés étrangères des bases de données, ce qui fait que si vous tentez d'insérer ou de mettre à jour une valeur sans avoir une valeur
+valide dans le modèle référencé, Phalcon ne produira pas de message de validation. Vous pouvez modifier de comportement en ajoutant un quatrième paramètre
+lors de la définition de la relation.
 
-The RobotsPart model can be changed to demonstrate this feature:
+Le modèle RobotsParts peut être modifié pour montrer cette capacité:
 
 .. code-block:: php
 
@@ -1185,9 +1194,9 @@ The RobotsPart model can be changed to demonstrate this feature:
         }
     }
 
-If you alter a :code:`belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
-valid value on the referenced model. Similarly, if a :code:`hasMany()`/:code:`hasOne()` is altered it will validate that the records cannot be deleted
-if that record is used on a referenced model.
+Si vous altérez une relation :code:`belongsTo()` pour qu'elle agisse comme une clé étrangère, elle vérifiera que les valeurs insérées ou mises à jour sur ces champs sont valides
+dans le modèle référencé. De même, si une relation :code:`hasMany()`/:code:`hasOne()` est altérée, elle vérifiera que les enregistrements ne peuvent pas être supprimés
+si l'enregistrement en question est utilisé dans le modèle référencé.
 
 .. code-block:: php
 
@@ -1212,7 +1221,7 @@ if that record is used on a referenced model.
         }
     }
 
-A virtual foreign key can be set up to allow null values as follows:
+Une clé étrangère virtuelle peut être modifiée pour autoriser des valeurs nulles comme suit:
 
 .. code-block:: php
 
@@ -1244,10 +1253,10 @@ A virtual foreign key can be set up to allow null values as follows:
         }
     }
 
-Cascade/Restrict actions
-^^^^^^^^^^^^^^^^^^^^^^^^
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records
-to maintain the integrity of data:
+Action en cascade ou Restrictions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les relations qui agissent en tant que relation étrangère virtuelle restreignent par défaut la création, la suppression et la mise à jours d'enregistrements
+afin de maintenir l'intégrité des données:
 
 .. code-block:: php
 
@@ -1279,35 +1288,35 @@ to maintain the integrity of data:
         }
     }
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+Le code ci-dessus fait en sorte que les enregistrements référencés (parts) soient supprimés si l'enregistrement maître (robot) est supprimé.
 
-Generating Calculations
------------------------
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
+Génération de calculs
+---------------------
+Les calculs (ou les aggrégations) sont des aides pour les fonctions couramment utilisées des SGBD comme COUNT, SUM, MAX, MIN ou AVG.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` permet d'utiliser ces fonctions directement depuis les méthodes exposées.
 
-Count examples:
+Exemples de Count:
 
 .. code-block:: php
 
     <?php
 
-    // How many employees are?
+    // Combien y-a-t'il d'employés ?
     $rowcount = Employees::count();
 
-    // How many different areas are assigned to employees?
+    // Combien de zones différentes sont assignées aux employés ?
     $rowcount = Employees::count(
         array(
             "distinct" => "area"
         )
     );
 
-    // How many employees are in the Testing area?
+    // Combien y-a-t'il d'employés dans le secteur "Testing" ?
     $rowcount = Employees::count(
         "area = 'Testing'"
     );
 
-    // Count employees grouping results by their area
+    // Dénombre les employés en groupant le résultat par secteur
     $group = Employees::count(
         array(
             "group" => "area"
@@ -1317,7 +1326,7 @@ Count examples:
        echo "There are ", $row->rowcount, " in ", $row->area;
     }
 
-    // Count employees grouping by their area and ordering the result by count
+    // Dénombre les employés en les groupant par secteur et ordonnant le résultat sur le compte
     $group = Employees::count(
         array(
             "group" => "area",
@@ -1325,7 +1334,7 @@ Count examples:
         )
     );
 
-    // Avoid SQL injections using bound parameters
+    // Évite les injections SQL avec des paramètres liés
     $group = Employees::count(
         array(
             "type > ?0",
@@ -1333,20 +1342,20 @@ Count examples:
         )
     );
 
-Sum examples:
+Exemples de Sum:
 
 .. code-block:: php
 
     <?php
 
-    // How much are the salaries of all employees?
+    // A combien s'élève le salaire de tous les employés ?
     $total = Employees::sum(
         array(
             "column" => "salary"
         )
     );
 
-    // How much are the salaries of all employees in the Sales area?
+    // A combien s'élève le salaire de tous les employés du secteur des ventes ?
     $total = Employees::sum(
         array(
             "column"     => "salary",
@@ -1354,7 +1363,7 @@ Sum examples:
         )
     );
 
-    // Generate a grouping of the salaries of each area
+    // Génère un regroupement des salaires par secteur
     $group = Employees::sum(
         array(
             "column" => "salary",
@@ -1365,8 +1374,8 @@ Sum examples:
        echo "The sum of salaries of the ", $row->area, " is ", $row->sumatory;
     }
 
-    // Generate a grouping of the salaries of each area ordering
-    // salaries from higher to lower
+	// Génère un regroupement des salaires par secteur en ordonnant
+	// les salaires du plus grand au plus petit
     $group = Employees::sum(
         array(
             "column" => "salary",
@@ -1375,7 +1384,7 @@ Sum examples:
         )
     );
 
-    // Avoid SQL injections using bound parameters
+    // Évite les injections SQL avec des paramètres liés
     $group = Employees::sum(
         array(
             "conditions" => "area > ?0",
@@ -1383,20 +1392,20 @@ Sum examples:
         )
     );
 
-Average examples:
+Exemples d'Average:
 
 .. code-block:: php
 
     <?php
 
-    // What is the average salary for all employees?
+    // Quel est le salaire moyen de tous les employés ?
     $average = Employees::average(
         array(
             "column" => "salary"
         )
     );
 
-    // What is the average salary for the Sales's area employees?
+    // Quel est le salaire moyen de tous les employés du secteur des ventes ?
     $average = Employees::average(
         array(
             "column"     => "salary",
@@ -1404,7 +1413,7 @@ Average examples:
         )
     );
 
-    // Avoid SQL injections using bound parameters
+    // Évite les injections SQL avec des paramètres liés
     $average = Employees::average(
         array(
             "column"     => "age",
@@ -1413,20 +1422,20 @@ Average examples:
         )
     );
 
-Max/Min examples:
+Exemples Max/Min:
 
 .. code-block:: php
 
     <?php
 
-    // What is the oldest age of all employees?
+    // Quel est l'âge le plus élevé de tous les employés ?
     $age = Employees::maximum(
         array(
             "column" => "age"
         )
     );
 
-    // What is the oldest of employees from the Sales area?
+    // Quel est l'âge le plus élevé de tous les employés du secteur des ventes ?
     $age = Employees::maximum(
         array(
             "column"     => "age",
@@ -1434,31 +1443,31 @@ Max/Min examples:
         )
     );
 
-    // What is the lowest salary of all employees?
+    // Quel est le salaire le plus bas de tous les employés ?
     $salary = Employees::minimum(
         array(
             "column" => "salary"
         )
     );
 
-Hydration Modes
----------------
-As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified and saved again to persistence:
+Modes d'hydratation de données
+------------------------------
+Comme mentionné plus haut, les jeux de résultat sont des collections complètes d'objets, ce qui signifie que chaque résultat renvoyé est un objet
+qui représente une ligne dans la base de données. Ces objets peuvent être modifiés et re-sauvegardés pour la persistence:
 
 .. code-block:: php
 
     <?php
 
-    // Manipulating a resultset of complete objects
+    // Manipulation d'un jeu complet de résultats d'objets
     foreach (Robots::find() as $robot) {
         $robot->year = 2000;
         $robot->save();
     }
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
-to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
-returned in a resultset is called 'hydration mode':
+Parfois les enregistrement récupérés ne doivent être présentées à l'utilisateur qu'en lecture seule. Dans ces cas il peut être utile
+de changer la manière dont les enregistrement sont présentés afin de faciliter leur manipulation. La statégie utilisée pour présenter
+les objets retournés dans un jeu de résultat est appelée "mode d'hydratation":
 
 .. code-block:: php
 
@@ -1468,28 +1477,28 @@ returned in a resultset is called 'hydration mode':
 
     $robots = Robots::find();
 
-    // Return every robot as an array
+    // Retourne tous les robots dans un tableau
     $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
-    // Return every robot as a stdClass
+    // Retourne tous les robots dans une stdClass
     $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-    // Return every robot as a Robots instance
+    // Retourne tous les robots dans une instance de Robots
     $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-Hydration mode can also be passed as a parameter of 'find':
+Le mode d'hydratation peut également être transmis en paramètre de "find":
 
 .. code-block:: php
 
@@ -1507,14 +1516,14 @@ Hydration mode can also be passed as a parameter of 'find':
         echo $robot['year'], PHP_EOL;
     }
 
-Creating Updating/Records
--------------------------
-The method :code:`Phalcon\Mvc\Model::save()` allows you to create/update records according to whether they already exist in the table
-associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
-should be updated or created.
+Création et Mise à jour d'Enregistrements
+-----------------------------------------
+La méthode :code:`Phalcon\Mvc\Model::save()` vous permet de créer ou de mettre à jour les enregistrement selon s'ils existent déjà dans la table
+associée au modèle. La méthode "save" est appelée en interne par les méthodes "create" et "update" de :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
+Pour que cela fonctionne comme prévu, il est nécessaire d'avoir correctement défini une clé primaire dans l'entité pour déterminer si un enregistrement
+devrait être mis à jour ou créé.
 
-Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
+De plus, la méthode exécute les validateurs associés, les clés étrangères virtuelle ainsi que les événements qui sont définis dans le modèle:
 
 .. code-block:: php
 
@@ -1534,8 +1543,8 @@ Also the method executes associated validators, virtual foreign keys and events 
         echo "Great, a new robot was saved successfully!";
     }
 
-An array could be passed to "save" to avoid assign every column manually. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will check if there are setters implemented for
-the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+Un tableau peut être transmis à "save" pour éviter d'assigner chaque colonne manuellement. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` va vérifier s'il existe des setters
+pour les colonnes indiquées dans le tableau en leur donnant priorité plutôt que d'affecter directement les valeurs des attributs:
 
 .. code-block:: php
 
@@ -1551,8 +1560,8 @@ the columns passed in the array giving priority to them instead of assign direct
         )
     );
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
-an insecure array without worrying about possible SQL injections:
+Les valeurs qui sont assignées soit directement, soit à l'aide d'un tableau d'attributs, sont échappées et assainies selon le type de données relatif à l'attribut. Donc, n'ayez crainte des 
+injections SQL lors de la transmission d'un tableau peu sûr:
 
 .. code-block:: php
 
@@ -1563,12 +1572,12 @@ an insecure array without worrying about possible SQL injections:
 
 .. highlights::
 
-    Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature
-    if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted
-    form.
-
-You can set an additional parameter in 'save' to set a whitelist of fields that only must taken into account when doing
-the mass assignment:
+	Sans précaution, une affectation de masse pourrait permettre de définir la valeur à n'importe quelle colonne de la base de données. N'utilisez uniquement cette fonction
+	que si vous voulez permettre à un utilisateur d'insérer ou de mettre à jour toutes les colonnes du modèle, même si ces champs ne sont pas soumis
+	par le formulaire.
+	
+Vous pouvez ajouter un paramètre supplémentaire à "save" pour indiquer la liste blanche des champs qui seront pris en compte
+lors de l'assignation de masse:
 
 .. code-block:: php
 
@@ -1584,11 +1593,11 @@ the mass assignment:
         )
     );
 
-Create/Update with Confidence
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use :code:`Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the :code:`save()` call with :code:`create()` or :code:`update()`:
+Créer/Mettre à jour avec Confiance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lorsqu'une application contient beaucoup d'accès concurrents, nous pourrions nous attendre à créer un enregistrement alors qu'il est mis à jour. Cela
+peut arriver en utilisant :code:`Phalcon\Mvc\Model::save()` lors de la persistance des enregistrement en base. Pour être absolument certain
+que l'enregistrement soit créé ou mis à jour, nous pouvons remplacer l'appel de :code:`save()` par :code:`create()` ou :code:`update()`:
 
 .. code-block:: php
 
@@ -1599,7 +1608,7 @@ sure that a record is created or updated, we can change the :code:`save()` call 
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    // This record only must be created
+    // Cet enregistrement sera seulement créé
     if ($robot->create() == false) {
         echo "Umh, We can't store robots right now: \n";
         foreach ($robot->getMessages() as $message) {
@@ -1609,13 +1618,13 @@ sure that a record is created or updated, we can change the :code:`save()` call 
         echo "Great, a new robot was created successfully!";
     }
 
-These methods "create" and "update" also accept an array of values as parameter.
+Les méthodes "create" et "update" acceptent également un tableau de valeurs en paramètre.
 
-Auto-generated identity columns
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Les colonnes identité auto-générées
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Certains modèles peuvent avoir une colonne identité. Ces colonnes servent habituellement de clé primaire dans la table rattachée. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+peut reconnaître la colonne identité et l'omet dans l'instruction SQL INSERT générée, laissant le SGBD générer ainsi automatiquement la valeur pour lui.
+Systématiquement après chaque création d'enregistrement, le champ identité est rempli avec la valeur générée par le SGBD:
 
 .. code-block:: php
 
@@ -1625,11 +1634,11 @@ Always after creating a record, the identity field will be registered with the v
 
     echo "The generated id is: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` est capable de reconnaître la colonne identité. Selon le SGBD, ces colonnes peut être des
+colonnes "serial" comme dans PostgreSQL ou "auto_increment" dans le cas de MySQL.
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+PostgreSQL utilise les séquences pour générer des valeurs numérique. Par défaut, Phalcon tente d'obtenir les valeurs depuis la séquence "<table>_<field>_seq",
+comme par exemple "robots_id_seq". Si cette séquence a un nom différent, alors la méthode "getSequenceName" doit être réalisée:
 
 .. code-block:: php
 
@@ -1645,80 +1654,80 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
         }
     }
 
-Storing related records
-^^^^^^^^^^^^^^^^^^^^^^^
-Magic properties can be used to store a records and its related properties:
+Stockage des enregistrements relatifs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les propriétés magiques peuvent être utilisée pour stocker les enregistrements et les propriétés associées:
 
 .. code-block:: php
 
     <?php
 
-    // Create an artist
+    // Création d'un artiste
     $artist          = new Artists();
     $artist->name    = 'Shinichi Osawa';
     $artist->country = 'Japan';
 
-    // Create an album
+    // Création d'un album
     $album         = new Albums();
     $album->name   = 'The One';
-    $album->artist = $artist; // Assign the artist
+    $album->artist = $artist; // Assigne l'artiste
     $album->year   = 2008;
 
-    // Save both records
+    // Sauvegarde les 2 enregistrements
     $album->save();
 
-Saving a record and its related records in a has-many relation:
+Sauvegarder un enregistrement et ses enregistrements associés dans une relation has-many:
 
 .. code-block:: php
 
     <?php
 
-    // Get an existing artist
+    // Récupère un artiste existant
     $artist = Artists::findFirst('name = "Shinichi Osawa"');
 
-    // Create an album
+    // Création d'un album
     $album         = new Albums();
     $album->name   = 'The One';
     $album->artist = $artist;
 
     $songs = array();
 
-    // Create a first song
+    // Création du premier morceau 
     $songs[0]           = new Songs();
     $songs[0]->name     = 'Star Guitar';
     $songs[0]->duration = '5:54';
 
-    // Create a second song
+    // Création du deuxième morceau 
     $songs[1]           = new Songs();
     $songs[1]->name     = 'Last Days';
     $songs[1]->duration = '4:29';
 
-    // Assign the songs array
+    // Assignation du tableau de morceaux
     $album->songs = $songs;
 
-    // Save the album + its songs
+    // Enregistre l'album et ses morceaux
     $album->save();
 
-Saving the album and the artist at the same time implicitly makes use of a transaction so if anything
-goes wrong with saving the related records, the parent will not be saved either. Messages are
-passed back to the user for information regarding any errors.
+L'enregistrement simultané de l'album et de l'artiste implique l'utilisation implicite d'une transaction, ainsi 
+s'il y a un problème lors de la sauvegarde des enregistrement associés, le parent ne sera pas sauvegardé non plus. Les messages
+sont renvoyés à l'utilisateur pour l'informer d'éventuelles erreurs.
 
-Note: Adding related entities by overloading the following methods is not possible:
+Note: L'ajout d'entités relatives en surchargeant les méthodes suivantes n'est pas possible:
 
  - :code:`Phalcon\Mvc\Model::beforeSave()`
  - :code:`Phalcon\Mvc\Model::beforeCreate()`
  - :code:`Phalcon\Mvc\Model::beforeUpdate()`
 
-You need to overload :code:`Phalcon\Mvc\Model::save()` for this to work from within a model.
+Vous devez surcharger la méthode :code:`Phalcon\Mvc\Model::save()` dans un modèle pour que cela fonctionne.
 
-Validation Messages
-^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+Messages de Validation
+^^^^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` dispose d'un sous-système de messages qui fournit une façon flexible d'afficher ou de stocker
+les messages de validation générés lors du processus d'insertion/mise à jour.
 
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method :code:`getMessages()`. Each message provides extended information like the field name that
-generated the message or the message type:
+Chaque message consiste en une instance de la classe :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. L'ensemble
+de messages générés peut être récupérer avec la méthode :code:`getMessages()`. Chaque message contient une information étendue comme le nom du champ
+à l'origine du message ou bien le type du message:
 
 .. code-block:: php
 
@@ -1732,23 +1741,23 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` peut générer les types suivants de messages de validation:
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
 +======================+====================================================================================================================================+
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| PresenceOf           | Généré lorsqu'un champ avec un attribut non-nul en base tente d'insérer/mettre à jour une valeur nulle                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| ConstraintViolation  | Généré lorsqu'un champ à clé étrangère tente d'insérer/mettre à jour une valeur qui n'existe pas dans le modèle référencé          |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
+| InvalidValue         | Généré lorsqu'un validateur échoue à cause d'une valeur invalide                                                                   |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
+| InvalidCreateAttempt | Produit lors de la tentative de création d'un enregistrement qui existe déjà                                                       |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| InvalidUpdateAttempt | Produit lors de la tentative de mise à jour d'un enregistrement qui n'existe pas                                                   |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method :code:`getMessages()` can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+La méthode :code:`getMessages()` peut être surchargée dans un modèle pour remplacer/traduire le message par défaut qui est généré automatiquement par l'ORM:
 
 .. code-block:: php
 
@@ -1779,44 +1788,44 @@ The method :code:`getMessages()` can be overridden in a model to replace/transla
         }
     }
 
-Events and Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+Événements et Gestionnaire d'événements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les modèles vous permettent d'écrire des événements qui seront générés lors de la réalisation d'une insertion/mise à jour(m.à.j.)/suppression. Il permettent de définir les règles métiers pour un 
+modèle précis. Les événements qui suivent sont supportés par :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` dans leur ordre d'exécution:
 
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
-+====================+==========================+=======================+===================================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Opération          | Nom                      | Peut stopper l'opération? | Explication                                                                                                                         |
++====================+==========================+===========================+=====================================================================================================================================+
+| insertion / m.à.j. | beforeValidation         | OUI                       | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères                                     |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | beforeValidationOnCreate | OUI                       | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération d'insertion    |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | beforeValidationOnUpdate | OUI                       | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération de mise à jour |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion/m.à.j.   | onValidationFails        | OUI (systématiquement)    | Est exécuté lors de l'échec d'une validation d'intégrité                                                                            |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | afterValidationOnCreate  | OUI                       | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération d'insertion    |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | afterValidationOnUpdate  | OUI                       | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération de mise à jour |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion/m.à.j.   | afterValidation          | OUI                       | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères                                     |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion/m.à.j.   | beforeSave               | OUI                       | Lancé avant l'opération requise sur le SGBD                                                                                         |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | beforeUpdate             | OUI                       | Lancé avant l'opération de mise à jour requise sur le SGBD                                                                          |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | beforeCreate             | OUI                       | Lancé avant l'opération d'insertion requise sur le SGBD                                                                             |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | afterUpdate              | NON                       | Lancé après l'opération de mise à jour requise sur le SGBD                                                                          |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | afterCreate              | NON                       | Lancé après l'opération d'insertion requise sur le SGBD                                                                             |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion/m.à.j.   | afterSave                | NON                       | Lancé après l'opération requise sur le SGBD                                                                                         |
++--------------------+--------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
 
-Implementing Events in the Model's class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
+Mise en œuvre d'événements dans la classe du Modèle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La façon la plus facile pour faire en sorte qu'un modèle réagisse aux événement est de réaliser dans la classe une méthode du même nom que l'événement:
 
 .. code-block:: php
 
@@ -1828,11 +1837,11 @@ The easier way to make a model react to events is implement a method with the sa
     {
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before creating a Robot!";
+            echo "Ceci est exécuté avant la création d'un Robot !";
         }
     }
 
-Events can be useful to assign values before performing an operation, for example:
+Les événements peuvent être utiles pour assigner des valeurs avant la réalisation d'une opération comme par exemple:
 
 .. code-block:: php
 
@@ -1844,21 +1853,21 @@ Events can be useful to assign values before performing an operation, for exampl
     {
         public function beforeCreate()
         {
-            // Set the creation date
+            // Établir la date de création
             $this->created_at = date('Y-m-d H:i:s');
         }
 
         public function beforeUpdate()
         {
-            // Set the modification date
+            // Établir la date de modification
             $this->modified_in = date('Y-m-d H:i:s');
         }
     }
 
-Using a custom Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
-this means we can create listeners that run when an event is triggered.
+Utilisation d'un Gestionnaire d'Événements personnalisés
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+De plus, ce composant est intégré dans :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+ce qui signifie que nous pouvons créer des écouteurs qui s'exécutent lors du déclenchement d'un événement.
 
 .. code-block:: php
 
@@ -1873,7 +1882,7 @@ this means we can create listeners that run when an event is triggered.
         {
             $eventsManager = new EventsManager();
 
-            // Attach an anonymous function as a listener for "model" events
+            // Attache une fonction anonyme pour écouter les événements de "model"
             $eventsManager->attach('model', function ($event, $robot) {
                 if ($event->getType() == 'beforeSave') {
                     if ($robot->name == 'Scooby Doo') {
@@ -1885,13 +1894,13 @@ this means we can create listeners that run when an event is triggered.
                 return true;
             });
 
-            // Attach the events manager to the event
+            // Attache le gestionnaire d'événement à l'événement
             $this->setEventsManager($eventsManager);
         }
     }
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function).
-Events will be fired to the listener when 'robots' are saved:
+Dans l'exemple précédent, le Gestionnaire d'Événements agit comme un pont entre l'objet et l'écouteur (la fonction anonyme).
+Les événements fuseront vers les écouteurs lors de la sauvegarde de 'robots':
 
 .. code-block:: php
 
@@ -1903,21 +1912,21 @@ Events will be fired to the listener when 'robots' are saved:
 
     $robot->save();
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
+Si vous voulez que tous les objets créés dans votre application utilisent le même EventsManager, vous devez alors l'assigner au Gestionnaire de Modèles:
 
 .. code-block:: php
 
     <?php
 
-    // Registering the modelsManager service
+    // Inscription du service "modelsManager"
     $di->setShared('modelsManager', function () {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        // Attach an anonymous function as a listener for "model" events
+        // Attache une fonction anonyme en tant qu'écouteur pour les événements de "model"
         $eventsManager->attach('model', function ($event, $model) {
 
-            // Catch events produced by the Robots model
+            // Capture les événements produits par le modèle "Robots"
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
@@ -1931,24 +1940,24 @@ If we want all objects created in our application use the same EventsManager, th
             return true;
         });
 
-        // Setting a default EventsManager
+        // Établissement d'un EventsManager par défaut
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
 
         return $modelsManager;
     });
 
-If a listener returns false that will stop the operation that is executing currently.
+Si un écouteur retourne "faux" alors ceci interrompt l'opération en cours d'exécution.
 
-Implementing a Business Rule
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of
-the events listed in the table above.
+Mise en œuvre de Règles Métier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lorsqu'une instruction "insert", "update" ou "delete" est exécutée, le modèle vérifie s'il existe des méthodes avec
+le nom des événements listés dans la table ci-dessus.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation
-from being exposed publicly.
+Nous recommandons que les méthodes de validation soient déclarées "protected" pour éviter que l'implémentation de la 
+logique métier soit exposée publiquement.
 
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+L'exemple suivant met en œuvre un événément qui valide l'année pour quelle ne soit pas plus petite que 0 lors de la mise à jour ou de l'insertion:
 
 .. code-block:: php
 
@@ -1967,15 +1976,15 @@ The following example implements an event that validates the year cannot be smal
         }
     }
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-will assume a true value.
+Certains événements retournent "false" comme indication de l'arrêt de l'opération courante. Si un événement ne retourne rien alors :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+considère qu'il s'agit d'une valeur "true".
 
-Validating Data Integrity
-^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+Validation de l'intégrité des données
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` fournit plusieurs événements pour valider les données et rédiger les règles métier. L'événement spécial "validation"
+nous permet d'appeler des validateurs prédéfinis sur l'enregistrement. Phalcon expose quelques validateurs déjà prêts à l'emploi à ce niveau de validation.
 
-The following example shows how to use it:
+L'exemple suivant montre comment l'utiliser:
 
 .. code-block:: php
 
@@ -2011,32 +2020,32 @@ The following example shows how to use it:
         }
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+L'exemple précédent réalise une validation en utilisant le validateur prédéfini "InclusionIn". Il vérifie que la valeur du champ "type" soit dans la liste de "domain".
+Si la valeur n'est pas inclue dans la méthode alors le validateur échoue et retourne "faux". Les validateurs prédéfinis qui suivent sont disponibles:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                          |
-+==============+==================================================================================================================================================================+==================================================================+
-| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`          |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Nom          | Explication                                                                                                                          | Exemple                                                          |
++==============+======================================================================================================================================+==================================================================+
+| PresenceOf   | Vérifie que la valeur d'un champ ne soit ni nulle ni vide. Ce validateur est automatiquement ajouté aux attributs marqués non nuls.  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`   |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Email        | Vérifie que les champs contiennent un format d'adresse de courriel valide                                                            | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`        |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| ExclusionIn  | Vérifie que la valeur ne soit pas dans la liste des valeurs possibles                                                                | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`  |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| InclusionIn  | Vérifie qu'une valeur soit dans la liste des valeurs possibles                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`  |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Numericality | Vérifie qu'un champ soit au format numérique                                                                                         | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>` |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Regex        | Vérifie que la valeur d'un champ corresponde à une expression régulière                                                              | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`        |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Uniqueness   | Vérifie qu'un champ ou qu'un ensemble de champs ne soient pas présent plus d'une fois dans l'enregistrement de la table relative     | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`   |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| StringLength | Vérifie la longueur d'une chaîne de caractères                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>` |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Url          | Vérifie qu'une valeur corresponde au format URL                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`          |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
-In addition to the built-in validators, you can create your own validators:
+En plus des validateurs prédéfinis, vous pouvez créer les votre:
 
 .. code-block:: php
 
@@ -3276,6 +3285,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     // Use the model
     echo Robots::count();
 
+.. _CRUD: https://fr.wikipedia.org/wiki/CRUD
 .. _PDO: http://php.net/manual/fr/pdo.prepared-statements.php
 .. _date: http://php.net/manual/fr/function.date.php
 .. _time: http://php.net/manual/fr/function.time.php
