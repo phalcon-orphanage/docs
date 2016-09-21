@@ -58,6 +58,7 @@ Components
    reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
+   reference/model-validation
    reference/phql
    reference/models-cache
    reference/odm
