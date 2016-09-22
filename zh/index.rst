@@ -56,6 +56,7 @@ Components
    reference/controllers
    reference/models
    reference/model-relationships
+   reference/model-events
    reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
