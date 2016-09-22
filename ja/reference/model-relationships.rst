@@ -250,9 +250,6 @@ and without:
     $robotsParts = $robot->robotsParts;
 
     // Only parts that match conditions
-    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
-
-    // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(
         [
             "created_at = :date:",
@@ -281,12 +278,23 @@ Getting related records manually:
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts, then
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "'"
+        [
+            "robots_id = :id:",
+            "bind" => [
+                "id" => $robot->id,
+            ]
+        ]
     );
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
+        [
+            "robots_id = :id: AND created_at = :date:",
+            "bind" => [
+                "id"   => $robot->id,
+                "date" => "2015-03-15",
+            ]
+        ]
     );
 
     $robotPart = RobotsParts::findFirst(1);
@@ -294,7 +302,12 @@ Getting related records manually:
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
     $robot = Robots::findFirst(
-        "id = '" . $robotPart->robots_id . "'"
+        [
+            "id = :id:",
+            "bind" => [
+                "id" => $robotPart->robots_id,
+            ]
+        ]
     );
 
 

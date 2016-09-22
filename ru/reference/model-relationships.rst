@@ -250,9 +250,6 @@ Phalcon использует магические методы :code:`__set`/:co
     $robotsParts = $robot->robotsParts;
 
     // Только те, которые соответствуют условию
-    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
-
-    // Или используя связанные параметры
     $robotsParts = $robot->getRobotsParts(
         [
             "created_at = :date:",
@@ -281,12 +278,23 @@ Phalcon использует магические методы :code:`__set`/:co
     // Модель Robots имеет отношение 1-n (hasMany)
     // к  RobotsParts
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "'"
+        [
+            "robots_id = :id:",
+            "bind" => [
+                "id" => $robot->id,
+            ]
+        ]
     );
 
     // Только те, которые соответствуют условиям
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
+        [
+            "robots_id = :id: AND created_at = :date:",
+            "bind" => [
+                "id"   => $robot->id,
+                "date" => "2015-03-15",
+            ]
+        ]
     );
 
     $robotPart = RobotsParts::findFirst(1);
@@ -294,7 +302,12 @@ Phalcon использует магические методы :code:`__set`/:co
     // Модель RobotsParts имеет отношение n-1 (belongsTo)
     // к RobotsParts
     $robot = Robots::findFirst(
-        "id = '" . $robotPart->robots_id . "'"
+        [
+            "id = :id:",
+            "bind" => [
+                "id" => $robotPart->robots_id,
+            ]
+        ]
     );
 
 
