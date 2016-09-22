@@ -865,38 +865,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 Изменение шаблонизатора
 ^^^^^^^^^^^^^^^^^^^^^^^
-Вы можете изменить или дополнить шаблонизатор из контроллера следующим образом:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Назначение шаблонизатора
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                ]
-            );
-        }
-
-        public function showAction()
-        {
-            // Использование нескольких шаблонизаторов
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
-                ]
-            );
-        }
-    }
-
 Вы можете полностью заменить шаблонизатор или использовать несколько шаблонизаторов одновременно. Метод :code:`Phalcon\Mvc\View::registerEngines()` принимает в качестве параметра массив, в котором описываются данные шаблонизаторов. Ключами массива в этом случае будут расширения файлов, что помогает отличить их друг от друга. Файлы шаблонов, относящиеся к этим шаблонизаторам должны иметь соответствующие расширения.
 
 Порядок выполнения шаблонизаторов определяется порядком, в котором они описаны в :code:`Phalcon\Mvc\View::registerEngines()`. Если :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` обнаружит два представления с одинаковым именами, но разными расширениями, то он отрисует тот, который был указан первым.
@@ -918,9 +886,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
             // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
+                ]
+            );
+
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
                 ]
             );
 

@@ -869,38 +869,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 替换模版引擎（Changing the Template Engine）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-你可以像下面一样从控制器更换或者添加更多的模板引擎：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Set the engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                ]
-            );
-        }
-
-        public function showAction()
-        {
-            // Using more than one template engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
-                ]
-            );
-        }
-    }
-
 你可以完全更换模板引擎或同时使用多个模板引擎。方法 :code:`Phalcon\Mvc\View::registerEngines()` 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
 
 :code:`Phalcon\Mvc\View::registerEngines()` 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
@@ -922,9 +890,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
             // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
+                ]
+            );
+
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
                 ]
             );
 
