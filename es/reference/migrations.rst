@@ -53,8 +53,9 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
     use Phalcon\Db\Column as Column;
     use Phalcon\Db\Index as Index;
     use Phalcon\Db\Reference as Reference;
+    use Phalcon\Mvc\Model\Migration;
 
-    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
+    class ProductsMigration_100 extends Migration
     {
         public function up()
         {
@@ -70,7 +71,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "unsigned"      => true,
                                 "notNull"       => true,
                                 "autoIncrement" => true,
-                                "first"         => true
+                                "first"         => true,
                             ]
                         ),
                         new Column(
@@ -80,7 +81,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "size"     => 10,
                                 "unsigned" => true,
                                 "notNull"  => true,
-                                "after"    => "id"
+                                "after"    => "id",
                             ]
                         ),
                         new Column(
@@ -89,7 +90,7 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "type"    => Column::TYPE_VARCHAR,
                                 "size"    => 70,
                                 "notNull" => true,
-                                "after"   => "product_types_id"
+                                "after"   => "product_types_id",
                             ]
                         ),
                         new Column(
@@ -99,19 +100,23 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "size"    => 16,
                                 "scale"   => 2,
                                 "notNull" => true,
-                                "after"   => "name"
+                                "after"   => "name",
                             ]
                         ),
                     ],
                     "indexes" => [
                         new Index(
                             "PRIMARY",
-                            ["id"]
+                            [
+                                "id",
+                            ]
                         ),
                         new Index(
                             "product_types_id",
-                            ["product_types_id"]
-                        )
+                            [
+                                "product_types_id",
+                            ],
+                        ),
                     ],
                     "references" => [
                         new Reference(
@@ -120,15 +125,15 @@ Each file contains a unique class that extends the :code:`Phalcon\Mvc\Model\Migr
                                 "referencedSchema"  => "invo",
                                 "referencedTable"   => "product_types",
                                 "columns"           => ["product_types_id"],
-                                "referencedColumns" => ["id"]
+                                "referencedColumns" => ["id"],
                             ]
-                        ]
+                        ),
                     ],
                     "options" => [
                         "TABLE_TYPE"      => "BASE TABLE",
                         "ENGINE"          => "InnoDB",
-                        "TABLE_COLLATION" => "utf8_general_ci"
-                    ]
+                        "TABLE_COLLATION" => "utf8_general_ci",
+                    ],
                 ]
             );
         }
@@ -225,7 +230,9 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     <?php
 
-    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
+    use Phalcon\Mvc\Model\Migration;
+
+    class ProductsMigration_100 extends Migration
     {
         public function up()
         {
@@ -233,8 +240,14 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
             self::$_connection->insert(
                 "products",
-                ["Malabar spinach", 14.50],
-                ["name", "price"]
+                [
+                    "Malabar spinach",
+                    14.50,
+                ],
+                [
+                    "name",
+                    "price",
+                ]
             );
         }
     }
