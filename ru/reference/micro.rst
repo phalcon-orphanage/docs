@@ -499,27 +499,25 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
 
     // Создаём менеджер событий
     $eventsManager = new EventsManager();
 
-    // Слушаем все события приложения
     $eventsManager->attach(
-        "micro",
-        function ($event, $app) {
-            if ($event->getType() == "beforeExecuteRoute") {
-                if ($app->session->get("auth") == false) {
-                    $app->flashSession->error("The user isn't authenticated");
+        "micro:beforeExecuteRoute",
+        function (Event $event, $app) {
+            if ($app->session->get("auth") === false) {
+                $app->flashSession->error("The user isn't authenticated");
 
-                    $app->response->redirect("/");
+                $app->response->redirect("/");
 
-                    $app->response->sendHeaders();
+                $app->response->sendHeaders();
 
-                    // Возвращаем (false) останов операции
-                    return false;
-                }
+                // Возвращаем (false) останов операции
+                return false;
             }
         }
     );

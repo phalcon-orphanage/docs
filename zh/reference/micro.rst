@@ -481,27 +481,25 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
 
     // 创建事件监听器
     $eventsManager = new EventsManager();
 
-    // 监听应用的所有事件
     $eventsManager->attach(
-        "micro",
-        function ($event, $app) {
-            if ($event->getType() == "beforeExecuteRoute") {
-                if ($app->session->get("auth") == false) {
-                    $app->flashSession->error("The user isn't authenticated");
+        "micro:beforeExecuteRoute",
+        function (Event $event, $app) {
+            if ($app->session->get("auth") === false) {
+                $app->flashSession->error("The user isn't authenticated");
 
-                    $app->response->redirect("/");
+                $app->response->redirect("/");
 
-                    $app->response->sendHeaders();
+                $app->response->sendHeaders();
 
-                    // 返回false来中止操作
-                    return false;
-                }
+                // 返回false来中止操作
+                return false;
             }
         }
     );
