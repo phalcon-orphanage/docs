@@ -453,7 +453,12 @@ INVO, мы подходим к созданию CRUD, очень распрос�
             "Поиск не нашел никаких продуктов"
         );
 
-        return $this->forward("products/index");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
 Если поиск не вернул ни одного продукта, мы снова перенаправляем пользователся на действие index. Если же
@@ -721,7 +726,12 @@ ORM для инициализации модели. В данном случае
     public function createAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $form = new ProductsForm();
@@ -794,7 +804,12 @@ ORM для инициализации модели. В данном случае
             $this->flash->error($message);
         }
 
-        return $this->forward("products/new");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
 В итоге, если форма не возвращает каких-либо сообщений валидации, то мы можем сохранить экземпляр продукта:
@@ -812,7 +827,12 @@ ORM для инициализации модели. В данном случае
             $this->flash->error($message);
         }
 
-        return $this->forward("products/new");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
     $form->clear();
@@ -821,7 +841,12 @@ ORM для инициализации модели. В данном случае
         "Продукт успешно создан"
     );
 
-    return $this->forward("products/index");
+    return $this->dispatcher->forward(
+        [
+            "controller" => "products",
+            "action"     => "index",
+        ]
+    );
 
 Теперь, в случае обновления продукта, сперва мы должны представить пользователю данные, которые уже имеются в редактируемой записи:
 
@@ -842,7 +867,12 @@ ORM для инициализации модели. В данном случае
                     "Продукт не найден"
                 );
 
-                return $this->forward("products/index");
+                return $this->dispatcher->forward(
+                    [
+                        "controller" => "products",
+                        "action"     => "index",
+                    ]
+                );
             }
 
             $this->view->form = new ProductsForm(
@@ -867,7 +897,12 @@ ORM для инициализации модели. В данном случае
     public function saveAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $id = $this->request->getPost("id", "int");
@@ -879,7 +914,12 @@ ORM для инициализации модели. В данном случае
                 "Продукт не существует"
             );
 
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $form = new ProductsForm();
@@ -893,7 +933,12 @@ ORM для инициализации модели. В данном случае
                 $this->flash->error($message);
             }
 
-            return $this->forward("products/new");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
         if ($product->save() === false) {
@@ -903,7 +948,12 @@ ORM для инициализации модели. В данном случае
                 $this->flash->error($message);
             }
 
-            return $this->forward("products/new");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
         $form->clear();
@@ -912,7 +962,12 @@ ORM для инициализации модели. В данном случае
             "Продукт успешно обновлен"
         );
 
-        return $this->forward("products/index");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
 Теперь мы видим, как Phalcon позволяет создавать формы и привязывать данные из базы данных в структурированном стиле.
