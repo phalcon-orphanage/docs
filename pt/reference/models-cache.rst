@@ -30,26 +30,28 @@ First, you must register it as a service in the services container:
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
     // Set the models cache service
-    $di->set('modelsCache', function () {
+    $di->set(
+        "modelsCache",
+        function () {
+            // Cache data for one day by default
+            $frontCache = new FrontendData(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // Cache data for one day by default
-        $frontCache = new FrontendData(
-            [
-                "lifetime" => 86400
-            ]
-        );
+            // Memcached connection settings
+            $cache = new BackendMemcache(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Memcached connection settings
-        $cache = new BackendMemcache(
-            $frontCache,
-            [
-                "host" => "localhost",
-                "port" => "11211"
-            ]
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 You have complete control in creating and customizing the cache before being used by registering the service
 as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
@@ -65,8 +67,8 @@ as an anonymous function. Once the cache setup is properly defined you could cac
     $products = Products::find(
         [
             "cache" => [
-                "key" => "my-cache"
-            ]
+                "key" => "my-cache",
+            ],
         ]
     );
 
@@ -75,15 +77,15 @@ as an anonymous function. Once the cache setup is properly defined you could cac
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
     // Using a custom cache
     $products = Products::find(
         [
-            "cache" => $myCache
+            "cache" => $myCache,
         ]
     );
 
@@ -94,14 +96,14 @@ Caching could be also applied to resultsets generated using relationships:
     <?php
 
     // Query some post
-    $post     = Post::findFirst();
+    $post = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(
         [
             "cache" => [
-                "key" => "my-key"
-            ]
+                "key" => "my-key",
+            ],
         ]
     );
 
@@ -110,8 +112,8 @@ Caching could be also applied to resultsets generated using relationships:
         [
             "cache" => [
                 "key"      => "my-key",
-                "lifetime" => 3600
-            ]
+                "lifetime" => 3600,
+            ],
         ]
     );
 
@@ -170,15 +172,13 @@ a static property to avoid that a record would be queried several times in a sam
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
-                    $uniqueKey[] = $key . ':' . $value;
-                } else {
-                    if (is_array($value)) {
-                        $uniqueKey[] = $key . ':[' . self::_createKey($value) .']';
-                    }
+                    $uniqueKey[] = $key . ":" . $value;
+                } elseif (is_array($value)) {
+                    $uniqueKey[] = $key . ":[" . self::_createKey($value) . "]";
                 }
             }
 
-            return join(',', $uniqueKey);
+            return join(",", $uniqueKey);
         }
 
         public static function find($parameters = null)
@@ -218,7 +218,6 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
-
             // We're using APC as second cache
             if (apc_exists($key)) {
 
@@ -298,8 +297,8 @@ cacheable we pass the key 'cache' in the array of parameters:
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
@@ -328,10 +327,10 @@ we can override the find/findFirst method to force every query to be cached:
 
             // Check if a cache key wasn't passed
             // and create the cache parameters
-            if (!isset($parameters['cache'])) {
-                $parameters['cache'] = [
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
                     "key"      => self::_createKey($parameters),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ];
             }
 
@@ -361,13 +360,13 @@ This language gives you much more freedom to create all kinds of queries. Of cou
     $query->cache(
         [
             "key"      => "cars-by-name",
-            "lifetime" => 300
+            "lifetime" => 300,
         ]
     );
 
     $cars = $query->execute(
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
@@ -382,11 +381,11 @@ If you don't want to use the implicit cache just save the resultset into your fa
     $cars = $this->modelsManager->executeQuery(
         $phql,
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
-    apc_store('my-cars', $cars);
+    apc_store("my-cars", $cars);
 
 Reusable Related Records
 ------------------------
@@ -397,7 +396,7 @@ Some models may have relationships to other models. This allows us to easily che
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -414,8 +413,9 @@ This also applies if we retrieve a set of invoices to show customers that corres
 
     // Get a set of invoices
     // SELECT * FROM invoices;
-    foreach (Invoices::find() as $invoice) {
+    $invoices = Invoices::find();
 
+    foreach ($invoices as $invoice) {
         // Get the customer related to the invoice
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
@@ -443,7 +443,7 @@ the records instead of re-querying them again and again:
                 "Customer",
                 "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
@@ -470,7 +470,7 @@ add a more sophisticated cache for this scenario overriding the models manager:
         public function getReusableRecords($modelName, $key)
         {
             // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 return apc_fetch($key);
             }
 
@@ -488,8 +488,9 @@ add a more sophisticated cache for this scenario overriding the models manager:
         public function setReusableRecords($modelName, $key, $records)
         {
             // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 apc_store($key, $records);
+
                 return;
             }
 
@@ -504,9 +505,12 @@ Do not forget to register the custom models manager in the DI:
 
     <?php
 
-    $di->setShared('modelsManager', function () {
-        return new CustomModelsManager();
-    });
+    $di->setShared(
+        "modelsManager",
+        function () {
+            return new CustomModelsManager();
+        }
+    );
 
 Caching Related Records
 -----------------------
@@ -530,13 +534,13 @@ This means that when you get a related record you could intercept how these data
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
-    $customer = $invoice->customer; // Invoices::findFirst('...');
+    $customer = $invoice->customer; // Invoices::findFirst("...");
 
     // Same as above
-    $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
+    $customer = $invoice->getCustomer(); // Invoices::findFirst("...");
 
 Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
 
@@ -550,7 +554,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     {
         public static function findFirst($parameters = null)
         {
-            // .. custom caching strategy
+            // ... Custom caching strategy
         }
     }
 
@@ -586,7 +590,7 @@ to obtain all entities:
         public static function find($parameters = null)
         {
             // Create a unique key
-            $key     = self::_createKey($parameters);
+            $key = self::_createKey($parameters);
 
             // Check if there are data in the cache
             $results = self::_getCache($key);
@@ -599,8 +603,8 @@ to obtain all entities:
             $results = [];
 
             $invoices = parent::find($parameters);
-            foreach ($invoices as $invoice) {
 
+            foreach ($invoices as $invoice) {
                 // Query the related customer
                 $customer = $invoice->customer;
 
@@ -645,15 +649,14 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql  = "SELECT Invoices.*, Customers.*
-            FROM Invoices JOIN Customers WHERE " . $conditions;
+            $phql = "SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
                 [
                     "key"      => self::_createKey($conditions, $params),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ]
             );
 
@@ -692,10 +695,10 @@ The easiest way is adding a static method to the model that chooses the right ca
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo1'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo1",
+                        ],
                     ]
                 );
             }
@@ -703,10 +706,10 @@ The easiest way is adding a static method to the model that chooses the right ca
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo2'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo2",
+                        ],
                     ]
                 );
             }
@@ -714,10 +717,10 @@ The easiest way is adding a static method to the model that chooses the right ca
             if ($initial > 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial,
-                        'cache' => [
-                            'service' => 'mongo3'
-                        ]
+                        "id >= " . $initial,
+                        "cache" => [
+                            "service" => "mongo3",
+                        ],
                     ]
                 );
             }
@@ -731,16 +734,16 @@ a more complicated method. Additionally, this method does not work if the data i
 
     <?php
 
-    $robots = Robots::find('id < 1000');
-    $robots = Robots::find('id > 100 AND type = "A"');
-    $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
+    $robots = Robots::find("id < 1000");
+    $robots = Robots::find("id > 100 AND type = 'A'");
+    $robots = Robots::find("(id > 100 AND type = 'A') AND id < 2000");
 
     $robots = Robots::find(
         [
-            '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => [100, 2000],
-            'order' => 'type'
-        )
+            "(id > ?0 AND type = 'A') AND id < ?1",
+            "bind"  => [100, 2000],
+            "order" => "type",
+        ]
     );
 
 To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and
@@ -759,7 +762,9 @@ The first is create a custom builder, so we can generate a totally customized qu
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
+
             $query->setDI($this->getDI());
+
             return $query;
         }
     }
@@ -784,15 +789,14 @@ this class looks like:
             $ir = $this->parse();
 
             // Check if the query has conditions
-            if (isset($ir['where'])) {
-
+            if (isset($ir["where"])) {
                 // The fields in the conditions can have any order
                 // We need to recursively check the conditions tree
                 // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
                 // Recursively visits the nodes
-                $visitor->visit($ir['where']);
+                $visitor->visit($ir["where"]);
 
                 $initial = $visitor->getInitial();
                 $final   = $visitor->getFinal();
@@ -829,43 +833,48 @@ tell us the possible range to be used in the cache:
 
         public function visit($node)
         {
-            switch ($node['type']) {
+            switch ($node["type"]) {
+                case "binary-op":
+                    $left  = $this->visit($node["left"]);
+                    $right = $this->visit($node["right"]);
 
-                case 'binary-op':
-
-                    $left  = $this->visit($node['left']);
-                    $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
                     }
 
-                    if ($left=='id') {
-                        if ($node['op'] == '>') {
+                    if ($left === "id") {
+                        if ($node["op"] === ">") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '=') {
+
+                        if ($node["op"] === "=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '>=')    {
+
+                        if ($node["op"] === ">=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '<') {
+
+                        if ($node["op"] === "<") {
                             $this->_final = $right;
                         }
-                        if ($node['op'] == '<=')    {
+
+                        if ($node["op"] === "<=") {
                             $this->_final = $right;
                         }
                     }
+
                     break;
 
-                case 'qualified':
-                    if ($node['name'] == 'id') {
-                        return 'id';
+                case "qualified":
+                    if ($node["name"] === "id") {
+                        return "id";
                     }
+
                     break;
 
-                case 'literal':
-                    return $node['value'];
+                case "literal":
+                    return $node["value"];
 
                 default:
                     return false;
@@ -900,12 +909,15 @@ Finally, we can replace the find method in the Robots model to use the custom cl
             }
 
             $builder = new CustomQueryBuilder($parameters);
+
             $builder->from(get_called_class());
 
-            if (isset($parameters['bind'])) {
-                return $builder->getQuery()->execute($parameters['bind']);
+            $query = $builder->getQuery();
+
+            if (isset($parameters["bind"])) {
+                return $query->execute($parameters["bind"]);
             } else {
-                return $builder->getQuery()->execute();
+                return $query->execute();
             }
         }
     }
@@ -922,8 +934,8 @@ build all your SQL statements passing variable parameters as bound parameters:
     <?php
 
     for ($i = 1; $i <= 10; $i++) {
+        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
 
-        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         // ...
@@ -939,8 +951,12 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
     $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $this->modelsManager->executeQuery($phql, [$i]);
+        $robots = $this->modelsManager->executeQuery(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }
@@ -951,12 +967,17 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $query->execute($phql, [$i]);
+        $robots = $query->execute(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }

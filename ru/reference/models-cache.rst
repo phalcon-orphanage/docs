@@ -30,26 +30,28 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
     // Регистрация сервиса кэша моделей
-    $di->set('modelsCache', function () {
+    $di->set(
+        "modelsCache",
+        function () {
+            // По умолчанию данные кэша хранятся один день
+            $frontCache = new FrontendData(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // По умолчанию данные кэша хранятся один день
-        $frontCache = new FrontendData(
-            [
-                "lifetime" => 86400
-            ]
-        );
+            // Настройки соединения с memcached
+            $cache = new BackendMemcache(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Настройки соединения с memcached
-        $cache = new BackendMemcache(
-            $frontCache,
-            [
-                "host" => "localhost",
-                "port" => "11211"
-            ]
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 Вы имеете полный контроль в создании и настройке кэша перед его использованием путем регистрации сервиса в
 качестве анонимной функции. После того, как настройка кэша правильно определена, можно кэшировать наборы данных:
@@ -65,8 +67,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $products = Products::find(
         [
             "cache" => [
-                "key" => "my-cache"
-            ]
+                "key" => "my-cache",
+            ],
         ]
     );
 
@@ -75,15 +77,15 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
     // Использование пользовательского кэша
     $products = Products::find(
         [
-            "cache" => $myCache
+            "cache" => $myCache,
         ]
     );
 
@@ -94,14 +96,14 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Запрос некоторого сообщения
-    $post     = Post::findFirst();
+    $post = Post::findFirst();
 
     // Получаем комментарии, относящиеся к сообщению, и кэшируем их
     $comments = $post->getComments(
         [
             "cache" => [
-                "key" => "my-key"
-            ]
+                "key" => "my-key",
+            ],
         ]
     );
 
@@ -110,8 +112,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         [
             "cache" => [
                 "key"      => "my-key",
-                "lifetime" => 3600
-            ]
+                "lifetime" => 3600,
+            ],
         ]
     );
 
@@ -173,15 +175,13 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
-                    $uniqueKey[] = $key . ':' . $value;
-                } else {
-                    if (is_array($value)) {
-                        $uniqueKey[] = $key . ':[' . self::_createKey($value) .']';
-                    }
+                    $uniqueKey[] = $key . ":" . $value;
+                } elseif (is_array($value)) {
+                    $uniqueKey[] = $key . ":[" . self::_createKey($value) . "]";
                 }
             }
 
-            return join(',', $uniqueKey);
+            return join(",", $uniqueKey);
         }
 
         public static function find($parameters = null)
@@ -223,7 +223,6 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
-
             // Мы используем APC как кэш второго уровня
             if (apc_exists($key)) {
 
@@ -305,8 +304,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
@@ -336,10 +335,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
             // Проверяем, что ключ кэша не был передан
             // и создаем параметры кэша
-            if (!isset($parameters['cache'])) {
-                $parameters['cache'] = [
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
                     "key"      => self::_createKey($parameters),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ];
             }
 
@@ -371,13 +370,13 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $query->cache(
         [
             "key"      => "cars-by-name",
-            "lifetime" => 300
+            "lifetime" => 300,
         ]
     );
 
     $cars = $query->execute(
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
@@ -392,11 +391,11 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     $cars = $this->modelsManager->executeQuery(
         $phql,
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
-    apc_store('my-cars', $cars);
+    apc_store("my-cars", $cars);
 
 Многократное использование связанных записей
 --------------------------------------------
@@ -408,7 +407,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Получаем некоторый счет
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Получаем клиента, связанного со счетом
     $customer = $invoice->customer;
@@ -426,8 +425,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     // Получаем набор счетов
     // SELECT * FROM invoices;
-    foreach (Invoices::find() as $invoice) {
+    $invoices = Invoices::find();
 
+    foreach ($invoices as $invoice) {
         // Получаем клиента связанного с заказом
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
@@ -456,7 +456,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
                 "Customer",
                 "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
@@ -484,7 +484,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public function getReusableRecords($modelName, $key)
         {
             // Если модель Products использует кэш APC
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 return apc_fetch($key);
             }
 
@@ -502,8 +502,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public function setReusableRecords($modelName, $key, $records)
         {
             // Если модель Products использует кэш APC
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 apc_store($key, $records);
+
                 return;
             }
 
@@ -518,9 +519,12 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    $di->setShared('modelsManager', function () {
-        return new CustomModelsManager();
-    });
+    $di->setShared(
+        "modelsManager",
+        function () {
+            return new CustomModelsManager();
+        }
+    );
 
 Кэширование связанных записей
 -----------------------------
@@ -546,13 +550,13 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
     <?php
 
     // Получаем счет
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Получаем владельца счета
-    $customer = $invoice->customer; // Invoices::findFirst('...');
+    $customer = $invoice->customer; // Invoices::findFirst("...");
 
     // То же самое
-    $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
+    $customer = $invoice->getCustomer(); // Invoices::findFirst("...");
 
 Соответственно, мы могли бы заменить метод FindFirst в моделе счетов и осуществлять кэширование наиболее подходящим способом:
 
@@ -602,7 +606,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public static function find($parameters = null)
         {
             // Создать уникальный ключ
-            $key     = self::_createKey($parameters);
+            $key = self::_createKey($parameters);
 
             // Проверяем наличие данных в кэше
             $results = self::_getCache($key);
@@ -615,8 +619,8 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             $results = [];
 
             $invoices = parent::find($parameters);
-            foreach ($invoices as $invoice) {
 
+            foreach ($invoices as $invoice) {
                 // Получение соответствующего клиента
                 $customer = $invoice->customer;
 
@@ -662,15 +666,14 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql  = "SELECT Invoices.*, Customers.*
-            FROM Invoices JOIN Customers WHERE " . $conditions;
+            $phql = "SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
                 [
                     "key"      => self::_createKey($conditions, $params),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ]
             );
 
@@ -709,10 +712,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo1'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo1",
+                        ],
                     ]
                 );
             }
@@ -720,10 +723,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo2'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo2",
+                        ],
                     ]
                 );
             }
@@ -731,10 +734,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             if ($initial > 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial,
-                        'cache' => [
-                            'service' => 'mongo3'
-                        ]
+                        "id >= " . $initial,
+                        "cache" => [
+                            "service" => "mongo3",
+                        ],
                     ]
                 );
             }
@@ -750,15 +753,15 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     <?php
 
-    $robots = Robots::find('id < 1000');
-    $robots = Robots::find('id > 100 AND type = "A"');
-    $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
+    $robots = Robots::find("id < 1000");
+    $robots = Robots::find("id > 100 AND type = 'A'");
+    $robots = Robots::find("(id > 100 AND type = 'A') AND id < 2000");
 
     $robots = Robots::find(
         [
-            '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => [100, 2000],
-            'order' => 'type'
+            "(id > ?0 AND type = 'A') AND id < ?1",
+            "bind"  => [100, 2000],
+            "order" => "type",
         ]
     );
 
@@ -780,7 +783,9 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
+
             $query->setDI($this->getDI());
+
             return $query;
         }
     }
@@ -806,15 +811,14 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             $ir = $this->parse();
 
             // Проверяем, что наш запрос имеет условия
-            if (isset($ir['where'])) {
-
+            if (isset($ir["where"])) {
                 // Поля в условии могут иметь любой порядок
                 // Нам нужно рекурсивно проверить дерево условий,
                 // чтобы найти информацию, которую мы ищем
                 $visitor = new CustomNodeVisitor();
 
                 // Рекурсивно просматриваем узлы
-                $visitor->visit($ir['where']);
+                $visitor->visit($ir["where"]);
 
                 $initial = $visitor->getInitial();
                 $final   = $visitor->getFinal();
@@ -852,43 +856,48 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
         public function visit($node)
         {
-            switch ($node['type']) {
+            switch ($node["type"]) {
+                case "binary-op":
+                    $left  = $this->visit($node["left"]);
+                    $right = $this->visit($node["right"]);
 
-                case 'binary-op':
-
-                    $left  = $this->visit($node['left']);
-                    $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
                     }
 
-                    if ($left=='id') {
-                        if ($node['op'] == '>') {
+                    if ($left === "id") {
+                        if ($node["op"] === ">") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '=') {
+
+                        if ($node["op"] === "=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '>=')    {
+
+                        if ($node["op"] === ">=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '<') {
+
+                        if ($node["op"] === "<") {
                             $this->_final = $right;
                         }
-                        if ($node['op'] == '<=')    {
+
+                        if ($node["op"] === "<=") {
                             $this->_final = $right;
                         }
                     }
+
                     break;
 
-                case 'qualified':
-                    if ($node['name'] == 'id') {
-                        return 'id';
+                case "qualified":
+                    if ($node["name"] === "id") {
+                        return "id";
                     }
+
                     break;
 
-                case 'literal':
-                    return $node['value'];
+                case "literal":
+                    return $node["value"];
 
                 default:
                     return false;
@@ -923,12 +932,15 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             }
 
             $builder = new CustomQueryBuilder($parameters);
+
             $builder->from(get_called_class());
 
-            if (isset($parameters['bind'])) {
-                return $builder->getQuery()->execute($parameters['bind']);
+            $query = $builder->getQuery();
+
+            if (isset($parameters["bind"])) {
+                return $query->execute($parameters["bind"]);
             } else {
-                return $builder->getQuery()->execute();
+                return $query->execute();
             }
         }
     }
@@ -945,8 +957,8 @@ build all your SQL statements passing variable parameters as bound parameters:
     <?php
 
     for ($i = 1; $i <= 10; $i++) {
+        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
 
-        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         // ...
@@ -962,8 +974,12 @@ Rewriting the code to take advantage of bound parameters reduces the processing 
     $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $this->modelsManager->executeQuery($phql, [$i]);
+        $robots = $this->modelsManager->executeQuery(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }
@@ -974,12 +990,17 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $query->execute($phql, [$i]);
+        $robots = $query->execute(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }

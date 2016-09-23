@@ -23,26 +23,28 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
     // 设置模型缓存服务
-    $di->set('modelsCache', function () {
+    $di->set(
+        "modelsCache",
+        function () {
+            // 默认缓存时间为一天
+            $frontCache = new FrontendData(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // 默认缓存时间为一天
-        $frontCache = new FrontendData(
-            [
-                "lifetime" => 86400
-            ]
-        );
+            // Memcached连接配置 这里使用的是Memcache适配器
+            $cache = new BackendMemcache(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Memcached连接配置 这里使用的是Memcache适配器
-        $cache = new BackendMemcache(
-            $frontCache,
-            [
-                "host" => "localhost",
-                "port" => "11211"
-            ]
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 在注册缓存服务时我们可以按照我们的需要进行配置。一旦完成正确的缓存设置之后，我们可以按如下的方式缓存查询的结果了:
 
@@ -57,8 +59,8 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     $products = Products::find(
         [
             "cache" => [
-                "key" => "my-cache"
-            ]
+                "key" => "my-cache",
+            ],
         ]
     );
 
@@ -67,15 +69,15 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
     // 使用自定义缓存
     $products = Products::find(
         [
-            "cache" => $myCache
+            "cache" => $myCache,
         ]
     );
 
@@ -86,14 +88,14 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     <?php
 
     // Query some post
-    $post     = Post::findFirst();
+    $post = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(
         [
             "cache" => [
-                "key" => "my-key"
-            ]
+                "key" => "my-key",
+            ],
         ]
     );
 
@@ -102,8 +104,8 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         [
             "cache" => [
                 "key"      => "my-key",
-                "lifetime" => 3600
-            ]
+                "lifetime" => 3600,
+            ],
         ]
     );
 
@@ -159,15 +161,13 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
-                    $uniqueKey[] = $key . ':' . $value;
-                } else {
-                    if (is_array($value)) {
-                        $uniqueKey[] = $key . ':[' . self::_createKey($value) .']';
-                    }
+                    $uniqueKey[] = $key . ":" . $value;
+                } elseif (is_array($value)) {
+                    $uniqueKey[] = $key . ":[" . self::_createKey($value) . "]";
                 }
             }
 
-            return join(',', $uniqueKey);
+            return join(",", $uniqueKey);
         }
 
         public static function find($parameters = null)
@@ -206,7 +206,6 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
-
             // We're using APC as second cache
             if (apc_exists($key)) {
 
@@ -284,8 +283,8 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
@@ -313,10 +312,10 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
             // Check if a cache key wasn't passed
             // and create the cache parameters
-            if (!isset($parameters['cache'])) {
-                $parameters['cache'] = [
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
                     "key"      => self::_createKey($parameters),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ];
             }
 
@@ -345,13 +344,13 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $query->cache(
         [
             "key"      => "cars-by-name",
-            "lifetime" => 300
+            "lifetime" => 300,
         ]
     );
 
     $cars = $query->execute(
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
@@ -366,11 +365,11 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $cars = $this->modelsManager->executeQuery(
         $phql,
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
 
-    apc_store('my-cars', $cars);
+    apc_store("my-cars", $cars);
 
 可重用的相关记录（Reusable Related Records）
 --------------------------------------------
@@ -381,7 +380,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -398,8 +397,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     // Get a set of invoices
     // SELECT * FROM invoices;
-    foreach (Invoices::find() as $invoice) {
+    $invoices = Invoices::find();
 
+    foreach ($invoices as $invoice) {
         // Get the customer related to the invoice
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
@@ -426,7 +426,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
                 "Customer",
                 "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
@@ -452,7 +452,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public function getReusableRecords($modelName, $key)
         {
             // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 return apc_fetch($key);
             }
 
@@ -470,8 +470,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public function setReusableRecords($modelName, $key, $records)
         {
             // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
+            if ($modelName === "Products") {
                 apc_store($key, $records);
+
                 return;
             }
 
@@ -486,9 +487,12 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     <?php
 
-    $di->setShared('modelsManager', function () {
-        return new CustomModelsManager();
-    });
+    $di->setShared(
+        "modelsManager",
+        function () {
+            return new CustomModelsManager();
+        }
+    );
 
 缓存相关记录（Caching Related Records）
 ---------------------------------------
@@ -511,13 +515,13 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
-    $customer = $invoice->customer; // Invoices::findFirst('...');
+    $customer = $invoice->customer; // Invoices::findFirst("...");
 
     // Same as above
-    $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
+    $customer = $invoice->getCustomer(); // Invoices::findFirst("...");
 
 因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法
 
@@ -531,7 +535,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     {
         public static function findFirst($parameters = null)
         {
-            // .. custom caching strategy
+            // ... Custom caching strategy
         }
     }
 
@@ -565,7 +569,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public static function find($parameters = null)
         {
             // Create a unique key
-            $key     = self::_createKey($parameters);
+            $key = self::_createKey($parameters);
 
             // Check if there are data in the cache
             $results = self::_getCache($key);
@@ -578,8 +582,8 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             $results = [];
 
             $invoices = parent::find($parameters);
-            foreach ($invoices as $invoice) {
 
+            foreach ($invoices as $invoice) {
                 // Query the related customer
                 $customer = $invoice->customer;
 
@@ -623,15 +627,14 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
         public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql  = "SELECT Invoices.*, Customers.*
-            FROM Invoices JOIN Customers WHERE " . $conditions;
+            $phql = "SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
                 [
                     "key"      => self::_createKey($conditions, $params),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ]
             );
 
@@ -669,10 +672,10 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             if ($initial >= 1 && $final < 10000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo1'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo1",
+                        ],
                     ]
                 );
             }
@@ -680,10 +683,10 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             if ($initial >= 10000 && $final <= 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo2'
-                        ]
+                        "id >= " . $initial . " AND id <= " . $final,
+                        "cache" => [
+                            "service" => "mongo2",
+                        ],
                     ]
                 );
             }
@@ -691,10 +694,10 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             if ($initial > 20000) {
                 return self::find(
                     [
-                        'id >= ' . $initial,
-                        'cache' => [
-                            'service' => 'mongo3'
-                        ]
+                        "id >= " . $initial,
+                        "cache" => [
+                            "service" => "mongo3",
+                        ],
                     ]
                 );
             }
@@ -707,15 +710,15 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     <?php
 
-    $robots = Robots::find('id < 1000');
-    $robots = Robots::find('id > 100 AND type = "A"');
-    $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
+    $robots = Robots::find("id < 1000");
+    $robots = Robots::find("id > 100 AND type = 'A'");
+    $robots = Robots::find("(id > 100 AND type = 'A') AND id < 2000");
 
     $robots = Robots::find(
         [
-            '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => [100, 2000],
-            'order' => 'type'
+            "(id > ?0 AND type = 'A') AND id < ?1",
+            "bind"  => [100, 2000],
+            "order" => "type",
         ]
     );
 
@@ -733,7 +736,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
+
             $query->setDI($this->getDI());
+
             return $query;
         }
     }
@@ -757,15 +762,14 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             $ir = $this->parse();
 
             // Check if the query has conditions
-            if (isset($ir['where'])) {
-
+            if (isset($ir["where"])) {
                 // The fields in the conditions can have any order
                 // We need to recursively check the conditions tree
                 // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
                 // Recursively visits the nodes
-                $visitor->visit($ir['where']);
+                $visitor->visit($ir["where"]);
 
                 $initial = $visitor->getInitial();
                 $final   = $visitor->getFinal();
@@ -801,43 +805,48 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
         public function visit($node)
         {
-            switch ($node['type']) {
+            switch ($node["type"]) {
+                case "binary-op":
+                    $left  = $this->visit($node["left"]);
+                    $right = $this->visit($node["right"]);
 
-                case 'binary-op':
-
-                    $left  = $this->visit($node['left']);
-                    $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
                     }
 
-                    if ($left=='id') {
-                        if ($node['op'] == '>') {
+                    if ($left === "id") {
+                        if ($node["op"] === ">") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '=') {
+
+                        if ($node["op"] === "=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '>=')    {
+
+                        if ($node["op"] === ">=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '<') {
+
+                        if ($node["op"] === "<") {
                             $this->_final = $right;
                         }
-                        if ($node['op'] == '<=')    {
+
+                        if ($node["op"] === "<=") {
                             $this->_final = $right;
                         }
                     }
+
                     break;
 
-                case 'qualified':
-                    if ($node['name'] == 'id') {
-                        return 'id';
+                case "qualified":
+                    if ($node["name"] === "id") {
+                        return "id";
                     }
+
                     break;
 
-                case 'literal':
-                    return $node['value'];
+                case "literal":
+                    return $node["value"];
 
                 default:
                     return false;
@@ -872,12 +881,15 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             }
 
             $builder = new CustomQueryBuilder($parameters);
+
             $builder->from(get_called_class());
 
-            if (isset($parameters['bind'])) {
-                return $builder->getQuery()->execute($parameters['bind']);
+            $query = $builder->getQuery();
+
+            if (isset($parameters["bind"])) {
+                return $query->execute($parameters["bind"]);
             } else {
-                return $builder->getQuery()->execute();
+                return $query->execute();
             }
         }
     }
@@ -892,8 +904,8 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     for ($i = 1; $i <= 10; $i++) {
+        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
 
-        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         // ...
@@ -908,8 +920,12 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $this->modelsManager->executeQuery($phql, [$i]);
+        $robots = $this->modelsManager->executeQuery(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }
@@ -920,12 +936,17 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     <?php
 
-    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $query->execute($phql, [$i]);
+        $robots = $query->execute(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }
