@@ -13,7 +13,7 @@ of your application.
 
 Caching Resultsets
 ------------------
-A well established technique to avoid the continuous access to the database is to cache resultsets that don't change
+A well established technique to avoid continuously accessing to the database is to cache resultsets that don't change
 frequently using a system with faster access (usually memory).
 
 When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
@@ -119,7 +119,7 @@ Caching could be also applied to resultsets generated using relationships:
 
 When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
 
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
+Note that not all resultsets should be cached. Results that change very frequently should not be cached since they
 are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
 do not change frequently could be cached, but that is a decision that the developer has to make based on the
 available caching mechanism and whether the performance impact to simply retrieve that data in the
@@ -127,7 +127,7 @@ first place is acceptable.
 
 Forcing Cache
 -------------
-Earlier we saw how :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a built-in integration with the caching component provided by the framework. To make a record/resultset
+Earlier we saw how :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` integrates with the caching component provided by the framework. To make a record/resultset
 cacheable we pass the key 'cache' in the array of parameters:
 
 .. code-block:: php
@@ -145,7 +145,7 @@ cacheable we pass the key 'cache' in the array of parameters:
     );
 
 This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
-we can override the find/findFirst method to force every query to be cached:
+we can override the :code:`find()/:code:`findFirst()` method to force every query to be cached:
 
 .. code-block:: php
 
@@ -199,11 +199,11 @@ we can override the find/findFirst method to force every query to be cached:
         }
     }
 
-Access the database is several times slower than calculate a cache key, you're free in implement the
-key generation strategy you find better for your needs. Note that a good key avoids collisions as much as possible,
-this means that different keys returns unrelated records to the find parameters.
+Accessing the database is several times slower than calculating a cache key. You're free to implement any
+key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible -
+meaning that different keys should return unrelated records.
 
-This gives you full control on how the caches must be implemented for each model, if this strategy is common to several models
+This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models
 you can create a base class for all of them:
 
 .. code-block:: php
@@ -243,7 +243,7 @@ Then use this class as base class for each 'Cacheable' model:
 
 Caching PHQL Queries
 --------------------
-All queries in the ORM, no matter how high level syntax we used to create them are handled internally using PHQL.
+Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL.
 This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
 .. code-block:: php
@@ -269,7 +269,7 @@ This language gives you much more freedom to create all kinds of queries. Of cou
 
 Reusable Related Records
 ------------------------
-Some models may have relationships to other models. This allows us to easily check the records that relate to instances in memory:
+Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
 .. code-block:: php
 
@@ -304,9 +304,9 @@ This also applies if we retrieve a set of invoices to show customers that corres
         echo $customer->name, "\n";
     }
 
-A customer may have one or more bills, this means that the customer may be unnecessarily more than once.
-To avoid this, we could mark the relationship as reusable, this way, we tell the ORM to automatically reuse
-the records instead of re-querying them again and again:
+A customer may have one or more bills so, in this example, the same customer record may be unnecessarily queried several times.
+To avoid this, we could mark the relationship as reusable; by doing so, we tell the ORM to automatically reuse
+the records from memory instead of re-querying them again and again:
 
 .. code-block:: php
 
@@ -329,11 +329,11 @@ the records instead of re-querying them again and again:
         }
     }
 
-This cache works in memory only, this means that cached data are released when the request is terminated.
+Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
 
 Caching Related Records
 -----------------------
-When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find/findFirst
+When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using :code:`find()`/:code:`findFirst()`
 in the target model according to the following table:
 
 +------------+-----------------------------------------------------------------+---------------------+
@@ -346,7 +346,7 @@ in the target model according to the following table:
 | Has-Many   | Returns a collection of model instances of the referenced model | :code:`find()`      |
 +------------+-----------------------------------------------------------------+---------------------+
 
-This means that when you get a related record you could intercept how these data are obtained by implementing the corresponding method:
+This means that when you get a related record you could intercept how the data is obtained by implementing the corresponding method:
 
 .. code-block:: php
 
@@ -361,7 +361,7 @@ This means that when you get a related record you could intercept how these data
     // Same as above
     $customer = $invoice->getCustomer(); // Invoices::findFirst("...");
 
-Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
+Accordingly, we could replace the :code:`findFirst()` method in the Invoices model and implement the cache we consider most appropriate:
 
 .. code-block:: php
 
@@ -379,7 +379,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
 Caching Related Records Recursively
 -----------------------------------
-In this scenario, we assume that everytime we query a result we also retrieve their associated records.
+In this scenario, we assume that every time we query a result we also retrieve their associated records.
 If we store the records found together with their related entities perhaps we could reduce a bit the overhead required
 to obtain all entities:
 
@@ -486,8 +486,8 @@ Note that this process can also be performed with PHQL following an alternative 
 
 Caching based on Conditions
 ---------------------------
-In this scenario, the cache is implemented conditionally according to current conditions received.
-According to the range where the primary key is located we choose a different cache backend:
+In this scenario, the cache is implemented differently depending on the conditions received.
+We might decide that the cache backend should be determined by the primary key:
 
 +---------------------+--------------------+
 | Type                | Cache Backend      |
@@ -499,7 +499,7 @@ According to the range where the primary key is located we choose a different ca
 | > 20000             | mongo3             |
 +---------------------+--------------------+
 
-The easiest way is adding a static method to the model that chooses the right cache to be used:
+The easiest way to achieve this is by adding a static method to the model that chooses the right cache to be used:
 
 .. code-block:: php
 
@@ -547,7 +547,7 @@ The easiest way is adding a static method to the model that chooses the right ca
     }
 
 This approach solves the problem, however, if we want to add other parameters such orders or conditions we would have to create
-a more complicated method. Additionally, this method does not work if the data is obtained using related records or a find/findFirst:
+a more complicated method. Additionally, this method does not work if the data is obtained using related records or a :code:`find()`/:code:`findFirst()`:
 
 .. code-block:: php
 
