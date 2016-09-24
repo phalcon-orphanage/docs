@@ -517,15 +517,15 @@ Do not forget to register the custom models manager in the DI:
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find/findFirst
 in the target model according to the following table:
 
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Type                | Description                                                                          | Implicit Method        |
-+=====================+===============================================================================================================+
-| Belongs-To          | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-One             | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-Many            | Returns a collection of model instances of the referenced model                      | find                   |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
++------------+-----------------------------------------------------------------+---------------------+
+| Type       | Description                                                     | Implicit Method     |
++============+=================================================================+=====================+
+| Belongs-To | Returns a model instance of the related record directly         | :code:`findFirst()` |
++------------+-----------------------------------------------------------------+---------------------+
+| Has-One    | Returns a model instance of the related record directly         | :code:`findFirst()` |
++------------+-----------------------------------------------------------------+---------------------+
+| Has-Many   | Returns a collection of model instances of the referenced model | :code:`find()`      |
++------------+-----------------------------------------------------------------+---------------------+
 
 This means that when you get a related record you could intercept how these data are obtained by implementing the corresponding method:
 
