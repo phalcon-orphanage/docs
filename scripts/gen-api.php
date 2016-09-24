@@ -312,6 +312,10 @@ $volt->setOptions(
     ]
 );
 
+$compiler = $volt->getCompiler();
+
+$compiler->addFunction("str_repeat", "str_repeat");
+
 $view->registerEngines(
     [
         ".volt" => $volt,
@@ -446,8 +450,7 @@ foreach ($classes as $className) {
     $nsClassName = str_replace("\\", "\\\\", $className);
 
     if ($reflector->isInterface() == true) {
-        $code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
-        $code .= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
+        $title = 'Interface **' . $nsClassName . '**';
     } else {
 
         $classPrefix = 'Class';
@@ -455,9 +458,10 @@ foreach ($classes as $className) {
             $classPrefix = ucfirst(strtolower($typeClass)) . ' class';
         }
 
-        $code = $classPrefix . ' **' . $nsClassName . '**' . PHP_EOL;
-        $code .= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
+        $title = $classPrefix . ' **' . $nsClassName . '**';
     }
+
+    $extendsString = "";
 
     if ($documentationData['extends']) {
         $extendsName = $documentationData['extends']->name;
@@ -473,16 +477,17 @@ foreach ($classes as $className) {
                     $prefix = 'abstract class';
                 }
 
-                $code
-                    .= '*extends* ' . $prefix . ' :doc:`' . $extendsName . ' <' . $extendsPath . '>`' . PHP_EOL
-                    . PHP_EOL;
+                $extendsString
+                    .= PHP_EOL . '*extends* ' . $prefix . ' :doc:`' . $extendsName . ' <' . $extendsPath . '>`' . PHP_EOL;
             } else {
-                $code .= '*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
+                $extendsString .= PHP_EOL . '*extends* ' . $extendsName . PHP_EOL;
             }
         } else {
-            $code .= '*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
+            $extendsString .= PHP_EOL . '*extends* ' . $extendsName . PHP_EOL;
         }
     }
+
+    $implementsString = "";
 
     //Generate the interfaces part
     if (count($documentationData['implements'])) {
@@ -500,32 +505,34 @@ foreach ($classes as $className) {
                 $implements[] = $interfaceName;
             }
         }
-        $code .= '*implements* ' . join(', ', $implements) . PHP_EOL . PHP_EOL;
+        $implementsString .= PHP_EOL . '*implements* ' . join(', ', $implements) . PHP_EOL;
     }
 
     $githubLink = 'https://github.com/phalcon/cphalcon/blob/master/' . str_replace("\\", "/", strtolower($className)) . '.zep';
 
-    $code .= '.. role:: raw-html(raw)' . PHP_EOL . '   :format: html' . PHP_EOL . PHP_EOL;
-
-    $code .= ':raw-html:`<a href="' . $githubLink . '" class="btn btn-default btn-sm">Source on GitHub</a>`' . PHP_EOL . PHP_EOL;
+    $classDescription = "";
 
     if (isset($classDocs[$realClassName])) {
         $ret = $api->getPhpDoc($classDocs[$realClassName], $className, $realClassName);
-        $code .= $ret['description'] . PHP_EOL . PHP_EOL;
+        $classDescription .= $ret['description'] . PHP_EOL . PHP_EOL;
     }
 
+    $constantsString = "";
+
     if (count($documentationData['constants'])) {
-        $code .= 'Constants' . PHP_EOL;
-        $code .= '---------' . PHP_EOL . PHP_EOL;
+        $constantsString .= 'Constants' . PHP_EOL;
+        $constantsString .= '---------' . PHP_EOL . PHP_EOL;
         foreach ($documentationData['constants'] as $name => $constant) {
-            $code .= '*' . gettype($constant) . '* **' . $name . '**' . PHP_EOL . PHP_EOL;
+            $constantsString .= '*' . gettype($constant) . '* **' . $name . '**' . PHP_EOL . PHP_EOL;
         }
     }
 
+    $methodsString = "";
+
     if (count($documentationData['methods'])) {
 
-        $code .= 'Methods' . PHP_EOL;
-        $code .= '-------' . PHP_EOL . PHP_EOL;
+        $methodsString .= 'Methods' . PHP_EOL;
+        $methodsString .= '-------' . PHP_EOL . PHP_EOL;
         foreach ($documentationData['methods'] as $method) {
 
             /** @var $method ReflectionMethod */
@@ -543,7 +550,7 @@ foreach ($classes as $className) {
                 $ret = array();
             }
 
-            $code .= implode(' ', Reflection::getModifierNames($method->getModifiers())) . ' ';
+            $methodsString .= implode(' ', Reflection::getModifierNames($method->getModifiers())) . ' ';
 
             if (isset($ret['return'])) {
                 if (preg_match('/^(\\\\?Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
@@ -552,22 +559,22 @@ foreach ($classes as $className) {
                         $extendsPath = str_replace("\\", "_", $extendsPath);
                         $extendsName = preg_replace('/^\\\\/', '', $matches[1]);
                         $extendsName = str_replace("\\", "\\\\", $extendsName);
-                        $code .= str_replace(
+                        $methodsString .= str_replace(
                             $matches[1],
                             ':doc:`' . $extendsName . ' <' . $extendsPath . '>` ',
                             $ret['return']
                         );
                     } else {
                         $extendsName = str_replace("\\", "\\\\", $ret['return']);
-                        $code .= '*' . $extendsName . '* ';
+                        $methodsString .= '*' . $extendsName . '* ';
                     }
 
                 } else {
-                    $code .= '*' . $ret['return'] . '* ';
+                    $methodsString .= '*' . $ret['return'] . '* ';
                 }
             }
 
-            $code .= ' **' . $method->name . '** (';
+            $methodsString .= ' **' . $method->name . '** (';
 
             $cp = array();
             foreach ($method->getParameters() as $parameter) {
@@ -608,22 +615,22 @@ foreach ($classes as $className) {
                     }
                 }
             }
-            $code .= join(', ', $cp) . ')';
+            $methodsString .= join(', ', $cp) . ')';
 
             if ($simpleClassName != $docClassName) {
-                $code .= ' inherited from ' . str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
+                $methodsString .= ' inherited from ' . str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
             }
 
-            $code .= PHP_EOL . PHP_EOL;
+            $methodsString .= PHP_EOL . PHP_EOL;
 
             if (isset($ret['description'])) {
                 foreach (explode("\n", $ret['description']) as $dline) {
-                    $code .= "" . $dline . "\n";
+                    $methodsString .= "" . $dline . "\n";
                 }
             } else {
-                $code .= "...\n";
+                $methodsString .= "...\n";
             }
-            $code .= PHP_EOL . PHP_EOL;
+            $methodsString .= PHP_EOL . PHP_EOL;
 
         }
 
@@ -631,9 +638,23 @@ foreach ($classes as $className) {
 
     foreach ($languages as $lang) {
         @mkdir($lang . '/api/');
-        file_put_contents($lang . '/api/' . $simpleClassName . '.rst', $code);
-    }
 
+        file_put_contents(
+            $lang . '/api/' . $simpleClassName . '.rst',
+            $view->render(
+                "class",
+                [
+                    "title"            => $title,
+                    "extendsString"    => $extendsString,
+                    "implementsString" => $implementsString,
+                    "githubLink"       => $githubLink,
+                    "classDescription" => $classDescription,
+                    "constantsString"  => $constantsString,
+                    "methodsString"    => $methodsString,
+                ]
+            )
+        );
+    }
 }
 
 foreach ($languages as $lang) {
