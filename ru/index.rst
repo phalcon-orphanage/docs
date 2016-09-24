@@ -135,6 +135,11 @@ Legal
 
    reference/license
 
+Previous Versions
+-----------------
+
+* `2.0.0 <https://docs.phalconphp.com/ru/2.0.0/>`
+
 Документация в других форматах
 ------------------------------
 

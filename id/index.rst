@@ -130,6 +130,11 @@ Legal
 
    reference/license
 
+Previous Versions
+-----------------
+
+* `2.0.0 <https://docs.phalconphp.com/id/2.0.0/>`
+
 Format lain
 -----------
 
