@@ -125,7 +125,7 @@ Validator for constructor
 
 
 
-private  **getOptionsDefault** ()
+protected  **getOptionsDefault** ()
 
 Gets default options
 

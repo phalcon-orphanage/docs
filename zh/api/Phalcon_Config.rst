@@ -114,7 +114,7 @@ Merges a configuration into the current one
     <?php
 
      $appConfig = new \Phalcon\Config(array('database' => array('host' => 'localhost')));
-     $globalConfig->merge($appConfig);
+     $globalConfig->merge($config2);
 
 
 

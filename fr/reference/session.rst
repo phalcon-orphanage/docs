@@ -5,7 +5,7 @@
 Stocker des données dans une session
 ====================================
 
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` fourni un ensemble de fonctions liés à la gestion des sessions.
+Le composant de session fourni un ensemble de fonctions liés à la gestion des sessions.
 
 Pourquoi utiliser ce composant plutôt que les sessions par défaut ?
 
