@@ -297,12 +297,33 @@ class ApiGenerator
 
 }
 
-$index
-    = 'API Indice
-----------
 
-.. toctree::
-   :maxdepth: 1' . PHP_EOL . PHP_EOL;
+
+$di = new \Phalcon\DI();
+
+$view = new \Phalcon\Mvc\View\Simple();
+
+$volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+$volt->setOptions(
+    [
+        "compiledPath"      => "scripts/compiled-views/",
+        "compiledExtension" => ".compiled",
+    ]
+);
+
+$view->registerEngines(
+    [
+        ".volt" => $volt,
+    ]
+);
+
+$view->setDI($di);
+
+// A trailing directory separator is required
+$view->setViewsDir("scripts/views/");
+
+
 
 $api = new ApiGenerator(CPHALCON_DIR);
 
@@ -616,5 +637,14 @@ foreach ($classes as $className) {
 }
 
 foreach ($languages as $lang) {
-    file_put_contents($lang . '/api/index.rst', $index . join('', $indexClasses) . join('', $indexInterfaces));
+    file_put_contents(
+        $lang . '/api/index.rst',
+        $view->render(
+            "index",
+            [
+                "classes"    => $indexClasses,
+                "interfaces" => $indexInterfaces,
+            ]
+        )
+    );
 }
