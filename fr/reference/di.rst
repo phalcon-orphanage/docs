@@ -98,12 +98,62 @@ Certaines limites peuvent être contournées en passant des variables supplémen
 
     <?php
 
+    use Phalcon\Config;
     use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
+    $config = new Config(
+        [
+            "host"     => "127.0.0.1",
+            "username" => "user",
+            "password" => "pass",
+            "dbname"   => "my_database",
+        ]
+    );
 
     // Utilisation de la variable $config dans la portée courante.
     $di->set(
         "db",
         function () use ($config) {
+            return new PdoMysql(
+                [
+                    "host"     => $config->host,
+                    "username" => $config->username,
+                    "password" => $config->password,
+                    "dbname"   => $config->name,
+                ]
+            );
+        }
+    );
+
+You can also access other DI services using the :code:`get()` method:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Config;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
+    $di->set(
+        "config",
+        function () {
+            return new Config(
+                [
+                    "host"     => "127.0.0.1",
+                    "username" => "user",
+                    "password" => "pass",
+                    "dbname"   => "my_database",
+                ]
+            );
+        }
+    );
+
+    // Using the 'config' service from the DI
+    $di->set(
+        "db",
+        function () {
+            $config = $this->get("config");
+
             return new PdoMysql(
                 [
                     "host"     => $config->host,
