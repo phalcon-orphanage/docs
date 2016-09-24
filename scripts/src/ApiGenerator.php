@@ -1,14 +1,26 @@
 <?php
 
+// use RecursiveDirectoryIterator;
+// use FilesystemIterator;
+// use RecursiveIteratorIterator;
+// use Exception;
+
 /**
  * Class ApiGenerator
  */
 class ApiGenerator
 {
+    /**
+     * @var array
+     */
+    protected $docs = [];
 
-    protected $docs = array();
+    /**
+     * @var array
+     */
+    protected $classDocs = [];
 
-    protected $classDocs = array();
+
 
     /**
      * @param $directory
@@ -18,23 +30,33 @@ class ApiGenerator
         $this->scanSources($directory);
     }
 
+
+
     /**
      * @param $directory
      */
     protected function scanSources($directory)
     {
-        $recursiveDirectoryIterator = new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS);
+        $recursiveDirectoryIterator = new RecursiveDirectoryIterator(
+            $directory,
+            FilesystemIterator::SKIP_DOTS
+        );
 
         /** @var $iterator RecursiveDirectoryIterator[] */
         $iterator = new RecursiveIteratorIterator($recursiveDirectoryIterator);
 
         foreach ($iterator as $item) {
-
-            if ($item->getExtension() == 'c') {
-                if (strpos($item->getPathname(), 'kernel') === false) {
-                    $this->parseDocs($item->getPathname());
-                }
+            if ($item->getExtension() !== "c") {
+                continue;
             }
+
+            if (strpos($item->getPathname(), "kernel") !== false) {
+                continue;
+            }
+
+            $this->parseDocs(
+                $item->getPathname()
+            );
         }
     }
 
@@ -48,69 +70,71 @@ class ApiGenerator
         $firstDoc       = true;
         $openComment    = false;
         $nextLineMethod = false;
-        $comment        = '';
-        foreach (file($file) as $line) {
-            if (trim($line) == '/**') {
+        $comment        = "";
+
+        $lines = file($file);
+
+        foreach ($lines as $line) {
+            if (trim($line) == "/**") {
                 $openComment = true;
                 $comment .= $line;
             }
+
             if ($openComment === true) {
                 $comment .= $line;
             } else {
                 if ($nextLineMethod === true) {
-                    if (preg_match('/^PHP_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
-                        $this->docs[$matches[1]][$matches[2]] = $comment;
-                        $className                            = $matches[1];
+                    if (preg_match("/^PHP_(DOC_)?METHOD\(([a-zA-Z0-9\_]+), (.*)\)/", $line, $matches)) {
+                        $this->docs[$matches[2]][$matches[3]] = $comment;
+                        $className                            = $matches[2];
                     } else {
-                        if (preg_match('/^PHALCON_DOC_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
-                            $this->docs[$matches[1]][$matches[2]] = $comment;
-                            $className                            = $matches[1];
-                        } else {
-                            if ($firstDoc === true) {
-                                $classDoc = $comment;
-                                $firstDoc = false;
-                                $comment  = '';
-                            }
+                        if ($firstDoc === true) {
+                            $classDoc = $comment;
+                            $firstDoc = false;
+                            $comment  = "";
                         }
                     }
+
                     $nextLineMethod = false;
                 } else {
-                    $comment = '';
+                    $comment = "";
                 }
             }
+
             if ($openComment === true) {
-                if (trim($line) == '*/') {
+                if (trim($line) == "*/") {
                     $comment .= $line;
+
                     $openComment    = false;
                     $nextLineMethod = true;
                 }
             }
-            if (preg_match('/^PHALCON_INIT_CLASS\(([a-zA-Z0-9\_]+)\)/', $line, $matches)) {
+
+            if (preg_match("/^PHALCON_INIT_CLASS\(([a-zA-Z0-9\_]+)\)/", $line, $matches)) {
                 $className = $matches[1];
             }
         }
 
         if (isset($classDoc)) {
-
             if (!isset($className)) {
+                $fileName = str_replace(CPHALCON_DIR, "", $file);
+                $fileName = str_replace(".c", "", $fileName);
 
-                $fileName = str_replace(CPHALCON_DIR, '', $file);
-                $fileName = str_replace('.c', '', $fileName);
+                $parts = [];
 
-                $parts = array();
                 foreach (explode(DIRECTORY_SEPARATOR, $fileName) as $part) {
                     $parts[] = ucfirst($part);
                 }
 
-                $className = 'Phalcon\\' . join('\\', $parts);
+                $className = "Phalcon\\" . join("\\", $parts);
             } else {
-                $className = str_replace('_', '\\', $className);
+                $className = str_replace("_", "\\", $className);
             }
 
             //echo $className, PHP_EOL;
 
             if (!isset($this->classDocs[$className])) {
-                if (class_exists($className) or interface_exists($className)) {
+                if (class_exists($className) || interface_exists($className)) {
                     $this->classDocs[$className] = $classDoc;
                 }
             }
@@ -142,21 +166,22 @@ class ApiGenerator
      */
     public function getPhpDoc($phpdoc, $className, $realClassName = null)
     {
-
-        $ret         = array();
-        $lines       = array();
-        $description = '';
+        $ret         = [];
+        $lines       = [];
+        $description = "";
 
         $phpdoc = trim($phpdoc);
         $phpdoc = str_replace("\r", "", $phpdoc);
 
         foreach (explode("\n", $phpdoc) as $line) {
-            $line  = preg_replace('#^/\*\*#', '', $line);
-            $line  = str_replace('*/', '', $line);
-            $line  = preg_replace('#^[ \t]+\*#', '', $line);
-            $line  = str_replace('*\/', '*/', $line);
+            $line = preg_replace("#^/\*\*#", "", $line);
+            $line = str_replace("*/", "", $line);
+            $line = preg_replace("#^[ \t]+\*#", "", $line);
+            $line = str_replace("*\/", "*/", $line);
+
             $tline = trim($line);
-            if ($className != $tline) {
+
+            if ($className !== $tline) {
                 $lines[] = $line;
             }
         }
@@ -165,27 +190,35 @@ class ApiGenerator
 
         $numberBlock = -1;
         $insideCode  = false;
-        $codeBlocks  = array();
+        $codeBlocks  = [];
+
         foreach ($lines as $line) {
-            if (strpos($line, '<code') !== false) {
+            if (strpos($line, "<code") !== false) {
                 $numberBlock++;
                 $insideCode = true;
             }
-            if (strpos($line, '</code') !== false) {
+
+            if (strpos($line, "</code") !== false) {
                 $insideCode = false;
             }
+
             if ($insideCode == false) {
-                $line = str_replace('</code>', '', $line);
+                $line = str_replace("</code>", "", $line);
+
                 if (trim($line) != $rc) {
-                    if (preg_match('/@([a-z0-9]+)/', $line, $matches)) {
-                        $content = trim(str_replace($matches[0], '', $line));
-                        if ($matches[1] == 'param') {
-                            $parts = preg_split('/[ \t]+/', $content);
+                    if (preg_match("/@([a-z0-9]+)/", $line, $matches)) {
+                        $content = trim(str_replace($matches[0], "", $line));
+
+                        if ($matches[1] == "param") {
+                            $parts = preg_split("/[ \t]+/", $content);
+
                             if (count($parts) == 2) {
                                 $name = "$" . str_replace("$", "", $parts[1]);
-                                $ret['parameters'][$name] = trim($parts[0]);
+                                $ret["parameters"][$name] = trim($parts[0]);
                             } else {
-                                //throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
+                                // throw new Exception(
+                                //     "Failed proccessing parameters in " . $className . "::" . $methodName
+                                // );
                             }
                         } else {
                             $ret[$matches[1]] = $content;
@@ -196,9 +229,11 @@ class ApiGenerator
                 }
             } else {
                 if (!isset($codeBlocks[$numberBlock])) {
-                    $line                     = str_replace('<code>', '', $line);
+                    $line = str_replace("<code>", "", $line);
+
                     $codeBlocks[$numberBlock] = $line . "\n";
-                    $description .= '%%' . $numberBlock . '%%';
+
+                    $description .= "%%" . $numberBlock . "%%";
                 } else {
                     $codeBlocks[$numberBlock] .= $line . "\n";
                 }
@@ -206,57 +241,68 @@ class ApiGenerator
         }
 
         foreach ($codeBlocks as $n => $cc) {
-            $c         = '';
+            $c         = "";
             $firstLine = true;
             $p         = explode("\n", $cc);
+
             foreach ($p as $pp) {
                 if ($firstLine) {
-                    if (substr(ltrim($pp), 0, 1) != '[') {
-                        if (!preg_match('#^<?php#', ltrim($pp))) {
+                    if (substr(ltrim($pp), 0, 1) != "[") {
+                        if (!preg_match("#^<?php#", ltrim($pp))) {
                             if (count($p) == 1) {
-                                $c .= '    <?php ';
+                                $c .= "    <?php ";
                             } else {
-                                $c .= '    <?php' . PHP_EOL . PHP_EOL;
+                                $c .= "    <?php" . PHP_EOL . PHP_EOL;
                             }
                         }
                     }
+
                     $firstLine = false;
                 }
-                $pp = preg_replace('#^\t#', '', $pp);
+
+                $pp = preg_replace("#^\t#", "", $pp);
+
                 if (count($p) != 1) {
-                    $c .= '    ' . $pp . PHP_EOL;
+                    $c .= "    " . $pp . PHP_EOL;
                 } else {
                     $c .= $pp . PHP_EOL;
                 }
             }
+
             $c .= PHP_EOL;
+
             $codeBlocks[$n] = rtrim($c);
         }
 
-        $description = str_replace('<p>', '', $description);
-        $description = str_replace('</p>', PHP_EOL . PHP_EOL, $description);
+        $description = str_replace("<p>", "", $description);
+        $description = str_replace("</p>", PHP_EOL . PHP_EOL, $description);
 
         $c = $description;
         $c = str_replace("\\", "\\\\", $c);
         $c = trim(str_replace("\t", "", $c));
         $c = trim(str_replace("\n", " ", $c));
+
         foreach ($codeBlocks as $n => $cc) {
-            if (preg_match('#\[[a-z]+\]#', $cc)) {
-                $type = 'ini';
+            if (preg_match("#\[[a-z]+\]#", $cc)) {
+                $type = "ini";
             } else {
-                $type = 'php';
+                $type = "php";
             }
+
             $c = str_replace(
-                '%%' . $n . '%%',
-                PHP_EOL . PHP_EOL . '.. code-block:: ' . $type . PHP_EOL . PHP_EOL . $cc . PHP_EOL . PHP_EOL,
+                "%%" . $n . "%%",
+                PHP_EOL . PHP_EOL . ".. code-block:: " . $type . PHP_EOL . PHP_EOL . $cc . PHP_EOL . PHP_EOL,
                 $c
             );
         }
 
-        $final     = '';
+        $final     = "";
         $blankLine = false;
-        foreach (explode("\n", $c) as $line) {
-            if (trim($line) == '') {
+
+        $lines = explode("\n", $c);
+
+        foreach ($lines as $line) {
+            if (trim($line) === "") {
                 if ($blankLine == false) {
                     $final .= $line . "\n";
                     $blankLine = true;
@@ -267,8 +313,8 @@ class ApiGenerator
             }
         }
 
-        $ret['description'] = $final;
+        $ret["description"] = $final;
+
         return $ret;
     }
-
 }
