@@ -527,37 +527,21 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         public static function queryCache($initial, $final)
         {
             if ($initial >= 1 && $final < 10000) {
-                return self::find(
-                    [
-                        "id >= " . $initial . " AND id <= " . $final,
-                        "cache" => [
-                            "service" => "mongo1",
-                        ],
-                    ]
-                );
+                $service = "mongo1";
+            } elseif ($initial >= 10000 && $final <= 20000) {
+                $service = "mongo2";
+            } elseif ($initial > 20000) {
+                $service = "mongo3";
             }
 
-            if ($initial >= 10000 && $final <= 20000) {
-                return self::find(
-                    [
-                        "id >= " . $initial . " AND id <= " . $final,
-                        "cache" => [
-                            "service" => "mongo2",
-                        ],
-                    ]
-                );
-            }
-
-            if ($initial > 20000) {
-                return self::find(
-                    [
-                        "id >= " . $initial,
-                        "cache" => [
-                            "service" => "mongo3",
-                        ],
-                    ]
-                );
-            }
+            return self::find(
+                [
+                    "id >= " . $initial . " AND id <= " . $final,
+                    "cache" => [
+                        "service" => $service,
+                    ],
+                ]
+            );
         }
     }
 
