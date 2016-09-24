@@ -121,6 +121,20 @@ Phalcon的验证组件中内置了一些验证器：
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------+
 | Class                                                                                                  | 解释                                      |
 +========================================================================================================+===========================================+
+| :doc:`Phalcon\\Validation\\Validator\\Alnum <../api/Phalcon_Validation_Validator_Alnum>`               | Validates that a field's value is only alphanumeric character(s). |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Alpha <../api/Phalcon_Validation_Validator_Alpha>`               | Validates that a field's value is only alphabetic character(s).   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Date <../api/Phalcon_Validation_Validator_Date>`                 | Validates that a field's value is a valid date.                   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Digit <../api/Phalcon_Validation_Validator_Digit>`               | Validates that a field's value is only numeric character(s).      |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\File <../api/Phalcon_Validation_Validator_File>`                 | Validates that a field's value is a correct file.                 |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Uniqueness <../api/Phalcon_Validation_Validator_Uniqueness>`     | Validates that a field's value is unique in the related model.    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Numericality <../api/Phalcon_Validation_Validator_Numericality>` | Validates that a field's value is a valid numeric value.          |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\PresenceOf <../api/Phalcon_Validation_Validator_PresenceOf>`     | 检测字段的值是否为非空                    |
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\Identical <../api/Phalcon_Validation_Validator_Identical>`       | 检测字段的值是否和指定的相同              |
