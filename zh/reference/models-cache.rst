@@ -193,46 +193,6 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 访问数据要远比计算key值慢的多，我们在这里定义自己需要的key生成方式。注意好的键可以避免冲突，这样就可以依据不同的key值
 取得不同的缓存结果。
 
-上面的例子中我们把缓存放在了内存中，这做为第一级的缓存。当然我们也可以在第一层缓存的基本上实现第二层的缓存比如使用
-APC/XCache或是使用NoSQL数据库（如MongoDB等）：
-
-.. code-block:: php
-
-    <?php
-
-    public static function find($parameters = null)
-    {
-        // Create an unique key based on the parameters
-        $key = self::_createKey($parameters);
-
-        if (!isset(self::$_cache[$key])) {
-            // We're using APC as second cache
-            if (apc_exists($key)) {
-
-                $data = apc_fetch($key);
-
-                // Store the result in the memory cache
-                self::$_cache[$key] = $data;
-
-                return $data;
-            }
-
-            // There are no memory or apc cache
-            $data = parent::find($parameters);
-
-            // Store the result in the memory cache
-            self::$_cache[$key] = $data;
-
-            // Store the result in APC
-            apc_store($key, $data);
-
-            return $data;
-        }
-
-        // Return the result in the cache
-        return self::$_cache[$key];
-    }
-
 这样我们可以对每个模型的缓存进行完全的控制，如果其他的模型也需要共用此缓存，可以建立一个模型缓存基类：
 
 .. code-block:: php
@@ -354,23 +314,6 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         ]
     );
 
-如果不想使用隐式的缓存，尽管使用你想用的缓存方式：
-
-.. code-block:: php
-
-    <?php
-
-    $phql = "SELECT * FROM Cars WHERE name = :name:";
-
-    $cars = $this->modelsManager->executeQuery(
-        $phql,
-        [
-            "name" => "Audi",
-        ]
-    );
-
-    apc_store("my-cars", $cars);
-
 可重用的相关记录（Reusable Related Records）
 --------------------------------------------
 一些模型可能与其他模型之间有关联关系。下面的例子可以让我们非常容易的在内存中检索相关联的数据：
@@ -432,67 +375,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         }
     }
 
-此Cache存在于内存中，这意味着当请求结束时缓存数据即被释放。我们也可以通过重写模型管理器的方式实现更加复杂的缓存：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Manager as ModelManager;
-
-    class CustomModelsManager extends ModelManager
-    {
-        /**
-         * Returns a reusable object from the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @return object
-         */
-        public function getReusableRecords($modelName, $key)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName === "Products") {
-                return apc_fetch($key);
-            }
-
-            // For the rest, use the memory cache
-            return parent::getReusableRecords($modelName, $key);
-        }
-
-        /**
-         * Stores a reusable record in the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @param mixed $records
-         */
-        public function setReusableRecords($modelName, $key, $records)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName === "Products") {
-                apc_store($key, $records);
-
-                return;
-            }
-
-            // For the rest, use the memory cache
-            parent::setReusableRecords($modelName, $key, $records);
-        }
-    }
-
-别忘记注册模型管理器到DI中：
-
-.. code-block:: php
-
-    <?php
-
-    $di->setShared(
-        "modelsManager",
-        function () {
-            return new CustomModelsManager();
-        }
-    );
+此Cache存在于内存中，这意味着当请求结束时缓存数据即被释放。
 
 缓存相关记录（Caching Related Records）
 ---------------------------------------

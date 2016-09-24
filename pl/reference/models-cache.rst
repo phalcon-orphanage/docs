@@ -205,46 +205,6 @@ Access the database is several times slower than calculate a cache key, you're f
 key generation strategy you find better for your needs. Note that a good key avoids collisions as much as possible,
 this means that different keys returns unrelated records to the find parameters.
 
-In the above example, we used a cache in memory, it is useful as a first level cache. Once we have the memory cache,
-we can implement a second level cache layer like APC/XCache or a NoSQL database:
-
-.. code-block:: php
-
-    <?php
-
-    public static function find($parameters = null)
-    {
-        // Create an unique key based on the parameters
-        $key = self::_createKey($parameters);
-
-        if (!isset(self::$_cache[$key])) {
-            // We're using APC as second cache
-            if (apc_exists($key)) {
-
-                $data = apc_fetch($key);
-
-                // Store the result in the memory cache
-                self::$_cache[$key] = $data;
-
-                return $data;
-            }
-
-            // There are no memory or apc cache
-            $data = parent::find($parameters);
-
-            // Store the result in the memory cache
-            self::$_cache[$key] = $data;
-
-            // Store the result in APC
-            apc_store($key, $data);
-
-            return $data;
-        }
-
-        // Return the result in the cache
-        return self::$_cache[$key];
-    }
-
 This gives you full control on how the caches must be implemented for each model, if this strategy is common to several models
 you can create a base class for all of them:
 
@@ -370,23 +330,6 @@ This language gives you much more freedom to create all kinds of queries. Of cou
         ]
     );
 
-If you don't want to use the implicit cache just save the resultset into your favorite cache backend:
-
-.. code-block:: php
-
-    <?php
-
-    $phql = "SELECT * FROM Cars WHERE name = :name:";
-
-    $cars = $this->modelsManager->executeQuery(
-        $phql,
-        [
-            "name" => "Audi",
-        ]
-    );
-
-    apc_store("my-cars", $cars);
-
 Reusable Related Records
 ------------------------
 Some models may have relationships to other models. This allows us to easily check the records that relate to instances in memory:
@@ -449,68 +392,7 @@ the records instead of re-querying them again and again:
         }
     }
 
-This cache works in memory only, this means that cached data are released when the request is terminated. You can
-add a more sophisticated cache for this scenario overriding the models manager:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Manager as ModelManager;
-
-    class CustomModelsManager extends ModelManager
-    {
-        /**
-         * Returns a reusable object from the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @return object
-         */
-        public function getReusableRecords($modelName, $key)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName === "Products") {
-                return apc_fetch($key);
-            }
-
-            // For the rest, use the memory cache
-            return parent::getReusableRecords($modelName, $key);
-        }
-
-        /**
-         * Stores a reusable record in the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @param mixed $records
-         */
-        public function setReusableRecords($modelName, $key, $records)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName === "Products") {
-                apc_store($key, $records);
-
-                return;
-            }
-
-            // For the rest, use the memory cache
-            parent::setReusableRecords($modelName, $key, $records);
-        }
-    }
-
-Do not forget to register the custom models manager in the DI:
-
-.. code-block:: php
-
-    <?php
-
-    $di->setShared(
-        "modelsManager",
-        function () {
-            return new CustomModelsManager();
-        }
-    );
+This cache works in memory only, this means that cached data are released when the request is terminated.
 
 Caching Related Records
 -----------------------
