@@ -36,6 +36,24 @@ Volt был написан под вдохновлением от Jinja_, кот
     <?php
 
     use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
+
+    // Register Volt as a service
+    $di->set(
+        "voltService",
+        function ($view, $di) {
+            $volt = new Volt($view, $di);
+
+            $volt->setOptions(
+                [
+                    "compiledPath"      => "../app/compiled-templates/",
+                    "compiledExtension" => ".compiled",
+                ]
+            );
+
+            return $volt;
+        }
+    );
 
     // Registering Volt as template engine
     $di->set(
@@ -47,7 +65,7 @@ Volt был написан под вдохновлением от Jinja_, кот
 
             $view->registerEngines(
                 [
-                    ".volt" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+                    ".volt" => "voltService",
                 ]
             );
 
@@ -63,7 +81,105 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     $view->registerEngines(
         [
-            ".phtml" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+            ".phtml" => "voltService",
+        ]
+    );
+
+You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
+
+.. code-block:: php
+
+    <?php
+
+    $view->registerEngines(
+        [
+            ".volt" => "Phalcon\\Mvc\\View\\Engine\\Volt",
+        ]
+    );
+
+Если вы не хотите использовать Volt в качестве сервиса, вы можете передать при регистрации шаблонизатора анонимную функцию, вместо имени сервиса:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
+
+    // Регистрация Volt в качестве шаблонизатора с анонимной функцией
+    $di->set(
+        "view",
+        function () {
+            $view = new \Phalcon\Mvc\View();
+
+            $view->setViewsDir("../app/views/");
+
+            $view->registerEngines(
+                [
+                    ".volt" => function ($view, $di) {
+                        $volt = new Volt($view, $di);
+
+                        // тут установка каких-то настроек
+
+                        return $volt;
+                    }
+                ]
+            );
+
+            return $view;
+        }
+    );
+
+В Volt могут быть следующие опции:
+
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| Опция                     | Описание                                                                                                               | По умолчанию |
++===========================+========================================================================================================================+==============+
+| :code:`compiledPath`      | Путь для записи скомпилированных шаблонов                                                                              | ./           |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`compiledExtension` | Дополнительное расширение, добавляемое к скомпилированным PHP-файлам                                                   | .php         |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`compiledSeparator` | Volt заменяет разделители папок / и \\ этим разделителем для создания одного файла в папке скомпилированных PHP файлов | %%           |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`stat`              | Если Phalcon должен проверять, существуют ли различия между файлом шаблона и его скомпилированным результатом          | true         |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`compileAlways`     | Указывает Volt, должны ли шаблоны собираться на каждый запрос, или только тогда, когда они изменяются                  | false        |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`prefix`            | Позволяет добавлять префикс к шаблонам в папке скомпилированных PHP файлов                                             | null         |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+| :code:`autoescape`        | Enables globally autoescape of HTML                                                                                    | false        |
++---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+
+The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
+an anonymous function can be used to generate it, this function receives the relative path to the template in the
+views directory. The following examples show how to change the compilation path dynamically:
+
+.. code-block:: php
+
+    <?php
+
+    // Just append the .php extension to the template path
+    // leaving the compiled templates in the same directory
+    $volt->setOptions(
+        [
+            "compiledPath" => function ($templatePath) {
+                return $templatePath . ".php";
+            }
+        ]
+    );
+
+    // Recursively create the same structure in another directory
+    $volt->setOptions(
+        [
+            "compiledPath" => function ($templatePath) {
+                $dirName = dirname($templatePath);
+
+                if (!is_dir("cache/" . $dirName)) {
+                    mkdir("cache/" . $dirName);
+                }
+
+                return "cache/" . $dirName . "/". $templatePath . ".php";
+            }
         ]
     );
 
@@ -1142,138 +1258,6 @@ Keep the following points in mind when choosing to use the "partial" function or
             No Autoescaped: {{ robot.name }}
         {% endautoescape %}
     {% endautoescape %}
-
-Настройка шаблонизатора Volt
-----------------------------
-Volt можно настроить так, чтобы изменить его поведение по умолчанию. В следующем примере объясняется, как это можно сделать:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\View\Engine\Volt;
-
-    // Register Volt as a service
-    $di->set(
-        "voltService",
-        function ($view, $di) {
-            $volt = new Volt($view, $di);
-
-            $volt->setOptions(
-                [
-                    "compiledPath"      => "../app/compiled-templates/",
-                    "compiledExtension" => ".compiled",
-                ]
-            );
-
-            return $volt;
-        }
-    );
-
-    // Register Volt as template engine
-    $di->set(
-        "view",
-        function () {
-            $view = new View();
-
-            $view->setViewsDir("../app/views/");
-
-            $view->registerEngines(
-                [
-                    ".volt" => "voltService",
-                ]
-            );
-
-            return $view;
-        }
-    );
-
-Если вы не хотите использовать Volt в качестве сервиса, вы можете передать при регистрации шаблонизатора анонимную функцию, вместо имени сервиса:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\View\Engine\Volt;
-
-    // Регистрация Volt в качестве шаблонизатора с анонимной функцией
-    $di->set(
-        "view",
-        function () {
-            $view = new \Phalcon\Mvc\View();
-
-            $view->setViewsDir("../app/views/");
-
-            $view->registerEngines(
-                [
-                    ".volt" => function ($view, $di) {
-                        $volt = new Volt($view, $di);
-
-                        // тут установка каких-то настроек
-
-                        return $volt;
-                    }
-                ]
-            );
-
-            return $view;
-        }
-    );
-
-В Volt могут быть следующие опции:
-
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| Опция                     | Описание                                                                                                               | По умолчанию |
-+===========================+========================================================================================================================+==============+
-| :code:`compiledPath`      | Путь для записи скомпилированных шаблонов                                                                              | ./           |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`compiledExtension` | Дополнительное расширение, добавляемое к скомпилированным PHP-файлам                                                   | .php         |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`compiledSeparator` | Volt заменяет разделители папок / и \\ этим разделителем для создания одного файла в папке скомпилированных PHP файлов | %%           |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`stat`              | Если Phalcon должен проверять, существуют ли различия между файлом шаблона и его скомпилированным результатом          | true         |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`compileAlways`     | Указывает Volt, должны ли шаблоны собираться на каждый запрос, или только тогда, когда они изменяются                  | false        |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`prefix`            | Позволяет добавлять префикс к шаблонам в папке скомпилированных PHP файлов                                             | null         |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-| :code:`autoescape`        | Enables globally autoescape of HTML                                                                                    | false        |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-
-The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
-an anonymous function can be used to generate it, this function receives the relative path to the template in the
-views directory. The following examples show how to change the compilation path dynamically:
-
-.. code-block:: php
-
-    <?php
-
-    // Just append the .php extension to the template path
-    // leaving the compiled templates in the same directory
-    $volt->setOptions(
-        [
-            "compiledPath" => function ($templatePath) {
-                return $templatePath . ".php";
-            }
-        ]
-    );
-
-    // Recursively create the same structure in another directory
-    $volt->setOptions(
-        [
-            "compiledPath" => function ($templatePath) {
-                $dirName = dirname($templatePath);
-
-                if (!is_dir("cache/" . $dirName)) {
-                    mkdir("cache/" . $dirName);
-                }
-
-                return "cache/" . $dirName . "/". $templatePath . ".php";
-            }
-        ]
-    );
 
 Расширение Volt
 ---------------
