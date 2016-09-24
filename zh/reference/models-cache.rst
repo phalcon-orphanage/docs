@@ -114,9 +114,25 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 注意并不是所有的结果都必须缓存下来。那些经常改变的数据就不应该被缓存，这样做只会影响应用的性能。另外对于那些特别大的
 不易变的数据集，开发者应用根据实际情况进行选择是否进行缓存。
 
-重写 find 与 findFirst 方法（Overriding find/findFirst）
---------------------------------------------------------
-从上面的我们可以看到这两个方法是从 :doc:`Phalcon\\Mvc\\Model继承而来 <../api/Phalcon_Mvc_Model>`:
+强制缓存（Forcing Cache）
+-------------------------
+前面的例子中我们在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
+
+.. code-block:: php
+
+    <?php
+
+    // 缓存查询结果5分钟
+    $products = Products::find(
+        [
+            "cache" => [
+                "key"      => "my-cache",
+                "lifetime" => 300,
+            ],
+        ]
+    );
+
+这给了我们自由选择需要缓存的查询结果，但是如果我们想对模型中的所有查询结果进行缓存，那么我们可以重写find/findFirst方法：
 
 .. code-block:: php
 
@@ -126,31 +142,6 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     class Robots extends Model
     {
-        public static function find($parameters = null)
-        {
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            return parent::findFirst($parameters);
-        }
-    }
-
-这样做会影响到所有此类的对象对这两个函数的调用，我们可以在其中添加一个缓存层，如果未有其它缓存的
-话（比如modelsCache）。例如，一个基本的缓存实现是我们在此类中添加一个静态的变量以避免在同一请求中
-多次查询数据库：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static $_cache = [];
-
         /**
          * Implement a method that returns a string key based
          * on the query parameters
@@ -172,16 +163,21 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
         public static function find($parameters = null)
         {
-            // Create an unique key based on the parameters
-            $key = self::_createKey($parameters);
-
-            if (!isset(self::$_cache[$key])) {
-                // Store the result in the memory cache
-                self::$_cache[$key] = parent::find($parameters);
+            // Convert the parameters to an array
+            if (!is_array($parameters)) {
+                $parameters = [$parameters];
             }
 
-            // Return the result in the cache
-            return self::$_cache[$key];
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
+                    "key"      => self::_createKey($parameters),
+                    "lifetime" => 300,
+                ];
+            }
+
+            return parent::find($parameters);
         }
 
         public static function findFirst($parameters = null)
@@ -227,65 +223,6 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     class Robots extends CacheableModel
     {
-
-    }
-
-强制缓存（Forcing Cache）
--------------------------
-前面的例子中我们在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
-
-.. code-block:: php
-
-    <?php
-
-    // 缓存查询结果5分钟
-    $products = Products::find(
-        [
-            "cache" => [
-                "key"      => "my-cache",
-                "lifetime" => 300,
-            ],
-        ]
-    );
-
-这给了我们自由选择需要缓存的查询结果，但是如果我们想对模型中的所有查询结果进行缓存，那么我们可以重写find/findFirst方法：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static function _createKey($parameters)
-        {
-            // ... Create a cache key based on the parameters
-        }
-
-        public static function find($parameters = null)
-        {
-            // Convert the parameters to an array
-            if (!is_array($parameters)) {
-                $parameters = [$parameters];
-            }
-
-            // Check if a cache key wasn't passed
-            // and create the cache parameters
-            if (!isset($parameters["cache"])) {
-                $parameters["cache"] = [
-                    "key"      => self::_createKey($parameters),
-                    "lifetime" => 300,
-                ];
-            }
-
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            // ...
-        }
 
     }
 

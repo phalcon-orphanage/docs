@@ -125,9 +125,27 @@ do not change frequently could be cached, but that is a decision that the develo
 available caching mechanism and whether the performance impact to simply retrieve that data in the
 first place is acceptable.
 
-Overriding find/findFirst
--------------------------
-As seen above, these methods are available in models that inherit :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
+キャッシュの強制
+----------------
+Earlier we saw how :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a built-in integration with the caching component provided by the framework. To make a record/resultset
+cacheable we pass the key 'cache' in the array of parameters:
+
+.. code-block:: php
+
+    <?php
+
+    // Cache the resultset for only for 5 minutes
+    $products = Products::find(
+        [
+            "cache" => [
+                "key"      => "my-cache",
+                "lifetime" => 300,
+            ],
+        ]
+    );
+
+This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
+we can override the find/findFirst method to force every query to be cached:
 
 .. code-block:: php
 
@@ -137,31 +155,6 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     class Robots extends Model
     {
-        public static function find($parameters = null)
-        {
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            return parent::findFirst($parameters);
-        }
-    }
-
-By doing this, you're intercepting all the calls to these methods, this way, you can add a cache
-layer or run the query if there is no cache. For example, a very basic cache implementation, uses
-a static property to avoid that a record would be queried several times in a same request:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static $_cache = [];
-
         /**
          * Implement a method that returns a string key based
          * on the query parameters
@@ -183,16 +176,21 @@ a static property to avoid that a record would be queried several times in a sam
 
         public static function find($parameters = null)
         {
-            // Create an unique key based on the parameters
-            $key = self::_createKey($parameters);
-
-            if (!isset(self::$_cache[$key])) {
-                // Store the result in the memory cache
-                self::$_cache[$key] = parent::find($parameters);
+            // Convert the parameters to an array
+            if (!is_array($parameters)) {
+                $parameters = [$parameters];
             }
 
-            // Return the result in the cache
-            return self::$_cache[$key];
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
+                    "key"      => self::_createKey($parameters),
+                    "lifetime" => 300,
+                ];
+            }
+
+            return parent::find($parameters);
         }
 
         public static function findFirst($parameters = null)
@@ -240,67 +238,6 @@ Then use this class as base class for each 'Cacheable' model:
 
     class Robots extends CacheableModel
     {
-
-    }
-
-キャッシュの強制
-----------------
-Earlier we saw how :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a built-in integration with the caching component provided by the framework. To make a record/resultset
-cacheable we pass the key 'cache' in the array of parameters:
-
-.. code-block:: php
-
-    <?php
-
-    // Cache the resultset for only for 5 minutes
-    $products = Products::find(
-        [
-            "cache" => [
-                "key"      => "my-cache",
-                "lifetime" => 300,
-            ],
-        ]
-    );
-
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
-we can override the find/findFirst method to force every query to be cached:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static function _createKey($parameters)
-        {
-            // ... Create a cache key based on the parameters
-        }
-
-        public static function find($parameters = null)
-        {
-            // Convert the parameters to an array
-            if (!is_array($parameters)) {
-                $parameters = [$parameters];
-            }
-
-            // Check if a cache key wasn't passed
-            // and create the cache parameters
-            if (!isset($parameters["cache"])) {
-                $parameters["cache"] = [
-                    "key"      => self::_createKey($parameters),
-                    "lifetime" => 300,
-                ];
-            }
-
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            // ...
-        }
 
     }
 
