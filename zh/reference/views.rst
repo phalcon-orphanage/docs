@@ -654,26 +654,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     ?>
     </div>
 
-在视图中使用模型（Using models in the view layer）
---------------------------------------------------
-应用模型在视图层也是可用的。:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 将在运行时实例化模型:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        $categories = Categories::find("status = 1");
-
-        foreach ($categories as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-尽管你可以执行模型处理操作，如在视图层 insert() 或  update()，但这是不推荐，因为在一个错误或异常发生时，它不可能将执行流程转发给另一个控制器。
-
 缓存视图片段（Caching View Fragments）
 --------------------------------------
 有时当你开发动态网站和一些区域不会经常更新，请求的输出是完全相同的。 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供缓存全部或部分的渲染输出来提高性能。

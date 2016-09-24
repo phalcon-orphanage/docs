@@ -668,27 +668,6 @@ from a simple string, integer etc. variable to a more complex structure such as 
     ?>
     </div>
 
-Viewレイヤでのモデルの使用
-------------------------------
-Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
-runtime automatically:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        $categories = Categories::find("status = 1");
-
-        foreach ($categories as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since it is not possible to forward the execution flow to another controller in the case of an error or an exception.
-
 View断片のキャッシュ
 ----------------------
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
