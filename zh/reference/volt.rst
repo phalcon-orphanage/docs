@@ -226,7 +226,7 @@ views directory. The following examples show how to change the compilation path 
     </html>
 
 使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 实例可以从控制器中把变量传递给视图。
-在下面的示例中，有三个变量传递给了视图: :code:`title`, :code:`menu` and :code:`post`:
+在下面的示例中，有四个变量传递给了视图: :code:`show_navigation`, :code:`menu`, :code:`title` and :code:`post`:
 
 .. code-block:: php
 
@@ -241,17 +241,17 @@ views directory. The following examples show how to change the compilation path 
             $post = Post::findFirst();
             $menu = Menu::findFirst();
 
+            $this->view->show_navigation = true;
+            $this->view->menu            = $menu;
             $this->view->title           = $post->title;
             $this->view->post            = $post;
-            $this->view->menu            = $menu;
-            $this->view->show_navigation = true;
 
             // Or...
 
+            $this->view->setVar("show_navigation", true);
+            $this->view->setVar("menu",            $menu);
             $this->view->setVar("title",           $post->title);
             $this->view->setVar("post",            $post);
-            $this->view->setVar("menu",            $menu);
-            $this->view->setVar("show_navigation", true);
         }
     }
 

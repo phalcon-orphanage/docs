@@ -229,7 +229,7 @@ Below is a minimal template that illustrates a few basics:
     </html>
 
 Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: :code:`title`, :code:`menu` and :code:`post`:
+In the above example, four variables were passed to the view: :code:`show_navigation`, :code:`menu`, :code:`title` and :code:`post`:
 
 .. code-block:: php
 
@@ -244,17 +244,17 @@ In the above example, three variables were passed to the view: :code:`title`, :c
             $post = Post::findFirst();
             $menu = Menu::findFirst();
 
+            $this->view->show_navigation = true;
+            $this->view->menu            = $menu;
             $this->view->title           = $post->title;
             $this->view->post            = $post;
-            $this->view->menu            = $menu;
-            $this->view->show_navigation = true;
 
             // Or...
 
+            $this->view->setVar("show_navigation", true);
+            $this->view->setVar("menu",            $menu);
             $this->view->setVar("title",           $post->title);
             $this->view->setVar("post",            $post);
-            $this->view->setVar("menu",            $menu);
-            $this->view->setVar("show_navigation", true);
         }
     }
 

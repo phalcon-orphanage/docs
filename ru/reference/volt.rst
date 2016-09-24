@@ -220,7 +220,7 @@ views directory. The following examples show how to change the compilation path 
         </body>
     </html>
 
-Используя :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` вы можете передать переменные из контроллера в представление. В предыдущем примере это были три переменные: title, menu и post:
+Используя :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` вы можете передать переменные из контроллера в представление. В предыдущем примере это были четыре переменные: :code:`show_navigation`, :code:`menu`, :code:`title` и :code:`post`:
 
 .. code-block:: php
 
@@ -235,17 +235,17 @@ views directory. The following examples show how to change the compilation path 
             $post = Post::findFirst();
             $menu = Menu::findFirst();
 
+            $this->view->show_navigation = true;
+            $this->view->menu            = $menu;
             $this->view->title           = $post->title;
             $this->view->post            = $post;
-            $this->view->menu            = $menu;
-            $this->view->show_navigation = true;
 
             // или...
 
+            $this->view->setVar("show_navigation", true);
+            $this->view->setVar("menu",            $menu);
             $this->view->setVar("title",           $post->title);
             $this->view->setVar("post",            $post);
-            $this->view->setVar("menu",            $menu);
-            $this->view->setVar("show_navigation", true);
         }
     }
 
