@@ -13,7 +13,6 @@ Pourquoi utiliser ce composant plutôt que les sessions par défaut ?
 * Vous pouvez intercepter où les sessions sont définis/récupérés (get/set) dans votre application.
 * Changer l'adaptateur de session en fonction de vos besoins.
 
-
 Commencer la Session
 --------------------
 Certaines applications sont très dépendantes des sessions, pratiquement chaque action qui est réalisé nécessite l'accès aux données de sessions.

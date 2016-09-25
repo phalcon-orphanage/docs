@@ -444,21 +444,21 @@ Database Events
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +---------------------+-----------------------------------------------------------+---------------------+
-| Event Name          | Triggered                                                 | Can stop operation? |
+| Nom d'évt           | Triggered                                                 | Opération stoppée ? |
 +=====================+===========================================================+=====================+
-| afterConnect        | After a successfully connection to a database system      | No                  |
+| afterConnect        | After a successfully connection to a database system      | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeQuery         | Before send a SQL statement to the database system        | Yes                 |
+| beforeQuery         | Before send a SQL statement to the database system        | Oui                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| afterQuery          | After send a SQL statement to database system             | No                  |
+| afterQuery          | After send a SQL statement to database system             | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeDisconnect    | Before close a temporal database connection               | No                  |
+| beforeDisconnect    | Before close a temporal database connection               | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beginTransaction    | Before a transaction is going to be started               | No                  |
+| beginTransaction    | Before a transaction is going to be started               | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| rollbackTransaction | Before a transaction is rollbacked                        | No                  |
+| rollbackTransaction | Before a transaction is rollbacked                        | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| commitTransaction   | Before a transaction is committed                         | No                  |
+| commitTransaction   | Before a transaction is committed                         | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
 
 Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalcon_Db>` will trigger the events with the type "db":
@@ -781,27 +781,27 @@ The following example shows how to create a table:
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | No       |
+| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | Non      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
+| "primary"       | True if the column is part of the table's primary key                                                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Yes      |
+| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | Column can store null values?                                                                                                              | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Yes      |
+| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
+| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | Column must be placed at first position in the column order                                                                                | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | Column must be placed after indicated column                                                                                               | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` supports the following database column types:
@@ -819,13 +819,13 @@ The associative array passed in :code:`Phalcon\Db::createTable()` can have the p
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional |
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | No       |
+| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | Non      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Yes      |
+| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Yes      |
+| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
+| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 Altering Tables

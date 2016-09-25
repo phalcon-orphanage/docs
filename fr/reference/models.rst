@@ -1077,11 +1077,11 @@ The following events are available to define custom business rules that can be e
 performed:
 
 +-----------+--------------+---------------------+------------------------------------------+
-| Operation | Name         | Can stop operation? | Explanation                              |
+| Operation | Name         | Opération stoppée ? | Explanation                              |
 +===========+==============+=====================+==========================================+
-| Deleting  | beforeDelete | YES                 | Runs before the delete operation is made |
+| Deleting  | beforeDelete | Oui                 | Runs before the delete operation is made |
 +-----------+--------------+---------------------+------------------------------------------+
-| Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
+| Deleting  | afterDelete  | Non                 | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
 
 With the above events can also define business rules in the models:

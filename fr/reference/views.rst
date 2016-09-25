@@ -1052,17 +1052,17 @@ View Events
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` are able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +----------------------+------------------------------------------------------------+---------------------+
-| Event Name           | Triggered                                                  | Can stop operation? |
+| Nom d'évt            | Triggered                                                  | Opération stoppée ? |
 +======================+============================================================+=====================+
-| beforeRender         | Triggered before starting the render process               | Yes                 |
+| beforeRender         | Triggered before starting the render process               | Oui                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Triggered before rendering an existing view                | Yes                 |
+| beforeRenderView     | Triggered before rendering an existing view                | Oui                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Triggered after rendering an existing view                 | No                  |
+| afterRenderView      | Triggered after rendering an existing view                 | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Triggered after completing the render process              | No                  |
+| afterRender          | Triggered after completing the render process              | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| notFoundView         | Triggered when a view was not found                        | No                  |
+| notFoundView         | Triggered when a view was not found                        | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:

@@ -476,17 +476,17 @@ Micro Application Events
 Events are triggered using the type "micro". The following events are supported:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
+| Nom d'évt           | Triggered                                                                                                                  | Opération stoppée ?  |
 +=====================+============================================================================================================================+======================+
-| beforeHandleRoute   | The main method is just called, at this point the application doesn't know if there is some matched route                  | Yes                  |
+| beforeHandleRoute   | The main method is just called, at this point the application doesn't know if there is some matched route                  | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Yes                  |
+| beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| afterExecuteRoute   | Triggered after running the handler                                                                                        | No                   |
+| afterExecuteRoute   | Triggered after running the handler                                                                                        | Non                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| beforeNotFound      | Triggered when any of the defined routes match the requested URI                                                           | Yes                  |
+| beforeNotFound      | Triggered when any of the defined routes match the requested URI                                                           | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Yes                  |
+| afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 In the following example, we explain how to control the application security using events:
@@ -636,13 +636,13 @@ Then add the instance to the application:
 The following middleware events are available:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
+| Nom d'évt           | Triggered                                                                                                                  | Opération stoppée ?  |
 +=====================+============================================================================================================================+======================+
-| before              | Before executing the handler. It can be used to control the access to the application                                      | Yes                  |
+| before              | Before executing the handler. It can be used to control the access to the application                                      | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| after               | Executed after the handler is executed. It can be used to prepare the response                                             | No                   |
+| after               | Executed after the handler is executed. It can be used to prepare the response                                             | Non                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
+| finish              | Executed after sending the response. It can be used to perform clean-up                                                    | Non                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 Using Controllers as Handlers

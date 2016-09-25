@@ -372,33 +372,33 @@ Models allow you to implement events that will be thrown when performing an inse
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                             | Can stop operation?   | Explanation                                                                                                        |
+| Operation          | Name                             | Opération stoppée ?   | Explanation                                                                                                        |
 +====================+==================================+=======================+====================================================================================================================+
-| Inserting/Updating | :code:`beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting/Updating | :code:`beforeValidation`         | Oui                   | Is executed before the validation process and the final insert/update to the database                              |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting          | :code:`beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting          | :code:`beforeValidationOnCreate` | Oui                   | Is executed before the validation process only when an insertion operation is being made                           |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Updating           | :code:`beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| Updating           | :code:`beforeValidationOnUpdate` | Oui                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | :code:`onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting/Updating | :code:`onValidationFails`        | Oui (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting          | :code:`afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
+| Inserting          | :code:`afterValidationOnCreate`  | Oui                   | Is executed after the validation process when an insertion operation is being made                                 |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Updating           | :code:`afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
+| Updating           | :code:`afterValidationOnUpdate`  | Oui                   | Is executed after the validation process when an updating operation is being made                                  |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | :code:`afterValidation`          | YES                   | Is executed after the validation process                                                                           |
+| Inserting/Updating | :code:`afterValidation`          | Oui                   | Is executed after the validation process                                                                           |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | :code:`beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
+| Inserting/Updating | :code:`beforeSave`               | Oui                   | Runs before the required operation over the database system                                                        |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Updating           | :code:`beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
+| Updating           | :code:`beforeUpdate`             | Oui                   | Runs before the required operation over the database system only when an updating operation is being made          |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting          | :code:`beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
+| Inserting          | :code:`beforeCreate`             | Oui                   | Runs before the required operation over the database system only when an inserting operation is being made         |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Updating           | :code:`afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
+| Updating           | :code:`afterUpdate`              | Non                   | Runs after the required operation over the database system only when an updating operation is being made           |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting          | :code:`afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
+| Inserting          | :code:`afterCreate`              | Non                   | Runs after the required operation over the database system only when an inserting operation is being made          |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | :code:`afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| Inserting/Updating | :code:`afterSave`                | Non                   | Runs after the required operation over the database system                                                         |
 +--------------------+----------------------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------+
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
@@ -753,11 +753,11 @@ You can also delete many documents by traversing a resultset with a :code:`forea
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
 +-----------+----------------------+---------------------+------------------------------------------+
-| Operation | Name                 | Can stop operation? | Explanation                              |
+| Operation | Name                 | Opération stoppée ? | Explanation                              |
 +===========+======================+=====================+==========================================+
-| Deleting  | :code:`beforeDelete` | YES                 | Runs before the delete operation is made |
+| Deleting  | :code:`beforeDelete` | Oui                 | Runs before the delete operation is made |
 +-----------+----------------------+---------------------+------------------------------------------+
-| Deleting  | :code:`afterDelete`  | NO                  | Runs after the delete operation was made |
+| Deleting  | :code:`afterDelete`  | Non                 | Runs after the delete operation was made |
 +-----------+----------------------+---------------------+------------------------------------------+
 
 Validation Failed Events

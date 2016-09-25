@@ -258,13 +258,13 @@ In the following example, the EventsManager is working with the class loader, al
 Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| Event Name       | Triggered                                                                                                           | Can stop operation? |
+| Nom d'évt        | Triggered                                                                                                           | Opération stoppée ? |
 +==================+=====================================================================================================================+=====================+
-| beforeCheckClass | Triggered before starting the autoloading process                                                                   | Yes                 |
+| beforeCheckClass | Triggered before starting the autoloading process                                                                   | Oui                 |
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| pathFound        | Triggered when the loader locate a class                                                                            | No                  |
+| pathFound        | Triggered when the loader locate a class                                                                            | Non                 |
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Non                 |
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
 Troubleshooting

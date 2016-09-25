@@ -144,13 +144,13 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                                 | Optional |
 +==============+=============================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns                                                                                                        | No       |
+| "columns"    | An array with a set of table columns                                                                                                        | Non      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes.                                                                                                       | Yes      |
+| "indexes"    | An array with a set of table indexes.                                                                                                       | Oui      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys).                                                                                     | Yes      |
+| "references" | An array with a set of table references (foreign keys).                                                                                     | Oui      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
+| "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Oui      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 Defining Columns
@@ -160,21 +160,21 @@ Defining Columns
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` constant (see below)                                            | No       |
+| "type"          | Column type. Must be a :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` constant (see below)                                            | Non      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Yes      |
+| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | Column can store null values?                                                                                                              | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | Column must be placed at first position in the column order                                                                                | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | Column must be placed after indicated column                                                                                               | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 Database migrations support the following database column types:
@@ -209,17 +209,17 @@ Defining References
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 | Index               | Description                                                                                         | Optional | Implemented in   |
 +=====================+=====================================================================================================+==========+==================+
-| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | No       | All              |
+| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | Non      | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "columns"           | An array with the name of the columns at the table that have the reference                          | No       | All              |
+| "columns"           | An array with the name of the columns at the table that have the reference                          | Non      | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       | All              |
+| "referencedColumns" | An array with the name of the columns at the referenced table                                       | Non      | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "referencedSchema"  | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      | All              |
+| "referencedSchema"  | The referenced table maybe is on another schema or database. This option allows you to define that. | Oui      | All              |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "onDelete"          | If the foreign record is removed, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
+| "onDelete"          | If the foreign record is removed, perform this action on the local record(s).                       | Oui      | MySQL PostgreSQL |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
-| "onUpdate"          | If the foreign record is updated, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
+| "onUpdate"          | If the foreign record is updated, perform this action on the local record(s).                       | Oui      | MySQL PostgreSQL |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+------------------+
 
 Writing Migrations
