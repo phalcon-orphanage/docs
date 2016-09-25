@@ -451,31 +451,40 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
         )
     );
 
-Validate recursive
-------------------
-
-If you have a object for example 'Company' that has a 'phone' property with a 'Phone object' you can use the 'afterValidation' event to validate recursive.
+Recursive Validation
+--------------------
+You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
 
 .. code-block:: php
 
     <?php
-    class Company extends Validation
+
+    use Phalcon\Validation;
+
+    class CompanyValidation extends Validation
     {
+        /**
+         * @var PhoneValidation
+         */
         protected $phoneValidation;
-    
-        public function __construct(array $validators = array())
+
+
+
+        public function initialize()
         {
-            parent::__construct($validators);
-    
             $this->phoneValidation = new PhoneValidation();
         }
-    
+
+
+
         public function afterValidation($data, $entity, $messages)
         {
-            if (!empty($data['phone'])) {
-                $messages->appendMessages($this->phoneValidation->validate($data['phone']));
-            }
-    
-            return true;
+            $phoneValidationMessages = $this->phoneValidation->validate(
+                $data["phone"]
+            );
+
+            $messages->appendMessages(
+                $phoneValidationMessages
+            );
         }
     }

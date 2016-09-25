@@ -450,3 +450,41 @@ Você pode passar a opção 'allowEmpty' para todos os validadores imbutidos par
             ]
         )
     );
+
+Recursive Validation
+--------------------
+You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+
+    class CompanyValidation extends Validation
+    {
+        /**
+         * @var PhoneValidation
+         */
+        protected $phoneValidation;
+
+
+
+        public function initialize()
+        {
+            $this->phoneValidation = new PhoneValidation();
+        }
+
+
+
+        public function afterValidation($data, $entity, $messages)
+        {
+            $phoneValidationMessages = $this->phoneValidation->validate(
+                $data["phone"]
+            );
+
+            $messages->appendMessages(
+                $phoneValidationMessages
+            );
+        }
+    }
