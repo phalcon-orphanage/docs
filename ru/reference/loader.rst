@@ -11,7 +11,7 @@
 
 С помощью этого класса возможна загрузка файлов сторонних проектов и производителей, компонент полностью совместим со `стандартом PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_.
 
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` поддерживает 3 варианта правил автозагрузки классов. Вы можете использовать их по отдельности, или комбинировать.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` поддерживает 4 варианта правил автозагрузки классов. Вы можете использовать их по отдельности, или комбинировать.
 
 Security Layer
 --------------
@@ -146,6 +146,32 @@ Phalcon будет вынужден обрабатывать данные по �
     // Искомый класс будет искаться на соответствующее зарегистрированное значение массива
     // например library/OtherComponent/Other/Some.php
     $some = new \Some();
+
+Registering Files
+-----------------
+You can also registers files that are "non-classes" hence needing a "require". This is very useful for including files that only have functions:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some classes
+    $loader->registerFiles(
+        [
+            "functions.php",
+            "arrayFunctions.php",
+        ]
+    );
+
+    // Register autoloader
+    $loader->register();
+
+These files are automatically loaded in the :code:`register()` method.
 
 Дополнительные расширения файлов
 --------------------------------

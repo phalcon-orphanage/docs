@@ -13,7 +13,7 @@ reads that occur are for the files needed. This technique is called `lazy initia
 
 With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ and `PSR-4 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md>`_ compliant.
 
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers three options to autoload classes. You can use them one at a time or combine them.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
 セキュリティレイヤ
 ------------------
@@ -152,6 +152,32 @@ maintenance of the class list very cumbersome and it is not recommended.
     // in the associative array
     // i.e. library/OtherComponent/Other/Some.php
     $some = new \Some();
+
+Registering Files
+-----------------
+You can also registers files that are "non-classes" hence needing a "require". This is very useful for including files that only have functions:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some classes
+    $loader->registerFiles(
+        [
+            "functions.php",
+            "arrayFunctions.php",
+        ]
+    );
+
+    // Register autoloader
+    $loader->register();
+
+These files are automatically loaded in the :code:`register()` method.
 
 ファイル拡張子の追加
 --------------------------
