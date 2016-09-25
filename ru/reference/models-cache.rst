@@ -415,7 +415,7 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
             // ... возвращаем данные из кэша
         }
 
-        protected static function _setCache($key)
+        protected static function _setCache($key, $results)
         {
             // ... сохраняет данные в кэше
         }

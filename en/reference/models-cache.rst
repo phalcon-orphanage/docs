@@ -401,7 +401,7 @@ to obtain all entities:
             // Returns data from a cache
         }
 
-        protected static function _setCache($key)
+        protected static function _setCache($key, $results)
         {
             // Stores data in the cache
         }
