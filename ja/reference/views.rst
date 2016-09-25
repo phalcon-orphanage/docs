@@ -463,6 +463,25 @@ If your controller doesn't produce any output in the view (or not even have one)
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 You can return a 'response' object to avoid disable the view manually:
 
 .. code-block:: php

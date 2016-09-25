@@ -454,6 +454,25 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 Вы можете вернуть объект 'response', чтобы вручную отключить компонент представления:
 
 .. code-block:: php

@@ -454,6 +454,25 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 你可以返回一个“response”的对象，避免手动禁用视图:
 
 .. code-block:: php
