@@ -13,7 +13,7 @@ reads that occur are for the files needed. This technique is called `lazy initia
 
 With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ and `PSR-4 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md>`_ compliant.
 
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers three options to autoload classes. You can use them one at a time or combine them.
 
 Security Layer
 --------------
@@ -87,37 +87,6 @@ the end of the paths.
     // The required class will automatically include the
     // file vendor/example/adapter/Some.php
     $some = new \Example\Adapter\Some();
-
-Registering Prefixes
---------------------
-This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
-where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
-the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Loader;
-
-    // Creates the autoloader
-    $loader = new Loader();
-
-    // Register some prefixes
-    $loader->registerPrefixes(
-        [
-            "Example_Base"    => "vendor/example/base/",
-            "Example_Adapter" => "vendor/example/adapter/",
-            "Example_"        => "vendor/example/",
-        ]
-    );
-
-    // Register autoloader
-    $loader->register();
-
-    // The required class will automatically include the
-    // file vendor/example/adapter/Some.php
-    $some = new \Example_Adapter_Some();
 
 Registering Directories
 -----------------------
