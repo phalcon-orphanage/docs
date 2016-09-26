@@ -32,7 +32,7 @@ Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一�
 
     Phalcon DevTools (3.0.0)
 
-    Available commands:
+    Available commands:可用命令
       commands         (alias of: list, enumerate)
       controller       (alias of: create-controller)
       module           (alias of: create-module)
@@ -69,10 +69,10 @@ web服务器根目录下输入如下命令：
 
     Phalcon DevTools (3.0.0)
 
-    Help:
+    Help:帮助
       Creates a project 创建项目
 
-    Usage:
+    Usage:用法
       project [name] [type] [directory] [enable-webtools]
 
     Arguments: 参数
@@ -157,7 +157,7 @@ Options:
  --force              Rewrite the model. [optional] 重写模型
  --trace              Shows the trace of the framework in case of exception. [optional] 出错时显示框架trace信息
  --mapcolumn          Get some code for map columns. [optional] 生成字映射的代码
- --abstract           Abstract Model [optional]
+ --abstract           Abstract Model [optional] 抽象模型
 
 最简单的生成模型的方式：
 
@@ -252,7 +252,7 @@ Options:
 
 
         /**
-         * Method to set the value of field id
+         * 设置字段 id 值的方法
          *
          * @param integer $id
          */
@@ -262,7 +262,7 @@ Options:
         }
 
         /**
-         * Method to set the value of field typesId
+         * 设置字段 typsId 值的方法
          *
          * @param integer $typesId
          */
@@ -274,7 +274,7 @@ Options:
         // ...
 
         /**
-         * Returns the value of field status
+         * 返回字段 status 值
          *
          * @return string
          */
@@ -310,13 +310,13 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 +----------------------------------------+--------------------------------+
 | app/models/Products.php                | Products模型                   |
 +----------------------------------------+--------------------------------+
-| app/views/layout/products.phtml        | Products控制器布局             |
+| app/views/layout/products.phtml        | Products控制器布局              |
 +----------------------------------------+--------------------------------+
-| app/views/products/new.phtml           | View for the action "new"      |
+| app/views/products/new.phtml           | 方法"new"的视图                 |
 +----------------------------------------+--------------------------------+
-| app/views/products/edit.phtml          | View for the action "edit"     |
+| app/views/products/edit.phtml          | 方法"edit"的视图                |
 +----------------------------------------+--------------------------------+
-| app/views/products/search.phtml        | View for the action "search"   |
+| app/views/products/search.phtml        | 方法"search"的视图              |
 +----------------------------------------+--------------------------------+
 
 在生成的Products控制器中，我们可以看到一个搜索表单和一个生成新product的链接：
