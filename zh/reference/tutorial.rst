@@ -26,18 +26,18 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 需要注意的是，你不需要任何有关Phalcon的 "library" 目录。该框架已经被加载到内存中，供您使用。
 
-Before continuing, please be sure you've successfully :doc:`installed Phalcon <install>` and have setup either :doc:`Nginx <nginx>`, :doc:`Apache <apache>` or :doc:`Cherokee <cherokee>`.
+在此之前, 请确认你已经成功的 :doc:`installed Phalcon <install>`, 并设置了:doc:`Nginx <nginx>`, :doc:`Apache <apache>` 或者 :doc:`Cherokee <cherokee>`.
 
 引导程序（Bootstrap）
 ---------------------
 你需要创建的第一个文件是引导文件。这个文件很重要; 因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
 在这个文件中，你可以实现组件的初始化和应用程序的行为。
 
-Ultimately, it is responsible for doing 3 things:
+基本上, 它负责做三件事情:
 
-1. Setting up the autoloader.
-2. Configuring the Dependency Injector.
-3. Handling the application request.
+1. 设置自动加载器.
+2. 配置依赖注入.
+3. 处理应用请求.
 
 自动加载（Autoloaders）
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -96,7 +96,7 @@ Ultimately, it is responsible for doing 3 things:
 
     // ...
 
-    // Setup the view component
+    // 设置视图组件
     $di->set(
         "view",
         function () {
@@ -119,7 +119,7 @@ Ultimately, it is responsible for doing 3 things:
 
     // ...
 
-    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    // 设置一个基础URI, 这样所有生成的URI都包含"tutorial"文件夹
     $di->set(
         "url",
         function () {
@@ -131,7 +131,7 @@ Ultimately, it is responsible for doing 3 things:
         }
     );
 
-Handling the application request
+处理应用请求(Handling the application request)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在这个文件的最后部分，我们发现 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。
 
@@ -149,7 +149,7 @@ Handling the application request
 
     $response->send();
 
-Putting everything together
+把每个组件组合在一起(Putting everything together)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 这个引导文件 tutorial/public/index.php 文件应该看起来像:
 
@@ -166,7 +166,7 @@ Putting everything together
 
 
 
-    // Register an autoloader
+    // 注册一个自动加载器
     $loader = new Loader();
 
     $loader->registerDirs(
@@ -180,10 +180,10 @@ Putting everything together
 
 
 
-    // Create a DI
+    // 创建一个 DI
     $di = new FactoryDefault();
 
-    // Setup the view component
+    // 设置视图组件
     $di->set(
         "view",
         function () {
@@ -195,7 +195,7 @@ Putting everything together
         }
     );
 
-    // Setup a base URI so that all generated URIs include the "tutorial" folder
+    // 设置一个基础URI, 这样所有生成的URI都包含"tutorial"文件夹
     $di->set(
         "url",
         function () {
@@ -212,7 +212,7 @@ Putting everything together
     $application = new Application($di);
 
     try {
-        // Handle the request
+        // 处理请求
         $response = $application->handle();
 
         $response->send();
@@ -473,7 +473,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
         {
             $user = new Users();
 
-            // Store and check for errors
+            // 存储和检验错误
             $success = $user->save(
                 $this->request->getPost(),
                 [
