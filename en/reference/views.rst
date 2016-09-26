@@ -463,6 +463,25 @@ If your controller doesn't produce any output in the view (or not even have one)
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 You can return a 'response' object to avoid disable the view manually:
 
 .. code-block:: php
@@ -668,27 +687,6 @@ from a simple string, integer etc. variable to a more complex structure such as 
     ?>
     </div>
 
-Using models in the view layer
-------------------------------
-Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
-runtime automatically:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        $categories = Categories::find("status = 1");
-
-        foreach ($categories as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since it is not possible to forward the execution flow to another controller in the case of an error or an exception.
-
 Caching View Fragments
 ----------------------
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
@@ -893,38 +891,6 @@ when it's necessary.
 
 Changing the Template Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can replace or add more a template engine from the controller as follows:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Set the engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                ]
-            );
-        }
-
-        public function showAction()
-        {
-            // Using more than one template engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
-                ]
-            );
-        }
-    }
-
 You can replace the template engine completely or use more than one template engine at the same time. The method :code:`Phalcon\Mvc\View::registerEngines()`
 accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
 Template files related to the particular engine must have those extensions.
@@ -949,9 +915,18 @@ If you want to register a template engine or a set of them for each request in t
             // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
+                ]
+            );
+
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
                 ]
             );
 

@@ -5,14 +5,13 @@
 Stocker des données dans une session
 ====================================
 
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` fourni un ensemble de fonctions liés à la gestion des sessions.
+Le composant de session fourni un ensemble de fonctions liés à la gestion des sessions.
 
 Pourquoi utiliser ce composant plutôt que les sessions par défaut ?
 
 * Vous pouvez facilement isoler des données de session à travers différentes applications du même domaine.
 * Vous pouvez intercepter où les sessions sont définis/récupérés (get/set) dans votre application.
 * Changer l'adaptateur de session en fonction de vos besoins.
-
 
 Commencer la Session
 --------------------

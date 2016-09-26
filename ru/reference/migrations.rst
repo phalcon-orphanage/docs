@@ -53,8 +53,9 @@
     use Phalcon\Db\Column as Column;
     use Phalcon\Db\Index as Index;
     use Phalcon\Db\Reference as Reference;
+    use Phalcon\Mvc\Model\Migration;
 
-    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
+    class ProductsMigration_100 extends Migration
     {
         public function up()
         {
@@ -70,7 +71,7 @@
                                 "unsigned"      => true,
                                 "notNull"       => true,
                                 "autoIncrement" => true,
-                                "first"         => true
+                                "first"         => true,
                             ]
                         ),
                         new Column(
@@ -80,7 +81,7 @@
                                 "size"     => 10,
                                 "unsigned" => true,
                                 "notNull"  => true,
-                                "after"    => "id"
+                                "after"    => "id",
                             ]
                         ),
                         new Column(
@@ -89,7 +90,7 @@
                                 "type"    => Column::TYPE_VARCHAR,
                                 "size"    => 70,
                                 "notNull" => true,
-                                "after"   => "product_types_id"
+                                "after"   => "product_types_id",
                             ]
                         ),
                         new Column(
@@ -99,19 +100,23 @@
                                 "size"    => 16,
                                 "scale"   => 2,
                                 "notNull" => true,
-                                "after"   => "name"
+                                "after"   => "name",
                             ]
                         ),
                     ],
                     "indexes" => [
                         new Index(
                             "PRIMARY",
-                            ["id"]
+                            [
+                                "id",
+                            ]
                         ),
                         new Index(
                             "product_types_id",
-                            ["product_types_id"]
-                        )
+                            [
+                                "product_types_id",
+                            ],
+                        ),
                     ],
                     "references" => [
                         new Reference(
@@ -120,15 +125,15 @@
                                 "referencedSchema"  => "invo",
                                 "referencedTable"   => "product_types",
                                 "columns"           => ["product_types_id"],
-                                "referencedColumns" => ["id"]
+                                "referencedColumns" => ["id"],
                             ]
-                        )
+                        ),
                     ],
                     "options" => [
                         "TABLE_TYPE"      => "BASE TABLE",
                         "ENGINE"          => "InnoDB",
-                        "TABLE_COLLATION" => "utf8_general_ci"
-                    ]
+                        "TABLE_COLLATION" => "utf8_general_ci",
+                    ],
                 ]
             );
         }
@@ -201,7 +206,6 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` определяет ссылки на таблицы (также называемые внешними ключами). Следующие опции могут быть использованы для определения внешних ключей:
 
-
 +---------------------+------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | Индекс              | Описание                                                                                                         | Опционально | Реализовано      |
 +=====================+==================================================================================================================+=============+==================+
@@ -226,7 +230,9 @@
 
     <?php
 
-    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
+    use Phalcon\Mvc\Model\Migration;
+
+    class ProductsMigration_100 extends Migration
     {
         public function up()
         {
@@ -234,8 +240,14 @@
 
             self::$_connection->insert(
                 "products",
-                ["Малабарский шпинат", 14.50],
-                ["name", "price"]
+                [
+                    "Малабарский шпинат",
+                    14.50,
+                ],
+                [
+                    "name",
+                    "price",
+                ]
             );
         }
     }

@@ -1,5 +1,5 @@
 Ласкаво просимо!
-========
+================
 
 Ласкаво просимо до фреймворка Phalcon. Наша місія полягає в тому, щоб дати вам просунутий інструмент
 для розробки швидкісних веб-сайтів і додатків за допомогою PHP.
@@ -14,7 +14,7 @@ Phalcon також слабо пов'язаний, що дозволяє вик�
 Phalcon не тільки про продуктивність, наша мета полягає в тому, щоб зробити його стійким, багатофункціональністю і простим у використанні!
 
 Зміст
------------------
+-----
 
 Installation
 ^^^^^^^^^^^^
@@ -56,9 +56,13 @@ Components
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-relationships
+   reference/model-events
    reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
+   reference/model-validation
+   reference/models-advanced
    reference/phql
    reference/models-cache
    reference/odm
@@ -125,6 +129,11 @@ Legal
    :maxdepth: 3
 
    reference/license
+
+Previous Versions
+-----------------
+
+* `2.0.0 <https://docs.phalconphp.com/uk/2.0.0/>`
 
 Other formats
 -------------

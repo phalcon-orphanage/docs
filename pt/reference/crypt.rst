@@ -155,5 +155,5 @@ Então, por exemplo, em um controlador você pode usá-lo da seguinte forma:
     }
 
 .. _openssl: http://www.php.net/manual/en/book.openssl.php
-.. _here: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
+.. _aqui: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

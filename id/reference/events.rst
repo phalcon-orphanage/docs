@@ -14,7 +14,7 @@ Ketika memasang event listener ke event manager, anda dapat menggunakan "compone
 kejadian :doc:`Phalcon\\Db <../api/Phalcon_Db>`) atau "component:event" untuk mengacu kejadian tertentu(contoh "db:afterQuery").
 
 Contoh Penggunaan
--------------
+-----------------
 Di contoh berikut, kita menggunakan EventsManager untuk mendengarkan kejadian yabg dihasilkan oleh koneksi MySQL yang dikelola :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 Pertama, kita perlu sebuah objek listener untuk melakukannya. Kita menciptakan sebuah kelas yang metodenya adalah event yang ingin kita dengarkan:
 
@@ -55,6 +55,10 @@ Pertama, kita perlu sebuah objek listener untuk melakukannya. Kita menciptakan s
 Sekarang tiap kali sebuah query dieksekusi, pernyataan SQL akan dicetak. Parameter pertama yang dilewatkan ke fungsi lambda berisi informasi 
 kontekstual tentang kejadian yang berjalan, yang kedua adalah sumber kejadian (dalam hal ini koneksi itu sendiri). Parameter ketiga dapat
 juga ditentukan yang akan berisi data sembarang terkait kejadian.
+
+.. highlights::
+
+    You must explicitly set the Events Manager to a component using the :code:`setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
 
 Selain menggunakan fungsi lambda, anda dapat menggunakan kelas event listener. Event listener juga memungkinkan anda untuk mendengarkan kejadian lebih dari satu. Di
 contoh ini, kita akan mengimplementasi :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` untuk mendeteksi pernyataan SQL yang butuh waktu lama
@@ -269,6 +273,38 @@ Dalam sebuah listener parameter ketiga juga menerima data ini:
             print_r($event->getData());
         }
     );
+
+Using Services From The DI
+--------------------------
+By extending :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, you can access services from the DI, just like you would in a controller:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+
+    class SomeListener extends Plugin
+    {
+        public function beforeSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, beforeSomeTask\n";
+
+            $this->logger->debug(
+                "beforeSomeTask has been triggered";
+            );
+        }
+
+        public function afterSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, afterSomeTask\n";
+
+            $this->logger->debug(
+                "afterSomeTask has been triggered";
+            );
+        }
+    }
 
 Perambatan/Pembatalan Event
 ---------------------------

@@ -56,6 +56,10 @@ Now every time a query is executed, the SQL statement will be echoed out.
 第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。
 A third parameter may also be specified which will contain arbitrary data specific to the event.
 
+.. highlights::
+
+    You must explicitly set the Events Manager to a component using the :code:`setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
+
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
@@ -270,6 +274,38 @@ Notice that in this example, we're using the "my-component" event namespace.
             print_r($event->getData());
         }
     );
+
+Using Services From The DI
+--------------------------
+By extending :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, you can access services from the DI, just like you would in a controller:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+
+    class SomeListener extends Plugin
+    {
+        public function beforeSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, beforeSomeTask\n";
+
+            $this->logger->debug(
+                "beforeSomeTask has been triggered";
+            );
+        }
+
+        public function afterSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, afterSomeTask\n";
+
+            $this->logger->debug(
+                "afterSomeTask has been triggered";
+            );
+        }
+    }
 
 事件传播与取消（Event Propagation/Cancellation）
 ------------------------------------------------

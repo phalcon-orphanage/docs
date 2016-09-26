@@ -88,37 +88,6 @@ the end of the paths.
     // file vendor/example/adapter/Some.php
     $some = new \Example\Adapter\Some();
 
-Registering Prefixes
---------------------
-This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
-where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
-the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Loader;
-
-    // Creates the autoloader
-    $loader = new Loader();
-
-    // Register some prefixes
-    $loader->registerPrefixes(
-        [
-            "Example_Base"    => "vendor/example/base/",
-            "Example_Adapter" => "vendor/example/adapter/",
-            "Example_"        => "vendor/example/",
-        ]
-    );
-
-    // Register autoloader
-    $loader->register();
-
-    // The required class will automatically include the
-    // file vendor/example/adapter/Some.php
-    $some = new \Example_Adapter_Some();
-
 Registering Directories
 -----------------------
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance,
@@ -183,6 +152,32 @@ maintenance of the class list very cumbersome and it is not recommended.
     // in the associative array
     // i.e. library/OtherComponent/Other/Some.php
     $some = new \Some();
+
+Registering Files
+-----------------
+You can also registers files that are "non-classes" hence needing a "require". This is very useful for including files that only have functions:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Loader;
+
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some classes
+    $loader->registerFiles(
+        [
+            "functions.php",
+            "arrayFunctions.php",
+        ]
+    );
+
+    // Register autoloader
+    $loader->register();
+
+These files are automatically loaded in the :code:`register()` method.
 
 Additional file extensions
 --------------------------
@@ -263,13 +258,13 @@ In the following example, the EventsManager is working with the class loader, al
 Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| Event Name       | Triggered                                                                                                           | Can stop operation? |
+| Nom d'évt        | Triggered                                                                                                           | Opération stoppée ? |
 +==================+=====================================================================================================================+=====================+
-| beforeCheckClass | Triggered before starting the autoloading process                                                                   | Yes                 |
+| beforeCheckClass | Triggered before starting the autoloading process                                                                   | Oui                 |
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| pathFound        | Triggered when the loader locate a class                                                                            | No                  |
+| pathFound        | Triggered when the loader locate a class                                                                            | Non                 |
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
-| afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Non                 |
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
 Troubleshooting

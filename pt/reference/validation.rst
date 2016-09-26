@@ -122,6 +122,20 @@ Phalcon fornece um conjunto de validadores para este componente:
 +--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 | Class                                                                                                  | Explicação                                                                |
 +========================================================================================================+===========================================================================+
+| :doc:`Phalcon\\Validation\\Validator\\Alnum <../api/Phalcon_Validation_Validator_Alnum>`               | Validates that a field's value is only alphanumeric character(s). |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Alpha <../api/Phalcon_Validation_Validator_Alpha>`               | Validates that a field's value is only alphabetic character(s).   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Date <../api/Phalcon_Validation_Validator_Date>`                 | Validates that a field's value is a valid date.                   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Digit <../api/Phalcon_Validation_Validator_Digit>`               | Validates that a field's value is only numeric character(s).      |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\File <../api/Phalcon_Validation_Validator_File>`                 | Validates that a field's value is a correct file.                 |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Uniqueness <../api/Phalcon_Validation_Validator_Uniqueness>`     | Validates that a field's value is unique in the related model.    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Numericality <../api/Phalcon_Validation_Validator_Numericality>` | Validates that a field's value is a valid numeric value.          |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\PresenceOf <../api/Phalcon_Validation_Validator_PresenceOf>`     | Valida que o valor de um campo não é nulo ou vazio                        |
 +--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\Identical <../api/Phalcon_Validation_Validator_Identical>`       | Valida que o valor de um campo é o mesmo que o especificado               |
@@ -436,3 +450,41 @@ Você pode passar a opção 'allowEmpty' para todos os validadores imbutidos par
             ]
         )
     );
+
+Recursive Validation
+--------------------
+You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+
+    class CompanyValidation extends Validation
+    {
+        /**
+         * @var PhoneValidation
+         */
+        protected $phoneValidation;
+
+
+
+        public function initialize()
+        {
+            $this->phoneValidation = new PhoneValidation();
+        }
+
+
+
+        public function afterValidation($data, $entity, $messages)
+        {
+            $phoneValidationMessages = $this->phoneValidation->validate(
+                $data["phone"]
+            );
+
+            $messages->appendMessages(
+                $phoneValidationMessages
+            );
+        }
+    }

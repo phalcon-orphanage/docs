@@ -23,26 +23,28 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
     // 设置模型缓存服务
-    $di->set('modelsCache', function () {
+    $di->set(
+        "modelsCache",
+        function () {
+            // 默认缓存时间为一天
+            $frontCache = new FrontendData(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // 默认缓存时间为一天
-        $frontCache = new FrontendData(
-            [
-                "lifetime" => 86400
-            ]
-        );
+            // Memcached连接配置 这里使用的是Memcache适配器
+            $cache = new BackendMemcache(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Memcached连接配置 这里使用的是Memcache适配器
-        $cache = new BackendMemcache(
-            $frontCache,
-            [
-                "host" => "localhost",
-                "port" => "11211"
-            ]
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 在注册缓存服务时我们可以按照我们的需要进行配置。一旦完成正确的缓存设置之后，我们可以按如下的方式缓存查询的结果了:
 
@@ -57,8 +59,8 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     $products = Products::find(
         [
             "cache" => [
-                "key" => "my-cache"
-            ]
+                "key" => "my-cache",
+            ],
         ]
     );
 
@@ -67,15 +69,15 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         [
             "cache" => [
                 "key"      => "my-cache",
-                "lifetime" => 300
-            ]
+                "lifetime" => 300,
+            ],
         ]
     );
 
     // 使用自定义缓存
     $products = Products::find(
         [
-            "cache" => $myCache
+            "cache" => $myCache,
         ]
     );
 
@@ -86,14 +88,14 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     <?php
 
     // Query some post
-    $post     = Post::findFirst();
+    $post = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(
         [
             "cache" => [
-                "key" => "my-key"
-            ]
+                "key" => "my-key",
+            ],
         ]
     );
 
@@ -102,8 +104,8 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         [
             "cache" => [
                 "key"      => "my-key",
-                "lifetime" => 3600
-            ]
+                "lifetime" => 3600,
+            ],
         ]
     );
 
@@ -112,9 +114,25 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 注意并不是所有的结果都必须缓存下来。那些经常改变的数据就不应该被缓存，这样做只会影响应用的性能。另外对于那些特别大的
 不易变的数据集，开发者应用根据实际情况进行选择是否进行缓存。
 
-重写 find 与 findFirst 方法（Overriding find/findFirst）
---------------------------------------------------------
-从上面的我们可以看到这两个方法是从 :doc:`Phalcon\\Mvc\\Model继承而来 <../api/Phalcon_Mvc_Model>`:
+强制缓存（Forcing Cache）
+-------------------------
+前面的例子中我们在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
+
+.. code-block:: php
+
+    <?php
+
+    // 缓存查询结果5分钟
+    $products = Products::find(
+        [
+            "cache" => [
+                "key"      => "my-cache",
+                "lifetime" => 300,
+            ],
+        ]
+    );
+
+这给了我们自由选择需要缓存的查询结果，但是如果我们想对模型中的所有查询结果进行缓存，那么我们可以重写:code:`find()`/:code:`findFirst()`方法：
 
 .. code-block:: php
 
@@ -124,31 +142,6 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
     class Robots extends Model
     {
-        public static function find($parameters = null)
-        {
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            return parent::findFirst($parameters);
-        }
-    }
-
-这样做会影响到所有此类的对象对这两个函数的调用，我们可以在其中添加一个缓存层，如果未有其它缓存的
-话（比如modelsCache）。例如，一个基本的缓存实现是我们在此类中添加一个静态的变量以避免在同一请求中
-多次查询数据库：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static $_cache = [];
-
         /**
          * Implement a method that returns a string key based
          * on the query parameters
@@ -159,29 +152,32 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
             foreach ($parameters as $key => $value) {
                 if (is_scalar($value)) {
-                    $uniqueKey[] = $key . ':' . $value;
-                } else {
-                    if (is_array($value)) {
-                        $uniqueKey[] = $key . ':[' . self::_createKey($value) .']';
-                    }
+                    $uniqueKey[] = $key . ":" . $value;
+                } elseif (is_array($value)) {
+                    $uniqueKey[] = $key . ":[" . self::_createKey($value) . "]";
                 }
             }
 
-            return join(',', $uniqueKey);
+            return join(",", $uniqueKey);
         }
 
         public static function find($parameters = null)
         {
-            // Create an unique key based on the parameters
-            $key = self::_createKey($parameters);
-
-            if (!isset(self::$_cache[$key])) {
-                // Store the result in the memory cache
-                self::$_cache[$key] = parent::find($parameters);
+            // Convert the parameters to an array
+            if (!is_array($parameters)) {
+                $parameters = [$parameters];
             }
 
-            // Return the result in the cache
-            return self::$_cache[$key];
+            // Check if a cache key wasn't passed
+            // and create the cache parameters
+            if (!isset($parameters["cache"])) {
+                $parameters["cache"] = [
+                    "key"      => self::_createKey($parameters),
+                    "lifetime" => 300,
+                ];
+            }
+
+            return parent::find($parameters);
         }
 
         public static function findFirst($parameters = null)
@@ -192,47 +188,6 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
 
 访问数据要远比计算key值慢的多，我们在这里定义自己需要的key生成方式。注意好的键可以避免冲突，这样就可以依据不同的key值
 取得不同的缓存结果。
-
-上面的例子中我们把缓存放在了内存中，这做为第一级的缓存。当然我们也可以在第一层缓存的基本上实现第二层的缓存比如使用
-APC/XCache或是使用NoSQL数据库（如MongoDB等）：
-
-.. code-block:: php
-
-    <?php
-
-    public static function find($parameters = null)
-    {
-        // Create an unique key based on the parameters
-        $key = self::_createKey($parameters);
-
-        if (!isset(self::$_cache[$key])) {
-
-            // We're using APC as second cache
-            if (apc_exists($key)) {
-
-                $data = apc_fetch($key);
-
-                // Store the result in the memory cache
-                self::$_cache[$key] = $data;
-
-                return $data;
-            }
-
-            // There are no memory or apc cache
-            $data = parent::find($parameters);
-
-            // Store the result in the memory cache
-            self::$_cache[$key] = $data;
-
-            // Store the result in APC
-            apc_store($key, $data);
-
-            return $data;
-        }
-
-        // Return the result in the cache
-        return self::$_cache[$key];
-    }
 
 这样我们可以对每个模型的缓存进行完全的控制，如果其他的模型也需要共用此缓存，可以建立一个模型缓存基类：
 
@@ -271,65 +226,6 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
     }
 
-强制缓存（Forcing Cache）
--------------------------
-前面的例子中我们在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
-
-.. code-block:: php
-
-    <?php
-
-    // 缓存查询结果5分钟
-    $products = Products::find(
-        [
-            "cache" => [
-                "key"      => "my-cache",
-                "lifetime" => 300
-            ]
-        ]
-    );
-
-这给了我们自由选择需要缓存的查询结果，但是如果我们想对模型中的所有查询结果进行缓存，那么我们可以重写find/findFirst方法：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        protected static function _createKey($parameters)
-        {
-            // ... Create a cache key based on the parameters
-        }
-
-        public static function find($parameters = null)
-        {
-            // Convert the parameters to an array
-            if (!is_array($parameters)) {
-                $parameters = [$parameters];
-            }
-
-            // Check if a cache key wasn't passed
-            // and create the cache parameters
-            if (!isset($parameters['cache'])) {
-                $parameters['cache'] = [
-                    "key"      => self::_createKey($parameters),
-                    "lifetime" => 300
-                ];
-            }
-
-            return parent::find($parameters);
-        }
-
-        public static function findFirst($parameters = null)
-        {
-            // ...
-        }
-
-    }
-
 缓存 PHQL 查询（Caching PHQL Queries）
 --------------------------------------
 ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL进行实现的。PHQL可以让我们非常自由的创建各种查询，当然这些查询也可以被缓存：
@@ -345,32 +241,15 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $query->cache(
         [
             "key"      => "cars-by-name",
-            "lifetime" => 300
+            "lifetime" => 300,
         ]
     );
 
     $cars = $query->execute(
         [
-            'name' => 'Audi'
+            "name" => "Audi",
         ]
     );
-
-如果不想使用隐式的缓存，尽管使用你想用的缓存方式：
-
-.. code-block:: php
-
-    <?php
-
-    $phql = "SELECT * FROM Cars WHERE name = :name:";
-
-    $cars = $this->modelsManager->executeQuery(
-        $phql,
-        [
-            'name' => 'Audi'
-        ]
-    );
-
-    apc_store('my-cars', $cars);
 
 可重用的相关记录（Reusable Related Records）
 --------------------------------------------
@@ -381,7 +260,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -398,8 +277,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     // Get a set of invoices
     // SELECT * FROM invoices;
-    foreach (Invoices::find() as $invoice) {
+    $invoices = Invoices::find();
 
+    foreach ($invoices as $invoice) {
         // Get the customer related to the invoice
         // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
@@ -426,83 +306,27 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
                 "Customer",
                 "id",
                 [
-                    'reusable' => true
+                    "reusable" => true,
                 ]
             );
         }
     }
 
-此Cache存在于内存中，这意味着当请求结束时缓存数据即被释放。我们也可以通过重写模型管理器的方式实现更加复杂的缓存：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Manager as ModelManager;
-
-    class CustomModelsManager extends ModelManager
-    {
-        /**
-         * Returns a reusable object from the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @return object
-         */
-        public function getReusableRecords($modelName, $key)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
-                return apc_fetch($key);
-            }
-
-            // For the rest, use the memory cache
-            return parent::getReusableRecords($modelName, $key);
-        }
-
-        /**
-         * Stores a reusable record in the cache
-         *
-         * @param string $modelName
-         * @param string $key
-         * @param mixed $records
-         */
-        public function setReusableRecords($modelName, $key, $records)
-        {
-            // If the model is Products use the APC cache
-            if ($modelName == 'Products') {
-                apc_store($key, $records);
-                return;
-            }
-
-            // For the rest, use the memory cache
-            parent::setReusableRecords($modelName, $key, $records);
-        }
-    }
-
-别忘记注册模型管理器到DI中：
-
-.. code-block:: php
-
-    <?php
-
-    $di->setShared('modelsManager', function () {
-        return new CustomModelsManager();
-    });
+此Cache存在于内存中，这意味着当请求结束时缓存数据即被释放。
 
 缓存相关记录（Caching Related Records）
 ---------------------------------------
-当使用find或findFirst查询关联数据时，ORM内部会自动的依据以下规则创建查询条件：
+当使用:code:`find()`或:code:`findFirst()`查询关联数据时，ORM内部会自动的依据以下规则创建查询条件：
 
-+---------------------+-----------------------------------------------------------------------------------------+---------------------+
-| 类型                | 描述                                                                                    | 隐含方法            |
-+=====================+=========================================================================================+=====================+
-| Belongs-To          | 直接的返回模型相关的记录                                                                | findFirst           |
-+---------------------+-----------------------------------------------------------------------------------------+---------------------+
-| Has-One             | 直接的返回模型相关的记录                                                                | findFirst           |
-+---------------------+-----------------------------------------------------------------------------------------+---------------------+
-| Has-Many            | 返回模型相关的记录集合                                                                  | find                |
-+---------------------+-----------------------------------------------------------------------------------------+---------------------+
++------------+----------------------------------+---------------------+
+| 类型       | 描述                             | 隐含方法            |
++============+==================================+=====================+
+| Belongs-To | 直接的返回模型相关的记录         | :code:`findFirst()` |
++------------+----------------------------------+---------------------+
+| Has-One    | 直接的返回模型相关的记录         | :code:`findFirst()` |
++------------+----------------------------------+---------------------+
+| Has-Many   | 返回模型相关的记录集合           | :code:`find()`      |
++------------+----------------------------------+---------------------+
 
 这意味着当我们取得关联记录时，我们需要解析如何取得数据的方法：
 
@@ -511,15 +335,15 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     // Get some invoice
-    $invoice  = Invoices::findFirst();
+    $invoice = Invoices::findFirst();
 
     // Get the customer related to the invoice
-    $customer = $invoice->customer; // Invoices::findFirst('...');
+    $customer = $invoice->customer; // Invoices::findFirst("...");
 
     // Same as above
-    $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
+    $customer = $invoice->getCustomer(); // Invoices::findFirst("...");
 
-因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法
+因此，我们可以替换掉Invoices模型中的:code:`findFirst()`方法然后实现我们使用适合的方法
 
 .. code-block:: php
 
@@ -531,7 +355,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     {
         public static function findFirst($parameters = null)
         {
-            // .. custom caching strategy
+            // ... Custom caching strategy
         }
     }
 
@@ -565,7 +389,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public static function find($parameters = null)
         {
             // Create a unique key
-            $key     = self::_createKey($parameters);
+            $key = self::_createKey($parameters);
 
             // Check if there are data in the cache
             $results = self::_getCache($key);
@@ -578,8 +402,8 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             $results = [];
 
             $invoices = parent::find($parameters);
-            foreach ($invoices as $invoice) {
 
+            foreach ($invoices as $invoice) {
                 // Query the related customer
                 $customer = $invoice->customer;
 
@@ -623,15 +447,14 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
         public function getInvoicesCustomers($conditions, $params = null)
         {
-            $phql  = "SELECT Invoices.*, Customers.*
-            FROM Invoices JOIN Customers WHERE " . $conditions;
+            $phql = "SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(
                 [
                     "key"      => self::_createKey($conditions, $params),
-                    "lifetime" => 300
+                    "lifetime" => 300,
                 ]
             );
 
@@ -642,7 +465,8 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
 基于条件的缓存（Caching based on Conditions）
 ---------------------------------------------
-此例中，根据不同的条件实施缓存：
+此例中，根据不同的条件实施缓存.
+We might decide that the cache backend should be determined by the primary key:
 
 +---------------------+--------------------+
 |类型                 |缓存                |
@@ -667,55 +491,39 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public static function queryCache($initial, $final)
         {
             if ($initial >= 1 && $final < 10000) {
-                return self::find(
-                    [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo1'
-                        ]
-                    ]
-                );
+                $service = "mongo1";
+            } elseif ($initial >= 10000 && $final <= 20000) {
+                $service = "mongo2";
+            } elseif ($initial > 20000) {
+                $service = "mongo3";
             }
 
-            if ($initial >= 10000 && $final <= 20000) {
-                return self::find(
-                    [
-                        'id >= ' . $initial . ' AND id <= '.$final,
-                        'cache' => [
-                            'service' => 'mongo2'
-                        ]
-                    ]
-                );
-            }
-
-            if ($initial > 20000) {
-                return self::find(
-                    [
-                        'id >= ' . $initial,
-                        'cache' => [
-                            'service' => 'mongo3'
-                        ]
-                    ]
-                );
-            }
+            return self::find(
+                [
+                    "id >= " . $initial . " AND id <= " . $final,
+                    "cache" => [
+                        "service" => $service,
+                    ],
+                ]
+            );
         }
     }
 
-这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等等，我们还要创建更复杂的方法。另外当我们使用find/findFirst来查询关联数据时此方法亦会失效：
+这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等等，我们还要创建更复杂的方法。另外当我们使用:code:`find()`/:code:`findFirst()`来查询关联数据时此方法亦会失效：
 
 .. code-block:: php
 
     <?php
 
-    $robots = Robots::find('id < 1000');
-    $robots = Robots::find('id > 100 AND type = "A"');
-    $robots = Robots::find('(id > 100 AND type = "A") AND id < 2000');
+    $robots = Robots::find("id < 1000");
+    $robots = Robots::find("id > 100 AND type = 'A'");
+    $robots = Robots::find("(id > 100 AND type = 'A') AND id < 2000");
 
     $robots = Robots::find(
         [
-            '(id > ?0 AND type = "A") AND id < ?1',
-            'bind'  => [100, 2000],
-            'order' => 'type'
+            "(id > ?0 AND type = 'A') AND id < ?1",
+            "bind"  => [100, 2000],
+            "order" => "type",
         ]
     );
 
@@ -733,7 +541,9 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
         public function getQuery()
         {
             $query = new CustomQuery($this->getPhql());
+
             $query->setDI($this->getDI());
+
             return $query;
         }
     }
@@ -757,15 +567,14 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             $ir = $this->parse();
 
             // Check if the query has conditions
-            if (isset($ir['where'])) {
-
+            if (isset($ir["where"])) {
                 // The fields in the conditions can have any order
                 // We need to recursively check the conditions tree
                 // to find the info we're looking for
                 $visitor = new CustomNodeVisitor();
 
                 // Recursively visits the nodes
-                $visitor->visit($ir['where']);
+                $visitor->visit($ir["where"]);
 
                 $initial = $visitor->getInitial();
                 $final   = $visitor->getFinal();
@@ -801,43 +610,48 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
         public function visit($node)
         {
-            switch ($node['type']) {
+            switch ($node["type"]) {
+                case "binary-op":
+                    $left  = $this->visit($node["left"]);
+                    $right = $this->visit($node["right"]);
 
-                case 'binary-op':
-
-                    $left  = $this->visit($node['left']);
-                    $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
                     }
 
-                    if ($left=='id') {
-                        if ($node['op'] == '>') {
+                    if ($left === "id") {
+                        if ($node["op"] === ">") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '=') {
+
+                        if ($node["op"] === "=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '>=')    {
+
+                        if ($node["op"] === ">=") {
                             $this->_initial = $right;
                         }
-                        if ($node['op'] == '<') {
+
+                        if ($node["op"] === "<") {
                             $this->_final = $right;
                         }
-                        if ($node['op'] == '<=')    {
+
+                        if ($node["op"] === "<=") {
                             $this->_final = $right;
                         }
                     }
+
                     break;
 
-                case 'qualified':
-                    if ($node['name'] == 'id') {
-                        return 'id';
+                case "qualified":
+                    if ($node["name"] === "id") {
+                        return "id";
                     }
+
                     break;
 
-                case 'literal':
-                    return $node['value'];
+                case "literal":
+                    return $node["value"];
 
                 default:
                     return false;
@@ -872,12 +686,15 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             }
 
             $builder = new CustomQueryBuilder($parameters);
+
             $builder->from(get_called_class());
 
-            if (isset($parameters['bind'])) {
-                return $builder->getQuery()->execute($parameters['bind']);
+            $query = $builder->getQuery();
+
+            if (isset($parameters["bind"])) {
+                return $query->execute($parameters["bind"]);
             } else {
-                return $builder->getQuery()->execute();
+                return $query->execute();
             }
         }
     }
@@ -892,8 +709,8 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     <?php
 
     for ($i = 1; $i <= 10; $i++) {
+        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
 
-        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         // ...
@@ -908,8 +725,12 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
     $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $this->modelsManager->executeQuery($phql, [$i]);
+        $robots = $this->modelsManager->executeQuery(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }
@@ -920,12 +741,17 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
 
     <?php
 
-    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {
-
-        $robots = $query->execute($phql, [$i]);
+        $robots = $query->execute(
+            $phql,
+            [
+                $i,
+            ]
+        );
 
         // ...
     }

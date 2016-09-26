@@ -1,12 +1,12 @@
 教程 3: 保护INVO(Tutorial 3: Securing INVO)
-=========================
+===========================================
 
 In this chapter, we continue explaining how INVO is structured, we'll talk
 about the implementation of authentication, authorization using events and plugins and
 an access control list (ACL) managed by Phalcon.
 
 登录应用(Log into the Application)
-------------------------
+----------------------------------
 A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and
 frontend ones is only logical. All controllers are located in the same directory (app/controllers/).
 
@@ -303,7 +303,7 @@ for components, a new component called :doc:`EventsManager <events>` allows us t
 by a component, routing the events to listeners.
 
 事件管理(Events Management)
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
 interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
 

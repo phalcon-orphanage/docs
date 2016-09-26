@@ -495,27 +495,25 @@ In the following example, we explain how to control the application security usi
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
 
     // Create a events manager
     $eventsManager = new EventsManager();
 
-    // Listen all the application events
     $eventsManager->attach(
-        "micro",
-        function ($event, $app) {
-            if ($event->getType() == "beforeExecuteRoute") {
-                if ($app->session->get("auth") == false) {
-                    $app->flashSession->error("The user isn't authenticated");
+        "micro:beforeExecuteRoute",
+        function (Event $event, $app) {
+            if ($app->session->get("auth") === false) {
+                $app->flashSession->error("The user isn't authenticated");
 
-                    $app->response->redirect("/");
+                $app->response->redirect("/");
 
-                    $app->response->sendHeaders();
+                $app->response->sendHeaders();
 
-                    // Return (false) stop the operation
-                    return false;
-                }
+                // Return (false) stop the operation
+                return false;
             }
         }
     );

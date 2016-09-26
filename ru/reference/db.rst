@@ -38,7 +38,7 @@
 +--------------------------------------------------------------------------------+-----------------------------------------+
 | Class                                                                          | Описание                                |
 +================================================================================+=========================================+
-| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           | Специфичные диалекты SQL для MySQL      |
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | Специфичные диалекты SQL для MySQL      |
 +--------------------------------------------------------------------------------+-----------------------------------------+
 | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | Специфичные диалекты SQL для PostgreSQL |
 +--------------------------------------------------------------------------------+-----------------------------------------+
@@ -63,7 +63,7 @@
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
+        "dbname"   => "test_db",
     ];
 
     // Необязательные
@@ -81,7 +81,7 @@
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
+        "dbname"   => "template",
     ];
 
     // Необязательные
@@ -96,7 +96,7 @@
 
     // Обязательные
     $config = [
-        "dbname" => "/path/to/database.db"
+        "dbname" => "/path/to/database.db",
     ];
 
     // Создаем соединение
@@ -118,8 +118,8 @@
             "password" => "sigma",
             "dbname"   => "test_db",
             "options"  => [
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
             ]
         ]
     );
@@ -191,7 +191,7 @@
     $sql = "SELECT id, name FROM robots";
     $result = $connection->query($sql);
 
-    //  Перебор набора данных
+    // Перебор набора данных
     while ($robot = $result->fetch()) {
        echo $robot["name"];
     }
@@ -216,11 +216,22 @@ SQL инъекций в  вашем коде. Поддерживаются ка�
 
     // Подготовленный запрос с неименованными псевдопеременными
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, ["Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
     // Подготовленный запрос с именованными псевдопеременными
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, ["name" => "Astro Boy", "year" => 1952]);
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
 are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
@@ -239,7 +250,12 @@ bound parameters are directly passed to PDO:
 
     // Binding with PDO placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, [1 => "Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
 Вставка/Обновление/Удаление строк
 ---------------------------------
@@ -255,22 +271,34 @@ bound parameters are directly passed to PDO:
 
     // с помощью подготовленного запроса
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, ['Astroy Boy', 1952]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
     // Динамическое создание запроса с помощью метода класса
     $success = $connection->insert(
-       "robots",
-       ["Astro Boy", 1952],
-       ["name", "year"]
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->insertAsDict(
-       "robots",
-       [
-          "name" => "Astro Boy",
-          "year" => 1952
-       ]
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
     // Обновление с помощью стандартного SQL запроса
@@ -279,46 +307,60 @@ bound parameters are directly passed to PDO:
 
     // с помощью подготовленного запроса
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, ['Astro Boy', 101]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
     // Динамическое создание запроса с помощью метода класса
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       "id = 101" // Внимание! Значения не экранируются
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Внимание! Значения не экранируются
     );
 
     // Динамическое создание запроса с помощью метода класса (другой синтаксис)
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       "id = 101" // Внимание! Значения не экранируются
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Внимание! Значения не экранируются
     );
 
     // С экранированием условий
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Необязательный параметр
-       ]
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Необязательный параметр
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Необязательный параметр
-       ]
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Необязательный параметр
+        ]
     );
 
     // Удаление с помощью стандартного SQL запроса
@@ -330,7 +372,13 @@ bound parameters are directly passed to PDO:
     $success = $connection->execute($sql, [101]);
 
     // Динамическое создание запроса с помощью метода класса
-    $success = $connection->delete("robots", "id = ?", [101]);
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
 Транзакции и вложенные транзакции
 ---------------------------------
@@ -342,7 +390,6 @@ bound parameters are directly passed to PDO:
     <?php
 
     try {
-
         // Начало новой транзакции
         $connection->begin();
 
@@ -353,7 +400,6 @@ bound parameters are directly passed to PDO:
 
         // Фиксируем изменения в транзакции, если все хорошо.
         $connection->commit();
-
     } catch (Exception $e) {
         // В случаи исключения откатываем все изменения
         $connection->rollback();
@@ -367,7 +413,6 @@ bound parameters are directly passed to PDO:
     <?php
 
     try {
-
         // Начало новой транзакции
         $connection->begin();
 
@@ -375,7 +420,6 @@ bound parameters are directly passed to PDO:
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
             // Начало вложенной транзакции
             $connection->begin();
 
@@ -385,7 +429,6 @@ bound parameters are directly passed to PDO:
 
             // Создаем точку сохранения
             $connection->commit();
-
         } catch (Exception $e) {
             // В случаи исключения откатываем все изменения
             $connection->rollback();
@@ -396,7 +439,6 @@ bound parameters are directly passed to PDO:
 
         // Фиксируем изменения в транзакции, если все хорошо.
         $connection->commit();
-
     } catch (Exception $e) {
         // В случаи исключения откатываем все изменения
         $connection->rollback();
@@ -445,7 +487,7 @@ bound parameters are directly passed to PDO:
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -458,18 +500,24 @@ bound parameters are directly passed to PDO:
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Проверка на наличие вредоносных ключевых слов в SQL
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP / ALTER операции не разрешено использовать в приложении,
-            // это должно быть SQL инъекция!
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // Проверка на наличие вредоносных ключевых слов в SQL
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // DROP / ALTER операции не разрешено использовать в приложении,
+                // это должно быть SQL инъекция!
+                return false;
+            }
+
+            // Все хорошо
+            return true;
         }
-
-        // Все хорошо
-        return true;
-    });
+    );
 
 Профилирование запросов SQL
 ---------------------------
@@ -484,6 +532,7 @@ bound parameters are directly passed to PDO:
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -492,16 +541,22 @@ bound parameters are directly passed to PDO:
     $profiler = new DbProfiler();
 
     // Слушаем все события БД
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // Запуск профайлера с текущим соединением
-            $profiler->startProfile($connection->getSQLStatement());
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
+
+                // Запуск профайлера с текущим соединением
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // Остановка текущего профайлера
+                $profiler->stopProfile();
+            }
         }
-        if ($event->getType() == 'afterQuery') {
-            // Остановка текущего профайлера
-            $profiler->stopProfile();
-        }
-    });
+    );
 
     // Назначаем менеджер событий соединению
     $connection->setEventsManager($eventsManager);
@@ -558,7 +613,7 @@ bound parameters are directly passed to PDO:
     $dbProfiler = new DbProfiler();
 
     // Прикрепляем слушателя ко всем событиям базы данных
-    $eventsManager->attach('db', $dbProfiler);
+    $eventsManager->attach("db", $dbProfiler);
 
 Логирование SQL запросов
 ------------------------
@@ -572,6 +627,7 @@ bound parameters are directly passed to PDO:
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -579,12 +635,14 @@ bound parameters are directly passed to PDO:
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // Слушаем все события БД
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
+    );
 
     // Назначаем менеджер событий соединению
     $connection->setEventsManager($eventsManager);
@@ -592,8 +650,14 @@ bound parameters are directly passed to PDO:
     // Выполняем несколько SQL запросов
     $connection->insert(
         "products",
-        ["Hot pepper", 3.50],
-        ["name", "price"]
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
     );
 
 Упомянутый выше файл *app/logs/db.log* будет содержать что-то похожее на это:
@@ -634,14 +698,18 @@ bound parameters are directly passed to PDO:
     // Получаем индексы таблицы 'robots'
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
     // Получаем внешние ключи на таблицу 'robots'
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // Выводим на экран ссылаемые столбцы
-        print_r($reference->getReferencedColumns());
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
 Таблица описания  очень похожа на результат команды “DESCRIBE” в MySQL, она содержит следующую информацию:
@@ -718,7 +786,7 @@ bound parameters are directly passed to PDO:
                         "size"    => 11,
                         "notNull" => true,
                     ]
-                )
+                ),
             ]
         ]
     );
@@ -799,7 +867,7 @@ bound parameters are directly passed to PDO:
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
+                "after"   => "name",
             ]
         )
     );
@@ -813,7 +881,7 @@ bound parameters are directly passed to PDO:
             [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
+                "notNull" => true,
             ]
         )
     );

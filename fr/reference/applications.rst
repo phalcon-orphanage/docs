@@ -349,7 +349,7 @@ Application Events
 (if it is present). Events are triggered using the type "application". The following events are supported:
 
 +---------------------+--------------------------------------------------------------+
-| Event Name          | Triggered                                                    |
+| Nom d'évt           | Triggered                                                    |
 +=====================+==============================================================+
 | boot                | Executed when the application handles its first request      |
 +---------------------+--------------------------------------------------------------+

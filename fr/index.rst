@@ -53,9 +53,13 @@ Components
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-relationships
+   reference/model-events
    reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
+   reference/model-validation
+   reference/models-advanced
    reference/phql
    reference/models-cache
    reference/odm
@@ -122,6 +126,11 @@ Legal
    :maxdepth: 3
 
    reference/license
+
+Previous Versions
+-----------------
+
+* `2.0.0 <https://docs.phalconphp.com/fr/2.0.0/>`
 
 Autres formats
 --------------

@@ -137,7 +137,7 @@ Also, note that we have using a constant called APP_PATH, this constant is defin
     );
 
 注册服务(Registering services)
---------------------
+------------------------------
 Another file that is required in the bootstrap is (app/config/services.php). This file allow
 us to organize the services that INVO does use.
 
@@ -180,7 +180,7 @@ the required components:
 We will discuss this file in depth later.
 
 处理请求(Handling the Request)
---------------------
+------------------------------
 If we skip to the end of the file (public/index.php), the request is finally handled by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
 which initializes and executes all that is necessary to make the application run:
 

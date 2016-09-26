@@ -38,7 +38,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 +--------------------------------------------------------------------------------+-----------------------------------------------------+
 | Class                                                                          | Description                                         |
 +================================================================================+=====================================================+
-| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           | SQL specific dialect for MySQL database system      |
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | SQL specific dialect for MySQL database system      |
 +------------------------------------------------------------------+-------------+-----------------------------------------------------+
 | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | SQL specific dialect for PostgreSQL database system |
 +------------------------------------------------------------------+-------------+-----------------------------------------------------+
@@ -63,7 +63,7 @@ below shows how to create a connection passing both required and optional parame
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
+        "dbname"   => "test_db",
     ];
 
     // Optional
@@ -81,7 +81,7 @@ below shows how to create a connection passing both required and optional parame
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
+        "dbname"   => "template",
     ];
 
     // Optional
@@ -96,7 +96,7 @@ below shows how to create a connection passing both required and optional parame
 
     // Required
     $config = [
-        "dbname" => "/path/to/database.db"
+        "dbname" => "/path/to/database.db",
     ];
 
     // Create a connection
@@ -118,8 +118,8 @@ You can set PDO options at connection time by passing the parameters 'options':
             "password" => "sigma",
             "dbname"   => "test_db",
             "options"  => [
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
             ]
         ]
     );
@@ -210,11 +210,22 @@ injection attacks. Both string and positional placeholders are supported. Bindin
 
     // Binding with numeric placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, ["Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
     // Binding with named placeholders
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, ["name" => "Astro Boy", "year" => 1952]);
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
 are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
@@ -233,7 +244,12 @@ bound parameters are directly passed to PDO:
 
     // Binding with PDO placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, [1 => "Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
 Inserting/Updating/Deleting Rows
 --------------------------------
@@ -249,22 +265,34 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, ['Astro Boy', 1952]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
     // Generating dynamically the necessary SQL
     $success = $connection->insert(
-       "robots",
-       ["Astro Boy", 1952],
-       ["name", "year"]
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->insertAsDict(
-       "robots",
-       [
-          "name" => "Astro Boy",
-          "year" => 1952
-       ]
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
     // Updating data with a raw SQL statement
@@ -273,46 +301,60 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, ['Astro Boy', 101]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
     // Generating dynamically the necessary SQL
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // With escaping conditions
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Optional parameter
-       ]
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Optional parameter
-       ]
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
 
     // Deleting data with a raw SQL statement
@@ -324,7 +366,13 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $success = $connection->execute($sql, [101]);
 
     // Generating dynamically the necessary SQL
-    $success = $connection->delete("robots", "id = ?", [101]);
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
 Transactions and Nested Transactions
 ------------------------------------
@@ -336,7 +384,6 @@ often increase the performance on most database systems:
     <?php
 
     try {
-
         // Start a transaction
         $connection->begin();
 
@@ -347,7 +394,6 @@ often increase the performance on most database systems:
 
         // Commit if everything goes well
         $connection->commit();
-
     } catch (Exception $e) {
         // An exception has occurred rollback the transaction
         $connection->rollback();
@@ -362,7 +408,6 @@ is created:
     <?php
 
     try {
-
         // Start a transaction
         $connection->begin();
 
@@ -370,7 +415,6 @@ is created:
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
             // Start a nested transaction
             $connection->begin();
 
@@ -380,7 +424,6 @@ is created:
 
             // Create a save point
             $connection->commit();
-
         } catch (Exception $e) {
             // An error has occurred, release the nested transaction
             $connection->rollback();
@@ -391,7 +434,6 @@ is created:
 
         // Commit if everything goes well
         $connection->commit();
-
     } catch (Exception $e) {
         // An exception has occurred rollback the transaction
         $connection->rollback();
@@ -438,7 +480,7 @@ Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalc
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -451,18 +493,24 @@ Stop SQL operations are very useful if for example you want to implement some la
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Check for malicious words in SQL statements
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // Check for malicious words in SQL statements
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // DROP/ALTER operations aren't allowed in the application,
+                // this must be a SQL injection!
+                return false;
+            }
+
+            // It's OK
+            return true;
         }
-
-        // It's OK
-        return true;
-    });
+    );
 
 Profiling SQL Statements
 ------------------------
@@ -474,6 +522,7 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -482,16 +531,22 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
     $profiler = new DbProfiler();
 
     // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // Start a profile with the active connection
-            $profiler->startProfile($connection->getSQLStatement());
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
+
+                // Start a profile with the active connection
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // Stop the active profile
+                $profiler->stopProfile();
+            }
         }
-        if ($event->getType() == 'afterQuery') {
-            // Stop the active profile
-            $profiler->stopProfile();
-        }
-    });
+    );
 
     // Assign the events manager to the connection
     $connection->setEventsManager($eventsManager);
@@ -547,7 +602,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     $dbProfiler = new DbProfiler();
 
     // Attach the listener listening for all database events
-    $eventsManager->attach('db', $dbProfiler);
+    $eventsManager->attach("db", $dbProfiler);
 
 Logging SQL Statements
 ----------------------
@@ -558,6 +613,7 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -565,12 +621,14 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
+    );
 
     // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
@@ -578,8 +636,14 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     // Execute some SQL statement
     $connection->insert(
         "products",
-        ["Hot pepper", 3.50],
-        ["name", "price"]
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
     );
 
 As above, the file *app/logs/db.log* will contain something like this:
@@ -619,14 +683,18 @@ Describing Tables/Views
     // Get indexes on the 'robots' table
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
     // Get foreign keys on the 'robots' table
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // Print referenced columns
-        print_r($reference->getReferencedColumns());
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
 A table description is very similar to the MySQL describe command, it contains the following information:
@@ -702,7 +770,7 @@ The following example shows how to create a table:
                         "size"    => 11,
                         "notNull" => true,
                     ]
-                )
+                ),
             ]
         ]
     );
@@ -782,7 +850,7 @@ is limited by these constraints.
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
+                "after"   => "name",
             ]
         )
     );
@@ -796,7 +864,7 @@ is limited by these constraints.
             [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
+                "notNull" => true,
             ]
         )
     );

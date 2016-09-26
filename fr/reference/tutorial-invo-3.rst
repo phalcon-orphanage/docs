@@ -453,7 +453,12 @@ Puis, basé sur les paramètres passé, on génère la requête :
             "The search did not found any products"
         );
 
-        return $this->forward("products/index");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
 Si la recherche ne retourne aucun produit, on transfert l'utilisateur à l'action index. Si la
@@ -721,7 +726,12 @@ Dans la page de création, on récupère les données envoyés et on leur assign
     public function createAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $form = new ProductsForm();
@@ -794,7 +804,12 @@ dans le form ProductsForm (app/forms/ProductsForm.php):
             $this->flash->error($message);
         }
 
-        return $this->forward("products/new");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
 Finally, if the form does not return any validation message we can save the product instance:
@@ -812,7 +827,12 @@ Finally, if the form does not return any validation message we can save the prod
             $this->flash->error($message);
         }
 
-        return $this->forward("products/new");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
     $form->clear();
@@ -821,7 +841,12 @@ Finally, if the form does not return any validation message we can save the prod
         "Product was created successfully"
     );
 
-    return $this->forward("products/index");
+    return $this->dispatcher->forward(
+        [
+            "controller" => "products",
+            "action"     => "index",
+        ]
+    );
 
 Maintenant, dans le cas de la modification de produit, on doit présenter les données à éditer à l'utilisateur en pré-remplissant les champs:
 
@@ -842,7 +867,12 @@ Maintenant, dans le cas de la modification de produit, on doit présenter les do
                     "Product was not found"
                 );
 
-                return $this->forward("products/index");
+                return $this->dispatcher->forward(
+                    [
+                        "controller" => "products",
+                        "action"     => "index",
+                    ]
+                );
             }
 
             $this->view->form = new ProductsForm(
@@ -867,7 +897,12 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
     public function saveAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $id = $this->request->getPost("id", "int");
@@ -879,7 +914,12 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
                 "Product does not exist"
             );
 
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $form = new ProductsForm();
@@ -893,7 +933,12 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
                 $this->flash->error($message);
             }
 
-            return $this->forward("products/new");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
         if ($product->save() === false) {
@@ -903,7 +948,12 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
                 $this->flash->error($message);
             }
 
-            return $this->forward("products/new");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
         $form->clear();
@@ -912,7 +962,12 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
             "Product was updated successfully"
         );
 
-        return $this->forward("products/index");
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
 We have seen how Phalcon lets you create forms and bind data from a database in a structured way.

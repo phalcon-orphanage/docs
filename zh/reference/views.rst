@@ -454,6 +454,25 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 你可以返回一个“response”的对象，避免手动禁用视图:
 
 .. code-block:: php
@@ -654,26 +673,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     ?>
     </div>
 
-在视图中使用模型（Using models in the view layer）
---------------------------------------------------
-应用模型在视图层也是可用的。:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 将在运行时实例化模型:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        $categories = Categories::find("status = 1");
-
-        foreach ($categories as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-尽管你可以执行模型处理操作，如在视图层 insert() 或  update()，但这是不推荐，因为在一个错误或异常发生时，它不可能将执行流程转发给另一个控制器。
-
 缓存视图片段（Caching View Fragments）
 --------------------------------------
 有时当你开发动态网站和一些区域不会经常更新，请求的输出是完全相同的。 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供缓存全部或部分的渲染输出来提高性能。
@@ -869,38 +868,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 替换模版引擎（Changing the Template Engine）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-你可以像下面一样从控制器更换或者添加更多的模板引擎：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Set the engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                ]
-            );
-        }
-
-        public function showAction()
-        {
-            // Using more than one template engine
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
-                ]
-            );
-        }
-    }
-
 你可以完全更换模板引擎或同时使用多个模板引擎。方法 :code:`Phalcon\Mvc\View::registerEngines()` 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
 
 :code:`Phalcon\Mvc\View::registerEngines()` 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
@@ -922,9 +889,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
             // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
+                ]
+            );
+
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
                 ]
             );
 

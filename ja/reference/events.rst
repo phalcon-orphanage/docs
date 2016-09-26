@@ -56,6 +56,10 @@ Now every time a query is executed, the SQL statement will be echoed out. The fi
 information about the event that is running, the second is the source of the event (in this case: the connection itself). A third parameter may
 also be specified which will contain arbitrary data specific to the event.
 
+.. highlights::
+
+    You must explicitly set the Events Manager to a component using the :code:`setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
+
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In
 this example, we will implement the :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` to detect the SQL statements that are taking longer
 to execute than expected:
@@ -270,6 +274,38 @@ In a listener the third parameter also receives this data:
             print_r($event->getData());
         }
     );
+
+Using Services From The DI
+--------------------------
+By extending :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, you can access services from the DI, just like you would in a controller:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+
+    class SomeListener extends Plugin
+    {
+        public function beforeSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, beforeSomeTask\n";
+
+            $this->logger->debug(
+                "beforeSomeTask has been triggered";
+            );
+        }
+
+        public function afterSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, afterSomeTask\n";
+
+            $this->logger->debug(
+                "afterSomeTask has been triggered";
+            );
+        }
+    }
 
 Event Propagation/Cancellation
 ------------------------------

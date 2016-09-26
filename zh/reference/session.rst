@@ -1,7 +1,7 @@
 使用 Session 存储数据（Storing data in Session）
 ================================================
 
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` 组件提供了一种面向对象的方式访问session数据。
+会话组件组件提供了一种面向对象的方式访问session数据。
 
 使用这个组件替代原生session的原因如下:
 

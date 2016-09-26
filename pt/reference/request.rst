@@ -38,13 +38,13 @@ never sanitized and can contain illegal characters or even malicious code, which
 
     use Phalcon\Filter;
 
-    // Manually applying the filter
     $filter = new Filter();
-    $email  = $filter->sanitize($_POST["user_email"], "email");
+
+    // Manually applying the filter
+    $email = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new Filter();
-    $email  = $filter->sanitize($request->getPost("user_email"), "email");
+    $email = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
     $email = $request->getPost("user_email", "email");
@@ -79,11 +79,9 @@ the :code:`$this->request` public property of the controller:
         {
             // Check if request has made with POST
             if ($this->request->isPost()) {
-
                 // Access POST data
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
-
             }
         }
     }
@@ -105,15 +103,17 @@ an object-oriented way to achieve this task:
         {
             // Check if the user has uploaded files
             if ($this->request->hasFiles()) {
+                $files = $this->request->getUploadedFiles();
 
                 // Print the real file names and sizes
-                foreach ($this->request->getUploadedFiles() as $file) {
-
+                foreach ($files as $file) {
                     // Print file details
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
                     // Move the file into the application
-                    $file->moveTo('files/' . $file->getName());
+                    $file->moveTo(
+                        "files/" . $file->getName()
+                    );
                 }
             }
         }
@@ -135,7 +135,8 @@ the user. The following examples show usages of that information:
 
     // Get the Http-X-Requested-With header
     $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
-    if ($requestedWith == "XMLHttpRequest") {
+
+    if ($requestedWith === "XMLHttpRequest") {
         echo "The request was made with Ajax";
     }
 
@@ -145,28 +146,27 @@ the user. The following examples show usages of that information:
     }
 
     // Check the request layer
-    if ($request->isSecureRequest()) {
+    if ($request->isSecure()) {
         echo "The request was made using a secure layer";
     }
 
     // Get the servers's IP address. ie. 192.168.0.100
-    $ipAddress   = $request->getServerAddress();
+    $ipAddress = $request->getServerAddress();
 
     // Get the client's IP address ie. 201.245.53.51
-    $ipAddress   = $request->getClientAddress();
+    $ipAddress = $request->getClientAddress();
 
     // Get the User Agent (HTTP_USER_AGENT)
-    $userAgent   = $request->getUserAgent();
+    $userAgent = $request->getUserAgent();
 
     // Get the best acceptable content by the browser. ie text/xml
     $contentType = $request->getAcceptableContent();
 
     // Get the best charset accepted by the browser. ie. utf-8
-    $charset     = $request->getBestCharset();
+    $charset = $request->getBestCharset();
 
     // Get the best language accepted configured in the browser. ie. en-us
-    $language    = $request->getBestLanguage();
-
+    $language = $request->getBestLanguage();
 
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
 .. _Cross Site Scripting (XSS): http://en.wikipedia.org/wiki/Cross-site_scripting

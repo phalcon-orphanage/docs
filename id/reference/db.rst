@@ -38,7 +38,7 @@ Phalcon membungkus detil spesifik tiap engine database dalam dialek. Mereka meny
 +--------------------------------------------------------------------------------+-----------------------------------------------------+
 | Class                                                                          | Keterangan                                          |
 +================================================================================+=====================================================+
-| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           | Dialek SQL spesifik untuk sistem database MySQL     |
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | Dialek SQL spesifik untuk sistem database MySQL     |
 +--------------------------------------------------------------------------------+-----------------------------------------------------+
 | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | Dialek SQL spesifik untuk sistem database PostgreSQL|
 +--------------------------------------------------------------------------------+-----------------------------------------------------+
@@ -63,7 +63,7 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
+        "dbname"   => "test_db",
     ];
 
     // Opsional
@@ -81,7 +81,7 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
+        "dbname"   => "template",
     ];
 
     // Opsional
@@ -96,7 +96,7 @@ dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan param
 
     // Wajib
     $config = [
-        "dbname" => "/path/to/database.db"
+        "dbname" => "/path/to/database.db",
     ];
 
     // Buat koneksi
@@ -118,8 +118,8 @@ Anda dapat mengatur opsi PDO saat konkesi dengan melewatkan parameter 'options':
             "password" => "sigma",
             "dbname"   => "test_db",
             "options"  => [
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
             ]
         ]
     );
@@ -210,11 +210,22 @@ injection. Baik string maupun positional placeholder didukung. Mengikat paramete
 
     // Mengikat dengan placeholder numerik
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, ["Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
     // Mengikat dengan placeholder bernama
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, ["name" => "Astro Boy", "year" => 1952]);
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
 Ketika menggunakan placeholder numerik, anda akan harus menentukannya sebagai integer yakni 1 atau 2. Untuk kasus "1" atau "2"
 mereka dianggap string dan bukan integer, sehingga placeholder tidak dapat diganti dengan benar. Dengan sembarang adapter
@@ -233,7 +244,12 @@ parameter terikat langsung dilewatkan ke PDO:
 
     // Mengikat placeholder PDO
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, [1 => "Wall-E"]);
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
 Menambah/Mengubah/Menghapus Row
 -------------------------------
@@ -249,22 +265,34 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
 
     // Dengan placeholder
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, ['Astro Boy', 1952]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
     // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->insert(
-       "robots",
-       ["Astro Boy", 1952],
-       ["name", "year"]
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
     // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->insertAsDict(
-       "robots",
-       [
-          "name" => "Astro Boy",
-          "year" => 1952
-       ]
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
     // Mengubah data dengan pernyataan SQL
@@ -273,46 +301,60 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
 
     // Dengan placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, ['Astro Boy', 101]);
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
     // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       "id = 101" // Peringatan! Disini, nilainya tidak di escape
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
     // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       "id = 101" // Peringatan! Disini, nilainya tidak di escape
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
     // Dengan kondisi escape
     $success = $connection->update(
-       "robots",
-       ["name"],
-       ["New Astro Boy"],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Parameter opsional
-       ]
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Parameter opsional
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       [
-          "name" => "New Astro Boy"
-       ],
-       [
-          'conditions' => 'id = ?',
-          'bind' => [101],
-          'bindTypes' => [PDO::PARAM_INT] // Parameter opsional
-       ]
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Parameter opsional
+        ]
     );
 
     // Menghapus data dengan pernyataan SQL
@@ -324,7 +366,13 @@ Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau men
     $success = $connection->execute($sql, [101]);
 
     // Membangkitkan SQL yang diperlukan secara dinamis
-    $success = $connection->delete("robots", "id = ?", [101]);
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
 Transaksi dan Transaksi Bersarang
 ---------------------------------
@@ -336,7 +384,6 @@ sering kali menaikkan performa pada sebagian besar sistem database:
     <?php
 
     try {
-
         // Mulai transaksi
         $connection->begin();
 
@@ -347,7 +394,6 @@ sering kali menaikkan performa pada sebagian besar sistem database:
 
         // Commit jika semuanya berjalan baik
         $connection->commit();
-
     } catch (Exception $e) {
         // Exception terjadi rollback transaksi
         $connection->rollback();
@@ -362,7 +408,6 @@ diciptakan:
     <?php
 
     try {
-
         // Mulai sebuah transaksi
         $connection->begin();
 
@@ -370,7 +415,6 @@ diciptakan:
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
             // Mulai transaksi bersarang
             $connection->begin();
 
@@ -380,7 +424,6 @@ diciptakan:
 
             // Buat save point
             $connection->commit();
-
         } catch (Exception $e) {
             // Kesalahan terjadi, lepaskan transaksi bersarang
             $connection->rollback();
@@ -391,7 +434,6 @@ diciptakan:
 
         // Commit jika semua berjalan baik
         $connection->commit();
-
     } catch (Exception $e) {
         // Kesalahan terjadi, batalkan transaksi
         $connection->rollback();
@@ -438,7 +480,7 @@ Mengikat sebuah EventsManager ke sebuah koneksi mudah, :doc:`Phalcon\\Db <../api
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
+            "dbname"   => "invo",
         ]
     );
 
@@ -451,18 +493,24 @@ Menghentikan operasi SQL berguna jika misalnya anda ingin membuat implementasi p
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Uji untuk kata-kata berbahaya dalam pernyataan SQL
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // Operasi DROP/ALTER tidak izinkan di aplikasi ini,
-            // Ini pastinya SQL injection!
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // Uji untuk kata-kata berbahaya dalam pernyataan SQL
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // Operasi DROP/ALTER tidak izinkan di aplikasi ini,
+                // Ini pastinya SQL injection!
+                return false;
+            }
+
+            // OK
+            return true;
         }
-
-        // OK
-        return true;
-    });
+    );
 
 Profiling SQL Statements
 ------------------------
@@ -474,6 +522,7 @@ Profiling database sangat mudah dengan :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -482,16 +531,22 @@ Profiling database sangat mudah dengan :doc:`Phalcon\\Db\\Profiler <../api/Phalc
     $profiler = new DbProfiler();
 
     // Pantau semua kejadian database
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // Mulai profil koneksi aktif
-            $profiler->startProfile($connection->getSQLStatement());
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
+
+                // Mulai profil koneksi aktif
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // Hentikan profil aktif
+                $profiler->stopProfile();
+            }
         }
-        if ($event->getType() == 'afterQuery') {
-            // Hentikan profil aktif
-            $profiler->stopProfile();
-        }
-    });
+    );
 
     // Salin eventsManager ke connection
     $connection->setEventsManager($eventsManager);
@@ -547,7 +602,7 @@ Anda dapat menciptakan kelas profil anda sendiri berdasar :doc:`Phalcon\\Db\\Pro
     $dbProfiler = new DbProfiler();
 
     // Pasang pemantau untuk memantau semua kejadian database
-    $eventsManager->attach('db', $dbProfiler);
+    $eventsManager->attach("db", $dbProfiler);
 
 Log Perintah SQL
 ----------------
@@ -558,6 +613,7 @@ Menggunakan komponen abstraksi level tinggi seperti :doc:`Phalcon\\Db <../api/Ph
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -565,12 +621,14 @@ Menggunakan komponen abstraksi level tinggi seperti :doc:`Phalcon\\Db <../api/Ph
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // Pantau semua kejadian database
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
+    );
 
     // Pasang eventsManager ke instance adapter db
     $connection->setEventsManager($eventsManager);
@@ -578,8 +636,14 @@ Menggunakan komponen abstraksi level tinggi seperti :doc:`Phalcon\\Db <../api/Ph
     // Jalankan perintah SQL
     $connection->insert(
         "products",
-        ["Hot pepper", 3.50],
-        ["name", "price"]
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
     );
 
 Kode di atas, file *app/logs/db.log* akan berisi seperti ini:
@@ -619,14 +683,18 @@ Deskripsi Tables/Views
     // Ambil indeks pada tabel 'robots'
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
     // Ambil foreign keys pada tabel 'robots'
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // Cetak kolom yang direferensi
-        print_r($reference->getReferencedColumns());
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
 Sebuah deksripsi tabel sangat mirip dengan perintah describe di MySQL, ia berisi informasi berikut:
@@ -702,7 +770,7 @@ Contoh berikut menunjukkan bagaimana menciptakan sebuah tabel:
                         "size"    => 11,
                         "notNull" => true,
                     ]
-                )
+                ),
             ]
         ]
     );
@@ -782,7 +850,7 @@ dibatasi oleh keterbatasan ini.
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
+                "after"   => "name",
             ]
         )
     );
@@ -796,7 +864,7 @@ dibatasi oleh keterbatasan ini.
             [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
+                "notNull" => true,
             ]
         )
     );

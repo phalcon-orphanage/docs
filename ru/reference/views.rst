@@ -454,6 +454,25 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         }
     }
 
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
+        }
+    }
+
 Вы можете вернуть объект 'response', чтобы вручную отключить компонент представления:
 
 .. code-block:: php
@@ -653,26 +672,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     ?>
     </div>
 
-Использование моделей в слое представления
-------------------------------------------
-Модели приложения всегда доступны из слоя представления. Во время исполнения :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` автоматически создаёт их копии:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        $categories = Categories::find("status = 1");
-
-        foreach ($categories as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-Хотя и существует возможность вызова таких методов модели, как insert() или update(), это не рекомендуется, так как при этом становится невозможной передача выполнения другому контроллеру в случае возникновения ошибки или исключительной ситуации.
-
 Кэширование фрагментов Представления
 ------------------------------------
 При разработке динамических веб-сайтов некоторые их области могут изменяться достаточно редко и результат вывода будет совпадать для похожих запросов. Для увеличения производительности :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` предоставляет возможность кэширования частей или даже всего результата отрисовки.
@@ -865,38 +864,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 Изменение шаблонизатора
 ^^^^^^^^^^^^^^^^^^^^^^^
-Вы можете изменить или дополнить шаблонизатор из контроллера следующим образом:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Назначение шаблонизатора
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                ]
-            );
-        }
-
-        public function showAction()
-        {
-            // Использование нескольких шаблонизаторов
-            $this->view->registerEngines(
-                [
-                    ".my-html" => "MyTemplateAdapter",
-                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
-                ]
-            );
-        }
-    }
-
 Вы можете полностью заменить шаблонизатор или использовать несколько шаблонизаторов одновременно. Метод :code:`Phalcon\Mvc\View::registerEngines()` принимает в качестве параметра массив, в котором описываются данные шаблонизаторов. Ключами массива в этом случае будут расширения файлов, что помогает отличить их друг от друга. Файлы шаблонов, относящиеся к этим шаблонизаторам должны иметь соответствующие расширения.
 
 Порядок выполнения шаблонизаторов определяется порядком, в котором они описаны в :code:`Phalcon\Mvc\View::registerEngines()`. Если :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` обнаружит два представления с одинаковым именами, но разными расширениями, то он отрисует тот, который был указан первым.
@@ -918,9 +885,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
             // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
+                ]
+            );
+
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
                 ]
             );
 
