@@ -78,7 +78,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     // ...
 
-    // Create a DI
+    // 创建一个 DI
     $di = new FactoryDefault();
 
 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` 是 :doc:`Phalcon\\Di <../api/Phalcon_Di>` 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
@@ -435,7 +435,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    // Setup the database service
+    // 设置数据库服务
     $di->set(
         "db",
         function () {
