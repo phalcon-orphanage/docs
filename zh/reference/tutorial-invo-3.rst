@@ -1,12 +1,9 @@
-Tutorial 4: Working with the CRUD
+教程4: 使用CRUD(Tutorial 4: Working with the CRUD)
 =================================
 
-Backends usually provide forms to allow users to manipulate data. Continuing the explanation of
-INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
-using forms, validations, paginators and more.
+后台通常提供表单来允许用户提交数据. 继续对INVO的解释, 我们现在处理CRUD的创建, 一个非常常见的操作任务, Phalcon将会帮助你使用表单, 校验, 分页和更多.
 
-Most options that manipulate data in INVO (companies, products and types of products) were developed
-using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
+在INVO(公司, 产品和产品类型)中大部分选项操作数据都是使用一个基础的常见的 CRUD_ (创建, 读取, 更新和删除)开发的. 每个CRUD包含以下文件:
 
 .. code-block:: bash
 
@@ -25,7 +22,7 @@ using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD cont
                     new.volt
                     search.volt
 
-Each controller has the following actions:
+每个控制器都有以下方法:
 
 .. code-block:: php
 
@@ -34,7 +31,7 @@ Each controller has the following actions:
     class ProductsController extends ControllerBase
     {
         /**
-         * The start action, it shows the "search" view
+         * 开始操作, 它展示"search"视图
          */
         public function indexAction()
         {
@@ -42,8 +39,8 @@ Each controller has the following actions:
         }
 
         /**
-         * Execute the "search" based on the criteria sent from the "index"
-         * Returning a paginator for the results
+         * 基于从"index"发送过来的条件处理"search"
+         * 返回一个分页结果
          */
         public function searchAction()
         {
@@ -51,7 +48,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to create a "new" product
+         * 展示创建一个"new"(新)产品的视图
          */
         public function newAction()
         {
@@ -59,7 +56,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to "edit" an existing product
+         * 展示编辑一个已存在"edit"(编辑)产品的视图
          */
         public function editAction()
         {
@@ -67,7 +64,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Creates a product based on the data entered in the "new" action
+         * 基于"new"方法中输入的数据创建一个产品
          */
         public function createAction()
         {
@@ -75,7 +72,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Updates a product based on the data entered in the "edit" action
+         * 基于"edit"方法中输入的数据更新一个产品
          */
         public function saveAction()
         {
@@ -83,7 +80,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Deletes an existing product
+         * 删除一个已存在的产品
          */
         public function deleteAction($id)
         {
@@ -91,18 +88,16 @@ Each controller has the following actions:
         }
     }
 
-The Search Form
+表单搜索(The Search Form)
 ^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user
-to create a search criteria for any field. The "products" table has a relationship with the table "products_types".
-In this case, we previously queried the records in this table in order to facilitate the search by that field:
+每个 CRUD 都开始于一个搜索表单. 这个表单展示了表(products)中的每个字段, 允许用户为一些字段创建一个搜索条件. 表 "products" 和表 "products_types" 是关系表. 既然这样, 我们先前查询表中的记录以便于字段的搜索:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * The start action, it shows the "search" view
+     * 开始操作, 它展示"search"视图
      */
     public function indexAction()
     {
@@ -111,8 +106,7 @@ In this case, we previously queried the records in this table in order to facili
         $this->view->form = new ProductsForm();
     }
 
-An instance of the ProductsForm form (app/forms/ProductsForm.php) is passed to the view.
-This form defines the fields that are visible to the user:
+ProductsForm 表单的实例 (app/forms/ProductsForm.php)传递给了视图. 这个表单定义了用户可见的字段:
 
 .. code-block:: php
 
@@ -129,7 +123,7 @@ This form defines the fields that are visible to the user:
     class ProductsForm extends Form
     {
         /**
-         * Initialize the products form
+         * 初始化产品表单
          */
         public function initialize($entity = null, $options = [])
         {
@@ -221,20 +215,19 @@ This form defines the fields that are visible to the user:
         }
     }
 
-The form is declared using an object-oriented scheme based on the elements provided by the :doc:`forms <forms>` component.
-Every element follows almost the same structure:
+表单是使用面向对象的方式声明的, 基于 :doc:`forms <forms>` 组件提供的元素. 每个元素都遵循近乎相同的结构:
 
 .. code-block:: php
 
     <?php
 
-    // Create the element
+    // 创建一个元素
     $name = new Text("name");
 
-    // Set its label
+    // 设置它的label
     $name->setLabel("Name");
 
-    // Before validating the element apply these filters
+    // 在验证元素之前应用这些过滤器
     $name->setFilters(
         [
             "striptags",
@@ -242,7 +235,7 @@ Every element follows almost the same structure:
         ]
     );
 
-    // Apply this validators
+    // 应用此验证
     $name->addValidators(
         [
             new PresenceOf(
@@ -253,16 +246,16 @@ Every element follows almost the same structure:
         ]
     );
 
-    // Add the element to the form
+    // 增加元素到表单
     $this->add($name);
 
-Other elements are also used in this form:
+在表单中其它元素也是这样使用:
 
 .. code-block:: php
 
     <?php
 
-    // Add a hidden input to the form
+    // 增加一个隐藏input到表单
     $this->add(
         new Hidden("id")
     );
@@ -271,8 +264,8 @@ Other elements are also used in this form:
 
     $productTypes = ProductTypes::find();
 
-    // Add a HTML Select (list) to the form
-    // and fill it with data from "product_types"
+    // 增加一个HTML Select (列表) 到表单
+    // 数据从"product_types"中填充
     $type = new Select(
         "profilesId",
         $productTypes,
@@ -287,8 +280,7 @@ Other elements are also used in this form:
         ]
     );
 
-Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
-Once the form is passed to the view, it can be rendered and presented to the user:
+注意, :code:`ProductTypes::find()` 包含的必须的数据 使用 :code:`Phalcon\Tag::select()` 来填充 SELECT 标签. 一旦表单传递给视图, 它会进行渲染并呈现给用户:
 
 .. code-block:: html+jinja
 
@@ -320,7 +312,7 @@ Once the form is passed to the view, it can be rendered and presented to the use
 
     {{ endForm() }}
 
-This produces the following HTML:
+这会生成下面的HTML:
 
 .. code-block:: html
 
@@ -378,36 +370,32 @@ This produces the following HTML:
 
     </form>
 
-When the form is submitted, the "search" action is executed in the controller performing the search
-based on the data entered by the user.
+当表单提交的时候, 控制器里面的"search"操作是基于用户输入的数据执行搜索的.
 
-Performing a Search
+执行搜索(Performing a Search)
 ^^^^^^^^^^^^^^^^^^^
-The "search" action has two behaviors. When accessed via POST, it performs a search based on the data sent from the
-form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods,
-we check it using the :doc:`Request <request>` component:
+"search"操作有两个行为. 当通过POST访问, 它基于表单发送的数据执行搜索, 但是当通过GET访问它会在分页中移动当前的页数. 为了区分HTTP方法,我们使用  :doc:`Request <request>` 组件进行校验:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Execute the "search" based on the criteria sent from the "index"
-     * Returning a paginator for the results
+     * 基于从"index"发送过来的条件处理"search"
+     * 返回一个分页结果
      */
     public function searchAction()
     {
         if ($this->request->isPost()) {
-            // Create the query conditions
+            // 创建查询条件
         } else {
-            // Paginate using the existing conditions
+            // 使用已存在的条件分页
         }
 
         // ...
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
-conditions intelligently based on the data types and values sent from the form:
+在 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` 的帮助下, 我们基于从表单发送来的数据类型和值创建智能的搜索条件:
 
 .. code-block:: php
 
@@ -419,8 +407,7 @@ conditions intelligently based on the data types and values sent from the form:
         $this->request->getPost()
     );
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the search criteria:
+这个方法验证值 "" (空字符串) 和值 null 的区别并考虑到这些来创建搜索条件:
 
 * If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
 * If the data type is not text or similar, it'll use the operator "=".
