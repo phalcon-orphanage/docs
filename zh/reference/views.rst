@@ -150,7 +150,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
         public function lastAction()
         {
-            $this->flash->notice("These are the latest posts");
+            $this->flash->notice(
+                "These are the latest posts"
+            );
         }
     }
 
@@ -446,9 +448,6 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Close session
             // ...
 
-            // A HTTP Redirect
-            $this->response->redirect("index/index");
-
             // Disable the view to avoid rendering
             $this->view->disable();
         }
@@ -615,7 +614,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-方法 partial() 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
+方法 :code:`partial()` 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
@@ -862,7 +861,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function render($path, $params)
         {
             // Access view
-            $view    = $this->_view;
+            $view = $this->_view;
 
             // Access options
             $options = $this->_options;
@@ -957,7 +956,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
-    $view->setVar("someProducts", $products);
+    $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
     // Start the output buffering
@@ -1086,16 +1085,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class TidyPlugin
     {
-        public function afterRender($event, $view)
+        public function afterRender(Event $event, $view)
         {
-            $tidyConfig = array(
+            $tidyConfig = [
                 "clean"          => true,
                 "output-xhtml"   => true,
                 "show-body-only" => true,
                 "wrap"           => 0,
-            );
+            ];
 
             $tidy = tidy_parse_string(
                 $view->getContent(),
