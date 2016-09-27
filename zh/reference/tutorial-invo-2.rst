@@ -1,21 +1,15 @@
 教程 3: 保护INVO(Tutorial 3: Securing INVO)
 ===========================================
 
-In this chapter, we continue explaining how INVO is structured, we'll talk
-about the implementation of authentication, authorization using events and plugins and
-an access control list (ACL) managed by Phalcon.
+在这一章, 我们将继续解释INVO是如何构成的, 我们将讨论认证的实施, 使用事件和插件的认证和一个由Phalcon管理的访问控制列表.
 
 登录应用(Log into the Application)
 ----------------------------------
-A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and
-frontend ones is only logical. All controllers are located in the same directory (app/controllers/).
+一个 "log in" 功能将允许我们在后台控制器中工作. 后台控制器和前台之前的分离是合乎逻辑的. 所有加载的控制器都位于相同的目录 (app/controllers/).
 
-To enter the system, users must have a valid username and password. Users are stored in the table "users"
-in the database "invo".
+为了进入系统, 用户必须有一个有效的用户名和密码. 用户存储在数据库 "invo" 里面的 "users" 表里面.
 
-Before we can start a session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with the connection information. As with the autoloader, we are
-again taking parameters from the configuration file in order to configure a service:
+在我们开始会话之前, 我们需要在数据库配置数据库的连接. 一个 "db" 服务在服务容器中设置连接信息. 就自动加载器来说, 我们再一次从配置文件中读取参数来配置一个服务:
 
 .. code-block:: php
 
@@ -25,7 +19,7 @@ again taking parameters from the configuration file in order to configure a serv
 
     // ...
 
-    // Database connection is created based on parameters defined in the configuration file
+    // 数据库连接是基于配置文件已经定义的参数创建的
     $di->set(
         "db",
         function () use ($config) {
@@ -40,11 +34,9 @@ again taking parameters from the configuration file in order to configure a serv
         }
     );
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting it up as you want.
+这里, 我们将会返回一个MySQL连接适配器的一个实例. 如果需要, 你可以做一些额外的操作比如添加一个日志记录, 一个分析器或者改变适配器, 设置你想要的.
 
-The following simple form (app/views/session/index.volt) requests the login information. We've removed
-some HTML code to make the example more concise:
+下列表单(app/views/session/index.volt) 请求登录信息. 我们已经删除了一些 HTML 代码来让例子更加简洁:
 
 .. code-block:: html+jinja
 
@@ -78,12 +70,9 @@ some HTML code to make the example more concise:
         </fieldset>
     {{ endForm() }}
 
-Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
-template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
-It will not take too long before you become familiar with Volt.
+使用原生的PHP作为以前的教程, 我们开始使用 :doc:`Volt <volt>`. 这是一个内置的模板引擎受 Jinja_ 的影响而提供简单而又友好的语法来创建模板. 在你熟悉 Volt 之前, 它将不会花费你太多的时间.
 
-The :code:`SessionController::startAction` function (app/controllers/SessionController.php) has the task of validating the
-data entered in the form including checking for a valid user in the database:
+:code:`SessionController::startAction` 方法 (app/controllers/SessionController.php) 有验证表单中输入的数据包括检查在数据库中是否为有效用户的任务:
 
 .. code-block:: php
 
@@ -105,16 +94,16 @@ data entered in the form including checking for a valid user in the database:
         }
 
         /**
-         * This action authenticate and logs a user into the application
+         * 这个方法检验和记录一个用户到应用中
          */
         public function startAction()
         {
             if ($this->request->isPost()) {
-                // Get the data from the user
+                // 从用户获取数据
                 $email    = $this->request->getPost("email");
                 $password = $this->request->getPost("password");
 
-                // Find the user in the database
+                // 在数据库中查找用户
                 $user = Users::findFirst(
                     [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
@@ -132,7 +121,7 @@ data entered in the form including checking for a valid user in the database:
                         "Welcome " . $user->name
                     );
 
-                    // Forward to the 'invoices' controller if the user is valid
+                    // 如果用户是有效的, 转发到'invoices'控制器
                     return $this->dispatcher->forward(
                         [
                             "controller" => "invoices",
@@ -146,7 +135,7 @@ data entered in the form including checking for a valid user in the database:
                 );
             }
 
-            // Forward to the login form again
+            // 再一次转发到登录表单
             return $this->dispatcher->forward(
                 [
                     "controller" => "session",
@@ -156,17 +145,13 @@ data entered in the form including checking for a valid user in the database:
         }
     }
 
-For the sake of simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
+为简单起见, 我们使用 "sha1_" 在数据库中存储密码散列, 然而, 在实际应用中不建议采用此算法, 使用 ":doc:`bcrypt <security>`" 代替.
 
-Note that multiple public attributes are accessed in the controller like: :code:`$this->flash`, :code:`$this->request` or :code:`$this->session`.
-These are services defined in the services container from earlier (app/config/services.php).
-When they're accessed the first time, they are injected as part of the controller.
+请注意, 多个公共属性在控制器访问, 像: :code:`$this->flash`, :code:`$this->request` 或者 :code:`$this->session`. 这些是先前在服务容器中定义的服务 (app/config/services.php). 当它们第一次访问的时候, 它们被注入作为控制器的一部分.
 
-These services are "shared", which means that we are always accessing the same instance regardless of the place
-where we invoke them.
+这些服务是"共享"的, 这意味着我们总是访问相同的地方, 无论我们在哪里调用它们.
 
-For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
+例如, 这里我们调用 "session" 服务然后我们在变量 "auth" 中存储用户身份:
 
 .. code-block:: php
 
@@ -180,8 +165,7 @@ For instance, here we invoke the "session" service and then we store the user id
         ]
     );
 
-Another important aspect of this section is how the user is validated as a valid one,
-first we validate whether the request has been made using method POST:
+本节的另外一个重要方面是如何验证用户为有效的, 首先我们验证是否使用的是POST请求的:
 
 .. code-block:: php
 
@@ -189,7 +173,7 @@ first we validate whether the request has been made using method POST:
 
     if ($this->request->isPost()) {
 
-Then, we receive the parameters from the form:
+然后, 我们接收表单中的参数:
 
 .. code-block:: php
 
@@ -198,7 +182,7 @@ Then, we receive the parameters from the form:
     $email    = $this->request->getPost("email");
     $password = $this->request->getPost("password");
 
-Now, we have to check if there is one user with the same username or email and password:
+现在, 我们需要检查是否存在一个相同的用户名或邮箱和密码的用户:
 
 .. code-block:: php
 
@@ -214,11 +198,9 @@ Now, we have to check if there is one user with the same username or email and p
         ]
     );
 
-Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
-then the values are 'bound' using the parameter 'bind'. This safely replaces the values for those
-columns without having the risk of a SQL injection.
+注意, '绑定参数'的使用, 占位符 :email: 和 :password: 要放置在替换的值的位置, 然后值的'绑定'使用参数 'bind'. 安全的替换列的值而没有SQL注入的危险.
 
-If the user is valid we register it in session and forwards him/her to the dashboard:
+如果用户是有效的, 我们将会在session中注册它, 并且转发到dashboard:
 
 .. code-block:: php
 
@@ -239,7 +221,7 @@ If the user is valid we register it in session and forwards him/her to the dashb
         );
     }
 
-If the user does not exist we forward the user back again to action where the form is displayed:
+如果用户不存在,再一次转发到登录表单让用户再次操作:
 
 .. code-block:: php
 
@@ -252,28 +234,19 @@ If the user does not exist we forward the user back again to action where the fo
         ]
     );
 
-Securing the Backend
+后端安全(Securing the Backend)
 --------------------
-The backend is a private area where only registered users have access. Therefore, it is necessary
-to check that only registered users have access to these controllers. If you aren't logged
-into the application and you try to access, for example, the products controller (which is private)
-you will see a screen like this:
+后端是一个私有区域，只有已经注册的人可以访问. 因此, 只有注册用户才能访问控制器这样的检验是有必要的. 如果你没有登录到应用中并试图访问, 例如, products 控制器 (这是私有的)
+你将会看到如下屏幕:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone attempts to access any controller/action, the application verifies that the
-current role (in session) has access to it, otherwise it displays a message like the above and
-forwards the flow to the home page.
+每次有人试图访问任何controller/action, 应用将会验证当前角色(在session中)是否能够访问它, 否则就会显示一个像上面那样的消息并转发到首页.
 
-Now let's find out how the application accomplishes this. The first thing to know is that
-there is a component called :doc:`Dispatcher <dispatching>`. It is informed about the route
-found by the :doc:`Routing <routing>` component. Then, it is responsible for loading the
-appropriate controller and execute the corresponding action method.
+现在, 让我们看看应用程序是如何实现的. 首先我们知道有个组件叫做 :doc:`Dispatcher <dispatching>`. 通过 :doc:`Routing <routing>` 组件来找到路由. 然后, 它负责加载合适的控制器和执行相应的动作方法.
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
-before executing the required action, checking if the user has access to it or not. To achieve this, we have
-replaced the component by creating a function in the bootstrap:
+正常情况下, 框架会自动创建分发器. 对我们而言, 我们想在执行请求的方法之前执行一个验证, 校验用户是否可以访问它. 要做到这一点, 我们需要在启动文件中创建一个方法来替换组件:
 
 .. code-block:: php
 
@@ -284,7 +257,7 @@ replaced the component by creating a function in the bootstrap:
     // ...
 
     /**
-     * MVC dispatcher
+     * MVC 分发器
      */
     $di->set(
         "dispatcher",
@@ -297,15 +270,11 @@ replaced the component by creating a function in the bootstrap:
         }
     );
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger
-events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
-for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
-by a component, routing the events to listeners.
+我们现在使用完全控制的分发器用于应用程序. 在框架中需要多组件的触发事件, 允许我们能够修改内部的操作流. 依赖注入组件作为胶水的一部分, 一个新的叫做  :doc:`EventsManager <events>` 的组件允许我们拦截由组件产生的事件, 路由事件到监听.
 
 事件管理(Events Management)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
-interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
+一个 :doc:`EventsManager <events>` 允许我们为一个特定类型的事件添加监听. 现在我们感兴趣的类型是 "dispatch". 下列代码过滤了由分发器产生的所有事件:
 
 .. code-block:: php
 
@@ -317,16 +286,16 @@ interests us now is "dispatch". The following code filters all events produced b
     $di->set(
         "dispatcher",
         function () {
-            // Create an events manager
+            // 创建一个事件管理器
             $eventsManager = new EventsManager();
 
-            // Listen for events produced in the dispatcher using the Security plugin
+            // 监听分发器中使用安全插件产生的事件
             $eventsManager->attach(
                 "dispatch:beforeExecuteRoute",
                 new SecurityPlugin()
             );
 
-            // Handle exceptions and not-found exceptions using NotFoundPlugin
+            // 处理异常和使用 NotFoundPlugin 未找到异常
             $eventsManager->attach(
                 "dispatch:beforeException",
                 new NotFoundPlugin()
@@ -334,43 +303,42 @@ interests us now is "dispatch". The following code filters all events produced b
 
             $dispatcher = new Dispatcher();
 
-            // Assign the events manager to the dispatcher
+            // 分配事件管理器到分发器
             $dispatcher->setEventsManager($eventsManager);
 
             return $dispatcher;
         }
     );
 
-When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
+当一个叫做 "beforeExecuteRoute" 的事件触发以下插件将会被通知:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Check if the user is allowed to access certain action using the SecurityPlugin
+     * 检验用户是否允许使用 SecurityPlugin 访问某些方法
      */
     $eventsManager->attach(
         "dispatch:beforeExecuteRoute",
         new SecurityPlugin()
     );
 
-When a "beforeException" is triggered then other plugin is notified:
+当一个 "beforeException" 被触发然后其他插件通知:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Handle exceptions and not-found exceptions using NotFoundPlugin
+     * 处理异常和使用 NotFoundPlugin 未找到异常
      */
     $eventsManager->attach(
         "dispatch:beforeException",
         new NotFoundPlugin()
     );
 
-SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This class implements the method
-"beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
+SecurityPlugin 是一个类位于(app/plugins/SecurityPlugin.php). 这个类实现了 "beforeExecuteRoute" 方法. 这是一个相同的名字在分发器中产生的事件中的一个:
 
 .. code-block:: php
 
@@ -390,13 +358,9 @@ SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This clas
         }
     }
 
-The hook events always receive a first parameter that contains contextual information of the event produced (:code:`$event`)
-and a second one that is the object that produced the event itself (:code:`$dispatcher`). It is not mandatory that
-plugins extend the class :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, but by doing this they gain easier access to the services
-available in the application.
+钩子事件始终接收第一个包含上下文信息所产生的事件(:code:`$event`)的参数和第二个包含事件本身所产生的对象(:code:`$dispatcher`)的参数. 这不是一个强制性的插件扩展类 :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, 但通过这样做, 它们更容易获得应用程序中可用的服务.
 
-Now, we're verifying the role in the current session, checking if the user has access using the ACL list.
-If the user does not have access we redirect to the home screen as explained before:
+现在, 我们验证当前 session 中的角色, 验证用户是否可以通过ACL列表访问.如果用户没有权限, 我们将会重定向到如上所述的主页中去:
 
 .. code-block:: php
 
@@ -413,7 +377,7 @@ If the user does not have access we redirect to the home screen as explained bef
 
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
-            // Check whether the "auth" variable exists in session to define the active role
+            // 检查session中是否存在"auth"变量来定义当前活动的角色
             $auth = $this->session->get("auth");
 
             if (!$auth) {
@@ -422,18 +386,18 @@ If the user does not have access we redirect to the home screen as explained bef
                 $role = "Users";
             }
 
-            // Take the active controller/action from the dispatcher
+            // 从分发器获取活动的 controller/action
             $controller = $dispatcher->getControllerName();
             $action     = $dispatcher->getActionName();
 
-            // Obtain the ACL list
+            // 获得ACL列表
             $acl = $this->getAcl();
 
-            // Check if the Role have access to the controller (resource)
+            // 检验角色是否允许访问控制器 (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
 
             if ($allowed !== Acl::ALLOW) {
-                // If he doesn't have access forward him to the index controller
+                // 如果没有访问权限则转发到 index 控制器
                 $this->flash->error(
                     "You don't have access to this module"
                 );
@@ -445,16 +409,15 @@ If the user does not have access we redirect to the home screen as explained bef
                     ]
                 );
 
-                // Returning "false" we tell to the dispatcher to stop the current operation
+                // 返回 "false" 我们将告诉分发器停止当前操作
                 return false;
             }
         }
     }
 
-Providing an ACL list
+提供 ACL 列表(Providing an ACL list)
 ^^^^^^^^^^^^^^^^^^^^^
-In the above example we have obtained the ACL using the method :code:`$this->getAcl()`. This method is also
-implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
+在上面的例子中我们已经获得了ACL的使用方法 :code:`$this->getAcl()`. 这个方法也是在插件中实现的. 现在我们要逐步解释如何建立访问控制列表(ACL):
 
 .. code-block:: php
 
@@ -464,16 +427,15 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
     use Phalcon\Acl\Role;
     use Phalcon\Acl\Adapter\Memory as AclList;
 
-    // Create the ACL
+    // 创建一个 ACL
     $acl = new AclList();
 
-    // The default action is DENY access
+    // 默认行为是 DENY(拒绝) 访问
     $acl->setDefaultAction(
         Acl::DENY
     );
 
-    // Register two roles, Users is registered users
-    // and guests are users without a defined identity
+    // 注册两个角色, 用户是已注册用户和没有定义身份的来宾用户
     $roles = [
         "users"  => new Role("Users"),
         "guests" => new Role("Guests"),
@@ -483,8 +445,7 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
         $acl->addRole($role);
     }
 
-Now, we define the resources for each area respectively. Controller names are resources and their actions are
-accesses for the resources:
+现在, 我们分别为每个区域定义资源. 控制器名称是资源它们的方法是对资源的访问:
 
 .. code-block:: php
 
@@ -494,7 +455,7 @@ accesses for the resources:
 
     // ...
 
-    // Private area resources (backend)
+    // 私有区域资源 (后台)
     $privateResources = [
         "companies"    => ["index", "search", "new", "edit", "save", "create", "delete"],
         "products"     => ["index", "search", "new", "edit", "save", "create", "delete"],
@@ -509,9 +470,7 @@ accesses for the resources:
         );
     }
 
-
-
-    // Public area resources (frontend)
+    // 公共区域资源 (前台)
     $publicResources = [
         "index"    => ["index"],
         "about"    => ["index"],
@@ -528,14 +487,13 @@ accesses for the resources:
         );
     }
 
-The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
-all the resources of both frontend and backend. The role "Guests" only has access to the public area:
+ACL现在了解现有的控制器和它们相关的操作. 角色 "Users" 由权限访问前台和后台的所有资源. 角色 "Guests" 仅允许访问公共区域:
 
 .. code-block:: php
 
     <?php
 
-    // Grant access to public areas to both users and guests
+    // 授权user和Grant访问公共区域
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow(
@@ -546,7 +504,7 @@ all the resources of both frontend and backend. The role "Guests" only has acces
         }
     }
 
-    // Grant access to private area only to role Users
+    // 授权仅角色Users 访问私有区域
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow(
@@ -557,8 +515,7 @@ all the resources of both frontend and backend. The role "Guests" only has acces
         }
     }
 
-Hooray!, the ACL is now complete. In next chapter, we will see how a CRUD is implemented in Phalcon and how you
-can customize it.
+万岁!, ACL现在终于完成了. 在下一章, 我们将会看到Phalcon中的CRUD是如何实现的并且你如何自定义它.
 
 .. _jinja: http://jinja.pocoo.org/
 .. _sha1: http://php.net/manual/zh/function.sha1.php
