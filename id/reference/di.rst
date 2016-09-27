@@ -233,9 +233,14 @@ Anggap kita memiliki komponen berikut:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function __construct(Response $response, $someFlag)
         {
@@ -262,8 +267,14 @@ Service ini dapat didaftarkan dengan cara berikut:
         [
             "className" => "SomeApp\\SomeComponent",
             "arguments" => [
-                ["type" => "service", "name" => "response"],
-                ["type" => "parameter", "value" => true],
+                [
+                    "type" => "service",
+                    "name" => "response",
+                ],
+                [
+                    "type"  => "parameter",
+                    "value" => true,
+                ],
             ]
         ]
     );
@@ -285,9 +296,14 @@ Kelas mungkin punya setter untuk menyisipkan ketergantungan tidak wajib, kelas k
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function setResponse(Response $response)
         {
@@ -309,7 +325,7 @@ Service dengan injeksi setter dapat didaftarkan seperti berikut:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -354,6 +370,9 @@ Strategi kurang umum adalah menyisipkan ketergantungan atau parameter langsung m
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         public $response;
 
         public $someFlag;
@@ -368,7 +387,7 @@ Service dengan injeksi properti dapat didaftarkan sebagai berikut:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -382,14 +401,14 @@ Service dengan injeksi properti dapat didaftarkan sebagai berikut:
                     "value" => [
                         "type" => "service",
                         "name" => "response",
-                    ]
+                    ],
                 ],
                 [
                     "name"  => "someFlag",
                     "value" => [
                         "type"  => "parameter",
                         "value" => true,
-                    ]
+                    ],
                 ]
             ]
         ]
@@ -440,7 +459,7 @@ Sintaks array juga diizinkan untuk mendaftarkan service:
 
     // Menggunakan definisi array
     $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
+        "className" => "Phalcon\\Http\\Request",
     ];
 
 Dicontoh diatas, ketika framework butuh mengakses data request, ia akan meminta service yang diidentifikasi sebagai ‘request’ dalam kontainer.
@@ -486,7 +505,13 @@ Argumen dapat dilewatkan ke konstruktor dengan menambahkan parameter array ke me
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", ["some-parameter", "other"]);
+    $component = $di->get(
+        "MyComponent",
+        [
+            "some-parameter",
+            "other",
+        ]
+    );
 
 Event
 -----
@@ -525,8 +550,11 @@ instance sama dikembalikan tiap kali konsumer meminta service dari kontainer:
         }
     );
 
-    $session = $di->get("session"); // Temukan service untuk pertama kali
-    $session = $di->getSession();   // Mengembalikan objek yang sudah diciptakan pertama kali
+    // Temukan service untuk pertama kali
+    $session = $di->get("session");
+
+    // Mengembalikan objek yang sudah diciptakan pertama kali
+    $session = $di->getSession();
 
 Cara lain mendaftarkan shared service adalah melewatkan "true" sebagai parameter ketiga "set":
 
@@ -633,7 +661,12 @@ untuk melakukan ini, anda butuh mengimplementasi :doc:`Phalcon\\Di\\InjectionAwa
 
     class MyClass implements InjectionAwareInterface
     {
+        /**
+         * @var DiInterface
+         */
         protected $_di;
+
+
 
         public function setDi(DiInterface $di)
         {

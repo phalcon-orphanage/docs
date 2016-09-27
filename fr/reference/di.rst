@@ -234,9 +234,14 @@ Admettons que nous ayons le composant suivant:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function __construct(Response $response, $someFlag)
         {
@@ -263,8 +268,14 @@ Le service peut être inscrit de cette façon:
         [
             "className" => "SomeApp\\SomeComponent",
             "arguments" => [
-                ["type" => "service", "name" => "response"],
-                ["type" => "parameter", "value" => true],
+                [
+                    "type" => "service",
+                    "name" => "response",
+                ],
+                [
+                    "type"  => "parameter",
+                    "value" => true,
+                ],
             ]
         ]
     );
@@ -287,9 +298,14 @@ accepter des dépendances avec des accesseurs:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function setResponse(Response $response)
         {
@@ -311,7 +327,7 @@ Un service avec une injection par accesseur peut être inscrite comme suit:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -356,6 +372,9 @@ Une stratégie moins courante est d'injecter directement des dépendances ou des
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         public $response;
 
         public $someFlag;
@@ -370,7 +389,7 @@ Un service avec un injection de propriétés peut être inscrite comme suit:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -384,14 +403,14 @@ Un service avec un injection de propriétés peut être inscrite comme suit:
                     "value" => [
                         "type" => "service",
                         "name" => "response",
-                    ]
+                    ],
                 ],
                 [
                     "name"  => "someFlag",
                     "value" => [
                         "type"  => "parameter",
                         "value" => true,
-                    ]
+                    ],
                 ]
             ]
         ]
@@ -442,7 +461,7 @@ L'écriture sous forme de tableau est possible pour inscrire des services:
 
     // Avec un tableau de définition
     $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
+        "className" => "Phalcon\\Http\\Request",
     ];
 
 Dans les exemples précédents, lorsque le framework doit accéder aux données demandées, il interroge le service identifié en tant que 'request' dans le conteneur.
@@ -488,7 +507,13 @@ Les arguments sont transmis au constructeur en ajoutant un tableau en paramètre
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", ["some-parameter", "other"]);
+    $component = $di->get(
+        "MyComponent",
+        [
+            "some-parameter",
+            "other",
+        ]
+    );
 
 Evénements
 ----------
@@ -527,8 +552,11 @@ la même instance est systématiquement retournée lorsqu'un consommateur récup
         }
     );
 
-    $session = $di->get("session"); // Localisation du service pour la première fois
-    $session = $di->getSession();   // Retourne l'objet instancié initialement
+    // Localisation du service pour la première fois
+    $session = $di->get("session");
+
+    // Retourne l'objet instancié initialement
+    $session = $di->getSession();
 
 Une autre façon d'inscrire des services partagés est de transmettre "true" au troisième paramètre de "set":
 
@@ -636,7 +664,12 @@ Pour ceci, vous devez implémtenter l'interface :doc:`Phalcon\\Di\\InjectionAwar
 
     class MyClass implements InjectionAwareInterface
     {
+        /**
+         * @var DiInterface
+         */
         protected $_di;
+
+
 
         public function setDi(DiInterface $di)
         {
