@@ -653,35 +653,41 @@ use that object to set variables directly to the view from a controller action b
 
         public function showAction()
         {
-            // Pass all the posts to the views
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Pass all the username and the posts to the views
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Using the magic setter
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Passing more than one variable at the same time
             $this->view->setVars(
-                array(
-                    "title"   => $post->title,
-                    "content" => $post->content,
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
+A variable with the name of the first parameter of :code:`setVar()` will be created in the view, ready to be used. The variable can be of any type,
 from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>

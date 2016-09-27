@@ -640,34 +640,40 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
         public function showAction()
         {
-            // Pass all the posts to the views
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Pass all the username and the posts to the views
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Using the magic setter
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Passing more than one variable at the same time
             $this->view->setVars(
-                array(
-                    "title"   => $post->title,
-                    "content" => $post->content,
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-名为setVar()的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
+名为:code:`setVar()`的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>
