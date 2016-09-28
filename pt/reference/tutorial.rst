@@ -509,9 +509,9 @@ Receiving data from the form and storing them in the table is the next step.
     }
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which indicates whether the storing of the data was successful or not.
+of the record in the users table. Setting the relevant values in the new record and calling :code:`save()` will store the data in the database for that record. The :code:`save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the save method.
+The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the :code:`save()` method.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
 

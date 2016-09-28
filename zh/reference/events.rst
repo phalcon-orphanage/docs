@@ -153,7 +153,7 @@ Attaching an event listener to the events manager is as simple as:
 -----------------------------------------------------------
 你可以在你的应用中为事件管理器的触发事件创建组件。这样的结果是，可以有很多存在的侦听者为这些产生的事件作出响应。
 在以下的示例中，我们将会创建一个叫做“MyComponent”组件。这是个意识事件管理器组件；
-当它的方法:code:someTask()`被执行时它将触发事件管理器中全部侦听者的两个事件：
+当它的方法:code:`someTask()`被执行时它将触发事件管理器中全部侦听者的两个事件：
 
 .. code-block:: php
 
@@ -235,7 +235,7 @@ Notice that in this example, we're using the "my-component" event namespace.
     // 执行组件的方法
     $myComponent->someTask();
 
-当:code:someTask()`被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
+当:code:`someTask()`被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
 
 .. code-block:: php
 
@@ -243,7 +243,7 @@ Notice that in this example, we're using the "my-component" event namespace.
     这里, someTask
     这里, afterSomeTask
 
-当触发一个事件时也可以使用:code:fire()`中的第三个参数来传递额外的数据：
+当触发一个事件时也可以使用:code:`fire()`中的第三个参数来传递额外的数据：
 
 .. code-block:: php
 

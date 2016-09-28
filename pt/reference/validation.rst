@@ -208,7 +208,7 @@ Mensagens de Validação
 armazenamento de mensagens de validação gerada durante os processos de validação.
 
 Cada mensagem consiste em uma instancia da classe :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`.
-O conjunto de mensagens geradas podem ser recuperadas com o método getMessages(). Cada mensagem fornece informações detalhadas como
+O conjunto de mensagens geradas podem ser recuperadas com o método :code:`getMessages()`. Cada mensagem fornece informações detalhadas como
 o atributo que gerou a mensagem ou o tipo de mensagem:
 
 .. code-block:: php
@@ -243,7 +243,7 @@ Pode passar o parametro 'message' para alterar a mensagem padrão em cada valida
     );
 
 Por padrão, :code:`getMessages()` retorna todas as mensagens geradas durante a validação. Você pode filtrar as mensagens
-por um campo específico usando o método 'filter':
+por um campo específico usando o método :code:`filter()`:
 
 .. code-block:: php
 
@@ -299,7 +299,7 @@ componente ou usar os imbutidos.
 
 Eventos de Validação
 --------------------
-Quando validações são organizadas em classes, você pode implementar os métodos 'beforeValidation' e 'afterValidation' para dispor de mais verificações, filtros, etc. Se o método 'beforeValidation' retornar false, a validação é automaticamente
+Quando validações são organizadas em classes, você pode implementar os métodos :code:`beforeValidation()` e :code:`afterValidation()` para dispor de mais verificações, filtros, etc. Se o método :code:`beforeValidation()` retornar false, a validação é automaticamente
 cancelada:
 
 .. code-block:: php
