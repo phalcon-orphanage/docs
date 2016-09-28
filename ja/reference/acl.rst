@@ -519,7 +519,7 @@ ACLイベント
     // ...
 
     // aclコンポーネントにイベントマネージャーを紐付け
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 独自アダプタの実装
 ------------------

@@ -526,7 +526,7 @@ ACL 事件（ACL Events）
     // ...
 
     // 绑定eventsManager到ACL组件
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 自定义适配器（Implementing your own adapters）
 ----------------------------------------------

@@ -518,7 +518,7 @@ L'exemple suivant montre comment attacher un écouteur à ce composant:
     // ...
 
     // Bind the eventsManager to the ACL component
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 Création de vos propre adaptateurs
 ----------------------------------
