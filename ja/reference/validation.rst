@@ -208,7 +208,7 @@ It is important that validators return a valid boolean value indicating if the v
 validation messages generated during the validation processes.
 
 Each message consists of an instance of the class :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the getMessages() method. Each message provides extended information like the attribute that
+messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the attribute that
 generated the message or the message type:
 
 .. code-block:: php
@@ -299,7 +299,7 @@ component or use the built-in ones.
 
 バリデーション・イベント
 ------------------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
+When validations are organized in classes, you can implement the :code:`beforeValidation()` and :code:`afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the :code:`beforeValidation()` method returns false the validation is automatically
 cancelled:
 
 .. code-block:: php

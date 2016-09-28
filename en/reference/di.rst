@@ -234,9 +234,14 @@ Let's pretend we have the following component:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function __construct(Response $response, $someFlag)
         {
@@ -263,8 +268,14 @@ The service can be registered this way:
         [
             "className" => "SomeApp\\SomeComponent",
             "arguments" => [
-                ["type" => "service", "name" => "response"],
-                ["type" => "parameter", "value" => true],
+                [
+                    "type" => "service",
+                    "name" => "response",
+                ],
+                [
+                    "type"  => "parameter",
+                    "value" => true,
+                ],
             ]
         ]
     );
@@ -286,9 +297,14 @@ Classes may have setters to inject optional dependencies, our previous class can
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function setResponse(Response $response)
         {
@@ -310,7 +326,7 @@ A service with setter injection can be registered as follows:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -355,6 +371,9 @@ A less common strategy is to inject dependencies or parameters directly into pub
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         public $response;
 
         public $someFlag;
@@ -369,7 +388,7 @@ A service with properties injection can be registered as follows:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -383,14 +402,14 @@ A service with properties injection can be registered as follows:
                     "value" => [
                         "type" => "service",
                         "name" => "response",
-                    ]
+                    ],
                 ],
                 [
                     "name"  => "someFlag",
                     "value" => [
                         "type"  => "parameter",
                         "value" => true,
-                    ]
+                    ],
                 ]
             ]
         ]
@@ -441,7 +460,7 @@ The array syntax is also allowed to register services:
 
     // Using an array definition
     $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
+        "className" => "Phalcon\\Http\\Request",
     ];
 
 In the examples above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
@@ -487,7 +506,13 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", ["some-parameter", "other"]);
+    $component = $di->get(
+        "MyComponent",
+        [
+            "some-parameter",
+            "other",
+        ]
+    );
 
 Events
 ------
@@ -526,8 +551,11 @@ the same instance of it is returned every time a consumer retrieve the service f
         }
     );
 
-    $session = $di->get("session"); // Locates the service for the first time
-    $session = $di->getSession();   // Returns the first instantiated object
+    // Locates the service for the first time
+    $session = $di->get("session");
+
+    // Returns the first instantiated object
+    $session = $di->getSession();
 
 An alternative way to register shared services is to pass "true" as third parameter of "set":
 
@@ -634,7 +662,12 @@ to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface
 
     class MyClass implements InjectionAwareInterface
     {
+        /**
+         * @var DiInterface
+         */
         protected $_di;
+
+
 
         public function setDi(DiInterface $di)
         {

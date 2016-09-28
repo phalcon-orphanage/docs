@@ -539,7 +539,7 @@ It's recommended to use the Memory adapter during development and use one of the
     // ...
 
     // Присваиваем менеджера событий к компоненту ACL
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 Реализация собственных адаптеров
 --------------------------------

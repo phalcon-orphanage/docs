@@ -514,9 +514,9 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
     }
 
 Instanciamos la clase "Users", que corresponde a un registro de la tabla "users". Las propiedades públicas en la clase representan los campos
-que tiene cada registro en la tabla. Establecemos los datos necesarios en el modelo y llamamos al método save() para que almacene estos datos en la tabla. El método save() retorna un valor booleano (true/false) que indica si el proceso de guardar fue correcto o no.
+que tiene cada registro en la tabla. Establecemos los datos necesarios en el modelo y llamamos al método :code:`save()` para que almacene estos datos en la tabla. El método :code:`save()` retorna un valor booleano (true/false) que indica si el proceso de guardar fue correcto o no.
 
-El ORM automaticamente escapa la entrada de datos previniendo inyecciones de SQL, de esta manera podemos simplemente pasar los datos al método save().
+El ORM automaticamente escapa la entrada de datos previniendo inyecciones de SQL, de esta manera podemos simplemente pasar los datos al método :code:`save()`.
 
 Una validación adicional sobre los campos que no permiten valores nulos (obligatorios) es ejecutada de manera automática. Si no entramos ningún valor en el formulario y tratamos de guardar veremos lo siguiente:
 

@@ -525,7 +525,7 @@ The following example demonstrates how to attach listeners to this component:
     // ...
 
     // Bind the eventsManager to the ACL component
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 Implementing your own adapters
 ------------------------------

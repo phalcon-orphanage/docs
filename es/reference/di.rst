@@ -234,9 +234,14 @@ Prentendamos que tenemos el siguiente componente:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function __construct(Response $response, $someFlag)
         {
@@ -263,8 +268,14 @@ El servicio puede ser registrado de la siguiente forma:
         [
             "className" => "SomeApp\\SomeComponent",
             "arguments" => [
-                ["type" => "service", "name" => "response"],
-                ["type" => "parameter", "value" => true],
+                [
+                    "type" => "service",
+                    "name" => "response",
+                ],
+                [
+                    "type"  => "parameter",
+                    "value" => true,
+                ],
             ]
         ]
     );
@@ -286,9 +297,14 @@ Las clases pueden tener setters que inyectan dependencias opcionales, nuestra cl
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function setResponse(Response $response)
         {
@@ -310,7 +326,7 @@ Un servicio con inyección de setters se puede registrar así:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -355,6 +371,9 @@ Una estrategia menos común es inyectar las dependencias directamente a los atri
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         public $response;
 
         public $someFlag;
@@ -369,7 +388,7 @@ Un servicio con dependencias inyectadas en sus propiedades se puede registrar as
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -383,14 +402,14 @@ Un servicio con dependencias inyectadas en sus propiedades se puede registrar as
                     "value" => [
                         "type" => "service",
                         "name" => "response",
-                    ]
+                    ],
                 ],
                 [
                     "name"  => "someFlag",
                     "value" => [
                         "type"  => "parameter",
                         "value" => true,
-                    ]
+                    ],
                 ]
             ]
         ]
@@ -441,7 +460,7 @@ También podemos registrar servicios en el DI usando la sintaxis de array:
 
     // Usar un array como definición
     $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
+        "className" => "Phalcon\\Http\\Request",
     ];
 
 En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como 'request' en el contenedor.
@@ -487,7 +506,13 @@ Los argumentos se pueden pasar al constructor agregando un array como parámetro
     <?php
 
     // new MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", ["some-parameter", "other"]);
+    $component = $di->get(
+        "MyComponent",
+        [
+            "some-parameter",
+            "other",
+        ]
+    );
 
 Events
 ------
@@ -526,8 +551,11 @@ la misma instancia será retornada cada vez que alguien consuma el servicio en e
         }
     );
 
-    $session = $di->get("session"); // Localiza y resuelve el servicio por primera vez
-    $session = $di->getSession();   // Devuelve el objeto instanciado inicialmente
+    // Localiza y resuelve el servicio por primera vez
+    $session = $di->get("session");
+
+    // Devuelve el objeto instanciado inicialmente
+    $session = $di->getSession();
 
 Una manera alternativa de registrar un servicio compartido es pasar "true" como tercer parámetro de "set":
 
@@ -634,7 +662,12 @@ to do this, you need to implement the :doc:`Phalcon\\Di\\InjectionAwareInterface
 
     class MyClass implements InjectionAwareInterface
     {
+        /**
+         * @var DiInterface
+         */
         protected $_di;
+
+
 
         public function setDi(DiInterface $di)
         {
