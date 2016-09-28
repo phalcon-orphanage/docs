@@ -290,8 +290,7 @@ Los datos pueden ser filtrados antes de la validación para asegurar que los dat
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-
-El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el componente :doc:`filter <filter>`:. Se puede añadir más filtros a este componente o usar uno ya construido.
+El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el componente :doc:`filter <filter>`. Se puede añadir más filtros a este componente o usar uno ya construido.
 
 Eventos de Validación
 ---------------------

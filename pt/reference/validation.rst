@@ -294,7 +294,7 @@ Os dados podem ser filtrados antes da validação garantindo que os informaçõe
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-Filtragem e sanatização é realizada usando o componente :doc:`filter <filter>`:. Você pode adicionar mais filtros nesse
+Filtragem e sanatização é realizada usando o componente :doc:`filter <filter>`. Você pode adicionar mais filtros nesse
 componente ou usar os imbutidos.
 
 Eventos de Validação

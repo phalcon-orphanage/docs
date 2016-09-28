@@ -294,7 +294,7 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
+Filtering and sanitizing is performed using the :doc:`filter <filter>` component. You can add more filters to this
 component or use the built-in ones.
 
 Validation Events

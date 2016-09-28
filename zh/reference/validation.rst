@@ -290,7 +290,7 @@ Phalcon的验证组件中内置了一些验证器：
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-这里我们使用 :doc:`filter <filter>`: 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。
+这里我们使用 :doc:`filter <filter>` 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。
 
 验证事件（Validation Events）
 -----------------------------
