@@ -381,7 +381,7 @@ ORM中的所有查询，不论多高级的查询方法，内部都是通过PHQL�
             // Returns data from a cache
         }
 
-        protected static function _setCache($key)
+        protected static function _setCache($key, $results)
         {
             // Stores data in the cache
         }

@@ -48,7 +48,7 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
         }
     }
 
-The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
+The :code:`setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
 how to pass the :code:`$postId` parameter to the respective view template.
 
 階層的なレンダリング
@@ -157,7 +157,9 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
 
         public function lastAction()
         {
-            $this->flash->notice("These are the latest posts");
+            $this->flash->notice(
+                "These are the latest posts"
+            );
         }
     }
 
@@ -455,9 +457,6 @@ If your controller doesn't produce any output in the view (or not even have one)
             // Close session
             // ...
 
-            // A HTTP Redirect
-            $this->response->redirect("index/index");
-
             // Disable the view to avoid rendering
             $this->view->disable();
         }
@@ -627,7 +626,7 @@ One way to use partials is to treat them as the equivalent of subroutines: as a 
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-Method partial() does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+The :code:`partial()` method does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
 
 .. code-block:: html+php
 
@@ -653,35 +652,41 @@ use that object to set variables directly to the view from a controller action b
 
         public function showAction()
         {
-            // Pass all the posts to the views
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Pass all the username and the posts to the views
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Using the magic setter
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Passing more than one variable at the same time
             $this->view->setVars(
-                array(
-                    "title"   => $post->title,
-                    "content" => $post->content,
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
+A variable with the name of the first parameter of :code:`setVar()` will be created in the view, ready to be used. The variable can be of any type,
 from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>
@@ -879,7 +884,7 @@ when it's necessary.
         public function render($path, $params)
         {
             // Access view
-            $view    = $this->_view;
+            $view = $this->_view;
 
             // Access options
             $options = $this->_options;
@@ -978,7 +983,7 @@ Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode 
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
-    $view->setVar("someProducts", $products);
+    $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
     // Start the output buffering
@@ -1107,16 +1112,18 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class TidyPlugin
     {
-        public function afterRender($event, $view)
+        public function afterRender(Event $event, $view)
         {
-            $tidyConfig = array(
+            $tidyConfig = [
                 "clean"          => true,
                 "output-xhtml"   => true,
                 "show-body-only" => true,
                 "wrap"           => 0,
-            );
+            ];
 
             $tidy = tidy_parse_string(
                 $view->getContent(),

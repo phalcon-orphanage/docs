@@ -43,7 +43,7 @@ Dispatcher будет искать "PostsController" и его метод "showA
         }
     }
 
-Метод setVar позволяет создавать переменные, которые могут быть использованы в шаблоне. В примере выше показано, как передать переменную :code:`$postId`.
+Метод :code:`setVar()` позволяет создавать переменные, которые могут быть использованы в шаблоне. В примере выше показано, как передать переменную :code:`$postId`.
 
 Иерархия
 --------
@@ -150,7 +150,9 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
 
         public function lastAction()
         {
-            $this->flash->notice("These are the latest posts");
+            $this->flash->notice(
+                "These are the latest posts"
+            );
         }
     }
 
@@ -244,7 +246,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
         </body>
     </html>
 
-If we had used :code:`$this->view->setTemplateBefore('common')`, this would be the final output:
+If we had used :code:`$this->view->setTemplateBefore("common")`, this would be the final output:
 
 .. code-block:: html+php
 
@@ -446,9 +448,6 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
             // Тут завершилась сессия
             // ...
 
-            // HTTP редирект
-            $this->response->redirect("index/index");
-
             // Отключение компонента представлений
             $this->view->disable();
         }
@@ -488,8 +487,8 @@ Alternatively, you can return :code:`false` to produce the same effect:
             // Close session
             // ...
 
-            // A HTTP Redirect
-            return $this->response->redirect('index/index');
+            // HTTP редирект
+            return $this->response->redirect("index/index");
         }
     }
 
@@ -614,7 +613,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-Метод partial() принимает в качестве второго параметра массив переменных, которые будут доступны только в пределах части шаблона:
+Метод :code:`partial()` принимает в качестве второго параметра массив переменных, которые будут доступны только в пределах части шаблона:
 
 .. code-block:: html+php
 
@@ -639,34 +638,40 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
         public function showAction()
         {
-            // Передаёт все посты во представление
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Передаёт все имя пользователя и посты во представление
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Используется "магический" сеттер
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Передача сразу нескольких переменных с помощью массива
             $this->view->setVars(
-                array(
-                    "title"   => $post->title,
-                    "content" => $post->content,
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-Первым параметром метода setVar() передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа, как простым, например, строкой или числом, так и сложной структурой вроде массива или коллекции объектов.
+Первым параметром метода :code:`setVar()` передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа, как простым, например, строкой или числом, так и сложной структурой вроде массива или коллекции объектов.
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>
@@ -852,7 +857,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function render($path, $params)
         {
             // Доступ к view
-            $view    = $this->_view;
+            $view = $this->_view;
 
             // Доступ к настройкам
             $options = $this->_options;
@@ -947,7 +952,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view->setViewsDir("../app/views/");
 
     // Передача переменных в представление
-    $view->setVar("someProducts", $products);
+    $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
     // Начало буферизации вывода
@@ -1076,16 +1081,18 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class TidyPlugin
     {
-        public function afterRender($event, $view)
+        public function afterRender(Event $event, $view)
         {
-            $tidyConfig = array(
+            $tidyConfig = [
                 "clean"          => true,
                 "output-xhtml"   => true,
                 "show-body-only" => true,
                 "wrap"           => 0,
-            );
+            ];
 
             $tidy = tidy_parse_string(
                 $view->getContent(),

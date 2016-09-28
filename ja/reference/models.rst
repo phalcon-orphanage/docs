@@ -22,7 +22,7 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
 
     }
@@ -32,7 +32,7 @@
     If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-デフォルトでは、モデル "Store\\Toys\\Robots" はテーブル "robots" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 :code:`setSource()` メソッドを使用することができます:
+デフォルトでは、モデル "Store\\Toys\\RobotParts" はテーブル "robot_parts" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 :code:`setSource()` メソッドを使用することができます:
 
 .. code-block:: php
 
@@ -42,15 +42,15 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function initialize()
         {
-            $this->setSource("toys_robots");
+            $this->setSource("toys_robot_parts");
         }
     }
 
-モデル Robots は現在、「 toys_robots 」テーブルにマップされています。上記の方法に加えて、 :code:`initialize()` メソッドが提供されています。
+モデル RobotParts は現在、「 toys_robot_parts 」テーブルにマップされています。上記の方法に加えて、 :code:`initialize()` メソッドが提供されています。
 
 :code:`initialize()` メソッドはリクエストの間に一度だけ呼び出され、アプリケーション内で作成されたモデルのすべてのインスタンスに適用するために初期化を実行します。もし、あなたが、すべてのインスタンスで初期化処理を実行したい場合 :code:`onConstruct()` でできます:
 
@@ -62,7 +62,7 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function onConstruct()
         {

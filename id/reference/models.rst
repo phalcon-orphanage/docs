@@ -27,7 +27,7 @@ A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_M
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
 
     }
@@ -37,7 +37,7 @@ A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_M
     If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-By default, the model "Store\\Toys\\Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
+By default, the model "Store\\Toys\\RobotParts" will refer to the table "robot_parts". If you want to manually specify another name for the mapping table,
 you can use the :code:`setSource()` method:
 
 .. code-block:: php
@@ -48,15 +48,15 @@ you can use the :code:`setSource()` method:
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function initialize()
         {
-            $this->setSource("toys_robots");
+            $this->setSource("toys_robot_parts");
         }
     }
 
-The model Robots now maps to "toys_robots" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
+The model RobotParts now maps to "toys_robot_parts" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
 
 The :code:`initialize()` method is only called once during the request, it's intended to perform initializations that apply for
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
@@ -70,7 +70,7 @@ created you can use the :code:`onConstruct()` method:
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function onConstruct()
         {

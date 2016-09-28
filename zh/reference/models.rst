@@ -26,7 +26,7 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
 
     }
@@ -35,7 +35,7 @@
 
     如果使用 PHP 5.4/5.5 建议在模型中预先定义好所有的列，这样可以减少模型内存的开销以及内存分配。
 
-默认情况下，模型 "Store\\Toys\\Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 :code:`setSource()` 方法：
+默认情况下，模型 "Store\\Toys\\RobotParts" 对应的是数据库表 "robot_parts"， 如果想映射到其他数据库表，可以使用 :code:`setSource()` 方法：
 
 .. code-block:: php
 
@@ -45,15 +45,15 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function initialize()
         {
-            $this->setSource("toys_robots");
+            $this->setSource("toys_robot_parts");
         }
     }
 
-模型 Robots 现在映射到了 "toys_robots" 表。:code:`initialize()` 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
+模型 RobotParts 现在映射到了 "toys_robot_parts" 表。:code:`initialize()` 方法可以帮助在模型中建立自定义行为，例如指定不同的数据库表。
 
 :code:`initialize()` 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
 可以使用 :code:`onConstruct()` 事件：
@@ -66,7 +66,7 @@
 
     use Phalcon\Mvc\Model;
 
-    class Robots extends Model
+    class RobotParts extends Model
     {
         public function onConstruct()
         {

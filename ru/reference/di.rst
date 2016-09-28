@@ -234,9 +234,14 @@ You can also access other DI services using the :code:`get()` method:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function __construct(Response $response, $someFlag)
         {
@@ -263,8 +268,14 @@ You can also access other DI services using the :code:`get()` method:
         [
             "className" => "SomeApp\\SomeComponent",
             "arguments" => [
-                ["type" => "service", "name" => "response"],
-                ["type" => "parameter", "value" => true],
+                [
+                    "type" => "service",
+                    "name" => "response",
+                ],
+                [
+                    "type"  => "parameter",
+                    "value" => true,
+                ],
             ]
         ]
     );
@@ -286,9 +297,14 @@ You can also access other DI services using the :code:`get()` method:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         protected $_response;
 
         protected $_someFlag;
+
+
 
         public function setResponse(Response $response)
         {
@@ -310,7 +326,7 @@ You can also access other DI services using the :code:`get()` method:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -355,6 +371,9 @@ You can also access other DI services using the :code:`get()` method:
 
     class SomeComponent
     {
+        /**
+         * @var Response
+         */
         public $response;
 
         public $someFlag;
@@ -369,7 +388,7 @@ You can also access other DI services using the :code:`get()` method:
     $di->set(
         "response",
         [
-            "className" => "Phalcon\\Http\\Response"
+            "className" => "Phalcon\\Http\\Response",
         ]
     );
 
@@ -383,14 +402,14 @@ You can also access other DI services using the :code:`get()` method:
                     "value" => [
                         "type" => "service",
                         "name" => "response",
-                    ]
+                    ],
                 ],
                 [
                     "name"  => "someFlag",
                     "value" => [
                         "type"  => "parameter",
                         "value" => true,
-                    ]
+                    ],
                 ]
             ]
         ]
@@ -441,7 +460,7 @@ Array Syntax
 
     // Определение с помощью массива
     $di["request"] = [
-        "className" => "Phalcon\\Http\\Request"
+        "className" => "Phalcon\\Http\\Request",
     ];
 
 В примере, данном выше, когда фреймворк нуждается в доступе к запрашиваемым данным, он будет запрашивать в контейнере сервис, названный 'request'.
@@ -487,7 +506,13 @@ Array Syntax
     <?php
 
     // новый MyComponent("some-parameter", "other")
-    $component = $di->get("MyComponent", ["some-parameter", "other"]);
+    $component = $di->get(
+        "MyComponent",
+        [
+            "some-parameter",
+            "other",
+        ]
+    );
 
 События
 -------
@@ -526,8 +551,11 @@ Array Syntax
         }
     );
 
-    $session = $di->get("session"); // Создает сервис в первый раз
-    $session = $di->getSession();   // Возвращает первоначальный экзмепляр объекта
+    // Создает сервис в первый раз
+    $session = $di->get("session");
+
+    // Возвращает первоначальный экзмепляр объекта
+    $session = $di->getSession();
 
 Также можно зарегистрировать сервис с совместным доступом, передав "true" в качестве третьего параметра метода "set":
 
@@ -634,7 +662,12 @@ Array Syntax
 
     class MyClass implements InjectionAwareInterface
     {
+        /**
+         * @var DiInterface
+         */
         protected $_di;
+
+
 
         public function setDi(DiInterface $di)
         {
