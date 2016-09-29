@@ -155,7 +155,7 @@ Volt syntax:
 
     $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == "development") {
+    if ($config->environment === "development") {
         $footerCollection->setPrefix("/");
     } else {
         $footerCollection->setPrefix("http:://cdn.example.com/");

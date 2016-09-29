@@ -163,7 +163,7 @@ Collections can be URL-prefixed, this enables you to easily change from one serv
 
     $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == "development") {
+    if ($config->environment === "development") {
         $footerCollection->setPrefix("/");
     } else {
         $footerCollection->setPrefix("http:://cdn.example.com/");

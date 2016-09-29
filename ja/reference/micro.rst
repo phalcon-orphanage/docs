@@ -535,7 +535,7 @@ In addition to the events manager, events can be added using the methods 'before
     // Return false cancels the route execution
     $app->before(
         function () use ($app) {
-            if ($app["session"]->get("auth") == false) {
+            if ($app["session"]->get("auth") === false) {
                 $app["flashSession"]->error("The user isn't authenticated");
 
                 $app["response"]->redirect("/error");

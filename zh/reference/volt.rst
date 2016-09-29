@@ -24,7 +24,7 @@ Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP
 
     {% for product in products %}
         * Name: {{ product.name|e }}
-        {% if product.status == "Active" %}
+        {% if product.status === "Active" %}
            Price: {{ product.price + product.taxes/100 }}
         {% endif  %}
     {% endfor  %}
@@ -453,7 +453,7 @@ An "if" evaluation can be optionally set:
         Value: {{ value }}
     {% endfor %}
 
-    {% for name, value in numbers if name != 'two' %}
+    {% for name, value in numbers if name !== 'two' %}
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
@@ -512,7 +512,7 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
     <h1>Cyborg Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% endif %}
         {% endfor %}
@@ -525,7 +525,7 @@ The else clause is also supported:
     <h1>Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% else %}
                 <li>{{ robot.name|e }} (not a cyborg)</li>
@@ -537,11 +537,11 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
 
 .. code-block:: html+jinja
 
-    {% if robot.type == "cyborg" %}
+    {% if robot.type === "cyborg" %}
         Robot is a cyborg
-    {% elseif robot.type == "virtual" %}
+    {% elseif robot.type === "virtual" %}
         Robot is virtual
-    {% elseif robot.type == "mechanical" %}
+    {% elseif robot.type === "mechanical" %}
         Robot is mechanical
     {% endif %}
 

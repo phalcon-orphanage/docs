@@ -133,7 +133,7 @@ Also you can add as 4th parameter your custom function which must return boolean
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 
@@ -172,7 +172,7 @@ Also if you don't provide any parameters in :code:`isAllowed()` method then defa
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 

@@ -1098,7 +1098,7 @@ column map (as described above) to ensure proper mapping of your properties to t
     {
         public function beforeDelete()
         {
-            if ($this->status == "A") {
+            if ($this->status === "A") {
                 echo "Робот активен, он не может быть удален";
 
                 return false;

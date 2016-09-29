@@ -27,7 +27,7 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
             $robot->created_at  = date("Y-m-d");
 
             // The model failed to save, so rollback the transaction
-            if ($robot->save() == false) {
+            if ($robot->save() === false) {
                 $this->db->rollback();
                 return;
             }
@@ -37,7 +37,7 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
             $robotPart->type      = "head";
 
             // The model failed to save, so rollback the transaction
-            if ($robotPart->save() == false) {
+            if ($robotPart->save() === false) {
                 $this->db->rollback();
                 return;
             }
@@ -89,7 +89,8 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         $robot->setTransaction($transaction);
         $robot->name        = "WALL·E";
         $robot->created_at  = date("Y-m-d");
-        if ($robot->save() == false) {
+
+        if ($robot->save() === false) {
             $transaction->rollback("Cannot save robot");
         }
 
@@ -97,7 +98,8 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         $robotPart->setTransaction($transaction);
         $robotPart->robots_id   = $robot->id;
         $robotPart->type        = "head";
-        if ($robotPart->save() == false) {
+
+        if ($robotPart->save() === false) {
             $transaction->rollback("Cannot save robot part");
         }
 
@@ -128,7 +130,8 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         // Get the robots to be deleted
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
-            if ($robot->delete() == false) {
+
+            if ($robot->delete() === false) {
                 // Something's gone wrong, we should rollback the transaction
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());

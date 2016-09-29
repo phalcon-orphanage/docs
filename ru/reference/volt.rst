@@ -20,7 +20,7 @@ Volt был написан под вдохновлением от Jinja_, кот
 
     {% for product in products %}
         * Name: {{ product.name|e }}
-        {% if product.status == "Active" %}
+        {% if product.status === "Active" %}
            Price: {{ product.price + product.taxes/100 }}
         {% endif  %}
     {% endfor  %}
@@ -447,7 +447,7 @@ For
         Value: {{ value }}
     {% endfor %}
 
-    {% for name, value in numbers if name != 'two' %}
+    {% for name, value in numbers if name !== 'two' %}
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
@@ -506,7 +506,7 @@ If
     <h1>Cyborg Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% endif %}
         {% endfor %}
@@ -519,7 +519,7 @@ If
     <h1>Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% else %}
                 <li>{{ robot.name|e }} (not a cyborg)</li>
@@ -531,11 +531,11 @@ If
 
 .. code-block:: html+jinja
 
-    {% if robot.type == "cyborg" %}
+    {% if robot.type === "cyborg" %}
         Robot is a cyborg
-    {% elseif robot.type == "virtual" %}
+    {% elseif robot.type === "virtual" %}
         Robot is virtual
-    {% elseif robot.type == "mechanical" %}
+    {% elseif robot.type === "mechanical" %}
         Robot is mechanical
     {% endif %}
 

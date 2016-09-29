@@ -541,7 +541,7 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     // Возврат false отменит выполнение маршрута
     $app->before(
         function () use ($app) {
-            if ($app["session"]->get("auth") == false) {
+            if ($app["session"]->get("auth") === false) {
                 $app["flashSession"]->error("The user isn't authenticated");
 
                 $app["response"]->redirect("/error");

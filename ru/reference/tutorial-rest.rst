@@ -187,7 +187,7 @@
             }
 
             // Проверяем, были ли получены какие-либо сообщения при валидации
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -378,7 +378,7 @@
             $response = new Response();
 
             // Проверяем, что вставка произведена успешно
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 // Меняем HTTP статус
                 $response->setStatusCode(201, "Created");
 
@@ -445,7 +445,7 @@
             $response = new Response();
 
             // Проверяем, что обновление произведено успешно
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"
@@ -499,7 +499,7 @@
             // Формируем ответ
             $response = new Response();
 
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"

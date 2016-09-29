@@ -25,7 +25,7 @@ The following example shows how to use it:
         {
             $validator = new Validation();
 
-            $validator->validate(
+            $validator->add(
                 "type",
                 new InclusionIn(
                     [
@@ -37,7 +37,7 @@ The following example shows how to use it:
                 )
             );
 
-            $validator->validate(
+            $validator->add(
                 "name",
                 new Uniqueness(
                     [

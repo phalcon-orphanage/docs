@@ -129,7 +129,7 @@ Vous pouvez aussi ajouter en 4ème paramètre votre fonction personnalisée qui 
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 
@@ -168,7 +168,7 @@ Si vous ne fournissez pas de paramètres à la méthode :code:`isAllowed()`, le 
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 

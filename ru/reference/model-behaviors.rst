@@ -254,7 +254,7 @@ ORM предоставляет API для создания собственно�
         public function missingMethod($model, $method, $arguments = [])
         {
             // Если метод - 'getSlug', то преобразуем заголовок
-            if ($method == "getSlug") {
+            if ($method === "getSlug") {
                 return Tag::friendlyTitle($model->title);
             }
         }

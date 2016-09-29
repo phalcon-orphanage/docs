@@ -25,7 +25,7 @@ Validating Models
         {
             $validator = new Validation();
 
-            $validator->validate(
+            $validator->add(
                 "type",
                 new InclusionIn(
                     [
@@ -37,7 +37,7 @@ Validating Models
                 )
             );
 
-            $validator->validate(
+            $validator->add(
                 "name",
                 new Uniqueness(
                     [

@@ -833,7 +833,7 @@ This is typically for an Error 404 page.
     $route->beforeMatch(
         function ($uri, $route) {
             // Проверим, что это был Ajax-запрос
-            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
+            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest") {
                 return false;
             }
 
@@ -851,7 +851,7 @@ This is typically for an Error 404 page.
     {
         public function check()
         {
-            return $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest";
+            return $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest";
         }
     }
 

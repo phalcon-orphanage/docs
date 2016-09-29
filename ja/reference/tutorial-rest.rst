@@ -187,7 +187,7 @@ application:
             }
 
             // Check if any messages have been produced
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -378,7 +378,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             $response = new Response();
 
             // Check if the insertion was successful
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 // Change the HTTP status
                 $response->setStatusCode(201, "Created");
 
@@ -445,7 +445,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             $response = new Response();
 
             // Check if the insertion was successful
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"
@@ -499,7 +499,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
             // Create a response
             $response = new Response();
 
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"

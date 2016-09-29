@@ -104,7 +104,7 @@ this means we can create listeners that run when an event is triggered.
             $eventsManager->attach(
                 "model:beforeSave",
                 function (Event $event, $robot) {
-                    if ($robot->name == "Scooby Doo") {
+                    if ($robot->name === "Scooby Doo") {
                         echo "Scooby Doo isn't a robot!";
 
                         return false;

@@ -72,9 +72,9 @@ Di bawah ini adalah contoh bootstrap yang digunakan untuk contoh ini.
     $arguments = [];
 
     foreach ($argv as $k => $arg) {
-        if ($k == 1) {
+        if ($k === 1) {
             $arguments["task"] = $arg;
-        } elseif ($k == 2) {
+        } elseif ($k === 2) {
             $arguments["action"] = $arg;
         } elseif ($k >= 3) {
             $arguments["params"][] = $arg;

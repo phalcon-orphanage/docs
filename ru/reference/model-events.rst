@@ -104,7 +104,7 @@ Model Events
             $eventsManager->attach(
                 "model:beforeSave",
                 function (Event $event, $robot) {
-                    if ($robot->name == "Scooby Doo") {
+                    if ($robot->name === "Scooby Doo") {
                         echo "Scooby Doo isn't a robot!";
 
                         return false;
