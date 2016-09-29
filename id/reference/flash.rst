@@ -1,28 +1,28 @@
-Flashing Messages
-=================
+Pesan Flash
+===========
 
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
-These kinds of messages can be generated using this component.
+Pesan flash digunakan untuk memberitahu user tentang status aksi yang dibuatnya atau sekedar menunjukkan informasi ke user.
+Pesan semacam ini dapat dibuat dengan menggunakan komponen ini.
 
-Adapters
---------
-This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
+Adapter
+-------
+Komponen ini menggunakan adapter untuk mendefinisikan perilaku pesan setelah dilewatkan ke Flasher:
 
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Adapter | Description                                                                                   | API                                                                        |
+| Adapter | Keterangan                                                                                    | API                                                                        |
 +=========+===============================================================================================+============================================================================+
-| Direct  | Directly outputs the messages passed to the flasher                                           | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                |
+| Direct  | Cetak pesan langsung setelah dilewatkan ke flasher                                            | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                |
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Session | Temporarily stores the messages in session, then messages can be printed in the next request  | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
+| Session | Simpan pesan disession sementara, lalu pesan dicetak di request berikutnya                    | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-Usage
------
-Usually the Flash Messaging service is requested from the services container.
-If you're using :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`
-then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automatically registered as "flash" service and
-:doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>` is automatically registered as "flashSession" service.
-You can also manually register it:
+Penggunaan
+----------
+Biasanya layanan Flash Messaging diminta dari services container.
+Jika anda menggunakan :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>`
+maka :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` otomatis terdaftar sebagai seervice bernama "flash" dan
+:doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>` ittinatus terdaftar sebagai "flashSession" service.
+Anda dapat juga mendaftarkannya secara manual:
 
 .. code-block:: php
 
@@ -31,7 +31,7 @@ You can also manually register it:
     use Phalcon\Flash\Direct as FlashDirect;
     use Phalcon\Flash\Session as FlashSession;
 
-    // Set up the flash service
+    // Siapkan flash service
     $di->set(
         "flash",
         function () {
@@ -39,7 +39,7 @@ You can also manually register it:
         }
     );
 
-    // Set up the flash session service
+    // Siapkan flash session service
     $di->set(
         "flashSession",
         function () {
@@ -47,7 +47,7 @@ You can also manually register it:
         }
     );
 
-This way, you can use it in controllers or views:
+Dengan cara ini, anda dapat menggunakannya dalam kontroler atau view:
 
 .. code-block:: php
 
@@ -68,7 +68,7 @@ This way, you can use it in controllers or views:
         }
     }
 
-There are four built-in message types supported:
+Berikut ini adalah empat jenis pesan bawaan yang didukung:
 
 .. code-block:: php
 
@@ -82,7 +82,7 @@ There are four built-in message types supported:
 
     $this->flash->warning("best check yo self, you're not looking too good.");
 
-You can also add messages with your own types using the :code:`message()` method:
+Anda dapat juga menambahkan pesan dengan tipe milik anda sendiri menggunakan metode :code:`message()`:
 
 .. code-block:: php
 
@@ -90,9 +90,9 @@ You can also add messages with your own types using the :code:`message()` method
 
     $this->flash->message("debug", "this is debug message, you don't say");
 
-Printing Messages
------------------
-Messages sent to the flash service are automatically formatted with HTML:
+Mencetak Pesan
+--------------
+Pesan yang dikirim ke flash service otomatis diformat berupa HTML:
 
 .. code-block:: html
 
@@ -104,8 +104,8 @@ Messages sent to the flash service are automatically formatted with HTML:
 
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As you can see, CSS classes are added automatically to the :code:`<div>`s. These classes allow you to define the graphical presentation
-of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter Bootstrap, classes can be configured as:
+Dapat Anda lihat, kelas CSS ditambahkan otomatis ke :code:`<div>`s. Kelas ini memungkinkan anda menentukan pesentasi grafis
+pesan di browser. Kelas CSS ini dapat di override, misal jika anda menggunakan Twitter Bootstrap, ia dapat dikonfigurasi sebagai:
 
 .. code-block:: php
 
@@ -113,7 +113,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
 
     use Phalcon\Flash\Direct as FlashDirect;
 
-    // Register the flash service with custom CSS classes
+    // Daftarkan flash service dengan kelas CSS custom
     $di->set(
         "flash",
         function () {
@@ -130,7 +130,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
         }
     );
 
-Then the messages would be printed as follows:
+maka pesan dapat dicetak sebagai berikut:
 
 .. code-block:: html
 
@@ -142,11 +142,11 @@ Then the messages would be printed as follows:
 
     <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
-Implicit Flush vs. Session
+Flush Implisit vs. Session
 --------------------------
-Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later.
-When should you use each? That usually depends on the type of redirection you do after sending the messages. For example,
-if you make a "forward" is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
+Tergantung adapter yang digunakan untuk mengirim pesan, ia dapat menghasilkan output langsung, atau menyimpan pesan sementara di session untuk ditampilkan nanti.
+Kapan anda harus menggunakan masing-masing? Itu tergantung jenis redirection yang anda lakukan setelah mengirim pesan. Contoh,
+jika anda membuat "forward" tidak perlu menyimpan pesan dalam session, tetapi jika anda melakukan HTTP redirect, mereka harus disimpan di session:
 
 .. code-block:: php
 
@@ -163,12 +163,12 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
         public function saveAction()
         {
-            // Store the post
+            // Simpan post
 
-            // Using direct flash
+            // Menggunakan direct flash
             $this->flash->success("Your information was stored correctly!");
 
-            // Forward to the index action
+            // Forward ke index action
             return $this->dispatcher->forward(
                 [
                     "action" => "index"
@@ -177,7 +177,7 @@ if you make a "forward" is not necessary to store the messages in session, but i
         }
     }
 
-Or using a HTTP redirection:
+Atau menggunakan HTTP redirection:
 
 .. code-block:: php
 
@@ -194,17 +194,17 @@ Or using a HTTP redirection:
 
         public function saveAction()
         {
-            // Store the post
+            // Simpan post
 
-            // Using session flash
+            // Menggunakan session flash
             $this->flashSession->success("Your information was stored correctly!");
 
-            // Make a full HTTP redirection
+            // Buat HTTP redirection penuh
             return $this->response->redirect("contact/index");
         }
     }
 
-In this case you need to manually print the messages in the corresponding view:
+Dalam hal anda perlu mencetak pesan secara manual di view terkait:
 
 .. code-block:: html+php
 
@@ -212,5 +212,5 @@ In this case you need to manually print the messages in the corresponding view:
 
     <p><?php $this->flashSession->output() ?></p>
 
-The attribute 'flashSession' is how the flash was previously set into the dependency injection container.
-You need to start the :doc:`session <session>` first to successfully use the flashSession messenger.
+Atribut 'flashSession' adalah flash yang sebelumnya diset ke kontainer dependency injection.
+Anda perlu menjalankan :doc:`session <session>` terlebih dahulu untuk dapat menggunakan flashSession messenger.
