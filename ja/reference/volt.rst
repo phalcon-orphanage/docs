@@ -1130,7 +1130,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
 
 From other template we could extend the base template replacing the blocks:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
     {% extends "templates/base.volt" %}
 

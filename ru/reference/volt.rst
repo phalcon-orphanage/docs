@@ -1128,7 +1128,7 @@ Keep the following points in mind when choosing to use the "partial" function or
 
 Заменяя блоки, мы расширим базовый шаблон другим:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
     {% extends "templates/base.volt" %}
 

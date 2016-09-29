@@ -1136,7 +1136,7 @@ Keep the following points in mind when choosing to use the "partial" function or
 
 其他的模板继承了基础模板后，会重写基础模板中的 *block* 代码块:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
     {% extends "templates/base.volt" %}
 
