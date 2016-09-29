@@ -206,7 +206,7 @@ Mensajes de validación
 ----------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` tiene un subsistema que provee una forma flexible de salida o de almacenar los mensajes de validación generados durante el proceso.
 
-Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. El conjunto de mensajes generados puede ser recibido con el método getMessages(). Cada mensaje provee información extendida como el atributo que lo generó o el tipo de mensaje:
+Cada mensaje consiste en una instancia de la clase :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. El conjunto de mensajes generados puede ser recibido con el método :code:`getMessages()`. Cada mensaje provee información extendida como el atributo que lo generó o el tipo de mensaje:
 
 .. code-block:: php
 
@@ -295,7 +295,7 @@ El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el comp
 
 Eventos de Validación
 ---------------------
-Cuando las validaciones son organizadas en clases, se puede implementar los métodos 'beforeValidation' y 'afterValidation' para ejecutar chequeos adicionales, filtros, limpiezas, etc. Si el método 'beforeValidation' devuelve false la validación es cancelada automáticamente:
+Cuando las validaciones son organizadas en clases, se puede implementar los métodos :code:`beforeValidation()` y :code:`afterValidation()` para ejecutar chequeos adicionales, filtros, limpiezas, etc. Si el método :code:`beforeValidation()` devuelve false la validación es cancelada automáticamente:
 
 .. code-block:: php
 

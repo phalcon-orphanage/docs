@@ -205,7 +205,7 @@ Phalcon的验证组件中内置了一些验证器：
 -------------------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。
 
-每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用:code:`getMessages()`方法取得。
 每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：
 
 .. code-block:: php
@@ -294,7 +294,7 @@ Phalcon的验证组件中内置了一些验证器：
 
 验证事件（Validation Events）
 -----------------------------
-当在类中执行验证时， 我们可以在beforeValidation或afterValidation方法（事件）中执行额外的检查，过滤，清理等工作。 如果beforeValidation方法返回了false
+当在类中执行验证时， 我们可以在:code:`beforeValidation()`或:code:`afterValidation()`方法（事件）中执行额外的检查，过滤，清理等工作。 如果:code:`beforeValidation()`方法返回了false
 则验证会被中止：
 
 .. code-block:: php

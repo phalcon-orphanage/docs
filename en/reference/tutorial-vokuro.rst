@@ -98,7 +98,7 @@ different than the one we saw before (app/config/loader.php):
 
     // ...
 
-Instead of using registerDirectories, we use registerNamespaces. Every namespace points to a directory
+Instead of using :code:`registerDirectories()`, we use :code:`registerNamespaces()`. Every namespace points to a directory
 defined in the configuration file (app/config/config.php). For instance the namespace Vokuro\\Controllers
 points to app/controllers so all the classes required by the application within this namespace
 requires it in its definition:

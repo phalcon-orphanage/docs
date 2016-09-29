@@ -520,7 +520,7 @@ Contoh berikut menunjukkan bagaimana memasang listener ke komponen ini:
     // ...
 
     // Ikat eventsManager ke komponen ACL
-    $acl->setEventsManager($eventManagers);
+    $acl->setEventsManager($eventsManager);
 
 Implementasi adapter Anda sendiri
 ---------------------------------

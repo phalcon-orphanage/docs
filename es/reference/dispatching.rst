@@ -544,7 +544,7 @@ For example, you have a base CrudController which your PostsController extends f
     }
 
 In your PostsController you need to define which model the controller is associated with. This is done by implementing the :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>`
-which will add the getModelName() method from which you can return the model name.
+which will add the :code:`getModelName()` method from which you can return the model name.
 
 .. code-block:: php
 
@@ -559,7 +559,7 @@ which will add the getModelName() method from which you can return the model nam
         }
     }
 
-By declaring the model associated with the PostsController the dispatcher can check the controller for the getModelName() method before passing
+By declaring the model associated with the PostsController the dispatcher can check the controller for the :code:`getModelName()` method before passing
 the defined model into the parent show action.
 
 If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:
@@ -584,7 +584,7 @@ If your project structure does not use any parent controller you can of course s
 
 .. highlights::
 
-    Currently the dispatchers internal model binding will only use the models primary key to perform a findFirst() on.
+    Currently the dispatchers internal model binding will only use the models primary key to perform a :code:`findFirst()` on.
     An example route for the above would be /posts/show/{1}
 
 Handling Not-Found Exceptions
