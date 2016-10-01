@@ -45,19 +45,19 @@ Returns a slice of the resultset to show in the pagination
 
 
 
-public  **setCurrentPage** (*mixed* $page) inherited from Phalcon\\Paginator\\Adapter
+public  **setCurrentPage** (*mixed* $page) inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Set the current page number
 
 
 
-public  **setLimit** (*mixed* $limitRows) inherited from Phalcon\\Paginator\\Adapter
+public  **setLimit** (*mixed* $limitRows) inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Set current rows limit
 
 
 
-public  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
+public  **getLimit** () inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Get current rows limit
 

@@ -131,48 +131,48 @@ Gets default options
 
 
 
-public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Phalcon_Translate_InterpolatorInterface>` $interpolator) inherited from Phalcon\\Translate\\Adapter
+public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Phalcon_Translate_InterpolatorInterface>` $interpolator) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 ...
 
 
-public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation string of the given key (alias of method 't')
 
 
 
-public  **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon\\Translate\\Adapter
+public  **offsetSet** (*string* $offset, *string* $value) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Sets a translation value
 
 
 
-public  **offsetExists** (*mixed* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public  **offsetExists** (*mixed* $translateKey) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*string* $offset) inherited from Phalcon\\Translate\\Adapter
+public  **offsetUnset** (*string* $offset) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*string* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public *string*  **offsetGet** (*string* $translateKey) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation related to the given key
 
 
 
-protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Replaces placeholders by the values passed
 

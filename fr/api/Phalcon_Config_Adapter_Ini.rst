@@ -85,7 +85,7 @@ We have to cast values manually because parse_ini_file() has a poor implementati
 
 
 
-public  **offsetExists** (*mixed* $index) inherited from Phalcon\\Config
+public  **offsetExists** (*mixed* $index) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -98,7 +98,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from Phalcon\\Config
+public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -111,7 +111,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public  **offsetGet** (*mixed* $index) inherited from Phalcon\\Config
+public  **offsetGet** (*mixed* $index) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Gets an attribute using the array-syntax 
 
@@ -124,7 +124,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Sets an attribute using the array-syntax 
 
@@ -137,7 +137,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*mixed* $index) inherited from Phalcon\\Config
+public  **offsetUnset** (*mixed* $index) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Unsets an attribute using the array-syntax 
 
@@ -150,7 +150,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config) inherited from Phalcon\\Config
+public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Merges a configuration into the current one 
 
@@ -164,7 +164,7 @@ Merges a configuration into the current one
 
 
 
-public  **toArray** () inherited from Phalcon\\Config
+public  **toArray** () inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Converts recursively the object to an array 
 
@@ -177,7 +177,7 @@ Converts recursively the object to an array
 
 
 
-public  **count** () inherited from Phalcon\\Config
+public  **count** () inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Returns the count of properties set in the config 
 
@@ -198,13 +198,13 @@ or
 
 
 
-public static  **__set_state** (*array* $data) inherited from Phalcon\\Config
+public static  **__set_state** (*array* $data) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Restores the state of a Phalcon\\Config object
 
 
 
-final protected *Config merged config*  **_merge** (*Config* $config, [*mixed* $instance]) inherited from Phalcon\\Config
+final protected *Config merged config*  **_merge** (*Config* $config, [*mixed* $instance]) inherited from :doc:`Phalcon\\Config <Phalcon_Config>`
 
 Helper method for merge configs (forwarding nested config instance)
 

@@ -52,7 +52,7 @@ Applies a format to a message before sending it to the log
 
 
 
-public  **interpolate** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Formatter
+public  **interpolate** (*string* $message, [*array* $context]) inherited from :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 Interpolates context values into the message placeholders
 

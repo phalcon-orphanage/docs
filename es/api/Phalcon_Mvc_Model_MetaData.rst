@@ -413,12 +413,12 @@ Resets internal meta-data in order to regenerate it
 
 
 
-abstract public  **read** (*mixed* $key) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+abstract public  **read** (*mixed* $key) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 ...
 
 
-abstract public  **write** (*mixed* $key, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+abstract public  **write** (*mixed* $key, *mixed* $data) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 ...
 

@@ -415,7 +415,20 @@ foreach ($classes as $className) {
             $methodsString .= join(", ", $cp) . ")";
 
             if ($simpleClassName != $docClassName) {
-                $methodsString .= " inherited from " . str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
+                $className = $method->getDeclaringClass()->name;
+
+                if (strpos($className, "Phalcon") !== false) {
+                    if (class_exists($className) || interface_exists($className)) {
+                        $classPath = str_replace("\\", "_", $className);
+                        $className = str_replace("\\", "\\\\", $className);
+
+                        $className  = ":doc:`" . $className . " <" . $classPath . ">`";
+                    } else {
+                        $className = str_replace("\\", "\\\\", $className);
+                    }
+                }
+
+                $methodsString .= " inherited from " . $className;
             }
 
             $methodsString .= PHP_EOL . PHP_EOL;

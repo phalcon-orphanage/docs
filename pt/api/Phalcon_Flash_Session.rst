@@ -58,67 +58,67 @@ Clear messages in the session messenger
 
 
 
-public  **__construct** ([*mixed* $cssClasses]) inherited from Phalcon\\Flash
+public  **__construct** ([*mixed* $cssClasses]) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Phalcon\\Flash constructor
 
 
 
-public  **getAutoescape** () inherited from Phalcon\\Flash
+public  **getAutoescape** () inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Returns the autoescape mode in generated html
 
 
 
-public  **setAutoescape** (*mixed* $autoescape) inherited from Phalcon\\Flash
+public  **setAutoescape** (*mixed* $autoescape) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Set the autoescape mode in generated html
 
 
 
-public  **getEscaperService** () inherited from Phalcon\\Flash
+public  **getEscaperService** () inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Returns the Escaper Service
 
 
 
-public  **setEscaperService** (:doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>` $escaperService) inherited from Phalcon\\Flash
+public  **setEscaperService** (:doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>` $escaperService) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Sets the Escaper Service
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Flash
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from Phalcon\\Flash
+public  **getDI** () inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Returns the internal dependency injector
 
 
 
-public  **setImplicitFlush** (*mixed* $implicitFlush) inherited from Phalcon\\Flash
+public  **setImplicitFlush** (*mixed* $implicitFlush) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public  **setAutomaticHtml** (*mixed* $automaticHtml) inherited from Phalcon\\Flash
+public  **setAutomaticHtml** (*mixed* $automaticHtml) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Set if the output must be implicitly formatted with HTML
 
 
 
-public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
+public  **setCssClasses** (*array* $cssClasses) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Set an array with CSS classes to format the messages
 
 
 
-public  **error** (*mixed* $message) inherited from Phalcon\\Flash
+public  **error** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Shows a HTML error message 
 
@@ -131,7 +131,7 @@ Shows a HTML error message
 
 
 
-public  **notice** (*mixed* $message) inherited from Phalcon\\Flash
+public  **notice** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Shows a HTML notice/information message 
 
@@ -144,7 +144,7 @@ Shows a HTML notice/information message
 
 
 
-public  **success** (*mixed* $message) inherited from Phalcon\\Flash
+public  **success** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Shows a HTML success message 
 
@@ -157,7 +157,7 @@ Shows a HTML success message
 
 
 
-public  **warning** (*mixed* $message) inherited from Phalcon\\Flash
+public  **warning** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Shows a HTML warning message 
 
@@ -170,7 +170,7 @@ Shows a HTML warning message
 
 
 
-public *string|void*  **outputMessage** (*mixed* $type, *string|array* $message) inherited from Phalcon\\Flash
+public *string|void*  **outputMessage** (*mixed* $type, *string|array* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Outputs a message formatting it with HTML 
 

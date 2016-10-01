@@ -210,7 +210,7 @@ Returns serialised model objects as array for json_encode. Calls jsonSerialize o
 
 
 
-abstract public  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
+abstract public  **toArray** () inherited from :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 ...
 

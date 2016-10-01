@@ -206,7 +206,7 @@ Magic method __toString renders the widget without attributes
 
 
 
-abstract public  **render** ([*mixed* $attributes]) inherited from Phalcon\\Forms\\ElementInterface
+abstract public  **render** ([*mixed* $attributes]) inherited from :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
 ...
 

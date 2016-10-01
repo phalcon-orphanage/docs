@@ -231,43 +231,43 @@ Return an array with every resource registered in the list
 
 
 
-public  **getActiveRole** () inherited from Phalcon\\Acl\\Adapter
+public  **getActiveRole** () inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Role which the list is checking if it's allowed to certain resource/access
 
 
 
-public  **getActiveResource** () inherited from Phalcon\\Acl\\Adapter
+public  **getActiveResource** () inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Resource which the list is checking if some role can access it
 
 
 
-public  **getActiveAccess** () inherited from Phalcon\\Acl\\Adapter
+public  **getActiveAccess** () inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Active access which the list is checking if some role can access it
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Acl\\Adapter
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Sets the events manager
 
 
 
-public  **getEventsManager** () inherited from Phalcon\\Acl\\Adapter
+public  **getEventsManager** () inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Returns the internal event manager
 
 
 
-public  **setDefaultAction** (*mixed* $defaultAccess) inherited from Phalcon\\Acl\\Adapter
+public  **setDefaultAction** (*mixed* $defaultAccess) inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
 
 
-public  **getDefaultAction** () inherited from Phalcon\\Acl\\Adapter
+public  **getDefaultAction** () inherited from :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 Returns the default ACL access level
 

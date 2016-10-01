@@ -151,52 +151,52 @@ abstract public  **isDisabled** ()
 ...
 
 
-abstract public  **setViewsDir** (*mixed* $viewsDir) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setViewsDir** (*mixed* $viewsDir) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getViewsDir** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getViewsDir** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setParamToView** (*mixed* $key, *mixed* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setParamToView** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setVar** (*mixed* $key, *mixed* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setVar** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getParamsToView** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getParamsToView** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getCache** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getCache** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **cache** ([*mixed* $options]) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **cache** ([*mixed* $options]) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setContent** (*mixed* $content) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setContent** (*mixed* $content) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getContent** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getContent** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **partial** (*mixed* $partialPath, [*mixed* $params]) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **partial** (*mixed* $partialPath, [*mixed* $params]) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 

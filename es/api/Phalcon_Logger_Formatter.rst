@@ -26,7 +26,7 @@ Interpolates context values into the message placeholders
 
 
 
-abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from Phalcon\\Logger\\FormatterInterface
+abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
 ...
 

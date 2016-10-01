@@ -41,43 +41,43 @@ Writes parsed annotations to APC
 
 
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from Phalcon\\Annotations\\Adapter
+public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Sets the annotations parser
 
 
 
-public  **getReader** () inherited from Phalcon\\Annotations\\Adapter
+public  **getReader** () inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotation reader
 
 
 
-public  **get** (*string|object* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **get** (*string|object* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Parses or retrieves all the annotations found in a class
 
 
 
-public  **getMethods** (*mixed* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **getMethods** (*mixed* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in all the class' methods
 
 
 
-public  **getMethod** (*mixed* $className, *mixed* $methodName) inherited from Phalcon\\Annotations\\Adapter
+public  **getMethod** (*mixed* $className, *mixed* $methodName) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in a specific method
 
 
 
-public  **getProperties** (*mixed* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **getProperties** (*mixed* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in all the class' methods
 
 
 
-public  **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from Phalcon\\Annotations\\Adapter
+public  **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in a specific property
 

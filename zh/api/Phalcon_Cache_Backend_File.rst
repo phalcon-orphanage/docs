@@ -114,61 +114,61 @@ Set whether to use the safekey or not
 
 
 
-public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
+public  **getFrontend** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **getOptions** () inherited from Phalcon\\Cache\\Backend
+public  **getOptions** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
+public  **getLastKey** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Stops the frontend without store any cached content
 
 
 
-public  **isFresh** () inherited from Phalcon\\Cache\\Backend
+public  **isFresh** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Checks whether the last cache is fresh or cached
 
 
 
-public  **isStarted** () inherited from Phalcon\\Cache\\Backend
+public  **isStarted** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Checks whether the cache has starting buffering or not
 
 
 
-public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+public *int*  **getLifetime** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Gets the last lifetime set
 

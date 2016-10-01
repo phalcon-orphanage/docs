@@ -120,169 +120,169 @@ Returns the active controller in the dispatcher
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from Phalcon\\Dispatcher
+public  **getDI** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the events manager
 
 
 
-public  **getEventsManager** () inherited from Phalcon\\Dispatcher
+public  **getEventsManager** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*mixed* $actionSuffix) inherited from Phalcon\\Dispatcher
+public  **setActionSuffix** (*mixed* $actionSuffix) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the default action suffix
 
 
 
-public  **getActionSuffix** () inherited from Phalcon\\Dispatcher
+public  **getActionSuffix** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets the default action suffix
 
 
 
-public  **setModuleName** (*mixed* $moduleName) inherited from Phalcon\\Dispatcher
+public  **setModuleName** (*mixed* $moduleName) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the module where the controller is (only informative)
 
 
 
-public  **getModuleName** () inherited from Phalcon\\Dispatcher
+public  **getModuleName** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*mixed* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setNamespaceName** (*mixed* $namespaceName) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the namespace where the controller class is
 
 
 
-public  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+public  **getNamespaceName** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the default namespace
 
 
 
-public  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
+public  **getDefaultNamespace** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns the default namespace
 
 
 
-public  **setDefaultAction** (*mixed* $actionName) inherited from Phalcon\\Dispatcher
+public  **setDefaultAction** (*mixed* $actionName) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the default action name
 
 
 
-public  **setActionName** (*mixed* $actionName) inherited from Phalcon\\Dispatcher
+public  **setActionName** (*mixed* $actionName) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the action name to be dispatched
 
 
 
-public  **getActionName** () inherited from Phalcon\\Dispatcher
+public  **getActionName** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets the latest dispatched action name
 
 
 
-public  **setParams** (*array* $params) inherited from Phalcon\\Dispatcher
+public  **setParams** (*array* $params) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets action params to be dispatched
 
 
 
-public  **getParams** () inherited from Phalcon\\Dispatcher
+public  **getParams** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets action params
 
 
 
-public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
+public  **setParam** (*mixed* $param, *mixed* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets a param by its name or numeric index
 
 
 
-public *boolean*  **hasParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+public *boolean*  **hasParam** (*mixed* $param) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Check if a param exists
 
 
 
-public  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+public  **getActiveMethod** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns the current method to be/executed in the dispatcher
 
 
 
-public  **isFinished** () inherited from Phalcon\\Dispatcher
+public  **isFinished** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 
 
-public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+public  **setReturnedValue** (*mixed* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Sets the latest returned value by an action manually
 
 
 
-public *mixed*  **getReturnedValue** () inherited from Phalcon\\Dispatcher
+public *mixed*  **getReturnedValue** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*boolean* $value) inherited from Phalcon\\Dispatcher
+public  **setModelBinding** (*boolean* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Enable/Disable model binding during dispatch
 
 
 
-public *object*  **dispatch** () inherited from Phalcon\\Dispatcher
+public *object*  **dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Dispatches a handle action taking into account the routing parameters
 
 
 
-protected *object*  **_dispatch** () inherited from Phalcon\\Dispatcher
+protected *object*  **_dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Dispatches a handle action taking into account the routing parameters
 
 
 
-public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
+public  **forward** (*array* $forward) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
 
@@ -295,24 +295,24 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
 
 
-public  **wasForwarded** () inherited from Phalcon\\Dispatcher
+public  **wasForwarded** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Check if the current executed action was forwarded by another one
 
 
 
-public  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+public  **getHandlerClass** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Possible class name that will be located to dispatch the request
 
 
 
-public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params]) inherited from Phalcon\\Dispatcher
+public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 ...
 
 
-protected  **_resolveEmptyProperties** () inherited from Phalcon\\Dispatcher
+protected  **_resolveEmptyProperties** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Set empty properties to their defaults (where defaults are available)
 
