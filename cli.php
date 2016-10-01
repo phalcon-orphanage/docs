@@ -60,8 +60,18 @@ foreach ($argv as $k => $arg) {
 try {
     // Handle incoming arguments
     $console->handle($arguments);
-} catch (\Phalcon\Exception $e) {
-    echo $e->getMessage();
+} catch (\Throwable $throwable) {
+    fwrite(
+        STDERR,
+        "ERROR: " . $throwable->getMessage() . PHP_EOL
+    );
 
-    exit(255);
+    exit(1);
+} catch (\Exception $exception) {
+    fwrite(
+        STDERR,
+        "ERROR: " . $exception->getMessage() . PHP_EOL
+    );
+
+    exit(1);
 }
