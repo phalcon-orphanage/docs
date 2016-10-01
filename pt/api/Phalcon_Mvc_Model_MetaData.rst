@@ -231,7 +231,7 @@ Returns attributes which types are numerical
 
 
 
-public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public *string* **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Returns the name of identity field (if one is present) 
 
@@ -413,12 +413,12 @@ Resets internal meta-data in order to regenerate it
 
 
 
-abstract public  **read** (*mixed* $key) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+abstract public  **read** (*mixed* $key) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 ...
 
 
-abstract public  **write** (*mixed* $key, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+abstract public  **write** (*mixed* $key, *mixed* $data) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 ...
 

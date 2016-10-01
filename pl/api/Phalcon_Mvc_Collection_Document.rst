@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection\\Document**
 ============================================
 
-*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, ArrayAccess
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -14,7 +14,7 @@ This component allows Phalcon\\Mvc\\Collection to return rows without an associa
 Methods
 -------
 
-public *boolean*  **offsetExists** (*int* $index)
+public *boolean* **offsetExists** (*int* $index)
 
 Checks whether an offset exists in the document
 
@@ -38,7 +38,7 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 
 
-public *mixed*  **readAttribute** (*string* $attribute)
+public *mixed* **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -64,7 +64,7 @@ Writes an attribute value by its name
 
 
 
-public *array*  **toArray** ()
+public *array* **toArray** ()
 
 Returns the instance as an array representation
 

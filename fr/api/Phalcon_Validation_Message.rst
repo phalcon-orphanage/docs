@@ -50,7 +50,7 @@ Sets field name related to message
 
 
 
-public *mixed*  **getField** ()
+public *mixed* **getField** ()
 
 Returns field name related to message
 

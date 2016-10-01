@@ -72,7 +72,7 @@ Starts output frontend. Actually, does nothing
 
 
 
-public *string*  **getContent** ()
+public *string* **getContent** ()
 
 Returns output cached content
 

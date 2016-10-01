@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`, IteratorAggregate, Traversable, ArrayAccess, Countable
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`, `IteratorAggregate <http://php.net/manual/en/class.iteratoraggregate.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_
 
 .. role:: raw-html(raw)
    :format: html

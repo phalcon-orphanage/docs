@@ -34,7 +34,7 @@ abstract public  **resetHeaders** ()
 ...
 
 
-abstract public  **setExpires** (*DateTime* $datetime)
+abstract public  **setExpires** (`DateTime <http://php.net/manual/en/class.datetime.php>`_ $datetime)
 
 ...
 

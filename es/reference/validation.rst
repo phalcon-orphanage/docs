@@ -290,8 +290,7 @@ Los datos pueden ser filtrados antes de la validación para asegurar que los dat
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-
-El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el componente :doc:`filter <filter>`:. Se puede añadir más filtros a este componente o usar uno ya construido.
+El filtrado (filtering) y desinfección (sanitizing) es ejecutado usando el componente :doc:`filter <filter>`. Se puede añadir más filtros a este componente o usar uno ya construido.
 
 Eventos de Validación
 ---------------------
@@ -320,7 +319,7 @@ Cuando las validaciones son organizadas en clases, se puede implementar los mét
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != "admin.mydomain.com") {
+            if ($this->request->getHttpHost() !== "admin.mydomain.com") {
                 $messages->appendMessage(
                     new Message("Only users can log on in the administration domain")
                 );
@@ -412,7 +411,7 @@ Si creas validators personalizados puedes parar dinámicamente la ejecución con
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == "name") {
+            if ($attribute === "name") {
                 $validator->setOption("cancelOnFail", true);
             }
 

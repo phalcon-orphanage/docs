@@ -37,7 +37,7 @@ Constants
 Methods
 -------
 
-public static *EscaperInterface*  **getEscaper** (*array* $params)
+public static *EscaperInterface* **getEscaper** (*array* $params)
 
 Obtains the 'escaper' service if required
 
@@ -119,13 +119,13 @@ Alias of Phalcon\\Tag::setDefault
 
 
 
-public static *boolean*  **hasValue** (*string* $name)
+public static *boolean* **hasValue** (*string* $name)
 
 Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from _POST
 
 
 
-public static *mixed*  **getValue** (*string* $name, [*array* $params])
+public static *mixed* **getValue** (*string* $name, [*array* $params])
 
 Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from _POST
 
@@ -137,7 +137,7 @@ Resets the request and internal values to avoid those fields will have any defau
 
 
 
-public static *string*  **linkTo** (*array|string* $parameters, [*string* $text], [*boolean* $local])
+public static *string* **linkTo** (*array* | *string* $parameters, [*string* $text], [*boolean* $local])
 
 Builds a HTML A tag using framework conventions 
 
@@ -155,25 +155,25 @@ Builds a HTML A tag using framework conventions
 
 
 
-final protected static *string*  **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
+final protected static *string* **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
 
 Builds generic INPUT tags
 
 
 
-final protected static *string*  **_inputFieldChecked** (*string* $type, *array* $parameters)
+final protected static *string* **_inputFieldChecked** (*string* $type, *array* $parameters)
 
 Builds INPUT tags that implements the checked attribute
 
 
 
-public static *string*  **colorField** (*array* $parameters)
+public static *string* **colorField** (*array* $parameters)
 
 Builds a HTML input[type="color"] tag
 
 
 
-public static *string*  **textField** (*array* $parameters)
+public static *string* **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
 
@@ -186,7 +186,7 @@ Builds a HTML input[type="text"] tag
 
 
 
-public static *string*  **numericField** (*array* $parameters)
+public static *string* **numericField** (*array* $parameters)
 
 Builds a HTML input[type="number"] tag 
 
@@ -199,13 +199,13 @@ Builds a HTML input[type="number"] tag
 
 
 
-public static *string*  **rangeField** (*array* $parameters)
+public static *string* **rangeField** (*array* $parameters)
 
 Builds a HTML input[type="range"] tag
 
 
 
-public static *string*  **emailField** (*array* $parameters)
+public static *string* **emailField** (*array* $parameters)
 
 Builds a HTML input[type="email"] tag 
 
@@ -218,7 +218,7 @@ Builds a HTML input[type="email"] tag
 
 
 
-public static *string*  **dateField** (*array* $parameters)
+public static *string* **dateField** (*array* $parameters)
 
 Builds a HTML input[type="date"] tag 
 
@@ -231,37 +231,37 @@ Builds a HTML input[type="date"] tag
 
 
 
-public static *string*  **dateTimeField** (*array* $parameters)
+public static *string* **dateTimeField** (*array* $parameters)
 
 Builds a HTML input[type="datetime"] tag
 
 
 
-public static *string*  **dateTimeLocalField** (*array* $parameters)
+public static *string* **dateTimeLocalField** (*array* $parameters)
 
 Builds a HTML input[type="datetime-local"] tag
 
 
 
-public static *string*  **monthField** (*array* $parameters)
+public static *string* **monthField** (*array* $parameters)
 
 Builds a HTML input[type="month"] tag
 
 
 
-public static *string*  **timeField** (*array* $parameters)
+public static *string* **timeField** (*array* $parameters)
 
 Builds a HTML input[type="time"] tag
 
 
 
-public static *string*  **weekField** (*array* $parameters)
+public static *string* **weekField** (*array* $parameters)
 
 Builds a HTML input[type="week"] tag
 
 
 
-public static *string*  **passwordField** (*array* $parameters)
+public static *string* **passwordField** (*array* $parameters)
 
 Builds a HTML input[type="password"] tag 
 
@@ -274,7 +274,7 @@ Builds a HTML input[type="password"] tag
 
 
 
-public static *string*  **hiddenField** (*array* $parameters)
+public static *string* **hiddenField** (*array* $parameters)
 
 Builds a HTML input[type="hidden"] tag 
 
@@ -287,7 +287,7 @@ Builds a HTML input[type="hidden"] tag
 
 
 
-public static *string*  **fileField** (*array* $parameters)
+public static *string* **fileField** (*array* $parameters)
 
 Builds a HTML input[type="file"] tag 
 
@@ -300,25 +300,25 @@ Builds a HTML input[type="file"] tag
 
 
 
-public static *string*  **searchField** (*array* $parameters)
+public static *string* **searchField** (*array* $parameters)
 
 Builds a HTML input[type="search"] tag
 
 
 
-public static *string*  **telField** (*array* $parameters)
+public static *string* **telField** (*array* $parameters)
 
 Builds a HTML input[type="tel"] tag
 
 
 
-public static *string*  **urlField** (*array* $parameters)
+public static *string* **urlField** (*array* $parameters)
 
 Builds a HTML input[type="url"] tag
 
 
 
-public static *string*  **checkField** (*array* $parameters)
+public static *string* **checkField** (*array* $parameters)
 
 Builds a HTML input[type="check"] tag 
 
@@ -339,7 +339,7 @@ Volt syntax:
 
 
 
-public static *string*  **radioField** (*array* $parameters)
+public static *string* **radioField** (*array* $parameters)
 
 Builds a HTML input[type="radio"] tag 
 
@@ -360,7 +360,7 @@ Volt syntax:
 
 
 
-public static *string*  **imageInput** (*array* $parameters)
+public static *string* **imageInput** (*array* $parameters)
 
 Builds a HTML input[type="image"] tag 
 
@@ -381,7 +381,7 @@ Volt syntax:
 
 
 
-public static *string*  **submitButton** (*array* $parameters)
+public static *string* **submitButton** (*array* $parameters)
 
 Builds a HTML input[type="submit"] tag 
 
@@ -402,7 +402,7 @@ Volt syntax:
 
 
 
-public static *string*  **selectStatic** (*array* $parameters, [*array* $data])
+public static *string* **selectStatic** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a PHP array for options 
 
@@ -415,7 +415,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
 
 
-public static *string*  **select** (*array* $parameters, [*array* $data])
+public static *string* **select** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options 
 
@@ -440,7 +440,7 @@ Volt syntax:
 
 
 
-public static *string*  **textArea** (*array* $parameters)
+public static *string* **textArea** (*array* $parameters)
 
 Builds a HTML TEXTAREA tag 
 
@@ -461,7 +461,7 @@ Volt syntax:
 
 
 
-public static *string*  **form** (*array* $parameters)
+public static *string* **form** (*array* $parameters)
 
 Builds a HTML FORM tag 
 
@@ -566,7 +566,7 @@ Gets the current document title separator
 
 
 
-public static *string*  **stylesheetLink** ([*array* $parameters], [*boolean* $local])
+public static *string* **stylesheetLink** ([*array* $parameters], [*boolean* $local])
 
 Builds a LINK[rel="stylesheet"] tag 
 
@@ -589,7 +589,7 @@ Volt Syntax:
 
 
 
-public static *string*  **javascriptInclude** ([*array* $parameters], [*boolean* $local])
+public static *string* **javascriptInclude** ([*array* $parameters], [*boolean* $local])
 
 Builds a SCRIPT[type="javascript"] tag 
 
@@ -612,7 +612,7 @@ Volt syntax:
 
 
 
-public static *string*  **image** ([*array* $parameters], [*boolean* $local])
+public static *string* **image** ([*array* $parameters], [*boolean* $local])
 
 Builds HTML IMG tags 
 

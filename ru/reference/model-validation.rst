@@ -25,7 +25,7 @@ Validating Models
         {
             $validator = new Validation();
 
-            $validator->validate(
+            $validator->add(
                 "type",
                 new InclusionIn(
                     [
@@ -37,7 +37,7 @@ Validating Models
                 )
             );
 
-            $validator->validate(
+            $validator->add(
                 "name",
                 new Uniqueness(
                     [
@@ -51,7 +51,7 @@ Validating Models
     }
 
 Приведенный выше пример выполняет проверку с помощью встроенного валидатора "InclusionIn". Он проверяет значение поля "type" в списке "domain". Если
-значение отсутствует в методе, то валидация будет прервана и будет возвращено значение false. Доступны следующие валидаторы:
+значение отсутствует в методе, то валидация будет прервана и будет возвращено значение false.
 
 .. highlights::
 

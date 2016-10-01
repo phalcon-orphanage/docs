@@ -177,7 +177,7 @@ Check whether column have first position in table
 
 
 
-public *string*  **getAfterPosition** ()
+public *string* **getAfterPosition** ()
 
 Check whether field absolute to position in table
 

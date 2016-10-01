@@ -72,7 +72,7 @@ Sets the database service used to run the isolated transactions
 
 
 
-public *string*  **getDbService** ()
+public *string* **getDbService** ()
 
 Returns the database service used to isolate the transaction
 

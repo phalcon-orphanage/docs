@@ -12,7 +12,7 @@ Class **Phalcon\\Forms\\Manager**
 Methods
 -------
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **create** ([*string* $name], [*object* $entity])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` **create** ([*string* $name], [*object* $entity])
 
 Creates a form registering it in the forms manager
 

@@ -294,7 +294,7 @@ Os dados podem ser filtrados antes da validação garantindo que os informaçõe
     $validation->setFilters("name", "trim");
     $validation->setFilters("email", "trim");
 
-Filtragem e sanatização é realizada usando o componente :doc:`filter <filter>`:. Você pode adicionar mais filtros nesse
+Filtragem e sanatização é realizada usando o componente :doc:`filter <filter>`. Você pode adicionar mais filtros nesse
 componente ou usar os imbutidos.
 
 Eventos de Validação
@@ -325,7 +325,7 @@ cancelada:
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != "admin.mydomain.com") {
+            if ($this->request->getHttpHost() !== "admin.mydomain.com") {
                 $messages->appendMessage(
                     new Message("Only users can log on in the administration domain")
                 );
@@ -419,7 +419,7 @@ Se você está criando validadores próprios você pode parar a cadeia de valida
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == "name") {
+            if ($attribute === "name") {
                 $validator->setOption("cancelOnFail", true);
             }
 

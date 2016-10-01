@@ -795,7 +795,7 @@ Not Found パス
     $route->beforeMatch(
         function ($uri, $route) {
             // リクエストがAjaxによって生成されたかチェック
-            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest") {
+            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest") {
                 return false;
             }
 
@@ -813,7 +813,7 @@ Not Found パス
     {
         public function check()
         {
-            return $_SERVER["HTTP_X_REQUESTED_WITH"] == "XMLHttpRequest";
+            return $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest";
         }
     }
 

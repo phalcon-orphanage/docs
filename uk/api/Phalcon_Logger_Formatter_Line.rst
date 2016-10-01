@@ -46,19 +46,19 @@ Phalcon\\Logger\\Formatter\\Line construct
 
 
 
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
+public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 
 
 
-public  **getTypeString** (*mixed* $type) inherited from Phalcon\\Logger\\Formatter
+public  **getTypeString** (*mixed* $type) inherited from :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 Returns the string meaning of a logger constant
 
 
 
-public  **interpolate** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Formatter
+public  **interpolate** (*string* $message, [*array* $context]) inherited from :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 Interpolates context values into the message placeholders
 

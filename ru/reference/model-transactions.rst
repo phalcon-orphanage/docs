@@ -32,7 +32,7 @@
             $robot->created_at  = date("Y-m-d");
 
             // The model failed to save, so rollback the transaction
-            if ($robot->save() == false) {
+            if ($robot->save() === false) {
                 $this->db->rollback();
                 return;
             }
@@ -42,7 +42,7 @@
             $robotPart->type      = "head";
 
             // The model failed to save, so rollback the transaction
-            if ($robotPart->save() == false) {
+            if ($robotPart->save() === false) {
                 $this->db->rollback();
                 return;
             }
@@ -97,7 +97,8 @@
         $robot->setTransaction($transaction);
         $robot->name        = "WALL·E";
         $robot->created_at  = date("Y-m-d");
-        if ($robot->save() == false) {
+
+        if ($robot->save() === false) {
             $transaction->rollback("Невозможно сохранить робота");
         }
 
@@ -105,7 +106,8 @@
         $robotPart->setTransaction($transaction);
         $robotPart->robots_id   = $robot->id;
         $robotPart->type        = "head";
-        if ($robotPart->save() == false) {
+
+        if ($robotPart->save() === false) {
             $transaction->rollback("Невозможно сохранить часть робота");
         }
 
@@ -136,7 +138,8 @@
         // Получить роботов для удаления
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
-            if ($robot->delete() == false) {
+
+            if ($robot->delete() === false) {
                 // Что-то идет не так, мы должны откатить транзакцию
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());

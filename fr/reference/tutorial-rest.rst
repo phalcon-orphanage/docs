@@ -187,7 +187,7 @@ application :
             }
 
             // Check if any messages have been produced
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -378,7 +378,7 @@ Prenons la données comme une chaine JSON que l'on insert dans le corps de la re
             $response = new Response();
 
             // Check if the insertion was successful
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 // Change the HTTP status
                 $response->setStatusCode(201, "Created");
 
@@ -445,7 +445,7 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
             $response = new Response();
 
             // Check if the insertion was successful
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"
@@ -499,7 +499,7 @@ La suppression de données est relativement identique à la modification. L'iden
             // Create a response
             $response = new Response();
 
-            if ($status->success() == true) {
+            if ($status->success() === true) {
                 $response->setJsonContent(
                     [
                         "status" => "OK"

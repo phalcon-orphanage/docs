@@ -325,7 +325,7 @@ Then initialize and use your own validator:
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != "admin.mydomain.com") {
+            if ($this->request->getHttpHost() !== "admin.mydomain.com") {
                 $messages->appendMessage(
                     new Message("Only users can log on in the administration domain")
                 );
@@ -419,7 +419,7 @@ Then initialize and use your own validator:
         public function validate(Validation $validator, $attribute)
         {
             // Если имя атрибута 'name' - останавливаем дальнейшие проверки
-            if ($attribute == "name") {
+            if ($attribute === "name") {
                 $validator->setOption("cancelOnFail", true);
             }
 

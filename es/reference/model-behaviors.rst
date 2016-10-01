@@ -254,7 +254,7 @@ A behavior is also capable of intercepting missing methods on your models:
         public function missingMethod($model, $method, $arguments = [])
         {
             // If the method is 'getSlug' convert the title
-            if ($method == "getSlug") {
+            if ($method === "getSlug") {
                 return Tag::friendlyTitle($model->title);
             }
         }

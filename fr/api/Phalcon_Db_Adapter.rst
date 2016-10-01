@@ -81,7 +81,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
+public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -107,7 +107,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *string|*  **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int|string* $column])
+public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
 Returns the n'th field of first row in a SQL query result 
 
@@ -126,7 +126,7 @@ Returns the n'th field of first row in a SQL query result
 
 
 
-public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
+public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
 Inserts data into a table using custom RDBMS SQL syntax 
 
@@ -147,7 +147,7 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 
 
-public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
+public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -170,7 +170,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string|array* $table, *array* $fields, *array* $values, [*string|array* $whereCondition], [*array* $dataTypes])
+public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -206,7 +206,7 @@ Warning! If $whereCondition is string it not escaped.
 
 
 
-public *boolean*  **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
+public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
 
@@ -229,7 +229,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
 
 
-public *boolean*  **delete** (*string|array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
+public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -249,7 +249,7 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*array* $columnList)
+public *string* **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
@@ -416,7 +416,7 @@ List all views on a database
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
+public Phalcon\\Db\\Index[] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
 
@@ -545,7 +545,7 @@ Return descriptor used to connect to the active database
 
 
 
-public *string*  **getConnectionId** ()
+public *string* **getConnectionId** ()
 
 Gets the active connection unique identifier
 
@@ -563,7 +563,7 @@ Active SQL statement in the object without replace bound paramters
 
 
 
-public *array*  **getSQLBindTypes** ()
+public *array* **getSQLBindTypes** ()
 
 Active SQL statement in the object
 

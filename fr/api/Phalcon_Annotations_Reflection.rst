@@ -54,13 +54,13 @@ Returns the annotations found in the properties' docblocks
 
 
 
-public *array*  **getReflectionData** ()
+public *array* **getReflectionData** ()
 
 Returns the raw parsing intermediate definitions used to construct the reflection
 
 
 
-public static *array data*  **__set_state** (*mixed* $data)
+public static *array data* **__set_state** (*mixed* $data)
 
 Restores the state of a Phalcon\\Annotations\\Reflection variable export
 

@@ -51,37 +51,37 @@ Returns a cached content
 
 
 
-public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int* | *string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean* **delete** (*int* | *string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** ([*string* $prefix])
+public *array* **queryKeys** ([*string* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean* **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it isn't expired
 
 
 
-public *mixed*  **increment** (*string* $keyName, [*long* $value])
+public *mixed* **increment** (*string* $keyName, [*long* $value])
 
 Atomic increment of a given key, by number $value
 
 
 
-public *mixed*  **decrement** (*string* $keyName, [*long* $value])
+public *mixed* **decrement** (*string* $keyName, [*long* $value])
 
 Atomic decrement of a given key, by number $value
 
@@ -93,61 +93,61 @@ Immediately invalidates all existing items.
 
 
 
-public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
+public  **getFrontend** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setFrontend** (*mixed* $frontend) inherited from Phalcon\\Cache\\Backend
+public  **setFrontend** (*mixed* $frontend) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **getOptions** () inherited from Phalcon\\Cache\\Backend
+public  **getOptions** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setOptions** (*mixed* $options) inherited from Phalcon\\Cache\\Backend
+public  **setOptions** (*mixed* $options) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
+public  **getLastKey** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public  **setLastKey** (*mixed* $lastKey) inherited from Phalcon\\Cache\\Backend
+public  **setLastKey** (*mixed* $lastKey) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 ...
 
 
-public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*mixed* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*mixed* $stopBuffer]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Stops the frontend without store any cached content
 
 
 
-public  **isFresh** () inherited from Phalcon\\Cache\\Backend
+public  **isFresh** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Checks whether the last cache is fresh or cached
 
 
 
-public  **isStarted** () inherited from Phalcon\\Cache\\Backend
+public  **isStarted** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Checks whether the cache has starting buffering or not
 
 
 
-public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+public *int* **getLifetime** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Gets the last lifetime set
 

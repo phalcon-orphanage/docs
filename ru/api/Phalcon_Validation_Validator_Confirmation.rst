@@ -51,31 +51,31 @@ Compare strings
 
 
 
-public  **__construct** ([*array* $options]) inherited from Phalcon\\Validation\\Validator
+public  **__construct** ([*array* $options]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Phalcon\\Validation\\Validator constructor
 
 
 
-public  **isSetOption** (*mixed* $key) inherited from Phalcon\\Validation\\Validator
+public  **isSetOption** (*mixed* $key) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Checks if an option has been defined
 
 
 
-public  **hasOption** (*mixed* $key) inherited from Phalcon\\Validation\\Validator
+public  **hasOption** (*mixed* $key) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Checks if an option is defined
 
 
 
-public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from Phalcon\\Validation\\Validator
+public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Returns an option in the validator's options Returns null if the option hasn't set
 
 
 
-public  **setOption** (*mixed* $key, *mixed* $value) inherited from Phalcon\\Validation\\Validator
+public  **setOption** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Sets an option in the validator
 

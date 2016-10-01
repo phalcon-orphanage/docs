@@ -99,7 +99,7 @@ Sets the columns to be queried
 
 
 
-public *string|array*  **getColumns** ()
+public *string* | *array* **getColumns** ()
 
 Return the columns to be queried
 
@@ -145,13 +145,13 @@ Add a model to take part of the query
 
 
 
-public *string|array*  **getFrom** ()
+public *string* | *array* **getFrom** ()
 
 Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
 Adds an INNER join to the query 
 
@@ -174,7 +174,7 @@ Adds an INNER join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds an INNER join to the query 
 
@@ -194,7 +194,7 @@ Adds an INNER join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a LEFT join to the query 
 
@@ -207,7 +207,7 @@ Adds a LEFT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a RIGHT join to the query 
 
@@ -220,13 +220,13 @@ Adds a RIGHT join to the query
 
 
 
-public *array*  **getJoins** ()
+public *array* **getJoins** ()
 
 Return join parts of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*mixed* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **where** (*mixed* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Sets the query conditions 
 
@@ -241,7 +241,7 @@ Sets the query conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using a AND operator 
 
@@ -255,7 +255,7 @@ Appends a condition to the current conditions using a AND operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an OR operator 
 
@@ -321,13 +321,13 @@ Appends a NOT IN condition to the current conditions
 
 
 
-public *string|array*  **getWhere** ()
+public *string* | *array* **getWhere** ()
 
 Return the conditions for the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string|array* $orderBy)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **orderBy** (*string* | *array* $orderBy)
 
 Sets an ORDER BY condition clause 
 
@@ -341,7 +341,7 @@ Sets an ORDER BY condition clause
 
 
 
-public *string|array*  **getOrderBy** ()
+public *string* | *array* **getOrderBy** ()
 
 Returns the set ORDER BY clause
 
@@ -373,7 +373,7 @@ Sets a FOR UPDATE clause
 
 
 
-public *string|array*  **getHaving** ()
+public *string* | *array* **getHaving** ()
 
 Return the current having clause
 
@@ -393,7 +393,7 @@ Sets a LIMIT clause, optionally an offset clause
 
 
 
-public *string|array*  **getLimit** ()
+public *string* | *array* **getLimit** ()
 
 Returns the current LIMIT clause
 
@@ -412,13 +412,13 @@ Sets an OFFSET clause
 
 
 
-public *string|array*  **getOffset** ()
+public *string* | *array* **getOffset** ()
 
 Returns the current OFFSET clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*string|array* $group)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>` **groupBy** (*string* | *array* $group)
 
 Sets a GROUP BY clause 
 
@@ -431,13 +431,13 @@ Sets a GROUP BY clause
 
 
 
-public *string*  **getGroupBy** ()
+public *string* **getGroupBy** ()
 
 Returns the GROUP BY clause
 
 
 
-final public *string*  **getPhql** ()
+final public *string* **getPhql** ()
 
 Returns a PHQL statement built based on the builder parameters
 

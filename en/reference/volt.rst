@@ -25,7 +25,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
     {% for product in products %}
         * Name: {{ product.name|e }}
-        {% if product.status == "Active" %}
+        {% if product.status === "Active" %}
            Price: {{ product.price + product.taxes/100 }}
         {% endif  %}
     {% endfor  %}
@@ -458,7 +458,7 @@ An "if" evaluation can be optionally set:
         Value: {{ value }}
     {% endfor %}
 
-    {% for name, value in numbers if name != 'two' %}
+    {% for name, value in numbers if name !== 'two' %}
         Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
@@ -517,7 +517,7 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
     <h1>Cyborg Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% endif %}
         {% endfor %}
@@ -530,7 +530,7 @@ The else clause is also supported:
     <h1>Robots</h1>
     <ul>
         {% for robot in robots %}
-            {% if robot.type == "cyborg" %}
+            {% if robot.type === "cyborg" %}
                 <li>{{ robot.name|e }}</li>
             {% else %}
                 <li>{{ robot.name|e }} (not a cyborg)</li>
@@ -542,11 +542,11 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
 
 .. code-block:: html+jinja
 
-    {% if robot.type == "cyborg" %}
+    {% if robot.type === "cyborg" %}
         Robot is a cyborg
-    {% elseif robot.type == "virtual" %}
+    {% elseif robot.type === "virtual" %}
         Robot is virtual
-    {% elseif robot.type == "mechanical" %}
+    {% elseif robot.type === "mechanical" %}
         Robot is mechanical
     {% endif %}
 
@@ -1141,7 +1141,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
 
 From other template we could extend the base template replacing the blocks:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
     {% extends "templates/base.volt" %}
 

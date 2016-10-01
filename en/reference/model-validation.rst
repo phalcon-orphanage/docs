@@ -25,7 +25,7 @@ The following example shows how to use it:
         {
             $validator = new Validation();
 
-            $validator->validate(
+            $validator->add(
                 "type",
                 new InclusionIn(
                     [
@@ -37,7 +37,7 @@ The following example shows how to use it:
                 )
             );
 
-            $validator->validate(
+            $validator->add(
                 "name",
                 new Uniqueness(
                     [
@@ -51,7 +51,7 @@ The following example shows how to use it:
     }
 
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+the value is not included in the method then the validator will fail and return false.
 
 .. highlights::
 

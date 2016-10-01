@@ -134,7 +134,7 @@ Shows a HTML warning message
 
 
 
-public *string|void*  **outputMessage** (*mixed* $type, *string|array* $message)
+public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message)
 
 Outputs a message formatting it with HTML 
 

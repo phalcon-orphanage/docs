@@ -28,22 +28,28 @@ if (!file_exists(CPHALCON_DIR)) {
     );
 }
 
-$languages = [
-    "en",
-    "es",
-    "fr",
-    "id",
-    "ja",
-    "pl",
-    "pt",
-    "ru",
-    "uk",
-    "zh",
-];
+
+
+$languagesConfigPath = "scripts/config/languages.json";
+
+$languagesConfigContents = file_get_contents($languagesConfigPath);
+
+$languages = json_decode($languagesConfigContents);
 
 
 
-require "src/ApiGenerator.php";
+/**
+ * Register the autoloader and tell it to register the tasks directory
+ */
+$loader = new \Phalcon\Loader();
+
+$loader->registerNamespaces(
+    [
+        "PhalconDocs" => __DIR__ . "/src/",
+    ]
+);
+
+$loader->register();
 
 
 
@@ -77,7 +83,7 @@ $view->setViewsDir("scripts/views/");
 
 
 
-$api = new ApiGenerator(CPHALCON_DIR);
+$api = new \PhalconDocs\ApiGenerator(CPHALCON_DIR);
 
 $classDocs = $api->getClassDocs();
 $docs      = $api->getDocs();
@@ -85,7 +91,7 @@ $docs      = $api->getDocs();
 $classes = [];
 
 foreach (get_declared_classes() as $className) {
-    if (!preg_match("#^Phalcon#", $className)) {
+    if (!preg_match("#^Phalcon\\\\#", $className)) {
         continue;
     }
 
@@ -93,7 +99,7 @@ foreach (get_declared_classes() as $className) {
 }
 
 foreach (get_declared_interfaces() as $interfaceName) {
-    if (!preg_match("#^Phalcon#", $interfaceName)) {
+    if (!preg_match("#^Phalcon\\\\#", $interfaceName)) {
         continue;
     }
 
@@ -161,6 +167,16 @@ sort($classes);
 $indexClasses    = [];
 $indexInterfaces = [];
 
+foreach ($languages as $lang) {
+    $folder = $lang . "/api/";
+
+    if (file_exists($folder) && is_dir($folder)) {
+        continue;
+    }
+
+    mkdir($folder);
+}
+
 foreach ($classes as $className) {
     $realClassName = $className;
 
@@ -222,25 +238,20 @@ foreach ($classes as $className) {
     if ($documentationData["extends"]) {
         $extendsName = $documentationData["extends"]->name;
 
-        if (strpos($extendsName, "Phalcon") !== false) {
-            if (class_exists($extendsName)) {
-                $extendsClass = $extendsName;
-                $extendsPath  = str_replace("\\", "_", $extendsName);
-                $extendsName  = str_replace("\\", "\\\\", $extendsName);
-                $reflector    = new ReflectionClass($extendsClass);
+        $classLink = new \PhalconDocs\ClassLink($extendsName);
 
-                $prefix = "class";
+        if (class_exists($extendsName)) {
+            $reflector = new ReflectionClass($extendsName);
 
-                if ($reflector->isAbstract()) {
-                    $prefix = "abstract class";
-                }
+            $prefix = "class";
 
-                $extendsString .= PHP_EOL . "*extends* " . $prefix . " :doc:`" . $extendsName . " <" . $extendsPath . ">`" . PHP_EOL;
-            } else {
-                $extendsString .= PHP_EOL . "*extends* " . $extendsName . PHP_EOL;
+            if ($reflector->isAbstract()) {
+                $prefix = "abstract class";
             }
+
+            $extendsString .= PHP_EOL . "*extends* " . $prefix . " " . $classLink->get() . PHP_EOL;
         } else {
-            $extendsString .= PHP_EOL . "*extends* " . $extendsName . PHP_EOL;
+            $extendsString .= PHP_EOL . "*extends* " . $classLink->get() . PHP_EOL;
         }
     }
 
@@ -253,18 +264,9 @@ foreach ($classes as $className) {
         $implements = [];
 
         foreach ($documentationData["implements"] as $interfaceName) {
-            if (strpos($interfaceName, "Phalcon") !== false) {
-                if (interface_exists($interfaceName)) {
-                    $interfacePath = str_replace("\\", "_", $interfaceName);
-                    $interfaceName = str_replace("\\", "\\\\", $interfaceName);
+            $classLink = new \PhalconDocs\ClassLink($interfaceName);
 
-                    $implements[]  = ":doc:`" . $interfaceName . " <" . $interfacePath . ">`";
-                } else {
-                    $implements[] = str_replace("\\", "\\\\", $interfaceName);
-                }
-            } else {
-                $implements[] = $interfaceName;
-            }
+            $implements[] = $classLink->get();
         }
 
         $implementsString .= PHP_EOL . "*implements* " . join(", ", $implements) . PHP_EOL;
@@ -280,6 +282,7 @@ foreach ($classes as $className) {
 
     if (isset($classDocs[$realClassName])) {
         $ret = $api->getPhpDoc($classDocs[$realClassName], $className, $realClassName);
+
         $classDescription .= $ret["description"] . PHP_EOL . PHP_EOL;
     }
 
@@ -292,7 +295,9 @@ foreach ($classes as $className) {
         $constantsString .= "---------" . PHP_EOL . PHP_EOL;
 
         foreach ($documentationData["constants"] as $name => $constant) {
-            $constantsString .= "*" . gettype($constant) . "* **" . $name . "**" . PHP_EOL . PHP_EOL;
+            $type = gettype($constant);
+
+            $constantsString .= "*" . $type . "* **" . $name . "**" . PHP_EOL . PHP_EOL;
         }
     }
 
@@ -324,24 +329,15 @@ foreach ($classes as $className) {
             $methodsString .= implode(" ", Reflection::getModifierNames($method->getModifiers())) . " ";
 
             if (isset($ret["return"])) {
-                if (preg_match("/^(\\\\?Phalcon[a-zA-Z0-9\\\\]+)/", $ret["return"], $matches)) {
-                    if (class_exists($matches[0]) || interface_exists($matches[0])) {
-                        $extendsPath = preg_replace("/^\\\\/", "", $matches[1]);
-                        $extendsPath = str_replace("\\", "_", $extendsPath);
-                        $extendsName = preg_replace("/^\\\\/", "", $matches[1]);
-                        $extendsName = str_replace("\\", "\\\\", $extendsName);
-                        $methodsString .= str_replace(
-                            $matches[1],
-                            ":doc:`" . $extendsName . " <" . $extendsPath . ">` ",
-                            $ret["return"]
-                        );
-                    } else {
-                        $extendsName = str_replace("\\", "\\\\", $ret["return"]);
-                        $methodsString .= "*" . $extendsName . "* ";
-                    }
-                } else {
-                    $methodsString .= "*" . $ret["return"] . "* ";
+                $returnTypes = explode("|", $ret["return"]);
+
+                foreach ($returnTypes as $i => $returnType) {
+                    $classLink = new \PhalconDocs\ClassLink($returnType);
+
+                    $returnTypes[$i] = $classLink->get();
                 }
+
+                $methodsString .= implode(" | ", $returnTypes);
             }
 
             $methodsString .= " **" . $method->name . "** (";
@@ -361,40 +357,31 @@ foreach ($classes as $className) {
                     $parameterType = "mixed";
                 }
 
-                if (strpos($parameterType, "Phalcon") !== false) {
-                    if (class_exists($parameterType) || interface_exists($parameterType)) {
-                        $parameterPath = preg_replace("/^\\\\/", "", $parameterType);
-                        $parameterPath = str_replace("\\", "_", $parameterPath);
-                        $parameterName = preg_replace("/^\\\\/", "", $parameterType);
-                        $parameterName = str_replace("\\", "\\\\", $parameterName);
+                $parameterTypes = explode("|", $parameterType);
 
-                        if (!$parameter->isOptional()) {
-                            $cp[] = ":doc:`" . $parameterName . " <" . $parameterPath . ">` " . $name;
-                        } else {
-                            $cp[] = "[:doc:`" . $parameterName . " <" . $parameterPath . ">` " . $name . "]";
-                        }
-                    } else {
-                        $parameterName = str_replace("\\", "\\\\", $parameterType);
+                foreach ($parameterTypes as $i => $parameterType) {
+                    $classLink = new \PhalconDocs\ClassLink($parameterType);
 
-                        if (!$parameter->isOptional()) {
-                            $cp[] = "*" . $parameterName . "* " . $name;
-                        } else {
-                            $cp[] = "[*" . $parameterName . "* " . $name . "]";
-                        }
-                    }
-                } else {
-                    if (!$parameter->isOptional()) {
-                        $cp[] = "*" . $parameterType . "* " . $name;
-                    } else {
-                        $cp[] = "[*" . $parameterType . "* " . $name . "]";
-                    }
+                    $parameterTypes[$i] = $classLink->get();
                 }
+
+                $parameterTypes = implode(" | ", $parameterTypes) . " " . $name;
+
+                if ($parameter->isOptional()) {
+                    $parameterTypes = "[" . $parameterTypes . "]";
+                }
+
+                $cp[] = $parameterTypes;
             }
 
             $methodsString .= join(", ", $cp) . ")";
 
             if ($simpleClassName != $docClassName) {
-                $methodsString .= " inherited from " . str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
+                $className = $method->getDeclaringClass()->name;
+
+                $classLink = new \PhalconDocs\ClassLink($className);
+
+                $methodsString .= " inherited from " . $classLink->get();
             }
 
             $methodsString .= PHP_EOL . PHP_EOL;
@@ -412,8 +399,6 @@ foreach ($classes as $className) {
     }
 
     foreach ($languages as $lang) {
-        @mkdir($lang . "/api/");
-
         file_put_contents(
             $lang . "/api/" . $simpleClassName . ".rst",
             $view->render(

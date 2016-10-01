@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\Resultset**
 =================================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
+*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_, `SeekableIterator <http://php.net/manual/en/class.seekableiterator.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Serializable <http://php.net/manual/en/class.serializable.php>`_, `JsonSerializable <http://php.net/manual/en/class.jsonserializable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -47,7 +47,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*\\Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+public  **__construct** (:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` | *false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -167,19 +167,19 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*\Closure* $conditionCallback])
+public *boolean* **update** (*array* $data, [`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback])
 
 Updates every record in the resultset
 
 
 
-public  **delete** ([*Closure* $conditionCallback])
+public  **delete** ([`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback])
 
 Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
+public Phalcon\\Mvc\\Model[] **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires 
 
@@ -196,7 +196,7 @@ Filters a resultset returning only those the developer requires
 
 
 
-public *array*  **jsonSerialize** ()
+public *array* **jsonSerialize** ()
 
 Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
 
@@ -210,22 +210,22 @@ Returns serialised model objects as array for json_encode. Calls jsonSerialize o
 
 
 
-abstract public  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
+abstract public  **toArray** () inherited from :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 ...
 
 
-abstract public  **current** () inherited from Iterator
+abstract public  **current** () inherited from `Iterator <http://php.net/manual/en/class.iterator.php>`_
 
 ...
 
 
-abstract public  **serialize** () inherited from Serializable
+abstract public  **serialize** () inherited from `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 ...
 
 
-abstract public  **unserialize** (*mixed* $serialized) inherited from Serializable
+abstract public  **unserialize** (*mixed* $serialized) inherited from `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 ...
 

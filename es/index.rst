@@ -101,6 +101,7 @@ Components
    reference/logging
    reference/annotations
    reference/cli
+   reference/images
    reference/queue
    reference/db
    reference/intl

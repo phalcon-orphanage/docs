@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation\\Message\\Group**
 =============================================
 
-*implements* Countable, ArrayAccess, Iterator, Traversable
+*implements* `Countable <http://php.net/manual/en/class.countable.php>`_, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -20,7 +20,7 @@ Phalcon\\Validation\\Message\\Group constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` **offsetGet** (*int* $index)
 
 Gets an attribute a message using the array syntax 
 
@@ -46,7 +46,7 @@ Sets an attribute using the array-syntax
 
 
 
-public *boolean*  **offsetExists** (*int* $index)
+public *boolean* **offsetExists** (*int* $index)
 
 Checks if an index exists 
 
@@ -85,7 +85,7 @@ Appends a message to the group
 
 
 
-public  **appendMessages** (*\\Phalcon\\Validation\\MessageInterface[]* $messages)
+public  **appendMessages** (Phalcon\\Validation\\MessageInterface[] $messages)
 
 Appends an array of messages to the group 
 
@@ -98,7 +98,7 @@ Appends an array of messages to the group
 
 
 
-public *array*  **filter** (*string* $fieldName)
+public *array* **filter** (*string* $fieldName)
 
 Filters the message group by field name
 
@@ -140,7 +140,7 @@ Check if the current message in the iterator is valid
 
 
 
-public static :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **__set_state** (*array* $group)
+public static :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` **__set_state** (*array* $group)
 
 Magic __set_state helps to re-build messages variable when exporting
 

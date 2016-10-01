@@ -85,7 +85,7 @@ Handles routing information received from command-line arguments
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router 
 
@@ -116,7 +116,7 @@ Returns processed action name
 
 
 
-public *array*  **getParams** ()
+public *array* **getParams** ()
 
 Returns processed extra params
 
@@ -128,7 +128,7 @@ Returns the route that matches the handled URI
 
 
 
-public *array*  **getMatches** ()
+public *array* **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
@@ -146,7 +146,7 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getRouteById** (*int* $id)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **getRouteById** (*int* $id)
 
 Returns a route object by its id
 

@@ -44,7 +44,7 @@ Returns the element name
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*array|string* $filters)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **setFilters** (*array* | *string* $filters)
 
 Sets the element filters
 
@@ -56,13 +56,13 @@ Adds a filter to current list of filters
 
 
 
-public *mixed*  **getFilters** ()
+public *mixed* **getFilters** ()
 
 Returns the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*array* $validators, [*mixed* $merge])
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **addValidators** (*array* $validators, [*mixed* $merge])
 
 Adds a group of validators
 
@@ -86,13 +86,13 @@ Returns an array of prepared attributes for Phalcon\\Tag helpers according to th
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*string* $attribute, *mixed* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **setAttribute** (*string* $attribute, *mixed* $value)
 
 Sets a default attribute for the element
 
 
 
-public *mixed*  **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
+public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
 
 Returns the value of an attribute if present
 
@@ -110,13 +110,13 @@ Returns the default attributes for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*string* $option, *mixed* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the element
 
 
 
-public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
+public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
@@ -152,7 +152,7 @@ Generate the HTML to label the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*mixed* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **setDefault** (*mixed* $value)
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
@@ -206,7 +206,7 @@ Magic method __toString renders the widget without attributes
 
 
 
-abstract public  **render** ([*mixed* $attributes]) inherited from Phalcon\\Forms\\ElementInterface
+abstract public  **render** ([*mixed* $attributes]) inherited from :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
 ...
 

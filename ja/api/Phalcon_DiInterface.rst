@@ -1,7 +1,7 @@
 Interface **Phalcon\\DiInterface**
 ==================================
 
-*implements* ArrayAccess
+*implements* `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -86,22 +86,22 @@ abstract public static  **reset** ()
 ...
 
 
-abstract public  **offsetExists** (*mixed* $offset) inherited from ArrayAccess
+abstract public  **offsetExists** (*mixed* $offset) inherited from `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 ...
 
 
-abstract public  **offsetGet** (*mixed* $offset) inherited from ArrayAccess
+abstract public  **offsetGet** (*mixed* $offset) inherited from `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 ...
 
 
-abstract public  **offsetSet** (*mixed* $offset, *mixed* $value) inherited from ArrayAccess
+abstract public  **offsetSet** (*mixed* $offset, *mixed* $value) inherited from `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 ...
 
 
-abstract public  **offsetUnset** (*mixed* $offset) inherited from ArrayAccess
+abstract public  **offsetUnset** (*mixed* $offset) inherited from `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 ...
 

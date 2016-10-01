@@ -528,7 +528,7 @@ Phalcon не только преобразует PHQL выражения в SQL.
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         foreach ($result->getMessages() as $message) {
             echo $message->getMessage();
         }
@@ -581,7 +581,7 @@ UPDATE выполняет изменение в два этапа:
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         $messages = $result->getMessages();
 
         foreach ($messages as $message) {
@@ -603,7 +603,7 @@ UPDATE выполняет изменение в два этапа:
         foreach ($cars as $car) {
             $car->price = 15000;
 
-            if ($car->save() == false) {
+            if ($car->save() === false) {
                 $messages = $car->getMessages();
 
                 return false;
@@ -653,7 +653,7 @@ any validation messages you should check the status code returned:
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         $messages = $result->getMessages();
 
         foreach ($messages as $message) {

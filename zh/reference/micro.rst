@@ -523,7 +523,7 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     // 返回false来中止程序执行
     $app->before(
         function () use ($app) {
-            if ($app["session"]->get("auth") == false) {
+            if ($app["session"]->get("auth") === false) {
                 $app["flashSession"]->error("The user isn't authenticated");
 
                 $app["response"]->redirect("/error");

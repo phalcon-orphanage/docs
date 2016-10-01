@@ -24,15 +24,17 @@ The documentation is written using [reStructuredText](http://sphinx.pocoo.org/re
 * [Spanish / Español (es)](https://docs.phalconphp.com/es/latest/index.html)
 * [Ukranian / Українська (uk)](https://docs.phalconphp.com/uk/latest/index.html)
 
-If you would like to translate the Phalcon Docs into your language, create a new folder using your language's [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), copy the contents of `en/` into it and submit it as a Pull Request.
+If you would like to translate the Phalcon Docs into your language, you'll need to find out your language's [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). For example, to create Vietnamese (vi), run the following command:
+
+    php cli.php language create vi
 
 
 
 ## API
 
-The API is automatically generated from the C source code using the following command:
+The API is automatically generated from the C source code using the following command (replace `/home/sid/cphalcon/ext/` with the appropriate value):
 
-    php scripts/gen-api.php
+    php cli.php api generate /home/sid/cphalcon/ext/
 
 If you find an error or want to improve it, please send a pull request:
 * Phalcon source code: https://github.com/phalcon/cphalcon

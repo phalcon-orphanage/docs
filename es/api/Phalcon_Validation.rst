@@ -27,7 +27,7 @@ Phalcon\\Validation constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** ([*array|object* $data], [*object* $entity])
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` **validate** ([*array* | *object* $data], [*object* $entity])
 
 Validate a set of data according to a set of rules
 
@@ -51,13 +51,13 @@ Adds the validators to a field
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setFilters** (*string* $field, *array|string* $filters)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>` **setFilters** (*string* $field, *array* | *string* $filters)
 
 Adds filters to the field
 
 
 
-public *mixed*  **getFilters** ([*string* $field])
+public *mixed* **getFilters** ([*string* $field])
 
 Returns all the filters or a specific one
 
@@ -75,7 +75,7 @@ Sets the bound entity
 
 
 
-public *object*  **getEntity** ()
+public *object* **getEntity** ()
 
 Returns the bound entity
 
@@ -105,7 +105,7 @@ Adds labels for fields
 
 
 
-public *string*  **getLabel** (*string* $field)
+public *string* **getLabel** (*string* $field)
 
 Get label for field
 
@@ -117,13 +117,13 @@ Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*object* $entity, *array|object* $data)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>` **bind** (*object* $entity, *array* | *object* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 
 
 
-public *mixed*  **getValue** (*string* $field)
+public *mixed* **getValue** (*string* $field)
 
 Gets the a value to validate in the array/object data source
 
@@ -135,31 +135,31 @@ Internal validations, if it returns true, then skip the current validator
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Sets the event manager
 
 
 
-public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Returns the internal event manager
 
 
 
-public  **__get** (*mixed* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Magic method __get
 

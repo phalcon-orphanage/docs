@@ -540,7 +540,7 @@ status of the insertion we can print any validation messages generated internall
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         foreach ($result->getMessages() as $message) {
             echo $message->getMessage();
         }
@@ -595,7 +595,7 @@ In summary, the following code:
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         $messages = $result->getMessages();
 
         foreach ($messages as $message) {
@@ -617,7 +617,7 @@ is somewhat equivalent to:
         foreach ($cars as $car) {
             $car->price = 15000;
 
-            if ($car->save() == false) {
+            if ($car->save() === false) {
                 $messages = $car->getMessages();
 
                 return false;
@@ -667,7 +667,7 @@ any validation messages you should check the status code returned:
 
     $result = $manager->executeQuery($phql);
 
-    if ($result->success() == false) {
+    if ($result->success() === false) {
         $messages = $result->getMessages();
 
         foreach ($messages as $message) {

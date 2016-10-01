@@ -1082,7 +1082,7 @@ With the above events can also define business rules in the models:
     {
         public function beforeDelete()
         {
-            if ($this->status == "A") {
+            if ($this->status === "A") {
                 echo "The robot is active, it can't be deleted";
 
                 return false;

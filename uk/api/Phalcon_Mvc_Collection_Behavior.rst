@@ -24,7 +24,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*string* $eventName])
+protected *array* **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 

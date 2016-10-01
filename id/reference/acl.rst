@@ -131,7 +131,7 @@ Anda dapat juga menambahkan parameter ke-4 berupa fungsi kustom yang mengembalik
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 
@@ -170,7 +170,7 @@ Jika anda tidak menyediakan parameter di metode :code:`isAllowed()` maka perilak
         "Customers",
         "search",
         function ($a) {
-            return $a % 2 == 0;
+            return $a % 2 === 0;
         }
     );
 

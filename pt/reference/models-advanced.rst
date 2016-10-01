@@ -485,7 +485,7 @@ according to the current query conditions:
                 $conditions = $intermediate["where"];
 
                 // Choose the possible shard according to the conditions
-                if ($conditions["left"]["name"] == "id") {
+                if ($conditions["left"]["name"] === "id") {
                     $id = $conditions["right"]["value"];
 
                     if ($id > 0 && $id < 10000) {

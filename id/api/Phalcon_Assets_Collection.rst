@@ -1,7 +1,7 @@
 Class **Phalcon\\Assets\\Collection**
 =====================================
 
-*implements* Countable, Iterator, Traversable
+*implements* `Countable <http://php.net/manual/en/class.countable.php>`_, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -98,7 +98,7 @@ Adds an inline CSS to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the collection
 
@@ -128,7 +128,7 @@ Returns the current resource in the iterator
 
 
 
-public *int*  **key** ()
+public *int* **key** ()
 
 Returns the current position/key in the iterator
 
