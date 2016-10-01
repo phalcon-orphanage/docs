@@ -167,7 +167,7 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*\Closure* $conditionCallback])
+public *boolean*  **update** (*array* $data, [*\\Closure* $conditionCallback])
 
 Updates every record in the resultset
 

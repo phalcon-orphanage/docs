@@ -109,7 +109,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\\PDOStatement*  **executePrepared** (*\\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 

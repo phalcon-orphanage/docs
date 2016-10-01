@@ -173,7 +173,7 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*\Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **update** (*array* $data, [*\\Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Updates every record in the resultset
 

@@ -62,7 +62,7 @@ Removes all events from the EventsManager
 
 
 
-final public *mixed*  **fireQueue** (*\SplPriorityQueue|array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
+final public *mixed*  **fireQueue** (*\\SplPriorityQueue|array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
 Internal handler to call a queue of events
 

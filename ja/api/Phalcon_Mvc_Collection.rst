@@ -37,7 +37,7 @@ Sets a value for the _id property, creates a MongoId object if needed
 
 
 
-public *\MongoId*  **getId** ()
+public *\\MongoId*  **getId** ()
 
 Returns the value of the _id property
 
@@ -109,7 +109,7 @@ Returns DependencyInjection connection service
 
 
 
-public *\MongoDb*  **getConnection** ()
+public *\\MongoDb*  **getConnection** ()
 
 Retrieves a database connection
 
@@ -147,13 +147,13 @@ Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection, *boolean* $unique)
+protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\\MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection)
+protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\\MongoDb* $connection)
 
 Perform a count over a resultset
 
@@ -247,7 +247,7 @@ Cancel the current operation
 
 
 
-protected *boolean*  **_exists** (*\MongoCollection* $collection)
+protected *boolean*  **_exists** (*\\MongoCollection* $collection)
 
 Checks if the document exists in the collection
 

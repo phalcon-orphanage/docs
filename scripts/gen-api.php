@@ -353,10 +353,13 @@ foreach ($classes as $className) {
                         );
                     } else {
                         $extendsName = str_replace("\\", "\\\\", $ret["return"]);
+
                         $methodsString .= "*" . $extendsName . "* ";
                     }
                 } else {
-                    $methodsString .= "*" . $ret["return"] . "* ";
+                    $extendsName = str_replace("\\", "\\\\", $ret["return"]);
+
+                    $methodsString .= "*" . $extendsName . "* ";
                 }
             }
 
@@ -399,10 +402,12 @@ foreach ($classes as $className) {
                         }
                     }
                 } else {
+                    $parameterName = str_replace("\\", "\\\\", $parameterType);
+
                     if (!$parameter->isOptional()) {
-                        $cp[] = "*" . $parameterType . "* " . $name;
+                        $cp[] = "*" . $parameterName . "* " . $name;
                     } else {
-                        $cp[] = "[*" . $parameterType . "* " . $name . "]";
+                        $cp[] = "[*" . $parameterName . "* " . $name . "]";
                     }
                 }
             }

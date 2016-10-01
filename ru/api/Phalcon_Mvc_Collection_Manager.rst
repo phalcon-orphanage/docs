@@ -115,7 +115,7 @@ Checks if a model is using implicit object ids
 
 
 
-public *\Mongo*  **getConnection** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public *\\Mongo*  **getConnection** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 Returns the connection related to a model
 

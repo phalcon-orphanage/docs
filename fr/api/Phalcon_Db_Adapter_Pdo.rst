@@ -80,7 +80,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes)
+public *\\PDOStatement*  **executePrepared** (*\\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes)
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 
