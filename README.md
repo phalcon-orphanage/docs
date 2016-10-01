@@ -32,9 +32,9 @@ If you would like to translate the Phalcon Docs into your language, you'll need 
 
 ## API
 
-The API is automatically generated from the C source code using the following command:
+The API is automatically generated from the C source code using the following command (replace `/home/sid/cphalcon/ext/` with the appropriate value):
 
-    php scripts/gen-api.php
+    php cli.php api generate /home/sid/cphalcon/ext/
 
 If you find an error or want to improve it, please send a pull request:
 * Phalcon source code: https://github.com/phalcon/cphalcon
