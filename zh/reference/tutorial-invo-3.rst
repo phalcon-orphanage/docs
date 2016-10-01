@@ -409,13 +409,12 @@ ProductsForm 表单的实例 (app/forms/ProductsForm.php)传递给了视图. 这
 
 这个方法验证值 "" (空字符串) 和值 null 的区别并考虑到这些来创建搜索条件:
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
-* If the data type is not text or similar, it'll use the operator "=".
+* 如果字段日期类型是text或者类似的(char, varchar, text, 等等) 它会使用一个SQL "like" 操作符来过滤结果.
+* 如果日期类型不是text或者类似的, 它将会使用操作符"=".
 
-Additionally, "Criteria" ignores all the :code:`$_POST` variables that do not match any field in the table.
-Values are automatically escaped using "bound parameters".
+另外, "Criteria" 会忽略 :code:`$_POST` 所有不与表中的任何字段相匹配的变量. 值会自动避免使用"参数绑定".
 
-Now, we store the produced parameters in the controller's session bag:
+现在, 我们在控制器的会话袋里存储产品参数:
 
 .. code-block:: php
 
@@ -423,11 +422,9 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests using the session service.
-When accessed, this attribute injects a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` instance
-that is independent in each controller.
+会话袋在控制器里面是一个特殊的属性, 在使用 session 服务的不同请求之间依然存在. 当访问的时候, 这个属性会注入一个 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 实例, 对于每个控制器来说, 这是独立的.
 
-Then, based on the built params we perform the query:
+然后, 基于内置的参数我们执行查询:
 
 .. code-block:: php
 
@@ -448,8 +445,7 @@ Then, based on the built params we perform the query:
         );
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+如果搜索不返回一些产品, 我们再一次转发用户到 index 方法. 让我们模拟搜索返回结果, 然后我们创建一个分页来轻松的浏览他们:
 
 .. code-block:: php
 
@@ -461,16 +457,16 @@ search returned results, then we create a paginator to navigate easily through t
 
     $paginator = new Paginator(
         [
-            "data"  => $products,   // Data to paginate
-            "limit" => 5,           // Rows per page
-            "page"  => $numberPage, // Active page
+            "data"  => $products,   // 分页的数据
+            "limit" => 5,           // 每页的行数
+            "page"  => $numberPage, // 查看的指定页
         ]
     );
 
-    // Get active page in the paginator
+    // 获取分页中当前页面
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+最后我们通过返回的页面来浏览:
 
 .. code-block:: php
 
@@ -478,8 +474,7 @@ Finally we pass the returned page to view:
 
     $this->view->page = $page;
 
-In the view (app/views/products/search.volt), we traverse the results corresponding to the current page,
-showing every row in the current page to the user:
+在视图里面 (app/views/products/search.volt), 我们在当前页面循环相应的结果, 在当前页面给用户展示每一行记录:
 
 .. code-block:: html+jinja
 
@@ -549,20 +544,19 @@ showing every row in the current page to the user:
         No products are recorded
     {% endfor %}
 
-There are many things in the above example that worth detailing. First of all, active items
-in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+在上面的例子中有很多东西值得详细介绍. 首先, 当前页面的记录是使用 Volt 的 'for' 循环出来的. Volt 对 PHP 的 'foreach' 提供了一个简单的语法.
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
 
-Which in PHP is the same as:
+对于 PHP 来说也是一样:
 
 .. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
 
-The whole 'for' block provides the following:
+完整的 'for' 提供了以下:
 
 .. code-block:: html+jinja
 
@@ -580,8 +574,7 @@ The whole 'for' block provides the following:
         Executed if page.items does not have any products
     {% endfor %}
 
-Now you can go back to the view and find out what every block is doing. Every field
-in "product" is printed accordingly:
+现在你可以返回到页面找出每个块都在做什么. 在"product"中的每个字段都有相应的输出:
 
 .. code-block:: html+jinja
 
@@ -615,10 +608,7 @@ in "product" is printed accordingly:
         </td>
     </tr>
 
-As we seen before using :code:`product.id` is the same as in PHP as doing: :code:`$product->id`,
-we made the same with :code:`product.name` and so on. Other fields are rendered differently,
-for instance, let's focus in :code:`product.productTypes.name`. To understand this part,
-we have to check the Products model (app/models/Products.php):
+正如我们看到的, 在之前使用 :code:`product.id` 和在PHP中使用 :code:`$product->id` 是等价的, we made the same with :code:`product.name` and so on. 其它字段都表现的有些不同, 例如, 让我们看下 :code:`product.productTypes.name`. 要理解这部分, 我们必须看一下 Products 模型 (app/models/Products.php):
 
 .. code-block:: php
 
@@ -627,14 +617,14 @@ we have to check the Products model (app/models/Products.php):
     use Phalcon\Mvc\Model;
 
     /**
-     * Products
+     * 产品
      */
     class Products extends Model
     {
         // ...
 
         /**
-         * Products initializer
+         * 产品初始化
          */
         public function initialize()
         {
@@ -651,9 +641,7 @@ we have to check the Products model (app/models/Products.php):
         // ...
     }
 
-A model can have a method called :code:`initialize()`, this method is called once per request and it serves
-the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
-has a one-to-many relationship to another model called "ProductTypes".
+一个模型有一个名为 :code:`initialize()` 的方法, 这个方法在每次请求的时候调用一次兵器它服务ORM去初始化一个模型. 在这种情况话, "Products" 通过定义这个模型跟另外一个叫做 "ProductTypes" 的模型有一对多的关系从而初始化.
 
 .. code-block:: php
 
@@ -668,47 +656,44 @@ has a one-to-many relationship to another model called "ProductTypes".
         ]
     );
 
-Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the "ProductTypes" model in its attribute "id". By defining this relationship we can access the name of
-the product type by using:
+它的意思是, "Products" 的本地属性"product_types_id" 跟 "ProductTypes" 模型里面的属性 "id" 是一对多的关系. 通过定义这个关系我们可以通过如下方法来访问产品类型的名字:
 
 .. code-block:: html+jinja
 
     <td>{{ product.productTypes.name }}</td>
 
-The field "price" is printed by its formatted using a Volt filter:
+字段 "price" 使用一个 Volt 过滤器来格式化输出:
 
 .. code-block:: html+jinja
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-In plain PHP, this would be:
+在原生PHP中, 它将是这样的:
 
 .. code-block:: php
 
     <?php echo sprintf("%.2f", $product->price) ?>
 
-Printing whether the product is active or not uses a helper implemented in the model:
+使用模型中已经实现的帮助者函数来输出产品是否是有效的:
 
 .. code-block:: php
 
     <td>{{ product.getActiveDetail() }}</td>
 
-This method is defined in the model.
+这个方法在模型中定义了.
 
-Creating and Updating Records
+创建和更新记录(Creating and Updating Records)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views, the data entered by the user
-is sent to the "create" and "save" actions that perform actions of "creating" and "updating" products, respectively.
+现在, 让我们看看 CRUD 如何创建和更新记录. 从 "new" 和 "edit" 视图, 通过用户输入的数据发送 "create" 和 "save" 方法从而分别执行 "creating" 和 "updating" 产品的方法.
 
-In the creation case, we recover the data submitted and assign them to a new "Products" instance:
+在创建的情况下, 我们提取提交的数据然后分配它们到一个新的 "Products" 实例:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * 基于在 "new" 方法中输入的数据创建一个产品
      */
     public function createAction()
     {
@@ -734,8 +719,7 @@ In the creation case, we recover the data submitted and assign them to a new "Pr
         // ...
     }
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object :code:`$product`.
-This filtering is optional; the ORM also escapes the input data and performs additional casting according to the column types:
+还记得我们在产品表单中定义的过滤器吗? 数据在开始分配到 :code:`$product` 对象前进行过滤. 这个过滤器是可选的; ORM同样也会转义输入的数据和根据列类型执行附加的转换:
 
 .. code-block:: php
 
@@ -747,7 +731,7 @@ This filtering is optional; the ORM also escapes the input data and performs add
 
     $name->setLabel("Name");
 
-    // Filters for name
+    // 过滤 name
     $name->setFilters(
         [
             "striptags",
@@ -755,7 +739,7 @@ This filtering is optional; the ORM also escapes the input data and performs add
         ]
     );
 
-    // Validators for name
+    // 验证 name
     $name->addValidators(
         [
             new PresenceOf(
@@ -768,8 +752,7 @@ This filtering is optional; the ORM also escapes the input data and performs add
 
     $this->add($name);
 
-When saving, we'll know whether the data conforms to the business rules and validations implemented
-in the form ProductsForm form (app/forms/ProductsForm.php):
+当保存的时候, 我们就会知道 ProductsForm (app/forms/ProductsForm.php) 表单提交的数据是否否则业务规则和实现的验证:
 
 .. code-block:: php
 
@@ -781,7 +764,7 @@ in the form ProductsForm form (app/forms/ProductsForm.php):
 
     $product = new Products();
 
-    // Validate the input
+    // V验证输入
     $data = $this->request->getPost();
 
     if (!$form->isValid($data, $product)) {
@@ -799,7 +782,7 @@ in the form ProductsForm form (app/forms/ProductsForm.php):
         );
     }
 
-Finally, if the form does not return any validation message we can save the product instance:
+最后, 如果表单没有返回任何验证消息, 我们就可以保存产品实例了:
 
 .. code-block:: php
 
@@ -835,14 +818,14 @@ Finally, if the form does not return any validation message we can save the prod
         ]
     );
 
-Now, in the case of updating a product, we must first present the user with the data that is currently in the edited record:
+现在, 在更新产品的情况下, 我们必须先将当前编辑的记录展示给用户:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Edits a product based on its id
+     * 基于它的id编辑一个产品
      */
     public function editAction($id)
     {
@@ -871,15 +854,14 @@ Now, in the case of updating a product, we must first present the user with the 
         }
     }
 
-The data found is bound to the form by passing the model as first parameter. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+通过将模型作为第一个参数传递过去找出被绑定到表单的数据. 多亏了这个, 用户可以改变任何值, 然后通过 "save" 方法发送它到数据库:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * 在 "edit"方法中基于输入的数据更新一个产品
      */
     public function saveAction()
     {
@@ -957,7 +939,6 @@ the user can change any value and then sent it back to the database through to t
         );
     }
 
-We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
-In next chapter, we will see how to add custom HTML elements like a menu.
+我们已经看到 Phalcon 如何以一种结构化的方式让你创建表单和从一个数据库中绑定数据. 在下一章, 我们将会看到如何添加自定义 HTML 元素, 比如一个菜单.
 
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
