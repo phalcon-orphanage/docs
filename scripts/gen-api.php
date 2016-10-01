@@ -28,18 +28,13 @@ if (!file_exists(CPHALCON_DIR)) {
     );
 }
 
-$languages = [
-    "en",
-    "es",
-    "fr",
-    "id",
-    "ja",
-    "pl",
-    "pt",
-    "ru",
-    "uk",
-    "zh",
-];
+
+
+$languagesConfigPath = "scripts/config/languages.json";
+
+$languagesConfigContents = file_get_contents($languagesConfigPath);
+
+$languages = json_decode($languagesConfigContents);
 
 
 
@@ -55,7 +50,6 @@ $loader->registerNamespaces(
 );
 
 $loader->register();
-
 
 
 
