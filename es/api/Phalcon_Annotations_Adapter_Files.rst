@@ -31,7 +31,7 @@ Phalcon\\Annotations\\Adapter\\Files constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` **read** (*string* $key)
 
 Reads parsed annotations from files
 
@@ -55,7 +55,7 @@ Returns the annotation reader
 
 
 
-public  **get** (*string|object* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
+public  **get** (*string* | *object* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Parses or retrieves all the annotations found in a class
 

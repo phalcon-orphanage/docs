@@ -14,7 +14,7 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 Methods
 -------
 
-public  **attach** (*string* $eventType, *object|callable* $handler, [*int* $priority])
+public  **attach** (*string* $eventType, *object* | *callable* $handler, [*int* $priority])
 
 Attach a listener to the events manager
 
@@ -50,7 +50,7 @@ Check if the events manager is collecting all all the responses returned by ever
 
 
 
-public *array*  **getResponses** ()
+public *array* **getResponses** ()
 
 Returns all the responses returned by every handler executed by the last 'fire' executed
 
@@ -62,13 +62,13 @@ Removes all events from the EventsManager
 
 
 
-final public *mixed*  **fireQueue** (*\\SplPriorityQueue|array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
+final public *mixed* **fireQueue** (`SplPriorityQueue <http://php.net/manual/en/class.splpriorityqueue.php>`_ | *array* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
 Internal handler to call a queue of events
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable])
+public *mixed* **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
 Fires an event in the events manager causing the active listeners to be notified about it 
 
@@ -87,7 +87,7 @@ Check whether certain type of event has listeners
 
 
 
-public *array*  **getListeners** (*string* $type)
+public *array* **getListeners** (*string* $type)
 
 Returns all the attached listeners of a certain type
 

@@ -48,7 +48,7 @@ Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime])
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
 Starts a cache. The keyname allows to identify the created fragment
 
@@ -72,7 +72,7 @@ Checks whether the cache has starting buffering or not
 
 
 
-public *int*  **getLifetime** ()
+public *int* **getLifetime** ()
 
 Gets the last lifetime set
 

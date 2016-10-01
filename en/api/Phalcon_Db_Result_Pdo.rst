@@ -25,7 +25,7 @@ Encapsulates the resultset internals
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
+public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, `PDOStatement <http://php.net/manual/en/class.pdostatement.php>`_ $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
 Phalcon\\Db\\Result\\Pdo constructor
 

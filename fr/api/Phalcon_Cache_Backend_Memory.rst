@@ -3,7 +3,7 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 
 *extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`, Serializable
+*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`, `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -47,31 +47,31 @@ Stores cached content into the backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*string* $keyName)
+public *boolean* **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** ([*string|int* $prefix])
+public *array* **queryKeys** ([*string* | *int* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string|int* $keyName], [*long* $lifetime])
+public *boolean* **exists** ([*string* | *int* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *long*  **increment** ([*string* $keyName], [*mixed* $value])
+public *long* **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
 
 
-public *long*  **decrement** ([*string* $keyName], [*long* $value])
+public *long* **decrement** ([*string* $keyName], [*long* $value])
 
 Decrement of $keyName by given $value
 
@@ -131,7 +131,7 @@ Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Starts a cache. The keyname allows to identify the created fragment
 
@@ -155,7 +155,7 @@ Checks whether the cache has starting buffering or not
 
 
 
-public *int*  **getLifetime** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+public *int* **getLifetime** () inherited from :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Gets the last lifetime set
 

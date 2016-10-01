@@ -3,7 +3,7 @@ Class **Phalcon\\Forms\\Form**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Countable, Iterator, Traversable
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, `Countable <http://php.net/manual/en/class.countable.php>`_, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -74,7 +74,7 @@ Sets the entity related to the model
 
 
 
-public *object*  **getEntity** ()
+public *object* **getEntity** ()
 
 Returns the entity related to the model
 

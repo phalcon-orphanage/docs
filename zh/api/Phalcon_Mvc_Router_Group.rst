@@ -122,43 +122,43 @@ Adds a route to the router on any HTTP method
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addGet** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addGet** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPost** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addPost** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPut** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addPut** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPatch** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addPatch** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addDelete** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addOptions** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addOptions** (*string* $pattern, [*string/array* $paths])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` **addHead** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is HEAD
 

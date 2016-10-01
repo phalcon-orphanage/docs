@@ -86,7 +86,7 @@ Sets a cookies bag for the response externally
 
 
 
-public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **getCookies** ()
+public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>` **getCookies** ()
 
 Returns coookies set by the user
 
@@ -124,7 +124,7 @@ Resets all the stablished headers
 
 
 
-public  **setExpires** (*DateTime* $datetime)
+public  **setExpires** (`DateTime <http://php.net/manual/en/class.datetime.php>`_ $datetime)
 
 Sets an Expires header in the response that allows to use the HTTP cache 
 
@@ -137,7 +137,7 @@ Sets an Expires header in the response that allows to use the HTTP cache
 
 
 
-public  **setLastModified** (*DateTime* $datetime)
+public  **setLastModified** (`DateTime <http://php.net/manual/en/class.datetime.php>`_ $datetime)
 
 Sets Last-Modified header 
 

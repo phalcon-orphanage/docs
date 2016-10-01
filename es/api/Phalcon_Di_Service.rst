@@ -62,13 +62,13 @@ Set the service definition
 
 
 
-public *mixed*  **getDefinition** ()
+public *mixed* **getDefinition** ()
 
 Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *mixed* **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
@@ -80,7 +80,7 @@ Changes a parameter in the definition without resolve the service
 
 
 
-public *array*  **getParameter** (*int* $position)
+public *array* **getParameter** (*int* $position)
 
 Returns a parameter in a specific position
 

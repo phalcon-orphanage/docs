@@ -54,7 +54,7 @@ Allows to read to chained backend adapters writing to multiple backends
 Methods
 -------
 
-public  **__construct** ([*Phalcon\\Cache\\BackendInterface[]* $backends])
+public  **__construct** ([Phalcon\\Cache\\BackendInterface[] $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
@@ -66,13 +66,13 @@ Adds a backend
 
 
 
-public *mixed*  **get** (*string|int* $keyName, [*long* $lifetime])
+public *mixed* **get** (*string* | *int* $keyName, [*long* $lifetime])
 
 Returns a cached content reading the internal backends
 
 
 
-public  **start** (*string|int* $keyName, [*long* $lifetime])
+public  **start** (*string* | *int* $keyName, [*long* $lifetime])
 
 Starts every backend
 
@@ -84,13 +84,13 @@ Stores cached content into all backends and stops the frontend
 
 
 
-public *boolean*  **delete** (*string|int* $keyName)
+public *boolean* **delete** (*string* | *int* $keyName)
 
 Deletes a value from each backend
 
 
 
-public *boolean*  **exists** ([*string|int* $keyName], [*long* $lifetime])
+public *boolean* **exists** ([*string* | *int* $keyName], [*long* $lifetime])
 
 Checks if cache exists in at least one backend
 

@@ -137,13 +137,13 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue])
 
 Gets a param by its name or numeric index
 
 
 
-public *boolean*  **hasParam** (*mixed* $param)
+public *boolean* **hasParam** (*mixed* $param)
 
 Check if a param exists
 
@@ -167,7 +167,7 @@ Sets the latest returned value by an action manually
 
 
 
-public *mixed*  **getReturnedValue** ()
+public *mixed* **getReturnedValue** ()
 
 Returns value returned by the latest dispatched action
 
@@ -179,13 +179,13 @@ Enable/Disable model binding during dispatch
 
 
 
-public *object*  **dispatch** ()
+public *object* **dispatch** ()
 
 Dispatches a handle action taking into account the routing parameters
 
 
 
-protected *object*  **_dispatch** ()
+protected *object* **_dispatch** ()
 
 Dispatches a handle action taking into account the routing parameters
 

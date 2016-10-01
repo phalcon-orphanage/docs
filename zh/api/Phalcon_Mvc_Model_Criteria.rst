@@ -69,7 +69,7 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **columns** (*string|array* $columns)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>` **columns** (*string* | *array* $columns)
 
 Sets the columns to be queried 
 
@@ -275,7 +275,7 @@ Returns the conditions parameter in the criteria
 
 
 
-public *string|array|null*  **getColumns** ()
+public *string* | *array* | *null* **getColumns** ()
 
 Returns the columns to be queried
 
@@ -287,7 +287,7 @@ Returns the conditions parameter in the criteria
 
 
 
-public *int|array|null*  **getLimit** ()
+public *int* | *array* | *null* **getLimit** ()
 
 Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
 
@@ -311,7 +311,7 @@ Returns the having clause in the criteria
 
 
 
-public *array*  **getParams** ()
+public *array* **getParams** ()
 
 Returns all the parameters defined in the criteria
 

@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model**
 ======================================
 
-*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable, JsonSerializable
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, `Serializable <http://php.net/manual/en/class.serializable.php>`_, `JsonSerializable <http://php.net/manual/en/class.jsonserializable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -210,7 +210,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*mixed* $dataColumnMap], [*array* $whiteList])
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **assign** (*array* $data, [*mixed* $dataColumnMap], [*array* $whiteList])
 
 Assigns values to a model from an array 
 
@@ -237,7 +237,7 @@ Assigns values to a model from an array
 
 
 
-public static  **cloneResultMap** (*\\Phalcon\\Mvc\\ModelInterface|\\Phalcon\\Mvc\\Model\\Row* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static  **cloneResultMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | :doc:`Phalcon\\Mvc\\Model\\Row <Phalcon_Mvc_Model_Row>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -254,13 +254,13 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static *mixed*  **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
+public static *mixed* **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
 
 Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*int* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -308,7 +308,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static *static*  **findFirst** ([*string|array* $parameters])
+public static *static* **findFirst** ([*string* | *array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -337,19 +337,19 @@ Create a criteria for a specific model
 
 
 
-protected *boolean*  **_exists** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, [*string|array* $table])
+protected *boolean* **_exists** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, [*string* | *array* $table])
 
 Checks if the current record already exists or not
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** (*mixed* $functionName, *string* $alias, *array* $parameters)
+protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>` **_groupResult** (*mixed* $functionName, *string* $alias, *array* $parameters)
 
 Generate a PHQL SELECT statement for an aggregate
 
 
 
-public static *mixed*  **count** ([*array* $parameters])
+public static *mixed* **count** ([*array* $parameters])
 
 Allows to count how many records match the specified conditions 
 
@@ -368,7 +368,7 @@ Allows to count how many records match the specified conditions
 
 
 
-public static *mixed*  **sum** ([*array* $parameters])
+public static *mixed* **sum** ([*array* $parameters])
 
 Allows to calculate a sum on a column that match the specified conditions 
 
@@ -387,7 +387,7 @@ Allows to calculate a sum on a column that match the specified conditions
 
 
 
-public static *mixed*  **maximum** ([*array* $parameters])
+public static *mixed* **maximum** ([*array* $parameters])
 
 Allows to get the maximum value of a column that match the specified conditions 
 
@@ -406,7 +406,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 
 
-public static *mixed*  **minimum** ([*array* $parameters])
+public static *mixed* **minimum** ([*array* $parameters])
 
 Allows to get the minimum value of a column that match the specified conditions 
 
@@ -425,7 +425,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 
 
-public static *double*  **average** ([*array* $parameters])
+public static *double* **average** ([*array* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions 
 
@@ -600,31 +600,31 @@ Executes internal events after save a record
 
 
 
-protected *boolean*  **_doLowInsert** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table, *boolean|string* $identityField)
+protected *boolean* **_doLowInsert** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string* | *array* $table, *boolean* | *string* $identityField)
 
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-protected *boolean*  **_doLowUpdate** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string|array* $table)
+protected *boolean* **_doLowUpdate** (:doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>` $metaData, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *string* | *array* $table)
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean*  **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\\Phalcon\\Mvc\\ModelInterface[]* $related)
+protected *boolean* **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, Phalcon\\Mvc\\ModelInterface[] $related)
 
 Saves related records that must be stored prior to save the master record
 
 
 
-protected *boolean*  **_postSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *Phalcon\\Mvc\\ModelInterface[]* $related)
+protected *boolean* **_postSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, Phalcon\\Mvc\\ModelInterface[] $related)
 
 Save the related records assigned in the has-one/has-many relations
 
 
 
-public *boolean*  **save** ([*array* $data], [*array* $whiteList])
+public *boolean* **save** ([*array* $data], [*array* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -906,7 +906,7 @@ Setup a relation 1-n between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** (*string|array* $fields, *string* $intermediateModel, *string|array* $intermediateFields, *string|array* $intermediateReferencedFields, *mixed* $referenceModel, *string|array* $referencedFields, [*array* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>` **hasManyToMany** (*string* | *array* $fields, *string* $intermediateModel, *string* | *array* $intermediateFields, *string* | *array* $intermediateReferencedFields, *mixed* $referenceModel, *string* | *array* $referencedFields, [*array* $options])
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -1007,7 +1007,7 @@ Returns the internal snapshot data
 
 
 
-public  **hasChanged** ([*string|array* $fieldName])
+public  **hasChanged** ([*string* | *array* $fieldName])
 
 Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
@@ -1042,31 +1042,31 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>` **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
 
 
 
-protected *mixed*  **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
+protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 
 Returns related records defined relations depending on the method name
 
 
 
-final protected static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` []|:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` |boolean **_invokeFinder** (*string* $method, *array* $arguments)
+final protected static Phalcon\\Mvc\\ModelInterface[] | :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
 
 Try to check if the query must invoke a finder
 
 
 
-public *mixed*  **__call** (*string* $method, *array* $arguments)
+public *mixed* **__call** (*string* $method, *array* $arguments)
 
 Handles method calls when a method is not implemented
 
 
 
-public static *mixed*  **__callStatic** (*string* $method, *array* $arguments)
+public static *mixed* **__callStatic** (*string* $method, *array* $arguments)
 
 Handles method calls when a static method is not implemented
 
@@ -1078,13 +1078,13 @@ Magic method to assign values to the the model
 
 
 
-final protected *string*  **_possibleSetter** (*string* $property, *mixed* $value)
+final protected *string* **_possibleSetter** (*string* $property, *mixed* $value)
 
 Check for, and attempt to use, possible setter.
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*string* $property)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` | :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **__get** (*string* $property)
 
 Magic method to get related records using the relation alias as a property
 
@@ -1121,7 +1121,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ([*array* $columns])
+public *array* **toArray** ([*array* $columns])
 
 Returns the instance as an array representation 
 
@@ -1134,7 +1134,7 @@ Returns the instance as an array representation
 
 
 
-public *array*  **jsonSerialize** ()
+public *array* **jsonSerialize** ()
 
 Serializes the object for json_encode 
 

@@ -96,7 +96,7 @@ Throws an internal exception
 
 
 
-protected  **_handleException** (*Exception* $exception)
+protected  **_handleException** (`Exception <http://php.net/manual/en/class.exception.php>`_ $exception)
 
 Handles a user exception
 
@@ -228,13 +228,13 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Gets a param by its name or numeric index
 
 
 
-public *boolean*  **hasParam** (*mixed* $param) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public *boolean* **hasParam** (*mixed* $param) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Check if a param exists
 
@@ -258,7 +258,7 @@ Sets the latest returned value by an action manually
 
 
 
-public *mixed*  **getReturnedValue** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public *mixed* **getReturnedValue** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Returns value returned by the latest dispatched action
 
@@ -270,13 +270,13 @@ Enable/Disable model binding during dispatch
 
 
 
-public *object*  **dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public *object* **dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Dispatches a handle action taking into account the routing parameters
 
 
 
-protected *object*  **_dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+protected *object* **_dispatch** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Dispatches a handle action taking into account the routing parameters
 

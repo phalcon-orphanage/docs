@@ -1,7 +1,7 @@
 Class **Phalcon\\Config**
 =========================
 
-*implements* ArrayAccess, Countable
+*implements* `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -159,7 +159,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-final protected *Config merged config*  **_merge** (*Config* $config, [*mixed* $instance])
+final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
 

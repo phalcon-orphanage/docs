@@ -170,7 +170,7 @@ Shows a HTML warning message
 
 
 
-public *string|void*  **outputMessage** (*mixed* $type, *string|array* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
+public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Outputs a message formatting it with HTML 
 

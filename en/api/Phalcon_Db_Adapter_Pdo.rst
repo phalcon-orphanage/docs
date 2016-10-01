@@ -80,7 +80,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\\PDOStatement*  **executePrepared** (*\\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes)
+public `PDOStatement <http://php.net/manual/en/class.pdostatement.php>`_ **executePrepared** (`PDOStatement <http://php.net/manual/en/class.pdostatement.php>`_ $statement, *array* $placeholders, *array* $dataTypes)
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 
@@ -146,7 +146,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 
 
-public *string*  **escapeIdentifier** (*string* $identifier)
+public *string* **escapeIdentifier** (*string* $identifier)
 
 Escapes a column/table/schema name 
 
@@ -186,7 +186,7 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 
 
-public *int|boolean*  **lastInsertId** ([*string* $sequenceName])
+public *int* | *boolean* **lastInsertId** ([*string* $sequenceName])
 
 Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
 
@@ -251,7 +251,7 @@ Return internal PDO handler
 
 
 
-public *array*  **getErrorInfo** ()
+public *array* **getErrorInfo** ()
 
 Return the error info, if any
 
@@ -318,7 +318,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Dumps the complete result of a query into an array 
 
@@ -344,7 +344,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *string|*  **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int|string* $column]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Returns the n'th field of first row in a SQL query result 
 
@@ -363,7 +363,7 @@ Returns the n'th field of first row in a SQL query result
 
 
 
-public *boolean*  **insert** (*string|array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Inserts data into a table using custom RDBMS SQL syntax 
 
@@ -384,7 +384,7 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 
 
-public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -407,7 +407,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string|array* $table, *array* $fields, *array* $values, [*string|array* $whereCondition], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -443,7 +443,7 @@ Warning! If $whereCondition is string it not escaped.
 
 
 
-public *boolean*  **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
 
@@ -466,7 +466,7 @@ Updates data on a table using custom RBDM SQL syntax Another, more convenient sy
 
 
 
-public *boolean*  **delete** (*string|array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -486,7 +486,7 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*array* $columnList) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *string* **getColumnList** (*array* $columnList) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Gets a list of columns
 
@@ -653,7 +653,7 @@ List all views on a database
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public Phalcon\\Db\\Index[] **describeIndexes** (*string* $table, [*string* $schema]) inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Lists table indexes 
 
@@ -782,7 +782,7 @@ Return descriptor used to connect to the active database
 
 
 
-public *string*  **getConnectionId** () inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *string* **getConnectionId** () inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Gets the active connection unique identifier
 
@@ -800,7 +800,7 @@ Active SQL statement in the object without replace bound paramters
 
 
 
-public *array*  **getSQLBindTypes** () inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+public *array* **getSQLBindTypes** () inherited from :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 Active SQL statement in the object
 

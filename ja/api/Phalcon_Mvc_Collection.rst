@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Collection**
 ===========================================
 
-*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -37,7 +37,7 @@ Sets a value for the _id property, creates a MongoId object if needed
 
 
 
-public *\\MongoId*  **getId** ()
+public MongoId **getId** ()
 
 Returns the value of the _id property
 
@@ -109,13 +109,13 @@ Returns DependencyInjection connection service
 
 
 
-public *\\MongoDb*  **getConnection** ()
+public MongoDb **getConnection** ()
 
 Retrieves a database connection
 
 
 
-public *mixed*  **readAttribute** (*string* $attribute)
+public *mixed* **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -147,19 +147,19 @@ Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\\MongoDb* $connection, *boolean* $unique)
+protected static *array* **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, MongoDb $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\\MongoDb* $connection)
+protected static *int* **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, MongoDb $connection)
 
 Perform a count over a resultset
 
 
 
-final protected *boolean*  **_preSave** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
+final protected *boolean* **_preSave** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
@@ -247,7 +247,7 @@ Cancel the current operation
 
 
 
-protected *boolean*  **_exists** (*\\MongoCollection* $collection)
+protected *boolean* **_exists** (MongoCollection $collection)
 
 Checks if the document exists in the collection
 

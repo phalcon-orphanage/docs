@@ -3,7 +3,7 @@ Class **Phalcon\\Translate\\Adapter\\Gettext**
 
 *extends* abstract class :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
-*implements* :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`, ArrayAccess
+*implements* :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -46,7 +46,7 @@ Phalcon\\Translate\\Adapter\\Gettext constructor
 
 
 
-public *string*  **query** (*string* $index, [*array* $placeholders])
+public *string* **query** (*string* $index, [*array* $placeholders])
 
 Returns the translation related to the given key
 
@@ -136,13 +136,13 @@ public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Ph
 ...
 
 
-public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
+public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
+public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation string of the given key (alias of method 't')
 
@@ -166,7 +166,7 @@ Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*string* $translateKey) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
+public *string* **offsetGet** (*string* $translateKey) inherited from :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 Returns the translation related to the given key
 

@@ -32,13 +32,13 @@ Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*string* $value)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>` **setValue** (*string* $value)
 
 Sets the cookie's value
 
 
 
-public *mixed*  **getValue** ([*string|array* $filters], [*string* $defaultValue])
+public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
 Returns the cookie's value
 

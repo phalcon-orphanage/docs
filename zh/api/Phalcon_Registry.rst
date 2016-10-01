@@ -1,7 +1,7 @@
 Final class **Phalcon\\Registry**
 =================================
 
-*implements* ArrayAccess, Countable, Iterator, Traversable
+*implements* `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_
 
 .. role:: raw-html(raw)
    :format: html

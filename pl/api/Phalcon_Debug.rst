@@ -126,7 +126,7 @@ Throws an exception when a notice or warning is raised
 
 
 
-public  **onUncaughtException** (*Exception* $exception)
+public  **onUncaughtException** (`Exception <http://php.net/manual/en/class.exception.php>`_ $exception)
 
 Handles uncaught exceptions
 

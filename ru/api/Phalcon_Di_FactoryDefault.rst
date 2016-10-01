@@ -3,7 +3,7 @@ Class **Phalcon\\Di\\FactoryDefault**
 
 *extends* class :doc:`Phalcon\\Di <Phalcon_Di>`
 
-*implements* ArrayAccess, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
+*implements* `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -82,7 +82,7 @@ Resolves the service based on its configuration
 
 
 
-public *mixed*  **getShared** (*string* $name, [*array* $parameters]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
+public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
@@ -112,7 +112,7 @@ Check if a service is registered using the array syntax
 
 
 
-public *boolean*  **offsetSet** (*string* $name, *mixed* $definition) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
+public *boolean* **offsetSet** (*string* $name, *mixed* $definition) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
 Allows to register a shared service using the array syntax 
 

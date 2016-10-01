@@ -34,7 +34,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*string* $eventName]) inherited from :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
+protected *array* **getOptions** ([*string* $eventName]) inherited from :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
 
 Returns the behavior options related to an event
 

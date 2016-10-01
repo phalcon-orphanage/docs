@@ -16,7 +16,7 @@ Formats messages using JSON encoding
 Methods
 -------
 
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
+public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 

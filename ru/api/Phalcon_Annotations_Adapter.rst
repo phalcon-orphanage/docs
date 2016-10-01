@@ -26,7 +26,7 @@ Returns the annotation reader
 
 
 
-public  **get** (*string|object* $className)
+public  **get** (*string* | *object* $className)
 
 Parses or retrieves all the annotations found in a class
 

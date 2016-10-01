@@ -72,7 +72,7 @@ Register templating engines
 
 
 
-protected *array*  **_loadTemplateEngines** ()
+protected *array* **_loadTemplateEngines** ()
 
 Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
 
@@ -117,7 +117,7 @@ Sets the cache options
 
 
 
-public *array*  **getCacheOptions** ()
+public *array* **getCacheOptions** ()
 
 Returns the cache options
 
@@ -193,7 +193,7 @@ Returns a parameter previously set in the view
 
 
 
-public *array*  **getParamsToView** ()
+public *array* **getParamsToView** ()
 
 Returns parameters to views
 
@@ -218,7 +218,7 @@ Returns cached output from another view stage
 
 
 
-public *string*  **getActiveRenderPath** ()
+public *string* **getActiveRenderPath** ()
 
 Returns the path of the view that is currently rendered
 

@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-*implements* JsonSerializable, Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
+*implements* `JsonSerializable <http://php.net/manual/en/class.jsonserializable.php>`_, `Serializable <http://php.net/manual/en/class.serializable.php>`_, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_, `SeekableIterator <http://php.net/manual/en/class.seekableiterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_, `Iterator <http://php.net/manual/en/class.iterator.php>`_, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -29,7 +29,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*array* $columnMap, *\\Phalcon\\Mvc\\ModelInterface|Phalcon\\Mvc\\Model\\Row* $model, *\\Phalcon\\Db\\Result\\Pdo|null* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
+public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | :doc:`Phalcon\\Mvc\\Model\\Row <Phalcon_Mvc_Model_Row>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` | *null* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
@@ -173,19 +173,19 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*\\Closure* $conditionCallback]) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+public *boolean* **update** (*array* $data, [`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback]) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 Updates every record in the resultset
 
 
 
-public  **delete** ([*Closure* $conditionCallback]) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+public  **delete** ([`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback]) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+public Phalcon\\Mvc\\Model[] **filter** (*callback* $filter) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 Filters a resultset returning only those the developer requires 
 
@@ -202,7 +202,7 @@ Filters a resultset returning only those the developer requires
 
 
 
-public *array*  **jsonSerialize** () inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+public *array* **jsonSerialize** () inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
 

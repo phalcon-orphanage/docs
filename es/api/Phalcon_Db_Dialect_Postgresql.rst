@@ -146,7 +146,7 @@ List all tables in database
 
 
 
-public *string*  **listViews** ([*string* $schemaName])
+public *string* **listViews** ([*string* $schemaName])
 
 Generates the SQL to list all views of a schema or user
 

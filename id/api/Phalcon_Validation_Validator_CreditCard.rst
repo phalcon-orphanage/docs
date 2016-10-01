@@ -40,7 +40,7 @@ Executes the validation
 
 
 
-private *boolean*  **verifyByLuhnAlgorithm** (*string* $number)
+private *boolean* **verifyByLuhnAlgorithm** (*string* $number)
 
 is a simple checksum formula used to validate a variety of identification numbers
 
