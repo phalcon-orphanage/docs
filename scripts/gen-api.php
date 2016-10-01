@@ -173,6 +173,16 @@ sort($classes);
 $indexClasses    = [];
 $indexInterfaces = [];
 
+foreach ($languages as $lang) {
+    $folder = $lang . "/api/";
+
+    if (file_exists($folder) && is_dir($folder)) {
+        continue;
+    }
+
+    mkdir($folder);
+}
+
 foreach ($classes as $className) {
     $realClassName = $className;
 
@@ -424,8 +434,6 @@ foreach ($classes as $className) {
     }
 
     foreach ($languages as $lang) {
-        @mkdir($lang . "/api/");
-
         file_put_contents(
             $lang . "/api/" . $simpleClassName . ".rst",
             $view->render(
