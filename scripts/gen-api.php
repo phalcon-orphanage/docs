@@ -43,7 +43,19 @@ $languages = [
 
 
 
-require "src/ApiGenerator.php";
+/**
+ * Register the autoloader and tell it to register the tasks directory
+ */
+$loader = new \Phalcon\Loader();
+
+$loader->registerNamespaces(
+    [
+        "PhalconDocs" => __DIR__ . "/src/",
+    ]
+);
+
+$loader->register();
+
 
 
 
@@ -77,7 +89,7 @@ $view->setViewsDir("scripts/views/");
 
 
 
-$api = new ApiGenerator(CPHALCON_DIR);
+$api = new \PhalconDocs\ApiGenerator(CPHALCON_DIR);
 
 $classDocs = $api->getClassDocs();
 $docs      = $api->getDocs();
@@ -85,7 +97,7 @@ $docs      = $api->getDocs();
 $classes = [];
 
 foreach (get_declared_classes() as $className) {
-    if (!preg_match("#^Phalcon#", $className)) {
+    if (!preg_match("#^Phalcon\\\\#", $className)) {
         continue;
     }
 
@@ -93,7 +105,7 @@ foreach (get_declared_classes() as $className) {
 }
 
 foreach (get_declared_interfaces() as $interfaceName) {
-    if (!preg_match("#^Phalcon#", $interfaceName)) {
+    if (!preg_match("#^Phalcon\\\\#", $interfaceName)) {
         continue;
     }
 

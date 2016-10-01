@@ -1,9 +1,11 @@
 <?php
 
-// use RecursiveDirectoryIterator;
-// use FilesystemIterator;
-// use RecursiveIteratorIterator;
-// use Exception;
+namespace PhalconDocs;
+
+use RecursiveDirectoryIterator;
+use FilesystemIterator;
+use RecursiveIteratorIterator;
+use Exception;
 
 /**
  * Class ApiGenerator
