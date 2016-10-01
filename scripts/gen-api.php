@@ -200,15 +200,6 @@ foreach ($classes as $className) {
 
 
 
-    $documentationData = [
-        "extends"    => $reflector->getParentClass(),
-        "implements" => $reflector->getInterfaceNames(),
-        "constants"  => $reflector->getConstants(),
-        "methods"    => $reflector->getMethods(),
-    ];
-
-
-
     if ($reflector->isInterface()) {
         $indexInterfaces[] = "   " . $simpleClassName . PHP_EOL;
     } else {
@@ -233,19 +224,21 @@ foreach ($classes as $className) {
 
 
 
+    $parentClass = $reflector->getParentClass();
+
     $extendsString = "";
 
-    if ($documentationData["extends"]) {
-        $extendsName = $documentationData["extends"]->name;
+    if ($parentClass) {
+        $extendsName = $parentClass->name;
 
         $classLink = new \PhalconDocs\ClassLink($extendsName);
 
         if (class_exists($extendsName)) {
-            $reflector = new ReflectionClass($extendsName);
+            $parentClassReflector = new ReflectionClass($extendsName);
 
             $prefix = "class";
 
-            if ($reflector->isAbstract()) {
+            if ($parentClassReflector->isAbstract()) {
                 $prefix = "abstract class";
             }
 
@@ -257,13 +250,15 @@ foreach ($classes as $className) {
 
 
 
+    $interfaceNames = $reflector->getInterfaceNames();
+
     $implementsString = "";
 
     //Generate the interfaces part
-    if (count($documentationData["implements"])) {
+    if (count($interfaceNames)) {
         $implements = [];
 
-        foreach ($documentationData["implements"] as $interfaceName) {
+        foreach ($interfaceNames as $interfaceName) {
             $classLink = new \PhalconDocs\ClassLink($interfaceName);
 
             $implements[] = $classLink->get();
@@ -288,13 +283,15 @@ foreach ($classes as $className) {
 
 
 
+    $constants = $reflector->getConstants();
+
     $constantsString = "";
 
-    if (count($documentationData["constants"])) {
+    if (count($constants)) {
         $constantsString .= "Constants" . PHP_EOL;
         $constantsString .= "---------" . PHP_EOL . PHP_EOL;
 
-        foreach ($documentationData["constants"] as $name => $constant) {
+        foreach ($constants as $name => $constant) {
             $type = gettype($constant);
 
             $constantsString .= "*" . $type . "* **" . $name . "**" . PHP_EOL . PHP_EOL;
@@ -303,13 +300,15 @@ foreach ($classes as $className) {
 
 
 
+    $methods = $reflector->getMethods();
+
     $methodsString = "";
 
-    if (count($documentationData["methods"])) {
+    if (count($methods)) {
         $methodsString .= "Methods" . PHP_EOL;
         $methodsString .= "-------" . PHP_EOL . PHP_EOL;
 
-        foreach ($documentationData["methods"] as $method) {
+        foreach ($methods as $method) {
             /** @var $method ReflectionMethod */
 
             $docClassName = str_replace("\\", "_", $method->getDeclaringClass()->name);
