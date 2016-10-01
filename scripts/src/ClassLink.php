@@ -9,47 +9,45 @@ class ClassLink
      */
     protected $className;
 
+    /**
+     * @var boolean
+     */
+    protected $isArray;
+
 
 
     public function __construct($className)
     {
+        $isArray = (preg_match("/^(.*)\[\]$/", $className, $match) === 1);
+
+        if ($isArray) {
+            $className = $match[1];
+        }
+
         $this->className = $className;
+        $this->isArray   = $isArray;
     }
 
 
 
     public function get()
     {
-        if (class_exists($this->className) || interface_exists($this->className)) {
-            if (preg_match("/^(\\\\?Phalcon\\\\[a-zA-Z0-9\\\\]+)/", $this->className)) {
-                $classPath = preg_replace("/^\\\\/", "", $this->className);
-                $classPath = str_replace("\\", "_", $classPath);
-                $className = preg_replace("/^\\\\/", "", $this->className);
-                $className = str_replace("\\", "\\\\", $className);
+        $className = preg_replace("/^\\\\/", "", $this->className);
 
-                return str_replace(
-                    $this->className,
-                    ":doc:`" . $className . " <" . $classPath . ">`",
-                    $this->className
-                );
-            } else {
-                $className = preg_replace("/^\\\\/", "", $this->className);
-                $className = str_replace("\\", "\\\\", $className);
+        if (!class_exists($className) && !interface_exists($className)) {
+            return "*" . $className . "*" . ($this->isArray ? "\ []" : "");
+        }
 
-                return str_replace(
-                    $this->className,
-                    "`" . $className . " <http://php.net/manual/en/class." . strtolower($className) . ".php>`_",
-                    $this->className
-                );
-            }
-        } elseif (preg_match("/\\\\/", $this->className)) {
-            $className = preg_replace("/^\\\\/", "", $this->className);
-            $className = str_replace("\\", "\\\\", $className);
+        $className = str_replace("\\", "\\\\", $className);
 
-            return $className;
+        if (preg_match("/^Phalcon\\\\/", $className)) {
+            $path = str_replace("\\\\", "_", $className);
+
+            return ":doc:`" . $className . " <" . $path . ">`" . ($this->isArray ? "\ []" : "");
         } else {
+            $url = "http://php.net/manual/en/class." . strtolower($className) . ".php";
 
-            return "*" . $this->className . "*";
+            return "`" . $className . " <" . $url . ">`_" . ($this->isArray ? "\ []" : "");
         }
     }
 }

@@ -185,7 +185,7 @@ Deletes every record in the resultset
 
 
 
-public Phalcon\\Mvc\\Model[] **filter** (*callback* $filter) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`\ [] **filter** (*callback* $filter) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 Filters a resultset returning only those the developer requires 
 

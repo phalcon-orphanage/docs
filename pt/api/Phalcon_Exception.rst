@@ -1,7 +1,7 @@
 Class **Phalcon\\Exception**
 ============================
 
-*extends* `Exception <http://php.net/manual/en/class.exception.php>`_
+*extends* class `Exception <http://php.net/manual/en/class.exception.php>`_
 
 *implements* `Throwable <http://php.net/manual/en/class.throwable.php>`_
 

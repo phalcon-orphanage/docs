@@ -612,13 +612,13 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean* **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, Phalcon\\Mvc\\ModelInterface[] $related)
+protected *boolean* **_preSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`\ [] $related)
 
 Saves related records that must be stored prior to save the master record
 
 
 
-protected *boolean* **_postSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, Phalcon\\Mvc\\ModelInterface[] $related)
+protected *boolean* **_postSaveRelatedRecords** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`\ [] $related)
 
 Save the related records assigned in the has-one/has-many relations
 
@@ -1054,7 +1054,7 @@ Returns related records defined relations depending on the method name
 
 
 
-final protected static Phalcon\\Mvc\\ModelInterface[] | :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
+final protected static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`\ [] | :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
 
 Try to check if the query must invoke a finder
 

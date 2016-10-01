@@ -85,7 +85,7 @@ Appends a message to the group
 
 
 
-public  **appendMessages** (Phalcon\\Validation\\MessageInterface[] $messages)
+public  **appendMessages** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>`\ [] $messages)
 
 Appends an array of messages to the group 
 

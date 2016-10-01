@@ -416,7 +416,7 @@ List all views on a database
 
 
 
-public Phalcon\\Db\\Index[] **describeIndexes** (*string* $table, [*string* $schema])
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>`\ [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
 

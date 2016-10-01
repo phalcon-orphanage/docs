@@ -66,7 +66,7 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 
-public Phalcon\\Db\\IndexInterface[] **describeIndexes** (*string* $table, [*string* $schema])
+public :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>`\ [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
 
