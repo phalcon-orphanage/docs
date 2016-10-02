@@ -265,7 +265,11 @@ class ApiGenerator
                 $pp = preg_replace("#^\s#", "", $pp);
 
                 if (count($p) != 1) {
-                    $c .= "    " . $pp . PHP_EOL;
+                    if ($pp === "") {
+                        $c .= PHP_EOL;
+                    } else {
+                        $c .= "    " . $pp . PHP_EOL;
+                    }
                 } else {
                     $c .= $pp . PHP_EOL;
                 }
