@@ -262,7 +262,7 @@ class ApiGenerator
                     $firstLine = false;
                 }
 
-                $pp = preg_replace("#^\t#", "", $pp);
+                $pp = preg_replace("#^\s#", "", $pp);
 
                 if (count($p) != 1) {
                     $c .= "    " . $pp . PHP_EOL;
