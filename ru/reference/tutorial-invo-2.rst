@@ -432,7 +432,7 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
             // Проверяем, имеет ли данная роль доступ к контроллеру (ресурсу)
             $allowed = $acl->isAllowed($role, $controller, $action);
 
-            if ($allowed !== Acl::ALLOW) {
+            if (!$allowed) {
                 // Если доступа нет, перенаправляем его на контроллер "index".
                 $this->flash->error(
                     "У вас нет доступа к данному модулю"
