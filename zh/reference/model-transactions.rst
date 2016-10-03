@@ -22,9 +22,10 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
             // Start a transaction
             $this->db->begin();
 
-            $robot              = new Robots();
-            $robot->name        = "WALL·E";
-            $robot->created_at  = date("Y-m-d");
+            $robot = new Robots();
+
+            $robot->name       = "WALL·E";
+            $robot->created_at = date("Y-m-d");
 
             // The model failed to save, so rollback the transaction
             if ($robot->save() === false) {
@@ -32,13 +33,15 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
                 return;
             }
 
-            $robotPart            = new RobotParts();
+            $robotPart = new RobotParts();
+
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
             // The model failed to save, so rollback the transaction
             if ($robotPart->save() === false) {
                 $this->db->rollback();
+
                 return;
             }
 
@@ -55,15 +58,20 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
 
     <?php
 
-    $robotPart          = new RobotParts();
-    $robotPart->type    = "head";
+    $robotPart = new RobotParts();
 
-    $robot              = new Robots();
-    $robot->name        = "WALL·E";
-    $robot->created_at  = date("Y-m-d");
-    $robot->robotPart   = $robotPart;
+    $robotPart->type = "head";
 
-    $robot->save(); // Creates an implicit transaction to store both records
+
+
+    $robot = new Robots();
+
+    $robot->name       = "WALL·E";
+    $robot->created_at = date("Y-m-d");
+    $robot->robotPart  = $robotPart;
+
+    // Creates an implicit transaction to store both records
+    $robot->save();
 
 单独的事务（Isolated Transactions）
 -----------------------------------
@@ -78,34 +86,40 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
         // Create a transaction manager
-        $manager     = new TxManager();
+        $manager = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
-        $robot              = new Robots();
+        $robot = new Robots();
+
         $robot->setTransaction($transaction);
-        $robot->name        = "WALL·E";
-        $robot->created_at  = date("Y-m-d");
+
+        $robot->name       = "WALL·E";
+        $robot->created_at = date("Y-m-d");
 
         if ($robot->save() === false) {
-            $transaction->rollback("Cannot save robot");
+            $transaction->rollback(
+                "Cannot save robot"
+            );
         }
 
-        $robotPart              = new RobotParts();
+        $robotPart = new RobotParts();
+
         $robotPart->setTransaction($transaction);
-        $robotPart->robots_id   = $robot->id;
-        $robotPart->type        = "head";
+
+        $robotPart->robots_id = $robot->id;
+        $robotPart->type      = "head";
 
         if ($robotPart->save() === false) {
-            $transaction->rollback("Cannot save robot part");
+            $transaction->rollback(
+                "Cannot save robot part"
+            );
         }
 
         // Everything's gone fine, let's commit the transaction
         $transaction->commit();
-
     } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
@@ -120,21 +134,28 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
         // Create a transaction manager
-        $manager     = new TxManager();
+        $manager = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
         // Get the robots to be deleted
-        foreach (Robots::find("type = 'mechanical'") as $robot) {
+        $robots = Robots::find(
+            "type = 'mechanical'"
+        );
+
+        foreach ($robots as $robot) {
             $robot->setTransaction($transaction);
 
+            // Something's gone wrong, we should rollback the transaction
             if ($robot->delete() === false) {
-                // Something's gone wrong, we should rollback the transaction
-                foreach ($robot->getMessages() as $message) {
-                    $transaction->rollback($message->getMessage());
+                $messages = $robot->getMessages();
+
+                foreach ($messages as $message) {
+                    $transaction->rollback(
+                        $message->getMessage()
+                    );
                 }
             }
         }
@@ -143,12 +164,11 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         $transaction->commit();
 
         echo "Robots were deleted successfully!";
-
     } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
-事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个commit()或者一个rollback()执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局事务管理器。
+事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个:code:`commit()`或者一个:code:`rollback()`执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局事务管理器。
 
 .. code-block:: php
 
@@ -156,9 +176,12 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
 
     use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager
 
-    $di->setShared('transactions', function () {
-        return new TransactionManager();
-    });
+    $di->setShared(
+        "transactions",
+        function () {
+            return new TransactionManager();
+        }
+    );
 
 然后在控制器或者视图中访问：
 
@@ -173,10 +196,10 @@ Phalcon中通过事务，可以在所有操作都成功执行之后提交到服�
         public function saveAction()
         {
             // Obtain the TransactionsManager from the services container
-            $manager     = $this->di->getTransactions();
+            $manager = $this->di->getTransactions();
 
             // Or
-            $manager     = $this->transactions;
+            $manager = $this->transactions;
 
             // Request a transaction
             $transaction = $manager->get();
