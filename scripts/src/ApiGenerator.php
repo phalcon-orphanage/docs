@@ -286,7 +286,6 @@ class ApiGenerator
         $c = $description;
         $c = str_replace("\\", "\\\\", $c);
         $c = trim(str_replace("\t", "", $c));
-        $c = trim(str_replace("\n", " ", $c));
 
         foreach ($codeBlocks as $n => $cc) {
             if (preg_match("#\[[a-z]+\]#", $cc)) {
