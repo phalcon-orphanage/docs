@@ -79,7 +79,6 @@ class ApiGenerator
         foreach ($lines as $line) {
             if (trim($line) == "/**") {
                 $openComment = true;
-                $comment .= $line;
             }
 
             if ($openComment === true) {
@@ -105,8 +104,6 @@ class ApiGenerator
 
             if ($openComment === true) {
                 if (trim($line) == "*/") {
-                    $comment .= $line;
-
                     $openComment    = false;
                     $nextLineMethod = true;
                 }
