@@ -146,6 +146,8 @@ application :
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Message;
     use Phalcon\Mvc\Model\Validator\Uniqueness;
@@ -207,11 +209,13 @@ Maintenant nous devons mettre en place la connexion qui sera utilisée par le mo
     // Use Loader() to autoload our model
     $loader = new Loader();
 
-    $loader->registerDirs(
+    $loader->registerNamespaces(
         [
-            __DIR__ . "/models/"
+            "Store\\Toys" => __DIR__ . "/models/",
         ]
-    )->register();
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
@@ -246,7 +250,7 @@ exécuter une simple requête qui retourne les résultats sous forme de JSON :
     $app->get(
         "/api/robots",
         function () use ($app) {
-            $phql = "SELECT * FROM Robots ORDER BY name";
+            $phql = "SELECT * FROM Store\\Toys\\Robots ORDER BY name";
 
             $robots = $app->modelsManager->executeQuery($phql);
 
@@ -277,7 +281,7 @@ La recherche par nom ressemblera à cela :
     $app->get(
         "/api/robots/search/{name}",
         function ($name) use ($app) {
-            $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
+            $phql = "SELECT * FROM Store\\Toys\\Robots WHERE name LIKE :name: ORDER BY name";
 
             $robots = $app->modelsManager->executeQuery(
                 $phql,
@@ -311,7 +315,7 @@ Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nou
     $app->get(
         "/api/robots/{id:[0-9]+}",
         function ($id) use ($app) {
-            $phql = "SELECT * FROM Robots WHERE id = :id:";
+            $phql = "SELECT * FROM Store\\Toys\\Robots WHERE id = :id:";
 
             $robot = $app->modelsManager->executeQuery(
                 $phql,
@@ -363,7 +367,7 @@ Prenons la données comme une chaine JSON que l'on insert dans le corps de la re
         function () use ($app) {
             $robot = $app->request->getJsonRawBody();
 
-            $phql = "INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)";
+            $phql = "INSERT INTO Store\\Toys\\Robots (name, type, year) VALUES (:name:, :type:, :year:)";
 
             $status = $app->modelsManager->executeQuery(
                 $phql,
@@ -429,7 +433,7 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
         function ($id) use ($app) {
             $robot = $app->request->getJsonRawBody();
 
-            $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
+            $phql = "UPDATE Store\\Toys\\Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
 
             $status = $app->modelsManager->executeQuery(
                 $phql,
@@ -487,7 +491,7 @@ La suppression de données est relativement identique à la modification. L'iden
     $app->delete(
         "/api/robots/{id:[0-9]+}",
         function ($id) use ($app) {
-            $phql = "DELETE FROM Robots WHERE id = :id:";
+            $phql = "DELETE FROM Store\\Toys\\Robots WHERE id = :id:";
 
             $status = $app->modelsManager->executeQuery(
                 $phql,
