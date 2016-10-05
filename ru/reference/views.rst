@@ -47,20 +47,20 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
 Иерархия
 --------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` поддерживает иерархическую файловую структуру. Это позволяет определять местонахождение как основных шаблонов (main layout), так и шаблонов для отдельных контроллеров (controller layout) с помощью задания имён для соответствующих им папок.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` поддерживает иерархическую файловую структуру. Это позволяет определять местонахождение как основных макетов (*здесь и ниже макет используется для перевода layout. Прим. перев.*), так и макетов для отдельных контроллеров с помощью задания имён для соответствующих им папок.
 
-В качестве движка по умолчанию компонент использует сам PHP, поэтому представления должны иметь расширение .phtml.
+В качестве движка по умолчанию компонент использует сам PHP, поэтому представления должны иметь расширение :code:`.phtml`.
 Если в качестве папки с представлениями используется *app/views*, то компонент автоматически будет искать следующие 3 файла.
 
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Название          | Файл                          | Описание                                                                                                         |
-+===================+===============================+==================================================================================================================+
-| Action View       | app/views/posts/show.phtml    | Представление, связанное с конкретным действием контроллера. Используется только при выполнении этого действия.  |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Controller Layout | app/views/layouts/posts.phtml | Представление, связанное с контроллером. Используется для любого действия контроллера "posts".                   |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Main Layout       | app/views/index.phtml         | Основной шаблон приложения. Используется для любого контроллера или действия.                                    |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Название               | Файл                          | Описание                                                                                                         |
++========================+===============================+==================================================================================================================+
+| Пердставление действия | app/views/posts/show.phtml    | Представление, связанное с конкретным действием контроллера. Используется только при выполнении этого действия.  |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Макет контроллера      | app/views/layouts/posts.phtml | Макет, связанный с контроллером. Используется для любого действия контроллера "posts".                           |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Основной макет         | app/views/index.phtml         | Основной макет приложения. Используется для любого контроллера или действия.                                     |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
 
 Совершенно не обязательно использовать все упомянутые выше файлы. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` просто пропустит тот файл, которого нет, и перейдёт к следующему.
 Если же существуют все три файла представлений, то они будут обработаны следующим образом:
@@ -69,15 +69,15 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <!-- app/views/posts/show.phtml -->
 
-    <h3>This is show view!</h3>
+    <h3>Это показывает конкретное представление!</h3>
 
-    <p>I have received the parameter <?php echo $postId; ?></p>
+    <p>Я получил параметр <?php echo $postId; ?></p>
 
 .. code-block:: html+php
 
     <!-- app/views/layouts/posts.phtml -->
 
-    <h2>This is the "posts" controller layout!</h2>
+    <h2>Это макет контроллера "posts"!</h2>
 
     <?php echo $this->getContent(); ?>
 
@@ -86,11 +86,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <!-- app/views/index.phtml -->
     <html>
         <head>
-            <title>Example</title>
+            <title>Пример</title>
         </head>
         <body>
 
-            <h1>This is main layout!</h1>
+            <h1>Это основной макет!</h1>
 
             <?php echo $this->getContent(); ?>
 
@@ -110,30 +110,30 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <!-- app/views/index.phtml -->
     <html>
         <head>
-            <title>Example</title>
+            <title>Пример</title>
         </head>
         <body>
 
-            <h1>This is main layout!</h1>
+            <h1>Это основной макет!</h1>
 
             <!-- app/views/layouts/posts.phtml -->
 
-            <h2>This is the "posts" controller layout!</h2>
+            <h2>Это макет контроллера "posts"!</h2>
 
             <!-- app/views/posts/show.phtml -->
 
-            <h3>This is show view!</h3>
+            <h3>Это показывает конкретное представление!</h3>
 
-            <p>I have received the parameter 101</p>
+            <p>Я получил параметр 101</p>
 
         </body>
     </html>
 
 Использование Шаблонов
 ^^^^^^^^^^^^^^^^^^^^^^
-Шаблоны — это представления, которые могут быть общими для разных действий контроллера. По сути они играют роль представлений контроллеров (controller layouts), поэтому их необходимо помещать папку layouts.
+Шаблоны — это представления, которые могут быть общими для разных действий контроллера. По сути они играют роль макетов контроллеров, поэтому их необходимо помещать папку :code:`layouts`.
 
-Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
+Шаблоны могут быть отрендерены как перед макетом (с использованием :code:`$this->view->setTemplateBefore()`), так и после (с использованием :code:`this->view->setTemplateAfter()`). В примере приведенном ниже, шаблон (layouts/common.phtml) рендерится перед основным мекетом (layouts/posts.phtml):
 
 .. code-block:: php
 
@@ -151,7 +151,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
         public function lastAction()
         {
             $this->flash->notice(
-                "These are the latest posts"
+                "Здесь находятся последние статьи"
             );
         }
     }
@@ -162,7 +162,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
             <?php echo $this->getContent(); ?>
@@ -174,9 +174,9 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!-- app/views/layouts/common.phtml -->
 
     <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/articles">Articles</a></li>
-        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/articles">Статьи</a></li>
+        <li><a href="/contact">Контакты</a></li>
     </ul>
 
     <div class="content"><?php echo $this->getContent(); ?></div>
@@ -185,7 +185,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
 
     <!-- app/views/layouts/posts.phtml -->
 
-    <h1>Blog Title</h1>
+    <h1>Мой блог</h1>
 
     <?php echo $this->getContent(); ?>
 
@@ -194,13 +194,13 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!-- app/views/posts/last.phtml -->
 
     <article>
-        <h2>This is a title</h2>
-        <p>This is the post content</p>
+        <h2>Заголовок статьи</h2>
+        <p>Содержимое статьи</p>
     </article>
 
     <article>
-        <h2>This is another title</h2>
-        <p>This is another post content</p>
+        <h2>Еще один заголовок</h2>
+        <p>Еще одно содержимое статьи</p>
     </article>
 
 Вывод получится следующим:
@@ -211,34 +211,34 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
 
             <!-- app/views/layouts/common.phtml -->
 
             <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/contact">Contact us</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/articles">Статьи</a></li>
+                <li><a href="/contact">Контакты</a></li>
             </ul>
 
             <div class="content">
 
                 <!-- app/views/layouts/posts.phtml -->
 
-                <h1>Blog Title</h1>
+                <h1>Мой блог</h1>
 
                 <!-- app/views/posts/last.phtml -->
 
                 <article>
-                    <h2>This is a title</h2>
-                    <p>This is the post content</p>
+                    <h2>Заголовок статьи</h2>
+                    <p>Содержимое статьи</p>
                 </article>
 
                 <article>
-                    <h2>This is another title</h2>
-                    <p>This is another post content</p>
+                    <h2>Еще один заголовок</h2>
+                    <p>Еще одно содержимое статьи</p>
                 </article>
 
             </div>
@@ -246,7 +246,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
         </body>
     </html>
 
-If we had used :code:`$this->view->setTemplateBefore("common")`, this would be the final output:
+Если бы мы использовали :code:`$this->view->setTemplateBefore("common")`, окончательный результат был бы:
 
 .. code-block:: html+php
 
@@ -254,20 +254,20 @@ If we had used :code:`$this->view->setTemplateBefore("common")`, this would be t
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
 
             <!-- app/views/layouts/posts.phtml -->
 
-            <h1>Blog Title</h1>
+            <h1>Мой блог</h1>
 
             <!-- app/views/layouts/common.phtml -->
 
             <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/contact">Contact us</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/articles">Статьи</a></li>
+                <li><a href="/contact">Контакты</a></li>
             </ul>
 
             <div class="content">
@@ -275,13 +275,13 @@ If we had used :code:`$this->view->setTemplateBefore("common")`, this would be t
                 <!-- app/views/posts/last.phtml -->
 
                 <article>
-                    <h2>This is a title</h2>
-                    <p>This is the post content</p>
+                    <h2>Заголовок статьи</h2>
+                    <p>Содержимое статьи</p>
                 </article>
 
                 <article>
-                    <h2>This is another title</h2>
-                    <p>This is another post content</p>
+                    <h2>Еще один заголовк</h2>
+                    <p>Еще одно содержимое статьи</p>
                 </article>
 
             </div>
@@ -337,13 +337,13 @@ If we had used :code:`$this->view->setTemplateBefore("common")`, this would be t
 +-----------------------+--------------------------------------------------------------------------+---------+
 | LEVEL_ACTION_VIEW     | Генерация представления, относящегося к конкретному действию.            | 1       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_BEFORE_TEMPLATE | Генерация шаблонов представлений, предшествующих layout контроллера.     | 2       |
+| LEVEL_BEFORE_TEMPLATE | Генерация шаблонов представлений, предшествующих макету контроллера.     | 2       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_LAYOUT          | Генерация представления, для layout контроллера.                         | 3       |
+| LEVEL_LAYOUT          | Генерация представления, для макета контроллера.                         | 3       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_AFTER_TEMPLATE  | Генерация шаблонов представлений, следующих за layout контроллера.       | 4       |
+| LEVEL_AFTER_TEMPLATE  | Генерация шаблонов представлений, следующих за макетом контроллера.      | 4       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_MAIN_LAYOUT     | Генерация представления для главного layout. Файл views/index.phtml      | 5       |
+| LEVEL_MAIN_LAYOUT     | Генерация представления для главного макета. Файл views/index.phtml      | 5       |
 +-----------------------+--------------------------------------------------------------------------+---------+
 
 Отключение уровней отрисовки
