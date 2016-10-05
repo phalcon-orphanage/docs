@@ -396,7 +396,7 @@ SecurityPlugin 是一个类位于(app/plugins/SecurityPlugin.php). 这个类实�
             // 检验角色是否允许访问控制器 (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
 
-            if ($allowed !== Acl::ALLOW) {
+            if (!$allowed) {
                 // 如果没有访问权限则转发到 index 控制器
                 $this->flash->error(
                     "You don't have access to this module"

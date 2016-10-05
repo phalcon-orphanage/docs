@@ -16,7 +16,7 @@ This exception is generated when a model fails to save a record Phalcon\\Mvc\\Mo
 Methods
 -------
 
-public  **__construct** (*Model* $model, *Message[]* $validationMessages)
+public  **__construct** (*Model* $model, *Message*\ [] $validationMessages)
 
 Phalcon\\Mvc\\Model\\ValidationFailed constructor
 

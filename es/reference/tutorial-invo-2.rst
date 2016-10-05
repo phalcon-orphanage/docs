@@ -432,7 +432,7 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
             // Verificar si el pérfil (role) tiene acceso al controlador/acción
             $allowed = $acl->isAllowed($role, $controller, $action);
 
-            if ($allowed !== Acl::ALLOW) {
+            if (!$allowed) {
                 // Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
                 $this->flash->error(
                     "No tienes acceso a este módulo."

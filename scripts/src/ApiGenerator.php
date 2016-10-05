@@ -79,7 +79,6 @@ class ApiGenerator
         foreach ($lines as $line) {
             if (trim($line) == "/**") {
                 $openComment = true;
-                $comment .= $line;
             }
 
             if ($openComment === true) {
@@ -105,8 +104,6 @@ class ApiGenerator
 
             if ($openComment === true) {
                 if (trim($line) == "*/") {
-                    $comment .= $line;
-
                     $openComment    = false;
                     $nextLineMethod = true;
                 }
@@ -262,10 +259,14 @@ class ApiGenerator
                     $firstLine = false;
                 }
 
-                $pp = preg_replace("#^\t#", "", $pp);
+                $pp = preg_replace("#^\s#", "", $pp);
 
                 if (count($p) != 1) {
-                    $c .= "    " . $pp . PHP_EOL;
+                    if ($pp === "") {
+                        $c .= PHP_EOL;
+                    } else {
+                        $c .= "    " . $pp . PHP_EOL;
+                    }
                 } else {
                     $c .= $pp . PHP_EOL;
                 }
@@ -282,7 +283,6 @@ class ApiGenerator
         $c = $description;
         $c = str_replace("\\", "\\\\", $c);
         $c = trim(str_replace("\t", "", $c));
-        $c = trim(str_replace("\n", " ", $c));
 
         foreach ($codeBlocks as $n => $cc) {
             if (preg_match("#\[[a-z]+\]#", $cc)) {

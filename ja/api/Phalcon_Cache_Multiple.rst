@@ -54,7 +54,7 @@ Allows to read to chained backend adapters writing to multiple backends
 Methods
 -------
 
-public  **__construct** ([Phalcon\\Cache\\BackendInterface[] $backends])
+public  **__construct** ([:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`\ [] $backends])
 
 Phalcon\\Cache\\Multiple constructor
 

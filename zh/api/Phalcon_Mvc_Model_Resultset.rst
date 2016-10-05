@@ -179,7 +179,7 @@ Deletes every record in the resultset
 
 
 
-public Phalcon\\Mvc\\Model[] **filter** (*callback* $filter)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`\ [] **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires 
 

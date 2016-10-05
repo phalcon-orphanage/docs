@@ -432,7 +432,7 @@ If the user does not have access we redirect to the home screen as explained bef
             // Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
 
-            if ($allowed !== Acl::ALLOW) {
+            if (!$allowed) {
                 // If he doesn't have access forward him to the index controller
                 $this->flash->error(
                     "You don't have access to this module"
