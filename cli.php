@@ -60,13 +60,6 @@ foreach ($argv as $k => $arg) {
 try {
     // Handle incoming arguments
     $console->handle($arguments);
-} catch (\Throwable $throwable) {
-    fwrite(
-        STDERR,
-        "ERROR: " . $throwable->getMessage() . PHP_EOL
-    );
-
-    exit(1);
 } catch (\Exception $exception) {
     fwrite(
         STDERR,
