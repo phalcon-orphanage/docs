@@ -82,10 +82,13 @@ as an anonymous function. Once the cache setup is properly defined you could cac
         ]
     );
 
-    // Using a custom cache
+    // Use the 'cache' service from the DI instead of 'modelsCache'
     $products = Products::find(
         [
-            "cache" => $myCache,
+            "cache" => [
+                "key"          => "my-cache",
+                "cacheService" => "cache",
+            ],
         ]
     );
 
