@@ -370,54 +370,6 @@ tiap kelas lain yang terdaftar dengan nama sama dapat dengan mudah mengganti seb
         }
     );
 
-Menciptakan Kontroler Dasar
----------------------------
-Beberapa fitur aplikasi seperti access control list, translation, cache, dan template engine sering kali umum bagi banyak
-kontroler. Pada kasus seperti ini menciptakan sebuah "base controller" disarankan untuk memastikan kode anda tetap DRY_. Sebuah kontroler
-dasar sederhananya adalah sebuah kelas yang diturunkan dari :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` dan membungkus
-fungsionalitas umum yang harus dimiliki semua kontroler. Selanjutnya, kontroler anda diturunkan dari "base controller" dan memiliki
-akses ke fungsionalitas  umum tersebut.
-
-Kelas ini dapat ditempatkan dimanapun, namun untuk konvensi pengelolaan disarankan dalam folder kontroler,
-misal apps/controllers/ControllerBase.php. Kita dapat menambahkannya dengan require secara langsung dalam file bootstrap atau
-dimuat menggunakan autoloader:
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-Implementasi komponen umum (aksi, metode,  properti dan lain-lain.) berada di file ini:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * Aksi ini tersedia di lebih dari satu kontroler
-         */
-        public function someAction()
-        {
-
-        }
-    }
-
-Kontroler lainnya yang sekarang diturunkan dari ControllerBase, otomatis mempunyai akses ke komponen umum (yang disebut di atas):
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
-
 Event dalam Kontroler
 ---------------------
 Kontroler otomatis bertindak sebagai listener untuk :doc:`dispatcher <dispatching>` event, mengimplementasi metode dengan nama tersebut memungkinkan

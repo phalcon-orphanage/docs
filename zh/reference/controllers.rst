@@ -368,52 +368,6 @@
         }
     );
 
-创建基类控制器（Creating a Base Controller）
---------------------------------------------
-对于某些应用特性如访问控制列表（ACL），翻译，缓存，和模板引擎一般对于
-控制器都是通用的。在这种情况下，我们鼓励创建一个 “基类控制器”，从而确保你的代码遵循 DRY_ 编程原则。
-基类控制器可以是一个简单的类，然后继承于 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` ，并封装
-全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基类控制器”以便可以直接使用通用功能操作。
-
-这个基类可以放置在任何一个地方，但出于代码组织的便利我们推荐应该放置在控制器的目录下，
-如：apps/controllers/ControllerBase.php。我们可以在启动文件直接require这个文件，也可以使用自动加载：
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-对通用组件（action，方法，和类属性等）也在这个基类文件里面：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * 这个方法可以被不同的控制器子类使用
-         */
-        public function someAction()
-        {
-
-        }
-    }
-
-现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上面讲到的的）：
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
-
 控制器中的事件（Events in Controllers）
 ---------------------------------------
 控制器会自动作为 :doc:`dispatcher <dispatching>` 事件的侦听者，使用这些事件并实现这些方法后，

@@ -371,54 +371,6 @@ any other class registered with its name can easily replace a controller:
         }
     );
 
-ベース・コントローラの作成
---------------------------
-Some application features like access control lists, translation, caching and template engines are often common to many
-controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
-controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
-the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
-access to the common functionality.
-
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
-e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
-loaded using any autoloader:
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-Common components (actions, methods, properties etc.) can be implemented in this class:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * This action is available for multiple controllers
-         */
-        public function someAction()
-        {
-
-        }
-    }
-
-Now, any controller that extends ControllerBase automatically gains access to the common components (discussed above):
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
-
 コントローラのイベント
 ----------------------
 Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
