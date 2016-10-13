@@ -74,10 +74,13 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         ]
     );
 
-    // 使用自定义缓存
+    // Use the 'cache' service from the DI instead of 'modelsCache'
     $products = Products::find(
         [
-            "cache" => $myCache,
+            "cache" => [
+                "key"          => "my-cache",
+                "cacheService" => "cache",
+            ],
         ]
     );
 
