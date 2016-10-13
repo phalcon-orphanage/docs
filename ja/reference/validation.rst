@@ -1,10 +1,10 @@
 バリデーション
 ==============
 
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` は任意のデータセットを検証する、独立バリデーションコンポーネントです。
+このコンポーネントは、モデルまたはコレクションに属していないデータオブジェクトの検証ルールを実装するために使用することができます。
 
-The following example shows its basic usage:
+次の例は基本的な使い方です。
 
 .. code-block:: php
 
@@ -51,11 +51,11 @@ The following example shows its basic usage:
         }
     }
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+このコンポーネントの疎結合な設計思想は、フレームワークによって提供されているバリデータを使って、あなたが自分自身のバリデータを作ることを可能にしています。
 
 バリデーションの初期化
 -----------------------
-Validation chains can be initialized in a direct manner by just adding validators to the :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` object.
+バリデーションチェーンは :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` オブジェクトにバリデータを追加するという直接的な方法で初期化することができます。
 You can put your validations in a separate file for better re-use code and organization:
 
 .. code-block:: php
