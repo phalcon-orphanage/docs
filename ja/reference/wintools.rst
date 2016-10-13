@@ -1,74 +1,75 @@
 Phalcon 開発者ツール / Windows向け
 ==================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Windows.
+下記のステップは Phalcon 開発者ツール for Windows のインストール手順を示すものです。
 
 前提条件
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
+Phalcon 開発者ツールの実行には、Phalcon PHP 拡張が必須です。もしまだインストールしていないのなら、
+:doc:`インストール <install>` を参照してください。
 
 ダウンロード
 ------------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
+Download_ セクションで、開発者ツールを同梱したクロスプラットフォームのパッケージがダウンロードできます。また、Github_ から clone でもできます。
 
-On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\phalcon-tools*. You will need this path in the steps below. Edit the file "phalcon.bat" by right clicking on the file and selecting "Edit":
+Windows プラットフォームでは、システム環境変数 PATH に、Phalcon と PHP の実行ファイルの場所を含むよう構成する必要があります。 開発者ツールを ZIP 書庫でダウンロードした場合は、 *c:\\phalcon-tools* といったローカル HDD の任意のパスに展開してください。以降のステップでそのパスが必要になります。それから、「phalcon.bat」を選択し、右クリックメニューから「編集」を選び、編集します。
 
 .. figure:: ../_static/img/path-0.png
    :align: center
 
-Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
+Phalcon 開発者ツールをインストールした場所にパスを変更します。 (ここでは PTOOLSPATH=C:\phalcon-tools\ に設定):
 
 .. figure:: ../_static/img/path-01.png
    :align: center
 
-Save the changes.
+変更したら保存します。
 
-システムのパスにPHPとツールを追加
+システムのパスに PHP とツールを追加
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\wamp\bin\\php\\php5.3.10\\php.exe*.
+スクリプトも PHP で書かれているので、あなたのマシンにも PHP のインストールが必要になります。PHP の実行ファイルはインストール方法に依存して様々な場所に配置されます。php.exe ファイルを検索してそのパスをコピーしてください。最新の WAMP スタックを使っている場合は、PHP は *C:\\wamp\bin\\php\\php5.3.10\\php.exe* にあります。
 
-From the Windows start menu, right mouse click on the "Computer" icon and select "Properties":
+Windows のスタートメニューにて「コンピュータ」を右クリック、「プロパティ」を選びます。
 
 .. figure:: ../_static/img/path-1.png
    :align: center
 
-Click the "Advanced" tab and then the button "Environment Variables":
+詳細設定のタブから「環境変数」を押します。
 
 .. figure:: ../_static/img/path-2.png
    :align: center
 
-At the bottom, look for the section "System variables" and edit the variable "Path":
+下側の「システム環境変数」セクションから、変数「Path」を見つけて編集します。
 
 .. figure:: ../_static/img/path-3.png
    :align: center
 
-Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the ";" character to separate the different paths in the variable:
+この手順は気をつけてください！ Path 変数の長い文字列の最後に、php.exe へのパスと開発者ツールをインストールしたパスを追加します。変数内の文字列で異なるパスを分けるには、「;（セミコロン）」を使います。
 
 .. figure:: ../_static/img/path-4.png
    :align: center
 
-Accept the changes made by clicking "OK" and close the dialogs opened. From the start menu click on the option "Run". If you can't find this option, press "Windows Key" + "R".
+変更後「OK」を押し、ダイアログボックスを閉じましょう。スタートメニューから「ファイル名を指定して実行」を選びます。スタートメニューから見つけられない場合は、「ウィンドウズキー」と「R」を押してください。
 
 .. figure:: ../_static/img/path-5.png
    :align: center
 
-Type "cmd" and press enter to open the windows command line utility:
+Windows のコマンドプロンプトを開くため、:code:`cmd` と入力してエンターキーを押してください。
 
 .. figure:: ../_static/img/path-6.png
    :align: center
 
-Type the commands "php -v" and "phalcon" and you will see something like this:
+コマンド :code:`php -v` と :code:`phalcon` を入力して、こんなメッセージが出てくるのを確認しましょう。
 
 .. figure:: ../_static/img/path-7.png
    :align: center
 
-Congratulations you now have Phalcon tools installed!
+おめでとうございます！これで Phalcon Tools がインストールされました！
 
 関連ガイド
 ^^^^^^^^^^^^^^
-* :doc:`Using Developer Tools <tools>`
-* :doc:`Installation on OS X <mactools>`
-* :doc:`Installation on Linux <linuxtools>`
+* :doc:`Phalcon 開発者ツール <tools>`
+* :doc:`Phalcon 開発者ツール / Mac OS X向け <mactools>`
+* :doc:`Phalcon 開発者ツール / Linux向け <linuxtools>`
 
 .. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools
