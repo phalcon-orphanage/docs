@@ -1,4 +1,4 @@
-クラス **Phalcon\\Version**
+Class **Phalcon\\Version**
 ==========================
 
 .. role:: raw-html(raw)
