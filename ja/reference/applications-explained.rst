@@ -42,7 +42,7 @@ Phalcon アプリケーションの動作を理解する
 
     <?php
 
-	// ルーティングサービスを取得する
+    // ルーティングサービスを取得する
     $router = $di["router"];
 
     $router->handle();
@@ -140,14 +140,14 @@ Phalcon アプリケーションの動作を理解する
 
     use Phalcon\Http\ResponseInterface;
 
-	// ルーティングサービスを取得する
+    // ルーティングサービスを取得する
     $router = $di["router"];
 
     $router->handle();
 
     $dispatcher = $di["dispatcher"];
 
-	// 処理済みのルータパラメータをディスパッチャに渡す
+    // 処理済みのルータパラメータをディスパッチャに渡す
 
     $dispatcher->setControllerName(
         $router->getControllerName()
@@ -167,7 +167,7 @@ Phalcon アプリケーションの動作を理解する
     } catch (Exception $e) {
         // 例外が発生した場合、それに対応するコントローラーとアクションを実行する
 
-		// 処理済みのルータパラメータをディスパッチャに渡す
+        // 処理済みのルータパラメータをディスパッチャに渡す
         $dispatcher->setControllerName("errors");
         $dispatcher->setActionName("action503");
 
