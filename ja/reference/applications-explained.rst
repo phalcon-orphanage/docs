@@ -1,7 +1,7 @@
-Understanding How Phalcon Applications Work
+Phalcon アプリケーションの動作を理解する
 ===========================================
 
-あなたが :doc:`tutorial <tutorial>` を読んでことがあるか、 :doc:`Phalcon Devtools <tools>` を使ってコードを生成したことがあるなら、以下のブートストラップファイルを見たことがあるはずです：
+あなたが :doc:`tutorial <tutorial>` を読んだことがあるか、 :doc:`Phalcon Devtools <tools>` を使ってコードを生成したことがあるなら、以下のブートストラップファイルを見たことがあるはずです：
 
 .. code-block:: php
 
@@ -15,7 +15,7 @@ Understanding How Phalcon Applications Work
     // サービスを登録する
     // ...
 
-    // Handle the request
+    // リクエストのハンドル
     $application = new Application($di);
 
     try {
@@ -26,7 +26,7 @@ Understanding How Phalcon Applications Work
         echo "Exception: ", $e->getMessage();
     }
 
-コントローラーの全ての働きの中核部分は、handle()が呼ばれた際に発生します：
+コントローラーに関する動作全般の中核部分は、handle() が呼ばれる際に発生します：
 
 .. code-block:: php
 
@@ -36,13 +36,13 @@ Understanding How Phalcon Applications Work
 
 手動によるブートストラップ
 --------------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を使いたくない場合、上述したコードは以下のように変更できます:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を使いたくない場合、前述のコードは以下のように変更できます:
 
 .. code-block:: php
 
     <?php
 
-    // 「router」サービスを取得
+    // ルーティングサービスを取得する
     $router = $di["router"];
 
     $router->handle();
@@ -88,7 +88,7 @@ Understanding How Phalcon Applications Work
         $view->getContent()
     );
 
-    // Send the response
+    // レスポンスを送信
     $response->send();
 
 以下の、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の代替となるコードは、viewコンポーネントを使用していないため、REST APIに適しています:
@@ -99,14 +99,14 @@ Understanding How Phalcon Applications Work
 
     use Phalcon\Http\ResponseInterface;
 
-    // Get the 'router' service
+    // ルーティングサービスを取得する
     $router = $di["router"];
 
     $router->handle();
 
     $dispatcher = $di["dispatcher"];
 
-    // Pass the processed router parameters to the dispatcher
+    // 処理済みのルータパラメータをディスパッチャに渡す
 
     $dispatcher->setControllerName(
         $router->getControllerName()
@@ -140,14 +140,14 @@ Understanding How Phalcon Applications Work
 
     use Phalcon\Http\ResponseInterface;
 
-    // Get the 'router' service
+    // ルーティングサービスを取得する
     $router = $di["router"];
 
     $router->handle();
 
     $dispatcher = $di["dispatcher"];
 
-    // Pass the processed router parameters to the dispatcher
+    // 処理済みのルータパラメータをディスパッチャに渡す
 
     $dispatcher->setControllerName(
         $router->getControllerName()
@@ -162,25 +162,25 @@ Understanding How Phalcon Applications Work
     );
 
     try {
-        // Dispatch the request
+        // リクエストを割り振る
         $dispatcher->dispatch();
     } catch (Exception $e) {
         // 例外が発生した場合、それに対応するコントローラーとアクションを実行する
 
-        // Pass the processed router parameters to the dispatcher
+        // 処理済みのルータパラメータをディスパッチャに渡す
         $dispatcher->setControllerName("errors");
         $dispatcher->setActionName("action503");
 
-        // Dispatch the request
+        // リクエストを割り振る
         $dispatcher->dispatch();
     }
 
-    // Get the returned value by the last executed action
+    // 最後に実行したアクションによる戻り値を取得する
     $response = $dispatcher->getReturnedValue();
 
-    // Check if the action returned is a 'response' object
+    // アクションが「レスポンス」オブジェクトかどうか確認する
     if ($response instanceof ResponseInterface) {
-        // Send the response
+        // レスポンスを送信する
         $response->send();
     }
 

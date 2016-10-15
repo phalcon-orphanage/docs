@@ -1,16 +1,16 @@
-Generating URLs and Paths
+URL とパスを生成する
 =========================
 
-:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate URLs in a Phalcon application. It's
-capable of produce independent URLs based on routes.
+:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` は Phalcon アプリケーションに置いて、URL 生成を担うコンポーネントです。
+ルーティングをベースにした、個々の URL を生成する能力があります。
 
-ベースURIの設定
+ベース URI の設定
 ------------------
-Depending of which directory of your document root your application is installed, it may have a base URI or not.
+アプリケーションをインストールしたドキュメントルートのディレクトリの状況に応じて、ベース URI が必要になる場合があります。
 
-For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
-baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
-Execute the following code to know the base URI detected by Phalcon:
+例えば、ドキュメントルートが /var/www/htdocs であなたのアプリケーションが /var/www/htdocs/invo にインストールしてある場合、ベース URI は /invo/ になります。
+VirtualHost を使っていたり、またはドキュメントルート直下にインストールしている場合、ベース URI は / になります。
+Phalcon が検出しているベース URI を確認するため、下記のコードを実行しましょう。
 
 .. code-block:: php
 
@@ -22,8 +22,8 @@ Execute the following code to know the base URI detected by Phalcon:
 
     echo $url->getBaseUri();
 
-By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application
-is recommended setting up it manually:
+Phalcon は、デフォルトでは自動的にベース URI を検出します。
+しかしアプリケーションのパフォーマンスを向上させたい場合は、設定を手動で行うことを推奨しています。
 
 .. code-block:: php
 
@@ -33,16 +33,16 @@ is recommended setting up it manually:
 
     $url = new Url();
 
-    // Setting a relative base URI
+    // ベース URI を相対的に設定
     $url->setBaseUri("/invo/");
 
-    // Setting a full domain as base URI
+    // ベース URI としてフルドメインを指定する
     $url->setBaseUri("//my.domain.com/");
 
-    // Setting a full domain as base URI
+    // ベース URI としてフルドメインを指定する
     $url->setBaseUri("http://my.domain.com/my-app/");
 
-Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
+通常、このコンポーネントは DI コンテナ内で登録されなければならないので、下記のように設定することもできます。
 
 .. code-block:: php
 
@@ -61,18 +61,18 @@ Usually, this component must be registered in the Dependency Injector container,
         }
     );
 
-URIの生成
+URI の生成
 ---------------
-If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the
-following pattern: /:controller/:action/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other
-pattern defined in the router) passing a string to the method "get":
+もし、:doc:`ルーティング <routing>`のデフォルトの振る舞いを使用するならば、
+あなたのアプリケーションのルーティングパターンは /:controller/:action/:params にすることができます。
+従って、ルータ内部で定義しているあらゆるパターン含め、GET メソッドへ渡す文字列パターンも簡単に作ることができます。
 
 .. code-block:: php
 
     <?php echo $url->get("products/save"); ?>
 
-Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically.
-For Example if you have the following route:
+ベース URI を先頭につける必要が無いことに注意してください。名前をつけたルートであれば、動的に簡単に変更、作成ができます。
+例えば、次のようなルートを持っていたとします。
 
 .. code-block:: php
 
@@ -86,13 +86,13 @@ For Example if you have the following route:
         ]
     )->setName("show-post");
 
-A URL can be generated in the following way:
+URL は次のような方法で生成することができます。
 
 .. code-block:: php
 
     <?php
 
-    // This produces: /blog/2015/01/some-blog-post
+    // 結果は /blog/2015/01/some-blog-post となります
     $url->get(
         [
             "for"   => "show-post",
@@ -102,9 +102,9 @@ A URL can be generated in the following way:
         ]
     );
 
-mod_rewriteを使用せずにURLを生成する
+mod_rewrite を使用せずに URL を生成する
 ------------------------------------
-You can use this component also to create URLs without mod_rewrite:
+mod_rewrite を使用せずに URL を生成する場合も、このコンポーネントを使うことができます。
 
 .. code-block:: php
 
@@ -114,13 +114,13 @@ You can use this component also to create URLs without mod_rewrite:
 
     $url = new Url();
 
-    // Pass the URI in $_GET["_url"]
+    // $_GET["_url"] 内の URI を渡す
     $url->setBaseUri("/invo/index.php?_url=/");
 
-    // This produce: /invo/index.php?_url=/products/save
+    // 出力結果は /invo/index.php?_url=/products/save となります。
     echo $url->get("products/save");
 
-You can also use :code:`$_SERVER["REQUEST_URI"]`:
+この際、:code:`$_SERVER["REQUEST_URI"]` を使うことも可能です。
 
 .. code-block:: php
 
@@ -130,13 +130,13 @@ You can also use :code:`$_SERVER["REQUEST_URI"]`:
 
     $url = new Url();
 
-    // Pass the URI in $_GET["_url"]
+    // $_GET["_url"] 内の URI を渡す
     $url->setBaseUri("/invo/index.php?_url=/");
 
-    // Pass the URI using $_SERVER["REQUEST_URI"]
+    // $_SERVER["REQUEST_URI"] を使っ、マニュアルでハンドルが必要になります。て URI を渡す
     $url->setBaseUri("/invo/index.php/");
 
-In this case, it's necessary to manually handle the required URI in the Router:
+この場合、ルーター内で要求した URI をマニュアルで対処する必要があります。
 
 .. code-block:: php
 
@@ -146,38 +146,38 @@ In this case, it's necessary to manually handle the required URI in the Router:
 
     $router = new Router();
 
-    // ... Define routes
+    // ... ルートをマニュアルで定義する
 
     $uri = str_replace($_SERVER["SCRIPT_NAME"], "", $_SERVER["REQUEST_URI"]);
 
     $router->handle($uri);
 
-The produced routes would look like:
+結果のルートは下記のようになります
 
 .. code-block:: php
 
     <?php
 
-    // This produce: /invo/index.php/products/save
+    // 結果として /invo/index.php/products/save となります。
     echo $url->get("products/save");
 
-VoltでのURLの生成
+Volt での URL の生成
 ------------------------
-The function "url" is available in volt to generate URLs using this component:
+Volt 内部でこのコンポーネントを使って URL を生成するために url という関数を用意しています。
 
 .. code-block:: html+jinja
 
     <a href="{{ url("posts/edit/1002") }}">Edit</a>
 
-Generate static routes:
+静的なルートが生成されます。
 
 .. code-block:: html+jinja
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-静的なURI vs. 動的なURI
+静的な URI vs. 動的な URI
 -----------------------
-This component allow you to set up a different base URI for static resources in the application:
+このコンポーネントは、同一アプリケーション内で異なるベース URI を設定することも許されています。
 
 .. code-block:: php
 
@@ -187,15 +187,14 @@ This component allow you to set up a different base URI for static resources in 
 
     $url = new Url();
 
-    // Dynamic URIs are
+    // 動的 URI
     $url->setBaseUri("/");
 
-    // Static resources go through a CDN
+    // 静的リソースは CDN へ
     $url->setStaticBaseUri("http://static.mywebsite.com/");
 
-:doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
+:doc:`Phalcon\\Tag <tags>` は、このコンポーネントを使った動的・静的　URI の両方を要求します。
 
-独自URLジェネレータの実装
+独自 URL ジェネレータの実装
 -----------------------------------
-The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL
-generator replacing the one provided by Phalcon.
+Phalcon が提供している URL ジェネレータの代わりに独自で URL ジェネレータを作成する場合、 :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` インターフェースを必ず実装してください。
