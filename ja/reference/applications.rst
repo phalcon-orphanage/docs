@@ -1,15 +1,16 @@
 MVC アプリケーション
 ====================
 
-PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の働きがあります。このコンポーネントは、バックグラウンドで必要となる全ての複雑な処理をカプセル化し、必要とされる全てのコンポーネントを初期化して、それらをプロジェクトに統合し、MVCパターンの望ましい動作を実現します。
+Phalcon では MVC の協調動作の背後にある全ての煩雑な作業は通常 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` によって遂行されています。
+このコンポーネントは、バックグラウンドで必要となる全ての複雑な処理をカプセル化し、必要とされる全てのコンポーネントを初期化して、それらをプロジェクトに統合し、MVC パターンの望ましい動作を実現します。
 
 シングルまたはマルチモジュールアプリケーション
 ----------------------------------------------
-このコンポーネントを使用すると、様々な種類のMVC構造を実行することが出来ます。
+このコンポーネントを使用すると、様々な種類の MVC 構造を実行することが出来ます。
 
 シングルモジュール
 ^^^^^^^^^^^^^^^^^^^
-シングルMVCアプリケーションは、1つのモジュールで構成されています。名前空間を使用することもできますが、使用しなくてもかまいません。このようなアプリケーションでは、下記のようなファイル構成を持つことになります：
+シングル MVC アプリケーションは 1 つのモジュールだけで構成されています。名前空間を使用することもできますが不要です。このようなアプリケーションでは、下記のようなファイル構成を持つことになります：
 
 .. code-block:: php
 
@@ -23,7 +24,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
             img/
             js/
 
-名前空間を使用しない場合、下記のブートストラップファイルをMVCのフローを調整するために使用することができます：
+名前空間を使用しない場合、下記のブートストラップファイルを MVC のフローを調整するために使用することができます：
 
 .. code-block:: php
 
@@ -107,7 +108,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
         }
     );
 
-    // Register the view component
+    // view コンポーネントを登録
     $di->set(
         "view",
         function () {
@@ -131,7 +132,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
 
 マルチモジュール
 ^^^^^^^^^^^^^^^^
-マルチモジュールアプリケーションは、1つ以上のモジュールに同じドキュメントルートを使用します。この場合、以下のようなファイル構成が使用できます：
+マルチモジュールアプリケーションは、1 つ以上のモジュールに同じドキュメントルートを使用します。この場合、以下のようなファイル構成が使用できます：
 
 .. code-block:: php
 
@@ -152,7 +153,7 @@ PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Appl
         img/
         js/
 
-apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っています。Module.php はそれぞれのモジュールにおける固有の設定、例えばオートローダーや専用のサービスの登録等に使用します：
+apps/ 配下のそれぞれのディレクトリが独自の MVC 構造を持っています。Module.php はそれぞれのモジュールにおける固有の設定、例えばオートローダーや専用のサービスの登録等に使用します：
 
 .. code-block:: php
 
@@ -169,7 +170,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     class Module implements ModuleDefinitionInterface
     {
         /**
-         * Register a specific autoloader for the module
+         * モジュール用に特定のオートローダを登録
          */
         public function registerAutoloaders(DiInterface $di = null)
         {
@@ -186,7 +187,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         }
 
         /**
-         * Register specific services for the module
+         * モジュール用に特定のサービスを登録
          */
         public function registerServices(DiInterface $di)
         {
@@ -202,7 +203,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
                 }
             );
 
-            // Registering the view component
+            // view コンポーネントを登録
             $di->set(
                 "view",
                 function () {
@@ -216,7 +217,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
         }
     }
 
-マルチモジュールのMVC構成をロードするには、特別なブートストラップファイルが必要になります：
+マルチモジュールの MVC 構成をロードするには、特別なブートストラップファイルが必要になります：
 
 .. code-block:: php
 
@@ -229,7 +230,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     $di = new FactoryDefault();
 
     // モジュールのルーティング設定
-    // More information how to set the router up https://docs.phalconphp.com/ja/latest/reference/routing.html
+    // 詳細はルーティングの設定を参照  https://docs.phalconphp.com/ja/latest/reference/routing.html
     $di->set(
         "router",
         function () {
@@ -307,7 +308,7 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
     // viewコンポーネントにオプションを設定
     // ...
 
-    // Register the installed modules
+    // インストールしたモジュールを登録
     $application->registerModules(
         [
             "frontend" => function ($di) use ($view) {
@@ -340,17 +341,17 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` は、 :doc:`EventsManager <events>` にイベントを送ることができます ( :doc:`EventsManager <events>` がある場合)。イベントは「application」というタイプで発火します。以下のイベントがサポートされています:
 
 +---------------------+--------------------------------------------------------------+
-| Event Name          | Triggered                                                    |
+| イベント名            | トリガー                                                      |
 +=====================+==============================================================+
-| boot                | Executed when the application handles its first request      |
+| boot                | アプリケーションが最初のリクエストを処理した時に実行される             |
 +---------------------+--------------------------------------------------------------+
-| beforeStartModule   | Before initialize a module, only when modules are registered |
+| beforeStartModule   | モジュールが登録されている場合に限り、モジュールが初期化される前に実行される |
 +---------------------+--------------------------------------------------------------+
-| afterStartModule    | After initialize a module, only when modules are registered  |
+| afterStartModule    | モジュールが登録されている場合に限り、モジュールが初期化された後に実行される |
 +---------------------+--------------------------------------------------------------+
-| beforeHandleRequest | Before execute the dispatch loop                             |
+| beforeHandleRequest | ディスパッチループが開始される前に実行される                        |
 +---------------------+--------------------------------------------------------------+
-| afterHandleRequest  | After execute the dispatch loop                              |
+| afterHandleRequest  | ディスパッチループの後に実行される                                |
 +---------------------+--------------------------------------------------------------+
 
 以下の例は、リスナーへのこのコンポーネントの追加方法を示しています:
@@ -375,4 +376,4 @@ apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っ�
 
 外部資料
 ------------------
-* `MVC examples on Github <https://github.com/phalcon/mvc>`_
+* `Github にある MVC 例 <https://github.com/phalcon/mvc>`_

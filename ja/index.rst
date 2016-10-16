@@ -16,7 +16,7 @@ Phalconはパフォーマンスだけではありません。我々のゴール�
 目次
 -----------------
 
-Installation
+インストール
 ^^^^^^^^^^^^
 
 .. toctree::
@@ -31,7 +31,7 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
+チュートリアル
 ^^^^^^^^^
 
 .. toctree::
@@ -46,7 +46,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+コンポーネント
 ^^^^^^^^^^
 
 .. toctree::
@@ -105,7 +105,7 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
+詳細解説・参考文献
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
@@ -123,7 +123,7 @@ API
 
    api/index
 
-Legal
+免責事項
 ^^^^^
 
 .. toctree::
@@ -131,7 +131,7 @@ Legal
 
    reference/license
 
-Previous Versions
+過去のバージョン
 -----------------
 
 * `2.0.0 <https://docs.phalconphp.com/ja/2.0.0/>`

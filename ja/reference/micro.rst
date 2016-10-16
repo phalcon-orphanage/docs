@@ -61,7 +61,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    // With a function
+    // 関数を使う
     function say_hello($name) {
         echo "<h1>Hello! $name</h1>";
     }
@@ -71,13 +71,13 @@ PHPアプリケーションを最小のコードで書くことが可能です�
         "say_hello"
     );
 
-    // With a static method
+    // 静的メソッドを使う
     $app->get(
         "/say/hello/{name}",
         "SomeClass::someSayMethod"
     );
 
-    // With a method in an object
+    // オブジェクト内のメソッドを使う
     $myController = new MyController();
     $app->get(
         "/say/hello/{name}",
@@ -87,7 +87,7 @@ PHPアプリケーションを最小のコードで書くことが可能です�
         ]
     );
 
-    // Anonymous function
+    // 無名関数
     $app->get(
         "/say/hello/{name}",
         function ($name) {
@@ -102,43 +102,43 @@ PHPアプリケーションを最小のコードで書くことが可能です�
 
     <?php
 
-    // Matches if the HTTP method is GET
+    // HTTP メソッドが GET の場合
     $app->get(
         "/api/products",
         "get_products"
     );
 
-    // Matches if the HTTP method is POST
+    // HTTP メソッドが POST の場合
     $app->post(
         "/api/products/add",
         "add_product"
     );
 
-    // Matches if the HTTP method is PUT
+    // HTTP メソッドが PUT の場合
     $app->put(
         "/api/products/update/{id}",
         "update_product"
     );
 
-    // Matches if the HTTP method is DELETE
+    // HTTP メソッドが DELETE の場合
     $app->delete(
         "/api/products/remove/{id}",
         "delete_product"
     );
 
-    // Matches if the HTTP method is OPTIONS
+    // HTTP メソッドが OPTIONS の場合
     $app->options(
         "/api/products/info/{id}",
         "info_product"
     );
 
-    // Matches if the HTTP method is PATCH
+    // HTTP メソッドが PATCH の場合
     $app->patch(
         "/api/products/update/{id}",
         "info_product"
     );
 
-    // Matches if the HTTP method is GET or POST
+    // HTTP メソッドが GET または POST の場合
     $app->map(
         "/repos/store/refs",
         "action_product"

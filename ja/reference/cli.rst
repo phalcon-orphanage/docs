@@ -1,21 +1,21 @@
 コマンドライン アプリケーション
 ===============================
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI アプリケーションはコマンドラインから実行されます。これらは cron ジョブやスクリプト、コマンドユーティリティ等を作成するのに便利です。
 
 構造
 ---------
-A minimal structure of a CLI application will look like this:
+CLI アプリケーションの最小構成はこんな感じになります:
 
 * app/config/config.php
 * app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+* app/cli.php <-- メインのブートストラップファイル
 
-Bootstrapの作成
+ブートストラップの作成
 --------------------
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+通常の MVC アプリケーションのように、ブートストラップファイルはアプリケーションの起動に使用されます。Web アプリケーションではおなじみの index.php の代わりに、cli.php をこのアプリケーションのブートストラップファイルに使います。
 
-Below is a sample bootstrap that is being used for this example.
+下は、サンプルのこの例のために用意したブートストラップです。
 
 .. code-block:: php
 
@@ -27,13 +27,13 @@ Below is a sample bootstrap that is being used for this example.
 
 
 
-    // Using the CLI factory default services container
+    // CLI ファクトリのデフォルトサービスコンテナを使います
     $di = new CliDI();
 
 
 
     /**
-     * Register the autoloader and tell it to register the tasks directory
+     * オートローダを登録し、更にローダにタスク用ディレクトリを登録
      */
     $loader = new Loader();
 
@@ -47,7 +47,7 @@ Below is a sample bootstrap that is being used for this example.
 
 
 
-    // Load the configuration file (if any)
+    // 設定ファイルを読み込み（もしあれば）
 
     $configFile = __DIR__ . "/config/config.php";
 
@@ -59,7 +59,7 @@ Below is a sample bootstrap that is being used for this example.
 
 
 
-    // Create a console application
+    // コンソールアプリケーションを作成
     $console = new ConsoleApp();
 
     $console->setDI($di);
@@ -67,7 +67,7 @@ Below is a sample bootstrap that is being used for this example.
 
 
     /**
-     * Process the console arguments
+     * コンソールの引数を処理
      */
     $arguments = [];
 
@@ -84,7 +84,7 @@ Below is a sample bootstrap that is being used for this example.
 
 
     try {
-        // Handle incoming arguments
+        // 渡された引数の処理
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
@@ -92,13 +92,13 @@ Below is a sample bootstrap that is being used for this example.
         exit(255);
     }
 
-This piece of code can be run using:
+この部分のコードは下記のように実行されます:
 
 .. code-block:: bash
 
     $ php app/cli.php
 
-    This is the default task and the default action
+    これはデフォルトのタスクで、かつデフォルトのアクションになります。
 
 タスク
 ------
