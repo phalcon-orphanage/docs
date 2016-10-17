@@ -1,18 +1,19 @@
-Phalcon 開発者ツール / Linux向け
+Phalcon 開発者ツール / Linux 向け
 ================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+下記のステップは Linux に Phalcon 開発者ツールをインストールするための手順を示すものです。
 
-Prerequisites
+前提条件
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>`
-section for instructions.
+Phalcon 開発者ツールの実行には、Phalcon PHP 拡張が必須です。もしまだインストールしていないのなら、
+:doc:`インストール <install>` を参照してください。
 
-Download
---------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 
-Open a terminal and type the command below:
+ダウンロード
+------------
+Download_ セクションで、開発者ツールを同梱したクロスプラットフォームのパッケージがダウンロードできます。また、Github_ から clone でもできます。
+
+ターミナルを開き、下記のコマンドを入力します:
 
 .. code-block:: bash
 
@@ -21,7 +22,7 @@ Open a terminal and type the command below:
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
-Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+ツールを clone したフォルダに移動し、". ./phalcon.sh" を実行します（コマンドの最初のドットを忘れないでください）。:
 
 .. code-block:: bash
 
@@ -32,7 +33,7 @@ Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", 
 .. figure:: ../_static/img/linux-2.png
    :align: center
 
-Create a symbolink link to the phalcon.php script:
+スクリプト phalcon.php へのシンボリックリンクを作成します:
 
 .. code-block:: bash
 
@@ -40,13 +41,13 @@ Create a symbolink link to the phalcon.php script:
 
     chmod ugo+x /usr/bin/phalcon
 
-Congratulations you now have Phalcon tools installed!
+おめでとうございます！これで Phalcon Tools がインストールされました！
 
-Related Guides
+関連ガイド
 ^^^^^^^^^^^^^^
-* :doc:`Using Developer Tools <tools>`
-* :doc:`Installation on Windows <wintools>`
-* :doc:`Installation on Mac <mactools>`
+* :doc:`Phalcon 開発者ツール <tools>`
+* :doc:`Phalcon 開発者ツール / Windows 向け <wintools>`
+* :doc:`Phalcon 開発者ツール / Mac OS X 向け <mactools>`
 
 .. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools
