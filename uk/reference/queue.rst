@@ -16,6 +16,12 @@ Putting Jobs into the Queue
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message
 structure according to the needs of the application:
 
+.. attention::
+
+    Some of the returns from queue methods require that the module Yaml be installed.  Please
+    refer to http://php.net/manual/book.yaml.php for more information.  For PHP < 7, Yaml 1.3.0
+    is acceptable.  For PHP >= 7, you will need to use Yaml >= 2.0.0.
+
 .. code-block:: php
 
     <?php

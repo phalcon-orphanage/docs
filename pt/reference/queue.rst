@@ -11,6 +11,12 @@ While you can find more sophisticated PHP extensions to address queueing in your
 Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
 It’s simple, lightweight, and completely specialized for job queueing.
 
+.. attention::
+
+    Some of the returns from queue methods require that the module Yaml be installed.  Please
+    refer to http://php.net/manual/book.yaml.php for more information.  For PHP < 7, Yaml 1.3.0
+    is acceptable.  For PHP >= 7, you will need to use Yaml >= 2.0.0.
+
 Putting Jobs into the Queue
 ---------------------------
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message

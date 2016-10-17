@@ -13,6 +13,12 @@
 была вдохновлена Memcache_. Этот клиент прост, легок, и полностью специализируется на работе
 очереди.
 
+.. attention::
+
+    Some of the returns from queue methods require that the module Yaml be installed.  Please
+    refer to http://php.net/manual/book.yaml.php for more information.  For PHP < 7, Yaml 1.3.0
+    is acceptable.  For PHP >= 7, you will need to use Yaml >= 2.0.0.
+
 Добавление заданий в очередь
 ----------------------------
 После подключения к Beanstalk, вы можете добавлять столько заданий сколько необходимо. Разработчик
