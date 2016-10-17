@@ -16,7 +16,7 @@
 .. figure:: ../_static/img/path-0.png
    :align: center
 
-Измените путь на тот, в который были установлены инструменты разработчика Phalcon:
+Измените путь на тот, по которому были установлены инструменты разработчика Phalcon:
 
 .. figure:: ../_static/img/path-01.png
    :align: center
