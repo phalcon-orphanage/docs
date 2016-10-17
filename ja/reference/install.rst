@@ -1,19 +1,19 @@
 インストール
 ============
-PHP拡張モジュールは、従来のPHPベースのライブラリやフレームワークとは若干異なるインストール方法をとります。
+PHP 拡張モジュールは、従来の PHP ベースのライブラリやフレームワークとは若干異なるインストール方法をとります。
 あなたのシステム向けのバイナリパッケージをダウンロードするか、ソースコードからビルドする２つの方法があります。
 
 Windows
 -------
-Windows上でPhalconを使用するには、DLLライブラリをダウンロードします。そして php.iniを編集し、最後に次の行を追加します。
+Windows 上で Phalcon を使用するには、DLLライブラリをダウンロードします。そして php.ini を編集し、最後に次の行を追加します。
 
 .. code-block:: bash
 
     extension=php_phalcon.dll
 
-最後にWEBサーバーを再起動します。
+最後に WEB サーバーを再起動します。
 
-次のスクリーンキャストは、Windows上にPhalconをインストールするステップバイステップガイドです。
+次のスクリーンキャストは、Windows 上に Phalcon をインストールするステップバイステップガイドです。
 
 .. raw:: html
 
@@ -32,61 +32,61 @@ Linux/Solaris
 
 Debian / Ubuntu
 ^^^^^^^^^^^^^^^
-To add the repository to your distribution:
+下記の方法でディストリビューションにリポジトリを追加します:
 
 .. code-block:: bash
 
-    # Stable releases
+    # 安定板
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 
-    # Nightly releases
+    # ナイトリービルド
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを選び直すといった事情がなければ、実施は一度だけしか必要ありません。
 
-To install Phalcon:
+Phalcon をインストールするには:
 
 .. code-block:: bash
 
     sudo apt-get install php5-phalcon
 
-    # or for PHP 7
+    # PHP 7 の場合
 
     sudo apt-get install php7.0-phalcon
 
-RPM distributions (i.e. CentOS)
+RPM ディストリビューション (CentOS 等)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To add the repository to our distribution:
+下記の方法でディストリビューションにリポジトリを追加します:
 
 .. code-block:: bash
 
-    # Stable releases
+    # 安定板
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 
-    # Nightly releases
+    # ナイトリービルド
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを選び直すといった事情がなければ、実施は一度だけしか必要ありません。
 
-To install Phalcon:
+Phalcon をインストールするには:
 
 .. code-block:: bash
 
     sudo yum install php56u-phalcon
 
-    # or for PHP 7
-
+    # PHP 7 の場合
+｀
     sudo yum install php70u-phalcon
 
-Compile from source
+ソースからコンパイルする
 ^^^^^^^^^^^^^^^^^^^
 Linux/Solaris の環境では、簡単に拡張モジュールをソースコードからコンパイルしてインストールすることができます。
 
 必要となるパッケージは次の通りです：
 
-* PHP >= 5.5 development resources
-* GCC compiler (Linux/Solaris)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* PHP >= 5.5 開発リソース
+* GCC コンパイラ (Linux/Solaris)
+* Git (まだインストールしていないなら。GitHub からダウンロードしたり、サーバーには FTP/SFTP でアップロードでもしない限り、すでに入っていると思いますが)
 
 一般的なプラットフォームにおける具体的なパッケージ:
 
@@ -114,45 +114,45 @@ Linux/Solaris の環境では、簡単に拡張モジュールをソースコー
 
     sudo ./install
 
-php.iniに拡張モジュールを追加します。
+php.ini に拡張モジュールを追加します。
 
 .. code-block:: bash
 
-    # Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+    # Suse の場合: /etc/php5/conf.d/ に下記内容が書いてある phalcon.ini を追加します:
     extension=phalcon.so
 
-    # CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    # CentOS/RedHat/Fedora の場合: /etc/php.d/ に下記内容が書いてある phalcon.ini を追加します:
     extension=phalcon.so
 
-    # Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+    # Ubuntu/Debian、Apache2 で構成している場合: /etc/php5/apache2/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
     extension=phalcon.so
 
-    # Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    # Ubuntu/Debian、php5-fpm で構成している場合: /etc/php5/fpm/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
     extension=phalcon.so
 
-    # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+    # Ubuntu/Debian、php5-cli で構成している場合: /etc/php5/cli/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
     extension=phalcon.so
 
-最後にWEBサーバーを再起動します。
+最後に WEB サーバーを再起動します。
 
-If you are running Ubuntu/Debian with php5-fpm, restart it:
+Ubuntu/Debian、php5-fpm で構成している場合は、これも再起動します:
 
 .. code-block:: bash
 
     sudo service php5-fpm restart
 
-Phalconは自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます。
+Phalcon は自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます。
 
 .. code-block:: bash
 
     cd cphalcon/build
 
-    # One of the following:
+    # 次のどれか一つ:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+自動判別インストーラが失敗する場合は手動でビルドしてみます:
 
 .. code-block:: bash
 
@@ -166,11 +166,11 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+macOS, OS X システムではソースコードからコンパイル、そしてインストールすることができます:
 
-Requirements
+前提条件
 ^^^^^^^^^^^^
-Prerequisite packages are:
+必須パッケージは下記の通り:
 
 * PHP >= 5.5 development resources
 * XCode
@@ -186,17 +186,17 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration.
+これであなたの PHP 環境に拡張モジュールが入ります。
 
 FreeBSD
 -------
-FreeBSDではportを利用することができます。インストールするには、次のシンプルなコマンドを叩くだけです。
+FreeBSD では port を利用することができます。インストールするには、次のシンプルなコマンドを叩くだけです。
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+または
 
 .. code-block:: bash
 
@@ -208,13 +208,13 @@ or
 
 インストールの確認
 ------------------
-:code:`phpinfo()` の "Phalcon"のセクションの出力を確認するか、 次のコードスニペットを実行してみてください。
+:code:`phpinfo()` の "Phalcon" のセクションの出力を確認するか、 次のコードスニペットを実行してみてください。
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-Phalcon拡張モジュールは下記のように出力の一部に現れるでしょう。
+Phalcon 拡張モジュールは下記のように出力の一部に現れるでしょう。
 
 .. code-block:: php
 
@@ -231,7 +231,7 @@ Phalcon拡張モジュールは下記のように出力の一部に現れるで�
 
 インストール ノート
 -------------------
-各WEBサーバーにおけるインストールノート
+各 WEB サーバーにおけるインストールノート
 
 .. toctree::
     :maxdepth: 1

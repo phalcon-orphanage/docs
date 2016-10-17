@@ -1,28 +1,28 @@
-Phalcon 開発者ツール / Mac OS X向け
+Phalcon 開発者ツール / Mac OS X 向け
 ===================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
+下記のステップは OS X / macOS に Phalcon 開発者ツールをインストールするための手順を示すものです。
 
-Prerequisites
+前提条件
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
+Phalcon 開発者ツールの実行には、Phalcon PHP 拡張が必須です。もしまだインストールしていないのなら、:doc:`インストール <install>` のセクションを参照してください。
 
-Download
+ダウンロード
 --------
-You can download a cross platform package containing the developer tools from the `Download`_ section. You can also clone it from `Github`_.
+Download_ セクションで、開発者ツールを同梱したクロスプラットフォームのパッケージがダウンロードできます。また、Github_ から clone でもできます。
 
-Open the terminal application:
+ターミナルアプリケーションを開き:
 
 .. figure:: ../_static/img/mac-1.png
    :align: center
 
-Copy & Paste the commands below in your terminal:
+コピー & ペーストでターミナルに下記のコマンドを貼り付けます:
 
 .. code-block:: bash
 
     git clone git://github.com/phalcon/phalcon-devtools.git
 
-Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+ツールを clone したフォルダに移動し、". ./phalcon.sh" を実行します（コマンドの最初のドットを忘れないでください）。:
 
 .. code-block:: bash
 
@@ -30,7 +30,7 @@ Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", 
 
     . ./phalcon.sh
 
-In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
+ターミナルで次のコマンドを入力し、スクリプト phalcon.php へのシンボリックリンクを作成します。:
 
 .. code-block:: bash
 
@@ -38,18 +38,18 @@ In the terminal window, type the following commands to create a symbolic link to
 
     chmod +x ~/phalcon-tools/phalcon
 
-Type the command "phalcon" and you will see something like this:
+"phalcon" とコマンドを入力すると下記のようになります。:
 
 .. figure:: ../_static/img/mac-5.png
    :align: center
 
-Congratulations you now have Phalcon tools installed!
+   おめでとうございます！これで Phalcon 開発者ツールがインストールされました！
 
-Related Guides
+関連ガイド
 ^^^^^^^^^^^^^^
-* :doc:`Using Developer Tools <tools>`
-* :doc:`Installation on Windows <wintools>`
-* :doc:`Installation on Linux <linuxtools>`
+* :doc:`Phalcon 開発者ツール <tools>`
+* :doc:`Phalcon 開発者ツール / Windows 向け <wintools>`
+* :doc:`Phalcon 開発者ツール / Linux 向け <linuxtools>`
 
 .. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools

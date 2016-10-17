@@ -1,7 +1,7 @@
-Phalcon 開発者ツール / Windows向け
+Phalcon 開発者ツール / Windows 向け
 ==================================
 
-下記のステップは Phalcon 開発者ツール for Windows のインストール手順を示すものです。
+下記のステップは Windows に Phalcon 開発者ツールのインストールするための手順を示すものです。
 
 前提条件
 -------------
@@ -63,12 +63,12 @@ Windows のコマンドプロンプトを開くため、:code:`cmd` と入力し
 .. figure:: ../_static/img/path-7.png
    :align: center
 
-おめでとうございます！これで Phalcon Tools がインストールされました！
+   おめでとうございます！これで Phalcon 開発者ツールがインストールされました！
 
 関連ガイド
 ^^^^^^^^^^^^^^
 * :doc:`Phalcon 開発者ツール <tools>`
-* :doc:`Phalcon 開発者ツール / Mac OS X向け <mactools>`
+* :doc:`Phalcon 開発者ツール / Mac OS X 向け <mactools>`
 * :doc:`Phalcon 開発者ツール / Linux向け <linuxtools>`
 
 .. _Download: http://phalconphp.com/download
