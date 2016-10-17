@@ -60,10 +60,10 @@ RPM ディストリビューション (CentOS 等)
 
 .. code-block:: bash
 
-	# 安定板
+    # 安定板
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 
-	# ナイトリービルド
+    # ナイトリービルド
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
 この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを選び直すといった事情がなければ、実施は一度だけしか必要ありません。
@@ -74,7 +74,7 @@ Phalcon をインストールするには:
 
     sudo yum install php56u-phalcon
 
-	# PHP 7 の場合
+    # PHP 7 の場合
 ｀
     sudo yum install php70u-phalcon
 
