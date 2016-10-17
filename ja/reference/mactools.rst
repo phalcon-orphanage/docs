@@ -44,7 +44,7 @@ Download_ セクションで、開発者ツールを同梱したクロスプラ�
 .. figure:: ../_static/img/mac-5.png
    :align: center
 
-おめでとうございます！これで Phalcon Tools がインストールされました！
+   おめでとうございます！これで Phalcon 開発者ツールがインストールされました！
 
 関連ガイド
 ^^^^^^^^^^^^^^

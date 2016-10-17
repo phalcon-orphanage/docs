@@ -63,7 +63,7 @@ Windows のコマンドプロンプトを開くため、:code:`cmd` と入力し
 .. figure:: ../_static/img/path-7.png
    :align: center
 
-おめでとうございます！これで Phalcon Tools がインストールされました！
+   おめでとうございます！これで Phalcon 開発者ツールがインストールされました！
 
 関連ガイド
 ^^^^^^^^^^^^^^
