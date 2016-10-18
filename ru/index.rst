@@ -21,8 +21,8 @@ Phalcon заботится не только о производительнос
 Оглавление
 ----------
 
-Installation
-^^^^^^^^^^^^
+Установка
+^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -36,8 +36,8 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
-^^^^^^^^^
+Руководство
+^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -51,7 +51,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+Компоненты
 ^^^^^^^^^^
 
 .. toctree::
@@ -110,8 +110,8 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Дополнительные материалы для чтения
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -128,15 +128,15 @@ API
 
    api/index
 
-Legal
-^^^^^
+Разрешение
+^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
 
    reference/license
 
-Previous Versions
+Предыдущие версии
 -----------------
 
 * `2.0.0 <https://docs.phalconphp.com/ru/2.0.0/>`
