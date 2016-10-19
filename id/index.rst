@@ -1,11 +1,11 @@
-Selamat Datang!
-===============
+Selamat Datang
+==============
 
 Selamat datang di Phalcon framework. Misi kami adalah memberimu tool canggih
 untuk mengembangkan website dan aplikasi web yang lebih cepat dengan PHP.
 
-Apa itu Phalcon?
-----------------
+Apa itu Phalcon
+---------------
 
 Phalcon adalah framework PHP full stack open source, ditulis sebagai ekstensi C, dioptimasi untuk performa tinggi.
 Anda tidak perlu belajar atau menggunakan bahasa C, karena fungsionalitasnya disediakan sebagai kelas PHP siap untuk Anda gunakan.
