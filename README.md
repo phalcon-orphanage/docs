@@ -23,6 +23,7 @@ The documentation is written using [reStructuredText](http://sphinx.pocoo.org/re
 * [Russian / Русский (ru)](https://docs.phalconphp.com/ru/latest/index.html)
 * [Spanish / Español (es)](https://docs.phalconphp.com/es/latest/index.html)
 * [Ukranian / Українська (uk)](https://docs.phalconphp.com/uk/latest/index.html)
+* [Farsi(Persian) / ایران (fa)](https://docs.phalconphp.com/fa/latest/index.html)
 
 If you would like to translate the Phalcon Docs into your language, you'll need to find out your language's [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). For example, to create Vietnamese (vi), run the following command:
 
