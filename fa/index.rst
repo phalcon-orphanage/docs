@@ -1,21 +1,21 @@
-Welcome
+خوش آمدید
 =======
 
-Welcome to Phalcon framework. Our mission is to give you an advanced tool for developing the faster web sites and applications with PHP.
+به فریمورک فالکن خوش آمدید.مأموریت ما دادن ابزاری پیشرفته برای توسعه سریع تر یک وب سایت و برنامه های کاربردی با php است .
 
-What is Phalcon
+فالکون چیست
 ---------------
 
-Phalcon is an open source, full stack framework for PHP written as a C-extension, optimized for high performance.
-You don't need to learn or use the C language, since the functionality is exposed as PHP classes ready for you to use.
-Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
+فالکون یک  متن باز است. تمام ساختمان فریمورک برای php به عنوان یک  C-extension نوشته شده  و  بهینه سازی شده برای عملکرد بالا است.
+نیاز نیست شما زبان برنامه نویسی  C  را یاد بگیرید یا از آن استفاده کنید . از آنجایی که این قابلیت وابسته به کلاس های php  میباشد آماده است تا شما از آن استفاده کنید.
+فالکون آزادانه همراه شماست . به شما اجازه میدهد تا از ابجکت های آن در قالب یک کامپوننت در برنامه های خودتان استفاده کنید.
 
-Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!
+فالکون تنها در عملکرد قوی نیست . هدف ما این است که آن را در ویژگی ها و استفاده آسان قدرتمند سازیم.
 
-Table of Contents
+جدول محتوا
 -----------------
 
-Installation
+نصب و راه اندازی
 ^^^^^^^^^^^^
 
 .. toctree::
@@ -30,7 +30,7 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
+آموزش
 ^^^^^^^^^
 
 .. toctree::
@@ -45,7 +45,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+کامپوننت
 ^^^^^^^^^^
 
 .. toctree::
@@ -104,7 +104,7 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
+توضیحات عمق تر / منابعی برای مطالعه بیشتر
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
@@ -130,12 +130,12 @@ Legal
 
    reference/license
 
-Previous Versions
+نسخه های پیشین
 -----------------
 
 * `2.0.0 <https://docs.phalconphp.com/en/2.0.0/>`
 
-Other formats
+فرمت های دیگر
 -------------
 
 * `PDF <https://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
