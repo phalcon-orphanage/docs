@@ -1,16 +1,13 @@
-Tutorial 5: Customizing INVO
+教程5: 定制INVO(Tutorial 5: Customizing INVO)
 ============================
 
-To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
-and changing the title according to the controller executed.
+要完成 INVO 的详细说明, 我们将会解释如何自定义 INVO 添加 UI 元素和根据控制器的执行从而改变标题.
 
-User Components
+用户组件(User Components)
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
-Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
+所有的UI元素和应用的视觉效果大部分都是通过 `Bootstrap`_ 实现的. 有些元素, 比如根据应用程序的状态而发生的导航条的变化. 例如, 右上角, 如果用户已经登录到应用程序, 链接"Log in / Sign Up" 变为 "Log out".
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+应用程序的这部分是用的组件 "Elements" (app/library/Elements.php) 来实现的.
 
 .. code-block:: php
 
@@ -31,15 +28,13 @@ This part of the application is implemented in the component "Elements" (app/lib
         }
     }
 
-This class extends the :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`. It is not imposed to extend a component with this class, but
-it helps to get access more quickly to the application services. Now, we are going to register
-our first user component in the services container:
+这个类继承 :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`. 这不是强加的去继承这个类的组件, 但是它会帮助我们更加快速的访问呢应用的服务. 现在, 我们将在服务容器中注册沃恩的第一个用户组件:
 
 .. code-block:: php
 
     <?php
 
-    // Register a user component
+    // 注册用户组件
     $di->set(
         "elements",
         function () {
@@ -47,8 +42,7 @@ our first user component in the services container:
         }
     );
 
-As controllers, plugins or components within a view, this component also has access to the services registered
-in the container and by just accessing an attribute with the same name as a previously registered service:
+作为控制器, 在视图中的插件或者组件, 这个组件还可以已在容器中注册的服务和通过访问一个相同名字的属性作为一个预先注册的服务:
 
 .. code-block:: html+jinja
 
@@ -78,16 +72,15 @@ in the container and by just accessing an attribute with the same name as a prev
         </footer>
     </div>
 
-The important part is:
+重要的部分是:
 
 .. code-block:: html+jinja
 
     {{ elements.getMenu() }}
 
-Changing the Title Dynamically
+动态改变标题(Changing the Title Dynamically)
 ------------------------------
-When you browse between one option and another will see that the title changes dynamically indicating where
-we are currently working. This is achieved in each controller initializer:
+当你在不同的选项中浏览的时候就会看到标题在动态的改变. 在每个控制器初始化的时候实现:
 
 .. code-block:: php
 
@@ -97,7 +90,7 @@ we are currently working. This is achieved in each controller initializer:
     {
         public function initialize()
         {
-            // Set the document title
+            // 设置文档标题
             $this->tag->setTitle(
                 "Manage your product types"
             );
@@ -108,7 +101,7 @@ we are currently working. This is achieved in each controller initializer:
         // ...
     }
 
-Note, that the method :code:`parent::initialize()` is also called, it adds more data to the title:
+注意, 这个方法 :code:`parent::initialize()` 也被调用, 它添加更多的数据到标题:
 
 .. code-block:: php
 
@@ -120,7 +113,7 @@ Note, that the method :code:`parent::initialize()` is also called, it adds more 
     {
         protected function initialize()
         {
-            // Prepend the application name to the title
+            // 在标题的前面加上应用名称
             $this->tag->prependTitle(
                 "INVO | "
             );
@@ -129,7 +122,7 @@ Note, that the method :code:`parent::initialize()` is also called, it adds more 
         // ...
     }
 
-Finally, the title is printed in the main view (app/views/index.volt):
+最后, 标题在 main 视图 (app/views/index.volt) 输出了 :
 
 .. code-block:: html+php
 
