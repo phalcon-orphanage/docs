@@ -3,11 +3,11 @@
 
 @font-face {
     font-family: 'yekan';
-    src: url('../fonts/Yekan-modified.eot');
-    src: url('../fonts/Yekan-modified.eot#iefix') format('embedded-opentype'),
-         url('../fonts/Yekan-modified.woff') format('woff'),
-         url('../fonts/Yekan-modified.ttf') format('truetype'),
-         url('../fonts/Yekan-modified.svg#CartoGothicStdBook') format('svg');
+    src: url('fonts/Yekan-modified.eot');
+    src: url('fonts/Yekan-modified.eot#iefix') format('embedded-opentype'),
+         url('fonts/Yekan-modified.woff') format('woff'),
+         url('fonts/Yekan-modified.ttf') format('truetype'),
+         url('fonts/Yekan-modified.svg#CartoGothicStdBook') format('svg');
     font-weight: normal;
     font-style: normal;
 }
