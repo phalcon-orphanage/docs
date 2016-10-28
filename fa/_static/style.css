@@ -1,3 +1,16 @@
+/* Import fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+
+@font-face {
+    font-family: 'yekan';
+    src: url('../fonts/Yekan-modified.eot');
+    src: url('../fonts/Yekan-modified.eot#iefix') format('embedded-opentype'),
+         url('../fonts/Yekan-modified.woff') format('woff'),
+         url('../fonts/Yekan-modified.ttf') format('truetype'),
+         url('../fonts/Yekan-modified.svg#CartoGothicStdBook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body, html {margin: 0; padding:0; height: 100%;}
 
