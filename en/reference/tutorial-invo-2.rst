@@ -79,7 +79,7 @@ some HTML code to make the example more concise:
     {{ endForm() }}
 
 Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
-template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
+template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates.
 It will not take too long before you become familiar with Volt.
 
 The :code:`SessionController::startAction` function (app/controllers/SessionController.php) has the task of validating the
