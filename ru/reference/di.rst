@@ -3,7 +3,7 @@
 
 .. highlights::
 
-    Before reading this section, it is wise to read :doc:`the section which explains why Phalcon uses service location and dependency injection <di-explained>`.
+    Перед прочтением этого раздела рекомендуется прочесть :doc:`главу, в которой объясняется почему Phalcon использует сервис-локацию и внедрение зависимостей <di-explained>`.
 
 :doc:`Phalcon\\Di <../api/Phalcon_Di>` — это компонент, реализующий паттерны `Dependency Injection`_ и `Service Locator`_, и являющийся контейнером для зависимостей.
 
@@ -125,7 +125,7 @@
         }
     );
 
-You can also access other DI services using the :code:`get()` method:
+Вы также можете получить доступ к другим сервисам с помощью :code:`get()` method:
 
 .. code-block:: php
 
@@ -148,7 +148,7 @@ You can also access other DI services using the :code:`get()` method:
         }
     );
 
-    // Using the 'config' service from the DI
+    // Использование сервиса 'config' из DI
     $di->set(
         "db",
         function () {
