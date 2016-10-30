@@ -32,54 +32,54 @@ Linux/Solaris
 
 Debian / Ubuntu
 ^^^^^^^^^^^^^^^
-To add the repository to your distribution:
+Для того, чтобы добавить репозиторий в ваш дистрибутив:
 
 .. code-block:: bash
 
-    # Stable releases
+    # Стабильные релизы
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 
-    # Nightly releases
+    # Ночные сборки
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Это требуется сделать лишь один раз, либо в том случае, если изменился ваш дистрибутив, или вы хотите перейти со стабильных на ночные сборки.
 
-To install Phalcon:
+Для установки Phalcon:
 
 .. code-block:: bash
 
     sudo apt-get install php5-phalcon
 
-    # or for PHP 7
+    # или для PHP 7
 
     sudo apt-get install php7.0-phalcon
 
-RPM distributions (i.e. CentOS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To add the repository to our distribution:
+RPM дистрибутивы (т.е. CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Для того, чтобы добавить репозиторий в ваш дистрибутив:
 
 .. code-block:: bash
 
-    # Stable releases
+    # Стабильные релизы
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 
-    # Nightly releases
+    # Ночные сборки
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Это требуется сделать лишь один раз, либо в том случае, если изменился ваш дистрибутив, или вы хотите перейти со стабильных на ночные сборки.
 
-To install Phalcon:
+Для установки Phalcon:
 
 .. code-block:: bash
 
     sudo yum install php56u-phalcon
 
-    # or for PHP 7
+    # или для PHP 7
 
     sudo yum install php70u-phalcon
 
-Compile from source
-^^^^^^^^^^^^^^^^^^^
+Компиляция из исходного кода
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Пользователи систем Linux/Solaris могут просто собрать Phalcon из исходных файлов:
 
 Необходимы пакеты:
@@ -208,8 +208,7 @@ FreeBSD
 
 Проверка установки
 ------------------
-Проверьте, есть ли в результатах :code:`phpinfo()` секция "Phalcon",
-или выполните следующий код:
+Проверьте, есть ли в результатах :code:`phpinfo()` секция "Phalcon", или выполните следующий код:
 
 .. code-block:: php
 
