@@ -1,5 +1,8 @@
 
 $(document).ready(function() {
+	$("p").attr("dir", "rtl");
+	$("h2").attr("dir", "rtl");
+	$("span .pl-c").attr("dir", "rtl");
 	$("#versions").change(function() {
 		var docsUrl = $(this).val();
 		window.location.href = docsUrl;
