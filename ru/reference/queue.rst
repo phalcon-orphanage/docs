@@ -15,9 +15,9 @@
 
 .. attention::
 
-    Some of the returns from queue methods require that the module Yaml be installed.  Please
-    refer to http://php.net/manual/book.yaml.php for more information.  For PHP < 7, Yaml 1.3.0
-    is acceptable.  For PHP >= 7, you will need to use Yaml >= 2.0.0.
+    Для работы с некоторыми результатами выполнения методов очередей необходима установка модуля Yaml. Пожалуйста,
+    обратитесь к http://php.net/manual/book.yaml.php для получения подробной информации. Для PHP < 7 подходит Yaml 1.3.0.
+    Для PHP >= 7 вам нужно воспользоваться Yaml >= 2.0.0.
 
 Добавление заданий в очередь
 ----------------------------
