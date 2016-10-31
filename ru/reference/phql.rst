@@ -1006,6 +1006,6 @@ any validation messages you should check the status code returned:
 * Классы регистрозависимы, если класс не определён так, как он определён, то это может привести к неожиданному поведению.
 * Чтобы успешно связывать (bind) параметры, в соединении должна быть определена правильная кодировка.
 * Классы, для которых заданы алиасы не заменяются классами с неймспейсами, поскольку это происходит только в PHP коде, а не внутри строк.
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* Если включено переименование колонок, избегайте использования алисов с таким же именем, что и колонка, которую вы хотите переименовать. Иначе могут возникнуть проблемы при разрешении имен.
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator
