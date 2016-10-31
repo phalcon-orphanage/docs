@@ -1,4 +1,4 @@
-Validating Models
+Валидация моделей
 =================
 
 Проверка целостности данных
@@ -55,7 +55,7 @@ Validating Models
 
 .. highlights::
 
-    For more information on validators, see the :doc:`Validation documentation <validation>`.
+    Дополнительную информацию о валидаторах ищите в :doc:`документации по валидации <validation>`.
 
 Идея создания валидаторов заключается в их повторном использовании несколькими моделями. Валидатор может быть и простым, например:
 
@@ -74,7 +74,7 @@ Validating Models
         {
             if ($this->type === "Old") {
                 $message = new Message(
-                    "Sorry, old robots are not allowed anymore",
+                    "Извините, старые роботы больше не принимаются",
                     "type",
                     "MyType"
                 );

@@ -32,7 +32,7 @@
             $robot->name       = "WALL·E";
             $robot->created_at = date("Y-m-d");
 
-            // The model failed to save, so rollback the transaction
+            // Не удалось сохранить модель, поэтому откатываем транзакцию
             if ($robot->save() === false) {
                 $this->db->rollback();
                 return;
@@ -43,14 +43,14 @@
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
-            // The model failed to save, so rollback the transaction
+            // Не удалось сохранить модель, поэтому откатываем транзакцию
             if ($robotPart->save() === false) {
                 $this->db->rollback();
 
                 return;
             }
 
-            // Commit the transaction
+            // Фиксируем транзакцию
             $this->db->commit();
         }
     }
@@ -94,7 +94,7 @@
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-        // Create a transaction manager
+        // Создаем менеджера транзакций
         $manager = new TxManager();
 
         // Запрос транзакции

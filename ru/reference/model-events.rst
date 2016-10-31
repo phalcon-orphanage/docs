@@ -1,5 +1,5 @@
-Model Events
-============
+События модели
+==============
 
 События и управление событиями
 ------------------------------
@@ -105,7 +105,7 @@ Model Events
                 "model:beforeSave",
                 function (Event $event, $robot) {
                     if ($robot->name === "Scooby Doo") {
-                        echo "Scooby Doo isn't a robot!";
+                        echo "Scooby Doo не робот!";
 
                         return false;
                     }
