@@ -1,19 +1,19 @@
 Installation
 ============
-PHP extensions require a slightly different installation method to a traditional PHP-based library or framework.
-You can either download a binary package for the system of your choice or build it from the sources.
+PHP розширень вимагають дещо інший спосіб установки традиційного PHP на основі бібліотеки або фреймворка.
+Ви можете або завантажити бінарний пакет для системи за вашим вибором або побудувати його з джерел.
 
 Windows
 -------
-To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
+Щоб використовувати Phalcon на Windows ви можете download_ DLL бібліотеку. Edit your php.ini file і потім додати в кінці:
 
 .. code-block:: bash
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+Перезапустіть ваш веб-сервер.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+Наступний скрінкасти являє собою керівництво крок за кроком встановити Phalcon на Windows:
 
 .. raw:: html
 
@@ -32,7 +32,7 @@ Linux/Solaris
 
 Debian / Ubuntu
 ^^^^^^^^^^^^^^^
-To add the repository to your distribution:
+Щоб додати репозиторій до вашого дистрибутива:
 
 .. code-block:: bash
 
@@ -42,9 +42,9 @@ To add the repository to your distribution:
     # Nightly releases
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Це необхідно зробити тільки один раз, якщо ваш дистрибутив не змінений або ви хочете перемкнутися зі стабільних на нічні збірки.
 
-To install Phalcon:
+Для встановлення Phalcon:
 
 .. code-block:: bash
 
@@ -56,7 +56,7 @@ To install Phalcon:
 
 RPM distributions (i.e. CentOS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To add the repository to our distribution:
+Щоб додати репозиторій до нашого дистрибутиву:
 
 .. code-block:: bash
 
@@ -66,9 +66,9 @@ To add the repository to our distribution:
     # Nightly releases
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Це необхідно зробити тільки один раз, якщо ваш дистрибутив не змінений або ви хочете перемкнутися зі стабільних на нічні збірки.
 
-To install Phalcon:
+Для встановлення Phalcon:
 
 .. code-block:: bash
 
@@ -80,15 +80,15 @@ To install Phalcon:
 
 Compile from source
 ^^^^^^^^^^^^^^^^^^^
-On a Linux/Solaris system you can easily compile and install the extension from the source code:
+На  Linux/Solaris ви можете легко зібрати і встановити розширення з вихідного коду:
 
-Prerequisite packages are:
+Необхідні пакети:
 
 * PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
-Specific packages for common platforms:
+Конкретні пакети для загальних платформ:
 
 .. code-block:: bash
 
@@ -104,7 +104,7 @@ Specific packages for common platforms:
     # Solaris
     pkg install gcc-45 php-56 apache-php56
 
-Creating the extension:
+Створіть розширення:
 
 .. code-block:: bash
 
@@ -114,7 +114,7 @@ Creating the extension:
 
     sudo ./install
 
-Add extension to your PHP configuration:
+і додайте розширення в PHP конфігурацію:
 
 .. code-block:: bash
 
@@ -133,7 +133,7 @@ Add extension to your PHP configuration:
     # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
     extension=phalcon.so
 
-Restart the webserver.
+Перезапустіть веб-сервер.
 
 If you are running Ubuntu/Debian with php5-fpm, restart it:
 
@@ -141,7 +141,7 @@ If you are running Ubuntu/Debian with php5-fpm, restart it:
 
     sudo service php5-fpm restart
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon автоматично визначає архітектуру, однак, ви можете змусити компіляцію для конкретної архітектури:
 
 .. code-block:: bash
 
@@ -152,7 +152,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+Якщо автоматичний установник не вдається, спробуйте будувати розширення вручну:
 
 .. code-block:: bash
 
@@ -166,11 +166,11 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+В операційній системі Mac OS X ви можете зібрати і встановити розширення з вихідного коду:
 
 Requirements
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Необхідні пакети:
 
 * PHP >= 5.5 development resources
 * XCode
@@ -186,17 +186,17 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration.
+Додайте розширення в PHP конфігурацію.
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Порт доступний для FreeBSD. Просто потрібно тільки команди ці прості лінії, щоб встановити його:
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+або
 
 .. code-block:: bash
 
@@ -208,13 +208,13 @@ or
 
 Checking your installation
 --------------------------
-Check your :code:`phpinfo()` output for a section referencing "Phalcon" or execute the code snippet below:
+Перевірте ваш :code:`phpinfo()` вивід для секції посилань "Phalcon" або виконати фрагмент коду нижче:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+Розширення Phalcon має з'явитися як частина виходу:
 
 .. code-block:: php
 
@@ -231,7 +231,7 @@ The Phalcon extension should appear as part of the output:
 
 Installation Notes
 ------------------
-Installation notes for Web Servers:
+Зауваження по встановленню для веб-серверів:
 
 .. toctree::
     :maxdepth: 1
@@ -241,4 +241,4 @@ Installation notes for Web Servers:
     cherokee
     built-in
 
-.. _download: http://phalconphp.com/en/download
+.. _download: http://phalconphp.com/uk/download
