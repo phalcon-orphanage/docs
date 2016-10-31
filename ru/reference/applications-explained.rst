@@ -1,5 +1,5 @@
-Understanding How Phalcon Applications Work
-===========================================
+Понимание работы Phalcon приложения
+===================================
 
 Если вы смотрели :doc:`руководство <tutorial>` или сгенерировали код используя :doc:`Инструменты разработчика <tools>`,
 вы можете узнать следующий код:
@@ -92,7 +92,7 @@ Understanding How Phalcon Applications Work
     // Send the response
     $response->send();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
+В этой замене :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` отсутствует компонент представления, что делает данный вариант подходящим для Rest API:
 
 .. code-block:: php
 
@@ -100,14 +100,14 @@ The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc
 
     use Phalcon\Http\ResponseInterface;
 
-    // Get the 'router' service
+    // Получаем сервис 'router'
     $router = $di["router"];
 
     $router->handle();
 
     $dispatcher = $di["dispatcher"];
 
-    // Pass the processed router parameters to the dispatcher
+    // Передаем обработанные параметры роутера в диспетчер
 
     $dispatcher->setControllerName(
         $router->getControllerName()
@@ -121,19 +121,19 @@ The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc
         $router->getParams()
     );
 
-    // Dispatch the request
+    // Обрабатываем запрос
     $dispatcher->dispatch();
 
-    // Get the returned value by the last executed action
+    // Получаем результат последнего выполненного действия
     $response = $dispatcher->getReturnedValue();
 
-    // Check if the action returned is a 'response' object
+    // Проверяем, что результат является 'response' объектом
     if ($response instanceof ResponseInterface) {
         // Send the response
         $response->send();
     }
 
-Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
+Или вот еще один способ, в котором отлавливаются исключения, сгенерированные в диспетчере, и последовательно передаются в другие действия:
 
 .. code-block:: php
 
@@ -141,14 +141,14 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     use Phalcon\Http\ResponseInterface;
 
-    // Get the 'router' service
+    // Получаем сервис 'router'
     $router = $di["router"];
 
     $router->handle();
 
     $dispatcher = $di["dispatcher"];
 
-    // Pass the processed router parameters to the dispatcher
+    // Передаем обработанные параметры роутера в диспетчер
 
     $dispatcher->setControllerName(
         $router->getControllerName()
@@ -163,23 +163,23 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
     );
 
     try {
-        // Dispatch the request
+        // Обрабатываем запрос
         $dispatcher->dispatch();
     } catch (Exception $e) {
-        // An exception has occurred, dispatch some controller/action aimed for that
+        // Возникло исключение, поэтому специально для этого случая выполняем controller/action
 
-        // Pass the processed router parameters to the dispatcher
+        // Передаем обработанные параметры роутера в диспетчер
         $dispatcher->setControllerName("errors");
         $dispatcher->setActionName("action503");
 
-        // Dispatch the request
+        // Обрабатываем запрос
         $dispatcher->dispatch();
     }
 
-    // Get the returned value by the last executed action
+    // Получаем результат последнего выполненного действия
     $response = $dispatcher->getReturnedValue();
 
-    // Check if the action returned is a 'response' object
+    // Проверяем, что результат является 'response' объектом
     if ($response instanceof ResponseInterface) {
         // Send the response
         $response->send();
