@@ -56,7 +56,7 @@ vous pouvez utiliser la méthode :code:`setSource()`:
         }
     }
 
-The model RobotParts now maps to "toys_robot_parts" table. The :code:`initialize()` method aids in setting up the model with a custom behavior i.e. a different table.
+Le modèle RobotParts est désormais relié à la table "toys_robots_parts". La méthode :code:`initialize()` facilite la mise en place d'un comportement personnalisé comme par exemple une table différente.
 
 La méthode :code:`initialize()` n'est invoquée qu'une seule fois lors de la requête, il est destiné à effectuer des initialisations qui
 s'appliquent à toutes les instances du modèle créées au sein de l'application. Si vous voulez réaliser des tâches d'initialisation à chaque instanciation
@@ -368,7 +368,7 @@ Si vous préférez, il existe une façon plus orientée objet pour créer des re
 La méthode statique :code:`query()` retourne un objet :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` qui plus favorable à l'autocomplétion des IDE.
 
 Toutes les requêtes sont gérées en interne comme des requêtes :doc:`PHQL <phql>`. PHQL est un langage de haut niveau semblable au SQL et orienté objet.
-Ce langage dispose d'autre caractéristiques pour réaliser des requêtes comme des jointures avec d'autres modèles, des regroupement, des aggrégats, etc.
+Ce langage dispose d'autre caractéristiques pour réaliser des requêtes comme des jointures avec d'autres modèles, des regroupement, des agrégats, etc.
 
 Enfin, il existe la méthode :code:`findFirstBy<property-name>()`. Cette méthode étend la méthode :code:`findFirst()` mentionnée plus tôt. Elle permet de réaliser rapidement une
 restitution depuis la table en exploitant le nom de la propriété elle-même et en transmettant en paramètre les données à rechercher sur cette colonne.
@@ -474,7 +474,7 @@ est qu'à n'importe quel moment il n'y a qu'un seul enregistrement en mémoire. 
     $robot = $robots->getLast();
 
 Les jeux de résultat de Phalcon émulent les curseurs défilables. Vous pouvez prendre n'importe quel ligne juste d'après sa position, ou déplacer le pointeur interne
-à une position spécifique. Notez que certains SGBD ne supportent pas les curseurs défilables ce qui oblige à re-exécuter la requête
+à une position spécifique. Notez que certains SGBD ne supportent pas les curseurs défilables ce qui oblige à ré-exécuter la requête
 pour faire repartir le curseur depuis le début et d'obtenir l'enregistrement à la position demandée. De même, si un jeu de résultat
 doit être parcouru plusieurs fois, la requête sera exécutée d'autant de fois.
 
@@ -1022,9 +1022,9 @@ que l'enregistrement soit créé ou mis à jour, nous pouvons remplacer l'appel 
 
 Les méthodes "create" et "update" acceptent également un tableau de valeurs en paramètre.
 
-Supression d'enregistrements
-----------------
-The :code:`Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
+Suppression d'enregistrements
+-----------------------------
+La méthode :code:`Phalcon\Mvc\Model::delete()` permet de supprimer un enregistrement. Vous pouvez l'utiliser comme suit:
 
 .. code-block:: php
 
@@ -1048,7 +1048,7 @@ The :code:`Phalcon\Mvc\Model::delete()` method allows to delete a record. You ca
         }
     }
 
-You can also delete many records by traversing a resultset with a foreach:
+Vous pouvez également supprimer plusieurs enregistrements en parcourant un jeu d'enregistrement avec foreach:
 
 .. code-block:: php
 
@@ -1074,18 +1074,18 @@ You can also delete many records by traversing a resultset with a foreach:
         }
     }
 
-The following events are available to define custom business rules that can be executed when a delete operation is
-performed:
+Les événements qui suivent servent à définir des règles métier qui seront exécutées lors d'une opération de 
+suppression:
 
 +-----------+--------------+---------------------+------------------------------------------+
-| Operation | Name         | Opération stoppée ? | Explanation                              |
+| Opération | Nom          | Opération stoppée ? | Explication                              |
 +===========+==============+=====================+==========================================+
-| Deleting  | beforeDelete | Oui                 | Runs before the delete operation is made |
+| Deleting  | beforeDelete | Oui                 | Lancé avant l'opération de suppression   |
 +-----------+--------------+---------------------+------------------------------------------+
-| Deleting  | afterDelete  | Non                 | Runs after the delete operation was made |
+| Deleting  | afterDelete  | Non                 | Lancé après l'opération de suppression   |
 +-----------+--------------+---------------------+------------------------------------------+
 
-With the above events can also define business rules in the models:
+Avec les événements ci-dessus vous pouvez également définir des règles métier dans les modèles:
 
 .. code-block:: php
 

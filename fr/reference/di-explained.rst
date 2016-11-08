@@ -1,11 +1,11 @@
-Dependency Injection Explained
-==============================
+La dépendance d'injection expliquée
+===================================
 
 L'exemple qui suit est un peut long, mais il tente d'expliquer pourquoi Phalcon utilise la localisation de service et l'injection de dépendance.
 Pour commencer, imaginons que nous avons développé un composant appelé SomeComponent. La tâche qu'il réalise n'a pas d'importance maintenant.
 Notre composant détient des dépendances dont la connexion à la base de données.
 
-Dans ce premier exemple, la connexion est réalisée à l'intérieur du composante. Cette approche n'est pas pratique; nous ne
+Dans ce premier exemple, la connexion est réalisée à l'intérieur du composant. Cette approche n'est pas pratique; nous ne
 pouvons pas changer les paramètres de la connexion ou le type de SGBD parce que le composant n'est créé que pour fonctionner comme ça.
 
 .. code-block:: php
@@ -38,7 +38,7 @@ pouvons pas changer les paramètres de la connexion ou le type de SGBD parce que
 
     $some->someDbTask();
 
-Pour résoudre ceci, nous avons créé un accesseur qui injecte une dépendence externe avant de l'utiliser. Pour l'instant,
+Pour résoudre ceci, nous avons créé un accesseur qui injecte une dépendance externe avant de l'utiliser. Pour l'instant,
 ceci semble être une bonne solution:
 
 .. code-block:: php
@@ -228,7 +228,7 @@ Maintenant, imaginons que nous devons réaliser deux méthodes dans ce composant
         Registry::getNewConnection()
     );
 
-Jusque là, nous avons vu comment l'injection de dépendance résoud notre problème. Transmettre des dépendances en argument au lieu
+Jusque là, nous avons vu comment l'injection de dépendance résout notre problème. Transmettre des dépendances en argument au lieu
 de les créer en interne dans le code rend notre application plus maintenable et découplée. Cependant, sur le long terme, cette forme de
 dépendance possède quelques inconvénients.
 
@@ -258,7 +258,7 @@ le composant, rendant ainsi le code moins maintenable que nous ne le voudrions:
     $some->setSelector($selector);
 
 Supposez que nous devions créer cet objet dans différentes parties de notre application. Si, dans le futur, nous n'avions plus besoin de ces
-dépendances, nous devrions naviguer au sein du code pour enlever le paramètre des constructeurs ou des accesseurs. Pour resoudre ceci, nous
+dépendances, nous devrions naviguer au sein du code pour enlever le paramètre des constructeurs ou des accesseurs. Pour résoudre ceci, nous
 revenons au registre global pour créer le composant. Toutefois, on ajoute une nouvelle couche d'abstraction avant de créer l'objet:
 
 .. code-block:: php
