@@ -1,12 +1,12 @@
-Using Controllers
-=================
+Menggunakan Kontroler
+=====================
 
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
-the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Aksi adalah metode pada sebuah kontroler yang menangani request. Defaultnya semua
+metode publik pada sebuah kontroler dipetakan ke aksi dan dapat diakses menggunakan sebuah URL. Aksi bertanggung jawab menerjemahkan request dan menciptakan
+respon. Respon biasanya dalam bentuk view yang dirender, namun ada juga cara lain untuk menciptakan respon.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
-part like this:
+Contoh, ketika anda mengakses sebuah URL seperti berikut: http://localhost/blog/posts/show/2015/the-post-title Phalcon secara bawaan akan memecah tiap
+bagian seperti berikut:
 
 +-----------------------+----------------+
 | **Phalcon Directory** | blog           |
@@ -20,10 +20,10 @@ part like this:
 | **Parameter**         | the-post-title |
 +-----------------------+----------------+
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
-could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+Di kasus ini, PostsController akan menangani request ini. Tidak ada lokasi khusus untuk meletakkan kontroler dalam aplikasi, ia
+dapat dimuat menggunakan :doc:`autoloaders <loader>`, sehingga anda bebas mengorganisasi kontroler sesuai kebutuhan.
 
-Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
+Kontroler harus memiliki akhiran "Controller" sementara aksi menggunakan akhiran "Action". Contoh sebuah kontroler adalah sebagai berikut:
 
 .. code-block:: php
 
@@ -44,11 +44,10 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
         }
     }
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
-optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to
-the application services.
+Parameter URI tambahan didefinisi sebagai parameter aksi, sehingga mereka dapat diakses dengan mudah menggunakan variabel lokal. Sebuah kontroler bisa jadi
+diturunkan dari :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. Dengan melakukan ini, kontroler dapat memiliki akses mudah ke layanan aplikasi.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Parameter tanpa nilai default ditangani seperlunya. Pengaturan nilai opsional untuk parameter dilakukan seperti biasa dalam PHP:
 
 .. code-block:: php
 
@@ -63,13 +62,13 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
     }
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Parameter disalin dengan urutan sama ketika dilewatkan dalam sebuah route. Anda dapat memeroleh sembarang parameter dari namanya dengan cara berikut:
 
 .. code-block:: php
 
@@ -86,16 +85,16 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
-action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
-execution to a different controller/action.
+Dispatch loop akan dijalankan dalam Dispatcher sampai tidak ada aksi tersisa untuk dijalankan. Di contoh sebelumnya hanya satu
+aksi yang dijalankan. Kita akan melihat bagaimana :code:`forward()` dapat menyediakan alir operasi yang lebih kompleks dalam dispatch loop, dengan mengarahkan
+eksekusi ke kontroler/aksi berbeda.
 
 .. code-block:: php
 
@@ -112,19 +111,21 @@ execution to a different controller/action.
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
-            // Forward flow to another action
+            // Arahkan alir ke aksi lain
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
-                    "action"     => "signin"
-                )
+                    "action"     => "signin",
+                ]
             );
         }
     }
 
-If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action.
+Jika pengguna tidak memiliki izin untuk mengakses aksi tertentu maka mereka akan diarahkan ke kontroler Users dan aksi bernama signin.
 
 .. code-block:: php
 
@@ -145,14 +146,14 @@ If users don't have permissions to access a certain action then will be forwarde
         }
     }
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
-your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
-the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+Tidak ada batasan jumlah "forward" yang dapat anda miliki dalam aplikasi, selama mereka tidak menyebabkan referensi sirkular, di mana dititik ini aplikasi akan dihentikan.
+Jika tidak ada aksi lain yang harus dikirim oleh dispatch loop, dispatcher otomatis memanggil
+lapisan view dalam MVC yang dikelola oleh :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
-Initializing Controllers
-------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
-action is executed on a controller. The use of the "__construct" method is not recommended.
+Inisialiasi Kontroler
+---------------------
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` menawarkan metode :code:`initialize()`, yang dijalankan pertama kali, sebelum semua
+aksi dieksekusi pada sebuah kontroler. Penggunaan metode :code:`__construct()` tidak disarankan.
 
 .. code-block:: php
 
@@ -166,14 +167,14 @@ action is executed on a controller. The use of the "__construct" method is not r
 
         public function initialize()
         {
-            $this->settings = array(
-                "mySetting" => "value"
-            );
+            $this->settings = [
+                "mySetting" => "value",
+            ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -181,11 +182,11 @@ action is executed on a controller. The use of the "__construct" method is not r
 
 .. highlights::
 
-    Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
-    that application logic in the initializer cannot be executed without authorization.
+    Metode :code:`initialize()` hanya dipanggil jika event 'beforeExecuteRoute' dieksekusi dengan sukses. Ini mencegah
+    kode aplikasi dalam initializer tidak dapat dieksekusi tanpa otorisasi.
 
-If you want to execute some initialization logic just after build the controller object you can implement the
-method 'onConstruct':
+Jika anda ingin menjalankan kode inisialiasi tepat setelah menciptakan objek kontroler anda dapat mengimplementasi
+metode :code:`onConstruct()`:
 
 .. code-block:: php
 
@@ -203,14 +204,14 @@ method 'onConstruct':
 
 .. highlights::
 
-    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
-    in the controller or the user does not have access to it (according to custom control access
-    provided by developer).
+    Ketahui bahwa metode :code:`onConstruct()` dijalankan bahkan bila aksi yang harus dijalankan tidak ada
+    dalam kontroler atau user tidak punya akses ke sana (berdasarkan kontrol akses kustom yang disediakan
+    oleh developer).
 
-Injecting Services
-------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
-container in application. For example, if we have registered a service like this:
+Menginjeksi Services
+--------------------
+Jika sebuah kontroler diturunkan dari :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` maka mudah untuk mengakses service
+container dalam aplikasi. Contoh, jika kita mendaftarkan sebuah service seperti ini:
 
 .. code-block:: php
 
@@ -220,11 +221,17 @@ container in application. For example, if we have registered a service like this
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
-Then, we can access to that service in several ways:
+Anda dapat mengakses service tersebut dengan beberapa cara:
 
 .. code-block:: php
 
@@ -236,30 +243,30 @@ Then, we can access to that service in several ways:
     {
         public function saveAction()
         {
-            // Injecting the service by just accessing the property with the same name
-            $this->storage->save('/some/file');
+            // Menginjeksi service dengan mengakses property bernama sama
+            $this->storage->save("/some/file");
 
-            // Accessing the service from the DI
-            $this->di->get('storage')->save('/some/file');
+            // Mengakses service dari DI
+            $this->di->get("storage")->save("/some/file");
 
-            // Another way to access the service using the magic getter
-            $this->di->getStorage()->save('/some/file');
+            // Cara lain mengakses service dengan magic getter
+            $this->di->getStorage()->save("/some/file");
 
-            // Another way to access the service using the magic getter
-            $this->getDi()->getStorage()->save('/some/file');
+            // Cara lain mengakses service dengan magic getter
+            $this->getDi()->getStorage()->save("/some/file");
 
-            // Using the array-syntax
-            $this->di['storage']->save('/some/file');
+            // Menggunkana sintaks array
+            $this->di["storage"]->save("/some/file");
         }
     }
 
-If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
+Jika anda menggunakan Phalcon sebagai sebuah full-stack framework, anda dapat membaca service :doc:`bawaan <di>` yang disediakan dalam framework.
 
-Request and Response
+Request dan Response
 --------------------
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
-The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
-contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
+Diasumsikan framework menyediakan sejumlah service yang telah terdaftar. Kita menjelaskan bagaimana berinteraksi dengan lingkungan HTTP.
+Service "request" mengandung instance :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` dan "response"
+berisi :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` mewakili apa yang akan dikirim kembali ke klien.
 
 .. code-block:: php
 
@@ -276,17 +283,17 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
         public function saveAction()
         {
-            // Check if request has made with POST
-            if ($this->request->isPost() == true) {
-                // Access POST data
+            // Uji apakah request dibuat dengan POST
+            if ($this->request->isPost()) {
+                // Akses data POST
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
             }
         }
     }
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
-an afterDispatch event - it can be useful to access the response directly:
+Objek response biasanya tidak digunakan secara langsung, ia dibuat sebelum eksekusi aksi, kadang kala - seperti dalam event
+afterDispatch - cukup berguna bila response dapat diakses langsung:
 
 .. code-block:: php
 
@@ -303,17 +310,17 @@ an afterDispatch event - it can be useful to access the response directly:
 
         public function notFoundAction()
         {
-            // Send a HTTP 404 response header
+            // Kirim response header HTTP 404
             $this->response->setStatusCode(404, "Not Found");
         }
     }
 
-Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
+Pelajari lebih lanjut tentang lingkungan HTTP di artikel :doc:`request <request>` dan :doc:`response <response>`.
 
-Session Data
+Data Session
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that needs to be persistent.
+Session membantu kita mengelola data persisten antar request. Anda dapat mengakses :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+dari sembarang kontroler untuk membungkus data yang harus dibuat persisten.
 
 .. code-block:: php
 
@@ -334,79 +341,39 @@ from any controller to encapsulate data that needs to be persistent.
         }
     }
 
-Using Services as Controllers
------------------------------
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
-any other class registered with its name can easily replace a controller:
+Menggunakan Service sebagai Kontroler
+-------------------------------------
+Service dapat bertindak sebagai kontroler, kelas kontroler selalu diminta dari service container. Dengan demikian,
+tiap kelas lain yang terdaftar dengan nama sama dapat dengan mudah mengganti sebuah kontroler:
 
 .. code-block:: php
 
     <?php
 
-    // Register a controller as a service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    // Daftarkan kontroler sebagai service
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
 
-    // Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
-
-Creating a Base Controller
---------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many
-controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
-controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
-the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
-access to the common functionality.
-
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
-e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
-loaded using any autoloader:
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-The implementation of common components (actions, methods, properties etc.) resides in this file:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * This action is available for multiple controllers
-         */
-        public function someAction()
-        {
-
+            return $component;
         }
-    }
+    );
 
-Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
+    // Daftarkan kontroler dengan namespace sebagai service
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
 
-.. code-block:: php
+            return $component;
+        }
+    );
 
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
-
-Events in Controllers
+Event dalam Kontroler
 ---------------------
-Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
-you to implement hook points before/after the actions are executed:
+Kontroler otomatis bertindak sebagai listener untuk :doc:`dispatcher <dispatching>` event, mengimplementasi metode dengan nama tersebut memungkinkan
+anda untuk mengimplementasi hook point sebelum/sesudah aksi dieksekusi:
 
 .. code-block:: php
 
@@ -419,15 +386,16 @@ you to implement hook points before/after the actions are executed:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
-                    array(
-                        'controller' => 'home',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "home",
+                        "action"     => "index",
+                    ]
                 );
 
                 return false;
@@ -436,7 +404,7 @@ you to implement hook points before/after the actions are executed:
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Executed after every found action
+            // Dieksekusi tiap kali setelah aksi yang ditemukan
         }
     }
 

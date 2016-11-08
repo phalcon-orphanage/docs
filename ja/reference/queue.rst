@@ -11,6 +11,12 @@ While you can find more sophisticated PHP extensions to address queueing in your
 Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
 It’s simple, lightweight, and completely specialized for job queueing.
 
+.. attention::
+
+    Some of the returns from queue methods require that the module Yaml be installed.  Please
+    refer to http://php.net/manual/book.yaml.php for more information.  For PHP < 7, Yaml 1.3.0
+    is acceptable.  For PHP >= 7, you will need to use Yaml >= 2.0.0.
+
 ジョブをキューに入れる
 ---------------------------
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message
@@ -20,19 +26,21 @@ structure according to the needs of the application:
 
     <?php
 
+    use Phalcon\Queue\Beanstalk;
+
     // Connect to the queue
-    $queue = new Phalcon\Queue\Beanstalk(
-        array(
-            'host' => '192.168.0.21',
-            'port' => '11300'
-        )
+    $queue = new Beanstalk(
+        [
+            "host" => "192.168.0.21",
+            "port" => "11300",
+        ]
     );
 
     // Insert the job in the queue
     $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Available connection options are:
@@ -56,14 +64,14 @@ Additional options as time to run, priority and delay can be passed as second pa
 
     // Insert the job in the queue with options
     $queue->put(
-        array(
-            'processVideo' => 4871
-        ),
-        array(
-            'priority' => 250,
-            'delay'    => 10,
-            'ttr'      => 3600
-        )
+        [
+            "processVideo" => 4871,
+        ],
+        [
+            "priority" => 250,
+            "delay"    => 10,
+            "ttr"      => 3600,
+        ]
     );
 
 The following options are available:
@@ -85,9 +93,9 @@ Every job put into the queue returns a "job id" which you can use to track the s
     <?php
 
     $jobId = $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 メッセージの取得
@@ -100,7 +108,6 @@ the task:
     <?php
 
     while (($job = $queue->peekReady()) !== false) {
-
         $message = $job->getBody();
 
         var_dump($message);
@@ -115,8 +122,7 @@ jobs must be "reserved" so other workers don't re-process them while other worke
 
     <?php
 
-    while (($job = $queue->reserve())) {
-
+    while (($job = $queue->reserve()) !== false) {
         $message = $job->getBody();
 
         var_dump($message);

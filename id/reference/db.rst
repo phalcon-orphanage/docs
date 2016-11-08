@@ -1,132 +1,132 @@
-Database Abstraction Layer
+Lapisan Abstraksi Database
 ==========================
 
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that powers the model layer
-in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` adalah komponen di belakang :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` yang memberi tenaga lapisan model
+dalam framework. Ia terdiri atas lapisan abstraksi independen terhadap sistem database, yang ditulis sepenuhnya dalam C.
 
-This component allows for a lower level database manipulation than using traditional models.
+Komponen ini memungkinkan manipulasi database level bawah menggunakan model tradisional.
 
 .. highlights::
 
-    This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>`
-    for a complete reference.
+    Panduan ini tidak dimaksudkan sebagai dokumentasi lengkap metode yang tersedia dan argumennya. Silakan kunjungi :doc:`API <../api/index>`
+    untuk referensi lengkap.
 
-Database Adapters
------------------
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
-database engines are supported:
+Adapter Database
+----------------
+Komponen ini menggunakan adapter untuk membungkus detil spesifik sistem database. Phalcon menggunakan PDO_ untuk menyambung ke database. Engine
+database berikut didukung:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
-+============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                   | Keterangan                                                                                                                                                                                                                        |
++=========================================================================================+===================================================================================================================================================================================================================================+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           | Sistem manajemen database relasional (RDBMS) yang paling banyak digunakan di dunia yang berjalan sebagai sebuah server yang meneyediakan akses banyak pengguna ke sejumlah database                                               |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` | PostgreSQL adalah sistem database relasional open source yang bertenaga. Ia aktif dikembangkan lebih dari 15 tahun dan memiliki arsitektur teruji yang telah memperoleh reputasi untuk keandalan, integritasi data dan kebenaran. |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         | SQLite adalah pustaka software yang mengimplementasi engine SQL database transaksional yang berdiri sendiri, tanpa server dan tanpa konfigurasi                                                                                   |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Implementing your own adapters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own
-database adapters or extend the existing ones.
+Mengimplementasi Adapter anda sendiri
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` harus diimplementasi untuk dapat menciptakan apater database
+anda sendiri atau mengembangkan yang sudah ada.
 
-Database Dialects
------------------
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Dialek Database
+---------------
+Phalcon membungkus detil spesifik tiap engine database dalam dialek. Mereka menyediakan fungsi umum dan pembangkit SQL untuk adapter.
 
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Name       | Description                                         | API                                                                            |
-+============+=====================================================+================================================================================+
-| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| Class                                                                          | Keterangan                                          |
++================================================================================+=====================================================+
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | Dialek SQL spesifik untuk sistem database MySQL     |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | Dialek SQL spesifik untuk sistem database PostgreSQL|
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         | Dialek SQL spesifik untuk sistem database SQLite    |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
 
-Implementing your own dialects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
+Mengimplementasi dialek anda sendiri
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` harus diimplementasi untuk dapat menciptakan dialek database anda sendiri atau mengembangkan yang sudah ada.
 
-Connecting to Databases
------------------------
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example
-below shows how to create a connection passing both required and optional parameters:
+Menyambung ke Database
+----------------------
+Untuk menciptakan koneksi harus dilakukan dengan menciptakan kelas adapter. Butuh sebuah array berisi parameter koneksi. Contoh
+dibawah menunjukkan bagaimana menciptakan sebuah koneksi dengan melewatkan parameter wajib dan tidak:
 
 .. code-block:: php
 
     <?php
 
-    // Required
-    $config = array(
+    // Wajib
+    $config = [
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
-    );
+        "dbname"   => "test_db",
+    ];
 
-    // Optional
+    // Opsional
     $config["persistent"] = false;
 
-    // Create a connection
+    // Buat koneksi
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 
 .. code-block:: php
 
     <?php
 
-    // Required
-    $config = array(
+    // wajib
+    $config = [
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
-    );
+        "dbname"   => "template",
+    ];
 
-    // Optional
+    // Opsional
     $config["schema"] = "public";
 
-    // Create a connection
+    // Buat koneksi
     $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 
 .. code-block:: php
 
     <?php
 
-    // Required
-    $config = array(
-        "dbname" => "/path/to/database.db"
-    );
+    // Wajib
+    $config = [
+        "dbname" => "/path/to/database.db",
+    ];
 
-    // Create a connection
+    // Buat koneksi
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
-Setting up additional PDO options
----------------------------------
-You can set PDO options at connection time by passing the parameters 'options':
+Menyiapkan opsi tambahan PDO
+----------------------------
+Anda dapat mengatur opsi PDO saat konkesi dengan melewatkan parameter 'options':
 
 .. code-block:: php
 
     <?php
 
-    // Create a connection with PDO options
+    // Buat koneksi dengan opsi PDO
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "sigma",
             "dbname"   => "test_db",
-            "options"  => array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
-            )
-        )
+            "options"  => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
+            ]
+        ]
     );
 
-Finding Rows
-------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+Mencari Row
+-----------
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` menyediakan beberapa metode untuk query baris ke tabel. Sintaks SQL spesifik target engine database diperlukan dalam hal ini:
 
 .. code-block:: php
 
@@ -134,35 +134,35 @@ Finding Rows
 
     $sql = "SELECT id, name FROM robots ORDER BY name";
 
-    // Send a SQL statement to the database system
+    // Kirim pernyataan SQL ke sistem database
     $result = $connection->query($sql);
 
-    // Print each robot name
+    // Cetak nama tiap robot
     while ($robot = $result->fetch()) {
        echo $robot["name"];
     }
 
-    // Get all rows in an array
+    // Dapatkan semua row dalam sebuah array
     $robots = $connection->fetchAll($sql);
     foreach ($robots as $robot) {
        echo $robot["name"];
     }
 
-    // Get only the first row
+    // Ambil baris pertama saja
     $robot = $connection->fetchOne($sql);
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using :code:`Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+Secara default pemanggilan ini menciptakan array dengan indeks asosiatif dan numerik. Anda dapat mengubah perilaku ini menggunakan :code:`Phalcon\Db\Result::setFetchMode()`. Mteode ini menerima sebuah konstan, yang menentukan tipe indeks yang diperlukan.
 
 +---------------------------------+-----------------------------------------------------------+
-| Constant                        | Description                                               |
+| Konstan                         | Keterangan                                                |
 +=================================+===========================================================+
-| :code:`Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
+| :code:`Phalcon\Db::FETCH_NUM`   | Kembalikan array dengan indeks numerik                    |
 +---------------------------------+-----------------------------------------------------------+
-| :code:`Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
+| :code:`Phalcon\Db::FETCH_ASSOC` | Kembalikan array dengan indeks asosiatif                  |
 +---------------------------------+-----------------------------------------------------------+
-| :code:`Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
+| :code:`Phalcon\Db::FETCH_BOTH`  | Kembalikan array dengan indeks asosiatif dan numerik      |
 +---------------------------------+-----------------------------------------------------------+
-| :code:`Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
+| :code:`Phalcon\Db::FETCH_OBJ`   | Kembalikan objek daripada array                           |
 +---------------------------------+-----------------------------------------------------------+
 
 .. code-block:: php
@@ -177,7 +177,7 @@ By default these calls create arrays with both associative and numeric indexes. 
        echo $robot[0];
     }
 
-The :code:`Phalcon\Db::query()` returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+:code:`Phalcon\Db::query()` mengembalikan instance :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. Objek ini membungkus semua fungsionalitas terkait result set yang dikembalikan yakni menelusuri, mencari record tertentu, jumlah dan lain-lain.
 
 .. code-block:: php
 
@@ -186,240 +186,282 @@ The :code:`Phalcon\Db::query()` returns an instance of :doc:`Phalcon\\Db\\Result
     $sql = "SELECT id, name FROM robots";
     $result = $connection->query($sql);
 
-    // Traverse the resultset
+    // Menelusuri resultset
     while ($robot = $result->fetch()) {
        echo $robot["name"];
     }
 
-    // Seek to the third row
+    // Mencari row ketiga
     $result->seek(2);
     $robot = $result->fetch();
 
-    // Count the resultset
+    // Hitung jumlah resultset
     echo $result->numRows();
 
-Binding Parameters
+Mengikat Parameter
 ------------------
-Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
-bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
-injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+Parameter terikat juga didukung :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Meski ada dampak kecil di performa dengan menggunakan
+parameter terikat, anda disarankan untuk menggunakan metodologi ini untuk menghilangkan kemungkinan kode anda terkena serangan SQL
+injection. Baik string maupun positional placeholder didukung. Mengikat parameter dapat dilakukan seperti berikut:
 
 .. code-block:: php
 
     <?php
 
-    // Binding with numeric placeholders
+    // Mengikat dengan placeholder numerik
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array("Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
-    // Binding with named placeholders
+    // Mengikat dengan placeholder bernama
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
-are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
-data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
+Ketika menggunakan placeholder numerik, anda akan harus menentukannya sebagai integer yakni 1 atau 2. Untuk kasus "1" atau "2"
+mereka dianggap string dan bukan integer, sehingga placeholder tidak dapat diganti dengan benar. Dengan sembarang adapter
+data otomatis di escape menggunakan `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
 
-This function takes into account the connection charset, so its recommended to define the correct charset
-in the connection parameters or in your database server configuration, as a wrong
-charset will produce undesired effects when storing or retrieving data.
+Fungsi ini memerhitungkan connection charset, sehingga disarankan untuk menentukan charset yang benar
+dalam parameter koneksi atau dalam konfigurasi server database, karena charset
+keliru akan menghasilkan dampak tidak diinginkan ketika menyimpan atau mangambil data.
 
-Also, you can pass your parameters directly to the execute/query methods. In this case
-bound parameters are directly passed to PDO:
+Anda dapat juga melewatkan parameter langsung ke metode execute/query. untuk hal ini
+parameter terikat langsung dilewatkan ke PDO:
 
 .. code-block:: php
 
     <?php
 
-    // Binding with PDO placeholders
+    // Mengikat placeholder PDO
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
-Inserting/Updating/Deleting Rows
---------------------------------
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+Menambah/Mengubah/Menghapus Row
+-------------------------------
+Untuk menambah, mengubah atau menghapus row, anda dapat menggunakan SQL atau menggunakan fungsi yang telah tersedia  oleh kelas ini:
 
 .. code-block:: php
 
     <?php
 
-    // Inserting data with a raw SQL statement
+    // Menambah data dengan perintah SQL
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
     $success = $connection->execute($sql);
 
-    // With placeholders
+    // Dengan placeholder
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astro Boy', 1952));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
-    // Generating dynamically the necessary SQL
+    // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->insert(
-       "robots",
-       array("Astro Boy", 1952),
-       array("name", "year")
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
-    // Generating dynamically the necessary SQL (another syntax)
+    // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->insertAsDict(
-       "robots",
-       array(
-          "name" => "Astro Boy",
-          "year" => 1952
-       )
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
-    // Updating data with a raw SQL statement
+    // Mengubah data dengan pernyataan SQL
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    // With placeholders
+    // Dengan placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astro Boy', 101));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
-    // Generating dynamically the necessary SQL
+    // Membangkitkan SQL yang diperlukan secara dinamis
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
-    // Generating dynamically the necessary SQL (another syntax)
+    // Membangkitkan SQL yang diperlukan secara dinamis (sintaks lain)
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Peringatan! Disini, nilainya tidak di escape
     );
 
-    // With escaping conditions
+    // Dengan kondisi escape
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Parameter opsional
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Parameter opsional
+        ]
     );
 
-    // Deleting data with a raw SQL statement
+    // Menghapus data dengan pernyataan SQL
     $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    // With placeholders
+    // Dengan placeholder
     $sql     = "DELETE `robots` WHERE `id` = ?";
-    $success = $connection->execute($sql, array(101));
+    $success = $connection->execute($sql, [101]);
 
-    // Generating dynamically the necessary SQL
-    $success = $connection->delete("robots", "id = ?", array(101));
+    // Membangkitkan SQL yang diperlukan secara dinamis
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
-Transactions and Nested Transactions
-------------------------------------
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
-often increase the performance on most database systems:
+Transaksi dan Transaksi Bersarang
+---------------------------------
+Bekerja dengan transaksi didukung seperti halnya dengan PDO. Melakukan manipulasi data dalam transaksi
+sering kali menaikkan performa pada sebagian besar sistem database:
 
 .. code-block:: php
 
     <?php
 
     try {
-
-        // Start a transaction
+        // Mulai transaksi
         $connection->begin();
 
-        // Execute some SQL statements
+        // Eksekusi beberapa pernyataan SQL
         $connection->execute("DELETE `robots` WHERE `id` = 101");
         $connection->execute("DELETE `robots` WHERE `id` = 102");
         $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-        // Commit if everything goes well
+        // Commit jika semuanya berjalan baik
         $connection->commit();
-
     } catch (Exception $e) {
-        // An exception has occurred rollback the transaction
+        // Exception terjadi rollback transaksi
         $connection->rollback();
     }
 
-In addition to standard transactions, :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides built-in support for `nested transactions`_
-(if the database system used supports them). When you call begin() for a second time a nested transaction
-is created:
+Sebagai tambahan transaksi baku, :doc:`Phalcon\\Db <../api/Phalcon_Db>` menyediakan dukungan bawaan untuk `transaksi bersarang`_
+(jika sistem database yang digunakan mendukung). Ketika anda memanggil begin() untuk kedua kali sebuah transaksi bersarang
+diciptakan:
 
 .. code-block:: php
 
     <?php
 
     try {
-
-        // Start a transaction
+        // Mulai sebuah transaksi
         $connection->begin();
 
-        // Execute some SQL statements
+        // Eksekusi pernyataan SQL
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
-            // Start a nested transaction
+            // Mulai transaksi bersarang
             $connection->begin();
 
             // Execute these SQL statements into the nested transaction
             $connection->execute("DELETE `robots` WHERE `id` = 102");
             $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-            // Create a save point
+            // Buat save point
             $connection->commit();
-
         } catch (Exception $e) {
-            // An error has occurred, release the nested transaction
+            // Kesalahan terjadi, lepaskan transaksi bersarang
             $connection->rollback();
         }
 
-        // Continue, executing more SQL statements
+        // Lanjutkan, eksekusi pernyataan SQL lain
         $connection->execute("DELETE `robots` WHERE `id` = 104");
 
-        // Commit if everything goes well
+        // Commit jika semua berjalan baik
         $connection->commit();
-
     } catch (Exception $e) {
-        // An exception has occurred rollback the transaction
+        // Kesalahan terjadi, batalkan transaksi
         $connection->rollback();
     }
 
-Database Events
----------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+Kejadian Database
+-----------------
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` mampu mengirim kejadian ke sebuah :doc:`EventsManager <events>` jika ada. Beberapa kejadian yang ketika mengembalikan nilai boolean false dapat menghentikan operasi yang aktif. Kejadian berikut didukung:
 
 +---------------------+-----------------------------------------------------------+---------------------+
-| Event Name          | Triggered                                                 | Can stop operation? |
+| Nama Event          | Dipicu                                                    | Bisa stop operasi?  |
 +=====================+===========================================================+=====================+
-| afterConnect        | After a successfully connection to a database system      | No                  |
+| afterConnect        | Setelah koneksi sukses ke sistem database                 | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeQuery         | Before send a SQL statement to the database system        | Yes                 |
+| beforeQuery         | Sebelum mengirim pernyataan SQL ke sistem database        | Ya                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| afterQuery          | After send a SQL statement to database system             | No                  |
+| afterQuery          | Setelah mengirim pernyataan SQL ke sistem database        | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeDisconnect    | Before close a temporal database connection               | No                  |
+| beforeDisconnect    | Sebelum menutup koneksi database sementara                | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beginTransaction    | Before a transaction is going to be started               | No                  |
+| beginTransaction    | Sebelum memulai transaksi                                 | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
-| rollbackTransaction | Before a transaction is rollbacked                        | No                  |
+| rollbackTransaction | Sebelum membatalkan transaksi                             | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
-| commitTransaction   | Before a transaction is committed                         | No                  |
+| commitTransaction   | Sebelum commit transaksi                                  | Tidak               |
 +---------------------+-----------------------------------------------------------+---------------------+
 
-Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalcon_Db>` will trigger the events with the type "db":
+Mengikat sebuah EventsManager ke sebuah koneksi mudah, :doc:`Phalcon\\Db <../api/Phalcon_Db>` akan memicu kejadian bertipe "db":
 
 .. code-block:: php
 
@@ -430,50 +472,57 @@ Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalc
 
     $eventsManager = new EventsManager();
 
-    // Listen all the database events
+    // Pantau semua kejadian database
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
-    // Assign the eventsManager to the db adapter instance
+    // Salin eventsManager ke instance adapter db
     $connection->setEventsManager($eventsManager);
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+Menghentikan operasi SQL berguna jika misalnya anda ingin membuat implementasi penguji SQL injeksi:
 
 .. code-block:: php
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Check for malicious words in SQL statements
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // Uji untuk kata-kata berbahaya dalam pernyataan SQL
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // Operasi DROP/ALTER tidak izinkan di aplikasi ini,
+                // Ini pastinya SQL injection!
+                return false;
+            }
+
+            // OK
+            return true;
         }
-
-        // It's OK
-        return true;
-    });
+    );
 
 Profiling SQL Statements
 ------------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` menyertakan komponen profiling bernama :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`, yang digunakan untuk menganalisa performa operasi database juga mendiagnosa masalah performa dan menemukan bottleneck.
 
-Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`:
+Profiling database sangat mudah dengan :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -481,29 +530,35 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     $profiler = new DbProfiler();
 
-    // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // Start a profile with the active connection
-            $profiler->startProfile($connection->getSQLStatement());
-        }
-        if ($event->getType() == 'afterQuery') {
-            // Stop the active profile
-            $profiler->stopProfile();
-        }
-    });
+    // Pantau semua kejadian database
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
 
-    // Assign the events manager to the connection
+                // Mulai profil koneksi aktif
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // Hentikan profil aktif
+                $profiler->stopProfile();
+            }
+        }
+    );
+
+    // Salin eventsManager ke connection
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
          . "FROM buyers "
          . "LEFT JOIN products ON buyers.pid = products.id";
 
-    // Execute a SQL statement
+    // Eksekusi perintah SQL
     $connection->query($sql);
 
-    // Get the last profile in the profiler
+    // Ambil profil terakhir dari profiler
     $profile = $profiler->getLastProfile();
 
     echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -511,7 +566,7 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
     echo "Final Time: ", $profile->getFinalTime(), "\n";
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
-You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` to record real time statistics of the statements sent to the database system:
+Anda dapat menciptakan kelas profil anda sendiri berdasar :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` untuk merekam statistik real time perintah yang dikirim ke sistem database:
 
 .. code-block:: php
 
@@ -524,7 +579,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     class DbProfiler extends Profiler
     {
         /**
-         * Executed before the SQL statement will sent to the db server
+         * Dieksekusi sebelum perintah SQL dikirim ke server db
          */
         public function beforeStartProfile(Item $profile)
         {
@@ -532,7 +587,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
         }
 
         /**
-         * Executed after the SQL statement was sent to the db server
+         * Dieksekusi setelah perintah SQL dikirim ke server db
          */
         public function afterEndProfile(Item $profile)
         {
@@ -540,24 +595,25 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
         }
     }
 
-    // Create an Events Manager
+    // Buat sebuah Events Manager
     $eventsManager = new EventsManager();
 
-    // Create a listener
+    // Buat pemantau
     $dbProfiler = new DbProfiler();
 
-    // Attach the listener listening for all database events
-    $eventsManager->attach('db', $dbProfiler);
+    // Pasang pemantau untuk memantau semua kejadian database
+    $eventsManager->attach("db", $dbProfiler);
 
-Logging SQL Statements
-----------------------
-Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
+Log Perintah SQL
+----------------
+Menggunakan komponen abstraksi level tinggi seperti :doc:`Phalcon\\Db <../api/Phalcon_Db>` untuk mengakses sebuah database, sulit untuk memahami perintah apa yang dikirim ke sistem database. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` berinteraksi dengan :doc:`Phalcon\\Db <../api/Phalcon_Db>`, menyediakan kemampuan logging di lapisan abstraksi database.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -565,24 +621,32 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
-
-    // Assign the eventsManager to the db adapter instance
-    $connection->setEventsManager($eventsManager);
-
-    // Execute some SQL statement
-    $connection->insert(
-        "products",
-        array("Hot pepper", 3.50),
-        array("name", "price")
     );
 
-As above, the file *app/logs/db.log* will contain something like this:
+    // Pasang eventsManager ke instance adapter db
+    $connection->setEventsManager($eventsManager);
+
+    // Jalankan perintah SQL
+    $connection->insert(
+        "products",
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
+    );
+
+Kode di atas, file *app/logs/db.log* akan berisi seperti ini:
 
 .. code-block:: php
 
@@ -590,81 +654,85 @@ As above, the file *app/logs/db.log* will contain something like this:
     (name, price) VALUES ('Hot pepper', 3.50)
 
 
-Implementing your own Logger
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
-The method needs to accept a string as the first argument. You can then pass your logging object to :code:`Phalcon\Db::setLogger()`,
-and from then on any SQL statement executed will call that method to log the results.
+Implementasi Logger anda sendiri
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Anda dapat mengimplementasi kelas logger anda sendiri untuk query database, dengan menciptakan sebuah kelas yang mengimplementasi sebuah metode bernama "log".
+Metode ini harus menerima string sebagai argumen pertama. Anda dapat melewatkan objek logging ke :code:`Phalcon\Db::setLogger()`,
+dan dari sana tiap perintah SQL yang dijalankan akan memanggil metode tersebut untuk log result.
 
-Describing Tables/Views
------------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and views:
+Deskripsi Tables/Views
+----------------------
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` juga menyediakan metode untuk mendapatkan informasi detil tentang tabel dan view:
 
 .. code-block:: php
 
     <?php
 
-    // Get tables on the test_db database
+    // Ambil tabel pada database test_db
     $tables = $connection->listTables("test_db");
 
-    // Is there a table 'robots' in the database?
+    // Apakah ada tabel 'robots' dalam database?
     $exists = $connection->tableExists("robots");
 
-    // Get name, data types and special features of 'robots' fields
+    // Ambil nama, tipe data dan fitur khusus field 'robots'
     $fields = $connection->describeColumns("robots");
     foreach ($fields as $field) {
         echo "Column Type: ", $field["Type"];
     }
 
-    // Get indexes on the 'robots' table
+    // Ambil indeks pada tabel 'robots'
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
-    // Get foreign keys on the 'robots' table
+    // Ambil foreign keys pada tabel 'robots'
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
-        // Print referenced columns
-        print_r($reference->getReferencedColumns());
+        // Cetak kolom yang direferensi
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+Sebuah deksripsi tabel sangat mirip dengan perintah describe di MySQL, ia berisi informasi berikut:
 
 +-------+----------------------------------------------------+
-| Index | Description                                        |
+| Indeks| Keterangan                                         |
 +=======+====================================================+
-| Field | Field's name                                       |
+| Field | Nama field                                         |
 +-------+----------------------------------------------------+
-| Type  | Column Type                                        |
+| Type  | Tipe kolom                                         |
 +-------+----------------------------------------------------+
-| Key   | Is the column part of the primary key or an index? |
+| Key   | Apakah primary key atau index?                     |
 +-------+----------------------------------------------------+
-| Null  | Does the column allow null values?                 |
+| Null  | Kolom ini mengizinkan nilai null?                  |
 +-------+----------------------------------------------------+
 
-Methods to get information about views are also implemented for every supported database system:
+Metode untuk mendapatkan informasi tenant view juga diimplementasi untuk semua sistem database yang didukung:
 
 .. code-block:: php
 
     <?php
 
-    // Get views on the test_db database
+    // Ambil view pada database test_db
     $tables = $connection->listViews("test_db");
 
-    // Is there a view 'robots' in the database?
+    // Apakah ada view bernama 'robots' di database?
     $exists = $connection->viewExists("robots");
 
 Creating/Altering/Dropping Tables
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
-commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used.
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
-differentiate the SQL syntax based on the target storage system.
+Sistem database berbeda (MySQL, Postgresql dan lain-lain.) menyediakan kemampuan untuk menciptakan, mengubah atau menghapus tabel dengan
+perintah seperti CREATE, ALTER atau DROP. Sintaks SQL berbeda berdasarkan pada sistem database yang digunakan.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` menawarkan antarmuka seragam untuk mengubah tabel, tanpa perlu
+membedakan sintaks SQL berdasarkan target sistem storage.
 
-Creating Tables
-^^^^^^^^^^^^^^^
-The following example shows how to create a table:
+Menciptakan Tabel
+^^^^^^^^^^^^^^^^^
+Contoh berikut menunjukkan bagaimana menciptakan sebuah tabel:
 
 .. code-block:: php
 
@@ -675,68 +743,68 @@ The following example shows how to create a table:
     $connection->createTable(
         "robots",
         null,
-        array(
-           "columns" => array(
+        [
+           "columns" => [
                 new Column(
                     "id",
-                    array(
+                    [
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
                         "primary"       => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "name",
-                    array(
+                    [
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",
-                    array(
+                    [
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
                         "notNull" => true,
-                    )
-                )
-            )
-        )
+                    ]
+                ),
+            ]
+        ]
     );
 
-:code:`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class
-:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
+:code:`Phalcon\Db::createTable()` menerima array asosiatif yang mendeskripsikan tabel. Kolom ditentukan dengan kelas
+:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. tabel di bawah menunjukkan opsi yang tersedia untuk mendefinisikan kolom:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Option          | Description                                                                                                                                | Optional |
+| Option          | Keterangan                                                                                                                                 | Opsional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | No       |
+| "type"          | Tipe kolom. Harus konstan :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` (lihat daftar dibawah)                                     | Tidak    |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
+| "primary"       | True jika kolom adalah primary key tabel                                                                                                   | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | Beberapa tipe kolom seperti VARCHAR atau INTEGER bisa memiliki size tertentu                                                               | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Yes      |
+| "scale"         | Kolom DECIMAL atau NUMBER dapat memiliki skala untuk menentukan berapa desimal yang disimpan                                               | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | Kolom INTEGER dapat berupa signed atau unsigned. Opsi ini tidak dapat diterapkan untuk tipe kolom lain                                     | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | Kolom dapat menyimpan nilai null?                                                                                                          | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Yes      |
+| "default"       | Nilai default (ketika digunakan dengan :code:`"notNull" => true`).                                                                         | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | Dengan atribut ini kolom akan diisi dengan integer auto-increment. Hanya satu kolom dalam tabel yang bisa punya atribut ini.               | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
+| "bind"          | Salah satu konstant BIND_TYPE_* yang menjelaskan bahwiman kolom harus diikat sebelum disimpan                                              | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | Kolom harus ditempatkan di posisi pertama dalam urutan kolom                                                                               | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | Kolom harus ditempatkan setelah posisi kolom terindikasi                                                                                   | Ya       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` supports the following database column types:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` mendukung tipe kolom database berikut:
 
 * :code:`Phalcon\Db\Column::TYPE_INTEGER`
 * :code:`Phalcon\Db\Column::TYPE_DATE`
@@ -746,25 +814,25 @@ The following example shows how to create a table:
 * :code:`Phalcon\Db\Column::TYPE_CHAR`
 * :code:`Phalcon\Db\Column::TYPE_TEXT`
 
-The associative array passed in :code:`Phalcon\Db::createTable()` can have the possible keys:
+Array asosiatif yang dilewatkan dalam :code:`Phalcon\Db::createTable()` dapat memiliki key berikut:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Index        | Description                                                                                                                            | Optional |
+| Index        | Keterangan                                                                                                                             | Opsional |
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | No       |
+| "columns"    | Sebuah array dengan himpunan kolom tabel ditentukan oleh :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                         | Tidak    |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Yes      |
+| "indexes"    | Sebuah array dengan himpunan indeks tabel ditentukan oleh :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                          | Ya       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Yes      |
+| "references" | Sebuah array dengan himpunan referensi tabel (foreign key) ditentukan oleh :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` | Ya       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
+| "options"    | Sebuah array dengan himpunan opsi pembuatan tabel. Opsi ini terkait dengan sistem database yang migrasi dibuat.                        | Ya       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Altering Tables
-^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
-Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
-is limited by these constraints.
+mengubah Tabel
+^^^^^^^^^^^^^^
+Saat aplikasi anda tumbuh, anda mungkin perlu mengubah database anda, sebagai bagian dari refactoring atau menambah fitur baru.
+Tidak semua sistem database mengizinkan mengubah kolom yang sudah ada atau menamb kolom antara yang sudah ada. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
+dibatasi oleh keterbatasan ini.
 
 .. code-block:: php
 
@@ -772,55 +840,55 @@ is limited by these constraints.
 
     use Phalcon\Db\Column as Column;
 
-    // Adding a new column
+    // Menambah kolom baru
     $connection->addColumn(
         "robots",
         null,
         new Column(
             "robot_type",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
-            )
+                "after"   => "name",
+            ]
         )
     );
 
-    // Modifying an existing column
+    // Mengubah kolom yang suadh ada
     $connection->modifyColumn(
         "robots",
         null,
         new Column(
             "name",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
-            )
+                "notNull" => true,
+            ]
         )
     );
 
-    // Deleting the column "name"
+    // Menghapus kolom "name"
     $connection->dropColumn(
         "robots",
         null,
         "name"
     );
 
-Dropping Tables
-^^^^^^^^^^^^^^^
-Examples on dropping tables:
+Menghapus Tables
+^^^^^^^^^^^^^^^^
+Contoh menghapus tabel:
 
 .. code-block:: php
 
     <?php
 
-    // Drop table robot from active database
+    // Hapus tabel robot dari database aktif
     $connection->dropTable("robots");
 
-    // Drop table robot from database "machines"
+    // Hapus tabel robot dari database "machines"
     $connection->dropTable("robots", "machines");
 
 .. _PDO: http://www.php.net/manual/en/book.pdo.php
-.. _`nested transactions`: http://en.wikipedia.org/wiki/Nested_transaction
+.. _`transaksi bersarang`: http://en.wikipedia.org/wiki/Nested_transaction

@@ -1,7 +1,7 @@
 使用 Session 存储数据（Storing data in Session）
 ================================================
 
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` 组件提供了一种面向对象的方式访问session数据。
+会话组件组件提供了一种面向对象的方式访问session数据。
 
 使用这个组件替代原生session的原因如下:
 
@@ -21,11 +21,16 @@ Thanks to the service container, we can ensure that the session is accessed only
     use Phalcon\Session\Adapter\Files as Session;
 
     // Start the session the first time when some component request the session service
-    $di->setShared('session', function () {
-        $session = new Session();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new Session();
+
+            $session->start();
+
+            return $session;
+        }
+    );
 
 Session 的存储与读取（Storing/Retrieving data in Session）
 ----------------------------------------------------------
@@ -50,7 +55,6 @@ Session 的存储与读取（Storing/Retrieving data in Session）
         {
             // 检查session变量是否已定义
             if ($this->session->has("user-name")) {
-
                 // 获取session变量的值
                 $name = $this->session->get("user-name");
             }
@@ -96,19 +100,21 @@ prefix for every session variable created in a certain application:
     use Phalcon\Session\Adapter\Files as Session;
 
     // Isolating the session data
-    $di->set('session', function () {
+    $di->set(
+        "session",
+        function () {
+            // All variables created will prefixed with "my-app-1"
+            $session = new Session(
+                [
+                    "uniqueId" => "my-app-1",
+                ]
+            );
 
-        // All variables created will prefixed with "my-app-1"
-        $session = new Session(
-            array(
-                'uniqueId' => 'my-app-1'
-            )
-        );
+            $session->start();
 
-        $session->start();
-
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 Adding a unique ID is not necessary.
 
@@ -124,8 +130,10 @@ it's automatically stored in session:
 
     use Phalcon\Session\Bag as SessionBag;
 
-    $user       = new SessionBag('user');
+    $user = new SessionBag("user");
+
     $user->setDI($di);
+
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
 

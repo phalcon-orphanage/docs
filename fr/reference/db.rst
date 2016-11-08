@@ -16,15 +16,15 @@ Database Adapters
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
 database engines are supported:
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
-+============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                   | Description                                                                                                                                                                                                                          |
++=========================================================================================+======================================================================================================================================================================================================================================+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,15 +35,15 @@ Database Dialects
 -----------------
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Name       | Description                                         | API                                                                            |
-+============+=====================================================+================================================================================+
-| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| Class                                                                          | Description                                         |
++================================================================================+=====================================================+
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | SQL specific dialect for MySQL database system      |
++------------------------------------------------------------------+-------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | SQL specific dialect for PostgreSQL database system |
++------------------------------------------------------------------+-------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         | SQL specific dialect for SQLite database system     |
++------------------------------------------------------------------+-------------+-----------------------------------------------------+
 
 Implementing your own dialects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,12 +59,12 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
+    $config = [
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
-    );
+        "dbname"   => "test_db",
+    ];
 
     // Optional
     $config["persistent"] = false;
@@ -77,12 +77,12 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
+    $config = [
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
-    );
+        "dbname"   => "template",
+    ];
 
     // Optional
     $config["schema"] = "public";
@@ -95,9 +95,9 @@ below shows how to create a connection passing both required and optional parame
     <?php
 
     // Required
-    $config = array(
-        "dbname" => "/path/to/database.db"
-    );
+    $config = [
+        "dbname" => "/path/to/database.db",
+    ];
 
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -112,16 +112,16 @@ You can set PDO options at connection time by passing the parameters 'options':
 
     // Create a connection with PDO options
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "sigma",
             "dbname"   => "test_db",
-            "options"  => array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
-            )
-        )
+            "options"  => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
+            ]
+        ]
     );
 
 Finding Rows
@@ -210,11 +210,22 @@ injection attacks. Both string and positional placeholders are supported. Bindin
 
     // Binding with numeric placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array("Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
     // Binding with named placeholders
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
 are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
@@ -233,7 +244,12 @@ bound parameters are directly passed to PDO:
 
     // Binding with PDO placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
 Inserting/Updating/Deleting Rows
 --------------------------------
@@ -249,22 +265,34 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astro Boy', 1952));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
     // Generating dynamically the necessary SQL
     $success = $connection->insert(
-       "robots",
-       array("Astro Boy", 1952),
-       array("name", "year")
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->insertAsDict(
-       "robots",
-       array(
-          "name" => "Astro Boy",
-          "year" => 1952
-       )
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
     // Updating data with a raw SQL statement
@@ -273,46 +301,60 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astro Boy', 101));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
     // Generating dynamically the necessary SQL
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // Generating dynamically the necessary SQL (another syntax)
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // With escaping conditions
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
 
     // Deleting data with a raw SQL statement
@@ -321,10 +363,16 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     // With placeholders
     $sql     = "DELETE `robots` WHERE `id` = ?";
-    $success = $connection->execute($sql, array(101));
+    $success = $connection->execute($sql, [101]);
 
     // Generating dynamically the necessary SQL
-    $success = $connection->delete("robots", "id = ?", array(101));
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
 Transactions and Nested Transactions
 ------------------------------------
@@ -336,7 +384,6 @@ often increase the performance on most database systems:
     <?php
 
     try {
-
         // Start a transaction
         $connection->begin();
 
@@ -347,7 +394,6 @@ often increase the performance on most database systems:
 
         // Commit if everything goes well
         $connection->commit();
-
     } catch (Exception $e) {
         // An exception has occurred rollback the transaction
         $connection->rollback();
@@ -362,7 +408,6 @@ is created:
     <?php
 
     try {
-
         // Start a transaction
         $connection->begin();
 
@@ -370,7 +415,6 @@ is created:
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
             // Start a nested transaction
             $connection->begin();
 
@@ -380,7 +424,6 @@ is created:
 
             // Create a save point
             $connection->commit();
-
         } catch (Exception $e) {
             // An error has occurred, release the nested transaction
             $connection->rollback();
@@ -391,7 +434,6 @@ is created:
 
         // Commit if everything goes well
         $connection->commit();
-
     } catch (Exception $e) {
         // An exception has occurred rollback the transaction
         $connection->rollback();
@@ -402,21 +444,21 @@ Database Events
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +---------------------+-----------------------------------------------------------+---------------------+
-| Event Name          | Triggered                                                 | Can stop operation? |
+| Nom d'évt           | Triggered                                                 | Opération stoppée ? |
 +=====================+===========================================================+=====================+
-| afterConnect        | After a successfully connection to a database system      | No                  |
+| afterConnect        | After a successfully connection to a database system      | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeQuery         | Before send a SQL statement to the database system        | Yes                 |
+| beforeQuery         | Before send a SQL statement to the database system        | Oui                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| afterQuery          | After send a SQL statement to database system             | No                  |
+| afterQuery          | After send a SQL statement to database system             | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeDisconnect    | Before close a temporal database connection               | No                  |
+| beforeDisconnect    | Before close a temporal database connection               | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beginTransaction    | Before a transaction is going to be started               | No                  |
+| beginTransaction    | Before a transaction is going to be started               | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| rollbackTransaction | Before a transaction is rollbacked                        | No                  |
+| rollbackTransaction | Before a transaction is rollbacked                        | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| commitTransaction   | Before a transaction is committed                         | No                  |
+| commitTransaction   | Before a transaction is committed                         | Non                 |
 +---------------------+-----------------------------------------------------------+---------------------+
 
 Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalcon_Db>` will trigger the events with the type "db":
@@ -434,12 +476,12 @@ Bind an EventsManager to a connection is simple, :doc:`Phalcon\\Db <../api/Phalc
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
     // Assign the eventsManager to the db adapter instance
@@ -451,18 +493,24 @@ Stop SQL operations are very useful if for example you want to implement some la
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Check for malicious words in SQL statements
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // Check for malicious words in SQL statements
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // DROP/ALTER operations aren't allowed in the application,
+                // this must be a SQL injection!
+                return false;
+            }
+
+            // It's OK
+            return true;
         }
-
-        // It's OK
-        return true;
-    });
+    );
 
 Profiling SQL Statements
 ------------------------
@@ -474,6 +522,7 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -482,16 +531,22 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
     $profiler = new DbProfiler();
 
     // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // Start a profile with the active connection
-            $profiler->startProfile($connection->getSQLStatement());
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
+
+                // Start a profile with the active connection
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // Stop the active profile
+                $profiler->stopProfile();
+            }
         }
-        if ($event->getType() == 'afterQuery') {
-            // Stop the active profile
-            $profiler->stopProfile();
-        }
-    });
+    );
 
     // Assign the events manager to the connection
     $connection->setEventsManager($eventsManager);
@@ -547,7 +602,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     $dbProfiler = new DbProfiler();
 
     // Attach the listener listening for all database events
-    $eventsManager->attach('db', $dbProfiler);
+    $eventsManager->attach("db", $dbProfiler);
 
 Logging SQL Statements
 ----------------------
@@ -558,6 +613,7 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -565,12 +621,14 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // Listen all the database events
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
+    );
 
     // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
@@ -578,8 +636,14 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     // Execute some SQL statement
     $connection->insert(
         "products",
-        array("Hot pepper", 3.50),
-        array("name", "price")
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
     );
 
 As above, the file *app/logs/db.log* will contain something like this:
@@ -619,14 +683,18 @@ Describing Tables/Views
     // Get indexes on the 'robots' table
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
     // Get foreign keys on the 'robots' table
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // Print referenced columns
-        print_r($reference->getReferencedColumns());
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
 A table description is very similar to the MySQL describe command, it contains the following information:
@@ -675,36 +743,36 @@ The following example shows how to create a table:
     $connection->createTable(
         "robots",
         null,
-        array(
-           "columns" => array(
+        [
+           "columns" => [
                 new Column(
                     "id",
-                    array(
+                    [
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
                         "primary"       => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "name",
-                    array(
+                    [
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",
-                    array(
+                    [
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
                         "notNull" => true,
-                    )
-                )
-            )
-        )
+                    ]
+                ),
+            ]
+        ]
     );
 
 :code:`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class
@@ -713,27 +781,27 @@ The following example shows how to create a table:
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | No       |
+| "type"          | Column type. Must be a :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` constant (see below for a list)                               | Non      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
+| "primary"       | True if the column is part of the table's primary key                                                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Yes      |
+| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | Column can store null values?                                                                                                              | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Yes      |
+| "default"       | Default value (when used with :code:`"notNull" => true`).                                                                                  | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
+| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | Column must be placed at first position in the column order                                                                                | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | Column must be placed after indicated column                                                                                               | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` supports the following database column types:
@@ -751,13 +819,13 @@ The associative array passed in :code:`Phalcon\Db::createTable()` can have the p
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional |
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | No       |
+| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | Non      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Yes      |
+| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Yes      |
+| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
+| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Oui      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 Altering Tables
@@ -778,12 +846,12 @@ is limited by these constraints.
         null,
         new Column(
             "robot_type",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
-            )
+                "after"   => "name",
+            ]
         )
     );
 
@@ -793,11 +861,11 @@ is limited by these constraints.
         null,
         new Column(
             "name",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
-            )
+                "notNull" => true,
+            ]
         )
     );
 

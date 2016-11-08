@@ -13,9 +13,12 @@ Micro Applications
 
     $app = new Micro();
 
-    $app->get('/say/welcome/{name}', function ($name) {
-        echo "<h1>Welcome $name!</h1>";
-    });
+    $app->get(
+        "/say/welcome/{name}",
+        function ($name) {
+            echo "<h1>Welcome $name!</h1>";
+        }
+    );
 
     $app->handle();
 
@@ -42,9 +45,12 @@ HTTP используется, чтобы запросы путей соотве
 
     <?php
 
-    $app->get('/say/hello/{name}', function ($name) {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello/{name}",
+        function ($name) {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
 Метод "get" показывает, что используется GET-запрос. Путь :code:`/say/hello/{name}` также имеет параметр :code:`{$name}`,
 который напрямую передается обработчику пути (анонимная функция). Обработка пути выполняется, когда путь совпадает.
@@ -60,19 +66,34 @@ HTTP используется, чтобы запросы путей соотве
         echo "<h1>Hello! $name</h1>";
     }
 
-    $app->get('/say/hello/{name}', "say_hello");
+    $app->get(
+        "/say/hello/{name}",
+        "say_hello"
+    );
 
     // С помощью статического метода
-    $app->get('/say/hello/{name}', "SomeClass::someSayMethod");
+    $app->get(
+        "/say/hello/{name}",
+        "SomeClass::someSayMethod"
+    );
 
     // С помощью метода объекта
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($myController, "someAction"));
+    $app->get(
+        "/say/hello/{name}",
+        [
+            $myController,
+            "someAction"
+        ]
+    );
 
     // Анонимная функция (замыкание)
-    $app->get('/say/hello/{name}', function ($name) {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello/{name}",
+        function ($name) {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` предлагает набор инструментов для создания HTTP-метода (или методов),
 необходимых для создания пути:
@@ -82,25 +103,51 @@ HTTP используется, чтобы запросы путей соотве
     <?php
 
     // Совпадет, если HTTP-метод - GET
-    $app->get('/api/products', "get_products");
+    $app->get(
+        "/api/products",
+        "get_products"
+    );
 
     // Совпадет, если HTTP-метод - POST
-    $app->post('/api/products/add', "add_product");
+    $app->post(
+        "/api/products/add",
+        "add_product"
+    );
 
     // Совпадет, если HTTP-метод - PUT
-    $app->put('/api/products/update/{id}', "update_product");
+    $app->put(
+        "/api/products/update/{id}",
+        "update_product"
+    );
 
     // Совпадет, если HTTP-метод - DELETE
-    $app->delete('/api/products/remove/{id}', "delete_product");
+    $app->delete(
+        "/api/products/remove/{id}",
+        "delete_product"
+    );
 
     // Совпадет, если HTTP-метод - OPTIONS
-    $app->options('/api/products/info/{id}', "info_product");
+    $app->options(
+        "/api/products/info/{id}",
+        "info_product"
+    );
 
     // Совпадет, если HTTP-метод - PATCH
-    $app->patch('/api/products/update/{id}', "info_product");
+    $app->patch(
+        "/api/products/update/{id}",
+        "info_product"
+    );
 
     // Совпадет, если HTTP-метод - GET или POST
-    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
+    $app->map(
+        "/repos/store/refs",
+        "action_product"
+    )->via(
+        [
+            "GET",
+            "POST",
+        ]
+    );
 
 To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
@@ -109,9 +156,12 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Matches if the HTTP method is POST
-    $app->post('/api/products/add', function () use ($app) {
-        echo $app->request->getPost("productID");
-    });
+    $app->post(
+        "/api/products/add",
+        function () use ($app) {
+            echo $app->request->getPost("productID");
+        }
+    );
 
 Пути с параметрами
 ^^^^^^^^^^^^^^^^^^
@@ -124,10 +174,13 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Данный путь имеет два параметра, у каждого из которых задан формат
-    $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
-        echo "<h1>Title: $title</h1>";
-        echo "<h2>Year: $year</h2>";
-    });
+    $app->get(
+        "/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}",
+        function ($year, $title) {
+            echo "<h1>Title: $title</h1>";
+            echo "<h2>Year: $year</h2>";
+        }
+    );
 
 Маршрут по умолчанию
 ^^^^^^^^^^^^^^^^^^^^
@@ -139,9 +192,12 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Это маршрут по умолчанию
-    $app->get('/', function () {
-        echo "<h1>Welcome!</h1>";
-    });
+    $app->get(
+        "/",
+        function () {
+            echo "<h1>Welcome!</h1>";
+        }
+    );
 
 Правила перезаписи (Rewrite Rules)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,25 +221,34 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Прямой вывод
-    $app->get('/say/hello', function () {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello",
+        function () {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
     // Подключение внешнего файла
-    $app->get('/show/results', function () {
-        require 'views/results.php';
-    });
+    $app->get(
+        "/show/results",
+        function () {
+            require "views/results.php";
+        }
+    );
 
     // Возврат JSON
-    $app->get('/get/some-json', function () {
-        echo json_encode(
-            array(
-                "some",
-                "important",
-                "data"
-            )
-        );
-    });
+    $app->get(
+        "/get/some-json",
+        function () {
+            echo json_encode(
+                [
+                    "some",
+                    "important",
+                    "data",
+                ]
+            );
+        }
+    );
 
 В дополнение к этому, у вас есть доступ к сервису :doc:`"response" <response>`, благодаря которому вы
 можете обрабатывать ответы ещё более гибко:
@@ -192,14 +257,18 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->get('/show/data', function () use ($app) {
+    $app->get(
+        "/show/data",
+        function () use ($app) {
+            // Установка заголовка Content-Type
+            $app->response->setContentType("text/plain");
 
-        // Установка заголовка Content-Type
-        $app->response->setContentType('text/plain')->sendHeaders();
+            $app->response->sendHeaders();
 
-        // Вывод содержимого файла
-        readfile("data.txt");
-    });
+            // Вывод содержимого файла
+            readfile("data.txt");
+        }
+    );
 
 Или создайте объект класса Response и верните его из обработчика:
 
@@ -207,20 +276,22 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->get('/show/data', function () {
+    $app->get(
+        "/show/data",
+        function () {
+            // Создаем объект для работы с заголовками ответов
+            $response = new Phalcon\Http\Response();
 
-        // Создаем объект для работы с заголовками ответов
-        $response = new Phalcon\Http\Response();
+            // Установка заголовка Content-Type
+            $response->setContentType("text/plain");
 
-        // Установка заголовка Content-Type
-        $response->setContentType('text/plain');
+            // Передаем содержимое файла
+            $response->setContent(file_get_contents("data.txt"));
 
-        // Передаем содержимое файла
-        $response->setContent(file_get_contents("data.txt"));
-
-        // Возвращаем объект Response
-        return $response;
-    });
+            // Возвращаем объект Response
+            return $response;
+        }
+    );
 
 Создание перенаправлений (Redirects)
 ------------------------------------
@@ -231,13 +302,19 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Этот маршрут выполняет перенаправление на другой маршрут
-    $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome")->sendHeaders();
-    });
+    $app->post("/old/welcome",
+        function () use ($app) {
+            $app->response->redirect("new/welcome");
 
-    $app->post('/new/welcome', function () use ($app) {
-        echo 'This is the new Welcome';
-    });
+            $app->response->sendHeaders();
+        }
+    );
+
+    $app->post("/new/welcome",
+        function () use ($app) {
+            echo "This is the new Welcome";
+        }
+    );
 
 Создание URL-адресов для маршрутов
 ----------------------------------
@@ -250,24 +327,26 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Установка маршрута с именем "show-post"
-    $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
-
-        // ... здесь показываем текст статьи
-
-    })->setName('show-post');
+    $app->get(
+        "/blog/{year}/{title}",
+        function ($year, $title) use ($app) {
+            // ... здесь показываем текст статьи
+        }
+    )->setName("show-post");
 
     // Где-нибудь используем наш новый адрес
-    $app->get('/', function () use ($app) {
-
-        echo '<a href="', $app->url->get(
-            array(
-                'for'   => 'show-post',
-                'title' => 'php-is-a-great-framework',
-                'year'  => 2015
-            )
-        ), '">Show the post</a>';
-
-    });
+    $app->get(
+        "/",
+        function () use ($app) {
+            echo '<a href="', $app->url->get(
+                [
+                    "for"   => "show-post",
+                    "title" => "php-is-a-great-framework",
+                    "year"  => 2015
+                ]
+            ), '">Show the post</a>';
+        }
+    );
 
 Работа с Внедрением зависимостей (Dependency Injector)
 ------------------------------------------------------
@@ -285,22 +364,31 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-        return new IniConfig("config.ini");
-    });
+    $di->set(
+        "config",
+        function () {
+            return new IniConfig("config.ini");
+        }
+    );
 
     $app = new Micro();
 
     $app->setDI($di);
 
-    $app->get('/', function () use ($app) {
-        // Читаем свойства нашего конфигурационного файла
-        echo $app->config->app_name;
-    });
+    $app->get(
+        "/",
+        function () use ($app) {
+            // Читаем свойства нашего конфигурационного файла
+            echo $app->config->app_name;
+        }
+    );
 
-    $app->post('/contact', function () use ($app) {
-        $app->flash->success('Yes!, the contact was made!');
-    });
+    $app->post(
+        "/contact",
+        function () use ($app) {
+            $app->flash->success("Yes!, the contact was made!");
+        }
+    );
 
 Синтаксис массивов удобен для установки/получения сервисов из внутреннего контейнера сервисов:
 
@@ -314,23 +402,27 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $app = new Micro();
 
     // Установка сервиса базы данных
-    $app['db'] = function () {
+    $app["db"] = function () {
         return new MysqlAdapter(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            )
+            ]
         );
     };
 
-    $app->get('/blog', function () use ($app) {
-        $news = $app['db']->query('SELECT * FROM news');
-        foreach ($news as $new) {
-            echo $new->title;
+    $app->get(
+        "/blog",
+        function () use ($app) {
+            $news = $app["db"]->query("SELECT * FROM news");
+
+            foreach ($news as $new) {
+                echo $new->title;
+            }
         }
-    });
+    );
 
 Обработка исключений "Не найдено"
 ---------------------------------
@@ -341,10 +433,15 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->notFound(function () use ($app) {
-        $app->response->setStatusCode(404, "Not Found")->sendHeaders();
-        echo 'This is crazy, but this page was not found!';
-    });
+    $app->notFound(
+        function () use ($app) {
+            $app->response->setStatusCode(404, "Not Found");
+
+            $app->response->sendHeaders();
+
+            echo "This is crazy, but this page was not found!";
+        }
+    );
 
 Модели в микроприложениях
 -------------------------
@@ -357,20 +454,23 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(
-        array(
-            __DIR__ . '/models/'
-        )
+        [
+            __DIR__ . "/models/"
+        ]
     )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function () {
+    $app->get(
+        "/products/find",
+        function () {
+            $products = Products::find();
 
-        foreach (Products::find() as $product) {
-            echo $product->name, '<br>';
+            foreach ($products as $product) {
+                echo $product->name, "<br>";
+            }
         }
-
-    });
+    );
 
     $app->handle();
 
@@ -399,26 +499,28 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
 
     // Создаём менеджер событий
     $eventsManager = new EventsManager();
 
-    // Слушаем все события приложения
-    $eventsManager->attach('micro', function ($event, $app) {
-
-        if ($event->getType() == 'beforeExecuteRoute') {
-            if ($app->session->get('auth') == false) {
-
+    $eventsManager->attach(
+        "micro:beforeExecuteRoute",
+        function (Event $event, $app) {
+            if ($app->session->get("auth") === false) {
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/")->sendHeaders();
+
+                $app->response->redirect("/");
+
+                $app->response->sendHeaders();
 
                 // Возвращаем (false) останов операции
                 return false;
             }
         }
-    });
+    );
 
     $app = new Micro();
 
@@ -437,33 +539,42 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     // Выполнится до того, как выполнится любой из маршрутов
     // Возврат false отменит выполнение маршрута
-    $app->before(function () use ($app) {
-        if ($app['session']->get('auth') == false) {
+    $app->before(
+        function () use ($app) {
+            if ($app["session"]->get("auth") === false) {
+                $app["flashSession"]->error("The user isn't authenticated");
 
-            $app['flashSession']->error("The user isn't authenticated");
-            $app['response']->redirect("/error");
+                $app["response"]->redirect("/error");
 
-            // Return false stops the normal execution
-            return false;
+                // Return false stops the normal execution
+                return false;
+            }
+
+            return true;
         }
+    );
 
-        return true;
-    });
+    $app->map(
+        "/api/robots",
+        function () {
+            return [
+                "status" => "OK",
+            ];
+        }
+    );
 
-    $app->map('/api/robots', function () {
-        return array(
-            'status' => 'OK'
-        );
-    });
+    $app->after(
+        function () use ($app) {
+            // Это выполнится после того, как выполнится маршрут
+            echo json_encode($app->getReturnedValue());
+        }
+    );
 
-    $app->after(function () use ($app) {
-        // Это выполнится после того, как выполнится маршрут
-        echo json_encode($app->getReturnedValue());
-    });
-
-    $app->finish(function () use ($app) {
-        // Это выполнится после того, как был обработан запрос
-    });
+    $app->finish(
+        function () use ($app) {
+            // Это выполнится после того, как был обработан запрос
+        }
+    );
 
 Вы можете вызывать методы несколько раз, чтобы добавлять больше событий того же типа:
 
@@ -471,13 +582,17 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->finish(function () use ($app) {
-        // First 'finish' middleware
-    });
+    $app->finish(
+        function () use ($app) {
+            // First 'finish' middleware
+        }
+    );
 
-    $app->finish(function () use ($app) {
-        // Second 'finish' middleware
-    });
+    $app->finish(
+        function () use ($app) {
+            // Second 'finish' middleware
+        }
+    );
 
 Код из связанных событий может быть повторно использован в отдельных классах:
 
@@ -496,10 +611,10 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     {
         public function call($application)
         {
-            $cache  = $application['cache'];
-            $router = $application['router'];
+            $cache  = $application["cache"];
+            $router = $application["router"];
 
-            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key = preg_replace("/^[a-zA-Z0-9]/", "", $router->getRewriteUri());
 
             // Проверяем, закэширован ли запрос
             if ($cache->exists($key)) {
@@ -546,16 +661,18 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $posts = new MicroCollection();
 
     // Устанавливаем главный обработчик, например, экземпляр объекта контроллера
-    $posts->setHandler(new PostsController());
+    $posts->setHandler(
+        new PostsController()
+    );
 
     // Устанавливаем общий префикс для всех маршрутов
-    $posts->setPrefix('/posts');
+    $posts->setPrefix("/posts");
 
     // Используем метод 'index' в контроллере PostsController
-    $posts->get('/', 'index');
+    $posts->get("/", "index");
 
     // Используем метод 'show' в контроллере PostsController
-    $posts->get('/show/{slug}', 'show');
+    $posts->get("/show/{slug}", "show");
 
     $app->mount($posts);
 
@@ -586,8 +703,8 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $posts->setHandler('PostsController', true);
-    $posts->setHandler('Blog\Controllers\PostsController', true);
+    $posts->setHandler("PostsController", true);
+    $posts->setHandler("Blog\Controllers\PostsController", true);
 
 Возврат заголовков ответов (Responses)
 --------------------------------------
@@ -604,16 +721,18 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     $app = new Micro();
 
     // Взвращаем ответ
-    $app->get('/welcome/index', function () {
+    $app->get(
+        "/welcome/index",
+        function () {
+            $response = new Response();
 
-        $response = new Response();
+            $response->setStatusCode(401, "Unauthorized");
 
-        $response->setStatusCode(401, "Unauthorized");
+            $response->setContent("Access is not authorized");
 
-        $response->setContent("Access is not authorized");
-
-        return $response;
-    });
+            return $response;
+        }
+    );
 
 Отрисовка представлений
 -----------------------
@@ -626,22 +745,28 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function () {
+    $app["view"] = function () {
         $view = new \Phalcon\Mvc\View\Simple();
-        $view->setViewsDir('app/views/');
+
+        $view->setViewsDir("app/views/");
+
         return $view;
     };
 
     // Возвращаем отрисованное представление
-    $app->get('/products/show', function () use ($app) {
-
-        // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
-        echo $app['view']->render('products/show', array(
-            'id'   => 100,
-            'name' => 'Artichoke'
-        ));
-
-    });
+    $app->get(
+        "/products/show",
+        function () use ($app) {
+            // Отрисовываем представление app/views/products/show.phtml с передачей в него некоторых переменных
+            echo $app["view"]->render(
+                "products/show",
+                [
+                    "id"   => 100,
+                    "name" => "Artichoke"
+                ]
+            );
+        }
+    );
 
 Please note that this code block uses :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` which uses relative paths instead of controllers and actions.
 If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` instead, you will need to change the parameters of the :code:`render()` method:
@@ -652,22 +777,29 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function () {
+    $app["view"] = function () {
         $view = new \Phalcon\Mvc\View();
-        $view->setViewsDir('app/views/');
+
+        $view->setViewsDir("app/views/");
+
         return $view;
     };
 
     // Return a rendered view
-    $app->get('/products/show', function () use ($app) {
-
-        // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products', 'show', array(
-            'id'   => 100,
-            'name' => 'Artichoke'
-        ));
-
-    });
+    $app->get(
+        "/products/show",
+        function () use ($app) {
+            // Render app/views/products/show.phtml passing some variables
+            echo $app["view"]->render(
+                "products",
+                "show",
+                [
+                    "id"   => 100,
+                    "name" => "Artichoke"
+                ]
+            );
+        }
+    );
 
 Error Handling
 --------------
@@ -679,9 +811,12 @@ A proper response can be generated if an exception is raised in a micro handler:
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app->get('/', function () {
-        throw new \Exception("An error");
-    });
+    $app->get(
+        "/",
+        function () {
+            throw new \Exception("An error");
+        }
+    );
 
     $app->error(
         function ($exception) {

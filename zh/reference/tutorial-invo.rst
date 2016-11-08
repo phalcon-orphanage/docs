@@ -42,7 +42,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 
 路由（Routing）
 ---------------
-INVO使用内置的标准路由。  :doc:`Router <routing>` 组件. 路由符合以下格式：/:controller/:action/:params. 这就意味着第一部分URI是控制器，第二部分是方法，剩余的是参数。
+INVO使用内置的标准路由. :doc:`Router <routing>` 组件. 路由符合以下格式：/:controller/:action/:params. 这就意味着第一部分URI是控制器，第二部分是方法，剩余的是参数。
 
 下面的路由 `/session/register` 执行的是 SessionController 控制器和它的 registerAction方法。
 
@@ -58,8 +58,10 @@ INVO有一个设置应用常规参数的配置文件。这个文件位于 app/co
 
     // ...
 
-    // Read the configuration
-    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
+    // 读取配置
+    $config = new ConfigIni(
+        APP_PATH . "app/config/config.ini"
+    );
 
 :doc:`Phalcon\\Config <config>` 允许我们使用面向对象的方式来操作文件。在这个例子中，我们使用ini文件作为配置文件，然而，它对于配置文件有更多的适配支持。这个配置文件包含以下配置：
 
@@ -80,24 +82,23 @@ INVO有一个设置应用常规参数的配置文件。这个文件位于 app/co
     libraryDir     = app/library/
     baseUri        = /invo/
 
-Phalcon没有任何提前预约好的惯例配置。Sections help us to organize the options as appropriate.
-In this file there are two sections to be used later "application" and "database".
+Phalcon没有任何提前预约好的惯例配置。节帮助我们组织相应选项.
+在这个文件里面有两个部分被用于后面的"application" 和 "database".
 
 自动加载（Autoloaders）
 -----------------------
-The second part that appears in the bootstrap file (public/index.php) is the autoloader:
+在启动文件(public/index.php)的第二部分是自动加载器:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Auto-loader configuration
+     * 自动加载配置
      */
-    require APP_PATH . 'app/config/loader.php';
+    require APP_PATH . "app/config/loader.php";
 
-The autoloader registers a set of directories in which the application will look for
-the classes that it eventually will need.
+The autoloader registers a set of directories in which the application will look for the classes that it eventually will need.
 
 .. code-block:: php
 
@@ -107,19 +108,19 @@ the classes that it eventually will need.
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
-        array(
+        [
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->pluginsDir,
             APP_PATH . $config->application->libraryDir,
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
-        )
-    )->register();
+        ]
+    );
 
-Note that the above code has registered the directories that were defined in the configuration file. The only
-directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
-Also, note that we have using a constant called APP_PATH, this constant is defined in the bootstrap
-(public/index.php) to allow us have a reference to the root of our project:
+    $loader->register();
+
+注意, 以上代码注册的目录是在配置文件中定义的. 唯一没有注册的目录是viewsDir, 因为它包含 HTML + PHP 文件但不是类.
+同时, 也要注意我们使用了常量 APP_PATH, 这个常量在引导文件(public/index.php)中被定义, 允许我们对我们项目的根路径有一个参考:
 
 .. code-block:: php
 
@@ -127,24 +128,25 @@ Also, note that we have using a constant called APP_PATH, this constant is defin
 
     // ...
 
-    define('APP_PATH', realpath('..') . '/');
+    define(
+        "APP_PATH",
+        realpath("..") . "/"
+    );
 
 注册服务(Registering services)
---------------------
-Another file that is required in the bootstrap is (app/config/services.php). This file allow
-us to organize the services that INVO does use.
+------------------------------
+在引导文件中加载的另外一个文件是 (app/config/services.php). 这个文件允许我们组织 INVO 不需要的文件.
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Load application services
+     * 加载应用服务
      */
-    require APP_PATH . 'app/config/services.php';
+    require APP_PATH . "app/config/services.php";
 
-Service registration is achieved as in the previous tutorial, making use of a closure to lazily loads
-the required components:
+服务注册已经在前面的教程中实现了, 利用一个闭包来实现惰性加载组件:
 
 .. code-block:: php
 
@@ -155,22 +157,26 @@ the required components:
     // ...
 
     /**
-     * The URL component is used to generate all kind of URLs in the application
+     * URL组件被用来生成应用中的各种URL
      */
-    $di->set('url', function () use ($config) {
-        $url = new UrlProvider();
+    $di->set(
+        "url",
+        function () use ($config) {
+            $url = new UrlProvider();
 
-        $url->setBaseUri($config->application->baseUri);
+            $url->setBaseUri(
+                $config->application->baseUri
+            );
 
-        return $url;
-    });
+            return $url;
+        }
+    );
 
-We will discuss this file in depth later.
+稍后我们将会深入讨论这个文件.
 
 处理请求(Handling the Request)
---------------------
-If we skip to the end of the file (public/index.php), the request is finally handled by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
-which initializes and executes all that is necessary to make the application run:
+------------------------------
+如果我们忽略文件(public/index.php)的结束, 请求最终会被 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 处理, 初始化并运行所有必须的代码来让程序执行:
 
 .. code-block:: php
 
@@ -188,18 +194,11 @@ which initializes and executes all that is necessary to make the application run
 
 依赖注入（Dependency Injection）
 --------------------------------
-Look at the first line of the code block above, the Application class constructor is receiving the variable
-:code:`$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework,
-so we need a component that acts as glue to make everything work together. That component is :doc:`Phalcon\\Di <../api/Phalcon_Di>`.
-It is a service container that also performs dependency injection and service location,
-instantiating all components as they are needed by the application.
+看上面代码的第一行, Application 类的构造方法接受一个 :code:`$di` 变量作为一个参数. 这个变量的用意是什么呢? Phalcon 是一个高度解耦的框架, 所以我们一个组件来充当胶水来让每个组件都能正常工作. 这个组件就是 :doc:`Phalcon\\Di <../api/Phalcon_Di>`. 这是一个服务容器, 可以执行依赖注入和服务定位, 实例化应用所需要的所有组件.
 
-There are many ways of registering services in the container. In INVO, most services have been registered using
-anonymous functions/closures. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
-by the application.
+在容器中有多种注册服务的方法. 在INVO里, 大部分服务使用匿名函数或者闭包来进行注册的. 多亏了这个, 对象以惰性的方式被实例化, 减少了应用程序所需要的资源.
 
-For instance, in the following excerpt the session service is registered. The anonymous function will only be
-called when the application requires access to the session data:
+例如, 下面摘录了 Session 服务的注册. 当应用程序需要访问Session数据的时候, 匿名函数才会被调用:
 
 .. code-block:: php
 
@@ -209,22 +208,21 @@ called when the application requires access to the session data:
 
     // ...
 
-    // Start the session the first time a component requests the session service
-    $di->set('session', function () {
-        $session = new Session();
+    // 在一个组件请求Session服务的时候, 启动Sesssion
+    $di->set(
+        "session",
+        function () {
+            $session = new Session();
 
-        $session->start();
+            $session->start();
 
-        return $session;
-    });
+            return $session;
+        }
+    );
 
-Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
-was registered using the name "session". This is a convention that will allow the framework to identify the active
-service in the services container.
+这里, 我们可以自动的更改适配器, 执行额外的初始化或者更多. 注意, 这个服务器是使用 "session" 名字进行注册的. 这是一个惯例, 来允许框架在服务容器中识别正在活动的服务.
 
-A request can use many services and registering each service individually can be a cumbersome task. For that reason,
-the framework provides a variant of :doc:`Phalcon\\Di <../api/Phalcon_Di>` called :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` whose task is to register
-all services providing a full-stack framework.
+一个请求可以使用多个服务和单独注册每个服务可以说是一个繁重的任务. 因此, 框架提供了 :doc:`Phalcon\\Di <../api/Phalcon_Di>` 的一个变种, 称作  :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` 其任务是注册所有的服务来提供一个全栈框架.
 
 .. code-block:: php
 
@@ -234,15 +232,12 @@ all services providing a full-stack framework.
 
     // ...
 
-    // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full-stack framework
+    // FactoryDefault 依赖注入自动注册了正确的服务来提供了一个全栈框架
     $di = new FactoryDefault();
 
-It registers the majority of services with components provided by the framework as standard. If we need to override
-the definition of some service we could just set it again as we did above with "session" or "url".
-This is the reason for the existence of the variable :code:`$di`.
+它通过框架注册大部分组件服务作为标准提供. 如果我们需要重写某些已经定义的服务, 我们仅仅需要重新定义它, 就像上面的 "session" 和 "url"一样. 这就是变量  :code:`$di` 存在的原因.
 
-In next chapter, we will see how to authentication and authorization is implemented in INVO.
+在下一章, 我们将会看到如何在INVO中实施认证和授权.
 
 .. _Github: https://github.com/phalcon/invo
 .. _Bootstrap: http://getbootstrap.com/

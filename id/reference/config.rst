@@ -3,18 +3,6 @@ Membaca Konfigurasi
 
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` adalah komponen yang digunakan untuk membaca file konfigurasi beragam format (menggunakan adapter) ke dalam objek PHP untuk digunakan dalam aplikasi.
 
-File Adapters
--------------
-Adapter yang tersedia:
-
-+-----------+---------------------------------------------------------------------------------------------------------+
-| Tipe File | Keterangan                                                                                              |
-+===========+=========================================================================================================+
-| Ini       | Menggunakan file INI untuk menyimpan setting. Didalamnya adapter menggunakan fungsi PHP parse_ini_file. |
-+-----------+---------------------------------------------------------------------------------------------------------+
-| Array     | Menggunakan array PHP multi dimensi untuk menyimpan setting. Adapter ini menawarkan performa terbaik.   |
-+-----------+---------------------------------------------------------------------------------------------------------+
-
 Array Native
 ------------
 Contoh berikut menunjukkan bagaimana mengubah array native ke objek :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Pilihan ini menawarkan performa terbaik karena tidak ada file yang dibaca selama request.
@@ -25,21 +13,21 @@ Contoh berikut menunjukkan bagaimana mengubah array native ke objek :doc:`Phalco
 
     use Phalcon\Config;
 
-    $settings = array(
-        "database" => array(
+    $settings = [
+        "database" => [
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
             "dbname"   => "test_db"
-        ),
-         "app" => array(
+        ],
+         "app" => [
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
             "viewsDir"       => "../app/views/"
-        ),
+        ],
         "mysetting" => "the-value"
-    );
+    ];
 
     $config = new Config($settings);
 
@@ -56,7 +44,24 @@ Jika anda ingi mengelola projek anda lebih baik anda dapat menyimpan array ke fi
     use Phalcon\Config;
 
     require "config/config.php";
+
     $config = new Config($settings);
+
+File Adapters
+-------------
+Adapter yang tersedia:
+
++----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
+| Tipe File                                                                  | Keterangan                                                                                              |
++============================================================================+=========================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Menggunakan file INI untuk menyimpan setting. Didalamnya adapter menggunakan fungsi PHP parse_ini_file. |
++----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                      |
++----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.           |
++----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                      |
++----------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+
 
 Membaca file INI
 ----------------
@@ -105,24 +110,24 @@ Properti baru ditambahkan dan properti yang sudah ada diperbarui.
     use Phalcon\Config;
 
     $config = new Config(
-        array(
-            'database' => array(
-                'host'   => 'localhost',
-                'dbname' => 'test_db'
-            ),
-            'debug' => 1
-        )
+        [
+            "database" => [
+                "host"   => "localhost",
+                "dbname" => "test_db",
+            ],
+            "debug" => 1,
+        ]
     );
 
     $config2 = new Config(
-        array(
-            'database' => array(
-                'dbname'   => 'production_db',
-                'username' => 'scott',
-                'password' => 'secret'
-            ),
-            'logging' => 1
-        )
+        [
+            "database" => [
+                "dbname"   => "production_db",
+                "username" => "scott",
+                "password" => "secret",
+            ],
+            "logging" => 1,
+        ]
     );
 
     $config->merge($config2);
@@ -162,23 +167,27 @@ Ada dapat menginjeksi ketergantungan terhadap konfigurasi ke kontroller yang mem
     // Buat DI
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-	$configData = require 'config/config.php';
-        return new Config($configData);
-    });
+    $di->set(
+        "config",
+        function () {
+            $configData = require "config/config.php";
+
+            return new Config($configData);
+        }
+    );
 
 Sekarang dalam kontroller anda dapat mengakses konfigurasi memanfaatkan fitur depedency injection dengan nama `config` seperti kode berikut:
 
 .. code-block:: php
 
-   <?php
+    <?php
 
-   use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Controller;
 
-   class MyController extends Controller
-   {
-
-       private function getDatabaseName() {
-           return $this->config->database->dbname;
-       }
-   }
+    class MyController extends Controller
+    {
+        private function getDatabaseName()
+        {
+            return $this->config->database->dbname;
+        }
+    }

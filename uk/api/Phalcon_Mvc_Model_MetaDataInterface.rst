@@ -24,12 +24,12 @@ abstract public  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_M
 ...
 
 
-abstract public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
+abstract public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
 ...
 
 
-abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index, *unknown* $data)
+abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index, *mixed* $data)
 
 ...
 
@@ -39,7 +39,7 @@ abstract public  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_
 ...
 
 
-abstract public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
+abstract public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
 ...
 
@@ -129,7 +129,7 @@ abstract public  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Ph
 ...
 
 
-abstract public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+abstract public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $attribute)
 
 ...
 
@@ -144,12 +144,12 @@ abstract public  **reset** ()
 ...
 
 
-abstract public  **read** (*unknown* $key)
+abstract public  **read** (*mixed* $key)
 
 ...
 
 
-abstract public  **write** (*unknown* $key, *unknown* $data)
+abstract public  **write** (*mixed* $key, *mixed* $data)
 
 ...
 

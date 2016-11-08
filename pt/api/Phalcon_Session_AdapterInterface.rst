@@ -24,22 +24,22 @@ abstract public  **getOptions** ()
 ...
 
 
-abstract public  **get** (*unknown* $index, [*unknown* $defaultValue])
+abstract public  **get** (*mixed* $index, [*mixed* $defaultValue])
 
 ...
 
 
-abstract public  **set** (*unknown* $index, *unknown* $value)
+abstract public  **set** (*mixed* $index, *mixed* $value)
 
 ...
 
 
-abstract public  **has** (*unknown* $index)
+abstract public  **has** (*mixed* $index)
 
 ...
 
 
-abstract public  **remove** (*unknown* $index)
+abstract public  **remove** (*mixed* $index)
 
 ...
 
@@ -54,17 +54,17 @@ abstract public  **isStarted** ()
 ...
 
 
-abstract public  **destroy** ([*unknown* $removeData])
+abstract public  **destroy** ([*mixed* $removeData])
 
 ...
 
 
-abstract public  **regenerateId** ([*unknown* $deleteOldSession])
+abstract public  **regenerateId** ([*mixed* $deleteOldSession])
 
 ...
 
 
-abstract public  **setName** (*unknown* $name)
+abstract public  **setName** (*mixed* $name)
 
 ...
 

@@ -43,24 +43,24 @@ Dispatcher будет искать "PostsController" и его метод "showA
         }
     }
 
-Метод setVar позволяет создавать переменные, которые могут быть использованы в шаблоне. В примере выше показано, как передать переменную :code:`$postId`.
+Метод :code:`setVar()` позволяет создавать переменные, которые могут быть использованы в шаблоне. В примере выше показано, как передать переменную :code:`$postId`.
 
 Иерархия
 --------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` поддерживает иерархическую файловую структуру. Это позволяет определять местонахождение как основных шаблонов (main layout), так и шаблонов для отдельных контроллеров (controller layout) с помощью задания имён для соответствующих им папок.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` поддерживает иерархическую файловую структуру. Это позволяет определять местонахождение как основных макетов (*здесь и ниже макет используется для перевода layout. Прим. перев.*), так и макетов для отдельных контроллеров с помощью задания имён для соответствующих им папок.
 
-В качестве движка по умолчанию компонент использует сам PHP, поэтому представления должны иметь расширение .phtml.
+В качестве движка по умолчанию компонент использует сам PHP, поэтому представления должны иметь расширение :code:`.phtml`.
 Если в качестве папки с представлениями используется *app/views*, то компонент автоматически будет искать следующие 3 файла.
 
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Название          | Файл                          | Описание                                                                                                         |
-+===================+===============================+==================================================================================================================+
-| Action View       | app/views/posts/show.phtml    | Представление, связанное с конкретным действием контроллера. Используется только при выполнении этого действия.  |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Controller Layout | app/views/layouts/posts.phtml | Представление, связанное с контроллером. Используется для любого действия контроллера "posts".                   |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
-| Main Layout       | app/views/index.phtml         | Основной шаблон приложения. Используется для любого контроллера или действия.                                    |
-+-------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Название               | Файл                          | Описание                                                                                                         |
++========================+===============================+==================================================================================================================+
+| Пердставление действия | app/views/posts/show.phtml    | Представление, связанное с конкретным действием контроллера. Используется только при выполнении этого действия.  |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Макет контроллера      | app/views/layouts/posts.phtml | Макет, связанный с контроллером. Используется для любого действия контроллера "posts".                           |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
+| Основной макет         | app/views/index.phtml         | Основной макет приложения. Используется для любого контроллера или действия.                                     |
++------------------------+-------------------------------+------------------------------------------------------------------------------------------------------------------+
 
 Совершенно не обязательно использовать все упомянутые выше файлы. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` просто пропустит тот файл, которого нет, и перейдёт к следующему.
 Если же существуют все три файла представлений, то они будут обработаны следующим образом:
@@ -69,15 +69,15 @@ Dispatcher будет искать "PostsController" и его метод "showA
 
     <!-- app/views/posts/show.phtml -->
 
-    <h3>This is show view!</h3>
+    <h3>Это показывает конкретное представление!</h3>
 
-    <p>I have received the parameter <?php echo $postId; ?></p>
+    <p>Я получил параметр <?php echo $postId; ?></p>
 
 .. code-block:: html+php
 
     <!-- app/views/layouts/posts.phtml -->
 
-    <h2>This is the "posts" controller layout!</h2>
+    <h2>Это макет контроллера "posts"!</h2>
 
     <?php echo $this->getContent(); ?>
 
@@ -86,11 +86,11 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <!-- app/views/index.phtml -->
     <html>
         <head>
-            <title>Example</title>
+            <title>Пример</title>
         </head>
         <body>
 
-            <h1>This is main layout!</h1>
+            <h1>Это основной макет!</h1>
 
             <?php echo $this->getContent(); ?>
 
@@ -110,30 +110,30 @@ Dispatcher будет искать "PostsController" и его метод "showA
     <!-- app/views/index.phtml -->
     <html>
         <head>
-            <title>Example</title>
+            <title>Пример</title>
         </head>
         <body>
 
-            <h1>This is main layout!</h1>
+            <h1>Это основной макет!</h1>
 
             <!-- app/views/layouts/posts.phtml -->
 
-            <h2>This is the "posts" controller layout!</h2>
+            <h2>Это макет контроллера "posts"!</h2>
 
             <!-- app/views/posts/show.phtml -->
 
-            <h3>This is show view!</h3>
+            <h3>Это показывает конкретное представление!</h3>
 
-            <p>I have received the parameter 101</p>
+            <p>Я получил параметр 101</p>
 
         </body>
     </html>
 
 Использование Шаблонов
 ^^^^^^^^^^^^^^^^^^^^^^
-Шаблоны — это представления, которые могут быть общими для разных действий контроллера. По сути они играют роль представлений контроллеров (controller layouts), поэтому их необходимо помещать папку layouts.
+Шаблоны — это представления, которые могут быть общими для разных действий контроллера. По сути они играют роль макетов контроллеров, поэтому их необходимо помещать папку :code:`layouts`.
 
-Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
+Шаблоны могут быть отрендерены как перед макетом (с использованием :code:`$this->view->setTemplateBefore()`), так и после (с использованием :code:`this->view->setTemplateAfter()`). В примере приведенном ниже, шаблон (layouts/common.phtml) рендерится перед основным мекетом (layouts/posts.phtml):
 
 .. code-block:: php
 
@@ -145,12 +145,14 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     {
         public function initialize()
         {
-            $this->view->setTemplateAfter('common');
+            $this->view->setTemplateAfter("common");
         }
 
         public function lastAction()
         {
-            $this->flash->notice("These are the latest posts");
+            $this->flash->notice(
+                "Здесь находятся последние статьи"
+            );
         }
     }
 
@@ -160,7 +162,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
             <?php echo $this->getContent(); ?>
@@ -172,9 +174,9 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!-- app/views/layouts/common.phtml -->
 
     <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/articles">Articles</a></li>
-        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/articles">Статьи</a></li>
+        <li><a href="/contact">Контакты</a></li>
     </ul>
 
     <div class="content"><?php echo $this->getContent(); ?></div>
@@ -183,7 +185,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
 
     <!-- app/views/layouts/posts.phtml -->
 
-    <h1>Blog Title</h1>
+    <h1>Мой блог</h1>
 
     <?php echo $this->getContent(); ?>
 
@@ -192,13 +194,13 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!-- app/views/posts/last.phtml -->
 
     <article>
-        <h2>This is a title</h2>
-        <p>This is the post content</p>
+        <h2>Заголовок статьи</h2>
+        <p>Содержимое статьи</p>
     </article>
 
     <article>
-        <h2>This is another title</h2>
-        <p>This is another post content</p>
+        <h2>Еще один заголовок</h2>
+        <p>Еще одно содержимое статьи</p>
     </article>
 
 Вывод получится следующим:
@@ -209,34 +211,34 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
 
             <!-- app/views/layouts/common.phtml -->
 
             <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/contact">Contact us</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/articles">Статьи</a></li>
+                <li><a href="/contact">Контакты</a></li>
             </ul>
 
             <div class="content">
 
                 <!-- app/views/layouts/posts.phtml -->
 
-                <h1>Blog Title</h1>
+                <h1>Мой блог</h1>
 
                 <!-- app/views/posts/last.phtml -->
 
                 <article>
-                    <h2>This is a title</h2>
-                    <p>This is the post content</p>
+                    <h2>Заголовок статьи</h2>
+                    <p>Содержимое статьи</p>
                 </article>
 
                 <article>
-                    <h2>This is another title</h2>
-                    <p>This is another post content</p>
+                    <h2>Еще один заголовок</h2>
+                    <p>Еще одно содержимое статьи</p>
                 </article>
 
             </div>
@@ -244,7 +246,7 @@ Templates can be rendered before the layout (using :code:`$this->view->setTempla
         </body>
     </html>
 
-If we had used :code:`$this->view->setTemplateBefore('common')`, this would be the final output:
+Если бы мы использовали :code:`$this->view->setTemplateBefore("common")`, окончательный результат был бы:
 
 .. code-block:: html+php
 
@@ -252,20 +254,20 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Blog's title</title>
+            <title>Мой блог</title>
         </head>
         <body>
 
             <!-- app/views/layouts/posts.phtml -->
 
-            <h1>Blog Title</h1>
+            <h1>Мой блог</h1>
 
             <!-- app/views/layouts/common.phtml -->
 
             <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/contact">Contact us</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/articles">Статьи</a></li>
+                <li><a href="/contact">Контакты</a></li>
             </ul>
 
             <div class="content">
@@ -273,13 +275,13 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
                 <!-- app/views/posts/last.phtml -->
 
                 <article>
-                    <h2>This is a title</h2>
-                    <p>This is the post content</p>
+                    <h2>Заголовок статьи</h2>
+                    <p>Содержимое статьи</p>
                 </article>
 
                 <article>
-                    <h2>This is another title</h2>
-                    <p>This is another post content</p>
+                    <h2>Еще один заголовк</h2>
+                    <p>Еще одно содержимое статьи</p>
                 </article>
 
             </div>
@@ -310,7 +312,9 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         public function findAction()
         {
             // Ajax-ответ, генерация представления не нужна
-            $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
+            $this->view->setRenderLevel(
+                View::LEVEL_NO_RENDER
+            );
 
             // ...
         }
@@ -318,7 +322,9 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         public function showAction($postId)
         {
             // Показать только представление, относящееся к конкретному действию контроллера
-            $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+            $this->view->setRenderLevel(
+                View::LEVEL_ACTION_VIEW
+            );
         }
     }
 
@@ -331,13 +337,13 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 +-----------------------+--------------------------------------------------------------------------+---------+
 | LEVEL_ACTION_VIEW     | Генерация представления, относящегося к конкретному действию.            | 1       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_BEFORE_TEMPLATE | Генерация шаблонов представлений, предшествующих layout контроллера.     | 2       |
+| LEVEL_BEFORE_TEMPLATE | Генерация шаблонов представлений, предшествующих макету контроллера.     | 2       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_LAYOUT          | Генерация представления, для layout контроллера.                         | 3       |
+| LEVEL_LAYOUT          | Генерация представления, для макета контроллера.                         | 3       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_AFTER_TEMPLATE  | Генерация шаблонов представлений, следующих за layout контроллера.       | 4       |
+| LEVEL_AFTER_TEMPLATE  | Генерация шаблонов представлений, следующих за макетом контроллера.      | 4       |
 +-----------------------+--------------------------------------------------------------------------+---------+
-| LEVEL_MAIN_LAYOUT     | Генерация представления для главного layout. Файл views/index.phtml      | 5       |
+| LEVEL_MAIN_LAYOUT     | Генерация представления для главного макета. Файл views/index.phtml      | 5       |
 +-----------------------+--------------------------------------------------------------------------+---------+
 
 Отключение уровней отрисовки
@@ -350,20 +356,23 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
     use Phalcon\Mvc\View;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
 
-        $view = new View();
+            // Отключить несколько уровней
+            $view->disableLevel(
+                [
+                    View::LEVEL_LAYOUT      => true,
+                    View::LEVEL_MAIN_LAYOUT => true,
+                ]
+            );
 
-        // Отключить несколько уровней
-        $view->disableLevel(
-            array(
-                View::LEVEL_LAYOUT      => true,
-                View::LEVEL_MAIN_LAYOUT => true
-            )
-        );
-
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 или только для какой-либо его части:
 
@@ -383,7 +392,9 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
         public function findAction()
         {
-            $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+            $this->view->disableLevel(
+                View::LEVEL_MAIN_LAYOUT
+            );
         }
     }
 
@@ -405,10 +416,18 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
             $this->view->pick("products/search");
 
             // Использовать для отрисовки "views-dir/books/list"
-            $this->view->pick(array('books'));
+            $this->view->pick(
+                [
+                    "books",
+                ]
+            );
 
             // Использовать для отрисовки "views-dir/products/search"
-            $this->view->pick(array(1 => 'search'));
+            $this->view->pick(
+                [
+                    1 => "search",
+                ]
+            );
         }
     }
 
@@ -429,11 +448,27 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
             // Тут завершилась сессия
             // ...
 
-            // HTTP редирект
-            $this->response->redirect('index/index');
-
             // Отключение компонента представлений
             $this->view->disable();
+        }
+    }
+
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
         }
     }
 
@@ -452,8 +487,8 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
             // Close session
             // ...
 
-            // A HTTP Redirect
-            return $this->response->redirect('index/index');
+            // HTTP редирект
+            return $this->response->redirect("index/index");
         }
     }
 
@@ -472,14 +507,17 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
     use Phalcon\Mvc\View\Simple as SimpleView;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new SimpleView();
 
-        $view = new SimpleView();
+            $view->setViewsDir("../app/views/");
 
-        $view->setViewsDir('../app/views/');
-
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 Процесс автоматической отрисовки может быть отключен в :doc:`Phalcon\\Mvc\\Application <applications>` (если это необходимо):
 
@@ -487,10 +525,10 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
 
     <?php
 
+    use Exception;
     use Phalcon\Mvc\Application;
 
     try {
-
         $application = new Application($di);
 
         $application->useImplicitView(false);
@@ -498,8 +536,7 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         $response = $application->handle();
 
         $response->send();
-
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
 
@@ -516,16 +553,26 @@ If we had used :code:`$this->view->setTemplateBefore('common')`, this would be t
         public function indexAction()
         {
             // Render 'views-dir/index.phtml'
-            echo $this->view->render('index');
+            echo $this->view->render("index");
 
             // Render 'views-dir/posts/show.phtml'
-            echo $this->view->render('posts/show');
+            echo $this->view->render("posts/show");
 
             // Render 'views-dir/index.phtml' passing variables
-            echo $this->view->render('index', array('posts' => Posts::find()));
+            echo $this->view->render(
+                "index",
+                [
+                    "posts" => Posts::find(),
+                ]
+            );
 
             // Render 'views-dir/posts/show.phtml' passing variables
-            echo $this->view->render('posts/show', array('posts' => Posts::find()));
+            echo $this->view->render(
+                "posts/show",
+                [
+                    "posts" => Posts::find(),
+                ]
+            );
         }
     }
 
@@ -535,15 +582,17 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
-    $params = array('posts' => Posts::find());
+    $params = [
+        "posts" => Posts::find(),
+    ];
 
     // Phalcon\Mvc\View
     $view = new \Phalcon\Mvc\View();
-    echo $view->render('posts', 'show', $params);
+    echo $view->render("posts", "show", $params);
 
     // Phalcon\Mvc\View\Simple
     $simpleView = new \Phalcon\Mvc\View\Simple();
-    echo $simpleView->render('posts/show', $params);
+    echo $simpleView->render("posts/show", $params);
 
 Части шаблонов (Partials)
 -------------------------
@@ -564,11 +613,11 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-Метод partial() принимает в качестве второго параметра массив переменных, которые будут доступны только в пределах части шаблона:
+Метод :code:`partial()` принимает в качестве второго параметра массив переменных, которые будут доступны только в пределах части шаблона:
 
 .. code-block:: html+php
 
-    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')); ?>
+    <?php $this->partial("shared/ad_banner", ["id" => $site->id, "size" => "big"]); ?>
 
 Передача переменных контроллера
 -------------------------------
@@ -589,56 +638,44 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
         public function showAction()
         {
-            // Передаёт все посты во представление
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Передаёт все имя пользователя и посты во представление
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Используется "магический" сеттер
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Передача сразу нескольких переменных с помощью массива
             $this->view->setVars(
-                array(
-                    'title'   => $post->title,
-                    'content' => $post->content
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-Первым параметром метода setVar() передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа, как простым, например, строкой или числом, так и сложной структурой вроде массива или коллекции объектов.
+Первым параметром метода :code:`setVar()` передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа, как простым, например, строкой или числом, так и сложной структурой вроде массива или коллекции объектов.
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>
     </div>
-
-Использование моделей в слое представления
-------------------------------------------
-Модели приложения всегда доступны из слоя представления. Во время исполнения :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` автоматически создаёт их копии:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        foreach (Categories::find("status = 1") as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-Хотя и существует возможность вызова таких методов модели, как insert() или update(), это не рекомендуется, так как при этом становится невозможной передача выполнения другому контроллеру в случае возникновения ошибки или исключительной ситуации.
 
 Кэширование фрагментов Представления
 ------------------------------------
@@ -664,9 +701,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Кэширование на один час
             $this->view->cache(
-                array(
-                    "lifetime" => 3600
-                )
+                [
+                    "lifetime" => 3600,
+                ]
             );
         }
 
@@ -674,10 +711,10 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Кэширование представления этого действия на один день с ключем "resume-cache"
             $this->view->cache(
-                array(
+                [
                     "lifetime" => 86400,
-                    "key"      => "resume-cache"
-                )
+                    "key"      => "resume-cache",
+                ]
             );
         }
 
@@ -685,11 +722,11 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Использование стороннего сервиса для кэширования
             $this->view->cache(
-                array(
+                [
                     "service"  => "myCache",
                     "lifetime" => 86400,
-                    "key"      => "resume-cache"
-                )
+                    "key"      => "resume-cache",
+                ]
             );
         }
     }
@@ -707,26 +744,28 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
     // Назначение сервиса кэширования представлений
-    $di->set('viewCache', function () {
+    $di->set(
+        "viewCache",
+        function () {
+            // Кэширование данных на сутки по умолчанию
+            $frontCache = new OutputFrontend(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // Кэширование данных на сутки по умолчанию
-        $frontCache = new OutputFrontend(
-            array(
-                "lifetime" => 86400
-            )
-        );
+            // Настройки соединения с Memcached
+            $cache = new MemcacheBackend(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Настройки соединения с Memcached
-        $cache = new MemcacheBackend(
-            $frontCache,
-            array(
-                "host" => "localhost",
-                "port" => "11211"
-            )
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 .. highlights::
     Интерфейс всегда должен быть :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`, а сервис "viewCache" должен быть зарегистрирован как всегда открытый (not shared) в контейнере сервисов (DI).
@@ -746,13 +785,12 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function indexAction()
         {
             // Проверяет, кэш с ключом "downloads" на существование или истёкший срок
-            if ($this->view->getCache()->exists('downloads')) {
-
+            if ($this->view->getCache()->exists("downloads")) {
                 // Запрос последних загрузок
                 $latest = Downloads::find(
-                    array(
-                        'order' => 'created_at DESC'
-                    )
+                    [
+                        "order" => "created_at DESC",
+                    ]
                 );
 
                 $this->view->latest = $latest;
@@ -760,9 +798,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
             // Включает кэширование с ключом "downloads"
             $this->view->cache(
-                array(
-                    'key' => 'downloads'
-                )
+                [
+                    "key" => "downloads",
+                ]
             );
         }
     }
@@ -793,6 +831,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Engine;
 
     class MyTemplateAdapter extends Engine
@@ -803,7 +842,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\Di $di
          */
-        public function __construct($view, $di)
+        public function __construct($view, DiInterface $di)
         {
             // Инициализация адаптера
             parent::__construct($view, $di);
@@ -818,7 +857,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function render($path, $params)
         {
             // Доступ к view
-            $view    = $this->_view;
+            $view = $this->_view;
 
             // Доступ к настройкам
             $options = $this->_options;
@@ -830,38 +869,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 Изменение шаблонизатора
 ^^^^^^^^^^^^^^^^^^^^^^^
-Вы можете изменить или дополнить шаблонизатор из контроллера следующим образом:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Назначение шаблонизатора
-            $this->view->registerEngines(
-                array(
-                    ".my-html" => "MyTemplateAdapter"
-                )
-            );
-        }
-
-        public function showAction()
-        {
-            // Использование нескольких шаблонизаторов
-            $this->view->registerEngines(
-                array(
-                    ".my-html" => 'MyTemplateAdapter',
-                    ".phtml"   => 'Phalcon\Mvc\View\Engine\Php'
-                )
-            );
-        }
-    }
-
 Вы можете полностью заменить шаблонизатор или использовать несколько шаблонизаторов одновременно. Метод :code:`Phalcon\Mvc\View::registerEngines()` принимает в качестве параметра массив, в котором описываются данные шаблонизаторов. Ключами массива в этом случае будут расширения файлов, что помогает отличить их друг от друга. Файлы шаблонов, относящиеся к этим шаблонизаторам должны иметь соответствующие расширения.
 
 Порядок выполнения шаблонизаторов определяется порядком, в котором они описаны в :code:`Phalcon\Mvc\View::registerEngines()`. Если :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` обнаружит два представления с одинаковым именами, но разными расширениями, то он отрисует тот, который был указан первым.
@@ -875,21 +882,33 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     use Phalcon\Mvc\View;
 
     // Настройка компонента представления
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
 
-        $view = new View();
+            // A trailing directory separator is required
+            $view->setViewsDir("../app/views/");
 
-        // A trailing directory separator is required
-        $view->setViewsDir('../app/views/');
+            // Set the engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                ]
+            );
 
-        $view->registerEngines(
-            array(
-                ".my-html" => 'MyTemplateAdapter'
-            )
-        );
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
+                ]
+            );
 
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 Адаптеры для некоторых шаблонизаторов можно найти здесь: `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_.
 
@@ -933,7 +952,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view->setViewsDir("../app/views/");
 
     // Передача переменных в представление
-    $view->setVar("someProducts", $products);
+    $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
     // Начало буферизации вывода
@@ -957,15 +976,21 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     $view = new View();
 
-    echo $view->getRender('products', 'list',
-        array(
+    echo $view->getRender(
+        "products",
+        "list",
+        [
             "someProducts"       => $products,
-            "someFeatureEnabled" => true
-        ),
+            "someFeatureEnabled" => true,
+        ],
         function ($view) {
             // Установка дополнительных опций
+
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(View::LEVEL_LAYOUT);
+
+            $view->setRenderLevel(
+                View::LEVEL_LAYOUT
+            );
         }
     );
 
@@ -990,10 +1015,10 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     // Передача параметров для отрисовки
     echo $view->render(
         "templates/welcomeMail",
-        array(
-            'email'   => $email,
-            'content' => $content
-        )
+        [
+            "email"   => $email,
+            "content" => $content,
+        ]
     );
 
 События компонента представлений
@@ -1020,28 +1045,35 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
-    use Phalcon\Mvc\View;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\View;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            // Создание обработчика событий
+            $eventsManager = new EventsManager();
 
-        // Создание обработчика событий
-        $eventsManager = new EventsManager();
+            // Назначение слушателя для событий типа "view"
+            $eventsManager->attach(
+                "view",
+                function (Event $event, $view) {
+                    echo $event->getType(), " - ", $view->getActiveRenderPath(), PHP_EOL;
+                }
+            );
 
-        // Назначение слушателя для событий типа "view"
-        $eventsManager->attach("view", function ($event, $view) {
-            echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
-        });
+            $view = new View();
 
-        $view = new View();
-        $view->setViewsDir("../app/views/");
+            $view->setViewsDir("../app/views/");
 
-        // Назначение обработчика событий для компонента представления
-        $view->setEventsManager($eventsManager);
+            // Назначение обработчика событий для компонента представления
+            $view->setEventsManager($eventsManager);
 
-        return $view;
-
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 Следующий пример показывает, как создать плагин, который очищает/исправляет HTML, сгенерированный с использованием Tidy_:
 
@@ -1049,26 +1081,38 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class TidyPlugin
     {
-        public function afterRender($event, $view)
+        public function afterRender(Event $event, $view)
         {
-            $tidyConfig = array(
-                'clean'          => true,
-                'output-xhtml'   => true,
-                'show-body-only' => true,
-                'wrap'           => 0
+            $tidyConfig = [
+                "clean"          => true,
+                "output-xhtml"   => true,
+                "show-body-only" => true,
+                "wrap"           => 0,
+            ];
+
+            $tidy = tidy_parse_string(
+                $view->getContent(),
+                $tidyConfig,
+                "UTF8"
             );
 
-            $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');
             $tidy->cleanRepair();
 
-            $view->setContent((string) $tidy);
+            $view->setContent(
+                (string) $tidy
+            );
         }
     }
 
     // Назначение плагина в качестве слушателя
-    $eventsManager->attach("view:afterRender", new TidyPlugin());
+    $eventsManager->attach(
+        "view:afterRender",
+        new TidyPlugin()
+    );
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/

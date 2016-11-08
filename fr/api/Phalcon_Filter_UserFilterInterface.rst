@@ -9,7 +9,7 @@ Interface **Phalcon\\Filter\\UserFilterInterface**
 Methods
 -------
 
-abstract public  **filter** (*unknown* $value)
+abstract public  **filter** (*mixed* $value)
 
 ...
 

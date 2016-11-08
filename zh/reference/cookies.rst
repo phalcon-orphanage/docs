@@ -20,25 +20,30 @@ Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用�
         public function loginAction()
         {
             // 检测cookie之前有没被设置过
-            if ($this->cookies->has('remember-me')) {
-
+            if ($this->cookies->has("remember-me")) {
                 // 获取cookie
-                $rememberMe = $this->cookies->get('remember-me');
+                $rememberMeCookie = $this->cookies->get("remember-me");
 
                 // 获取cookie的值
-                $value      = $rememberMe->getValue();
+                $value = $rememberMeCookie->getValue();
             }
         }
 
         public function startAction()
         {
-            $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
+            $this->cookies->set(
+                "remember-me",
+                "some value",
+                time() + 15 * 86400
+            );
         }
 
         public function logoutAction()
         {
+            $rememberMeCookie = $this->cookies->get("remember-me");
+
             // Delete the cookie
-            $this->cookies->get('remember-me')->delete();
+            $rememberMeCookie->delete();
         }
     }
 
@@ -56,13 +61,16 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function () {
-        $cookies = new Cookies();
+    $di->set(
+        "cookies",
+        function () {
+            $cookies = new Cookies();
 
-        $cookies->useEncryption(false);
+            $cookies->useEncryption(false);
 
-        return $cookies;
-    });
+            return $cookies;
+        }
+    );
 
 使用加密的话，必须在“crypt”服务中设置一个全局的key：
 
@@ -72,13 +80,16 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
-        $crypt = new Crypt();
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // 使用你自己的key！
+            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // 使用你自己的key！
 
-        return $crypt;
-    });
+            return $crypt;
+        }
+    );
 
 .. highlights::
 

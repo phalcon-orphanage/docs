@@ -20,37 +20,22 @@
 
 .. code-block:: bash
 
-    wget -q --no-check-certificate -O phalcon-tools.zip http://github.com/phalcon/phalcon-devtools/zipball/master
-    unzip -q phalcon-tools.zip
-    mv phalcon-phalcon-devtools-* phalcon-tools
+    git clone git://github.com/phalcon/phalcon-devtools.git
 
-Проверьте, куда будут установлены Инструменты разработчика Phalcon, используя команду *pwd*:
-
-.. figure:: ../_static/img/mac-2.png
-   :align: center
-
-На платформе Mac, вам необходимо самостоятельно настроить пользовательскую переменную PATH, для включения инструментов Phalcon. Откройте ваш .profile файл и добавьте путь к инструментам Phalcon в переменную PATH:
-
-.. figure:: ../_static/img/mac-3.png
-   :align: center
-
-Вставьте две строки в конец файла:
+Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
 
 .. code-block:: bash
 
-    export PATH=$PATH:/Users/scott/phalcon-tools
-    export PTOOLSPATH=/Users/scott/phalcon-tools
+    cd phalcon-devtools/
 
-Файл .profile должен быть примерно таким:
+    . ./phalcon.sh
 
-.. figure:: ../_static/img/mac-4.png
-   :align: center
-
-Сохраните изменения и закройте файл. Потом в терминале, введите следующие команды для создания символической ссылки на скрипт phalcon.php:
+Потом в терминале, введите следующие команды для создания символической ссылки на скрипт phalcon.php:
 
 .. code-block:: bash
 
     ln -s ~/phalcon-tools/phalcon.php ~/phalcon-tools/phalcon
+
     chmod +x ~/phalcon-tools/phalcon
 
 Введите команду "phalcon" и вы должны увидеть нечто подобное:

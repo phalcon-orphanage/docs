@@ -32,7 +32,7 @@ Index type
 
 
 
-public  **__construct** (*unknown* $name, *array* $columns, [*unknown* $type])
+public  **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
 
 Phalcon\\Db\\Index constructor
 

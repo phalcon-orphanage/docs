@@ -22,32 +22,37 @@ accessed:
         public function loginAction()
         {
             // Check if the cookie has previously set
-            if ($this->cookies->has('remember-me')) {
-
+            if ($this->cookies->has("remember-me")) {
                 // Get the cookie
-                $rememberMe = $this->cookies->get('remember-me');
+                $rememberMeCookie = $this->cookies->get("remember-me");
 
                 // Get the cookie's value
-                $value      = $rememberMe->getValue();
+                $value = $rememberMeCookie->getValue();
             }
         }
 
         public function startAction()
         {
-            $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
+            $this->cookies->set(
+                "remember-me",
+                "some value",
+                time() + 15 * 86400
+            );
         }
 
         public function logoutAction()
         {
+            $rememberMeCookie = $this->cookies->get("remember-me");
+
             // Delete the cookie
-            $this->cookies->get('remember-me')->delete();
+            $rememberMeCookie->delete();
         }
     }
 
 Encryption/Decryption of Cookies
 --------------------------------
 By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user.
-This protection allows unauthorized users to see the cookies' contents in the client (browser).
+This protection prevents unauthorized users to see the cookies' contents in the client (browser).
 Despite this protection, sensitive data should not be stored in cookies.
 
 You can disable encryption in the following way:
@@ -58,13 +63,16 @@ You can disable encryption in the following way:
 
     use Phalcon\Http\Response\Cookies;
 
-    $di->set('cookies', function () {
-        $cookies = new Cookies();
+    $di->set(
+        "cookies",
+        function () {
+            $cookies = new Cookies();
 
-        $cookies->useEncryption(false);
+            $cookies->useEncryption(false);
 
-        return $cookies;
-    });
+            return $cookies;
+        }
+    );
 
 If you wish to use encryption, a global key must be set in the 'crypt' service:
 
@@ -74,13 +82,16 @@ If you wish to use encryption, a global key must be set in the 'crypt' service:
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
-        $crypt = new Crypt();
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
+            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
 
-        return $crypt;
-    });
+            return $crypt;
+        }
+    );
 
 .. highlights::
 

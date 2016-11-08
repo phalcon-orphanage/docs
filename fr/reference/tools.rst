@@ -5,8 +5,8 @@ Ces outils sont une collection de scripts utiles pour générer un squelette de 
 Des composants principaux de votre application peuvent être générés avec une simple commande, vous permettant de développer des applications facilement avec phalcon.
 
 .. highlights::
-    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs. Il est fortement recommandé
-    d'utilisé PHP 5.4 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
+
+    Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
 
 Téléchargement
 --------------
@@ -29,19 +29,20 @@ Vous pouvez obtenir la liste des commandes Phalcon disponibles en tapant : :code
 
 .. code-block:: sh
 
-   $ phalcon commands
+    $ phalcon commands
 
-   Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
-   Available commands:
-     commands         (alias of: list, enumerate)
-     controller       (alias of: create-controller)
-     model            (alias of: create-model)
-     all-models       (alias of: create-all-models)
-     project          (alias of: create-project)
-     scaffold         (alias of: create-scaffold)
-     migration        (alias of: create-migration)
-     webtools         (alias of: create-webtools)
+    Available commands:
+      commands         (alias of: list, enumerate)
+      controller       (alias of: create-controller)
+      module           (alias of: create-module)
+      model            (alias of: create-model)
+      all-models       (alias of: create-all-models)
+      project          (alias of: create-project)
+      scaffold         (alias of: create-scaffold)
+      migration        (alias of: create-migration)
+      webtools         (alias of: create-webtools)
 
 Générer un squelette de Project
 -------------------------------
@@ -51,11 +52,11 @@ Ecrivez la ligne de commande suivante à l'endroit où vous désirez créer votr
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 La structure suivante sera générée :
 
@@ -68,7 +69,7 @@ Vous pouvez ajouter le paramètre *--help* pour obtenir de l'aide sur l'utilisat
 
     $ phalcon project --help
 
-    Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
     Help:
       Creates a project
@@ -104,7 +105,7 @@ Il est important de faire cette commande à l'intérieur du dossier qui contient
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 Le code suivant sera généré par le script :
 
@@ -112,7 +113,9 @@ Le code suivant sera généré par le script :
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -165,11 +168,11 @@ La manière la plus simple de générer un model est d'écrire cela:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 Tous les champs de la table seront déclarés public pour un accès direct.
 
@@ -177,7 +180,9 @@ Tous les champs de la table seront déclarés public pour un accès direct.
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -187,7 +192,7 @@ Tous les champs de la table seront déclarés public pour un accès direct.
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -216,7 +221,9 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -226,7 +233,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -251,6 +258,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
         /**
          * Method to set the value of field id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -259,18 +267,20 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
         }
 
         /**
-         * Method to set the value of field types_id
-         * @param integer $types_id
+         * Method to set the value of field typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Returns the value of field status
+         *
          * @return string
          */
         public function getStatus()
@@ -298,7 +308,7 @@ Sur l'exemple de code suivant illustre le liner sur la base de la table "product
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 Le générateur d'échaffaudage va créer plusieurs fichiers/dossiers dans votre application. Voici un aperçu de ce qui sera généré:
 

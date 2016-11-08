@@ -11,7 +11,7 @@ Interface **Phalcon\\Mvc\\ViewInterface**
 Methods
 -------
 
-abstract public  **setLayoutsDir** (*unknown* $layoutsDir)
+abstract public  **setLayoutsDir** (*mixed* $layoutsDir)
 
 ...
 
@@ -21,7 +21,7 @@ abstract public  **getLayoutsDir** ()
 ...
 
 
-abstract public  **setPartialsDir** (*unknown* $partialsDir)
+abstract public  **setPartialsDir** (*mixed* $partialsDir)
 
 ...
 
@@ -31,7 +31,7 @@ abstract public  **getPartialsDir** ()
 ...
 
 
-abstract public  **setBasePath** (*unknown* $basePath)
+abstract public  **setBasePath** (*mixed* $basePath)
 
 ...
 
@@ -41,12 +41,12 @@ abstract public  **getBasePath** ()
 ...
 
 
-abstract public  **setRenderLevel** (*unknown* $level)
+abstract public  **setRenderLevel** (*mixed* $level)
 
 ...
 
 
-abstract public  **setMainView** (*unknown* $viewPath)
+abstract public  **setMainView** (*mixed* $viewPath)
 
 ...
 
@@ -56,7 +56,7 @@ abstract public  **getMainView** ()
 ...
 
 
-abstract public  **setLayout** (*unknown* $layout)
+abstract public  **setLayout** (*mixed* $layout)
 
 ...
 
@@ -66,7 +66,7 @@ abstract public  **getLayout** ()
 ...
 
 
-abstract public  **setTemplateBefore** (*unknown* $templateBefore)
+abstract public  **setTemplateBefore** (*mixed* $templateBefore)
 
 ...
 
@@ -76,7 +76,7 @@ abstract public  **cleanTemplateBefore** ()
 ...
 
 
-abstract public  **setTemplateAfter** (*unknown* $templateAfter)
+abstract public  **setTemplateAfter** (*mixed* $templateAfter)
 
 ...
 
@@ -111,12 +111,12 @@ abstract public  **registerEngines** (*array* $engines)
 ...
 
 
-abstract public  **render** (*unknown* $controllerName, *unknown* $actionName, [*unknown* $params])
+abstract public  **render** (*mixed* $controllerName, *mixed* $actionName, [*mixed* $params])
 
 ...
 
 
-abstract public  **pick** (*unknown* $renderView)
+abstract public  **pick** (*mixed* $renderView)
 
 ...
 
@@ -151,52 +151,52 @@ abstract public  **isDisabled** ()
 ...
 
 
-abstract public  **setViewsDir** (*unknown* $viewsDir) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setViewsDir** (*mixed* $viewsDir) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getViewsDir** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getViewsDir** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setParamToView** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setParamToView** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setVar** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setVar** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getParamsToView** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getParamsToView** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getCache** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getCache** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **cache** ([*unknown* $options]) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **cache** ([*mixed* $options]) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **setContent** (*unknown* $content) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **setContent** (*mixed* $content) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **getContent** () inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **getContent** () inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 
 
-abstract public  **partial** (*unknown* $partialPath, [*unknown* $params]) inherited from Phalcon\\Mvc\\ViewBaseInterface
+abstract public  **partial** (*mixed* $partialPath, [*mixed* $params]) inherited from :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 ...
 

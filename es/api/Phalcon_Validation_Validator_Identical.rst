@@ -16,49 +16,60 @@ Checks if a value is identical to other
 
     <?php
 
-    use Phalcon\Validation\Validator\Identical;
+     use Phalcon\Validation\Validator\Identical;
     
-    $validator->add('terms', new Identical(array(
-       'accepted' => 'yes',
-       'message' => 'Terms and conditions must be accepted'
-    )));
+     $validator->add('terms', new Identical([
+         'accepted' => 'yes',
+         'message' => 'Terms and conditions must be accepted'
+     ]));
+    
+     $validator->add(['terms', 'anotherTerms'], new Identical([
+         'accepted' => [
+             'terms' => 'yes',
+             'anotherTerms' => 'yes'
+         ],
+         'message' => [
+             'terms' => 'Terms and conditions must be accepted',
+             'anotherTerms' => 'Another terms  must be accepted'
+         ]
+     ]));
 
 
 
 Methods
 -------
 
-public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *unknown* $field)
+public  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validation, *mixed* $field)
 
 Executes the validation
 
 
 
-public  **__construct** ([*unknown* $options]) inherited from Phalcon\\Validation\\Validator
+public  **__construct** ([*array* $options]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Phalcon\\Validation\\Validator constructor
 
 
 
-public  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+public  **isSetOption** (*mixed* $key) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
+
+Checks if an option has been defined
+
+
+
+public  **hasOption** (*mixed* $key) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Checks if an option is defined
 
 
 
-public  **hasOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
-
-Checks if an option is defined
-
-
-
-public  **getOption** (*unknown* $key, [*unknown* $defaultValue]) inherited from Phalcon\\Validation\\Validator
+public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Returns an option in the validator's options Returns null if the option hasn't set
 
 
 
-public  **setOption** (*unknown* $key, *unknown* $value) inherited from Phalcon\\Validation\\Validator
+public  **setOption** (*mixed* $key, *mixed* $value) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Sets an option in the validator
 

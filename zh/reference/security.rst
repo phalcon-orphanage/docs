@@ -25,8 +25,8 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
         {
             $user = new Users();
 
-            $login    = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+            $login    = $this->request->getPost("login");
+            $password = $this->request->getPost("password");
 
             $user->login = $login;
 
@@ -49,8 +49,8 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
     {
         public function loginAction()
         {
-            $login    = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+            $login    = $this->request->getPost("login");
+            $password = $this->request->getPost("password");
 
             $user = Users::findFirstByLogin($login);
             if ($user) {
@@ -112,11 +112,16 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
     <?php
 
-    $di->setShared('session', function () {
-        $session = new Phalcon\Session\Adapter\Files();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new \Phalcon\Session\Adapter\Files();
+
+            $session->start();
+
+            return $session;
+        }
+    );
 
 同时也建议为表单添加一个 captcha_ ，以完全避免这种攻击的风险。
 
@@ -130,15 +135,18 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
     use Phalcon\Security;
 
-    $di->set('security', function () {
+    $di->set(
+        "security",
+        function () {
+            $security = new Security();
 
-        $security = new Security();
+            // Set the password hashing factor to 12 rounds
+            $security->setWorkFactor(12);
 
-        // Set the password hashing factor to 12 rounds
-        $security->setWorkFactor(12);
-
-        return $security;
-    }, true);
+            return $security;
+        },
+        true
+    );
 
 Random
 ------
@@ -148,7 +156,9 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
 
     <?php
 
-    $random = new \Phalcon\Security\Random();
+    use Phalcon\Security\Random;
+
+    $random = new Random();
 
     // ...
     $bytes      = $random->bytes();

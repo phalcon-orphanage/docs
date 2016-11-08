@@ -16,13 +16,13 @@ Formats messages so that they can be sent to FirePHP
 Methods
 -------
 
-public  **getTypeString** (*unknown* $type)
+public  **getTypeString** (*mixed* $type)
 
 Returns the string meaning of a logger constant
 
 
 
-public  **setShowBacktrace** ([*unknown* $isShow])
+public  **setShowBacktrace** ([*mixed* $isShow])
 
 Returns the string meaning of a logger constant
 
@@ -34,7 +34,7 @@ Returns the string meaning of a logger constant
 
 
 
-public  **enableLabels** ([*unknown* $isEnable])
+public  **enableLabels** ([*mixed* $isEnable])
 
 Returns the string meaning of a logger constant
 
@@ -46,13 +46,13 @@ Returns the labels enabled
 
 
 
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
+public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sending it to the log
 
 
 
-public  **interpolate** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Formatter
+public  **interpolate** (*string* $message, [*array* $context]) inherited from :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 Interpolates context values into the message placeholders
 

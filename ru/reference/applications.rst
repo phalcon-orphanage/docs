@@ -41,29 +41,34 @@ MVC Приложения
     $loader = new Loader();
 
     $loader->registerDirs(
-        array(
-            '../apps/controllers/',
-            '../apps/models/'
-        )
-    )->register();
+        [
+            "../apps/controllers/",
+            "../apps/models/",
+        ]
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
     // Регистрация компонента представлений
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../apps/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../apps/views/");
+
+            return $view;
+        }
+    );
+
+    $application = new Application($di);
 
     try {
-
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -84,36 +89,46 @@ MVC Приложения
 
     // Использование автозагрузки по префиксу пространства имён
     $loader->registerNamespaces(
-        array(
-            'Single\Controllers' => '../apps/controllers/',
-            'Single\Models'      => '../apps/models/',
-        )
-    )->register();
+        [
+            "Single\\Controllers" => "../apps/controllers/",
+            "Single\\Models"      => "../apps/models/",
+        ]
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
     // Регистрация диспетчера c пространством имён для контроллеров
-    $di->set('dispatcher', function () {
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDefaultNamespace('Single\Controllers');
-        return $dispatcher;
-    });
+    $di->set(
+        "dispatcher",
+        function () {
+            $dispatcher = new Dispatcher();
+
+            $dispatcher->setDefaultNamespace("Single\\Controllers");
+
+            return $dispatcher;
+        }
+    );
 
     // Регистрация компонента представлений
-    $di->set('view', function () {
-        $view = new View();
-        $view->setViewsDir('../apps/views/');
-        return $view;
-    });
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
+
+            $view->setViewsDir("../apps/views/");
+
+            return $view;
+        }
+    );
+
+    $application = new Application($di);
 
     try {
-
-        $application = new Application($di);
-
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -166,10 +181,10 @@ MVC Приложения
             $loader = new Loader();
 
             $loader->registerNamespaces(
-                array(
-                    'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
-                    'Multiple\Backend\Models'      => '../apps/backend/models/',
-                )
+                [
+                    "Multiple\\Backend\\Controllers" => "../apps/backend/controllers/",
+                    "Multiple\\Backend\\Models"      => "../apps/backend/models/",
+                ]
             );
 
             $loader->register();
@@ -181,18 +196,28 @@ MVC Приложения
         public function registerServices(DiInterface $di)
         {
             // Регистрация диспетчера
-            $di->set('dispatcher', function () {
-                $dispatcher = new Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
-                return $dispatcher;
-            });
+            $di->set(
+                "dispatcher",
+                function () {
+                    $dispatcher = new Dispatcher();
+
+                    $dispatcher->setDefaultNamespace("Multiple\\Backend\\Controllers");
+
+                    return $dispatcher;
+                }
+            );
 
             // Регистрация компонента представлений
-            $di->set('view', function () {
-                $view = new View();
-                $view->setViewsDir('../apps/backend/views/');
-                return $view;
-            });
+            $di->set(
+                "view",
+                function () {
+                    $view = new View();
+
+                    $view->setViewsDir("../apps/backend/views/");
+
+                    return $view;
+                }
+            );
         }
     }
 
@@ -210,65 +235,65 @@ MVC Приложения
 
     // Специфичные роуты для модуля
     // More information how to set the router up https://docs.phalconphp.com/ru/latest/reference/routing.html
-    $di->set('router', function () {
+    $di->set(
+        "router",
+        function () {
+            $router = new Router();
 
-        $router = new Router();
+            $router->setDefaultModule("frontend");
 
-        $router->setDefaultModule("frontend");
+            $router->add(
+                "/login",
+                [
+                    "module"     => "backend",
+                    "controller" => "login",
+                    "action"     => "index",
+                ]
+            );
 
-        $router->add(
-            "/login",
-            array(
-                'module'     => 'backend',
-                'controller' => 'login',
-                'action'     => 'index'
-            )
-        );
+            $router->add(
+                "/admin/products/:action",
+                [
+                    "module"     => "backend",
+                    "controller" => "products",
+                    "action"     => 1,
+                ]
+            );
 
-        $router->add(
-            "/admin/products/:action",
-            array(
-                'module'     => 'backend',
-                'controller' => 'products',
-                'action'     => 1
-            )
-        );
+            $router->add(
+                "/products/:action",
+                [
+                    "controller" => "products",
+                    "action"     => 1,
+                ]
+            );
 
-        $router->add(
-            "/products/:action",
-            array(
-                'controller' => 'products',
-                'action'     => 1
-            )
-        );
+            return $router;
+        }
+    );
 
-        return $router;
-    });
+    // Создание приложения
+    $application = new Application($di);
+
+    // Регистрация установленных модулей
+    $application->registerModules(
+        [
+            "frontend" => [
+                "className" => "Multiple\\Frontend\\Module",
+                "path"      => "../apps/frontend/Module.php",
+            ],
+            "backend"  => [
+                "className" => "Multiple\\Backend\\Module",
+                "path"      => "../apps/backend/Module.php",
+            ]
+        ]
+    );
 
     try {
-
-        // Создание приложения
-        $application = new Application($di);
-
-        // Регистрация установленных модулей
-        $application->registerModules(
-            array(
-                'frontend' => array(
-                    'className' => 'Multiple\Frontend\Module',
-                    'path'      => '../apps/frontend/Module.php',
-                ),
-                'backend'  => array(
-                    'className' => 'Multiple\Backend\Module',
-                    'path'      => '../apps/backend/Module.php',
-                )
-            )
-        );
-
         // Обработка запроса
         $response = $application->handle();
 
         $response->send();
-
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
@@ -289,193 +314,34 @@ MVC Приложения
 
     // Регистрация установленных модулей
     $application->registerModules(
-        array(
-            'frontend' => function ($di) use ($view) {
-                $di->setShared('view', function () use ($view) {
-                    $view->setViewsDir('../apps/frontend/views/');
-                    return $view;
-                });
+        [
+            "frontend" => function ($di) use ($view) {
+                $di->setShared(
+                    "view",
+                    function () use ($view) {
+                        $view->setViewsDir("../apps/frontend/views/");
+
+                        return $view;
+                    }
+                );
             },
-            'backend' => function ($di) use ($view) {
-                $di->setShared('view', function () use ($view) {
-                    $view->setViewsDir('../apps/backend/views/');
-                    return $view;
-                });
+            "backend" => function ($di) use ($view) {
+                $di->setShared(
+                    "view",
+                    function () use ($view) {
+                        $view->setViewsDir("../apps/backend/views/");
+
+                        return $view;
+                    }
+                );
             }
-        )
+        ]
     );
 
 Когда :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` зарегистрирует модули, всегда необходимо
 чтобы каждая регистрация возвращала существующий модуль. Каждый зарегистрированный модуль должен иметь соответствующий класс
 и функцию для настройки самого модуля. Каждый модуль должен обязательно содержать два методы: registerAutoloaders() и registerServices(),
 они будут автоматически вызваны :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` при выполнении модуля.
-
-Понятие поведения по умолчанию
-------------------------------
-Если вы смотрели :doc:`руководство <tutorial>` или сгенерировали код используя :doc:`Инструменты разработчика <tools>`,
-вы можете узнать следующий код:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Application;
-
-    try {
-
-        // Регистрация автозагрузчика
-        // ...
-
-        // Регистрация сервисов
-        // ...
-
-        // Обработка запроса
-        $application = new Application($di);
-
-        $response = $application->handle();
-
-        $response->send();
-
-    } catch (\Exception $e) {
-        echo "Exception: ", $e->getMessage();
-    }
-
-Ядро выполняет основную работу по запуску контроллера, при вызове handle():
-
-.. code-block:: php
-
-    <?php
-
-    $response = $application->handle();
-
-Ручная начальная загрузка
--------------------------
-Если вы не хотите использовать :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, код выше можно изменить вот так:
-
-.. code-block:: php
-
-    <?php
-
-    // Получаем  сервис из контейнера сервисов
-    $router = $di['router'];
-
-    $router->handle();
-
-    $view = $di['view'];
-
-    $dispatcher = $di['dispatcher'];
-
-    // Передаём обработанные параметры маршрутизатора в диспетчер
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
-
-    // Запускаем представление
-    $view->start();
-
-    // Выполняем запрос
-    $dispatcher->dispatch();
-
-    // Выводим необходимое представление
-    $view->render(
-        $dispatcher->getControllerName(),
-        $dispatcher->getActionName(),
-        $dispatcher->getParams()
-    );
-
-    // Завершаем работу представления
-    $view->finish();
-
-    $response = $di['response'];
-
-    // Передаём результат для ответа
-    $response->setContent($view->getContent());
-
-    // Отправляем заголовки
-    $response->sendHeaders();
-
-    // Выводим ответ
-    echo $response->getContent();
-
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making it suitable for Rest APIs:
-
-.. code-block:: php
-
-    <?php
-
-    // Get the 'router' service
-    $router = $di['router'];
-
-    $router->handle();
-
-    $dispatcher = $di['dispatcher'];
-
-    // Pass the processed router parameters to the dispatcher
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
-
-    // Dispatch the request
-    $dispatcher->dispatch();
-
-    // Get the returned value by the last executed action
-    $response = $dispatcher->getReturnedValue();
-
-    // Check if the action returned is a 'response' object
-    if ($response instanceof Phalcon\Http\ResponseInterface) {
-
-        // Send the response
-        $response->send();
-    }
-
-Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
-
-.. code-block:: php
-
-    <?php
-
-    // Get the 'router' service
-    $router = $di['router'];
-
-    $router->handle();
-
-    $dispatcher = $di['dispatcher'];
-
-    // Pass the processed router parameters to the dispatcher
-    $dispatcher->setControllerName($router->getControllerName());
-    $dispatcher->setActionName($router->getActionName());
-    $dispatcher->setParams($router->getParams());
-
-    try {
-
-        // Dispatch the request
-        $dispatcher->dispatch();
-
-    } catch (Exception $e) {
-
-        // An exception has occurred, dispatch some controller/action aimed for that
-
-        // Pass the processed router parameters to the dispatcher
-        $dispatcher->setControllerName('errors');
-        $dispatcher->setActionName('action503');
-
-        // Dispatch the request
-        $dispatcher->dispatch();
-    }
-
-    // Get the returned value by the last executed action
-    $response = $dispatcher->getReturnedValue();
-
-    // Check if the action returned is a 'response' object
-    if ($response instanceof Phalcon\Http\ResponseInterface) {
-
-        // Send the response
-        $response->send();
-    }
-
-Несмотря на то, что этот код более многословен чем код при использовании :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-он предоставляет альтернативу для запуска вашего приложения. В зависимости от своих потребностей, вы, возможно, захотите иметь полный контроль
-того будет ли создан ответ или нет, или захотите заменить определённые компоненты на свои, либо расширить их функциональность.
 
 События приложения
 ------------------
@@ -502,6 +368,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $eventsManager = new EventsManager();
@@ -510,7 +377,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     $eventsManager->attach(
         "application",
-        function ($event, $application) {
+        function (Event $event, $application) {
             // ...
         }
     );

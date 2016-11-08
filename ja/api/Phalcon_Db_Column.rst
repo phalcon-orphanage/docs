@@ -135,7 +135,7 @@ Default column value
 
 
 
-public  **__construct** (*unknown* $name, *array* $definition)
+public  **__construct** (*mixed* $name, *array* $definition)
 
 Phalcon\\Db\\Column constructor
 
@@ -177,7 +177,7 @@ Check whether column have first position in table
 
 
 
-public *string*  **getAfterPosition** ()
+public *string* **getAfterPosition** ()
 
 Check whether field absolute to position in table
 

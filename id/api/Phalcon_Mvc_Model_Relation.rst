@@ -33,15 +33,15 @@ Constants
 Methods
 -------
 
-public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
+public  **__construct** (*int* $type, *string* $referencedModel, *string* | *array* $fields, *string* | *array* $referencedFields, [*array* $options])
 
 Phalcon\\Mvc\\Model\\Relation constructor
 
 
 
-public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
+public  **setIntermediateRelation** (*string* | *array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 
-Sets the intermediate model data for has-\*-through relations
+Sets the intermediate model data for has-*-through relations
 
 
 
@@ -57,25 +57,25 @@ Returns the referenced model
 
 
 
-public *string|array*  **getFields** ()
+public *string* | *array* **getFields** ()
 
 Returns the fields
 
 
 
-public *string|array*  **getReferencedFields** ()
+public *string* | *array* **getReferencedFields** ()
 
 Returns the referenced fields
 
 
 
-public *string|array*  **getOptions** ()
+public *string* | *array* **getOptions** ()
 
 Returns the options
 
 
 
-public  **getOption** (*unknown* $name)
+public  **getOption** (*mixed* $name)
 
 Returns an option by the specified name If the option doesn't exist null is returned
 
@@ -87,13 +87,13 @@ Check whether the relation act as a foreign key
 
 
 
-public *string|array*  **getForeignKey** ()
+public *string* | *array* **getForeignKey** ()
 
 Returns the foreign key configuration
 
 
 
-public *array*  **getParams** ()
+public *array* **getParams** ()
 
 Returns parameters that must be always used when the related records are obtained
 
@@ -111,18 +111,21 @@ Check if records returned by getting belongs-to/has-many are implicitly cached d
 
 
 
-public *string|array*  **getIntermediateFields** ()
+public *string* | *array* **getIntermediateFields** ()
 
-Gets the intermediate fields for has-\*-through relations
+Gets the intermediate fields for has-*-through relations
 
 
 
 public  **getIntermediateModel** ()
 
-Gets the intermediate model for has-\*-through relations
+Gets the intermediate model for has-*-through relations
 
 
 
-public *string|array*  **getIntermediateReferencedFields** ()
+public *string* | *array* **getIntermediateReferencedFields** ()
 
-Gets the intermediate referenced fields for has-\*-through relations
+Gets the intermediate referenced fields for has-*-through relations
+
+
+

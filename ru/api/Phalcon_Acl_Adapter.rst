@@ -44,7 +44,7 @@ Returns the internal event manager
 
 
 
-public  **setDefaultAction** (*unknown* $defaultAccess)
+public  **setDefaultAction** (*mixed* $defaultAccess)
 
 Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
@@ -56,62 +56,72 @@ Returns the default ACL access level
 
 
 
-abstract public  **addRole** (*unknown* $role, [*unknown* $accessInherits]) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **addInherit** (*unknown* $roleName, *unknown* $roleToInherit) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **getNoArgumentsDefaultAction** () inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **isRole** (*unknown* $roleName) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits]) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **isResource** (*unknown* $resourceName) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **addResource** (*unknown* $resourceObject, *unknown* $accessList) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **isRole** (*mixed* $roleName) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **addResourceAccess** (*unknown* $resourceName, *unknown* $accessList) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **isResource** (*mixed* $resourceName) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **dropResourceAccess** (*unknown* $resourceName, *unknown* $accessList) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **addResource** (*mixed* $resourceObject, *mixed* $accessList) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **allow** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **deny** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **isAllowed** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func]) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **getRoles** () inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func]) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 
 
-abstract public  **getResources** () inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters]) inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
+
+...
+
+
+abstract public  **getRoles** () inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
+
+...
+
+
+abstract public  **getResources** () inherited from :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 ...
 

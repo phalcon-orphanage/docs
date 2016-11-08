@@ -67,7 +67,9 @@ app/config/config.ini and it's loaded in the very first lines of the application
     // ...
 
     // Read the configuration
-    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
+    $config = new ConfigIni(
+        APP_PATH . "app/config/config.ini"
+    );
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
 In this example, we're using a ini file as configuration, however, there are more adapters supported
@@ -104,7 +106,7 @@ The second part that appears in the bootstrap file (public/index.php) is the aut
     /**
      * Auto-loader configuration
      */
-    require APP_PATH . 'app/config/loader.php';
+    require APP_PATH . "app/config/loader.php";
 
 The autoloader registers a set of directories in which the application will look for
 the classes that it eventually will need.
@@ -117,14 +119,16 @@ the classes that it eventually will need.
 
     // We're a registering a set of directories taken from the configuration file
     $loader->registerDirs(
-        array(
+        [
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->pluginsDir,
             APP_PATH . $config->application->libraryDir,
             APP_PATH . $config->application->modelsDir,
             APP_PATH . $config->application->formsDir,
-        )
-    )->register();
+        ]
+    );
+
+    $loader->register();
 
 Note that the above code has registered the directories that were defined in the configuration file. The only
 directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
@@ -137,7 +141,10 @@ Also, note that we have using a constant called APP_PATH, this constant is defin
 
     // ...
 
-    define('APP_PATH', realpath('..') . '/');
+    define(
+        "APP_PATH",
+        realpath("..") . "/"
+    );
 
 Registering services
 --------------------
@@ -151,7 +158,7 @@ us to organize the services that INVO does use.
     /**
      * Load application services
      */
-    require APP_PATH . 'app/config/services.php';
+    require APP_PATH . "app/config/services.php";
 
 Service registration is achieved as in the previous tutorial, making use of a closure to lazily loads
 the required components:
@@ -167,13 +174,18 @@ the required components:
     /**
      * The URL component is used to generate all kind of URLs in the application
      */
-    $di->set('url', function () use ($config) {
-        $url = new UrlProvider();
+    $di->set(
+        "url",
+        function () use ($config) {
+            $url = new UrlProvider();
 
-        $url->setBaseUri($config->application->baseUri);
+            $url->setBaseUri(
+                $config->application->baseUri
+            );
 
-        return $url;
-    });
+            return $url;
+        }
+    );
 
 We will discuss this file in depth later.
 
@@ -220,13 +232,16 @@ called when the application requires access to the session data:
     // ...
 
     // Start the session the first time a component requests the session service
-    $di->set('session', function () {
-        $session = new Session();
+    $di->set(
+        "session",
+        function () {
+            $session = new Session();
 
-        $session->start();
+            $session->start();
 
-        return $session;
-    });
+            return $session;
+        }
+    );
 
 Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
 was registered using the name "session". This is a convention that will allow the framework to identify the active

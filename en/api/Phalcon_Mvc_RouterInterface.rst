@@ -9,17 +9,17 @@ Interface **Phalcon\\Mvc\\RouterInterface**
 Methods
 -------
 
-abstract public  **setDefaultModule** (*unknown* $moduleName)
+abstract public  **setDefaultModule** (*mixed* $moduleName)
 
 ...
 
 
-abstract public  **setDefaultController** (*unknown* $controllerName)
+abstract public  **setDefaultController** (*mixed* $controllerName)
 
 ...
 
 
-abstract public  **setDefaultAction** (*unknown* $actionName)
+abstract public  **setDefaultAction** (*mixed* $actionName)
 
 ...
 
@@ -29,47 +29,62 @@ abstract public  **setDefaults** (*array* $defaults)
 ...
 
 
-abstract public  **handle** ([*unknown* $uri])
+abstract public  **handle** ([*mixed* $uri])
 
 ...
 
 
-abstract public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+abstract public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 ...
 
 
-abstract public  **addGet** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPost** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPost** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPut** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addPatch** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addPatch** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addDelete** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addDelete** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addOptions** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addOptions** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
 
-abstract public  **addHead** (*unknown* $pattern, [*unknown* $paths])
+abstract public  **addHead** (*mixed* $pattern, [*mixed* $paths])
+
+...
+
+
+abstract public  **addPurge** (*mixed* $pattern, [*mixed* $paths])
+
+...
+
+
+abstract public  **addTrace** (*mixed* $pattern, [*mixed* $paths])
+
+...
+
+
+abstract public  **addConnect** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
@@ -129,12 +144,12 @@ abstract public  **getRoutes** ()
 ...
 
 
-abstract public  **getRouteById** (*unknown* $id)
+abstract public  **getRouteById** (*mixed* $id)
 
 ...
 
 
-abstract public  **getRouteByName** (*unknown* $name)
+abstract public  **getRouteByName** (*mixed* $name)
 
 ...
 

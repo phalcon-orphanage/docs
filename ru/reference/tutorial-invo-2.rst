@@ -26,16 +26,19 @@
     // ...
 
     // Соединение с базой данных создается соответственно параметрам в конфигурационном файле
-    $di->set('db', function () use ($config) {
-        return new DbAdapter(
-            array(
-                "host"     => $config->database->host,
-                "username" => $config->database->username,
-                "password" => $config->database->password,
-                "dbname"   => $config->database->name
-            )
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new DbAdapter(
+                [
+                    "host"     => $config->database->host,
+                    "username" => $config->database->username,
+                    "password" => $config->database->password,
+                    "dbname"   => $config->database->name,
+                ]
+            );
+        }
+    );
 
 Здесь мы вернули экземпляр адаптера соединения с MySQL. При необходимости вы можете реализовать дополнительные действия, такие как
 логирование и профилирование запросов, или изменить адаптер, сконфигурировав его так, как вам угодно.
@@ -45,25 +48,35 @@
 
 .. code-block:: html+jinja
 
-    {{ form('session/start') }}
+    {{ form("session/start") }}
         <fieldset>
             <div>
-                <label for="email">Логин/Email</label>
+                <label for="email">
+                    Логин/Email
+                </label>
+
                 <div>
-                    {{ text_field('email') }}
+                    {{ text_field("email") }}
                 </div>
             </div>
+
             <div>
-                <label for="password">Пароль</label>
+                <label for="password">
+                    Пароль
+                </label>
+
                 <div>
-                    {{ password_field('password') }}
+                    {{ password_field("password") }}
                 </div>
             </div>
+
+
+
             <div>
                 {{ submit_button('Войти') }}
             </div>
         </fieldset>
-    </form>
+    {{ endForm() }}
 
 Вместо использования обычного PHP (как в предыдущем уроке), мы воспользовались :doc:`Volt <volt>`. Это встроенный
 шаблонизатор, вдохновленный Jinja_, предоставляющий простой и удобный синтаксис создания шаблонов.
@@ -83,11 +96,11 @@
         private function _registerSession($user)
         {
             $this->session->set(
-                'auth',
-                array(
-                    'id'   => $user->id,
-                    'name' => $user->name
-                )
+                "auth",
+                [
+                    "id"   => $user->id,
+                    "name" => $user->name,
+                ]
             );
         }
 
@@ -97,46 +110,48 @@
         public function startAction()
         {
             if ($this->request->isPost()) {
-
                 // Получаем данные от пользователя
-                $email    = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email    = $this->request->getPost("email");
+                $password = $this->request->getPost("password");
 
                 // Производим поиск в базе данных
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
-                            'email'    => $email,
-                            'password' => sha1($password)
-                        )
-                    )
+                        "bind" => [
+                            "email"    => $email,
+                            "password" => sha1($password),
+                        ]
+                    ]
                 );
 
-                if ($user != false) {
-
+                if ($user !== false) {
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome ' . $user->name);
+                    $this->flash->success(
+                        "Welcome " . $user->name
+                    );
 
                     // Перенаправляем на контроллер 'invoices', если пользователь существует
                     return $this->dispatcher->forward(
-                        array(
-                            'controller' => 'invoices',
-                            'action'     => 'index'
-                        )
+                        [
+                            "controller" => "invoices",
+                            "action"     => "index",
+                        ]
                     );
                 }
 
-                $this->flash->error('Неверный email/пароль');
+                $this->flash->error(
+                    "Неверный email/пароль"
+                );
             }
 
             // Снова выдаем форму авторизации
             return $this->dispatcher->forward(
-                array(
-                    'controller' => 'session',
-                    'action'     => 'index'
-                )
+                [
+                    "controller" => "session",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -158,11 +173,11 @@
     <?php
 
     $this->session->set(
-        'auth',
-        array(
-            'id'   => $user->id,
-            'name' => $user->name
-        )
+        "auth",
+        [
+            "id"   => $user->id,
+            "name" => $user->name,
+        ]
     );
 
 Другой важный аспект этой главы - это то, как сверяются данные пользователя,
@@ -180,8 +195,8 @@
 
     <?php
 
-    $email    = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $email    = $this->request->getPost("email");
+    $password = $this->request->getPost("password");
 
 Теперь мы должны проверить, имеется ли пользователь с таким же именем или почтой и паролем:
 
@@ -190,13 +205,13 @@
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
-                'email'    => $email,
-                'password' => sha1($password)
-            )
-        )
+            "bind" => [
+                "email"    => $email,
+                "password" => sha1($password),
+            ]
+        ]
     );
 
 Обратите внимание на использование 'связаннных параметров', плейсхолдеры :email: и :password: расположены там, где должны быть значения переменных,
@@ -209,11 +224,19 @@
 
     <?php
 
-    if ($user != false) {
+    if ($user !== false) {
         $this->_registerSession($user);
-        $this->flash->success('Welcome ' . $user->name);
 
-        return $this->forward('invoices/index');
+        $this->flash->success(
+            "Welcome " . $user->name
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "invoices",
+                "action"     => "index",
+            ]
+        );
     }
 
 Если пользователь не существует, то возвращаем его на страницу с формой авторизации:
@@ -222,7 +245,12 @@
 
     <?php
 
-    return $this->forward('session/index');
+    return $this->dispatcher->forward(
+        [
+            "controller" => "session",
+            "action"     => "index",
+        ]
+    );
 
 Безопасность бэкенда
 --------------------
@@ -258,14 +286,16 @@
     /**
      * Диспетчер MVC
      */
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // ...
 
-        // ...
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 Теперь мы имеем полный контроль над используемым в приложении диспетчером. Многие компоненты фреймворка инициируют
 события, которые позволяют нам управлять их ходом выполнения. Как компонент внедрения зависимостей выполняет роль клея
@@ -284,24 +314,32 @@
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Создаем менеджер событий
+            $eventsManager = new EventsManager();
 
-        // Создаем менеджер событий
-        $eventsManager = new EventsManager();
+            // Плагин безопасности слушает события, инициированные диспетчером
+            $eventsManager->attach(
+                "dispatch:beforeExecuteRoute",
+                new SecurityPlugin()
+            );
 
-        // Плагин безопасности слушает события, инициированные диспетчером
-        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+            // Отлавливаем исключения и not-found исключения, используя NotFoundPlugin
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                new NotFoundPlugin()
+            );
 
-        // Отлавливаем исключения и not-found исключения, используя NotFoundPlugin
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
+            // Связываем менеджер событий с диспетчером
+            $dispatcher->setEventsManager($eventsManager);
 
-        // Связываем менеджер событий с диспетчером
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 При срабатывании события "beforeExecuteRoute" будет оповещен следующий плагин:
 
@@ -312,7 +350,10 @@
     /**
      * С помощью SecurityPlugin проверяем, разрешен ли пользователю доступ к определенному действию
      */
-    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeExecuteRoute",
+        new SecurityPlugin()
+    );
 
 Когда срабатывает "beforeException", оповещается другой плагин:
 
@@ -323,7 +364,10 @@
     /**
      * Отлавливаем исключения и not-found исключения, используя NotFoundPlugin
      */
-    $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeException",
+        new NotFoundPlugin()
+    );
 
 SecurityPlugin - это класс, расположенный в (app/plugins/SecurityPlugin.php). Он реализует метод
 "beforeExecuteRoute". Его название совпадает с именем одного из событий, инициируемых диспетчером:
@@ -370,31 +414,35 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Проверяем, установлена ли в сессии переменная "auth" для определения активной роли.
-            $auth = $this->session->get('auth');
+            $auth = $this->session->get("auth");
+
             if (!$auth) {
-                $role = 'Guests';
+                $role = "Guests";
             } else {
-                $role = 'Users';
+                $role = "Users";
             }
 
             // Получаем активный контроллер/действие от диспетчера
             $controller = $dispatcher->getControllerName();
-            $action = $dispatcher->getActionName();
+            $action     = $dispatcher->getActionName();
 
             // Получаем список ACL
             $acl = $this->getAcl();
 
             // Проверяем, имеет ли данная роль доступ к контроллеру (ресурсу)
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Acl::ALLOW) {
 
+            if (!$allowed) {
                 // Если доступа нет, перенаправляем его на контроллер "index".
-                $this->flash->error("У вас нет доступа к данному модулю");
+                $this->flash->error(
+                    "У вас нет доступа к данному модулю"
+                );
+
                 $dispatcher->forward(
-                    array(
-                        'controller' => 'index',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "index",
+                        "action"     => "index",
+                    ]
                 );
 
                 // Возвращая "false" мы приказываем диспетчеру прервать текущую операцию
@@ -420,14 +468,16 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
     $acl = new AclList();
 
     // Действием по умолчанию будет запрет
-    $acl->setDefaultAction(Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
     // Регистрируем две роли. Users - это зарегистрированные пользователи,
     // а Guests - неидентифицированные посетители.
-    $roles = array(
-        'users'  => new Role('Users'),
-        'guests' => new Role('Guests')
-    );
+    $roles = [
+        "users"  => new Role("Users"),
+        "guests" => new Role("Guests"),
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,27 +495,37 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
     // ...
 
     // Приватные ресурсы (бэкенд)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
-    foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $privateResources = [
+        "companies"    => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "products"     => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "producttypes" => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "invoices"     => ["index", "profile"],
+    ];
+
+    foreach ($privateResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
+
+
     // Публичные ресурсы (фронтенд)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
-    foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $publicResources = [
+        "index"    => ["index"],
+        "about"    => ["index"],
+        "register" => ["index"],
+        "errors"   => ["show404", "show500"],
+        "session"  => ["index", "register", "start", "end"],
+        "contact"  => ["index", "send"],
+    ];
+
+    foreach ($publicResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
 Теперь ACL знает о существующих контроллерах и связанных с ними действиях. Роли "Users" дадим доступ
@@ -478,14 +538,22 @@ SecurityPlugin - это класс, расположенный в (app/plugins/S
     // Предоставляем пользователям и гостям доступ к публичным ресурсам
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
-            $acl->allow($role->getName(), $resource, '*');
+            $acl->allow(
+                $role->getName(),
+                $resource,
+                "*"
+            );
         }
     }
 
     // Доступ к приватным ресурсам предоставляем только пользователям
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
-            $acl->allow('Users', $resource, $action);
+            $acl->allow(
+                "Users",
+                $resource,
+                $action
+            );
         }
     }
 

@@ -2,9 +2,13 @@ Encriptação/Decriptação
 =======================
 
 Phalcon provê utilitários de encriptação pelo componente :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
-Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca mcrypt_ do PHP.
+Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca openssl_ do PHP.
 
-Por padrão, esse componente provê uma encriptação segura usando AES-256 (rijndael-256-cbc).
+Por padrão, esse componente provê uma encriptação segura usando AES-256.
+
+.. highlights::
+    You must use a key length corresponding to the current algorithm.
+    For the algorithm used by default it is 32 bytes.
 
 Uso Básico
 ----------
@@ -17,10 +21,10 @@ Esse componente foi projetado para fornecer um uso muito simples:
     use Phalcon\Crypt;
 
     // Create an instance
-    $crypt     = new Crypt();
+    $crypt = new Crypt();
 
-    $key       = 'le password';
-    $text      = 'This is a secret text';
+    $key  = "This is a secret key (32 bytes).";
+    $text = "This is the text that you want to encrypt.";
 
     $encrypted = $crypt->encrypt($text, $key);
 
@@ -37,13 +41,12 @@ Você pode usar a mesma instância para encriptar/decriptar várias vezes:
     // Create an instance
     $crypt = new Crypt();
 
-    $texts = array(
-        'my-key'    => 'This is a secret text',
-        'other-key' => 'This is a very secret'
-    );
+    $texts = [
+        "my-key"    => "This is a secret text",
+        "other-key" => "This is a very secret",
+    ];
 
     foreach ($texts as $key => $text) {
-
         // Perform the encryption
         $encrypted = $crypt->encrypt($text, $key);
 
@@ -55,14 +58,11 @@ Opções de Encriptação
 ---------------------
 As seguintes opções estão disponíveis para alterar o comportamento da encriptação:
 
-+------------+--------------------------------------------------------------------------------------------------------------+
-| Nome       | Descrição                                                                                                    |
-+============+==============================================================================================================+
-| Cipher     | É um dos tipos de algoritmo de encriptografia suportados pela libmcrypt. Você pode ver a lista aqui_         |
-+------------+--------------------------------------------------------------------------------------------------------------+
-| Mode       | Um modo de encriptação suportado pela libmcrypt (ecb, cbc, cfb, ofb)                                         |
-+------------+--------------------------------------------------------------------------------------------------------------+
-
++--------+------------------------------------------------------------------------------------------------------+
+| Nome   | Descrição                                                                                            |
++========+======================================================================================================+
+| Cipher | É um dos tipos de algoritmo de encriptografia suportados pela libmcrypt. Você pode ver a lista aqui_ |
++--------+------------------------------------------------------------------------------------------------------+
 
 Exemplo:
 
@@ -76,10 +76,10 @@ Exemplo:
     $crypt = new Crypt();
 
     // Use blowfish
-    $crypt->setCipher('blowfish');
+    $crypt->setCipher("bf-cbc");
 
-    $key   = 'le password';
-    $text  = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     echo $crypt->encrypt($text, $key);
 
@@ -94,10 +94,10 @@ Para que a criptografia possa ser trafegada (emails, urls) ou exibida (navegador
     use Phalcon\Crypt;
 
     // Create an instance
-    $crypt   = new Crypt();
+    $crypt = new Crypt();
 
-    $key     = 'le password';
-    $text    = 'This is a secret text';
+    $key  = "le password";
+    $text = "This is a secret text";
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -113,15 +113,20 @@ Você pode configurar um componente de encriptação no container de serviços p
 
     use Phalcon\Crypt;
 
-    $di->set('crypt', function () {
+    $di->set(
+        "crypt",
+        function () {
+            $crypt = new Crypt();
 
-        $crypt = new Crypt();
+            // Set a global encryption key
+            $crypt->setKey(
+                "%31.1e$i86e$f!8jz"
+            );
 
-        // Set a global encryption key
-        $crypt->setKey('%31.1e$i86e$f!8jz');
-
-        return $crypt;
-    }, true);
+            return $crypt;
+        },
+        true
+    );
 
 Então, por exemplo, em um controlador você pode usá-lo da seguinte forma:
 
@@ -137,16 +142,18 @@ Então, por exemplo, em um controlador você pode usá-lo da seguinte forma:
         {
             $secret = new Secrets();
 
-            $text = $this->request->getPost('text');
+            $text = $this->request->getPost("text");
 
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Secret was successfully created!');
+                $this->flash->success(
+                    "Secret was successfully created!"
+                );
             }
         }
     }
 
-.. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
-.. _aqui: http://www.php.net/manual/en/mcrypt.ciphers.php
+.. _openssl: http://www.php.net/manual/en/book.openssl.php
+.. _aqui: http://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

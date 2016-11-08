@@ -15,17 +15,25 @@ Phalcon中提供了 :code:`Phalcon\Forms` 组件以方便开发者创建和维�
 
     $form = new Form();
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("telephone"));
+    $form->add(
+        new Text(
+            "telephone"
+        )
+    );
 
     $form->add(
         new Select(
             "telephoneType",
-            array(
-                'H' => 'Home',
-                'C' => 'Cell'
-            )
+            [
+                "H" => "Home",
+                "C" => "Cell",
+            ]
         )
     );
 
@@ -33,24 +41,37 @@ Phalcon中提供了 :code:`Phalcon\Forms` 组件以方便开发者创建和维�
 
 .. code-block:: html+php
 
-    <h1>Contacts</h1>
+    <h1>
+        Contacts
+    </h1>
 
     <form method="post">
 
         <p>
-            <label>Name</label>
+            <label>
+                Name
+            </label>
+
             <?php echo $form->render("name"); ?>
         </p>
 
         <p>
-            <label>Telephone</label>
+            <label>
+                Telephone
+            </label>
+
             <?php echo $form->render("telephone"); ?>
         </p>
 
         <p>
-            <label>Type</label>
+            <label>
+                Type
+            </label>
+
             <?php echo $form->render("telephoneType"); ?>
         </p>
+
+
 
         <p>
             <input type="submit" value="Save" />
@@ -58,14 +79,17 @@ Phalcon中提供了 :code:`Phalcon\Forms` 组件以方便开发者创建和维�
 
     </form>
 
-开发者可根据需要渲染HTML组件。 当使用render()函数时， phalcon内部会使用 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 生成相应的html项，
+开发者可根据需要渲染HTML组件。 当使用:code:`render()`函数时， phalcon内部会使用 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 生成相应的html项，
 第二个参数中可以对一些属性进行设置。
 
 .. code-block:: html+php
 
     <p>
-        <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')); ?>
+        <label>
+            Name
+        </label>
+
+        <?php echo $form->render("name", ["maxlength" => 30, "placeholder" => "Type your name"]); ?>
     </p>
 
 HTML的属性也可以在创建时指定：
@@ -77,10 +101,10 @@ HTML的属性也可以在创建时指定：
     $form->add(
         new Text(
             "name",
-            array(
-                'maxlength'   => 30,
-                'placeholder' => 'Type your name'
-            )
+            [
+                "maxlength"   => 30,
+                "placeholder" => "Type your name",
+            ]
         )
     );
 
@@ -100,20 +124,28 @@ HTML的属性也可以在创建时指定：
     {
         public function initialize()
         {
-            $this->add(new Text("name"));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
 
-            $this->add(new Text("telephone"));
+            $this->add(
+                new Text(
+                    "telephone"
+                )
+            );
 
             $this->add(
                 new Select(
                     "telephoneType",
                     TelephoneTypes::find(),
-                    array(
-                        'using' => array(
-                            'id',
-                            'name'
-                        )
-                    )
+                    [
+                        "using" => [
+                            "id",
+                            "name",
+                        ]
+                    ]
                 )
             );
         }
@@ -146,10 +178,18 @@ HTML的属性也可以在创建时指定：
             $this->setEntity($this);
 
             // Add a text element to capture the 'email'
-            $this->add(new Text("email"));
+            $this->add(
+                new Text(
+                    "email"
+                )
+            );
 
             // Add a text element to put a hidden CSRF
-            $this->add(new Hidden("csrf"));
+            $this->add(
+                new Hidden(
+                    "csrf"
+                )
+            );
         }
     }
 
@@ -171,15 +211,27 @@ HTML的属性也可以在创建时指定：
          * @param Users $user
          * @param array $options
          */
-        public function initialize(Users $user, $options)
+        public function initialize(Users $user, array $options)
         {
-            if ($options['edit']) {
-                $this->add(new Hidden('id'));
+            if ($options["edit"]) {
+                $this->add(
+                    new Hidden(
+                        "id"
+                    )
+                );
             } else {
-                $this->add(new Text('id'));
+                $this->add(
+                    new Text(
+                        "id"
+                    )
+                );
             }
 
-            $this->add(new Text('name'));
+            $this->add(
+                new Text(
+                    "name"
+                )
+            );
         }
     }
 
@@ -191,9 +243,9 @@ HTML的属性也可以在创建时指定：
 
     $form = new UsersForm(
         new Users(),
-        array(
-            'edit' => true
-        )
+        [
+            "edit" => true,
+        ]
     );
 
 验证（Validation）
@@ -208,22 +260,24 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
     use Phalcon\Validation\Validator\PresenceOf;
     use Phalcon\Validation\Validator\StringLength;
 
-    $name = new Text("name");
+    $name = new Text(
+        "name"
+    );
 
     $name->addValidator(
         new PresenceOf(
-            array(
-                'message' => 'The name is required'
-            )
+            [
+                "message" => "The name is required",
+            ]
         )
     );
 
     $name->addValidator(
         new StringLength(
-            array(
-                'min'            => 10,
-                'messageMinimum' => 'The name is too short'
-            )
+            [
+                "min"            => 10,
+                "messageMinimum" => "The name is too short",
+            ]
         )
     );
 
@@ -236,8 +290,10 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
     <?php
 
     if (!$form->isValid($_POST)) {
-        foreach ($form->getMessages() as $message) {
-            echo $message, '<br>';
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
+            echo $message, "<br>";
         }
     }
 
@@ -250,10 +306,10 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
     <?php
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
-        echo 'Messages generated by ', $attribute, ':', "\n";
+        echo "Messages generated by ", $attribute, ":", "\n";
 
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -263,16 +319,53 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     <?php
 
-    foreach ($form->getMessagesFor('name') as $message) {
-        echo $message, '<br>';
+    $messages = $form->getMessagesFor("name");
+
+    foreach ($messages as $message) {
+        echo $message, "<br>";
     }
 
 过滤（Filtering）
 -----------------
 表单元素可以在进行验证前先进行过滤， 开发者可以为每个元素设置过滤器：
 
-设置用户选项（Setting User Options）
-------------------------------------
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Element\Text;
+
+    $name = new Text(
+        "name"
+    );
+
+    // Set multiple filters
+    $name->setFilters(
+        [
+            "string",
+            "trim",
+        ]
+    );
+
+    $form->add($name);
+
+
+
+    $email = new Text(
+        "email"
+    );
+
+    // Set one filter
+    $email->setFilters(
+        "email"
+    );
+
+    $form->add($email);
+
+.. highlights::
+
+    Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
+
 表单与实体（Forms + Entities）
 ------------------------------
 我们可以把 model/collection/plain 设置到表单对象中， 这样 phalcon 会自动的设置表单元素的值：
@@ -285,15 +378,23 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     $form = new Form($robot);
 
-    $form->add(new Text("name"));
+    $form->add(
+        new Text(
+            "name"
+        )
+    );
 
-    $form->add(new Text("year"));
+    $form->add(
+        new Text(
+            "year"
+        )
+    );
 
 在表单渲染时如果表单项未设置默认值， phalcon会使用对象实体值作为默认值：
 
 .. code-block:: html+php
 
-    <?php echo $form->render('name'); ?>
+    <?php echo $form->render("name"); ?>
 
 开发者可以使用下面的方式验证表单及利用用户的输入来设置值：
 
@@ -305,7 +406,6 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     // Check if the form is valid
     if ($form->isValid()) {
-
         // Save the entity
         $robot->save();
     }
@@ -318,9 +418,9 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     class Preferences
     {
-        public $timezone = 'Europe/Amsterdam';
+        public $timezone = "Europe/Amsterdam";
 
-        public $receiveEmails = 'No';
+        public $receiveEmails = "No";
     }
 
 使用此类做为对象实体，这样可以使用此类中的值作为表单的默认值：
@@ -329,27 +429,29 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     <?php
 
-    $form = new Form(new Preferences());
+    $form = new Form(
+        new Preferences()
+    );
 
     $form->add(
         new Select(
             "timezone",
-            array(
-                'America/New_York'  => 'New York',
-                'Europe/Amsterdam'  => 'Amsterdam',
-                'America/Sao_Paulo' => 'Sao Paulo',
-                'Asia/Tokyo'        => 'Tokyo'
-            )
+            [
+                "America/New_York"  => "New York",
+                "Europe/Amsterdam"  => "Amsterdam",
+                "America/Sao_Paulo" => "Sao Paulo",
+                "Asia/Tokyo"        => "Tokyo",
+            ]
         )
     );
 
     $form->add(
         new Select(
             "receiveEmails",
-            array(
-                'Yes' => 'Yes, please!',
-                'No'  => 'No, thanks'
-            )
+            [
+                "Yes" => "Yes, please!",
+                "No"  => "No, thanks",
+            ]
         )
     );
 
@@ -365,14 +467,16 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
         public $receiveEmails;
 
+
+
         public function getTimezone()
         {
-            return 'Europe/Amsterdam';
+            return "Europe/Amsterdam";
         }
 
         public function getReceiveEmails()
         {
-            return 'No';
+            return "No";
         }
     }
 
@@ -380,29 +484,29 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 -------------------------
 Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :doc:`Phalcon\\Forms\\Element <../api/Phalcon_Forms_Element>` 命名空间下：
 
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 名称         | 描述                                                                                     | 示例                                                              |
-+==============+==========================================================================================+===================================================================+
-| Text         | 产生 INPUT[type=text] 项                                                                 | :doc:`Example <../api/Phalcon_Forms_Element_Text>`                |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Password     | 产生 INPUT[type=password] 项                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Password>`            |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Select       | 产生 SELECT tag (combo lists) 项                                                         | :doc:`Example <../api/Phalcon_Forms_Element_Select>`              |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Check        | 产生 INPUT[type=check] 项                                                                | :doc:`Example <../api/Phalcon_Forms_Element_Check>`               |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Textarea     | 产生 TEXTAREA 项                                                                         | :doc:`Example <../api/Phalcon_Forms_Element_TextArea>`            |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Hidden       | 产生 INPUT[type=hidden] 项                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Hidden>`              |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| File         | 产生 INPUT[type=file] 项                                                                 | :doc:`Example <../api/Phalcon_Forms_Element_File>`                |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Date         | 产生 INPUT[type=date] 项                                                                 | :doc:`Example <../api/Phalcon_Forms_Element_Date>`                |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numeric      | 产生 INPUT[type=number] 项                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Numeric>`             |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Submit       | 产生 INPUT[type=submit] 项                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
-+--------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++----------------------------------------------------------------------------------+----------------------------------+
+| 名称                                                                             | 描述                             |
++==================================================================================+==================================+
+| :doc:`Phalcon\\Forms\\Element\\Text <../api/Phalcon_Forms_Element_Text>`         | 产生 INPUT[type=text] 项         |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Password <../api/Phalcon_Forms_Element_Password>` | 产生 INPUT[type=password] 项     |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Select <../api/Phalcon_Forms_Element_Select>`     | 产生 SELECT tag (combo lists) 项 |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Check <../api/Phalcon_Forms_Element_Check>`       | 产生 INPUT[type=check] 项        |
++----------------------------------------------------------+-----------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\TextArea <../api/Phalcon_Forms_Element_TextArea>` | 产生 TEXTAREA 项                 |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Hidden <../api/Phalcon_Forms_Element_Hidden>`     | 产生 INPUT[type=hidden] 项       |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\File <../api/Phalcon_Forms_Element_File>`         | 产生 INPUT[type=file] 项         |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Date <../api/Phalcon_Forms_Element_Date>`         | 产生 INPUT[type=date] 项         |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Numeric <../api/Phalcon_Forms_Element_Numeric>`   | 产生 INPUT[type=number] 项       |
++----------------------------------------------------------------------------------+----------------------------------+
+| :doc:`Phalcon\\Forms\\Element\\Submit <../api/Phalcon_Forms_Element_Submit>`     | 产生 INPUT[type=submit] 项       |
++----------------------------------------------------------------------------------+----------------------------------+
 
 事件回调（Event Callbacks）
 ---------------------------
@@ -432,29 +536,37 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     <form method="post">
         <?php
+
             // Traverse the form
             foreach ($form as $element) {
-
                 // Get any generated messages for the current element
-                $messages = $form->getMessagesFor($element->getName());
+                $messages = $form->getMessagesFor(
+                    $element->getName()
+                );
 
                 if (count($messages)) {
                     // Print each element
                     echo '<div class="messages">';
+
                     foreach ($messages as $message) {
                         echo $message;
                     }
-                    echo '</div>';
+
+                    echo "</div>";
                 }
 
-                echo '<p>';
-                echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
-                echo $element;
-                echo '</p>';
+                echo "<p>";
 
+                echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
+                echo $element;
+
+                echo "</p>";
             }
+
         ?>
-        <input type="submit" value="Send"/>
+
+        <input type="submit" value="Send" />
     </form>
 
 或是在登录表单中重用表单类：
@@ -477,21 +589,28 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
             $element  = $this->get($name);
 
             // Get any generated messages for the current element
-            $messages = $this->getMessagesFor($element->getName());
+            $messages = $this->getMessagesFor(
+                $element->getName()
+            );
 
             if (count($messages)) {
                 // Print each element
                 echo '<div class="messages">';
+
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
                 }
-                echo '</div>';
+
+                echo "</div>";
             }
 
-            echo '<p>';
-            echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+            echo "<p>";
+
+            echo '<label for="', $element->getName(), '">', $element->getLabel(), "</label>";
+
             echo $element;
-            echo '</p>';
+
+            echo "</p>";
         }
     }
 
@@ -501,9 +620,9 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     <?php
 
-    echo $element->renderDecorated('name');
+    echo $element->renderDecorated("name");
 
-    echo $element->renderDecorated('telephone');
+    echo $element->renderDecorated("telephone");
 
 创建表单控件（Creating Form Elements）
 --------------------------------------
@@ -520,6 +639,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
         public function render($attributes = null)
         {
             $html = // ... Produce some HTML
+
             return $html;
         }
     }
@@ -534,7 +654,7 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     use Phalcon\Forms\Manager as FormsManager;
 
-    $di['forms'] = function () {
+    $di["forms"] = function () {
         return new FormsManager();
     };
 
@@ -544,7 +664,10 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     <?php
 
-    $this->forms->set('login', new LoginForm());
+    $this->forms->set(
+        "login",
+        new LoginForm()
+    );
 
 使用唯一名， 我们可以在应用的任何地方访问到表单：
 
@@ -552,7 +675,9 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
 
     <?php
 
-    echo $this->forms->get('login')->render();
+    $loginForm = $this->forms->get("login");
+
+    echo $loginForm->render();
 
 外部资源（External Resources)
 -----------------------------

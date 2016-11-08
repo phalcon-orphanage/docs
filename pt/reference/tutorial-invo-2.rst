@@ -26,16 +26,19 @@ again taking parameters from the configuration file in order to configure a serv
     // ...
 
     // Database connection is created based on parameters defined in the configuration file
-    $di->set('db', function () use ($config) {
-        return new DbAdapter(
-            array(
-                "host"     => $config->database->host,
-                "username" => $config->database->username,
-                "password" => $config->database->password,
-                "dbname"   => $config->database->name
-            )
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new DbAdapter(
+                [
+                    "host"     => $config->database->host,
+                    "username" => $config->database->username,
+                    "password" => $config->database->password,
+                    "dbname"   => $config->database->name,
+                ]
+            );
+        }
+    );
 
 Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
 logger, a profiler or change the adapter, setting it up as you want.
@@ -45,25 +48,35 @@ some HTML code to make the example more concise:
 
 .. code-block:: html+jinja
 
-    {{ form('session/start') }}
+    {{ form("session/start") }}
         <fieldset>
             <div>
-                <label for="email">Username/Email</label>
+                <label for="email">
+                    Username/Email
+                </label>
+
                 <div>
-                    {{ text_field('email') }}
+                    {{ text_field("email") }}
                 </div>
             </div>
+
             <div>
-                <label for="password">Password</label>
+                <label for="password">
+                    Password
+                </label>
+
                 <div>
-                    {{ password_field('password') }}
+                    {{ password_field("password") }}
                 </div>
             </div>
+
+
+
             <div>
-                {{ submit_button('Login') }}
+                {{ submit_button("Login") }}
             </div>
         </fieldset>
-    </form>
+    {{ endForm() }}
 
 Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
@@ -83,11 +96,11 @@ data entered in the form including checking for a valid user in the database:
         private function _registerSession($user)
         {
             $this->session->set(
-                'auth',
-                array(
-                    'id'   => $user->id,
-                    'name' => $user->name
-                )
+                "auth",
+                [
+                    "id"   => $user->id,
+                    "name" => $user->name,
+                ]
             );
         }
 
@@ -97,46 +110,48 @@ data entered in the form including checking for a valid user in the database:
         public function startAction()
         {
             if ($this->request->isPost()) {
-
                 // Get the data from the user
-                $email    = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email    = $this->request->getPost("email");
+                $password = $this->request->getPost("password");
 
                 // Find the user in the database
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
-                            'email'    => $email,
-                            'password' => sha1($password)
-                        )
-                    )
+                        "bind" => [
+                            "email"    => $email,
+                            "password" => sha1($password),
+                        ]
+                    ]
                 );
 
-                if ($user != false) {
-
+                if ($user !== false) {
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome ' . $user->name);
+                    $this->flash->success(
+                        "Welcome " . $user->name
+                    );
 
                     // Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(
-                        array(
-                            'controller' => 'invoices',
-                            'action'     => 'index'
-                        )
+                        [
+                            "controller" => "invoices",
+                            "action"     => "index",
+                        ]
                     );
                 }
 
-                $this->flash->error('Wrong email/password');
+                $this->flash->error(
+                    "Wrong email/password"
+                );
             }
 
             // Forward to the login form again
             return $this->dispatcher->forward(
-                array(
-                    'controller' => 'session',
-                    'action'     => 'index'
-                )
+                [
+                    "controller" => "session",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -158,11 +173,11 @@ For instance, here we invoke the "session" service and then we store the user id
     <?php
 
     $this->session->set(
-        'auth',
-        array(
-            'id'   => $user->id,
-            'name' => $user->name
-        )
+        "auth",
+        [
+            "id"   => $user->id,
+            "name" => $user->name,
+        ]
     );
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -180,8 +195,8 @@ Then, we receive the parameters from the form:
 
     <?php
 
-    $email    = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $email    = $this->request->getPost("email");
+    $password = $this->request->getPost("password");
 
 Now, we have to check if there is one user with the same username or email and password:
 
@@ -190,13 +205,13 @@ Now, we have to check if there is one user with the same username or email and p
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
-                'email'    => $email,
-                'password' => sha1($password)
-            )
-        )
+            "bind" => [
+                "email"    => $email,
+                "password" => sha1($password),
+            ]
+        ]
     );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
@@ -209,11 +224,19 @@ If the user is valid we register it in session and forwards him/her to the dashb
 
     <?php
 
-    if ($user != false) {
+    if ($user !== false) {
         $this->_registerSession($user);
-        $this->flash->success('Welcome ' . $user->name);
 
-        return $this->forward('invoices/index');
+        $this->flash->success(
+            "Welcome " . $user->name
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "invoices",
+                "action"     => "index",
+            ]
+        );
     }
 
 If the user does not exist we forward the user back again to action where the form is displayed:
@@ -222,7 +245,12 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    return $this->forward('session/index');
+    return $this->dispatcher->forward(
+        [
+            "controller" => "session",
+            "action"     => "index",
+        ]
+    );
 
 Securing the Backend
 --------------------
@@ -258,14 +286,16 @@ replaced the component by creating a function in the bootstrap:
     /**
      * MVC dispatcher
      */
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // ...
 
-        // ...
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 We now have total control over the Dispatcher used in the application. Many components in the framework trigger
 events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
@@ -284,24 +314,32 @@ interests us now is "dispatch". The following code filters all events produced b
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Create an events manager
+            $eventsManager = new EventsManager();
 
-        // Create an events manager
-        $eventsManager = new EventsManager();
+            // Listen for events produced in the dispatcher using the Security plugin
+            $eventsManager->attach(
+                "dispatch:beforeExecuteRoute",
+                new SecurityPlugin()
+            );
 
-        // Listen for events produced in the dispatcher using the Security plugin
-        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+            // Handle exceptions and not-found exceptions using NotFoundPlugin
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                new NotFoundPlugin()
+            );
 
-        // Handle exceptions and not-found exceptions using NotFoundPlugin
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
+            // Assign the events manager to the dispatcher
+            $dispatcher->setEventsManager($eventsManager);
 
-        // Assign the events manager to the dispatcher
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
@@ -312,7 +350,10 @@ When an event called "beforeExecuteRoute" is triggered the following plugin will
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeExecuteRoute",
+        new SecurityPlugin()
+    );
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -323,7 +364,10 @@ When a "beforeException" is triggered then other plugin is notified:
     /**
      * Handle exceptions and not-found exceptions using NotFoundPlugin
      */
-    $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeException",
+        new NotFoundPlugin()
+    );
 
 SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This class implements the method
 "beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
@@ -370,31 +414,35 @@ If the user does not have access we redirect to the home screen as explained bef
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Check whether the "auth" variable exists in session to define the active role
-            $auth = $this->session->get('auth');
+            $auth = $this->session->get("auth");
+
             if (!$auth) {
-                $role = 'Guests';
+                $role = "Guests";
             } else {
-                $role = 'Users';
+                $role = "Users";
             }
 
             // Take the active controller/action from the dispatcher
             $controller = $dispatcher->getControllerName();
-            $action = $dispatcher->getActionName();
+            $action     = $dispatcher->getActionName();
 
             // Obtain the ACL list
             $acl = $this->getAcl();
 
             // Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Acl::ALLOW) {
 
+            if (!$allowed) {
                 // If he doesn't have access forward him to the index controller
-                $this->flash->error("You don't have access to this module");
+                $this->flash->error(
+                    "You don't have access to this module"
+                );
+
                 $dispatcher->forward(
-                    array(
-                        'controller' => 'index',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "index",
+                        "action"     => "index",
+                    ]
                 );
 
                 // Returning "false" we tell to the dispatcher to stop the current operation
@@ -420,14 +468,16 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
     $acl = new AclList();
 
     // The default action is DENY access
-    $acl->setDefaultAction(Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
     // Register two roles, Users is registered users
     // and guests are users without a defined identity
-    $roles = array(
-        'users'  => new Role('Users'),
-        'guests' => new Role('Guests')
-    );
+    $roles = [
+        "users"  => new Role("Users"),
+        "guests" => new Role("Guests"),
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,27 +495,37 @@ accesses for the resources:
     // ...
 
     // Private area resources (backend)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
-    foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $privateResources = [
+        "companies"    => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "products"     => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "producttypes" => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "invoices"     => ["index", "profile"],
+    ];
+
+    foreach ($privateResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
+
+
     // Public area resources (frontend)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
-    foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $publicResources = [
+        "index"    => ["index"],
+        "about"    => ["index"],
+        "register" => ["index"],
+        "errors"   => ["show404", "show500"],
+        "session"  => ["index", "register", "start", "end"],
+        "contact"  => ["index", "send"],
+    ];
+
+    foreach ($publicResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
 The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
@@ -478,14 +538,22 @@ all the resources of both frontend and backend. The role "Guests" only has acces
     // Grant access to public areas to both users and guests
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
-            $acl->allow($role->getName(), $resource, '*');
+            $acl->allow(
+                $role->getName(),
+                $resource,
+                "*"
+            );
         }
     }
 
     // Grant access to private area only to role Users
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
-            $acl->allow('Users', $resource, $action);
+            $acl->allow(
+                "Users",
+                $resource,
+                $action
+            );
         }
     }
 

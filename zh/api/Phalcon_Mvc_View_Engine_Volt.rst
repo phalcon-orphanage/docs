@@ -34,31 +34,31 @@ Returns the Volt's compiler
 
 
 
-public  **render** (*unknown* $templatePath, *unknown* $params, [*unknown* $mustClean])
+public  **render** (*mixed* $templatePath, *mixed* $params, [*mixed* $mustClean])
 
 Renders a view using the template engine
 
 
 
-public  **length** (*unknown* $item)
+public  **length** (*mixed* $item)
 
 Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 
 
-public  **isIncluded** (*unknown* $needle, *unknown* $haystack)
+public  **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
 Checks if the needle is included in the haystack
 
 
 
-public  **convertEncoding** (*unknown* $text, *unknown* $from, *unknown* $to)
+public  **convertEncoding** (*mixed* $text, *mixed* $from, *mixed* $to)
 
 Performs a string conversion
 
 
 
-public  **slice** (*unknown* $value, [*unknown* $start], [*unknown* $end])
+public  **slice** (*mixed* $value, [*mixed* $start], [*mixed* $end])
 
 Extracts a slice from a string/array/traversable object value
 
@@ -70,61 +70,61 @@ Sorts an array
 
 
 
-public  **callMacro** (*unknown* $name, *array* $arguments)
+public  **callMacro** (*mixed* $name, [*array* $arguments])
 
 Checks if a macro is defined and calls it
 
 
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
 Phalcon\\Mvc\\View\\Engine constructor
 
 
 
-public  **getContent** () inherited from Phalcon\\Mvc\\View\\Engine
+public  **getContent** () inherited from :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
 Returns cached output on another view stage
 
 
 
-public *string*  **partial** (*string* $partialPath, [*array* $params]) inherited from Phalcon\\Mvc\\View\\Engine
+public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
 Renders a partial inside another view
 
 
 
-public  **getView** () inherited from Phalcon\\Mvc\\View\\Engine
+public  **getView** () inherited from :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
 Returns the view component related to the adapter
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Di\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Sets the event manager
 
 
 
-public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
+public  **__get** (*mixed* $propertyName) inherited from :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
 Magic method __get
 

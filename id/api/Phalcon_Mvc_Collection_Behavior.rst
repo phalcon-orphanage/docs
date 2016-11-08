@@ -18,25 +18,25 @@ public  **__construct** ([*array* $options])
 
 
 
-protected  **mustTakeAction** (*unknown* $eventName)
+protected  **mustTakeAction** (*mixed* $eventName)
 
 Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*string* $eventName])
+protected *array* **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 
 
 
-public  **notify** (*unknown* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
+public  **notify** (*mixed* $type, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
 This method receives the notifications from the EventsManager
 
 
 
-public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *unknown* $method, [*unknown* $arguments])
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $method, [*mixed* $arguments])
 
 Acts as fallbacks when a missing method is called on the collection
 

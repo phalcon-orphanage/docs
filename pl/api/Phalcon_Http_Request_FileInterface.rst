@@ -9,11 +9,6 @@ Interface **Phalcon\\Http\\Request\\FileInterface**
 Methods
 -------
 
-abstract public  **__construct** (*array* $file, [*unknown* $key])
-
-...
-
-
 abstract public  **getSize** ()
 
 ...
@@ -39,7 +34,7 @@ abstract public  **getRealType** ()
 ...
 
 
-abstract public  **moveTo** (*unknown* $destination)
+abstract public  **moveTo** (*mixed* $destination)
 
 ...
 

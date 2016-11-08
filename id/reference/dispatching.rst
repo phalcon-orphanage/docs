@@ -1,15 +1,15 @@
-Dispatching Controllers
-=======================
+Dispatch Kontroler
+==================
 
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
-on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` adalah komponen yang bertanggung jawab menciptakan kontroler dan menjalankan aksi yang dibutuhkan
+dalam sebuah aplikasi MVC. Memahami operasi dan kemampuannya membantu kita mendapat lebih dari service yang disediakan framework.
 
-The Dispatch Loop
------------------
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
-dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another
-controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
-within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
+Dispatch Loop
+-------------
+Ini adalah proses penting yang berkaitan dengan alir MVC sendiri, terutama dengan bagian kontroler. Kerja ini terjadi dalam kontroler
+dispatcher. File kontroler dibaca, dimuat dan kontroler diciptakan. lalu aksi yang diminta dijalankan. Jika sebuah aksi mengarahkan alir ke
+kontroler/aksi lain, dispatcher kontroler mulai lagi. Untuk menjelaskan lebih baik, contoh berikut menunjukkan proses yang dijalankan
+dalam :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
 .. code-block:: php
 
@@ -17,52 +17,57 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
     // Dispatch loop
     while (!$finished) {
-
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
 
-        // Instantiating the controller class via autoloaders
+        // Menciptakan kelas kontroler melalui  autoloaders
         $controller = new $controllerClass();
 
-        // Execute the action
-        call_user_func_array(array($controller, $actionName . "Action"), $params);
+        // Eksekusi aksi
+        call_user_func_array(
+            [
+                $controller,
+                $actionName . "Action"
+            ],
+            $params
+        );
 
         // '$finished' should be reloaded to check if the flow was forwarded to another controller
         $finished = true;
     }
 
-The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
+Kode diatas tidak memiliki validasi, filter dan pengecekan tambahan, namun ia mendemonstrasikan alir operasi normal dalam dispatcher.
 
-Dispatch Loop Events
-^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
+Kejadian Dispatch Loop
+^^^^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` mampu mengirim event ke :doc:`EventsManager <events>` jika tersedia. Event dipicu dengean menggunakan tipe "dispatch". Beberapa event ketika mengembalikan nilai false dapat menghentikan operasi aktif. Event berikut didukung:
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
+| Nama Event           | Dipicu                                                                                                                                                                                                         | Bisa stop operasi?  | Dipicu oleh           |
 +======================+================================================================================================================================================================================================================+=====================+=======================+
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
+| beforeDispatchLoop   | Dipicu sebelum memasuki dispatch loop. Saat ini dispatcher tidak tahu apakah kontroler atau aksi yang hendak dijalankan ada. Dispatcher hanya tahu informasi yang dilewatkan Router.                           | Ya                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 | Listeners             |
+| beforeDispatch       | Dipicu setelah memasuki dispatch loop. Saat ini dispatcher tidak tahu apakah kontroler atau aksi yang hendak dijalankan ada. Dispatcher hanya tahu informasi yang dilewatkan Router.                           | Ya                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Yes                 | Listeners/Controllers |
+| beforeExecuteRoute   | Dipicu sebelum menjalankan metode kontroler/aksi. Di saat ini dispacher tilah menginisialisasi kontroler dan tahu bila aksi ada.                                                                               | Ya                  | Listeners/Controllers |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Controllers           |
+| initialize           | Memungkinkan menginisialisasi kontroler secara global dalam request                                                                                                                                            | Tidak               | Controllers           |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
+| afterExecuteRoute    | Dipicu setelah mengeksekusi metode kontroler/aksi. Operasi tidak bisa dihentikan, hanya gunakan event ini untuk membersihkan sesuatu setelah menjalankan aksi                                                  | Tidak               | Listeners/Controllers |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Yes                 | Listeners             |
+| beforeNotFoundAction | Dipicu ketika aksi tidak ditemukan dalam kontroler                                                                                                                                                             | Ya                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Yes                 | Listeners             |
+| beforeException      | Dipicu sebelum dispacher melempar sembarang eksepsi                                                                                                                                                            | Ya                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Yes                 | Listeners             |
+| afterDispatch        | Dipicu setelah selesai menjalankan metode kontroler/aksi. Karena operasi tidak dapat dihentikan, hanya gunakan event ini untuk bersih-bersih setelah menjalankan aksi                                          | Yes                 | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
+| afterDispatchLoop    | Dipicu setelah keluar dispatch loop                                                                                                                                                                            | No                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
-The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
+Panduan :doc:`INVO <tutorial-invo>` menunjukkan bagaimana memanfaatkan  event dispatching untuk mengimplementasi filter keamanan dengan :doc:`Acl <acl>`
 
-The following example demonstrates how to attach listeners to this component:
+Contoh berikut menunjukkan bagaimana memasang listener ke komponen ini:
 
 .. code-block:: php
 
@@ -72,26 +77,31 @@ The following example demonstrates how to attach listeners to this component:
     use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat event manager
+            $eventsManager = new EventsManager();
 
-        // Create an event manager
-        $eventsManager = new EventsManager();
+            // Memasang listener untuk tipe "dispatch"
+            $eventsManager->attach(
+                "dispatch",
+                function (Event $event, $dispatcher) {
+                    // ...
+                }
+            );
 
-        // Attach a listener for type "dispatch"
-        $eventsManager->attach("dispatch", function (Event $event, $dispatcher) {
-            // ...
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
+            // Ikat eventsManager ke komponen view
+            $dispatcher->setEventsManager($eventsManager);
 
-        // Bind the eventsManager to the view component
-        $dispatcher->setEventsManager($eventsManager);
+            return $dispatcher;
+        },
+        true
+    );
 
-        return $dispatcher;
-
-    }, true);
-
-An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
+Kontroller yang diciptakan otomatis bertindak sebagai sebuah listener untuk mengirim event, anda dapat mengimplement metode sebagai callback:
 
 .. code-block:: php
 
@@ -104,21 +114,21 @@ An instantiated controller automatically acts as a listener for dispatch events,
     {
         public function beforeExecuteRoute(Dispatcher $dispatcher)
         {
-            // Executed before every found action
+            // Eksekusi sebelum tiap aksi
         }
 
         public function afterExecuteRoute(Dispatcher $dispatcher)
         {
-            // Executed after every found action
+            // Eksekusi setelah tiap aksi
         }
     }
 
-.. note:: Methods on event listeners accept an :doc:`Phalcon\\Events\\Event <../api/Phalcon_Events_Event>` object as their first parameter - methods in controllers do not.
+.. note:: Metode apda event listener menerima objek :doc:`Phalcon\\Events\\Event <../api/Phalcon_Events_Event>` sebagai parameter pertama - metode dalam kontroller tidak.
 
-Forwarding to other actions
----------------------------
-The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
-access to certain options, redirect users to other screens or simply reuse code.
+Mengarahkan ke aksi lain
+------------------------
+Dispatch loop memungkinkan kita mengarahkan alir ke kontroler/aksi lain. Ini sangat berguna untuk menguji apakah user dapat mengakses
+opsi tertentu, mengarahkan user ke screen lain atau sekedar menggunakan ulang kode.
 
 .. code-block:: php
 
@@ -139,62 +149,62 @@ access to certain options, redirect users to other screens or simply reuse code.
 
             // Forward flow to the index action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "posts",
-                    "action"     => "index"
-                )
+                    "action"     => "index",
+                ]
             );
         }
     }
 
-Keep in mind that making a "forward" is not the same as making a HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
-to complete the process.
+Yang harus diingat membuat sebuah "forward" tidak sama dengan membuat HTTP redirect. Meski keduanya menghasilkan hasil sama.
+"forward" tidak memuat ulang halaman saat ini, semua terjadi dalam satu request, sementara HTTP redirect butuh dua request
+untuk menyelesaikan proses.
 
-More forwarding examples:
+Contoh forwarding:
 
 .. code-block:: php
 
     <?php
 
-    // Forward flow to another action in the current controller
+    // Arahkan ali ke aksi lain dalam kontroler saat ini
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search"
-        )
+        ]
     );
 
-    // Forward flow to another action in the current controller
-    // passing parameters
+    // Arahkan alir ke aksi lain dalam kontroler saa ini
+    // dengan melewatkan parameter
     $this->dispatcher->forward(
-        array(
+        [
             "action" => "search",
-            "params" => array(1, 2, 3)
-        )
+            "params" => [1, 2, 3]
+        ]
     );
 
-A forward action accepts the following parameters:
+Aksi forward menerima parameter berikut:
 
-+----------------+--------------------------------------------------------+
-| Parameter      | Triggered                                              |
-+================+========================================================+
-| controller     | A valid controller name to forward to.                 |
-+----------------+--------------------------------------------------------+
-| action         | A valid action name to forward to.                     |
-+----------------+--------------------------------------------------------+
-| params         | An array of parameters for the action                  |
-+----------------+--------------------------------------------------------+
-| namespace      | A valid namespace name where the controller is part of |
-+----------------+--------------------------------------------------------+
++----------------+------------------------------------------------------------+
+| Parameter      | Memicu                                                     |
++================+============================================================+
+| controller     | Sebuah nama kontroler sah untuk tujuan forward.            |
++----------------+------------------------------------------------------------+
+| action         | Sebuah nama aksi sah untuk tujauan forward.                |
++----------------+------------------------------------------------------------+
+| params         | Sebuah array parameter aksi.                               |
++----------------+------------------------------------------------------------+
+| namespace      | Sebauah nama namespace sah dimana kontroler menjadi bagian |
++----------------+------------------------------------------------------------+
 
-Preparing Parameters
+Menyiapkan Parameter
 --------------------
-Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
-adapt your application to any URL schema:
+Terima kasih ke hook point yang disediakan :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` anda dapat dengan mudah
+mengubah aplikasi anda ke sembarang URL schema:
 
-For example, you want your URLs look like: http://example.com/controller/key1/value1/key2/value
+Contoh, anda ingin URL seperti: http://example.com/controller/key1/value1/key2/value
 
-Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:
+Parameter secara default dilewatkan sesuai tempatnya di URL ke aksi, anda dapat mengubahnya ke schema yang anda mau:
 
 .. code-block:: php
 
@@ -202,37 +212,47 @@ Parameters by default are passed as they come in the URL to actions, you can tra
 
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat sebuah EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            // Pasang listener
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $params = $dispatcher->getParams();
 
-        // Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    $keyParams = [];
 
-            $keyParams = array();
-            $params    = $dispatcher->getParams();
+                    // Gunakan paramter ganjil sebagai key dan genap sebagai value
+                    foreach ($params as $i => $value) {
+                        if ($i & 1) {
+                            // Previous param
+                            $key = $params[$i - 1];
 
-            // Use odd parameters as keys and even as values
-            foreach ($params as $number => $value) {
-                if ($number & 1) {
-                    $keyParams[$params[$number - 1]] = $value;
+                            $keyParams[$key] = $value;
+                        }
+                    }
+
+                    // Override parameters
+                    $dispatcher->setParams($keyParams);
                 }
-            }
+            );
 
-            // Override parameters
-            $dispatcher->setParams($keyParams);
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
-If the desired schema is: http://example.com/controller/key1:value1/key2:value, the following code is required:
+Jika schema yang diinginkan adalah: http://example.com/controller/key1:value1/key2:value, kode berikut diperlukan:
 
 .. code-block:: php
 
@@ -240,38 +260,46 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat sebuah EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            // Pasang sebuah listener
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $params = $dispatcher->getParams();
 
-        // Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    $keyParams = [];
 
-            $keyParams = array();
-            $params    = $dispatcher->getParams();
+                    // Pisah tiap parameter sebagai pasangan key,value
+                    foreach ($params as $number => $value) {
+                        $parts = explode(":", $value);
 
-            // Explode each parameter as key,value pairs
-            foreach ($params as $number => $value) {
-                $parts                = explode(':', $value);
-                $keyParams[$parts[0]] = $parts[1];
-            }
+                        $keyParams[$parts[0]] = $parts[1];
+                    }
 
-            // Override parameters
-            $dispatcher->setParams($keyParams);
-        });
+                    // Override parameters
+                    $dispatcher->setParams($keyParams);
+                }
+            );
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher = new MvcDispatcher();
 
-        return $dispatcher;
-    });
+            $dispatcher->setEventsManager($eventsManager);
 
-Getting Parameters
-------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends
+            return $dispatcher;
+        }
+    );
+
+Mengambil Parameters
+--------------------
+Ketika sebuah route menyediakan parameter bernama, anda dapat menerimanya dalam sebuah kontroler, view atau komponen lain turunan
 :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>`.
 
 .. code-block:: php
@@ -289,27 +317,27 @@ When a route provides named parameters you can receive them in a controller, a v
 
         public function saveAction()
         {
-            // Get the post's title passed in the URL as parameter
-            // or prepared in an event
+            // Ambil judul post yang dilewatkan sebagai parameter
+            // atau yang disiapkan dalam sebuah event
             $title = $this->dispatcher->getParam("title");
 
-            // Get the post's year passed in the URL as parameter
-            // or prepared in an event also filtering it
+            // Ambil tahun post yang dilewatkan sebagai parameter
+            // atau yang disiapkan dalam sebuah event juga lakukan filter
             $year = $this->dispatcher->getParam("year", "int");
 
             // ...
         }
     }
 
-Preparing actions
------------------
-You can also define an arbitrary schema for actions before be dispatched.
+Menyiapkan aksi
+---------------
+Anda dapat mendefinisikan sembarang schema bagi aksi sebelum dispatch.
 
-Camelize action names
-^^^^^^^^^^^^^^^^^^^^^
-If the original URL is: http://example.com/admin/products/show-latest-products,
-and for example you want to camelize 'show-latest-products' to 'ShowLatestProducts',
-the following code is required:
+Camel-case nama aksi
+^^^^^^^^^^^^^^^^^^^^
+Jika ULR asli: http://example.com/admin/products/show-latest-products,
+dan misalnya anda ingin mengubahnya menjadi camel-case 'show-latest-products' ke 'ShowLatestProducts',
+kode berikut ini diperlukan:
 
 .. code-block:: php
 
@@ -317,67 +345,84 @@ the following code is required:
 
     use Phalcon\Text;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            // Ubah aksi menjadi camel-case
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $dispatcher->setActionName(
+                        Text::camelize($dispatcher->getActionName())
+                    );
+                }
+            );
 
-        // Camelize actions
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
-            $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
-Remove legacy extensions
-^^^^^^^^^^^^^^^^^^^^^^^^
-If the original URL always contains a '.php' extension:
+Hapus ekstensi lama
+^^^^^^^^^^^^^^^^^^^
+Jika URL asli selalu berisi ekstensi '.php':
 
 http://example.com/admin/products/show-latest-products.php
 http://example.com/admin/products/index.php
 
-You can remove it before dispatch the controller/action combination:
+Anda dapat menghapusnya sebelum dispatch kombinasi controller/action:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            // Hapus ekstensi sebelum dispatch
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    $action = $dispatcher->getActionName();
 
-        // Remove extension before dispatch
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    // Hapus ekstensi
+                    $action = preg_replace("/\.php$/", "", $action);
 
-            // Remove extension
-            $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
+                    // Override action
+                    $dispatcher->setActionName($action);
+                }
+            );
 
-            // Override action
-            $dispatcher->setActionName($action);
-        });
+            $dispatcher = new MvcDispatcher();
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 Inject model instances
 ^^^^^^^^^^^^^^^^^^^^^^
-In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
-inject model instances.
+Di contoh ini, developer ingin menginspeksi parameter yang sebuah aksi akan terima  untuk
+menginjek instance model secara dinamis.
 
-The controller looks like:
+Kontroler terlihat seperti berikut:
 
 .. code-block:: php
 
@@ -388,7 +433,7 @@ The controller looks like:
     class PostsController extends Controller
     {
         /**
-         * Shows posts
+         * Tampilkan post
          *
          * @param \Posts $post
          */
@@ -398,152 +443,242 @@ The controller looks like:
         }
     }
 
-Method 'showAction' receives an instance of the model \Posts, the developer could inspect this
-before dispatch the action preparing the parameter accordingly:
+Metode 'showAction' menerima instance model \Posts, developer dapat menginspeksinya
+sebelum mengirim aksi dan menyiapkan parameter yang sesuai:
 
 .. code-block:: php
 
     <?php
 
+    use Exception;
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
+    use ReflectionMethod;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Buat EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            $eventsManager->attach(
+                "dispatch:beforeDispatchLoop",
+                function (Event $event, $dispatcher) {
+                    // Nama kelas yang mungkin
+                    $controllerName = $dispatcher->getControllerClass();
 
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function ($event, $dispatcher) {
+                    // nama metode yang mungkin
+                    $actionName = $dispatcher->getActiveMethod();
 
-            // Possible controller class name
-            $controllerName = $dispatcher->getControllerClass();
+                    try {
+                        // Ambil reflection untuk metode untuk dieksekusi
+                        $reflection = new ReflectionMethod($controllerName, $actionName);
 
-            // Possible method name
-            $actionName = $dispatcher->getActiveMethod();
+                        $parameters = $reflection->getParameters();
 
-            try {
+                        // Cek parameter
+                        foreach ($parameters as $parameter) {
+                            // Ambil nama model yang diharapkan
+                            $className = $parameter->getClass()->name;
 
-                // Get the reflection for the method to be executed
-                $reflection = new \ReflectionMethod($controllerName, $actionName);
+                            // Uji apakah parameter mengharapkan instance model
+                            if (is_subclass_of($className, Model::class)) {
+                                $model = $className::findFirstById($dispatcher->getParams()[0]);
 
-                // Check parameters
-                foreach ($reflection->getParameters() as $parameter) {
-
-                    // Get the expected model name
-                    $className = $parameter->getClass()->name;
-
-                    // Check if the parameter expects a model instance
-                    if (is_subclass_of($className, Model::class)) {
-
-                        $model = $className::findFirstById($dispatcher->getParams()[0]);
-
-                        // Override the parameters by the model instance
-                        $dispatcher->setParams(array($model));
+                                // Override parameters menggunakan model instance
+                                $dispatcher->setParams([$model]);
+                            }
+                        }
+                    } catch (Exception $e) {
+                        // exception terjadi, mungkin kelas atau aksi tidak ada?
                     }
                 }
+            );
 
-            } catch (\Exception $e) {
-                // An exception has occurred, maybe the class or action does not exist?
-            }
+            $dispatcher = new MvcDispatcher();
 
-        });
+            $dispatcher->setEventsManager($eventsManager);
 
-        $dispatcher = new MvcDispatcher();
-        $dispatcher->setEventsManager($eventsManager);
+            return $dispatcher;
+        }
+    );
 
-        return $dispatcher;
-    });
+Contoh di atas telah disederhanakan untuk tujuan akademis.
+Developer dapat memperbaikinya dengan menginjek sembarang ketergantungan atau model dalam aksi sebelum dieksekusi.
 
-The above example has been simplified for academic purposes.
-A developer can improve it to inject any kind of dependency or model in actions before be executed.
+From 3.0.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action.
 
-Handling Not-Found Exceptions
------------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+.. code-block:: php
+
+    use Phalcon\Mvc\Dispatcher;
+
+    $dispatcher = new Dispatcher();
+
+    $dispatcher->setModelBinding(true);
+
+    return $dispatcher;
+
+It also introduces a new interface :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>` which allows you to define the controllers associated model
+to allow model binding in base controllers.
+
+For example, you have a base CrudController which your PostsController extends from. Your CrudController looks something like this:
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\Model;
+
+    class CrudController extends Controller
+    {
+        /**
+         * Show action
+         *
+         * @param Model $model
+         */
+        public function showAction(Model $model)
+        {
+            $this->view->model = $model;
+        }
+    }
+
+In your PostsController you need to define which model the controller is associated with. This is done by implementing the :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>`
+which will add the :code:`getModelName()` method from which you can return the model name.
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller\BindModelInterface;
+    use Models\Posts;
+
+    class PostsController extends CrudController implements BindModelInterface
+    {
+        public static function getModelName()
+        {
+            return Posts::class;
+        }
+    }
+
+By declaring the model associated with the PostsController the dispatcher can check the controller for the :code:`getModelName()` method before passing
+the defined model into the parent show action.
+
+If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:
+
+.. code-block:: php
+
+    use Phalcon\Mvc\Controller;
+    use Models\Posts;
+
+    class PostsController extends Controller
+    {
+        /**
+         * Shows posts
+         *
+         * @param Posts $post
+         */
+        public function showAction(Posts $post)
+        {
+            $this->view->post = $post;
+        }
+    }
+
+.. highlights::
+
+    Currently the dispatchers internal model binding will only use the models primary key to perform a :code:`findFirst()` on.
+    An example route for the above would be /posts/show/{1}
+
+Menangani Eksepsi tidak ditemukan
+---------------------------------
+Menggunakan :doc:`EventsManager <events>` dimungkinkan untuk menyisipkan hook point sebelum dispatcher melemparkan eksepsi ketika kombinasi kontroler/aksi tidak ditemukan:
 
 .. code-block:: php
 
     <?php
 
+    use Exception;
     use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
-    $di->setShared('dispatcher', function () {
+    $di->setShared(
+        "dispatcher",
+        function () {
+            // Buat EventsManager
+            $eventsManager = new EventsManager();
 
-        // Create an EventsManager
-        $eventsManager = new EventsManager();
+            // Pasang listener
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                function (Event $event, $dispatcher, Exception $exception) {
+                    // Tangani eksepsi 404
+                    if ($exception instanceof DispatchException) {
+                        $dispatcher->forward(
+                            [
+                                "controller" => "index",
+                                "action"     => "show404",
+                            ]
+                        );
 
-        // Attach a listener
-        $eventsManager->attach("dispatch:beforeException", function ($event, $dispatcher, $exception) {
+                        return false;
+                    }
 
-            // Handle 404 exceptions
-            if ($exception instanceof DispatchException) {
-                $dispatcher->forward(
-                    array(
-                        'controller' => 'index',
-                        'action'     => 'show404'
-                    )
-                );
+                    // cara lain, kontroler atau aksi tidak ada
+                    switch ($exception->getCode()) {
+                        case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                        case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                            $dispatcher->forward(
+                                [
+                                    "controller" => "index",
+                                    "action"     => "show404",
+                                ]
+                            );
 
-                return false;
-            }
+                            return false;
+                    }
+                }
+            );
 
-            // Alternative way, controller or action doesn't exist
-            switch ($exception->getCode()) {
-                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                    $dispatcher->forward(
-                        array(
-                            'controller' => 'index',
-                            'action'     => 'show404'
-                        )
-                    );
+            $dispatcher = new MvcDispatcher();
 
-                    return false;
-            }
-        });
+            // Ikat EventsManager ke dispatcher
+            $dispatcher->setEventsManager($eventsManager);
 
-        $dispatcher = new MvcDispatcher();
+            return $dispatcher;
+        }
+    );
 
-        // Bind the EventsManager to the dispatcher
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-
-    }, true);
-
-Of course, this method can be moved onto independent plugin classes, allowing more than one class
-take actions when an exception is produced in the dispatch loop:
+Tentu metode ini dapat dipindah ke dalam kelas plugin independen, sehingga memungkinkan lebih dari satu kelas
+mengambil aksi ketika sebuah eksepsi dihasilkan dalam dispatch loop:
 
 .. code-block:: php
 
     <?php
 
+    use Exception;
     use Phalcon\Events\Event;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     class ExceptionsPlugin
     {
-        public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
+        public function beforeException(Event $event, Dispatcher $dispatcher, Exception $exception)
         {
-            // Handle 404 exceptions
+            // Default error action
+            $action = "show503";
+
+            // Tangani eksepsi 404
             if ($exception instanceof DispatchException) {
-                $dispatcher->forward(array(
-                    'controller' => 'index',
-                    'action'     => 'show404'
-                ));
-                return false;
+                $action = "show404";
             }
 
-            // Handle other exceptions
-            $dispatcher->forward(array(
-                'controller' => 'index',
-                'action'     => 'show503'
-            ));
+            $dispatcher->forward(
+                [
+                    "controller" => "index",
+                    "action"     => $action,
+                ]
+            );
 
             return false;
         }
@@ -551,11 +686,11 @@ take actions when an exception is produced in the dispatch loop:
 
 .. highlights::
 
-    Only exceptions produced by the dispatcher and exceptions produced in the executed action
-    are notified in the 'beforeException' events. Exceptions produced in listeners or
-    controller events are redirected to the latest try/catch.
+    Hanya eksepsi yang dihasilkan dispatcher dan eksepsi yang dihasilkan dalam aksi yang dijalankan
+    diberitahu dalam event 'beforeException'. Eksepsi yang dihasilkan dalam listener atau
+    event kontroler diarahkan ke try/catch paling akhir.
 
-Implementing your own Dispatcher
---------------------------------
-The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher
-replacing the one provided by Phalcon.
+Mengimplementasi Dispatcher anda sendiri
+----------------------------------------
+Interface :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` harus diimplementasi untuk menciptakan dispatcher anda sendiri
+menggantikan yang disediakan Phalcon.

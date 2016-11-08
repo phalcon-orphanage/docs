@@ -1,15 +1,15 @@
-Using PHP Built-in webserver
-============================
+Menggunakan Web Server bawaan PHP
+=================================
 
-As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.
+Mulai PHP 5.4.0, anda dapt menggunakan web server_ bawaan PHP untuk pengembangan.
 
-To start the server type:
+Untuk memulai server ketik:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /public
 
-If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
+Jika anda ingin menulis ulang URI ke file index.php gunakan file router berikut (.htrouter.php):
 
 .. code-block:: php
 
@@ -19,12 +19,12 @@ If you want to rewrite the URIs to the index.php file use the following router f
     }
     return false;
 
-and then start the server from the base project directory with:
+dan jalankan server dari direktori proyek:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /public .htrouter.php
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Lau arahkan browser anda ke http://localhost:8000/ untuk menguji apakah semuanya bekerja.
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php
+.. _server: http://php.net/manual/en/features.commandline.webserver.php

@@ -12,13 +12,13 @@ Once you clone the project in your document root you'll see the following struct
 
     vokuro/
         app/
-            cache/
             config/
             controllers/
             forms/
             library/
             models/
             views/
+        cache/
         public/
             css/
             img/
@@ -53,9 +53,9 @@ the composer.json looks like:
 
     {
         "require" : {
-            "php" : ">=5.4.0",
-            "ext-phalcon" : ">=2.0.0",
-            "swiftmailer/swiftmailer" : "5.0.*",
+            "php" : ">=5.5.0",
+            "ext-phalcon" : ">=3.0.0",
+            "swiftmailer/swiftmailer" : "^5.4",
             "amazonwebservices/aws-sdk-for-php" : "~1.0"
         }
     }
@@ -71,7 +71,7 @@ any of the classes in the downloaded dependencies:
     // ...
 
     // Use composer autoloader to load vendor classes
-    require_once __DIR__ . '/../../vendor/autoload.php';
+    require_once BASE_PATH . "/vendor/autoload.php";
 
 Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models
 which is the recommended practice to structure a project. This way the autoloader looks slightly
@@ -81,22 +81,24 @@ different than the one we saw before (app/config/loader.php):
 
     <?php
 
-    $loader = new Phalcon\Loader();
+    use Phalcon\Loader;
+
+    $loader = new Loader();
 
     $loader->registerNamespaces(
-        array(
-            'Vokuro\Models'      => $config->application->modelsDir,
-            'Vokuro\Controllers' => $config->application->controllersDir,
-            'Vokuro\Forms'       => $config->application->formsDir,
-            'Vokuro'             => $config->application->libraryDir
-        )
+        [
+            "Vokuro\\Models"      => $config->application->modelsDir,
+            "Vokuro\\Controllers" => $config->application->controllersDir,
+            "Vokuro\\Forms"       => $config->application->formsDir,
+            "Vokuro"              => $config->application->libraryDir,
+        ]
     );
 
     $loader->register();
 
     // ...
 
-Instead of using registerDirectories, we use registerNamespaces. Every namespace points to a directory
+Instead of using :code:`registerDirectories()`, we use :code:`registerNamespaces()`. Every namespace points to a directory
 defined in the configuration file (app/config/config.php). For instance the namespace Vokuro\\Controllers
 points to app/controllers so all the classes required by the application within this namespace
 requires it in its definition:
@@ -143,47 +145,49 @@ allow the user enter the login details:
 
 .. code-block:: html+jinja
 
-    {{ form('class': 'form-search') }}
+    {{ form("class": "form-search") }}
 
-        <h2>Sign Up</h2>
+        <h2>
+            Sign Up
+        </h2>
 
-        <p>{{ form.label('name') }}</p>
+        <p>{{ form.label("name") }}</p>
         <p>
-            {{ form.render('name') }}
-            {{ form.messages('name') }}
+            {{ form.render("name") }}
+            {{ form.messages("name") }}
         </p>
 
-        <p>{{ form.label('email') }}</p>
+        <p>{{ form.label("email") }}</p>
         <p>
-            {{ form.render('email') }}
-            {{ form.messages('email') }}
+            {{ form.render("email") }}
+            {{ form.messages("email") }}
         </p>
 
-        <p>{{ form.label('password') }}</p>
+        <p>{{ form.label("password") }}</p>
         <p>
-            {{ form.render('password') }}
-            {{ form.messages('password') }}
+            {{ form.render("password") }}
+            {{ form.messages("password") }}
         </p>
 
-        <p>{{ form.label('confirmPassword') }}</p>
+        <p>{{ form.label("confirmPassword") }}</p>
         <p>
-            {{ form.render('confirmPassword') }}
-            {{ form.messages('confirmPassword') }}
+            {{ form.render("confirmPassword") }}
+            {{ form.messages("confirmPassword") }}
         </p>
 
         <p>
-            {{ form.render('terms') }} {{ form.label('terms') }}
-            {{ form.messages('terms') }}
+            {{ form.render("terms") }} {{ form.label("terms") }}
+            {{ form.messages("terms") }}
         </p>
 
-        <p>{{ form.render('Sign Up') }}</p>
+        <p>{{ form.render("Sign Up") }}</p>
 
-        {{ form.render('csrf', ['value': security.getToken()]) }}
-        {{ form.messages('csrf') }}
+        {{ form.render("csrf", ["value": security.getToken()]) }}
+        {{ form.messages("csrf") }}
 
         <hr>
 
-    </form>
+    {{ endForm() }}
 
 .. _Github: https://github.com/phalcon/vokuro
 .. _composer: https://getcomposer.org/

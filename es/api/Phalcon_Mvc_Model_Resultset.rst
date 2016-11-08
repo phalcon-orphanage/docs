@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\Resultset**
 =================================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_, `SeekableIterator <http://php.net/manual/en/class.seekableiterator.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_, `ArrayAccess <http://php.net/manual/en/class.arrayaccess.php>`_, `Serializable <http://php.net/manual/en/class.serializable.php>`_, `JsonSerializable <http://php.net/manual/en/class.jsonserializable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -14,19 +14,19 @@ This component allows to Phalcon\\Mvc\\Model returns large resultsets with the m
 
     <?php
 
-     //Using a standard foreach
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
+     // Using a standard foreach
+     $robots = Robots::find(["type='virtual'", 'order' => 'name']);
      foreach ($robots as robot) {
-      echo robot->name, "\n";
+         echo robot->name, "\n";
      }
     
-     //Using a while
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
+     // Using a while
+     $robots = Robots::find(["type='virtual'", 'order' => 'name');
      $robots->rewind();
      while ($robots->valid()) {
-      $robot = $robots->current();
-      echo $robot->name, "\n";
-      $robots->next();
+         $robot = $robots->current();
+         echo $robot->name, "\n";
+         $robots->next();
      }
 
 
@@ -47,7 +47,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*\\Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+public  **__construct** (:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` | *false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
@@ -77,7 +77,7 @@ Rewinds resultset to its beginning
 
 
 
-final public  **seek** (*unknown* $position)
+final public  **seek** (*mixed* $position)
 
 Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
 
@@ -89,13 +89,13 @@ Counts how many rows are in the resultset
 
 
 
-public  **offsetExists** (*unknown* $index)
+public  **offsetExists** (*mixed* $index)
 
 Checks whether offset exists in the resultset
 
 
 
-public  **offsetGet** (*unknown* $index)
+public  **offsetGet** (*mixed* $index)
 
 Gets row in a specific position of the resultset
 
@@ -107,7 +107,7 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 
 
 
-public  **offsetUnset** (*unknown* $offset)
+public  **offsetUnset** (*mixed* $offset)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -131,7 +131,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*unknown* $isFresh)
+public  **setIsFresh** (*mixed* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
@@ -143,7 +143,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public  **setHydrateMode** (*unknown* $hydrateMode)
+public  **setHydrateMode** (*mixed* $hydrateMode)
 
 Sets the hydration mode in the resultset
 
@@ -167,19 +167,19 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*array* $data, [*\Closure* $conditionCallback])
+public *boolean* **update** (*array* $data, [`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback])
 
 Updates every record in the resultset
 
 
 
-public  **delete** ([*Closure* $conditionCallback])
+public  **delete** ([`Closure <http://php.net/manual/en/class.closure.php>`_ $conditionCallback])
 
 Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`\ [] **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires 
 
@@ -196,22 +196,36 @@ Filters a resultset returning only those the developer requires
 
 
 
-abstract public  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
+public *array* **jsonSerialize** ()
+
+Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
+
+.. code-block:: php
+
+    <?php
+
+     $robots = Robots::find();
+     echo json_encode($robots);
+
+
+
+
+abstract public  **toArray** () inherited from :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 ...
 
 
-abstract public  **current** () inherited from Iterator
+abstract public  **current** () inherited from `Iterator <http://php.net/manual/en/class.iterator.php>`_
 
 ...
 
 
-abstract public  **serialize** () inherited from Serializable
+abstract public  **serialize** () inherited from `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 ...
 
 
-abstract public  **unserialize** (*unknown* $serialized) inherited from Serializable
+abstract public  **unserialize** (*mixed* $serialized) inherited from `Serializable <http://php.net/manual/en/class.serializable.php>`_
 
 ...
 

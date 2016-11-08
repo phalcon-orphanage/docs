@@ -4,18 +4,6 @@ Configuration de lecture
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` est un composant utilisé pour lire des fichiers de configuration sous différents formats
 (en utilisant des adaptateurs) et transformer le contenu en objet PHP pour pouvoir l'utiliser dans une application.
 
-Adaptateur de fichier
----------------------
-Les adaptateurs disponibles sont :
-
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                                          |
-+===========+======================================================================================================================+
-| Ini       | Utilise des fichiers INI pour stoquer des paramètres.  L'adaptateur utilise la fonction PHP parse_ini_files          |
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-| Array     | Utilise les arrays multi-dimensionnel pour stoquer les paramètres. Cet adaptateur offre les meilleures performances. |
-+-----------+----------------------------------------------------------------------------------------------------------------------+
-
 Les Array natifs
 ----------------
 L'exemple suivant montre comment convertir les arrays natifs en objets :doc:`Phalcon\\Config <../api/Phalcon_Config>`.
@@ -27,21 +15,21 @@ Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu
 
     use Phalcon\Config;
 
-    $settings = array(
-        "database" => array(
+    $settings = [
+        "database" => [
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
             "dbname"   => "test_db"
-        ),
-         "app" => array(
+        ],
+         "app" => [
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
             "viewsDir"       => "../app/views/"
-        ),
+        ],
         "mysetting" => "the-value"
-    );
+    ];
 
     $config = new Config($settings);
 
@@ -58,7 +46,24 @@ Si vous voulez mieux organiser votre projet vous pouvez sauvegarder l'array dans
     use Phalcon\Config;
 
     require "config/config.php";
+
     $config = new Config($settings);
+
+Adaptateur de fichier
+---------------------
+Les adaptateurs disponibles sont :
+
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| File Type                                                                  | Description                                                                                                |
++============================================================================+============================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Utilise des fichiers INI pour stoquer des paramètres. L'adaptateur utilise la fonction PHP parse_ini_files |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.              |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 Lire les fichiers INI
 ---------------------
@@ -108,24 +113,24 @@ Configuration de fusion
     use Phalcon\Config;
 
     $config = new Config(
-        array(
-            'database' => array(
-                'host'   => 'localhost',
-                'dbname' => 'test_db'
-            ),
-            'debug' => 1
-        )
+        [
+            "database" => [
+                "host"   => "localhost",
+                "dbname" => "test_db",
+            ],
+            "debug" => 1,
+        ]
     );
 
     $config2 = new Config(
-        array(
-            'database' => array(
-                'dbname'   => 'production_db',
-                'username' => 'scott',
-                'password' => 'secret'
-            ),
-            'logging' => 1
-        )
+        [
+            "database" => [
+                "dbname"   => "production_db",
+                "username" => "scott",
+                "password" => "secret",
+            ],
+            "logging" => 1,
+        ]
     );
 
     $config->merge($config2);
@@ -166,10 +171,14 @@ You can inject configuration dependency to controller allowing us to use :doc:`P
     // Create a DI
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-	$configData = require 'config/config.php';
-        return new Config($configData);
-    });
+    $di->set(
+        "config",
+        function () {
+            $configData = require "config/config.php";
+
+            return new Config($configData);
+        }
+    );
 
 Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
@@ -183,6 +192,6 @@ Now in your controller you can access your configuration by using dependency inj
     {
         private function getDatabaseName()
         {
-             return $this->config->database->dbname;
+            return $this->config->database->dbname;
         }
     }

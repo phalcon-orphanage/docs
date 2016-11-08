@@ -23,23 +23,26 @@ created by just moving the current connection into transaction mode and then com
             // Start a transaction
             $this->db->begin();
 
-            $robot              = new Robots();
-            $robot->name        = "WALL·E";
-            $robot->created_at  = date("Y-m-d");
+            $robot = new Robots();
+
+            $robot->name       = "WALL·E";
+            $robot->created_at = date("Y-m-d");
 
             // The model failed to save, so rollback the transaction
-            if ($robot->save() == false) {
+            if ($robot->save() === false) {
                 $this->db->rollback();
                 return;
             }
 
-            $robotPart            = new RobotParts();
+            $robotPart = new RobotParts();
+
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
             // The model failed to save, so rollback the transaction
-            if ($robotPart->save() == false) {
+            if ($robotPart->save() === false) {
                 $this->db->rollback();
+
                 return;
             }
 
@@ -57,15 +60,20 @@ implicitly creates a transaction to ensure that data is correctly stored:
 
     <?php
 
-    $robotPart          = new RobotParts();
-    $robotPart->type    = "head";
+    $robotPart = new RobotParts();
 
-    $robot              = new Robots();
-    $robot->name        = "WALL·E";
-    $robot->created_at  = date("Y-m-d");
-    $robot->robotPart   = $robotPart;
+    $robotPart->type = "head";
 
-    $robot->save(); // Creates an implicit transaction to store both records
+
+
+    $robot = new Robots();
+
+    $robot->name       = "WALL·E";
+    $robot->created_at = date("Y-m-d");
+    $robot->robotPart  = $robotPart;
+
+    // Creates an implicit transaction to store both records
+    $robot->save();
 
 Isolated Transactions
 ---------------------
@@ -82,32 +90,40 @@ transaction created ensuring that they are correctly rolled back/committed befor
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
         // Create a transaction manager
-        $manager     = new TxManager();
+        $manager = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
-        $robot              = new Robots();
+        $robot = new Robots();
+
         $robot->setTransaction($transaction);
-        $robot->name        = "WALL·E";
-        $robot->created_at  = date("Y-m-d");
-        if ($robot->save() == false) {
-            $transaction->rollback("Cannot save robot");
+
+        $robot->name       = "WALL·E";
+        $robot->created_at = date("Y-m-d");
+
+        if ($robot->save() === false) {
+            $transaction->rollback(
+                "Cannot save robot"
+            );
         }
 
-        $robotPart              = new RobotParts();
+        $robotPart = new RobotParts();
+
         $robotPart->setTransaction($transaction);
-        $robotPart->robots_id   = $robot->id;
-        $robotPart->type        = "head";
-        if ($robotPart->save() == false) {
-            $transaction->rollback("Cannot save robot part");
+
+        $robotPart->robots_id = $robot->id;
+        $robotPart->type      = "head";
+
+        if ($robotPart->save() === false) {
+            $transaction->rollback(
+                "Cannot save robot part"
+            );
         }
 
         // Everything's gone fine, let's commit the transaction
         $transaction->commit();
-
     } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
@@ -122,20 +138,28 @@ Transactions can be used to delete many records in a consistent way:
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
         // Create a transaction manager
-        $manager     = new TxManager();
+        $manager = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
         // Get the robots to be deleted
-        foreach (Robots::find("type = 'mechanical'") as $robot) {
+        $robots = Robots::find(
+            "type = 'mechanical'"
+        );
+
+        foreach ($robots as $robot) {
             $robot->setTransaction($transaction);
-            if ($robot->delete() == false) {
-                // Something's gone wrong, we should rollback the transaction
-                foreach ($robot->getMessages() as $message) {
-                    $transaction->rollback($message->getMessage());
+
+            // Something's gone wrong, we should rollback the transaction
+            if ($robot->delete() === false) {
+                $messages = $robot->getMessages();
+
+                foreach ($messages as $message) {
+                    $transaction->rollback(
+                        $message->getMessage()
+                    );
                 }
             }
         }
@@ -144,7 +168,6 @@ Transactions can be used to delete many records in a consistent way:
         $transaction->commit();
 
         echo "Robots were deleted successfully!";
-
     } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
@@ -158,9 +181,12 @@ is performed. You can use the service container to create the global transaction
 
     use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager
 
-    $di->setShared('transactions', function () {
-        return new TransactionManager();
-    });
+    $di->setShared(
+        "transactions",
+        function () {
+            return new TransactionManager();
+        }
+    );
 
 Then access it from a controller or view:
 
@@ -175,10 +201,10 @@ Then access it from a controller or view:
         public function saveAction()
         {
             // Obtain the TransactionsManager from the services container
-            $manager     = $this->di->getTransactions();
+            $manager = $this->di->getTransactions();
 
             // Or
-            $manager     = $this->transactions;
+            $manager = $this->transactions;
 
             // Request a transaction
             $transaction = $manager->get();

@@ -14,7 +14,7 @@ abstract public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc
 ...
 
 
-abstract public  **setModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $source)
+abstract public  **setModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $source)
 
 ...
 
@@ -24,7 +24,7 @@ abstract public  **getModelSource** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon
 ...
 
 
-abstract public  **setModelSchema** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $schema)
+abstract public  **setModelSchema** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $schema)
 
 ...
 
@@ -34,12 +34,12 @@ abstract public  **getModelSchema** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon
 ...
 
 
-abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
+abstract public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $connectionService)
 
 ...
 
 
-abstract public  **setReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
+abstract public  **setReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $connectionService)
 
 ...
 
@@ -49,7 +49,7 @@ abstract public  **getReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterfac
 ...
 
 
-abstract public  **setWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $connectionService)
+abstract public  **setWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $connectionService)
 
 ...
 
@@ -69,7 +69,7 @@ abstract public  **getWriteConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Pha
 ...
 
 
-abstract public  **isInitialized** (*unknown* $modelName)
+abstract public  **isInitialized** (*mixed* $modelName)
 
 ...
 
@@ -79,52 +79,52 @@ abstract public  **getLastInitialized** ()
 ...
 
 
-abstract public  **load** (*unknown* $modelName, [*unknown* $newInstance])
+abstract public  **load** (*mixed* $modelName, [*mixed* $newInstance])
 
 ...
 
 
-abstract public  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
+abstract public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **existsBelongsTo** (*unknown* $modelName, *unknown* $modelRelation)
+abstract public  **existsBelongsTo** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
 
-abstract public  **existsHasMany** (*unknown* $modelName, *unknown* $modelRelation)
+abstract public  **existsHasMany** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
 
-abstract public  **existsHasOne** (*unknown* $modelName, *unknown* $modelRelation)
+abstract public  **existsHasOne** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
 
-abstract public  **getBelongsToRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
+abstract public  **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getHasManyRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
+abstract public  **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getHasOneRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*unknown* $parameters])
+abstract public  **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*mixed* $parameters])
 
 ...
 
@@ -149,27 +149,27 @@ abstract public  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Ph
 ...
 
 
-abstract public  **getRelations** (*unknown* $modelName)
+abstract public  **getRelations** (*mixed* $modelName)
 
 ...
 
 
-abstract public  **getRelationsBetween** (*unknown* $first, *unknown* $second)
+abstract public  **getRelationsBetween** (*mixed* $first, *mixed* $second)
 
 ...
 
 
-abstract public  **createQuery** (*unknown* $phql)
+abstract public  **createQuery** (*mixed* $phql)
 
 ...
 
 
-abstract public  **executeQuery** (*unknown* $phql, [*unknown* $placeholders])
+abstract public  **executeQuery** (*mixed* $phql, [*mixed* $placeholders])
 
 ...
 
 
-abstract public  **createBuilder** ([*unknown* $params])
+abstract public  **createBuilder** ([*mixed* $params])
 
 ...
 
@@ -179,12 +179,12 @@ abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mv
 ...
 
 
-abstract public  **notifyEvent** (*unknown* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 ...
 
 
-abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $eventName, *unknown* $data)
+abstract public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $eventName, *mixed* $data)
 
 ...
 
@@ -194,7 +194,7 @@ abstract public  **getLastQuery** ()
 ...
 
 
-abstract public  **getRelationByAlias** (*unknown* $modelName, *unknown* $alias)
+abstract public  **getRelationByAlias** (*mixed* $modelName, *mixed* $alias)
 
 ...
 

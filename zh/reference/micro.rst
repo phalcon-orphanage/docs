@@ -11,9 +11,12 @@ Micro Applications
 
     $app = new Micro();
 
-    $app->get('/say/welcome/{name}', function ($name) {
-        echo "<h1>Welcome $name!</h1>";
-    });
+    $app->get(
+        "/say/welcome/{name}",
+        function ($name) {
+            echo "<h1>Welcome $name!</h1>";
+        }
+    );
 
     $app->handle();
 
@@ -38,9 +41,12 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
 
     <?php
 
-    $app->get('/say/hello/{name}', function ($name) {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello/{name}",
+        function ($name) {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
 get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{name}` 中含有一个参数 :code:`{$name}`, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
 处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：
@@ -54,19 +60,34 @@ get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{n
         echo "<h1>Hello! $name</h1>";
     }
 
-    $app->get('/say/hello/{name}', "say_hello");
+    $app->get(
+        "/say/hello/{name}",
+        "say_hello"
+    );
 
     //  静态方法
-    $app->get('/say/hello/{name}', "SomeClass::someSayMethod");
+    $app->get(
+        "/say/hello/{name}",
+        "SomeClass::someSayMethod"
+    );
 
     //  对象内的方法
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($myController, "someAction"));
+    $app->get(
+        "/say/hello/{name}",
+        [
+            $myController,
+            "someAction"
+        ]
+    );
 
     // 匿名函数
-    $app->get('/say/hello/{name}', function ($name) {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello/{name}",
+        function ($name) {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 提供了一系列的用于定义http方法的限定方法：
 
@@ -75,25 +96,51 @@ get 方法指定了要匹配的请求方法。 路由规则 :code:`/say/hello/{n
     <?php
 
     // 匹配HTTP GET 方法：
-    $app->get('/api/products', "get_products");
+    $app->get(
+        "/api/products",
+        "get_products"
+    );
 
     // 匹配HTTP POST方法
-    $app->post('/api/products/add', "add_product");
+    $app->post(
+        "/api/products/add",
+        "add_product"
+    );
 
     // 匹配HTTP PUT 方法
-    $app->put('/api/products/update/{id}', "update_product");
+    $app->put(
+        "/api/products/update/{id}",
+        "update_product"
+    );
 
     // 匹配HTTP DELETE方法
-    $app->delete('/api/products/remove/{id}', "delete_product");
+    $app->delete(
+        "/api/products/remove/{id}",
+        "delete_product"
+    );
 
     // 匹配HTTP OPTIONS方法
-    $app->options('/api/products/info/{id}', "info_product");
+    $app->options(
+        "/api/products/info/{id}",
+        "info_product"
+    );
 
     // 匹配HTTP PATCH方法
-    $app->patch('/api/products/update/{id}', "info_product");
+    $app->patch(
+        "/api/products/update/{id}",
+        "info_product"
+    );
 
     // 匹配HTTP GET 或 POST方法
-    $app->map('/repos/store/refs', "action_product")->via(array('GET', 'POST'));
+    $app->map(
+        "/repos/store/refs",
+        "action_product"
+    )->via(
+        [
+            "GET",
+            "POST",
+        ]
+    );
 
 To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
@@ -102,9 +149,12 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // Matches if the HTTP method is POST
-    $app->post('/api/products/add', function () use ($app) {
-        echo $app->request->getPost("productID");
-    });
+    $app->post(
+        "/api/products/add",
+        function () use ($app) {
+            echo $app->request->getPost("productID");
+        }
+    );
 
 路由参数（Routes with Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,10 +165,13 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // 此路由有两个参数每个参数有一格式
-    $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
-        echo "<h1>Title: $title</h1>";
-        echo "<h2>Year: $year</h2>";
-    });
+    $app->get(
+        "/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}",
+        function ($year, $title) {
+            echo "<h1>Title: $title</h1>";
+            echo "<h2>Year: $year</h2>";
+        }
+    );
 
 起始路由（Starting Route）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,9 +182,12 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // 超始路由
-    $app->get('/', function () {
-        echo "<h1>Welcome!</h1>";
-    });
+    $app->get(
+        "/",
+        function () {
+            echo "<h1>Welcome!</h1>";
+        }
+    );
 
 重写规则（Rewrite Rules）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,25 +210,34 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // 直接输出
-    $app->get('/say/hello', function () {
-        echo "<h1>Hello! $name</h1>";
-    });
+    $app->get(
+        "/say/hello",
+        function () {
+            echo "<h1>Hello! $name</h1>";
+        }
+    );
 
     // 包含其它文件
-    $app->get('/show/results', function () {
-        require 'views/results.php';
-    });
+    $app->get(
+        "/show/results",
+        function () {
+            require "views/results.php";
+        }
+    );
 
     // 返回JSON
-    $app->get('/get/some-json', function () {
-        echo json_encode(
-            array(
-                "some",
-                "important",
-                "data"
-            )
-        );
-    });
+    $app->get(
+        "/get/some-json",
+        function () {
+            echo json_encode(
+                [
+                    "some",
+                    "important",
+                    "data",
+                ]
+            );
+        }
+    );
 
 另外开发者还可以使用 :doc:`"response" <response>` ， 这样开发者可以更好的处理结果：
 
@@ -180,14 +245,18 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->get('/show/data', function () use ($app) {
+    $app->get(
+        "/show/data",
+        function () use ($app) {
+            // 设置返回头部内容格式
+            $app->response->setContentType("text/plain");
 
-        // 设置返回头部内容格式
-        $app->response->setContentType('text/plain')->sendHeaders();
+            $app->response->sendHeaders();
 
-        // 输出文件内容
-        readfile("data.txt");
-    });
+            // 输出文件内容
+            readfile("data.txt");
+        }
+    );
 
 或回复response对象：
 
@@ -195,20 +264,22 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
 
     <?php
 
-    $app->get('/show/data', function () {
+    $app->get(
+        "/show/data",
+        function () {
+            // 创建Response类实例
+            $response = new Phalcon\Http\Response();
 
-        // 创建Response类实例
-        $response = new Phalcon\Http\Response();
+            // Set the Content-Type header 设置返回内容的类型
+            $response->setContentType("text/plain");
 
-        // Set the Content-Type header 设置返回内容的类型
-        $response->setContentType('text/plain');
+            // 设置文件内容参数
+            $response->setContent(file_get_contents("data.txt"));
 
-        // 设置文件内容参数
-        $response->setContent(file_get_contents("data.txt"));
-
-        // 返回response实例对象
-        return $response;
-    });
+            // 返回response实例对象
+            return $response;
+        }
+    );
 
 重定向（Making redirections）
 -----------------------------
@@ -219,13 +290,19 @@ To access the HTTP method data :code:`$app` needs to be passed into the closure:
     <?php
 
     // 此路由重定向到其它的路由
-    $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome")->sendHeaders();
-    });
+    $app->post("/old/welcome",
+        function () use ($app) {
+            $app->response->redirect("new/welcome");
 
-    $app->post('/new/welcome', function () use ($app) {
-        echo 'This is the new Welcome';
-    });
+            $app->response->sendHeaders();
+        }
+    );
+
+    $app->post("/new/welcome",
+        function () use ($app) {
+            echo "This is the new Welcome";
+        }
+    );
 
 根据路由生成 URL（Generating URLs for Routes）
 -----------------------------------------------
@@ -236,24 +313,26 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     <?php
 
     // 设置名为 "show-post"的路由
-    $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
-
-        // ... Show the post here
-
-    })->setName('show-post');
+    $app->get(
+        "/blog/{year}/{title}",
+        function ($year, $title) use ($app) {
+            // ... Show the post here
+        }
+    )->setName("show-post");
 
     // 产生URL
-    $app->get('/', function () use ($app) {
-
-        echo '<a href="', $app->url->get(
-            array(
-                'for'   => 'show-post',
-                'title' => 'php-is-a-great-framework',
-                'year'  => 2015
-            )
-        ), '">Show the post</a>';
-
-    });
+    $app->get(
+        "/",
+        function () use ($app) {
+            echo '<a href="', $app->url->get(
+                [
+                    "for"   => "show-post",
+                    "title" => "php-is-a-great-framework",
+                    "year"  => 2015
+                ]
+            ), '">Show the post</a>';
+        }
+    );
 
 与依赖注入的交互（Interacting with the Dependency Injector）
 ------------------------------------------------------------
@@ -269,22 +348,31 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     $di = new FactoryDefault();
 
-    $di->set('config', function () {
-        return new IniConfig("config.ini");
-    });
+    $di->set(
+        "config",
+        function () {
+            return new IniConfig("config.ini");
+        }
+    );
 
     $app = new Micro();
 
     $app->setDI($di);
 
-    $app->get('/', function () use ($app) {
-        // Read a setting from the config
-        echo $app->config->app_name;
-    });
+    $app->get(
+        "/",
+        function () use ($app) {
+            // Read a setting from the config
+            echo $app->config->app_name;
+        }
+    );
 
-    $app->post('/contact', function () use ($app) {
-        $app->flash->success('Yes!, the contact was made!');
-    });
+    $app->post(
+        "/contact",
+        function () use ($app) {
+            $app->flash->success("Yes!, the contact was made!");
+        }
+    );
 
 服务容器中可以使用数据类的语法来设置或取服务实例：
 
@@ -298,23 +386,27 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
     $app = new Micro();
 
     // 设置数据库服务实例
-    $app['db'] = function () {
+    $app["db"] = function () {
         return new MysqlAdapter(
-            array(
+            [
                 "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
                 "dbname"   => "test_db"
-            )
+            ]
         );
     };
 
-    $app->get('/blog', function () use ($app) {
-        $news = $app['db']->query('SELECT * FROM news');
-        foreach ($news as $new) {
-            echo $new->title;
+    $app->get(
+        "/blog",
+        function () use ($app) {
+            $news = $app["db"]->query("SELECT * FROM news");
+
+            foreach ($news as $new) {
+                echo $new->title;
+            }
         }
-    });
+    );
 
 处理Not-Found（Not-Found Handler）
 ----------------------------------
@@ -324,10 +416,15 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     <?php
 
-    $app->notFound(function () use ($app) {
-        $app->response->setStatusCode(404, "Not Found")->sendHeaders();
-        echo 'This is crazy, but this page was not found!';
-    });
+    $app->notFound(
+        function () use ($app) {
+            $app->response->setStatusCode(404, "Not Found");
+
+            $app->response->sendHeaders();
+
+            echo "This is crazy, but this page was not found!";
+        }
+    );
 
 微应用中的模型（Models in Micro Applications）
 ----------------------------------------------
@@ -340,20 +437,23 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(
-        array(
-            __DIR__ . '/models/'
-        )
+        [
+            __DIR__ . "/models/"
+        ]
     )->register();
 
     $app = new \Phalcon\Mvc\Micro();
 
-    $app->get('/products/find', function () {
+    $app->get(
+        "/products/find",
+        function () {
+            $products = Products::find();
 
-        foreach (Products::find() as $product) {
-            echo $product->name, '<br>';
+            foreach ($products as $product) {
+                echo $product->name, "<br>";
+            }
         }
-
-    });
+    );
 
     $app->handle();
 
@@ -381,26 +481,28 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Events\Event;
+    use Phalcon\Events\Manager as EventsManager;
 
     // 创建事件监听器
     $eventsManager = new EventsManager();
 
-    // 监听应用的所有事件
-    $eventsManager->attach('micro', function ($event, $app) {
-
-        if ($event->getType() == 'beforeExecuteRoute') {
-            if ($app->session->get('auth') == false) {
-
+    $eventsManager->attach(
+        "micro:beforeExecuteRoute",
+        function (Event $event, $app) {
+            if ($app->session->get("auth") === false) {
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/")->sendHeaders();
+
+                $app->response->redirect("/");
+
+                $app->response->sendHeaders();
 
                 // 返回false来中止操作
                 return false;
             }
         }
-    });
+    );
 
     $app = new Micro();
 
@@ -419,33 +521,42 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     // 每个路由匹配之前执行
     // 返回false来中止程序执行
-    $app->before(function () use ($app) {
-        if ($app['session']->get('auth') == false) {
+    $app->before(
+        function () use ($app) {
+            if ($app["session"]->get("auth") === false) {
+                $app["flashSession"]->error("The user isn't authenticated");
 
-            $app['flashSession']->error("The user isn't authenticated");
-            $app['response']->redirect("/error");
+                $app["response"]->redirect("/error");
 
-            // Return false stops the normal execution
-            return false;
+                // Return false stops the normal execution
+                return false;
+            }
+
+            return true;
         }
+    );
 
-        return true;
-    });
+    $app->map(
+        "/api/robots",
+        function () {
+            return [
+                "status" => "OK",
+            ];
+        }
+    );
 
-    $app->map('/api/robots', function () {
-        return array(
-            'status' => 'OK'
-        );
-    });
+    $app->after(
+        function () use ($app) {
+            // 路由处理器执行后执行
+            echo json_encode($app->getReturnedValue());
+        }
+    );
 
-    $app->after(function () use ($app) {
-        // 路由处理器执行后执行
-        echo json_encode($app->getReturnedValue());
-    });
-
-    $app->finish(function () use ($app) {
-        // 路由处理器执行后执行
-    });
+    $app->finish(
+        function () use ($app) {
+            // 路由处理器执行后执行
+        }
+    );
 
 开发者可以对同一事件注册多个处理器:
 
@@ -453,13 +564,17 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     <?php
 
-    $app->finish(function () use ($app) {
-        // 第一个结束处理器
-    });
+    $app->finish(
+        function () use ($app) {
+            // 第一个结束处理器
+        }
+    );
 
-    $app->finish(function () use ($app) {
-        // 第二个结束处理器
-    });
+    $app->finish(
+        function () use ($app) {
+            // 第二个结束处理器
+        }
+    );
 
 把这些代码放在另外的文件中以达到重用的目的:
 
@@ -478,10 +593,10 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     {
         public function call($application)
         {
-            $cache  = $application['cache'];
-            $router = $application['router'];
+            $cache  = $application["cache"];
+            $router = $application["router"];
 
-            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key = preg_replace("/^[a-zA-Z0-9]/", "", $router->getRewriteUri());
 
             // 检查请示是否被处理了
             if ($cache->exists($key)) {
@@ -500,7 +615,9 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     <?php
 
-    $app->before(new CacheMiddleware());
+    $app->before(
+        new CacheMiddleware()
+    );
 
 支持如下的中间件事件：
 
@@ -527,16 +644,18 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
     $posts = new MicroCollection();
 
     // 设置主处理器，这里是控制器的实例
-    $posts->setHandler(new PostsController());
+    $posts->setHandler(
+        new PostsController()
+    );
 
     // 对所有路由设置前缀
-    $posts->setPrefix('/posts');
+    $posts->setPrefix("/posts");
 
     //  使用PostsController中的index action
-    $posts->get('/', 'index');
+    $posts->get("/", "index");
 
     // 使用PostController中的show action
-    $posts->get('/show/{slug}', 'show');
+    $posts->get("/show/{slug}", "show");
 
     $app->mount($posts);
 
@@ -584,16 +703,18 @@ PostsController形如下：
     $app = new Micro();
 
     // 返回Response实例
-    $app->get('/welcome/index', function () {
+    $app->get(
+        "/welcome/index",
+        function () {
+            $response = new Response();
 
-        $response = new Response();
+            $response->setStatusCode(401, "Unauthorized");
 
-        $response->setStatusCode(401, "Unauthorized");
+            $response->setContent("Access is not authorized");
 
-        $response->setContent("Access is not authorized");
-
-        return $response;
-    });
+            return $response;
+        }
+    );
 
 渲染视图（Rendering Views）
 ---------------------------
@@ -605,22 +726,28 @@ PostsController形如下：
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function () {
+    $app["view"] = function () {
         $view = new \Phalcon\Mvc\View\Simple();
-        $view->setViewsDir('app/views/');
+
+        $view->setViewsDir("app/views/");
+
         return $view;
     };
 
     // 返回渲染过的视图
-    $app->get('/products/show', function () use ($app) {
-
-        // 渲染视图时传递参数
-        echo $app['view']->render('products/show', array(
-            'id'   => 100,
-            'name' => 'Artichoke'
-        ));
-
-    });
+    $app->get(
+        "/products/show",
+        function () use ($app) {
+            // 渲染视图时传递参数
+            echo $app["view"]->render(
+                "products/show",
+                [
+                    "id"   => 100,
+                    "name" => "Artichoke"
+                ]
+            );
+        }
+    );
 
 Please note that this code block uses :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` which uses relative paths instead of controllers and actions.
 If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` instead, you will need to change the parameters of the :code:`render()` method:
@@ -631,22 +758,29 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app['view'] = function () {
+    $app["view"] = function () {
         $view = new \Phalcon\Mvc\View();
-        $view->setViewsDir('app/views/');
+
+        $view->setViewsDir("app/views/");
+
         return $view;
     };
 
     // Return a rendered view
-    $app->get('/products/show', function () use ($app) {
-
-        // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render('products', 'show', array(
-            'id'   => 100,
-            'name' => 'Artichoke'
-        ));
-
-    });
+    $app->get(
+        "/products/show",
+        function () use ($app) {
+            // Render app/views/products/show.phtml passing some variables
+            echo $app["view"]->render(
+                "products",
+                "show",
+                [
+                    "id"   => 100,
+                    "name" => "Artichoke"
+                ]
+            );
+        }
+    );
 
 Error Handling
 --------------
@@ -658,9 +792,12 @@ A proper response can be generated if an exception is raised in a micro handler:
 
     $app = new Phalcon\Mvc\Micro();
 
-    $app->get('/', function () {
-        throw new \Exception("An error");
-    });
+    $app->get(
+        "/",
+        function () {
+            throw new \Exception("An error");
+        }
+    );
 
     $app->error(
         function ($exception) {

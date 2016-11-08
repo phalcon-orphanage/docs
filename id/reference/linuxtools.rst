@@ -13,10 +13,20 @@ Anda dapat mendownload cross platform package berisi developer tools dari bagian
 
 Buka terminal dan ketik perintah berikut:
 
+.. code-block:: bash
+
+    git clone git://github.com/phalcon/phalcon-devtools.git
+
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
 Lalu masuk ke folder di mana tools diclone dan jalankan ". ./phalcon.sh", (Jangan lupa titik di awal perintah):
+
+.. code-block:: bash
+
+    cd phalcon-devtools/
+
+    . ./phalcon.sh
 
 .. figure:: ../_static/img/linux-2.png
    :align: center

@@ -1,6 +1,8 @@
 Class **Phalcon\\Events\\Event**
 ================================
 
+*implements* :doc:`Phalcon\\Events\\EventInterface <Phalcon_Events_EventInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -11,12 +13,6 @@ This class offers contextual information of a fired event in the EventsManager
 
 Methods
 -------
-
-public  **setType** (*unknown* $type)
-
-Event type
-
-
 
 public  **getType** ()
 
@@ -30,27 +26,27 @@ Event source
 
 
 
-public  **setData** (*unknown* $data)
-
-Event data
-
-
-
 public  **getData** ()
 
 Event data
 
 
 
-public  **getCancelable** ()
-
-Is event cancelable?
-
-
-
 public  **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
 Phalcon\\Events\\Event constructor
+
+
+
+public  **setData** ([*mixed* $data])
+
+Sets event data
+
+
+
+public  **setType** (*mixed* $type)
+
+Sets event type
 
 
 
@@ -63,6 +59,12 @@ Stops the event preventing propagation
 public  **isStopped** ()
 
 Check whether the event is currently stopped
+
+
+
+public  **isCancelable** ()
+
+Check whether the event is cancelable
 
 
 

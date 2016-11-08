@@ -14,13 +14,13 @@ Encapsulates validation info generated in the validation process
 Methods
 -------
 
-public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type], [*unknown* $code])
+public  **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 
 Phalcon\\Validation\\Message constructor
 
 
 
-public  **setType** (*unknown* $type)
+public  **setType** (*mixed* $type)
 
 Sets message type
 
@@ -32,7 +32,7 @@ Returns message type
 
 
 
-public  **setMessage** (*unknown* $message)
+public  **setMessage** (*mixed* $message)
 
 Sets verbose message
 
@@ -44,19 +44,19 @@ Returns verbose message
 
 
 
-public  **setField** (*unknown* $field)
+public  **setField** (*mixed* $field)
 
 Sets field name related to message
 
 
 
-public *string*  **getField** ()
+public *mixed* **getField** ()
 
 Returns field name related to message
 
 
 
-public  **setCode** (*unknown* $code)
+public  **setCode** (*mixed* $code)
 
 Sets code for the message
 

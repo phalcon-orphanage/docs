@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\MetaData**
 ================================================
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -58,7 +58,7 @@ Constants
 Methods
 -------
 
-final protected  **_initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $key, *unknown* $table, *unknown* $schema)
+final protected  **_initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $key, *mixed* $table, *mixed* $schema)
 
 Initialize the metadata for certain table
 
@@ -101,7 +101,7 @@ Reads the complete meta-data for certain model
 
 
 
-final public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
+final public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
 Reads meta-data for certain model 
 
@@ -114,7 +114,7 @@ Reads meta-data for certain model
 
 
 
-final public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index, *unknown* $data)
+final public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index, *mixed* $data)
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -140,7 +140,7 @@ Reads the ordered/reversed column map for certain model
 
 
 
-final public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $index)
+final public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
 Reads column-map information for certain model using a MODEL_* constant 
 
@@ -231,7 +231,7 @@ Returns attributes which types are numerical
 
 
 
-public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public *string* **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Returns the name of identity field (if one is present) 
 
@@ -374,7 +374,7 @@ Returns the reverse column map if any
 
 
 
-public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $attribute)
 
 Check if a model has certain attribute 
 
@@ -411,5 +411,15 @@ Resets internal meta-data in order to regenerate it
     $metaData->reset();
 
 
+
+
+abstract public  **read** (*mixed* $key) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+
+...
+
+
+abstract public  **write** (*mixed* $key, *mixed* $data) inherited from :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+
+...
 
 

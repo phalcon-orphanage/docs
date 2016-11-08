@@ -1,86 +1,98 @@
-Command Line Applications
-=========================
+Aplikasi Command Line
+=====================
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Aplikasi CLI dijalankan dari command line. Mereka berguna untuk menjalankan cron job, script, utiliti dan lainnya.
 
-Structure
----------
-A minimal structure of a CLI application will look like this:
+Struktur
+--------
+Struktur minimal aplikasi CLI terlihat seperti berikut:
 
 * app/config/config.php
 * app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+* app/cli.php <-- file bootstrap utama
 
-Creating a Bootstrap
---------------------
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Menciptakan sebuah Bootstrap
+----------------------------
+Sebagai aplikasi Mvc biasa, sebuah file bootstrap digunakan untuk memulai aplikasi. Alih-alih index.php untuk memulai aplikasi web, kita menggunakan file cli.php.
 
-Below is a sample bootstrap that is being used for this example.
+Di bawah ini adalah contoh bootstrap yang digunakan untuk contoh ini.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Di\FactoryDefault\Cli as CliDI,
-        Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Di\FactoryDefault\Cli as CliDI;
+    use Phalcon\Cli\Console as ConsoleApp;
+    use Phalcon\Loader;
 
-    define('VERSION', '1.0.0');
 
-    // Using the CLI factory default services container
+
+    // Menggunakan service container factory default CLI
     $di = new CliDI();
 
-    // Define path to application directory
-    defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+
 
     /**
-     * Register the autoloader and tell it to register the tasks directory
+     * Daftarkan autoloade dan daftarkan direktori task
      */
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
+
     $loader->registerDirs(
-        array(
-            APPLICATION_PATH . '/tasks'
-        )
+        [
+            __DIR__ . "/tasks",
+        ]
     );
+
     $loader->register();
 
-    // Load the configuration file (if any)
-    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
-        $config = include APPLICATION_PATH . '/config/config.php';
-        $di->set('config', $config);
+
+
+    // Muat file konfigurasi (bila ada)
+
+    $configFile = __DIR__ . "/config/config.php";
+
+    if (is_readable($configFile)) {
+        $config = include $configFile;
+
+        $di->set("config", $config);
     }
 
-    // Create a console application
+
+
+    // Buat aplikasi konsol
     $console = new ConsoleApp();
+
     $console->setDI($di);
 
+
+
     /**
-     * Process the console arguments
+     * Proses argumen
      */
-    $arguments = array();
+    $arguments = [];
+
     foreach ($argv as $k => $arg) {
-        if ($k == 1) {
-            $arguments['task'] = $arg;
-        } elseif ($k == 2) {
-            $arguments['action'] = $arg;
+        if ($k === 1) {
+            $arguments["task"] = $arg;
+        } elseif ($k === 2) {
+            $arguments["action"] = $arg;
         } elseif ($k >= 3) {
-            $arguments['params'][] = $arg;
+            $arguments["params"][] = $arg;
         }
     }
 
-    // Define global constants for the current task and action
-    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
-    define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
+
 
     try {
-        // Handle incoming arguments
+        // Handle argumen yang masuk
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
-This piece of code can be run using:
+Potongan kode ini dapat dijalankan menggunakan:
 
 .. code-block:: bash
 
@@ -88,39 +100,43 @@ This piece of code can be run using:
 
     This is the default task and the default action
 
-Tasks
+Tugas
 -----
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tugas nekerja mirip kontroller. Tiap aplikasi CLI butuh paling tidak satu MainTask dan mainAction dan tiap tugas butuh sebuah mainAction yang dijalankan bila tidak ada aksi yang diberikan secara eksplisit.
 
-Below is an example of the app/tasks/MainTask.php file:
+Di bawah ini adalah contoh file app/tasks/MainTask.php:
 
 .. code-block:: php
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
     }
 
-Processing action parameters
-----------------------------
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Memroses parameter aksi
+-----------------------
+Dimungkinkan untuk melewatkan parameter ke aksi, kode untuk ini sudah dihadirkan di contoh bootstrap.
 
-If you run the application with the following parameters and action:
+Jika aplikasi jalan dengan parameter dan aksi berikut:
 
 .. code-block:: php
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
         }
 
         /**
@@ -128,12 +144,23 @@ If you run the application with the following parameters and action:
          */
         public function testAction(array $params)
         {
-            echo sprintf('hello %s', $params[0]) . PHP_EOL;
-            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+            echo sprintf(
+                "hello %s",
+                $params[0]
+            );
+
+            echo PHP_EOL;
+
+            echo sprintf(
+                "best regards, %s",
+                $params[1]
+            );
+
+            echo PHP_EOL;
         }
     }
 
-We can then run the following command:
+Kita dapat menjalankan perintah berikut:
 
 .. code-block:: bash
 
@@ -142,48 +169,51 @@ We can then run the following command:
    hello world
    best regards, universe
 
-Running tasks in a chain
-------------------------
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Menjalankan tugas secara berantai
+---------------------------------
+Dimungkinkan juga menjalankan tugas secara berantai jika diperlukan. Untuk mencapai hal ini anda harus menambah console ke DI:
 
 .. code-block:: php
 
     <?php
 
-    $di->setShared('console', $console);
+    $di->setShared("console", $console);
 
     try {
         // Handle incoming arguments
         $console->handle($arguments);
     } catch (\Phalcon\Exception $e) {
         echo $e->getMessage();
+
         exit(255);
     }
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Lalu anda dapat menggunakan console dalam tiap tugas. Dibawah ini adalah contoh MainTask.php yang sudah dimodifikasi:
 
 .. code-block:: php
 
     <?php
 
-    class MainTask extends \Phalcon\Cli\Task
+    use Phalcon\Cli\Task;
+
+    class MainTask extends Task
     {
         public function mainAction()
         {
-            echo "\nThis is the default task and the default action \n";
+            echo "This is the default task and the default action" . PHP_EOL;
 
             $this->console->handle(
-                array(
-                    'task'   => 'main',
-                    'action' => 'test'
-                )
+                [
+                    "task"   => "main",
+                    "action" => "test",
+                ]
             );
         }
 
         public function testAction()
         {
-            echo "\nI will get printed too!\n";
+            echo "I will get printed too!" . PHP_EOL;
         }
     }
 
-However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` and implement this kind of logic there.
+Namun, lebih baik untuk menggunakan :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` dan mengimplementasi logika ini disana.

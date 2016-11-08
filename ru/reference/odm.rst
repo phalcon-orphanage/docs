@@ -39,7 +39,7 @@ ODM предлагает функциональность CRUD, события, 
     чтобы сохранить память и уменьшить выделение памяти.
 
 По умолчанию модель “Robots” будет ссылаться на “robots”. Если вы хотите вручную указать другое имя для отображения коллекции,
-вы можете использовать getSource() метод:
+вы можете использовать :code:`setSource()` метод:
 
 .. code-block:: php
 
@@ -49,9 +49,9 @@ ODM предлагает функциональность CRUD, события, 
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "the_robots";
+            $this->setSource("the_robots");
         }
     }
 
@@ -75,7 +75,7 @@ ODM предлагает функциональность CRUD, события, 
 
 Модели в пространствах имен
 ---------------------------
-Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов. В этом случае необходимо указать имя соответствующей колекции, используя getSource:
+Пространства имен могут быть использованы для того, чтобы избежать колизий имен классов. В этом случае необходимо указать имя соответствующей колекции, используя :code:`setSource()`:
 
 .. code-block:: php
 
@@ -87,9 +87,9 @@ ODM предлагает функциональность CRUD, события, 
 
     class Robots extends Collection
     {
-        public function getSource()
+        public function initialize()
         {
-            return "robots";
+            $this->setSource("robots");
         }
     }
 
@@ -112,13 +112,15 @@ ODM предлагает функциональность CRUD, события, 
     <?php
 
     $robot = Robots::findFirst(
-        array(
-            array(
-                'name' => 'Astro Boy'
-            )
-        )
+        [
+            [
+                "name" => "Astro Boy",
+            ]
+        ]
     );
+
     $robot->name = "Voltron";
+
     $robot->save();
 
 Setting a Connection
@@ -130,16 +132,28 @@ Connections are retrieved from the services container. By default, Phalcon tries
     <?php
 
     // Simple database connection to localhost
-    $di->set('mongo', function () {
-        $mongo = new MongoClient();
-        return $mongo->selectDB("store");
-    }, true);
+    $di->set(
+        "mongo",
+        function () {
+            $mongo = new MongoClient();
+
+            return $mongo->selectDB("store");
+        },
+        true
+    );
 
     // Connecting to a domain socket, falling back to localhost connection
-    $di->set('mongo', function () {
-        $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-        return $mongo->selectDB("store");
-    }, true);
+    $di->set(
+        "mongo",
+        function () {
+            $mongo = new MongoClient(
+                "mongodb:///tmp/mongodb-27017.sock,localhost:27017"
+            );
+
+            return $mongo->selectDB("store");
+        },
+        true
+    );
 
 Finding Documents
 -----------------
@@ -156,24 +170,24 @@ to query documents and convert them transparently to model instances:
 
     // How many mechanical robots are there?
     $robots = Robots::find(
-        array(
-            array(
-                "type" => "mechanical"
-            )
-        )
+        [
+            [
+                "type" => "mechanical",
+            ]
+        ]
     );
     echo "There are ", count($robots), "\n";
 
     // Get and print mechanical robots ordered by name upward
     $robots = Robots::find(
-        array(
-            array(
-                "type" => "mechanical"
-            ),
-            "sort" => array(
-                "name" => 1
-            )
-        )
+        [
+            [
+                "type" => "mechanical",
+            ],
+            "sort" => [
+                "name" => 1,
+            ],
+        ]
     );
 
     foreach ($robots as $robot) {
@@ -182,15 +196,15 @@ to query documents and convert them transparently to model instances:
 
     // Get first 100 mechanical robots ordered by name
     $robots = Robots::find(
-        array(
-            array(
-                "type" => "mechanical"
-            ),
-            "sort"  => array(
-                "name" => 1
-            ),
-            "limit" => 100
-        )
+        [
+            [
+                "type" => "mechanical",
+            ],
+            "sort"  => [
+                "name" => 1,
+            ],
+            "limit" => 100,
+        ]
     );
 
     foreach ($robots as $robot) {
@@ -209,11 +223,11 @@ You could also use the :code:`findFirst()` method to get only the first record m
 
     // What's the first mechanical robot in robots collection?
     $robot = Robots::findFirst(
-        array(
-            array(
-                "type" => "mechanical"
-            )
-        )
+        [
+            [
+                "type" => "mechanical",
+            ]
+        ]
     );
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
@@ -225,20 +239,24 @@ Both :code:`find()` and :code:`findFirst()` methods accept an associative array 
 
     // First robot where type = "mechanical" and year = "1999"
     $robot = Robots::findFirst(
-        array(
-            "conditions" => array(
+        [
+            "conditions" => [
                 "type" => "mechanical",
-                "year" => "1999"
-            )
-        )
+                "year" => "1999",
+            ],
+        ]
     );
 
     // All virtual robots ordered by name downward
     $robots = Robots::find(
-        array(
-            "conditions" => array("type" => "virtual"),
-            "sort"       => array("name" => -1)
-        )
+        [
+            "conditions" => [
+                "type" => "virtual",
+            ],
+            "sort" => [
+                "name" => -1,
+            ],
+        ]
     );
 
 The available query options are:
@@ -269,17 +287,23 @@ With this option is easy perform tasks such as totaling or averaging field value
     <?php
 
     $data = Article::aggregate(
-        array(
-            array(
-                '$project' => array('category' => 1)
-            ),
-            array(
-                '$group' => array(
-                    '_id' => array('category' => '$category'),
-                    'id'  => array('$max' => '$_id')
-                )
-            )
-        )
+        [
+            [
+                "\$project" => [
+                    "category" => 1,
+                ],
+            ],
+            [
+                "\$group" => [
+                    "_id" => [
+                        "category" => "\$category"
+                    ],
+                    "id"  => [
+                        "\$max" => "\$_id",
+                    ],
+                ],
+            ],
+        ]
     );
 
 Creating Updating/Records
@@ -293,13 +317,18 @@ Also the method executes associated validators and events that are defined in th
 
     <?php
 
-    $robot       = new Robots();
+    $robot = new Robots();
+
     $robot->type = "mechanical";
     $robot->name = "Astro Boy";
     $robot->year = 1952;
-    if ($robot->save() == false) {
+
+    if ($robot->save() === false) {
         echo "Umh, We can't store robots right now: \n";
-        foreach ($robot->getMessages() as $message) {
+
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo $message, "\n";
         }
     } else {
@@ -313,6 +342,7 @@ The "_id" property is automatically updated with the MongoId_ object created by 
     <?php
 
     $robot->save();
+
     echo "The generated id is: ", $robot->getId();
 
 Validation Messages
@@ -328,8 +358,10 @@ generated the message or the message type:
 
     <?php
 
-    if ($robot->save() == false) {
-        foreach ($robot->getMessages() as $message) {
+    if ($robot->save() === false) {
+        $messages = $robot->getMessages();
+
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage();
             echo "Field: ", $message->getField();
             echo "Type: ", $message->getType();
@@ -400,13 +432,13 @@ Events can be useful to assign values before performing an operation, for exampl
         public function beforeCreate()
         {
             // Set the creation date
-            $this->created_at = date('Y-m-d H:i:s');
+            $this->created_at = date("Y-m-d H:i:s");
         }
 
         public function beforeUpdate()
         {
             // Set the modification date
-            $this->modified_in = date('Y-m-d H:i:s');
+            $this->modified_in = date("Y-m-d H:i:s");
         }
     }
 
@@ -417,27 +449,32 @@ listeners that run when an event is triggered.
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
     $eventsManager = new EventsManager();
 
     // Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('collection', function ($event, $robot) {
-        if ($event->getType() == 'beforeSave') {
-            if ($robot->name == 'Scooby Doo') {
+    $eventsManager->attach(
+        "collection:beforeSave",
+        function (Event $event, $robot) {
+            if ($robot->name === "Scooby Doo") {
                 echo "Scooby Doo isn't a robot!";
 
                 return false;
             }
+
+            return true;
         }
+    );
 
-        return true;
-    });
+    $robot = new Robots();
 
-    $robot       = new Robots();
     $robot->setEventsManager($eventsManager);
-    $robot->name = 'Scooby Doo';
+
+    $robot->name = "Scooby Doo";
     $robot->year = 1969;
+
     $robot->save();
 
 In the example given above the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
@@ -447,27 +484,25 @@ objects created in our application use the same EventsManager, then we need to a
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Collection\Manager as CollectionManager;
 
     // Registering the collectionManager service
     $di->set(
-        'collectionManager',
+        "collectionManager",
         function () {
-
             $eventsManager = new EventsManager();
 
             // Attach an anonymous function as a listener for "model" events
             $eventsManager->attach(
-                'collection',
-                function ($event, $model) {
-                    if (get_class($model) == 'Robots') {
-                        if ($event->getType() == 'beforeSave') {
-                            if ($model->name == 'Scooby Doo') {
-                                echo "Scooby Doo isn't a robot!";
+                "collection:beforeSave",
+                function (Event $event, $model) {
+                    if (get_class($model) === "Robots") {
+                        if ($model->name === "Scooby Doo") {
+                            echo "Scooby Doo isn't a robot!";
 
-                                return false;
-                            }
+                            return false;
                         }
                     }
 
@@ -535,45 +570,48 @@ The following example shows how to use it:
         {
             $this->validate(
                 new InclusionIn(
-                    array(
+                    [
                         "field"   => "type",
                         "message" => "Type must be: mechanical or virtual",
-                        "domain"  => array("Mechanical", "Virtual")
-                    )
+                        "domain"  => [
+                            "Mechanical",
+                            "Virtual",
+                        ],
+                    ]
                 )
             );
 
             $this->validate(
                 new Numericality(
-                    array(
+                    [
                         "field"   => "price",
-                        "message" => "Price must be numeric"
-                    )
+                        "message" => "Price must be numeric",
+                    ]
                 )
             );
 
-            return $this->validationHasFailed() != true;
+            return $this->validationHasFailed() !== true;
         }
     }
 
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                      | Example                                                           |
-+==============+==================================================================+===================================================================+
-| Email        | Validates that field contains a valid email format               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+------------------------------------------------------------------+-------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| Name                                                                                                  | Explanation                                                      |
++=======================================================================================================+==================================================================+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Email <../api/Phalcon_Mvc_Model_Validator_Email>`               | Validates that field contains a valid email format               |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Exclusionin <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   | Validates that a value is not within a list of possible values   |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Inclusionin <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   | Validates that a value is within a list of possible values       |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Numericality <../api/Phalcon_Mvc_Model_Validator_Numericality>` | Validates that a field has a numeric format                      |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\Regex <../api/Phalcon_Mvc_Model_Validator_Regex>`               | Validates that the value of a field matches a regular expression |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+| :doc:`Phalcon\\Mvc\\Model\\Validator\\StringLength <../api/Phalcon_Mvc_Model_Validator_StringLength>` | Validates the length of a string                                 |
++-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
 In addition to the built-in validators, you can create your own validators:
 
@@ -587,12 +625,18 @@ In addition to the built-in validators, you can create your own validators:
     {
         public function validate($model)
         {
-            $field = $this->getOption('field');
+            $field = $this->getOption("field");
 
-            $value    = $model->$field;
+            $value = $model->$field;
+
             $filtered = filter_var($value, FILTER_VALIDATE_URL);
+
             if (!$filtered) {
-                $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+                $this->appendMessage(
+                    "The URL is invalid",
+                    $field,
+                    "UrlValidator"
+                );
 
                 return false;
             }
@@ -615,13 +659,13 @@ Adding the validator to a model:
         {
             $this->validate(
                 new UrlValidator(
-                    array(
+                    [
                         "field"  => "url",
-                    )
+                    ]
                 )
             );
 
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -640,7 +684,7 @@ The idea of creating validators is to make them reusable across several models. 
     {
         public function validation()
         {
-            if ($this->type == "Old") {
+            if ($this->type === "Old") {
                 $message = new ModelMessage(
                     "Sorry, old robots are not allowed anymore",
                     "type",
@@ -665,10 +709,14 @@ The :code:`Phalcon\Mvc\Collection::delete()` method allows you to delete a docum
     <?php
 
     $robot = Robots::findFirst();
-    if ($robot != false) {
-        if ($robot->delete() == false) {
+
+    if ($robot !== false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
-            foreach ($robot->getMessages() as $message) {
+
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -683,17 +731,20 @@ You can also delete many documents by traversing a resultset with a :code:`forea
     <?php
 
     $robots = Robots::find(
-        array(
-            array(
-                "type" => "mechanical"
-            )
-        )
+        [
+            [
+                "type" => "mechanical",
+            ]
+        ]
     );
 
     foreach ($robots as $robot) {
-        if ($robot->delete() == false) {
+        if ($robot->delete() === false) {
             echo "Sorry, we can't delete the robot right now: \n";
-            foreach ($robot->getMessages() as $message) {
+
+            $messages = $robot->getMessages();
+
+            foreach ($messages as $message) {
                 echo $message, "\n";
             }
         } else {
@@ -754,9 +805,11 @@ in the application's services container. You can overwrite this service setting 
 
     // This service returns a mongo database at 192.168.1.100
     $di->set(
-        'mongo1',
+        "mongo1",
         function () {
-            $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+            $mongo = new MongoClient(
+                "mongodb://scott:nekhen@192.168.1.100"
+            );
 
             return $mongo->selectDB("management");
         },
@@ -765,9 +818,11 @@ in the application's services container. You can overwrite this service setting 
 
     // This service returns a mongo database at localhost
     $di->set(
-        'mongo2',
+        "mongo2",
         function () {
-            $mongo = new MongoClient("mongodb://localhost");
+            $mongo = new MongoClient(
+                "mongodb://localhost"
+            );
 
             return $mongo->selectDB("invoicing");
         },
@@ -786,7 +841,7 @@ Then, in the :code:`initialize()` method, we define the connection service for t
     {
         public function initialize()
         {
-            $this->setConnectionService('mongo1');
+            $this->setConnectionService("mongo1");
         }
     }
 
@@ -805,11 +860,15 @@ You may be required to access the application services within a model, the follo
         public function notSave()
         {
             // Obtain the flash service from the DI container
-            $flash = $this->getDI()->getShared('flash');
+            $flash = $this->getDI()->getShared("flash");
+
+            $messages = $this->getMessages();
 
             // Show validation messages
-            foreach ($this->getMessages() as $message) {
-                $flash->error((string) $message);
+            foreach ($messages as $message) {
+                $flash->error(
+                    (string) $message
+                );
             }
         }
     }

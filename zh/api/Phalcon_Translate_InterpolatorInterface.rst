@@ -9,7 +9,7 @@ Interface **Phalcon\\Translate\\InterpolatorInterface**
 Methods
 -------
 
-abstract public  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders])
+abstract public  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
 ...
 

@@ -31,7 +31,7 @@ Area where the version number is set. The format is as follows: ABBCCDE A - Majo
 
 
 
-final protected static  **_getSpecial** (*unknown* $special)
+final protected static  **_getSpecial** (*mixed* $special)
 
 Translates a number to a special release If Special release = 1 this function will return ALPHA
 
@@ -63,7 +63,7 @@ Returns the numeric active version
 
 
 
-public static  **getPart** (*unknown* $part)
+public static  **getPart** (*mixed* $part)
 
 Returns a specific part of the version. If the wrong parameter is passed it will return the full version 
 

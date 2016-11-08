@@ -15,10 +15,27 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 目录
 -----
 
+Installation
+^^^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 3
 
    reference/install
+   reference/nginx
+   reference/apache
+   reference/cherokee
+   reference/tools
+   reference/linuxtools
+   reference/mactools
+   reference/wintools
+
+Tutorials
+^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/tutorial
    reference/tutorial-invo
    reference/tutorial-invo-2
@@ -27,12 +44,24 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
+
+Components
+^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/di
    reference/mvc
    reference/controllers
    reference/models
+   reference/model-relationships
+   reference/model-events
+   reference/model-behaviors
    reference/models-metadata
    reference/model-transactions
+   reference/model-validation
+   reference/models-advanced
    reference/phql
    reference/models-cache
    reference/odm
@@ -67,16 +96,44 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/logging
    reference/annotations
    reference/cli
+   reference/images
    reference/queue
    reference/db
    reference/intl
    reference/migrations
    reference/debug
-   reference/tools
-   reference/whats-next
    reference/unit-testing
+
+In Depth Explanations / Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
+   reference/whats-next
+   reference/di-explained
+   reference/applications-explained
+
+API
+^^^
+
+.. toctree::
+   :maxdepth: 2
+
    api/index
+
+Legal
+^^^^^
+
+.. toctree::
+   :maxdepth: 3
+
    reference/license
+
+Previous Versions
+-----------------
+
+* `2.0.0 <https://docs.phalconphp.com/zh/2.0.0/>`
 
 其他格式
 --------

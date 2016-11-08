@@ -26,7 +26,7 @@ Returns the internal dependency injector
 
 
 
-public  **useEncryption** (*unknown* $useEncryption)
+public  **useEncryption** (*mixed* $useEncryption)
 
 Set if cookies in the bag must be automatically encrypted/decrypted
 
@@ -38,25 +38,25 @@ Returns if the bag is automatically encrypting/decrypting cookies
 
 
 
-public  **set** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
+public  **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*mixed* $path], [*mixed* $secure], [*mixed* $domain], [*mixed* $httpOnly])
 
 Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Gets a cookie from the bag
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
 
 
 
-public  **delete** (*unknown* $name)
+public  **delete** (*mixed* $name)
 
 Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
 

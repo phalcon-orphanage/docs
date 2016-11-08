@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Flash**
 =================================
 
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -20,19 +22,55 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 Methods
 -------
 
-public  **__construct** ([*unknown* $cssClasses])
+public  **__construct** ([*mixed* $cssClasses])
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush)
+public  **getAutoescape** ()
+
+Returns the autoescape mode in generated html
+
+
+
+public  **setAutoescape** (*mixed* $autoescape)
+
+Set the autoescape mode in generated html
+
+
+
+public  **getEscaperService** ()
+
+Returns the Escaper Service
+
+
+
+public  **setEscaperService** (:doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>` $escaperService)
+
+Sets the Escaper Service
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+
+Sets the dependency injector
+
+
+
+public  **getDI** ()
+
+Returns the internal dependency injector
+
+
+
+public  **setImplicitFlush** (*mixed* $implicitFlush)
 
 Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public  **setAutomaticHtml** (*unknown* $automaticHtml)
+public  **setAutomaticHtml** (*mixed* $automaticHtml)
 
 Set if the output must be implicitly formatted with HTML
 
@@ -44,7 +82,7 @@ Set an array with CSS classes to format the messages
 
 
 
-public  **error** (*unknown* $message)
+public  **error** (*mixed* $message)
 
 Shows a HTML error message 
 
@@ -57,7 +95,7 @@ Shows a HTML error message
 
 
 
-public  **notice** (*unknown* $message)
+public  **notice** (*mixed* $message)
 
 Shows a HTML notice/information message 
 
@@ -70,7 +108,7 @@ Shows a HTML notice/information message
 
 
 
-public  **success** (*unknown* $message)
+public  **success** (*mixed* $message)
 
 Shows a HTML success message 
 
@@ -83,7 +121,7 @@ Shows a HTML success message
 
 
 
-public  **warning** (*unknown* $message)
+public  **warning** (*mixed* $message)
 
 Shows a HTML warning message 
 
@@ -96,7 +134,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*unknown* $type, *string|array* $message)
+public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message)
 
 Outputs a message formatting it with HTML 
 

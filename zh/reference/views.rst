@@ -145,12 +145,14 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
     {
         public function initialize()
         {
-            $this->view->setTemplateAfter('common');
+            $this->view->setTemplateAfter("common");
         }
 
         public function lastAction()
         {
-            $this->flash->notice("These are the latest posts");
+            $this->flash->notice(
+                "These are the latest posts"
+            );
         }
     }
 
@@ -244,7 +246,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         </body>
     </html>
 
-如果我们调用 :code:`$this->view->setTemplateBefore('common')` 方法, 最终输出如下:
+如果我们调用 :code:`$this->view->setTemplateBefore("common")` 方法, 最终输出如下:
 
 .. code-block:: html+php
 
@@ -310,7 +312,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         public function findAction()
         {
             // This is an Ajax response so it doesn't generate any kind of view
-            $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
+            $this->view->setRenderLevel(
+                View::LEVEL_NO_RENDER
+            );
 
             // ...
         }
@@ -318,7 +322,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         public function showAction($postId)
         {
             // Shows only the view related to the action
-            $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+            $this->view->setRenderLevel(
+                View::LEVEL_ACTION_VIEW
+            );
         }
     }
 
@@ -350,20 +356,23 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     use Phalcon\Mvc\View;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
 
-        $view = new View();
+            // Disable several levels
+            $view->disableLevel(
+                [
+                    View::LEVEL_LAYOUT      => true,
+                    View::LEVEL_MAIN_LAYOUT => true,
+                ]
+            );
 
-        // Disable several levels
-        $view->disableLevel(
-            array(
-                View::LEVEL_LAYOUT      => true,
-                View::LEVEL_MAIN_LAYOUT => true
-            )
-        );
-
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 或者在某些应用程序的一部分暂时或禁用:
 
@@ -383,7 +392,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
         public function findAction()
         {
-            $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+            $this->view->disableLevel(
+                View::LEVEL_MAIN_LAYOUT
+            );
         }
     }
 
@@ -405,10 +416,18 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             $this->view->pick("products/search");
 
             // Pick "views-dir/books/list" as view to render
-            $this->view->pick(array('books'));
+            $this->view->pick(
+                [
+                    "books",
+                ]
+            );
 
             // Pick "views-dir/products/search" as view to render
-            $this->view->pick(array(1 => 'search'));
+            $this->view->pick(
+                [
+                    1 => "search",
+                ]
+            );
         }
     }
 
@@ -429,11 +448,27 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Close session
             // ...
 
-            // A HTTP Redirect
-            $this->response->redirect('index/index');
-
             // Disable the view to avoid rendering
             $this->view->disable();
+        }
+    }
+
+Alternatively, you can return :code:`false` to produce the same effect:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
+    {
+        public function closeSessionAction()
+        {
+            // ...
+
+            // Disable the view to avoid rendering
+            return false;
         }
     }
 
@@ -453,7 +488,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // ...
 
             // A HTTP Redirect
-            return $this->response->redirect('index/index');
+            return $this->response->redirect("index/index");
         }
     }
 
@@ -473,14 +508,17 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     use Phalcon\Mvc\View\Simple as SimpleView;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new SimpleView();
 
-        $view = new SimpleView();
+            $view->setViewsDir("../app/views/");
 
-        $view->setViewsDir('../app/views/');
-
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 自动渲染必须在 :doc:`Phalcon\\Mvc\\Application <applications>` 被禁用 (如果需要):
 
@@ -488,10 +526,10 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
+    use Exception;
     use Phalcon\Mvc\Application;
 
     try {
-
         $application = new Application($di);
 
         $application->useImplicitView(false);
@@ -499,8 +537,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         $response = $application->handle();
 
         $response->send();
-
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
 
@@ -517,16 +554,26 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         public function indexAction()
         {
             // Render 'views-dir/index.phtml'
-            echo $this->view->render('index');
+            echo $this->view->render("index");
 
             // Render 'views-dir/posts/show.phtml'
-            echo $this->view->render('posts/show');
+            echo $this->view->render("posts/show");
 
             // Render 'views-dir/index.phtml' passing variables
-            echo $this->view->render('index', array('posts' => Posts::find()));
+            echo $this->view->render(
+                "index",
+                [
+                    "posts" => Posts::find(),
+                ]
+            );
 
             // Render 'views-dir/posts/show.phtml' passing variables
-            echo $this->view->render('posts/show', array('posts' => Posts::find()));
+            echo $this->view->render(
+                "posts/show",
+                [
+                    "posts" => Posts::find(),
+                ]
+            );
         }
     }
 
@@ -536,15 +583,17 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
-    $params = array('posts' => Posts::find());
+    $params = [
+        "posts" => Posts::find(),
+    ];
 
     // Phalcon\Mvc\View
     $view = new \Phalcon\Mvc\View();
-    echo $view->render('posts', 'show', $params);
+    echo $view->render("posts", "show", $params);
 
     // Phalcon\Mvc\View\Simple
     $simpleView = new \Phalcon\Mvc\View\Simple();
-    echo $simpleView->render('posts/show', $params);
+    echo $simpleView->render("posts/show", $params);
 
 使用局部模版（Using Partials）
 ------------------------------
@@ -565,11 +614,11 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-方法 partial() 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
+方法 :code:`partial()` 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
-    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')); ?>
+    <?php $this->partial("shared/ad_banner", ["id" => $site->id, "size" => "big"]); ?>
 
 控制器传值给视图（Transfer values from the controller to views）
 ----------------------------------------------------------------
@@ -590,56 +639,44 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
         public function showAction()
         {
-            // Pass all the posts to the views
-            $this->view->setVar(
-                "posts",
-                Posts::find()
-            );
+            $user  = Users::findFirst();
+            $posts = $user->getPosts();
+
+            // Pass all the username and the posts to the views
+            $this->view->setVar("username", $user->username);
+            $this->view->setVar("posts",    $posts;
 
             // Using the magic setter
-            $this->view->posts = Posts::find();
+            $this->view->username = $user->username;
+            $this->view->posts    = $posts;
 
             // Passing more than one variable at the same time
             $this->view->setVars(
-                array(
-                    'title'   => $post->title,
-                    'content' => $post->content
-                )
+                [
+                    "username" => $user->username,
+                    "posts"    => $posts,
+                ]
             );
         }
     }
 
-名为setVar()的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
+名为:code:`setVar()`的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
 
 .. code-block:: html+php
+
+    <h1>
+        {{ username }}'s Posts
+    </h1>
 
     <div class="post">
     <?php
 
         foreach ($posts as $post) {
-            echo "<h1>", $post->title, "</h1>";
+            echo "<h2>", $post->title, "</h2>";
         }
 
     ?>
     </div>
-
-在视图中使用模型（Using models in the view layer）
---------------------------------------------------
-应用模型在视图层也是可用的。:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 将在运行时实例化模型:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-        foreach (Categories::find("status = 1") as $category) {
-            echo "<span class='category'>", $category->name, "</span>";
-        }
-
-    ?>
-    </div>
-
-尽管你可以执行模型处理操作，如在视图层 insert() 或  update()，但这是不推荐，因为在一个错误或异常发生时，它不可能将执行流程转发给另一个控制器。
 
 缓存视图片段（Caching View Fragments）
 --------------------------------------
@@ -665,9 +702,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Cache this view for 1 hour
             $this->view->cache(
-                array(
-                    "lifetime" => 3600
-                )
+                [
+                    "lifetime" => 3600,
+                ]
             );
         }
 
@@ -675,10 +712,10 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
-                array(
+                [
                     "lifetime" => 86400,
-                    "key"      => "resume-cache"
-                )
+                    "key"      => "resume-cache",
+                ]
             );
         }
 
@@ -686,11 +723,11 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         {
             // Passing a custom service
             $this->view->cache(
-                array(
+                [
                     "service"  => "myCache",
                     "lifetime" => 86400,
-                    "key"      => "resume-cache"
-                )
+                    "key"      => "resume-cache",
+                ]
             );
         }
     }
@@ -709,26 +746,28 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
     // Set the views cache service
-    $di->set('viewCache', function () {
+    $di->set(
+        "viewCache",
+        function () {
+            // Cache data for one day by default
+            $frontCache = new OutputFrontend(
+                [
+                    "lifetime" => 86400,
+                ]
+            );
 
-        // Cache data for one day by default
-        $frontCache = new OutputFrontend(
-            array(
-                "lifetime" => 86400
-            )
-        );
+            // Memcached connection settings
+            $cache = new MemcacheBackend(
+                $frontCache,
+                [
+                    "host" => "localhost",
+                    "port" => "11211",
+                ]
+            );
 
-        // Memcached connection settings
-        $cache = new MemcacheBackend(
-            $frontCache,
-            array(
-                "host" => "localhost",
-                "port" => "11211"
-            )
-        );
-
-        return $cache;
-    });
+            return $cache;
+        }
+    );
 
 .. highlights::
     前端 :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` 和服务 'viewCache' 必须在服务容器（DI）注册为
@@ -749,13 +788,12 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function indexAction()
         {
             // Check whether the cache with key "downloads" exists or has expired
-            if ($this->view->getCache()->exists('downloads')) {
-
+            if ($this->view->getCache()->exists("downloads")) {
                 // Query the latest downloads
                 $latest = Downloads::find(
-                    array(
-                        'order' => 'created_at DESC'
-                    )
+                    [
+                        "order" => "created_at DESC",
+                    ]
                 );
 
                 $this->view->latest = $latest;
@@ -763,9 +801,9 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
             // Enable the cache with the same key "downloads"
             $this->view->cache(
-                array(
-                    'key' => 'downloads'
-                )
+                [
+                    "key" => "downloads",
+                ]
             );
         }
     }
@@ -797,6 +835,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Engine;
 
     class MyTemplateAdapter extends Engine
@@ -807,7 +846,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\Di $di
          */
-        public function __construct($view, $di)
+        public function __construct($view, DiInterface $di)
         {
             // Initialize here the adapter
             parent::__construct($view, $di);
@@ -822,7 +861,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         public function render($path, $params)
         {
             // Access view
-            $view    = $this->_view;
+            $view = $this->_view;
 
             // Access options
             $options = $this->_options;
@@ -834,38 +873,6 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 替换模版引擎（Changing the Template Engine）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-你可以像下面一样从控制器更换或者添加更多的模板引擎：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class PostsController extends Controller
-    {
-        public function indexAction()
-        {
-            // Set the engine
-            $this->view->registerEngines(
-                array(
-                    ".my-html" => "MyTemplateAdapter"
-                )
-            );
-        }
-
-        public function showAction()
-        {
-            // Using more than one template engine
-            $this->view->registerEngines(
-                array(
-                    ".my-html" => 'MyTemplateAdapter',
-                    ".phtml"   => 'Phalcon\Mvc\View\Engine\Php'
-                )
-            );
-        }
-    }
-
 你可以完全更换模板引擎或同时使用多个模板引擎。方法 :code:`Phalcon\Mvc\View::registerEngines()` 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
 
 :code:`Phalcon\Mvc\View::registerEngines()` 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
@@ -879,21 +886,33 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     use Phalcon\Mvc\View;
 
     // Setting up the view component
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            $view = new View();
 
-        $view = new View();
+            // A trailing directory separator is required
+            $view->setViewsDir("../app/views/");
 
-        // A trailing directory separator is required
-        $view->setViewsDir('../app/views/');
+            // Set the engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                ]
+            );
 
-        $view->registerEngines(
-            array(
-                ".my-html" => 'MyTemplateAdapter'
-            )
-        );
+            // Using more than one template engine
+            $view->registerEngines(
+                [
+                    ".my-html" => "MyTemplateAdapter",
+                    ".phtml"   => "Phalcon\\Mvc\\View\\Engine\\Php",
+                ]
+            );
 
-        return $view;
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 在 `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_ 有一些适配器可用于数个模板引擎
 
@@ -937,7 +956,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
-    $view->setVar("someProducts", $products);
+    $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
     // Start the output buffering
@@ -961,15 +980,21 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     $view = new View();
 
-    echo $view->getRender('products', 'list',
-        array(
+    echo $view->getRender(
+        "products",
+        "list",
+        [
             "someProducts"       => $products,
-            "someFeatureEnabled" => true
-        ),
+            "someFeatureEnabled" => true,
+        ],
         function ($view) {
             // Set any extra options here
+
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(View::LEVEL_LAYOUT);
+
+            $view->setRenderLevel(
+                View::LEVEL_LAYOUT
+            );
         }
     );
 
@@ -994,10 +1019,10 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     // Render a view passing parameters
     echo $view->render(
         "templates/welcomeMail",
-        array(
-            'email'   => $email,
-            'content' => $content
-        )
+        [
+            "email"   => $email,
+            "content" => $content,
+        ]
     );
 
 视图事件（View Events）
@@ -1024,28 +1049,35 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
-    use Phalcon\Mvc\View;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\View;
 
-    $di->set('view', function () {
+    $di->set(
+        "view",
+        function () {
+            // Create an events manager
+            $eventsManager = new EventsManager();
 
-        // Create an events manager
-        $eventsManager = new EventsManager();
+            // Attach a listener for type "view"
+            $eventsManager->attach(
+                "view",
+                function (Event $event, $view) {
+                    echo $event->getType(), " - ", $view->getActiveRenderPath(), PHP_EOL;
+                }
+            );
 
-        // Attach a listener for type "view"
-        $eventsManager->attach("view", function ($event, $view) {
-            echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
-        });
+            $view = new View();
 
-        $view = new View();
-        $view->setViewsDir("../app/views/");
+            $view->setViewsDir("../app/views/");
 
-        // Bind the eventsManager to the view component
-        $view->setEventsManager($eventsManager);
+            // Bind the eventsManager to the view component
+            $view->setEventsManager($eventsManager);
 
-        return $view;
-
-    }, true);
+            return $view;
+        },
+        true
+    );
 
 下面的示例演示如何创建一个插件 Tidy_ ，清理/修复的渲染过程中产生的HTML：
 
@@ -1053,26 +1085,38 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class TidyPlugin
     {
-        public function afterRender($event, $view)
+        public function afterRender(Event $event, $view)
         {
-            $tidyConfig = array(
-                'clean'          => true,
-                'output-xhtml'   => true,
-                'show-body-only' => true,
-                'wrap'           => 0
+            $tidyConfig = [
+                "clean"          => true,
+                "output-xhtml"   => true,
+                "show-body-only" => true,
+                "wrap"           => 0,
+            ];
+
+            $tidy = tidy_parse_string(
+                $view->getContent(),
+                $tidyConfig,
+                "UTF8"
             );
 
-            $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');
             $tidy->cleanRepair();
 
-            $view->setContent((string) $tidy);
+            $view->setContent(
+                (string) $tidy
+            );
         }
     }
 
     // Attach the plugin as a listener
-    $eventsManager->attach("view:afterRender", new TidyPlugin());
+    $eventsManager->attach(
+        "view:afterRender",
+        new TidyPlugin()
+    );
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/

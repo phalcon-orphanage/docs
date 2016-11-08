@@ -17,7 +17,7 @@ This class takes a PHQL intermediate representation and executes it.
      $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
               WHERE b.name = :name: ORDER BY c.name";
     
-     $result = manager->executeQuery($phql, array(
+     $result = $manager->executeQuery($phql, array(
        "name" => "Lamborghini"
      ));
     
@@ -43,7 +43,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*unknown* $options])
+public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*mixed* $options])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -61,7 +61,7 @@ Returns the dependency injection container
 
 
 
-public  **setUniqueRow** (*unknown* $uniqueRow)
+public  **setUniqueRow** (*mixed* $uniqueRow)
 
 Tells to the query if only the first row in the resultset must be returned
 
@@ -75,29 +75,29 @@ Check if the query is programmed to get only the first row in the resultset
 
 final protected  **_getQualified** (*array* $expr)
 
-Replaces the model's name to its source name in a qualifed-name expression
+Replaces the model's name to its source name in a qualified-name expression
 
 
 
 final protected  **_getCallArgument** (*array* $argument)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 
 final protected  **_getCaseExpression** (*array* $expr)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 
 final protected  **_getFunctionCall** (*array* $expr)
 
-Resolves a expression in a single call argument
+Resolves an expression in a single call argument
 
 
 
-final protected *string*  **_getExpression** (*array* $expr, [*boolean* $quoting])
+final protected *string* **_getExpression** (*array* $expr, [*boolean* $quoting])
 
 Resolves an expression from its intermediate code into a string
 
@@ -109,43 +109,43 @@ Resolves a column from its intermediate representation into an array used to det
 
 
 
-final protected *string*  **_getTable** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $qualifiedName)
+final protected *string* **_getTable** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $qualifiedName)
 
 Resolves a table in a SELECT statement checking if the model exists
 
 
 
-final protected  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *unknown* $join)
+final protected  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *mixed* $join)
 
 Resolves a JOIN clause checking if the associated models exist
 
 
 
-final protected *string*  **_getJoinType** (*array* $join)
+final protected *string* **_getJoinType** (*array* $join)
 
 Resolves a JOIN type
 
 
 
-final protected *array*  **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
+final protected *array* **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving has-one/belongs-to/has-many relations
 
 
 
-final protected *array*  **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
+final protected *array* **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving many-to-many relations
 
 
 
-final protected *array*  **_getJoins** (*array* $select)
+final protected *array* **_getJoins** (*array* $select)
 
 Processes the JOINs in the query returning an internal representation for the database dialect
 
 
 
-final protected *array*  **_getOrderClause** (*array|string* $order)
+final protected *array* **_getOrderClause** (*array* | *string* $order)
 
 Returns a processed order clause for a SELECT statement
 
@@ -163,7 +163,7 @@ Returns a processed limit clause for a SELECT statement
 
 
 
-final protected  **_prepareSelect** ([*unknown* $ast], [*unknown* $merge])
+final protected  **_prepareSelect** ([*mixed* $ast], [*mixed* $merge])
 
 Analyzes a SELECT intermediate code and produces an array to be executed later
 
@@ -199,49 +199,49 @@ Returns the current cache backend instance
 
 
 
-final protected  **_executeSelect** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes, [*unknown* $simulate])
+final protected  **_executeSelect** (*mixed* $intermediate, *mixed* $bindParams, *mixed* $bindTypes, [*mixed* $simulate])
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\\Resultset
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>` **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>` **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>` **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>` **_getRelatedRecords** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Query the records on which the UPDATE/DELETE operation well be done
 
 
 
-public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
+public *mixed* **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes the query returning the first result
 
 
 
-public  **setType** (*unknown* $type)
+public  **setType** (*mixed* $type)
 
 Sets the type of PHQL statement to be executed
 
@@ -253,25 +253,31 @@ Gets the type of PHQL statement executed
 
 
 
-public  **setBindParams** (*array* $bindParams, [*unknown* $merge])
+public  **setBindParams** (*array* $bindParams, [*mixed* $merge])
 
 Set default bind parameters
 
 
 
-public *array*  **getBindParams** ()
+public *array* **getBindParams** ()
 
 Returns default bind params
 
 
 
-public  **setBindTypes** (*array* $bindTypes, [*unknown* $merge])
+public  **setBindTypes** (*array* $bindTypes, [*mixed* $merge])
 
 Set default bind parameters
 
 
 
-public *array*  **getBindTypes** ()
+public  **setSharedLock** ([*mixed* $sharedLock])
+
+Set SHARED LOCK clause
+
+
+
+public *array* **getBindTypes** ()
 
 Returns default bind types
 
@@ -283,13 +289,13 @@ Allows to set the IR to be executed
 
 
 
-public *array*  **getIntermediate** ()
+public *array* **getIntermediate** ()
 
 Returns the intermediate representation of the PHQL statement
 
 
 
-public  **cache** (*unknown* $cacheOptions)
+public  **cache** (*mixed* $cacheOptions)
 
 Sets the cache parameters of the query
 
@@ -304,6 +310,12 @@ Returns the current cache options
 public  **getSql** ()
 
 Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
+
+
+
+public static  **clean** ()
+
+Destroys the internal PHQL cache
 
 
 

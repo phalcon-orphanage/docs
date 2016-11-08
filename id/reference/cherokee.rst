@@ -1,57 +1,57 @@
-Cherokee Installation Notes
-===========================
+Catatan Instalasi Cherokee
+==========================
 
-Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
+Cherokee_ adalah web server berkinerja tinggi. Ia sangat cepat, fleksibel dan mudah dikonfigurasi.
 
-Configuring Cherokee for Phalcon
---------------------------------
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
-Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin
+Mengkonfigurasi Cherokee untuk Phalcon
+--------------------------------------
+Cherokee menyediakan antarmuka grafis bersahabat untuk mengkonfigurasi hampir semua pengaturan yang tersedia di web server ini.
+Mulai sebagai administrator cherokee dengan menjalankan sebagai root /path-to-cherokee/sbin/cherokee-admin
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center
 
-Create a new virtual host by clicking on 'vServers', then add a new virtual server:
+Menitpakan virtual host baru dengan mengklik pada 'vServers', lalu menambahkan virtual server baru:
 
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab
-you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button.
-Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+Virtual server yang baru ditambahkan muncul di sisi kiri layar. Di tab 'Behaviors'
+anda akan melihat default behaviors untuk virtual server ini. Klik tombol 'Rule Management'.
+Hapus yang ditandai sebagai 'Directory /cherokee_themes' dan 'Directory /icons':
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Add the 'PHP Language' behavior using the wizard. This behavior allow you to run PHP applications:
+Tambahkan 'PHP Language' behavior menggunakan wizard. Behavior ini memungkinkan anda menjalankan aplikasi PHP:
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normally this behavior does not require additional settings. Add another behavior,
-this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
-then make sure the option 'Match any file' is enabled:
+Normalnya behavior ini tidak membutuhkan pengaturan tambahan. Tambahkan behavior lain,
+kali ini dibagian 'Manual Configuration'. Di 'Rule Type' pilih 'File Exists',
+lalu pastikan pilihan 'Match any file' dihidupkan:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
-In the 'Handler' tab choose 'List & Send' as handler:
+Di tab 'Handler' pilih 'List & Send' sebagai handler:
 
 .. figure:: ../_static/img/cherokee-7.jpg
     :align: center
 
-Edit the 'Default' behavior in order to enable the URL-rewrite engine. Change the handler to 'Redirection',
-then add the following regular expression to the engine ^(.*)$:
+Edit behavior default 'Default' untuk menghidupkan URL-rewrite engine. Ubah handler ke 'Redirection',
+lalu tambahkan regular expression berikut ke engine ^(.*)$:
 
 .. figure:: ../_static/img/cherokee-6.jpg
     :align: center
 
-Finally, make sure the behaviors have the following order:
+Akhirnya, pastikan behavior memiliki urutan berikut:
 
 .. figure:: ../_static/img/cherokee-8.jpg
     :align: center
 
-Execute the application in a browser:
+Eksekusi aplikasi di browser:
 
 .. figure:: ../_static/img/cherokee-9.jpg
     :align: center

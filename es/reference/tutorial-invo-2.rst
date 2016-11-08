@@ -26,16 +26,19 @@ autocargador también vamos a tomar los parámetros del archivo de configuració
     // ...
 
     // La conexión a la base de datos es creada basada en los parámetros definidos en el archivo de configuración
-    $di->set('db', function () use ($config) {
-        return new DbAdapter(
-            array(
-                "host"     => $config->database->host,
-                "username" => $config->database->username,
-                "password" => $config->database->password,
-                "dbname"   => $config->database->name
-            )
-        );
-    });
+    $di->set(
+        "db",
+        function () use ($config) {
+            return new DbAdapter(
+                [
+                    "host"     => $config->database->host,
+                    "username" => $config->database->username,
+                    "password" => $config->database->password,
+                    "dbname"   => $config->database->name,
+                ]
+            );
+        }
+    );
 
 Este servicio retorna una instancia del adaptador de conexión a MySQL. De llegar a ser requerido, puedes hacer acciones extra como agregar un
 logger, un profiler, cambiar el adaptador, agregar más opciones de configuración, etc.
@@ -45,25 +48,35 @@ Hemos quitado algo de HTML para hacer el ejemplo más simple:
 
 .. code-block:: html+jinja
 
-    {{ form('session/start') }}
+    {{ form("session/start") }}
         <fieldset>
             <div>
-                <label for="email">Nombre de usuario/Correo electrónico</label>
+                <label for="email">
+                    Nombre de usuario/Correo electrónico
+                </label>
+
                 <div>
-                    {{ text_field('email') }}
+                    {{ text_field("email") }}
                 </div>
             </div>
+
             <div>
-                <label for="password">Contraseña</label>
+                <label for="password">
+                    Contraseña
+                </label>
+
                 <div>
-                    {{ password_field('password') }}
+                    {{ password_field("password") }}
                 </div>
             </div>
+
+
+
             <div>
-                {{ submit_button('Autenticar') }}
+                {{ submit_button("Autenticar") }}
             </div>
         </fieldset>
-    </form>
+    {{ endForm() }}
 
 Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
@@ -83,11 +96,11 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
         private function _registerSession($user)
         {
             $this->session->set(
-                'auth',
-                array(
-                    'id'   => $user->id,
-                    'name' => $user->name
-                )
+                "auth",
+                [
+                    "id"   => $user->id,
+                    "name" => $user->name,
+                ]
             );
         }
 
@@ -97,46 +110,48 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
         public function startAction()
         {
             if ($this->request->isPost()) {
-
                 // Recibir los datos ingresados por el usuario
-                $email    = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email    = $this->request->getPost("email");
+                $password = $this->request->getPost("password");
 
                 // Buscar el usuario en la base de datos
                 $user = Users::findFirst(
-                    array(
+                    [
                         "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-                        'bind' => array(
-                            'email'    => $email,
-                            'password' => sha1($password)
-                        )
-                    )
+                        "bind" => [
+                            "email"    => $email,
+                            "password" => sha1($password),
+                        ]
+                    ]
                 );
 
-                if ($user != false) {
-
+                if ($user !== false) {
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome ' . $user->name);
+                    $this->flash->success(
+                        "Welcome " . $user->name
+                    );
 
                     // Redireccionar la ejecución si el usuario es valido
                     return $this->dispatcher->forward(
-                        array(
-                            'controller' => 'invoices',
-                            'action'     => 'index'
-                        )
+                        [
+                            "controller" => "invoices",
+                            "action"     => "index",
+                        ]
                     );
                 }
 
-                $this->flash->error('Wrong email/password');
+                $this->flash->error(
+                    "Wrong email/password"
+                );
             }
 
             // Redireccionar a el forma de login nuevamente
             return $this->dispatcher->forward(
-                array(
-                    'controller' => 'session',
-                    'action'     => 'index'
-                )
+                [
+                    "controller" => "session",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -158,11 +173,11 @@ Por ejemplo, aquí invocamos el servicio "session" y luego almacenamos la identi
     <?php
 
     $this->session->set(
-        'auth',
-        array(
-            'id'   => $user->id,
-            'name' => $user->name
-        )
+        "auth",
+        [
+            "id"   => $user->id,
+            "name" => $user->name,
+        ]
     );
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -180,8 +195,8 @@ Then, we receive the parameters from the form:
 
     <?php
 
-    $email    = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    $email    = $this->request->getPost("email");
+    $password = $this->request->getPost("password");
 
 Now, we have to check if there is one user with the same username or email and password:
 
@@ -190,13 +205,13 @@ Now, we have to check if there is one user with the same username or email and p
     <?php
 
     $user = Users::findFirst(
-        array(
+        [
             "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-            'bind' => array(
-                'email'    => $email,
-                'password' => sha1($password)
-            )
-        )
+            "bind" => [
+                "email"    => $email,
+                "password" => sha1($password),
+            ]
+        ]
     );
 
 Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
@@ -209,11 +224,19 @@ If the user is valid we register it in session and forwards him/her to the dashb
 
     <?php
 
-    if ($user != false) {
+    if ($user !== false) {
         $this->_registerSession($user);
-        $this->flash->success('Welcome ' . $user->name);
 
-        return $this->forward('invoices/index');
+        $this->flash->success(
+            "Welcome " . $user->name
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "invoices",
+                "action"     => "index",
+            ]
+        );
     }
 
 If the user does not exist we forward the user back again to action where the form is displayed:
@@ -222,7 +245,12 @@ If the user does not exist we forward the user back again to action where the fo
 
     <?php
 
-    return $this->forward('session/index');
+    return $this->dispatcher->forward(
+        [
+            "controller" => "session",
+            "action"     => "index",
+        ]
+    );
 
 Asegurando el Backend
 ---------------------
@@ -258,14 +286,16 @@ reemplazaremos la creación automática y crearemos una función en el bootstrap
     /**
      * MVC dispatcher
      */
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // ...
 
-        // ...
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 Ahora tenemos total control sobre como el Dispatcher es inicializado y usado en la aplicación. Muchos componentes del framework lanzan
 eventos que nos permiten cambiar el funcionamiento interno o su operación. Así como el inyector de dependencias funciona como intermedario
@@ -284,24 +314,32 @@ nos interesa ahora es "dispatch", el siguiente código filtra todos los eventos 
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
-    $di->set('dispatcher', function () {
+    $di->set(
+        "dispatcher",
+        function () {
+            // Crear un administrador de eventos
+            $eventsManager = new EventsManager();
 
-        // Crear un administrador de eventos
-        $eventsManager = new EventsManager();
+            // Enviar todos los eventos producidos en el Dispatcher al plugin Security
+            $eventsManager->attach(
+                "dispatch:beforeExecuteRoute",
+                new SecurityPlugin()
+            );
 
-        // Enviar todos los eventos producidos en el Dispatcher al plugin Security
-        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+            // Handle exceptions and not-found exceptions using NotFoundPlugin
+            $eventsManager->attach(
+                "dispatch:beforeException",
+                new NotFoundPlugin()
+            );
 
-        // Handle exceptions and not-found exceptions using NotFoundPlugin
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+            $dispatcher = new Dispatcher();
 
-        $dispatcher = new Dispatcher();
+            // Asignar el administrador de eventos al dispatcher
+            $dispatcher->setEventsManager($eventsManager);
 
-        // Asignar el administrador de eventos al dispatcher
-        $dispatcher->setEventsManager($eventsManager);
-
-        return $dispatcher;
-    });
+            return $dispatcher;
+        }
+    );
 
 When an event called "beforeExecuteRoute" is triggered the following plugin will be notified:
 
@@ -312,7 +350,10 @@ When an event called "beforeExecuteRoute" is triggered the following plugin will
     /**
      * Check if the user is allowed to access certain action using the SecurityPlugin
      */
-    $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeExecuteRoute",
+        new SecurityPlugin()
+    );
 
 When a "beforeException" is triggered then other plugin is notified:
 
@@ -323,7 +364,10 @@ When a "beforeException" is triggered then other plugin is notified:
     /**
      * Handle exceptions and not-found exceptions using NotFoundPlugin
      */
-    $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+    $eventsManager->attach(
+        "dispatch:beforeException",
+        new NotFoundPlugin()
+    );
 
 El plugin Security es una clase úbicada en (app/plugins/SecurityPlugin.php). Esta clase implementa el método
 "beforeExecuteRoute". Este tiene el mismo nombre de uno de los eventos producidos en el dispatcher:
@@ -370,31 +414,35 @@ Si no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos an
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // Verificar si la variable de sesión "auth" está definida, esto indica si hay un usuario autenticado
-            $auth = $this->session->get('auth');
+            $auth = $this->session->get("auth");
+
             if (!$auth) {
-                $role = 'Guests';
+                $role = "Guests";
             } else {
-                $role = 'Users';
+                $role = "Users";
             }
 
             // Obtener el controlador y acción actual desde el Dispatcher
             $controller = $dispatcher->getControllerName();
-            $action = $dispatcher->getActionName();
+            $action     = $dispatcher->getActionName();
 
             // Obtener la lista ACL
             $acl = $this->getAcl();
 
             // Verificar si el pérfil (role) tiene acceso al controlador/acción
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Acl::ALLOW) {
 
+            if (!$allowed) {
                 // Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
-                $this->flash->error("No tienes acceso a este módulo.");
+                $this->flash->error(
+                    "No tienes acceso a este módulo."
+                );
+
                 $dispatcher->forward(
-                    array(
-                        'controller' => 'index',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "index",
+                        "action"     => "index",
+                    ]
                 );
 
                 // Devolver "false" le indica al Dispatcher que debe detener la operación y evitar que la acción se ejecute
@@ -420,14 +468,16 @@ implementado en el plugin. Ahora, explicaremos paso a paso como construir la lis
     $acl = new AclList();
 
     // La acción por defecto es denegar (DENY)
-    $acl->setDefaultAction(Acl::DENY);
+    $acl->setDefaultAction(
+        Acl::DENY
+    );
 
     // Registrar dos roles, 'users' son usuarios registrados
     // y 'guests' son los usuarios sin un pérfil definido (invitados)
-    $roles = array(
-        'users'  => new Role('Users'),
-        'guests' => new Role('Guests')
-    );
+    $roles = [
+        "users"  => new Role("Users"),
+        "guests" => new Role("Guests"),
+    ];
 
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -445,27 +495,37 @@ accesos a los recursos:
     // ...
 
     // Recursos del área privada (backend)
-    $privateResources = array(
-      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices'     => array('index', 'profile')
-    );
-    foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $privateResources = [
+        "companies"    => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "products"     => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "producttypes" => ["index", "search", "new", "edit", "save", "create", "delete"],
+        "invoices"     => ["index", "profile"],
+    ];
+
+    foreach ($privateResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
+
+
     // Recursos del área pública (frontend)
-    $publicResources = array(
-        'index'    => array('index'),
-        'about'    => array('index'),
-        'register' => array('index'),
-        'errors'   => array('show404', 'show500'),
-        'session'  => array('index', 'register', 'start', 'end'),
-        'contact'  => array('index', 'send')
-    );
-    foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
+    $publicResources = [
+        "index"    => ["index"],
+        "about"    => ["index"],
+        "register" => ["index"],
+        "errors"   => ["show404", "show500"],
+        "session"  => ["index", "register", "start", "end"],
+        "contact"  => ["index", "send"],
+    ];
+
+    foreach ($publicResources as $resourceName => $actions) {
+        $acl->addResource(
+            new Resource($resourceName),
+            $actions
+        );
     }
 
 El ACL ahora tiene conocimiento de los controladores existentes y sus acciones. El perfil "Users" tiene acceso tanto
@@ -478,14 +538,22 @@ al backend y al frontend. El perfil "Guests" solo tiene acceso al área pública
     // Permitir acceso al área pública tanto a usuarios como a invitados
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
-            $acl->allow($role->getName(), $resource, '*');
+            $acl->allow(
+                $role->getName(),
+                $resource,
+                "*"
+            );
         }
     }
 
     // Permitir acceso al área privada solo al pérfil "Users"
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
-            $acl->allow('Users', $resource, $action);
+            $acl->allow(
+                "Users",
+                $resource,
+                $action
+            );
         }
     }
 
