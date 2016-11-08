@@ -1,10 +1,10 @@
-Seja Bem Vindo!
-===============
+Seja Bem Vindo
+==============
 
 Bem vindo ao Phalcon framework, um novo conceito em framework para PHP. Nossa missão é oferecer uma ferramenta avançada em desenvolvimento de web sites e aplicações sem as preocupações quanto a performance.  
 
-O que é o Phalcon?
-------------------
+O que é o Phalcon
+-----------------
 
 Phalcon é open source (código aberto), full stack framework (framework completo com todas funcionalidades necessárias para escrever uma aplicação completa) desenvolvido na forma de uma extensão em C (C-extension) para PHP 5, otimizado para alta performance. Você não precisa aprender a linguagem C e nem mesmo usa-la, pois todas as funcionalidades compiladas em C são expostas como classes em PHP pronta para seu uso. Phalcon possui baixo acoplamento, permitindo você utilizar seus objetos como componentes completamente independentes baseado na necessidades da sua aplicação.
 

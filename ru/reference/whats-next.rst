@@ -106,9 +106,9 @@ YSlow_ анализирует веб-страницу и показывает с
 Этот инструмент очень полезен, так как он позволяет получать в реальном времени параметры, используемые для отображения полной страницы, включая разбор HTML,
 оценку Javascript и CSS стилей.
 
-Use a recent PHP version
-------------------------
-PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
+Использование PHP последней версии
+----------------------------------
+PHP быстрее с каждым днем, использование последней версии повышает производительность вашего приложения, а также и Phalcon.
 
 Использование акселераторов PHP
 -------------------------------
@@ -121,10 +121,10 @@ APC_, как и многие другие PHP акселераторы, помо
 
 PHP 5.5 включает в себя встроенный кэшер байт-кода под названием ZendOptimizer+, это расширение также доступно для версий 5.3 и 5.4.
 
-Do blocking work in the background
-----------------------------------
-Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs.
-There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+Выполнение блокируюших задач в фоне
+-----------------------------------
+Обработка видео, отправка почты, сжатие файла или изображения и т.д. - все это медленные задачи, которые должны выполняться в фоне.
+Имеется ряд инструментов, предоставляющих системы очередей и сообщений, которые отлично работают с PHP:
 
 * `Beanstalkd <http://kr.github.io/beanstalkd/>`_
 * `Redis <http://redis.io/>`_
@@ -135,8 +135,8 @@ There are a variety of tools that provide queuing or messaging systems that work
 
 Модуль Google Page Speed
 ------------------------
-mod_pagespeed_ увеличивает скорость вашего сайта и уменьшает время загрузки страницы. Это open-source модуль для HTTP-сервера Apache (also available
-for nginx as ngx_pagespeed_), он использует для повышения производительности лучшие практики обработки страниц и соответствующих ресурсов (CSS, JavaScript, изображений), не требуя
+mod_pagespeed_ увеличивает скорость вашего сайта и уменьшает время загрузки страницы. Это open-source модуль для HTTP-сервера Apache (также доступен
+для nginx в виде ngx_pagespeed_), он использует для повышения производительности лучшие практики обработки страниц и соответствующих ресурсов (CSS, JavaScript, изображений), не требуя
 ручной модификации уже существующего контента или настроек.
 
 .. _firebug: http://getfirebug.com/
