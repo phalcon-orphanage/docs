@@ -1,29 +1,29 @@
-Utilisation de Contrôleurs
+Utilisation de ContrÃ´leurs
 ==========================
 
-Les contrôleurs fournissent un certain nombre de méthodes qui sont appelées actions. Les actions sont des méthodes du contrôleur qui traitent les requêtes.
-Par défaut toutes les méthodes publiques d'un contrôleur sont reliées à des actions et sont accessibles par URL. Les actions sont responsables
-de l'interprétation de la requête et de la création de la réponse. Habituellement les réponses sont sous la forme de vues mais il existe d'autres façons de créer des réponses adaptées.
+Les contrÃ´leurs fournissent un certain nombre de mÃ©thodes qui sont appelÃ©es actions. Les actions sont des mÃ©thodes du contrÃ´leur qui traitent les requÃªtes.
+Par dÃ©faut toutes les mÃ©thodes publiques d'un contrÃ´leur sont reliÃ©es Ã  des actions et sont accessibles par URL. Les actions sont responsables
+de l'interprÃ©tation de la requÃªte et de la crÃ©ation de la rÃ©ponse. Habituellement les rÃ©ponses sont sous la forme de vues mais il existe d'autres faÃ§ons de crÃ©er des rÃ©ponses adaptÃ©es.
 
-Par exemple, en accédant à une URL comme ceci: http://localhost/blog/posts/show/2015/the-post-title Phalcon par défaut décomposera chaque 
+Par exemple, en accÃ©dant Ã  une URL comme ceci: http://localhost/blog/posts/show/2015/the-post-title Phalcon par dÃ©faut dÃ©composera chaque 
 partie comme ceci:
 
 +------------------------+----------------+
-| **Répertoire Phalcon** | blog           |
+| **RÃ©pertoire Phalcon** | blog           |
 +------------------------+----------------+
-| **Contrôleur**         | posts          |
+| **ContrÃ´leur**         | posts          |
 +------------------------+----------------+
 | **Action**             | show           |
 +------------------------+----------------+
-| **Paramètre**          | 2015           |
+| **ParamÃ¨tre**          | 2015           |
 +------------------------+----------------+
-| **Paramètre**          | the-post-title |
+| **ParamÃ¨tre**          | the-post-title |
 +------------------------+----------------+
 
-Dans ce cas, le contrôleur "PostsController" gèrera cette requête. Il n'y a pas d'emplacement particulier pour placer les contrôleurs dans une application,
-ils seraient chargés grâçe à un :doc:`chargeur automatique <loader>`, et donc vous restez libre d'organiser vos contrôleurs selon vos besoins.
+Dans ce cas, le contrÃ´leur "PostsController" gÃ¨rera cette requÃªte. Il n'y a pas d'emplacement particulier pour placer les contrÃ´leurs dans une application,
+ils seraient chargÃ©s grÃ¢Ã§e Ã  un :doc:`chargeur automatique <loader>`, et donc vous restez libre d'organiser vos contrÃ´leurs selon vos besoins.
 
-Les contrôleurs doivent posséder le suffixe "Controller", et les actions le suffixe "Action". Un exemple de contrôleur se trouve ci-après:
+Les contrÃ´leurs doivent possÃ©der le suffixe "Controller", et les actions le suffixe "Action". Un exemple de contrÃ´leur se trouve ci-aprÃ¨s:
 
 .. code-block:: php
 
@@ -44,11 +44,11 @@ Les contrôleurs doivent posséder le suffixe "Controller", et les actions le suff
         }
     }
 
-Les paramètres supplémentaires de l'URI sont définis comme des paramètres de l'action, ainsi ils restent facilement accessibles en utilisant des variables locales.
-Un contrôleur peut éventuellement étendre :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. En faisant ceci, le contrôleur accède
+Les paramÃ¨tres supplÃ©mentaires de l'URI sont dÃ©finis comme des paramÃ¨tres de l'action, ainsi ils restent facilement accessibles en utilisant des variables locales.
+Un contrÃ´leur peut Ã©ventuellement Ã©tendre :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. En faisant ceci, le contrÃ´leur accÃ¨de
 facilement aux services de l'application.
 
-Les paramètres sans valeur par défaut sont correctement gérés. La définition de paramètres optionels se fait comme d'habitude en PHP:
+Les paramÃ¨tres sans valeur par dÃ©faut sont correctement gÃ©rÃ©s. La dÃ©finition de paramÃ¨tres optionels se fait comme d'habitude en PHP:
 
 .. code-block:: php
 
@@ -69,7 +69,7 @@ Les paramètres sans valeur par défaut sont correctement gérés. La définition de 
         }
     }
 
-Les paramètres sont assignés dans le même ordre qu'ils sont transmis dans la route. Vous pouvez récupérer arbitrairement des paramètres de la façon suivante:
+Les paramÃ¨tres sont assignÃ©s dans le mÃªme ordre qu'ils sont transmis dans la route. Vous pouvez rÃ©cupÃ©rer arbitrairement des paramÃ¨tres de la faÃ§on suivante:
 
 .. code-block:: php
 
@@ -91,11 +91,11 @@ Les paramètres sont assignés dans le même ordre qu'ils sont transmis dans la rou
         }
     }
 
-Boucle de répartition (dispatch)
+Boucle de rÃ©partition (dispatch)
 --------------------------------
-La boucle de répartition sera exécutée dans le "Dispatcher" tant qu'il reste des actions à exécuter. Dans l'exemple précédent, seule une
-action était exécutée. Voyons maintenant comment la méthode :code:`forward()` peut fournir un flot plus complexe d'opération à la boucle de répartition en faisant
-suivre le fil d'exécution à un autre contrôleur ou une autre action.
+La boucle de rÃ©partition sera exÃ©cutÃ©e dans le "Dispatcher" tant qu'il reste des actions Ã  exÃ©cuter. Dans l'exemple prÃ©cÃ©dent, seule une
+action Ã©tait exÃ©cutÃ©e. Voyons maintenant comment la mÃ©thode :code:`forward()` peut fournir un flot plus complexe d'opÃ©ration Ã  la boucle de rÃ©partition en faisant
+suivre le fil d'exÃ©cution Ã  un autre contrÃ´leur ou une autre action.
 
 .. code-block:: php
 
@@ -113,10 +113,10 @@ suivre le fil d'exécution à un autre contrôleur ou une autre action.
         public function showAction($year, $postTitle)
         {
             $this->flash->error(
-				"Vous n'avez pas la permission d'accéder à cette zone"
+				"Vous n'avez pas la permission d'accÃ©der Ã  cette zone"
 			);
 
-            // Redirection du flux à une autre action
+            // Redirection du flux Ã  une autre action
             $this->dispatcher->forward(
                 [
                     "controller" => "users",
@@ -126,7 +126,7 @@ suivre le fil d'exécution à un autre contrôleur ou une autre action.
         }
     }
 
-Si les utilisateurs n'ont pas la permission d'accéder à une certaine action, ils seront redirigés vers le contrôleur "Users", action "signin".
+Si les utilisateurs n'ont pas la permission d'accÃ©der Ã  une certaine action, ils seront redirigÃ©s vers le contrÃ´leur "Users", action "signin".
 
 .. code-block:: php
 
@@ -147,14 +147,14 @@ Si les utilisateurs n'ont pas la permission d'accéder à une certaine action, ils
         }
     }
 
-Votre application n'est pas limitée en nombre de "forward", tant qu'il n'y a pas de références circulaires, sinon votre application sera arrêtée.
-S'il ne reste plus d'action à répartir dans la boucle, le répartiteur invoquera automatiquement la couche vue du MVC qui est gérée par
+Votre application n'est pas limitÃ©e en nombre de "forward", tant qu'il n'y a pas de rÃ©fÃ©rences circulaires, sinon votre application sera arrÃªtÃ©e.
+S'il ne reste plus d'action Ã  rÃ©partir dans la boucle, le rÃ©partiteur invoquera automatiquement la couche vue du MVC qui est gÃ©rÃ©e par
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
-Initialisation des contrôleurs
+Initialisation des contrÃ´leurs
 ------------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` propose une méthode d'initialisation qui est exécutée en premier avant n'importe quelle
-action du contôleur. L'utilisation de la méthode "__construct" est à proscrire.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` propose une mÃ©thode d'initialisation qui est exÃ©cutÃ©e en premier avant n'importe quelle
+action du contÃ´leur. L'utilisation de la mÃ©thode "__construct" est Ã  proscrire.
 
 .. code-block:: php
 
@@ -183,11 +183,11 @@ action du contôleur. L'utilisation de la méthode "__construct" est à proscrire.
 
 .. highlights::
 
-    La méthode "initialize" n'est appelée que si l'événement "beforeExecuteRoute" est exécuté avec succès.
-    Ceci évite l'éxecution de l'initialiseur sans autorisation.
+    La mÃ©thode "initialize" n'est appelÃ©e que si l'Ã©vÃ©nement "beforeExecuteRoute" est exÃ©cutÃ© avec succÃ¨s.
+    Ceci Ã©vite l'Ã©xecution de l'initialiseur sans autorisation.
 
-Si vous souhaitez procéder à une initialisation juste après la construction du contrôleur, vous pouvez définir
-la méthode "onConstruct":
+Si vous souhaitez procÃ©der Ã  une initialisation juste aprÃ¨s la construction du contrÃ´leur, vous pouvez dÃ©finir
+la mÃ©thode "onConstruct":
 
 .. code-block:: php
 
@@ -205,13 +205,13 @@ la méthode "onConstruct":
 
 .. highlights::
 
-    Soyez attentifs au fait que la méthode :code:`onConstruct()` sera exécutée même si aucune action n'existe
-    dans le contrôleur, ou bien que l'utilisateur n'y ait pas accès (selon le contrôle d'accès fournit
-    par le développeur).
+    Soyez attentifs au fait que la mÃ©thode :code:`onConstruct()` sera exÃ©cutÃ©e mÃªme si aucune action n'existe
+    dans le contrÃ´leur, ou bien que l'utilisateur n'y ait pas accÃ¨s (selon le contrÃ´le d'accÃ¨s fournit
+    par le dÃ©veloppeur).
 
 Injection de services
 ---------------------
-Si un contrôleur étend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` il a alors facilement accès au conteneur
+Si un contrÃ´leur Ã©tend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` il a alors facilement accÃ¨s au conteneur
 de service de l'application. Si vous avez par exemple inscrit un service comme celui-ci:
 
 .. code-block:: php
@@ -232,7 +232,7 @@ de service de l'application. Si vous avez par exemple inscrit un service comme c
         true
     );
 
-Nous pouvons alors accéder à ce service de plusieurs façons:
+Nous pouvons alors accÃ©der Ã  ce service de plusieurs faÃ§ons:
 
 .. code-block:: php
 
@@ -244,30 +244,30 @@ Nous pouvons alors accéder à ce service de plusieurs façons:
     {
         public function saveAction()
         {
-            // Injection de service en accédant seulement à la propriété du même nom
+            // Injection de service en accÃ©dant seulement Ã  la propriÃ©tÃ© du mÃªme nom
             $this->storage->save('/un/fichier');
 
-            // Accès au service depuis le DI
+            // AccÃ¨s au service depuis le DI
             $this->di->get('storage')->save('/un/fichier');
 
-            // Une autre façon avec l'accesseur magique
+            // Une autre faÃ§on avec l'accesseur magique
             $this->di->getStorage()->save('/un/fichier');
 
-            // Une autre façon avec l'accesseur magique
+            // Une autre faÃ§on avec l'accesseur magique
             $this->getDi()->getStorage()->save('/un/fichier');
 
-            // Avec l'écriture tableau
+            // Avec l'Ã©criture tableau
             $this->di['storage']->save('/un/fichier');
         }
     }
 
-Si vous utilisez Phalcon comme un framework full-stack, vous pouvez consulter les services fournis :doc:`par défaut <di>` par le framework.
+Si vous utilisez Phalcon comme un framework full-stack, vous pouvez consulter les services fournis :doc:`par dÃ©faut <di>` par le framework.
 
-Requête et réponse
+RequÃªte et rÃ©ponse
 ------------------
-En supposant que le framework fournisse un ensemble de services pré-inscrit, nous allons expliquer comment interagir avec l'environnement HTTP.
+En supposant que le framework fournisse un ensemble de services prÃ©-inscrit, nous allons expliquer comment interagir avec l'environnement HTTP.
 Le service "request" contient un instance de :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` et le service "response" est une instance de
-:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` qui représente ce qui est renvoyé au client.
+:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` qui reprÃ©sente ce qui est renvoyÃ© au client.
 
 .. code-block:: php
 
@@ -284,7 +284,7 @@ Le service "request" contient un instance de :doc:`Phalcon\\Http\\Request <../ap
 
         public function saveAction()
         {
-            // Vérifie que la requête utilise la méthode POST
+            // VÃ©rifie que la requÃªte utilise la mÃ©thode POST
             if ($this->request->isPost()) {
                 // Access POST data
                 $customerName = $this->request->getPost("name");
@@ -293,8 +293,8 @@ Le service "request" contient un instance de :doc:`Phalcon\\Http\\Request <../ap
         }
     }
 
-Normalement, l'objet réponse n'est pas utilisé directement mais il est construit avant l'exécution de l'action. Parfois, comme
-dans l'événement "afterDispatch" il peut être utile d'accéder à la réponse directement:
+Normalement, l'objet rÃ©ponse n'est pas utilisÃ© directement mais il est construit avant l'exÃ©cution de l'action. Parfois, comme
+dans l'Ã©vÃ©nement "afterDispatch" il peut Ãªtre utile d'accÃ©der Ã  la rÃ©ponse directement:
 
 .. code-block:: php
 
@@ -311,17 +311,17 @@ dans l'événement "afterDispatch" il peut être utile d'accéder à la réponse direc
 
         public function notFoundAction()
         {
-            // Envoi d'une entête de réponse HTTP 404
+            // Envoi d'une entÃªte de rÃ©ponse HTTP 404
             $this->response->setStatusCode(404, "Not Found");
         }
     }
 
-Vous apprendrez plus sur l'environnement HTTP dans les articles dédiés à :doc:`request <request>` et :doc:`response <response>`.
+Vous apprendrez plus sur l'environnement HTTP dans les articles dÃ©diÃ©s Ã  :doc:`request <request>` et :doc:`response <response>`.
 
-Données de Session
+DonnÃ©es de Session
 ------------------
-Les sessions nous aident à maintenir la persistence des données entre les requêtes. Vous pouvez accéder à :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-à partir de n'importe quel contrôleur pour encapsuler les données devant être persistantes.
+Les sessions nous aident Ã  maintenir la persistence des donnÃ©es entre les requÃªtes. Vous pouvez accÃ©der Ã  :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+Ã  partir de n'importe quel contrÃ´leur pour encapsuler les donnÃ©es devant Ãªtre persistantes.
 
 .. code-block:: php
 
@@ -342,16 +342,16 @@ Les sessions nous aident à maintenir la persistence des données entre les requêt
         }
     }
 
-Utilisation des Services en tant que Contrôleurs
+Utilisation des Services en tant que ContrÃ´leurs
 ------------------------------------------------
-Les services peuvent agir comme des contrôleurs. Les classes contrôleur sont toujours intérrogées depuis le conteneur de services.
-En conséquence, n'importe quelle autre classe inscrite avec son nom peut aisément remplacer un contrôleur:
+Les services peuvent agir comme des contrÃ´leurs. Les classes contrÃ´leur sont toujours intÃ©rrogÃ©es depuis le conteneur de services.
+En consÃ©quence, n'importe quelle autre classe inscrite avec son nom peut aisÃ©ment remplacer un contrÃ´leur:
 
 .. code-block:: php
 
     <?php
 
-    // Inscription d'un contrôleur en tant que service
+    // Inscription d'un contrÃ´leur en tant que service
     $di->set(
         "IndexController",
         function () {
@@ -361,7 +361,7 @@ En conséquence, n'importe quelle autre classe inscrite avec son nom peut aisémen
         }
     );
 
-    // Inscription d'un contrôleur avec espace de nom en tant que service
+    // Inscription d'un contrÃ´leur avec espace de nom en tant que service
         $component = new Component();
     $di->set(
         "Backend\\Controllers\\IndexController",
@@ -373,10 +373,10 @@ En conséquence, n'importe quelle autre classe inscrite avec son nom peut aisémen
         }
     );
 
-Les Evénements dans les Contrôleurs
+Les EvÃ©nements dans les ContrÃ´leurs
 -----------------------------------
-Les contrôleurs agissent automatiquement comme des écouteurs pour les événements du :doc:`répartiteur <dispatching>`. La réalisation de méthodes
-avec ces noms d'événements vous permet de créer des points d'interception avant que les actions ne soient exécutées:
+Les contrÃ´leurs agissent automatiquement comme des Ã©couteurs pour les Ã©vÃ©nements du :doc:`rÃ©partiteur <dispatching>`. La rÃ©alisation de mÃ©thodes
+avec ces noms d'Ã©vÃ©nements vous permet de crÃ©er des points d'interception avant que les actions ne soient exÃ©cutÃ©es:
 
 .. code-block:: php
 
@@ -388,7 +388,7 @@ avec ces noms d'événements vous permet de créer des points d'interception avant 
     {
         public function beforeExecuteRoute($dispatcher)
         {
-            // Ceci est exécuté avant chaque action trouvée
+            // Ceci est exÃ©cutÃ© avant chaque action trouvÃ©e
             if ($dispatcher->getActionName() === "save") {
                 $this->flash->error(
                     "You don't have permission to save posts"
@@ -408,7 +408,7 @@ avec ces noms d'événements vous permet de créer des points d'interception avant 
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Exécutée après chaque action trouvée
+            // ExÃ©cutÃ©e aprÃ¨s chaque action trouvÃ©e
         }
     }
 
