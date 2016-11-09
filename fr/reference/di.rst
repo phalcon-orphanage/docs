@@ -35,8 +35,7 @@ Comme vu précédemment, il existe plusieurs façons d'inscrire un service. Voic
 
 Chaîne de caractères (string)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Ce mode s'attend à un nom de classe valide, retournant un objet de la classe spécifiée, qui si elle n'est pas chargée, le sera en utilisant
-un chargeur automatique de classes.
+Ce mode s'attend à un nom de classe valide, retournant un objet de la classe spécifiée, qui si elle n'est pas chargée, le sera en utilisant un chargeur automatique de classes.
 Ce mode de définition ne permet pas de spécifier des arguments pour constructeur de la classe ni des paramètres:
 
 .. code-block:: php
@@ -49,12 +48,12 @@ Ce mode de définition ne permet pas de spécifier des arguments pour constructe
         "Phalcon\\Http\\Request"
     );
 
-
 Instance de classe
 ^^^^^^^^^^^^^^^^^^
 Ce mode s'attend à un objet. Comme l'objet n'a pas besoin d'être résolu puisqu'il est déjà un objet,
 certains diront que ce n'est pas vraiment une injection de dépendance. Toutefois, cela peut être utile
-si vous souhaitez forcer la dépendance retournée à être toujours le même objet ou la même valeur:
+si vous souhaitez forcer la dépendance retournée à être toujours le même objet 
+ou la même valeur:
 
 .. code-block:: php
 
@@ -169,7 +168,8 @@ Vous pouvez également accéder à d'autres services DI en utilisant la méthode
 Inscription Complexe
 --------------------
 S'il est nécessaire de changer la définition d'un service sans devoir instancier/résoudre le service, nous devrons alors
-définir les services en utilisant la syntaxe tableau. La définition d'un service sous forme de tableau peut être un peu plus verbeuse:
+définir les services en utilisant la syntaxe tableau. La définition d'un service sous forme de tableau
+peut être un peu plus verbeuse:
 
 .. code-block:: php
 

@@ -596,10 +596,6 @@ Ceci est particulièrement utile lorsqu'il faut s'en servir pour créer des URLs
 
     $route->setName("show-posts");
 
-    // Ou juste
-
-    $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
-
 Ensuite en utilisant par exemple le composant :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` nous pouvons contruire des routes à partir de son nom:
 
 .. code-block:: php
@@ -900,9 +896,6 @@ Depuis Phalcon 3, il existe une autre façon de vérifier:
         ]
     );
 
-        // Vérifie qu'il s'agit d'une requête Ajax
-        return $request->isAjax();
-    });
     $route->beforeMatch(
         function ($uri, $route) {
             /**
@@ -913,6 +906,11 @@ Depuis Phalcon 3, il existe une autre façon de vérifier:
              */
             $request = $this->getShared("request");
 
+            // Vérifie qu'il s'agit d'une requête Ajax
+            return $request->isAjax();
+        }
+    );
+            
 Contraintes de Nom d'Hôte
 -------------------------
 Le routeur vous permet d'établir des contraintes selon le nom de l'hôte, ceci signifie que des routes spécifiques ou des groupes de routes
@@ -930,6 +928,8 @@ peuvent être restreintes seulement si la route satisfait la contrainte du nom d
             "action"     => "login",
         ]
     );
+    
+	$route->setHostName("admin.company.com");
 
 Le nom d'hôte peut également être transmis sous forme d'expression régulière:
 
@@ -945,6 +945,8 @@ Le nom d'hôte peut également être transmis sous forme d'expression régulièr
             "action"     => "login",
         ]
     );
+
+    $route->setHostName("([a-z]+).company.com");
 
 Vous pouvez faire en sorte qu'une contrainte de nom d'hôte s'applique à toutes les routes d'un groupe de routes:
 
