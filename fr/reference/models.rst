@@ -15,8 +15,8 @@ les opérations du moteur de bases de données respectif.
     Les modèles sont prévus pour travailler avec les bases de données sur une couche élevée d'abstraction. Si vous devez exploiter des bases de données à un bas niveau
     consultez la documentation du composant :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 
-Creating Models
----------------
+Création de modèles
+-------------------
 Un modèle est une classe qui étend :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Son nom de classe doit suivre la notation camel:
 
 .. code-block:: php
