@@ -53,7 +53,7 @@ Le passer en tant que partie du chemin:
         ]
     );
 
-Si vous travailler avec le même namespace pour tous les controlleurs de votre application, vous pouvez le définir en tant que namespace par défaut dans le dispatcher,
+Si vous travaillez avec le même namespace pour tous les controlleurs de votre application, vous pouvez le définir en tant que namespace par défaut dans le dispatcher,
 ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le chemin du routeur:
 
 .. code-block:: php
@@ -101,9 +101,9 @@ L'exemple suivante montre comment implémenter un controlleur qui utilise des es
         }
     }
 
-Models in Namespaces
---------------------
-Take the following into consideration when using models in namespaces:
+Modèles et Espaces de Nom
+-------------------------
+Prenez en considération ce qui suit lors de l'utilisation de modèles dans les espaces ne nom:
 
 .. code-block:: php
 
@@ -118,7 +118,7 @@ Take the following into consideration when using models in namespaces:
 
     }
 
-If models have relationships they must include the namespace too:
+Si des modèles contiennent des relations, ils doivent inclurent aussi l'espace de nom:
 
 .. code-block:: php
 
@@ -143,7 +143,7 @@ If models have relationships they must include the namespace too:
         }
     }
 
-In PHQL you must write the statements including namespaces:
+En PHQL vous devez inclure les espaces de nom dans les instructions:
 
 .. code-block:: php
 
@@ -151,4 +151,4 @@ In PHQL you must write the statements including namespaces:
 
     $phql = "SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p";
 
-.. _Namespaces: http://php.net/manual/en/language.namespaces.php
+.. _Namespaces: http://php.net/manual/fr/language.namespaces.php

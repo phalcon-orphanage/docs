@@ -1,43 +1,43 @@
-Model Events
-============
+Evénements et Modèles
+=====================
 
-Events and Events Manager
--------------------------
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+Événements et Gestionnaire d'événements
+---------------------------------------
+Les modèles vous permettent d'écrire des événements qui seront générés lors de la réalisation d'une insertion/mise à jour(m.à.j.)/suppression. Il permettent de définir les règles métiers. Ce qui suit sont les événements supportés par :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` et leur ordre d'exécution:
 
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Opération stoppée ?   | Explanation                                                                                                                       |
-+====================+==========================+=======================+===================================================================================================================================+
-| Inserting/Updating | beforeValidation         | Oui                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | Oui                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | Oui                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | Oui (already stopped) | Is executed after an integrity validator fails                                                                                    |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | Oui                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | Oui                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | Oui                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | Oui                   | Runs before the required operation over the database system                                                                       |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | Oui                   | Runs before the required operation over the database system only when an updating operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | Oui                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | Non                   | Runs after the required operation over the database system only when an updating operation is being made                          |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | Non                   | Runs after the required operation over the database system only when an inserting operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | Non                   | Runs after the required operation over the database system                                                                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Opération          | Nom                      | Opération stoppée ?   | Explication                                                                                                                          |
++====================+==========================+=======================+======================================================================================================================================+
+| insertion / m.à.j. | beforeValidation         | Oui                    | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères                                     |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | beforeValidationOnCreate | Oui                    | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération d'insertion    |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | beforeValidationOnUpdate | Oui                    | Est exécuté avant la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération de mise à jour |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion / m.à.j. | onValidationFails        | Oui (systématiquement) | Est exécuté lors de l'échec d'une validation d'intégrité                                                                            |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | afterValidationOnCreate  | Oui                    | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération d'insertion    |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | afterValidationOnUpdate  | Oui                    | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères lors d'une opération de mise à jour |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion / m.à.j. | afterValidation          | Oui                    | Est exécuté après la validation des champs sur du texte nul ou vide ou bien des clés étrangères                                     |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion / m.à.j. | beforeSave               | Oui                    | Lancé avant l'opération requise sur le SGBD                                                                                         |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | beforeUpdate             | Oui                    | Lancé avant l'opération de mise à jour requise sur le SGBD                                                                          |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | beforeCreate             | Oui                    | Lancé avant l'opération d'insertion requise sur le SGBD                                                                             |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| m.à.j.             | afterUpdate              | Non                    | Lancé après l'opération de mise à jour requise sur le SGBD                                                                          |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion          | afterCreate              | Non                    | Lancé après l'opération d'insertion requise sur le SGBD                                                                             |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| insertion / m.à.j. | afterSave                | Non                    | Lancé après l'opération requise sur le SGBD                                                                                         |
++--------------------+--------------------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
 
-Implementing Events in the Model's class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
+Mise en œuvre d'événements dans la classe du Modèle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La façon la plus facile pour faire en sorte qu'un modèle réagisse aux événement est de réaliser dans la classe une méthode du même nom que l'événement:
 
 .. code-block:: php
 
@@ -51,11 +51,11 @@ The easier way to make a model react to events is to implement a method with the
     {
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before creating a Robot!";
+            echo "Ceci est exécuté avant la création d'un Robot !";
         }
     }
 
-Events can be used to assign values before performing an operation, for example:
+Les événements peuvent être utiles pour assigner des valeurs avant la réalisation d'une opération comme par exemple:
 
 .. code-block:: php
 
@@ -67,21 +67,21 @@ Events can be used to assign values before performing an operation, for example:
     {
         public function beforeCreate()
         {
-            // Set the creation date
+            // Établir la date de création
             $this->created_at = date("Y-m-d H:i:s");
         }
 
         public function beforeUpdate()
         {
-            // Set the modification date
+            // Établir la date de modification
             $this->modified_in = date("Y-m-d H:i:s");
         }
     }
 
-Using a custom Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
-this means we can create listeners that run when an event is triggered.
+Utilisation d'un Gestionnaire d'Événements personnalisé
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+De plus, ce composant est intégré dans :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+ce qui signifie que nous pouvons créer des écouteurs qui s'exécutent lors du déclenchement d'un événement.
 
 .. code-block:: php
 
@@ -99,7 +99,7 @@ this means we can create listeners that run when an event is triggered.
         {
             $eventsManager = new EventsManager();
 
-            // Attach an anonymous function as a listener for "model" events
+            // Attache une fonction anonyme pour écouter les événements de "model"
             $eventsManager->attach(
                 "model:beforeSave",
                 function (Event $event, $robot) {
@@ -113,13 +113,13 @@ this means we can create listeners that run when an event is triggered.
                 }
             );
 
-            // Attach the events manager to the event
+            // Attache le gestionnaire d'événement à l'événement
             $this->setEventsManager($eventsManager);
         }
     }
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function).
-Events will be fired to the listener when 'robots' are saved:
+Dans l'exemple précédent, le Gestionnaire d'Événements agit comme un pont entre l'objet et l'écouteur (la fonction anonyme).
+Les événements fuseront vers les écouteurs lors de la sauvegarde de 'robots':
 
 .. code-block:: php
 
@@ -134,7 +134,7 @@ Events will be fired to the listener when 'robots' are saved:
 
     $robot->save();
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
+Si vous voulez que tous les objets créés dans votre application utilisent le même EventsManager, vous devez alors l'assigner au Gestionnaire de Modèles:
 
 .. code-block:: php
 
@@ -143,17 +143,17 @@ If we want all objects created in our application use the same EventsManager, th
     use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
 
-    // Registering the modelsManager service
+    // Inscription du service "modelsManager"
     $di->setShared(
         "modelsManager",
         function () {
             $eventsManager = new EventsManager();
 
-            // Attach an anonymous function as a listener for "model" events
+        // Attache une fonction anonyme en tant qu'écouteur pour les événements de "model"
             $eventsManager->attach(
                 "model:beforeSave",
                 function (Event $event, $model) {
-                    // Catch events produced by the Robots model
+					// Capture les événements produits par le modèle "Robots"
                     if (get_class($model) === "Store\\Toys\\Robots") {
                         if ($model->name === "Scooby Doo") {
                             echo "Scooby Doo isn't a robot!";
@@ -166,7 +166,7 @@ If we want all objects created in our application use the same EventsManager, th
                 }
             );
 
-            // Setting a default EventsManager
+        // Établissement d'un EventsManager par défaut
             $modelsManager = new ModelsManager();
 
             $modelsManager->setEventsManager($eventsManager);
@@ -175,15 +175,15 @@ If we want all objects created in our application use the same EventsManager, th
         }
     );
 
-If a listener returns false that will stop the operation that is executing currently.
+Si un écouteur retourne "faux" alors ceci interrompt l'opération en cours d'exécution.
 
-Logging Low-Level SQL Statements
---------------------------------
-When using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is
-difficult to understand which statements are finally sent to the database system. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-is supported internally by :doc:`Phalcon\\Db <../api/Phalcon_Db>`. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts
-with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
-statements as they happen.
+Journalisation des instructions SQL de bas niveau
+-------------------------------------------------
+Losrqu'on utilise un composant de haut niveau d'abstraction tel que :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` pour accéder aux données, il devient
+difficile de savoir quelles sont les instructions qui sont finalement envoyées au SGBD. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+est supporté en interne par :doc:`Phalcon\\Db <../api/Phalcon_Db>`. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interagit avec 
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`, fournissant des capacités de journalisation sur la couche d'abstraction de la base de données, ce qui nous permet
+de journaliser les instructions quand elles surviennent.
 
 .. code-block:: php
 
@@ -201,7 +201,7 @@ statements as they happen.
 
             $logger = new FileLogger("app/logs/debug.log");
 
-            // Listen all the database events
+            // Ecoute tous les événements de la base de données
             $eventsManager->attach(
                 "db:beforeQuery",
                 function ($event, $connection) use ($logger) {

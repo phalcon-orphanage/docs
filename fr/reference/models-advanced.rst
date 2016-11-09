@@ -1,10 +1,10 @@
-Working with Models (Advanced)
-==============================
+Travaller avec des modèles (Avancé)
+===================================
 
-Hydration Modes
----------------
-As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified and saved again to persistence:
+Modes d'hydratation de données
+------------------------------
+Comme mentionné plus haut, les jeux de résultat sont des collections complètes d'objets, ce qui signifie que chaque résultat renvoyé est un objet
+qui représente une ligne dans la base de données. Ces objets peuvent être modifiés et re-sauvegardés pour la persistence:
 
 .. code-block:: php
 
@@ -14,16 +14,16 @@ representing a row in the database. These objects can be modified and saved agai
 
     $robots = Robots::find();
 
-    // Manipulating a resultset of complete objects
+    // Manipulation d'un jeu complet de résultats d'objets
     foreach ($robots as $robot) {
         $robot->year = 2000;
 
         $robot->save();
     }
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
-to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
-returned in a resultset is called 'hydration mode':
+Parfois les enregistrement récupérés ne doivent être présentées à l'utilisateur qu'en lecture seule. Dans ces cas il peut être utile
+de changer la manière dont les enregistrement sont présentés afin de faciliter leur manipulation. La statégie utilisée pour présenter
+les objets retournés dans un jeu de résultat est appelée "mode d'hydratation":
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@ returned in a resultset is called 'hydration mode':
 
     $robots = Robots::find();
 
-    // Return every robot as an array
+    // Retourne tous les robots dans un tableau
     $robots->setHydrateMode(
         Resultset::HYDRATE_ARRAYS
     );
@@ -43,7 +43,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot["year"], PHP_EOL;
     }
 
-    // Return every robot as a stdClass
+    // Retourne tous les robots dans une stdClass
     $robots->setHydrateMode(
         Resultset::HYDRATE_OBJECTS
     );
@@ -52,7 +52,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-    // Return every robot as a Robots instance
+    // Retourne tous les robots dans une instance de Robots
     $robots->setHydrateMode(
         Resultset::HYDRATE_RECORDS
     );
@@ -61,7 +61,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-Hydration mode can also be passed as a parameter of 'find':
+Le mode d'hydratation peut également être transmis en paramètre de "find":
 
 .. code-block:: php
 
@@ -80,11 +80,11 @@ Hydration mode can also be passed as a parameter of 'find':
         echo $robot["year"], PHP_EOL;
     }
 
-Auto-generated identity columns
--------------------------------
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Les colonnes identité auto-générées
+-----------------------------------
+Certains modèles peuvent avoir une colonne identité. Ces colonnes servent habituellement de clé primaire dans la table rattachée. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+peut reconnaître la colonne identité et l'omet dans l'instruction SQL INSERT générée, laissant le SGBD générer ainsi automatiquement la valeur pour lui.
+Systématiquement après chaque création d'enregistrement, le champ identité est rempli avec la valeur générée par le SGBD:
 
 .. code-block:: php
 
@@ -94,11 +94,11 @@ Always after creating a record, the identity field will be registered with the v
 
     echo "The generated id is: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` est capable de reconnaître la colonne identité. Selon le SGBD, ces colonnes peut être des
+colonnes "serial" comme dans PostgreSQL ou "auto_increment" dans le cas de MySQL.
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the :code:`getSequenceName()` method needs to be implemented:
+PostgreSQL utilise les séquences pour générer des valeurs numérique. Par défaut, Phalcon tente d'obtenir les valeurs depuis la séquence "<table>_<field>_seq",
+comme par exemple "robots_id_seq". Si cette séquence a un nom différent, alors la méthode "getSequenceName" doit être réalisée:
 
 .. code-block:: php
 
