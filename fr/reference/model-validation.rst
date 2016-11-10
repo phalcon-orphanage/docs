@@ -1,12 +1,12 @@
-Validating Models
-=================
+Validation de modèles
+=====================
 
-Validating Data Integrity
--------------------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+Validation de l'intégrité des données
+-------------------------------------
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` fournit plusieurs événements pour valider les données et rédiger les règles métier. L'événement spécial "validation"
+nous permet d'appeler des validateurs prédéfinis sur l'enregistrement. Phalcon expose quelques validateurs déjà prêts à l'emploi à ce niveau de validation.
 
-The following example shows how to use it:
+L'exemple suivant montre comment l'utiliser:
 
 .. code-block:: php
 
@@ -50,14 +50,14 @@ The following example shows how to use it:
         }
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false.
+L'exemple précédent effectue une validation en utilisant le validateur prédéfini "InclusionIn". Il vérifie que la valeur du champ "type" soit dans la liste de "domain".
+Si la valeur n'est pas inclue dans la méthode alors le validateur échoue et retourne "faux". Les validateurs prédéfinis qui suivent sont disponibles:
 
 .. highlights::
 
-    For more information on validators, see the :doc:`Validation documentation <validation>`.
+	Pour plus d'information sur le validateurs, consultez :doc:`Validation documentation <validation>`.
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+L'idée derrière la création de validateurs est de les rendre réutilisables entre plusieurs modèles. Un validateur peut être aussi simple que:
 
 .. code-block:: php
 
@@ -88,14 +88,14 @@ The idea of creating validators is make them reusable between several models. A 
         }
     }
 
-Validation Messages
--------------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+Messages de validation
+----------------------
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` dispose d'un sous-système de messagerie qui fourni un moyen flexible de sortir ou stocker des
+messages de validation générés pendant les processus d'insertion/mise à jour.
 
-Each message is an instance of :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>` and the set of
-messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the field name that
-generated the message or the message type:
+Chaque message consiste en une instance de la classe :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. L'ensemble
+de messages générés peut être récupéré avec la méthode :code:`getMessages()`. Chaque message contient une information étendue comme le nom du champ
+à l'origine du message ou bien le type du message:
 
 .. code-block:: php
 
@@ -111,23 +111,23 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:code:`getMessages()` peut générer les types de messages de validation suivants:
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
 +======================+====================================================================================================================================+
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| PresenceOf           | Généré lorsqu'un champ avec un attribut non-nul en base tente d'insérer/mettre à jour une valeur nulle                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| ConstraintViolation  | Généré lorsqu'un champ à clé étrangère tente d'insérer/mettre à jour une valeur qui n'existe pas dans le modèle référencé          |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
+| InvalidValue         | Généré lorsqu'un validateur échoue à cause d'une valeur invalide                                                                   |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
+| InvalidCreateAttempt | Produit lors de la tentative de création d'un enregistrement qui existe déjà                                                       |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| InvalidUpdateAttempt | Produit lors de la tentative de mise à jour d'un enregistrement qui n'existe pas                                                   |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+La méthode :code:`getMessages()` peut être surchargée dans un modèle pour remplacer/traduire le message par défaut qui est généré automatiquement par l'ORM:
 
 .. code-block:: php
 
@@ -163,14 +163,14 @@ The :code:`getMessages()` method can be overridden in a model to replace/transla
         }
     }
 
-Validation Failed Events
-------------------------
-Another type of events are available when the data validation process finds any inconsistency:
+Événement d'échec de validation
+-------------------------------
+D'autres types d'événement sont disponibles lorsque le processus de validation détecte une incohérence:
 
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Operation                | Name               | Explanation                                                        |
-+==========================+====================+====================================================================+
-| Insert or Update         | notSaved           | Triggered when the INSERT or UPDATE operation fails for any reason |
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
-+--------------------------+--------------------+--------------------------------------------------------------------+
++---------------------------------+--------------------+-----------------------------------------------------------------------------------+
+| Opération                       | Nom                | Explication                                                                       |
++=================================+====================+===================================================================================+
+| Insertion ou M.à.j              | notSaved           | Déclenché lorsqu'une opération INSERT ou UPDATE échoue pour une raison quelconque |
++---------------------------------+--------------------+-----------------------------------------------------------------------------------+
+| Insertion, suppression ou M.à.j | onValidationFails  | Déclenché lorsqu'une opération de manipulation sur les données échoue             |
++---------------------------------+--------------------+-----------------------------------------------------------------------------------+
