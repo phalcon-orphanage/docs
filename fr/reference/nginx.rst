@@ -1,5 +1,5 @@
-Instructions d'installation sur Nginx
-=====================================
+Notes d'installation pour Nginx
+===============================
 Nginx est un projet libre et open-source qui permet d'avoir un serveur HTTP et un reverse proxy extrêmement performant ainsi qu'un relais IMAP/POP3. Contrairement aux serveurs classiques, Nginx_ n'exploite pas des threads pour traiter les requêtes. A la place il utilise une architecture plus évolutive basée sur des événements (asynchrones). Cette architecture utilise de petites quantités de mémoire mais plus importantes et prévisibles en cas de charge.
 
 Le `PHP-FPM`_ (FastCGI Process Manager) est habituellement utilisé pour permettre à Nginx_ de traiter les fichiers PHP. Actuellement, `PHP-FPM`_ est fourni avec n'importe quelle distribution PHP Unix. La combinaison Phalcon + Nginx_ + `PHP-FPM`_ fourni un puissant ensemble d'outils qui offre un maximum de performance pour vos applications PHP.

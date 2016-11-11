@@ -1,5 +1,5 @@
-Instructions d'installation sur Apache
-======================================
+Notes d'installation sur Apache
+===============================
 
 Apache_ est un serveur web populaire et bien connu, disponible sur de nombreuses plateformes.
 

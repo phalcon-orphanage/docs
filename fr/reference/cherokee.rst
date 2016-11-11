@@ -1,57 +1,58 @@
-Cherokee Installation Notes
-===========================
+Notes d'installation pour Cherokee
+==================================
 
-Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
+Cherokee_ est un serveur web hautement performant. Il est très rapide, flexible et facile à configurer.
 
-Configuring Cherokee for Phalcon
+
+Configurer Cherokee pour Phalcon
 --------------------------------
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
-Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin
+Cherokee fournit un interface graphique conviviale pour configurer presque tous les réglages disponibles dans le serveur web.  
+Démarrez l'administrateur cherokee avec /path-to-cherokee/sbin/cherokee-admin (NDT: On suppose que l'interface d'administration est en anglais)
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center
 
-Create a new virtual host by clicking on 'vServers', then add a new virtual server:
+Créez un nouveau serveur virtuel en cliquant sur "vServers" et renseignez alors votre nouveau serveur virtuel:
 
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab
-you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button.
-Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+Le serveur virtuel nouvellement ajouté doit apparaître dans la barre gauche de l'écran. Dans l'onglet "Behaviors"
+vous verrez un ensemble de comportements par défaut pour ce serveur virtuel. Cliquez sur le bouton "Rule Management".
+Supprimez ceux qui sont identifiés comme "Directory /cherokee_themes" et "Directory /icons":
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Add the 'PHP Language' behavior using the wizard. This behavior allow you to run PHP applications:
+A l'aide de l'assistant, ajoutez le comportement "PHP Language". Ce comportement vous permet d'exécuter des applications PHP:
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normally this behavior does not require additional settings. Add another behavior,
-this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
-then make sure the option 'Match any file' is enabled:
+Normalement ce comportement ne nécessite aucun réglage supplémentaire. Ajoutez un autre comportement
+cette fois ci en allant dans la section "Manual Configuration". Dans "Rule Type" choisissez "File Exists", 
+ensuite assurez-vous que l'option "Match any file" soit activée:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
-In the 'Handler' tab choose 'List & Send' as handler:
+Dans l'onglet "Handler", choisissez "List & Send" comme gestionnaire:
 
 .. figure:: ../_static/img/cherokee-7.jpg
     :align: center
 
-Edit the 'Default' behavior in order to enable the URL-rewrite engine. Change the handler to 'Redirection',
-then add the following regular expression to the engine ^(.*)$:
+Editez le comportement "Default" afin d'activer le moteur de réécriture d'URL. Définissez le gestionnaire à "Redirection",
+et ajouter l'expression régulière ^(.*)$ au moteur:
 
 .. figure:: ../_static/img/cherokee-6.jpg
     :align: center
 
-Finally, make sure the behaviors have the following order:
+Enfin, assurez-vous que les comportement soient dans l'ordre suivant:
 
 .. figure:: ../_static/img/cherokee-8.jpg
     :align: center
 
-Execute the application in a browser:
+Lancez l'application dans un navigateur:
 
 .. figure:: ../_static/img/cherokee-9.jpg
     :align: center
