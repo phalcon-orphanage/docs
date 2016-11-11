@@ -1,15 +1,15 @@
-Using PHP Built-in webserver
-============================
+Utilisation du serveur web interne à PHP
+========================================
 
-As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.
+A partir de PHP 5.4.0, vous pouvez utiliser un serveur web interne_ pour le développement.
 
-To start the server type:
+Tapez pour démarrer le serveur:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /public
 
-If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
+Si vous souhaitez réécrire les URIs pour le fichier index.php utilisez le fichier routeur suivant (.htrouter.php):
 
 .. code-block:: php
 
@@ -19,12 +19,12 @@ If you want to rewrite the URIs to the index.php file use the following router f
     }
     return false;
 
-and then start the server from the base project directory with:
+et démarrez le serveur à partir du répertoire de base du projet avec:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /public .htrouter.php
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Et ouvrez votre navigateur à l'adresse http://localhost:8000/ pour vérifier que cela fonctionne.
 
-.. _built-in: http://php.net/manual/fr/features.commandline.webserver.php
+.. _interne: http://php.net/manual/fr/features.commandline.webserver.php
