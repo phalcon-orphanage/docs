@@ -1,17 +1,16 @@
-Nginx Installation Notes
-========================
+Instructions d'installation sur Nginx
+=====================================
+Nginx est un projet libre et open-source qui permet d'avoir un serveur HTTP et un reverse proxy extrêmement performant ainsi qu'un relais IMAP/POP3. Contrairement aux serveurs classiques, Nginx_ n'exploite pas des threads pour traiter les requêtes. A la place il utilise une architecture plus évolutive basée sur des événements (asynchrones). Cette architecture utilise de petites quantités de mémoire mais plus importantes et prévisibles en cas de charge.
 
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Le `PHP-FPM`_ (FastCGI Process Manager) est habituellement utilisé pour permettre à Nginx_ de traiter les fichiers PHP. Actuellement, `PHP-FPM`_ est fourni avec n'importe quelle distribution PHP Unix. La combinaison Phalcon + Nginx_ + `PHP-FPM`_ fourni un puissant ensemble d'outils qui offre un maximum de performance pour vos applications PHP.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications.
-
-Configuring Nginx for Phalcon
+Configurer Nginx pour Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+Ce qui suit sont de possibles configurations que vous pouvez utiliser pour configurer Nginx avec Phalcon:
 
-Basic configuration
-^^^^^^^^^^^^^^^^^^^
-Using :code:`$_GET['_url']` as source of URIs:
+Configuration de base
+^^^^^^^^^^^^^^^^^^^^^
+En utilisant :code:`$_GET['_url']` comme source des URIs:
 
 .. code-block:: nginx
 
@@ -42,7 +41,7 @@ Using :code:`$_GET['_url']` as source of URIs:
         }
     }
 
-Using :code:`$_SERVER['REQUEST_URI']` as source of URIs:
+En utilisant :code:`$_SERVER['REQUEST_URI']` comme source des URIs:
 
 .. code-block:: nginx
 
