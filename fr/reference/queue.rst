@@ -101,7 +101,7 @@ Chaque job enfilé dans la queue retourne un identifiant de job qui permet de su
 
 Récupération de messages
 ------------------------
-Un fois le job placé dans la queue, ces messages sont consommés par un agent en arrière plan qui devrait avoir le temps de réaliser 
+Une fois le job placé dans la queue, ces messages sont consommés par un agent en arrière plan qui devrait avoir le temps de réaliser 
 la tâche:
 
 .. code-block:: php
