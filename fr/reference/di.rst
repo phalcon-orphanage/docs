@@ -5,7 +5,7 @@ Injection de dépendance/Localisation de Service
 
     Before reading this section, it is wise to read :doc:`the section which explains why Phalcon uses service location and dependency injection <di-explained>`.
 
-:doc:`Phalcon\\Di <../api/Phalcon_Di>` est un composant qui met en oeuvre l'Injection de Dépendance et la Localisation de Service et il est lui-même un conteneur pour cela.
+:doc:`Phalcon\\Di <../api/Phalcon_Di>` est un composant qui met en œuvre l'Injection de Dépendance et la Localisation de Service et il est lui-même un conteneur pour cela.
 
 Comme Phalcon est fortement découplé, :doc:`Phalcon\\Di <../api/Phalcon_Di>` est essentiel pour intégrer les différents composants dans le framework. Le développeur
 peut également exploiter ce composant pour injecter des dépendances et gérer les instances globales des différentes classes utilisées dans l'application.
@@ -21,7 +21,7 @@ Inscription de services dans le conteneur
 Le framework comme le développeur peuvent inscrire des service. Lorqu'un composant A nécessite un composant B (ou une instance de cette classe)
 pour fonctionner, il peut demander le composant B au conteneur plutôt que créer une nouvelle instance du composant B.
 
-Cette façon de faire procure plusieurs avangages:
+Cette façon de faire procure plusieurs avantages:
 
 * Nous pouvons facilement remplacer un composant par un autre réalisé par nos soins ou un tiers.
 * Nous avons un contrôle complet sur l'initialisation de l'objet, nous permettant de préparer les objets comme nous le souhaitons avant de les livrer aux composants.
@@ -35,8 +35,7 @@ Comme vu précédemment, il existe plusieurs façons d'inscrire un service. Voic
 
 Chaîne de caractères (string)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Ce mode s'attend à un nom de classe valide, retournant un objet de la classe spécifiée, qui si elle n'est pas chargée, le sera en utilisant
-un chargeur automatique de classes.
+Ce mode s'attend à un nom de classe valide, retournant un objet de la classe spécifiée, qui si elle n'est pas chargée, le sera en utilisant un chargeur automatique de classes.
 Ce mode de définition ne permet pas de spécifier des arguments pour constructeur de la classe ni des paramètres:
 
 .. code-block:: php
@@ -49,11 +48,12 @@ Ce mode de définition ne permet pas de spécifier des arguments pour constructe
         "Phalcon\\Http\\Request"
     );
 
-Class instances
-^^^^^^^^^^^^^^^
+Instance de classe
+^^^^^^^^^^^^^^^^^^
 Ce mode s'attend à un objet. Comme l'objet n'a pas besoin d'être résolu puisqu'il est déjà un objet,
 certains diront que ce n'est pas vraiment une injection de dépendance. Toutefois, cela peut être utile
-si vous souhaitez forcer la dépendance retournée à être toujours le même objet ou la même valeur:
+si vous souhaitez forcer la dépendance retournée à être toujours le même objet 
+ou la même valeur:
 
 .. code-block:: php
 
@@ -125,7 +125,7 @@ Certaines limites peuvent être contournées en passant des variables supplémen
         }
     );
 
-You can also access other DI services using the :code:`get()` method:
+Vous pouvez également accéder à d'autres services DI en utilisant la méthode :code:`get()`:
 
 .. code-block:: php
 
@@ -140,15 +140,15 @@ You can also access other DI services using the :code:`get()` method:
             return new Config(
                 [
                     "host"     => "127.0.0.1",
-                    "username" => "user",
-                    "password" => "pass",
-                    "dbname"   => "my_database",
+                    "username" => "utilisateur",
+                    "password" => "mot_de_passe",
+                    "dbname"   => "ma_base_de_donnees",
                 ]
             );
         }
     );
 
-    // Using the 'config' service from the DI
+    // Avec le service 'config' du DI
     $di->set(
         "db",
         function () {
@@ -168,7 +168,8 @@ You can also access other DI services using the :code:`get()` method:
 Inscription Complexe
 --------------------
 S'il est nécessaire de changer la définition d'un service sans devoir instancier/résoudre le service, nous devrons alors
-définir les services en utilisant la syntaxe tableau. La définition d'un service sous forme de tableau peut être un peu plus verbeuse:
+définir les services en utilisant la syntaxe tableau. La définition d'un service sous forme de tableau
+peut être un peu plus verbeuse:
 
 .. code-block:: php
 
@@ -221,7 +222,7 @@ De plus, en utilisant la syntaxe tableau, vous pouvez exploiter trois type d'inj
 
 Injection de constructeur
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Ce type d'injection transmet les dépendances au contructeur de la classe.
+Ce type d'injection transmet les dépendances au constructeur de la classe.
 Admettons que nous ayons le composant suivant:
 
 .. code-block:: php
@@ -428,14 +429,14 @@ Les différents types de paramètre supportés sont les suivants:
 | instance    | Représente un objet qui doit être construit dynamiquement | :code:`["type" => "instance", "className" => "DateTime", "arguments" => ["now"]]` |
 +-------------+-----------------------------------------------------------+-----------------------------------------------------------------------------------+
 
-La résolution d'un service dont la défnition est complexe peut être légèrement plus lente que pour les définitions simples vues précédemment. Cependant,
+La résolution d'un service dont la définition est complexe peut être légèrement plus lente que pour les définitions simples vues précédemment. Cependant,
 ceci fournit une approche plus robuste pour définir et injecter des services.
 
 Le mélange de différents types de définitions est permis. Chacun décide de la méthode d'inscription des service la plus appropriée en
 fonction des besoins de l'application.
 
-Array Syntax
-------------
+Forme tableau
+-------------
 L'écriture sous forme de tableau est possible pour inscrire des services:
 
 .. code-block:: php
@@ -468,7 +469,7 @@ Dans les exemples précédents, lorsque le framework doit accéder aux données 
 Le conteneur retourne une instance du service demandé. Le développeur peut éventuellement remplacer les composants selon ses besoins.
 
 Chacune des méthodes (vues dans les exemples précédents) utilisée pour définir/inscrire un service a ses avantages et ses inconvénients. C'est au
-développeur de choisir laquelle utiliser en fonction des éxigences.
+développeur de choisir laquelle utiliser en fonction des exigences.
 
 Définir un service par une chaîne de caractères est simple mais manque de souplesse. Définir un service par un tableau offre plus de flexibilité mais
 rend le code plus compliqué. La fonction lambda est un bon équilibre entre les deux mais risque de nécessiter plus de maintenance que nécessaire.
@@ -524,9 +525,9 @@ Les événements suivants son supportés:
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------+
 | Nom d'événement      | Déclenchement                                                                                                                                   | Stoppe l'opération ? | Destinataire       |
 +======================+=================================================================================================================================================+======================+====================+
-| beforeServiceResolve | Déclenché avant la résolution de service. Les écouteurs recoivent le nom du service ainsi que les paramètres qui lui sont transmis              | Non                  | Ecouteurs          |
+| beforeServiceResolve | Déclenché avant la résolution de service. Les écouteurs reçoivent le nom du service ainsi que les paramètres qui lui sont transmis              | Non                  | Ecouteurs          |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------+
-| afterServiceResolve  | Déclenché avant la résolution de service. Les écouteurs recoivent le nom du service, l'instance, ainsi que les paramètres qui lui sont transmis | Non                  | Ecouteurs          |
+| afterServiceResolve  | Déclenché avant la résolution de service. Les écouteurs reçoivent le nom du service, l'instance, ainsi que les paramètres qui lui sont transmis | Non                  | Ecouteurs          |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------+
 
 Services partagés
@@ -574,7 +575,7 @@ Une autre façon d'inscrire des services partagés est de transmettre "true" au 
     );
 
 Si un service n'est pas inscrit comme partagé et vous voulez être sûr d'accéder à une instance partagée à chaque fois
-que le service est obtenu auprès de DI, vous pouvez utiliser la méhtode 'getShared':
+que le service est obtenu auprès de DI, vous pouvez utiliser la méthode 'getShared':
 
 .. code-block:: php
 
@@ -646,14 +647,13 @@ le même nom. Grâce à ce comportement nous pouvons remplacer n'importe quelle 
     $myComponent = $di->get("MyOtherComponent");
 
 Vous pouvez profiter de ceci en instanciant toujours vos classes depuis le conteneur de services (même s'ils ne sont pas inscrits en tant que service).
-You can take advantage of this, always instantiating your classes via the service container (even if they aren't registered as services).
 Le DI prendra par défaut un chargeur automatique valide pour charger la classe. En faisant comme ceci, vous pourrez aisément replacer n'importe quelle
-classe en implementant une définition pour elle.
+classe en implémentant une définition pour elle.
 
 Injection automatique pour le DI lui-même
 =========================================
 Si une classe ou un composant ai besoin que le DI localise lui-même les services, le DI peut automatiquement s'injecter les instances qu'il crée.
-Pour ceci, vous devez implémtenter l'interface :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` dans vos classes:
+Pour ceci, vous devez implémenter l'interface :doc:`Phalcon\\Di\\InjectionAwareInterface <../api/Phalcon_Di_InjectionAwareInterface>` dans vos classes:
 
 .. code-block:: php
 

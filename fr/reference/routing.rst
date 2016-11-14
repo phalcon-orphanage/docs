@@ -1,14 +1,14 @@
-Routing
+Routage
 =======
 
-The router component allows you to define routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine this information. The router has two modes: MVC
-mode and match-only mode. The first mode is ideal for working with MVC applications.
+Le composant routeur vous permet de définir des routes qui correspondent à des contrôleurs ou des gestionnaires qui doivent
+recevoir la requête. Un routeur analyse l'URI pour extraire cette information. Le routeur dispose de deux modes: MVC,
+et correspondance seulement (match-only). Le premier mode est idéal pour travailler sur des applications MVC.
 
-Defining Routes
----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
-you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+Définir des Routes
+------------------
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` fournit des possibilité de routage avancées. En mode MVC
+vous pouvez définir des routes et les faire correspondre à des contrôleurs ou des actions dont vous avez besoin. Une route est défnie comme suit:
 
 .. code-block:: php
 
@@ -16,10 +16,10 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     use Phalcon\Mvc\Router;
 
-    // Create the router
+    // Création du routeur
     $router = new Router();
 
-    // Define a route
+    // Défintion d'une route
     $router->add(
         "/admin/users/my-profile",
         [
@@ -28,7 +28,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         ]
     );
 
-    // Another route
+    // Une autre route
     $router->add(
         "/admin/users/change-password",
         [
@@ -39,14 +39,14 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The first parameter of the :code:`add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. It's important to remember that the router does not execute the controller and action, it only collects this
-information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is the controller/action it should execute.
+Le premier paramètre de la méthode :code:`add()` est le motif recherché et, optionnellement, le second paramètre est un ensemble de chemins.
+Dans ce cas, si l'URI est /admin/users/my-profile, alors l'action "profile" du contrôleur "users" sera exécutée.
+Il faut se rappeler que le routeur n'exécute pas l'action du contrôleur, il récupère uniquement cette information
+pour en informer le bon composant (par ex. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
+que c'est ce contrôleur ou cette action qui doit être exécutée.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can
-create more flexible routes:
+Définir les routes une à une d'une application qui possède plusieurs chemins peut être une tâche pénible. Pour ces cas nous pouvons
+créer des routes plus flexibles:
 
 .. code-block:: php
 
@@ -54,10 +54,10 @@ create more flexible routes:
 
     use Phalcon\Mvc\Router;
 
-    // Create the router
+    // Création du routeur
     $router = new Router();
 
-    // Define a route
+    // Définition de route
     $router->add(
         "/admin/:controller/a/:action/:params",
         [
@@ -67,58 +67,58 @@ create more flexible routes:
         ]
     );
 
-In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) would produce:
+Dans l'exemple précédent nous utilisons des jokers pour rendre la route valide pour plusieurs URIs. Par exemple, cette URL
+(/admin/users/a/delete/dave/301) pourrait produire:
 
 +------------+---------------+
-| Controller | users         |
+| Contrôleur | users         |
 +------------+---------------+
 | Action     | delete        |
 +------------+---------------+
-| Parameter  | dave          |
+| Paramètre  | dave          |
 +------------+---------------+
-| Parameter  | 301           |
+| Paramètre  | 301           |
 +------------+---------------+
 
-The :code:`add()` method receives a pattern that can optionally have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a forward slash character (/). The regular expression syntax used
-is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All route patterns are case-insensitive.
+La méthode :code:`add()` reçoit un motif qui peut optionnellement avoir des marqueurs et des expressions régulières.
+Tous les modtifs de routage doivent commencer avec une barre oblique (/). La syntaxe utilisée pour les expressions régulières
+est la même que les `PCRE regular expressions`_. Notez qu'il n'est pas nécessaire d'ajouter les délimiteurs d'expression régulière.
+Tous les motifs de route sont insensibles à la casse.
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
-parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
-first subpattern matched (:code:`:controller`) is the controller part of the route, the second the action and so on.
+Le second paramètre définit comment les parties reconnues sont reliées aux contrôleur/action/paramètre. Les parties à reconnaître
+sont des marqueurs ou des sous-motifs délimités par des parenthèses (round brackets). Dans l'exemple donné précédemment,
+le premier sous-motif correspondant (:code:`:controller`) est partie contrôleur de la route, le deuxième est l'action, et ainsi de suite.
 
-These placeholders help writing regular expressions that are more readable for developers and easier
-to understand. The following placeholders are supported:
+Ces marqueurs facilite l'écriture d'expression régulière qui sont plus lisible pour le développeur et facile à comprendre.
+Les marqueurs suivant sont supportés:
 
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| Placeholder          | Regular Expression          | Usage                                                                                                  |
+| Marqueur             | Expression régulière        | Utilisation                                                                                            |
 +======================+=============================+========================================================================================================+
-| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
+| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Correspond à un module valide contenant seulement des caractères alphanumériques                       |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
+| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Correspond à un contrôleur valide contenant seulement des caractères alphanumériques                   |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
+| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Correspond à une action valide contenant seulement des caractères alphanumériques                      |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
+| :code:`/:params`     | :code:`(/.*)*`              | Correspond à une liste de mots optionnels séparés bar des slashs. A n'utiliser qu'en fin de route !    |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
+| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Correspond à un espace de nom à un seul niveau                                                         |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
+| :code:`/:int`        | :code:`/([0-9]+)`           | Correspond à un paramètre de type entier                                                               |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 
-Controller names are camelized, this means that characters (:code:`-`) and (:code:`_`) are removed and the next character
-is uppercased. For instance, some_controller is converted to SomeController.
+Les noms de contrôleur sont "camélisés". Ceci signifie que les caractères (:code:`-`) et (:code:`_`) sont retirés et que le caractère qui suit
+est mis en majuscule. Par exemple, un_controleur est convertit en UnControleur.
 
-Since you can add many routes as you need using the :code:`add()` method, the order in which routes are added indicate
-their relevance, latest routes added have more relevance than first added. Internally, all defined routes
-are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
-one that matches the given URI and processes it, while ignoring the rest.
+Depuis que vous pouvez ajouter autant de routes que nécessaire grâce à la méthode  :code:`add()`, l'ordre d'ajout des routes indique
+leur pertinence, les dernières routes ajoutés étant plus pertinentes que les premières. En interne, toutes les routes
+sont parcourues dans l'ordre inverse jusqu'à ce que :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` trouve
+celle qui correspond à l'URI fournie et la traite, ignorant alors le reste.
 
-Parameters with Names
-^^^^^^^^^^^^^^^^^^^^^
-The example below demonstrates how to define names to route parameters:
+Paramètres avec des Noms
+^^^^^^^^^^^^^^^^^^^^^^^^
+L'exemple ci-dessous démontre comment définir des noms pour les paramètres d'une route:
 
 .. code-block:: php
 
@@ -136,9 +136,9 @@ The example below demonstrates how to define names to route parameters:
         ]
     );
 
-In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced
-with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched
-by the request. Inside the controller, those named parameters can be accessed as follows:
+Dans l'exemple précédent, la route ne contient aucune partie "contrôler" ou "action". Ces parties sont remplacées
+par des valeurs constantes ("posts" et "show"). L'utilisateur ignore quel est le contrôleur qui est réellement
+concerné par la requête. Dans le contrôleur, on peut accéder à ces paramètres nommés de la manière suivante:
 
 .. code-block:: php
 
@@ -168,9 +168,9 @@ by the request. Inside the controller, those named parameters can be accessed as
         }
     }
 
-Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
-component that finally interacts with the drivers of your application. Moreover, there is also another
-way to create named parameters as part of the pattern:
+Notez que les valeurs des paramètres sont obtenues depuis le répartiteur. Ceci arrive parce que c'est
+le composant qui finalement interagit avec les pilotes de votre application. De plus, il existe une autre
+façon de créer des paramètres nommées à l'intérieur du motif:
 
 .. code-block:: php
 
@@ -184,7 +184,7 @@ way to create named parameters as part of the pattern:
         ]
     );
 
-You can access their values in the same way as before:
+Vous pouvez accéder aux valeurs de la même façon que précédemment:
 
 .. code-block:: php
 
@@ -206,22 +206,22 @@ You can access their values in the same way as before:
         }
     }
 
-Short Syntax
-^^^^^^^^^^^^
-If you don't like using an array to define the route paths, an alternative syntax is also available.
-The following examples produce the same result:
+Syntaxe courte
+^^^^^^^^^^^^^^
+Si vous n'aimez pas utiliser les tableaux pour définir des routes, une autre syntaxe est possible.
+L'exemple suivant produit le même résultat:
 
 .. code-block:: php
 
     <?php
 
-    // Short form
+    // Forme courte
     $router->add(
         "/posts/{year:[0-9]+}/{title:[a-z\-]+}",
         "Posts::show"
     );
 
-    // Array form
+    // Forme tableau
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
         [
@@ -232,17 +232,17 @@ The following examples produce the same result:
         ]
     );
 
-Mixing Array and Short Syntax
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
-are added to the route paths according to the position on which they were defined:
+Mélanger les Syntaxes Tableau et Courtes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les syntaxes tableau et courtes peuvent être mélangées pour définir une route. Dans ce cas, notez que les paramètres nommées
+sont ajoutés automatiquement aux chemins selon la position dans laquelle ils sont définis:
 
 .. code-block:: php
 
     <?php
 
-    // First position must be skipped because it is used for
-    // the named parameter 'country'
+    // La première position est ignorée parce qu'elle est utilisée
+    // pour le paramètre 'country'
     $router->add(
         "/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])",
         [
@@ -251,10 +251,10 @@ are added to the route paths according to the position on which they were define
         ]
     );
 
-Routing to Modules
-^^^^^^^^^^^^^^^^^^
-You can define routes whose paths include modules. This is specially suitable to multi-module applications.
-It's possible define a default route that includes a module wildcard:
+Router vers des Modules
+^^^^^^^^^^^^^^^^^^^^^^^
+Vous pouvez définir des routes dont les chemins incluent des modules. Ceci est spécialement adapté aux application multi-modules.
+Il est possible de définir une route qui inclus un joker pour le module:
 
 .. code-block:: php
 
@@ -274,20 +274,20 @@ It's possible define a default route that includes a module wildcard:
         ]
     );
 
-In this case, the route always must have the module name as part of the URL. For example, the following
-URL: /admin/users/edit/sonny, will be processed as:
+Dans le cas le nom de module sera toujours partie intégrante de l'URL. Par exemple, l'URL: /admin/users/edit/sonny
+sera traitée comme:
 
 +------------+---------------+
 | Module     | admin         |
 +------------+---------------+
-| Controller | users         |
+| Contrôleur | users         |
 +------------+---------------+
 | Action     | edit          |
 +------------+---------------+
-| Parameter  | sonny         |
+| Paramètre  | sonny         |
 +------------+---------------+
 
-Or you can bind specific routes to specific modules:
+Ou bien vous pouvez rattacher des routes spécifiques à des modules spécifiques:
 
 .. code-block:: php
 
@@ -311,7 +311,7 @@ Or you can bind specific routes to specific modules:
         ]
     );
 
-Or bind them to specific namespaces:
+Ou les rattacher à des espaces de noms spécifiques:
 
 .. code-block:: php
 
@@ -326,7 +326,7 @@ Or bind them to specific namespaces:
         ]
     );
 
-Namespaces/class names must be passed separated:
+Les noms d'espace de nom et de classe doivent être transmis séparément:
 
 .. code-block:: php
 
@@ -341,28 +341,28 @@ Namespaces/class names must be passed separated:
         ]
     );
 
-HTTP Method Restrictions
-^^^^^^^^^^^^^^^^^^^^^^^^
-When you add a route using simply :code:`add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
-this is especially useful when creating RESTful applications:
+Restriction de la Méthode HTTP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lorsque vous ajoutez une route en utilisant simplement :code:`add()` la route est défnie pour toutes les méthodes HTTP. De temps en temps, nous pouvons restreindre une route
+à une méthode en particulier. Ceci est spécialement utile lors de la création d'applications RESTful:
 
 .. code-block:: php
 
     <?php
 
-    // This route only will be matched if the HTTP method is GET
+    // Cette route correspondra seulement si la méthode HTTP est GET
     $router->addGet(
         "/products/edit/{id}",
         "Products::edit"
     );
 
-    // This route only will be matched if the HTTP method is POST
+    // Cette route correspondra seulement si la méthode HTTP est POST
     $router->addPost(
         "/products/save",
         "Products::save"
     );
 
-    // This route will be matched if the HTTP method is POST or PUT
+    // Cette route correspondra seulement si la méthode HTTP est POST ou PUT
     $router->add(
         "/products/update",
         "Products::update"
@@ -373,16 +373,16 @@ this is especially useful when creating RESTful applications:
         ]
     );
 
-Using conversors
-^^^^^^^^^^^^^^^^
-Conversors allow you to freely transform the route's parameters before passing them to the dispatcher.
-The following examples show how to use them:
+Utilisation de Convertisseurs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Les convertisseurs vous permettent de transformer librement les paramètres d'une route avant de les transmettre au répartiteur.
+Les exemples qui suivent vous montre comment s'en servir:
 
 .. code-block:: php
 
     <?php
 
-    // The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    // Le nom de l'action autorise les tirets. Une action peut être: /products/new-ipod-nano-4-generation
     $route = $router->add(
         "/products/{slug:[a-z\-]+}",
         [
@@ -394,18 +394,18 @@ The following examples show how to use them:
     $route->convert(
         "slug",
         function ($slug) {
-            // Transform the slug removing the dashes
+            // Transforme slug en supprimant les tirets
             return str_replace("-", "", $slug);
         }
     );
 
-Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
+Un autre cas d'utilisation des convertisseurs est de relier un modèle à une route. Ceci permet de transmettre directement le modèle à l'action:
 
 .. code-block:: php
 
     <?php
 
-    // This example works off the assumption that the ID is being used as parameter in the url: /products/4
+    // Cet exemple fonctionne en supposant que l'ID est transmis en paramètre dans l'url: /products/4
     $route = $router->add(
         "/products/{id}",
         [
@@ -422,9 +422,9 @@ Another use case for conversors is binding a model into a route. This allows the
         }
     );
 
-Groups of Routes
+Groupe de Routes
 ^^^^^^^^^^^^^^^^
-If a set of routes have common paths they can be grouped to easily maintain them:
+Si un ensemble de route a des chemins communs, ils peuvent être regroupés pour les maintenir aisément:
 
 .. code-block:: php
 
@@ -435,7 +435,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     $router = new Router();
 
-    // Create a group with a common module and controller
+    // Création d'un groupe avec un module et un contrôleur communs
     $blog = new RouterGroup(
         [
             "module"     => "blog",
@@ -443,10 +443,10 @@ If a set of routes have common paths they can be grouped to easily maintain them
         ]
     );
 
-    // All the routes start with /blog
+    // Toutes les routes commencent par /blog
     $blog->setPrefix("/blog");
 
-    // Add a route to the group
+    // Ajout d'une route au groupe
     $blog->add(
         "/save",
         [
@@ -454,7 +454,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
         ]
     );
 
-    // Add another route to the group
+    // Ajout d'une autre route au groupe
     $blog->add(
         "/edit/{id}",
         [
@@ -462,7 +462,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
         ]
     );
 
-    // This route maps to a controller different than the default
+    // Cette route est reliée à un autre contrôleur que celui par défaut
     $blog->add(
         "/blog",
         [
@@ -471,10 +471,10 @@ If a set of routes have common paths they can be grouped to easily maintain them
         ]
     );
 
-    // Add the group to the router
+    // Ajout du groupe au routeur
     $router->mount($blog);
 
-You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
+Vous pouvez placer les groupes de routes dans des fichiers distincts pour améliorer l'organisation et la réutilisation de code:
 
 .. code-block:: php
 
@@ -494,10 +494,10 @@ You can move groups of routes to separate files in order to improve the organiza
                 ]
             );
 
-            // All the routes start with /blog
+            // Toutes les routes commencent par /blog
             $this->setPrefix("/blog");
 
-            // Add a route to the group
+            // Ajout d'une route au groupe
             $this->add(
                 "/save",
                 [
@@ -505,7 +505,7 @@ You can move groups of routes to separate files in order to improve the organiza
                 ]
             );
 
-            // Add another route to the group
+            // Ajout d'une autre route au groupe
             $this->add(
                 "/edit/{id}",
                 [
@@ -513,7 +513,7 @@ You can move groups of routes to separate files in order to improve the organiza
                 ]
             );
 
-            // This route maps to a controller different than the default
+            // Cette route est reliée à un autre contrôleur que celui par défaut
             $this->add(
                 "/blog",
                 [
@@ -524,22 +524,22 @@ You can move groups of routes to separate files in order to improve the organiza
         }
     }
 
-Then mount the group in the router:
+On monte le groupe dans le routeur:
 
 .. code-block:: php
 
     <?php
 
-    // Add the group to the router
+    // Ajout du groupe au routeur
     $router->mount(
         new BlogRoutes()
     );
 
-Matching Routes
----------------
-A valid URI must be passed to the Router so that it can process it and find a matching route.
-By default, the routing URI is taken from the :code:`$_GET["_url"]` variable that is created by the rewrite engine
-module. A couple of rewrite rules that work very well with Phalcon are:
+Correspondance de Routes
+------------------------
+Une URI valide doit être transmise au routeur pour qu'il puisse la traiter et trouver une route correspondante.
+Par défaurt, l'URI à router est prise dans la variable :code:`$_GET['_url']` qui est créée par le module de réécriture.
+Un ensemble de règles de réécriture qui fonctionne bien avec Phalcon est:
 
 .. code-block:: apacheconf
 
@@ -548,9 +548,9 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
-In this configuration, any requests to files or folders that don't exist will be sent to index.php.
+Avec cette configuration, toutes les requêtes vers des fichiers ou des dossiers qui n'existent pas sont envoyés à index.php.
 
-The following example shows how to use this component in stand-alone mode:
+L'exemple suivant montre comment utiliser ce composant dans un mode autonome:
 
 .. code-block:: php
 
@@ -558,32 +558,32 @@ The following example shows how to use this component in stand-alone mode:
 
     use Phalcon\Mvc\Router;
 
-    // Creating a router
+    // Création du routeur
     $router = new Router();
 
-    // Define routes here if any
+    // Définition de routes s'il y a
     // ...
 
-    // Taking URI from $_GET["_url"]
+    // Récupère l'URI depuis $_GET["_url"]
     $router->handle();
 
-    // Or Setting the URI value directly
+    // Ou en définissant l'URI directement
     $router->handle("/employees/edit/17");
 
-    // Getting the processed controller
+    // Récupération du contrôleur trouvé
     echo $router->getControllerName();
 
-    // Getting the processed action
+    // Récupération de l'action trouvée
     echo $router->getActionName();
 
-    // Get the matched route
+    // Récupération de la route trouvée
     $route = $router->getMatchedRoute();
 
-Naming Routes
--------------
-Each route that is added to the router is stored internally as a :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>` object.
-That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
-This is especially useful if you want to create URLs from it.
+Routes Nommées
+--------------
+Chaque route ajoutée au routeur est stockée en interne en tant qu'objet de :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
+Cette classe encapsule tous les détails d'une route. Par exemple, nous pouvons donnée un nom au chemin afin de l'identifier de manière unique dans notre application.
+Ceci est particulièrement utile lorsqu'il faut s'en servir pour créer des URLs.
 
 .. code-block:: php
 
@@ -596,13 +596,13 @@ This is especially useful if you want to create URLs from it.
 
     $route->setName("show-posts");
 
-Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` we can build routes from its name:
+Ensuite en utilisant par exemple le composant :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` nous pouvons contruire des routes à partir de son nom:
 
 .. code-block:: php
 
     <?php
 
-    // Returns /posts/2012/phalcon-1-0-released
+    // Retourne /posts/2012/phalcon-1-0-released
     echo $url->get(
         [
             "for"   => "show-posts",
@@ -611,15 +611,15 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
         ]
     );
 
-Usage Examples
---------------
-The following are examples of custom routes:
+Exemple d'utilisation
+---------------------
+Ce qui suit sont des exemples de routes personnalisées:
 
 .. code-block:: php
 
     <?php
 
-    // Matches "/system/admin/a/edit/7001"
+    // Trouve "/system/admin/a/edit/7001"
     $router->add(
         "/system/:controller/a/:action/:params",
         [
@@ -629,7 +629,7 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches "/es/news"
+    // Trouve "/es/news"
     $router->add(
         "/([a-z]{2})/:controller",
         [
@@ -639,7 +639,7 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches "/es/news"
+    // Trouve "/es/news"
     $router->add(
         "/{language:[a-z]{2}}/:controller",
         [
@@ -648,7 +648,7 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches "/admin/posts/edit/100"
+    // Trouve "/admin/posts/edit/100"
     $router->add(
         "/admin/:controller/:action/:int",
         [
@@ -658,7 +658,7 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches "/posts/2015/02/some-cool-content"
+    // Trouve "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         [
@@ -670,7 +670,7 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches "/manual/en/translate.adapter.html"
+    // Trouve "/manual/en/translate.adapter.html"
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
         [
@@ -681,13 +681,13 @@ The following are examples of custom routes:
         ]
     );
 
-    // Matches /feed/fr/le-robots-hot-news.atom
+    // Trouve /feed/fr/le-robots-hot-news.atom
     $router->add(
         "/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}",
         "Feed::get"
     );
 
-    // Matches /api/v1/users/peter.json
+    // Trouve /api/v1/users/peter.json
     $router->add(
         "/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)",
         [
@@ -699,26 +699,26 @@ The following are examples of custom routes:
 
 .. highlights::
 
-    Beware of characters allowed in regular expression for controllers and namespaces. As these
-    become class names and in turn they're passed through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: :code:`/([a-zA-Z0-9\_\-]+)`
+    Prenez garde aux caractères autorisés dans les expressions régulière pour les contrôleurs et les espaces de noms. Comme ils
+    deviennent des noms de classe, ils peuvent permettre à des attaquants d'atteindre le système de fichiers et donc de lire des
+    fichiers non autorisés. Une expression régulière sûre est :code:`/([a-zA-Z0-9\_\-]+)`
 
-Default Behavior
-----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior that provides a very simple routing that
-always expects a URI that matches the following pattern: /:controller/:action/:params
+Comportement par Défaut
+-----------------------
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` a un comportement par défaut qui fournit un routage très simple
+qui s'attend à ce que l'URI corresponde au motif: /:controller/:action/:params
 
-For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows:
+Par exemple pour une URL du style *http://phalconphp.com/documentation/show/about.html*, le routeur transformera comme suit:
 
 +------------+---------------+
-| Controller | documentation |
+| Contrôleur | documentation |
 +------------+---------------+
 | Action     | show          |
 +------------+---------------+
-| Parameter  | about.html    |
+| Paramètre  | about.html    |
 +------------+---------------+
 
-If you don't want the router to have this behavior, you must create the router passing :code:`false` as the first parameter:
+Si vous ne souhaitez pas que le routeur ait ce comportement, vous devez créer le routeur en passant :code:`false` en premier paramètre:
 
 .. code-block:: php
 
@@ -726,13 +726,13 @@ If you don't want the router to have this behavior, you must create the router p
 
     use Phalcon\Mvc\Router;
 
-    // Create the router without default routes
+    // Création du routeur sans route par défaut
     $router = new Router(false);
 
-Setting the default route
--------------------------
-When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page
-in your website/application:
+Définir la route par défaut
+---------------------------
+Quand votre application est accédée sans aucune route c'est la route '/' qui est utilisée pour déterminer quels sont les chemins à utiliser pour
+afficher la page initiale de votre site web ou de votre application:
 
 .. code-block:: php
 
@@ -746,9 +746,9 @@ in your website/application:
         ]
     );
 
-Not Found Paths
----------------
-If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
+Chemins Introuvables
+--------------------
+Si aucune des routes spécifiées au routeur ne correspond, vous pouvez définir un groupe de chemin pour ce type de scénario;
 
 .. code-block:: php
 
@@ -762,24 +762,24 @@ If none of the routes specified in the router are matched, you can define a grou
         ]
     );
 
-This is typically for an Error 404 page.
+Ceci est typiquement pour une page d'Erreur 404.
 
-Setting default paths
----------------------
-It's possible to define default values for the module, controller or action. When a route is missing any of
-those paths they can be automatically filled by the router:
+Etablir des chemins par défaut
+------------------------------
+Il est possible de définir des valeurs par défaut pour le module, le contrôleur ou l'action. Lorqu'il manque une route,
+n'importe lequel des ces chemin peut être automatiquement complété par le routeur:
 
 .. code-block:: php
 
     <?php
 
-    // Setting a specific default
+    // Définition d'un défaut spécifique
     $router->setDefaultModule("backend");
     $router->setDefaultNamespace("Backend\\Controllers");
     $router->setDefaultController("index");
     $router->setDefaultAction("index");
 
-    // Using an array
+    // Avec un tableau
     $router->setDefaults(
         [
             "controller" => "index",
@@ -787,11 +787,11 @@ those paths they can be automatically filled by the router:
         ]
     );
 
-Dealing with extra/trailing slashes
------------------------------------
-Sometimes a route could be accessed with extra/trailing slashes.
-Those extra slashes would lead to produce a not-found status in the dispatcher.
-You can set up the router to automatically remove the slashes from the end of handled route:
+Traitement des slashs terminaux
+-------------------------------
+Il arrive qu'une route soit accédée avec des slashs terminaux.
+Ces slashs en trop peuvent provoquer un état de non-trouvé dans le répartiteur.
+Vous pouvez paramétrer le routeur pour qu'il retire automatiquement les slashs qui se trouvent à la fin d'une route:
 
 .. code-block:: php
 
@@ -801,16 +801,16 @@ You can set up the router to automatically remove the slashes from the end of ha
 
     $router = new Router();
 
-    // Remove trailing slashes automatically
+    // Retrait automatique des slashs terminaux
     $router->removeExtraSlashes(true);
 
-Or, you can modify specific routes to optionally accept trailing slashes:
+Ou bien, vous pouvez modifier des routes en particulier pour qu'elles acceptent des slashs terminaux:
 
 .. code-block:: php
 
     <?php
 
-    // The [/]{0,1} allows this route to have optionally have a trailing slash
+    // The [/]{0,1} autorise cette route de terminer éventuellement avec un slash
     $router->add(
         "/{language:[a-z]{2}}/:controller[/]{0,1}",
         [
@@ -819,11 +819,11 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         ]
     );
 
-Match Callbacks
----------------
-Sometimes, routes should only be matched if they meet specific conditions.
-You can add arbitrary conditions to routes using the :code:`beforeMatch()` callback.
-If this function return :code:`false`, the route will be treated as non-matched:
+Rappel sur Correspondance
+--------------------------
+De temps en temps, des routes ne peuvent correspondre que si elle remplissent certaines conditions.
+Vous pouvez ajouter des conditions arbitraires aux routes en utilisant la fonction de rappel :code:`beforeMatch()`.
+Si la fonction retourne :code:`false`, la route sera considérée comme ne pas correspondre:
 
 .. code-block:: php
 
@@ -838,7 +838,7 @@ If this function return :code:`false`, the route will be treated as non-matched:
 
     $route->beforeMatch(
         function ($uri, $route) {
-            // Check if the request was made with Ajax
+            // Vérifie qu'il s'agit d'une requête Ajax
             if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest") {
                 return false;
             }
@@ -847,7 +847,7 @@ If this function return :code:`false`, the route will be treated as non-matched:
         }
     );
 
-You can re-use these extra conditions in classes:
+Vous pouvez réutiliser des conditions complémentaires dans des classes:
 
 .. code-block:: php
 
@@ -861,7 +861,7 @@ You can re-use these extra conditions in classes:
         }
     }
 
-And use this class instead of the anonymous function:
+Et exploiter cette classe au lieu d'une fonction anonyme:
 
 .. code-block:: php
 
@@ -882,7 +882,7 @@ And use this class instead of the anonymous function:
         ]
     );
 
-As of Phalcon 3, there is another way to check this:
+Depuis Phalcon 3, il existe une autre façon de vérifier:
 
 .. code-block:: php
 
@@ -906,15 +906,15 @@ As of Phalcon 3, there is another way to check this:
              */
             $request = $this->getShared("request");
 
-            // Check if the request was made with Ajax
+            // Vérifie qu'il s'agit d'une requête Ajax
             return $request->isAjax();
         }
     );
-
-Hostname Constraints
---------------------
-The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted
-to only match if the route also meets the hostname constraint:
+            
+Contraintes de Nom d'Hôte
+-------------------------
+Le routeur vous permet d'établir des contraintes selon le nom de l'hôte, ceci signifie que des routes spécifiques ou des groupes de routes
+peuvent être restreintes seulement si la route satisfait la contrainte du nom d'hôte;
 
 .. code-block:: php
 
@@ -928,10 +928,10 @@ to only match if the route also meets the hostname constraint:
             "action"     => "login",
         ]
     );
+    
+	$route->setHostName("admin.company.com");
 
-    $route->setHostName("admin.company.com");
-
-The hostname can also be passed as a regular expressions:
+Le nom d'hôte peut également être transmis sous forme d'expression régulière:
 
 .. code-block:: php
 
@@ -948,7 +948,7 @@ The hostname can also be passed as a regular expressions:
 
     $route->setHostName("([a-z]+).company.com");
 
-In groups of routes you can set up a hostname constraint that apply for every route in the group:
+Vous pouvez faire en sorte qu'une contrainte de nom d'hôte s'applique à toutes les routes d'un groupe de routes:
 
 .. code-block:: php
 
@@ -956,7 +956,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
     use Phalcon\Mvc\Router\Group as RouterGroup;
 
-    // Create a group with a common module and controller
+    // Création d'un groupe avec un module et un contrôleur communs
     $blog = new RouterGroup(
         [
             "module"     => "blog",
@@ -964,13 +964,13 @@ In groups of routes you can set up a hostname constraint that apply for every ro
         ]
     );
 
-    // Hostname restriction
+    // Restriction sur le nom de l'hôte
     $blog->setHostName("blog.mycompany.com");
 
-    // All the routes start with /blog
+    // Toutes les routes commencent par /blog
     $blog->setPrefix("/blog");
 
-    // Default route
+    // Route par défaut
     $blog->add(
         "/",
         [
@@ -978,7 +978,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
         ]
     );
 
-    // Add a route to the group
+    // Ajout d'une route au groupe
     $blog->add(
         "/save",
         [
@@ -986,7 +986,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
         ]
     );
 
-    // Add another route to the group
+    // Ajout d'un autre route au groupe
     $blog->add(
         "/edit/{id}",
         [
@@ -994,13 +994,13 @@ In groups of routes you can set up a hostname constraint that apply for every ro
         ]
     );
 
-    // Add the group to the router
+    // Ajout du groupe au routeur
     $router->mount($blog);
 
-URI Sources
------------
-By default the URI information is obtained from the :code:`$_GET["_url"]` variable, this is passed by the Rewrite-Engine to
-Phalcon, you can also use :code:`$_SERVER["REQUEST_URI"]` if required:
+Sources d'URI
+-------------
+Par défaut l'URI est extraite de la variable :code:`$_GET['_url']` qui est transmise à Phalcon par le moteur de réécriture.
+Vous pouvez également utiliser :code:`$_SERVER['REQUEST_URI']` si c'est nécessaire:
 
 .. code-block:: php
 
@@ -1017,10 +1017,10 @@ Phalcon, you can also use :code:`$_SERVER["REQUEST_URI"]` if required:
 
     // Use $_SERVER["REQUEST_URI"]
     $router->setUriSource(
-        Router::URI_SOURCE_SERVER_REQUEST_URI
+		Router::URI_SOURCE_SERVER_REQUEST_URI
     );
 
-Or you can manually pass a URI to the :code:`handle()` method:
+Ou bien vous pouvez transmettre manuellement l'URI à la méthode :code:`handle()`:
 
 .. code-block:: php
 
@@ -1028,9 +1028,9 @@ Or you can manually pass a URI to the :code:`handle()` method:
 
     $router->handle("/some/route/to/handle");
 
-Testing your routes
--------------------
-Since this component has no dependencies, you can create a file as shown below to test your routes:
+Test de vos routes
+------------------
+Tant que le composant n'a pas de dépendances, vous pouvez créer un fichier comme montré ci-dessous pour tester vos routes:
 
 .. code-block:: php
 
@@ -1038,7 +1038,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
     use Phalcon\Mvc\Router;
 
-    // These routes simulate real URIs
+    // Ces routes simulent de vrai URIs
     $testRoutes = [
         "/",
         "/index",
@@ -1051,31 +1051,31 @@ Since this component has no dependencies, you can create a file as shown below t
 
     $router = new Router();
 
-    // Add here your custom routes
+    // Ajoutez ici vos propres routes
     // ...
 
-    // Testing each route
+    // Test de chaque route
     foreach ($testRoutes as $testRoute) {
-        // Handle the route
+        // Gestion de la route
         $router->handle($testRoute);
 
         echo "Testing ", $testRoute, "<br>";
 
-        // Check if some route was matched
+        // Vérifie que chaque route corresponde
         if ($router->wasMatched()) {
-            echo "Controller: ", $router->getControllerName(), "<br>";
-            echo "Action: ", $router->getActionName(), "<br>";
+            echo 'Contrôleur: ', $router->getControllerName(), '<br>';
+            echo 'Action: ', $router->getActionName(), '<br>';
         } else {
-            echo "The route wasn't matched by any route<br>";
+            echo 'La route n\'a pas de correspondance<br>';
         }
 
         echo "<br>";
     }
 
-Annotations Router
-------------------
-This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
-you can write the routes directly in the controllers instead of adding them in the service registration:
+Annotations du Routeur
+----------------------
+Ce composant fournit une variante du service :doc:`annotations <annotations>`. Avec cette stratégie vous
+pouvez écrire les routes directement dans les contrôleurs plutôt que les ajouter dans le service d'inscription:
 
 .. code-block:: php
 
@@ -1084,16 +1084,16 @@ you can write the routes directly in the controllers instead of adding them in t
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
     $di["router"] = function () {
-        // Use the annotations router. We're passing false as we don't want the router to add its default patterns
+        // Utilise les annotations du routeur. Nous passons 'faux' si nous ne voulons pas que le routeur ajoute son motif par défaut
         $router = new RouterAnnotations(false);
 
-        // Read the annotations from ProductsController if the URI starts with /api/products
+        // Lecture des annotations depuis ProductsController si l'URI commence par /api/products
         $router->addResource("Products", "/api/products");
 
         return $router;
     };
 
-The annotations can be defined in the following way:
+Les annotations peuvent être écrites de la façon suivante:
 
 .. code-block:: php
 
@@ -1157,41 +1157,41 @@ The annotations can be defined in the following way:
         }
     }
 
-Only methods marked with valid annotations are used as routes. List of annotations supported:
+Seules les méthodes marquées par une annotation valide sont utilisées comme routes. Voyez la liste des annotations supportées:
 
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                                      |
-+==============+===================================================================================================+============================================================================+
-| RoutePrefix  | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | :code:`@RoutePrefix("/api/products")`                                      |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | :code:`@Route("/api/products/show")`                                       |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Get          | This annotation marks a method as a route restricting the HTTP method to GET                      | :code:`@Get("/api/products/search")`                                       |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Post         | This annotation marks a method as a route restricting the HTTP method to POST                     | :code:`@Post("/api/products/save")`                                        |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Put          | This annotation marks a method as a route restricting the HTTP method to PUT                      | :code:`@Put("/api/products/save")`                                         |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Delete       | This annotation marks a method as a route restricting the HTTP method to DELETE                   | :code:`@Delete("/api/products/delete/{id}")`                               |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | :code:`@Option("/api/products/info")`                                      |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Nom          | Description                                                                                                    | Exemple de déclaration                                                     |
++==============+================================================================================================================+============================================================================+
+| RoutePrefix  | Un préfixe qui sera placé devant chaque route URI. Cette annotation est à placer dans le docblock de la classe | :code:`@RoutePrefix("/api/products")`                                      |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Route        | Cette annotation associe une méthode à une route. Cette annotation est à placer dans le docblock d'une méthode | :code:`@Route("/api/products/show")`                                       |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Get          | Cette annotation associe une méthode à une route avec une restriction sur la méthode HTTP GET                  | :code:`@Get("/api/products/search")`                                       |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Post         | Cette annotation associe une méthode à une route avec une restriction sur la méthode HTTP POST                 | :code:`@Post("/api/products/save")`                                        |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Put          | Cette annotation associe une méthode à une route avec une restriction sur la méthode HTTP PUT                  | :code:`@Put("/api/products/save")`                                         |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Delete       | Cette annotation associe une méthode à une route avec une restriction sur la méthode HTTP DELETE               | :code:`@Delete("/api/products/delete/{id}")`                               |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Options      | Cette annotation associe une méthode à une route avec une restriction sur la méthode HTTP OPTIONS              | :code:`@Option("/api/products/info")`                                      |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-For annotations that add routes, the following parameters are supported:
+Pour les annotations qui ajoutent des routes, les paramètres suivants sont supportés:
 
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                                      |
-+==============+===================================================================================================+============================================================================+
-| methods      | Define one or more HTTP method that route must meet with                                          | :code:`@Route("/api/products", methods={"GET", "POST"})`                   |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| name         | Define a name for the route                                                                       | :code:`@Route("/api/products", name="get-products")`                       |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to :code:`Phalcon\Mvc\Router::add()`                        | :code:`@Route("/posts/{id}/{slug}", paths={module="backend"})`             |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| conversors   | A hash of conversors to be applied to the parameters                                              | :code:`@Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"})` |
-+--------------+---------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Nom          | Description                                                                                                    | Exemple de déclaration                                                     |
++==============+================================================================================================================+============================================================================+
+| methods      | Définit une ou plusieurs méthodes HTPP que la route doit respecter                                             | :code:`@Route("/api/products", methods={"GET", "POST"})`                   |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| name         | Définit le nom d'une route                                                                                     | :code:`@Route("/api/products", name="get-products")`                       |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| paths        | Un tableau de chemins identiques à ceux passés à :code:`Phalcon\Mvc\Router::add()`                             | :code:`@Route("/posts/{id}/{slug}", paths={module="backend"})`             |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| conversors   | Un ensemble de convertisseurs qui s'appliquent aux paramètres                                                  | :code:`@Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"})` |
++--------------+----------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-If you're using modules in your application, it is better use the :code:`addModuleResource()` method:
+Si vous utilisez des modules dans votre application, il vaut mieux utiliser la méthode :code:`addModuleResource()`:
 
 .. code-block:: php
 
@@ -1200,27 +1200,27 @@ If you're using modules in your application, it is better use the :code:`addModu
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
     $di["router"] = function () {
-        // Use the annotations router
+        // Utilise les annotations de routage
         $router = new RouterAnnotations(false);
 
-        // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
+        // Lecture des annotations depuis Backend\Controllers\ProductsController si l'URI commence par /api/products
         $router->addModuleResource("backend", "Products", "/api/products");
 
         return $router;
     };
 
-Registering Router instance
----------------------------
-You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
+Inscription d'une Instance de Routeur
+-------------------------------------
+Vous pouvez inscrire le routeur lors de la procédure d'inscription du service dans l'injecteur de dépdendance de Phalcon pour le rendre disponible aux contrôleurs.
 
-You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
+Vous devez ajouter le code suivant dans votre fichier d'amorce (par exemple index.php ou app/config/services.php si vous utilisez `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Add routing capabilities
+     * Ajout de la capacité de routage
      */
     $di->set(
         "router",
@@ -1231,7 +1231,7 @@ You need to add code below in your bootstrap file (for example index.php or app/
         }
     );
 
-You need to create app/config/routes.php and add router initialization code, for example:
+Vous devrez créer app/config/routes.php et d'ajouter du code d'initialisation du routeur, comme par exemple:
 
 .. code-block:: php
 
@@ -1259,9 +1259,9 @@ You need to create app/config/routes.php and add router initialization code, for
 
     return $router;
 
-Implementing your own Router
-----------------------------
-The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
-the one provided by Phalcon.
+Ecriture de votre propre Routeur
+--------------------------------
+L'interface :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` doit être implémentée pour créer un routeur en remplacement 
+de celui fournit par Phalcon.
 
-.. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
+.. _PCRE regular expressions: http://php.net/manual/fr/book.pcre.php

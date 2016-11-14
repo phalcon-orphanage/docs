@@ -1,26 +1,26 @@
 Installation
 ============
-PHP extensions require a slightly different installation method to a traditional PHP-based library or framework.
-You can either download a binary package for the system of your choice or build it from the sources.
+Les extensions PHP nécessitent une méthode d'installation un peu différente des librairies ou des framework basés sur PHP.
+Vous pouvez soit télécharger le paquet binaire pour le système de votre choix soit le construire à partir des sources.
 
 Windows
 -------
-To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
+Pour utiliser Phalcon sur Windows vous pouvez télécharger_ une DLL. Ouvrez votre php.ini et ajoutez la ligne suivante:
 
 .. code-block:: bash
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+Ensuite redémarrez votre serveur web.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+La vidéo qui suit (en anglais) montre pas à pas comment installer Phalcon sur Windows:
 
 .. raw:: html
 
     <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
-^^^^^^^^^^^^^^
+Guides relatifs
+^^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -32,43 +32,43 @@ Linux/Solaris
 
 Debian / Ubuntu
 ^^^^^^^^^^^^^^^
-To add the repository to your distribution:
+Pour ajouter le dépôt à votre distribution:
 
 .. code-block:: bash
 
-    # Stable releases
+    # Versions stables
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 
-    # Nightly releases
+    # Versions nocturnes
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Ceci ne doit être fait qu'une seule fois, à moins d'un changement de distribution ou que vous souhaitiez basculer vers une construction nocturne.
 
-To install Phalcon:
+Pour installer Phalcon:
 
 .. code-block:: bash
 
     sudo apt-get install php5-phalcon
 
-    # or for PHP 7
+    # ou pour PHP 7
 
     sudo apt-get install php7.0-phalcon
 
-RPM distributions (i.e. CentOS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To add the repository to our distribution:
+Distributions RPM (par ex. CentOs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Pour ajouter le dépôt à votre distribution:
 
 .. code-block:: bash
 
-    # Stable releases
+    # Versions stables
     curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 
-    # Nightly releases
+    # Versions nocturnes
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Ceci ne doit être fait qu'une seule fois, à moins d'un changement de distribution ou que vous souhaitiez basculer vers une construction nocturne.
 
-To install Phalcon:
+Pour installer Phalcon:
 
 .. code-block:: bash
 
@@ -78,17 +78,17 @@ To install Phalcon:
 
     sudo yum install php70u-phalcon
 
-Compile from source
-^^^^^^^^^^^^^^^^^^^
-On a Linux/Solaris system you can easily compile and install the extension from the source code:
+Compiler depuis les sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sur un système Linux/Solaris vous pouvez aisément compiler et installer l'extension en partant du code source:
 
-Prerequisite packages are:
+Les paquets nécessaires sont:
 
 * PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* Git (s'il n'est pas déjà installé sur votre système - sinon vous pouvez le télécharger depuis Github et le déposer sur votre serveur via FTP/SFTP)
 
-Specific packages for common platforms:
+Paquets spécifique pour les plateformes courantes:
 
 .. code-block:: bash
 
@@ -104,7 +104,7 @@ Specific packages for common platforms:
     # Solaris
     pkg install gcc-45 php-56 apache-php56
 
-Creating the extension:
+Création de l'extension:
 
 .. code-block:: bash
 
@@ -114,34 +114,34 @@ Creating the extension:
 
     sudo ./install
 
-Add extension to your PHP configuration:
+Ajout de l'extension à votre configuration PHP:
 
 .. code-block:: bash
 
-    # Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+    # Suse: Ajoutez un fichier nommé phalcon.ini dans /etc/php5/conf.d/ avec ce contenu:
     extension=phalcon.so
 
-    # CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    # CentOS/RedHat/Fedora: Ajoutez un fichier nommé phalcon.ini in /etc/php.d/ avec ce contenu:
     extension=phalcon.so
 
-    # Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+    # Ubuntu/Debian with apache2: Ajoutez un fichier nommé 30-phalcon.ini in /etc/php5/apache2/conf.d/ avec ce contenu:
     extension=phalcon.so
 
-    # Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+    # Ubuntu/Debian with php5-fpm: Ajoutez un fichier nommé 30-phalcon.ini in /etc/php5/fpm/conf.d/ avec ce contenu:
     extension=phalcon.so
 
-    # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+    # Ubuntu/Debian with php5-cli: Ajoutez un fichier nommé 30-phalcon.ini in /etc/php5/cli/conf.d/ avec ce contenu:
     extension=phalcon.so
 
-Restart the webserver.
+Redémarrez le serveur web.
 
-If you are running Ubuntu/Debian with php5-fpm, restart it:
+Si vous utilisez php5-fpm sur Ubuntu ou Debian, redémarrez le:
 
 .. code-block:: bash
 
     sudo service php5-fpm restart
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon détecte automatiquement votre architecture, cependant vous pouvez forcer la compilation pour une architecture spécifique:
 
 .. code-block:: bash
 
@@ -152,7 +152,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+Si l'installateur automatique échoue, essayez la construction manuelle:
 
 .. code-block:: bash
 
@@ -166,11 +166,11 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+Sur un système Mac OS X vous pouvez compiler et installer l'extension à partir du code source:
 
-Requirements
-^^^^^^^^^^^^
-Prerequisite packages are:
+Pré-requis
+^^^^^^^^^^
+Les paquets nécessaires sont:
 
 * PHP >= 5.5 development resources
 * XCode
@@ -186,17 +186,17 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration.
+Ajoutez l'extension à votre configuration PHP.
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Un portage est disponible pour FreeBSD. Vous devez juste tapez cette ligne pour l'installer:
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+ou
 
 .. code-block:: bash
 
@@ -206,15 +206,15 @@ or
 
     make install clean
 
-Checking your installation
---------------------------
-Check your :code:`phpinfo()` output for a section referencing "Phalcon" or execute the code snippet below:
+Vérification de l'installation
+------------------------------
+Consultez la sortie de :code:`phpinfo()` à la recherche d'une section nommée "Phalcon" ou bien exécutez ce bout de code ci-dessous:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+L'extension Phalcon doit apparaître dans la sortie:
 
 .. code-block:: php
 
@@ -229,9 +229,9 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Installation Notes
-------------------
-Installation notes for Web Servers:
+Notes d'installation
+--------------------
+Instructions d'installation pour les serveurs Web:
 
 .. toctree::
     :maxdepth: 1
@@ -241,4 +241,4 @@ Installation notes for Web Servers:
     cherokee
     built-in
 
-.. _download: http://phalconphp.com/fr/download
+.. _télécharger: http://phalconphp.com/fr/download

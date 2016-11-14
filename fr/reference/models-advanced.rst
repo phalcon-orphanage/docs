@@ -1,10 +1,10 @@
-Working with Models (Advanced)
-==============================
+Travailler avec des modèles (Avancé)
+====================================
 
-Hydration Modes
----------------
-As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified and saved again to persistence:
+Modes d'hydratation de données
+------------------------------
+Comme mentionné plus haut, les jeux de résultat sont des collections complètes d'objets, ce qui signifie que chaque résultat renvoyé est un objet
+qui représente une ligne dans la base de données. Ces objets peuvent être modifiés et re-sauvegardés pour la persistence:
 
 .. code-block:: php
 
@@ -14,16 +14,16 @@ representing a row in the database. These objects can be modified and saved agai
 
     $robots = Robots::find();
 
-    // Manipulating a resultset of complete objects
+    // Manipulation d'un jeu complet de résultats d'objets
     foreach ($robots as $robot) {
         $robot->year = 2000;
 
         $robot->save();
     }
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
-to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
-returned in a resultset is called 'hydration mode':
+Parfois les enregistrement récupérés ne doivent être présentées à l'utilisateur qu'en lecture seule. Dans ces cas il peut être utile
+de changer la manière dont les enregistrement sont présentés afin de faciliter leur manipulation. La statégie utilisée pour présenter
+les objets retournés dans un jeu de résultat est appelée "mode d'hydratation":
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@ returned in a resultset is called 'hydration mode':
 
     $robots = Robots::find();
 
-    // Return every robot as an array
+    // Retourne tous les robots dans un tableau
     $robots->setHydrateMode(
         Resultset::HYDRATE_ARRAYS
     );
@@ -43,7 +43,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot["year"], PHP_EOL;
     }
 
-    // Return every robot as a stdClass
+    // Retourne tous les robots dans une stdClass
     $robots->setHydrateMode(
         Resultset::HYDRATE_OBJECTS
     );
@@ -52,7 +52,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-    // Return every robot as a Robots instance
+    // Retourne tous les robots dans une instance de Robots
     $robots->setHydrateMode(
         Resultset::HYDRATE_RECORDS
     );
@@ -61,7 +61,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-Hydration mode can also be passed as a parameter of 'find':
+Le mode d'hydratation peut également être transmis en paramètre de "find":
 
 .. code-block:: php
 
@@ -80,11 +80,11 @@ Hydration mode can also be passed as a parameter of 'find':
         echo $robot["year"], PHP_EOL;
     }
 
-Auto-generated identity columns
--------------------------------
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Les colonnes identité auto-générées
+-----------------------------------
+Certains modèles peuvent avoir une colonne identité. Ces colonnes servent habituellement de clé primaire dans la table rattachée. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+peut reconnaître la colonne identité et l'omet dans l'instruction SQL INSERT générée, laissant le SGBD générer ainsi automatiquement la valeur pour lui.
+Systématiquement après chaque création d'enregistrement, le champ identité est rempli avec la valeur générée par le SGBD:
 
 .. code-block:: php
 
@@ -94,11 +94,11 @@ Always after creating a record, the identity field will be registered with the v
 
     echo "The generated id is: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` est capable de reconnaître la colonne identité. Selon le SGBD, ces colonnes peut être des
+colonnes "serial" comme dans PostgreSQL ou "auto_increment" dans le cas de MySQL.
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the :code:`getSequenceName()` method needs to be implemented:
+PostgreSQL utilise les séquences pour générer des valeurs numérique. Par défaut, Phalcon tente d'obtenir les valeurs depuis la séquence "<table>_<field>_seq",
+comme par exemple "robots_id_seq". Si cette séquence a un nom différent, alors la méthode "getSequenceName" doit être réalisée:
 
 .. code-block:: php
 
@@ -116,10 +116,10 @@ for example: robots_id_seq, if that sequence has a different name, the :code:`ge
         }
     }
 
-Skipping Columns
-----------------
-To tell :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that always omits some fields in the creation and/or update of records in order
-to delegate the database system the assignation of the values by a trigger or a default:
+Omission de colonnes
+--------------------
+Pour indiquer à :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` qu'il doit omettre systématiquement des champs lors de la création ou la mise à jour d'enregistrement
+afin de déléguer au SGDB la mission d'assigner les valeurs soit par défaut soit par l'intermédiaire d'un déclencheur:
 
 .. code-block:: php
 
@@ -133,7 +133,7 @@ to delegate the database system the assignation of the values by a trigger or a 
     {
         public function initialize()
         {
-            // Skips fields/columns on both INSERT/UPDATE operations
+            // Omission de colonnes sur l'INSERT et l'UPDATE
             $this->skipAttributes(
                 [
                     "year",
@@ -141,14 +141,14 @@ to delegate the database system the assignation of the values by a trigger or a 
                 ]
             );
 
-            // Skips only when inserting
+            // Omis uniquement à la création
             $this->skipAttributesOnCreate(
                 [
                     "created_at",
                 ]
             );
 
-            // Skips only when updating
+            // Omis uniquement à la mise à jour
             $this->skipAttributesOnUpdate(
                 [
                     "modified_in",
@@ -157,9 +157,9 @@ to delegate the database system the assignation of the values by a trigger or a 
         }
     }
 
-This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
-If you want to ignore different attributes on different INSERT/UPDATE operations, you can specify the second parameter (boolean) - true
-for replacement. Forcing a default value can be done in the following way:
+Ceci ignorera ces champs sur chaque opération d'INSERT ou d'UPDATE pour l'ensemble de l'application.
+Si vous voulez ignorer des attributs selon l'opération INSERT ou UPDATE, vous devez spécifier un dexuième paramètre (booléen) - vrai pour le
+remplacement. Forcer une nouvelle valeur par défaut peut être réalisée de la façon suivante:
 
 .. code-block:: php
 
@@ -177,7 +177,7 @@ for replacement. Forcing a default value can be done in the following way:
 
     $robot->create();
 
-A callback also can be used to create a conditional assignment of automatic default values:
+Une fonction de rappel peut être utilisée pour réaliser une assignation conditionnelle des valeurs par défaut:
 
 .. code-block:: php
 
@@ -200,18 +200,18 @@ A callback also can be used to create a conditional assignment of automatic defa
 
 .. highlights::
 
-    Never use a :doc:`Phalcon\\Db\\RawValue <../api/Phalcon_Db_RawValue>` to assign external data (such as user input)
-    or variable data. The value of these fields is ignored when binding parameters to the query.
-    So it could be used to attack the application injecting SQL.
+    N'utilisez jamais :doc:`Phalcon\\Db\\RawValue <../api/Phalcon_Db_RawValue>` pour assigner des valeurs externes (comme les entrées utilisateur)
+    ou des données variables. Les valeurs de ces champs sont ignorées lors de la liaison de paramètres à la requête.
+    Ceci peut être sujet à des attaques par injection SQL.
 
-Dynamic Update
-^^^^^^^^^^^^^^
-SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update).
-You can change specific models to make dynamic updates, in this case, just the fields that had changed
-are used to create the final SQL statement.
+Mise à jour dynamique
+^^^^^^^^^^^^^^^^^^^^^
+Par défaut, les instructions SQL UPDATE sont créées avec toutes les colonnes définies dans le modèle (full all-field SQL update). 
+Vous pouvez modifier des modèles spécifique pour réaliser des mises à jour dynamiques. Dans ce cas, seuls les champs qui ont changé
+seront utilisés dans l'instruction SQL finale.
 
-In some cases this could improve the performance by reducing the traffic between the application and the database server,
-this specially helps when the table has blob/text fields:
+Dans certains cas, cela peut améliorer les performances en réduisant le trafic entre l'application et le serveur de base de données.
+Ceci est particulièrement utiles lorsque la table contient des champs blob ou textuels:
 
 .. code-block:: php
 
@@ -229,12 +229,12 @@ this specially helps when the table has blob/text fields:
         }
     }
 
-Independent Column Mapping
---------------------------
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
-the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
-This is a great feature when one needs to rename fields in the database without having to worry about all the queries
-in the code. A change in the column map in the model will take care of the rest. For example:
+Correspondance indépendante de colonnes
+---------------------------------------
+L'ORM supporte une correspondance indépendante de colonnes, ce qui permet au développeur d'utiliser des noms de colonnes dans le modèles différents de ceux 
+de la table. Phalcon reconnaîtra les nouveaux noms de colonnes et les renommera pour qu'ils correspondent aux colonnes respectives dans la base.
+Ceci est une caractéristique intéressante lorsqu'on a besoin de renommer des champs sans avoir à se soucier de toutes les requêtes 
+du code. Un simple changement dans la correspondance de colonnes et le modèle s'occupera du reste. Par exemple:
 
 .. code-block:: php
 
@@ -256,8 +256,8 @@ in the code. A change in the column map in the model will take care of the rest.
 
         public function columnMap()
         {
-            // Keys are the real names in the table and
-            // the values their names in the application
+            // Les clés sont les vrais noms dans la table et 
+            // Les valeurs sont leur noms dans l'application
             return [
                 "id"       => "code",
                 "the_name" => "theName",
@@ -267,7 +267,7 @@ in the code. A change in the column map in the model will take care of the rest.
         }
     }
 
-Then you can use the new names naturally in your code:
+Ainsi vous pouvez utilisez simplement les nouveaux noms dans votre code:
 
 .. code-block:: php
 
@@ -275,14 +275,14 @@ Then you can use the new names naturally in your code:
 
     use Store\Toys\Robots;
 
-    // Find a robot by its name
+    // Rechercher un robot par son nom
     $robot = Robots::findFirst(
         "theName = 'Voltron'"
     );
 
     echo $robot->theName, "\n";
 
-    // Get robots ordered by type
+    // Récupérer les robots triés par type
     $robot = Robots::find(
         [
             "order" => "theType DESC",
@@ -293,7 +293,7 @@ Then you can use the new names naturally in your code:
         echo "Code: ", $robot->code, "\n";
     }
 
-    // Create a robot
+    // Création d'un robot
     $robot = new Robots();
 
     $robot->code    = "10101";
@@ -303,21 +303,21 @@ Then you can use the new names naturally in your code:
 
     $robot->save();
 
-Take into consideration the following the next when renaming your columns:
+Prenez en considération ce qui suit lors du renommage de colonnes:
 
-* References to attributes in relationships/validators must use the new names
-* Refer the real column names will result in an exception by the ORM
+* Les références aux attributs dans les relations et validateurs doivent utiliser les nouveaux noms
+* Se référer au nom réel résultera en une exception de la part de l'ORM
 
-The independent column map allow you to:
+La correspondance indépendante de colonnes vous permet:
 
-* Write applications using your own conventions
-* Eliminate vendor prefixes/suffixes in your code
-* Change column names without change your application code
+* D'écrire des application en utilisant vos propre conventions
+* D'éliminer les suffixe ou préfixe dans votre code
+* De renommer les colonnes sans avoir à modifier le code de votre application
 
-Record Snapshots
-----------------
-Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what
-fields are changed according to the data queried from the persistence:
+Instantanés d'enregistrements
+-----------------------------
+Des modèles spéciaux peuvent être définis pour maintenir un instantané d'enregistrements lors de l'interrogation. Vous pouvez utiliser cette caractéristique pour 
+mettre en œuvre un audit ou bien juste pour savoir quels sont les champs qui ont changés depuis leur dernière interrogation:
 
 .. code-block:: php
 
@@ -335,8 +335,8 @@ fields are changed according to the data queried from the persistence:
         }
     }
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
-In models that have this feature activated you can check what fields changed:
+En activant cette caractéristique, l'application consomme un peu plus de mémoire pour conserver les valeurs d'origine obtenues depuis la persistance.
+Dans les modèles qui ont activés cette caractéristique vous pouvez vérifier quels sont les champs qui ont changé:
 
 .. code-block:: php
 
@@ -344,10 +344,10 @@ In models that have this feature activated you can check what fields changed:
 
     use Store\Toys\Robots;
 
-    // Get a record from the database
+    // Récupère un enregistrement depuis la base
     $robot = Robots::findFirst();
 
-    // Change a column
+    // Modifie une colonne
     $robot->name = "Other name";
 
     var_dump($robot->getChangedFields()); // ["name"]
@@ -356,9 +356,9 @@ In models that have this feature activated you can check what fields changed:
 
     var_dump($robot->hasChanged("type")); // false
 
-Pointing to a different schema
-------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the :code:`setSchema()` method to define that:
+Pointer un schéma différent
+---------------------------
+Si un modèle est rattaché à une table qui se trouve dans un autre schéma ou base que celui par défaut, vous pouvez utiliser la méthode :code:`setSchema()` pour définir cela:
 
 .. code-block:: php
 
@@ -376,11 +376,11 @@ If a model is mapped to a table that is in a different schemas/databases than th
         }
     }
 
-Setting multiple databases
---------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the :code:`initialize()` method:
+Définition de plusieurs bases de données
+----------------------------------------
+Dans Phalcon, tous les modèles peuvent dépendre de la même connexion à la base de données ou en avoir un particulier. Actuellement, 
+lorsque :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` a besoin de se connecter à la base, il interroge le service "db" dans le 
+container de services de l'application. Vous pouvez surcharger le paramétrage de ce service dans la méthode :code:`initialize()`:
 
 .. code-block:: php
 
@@ -389,7 +389,7 @@ in the application's services container. You can overwrite this service setting 
     use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
     use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
-    // This service returns a MySQL database
+    // Ce service retourne une base de données MySQL
     $di->set(
         "dbMysql",
         function () {
@@ -404,7 +404,7 @@ in the application's services container. You can overwrite this service setting 
         }
     );
 
-    // This service returns a PostgreSQL database
+    // Ce service retourne une base de données PostgreSQL
     $di->set(
         "dbPostgres",
         function () {
@@ -419,7 +419,7 @@ in the application's services container. You can overwrite this service setting 
         }
     );
 
-Then, in the :code:`initialize()` method, we define the connection service for the model:
+Ainsi, dans la méthode :code:`initialize()`, nous définissons le service de connexion pour le modèle:
 
 .. code-block:: php
 
@@ -437,8 +437,8 @@ Then, in the :code:`initialize()` method, we define the connection service for t
         }
     }
 
-But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
-to balance the load to your databases implementing a master-slave architecture:
+Mais Phalcon offre encore plus de flexibilité, nous pouvons définir une connexion pour la lecture et une pour l'écriture. Ceci est particulièrement utile
+pour équilibrer la charge entre les bases de données dans une architecture maître-esclave:
 
 .. code-block:: php
 
@@ -458,8 +458,8 @@ to balance the load to your databases implementing a master-slave architecture:
         }
     }
 
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
-according to the current query conditions:
+L'ORM fournit aussi la capacité d'`Horizontal Sharding`_, en vous permettant de mettre en place une sélection de "shard"
+en fonction des conditions actuelles de la requête:
 
 .. code-block:: php
 
@@ -472,7 +472,7 @@ according to the current query conditions:
     class Robots extends Model
     {
         /**
-         * Dynamically selects a shard
+         * Sélection dynamique d'un shard
          *
          * @param array $intermediate
          * @param array $bindParams
@@ -480,11 +480,11 @@ according to the current query conditions:
          */
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
-            // Check if there is a 'where' clause in the select
+            // Vérifie la présence d'une clause 'where'
             if (isset($intermediate["where"])) {
                 $conditions = $intermediate["where"];
 
-                // Choose the possible shard according to the conditions
+                // Choix des shard potentiels en fonction des conditions
                 if ($conditions["left"]["name"] === "id") {
                     $id = $conditions["right"]["value"];
 
@@ -498,13 +498,13 @@ according to the current query conditions:
                 }
             }
 
-            // Use a default shard
+            // Utilisation du shard par défaut
             return $this->getDI()->get("dbShard0");
         }
     }
 
-The :code:`selectReadConnection()` method is called to choose the right connection, this method intercepts any new
-query executed:
+La méthode :code:`selectReadConnection()` est appelée pour sélectionner la bonne connexion. Cette méthode intercepte chaque
+nouvelle requête exécutée:
 
 .. code-block:: php
 
@@ -514,9 +514,9 @@ query executed:
 
     $robot = Robots::findFirst('id = 101');
 
-Injecting services into Models
-------------------------------
-You may be required to access the application services within a model, the following example explains how to do that:
+Injection de services dans les modèles
+--------------------------------------
+Si vous devez accéder aux services de l'application à partir d'un modèle, l'exemple qui suit vous montre comment faire:
 
 .. code-block:: php
 
@@ -530,25 +530,25 @@ You may be required to access the application services within a model, the follo
     {
         public function notSaved()
         {
-            // Obtain the flash service from the DI container
+            // Obtention du service flash à partir du conteneur DI
             $flash = $this->getDI()->getFlash();
 
             $messages = $this->getMessages();
 
-            // Show validation messages
+            // Affiche les messages de validation
             foreach ($messages as $message) {
                 $flash->error($message);
             }
         }
     }
 
-The "notSaved" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+L'événement "notSaved" est déclenché à chaque échec des actions "create" ou "update". Ainsi nous envoyons les messages de validation
+dans le service "flash" obtenu depuis le conteneur DI. En faisant comme cela, nous n'avons par besoin d'imprimer le message après chaque sauvegarde.
 
-Disabling/Enabling Features
----------------------------
-In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
-According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+Activation/Désactivation de fonctionnalités
+-------------------------------------------
+Dans l'ORM nous avons mis en place un mécanisme qui vous permette d'activer ou de désactiver à la volée des fonctionnalités particulière ou des options.
+Vous pouvez désactiver de que vous n'utilisez pas dans l'ORM. Ces options peuvent également être désactivées temporairement si nécessaire:
 
 .. code-block:: php
 
@@ -563,27 +563,27 @@ According to how you use the ORM you can disable that you aren't using. These op
         ]
     );
 
-The available options are:
+Les options sont:
 
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| Option              | Description                                                                           | Default       |
-+=====================+=======================================================================================+===============+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models         | :code:`true`  |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| columnRenaming      | Enables/Disables the column renaming                                                  | :code:`true`  |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table       | :code:`true`  |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                             | :code:`true`  |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | :code:`true`  |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
-| lateStateBinding    | Enables/Disables late state binding of the :code:`Mvc\Model::cloneResultMap()` method | :code:`false` |
-+---------------------+---------------------------------------------------------------------------------------+---------------+
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| Option              | Description                                                                             | Défaut        |
++=====================+=========================================================================================+===============+
+| events              | Enables/Disables les rappels, crochets et notifications d'événement de tous les modèles | :code:`true`  |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| columnRenaming      | Active/Désactive le renommage de colonnes                                               | :code:`true`  |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| notNullValidations  | L'ORM valide automatiquement les colonnes non nulles présentes dans la table rattachée  | :code:`true`  |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| virtualForeignKeys  | Active/Désactive les clés étrangères virtuelles                                         | :code:`true`  |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| phqlLiterals        | Active/Désactive les littéraux dans le parser PHQL                                      | :code:`true`  |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
+| lateStateBinding    | Active/Désactive l'état tardif de la méthode :code:`Mvc\Model::cloneResultMap()`        | :code:`false` |
++---------------------+-----------------------------------------------------------------------------------------+---------------+
 
-Stand-Alone component
----------------------
-Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstrated below:
+Composant autonome
+------------------
+L'utilisation de :doc:`Phalcon\\Mvc\\Model <models>` en mode autonome est montrée ci-dessous:
 
 .. code-block:: php
 
@@ -597,7 +597,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     $di = new Di();
 
-    // Setup a connection
+    // Etablissement d'une connexion
     $di->set(
         "db",
         new Connection(
@@ -607,23 +607,25 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
         )
     );
 
-    // Set a models manager
+    // Définition d'un gestionnaire de modèles
     $di->set(
         "modelsManager",
         new ModelsManager()
     );
 
-    // Use the memory meta-data adapter or other
+    // Utilisation d'un adaptateur de métadonnées
     $di->set(
         "modelsMetadata",
         new MetaData()
     );
 
-    // Create a model
+    // Création d'un modèle
     class Robots extends Model
     {
 
     }
 
-    // Use the model
+    // Utilisation du modèle
     echo Robots::count();
+
+.. _Horizontal Sharding: https://en.wikipedia.org/wiki/Shard_(database_architecture)

@@ -1,29 +1,29 @@
-Using Controllers
-=================
+Utilisation de Contrôleurs
+==========================
 
-Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
-the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Les contrôleurs fournissent un certain nombre de méthodes qui sont appelées actions. Les actions sont des méthodes du contrôleur qui traitent les requêtes.
+Par défaut toutes les méthodes publiques d'un contrôleur sont reliées à des actions et sont accessibles par URL. Les actions sont responsables
+de l'interprétation de la requête et de la création de la réponse. Habituellement les réponses sont sous la forme de vues mais il existe d'autres façons de créer des réponses adaptées.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
-part like this:
+Par exemple, en accédant à une URL comme ceci: http://localhost/blog/posts/show/2015/the-post-title Phalcon par défaut décomposera chaque 
+partie comme ceci:
 
-+-----------------------+----------------+
-| **Phalcon Directory** | blog           |
-+-----------------------+----------------+
-| **Controller**        | posts          |
-+-----------------------+----------------+
-| **Action**            | show           |
-+-----------------------+----------------+
-| **Parameter**         | 2015           |
-+-----------------------+----------------+
-| **Parameter**         | the-post-title |
-+-----------------------+----------------+
++------------------------+----------------+
+| **Répertoire Phalcon** | blog           |
++------------------------+----------------+
+| **Contrôleur**         | posts          |
++------------------------+----------------+
+| **Action**             | show           |
++------------------------+----------------+
+| **Paramètre**          | 2015           |
++------------------------+----------------+
+| **Paramètre**          | the-post-title |
++------------------------+----------------+
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
-could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+Dans ce cas, le contrôleur "PostsController" gèrera cette requête. Il n'y a pas d'emplacement particulier pour placer les contrôleurs dans une application,
+ils seraient chargés grâçe à un :doc:`chargeur automatique <loader>`, et donc vous restez libre d'organiser vos contrôleurs selon vos besoins.
 
-Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
+Les contrôleurs doivent posséder le suffixe "Controller", et les actions le suffixe "Action". Un exemple de contrôleur se trouve ci-après:
 
 .. code-block:: php
 
@@ -44,11 +44,11 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
         }
     }
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
-optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to
-the application services.
+Les paramètres supplémentaires de l'URI sont définis comme des paramètres de l'action, ainsi ils restent facilement accessibles en utilisant des variables locales.
+Un contrôleur peut éventuellement étendre :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. En faisant ceci, le contrôleur accède
+facilement aux services de l'application.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Les paramètres sans valeur par défaut sont correctement gérés. La définition de paramètres optionels se fait comme d'habitude en PHP:
 
 .. code-block:: php
 
@@ -69,7 +69,7 @@ Parameters without a default value are handled as required. Setting optional val
         }
     }
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Les paramètres sont assignés dans le même ordre qu'ils sont transmis dans la route. Vous pouvez récupérer arbitrairement des paramètres de la façon suivante:
 
 .. code-block:: php
 
@@ -91,11 +91,11 @@ Parameters are assigned in the same order as they were passed in the route. You 
         }
     }
 
-Dispatch Loop
--------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
-action was executed. Now we'll see how the :code:`forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding
-execution to a different controller/action.
+Boucle de répartition (dispatch)
+--------------------------------
+La boucle de répartition sera exécutée dans le "Dispatcher" tant qu'il reste des actions à exécuter. Dans l'exemple précédent, seule une
+action était exécutée. Voyons maintenant comment la méthode :code:`forward()` peut fournir un flot plus complexe d'opération à la boucle de répartition en faisant
+suivre le fil d'exécution à un autre contrôleur ou une autre action.
 
 .. code-block:: php
 
@@ -113,10 +113,10 @@ execution to a different controller/action.
         public function showAction($year, $postTitle)
         {
             $this->flash->error(
-                "You don't have permission to access this area"
-            );
+				"Vous n'avez pas la permission d'accéder à cette zone"
+			);
 
-            // Forward flow to another action
+            // Redirection du flux à une autre action
             $this->dispatcher->forward(
                 [
                     "controller" => "users",
@@ -126,7 +126,7 @@ execution to a different controller/action.
         }
     }
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+Si les utilisateurs n'ont pas la permission d'accéder à une certaine action, ils seront redirigés vers le contrôleur "Users", action "signin".
 
 .. code-block:: php
 
@@ -147,14 +147,14 @@ If users don't have permission to access a certain action then they will be forw
         }
     }
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
-your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
-the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+Votre application n'est pas limitée en nombre de "forward", tant qu'il n'y a pas de références circulaires, sinon votre application sera arrêtée.
+S'il ne reste plus d'action à répartir dans la boucle, le répartiteur invoquera automatiquement la couche vue du MVC qui est gérée par
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
-Initializing Controllers
-------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the :code:`initialize()` method, which is executed first, before any
-action is executed on a controller. The use of the :code:`__construct()` method is not recommended.
+Initialisation des contrôleurs
+------------------------------
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` propose une méthode d'initialisation qui est exécutée en premier avant n'importe quelle
+action du contôleur. L'utilisation de la méthode "__construct" est à proscrire.
 
 .. code-block:: php
 
@@ -183,11 +183,11 @@ action is executed on a controller. The use of the :code:`__construct()` method 
 
 .. highlights::
 
-    The :code:`initialize()` method is only called if the 'beforeExecuteRoute' event is executed with success. This avoid
-    that application logic in the initializer cannot be executed without authorization.
+    La méthode "initialize" n'est appelée que si l'événement "beforeExecuteRoute" est exécuté avec succès.
+    Ceci évite l'éxecution de l'initialiseur sans autorisation.
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the
-:code:`onConstruct()` method:
+Si vous souhaitez procéder à une initialisation juste après la construction du contrôleur, vous pouvez définir
+la méthode "onConstruct":
 
 .. code-block:: php
 
@@ -205,14 +205,14 @@ If you want to execute some initialization logic just after the controller objec
 
 .. highlights::
 
-    Be aware that :code:`onConstruct()` method is executed even if the action to be executed doesn't exist
-    in the controller or the user does not have access to it (according to custom control access
-    provided by the developer).
+    Soyez attentifs au fait que la méthode :code:`onConstruct()` sera exécutée même si aucune action n'existe
+    dans le contrôleur, ou bien que l'utilisateur n'y ait pas accès (selon le contrôle d'accès fournit
+    par le développeur).
 
-Injecting Services
-------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
-container in application. For example, if we have registered a service like this:
+Injection de services
+---------------------
+Si un contrôleur étend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` il a alors facilement accès au conteneur
+de service de l'application. Si vous avez par exemple inscrit un service comme celui-ci:
 
 .. code-block:: php
 
@@ -226,13 +226,13 @@ container in application. For example, if we have registered a service like this
         "storage",
         function () {
             return new Storage(
-                "/some/directory"
+                "/un/repertoire"
             );
         },
         true
     );
 
-Then, we can access that service in several ways:
+Nous pouvons alors accéder à ce service de plusieurs façons:
 
 .. code-block:: php
 
@@ -244,30 +244,30 @@ Then, we can access that service in several ways:
     {
         public function saveAction()
         {
-            // Injecting the service by just accessing the property with the same name
-            $this->storage->save("/some/file");
+            // Injection de service en accédant seulement à la propriété du même nom
+            $this->storage->save('/un/fichier');
 
-            // Accessing the service from the DI
-            $this->di->get("storage")->save("/some/file");
+            // Accès au service depuis le DI
+            $this->di->get('storage')->save('/un/fichier');
 
-            // Another way to access the service using the magic getter
-            $this->di->getStorage()->save("/some/file");
+            // Une autre façon avec l'accesseur magique
+            $this->di->getStorage()->save('/un/fichier');
 
-            // Another way to access the service using the magic getter
-            $this->getDi()->getStorage()->save("/some/file");
+            // Une autre façon avec l'accesseur magique
+            $this->getDi()->getStorage()->save('/un/fichier');
 
-            // Using the array-syntax
-            $this->di["storage"]->save("/some/file");
+            // Avec l'écriture tableau
+            $this->di['storage']->save('/un/fichier');
         }
     }
 
-If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
+Si vous utilisez Phalcon comme un framework full-stack, vous pouvez consulter les services fournis :doc:`par défaut <di>` par le framework.
 
-Request and Response
---------------------
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
-The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
-contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
+Requête et réponse
+------------------
+En supposant que le framework fournisse un ensemble de services pré-inscrit, nous allons expliquer comment interagir avec l'environnement HTTP.
+Le service "request" contient un instance de :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` et le service "response" est une instance de
+:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` qui représente ce qui est renvoyé au client.
 
 .. code-block:: php
 
@@ -284,7 +284,7 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
         public function saveAction()
         {
-            // Check if request has made with POST
+            // Vérifie que la requête utilise la méthode POST
             if ($this->request->isPost()) {
                 // Access POST data
                 $customerName = $this->request->getPost("name");
@@ -293,8 +293,8 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
         }
     }
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
-an afterDispatch event - it can be useful to access the response directly:
+Normalement, l'objet réponse n'est pas utilisé directement mais il est construit avant l'exécution de l'action. Parfois, comme
+dans l'événement "afterDispatch" il peut être utile d'accéder à la réponse directement:
 
 .. code-block:: php
 
@@ -311,17 +311,17 @@ an afterDispatch event - it can be useful to access the response directly:
 
         public function notFoundAction()
         {
-            // Send a HTTP 404 response header
+            // Envoi d'une entête de réponse HTTP 404
             $this->response->setStatusCode(404, "Not Found");
         }
     }
 
-Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
+Vous apprendrez plus sur l'environnement HTTP dans les articles dédiés à :doc:`request <request>` et :doc:`response <response>`.
 
-Session Data
-------------
-Sessions help us maintain persistent data between requests. You can access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that needs to be persistent:
+Données de Session
+------------------
+Les sessions nous aident à maintenir la persistence des données entre les requêtes. Vous pouvez accéder à :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+à partir de n'importe quel contrôleur pour encapsuler les données devant être persistantes.
 
 .. code-block:: php
 
@@ -342,16 +342,16 @@ from any controller to encapsulate data that needs to be persistent:
         }
     }
 
-Using Services as Controllers
------------------------------
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
-any other class registered with its name can easily replace a controller:
+Utilisation des Services en tant que Contrôleurs
+------------------------------------------------
+Les services peuvent agir comme des contrôleurs. Les classes contrôleur sont toujours intérrogées depuis le conteneur de services.
+En conséquence, n'importe quelle autre classe inscrite avec son nom peut aisément remplacer un contrôleur:
 
 .. code-block:: php
 
     <?php
 
-    // Register a controller as a service
+    // Inscription d'un contrôleur en tant que service
     $di->set(
         "IndexController",
         function () {
@@ -361,20 +361,22 @@ any other class registered with its name can easily replace a controller:
         }
     );
 
-    // Register a namespaced controller as a service
+    // Inscription d'un contrôleur avec espace de nom en tant que service
+        $component = new Component();
     $di->set(
         "Backend\\Controllers\\IndexController",
         function () {
             $component = new Component();
 
             return $component;
+
         }
     );
 
-Events in Controllers
----------------------
-Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
-you to implement hook points before/after the actions are executed:
+Les Evénements dans les Contrôleurs
+-----------------------------------
+Les contrôleurs agissent automatiquement comme des écouteurs pour les événements du :doc:`répartiteur <dispatching>`. La réalisation de méthodes
+avec ces noms d'événements vous permet de créer des points d'interception avant que les actions ne soient exécutées:
 
 .. code-block:: php
 
@@ -386,12 +388,13 @@ you to implement hook points before/after the actions are executed:
     {
         public function beforeExecuteRoute($dispatcher)
         {
-            // This is executed before every found action
+            // Ceci est exécuté avant chaque action trouvée
             if ($dispatcher->getActionName() === "save") {
                 $this->flash->error(
                     "You don't have permission to save posts"
                 );
 
+                $this->flash->error("Vous n'avez pas l'autorisation d'enregistrer des annonces");
                 $this->dispatcher->forward(
                     [
                         "controller" => "home",
@@ -405,7 +408,7 @@ you to implement hook points before/after the actions are executed:
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Executed after every found action
+            // Exécutée après chaque action trouvée
         }
     }
 
