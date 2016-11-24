@@ -1,16 +1,16 @@
-Tutorial 5: Customizing INVO
-============================
+Tutoriel 5: Personnalisation d'INVO
+===================================
 
-To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
-and changing the title according to the controller executed.
+Pour finir l'explication détaille d'INVO, nous allons vous expliquer comment personnaliser INVO en ajoutant de éléments d'interface
+et en modifiant le titre en fonction du contrôleur exécuté.
 
 Composants utilisateurs
 -----------------------
 Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Bootstrap`_.
-Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté). Par exemple
+Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'application (connecté/déconnecté). Par exemple
 dans le coin en haut à droite, les liens "Log in / Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter) quand un utilisateur se connecte.
 
-Cette partie de l'application est implémentée en utilisant le composant "Elements" (app/library/Elements.php).
+Cette partie de l'application est réalisée en utilisant le composant "Elements" (app/library/Elements.php).
 
 .. code-block:: php
 
@@ -31,7 +31,7 @@ Cette partie de l'application est implémentée en utilisant le composant "Eleme
         }
     }
 
-Cette classe étend de :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`, il n'est pas imposé d'étendre un composant avec cette classe, mais
+Cette classe étend de :doc:`Phalcon\\Mvc\\User\\Component <../api/Phalcon_Mvc_User_Component>`, il n'est pas obligé d'étendre un composant avec cette classe, mais
 cela permet d'accéder plus rapidement/facilement aux services de l'application. Maintenant enregistrons
 cette classe au conteneur de service :
 
@@ -39,7 +39,7 @@ cette classe au conteneur de service :
 
     <?php
 
-    // Register a user component
+    // Inscription du composant utilisateur
     $di->set(
         "elements",
         function () {
