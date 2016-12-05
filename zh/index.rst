@@ -15,7 +15,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 目录
 -----
 
-Installation
+安装
 ^^^^^^^^^^^^
 
 .. toctree::
@@ -30,7 +30,7 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
+教程
 ^^^^^^^^^
 
 .. toctree::
@@ -45,7 +45,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+组件
 ^^^^^^^^^^
 
 .. toctree::
@@ -104,7 +104,7 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
+进阶技巧 / 延伸阅读
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
@@ -122,7 +122,7 @@ API
 
    api/index
 
-Legal
+声明
 ^^^^^
 
 .. toctree::
@@ -130,7 +130,7 @@ Legal
 
    reference/license
 
-Previous Versions
+旧的版本
 -----------------
 
 * `2.0.0 <https://docs.phalconphp.com/zh/2.0.0/>`
