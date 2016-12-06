@@ -16,7 +16,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 -----
 
 安装
-^^^^^
+^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -31,7 +31,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/wintools
 
 教程
-^^^^^
+^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -123,7 +123,7 @@ API
    api/index
 
 声明
-^^^^^
+^^^^
 
 .. toctree::
    :maxdepth: 3
