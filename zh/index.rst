@@ -16,7 +16,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 -----
 
 安装
-^^^^^^^^^^^^
+^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -31,7 +31,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/wintools
 
 教程
-^^^^^^^^^
+^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -46,7 +46,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/samples
 
 组件
-^^^^^^^^^^
+^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -105,7 +105,7 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
    reference/unit-testing
 
 进阶技巧 / 延伸阅读
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -131,7 +131,7 @@ API
    reference/license
 
 旧的版本
------------------
+--------
 
 * `2.0.0 <https://docs.phalconphp.com/zh/2.0.0/>`
 
