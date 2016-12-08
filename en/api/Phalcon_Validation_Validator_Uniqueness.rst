@@ -22,8 +22,10 @@ Check that a field is unique in the related table
          'model' => new Users(),
          'message' => ':field must be unique'
      ]));
+     
+::
 
-  Different attribute from the field: 
+Different attribute from the field: 
 
 .. code-block:: php
 
@@ -33,24 +35,30 @@ Check that a field is unique in the related table
          'model' => new Users(),
          'attribute' => 'nick'
      ]));
+     
+::
 
-  In model: 
+In model: 
 
 .. code-block:: php
 
     <?php
 
      $validator->add('username', new UniquenessValidator());
+     
+::
 
-  Combination of fields in model: 
+Combination of fields in model: 
 
 .. code-block:: php
 
     <?php
 
      $validator->add(['firstName', 'lastName'], new UniquenessValidator());
+     
+::
 
-  It is possible to convert values before validation. This is useful in situations where values need to be converted to do the database lookup: 
+It is possible to convert values before validation. This is useful in situations where values need to be converted to do the database lookup: 
 
 .. code-block:: php
 
@@ -64,7 +72,7 @@ Check that a field is unique in the related table
          }
      ]));
 
-
+::
 
 Methods
 -------
