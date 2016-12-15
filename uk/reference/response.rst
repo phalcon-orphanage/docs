@@ -179,8 +179,6 @@ Cache-Control
 
 E-Tag
 ^^^^^
-An "entity-tag" or "E-tag" is a unique identifier that helps the browser realize if the page has changed or not between two requests.
-The identifier must be calculated taking into account that this must change if the previously served content has changed:
 "entity-tag" чи "E-tag" це унікальний ідентифікатор, який допомагає браузеру зрозуміти, якщо сторінка змінилася чи ні між двома запитами. Ідентифікатор повинен бути розрахований з урахуванням, що змінитися повинен, якщо раніше обслуговуючий зміст змінився:
 
 .. code-block:: php
