@@ -1,8 +1,7 @@
-Returning Responses
+Повернення Відповідей
 ===================
 
-Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
-component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+Частина HTTP є повернення відповіді клієнтам. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` є компонентом Phalcon призначений для виконання цього завдання. HTTP-відповіді, як правило, складається із заголовків і тіла. Нижче наведено приклад базового використання:
 
 .. code-block:: php
 
@@ -10,20 +9,19 @@ component designed to achieve this task. HTTP responses are usually composed by 
 
     use Phalcon\Http\Response;
 
-    // Getting a response instance
+    // Отримання примірника відповіді
     $response = new Response();
 
-    // Set status code
-    $response->setStatusCode(404, "Not Found");
+    // Встановлення код стану
+    $response->setStatusCode(404, "Не знайдено");
 
-    // Set the content of the response
-    $response->setContent("Sorry, the page doesn't exist");
+    // Встановлення змісту відповіді
+    $response->setContent("Вибачте, сторінки не існує");
 
-    // Send response to the client
+    // Надсилання відповіді клієнту
     $response->send();
 
-If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response
-directly from a controller's action follow this example:
+Якщо ви використовуєте повний стек MVC немає необхідності створювати відповідей вручну. Проте, якщо вам потрібно повернути відповідь безпосередньо від дії контролера використовуйте цей приклад:
 
 .. code-block:: php
 
@@ -36,80 +34,79 @@ directly from a controller's action follow this example:
     {
         public function getAction()
         {
-            // Getting a response instance
+            // Отримання примірника відповіді
             $response = new Response();
 
             $feed = // ... Load here the feed
 
-            // Set the content of the response
+            // Встановлення змісту відповіді
             $response->setContent(
                 $feed->asString()
             );
 
-            // Return the response
+            // Надсилання відповіді
             return $response;
         }
     }
 
-Working with Headers
+Робота з заголовками
 --------------------
-Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
-type of response and much more.
+Заголовки є важливою частиною HTTP відповіді. Він містить корисну інформацію про стан відповіді, таку як статус HTTP,тип реакції і багато іншого.
 
-You can set headers in the following way:
+Ви можете встановити заголовки в такий спосіб:
 
 .. code-block:: php
 
     <?php
 
-    // Setting a header by its name
+    // Установка заголовка по імені
     $response->setHeader("Content-Type", "application/pdf");
     $response->setHeader("Content-Disposition", 'attachment; filename="downloaded.pdf"');
 
-    // Setting a raw header
+    // Установка вихідного заголовка
     $response->setRawHeader("HTTP/1.1 200 OK");
 
 A :doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
 retrieves the headers before sending it to client:
+Всі :doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` внутрішньо управляє заголовками. Цей клас витягує заголовки перед відправкою клієнту:
 
 .. code-block:: php
 
     <?php
 
-    // Get the headers bag
+    // Отримання всіх заголовків
     $headers = $response->getHeaders();
 
-    // Get a header by its name
+    // Отримання заголовка по імені
     $contentType = $headers->get("Content-Type");
 
 Making Redirections
 -------------------
-With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also execute HTTP redirections:
+З :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` ви можете також виконати HTTP переадресацію:
 
 .. code-block:: php
 
     <?php
 
-    // Redirect to the default URI
+    // Перенаправлення на URI за замовчуванням
     $response->redirect();
 
-    // Redirect to the local base URI
+    // Перенаправлення на базовий локальний URI
     $response->redirect("posts/index");
 
-    // Redirect to an external URL
+    // Перенаправлення на зовнішній URL
     $response->redirect("http://en.wikipedia.org", true);
 
-    // Redirect specifying the HTTP status code
+    // Перенаправлення із зазначенням коду стану HTTP
     $response->redirect("http://www.example.com/new-location", true, 301);
 
-All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`). This example demonstrates
-how you can redirect using a route you have defined in your application:
+Всі внутрішні ідентифікатори URI генеруються за допомогою 'url' сервісу :doc:`Phalcon\\Mvc\\Url <url>`). Цей приклад показує, як можна перенаправити за допомогою маршрут, який Ви визначили в вашому додатку:
 
 .. code-block:: php
 
     <?php
 
-    // Redirect based on a named route
+    // Перенаправлення на основі імені маршруту
     return $response->redirect(
         [
             "for"        => "index-lang",
@@ -118,26 +115,23 @@ how you can redirect using a route you have defined in your application:
         ]
     );
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
-will be executed anyway. You can disable the view from a controller by executing :code:`$this->view->disable()`;
+Зверніть увагу, що перенаправлення не відключає компонент перегляду, так що якщо є вид, пов'язаний з поточним дією він буде виконаний в будь-якому випадку. Можна відключити вид з контролера, виконавши :code:`$this->view->disable()`;
 
-HTTP Cache
+HTTP-кешування
 ----------
-One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache.
-Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
+Один з найпростіших способів поліпшити продуктивність в додатках і зменшити трафік це використовувати HTTP-кешування. Більшість сучасних браузерів підтримують кешування HTTP і це є однією з причин, чому багато веб-сайти в даний час швидкі.
 
-HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
+HTTP-кеш може бути змінений в наступних значеннях заголовків, які були надіслані додатком при обслуговуванні сторінки в перший раз:
 
-* *Expires:* With this header the application can set a date in the future or the past telling the browser when the page must expire.
-* *Cache-Control:* This header allows to specify how much time a page should be considered fresh in the browser.
-* *Last-Modified:* This header tells the browser which was the last time the site was updated avoiding page re-loads
-* *ETag:* An etag is a unique identifier that must be created including the modification timestamp of the current page
+* *Expires:* За допомогою цього заголовка програми можна встановити дату в майбутньому або минулому повідомляючи браузеру, коли сторінка повинна закінчитися.
+* *Cache-Control:* Цей заголовок дозволяє визначити, скільки часу сторінка повинна вважатися свіжим в браузері.
+* *Last-Modified:* Цей заголовок повідомляє браузеру, який був останній раз, коли сайт був оновлений уникаючи перезавантаження сторінки
+* *ETag:* ETag являє собою унікальний ідентифікатор, який повинен бути створений, включаючи зміну тимчасової мітки поточної сторінки
 
-Setting an Expiration Time
+Налаштування Expiration Time
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The expiration date is one of the easiest and most effective ways to cache a page in the client (browser).
-Starting from the current date we add the amount of time the page will be stored
-in the browser cache. Until this date expires no new content will be requested from the server:
+Термін придатності є одним з найпростіших і найефективніших способів для кешування сторінки на клієнті(браузер).
+Починаючи з поточної дати ми додаємо кількість часу скільки сторінка буде зберігатися в кеші браузера. До цієї дати поки не закінчиться ніякого вмісту не буде запропоновано з сервера:
 
 .. code-block:: php
 
@@ -148,9 +142,9 @@ in the browser cache. Until this date expires no new content will be requested f
 
     $response->setExpires($expiryDate);
 
-The Response component automatically shows the date in GMT timezone as expected in an Expires header.
+Компонент Response автоматично показує дату в часовому поясі, як і очікувалося, в Завершує заголовок.
 
-If we set this value to a date in the past the browser will always refresh the requested page:
+Якщо встановити це значення на дату в минулому, браузер завжди буде оновлювати запитану сторінку:
 
 .. code-block:: php
 
@@ -161,40 +155,37 @@ If we set this value to a date in the past the browser will always refresh the r
 
     $response->setExpires($expiryDate);
 
-Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to
-make pages expire and this may represent a limitation for this cache mechanism.
+Браузери покладаються на годинник клієнта, щоб оцінити, якщо ця дата пройшла чи ні. Годинники клієнт може бути змінений, щоб зробити сторінки закінченою, і це може бути обмеження цього механізму кешування.
 
 Cache-Control
 ^^^^^^^^^^^^^
-This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
-how long it must keep the page in its cache:
+Цей заголовок забезпечує більш безпечний спосіб для кешування сторінок. Ми просто повинні вказати час в секундах, які повідомляють браузеру, як довго він повинен тримати сторінку в кеші:
 
 .. code-block:: php
 
     <?php
 
-    // Starting from now, cache the page for one day
+    // Починаючи з цього моменту, кешувати сторінку на один день
     $response->setHeader("Cache-Control", "max-age=86400");
 
-The opposite effect (avoid page caching) is achieved in this way:
+Протилежний ефект (уникати кешування сторінок) досягається наступним чином:
 
 .. code-block:: php
 
     <?php
 
-    // Never cache the served page
+    // Ніколи не кешувати обслуговуючу сторінку
     $response->setHeader("Cache-Control", "private, max-age=0, must-revalidate");
 
 E-Tag
 ^^^^^
-An "entity-tag" or "E-tag" is a unique identifier that helps the browser realize if the page has changed or not between two requests.
-The identifier must be calculated taking into account that this must change if the previously served content has changed:
+"entity-tag" чи "E-tag" це унікальний ідентифікатор, який допомагає браузеру зрозуміти, якщо сторінка змінилася чи ні між двома запитами. Ідентифікатор повинен бути розрахований з урахуванням, що змінитися повинен, якщо раніше обслуговуючий зміст змінився:
 
 .. code-block:: php
 
     <?php
 
-    // Calculate the E-Tag based on the modification time of the latest news
+    // Обчислення E-Tag грунтуюється на часі модифікації останніх новин
     $mostRecentDate = News::maximum(
         [
             "column" => "created_at"
@@ -203,5 +194,5 @@ The identifier must be calculated taking into account that this must change if t
 
     $eTag = md5($mostRecentDate);
 
-    // Send an E-Tag header
+    // Надіслати E-Tag заголовока
     $response->setHeader("E-Tag", $eTag);
