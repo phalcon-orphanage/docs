@@ -10,6 +10,7 @@ Class **Phalcon\\Db\\Index**
 
 Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index
 
+
 Methods
 -------
 
@@ -40,6 +41,5 @@ Phalcon\\Db\\Index constructor
 public static  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Index object from export
-
 
 
