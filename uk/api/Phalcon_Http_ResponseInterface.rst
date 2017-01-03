@@ -9,7 +9,7 @@ Interface **Phalcon\\Http\\ResponseInterface**
 Methods
 -------
 
-abstract public  **setStatusCode** (*unknown* $code, [*unknown* $message])
+abstract public  **setStatusCode** (*mixed* $code, [*mixed* $message])
 
 ...
 
@@ -19,12 +19,12 @@ abstract public  **getHeaders** ()
 ...
 
 
-abstract public  **setHeader** (*unknown* $name, *unknown* $value)
+abstract public  **setHeader** (*mixed* $name, *mixed* $value)
 
 ...
 
 
-abstract public  **setRawHeader** (*unknown* $header)
+abstract public  **setRawHeader** (*mixed* $header)
 
 ...
 
@@ -34,7 +34,7 @@ abstract public  **resetHeaders** ()
 ...
 
 
-abstract public  **setExpires** (*DateTime* $datetime)
+abstract public  **setExpires** (`DateTime <http://php.net/manual/en/class.datetime.php>`_ $datetime)
 
 ...
 
@@ -44,27 +44,32 @@ abstract public  **setNotModified** ()
 ...
 
 
-abstract public  **setContentType** (*unknown* $contentType, [*unknown* $charset])
+abstract public  **setContentType** (*mixed* $contentType, [*mixed* $charset])
 
 ...
 
 
-abstract public  **redirect** ([*unknown* $location], [*unknown* $externalRedirect], [*unknown* $statusCode])
+abstract public  **setContentLength** (*mixed* $contentLength)
 
 ...
 
 
-abstract public  **setContent** (*unknown* $content)
+abstract public  **redirect** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
 
 ...
 
 
-abstract public  **setJsonContent** (*unknown* $content)
+abstract public  **setContent** (*mixed* $content)
 
 ...
 
 
-abstract public  **appendContent** (*unknown* $content)
+abstract public  **setJsonContent** (*mixed* $content)
+
+...
+
+
+abstract public  **appendContent** (*mixed* $content)
 
 ...
 
@@ -89,7 +94,7 @@ abstract public  **send** ()
 ...
 
 
-abstract public  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName])
+abstract public  **setFileToSend** (*mixed* $filePath, [*mixed* $attachmentName])
 
 ...
 

@@ -80,34 +80,52 @@
     $app = new Micro();
 
     // Получение всех роботов
-    $app->get('/api/robots', function () {
+    $app->get(
+        "/api/robots",
+        function () {
 
-    });
+        }
+    );
 
     // Поиск роботов с $name в названии
-    $app->get('/api/robots/search/{name}', function ($name) {
+    $app->get(
+        "/api/robots/search/{name}",
+        function ($name) {
 
-    });
+        }
+    );
 
     // Получение робота по первичному ключу
-    $app->get('/api/robots/{id:[0-9]+}', function ($id) {
+    $app->get(
+        "/api/robots/{id:[0-9]+}",
+        function ($id) {
 
-    });
+        }
+    );
 
     // Добавление нового робота
-    $app->post('/api/robots', function () {
+    $app->post(
+        "/api/robots",
+        function () {
 
-    });
+        }
+    );
 
     // Обновление робота по первичному ключу
-    $app->put('/api/robots/{id:[0-9]+}', function () {
+    $app->put(
+        "/api/robots/{id:[0-9]+}",
+        function () {
 
-    });
+        }
+    );
 
     // Удаление робота по первичному ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function () {
+    $app->delete(
+        "/api/robots/{id:[0-9]+}",
+        function () {
 
-    });
+        }
+    );
 
     $app->handle();
 
@@ -128,6 +146,8 @@
 
     <?php
 
+    namespace Store\Toys;
+
     use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Message;
     use Phalcon\Mvc\Model\Validator\Uniqueness;
@@ -140,13 +160,13 @@
             // Тип робота должен быть: droid, mechanical или virtual
             $this->validate(
                 new InclusionIn(
-                    array(
+                    [
                         "field"  => "type",
-                        "domain" => array(
+                        "domain" => [
                             "droid",
                             "mechanical",
-                            "virtual"
-                        )
+                            "virtual",
+                        ]
                     )
                 )
             );
@@ -154,20 +174,22 @@
             // Имя робота должно быть уникальным
             $this->validate(
                 new Uniqueness(
-                    array(
+                    [
                         "field"   => "name",
-                        "message" => "Имя робота должно быть уникальным"
-                    )
+                        "message" => "Имя робота должно быть уникальным",
+                    ]
                 )
             );
 
             // Год не может быть меньше нуля
             if ($this->year < 0) {
-                $this->appendMessage(new Message("Год не может быть меньше нуля"));
+                $this->appendMessage(
+                    new Message("Год не может быть меньше нуля")
+                );
             }
 
             // Проверяем, были ли получены какие-либо сообщения при валидации
-            if ($this->validationHasFailed() == true) {
+            if ($this->validationHasFailed() === true) {
                 return false;
             }
         }
@@ -187,25 +209,30 @@
     // Используем Loader() для автозагрузки нашей модели
     $loader = new Loader();
 
-    $loader->registerDirs(
-        array(
-            __DIR__ . '/models/'
-        )
-    )->register();
+    $loader->registerNamespaces(
+        [
+            "Store\\Toys" => __DIR__ . "/models/",
+        ]
+    );
+
+    $loader->register();
 
     $di = new FactoryDefault();
 
     // Настраиваем сервис базы данных
-    $di->set('db', function () {
-        return new PdoMysql(
-            array(
-                "host"     => "localhost",
-                "username" => "asimov",
-                "password" => "zeroth",
-                "dbname"   => "robotics"
-            )
-        );
-    });
+    $di->set(
+        "db",
+        function () {
+            return new PdoMysql(
+                [
+                    "host"     => "localhost",
+                    "username" => "asimov",
+                    "password" => "zeroth",
+                    "dbname"   => "robotics",
+                ]
+            );
+        }
+    );
 
     // Создаем и привязываем DI к приложению
     $app = new Micro($di);
@@ -220,21 +247,25 @@
     <?php
 
     // Получение всех роботов
-    $app->get('/api/robots', function () use ($app) {
+    $app->get(
+        "/api/robots",
+        function () use ($app) {
+            $phql = "SELECT * FROM Store\\Toys\\Robots ORDER BY name";
 
-        $phql = "SELECT * FROM Robots ORDER BY name";
-        $robots = $app->modelsManager->executeQuery($phql);
+            $robots = $app->modelsManager->executeQuery($phql);
 
-        $data = array();
-        foreach ($robots as $robot) {
-            $data[] = array(
-                'id'   => $robot->id,
-                'name' => $robot->name
-            );
+            $data = [];
+
+            foreach ($robots as $robot) {
+                $data[] = [
+                    "id"   => $robot->id,
+                    "name" => $robot->name,
+                ];
+            }
+
+            echo json_encode($data);
         }
-
-        echo json_encode($data);
-    });
+    );
 
 :doc:`PHQL <phql>` позволяет нам писать запросы с помощью высокоуровневого, объектно-ориентированного SQL-диалекта,
 которые внутри него будут переведены в правильные SQL-операторы в зависимости от используемой СУБД. "use" в
@@ -247,26 +278,30 @@
     <?php
 
     // Поиск роботов с $name в названии
-    $app->get('/api/robots/search/{name}', function ($name) use ($app) {
+    $app->get(
+        "/api/robots/search/{name}",
+        function ($name) use ($app) {
+            $phql = "SELECT * FROM Store\\Toys\\Robots WHERE name LIKE :name: ORDER BY name";
 
-        $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
-        $robots = $app->modelsManager->executeQuery(
-            $phql,
-            array(
-                'name' => '%' . $name . '%'
-            )
-        );
-
-        $data = array();
-        foreach ($robots as $robot) {
-            $data[] = array(
-                'id'   => $robot->id,
-                'name' => $robot->name
+            $robots = $app->modelsManager->executeQuery(
+                $phql,
+                [
+                    "name" => "%" . $name . "%"
+                ]
             );
-        }
 
-        echo json_encode($data);
-    });
+            $data = [];
+
+            foreach ($robots as $robot) {
+                $data[] = [
+                    "id"   => $robot->id,
+                    "name" => $robot->name,
+                ];
+            }
+
+            echo json_encode($data);
+        }
+    );
 
 В нашем случае поиск по полю "id" очень похож, кроме того, мы сообщаем, найден робот или нет:
 
@@ -277,36 +312,44 @@
     use Phalcon\Http\Response;
 
     // Получение робота по первичному ключу
-    $app->get('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
+    $app->get(
+        "/api/robots/{id:[0-9]+}",
+        function ($id) use ($app) {
+            $phql = "SELECT * FROM Store\\Toys\\Robots WHERE id = :id:";
 
-        $phql = "SELECT * FROM Robots WHERE id = :id:";
-        $robot = $app->modelsManager->executeQuery($phql, array(
-            'id' => $id
-        ))->getFirst();
+            $robot = $app->modelsManager->executeQuery(
+                $phql,
+                [
+                    "id" => $id,
+                ]
+            )->getFirst();
 
-        // Формируем ответ
-        $response = new Response();
 
-        if ($robot == false) {
-            $response->setJsonContent(
-                array(
-                    'status' => 'NOT-FOUND'
-                )
-            );
-        } else {
-            $response->setJsonContent(
-                array(
-                    'status' => 'FOUND',
-                    'data'   => array(
-                        'id'   => $robot->id,
-                        'name' => $robot->name
-                    )
-                )
-            );
+
+            // Формируем ответ
+            $response = new Response();
+
+            if ($robot === false) {
+                $response->setJsonContent(
+                    [
+                        "status" => "NOT-FOUND"
+                    ]
+                );
+            } else {
+                $response->setJsonContent(
+                    [
+                        "status" => "FOUND",
+                        "data"   => [
+                            "id"   => $robot->id,
+                            "name" => $robot->name
+                        ]
+                    ]
+                );
+            }
+
+            return $response;
         }
-
-        return $response;
-    });
+    );
 
 Вставка данных
 --------------
@@ -319,57 +362,60 @@
     use Phalcon\Http\Response;
 
     // Добавление нового робота
-    $app->post('/api/robots', function () use ($app) {
+    $app->post(
+        "/api/robots",
+        function () use ($app) {
+            $robot = $app->request->getJsonRawBody();
 
-        $robot = $app->request->getJsonRawBody();
+            $phql = "INSERT INTO Store\\Toys\\Robots (name, type, year) VALUES (:name:, :type:, :year:)";
 
-        $phql = "INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)";
-
-        $status = $app->modelsManager->executeQuery($phql, array(
-            'name' => $robot->name,
-            'type' => $robot->type,
-            'year' => $robot->year
-        ));
-
-        // Формируем ответ
-        $response = new Response();
-
-        // Проверяем, что вставка произведена успешно
-        if ($status->success() == true) {
-
-            // Меняем HTTP статус
-            $response->setStatusCode(201, "Created");
-
-            $robot->id = $status->getModel()->id;
-
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK',
-                    'data'   => $robot
-                )
+            $status = $app->modelsManager->executeQuery(
+                $phql,
+                [
+                    "name" => $robot->name,
+                    "type" => $robot->type,
+                    "year" => $robot->year,
+                ]
             );
 
-        } else {
+            // Формируем ответ
+            $response = new Response();
 
-            // Меняем HTTP статус
-            $response->setStatusCode(409, "Conflict");
+            // Проверяем, что вставка произведена успешно
+            if ($status->success() === true) {
+                // Меняем HTTP статус
+                $response->setStatusCode(201, "Created");
 
-            // Отправляем сообщение об ошибке клиенту
-            $errors = array();
-            foreach ($status->getMessages() as $message) {
-                $errors[] = $message->getMessage();
+                $robot->id = $status->getModel()->id;
+
+                $response->setJsonContent(
+                    [
+                        "status" => "OK",
+                        "data"   => $robot,
+                    ]
+                );
+            } else {
+                // Меняем HTTP статус
+                $response->setStatusCode(409, "Conflict");
+
+                // Отправляем сообщение об ошибке клиенту
+                $errors = [];
+
+                foreach ($status->getMessages() as $message) {
+                    $errors[] = $message->getMessage();
+                }
+
+                $response->setJsonContent(
+                    [
+                        "status"   => "ERROR",
+                        "messages" => $errors,
+                    ]
+                );
             }
 
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors
-                )
-            );
+            return $response;
         }
-
-        return $response;
-    });
+    );
 
 Обновление данных
 -----------------
@@ -382,48 +428,54 @@
     use Phalcon\Http\Response;
 
     // Обновление робота по первичному ключу
-    $app->put('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
+    $app->put(
+        "/api/robots/{id:[0-9]+}",
+        function ($id) use ($app) {
+            $robot = $app->request->getJsonRawBody();
 
-        $robot = $app->request->getJsonRawBody();
+            $phql = "UPDATE Store\\Toys\\Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
 
-        $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
-        $status = $app->modelsManager->executeQuery($phql, array(
-            'id' => $id,
-            'name' => $robot->name,
-            'type' => $robot->type,
-            'year' => $robot->year
-        ));
-
-        // Формируем ответ
-        $response = new Response();
-
-        // Проверяем, что обновление произведено успешно
-        if ($status->success() == true) {
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK'
-                )
+            $status = $app->modelsManager->executeQuery(
+                $phql,
+                [
+                    "id"   => $id,
+                    "name" => $robot->name,
+                    "type" => $robot->type,
+                    "year" => $robot->year,
+                ]
             );
-        } else {
 
-            // Меняем HTTP статус
-            $response->setStatusCode(409, "Conflict");
+            // Формируем ответ
+            $response = new Response();
 
-            $errors = array();
-            foreach ($status->getMessages() as $message) {
-                $errors[] = $message->getMessage();
+            // Проверяем, что обновление произведено успешно
+            if ($status->success() === true) {
+                $response->setJsonContent(
+                    [
+                        "status" => "OK"
+                    ]
+                );
+            } else {
+                // Меняем HTTP статус
+                $response->setStatusCode(409, "Conflict");
+
+                $errors = [];
+
+                foreach ($status->getMessages() as $message) {
+                    $errors[] = $message->getMessage();
+                }
+
+                $response->setJsonContent(
+                    [
+                        "status"   => "ERROR",
+                        "messages" => $errors,
+                    ]
+                );
             }
 
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors
-                )
-            );
+            return $response;
         }
-
-        return $response;
-    });
+    );
 
 Удаление данных
 ---------------
@@ -436,42 +488,48 @@
     use Phalcon\Http\Response;
 
     // Удаление робота по первичному ключу
-    $app->delete('/api/robots/{id:[0-9]+}', function ($id) use ($app) {
+    $app->delete(
+        "/api/robots/{id:[0-9]+}",
+        function ($id) use ($app) {
+            $phql = "DELETE FROM Store\\Toys\\Robots WHERE id = :id:";
 
-        $phql = "DELETE FROM Robots WHERE id = :id:";
-        $status = $app->modelsManager->executeQuery($phql, array(
-            'id' => $id
-        ));
-
-        // Формируем ответ
-        $response = new Response();
-
-        if ($status->success() == true) {
-            $response->setJsonContent(
-                array(
-                    'status' => 'OK'
-                )
+            $status = $app->modelsManager->executeQuery(
+                $phql,
+                [
+                    "id" => $id,
+                ]
             );
-        } else {
 
-            // Меняем HTTP статус
-            $response->setStatusCode(409, "Conflict");
+            // Формируем ответ
+            $response = new Response();
 
-            $errors = array();
-            foreach ($status->getMessages() as $message) {
-                $errors[] = $message->getMessage();
+            if ($status->success() === true) {
+                $response->setJsonContent(
+                    [
+                        "status" => "OK"
+                    ]
+                );
+            } else {
+                // Меняем HTTP статус
+                $response->setStatusCode(409, "Conflict");
+
+                $errors = [];
+
+                foreach ($status->getMessages() as $message) {
+                    $errors[] = $message->getMessage();
+                }
+
+                $response->setJsonContent(
+                    [
+                        "status"   => "ERROR",
+                        "messages" => $errors,
+                    ]
+                );
             }
 
-            $response->setJsonContent(
-                array(
-                    'status'   => 'ERROR',
-                    'messages' => $errors
-                )
-            );
+            return $response;
         }
-
-        return $response;
-    });
+    );
 
 Тестирование приложения
 -----------------------

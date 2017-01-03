@@ -16,10 +16,10 @@
     <?php
 
     $loader->registerNamespaces(
-        array(
+        [
            "Store\\Admin\\Controllers" => "../bundles/admin/controllers/",
-           "Store\\Admin\\Models"      => "../bundles/admin/models/"
-        )
+           "Store\\Admin\\Models"      => "../bundles/admin/models/",
+        ]
     );
 
 Использовать в роутинге, как отдельный параметр маршрутизации пути:
@@ -30,11 +30,11 @@
 
     $router->add(
         "/admin/users/my-profile",
-        array(
+        [
             "namespace"  => "Store\\Admin",
             "controller" => "Users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
 Использовать как часть маршрута:
@@ -45,11 +45,11 @@
 
     $router->add(
         "/:namespace/admin/users/my-profile",
-        array(
+        [
             "namespace"  => 1,
             "controller" => "Users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
 Если в вашем приложении используется единое пространство имён для контроллеров, то вы можете определить пространство имен по умолчанию в диспетчере.
@@ -62,11 +62,18 @@
     use Phalcon\Mvc\Dispatcher;
 
     // Регистрация диспетчера
-    $di->set('dispatcher', function () {
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDefaultNamespace("Store\\Admin\\Controllers");
-        return $dispatcher;
-    });
+    $di->set(
+        "dispatcher",
+        function () {
+            $dispatcher = new Dispatcher();
+
+            $dispatcher->setDefaultNamespace(
+                "Store\\Admin\\Controllers"
+            );
+
+            return $dispatcher;
+        }
+    );
 
 Контроллеры в пространстве имён
 -------------------------------
@@ -128,9 +135,9 @@
                 "id",
                 "Store\\Models\\Parts",
                 "robots_id",
-                array(
-                    "alias" => "parts"
-                )
+                [
+                    "alias" => "parts",
+                ]
             );
         }
     }
@@ -141,6 +148,6 @@
 
     <?php
 
-    $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
+    $phql = "SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p";
 
 .. _Пространства имён: http://php.net/manual/en/language.namespaces.php

@@ -27,7 +27,7 @@ Phalcon\\Cli\\Router is the standard framework router. Routing is the process of
 Methods
 -------
 
-public  **__construct** ([*unknown* $defaultRoutes])
+public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Cli\\Router constructor
 
@@ -45,19 +45,19 @@ Returns the internal dependency injector
 
 
 
-public  **setDefaultModule** (*unknown* $moduleName)
+public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
 
 
 
-public  **setDefaultTask** (*unknown* $taskName)
+public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*unknown* $actionName)
+public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
@@ -85,7 +85,7 @@ Handles routing information received from command-line arguments
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths])
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router 
 
@@ -112,23 +112,23 @@ Returns proccesed task name
 
 public  **getActionName** ()
 
-Returns proccesed action name
+Returns processed action name
 
 
 
-public *array*  **getParams** ()
+public *array* **getParams** ()
 
-Returns proccesed extra params
+Returns processed extra params
 
 
 
 public  **getMatchedRoute** ()
 
-Returns the route that matchs the handled URI
+Returns the route that matches the handled URI
 
 
 
-public *array*  **getMatches** ()
+public *array* **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
@@ -136,7 +136,7 @@ Returns the sub expressions in the regular expression matched
 
 public  **wasMatched** ()
 
-Checks if the router macthes any of the defined routes
+Checks if the router matches any of the defined routes
 
 
 
@@ -146,13 +146,13 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getRouteById** (*int* $id)
+public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **getRouteById** (*int* $id)
 
 Returns a route object by its id
 
 
 
-public  **getRouteByName** (*unknown* $name)
+public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
 

@@ -5,90 +5,63 @@
 специальных "ключевых точек". Эти ключевые точки позволяют разработчику получить информацию о состоянии, манипулировать данными и изменять
 процесс работы компонента.
 
+Naming Convention
+-----------------
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create
+your own as you see fit. Event names are formatted as "component:event". For example, as :doc:`Phalcon\\Db <../api/Phalcon_Db>` occupies the "db"
+namespace, its "afterQuery" event's full name is "db:afterQuery".
+
+When attaching event listeners to the events manager, you can use "component" to catch all events from that component (eg. "db" to catch all of the
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` events) or "component:event" to target a specific event (eg. "db:afterQuery").
+
 Пример использования
 --------------------
-В следующем примере, мы используем менеджер событий для прослушивания событий вызываемых в MySQL соединении управляемым :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-Для начала нам необходимо создать объект слушателя. Методы класса являются событиями, которые необходимо прослушивать.
+In the following example, we will use the EventsManager to listen for the "afterQuery" event produced in a MySQL connection managed by
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`:
 
 .. code-block:: php
 
     <?php
 
-    class MyDbListener
-    {
-        public function afterConnect()
-        {
-
-        }
-
-        public function beforeQuery()
-        {
-
-        }
-
-        public function afterQuery()
-        {
-
-        }
-    }
-
-Такой класс может реализовывать необходимые нам события. Менеджер событий будет взаимодействовать между компонентом и нашим классом,
-вызывая события, реализованные методами класса и поддерживаемые компонентом.
-
-.. code-block:: php
-
-    <?php
-
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
-    // Создание слушателя базы данных
-    $dbListener    = new MyDbListener();
+    $eventsManager->attach(
+        "db:afterQuery",
+        function (Event $event, $connection) {
+            echo $connection->getSQLStatement();
+        }
+    );
 
-    // Слушать все события базы данных
-    $eventsManager->attach('db', $dbListener);
-
-    $connection    = new DbAdapter(
-        array(
+    $connection = new DbAdapter(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
     // Совмещение менеджера событий с адаптером базы данных
     $connection->setEventsManager($eventsManager);
 
     // Выполнение SQL запроса
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->query(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
-Для того, чтобы получать все SQL-запросы, выполненные в нашем приложении, мы должны использовать событие “afterQuery”. Первый передаваемый слушателю параметр
-содержит контекстную информацию о текущем событии, второй параметр - само соединение.
+Now every time a query is executed, the SQL statement will be echoed out.
+Первый передаваемый слушателю параметр содержит контекстную информацию о текущем событии, второй параметр - само соединение.
+A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-.. code-block:: php
+.. highlights::
 
-    <?php
+    You must explicitly set the Events Manager to a component using the :code:`setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
 
-    use Phalcon\Logger\Adapter\File as Logger;
-
-    class MyDbListener
-    {
-        protected $_logger;
-
-        public function __construct()
-        {
-            $this->_logger = new Logger("../apps/logs/db.log");
-        }
-
-        public function afterQuery($event, $connection)
-        {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
-        }
-    }
-
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 В рамках этого примера, мы будем также использовать профайлер :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` для обнаружения SQL-запросов с длительным временем выполнения:
 
 .. code-block:: php
@@ -96,6 +69,7 @@
     <?php
 
     use Phalcon\Db\Profiler;
+    use Phalcon\Events\Event;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -117,17 +91,23 @@
         /**
          * Этот метод будет запущен, если будет вызван метод 'beforeQuery'
          */
-        public function beforeQuery($event, $connection)
+        public function beforeQuery(Event $event, $connection)
         {
-            $this->_profiler->startProfile($connection->getSQLStatement());
+            $this->_profiler->startProfile(
+                $connection->getSQLStatement()
+            );
         }
 
         /**
          * Этот метод будет запущен, если будет вызван метод 'afterQuery'
          */
-        public function afterQuery($event, $connection)
+        public function afterQuery(Event $event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(
+                $connection->getSQLStatement(),
+                Logger::INFO
+            );
+
             $this->_profiler->stopProfile();
         }
 
@@ -137,6 +117,21 @@
         }
     }
 
+Attaching an event listener to the events manager is as simple as:
+
+.. code-block:: php
+
+    <?php
+
+    // Создание слушателя базы данных
+    $dbListener = new MyDbListener();
+
+    // Слушать все события базы данных
+    $eventsManager->attach(
+        "db",
+        $dbListener
+    );
+
 Результирующие данные о работе профайлера могут быть получены из слушателя:
 
 .. code-block:: php
@@ -144,7 +139,9 @@
     <?php
 
     // Выполнение SQL запроса
-    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute(
+        "SELECT * FROM products p WHERE p.status = 1"
+    );
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -152,19 +149,6 @@
         echo "Final Time: ", $profile->getFinalTime(), "\n";
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
-
-Подобным образом мы можем зарегистрировать лямбда-функцию для выполнения этой задачи, без использования отдельного класса слушателя (как в примере выше):
-
-.. code-block:: php
-
-    <?php
-
-    // Слушаем все события базы данных
-    $eventManager->attach('db', function ($event, $connection) {
-        if ($event->getType() == 'afterQuery') {
-            echo $connection->getSQLStatement();
-        }
-    });
 
 Создание компонентов с поддержкой событий
 -----------------------------------------
@@ -177,12 +161,13 @@
     <?php
 
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -203,28 +188,29 @@
         }
     }
 
-Обратите внимание, что события, создаваемые нашим компонентом, имеют префикс "my-component". Это уникальное слово для разделения событий,
-которые формируются из разных компонентов. Вы можете создавать события вне компонента с таким же именем, оно ни от чего не зависит.
+Notice that in this example, we're using the "my-component" event namespace.
 Теперь давайте создадим слушателя для нашего компонента:
 
 .. code-block:: php
 
     <?php
 
+    use Phalcon\Events\Event;
+
     class SomeListener
     {
-        public function beforeSomeTask($event, $myComponent)
+        public function beforeSomeTask(Event $event, $myComponent)
         {
             echo "Выполняется beforeSomeTask\n";
         }
 
-        public function afterSomeTask($event, $myComponent)
+        public function afterSomeTask(Event $event, $myComponent)
         {
             echo "Выполняется afterSomeTask\n";
         }
     }
 
-Слушатель - это просто класс, который реализует все события, вызываемые в компоненте. Давайте заставим их работать вместе:
+Давайте заставим их работать вместе:
 
 .. code-block:: php
 
@@ -236,13 +222,16 @@
     $eventsManager = new EventsManager();
 
     // Создаём экземпляр MyComponent
-    $myComponent   = new MyComponent();
+    $myComponent = new MyComponent();
 
     // Связываем компонент и менеджер событий
     $myComponent->setEventsManager($eventsManager);
 
     // Связываем слушателя и менеджер событий
-    $eventsManager->attach('my-component', new SomeListener());
+    $eventsManager->attach(
+        "my-component",
+        new SomeListener()
+    );
 
     // Выполняем метод нашего компонента
     $myComponent->someTask();
@@ -269,26 +258,55 @@
 
     <?php
 
+    use Phalcon\Events\Event;
+
     // Получение данных из третьего параметра
-    $eventsManager->attach('my-component', function ($event, $component, $data) {
-        print_r($data);
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component, $data) {
+            print_r($data);
+        }
+    );
 
     // Получение данных из контекста события
-    $eventsManager->attach('my-component', function ($event, $component) {
-        print_r($event->getData());
-    });
+    $eventsManager->attach(
+        "my-component",
+        function (Event $event, $component) {
+            print_r($event->getData());
+        }
+    );
 
-Если слушать необходимо только определённое событие, вы можете указать его в момент связывания:
+Using Services From The DI
+--------------------------
+By extending :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, you can access services from the DI, just like you would in a controller:
 
 .. code-block:: php
 
     <?php
 
-    // Обработчик выполнится только при наступлении события "beforeSomeTask"
-    $eventsManager->attach('my-component:beforeSomeTask', function ($event, $component) {
-        // ...
-    });
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+
+    class SomeListener extends Plugin
+    {
+        public function beforeSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, beforeSomeTask\n";
+
+            $this->logger->debug(
+                "beforeSomeTask has been triggered";
+            );
+        }
+
+        public function afterSomeTask(Event $event, $myComponent)
+        {
+            echo "Here, afterSomeTask\n";
+
+            $this->logger->debug(
+                "afterSomeTask has been triggered";
+            );
+        }
+    }
 
 Остановка/Продолжение событий
 -----------------------------
@@ -300,17 +318,20 @@
 
     <?php
 
-    $eventsManager->attach('db', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // Если событие поддерживает прекращение
-        if ($event->isCancelable()) {
-            // Прекращение события, остальные слушатели его не получат
-            $event->stop();
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) {
+            // Если событие поддерживает прекращение
+            if ($event->isCancelable()) {
+                // Прекращение события, остальные слушатели его не получат
+                $event->stop();
+            }
+
+            // ...
         }
-
-        // ...
-
-    });
+    );
 
 По умолчанию все события поддерживают прекращение, большинство событий, выполняемых в ядре фреймворка, тоже поддерживают прекращение. Вы можете
 указать, что событие не прекращаемое передавая :code:`false` в четвертый параметр вызова :code:`fire()`:
@@ -332,9 +353,9 @@
     // активация установки приоритетов
     $eventsManager->enablePriorities(true);
 
-    $eventsManager->attach('db', new DbListener(), 150); // Высокий приоритет
-    $eventsManager->attach('db', new DbListener(), 100); // Нормальный приоритет
-    $eventsManager->attach('db', new DbListener(), 50);  // Низкий приоритет
+    $eventsManager->attach("db", new DbListener(), 150); // Высокий приоритет
+    $eventsManager->attach("db", new DbListener(), 100); // Нормальный приоритет
+    $eventsManager->attach("db", new DbListener(), 50);  // Низкий приоритет
 
 Сбор ответов
 ------------
@@ -352,17 +373,23 @@
     $eventsManager->collectResponses(true);
 
     // Добавления слушателя
-    $eventsManager->attach('custom:custom', function () {
-        return 'first response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "first response";
+        }
+    );
 
     // Добавления еще одного слушателя
-    $eventsManager->attach('custom:custom', function () {
-        return 'second response';
-    });
+    $eventsManager->attach(
+        "custom:custom",
+        function () {
+            return "second response";
+        }
+    );
 
     // Выполнение события
-    $eventsManager->fire('custom:custom', null);
+    $eventsManager->fire("custom:custom", null);
 
     // Получаем все ответы
     print_r($eventsManager->getResponses());

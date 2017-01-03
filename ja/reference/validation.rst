@@ -1,10 +1,10 @@
 バリデーション
 ==============
 
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` は任意のデータセットを検証する、独立バリデーションコンポーネントです。
+このコンポーネントは、モデルまたはコレクションに属していないデータオブジェクトの検証ルールを実装するために使用することができます。
 
-The following example shows its basic usage:
+次の例は基本的な使い方です。
 
 .. code-block:: php
 
@@ -17,44 +17,45 @@ The following example shows its basic usage:
     $validation = new Validation();
 
     $validation->add(
-        'name',
+        "name",
         new PresenceOf(
-            array(
-                'message' => 'The name is required'
-            )
+            [
+                "message" => "The name is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new PresenceOf(
-            array(
-                'message' => 'The e-mail is required'
-            )
+            [
+                "message" => "The e-mail is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+このコンポーネントの疎結合な設計思想は、フレームワークによって提供されているバリデータを使って、あなたが自分自身のバリデータを作ることを可能にしています。
 
 バリデーションの初期化
 -----------------------
-Validation chains can be initialized in a direct manner by just adding validators to the :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` object.
+バリデーションチェーンは :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` オブジェクトにバリデータを追加するという直接的な方法で初期化することができます。
 You can put your validations in a separate file for better re-use code and organization:
 
 .. code-block:: php
@@ -70,29 +71,29 @@ You can put your validations in a separate file for better re-use code and organ
         public function initialize()
         {
             $this->add(
-                'name',
+                "name",
                 new PresenceOf(
-                    array(
-                        'message' => 'The name is required'
-                    )
+                    [
+                        "message" => "The name is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new PresenceOf(
-                    array(
-                        'message' => 'The e-mail is required'
-                    )
+                    [
+                        "message" => "The e-mail is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new Email(
-                    array(
-                        'message' => 'The e-mail is not valid'
-                    )
+                    [
+                        "message" => "The e-mail is not valid",
+                    ]
                 )
             );
         }
@@ -107,9 +108,10 @@ Then initialize and use your own validator:
     $validation = new MyValidation();
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -117,31 +119,45 @@ Then initialize and use your own validator:
 -------------------------
 Phalcon exposes a set of built-in validators for this component:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| CreditCard   | Validates a credit card number                                                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
-+--------------+-------------------------------------------+----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Class                                                                                                  | Explanation                                                       |
++========================================================================================================+===================================================================+
+| :doc:`Phalcon\\Validation\\Validator\\Alnum <../api/Phalcon_Validation_Validator_Alnum>`               | Validates that a field's value is only alphanumeric character(s). |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Alpha <../api/Phalcon_Validation_Validator_Alpha>`               | Validates that a field's value is only alphabetic character(s).   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Date <../api/Phalcon_Validation_Validator_Date>`                 | Validates that a field's value is a valid date.                   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Digit <../api/Phalcon_Validation_Validator_Digit>`               | Validates that a field's value is only numeric character(s).      |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\File <../api/Phalcon_Validation_Validator_File>`                 | Validates that a field's value is a correct file.                 |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Uniqueness <../api/Phalcon_Validation_Validator_Uniqueness>`     | Validates that a field's value is unique in the related model.    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Numericality <../api/Phalcon_Validation_Validator_Numericality>` | Validates that a field's value is a valid numeric value.          |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\PresenceOf <../api/Phalcon_Validation_Validator_PresenceOf>`     | Validates that a field's value is not null or empty string.       |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Identical <../api/Phalcon_Validation_Validator_Identical>`       | Validates that a field's value is the same as a specified value   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Email <../api/Phalcon_Validation_Validator_Email>`               | Validates that field contains a valid email format                |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\ExclusionIn <../api/Phalcon_Validation_Validator_ExclusionIn>`   | Validates that a value is not within a list of possible values    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\InclusionIn <../api/Phalcon_Validation_Validator_InclusionIn>`   | Validates that a value is within a list of possible values        |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Regex <../api/Phalcon_Validation_Validator_Regex>`               | Validates that the value of a field matches a regular expression  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\StringLength <../api/Phalcon_Validation_Validator_StringLength>` | Validates the length of a string                                  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Between <../api/Phalcon_Validation_Validator_Between>`           | Validates that a value is between two values                      |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Confirmation <../api/Phalcon_Validation_Validator_Confirmation>` | Validates that a value is the same as another present in the data |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Url <../api/Phalcon_Validation_Validator_Url>`                   | Validates that field contains a valid URL                         |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Validates a credit card number                                    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
 
@@ -152,9 +168,8 @@ The following example explains how to create additional validators for this comp
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * Executes the validation
@@ -168,13 +183,15 @@ The following example explains how to create additional validators for this comp
             $value = $validator->getValue($attribute);
 
             if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                $message = $this->getOption("message");
 
-                $message = $this->getOption('message');
                 if (!$message) {
-                    $message = 'The IP is not valid';
+                    $message = "The IP is not valid";
                 }
 
-                $validator->appendMessage(new Message($message, $attribute, 'Ip'));
+                $validator->appendMessage(
+                    new Message($message, $attribute, "Ip")
+                );
 
                 return false;
             }
@@ -191,7 +208,7 @@ It is important that validators return a valid boolean value indicating if the v
 validation messages generated during the validation processes.
 
 Each message consists of an instance of the class :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the getMessages() method. Each message provides extended information like the attribute that
+messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the attribute that
 generated the message or the message type:
 
 .. code-block:: php
@@ -199,45 +216,16 @@ generated the message or the message type:
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
-        foreach ($validation->getMessages() as $message) {
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage(), "\n";
             echo "Field: ", $message->getField(), "\n";
             echo "Type: ", $message->getType(), "\n";
         }
     }
 
-The getMessages() method can be overridden in a validation class to replace/translate the default messages generated by the validators:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-Or you can pass a 'message' parameter to change the default message in each validator:
+You can pass a 'message' parameter to change/translate the default message in each validator:
 
 .. code-block:: php
 
@@ -246,25 +234,28 @@ Or you can pass a 'message' parameter to change the default message in each vali
     use Phalcon\Validation\Validator\Email;
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
-By default, 'getMessages' returns all the messages generated during validation. You can filter messages
-for a specific field using the 'filter' method:
+By default, the :code:`getMessages()` method returns all the messages generated during validation. You can filter messages
+for a specific field using the :code:`filter()` method:
 
 .. code-block:: php
 
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
         // Filter only the messages generated for the field 'name'
-        foreach ($validation->getMessages()->filter('name') as $message) {
+        $filteredMessages = $messages->filter("name");
+
+        foreach ($filteredMessages as $message) {
             echo $message;
         }
     }
@@ -281,24 +272,34 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 
     $validation = new Validation();
 
-    $validation
-        ->add('name', new PresenceOf(array(
-            'message' => 'The name is required'
-        )))
-        ->add('email', new PresenceOf(array(
-            'message' => 'The email is required'
-        )));
+    $validation->add(
+        "name",
+        new PresenceOf(
+            [
+                "message" => "The name is required",
+            ]
+        )
+    );
+
+    $validation->add(
+        "email",
+        new PresenceOf(
+            [
+                "message" => "The email is required",
+            ]
+        )
+    );
 
     // Filter any extra space
-    $validation->setFilters('name', 'trim');
-    $validation->setFilters('email', 'trim');
+    $validation->setFilters("name", "trim");
+    $validation->setFilters("email", "trim");
 
-Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
+Filtering and sanitizing is performed using the :doc:`filter <filter>` component. You can add more filters to this
 component or use the built-in ones.
 
 バリデーション・イベント
 ------------------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to perform additional checks, filters, clean-up, etc. If the 'beforeValidation' method returns false the validation is automatically
+When validations are organized in classes, you can implement the :code:`beforeValidation()` and :code:`afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the :code:`beforeValidation()` method returns false the validation is automatically
 cancelled:
 
 .. code-block:: php
@@ -324,8 +325,10 @@ cancelled:
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != 'admin.mydomain.com') {
-                $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+            if ($this->request->getHttpHost() !== "admin.mydomain.com") {
+                $messages->appendMessage(
+                    new Message("Only users can log on in the administration domain")
+                );
 
                 return false;
             }
@@ -361,19 +364,35 @@ this behavior by telling the validation component which validator may stop the v
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new PresenceOf(array(
-            'message'      => 'The telephone is required',
-            'cancelOnFail' => true
-        )))
-        ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )))
-        ->add('telephone', new StringLength(array(
-            'messageMinimum' => 'The telephone is too short',
-            'min'            => 2
-        )));
+    $validation->add(
+        "telephone",
+        new PresenceOf(
+            [
+                "message"      => "The telephone is required",
+                "cancelOnFail" => true,
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message" => "The telephone is required",
+                "pattern" => "/\+44 [0-9]+/",
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new StringLength(
+            [
+                "messageMinimum" => "The telephone is too short",
+                "min"            => 2,
+            ]
+        )
+    );
 
 The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
 validators in the chain are not executed.
@@ -387,9 +406,8 @@ If you are creating custom validators you can dynamically stop the validation ch
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * Executes the validation
@@ -401,8 +419,8 @@ If you are creating custom validators you can dynamically stop the validation ch
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == 'name') {
-                $validator->setOption('cancelOnFail', true);
+            if ($attribute === "name") {
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...
@@ -422,9 +440,51 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new Regex(array(
-            'message'    => 'The telephone is required',
-            'pattern'    => '/\+44 [0-9]+/',
-            'allowEmpty' => true
-        )));
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message"    => "The telephone is required",
+                "pattern"    => "/\+44 [0-9]+/",
+                "allowEmpty" => true,
+            ]
+        )
+    );
+
+Recursive Validation
+--------------------
+You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+
+    class CompanyValidation extends Validation
+    {
+        /**
+         * @var PhoneValidation
+         */
+        protected $phoneValidation;
+
+
+
+        public function initialize()
+        {
+            $this->phoneValidation = new PhoneValidation();
+        }
+
+
+
+        public function afterValidation($data, $entity, $messages)
+        {
+            $phoneValidationMessages = $this->phoneValidation->validate(
+                $data["phone"]
+            );
+
+            $messages->appendMessages(
+                $phoneValidationMessages
+            );
+        }
+    }

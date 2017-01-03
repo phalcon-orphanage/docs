@@ -29,55 +29,55 @@ Phalcon\\Annotations\\Adapter\\Apc constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` **read** (*string* $key)
 
 Reads parsed annotations from APC
 
 
 
-public  **write** (*unknown* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
+public  **write** (*mixed* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
 
 Writes parsed annotations to APC
 
 
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from Phalcon\\Annotations\\Adapter
+public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Sets the annotations parser
 
 
 
-public  **getReader** () inherited from Phalcon\\Annotations\\Adapter
+public  **getReader** () inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotation reader
 
 
 
-public  **get** (*string|object* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **get** (*string* | *object* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Parses or retrieves all the annotations found in a class
 
 
 
-public  **getMethods** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **getMethods** (*mixed* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in all the class' methods
 
 
 
-public  **getMethod** (*unknown* $className, *unknown* $methodName) inherited from Phalcon\\Annotations\\Adapter
+public  **getMethod** (*mixed* $className, *mixed* $methodName) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in a specific method
 
 
 
-public  **getProperties** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
+public  **getProperties** (*mixed* $className) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in all the class' methods
 
 
 
-public  **getProperty** (*unknown* $className, *unknown* $propertyName) inherited from Phalcon\\Annotations\\Adapter
+public  **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 Returns the annotations found in a specific property
 

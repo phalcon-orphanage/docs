@@ -3,21 +3,9 @@ Lendo Configurações
 
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler e transformar arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
 
-Adaptadores de Arquivo
-----------------------
-Os adaptadores disponíveis são:
-
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo | Descrição                                                                                                   |
-+=================+=============================================================================================================+
-| Ini             | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file. |
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-| Array           | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho       |
-+-----------------+-------------------------------------------------------------------------------------------------------------+
-
 Arrays Nativos
 --------------
-O próximo exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
+O primeiro exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon\\Config <../api/Phalcon_Config>`. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
 
 .. code-block:: php
 
@@ -25,21 +13,21 @@ O próximo exemplo mostra como converter arrays nativos em objetos :doc:`Phalcon
 
     use Phalcon\Config;
 
-    $settings = array(
-        "database" => array(
+    $settings = [
+        "database" => [
             "adapter"  => "Mysql",
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
             "dbname"   => "test_db"
-        ),
-         "app" => array(
+        ],
+         "app" => [
             "controllersDir" => "../app/controllers/",
             "modelsDir"      => "../app/models/",
             "viewsDir"       => "../app/views/"
-        ),
+        ],
         "mysetting" => "the-value"
-    );
+    ];
 
     $config = new Config($settings);
 
@@ -56,7 +44,24 @@ Se você deseja uma melhor organização do seu projeto, você pode salvar o arr
     use Phalcon\Config;
 
     require "config/config.php";
+
     $config = new Config($settings);
+
+Adaptadores de Arquivo
+----------------------
+Os adaptadores disponíveis são:
+
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| Class                                                                      | Descrição                                                                                                   |
++============================================================================+=============================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file. |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                          |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.               |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                          |
++----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+
 
 Lendo arquivos INI
 ------------------
@@ -104,24 +109,24 @@ O :doc:`Phalcon\\Config <../api/Phalcon_Config>` permite mesclar um objeto de co
     use Phalcon\Config;
 
     $config = new Config(
-        array(
-            'database' => array(
-                'host'   => 'localhost',
-                'dbname' => 'test_db'
-            ),
-            'debug' => 1
-        )
+        [
+            "database" => [
+                "host"   => "localhost",
+                "dbname" => "test_db",
+            ],
+            "debug" => 1,
+        ]
     );
 
     $config2 = new Config(
-        array(
-            'database' => array(
-                'dbname'   => 'production_db',
-                'username' => 'scott',
-                'password' => 'secret'
-            ),
-            'logging' => 1
-        )
+        [
+            "database" => [
+                "dbname"   => "production_db",
+                "username" => "scott",
+                "password" => "secret",
+            ],
+            "logging" => 1,
+        ]
     );
 
     $config->merge($config2);
@@ -146,3 +151,42 @@ O código acima produz o seguinte:
     )
 
 Existem mais adaptadores disponíveis para esse componente em `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+
+Injecting Configuration Dependency
+----------------------------------
+You can inject configuration dependency to controller allowing us to use :doc:`Phalcon\\Config <../api/Phalcon_Config>` inside :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. To be able to do that, add following code inside your dependency injector script.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Config;
+
+    // Create a DI
+    $di = new FactoryDefault();
+
+    $di->set(
+        "config",
+        function () {
+            $configData = require "config/config.php";
+
+            return new Config($configData);
+        }
+    );
+
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class MyController extends Controller
+    {
+        private function getDatabaseName()
+        {
+            return $this->config->database->dbname;
+        }
+    }

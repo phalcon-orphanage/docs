@@ -29,13 +29,62 @@ Windows
 
 Linux/Solaris
 -------------
+
+Debian / Ubuntu
+^^^^^^^^^^^^^^^
+Для того, чтобы добавить репозиторий в ваш дистрибутив:
+
+.. code-block:: bash
+
+    # Стабильные релизы
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+
+    # Ночные сборки
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
+
+Это требуется сделать лишь один раз, либо в том случае, если изменился ваш дистрибутив, или вы хотите перейти со стабильных на ночные сборки.
+
+Для установки Phalcon:
+
+.. code-block:: bash
+
+    sudo apt-get install php5-phalcon
+
+    # или для PHP 7
+
+    sudo apt-get install php7.0-phalcon
+
+RPM дистрибутивы (например, такие, как CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Для того, чтобы добавить репозиторий в ваш дистрибутив:
+
+.. code-block:: bash
+
+    # Стабильные релизы
+    curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+
+    # Ночные сборки
+    curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
+
+Это требуется сделать лишь один раз, либо в том случае, если изменился ваш дистрибутив, или вы хотите перейти со стабильных на ночные сборки.
+
+Для установки Phalcon:
+
+.. code-block:: bash
+
+    sudo yum install php56u-phalcon
+
+    # или для PHP 7
+
+    sudo yum install php70u-phalcon
+
+Компиляция из исходного кода
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Пользователи систем Linux/Solaris могут просто собрать Phalcon из исходных файлов:
 
-Требования
-^^^^^^^^^^
 Необходимы пакеты:
 
-* Пакеты для разработки PHP >= 5.3
+* Пакеты для разработки PHP >= 5.5
 * Компилятор GCC (Linux/Solaris)
 * Git (если не установлен, иначе, архив можно скачать с GitHub и затем загрузить на свой сервер по FTP/SFTP)
 
@@ -53,16 +102,16 @@ Linux/Solaris
     sudo yum install php-devel pcre-devel gcc make
 
     # Solaris
-    pkg install gcc-45 php-53 apache-php53
+    pkg install gcc-45 php-56 apache-php56
 
-Компиляция
-^^^^^^^^^^
 Создание расширения:
 
 .. code-block:: bash
 
-    git clone --depth=1 git://github.com/phalcon/cphalcon.git
+    git clone git://github.com/phalcon/cphalcon.git
+
     cd cphalcon/build
+
     sudo ./install
 
 Добавьте его в вашу PHP конфигурацию:
@@ -97,6 +146,8 @@ Linux/Solaris
 .. code-block:: bash
 
     cd cphalcon/build
+
+    # One of the following:
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -106,8 +157,11 @@ Linux/Solaris
 .. code-block:: bash
 
     cd cphalcon/build/64bits
+
     export CFLAGS="-O2 --fvisibility=hidden"
+
     ./configure --enable-phalcon
+
     make && sudo make install
 
 Mac OS X
@@ -118,19 +172,17 @@ Mac OS X
 ^^^^^^^^^^
 Необходимы пакеты:
 
-* Пакеты для разработки PHP >= 5.4
+* Пакеты для разработки PHP >= 5.5
 * XCode
 
 .. code-block:: bash
 
     # brew
     brew tap homebrew/homebrew-php
-    brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
     # MacPorts
-    sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
@@ -149,7 +201,33 @@ FreeBSD
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
-    cd /usr/ports/www/phalcon && make install clean
+
+    cd /usr/ports/www/phalcon
+
+    make install clean
+
+Проверка установки
+------------------
+Проверьте, есть ли в результатах :code:`phpinfo()` секция "Phalcon", или выполните следующий код:
+
+.. code-block:: php
+
+    <?php print_r(get_loaded_extensions()); ?>
+
+В результате вы должны увидеть Phalcon в списке:
+
+.. code-block:: php
+
+    Array
+    (
+        [0] => Core
+        [1] => libxml
+        [2] => filter
+        [3] => SPL
+        [4] => standard
+        [5] => phalcon
+        [6] => pdo_mysql
+    )
 
 Замечания по установке
 ----------------------

@@ -17,7 +17,7 @@ public  **getFrontend** ()
 ...
 
 
-public  **setFrontend** (*unknown* $frontend)
+public  **setFrontend** (*mixed* $frontend)
 
 ...
 
@@ -27,7 +27,7 @@ public  **getOptions** ()
 ...
 
 
-public  **setOptions** (*unknown* $options)
+public  **setOptions** (*mixed* $options)
 
 ...
 
@@ -37,7 +37,7 @@ public  **getLastKey** ()
 ...
 
 
-public  **setLastKey** (*unknown* $lastKey)
+public  **setLastKey** (*mixed* $lastKey)
 
 ...
 
@@ -48,13 +48,13 @@ Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime])
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
 Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*unknown* $stopBuffer])
+public  **stop** ([*mixed* $stopBuffer])
 
 Stops the frontend without store any cached content
 
@@ -72,7 +72,7 @@ Checks whether the cache has starting buffering or not
 
 
 
-public *int*  **getLifetime** ()
+public *int* **getLifetime** ()
 
 Gets the last lifetime set
 

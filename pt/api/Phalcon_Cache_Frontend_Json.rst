@@ -63,7 +63,7 @@ Starts output frontend. Actually, does nothing
 
 
 
-public *string*  **getContent** ()
+public *string* **getContent** ()
 
 Returns output cached content
 
@@ -75,13 +75,13 @@ Stops output frontend
 
 
 
-public *string*  **beforeStore** (*mixed* $data)
+public *string* **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed*  **afterRetrieve** (*mixed* $data)
+public *mixed* **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

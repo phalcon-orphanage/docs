@@ -12,25 +12,25 @@ Class **Phalcon\\Forms\\Manager**
 Methods
 -------
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **create** ([*string* $name], [*object* $entity])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` **create** ([*string* $name], [*object* $entity])
 
 Creates a form registering it in the forms manager
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Returns a form by its name
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Checks if a form is registered in the forms manager
 
 
 
-public  **set** (*unknown* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
+public  **set** (*mixed* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Registers a form in the Forms Manager
 

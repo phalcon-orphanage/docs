@@ -29,8 +29,8 @@ This component gives you the ability to use this algorithm in a simple way:
         {
             $user = new Users();
 
-            $login    = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+            $login    = $this->request->getPost("login");
+            $password = $this->request->getPost("password");
 
             $user->login = $login;
 
@@ -54,8 +54,8 @@ its encryption will be slow. We can check if the password is correct as follows:
     {
         public function loginAction()
         {
-            $login    = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+            $login    = $this->request->getPost("login");
+            $password = $this->request->getPost("password");
 
             $user = Users::findFirstByLogin($login);
             if ($user) {
@@ -119,11 +119,16 @@ Remember to add a session adapter to your Dependency Injector, otherwise the tok
 
     <?php
 
-    $di->setShared('session', function () {
-        $session = new Phalcon\Session\Adapter\Files();
-        $session->start();
-        return $session;
-    });
+    $di->setShared(
+        "session",
+        function () {
+            $session = new \Phalcon\Session\Adapter\Files();
+
+            $session->start();
+
+            return $session;
+        }
+    );
 
 Adding a captcha_ to the form is also recommended to completely avoid the risks of this attack.
 
@@ -138,15 +143,18 @@ to setup its options:
 
     use Phalcon\Security;
 
-    $di->set('security', function () {
+    $di->set(
+        "security",
+        function () {
+            $security = new Security();
 
-        $security = new Security();
+            // Set the password hashing factor to 12 rounds
+            $security->setWorkFactor(12);
 
-        // Set the password hashing factor to 12 rounds
-        $security->setWorkFactor(12);
-
-        return $security;
-    }, true);
+            return $security;
+        },
+        true
+    );
 
 Random
 ------
@@ -156,7 +164,9 @@ The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class make
 
     <?php
 
-    $random = new \Phalcon\Security\Random();
+    use Phalcon\Security\Random;
+
+    $random = new Random();
 
     // ...
     $bytes      = $random->bytes();

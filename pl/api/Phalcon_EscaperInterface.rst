@@ -9,7 +9,7 @@ Interface **Phalcon\\EscaperInterface**
 Methods
 -------
 
-abstract public  **setEncoding** (*unknown* $encoding)
+abstract public  **setEncoding** (*mixed* $encoding)
 
 ...
 
@@ -19,32 +19,32 @@ abstract public  **getEncoding** ()
 ...
 
 
-abstract public  **setHtmlQuoteType** (*unknown* $quoteType)
+abstract public  **setHtmlQuoteType** (*mixed* $quoteType)
 
 ...
 
 
-abstract public  **escapeHtml** (*unknown* $text)
+abstract public  **escapeHtml** (*mixed* $text)
 
 ...
 
 
-abstract public  **escapeHtmlAttr** (*unknown* $text)
+abstract public  **escapeHtmlAttr** (*mixed* $text)
 
 ...
 
 
-abstract public  **escapeCss** (*unknown* $css)
+abstract public  **escapeCss** (*mixed* $css)
 
 ...
 
 
-abstract public  **escapeJs** (*unknown* $js)
+abstract public  **escapeJs** (*mixed* $js)
 
 ...
 
 
-abstract public  **escapeUrl** (*unknown* $url)
+abstract public  **escapeUrl** (*mixed* $url)
 
 ...
 

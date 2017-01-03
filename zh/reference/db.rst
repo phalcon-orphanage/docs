@@ -14,17 +14,15 @@
 ---------------------------------
 这个组件利用了这些适配器去封装特定的数据库的详细操作。Phalcon使用 PDO_ 去连接这些数据库。下面这些是我们支持的数据库引擎：
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| 名称       | 描述                                                                                                                                                                                                                                 | API                                                                                     |
-+============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | MySQL是这个世界上最多人使用的关系数据库，它作为服务器运行为多用户提供了访问多个数据库的功能。                                                                                                                                        | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉                                                                                           | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite是一个实现一个自包含的，无服务器，零配置，支持事务的SQL数据库引擎的软件库                                                                                                                                                      | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Oracle     | Oracle是一个对象-关系数据库，由甲骨文公司生产和销售。                                                                                                                                                                                | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| Class                                                                                   | 描述                                                                                                                                       |
++=========================================================================================+============================================================================================================================================+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           | MySQL是这个世界上最多人使用的关系数据库，它作为服务器运行为多用户提供了访问多个数据库的功能。                                              |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉 |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         | SQLite是一个实现一个自包含的，无服务器，零配置，支持事务的SQL数据库引擎的软件库                                                            |
++-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,17 +33,15 @@
 Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“方言”提供了提供通用的功能和SQL生成的适配器。
 (译者注：这里的“方言”是指Phalcon把一些常用的数据库操作封装成类的方法，例如检查数据库中表是否存在，不再需要麻烦的手动写SQL，可以把调用tableExists方法去查询)
 
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| 名称       | 描述                                                | API                                                                            |
-+============+=====================================================+================================================================================+
-| MySQL      | MySQL的具体“方言”                                   | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_MySQL>`           |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL的具体“方言”                              | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | SQLite的具体“方言”                                  | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Oracle     | Oracle的具体“方言”                                  | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
-+------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| 名称                                                                           | 描述                                                |
++================================================================================+=====================================================+
+| :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | MySQL的具体“方言”                                   |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | PostgreSQL的具体“方言”                              |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
+| :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         | SQLite的具体“方言”                                  |
++--------------------------------------------------------------------------------+-----------------------------------------------------+
 
 自定义“方言”（Implementing your own dialects）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,12 +57,12 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     <?php
 
     // 必要参数
-    $config = array(
+    $config = [
         "host"     => "127.0.0.1",
         "username" => "mike",
         "password" => "sigma",
-        "dbname"   => "test_db"
-    );
+        "dbname"   => "test_db",
+    ];
 
     // 可选参数
     $config["persistent"] = false;
@@ -79,12 +75,12 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     <?php
 
     // 必要参数
-    $config = array(
+    $config = [
         "host"     => "localhost",
         "username" => "postgres",
         "password" => "secret1",
-        "dbname"   => "template"
-    );
+        "dbname"   => "template",
+    ];
 
     // 可选参数
     $config["schema"] = "public";
@@ -97,34 +93,12 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
     <?php
 
     // 必要参数
-    $config = array(
-        "dbname" => "/path/to/database.db"
-    );
+    $config = [
+        "dbname" => "/path/to/database.db",
+    ];
 
     // 创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
-
-.. code-block:: php
-
-    <?php
-
-    // 基本配置信息
-    $config = array(
-        'username' => 'scott',
-        'password' => 'tiger',
-        'dbname'   => '192.168.10.145/orcl'
-    );
-
-    // 高级配置信息
-    $config = array(
-        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
-        'username' => 'scott',
-        'password' => 'tiger',
-        'charset'  => 'AL32UTF8'
-    );
-
-    // 创建连接
-    $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
 设置额外的 PDO 选项（Setting up additional PDO options）
 --------------------------------------------------------
@@ -136,16 +110,16 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
     // 带PDO options参数的创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "sigma",
             "dbname"   => "test_db",
-            "options"  => array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
-                PDO::ATTR_CASE               => PDO::CASE_LOWER
-            )
-        )
+            "options"  => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
+            ]
+        ]
     );
 
 查找行（Finding Rows）
@@ -234,11 +208,22 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
     // 用数字占位符绑定参数
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array("Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            "Wall-E",
+        ]
+    );
 
     // 用指定的占位符绑定参数
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
-    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
+    $success = $connection->query(
+        $sql,
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
+    );
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
 are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
@@ -257,7 +242,12 @@ bound parameters are directly passed to PDO:
 
     // Binding with PDO placeholders
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
+    $result = $connection->query(
+        $sql,
+        [
+            1 => "Wall-E",
+        ]
+    );
 
 插入、更新、删除行（Inserting/Updating/Deleting Rows）
 ------------------------------------------------------
@@ -273,22 +263,34 @@ bound parameters are directly passed to PDO:
 
     // 使用带占位符的SQL插入行
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astro Boy', 1952));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            1952,
+        ]
+    );
 
     // 使用类中预设的方法插入行
     $success = $connection->insert(
-       "robots",
-       array("Astro Boy", 1952),
-       array("name", "year")
+        "robots",
+        [
+            "Astro Boy",
+            1952,
+        ],
+        [
+            "name",
+            "year",
+        ],
     );
 
     // 插入数据的另外一种方法
     $success = $connection->insertAsDict(
-       "robots",
-       array(
-          "name" => "Astro Boy",
-          "year" => 1952
-       )
+        "robots",
+        [
+            "name" => "Astro Boy",
+            "year" => 1952,
+        ]
     );
 
     // 使用原生SQL更新行
@@ -297,46 +299,60 @@ bound parameters are directly passed to PDO:
 
     // 使用带占位符的SQL更新行
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astro Boy', 101));
+    $success = $connection->execute(
+        $sql,
+        [
+            "Astro Boy",
+            101,
+        ]
+    );
 
     // 使用类中预设的方法更新行
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // 更新数据的另外一种方法
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       "id = 101" // Warning! In this case values are not escaped
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        "id = 101" // Warning! In this case values are not escaped
     );
 
     // With escaping conditions
     $success = $connection->update(
-       "robots",
-       array("name"),
-       array("New Astro Boy"),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name",
+        ],
+        [
+            "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
     $success = $connection->updateAsDict(
-       "robots",
-       array(
-          "name" => "New Astro Boy"
-       ),
-       array(
-          'conditions' => 'id = ?',
-          'bind' => array(101),
-          'bindTypes' => array(PDO::PARAM_INT) // Optional parameter
-       )
+        "robots",
+        [
+            "name" => "New Astro Boy",
+        ],
+        [
+            "conditions" => "id = ?",
+            "bind"       => [101],
+            "bindTypes"  => [PDO::PARAM_INT], // Optional parameter
+        ]
     );
 
     // 使用原生SQL删除数据
@@ -345,10 +361,16 @@ bound parameters are directly passed to PDO:
 
     // 使用带占位符的SQL删除行
     $sql     = "DELETE `robots` WHERE `id` = ?";
-    $success = $connection->execute($sql, array(101));
+    $success = $connection->execute($sql, [101]);
 
     // 使用类中预设的方法删除行
-    $success = $connection->delete("robots", "id = ?", array(101));
+    $success = $connection->delete(
+        "robots",
+        "id = ?",
+        [
+            101,
+        ]
+    );
 
 事务与嵌套事务（Transactions and Nested Transactions）
 ------------------------------------------------------
@@ -359,7 +381,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     <?php
 
     try {
-
         // 开始一个事务
         $connection->begin();
 
@@ -370,7 +391,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
         // 提交操作，如果一切正常
         $connection->commit();
-
     } catch (Exception $e) {
         // 如果发现异常，回滚操作
         $connection->rollback();
@@ -384,7 +404,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     <?php
 
     try {
-
         // 开始一个事务
         $connection->begin();
 
@@ -392,7 +411,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
-
             // 开始一个嵌套事务
             $connection->begin();
 
@@ -402,7 +420,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
             // 创建一个保存的点
             $connection->commit();
-
         } catch (Exception $e) {
             // 发生错误，释放嵌套的事务
             $connection->rollback();
@@ -413,7 +430,6 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
         // 如果一切正常，提交
         $connection->commit();
-
     } catch (Exception $e) {
         // 发生错误，回滚操作
         $connection->rollback();
@@ -457,12 +473,12 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(
-        array(
+        [
             "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname"   => "invo"
-        )
+            "dbname"   => "invo",
+        ]
     );
 
     // 把eventsManager分配给适配器实例
@@ -474,18 +490,24 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    $eventsManager->attach('db:beforeQuery', function ($event, $connection) {
+    use Phalcon\Events\Event;
 
-        // 检查是否有恶意关键词
-        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP/ALTER 操作是不允许的, 这肯定是一个注入!
-            // 返回false中断此操作
-            return false;
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) {
+            $sql = $connection->getSQLStatement();
+
+            // 检查是否有恶意关键词
+            if (preg_match("/DROP|ALTER/i", $sql)) {
+                // DROP/ALTER 操作是不允许的, 这肯定是一个注入!
+                // 返回false中断此操作
+                return false;
+            }
+
+            // 一切正常
+            return true;
         }
-
-        // 一切正常
-        return true;
-    });
+    );
 
 分析 SQL 语句（Profiling SQL Statements）
 -----------------------------------------
@@ -496,6 +518,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Db\Profiler as DbProfiler;
 
@@ -504,16 +527,22 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $profiler = new DbProfiler();
 
     // 监听所有数据库的事件
-    $eventsManager->attach('db', function ($event, $connection) use ($profiler) {
-        if ($event->getType() == 'beforeQuery') {
-            // 操作前启动分析
-            $profiler->startProfile($connection->getSQLStatement());
+    $eventsManager->attach(
+        "db",
+        function (Event $event, $connection) use ($profiler) {
+            if ($event->getType() === "beforeQuery") {
+                $sql = $connection->getSQLStatement();
+
+                // 操作前启动分析
+                $profiler->startProfile($sql);
+            }
+
+            if ($event->getType() === "afterQuery") {
+                // 操作后停止分析
+                $profiler->stopProfile();
+            }
         }
-        if ($event->getType() == 'afterQuery') {
-            // 操作后停止分析
-            $profiler->stopProfile();
-        }
-    });
+    );
 
     // 设置事件管理器
     $connection->setEventsManager($eventsManager);
@@ -569,7 +598,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $dbProfiler = new DbProfiler();
 
     // 设置监听器监听所有的数据库事件
-    $eventsManager->attach('db', $dbProfiler);
+    $eventsManager->attach("db", $dbProfiler);
 
 记录 SQL 语句（Logging SQL Statements）
 ---------------------------------------
@@ -580,6 +609,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     <?php
 
     use Phalcon\Logger;
+    use Phalcon\Events\Event;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Logger\Adapter\File as FileLogger;
 
@@ -587,12 +617,14 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     $logger = new FileLogger("app/logs/db.log");
 
-    // 监听所有数据库事件
-    $eventsManager->attach('db', function ($event, $connection) use ($logger) {
-        if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), Logger::INFO);
+    $eventsManager->attach(
+        "db:beforeQuery",
+        function (Event $event, $connection) use ($logger) {
+            $sql = $connection->getSQLStatement();
+
+            $logger->log($sql, Logger::INFO);
         }
-    });
+    );
 
     // 设置事件管理器
     $connection->setEventsManager($eventsManager);
@@ -600,8 +632,14 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     // 执行一些SQL
     $connection->insert(
         "products",
-        array("Hot pepper", 3.50),
-        array("name", "price")
+        [
+            "Hot pepper",
+            3.50,
+        ],
+        [
+            "name",
+            "price",
+        ]
     );
 
 如上操作，文件 *app/logs/db.log* 将包含像下面这样的信息：
@@ -641,14 +679,18 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     // 获取'robots'表的所有索引
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-        print_r($index->getColumns());
+        print_r(
+            $index->getColumns()
+        );
     }
 
     // 获取'robots'表的所有外键
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // 打印引用的列
-        print_r($reference->getReferencedColumns());
+        print_r(
+            $reference->getReferencedColumns()
+        );
     }
 
 一个表的详细描述信息和MYSQL的describe命令返回的信息非常相似，它包含以下信息：
@@ -695,36 +737,36 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
     $connection->createTable(
         "robots",
         null,
-        array(
-           "columns" => array(
+        [
+           "columns" => [
                 new Column(
                     "id",
-                    array(
+                    [
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
                         "notNull"       => true,
                         "autoIncrement" => true,
                         "primary"       => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "name",
-                    array(
+                    [
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
-                    )
+                    ]
                 ),
                 new Column(
                     "year",
-                    array(
+                    [
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
                         "notNull" => true,
-                    )
-                )
-            )
-        )
+                    ]
+                ),
+            ]
+        ]
     );
 
 :code:`Phalcon\Db::createTable()` 接受一个描述数据库表相关的数组。字段被定义成class :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` 。
@@ -798,12 +840,12 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         null,
         new Column(
             "robot_type",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 32,
                 "notNull" => true,
-                "after"   => "name"
-            )
+                "after"   => "name",
+            ]
         )
     );
 
@@ -813,11 +855,11 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
         null,
         new Column(
             "name",
-            array(
+            [
                 "type"    => Column::TYPE_VARCHAR,
                 "size"    => 40,
-                "notNull" => true
-            )
+                "notNull" => true,
+            ]
         )
     );
 

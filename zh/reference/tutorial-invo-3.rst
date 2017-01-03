@@ -1,14 +1,9 @@
-Tutorial 4: Using CRUDs
-=======================
+教程4: 使用CRUD(Tutorial 4: Working with the CRUD)
+=================================
 
-Backends usually provides forms to allow users to manipulate data. Continuing the explanation of
-INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
-using forms, validations, paginators and more.
+后台通常提供表单来允许用户提交数据. 继续对INVO的解释, 我们现在处理CRUD的创建, 一个非常常见的操作任务, Phalcon将会帮助你使用表单, 校验, 分页和更多.
 
-Working with the CRUD
----------------------
-Most options that manipulate data in INVO (companies, products and types of products), were developed
-using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
+在INVO(公司, 产品和产品类型)中大部分选项操作数据都是使用一个基础的常见的 CRUD_ (创建, 读取, 更新和删除)开发的. 每个CRUD包含以下文件:
 
 .. code-block:: bash
 
@@ -27,7 +22,7 @@ using a basic and common CRUD_ (Create, Read, Update and Delete). Each CRUD cont
                     new.volt
                     search.volt
 
-Each controller has the following actions:
+每个控制器都有以下方法:
 
 .. code-block:: php
 
@@ -36,7 +31,7 @@ Each controller has the following actions:
     class ProductsController extends ControllerBase
     {
         /**
-         * The start action, it shows the "search" view
+         * 开始操作, 它展示"search"视图
          */
         public function indexAction()
         {
@@ -44,8 +39,8 @@ Each controller has the following actions:
         }
 
         /**
-         * Execute the "search" based on the criteria sent from the "index"
-         * Returning a paginator for the results
+         * 基于从"index"发送过来的条件处理"search"
+         * 返回一个分页结果
          */
         public function searchAction()
         {
@@ -53,7 +48,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to create a "new" product
+         * 展示创建一个"new"(新)产品的视图
          */
         public function newAction()
         {
@@ -61,7 +56,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to "edit" an existing product
+         * 展示编辑一个已存在"edit"(编辑)产品的视图
          */
         public function editAction()
         {
@@ -69,7 +64,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Creates a product based on the data entered in the "new" action
+         * 基于"new"方法中输入的数据创建一个产品
          */
         public function createAction()
         {
@@ -77,7 +72,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Updates a product based on the data entered in the "edit" action
+         * 基于"edit"方法中输入的数据更新一个产品
          */
         public function saveAction()
         {
@@ -85,7 +80,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Deletes an existing product
+         * 删除一个已存在的产品
          */
         public function deleteAction($id)
         {
@@ -93,27 +88,25 @@ Each controller has the following actions:
         }
     }
 
-The Search Form
+表单搜索(The Search Form)
 ^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
-to create a search criteria from any field. Table "products" has a relationship to the table "products_types".
-In this case, we previously queried the records in this table in order to facilitate the search by that field:
+每个 CRUD 都开始于一个搜索表单. 这个表单展示了表(products)中的每个字段, 允许用户为一些字段创建一个搜索条件. 表 "products" 和表 "products_types" 是关系表. 既然这样, 我们先前查询表中的记录以便于字段的搜索:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * The start action, it shows the "search" view
+     * 开始操作, 它展示"search"视图
      */
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->form               = new ProductsForm;
+
+        $this->view->form = new ProductsForm();
     }
 
-An instance of the form ProductsForm (app/forms/ProductsForm.php) is passed to the view.
-This form defines the fields that are visible to the user:
+ProductsForm 表单的实例 (app/forms/ProductsForm.php)传递给了视图. 这个表单定义了用户可见的字段:
 
 .. code-block:: php
 
@@ -130,233 +123,298 @@ This form defines the fields that are visible to the user:
     class ProductsForm extends Form
     {
         /**
-         * Initialize the products form
+         * 初始化产品表单
          */
-        public function initialize($entity = null, $options = array())
+        public function initialize($entity = null, $options = [])
         {
-            if (!isset($options['edit'])) {
+            if (!isset($options["edit"])) {
                 $element = new Text("id");
-                $this->add($element->setLabel("Id"));
+
+                $element->setLabel("Id");
+
+                $this->add(
+                    $element
+                );
             } else {
-                $this->add(new Hidden("id"));
+                $this->add(
+                    new Hidden("id")
+                );
             }
 
+
+
             $name = new Text("name");
+
             $name->setLabel("Name");
-            $name->setFilters(array('striptags', 'string'));
-            $name->addValidators(
-                array(
-                    new PresenceOf(
-                        array(
-                            'message' => 'Name is required'
-                        )
-                    )
-                )
+
+            $name->setFilters(
+                [
+                    "striptags",
+                    "string",
+                ]
             );
+
+            $name->addValidators(
+                [
+                    new PresenceOf(
+                        [
+                            "message" => "Name is required",
+                        ]
+                    )
+                ]
+            );
+
             $this->add($name);
 
+
+
             $type = new Select(
-                'profilesId',
+                "profilesId",
                 ProductTypes::find(),
-                array(
-                    'using'      => array('id', 'name'),
-                    'useEmpty'   => true,
-                    'emptyText'  => '...',
-                    'emptyValue' => ''
-                )
+                [
+                    "using"      => [
+                        "id",
+                        "name",
+                    ],
+                    "useEmpty"   => true,
+                    "emptyText"  => "...",
+                    "emptyValue" => "",
+                ]
             );
+
             $this->add($type);
 
+
+
             $price = new Text("price");
+
             $price->setLabel("Price");
-            $price->setFilters(array('float'));
+
+            $price->setFilters(
+                [
+                    "float",
+                ]
+            );
+
             $price->addValidators(
-                array(
+                [
                     new PresenceOf(
-                        array(
-                            'message' => 'Price is required'
-                        )
+                        [
+                            "message" => "Price is required",
+                        ]
                     ),
                     new Numericality(
-                        array(
-                            'message' => 'Price is required'
-                        )
-                    )
-                )
+                        [
+                            "message" => "Price is required",
+                        ]
+                    ),
+                ]
             );
+
             $this->add($price);
         }
     }
 
-The form is declared using an object-oriented scheme based on the elements provided by the :doc:`forms <forms>` component.
-Every element follows almost the same structure:
+表单是使用面向对象的方式声明的, 基于 :doc:`forms <forms>` 组件提供的元素. 每个元素都遵循近乎相同的结构:
 
 .. code-block:: php
 
     <?php
 
-    // Create the element
+    // 创建一个元素
     $name = new Text("name");
 
-    // Set its label
+    // 设置它的label
     $name->setLabel("Name");
 
-    // Before validating the element apply these filters
-    $name->setFilters(array('striptags', 'string'));
-
-    // Apply this validators
-    $name->addValidators(
-        array(
-            new PresenceOf(
-                array(
-                    'message' => 'Name is required'
-                )
-            )
-        )
+    // 在验证元素之前应用这些过滤器
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
     );
 
-    // Add the element to the form
+    // 应用此验证
+    $name->addValidators(
+        [
+            new PresenceOf(
+                [
+                    "message" => "Name is required",
+                ]
+            )
+        ]
+    );
+
+    // 增加元素到表单
     $this->add($name);
 
-Other elements are also used in this form:
+在表单中其它元素也是这样使用:
 
 .. code-block:: php
 
     <?php
 
-    // Add a hidden input to the form
-    $this->add(new Hidden("id"));
+    // 增加一个隐藏input到表单
+    $this->add(
+        new Hidden("id")
+    );
 
     // ...
 
-    // Add a HTML Select (list) to the form
-    // and fill it with data from "product_types"
+    $productTypes = ProductTypes::find();
+
+    // 增加一个HTML Select (列表) 到表单
+    // 数据从"product_types"中填充
     $type = new Select(
-        'profilesId',
-        ProductTypes::find(),
-        array(
-            'using'      => array('id', 'name'),
-            'useEmpty'   => true,
-            'emptyText'  => '...',
-            'emptyValue' => ''
-        )
+        "profilesId",
+        $productTypes,
+        [
+            "using"      => [
+                "id",
+                "name",
+            ],
+            "useEmpty"   => true,
+            "emptyText"  => "...",
+            "emptyValue" => "",
+        ]
     );
 
-Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
-Once the form is passed to the view, it can be rendered and presented to the user:
+注意, :code:`ProductTypes::find()` 包含的必须的数据 使用 :code:`Phalcon\Tag::select()` 来填充 SELECT 标签. 一旦表单传递给视图, 它会进行渲染并呈现给用户:
 
 .. code-block:: html+jinja
 
     {{ form("products/search") }}
 
-    <h2>Search products</h2>
+        <h2>
+            Search products
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        {% for element in form %}
+            {% for element in form %}
+                <div class="control-group">
+                    {{ element.label(["class": "control-label"]) }}
+
+                    <div class="controls">
+                        {{ element }}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
             <div class="control-group">
-                {{ element.label(['class': 'control-label']) }}
-                <div class="controls">{{ element }}</div>
+                {{ submit_button("Search", "class": "btn btn-primary") }}
             </div>
-        {% endfor %}
 
-        <div class="control-group">
-            {{ submit_button("Search", "class": "btn btn-primary") }}
-        </div>
+        </fieldset>
 
-    </fieldset>
+    {{ endForm() }}
 
-This produces the following HTML:
+这会生成下面的HTML:
 
 .. code-block:: html
 
     <form action="/invo/products/search" method="post">
 
-    <h2>Search products</h2>
+        <h2>
+            Search products
+        </h2>
 
-    <fieldset>
+        <fieldset>
 
-        <div class="control-group">
-            <label for="id" class="control-label">Id</label>
-            <div class="controls"><input type="text" id="id" name="id" /></div>
-        </div>
+            <div class="control-group">
+                <label for="id" class="control-label">Id</label>
 
-        <div class="control-group">
-            <label for="name" class="control-label">Name</label>
-            <div class="controls">
-                <input type="text" id="name" name="name" />
+                <div class="controls">
+                    <input type="text" id="id" name="id" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="profilesId" class="control-label">profilesId</label>
-            <div class="controls">
-                <select id="profilesId" name="profilesId">
-                    <option value="">...</option>
-                    <option value="1">Vegetables</option>
-                    <option value="2">Fruits</option>
-                </select>
+            <div class="control-group">
+                <label for="name" class="control-label">Name</label>
+
+                <div class="controls">
+                    <input type="text" id="name" name="name" />
+                </div>
             </div>
-        </div>
 
-        <div class="control-group">
-            <label for="price" class="control-label">Price</label>
-            <div class="controls"><input type="text" id="price" name="price" /></div>
-        </div>
+            <div class="control-group">
+                <label for="profilesId" class="control-label">profilesId</label>
 
-        <div class="control-group">
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
+                <div class="controls">
+                    <select id="profilesId" name="profilesId">
+                        <option value="">...</option>
+                        <option value="1">Vegetables</option>
+                        <option value="2">Fruits</option>
+                    </select>
+                </div>
+            </div>
 
-    </fieldset>
+            <div class="control-group">
+                <label for="price" class="control-label">Price</label>
 
-When the form is submitted, the action "search" is executed in the controller performing the search
-based on the data entered by the user.
+                <div class="controls">
+                    <input type="text" id="price" name="price" />
+                </div>
+            </div>
 
-Performing a Search
+
+
+            <div class="control-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+
+        </fieldset>
+
+    </form>
+
+当表单提交的时候, 控制器里面的"search"操作是基于用户输入的数据执行搜索的.
+
+执行搜索(Performing a Search)
 ^^^^^^^^^^^^^^^^^^^
-The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
-form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
-we check it using the :doc:`Request <request>` component:
+"search"操作有两个行为. 当通过POST访问, 它基于表单发送的数据执行搜索, 但是当通过GET访问它会在分页中移动当前的页数. 为了区分HTTP方法,我们使用  :doc:`Request <request>` 组件进行校验:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Execute the "search" based on the criteria sent from the "index"
-     * Returning a paginator for the results
+     * 基于从"index"发送过来的条件处理"search"
+     * 返回一个分页结果
      */
     public function searchAction()
     {
         if ($this->request->isPost()) {
-            // Create the query conditions
+            // 创建查询条件
         } else {
-            // Paginate using the existing conditions
+            // 使用已存在的条件分页
         }
 
         // ...
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
-conditions intelligently based on the data types and values sent from the form:
+在 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` 的帮助下, 我们基于从表单发送来的数据类型和值创建智能的搜索条件:
 
 .. code-block:: php
 
     <?php
 
-    $query = Criteria::fromInput($this->di, "Products", $this->request->getPost());
+    $query = Criteria::fromInput(
+        $this->di,
+        "Products",
+        $this->request->getPost()
+    );
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the search criteria:
+这个方法验证值 "" (空字符串) 和值 null 的区别并考虑到这些来创建搜索条件:
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
-* If the data type is not text or similar, it'll use the operator "=".
+* 如果字段日期类型是text或者类似的(char, varchar, text, 等等) 它会使用一个SQL "like" 操作符来过滤结果.
+* 如果日期类型不是text或者类似的, 它将会使用操作符"=".
 
-Additionally, "Criteria" ignores all the :code:`$_POST` variables that do not match any field in the table.
-Values are automatically escaped using "bound parameters".
+另外, "Criteria" 会忽略 :code:`$_POST` 所有不与表中的任何字段相匹配的变量. 值会自动避免使用"参数绑定".
 
-Now, we store the produced parameters in the controller's session bag:
+现在, 我们在控制器的会话袋里存储产品参数:
 
 .. code-block:: php
 
@@ -364,24 +422,30 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests using the session service.
-When accessed, this attribute injects a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` instance
-that is independent in each controller.
+会话袋在控制器里面是一个特殊的属性, 在使用 session 服务的不同请求之间依然存在. 当访问的时候, 这个属性会注入一个 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 实例, 对于每个控制器来说, 这是独立的.
 
-Then, based on the built params we perform the query:
+然后, 基于内置的参数我们执行查询:
 
 .. code-block:: php
 
     <?php
 
     $products = Products::find($parameters);
-    if (count($products) == 0) {
-        $this->flash->notice("The search did not found any products");
-        return $this->forward("products/index");
+
+    if (count($products) === 0) {
+        $this->flash->notice(
+            "The search did not found any products"
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+如果搜索不返回一些产品, 我们再一次转发用户到 index 方法. 让我们模拟搜索返回结果, 然后我们创建一个分页来轻松的浏览他们:
 
 .. code-block:: php
 
@@ -392,17 +456,17 @@ search returned results, then we create a paginator to navigate easily through t
     // ...
 
     $paginator = new Paginator(
-        array(
-            "data"  => $products,  // Data to paginate
-            "limit" => 5,          // Rows per page
-            "page"  => $numberPage // Active page
-        )
+        [
+            "data"  => $products,   // 分页的数据
+            "limit" => 5,           // 每页的行数
+            "page"  => $numberPage, // 查看的指定页
+        ]
     );
 
-    // Get active page in the paginator
+    // 获取分页中当前页面
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+最后我们通过返回的页面来浏览:
 
 .. code-block:: php
 
@@ -410,103 +474,141 @@ Finally we pass the returned page to view:
 
     $this->view->page = $page;
 
-In the view (app/views/products/search.volt), we traverse the results corresponding to the current page,
-showing every row in the current page to the user:
+在视图里面 (app/views/products/search.volt), 我们在当前页面循环相应的结果, 在当前页面给用户展示每一行记录:
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Product Type</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Active</th>
-            </tr>
-          </thead>
-        <tbody>
-      {% endif %}
-      <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.getProductTypes().name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ "%.2f"|format(product.price) }}</td>
-        <td>{{ product.getActiveDetail() }}</td>
-        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
-      </tr>
-      {% if loop.last %}
-      </tbody>
-        <tbody>
-          <tr>
-            <td colspan="7">
-              <div>
-                {{ link_to("products/search", 'First') }}
-                {{ link_to("products/search?page=" ~ page.before, 'Previous') }}
-                {{ link_to("products/search?page=" ~ page.next, 'Next') }}
-                {{ link_to("products/search?page=" ~ page.last, 'Last') }}
-                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
-              </div>
+        {% if loop.first %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Type</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+
+        <tr>
+            <td>
+                {{ product.id }}
             </td>
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
+
+            <td>
+                {{ product.getProductTypes().name }}
+            </td>
+
+            <td>
+                {{ product.name }}
+            </td>
+
+            <td>
+                {{ "%.2f"|format(product.price) }}
+            </td>
+
+            <td>
+                {{ product.getActiveDetail() }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/edit/" ~ product.id, "Edit") }}
+            </td>
+
+            <td width="7%">
+                {{ link_to("products/delete/" ~ product.id, "Delete") }}
+            </td>
+        </tr>
+
+        {% if loop.last %}
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td colspan="7">
+                            <div>
+                                {{ link_to("products/search", "First") }}
+                                {{ link_to("products/search?page=" ~ page.before, "Previous") }}
+                                {{ link_to("products/search?page=" ~ page.next, "Next") }}
+                                {{ link_to("products/search?page=" ~ page.last, "Last") }}
+                                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
     {% else %}
-      No products are recorded
+        No products are recorded
     {% endfor %}
 
-There are many things in the above example that worth detailing. First of all, active items
-in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+在上面的例子中有很多东西值得详细介绍. 首先, 当前页面的记录是使用 Volt 的 'for' 循环出来的. Volt 对 PHP 的 'foreach' 提供了一个简单的语法.
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
 
-Which in PHP is the same as:
+对于 PHP 来说也是一样:
 
 .. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
 
-The whole 'for' block provides the following:
+完整的 'for' 提供了以下:
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
-      {% if loop.first %}
-        Executed before the first product in the loop
-      {% endif %}
+        {% if loop.first %}
+            Executed before the first product in the loop
+        {% endif %}
+
         Executed for every product of page.items
-      {% if loop.last %}
-        Executed after the last product is loop
-      {% endif %}
+
+        {% if loop.last %}
+            Executed after the last product is loop
+        {% endif %}
     {% else %}
-      Executed if page.items does not have any products
+        Executed if page.items does not have any products
     {% endfor %}
 
-Now you can go back to the view and find out what every block is doing. Every field
-in "product" is printed accordingly:
+现在你可以返回到页面找出每个块都在做什么. 在"product"中的每个字段都有相应的输出:
 
 .. code-block:: html+jinja
 
     <tr>
-      <td>{{ product.id }}</td>
-      <td>{{ product.productTypes.name }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ "%.2f"|format(product.price) }}</td>
-      <td>{{ product.getActiveDetail() }}</td>
-      <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
-      <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+        <td>
+            {{ product.id }}
+        </td>
+
+        <td>
+            {{ product.productTypes.name }}
+        </td>
+
+        <td>
+            {{ product.name }}
+        </td>
+
+        <td>
+            {{ "%.2f"|format(product.price) }}
+        </td>
+
+        <td>
+            {{ product.getActiveDetail() }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/edit/" ~ product.id, "Edit") }}
+        </td>
+
+        <td width="7%">
+            {{ link_to("products/delete/" ~ product.id, "Delete") }}
+        </td>
     </tr>
 
-As we seen before using product.id is the same as in PHP as doing: :code:`$product->id`,
-we made the same with product.name and so on. Other fields are rendered differently,
-for instance, let's focus in product.productTypes.name. To understand this part,
-we have to check the model Products (app/models/Products.php):
+正如我们看到的, 在之前使用 :code:`product.id` 和在PHP中使用 :code:`$product->id` 是等价的, we made the same with :code:`product.name` and so on. 其它字段都表现的有些不同, 例如, 让我们看下 :code:`product.productTypes.name`. 要理解这部分, 我们必须看一下 Products 模型 (app/models/Products.php):
 
 .. code-block:: php
 
@@ -515,96 +617,97 @@ we have to check the model Products (app/models/Products.php):
     use Phalcon\Mvc\Model;
 
     /**
-     * Products
+     * 产品
      */
     class Products extends Model
     {
         // ...
 
         /**
-         * Products initializer
+         * 产品初始化
          */
         public function initialize()
         {
             $this->belongsTo(
-                'product_types_id',
-                'ProductTypes',
-                'id',
-                array(
-                    'reusable' => true
-                )
+                "product_types_id",
+                "ProductTypes",
+                "id",
+                [
+                    "reusable" => true,
+                ]
             );
         }
 
         // ...
     }
 
-A model, can have a method called "initialize", this method is called once per request and it serves
-the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
-has a one-to-many relationship to another model called "ProductTypes".
+一个模型有一个名为 :code:`initialize()` 的方法, 这个方法在每次请求的时候调用一次兵器它服务ORM去初始化一个模型. 在这种情况话, "Products" 通过定义这个模型跟另外一个叫做 "ProductTypes" 的模型有一对多的关系从而初始化.
 
 .. code-block:: php
 
     <?php
 
     $this->belongsTo(
-        'product_types_id',
-        'ProductTypes',
-        'id',
-        array(
-            'reusable' => true
-        )
+        "product_types_id",
+        "ProductTypes",
+        "id",
+        [
+            "reusable" => true,
+        ]
     );
 
-Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
-the product type by using:
+它的意思是, "Products" 的本地属性"product_types_id" 跟 "ProductTypes" 模型里面的属性 "id" 是一对多的关系. 通过定义这个关系我们可以通过如下方法来访问产品类型的名字:
 
 .. code-block:: html+jinja
 
     <td>{{ product.productTypes.name }}</td>
 
-The field "price" is printed by its formatted using a Volt filter:
+字段 "price" 使用一个 Volt 过滤器来格式化输出:
 
 .. code-block:: html+jinja
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-What in PHP would be:
+在原生PHP中, 它将是这样的:
 
 .. code-block:: php
 
     <?php echo sprintf("%.2f", $product->price) ?>
 
-Printing whether the product is active or not uses a helper implemented in the model:
+使用模型中已经实现的帮助者函数来输出产品是否是有效的:
 
 .. code-block:: php
 
     <td>{{ product.getActiveDetail() }}</td>
 
-This method is defined in the model.
+这个方法在模型中定义了.
 
-Creating and Updating Records
+创建和更新记录(Creating and Updating Records)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+现在, 让我们看看 CRUD 如何创建和更新记录. 从 "new" 和 "edit" 视图, 通过用户输入的数据发送 "create" 和 "save" 方法从而分别执行 "creating" 和 "updating" 产品的方法.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+在创建的情况下, 我们提取提交的数据然后分配它们到一个新的 "Products" 实例:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * 基于在 "new" 方法中输入的数据创建一个产品
      */
     public function createAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
-        $form    = new ProductsForm;
+        $form = new ProductsForm();
+
         $product = new Products();
 
         $product->id               = $this->request->getPost("id", "int");
@@ -616,8 +719,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
         // ...
     }
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object :code:`$product`.
-This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
+还记得我们在产品表单中定义的过滤器吗? 数据在开始分配到 :code:`$product` 对象前进行过滤. 这个过滤器是可选的; ORM同样也会转义输入的数据和根据列类型执行附加的转换:
 
 .. code-block:: php
 
@@ -626,26 +728,31 @@ This filtering is optional, also the ORM escapes the input data and performs add
     // ...
 
     $name = new Text("name");
+
     $name->setLabel("Name");
 
-    // Filters for name
-    $name->setFilters(array('striptags', 'string'));
+    // 过滤 name
+    $name->setFilters(
+        [
+            "striptags",
+            "string",
+        ]
+    );
 
-    // Validators for name
+    // 验证 name
     $name->addValidators(
-        array(
+        [
             new PresenceOf(
-                array(
-                    'message' => 'Name is required'
-                )
+                [
+                    "message" => "Name is required",
+                ]
             )
-        )
+        ]
     );
 
     $this->add($name);
 
-When saving we'll know whether the data conforms to the business rules and validations implemented
-in the form ProductsForm (app/forms/ProductsForm.php):
+当保存的时候, 我们就会知道 ProductsForm (app/forms/ProductsForm.php) 表单提交的数据是否否则业务规则和实现的验证:
 
 .. code-block:: php
 
@@ -653,19 +760,29 @@ in the form ProductsForm (app/forms/ProductsForm.php):
 
     // ...
 
-    $form    = new ProductsForm;
+    $form = new ProductsForm();
+
     $product = new Products();
 
-    // Validate the input
+    // V验证输入
     $data = $this->request->getPost();
+
     if (!$form->isValid($data, $product)) {
-        foreach ($form->getMessages() as $message) {
+        $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
-        return $this->forward('products/new');
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
-Finally, if the form does not return any validation message we can save the product instance:
+最后, 如果表单没有返回任何验证消息, 我们就可以保存产品实例了:
 
 .. code-block:: php
 
@@ -673,94 +790,155 @@ Finally, if the form does not return any validation message we can save the prod
 
     // ...
 
-    if ($product->save() == false) {
-        foreach ($product->getMessages() as $message) {
+    if ($product->save() === false) {
+        $messages = $product->getMessages();
+
+        foreach ($messages as $message) {
             $this->flash->error($message);
         }
 
-        return $this->forward('products/new');
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "new",
+            ]
+        );
     }
 
     $form->clear();
 
-    $this->flash->success("Product was created successfully");
-    return $this->forward("products/index");
+    $this->flash->success(
+        "Product was created successfully"
+    );
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+    return $this->dispatcher->forward(
+        [
+            "controller" => "products",
+            "action"     => "index",
+        ]
+    );
+
+现在, 在更新产品的情况下, 我们必须先将当前编辑的记录展示给用户:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Edits a product based on its id
+     * 基于它的id编辑一个产品
      */
     public function editAction($id)
     {
         if (!$this->request->isPost()) {
-
             $product = Products::findFirstById($id);
-            if (!$product) {
-                $this->flash->error("Product was not found");
 
-                return $this->forward("products/index");
+            if (!$product) {
+                $this->flash->error(
+                    "Product was not found"
+                );
+
+                return $this->dispatcher->forward(
+                    [
+                        "controller" => "products",
+                        "action"     => "index",
+                    ]
+                );
             }
 
-            $this->view->form = new ProductsForm($product, array('edit' => true));
+            $this->view->form = new ProductsForm(
+                $product,
+                [
+                    "edit" => true,
+                ]
+            );
         }
     }
 
-The data found is bound to the form passing the model as first parameter. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+通过将模型作为第一个参数传递过去找出被绑定到表单的数据. 多亏了这个, 用户可以改变任何值, 然后通过 "save" 方法发送它到数据库:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * 在 "edit"方法中基于输入的数据更新一个产品
      */
     public function saveAction()
     {
         if (!$this->request->isPost()) {
-            return $this->forward("products/index");
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
         $id = $this->request->getPost("id", "int");
 
         $product = Products::findFirstById($id);
-        if (!$product) {
-            $this->flash->error("Product does not exist");
 
-            return $this->forward("products/index");
+        if (!$product) {
+            $this->flash->error(
+                "Product does not exist"
+            );
+
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "index",
+                ]
+            );
         }
 
-        $form = new ProductsForm;
+        $form = new ProductsForm();
 
         $data = $this->request->getPost();
+
         if (!$form->isValid($data, $product)) {
-            foreach ($form->getMessages() as $message) {
+            $messages = $form->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
-        if ($product->save() == false) {
-            foreach ($product->getMessages() as $message) {
+        if ($product->save() === false) {
+            $messages = $product->getMessages();
+
+            foreach ($messages as $message) {
                 $this->flash->error($message);
             }
 
-            return $this->forward('products/new');
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "products",
+                    "action"     => "new",
+                ]
+            );
         }
 
         $form->clear();
 
-        $this->flash->success("Product was updated successfully");
-        return $this->forward("products/index");
+        $this->flash->success(
+            "Product was updated successfully"
+        );
+
+        return $this->dispatcher->forward(
+            [
+                "controller" => "products",
+                "action"     => "index",
+            ]
+        );
     }
 
-We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
-In next chapter, we will see how to add custom HTML elements like a menu.
+我们已经看到 Phalcon 如何以一种结构化的方式让你创建表单和从一个数据库中绑定数据. 在下一章, 我们将会看到如何添加自定义 HTML 元素, 比如一个菜单.
 
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete

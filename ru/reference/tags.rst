@@ -1,5 +1,5 @@
-Помощники представлений
-=======================
+Помощники представлений (Tags)
+==============================
 
 Написание и хранение HTML разметки может быстро надоесть из-за многочисленных элементов с разными именами и атрибутами, зависимостями
 которые должны быть всегда учтены. Phalcon облегчает эти сложности предлагая для работы компонент :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`,
@@ -97,10 +97,10 @@ HTML разметки. Например, при указании любого т
     <?= $this->tag->linkTo("products/search", "Search") ?>
 
     <!-- используя CSS -->
-    <?= $this->tag->linkTo(array('products/edit/10', 'Edit', 'class' => 'edit-btn')) ?>
+    <?= $this->tag->linkTo(["products/edit/10", "Edit", "class" => "edit-btn"]) ?>
 
     <!-- для именованных маршрутов -->
-    <?= $this->tag->linkTo(array(array('for' => 'show-product', 'title' => 123, 'name' => 'carrots'), 'Show')) ?>
+    <?= $this->tag->linkTo([["for" => "show-product", "title" => 123, "name" => "carrots"], "Show"]) ?>
 
 На самом деле, все такие ссылки формируются с использованием компонент :doc:`Phalcon\\Mvc\\Url <url>` (или другого используемого для "url" сервиса )
 
@@ -112,10 +112,10 @@ HTML разметки. Например, при указании любого т
     {{ link_to("products/search", "Search") }}
 
     <!-- for a named route -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
+    {{ link_to(["for": "show-product", "id": 123, "name": "carrots"], "Show") }}
 
     <!-- for a named route with a HTML class -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show', 'class': 'edit-btn') }}
+    {{ link_to(["for": "show-product", "id": 123, "name": "carrots"], "Show", "class": "edit-btn") }}
 
 Создание форм
 -------------
@@ -126,14 +126,18 @@ HTML разметки. Например, при указании любого т
     <!-- Отправка формы методом POST -->
     <?= $this->tag->form("products/search") ?>
         <label for="q">Search:</label>
+
         <?= $this->tag->textField("q") ?>
+
         <?= $this->tag->submitButton("Search") ?>
     <?= $this->tag->endForm() ?>
 
     <!-- Использование специфичного для элемента FORM тега - метода отправки данных -->
-    <?= $this->tag->form(array("products/search", "method" => "get")); ?>
+    <?= $this->tag->form(["products/search", "method" => "get"]); ?>
         <label for="q">Search:</label>
+
         <?= $this->tag->textField("q"); ?>
+
         <?= $this->tag->submitButton("Search"); ?>
     <?= $this->tag->endForm() ?>
 
@@ -142,9 +146,11 @@ HTML разметки. Например, при указании любого т
 .. code-block:: html
 
     <form action="/store/products/search/" method="get">
-         <label for="q">Search:</label>
-         <input type="text" id="q" value="" name="q" />
-         <input type="submit" value="Search" />
+        <label for="q">Search:</label>
+
+        <input type="text" id="q" value="" name="q" />
+
+        <input type="submit" value="Search" />
     </form>
 
 Аналогичную форму можно сгенерировать в Volt:
@@ -154,7 +160,9 @@ HTML разметки. Например, при указании любого т
     <!-- Specifying another method or attributes for the FORM tag -->
     {{ form("products/search", "method": "get") }}
         <label for="q">Search:</label>
+
         {{ text_field("q") }}
+
         {{ submit_button("Search") }}
     {{ endForm() }}
 
@@ -168,22 +176,28 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php echo $this->tag->textField("username") ?>
 
-    <?php echo $this->tag->textArea(array(
-        "comment",
-        "This is the content of the text-area",
-        "cols" => "6",
-        "rows" => 20
-    )) ?>
+    <?php echo $this->tag->textArea(
+        [
+            "comment",
+            "This is the content of the text-area",
+            "cols" => "6",
+            "rows" => 20,
+        ]
+    ) ?>
 
-    <?php echo $this->tag->passwordField(array(
-        "password",
-        "size" => 30
-    )) ?>
+    <?php echo $this->tag->passwordField(
+        [
+            "password",
+            "size" => 30,
+        ]
+    ) ?>
 
-    <?php echo $this->tag->hiddenField(array(
-        "parent_id",
-        "value"=> "5"
-    )) ?>
+    <?php echo $this->tag->hiddenField(
+        [
+            "parent_id",
+            "value" => "5",
+        ]
+    ) ?>
 
 Синтаксис Volt:
 
@@ -207,24 +221,29 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
+    $products = Products::find("type = 'vegetables'");
+
     // Используем данные из resultset
     echo $this->tag->select(
-        array(
+        [
             "productId",
-            Products::find("type = 'vegetables'"),
-            "using" => array("id", "name")
-        )
+            $products,
+            "using" => [
+                "id",
+                "name",
+            ]
+        ]
     );
 
     // Используем данные из массива
     echo $this->tag->selectStatic(
-        array(
+        [
             "status",
-            array(
+            [
                 "A" => "Active",
                 "I" => "Inactive",
-            )
-        )
+            ]
+        ]
     );
 
 Сформируется такой HTML:
@@ -248,14 +267,19 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
-    // Формирование выпадающего списка с пустым элементом
+    $products = Products::find("type = 'vegetables'");
+
+    // Creating a Select Tag with an empty option
     echo $this->tag->select(
-        array(
+        [
             "productId",
-            Products::find("type = 'vegetables'"),
-            "using"    => array("id", "name"),
-            "useEmpty" => true
-        )
+            $products,
+            "using"    => [
+                "id",
+                "name",
+            ],
+            "useEmpty" => true,
+        ]
     );
 
 Получится HTML
@@ -273,16 +297,21 @@ Phalcon предоставляет ряд помощников для созда
 
     <?php
 
+    $products = Products::find("type = 'vegetables'");
+
     // Указание параметров пустого элемента
     echo $this->tag->select(
-        array(
-            'productId',
-            Products::find("type = 'vegetables'"),
-            'using'      => array('id', "name"),
-            'useEmpty'   => true,
-            'emptyText'  => 'Выберите значение...',
-            'emptyValue' => '@'
-        )
+        [
+            "productId",
+            $products,
+            "using"      => [
+                "id",
+                "name",
+            ],
+            "useEmpty"   => true,
+            "emptyText"  => "Выберите значение...",
+            "emptyValue" => "@",
+        ]
     );
 
 .. code-block:: html
@@ -309,12 +338,12 @@ Phalcon предоставляет ряд помощников для созда
 .. code-block:: html+php
 
     <?php $this->tag->textField(
-        array(
+        [
             "price",
             "size"        => 20,
             "maxlength"   => 30,
-            "placeholder" => "Введите цену"
-        )
+            "placeholder" => "Введите цену",
+        ]
     ) ?>
 
 так же и в Volt:
@@ -360,14 +389,14 @@ Phalcon предоставляет ряд помощников для созда
     <?php
 
     echo $this->tag->selectStatic(
-        array(
+        [
             "color",
-            array(
+            [
                 "Yellow" => "Yellow",
                 "Blue"   => "Blue",
-                "Red"    => "Red"
-            )
-        )
+                "Red"    => "Red",
+            ]
+        ]
     );
 
 В результате будет сформирован HTML код выпадающего списка с выбранным значением "Blue":
@@ -420,6 +449,7 @@ Phalcon предоставляет ряд помощников для созда
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <body>
 
         </body>
@@ -454,10 +484,10 @@ Phalcon предоставляет ряд помощников для созда
 
     // Сформируется <img alt="alternative text" src="/your-app/img/hello.gif">
     echo $this->tag->image(
-        array(
+        [
            "img/hello.gif",
-           "alt" => "alternative text"
-        )
+           "alt" => "alternative text",
+        ]
     );
 
 Использование в Volt:
@@ -526,7 +556,7 @@ Javascript
     // <canvas id="canvas1" width="300" class="cnvclass">
     // This is my canvas
     // </canvas>
-    echo $this->tag->tagHtml("canvas", array("id" => "canvas1", "width" => "300", "class" => "cnvclass"), false, true, true);
+    echo $this->tag->tagHtml("canvas", ["id" => "canvas1", "width" => "300", "class" => "cnvclass"], false, true, true);
     echo "This is my canvas";
     echo $this->tag->tagHtmlClose("canvas");
 
@@ -549,7 +579,7 @@ Javascript
 
 .. code-block:: php
 
-    <?php echo $this->tag->linkTo('pages/about', 'About') ?>
+    <?php echo $this->tag->linkTo("pages/about", "About") ?>
 
 Вы можете легко добавить свои хелперы в пользовательском компоненте, заменяющем сервис 'tag' в контейнере зависимостей:
 
@@ -564,13 +594,13 @@ Javascript
         // ...
 
         // Создаем новый хелпер
-        static public function myAmazingHelper($parameters)
+        public static function myAmazingHelper($parameters)
         {
             // ...
         }
 
         // Переопределяем уже существующий метод
-        static public function textField($parameters)
+        public static function textField($parameters)
         {
             // ...
         }
@@ -582,7 +612,7 @@ Javascript
 
     <?php
 
-    $di['tag'] = function () {
+    $di["tag"] = function () {
         return new MyTags();
     };
 
@@ -604,11 +634,11 @@ Javascript
          * @param array
          * @return string
          */
-        static public function audioField($parameters)
+        public static function audioField($parameters)
         {
             // Приведение к массиву
             if (!is_array($parameters)) {
-                $parameters = array($parameters);
+                $parameters = [$parameters];
             }
 
             // Определение атрибутов "id" и "name"
@@ -617,6 +647,7 @@ Javascript
             }
 
             $id = $parameters[0];
+
             if (!isset($parameters["name"])) {
                 $parameters["name"] = $id;
             } else {
@@ -626,21 +657,24 @@ Javascript
             }
 
             // Определение значения элемента
-            // $this->tag->setDefault() позволяет установить значение элемента
+            // \Phalcon\Tag::setDefault() позволяет установить значение элемента
             if (isset($parameters["value"])) {
                 $value = $parameters["value"];
+
                 unset($parameters["value"]);
             } else {
                 $value = self::getValue($id);
             }
 
             // Генерация кода
-            $code = '<audio id="'.$id.'" value="'.$value.'" ';
+            $code = '<audio id="' . $id . '" value="' . $value . '" ';
+
             foreach ($parameters as $key => $attributeValue) {
                 if (!is_integer($key)) {
-                    $code.= $key.'="'.$attributeValue.'" ';
+                    $code.= $key . '="' . $attributeValue . '" ';
                 }
             }
+
             $code.=" />";
 
             return $code;
@@ -659,27 +693,33 @@ After creating our custom helper, we will autoload the new directory that contai
     use Phalcon\Exception as PhalconException;
 
     try {
-
         $loader = new Loader();
-        $loader->registerDirs(array(
-            '../app/controllers',
-            '../app/models',
-            '../app/customhelpers' // Add the new helpers folder
-        ))->register();
+
+        $loader->registerDirs(
+            [
+                "../app/controllers",
+                "../app/models",
+                "../app/customhelpers", // Add the new helpers folder
+            ]
+        );
+
+        $loader->register();
 
         $di = new FactoryDefault();
 
         // Assign our new tag a definition so we can call it
-        $di->set('MyTags', function () {
-            return new MyTags();
-        });
+        $di->set(
+            "MyTags",
+            function () {
+                return new MyTags();
+            }
+        );
 
         $application = new Application($di);
 
         $response = $application->handle();
 
         $response->send();
-
     } catch (PhalconException $e) {
         echo "PhalconException: ", $e->getMessage();
     }
@@ -693,11 +733,11 @@ Now you are ready to use your new helper within your views:
         <?php
 
         echo MyTags::audioField(
-            array(
-                'name' => 'test',
-                'id'   => 'audio_test',
-                'src'  => '/path/to/audio.mp3'
-            )
+            [
+                "name" => "test",
+                "id"   => "audio_test",
+                "src"  => "/path/to/audio.mp3",
+            ]
         );
 
         ?>

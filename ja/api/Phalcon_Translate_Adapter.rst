@@ -22,13 +22,13 @@ public  **setInterpolator** (:doc:`Phalcon\\Translate\\InterpolatorInterface <Ph
 ...
 
 
-public *string*  **t** (*string* $translateKey, [*array* $placeholders])
+public *string* **t** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*string* $translateKey, [*array* $placeholders])
+public *string* **_** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key (alias of method 't')
 
@@ -40,7 +40,7 @@ Sets a translation value
 
 
 
-public  **offsetExists** (*unknown* $translateKey)
+public  **offsetExists** (*mixed* $translateKey)
 
 Check whether a translation key exists
 
@@ -52,13 +52,13 @@ Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*string* $translateKey)
+public *string* **offsetGet** (*string* $translateKey)
 
 Returns the translation related to the given key
 
 
 
-protected  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders])
+protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
 Replaces placeholders by the values passed
 

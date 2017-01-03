@@ -9,12 +9,12 @@ Interface **Phalcon\\Cache\\BackendInterface**
 Methods
 -------
 
-abstract public  **start** (*unknown* $keyName, [*unknown* $lifetime])
+abstract public  **start** (*mixed* $keyName, [*mixed* $lifetime])
 
 ...
 
 
-abstract public  **stop** ([*unknown* $stopBuffer])
+abstract public  **stop** ([*mixed* $stopBuffer])
 
 ...
 
@@ -39,7 +39,7 @@ abstract public  **isStarted** ()
 ...
 
 
-abstract public  **setLastKey** (*unknown* $lastKey)
+abstract public  **setLastKey** (*mixed* $lastKey)
 
 ...
 
@@ -49,27 +49,27 @@ abstract public  **getLastKey** ()
 ...
 
 
-abstract public  **get** (*unknown* $keyName, [*unknown* $lifetime])
+abstract public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 ...
 
 
-abstract public  **save** ([*unknown* $keyName], [*unknown* $content], [*unknown* $lifetime], [*unknown* $stopBuffer])
+abstract public  **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer])
 
 ...
 
 
-abstract public  **delete** (*unknown* $keyName)
+abstract public  **delete** (*mixed* $keyName)
 
 ...
 
 
-abstract public  **queryKeys** ([*unknown* $prefix])
+abstract public  **queryKeys** ([*mixed* $prefix])
 
 ...
 
 
-abstract public  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
+abstract public  **exists** ([*mixed* $keyName], [*mixed* $lifetime])
 
 ...
 

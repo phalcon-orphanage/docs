@@ -62,7 +62,7 @@
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -85,15 +85,15 @@
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
 循环调度（Dispatch Loop）
 -------------------------
 循环调度将会在分发器执行，直到没有action需要执行为止。在上面的例子中，只有一个action
-被执行到。现在让我们来看下“forward”（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
+被执行到。现在让我们来看下:code:`forward()``（转发）怎样才能在循环调度里提供一个更加复杂的操作流，从而将执行转发到
 另一个controller/action。
 
 .. code-block:: php
@@ -111,14 +111,16 @@
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Forward flow to another action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
-                    "action"     => "signin"
-                )
+                    "action"     => "signin",
+                ]
             );
         }
     }
@@ -165,14 +167,14 @@
 
         public function initialize()
         {
-            $this->settings = array(
-                "mySetting" => "value"
-            );
+            $this->settings = [
+                "mySetting" => "value",
+            ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -180,10 +182,10 @@
 
 .. highlights::
 
-    “initialize”仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
+    :code:`initialize()` 仅仅会在事件“beforeExecuteRoute”成功执行后才会被调用。这样可以避免
     在初始化中的应用逻辑在未鉴权的情况下无法执行。
 
-如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现“onConstruct”方法：
+如果你想在紧接着创建控制器对象的后面执行一些初始化的逻辑，你要实现:code:`onConstruct()`”方法：
 
 .. code-block:: php
 
@@ -217,9 +219,15 @@
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
 那么，我们可以通常多种方式来访问这个服务：
 
@@ -234,19 +242,19 @@
         public function saveAction()
         {
             // 以和服务相同名字的类属性访问
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // 通过DI访问服务
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // 另一种方式：使用魔法getter来访问
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // 另一种方式：使用魔法getter来访问
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // 使用数组下标
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -274,7 +282,7 @@
         public function saveAction()
         {
             // 检查请求是否为POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // 获取POST数据
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -341,62 +349,24 @@
     <?php
 
     // 将一个控制器作为服务进行注册
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // 将一个命名空间下的控制器作为服务进行注册
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
 
-创建基类控制器（Creating a Base Controller）
-------------------------------------------
-对于某些应用特性如访问控制列表（ACL），翻译，缓存，和模板引擎一般对于
-控制器都是通用的。在这种情况下，我们鼓励创建一个 “基类控制器”，从而确保你的代码遵循 DRY_ 编程原则。
-基类控制器可以是一个简单的类，然后继承于 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` ，并封装
-全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基类控制器”以便可以直接使用通用功能操作。
-
-这个基类可以放置在任何一个地方，但出于代码组织的便利我们推荐应该放置在控制器的目录下，
-如：apps/controllers/ControllerBase.php。我们可以在启动文件直接require这个文件，也可以使用自动加载：
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-对通用组件（action，方法，和类属性等）也在这个基类文件里面：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * 这个方法可以被不同的控制器子类使用
-         */
-        public function someAction()
-        {
-
+            return $component;
         }
-    }
-
-现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上面讲到的的）：
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
+    );
 
 控制器中的事件（Events in Controllers）
 ---------------------------------------
@@ -414,15 +384,16 @@
         public function beforeExecuteRoute($dispatcher)
         {
             // 这个方法会在每一个能找到的action前执行
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
-                    array(
-                        'controller' => 'home',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "home",
+                        "action"     => "index",
+                    ]
                 );
 
                 return false;

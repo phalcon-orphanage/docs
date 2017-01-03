@@ -44,7 +44,7 @@
          */
         public function getSource()
         {
-            return 'sample_cars';
+            return "sample_cars";
         }
 
         /**
@@ -53,7 +53,7 @@
          */
         public function initialize()
         {
-            $this->belongsTo('brand_id', 'Brands', 'id');
+            $this->belongsTo("brand_id", "Brands", "id");
         }
     }
 
@@ -76,7 +76,7 @@
          */
         public function getSource()
         {
-            return 'sample_brands';
+            return "sample_brands";
         }
 
         /**
@@ -84,7 +84,7 @@
          */
         public function initialize()
         {
-            $this->hasMany('id', 'Cars', 'brand_id');
+            $this->hasMany("id", "Cars", "brand_id");
         }
     }
 
@@ -99,7 +99,10 @@ PHQL запросы могут быть созданы только как эк�
     use Phalcon\Mvc\Model\Query;
 
     // Экземпляр Query
-    $query = new Query("SELECT * FROM Cars", $this->getDI());
+    $query = new Query(
+        "SELECT * FROM Cars",
+        $this->getDI()
+    );
 
     // Выполнение запроса возвращает какой-то результат
     $cars = $query->execute();
@@ -117,9 +120,9 @@ PHQL запросы могут быть созданы только как эк�
     // Со связыванием (bound) параметров
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars  = $query->execute(
-        array(
-            'name' => 'Audi'
-        )
+        [
+            "name" => "Audi",
+        ]
     );
 
 Или еще проще:
@@ -129,12 +132,17 @@ PHQL запросы могут быть созданы только как эк�
     <?php
 
     // Исполнение простого запроса
-    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
+    $cars = $this->modelsManager->executeQuery(
+        "SELECT * FROM Cars"
+    );
 
     // Со связыванием (bound) параметров
-    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
-        'name' => 'Audi'
-    ));
+    $cars = $this->modelsManager->executeQuery(
+        "SELECT * FROM Cars WHERE name = :name:",
+        [
+            "name" => "Audi",
+        ]
+    );
 
 Выборка записей
 ---------------
@@ -144,8 +152,13 @@ PHQL запросы могут быть созданы только как эк�
 
     <?php
 
-    $query = $manager->createQuery("SELECT * FROM Cars ORDER BY Cars.name");
-    $query = $manager->createQuery("SELECT Cars.name FROM Cars ORDER BY Cars.name");
+    $query = $manager->createQuery(
+        "SELECT * FROM Cars ORDER BY Cars.name"
+    );
+
+    $query = $manager->createQuery(
+        "SELECT Cars.name FROM Cars ORDER BY Cars.name"
+    );
 
 Так же разрешены неймспейсы классов:
 
@@ -168,8 +181,8 @@ PHQL поддерживает большинство стандартов SQL, �
 
     <?php
 
-    $phql   = "SELECT c.name FROM Cars AS c "
-       . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
+    $phql = "SELECT c.name FROM Cars AS c WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
+
     $query = $manager->createQuery($phql);
 
 Типы результата
@@ -181,7 +194,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT c.* FROM Cars AS c ORDER BY c.name";
+
     $cars = $manager->executeQuery($phql);
+
     foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
@@ -193,9 +208,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $cars = Cars::find(
-        array(
+        [
             "order" => "name"
-        )
+        ]
     );
 
     foreach ($cars as $car) {
@@ -209,7 +224,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT c.id, c.name FROM Cars AS c ORDER BY c.name";
+
     $cars = $manager->executeQuery($phql);
+
     foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
@@ -223,7 +240,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
+
     $cars = $manager->executeQuery($phql);
+
     foreach ($cars as $car) {
         echo $car->id_name, "\n";
     }
@@ -234,7 +253,8 @@ PHQL поддерживает большинство стандартов SQL, �
 
     <?php
 
-    $phql   = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
+    $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
+
     $result = $manager->executeQuery($phql);
 
 В этом случае результатом будет объект :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`. Он позволяет получить доступ и к полноценному объекту и к скаляру одновременно:
@@ -260,7 +280,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
+
     $rows = $manager->executeQuery($phql);
+
     foreach ($rows as $row) {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
@@ -291,6 +313,7 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id";
+
     $rows = $manager->executeQuery($phql);
 
 Джоины так же могут быть созданы, если в условии FROM фигурируют несколько таблиц:
@@ -300,7 +323,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id";
+
     $rows = $manager->executeQuery($phql);
+
     foreach ($rows as $row) {
         echo "Car: ", $row->cars->name, "\n";
         echo "Brand: ", $row->brands->name, "\n";
@@ -313,7 +338,9 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id";
+
     $rows = $manager->executeQuery($phql);
+
     foreach ($rows as $row) {
         echo "Car: ", $row->c->name, "\n";
         echo "Brand: ", $row->b->name, "\n";
@@ -325,8 +352,9 @@ PHQL поддерживает большинство стандартов SQL, �
 
     <?php
 
-    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
-            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $phql = "SELECT Artists.name, Songs.name FROM Artists " .
+            "JOIN Songs WHERE Artists.genre = 'Trip-Hop'";
+
     $result = $this->modelsManager->executeQuery($phql);
 
 Получаем следующий SQL в MySQL:
@@ -421,10 +449,20 @@ PHQL поддерживает большинство стандартов SQL, �
     <?php
 
     $phql = "SELECT * FROM Cars WHERE Cars.name = :name:";
-    $cars = $manager->executeQuery($phql, array("name" => 'Lamborghini Espada'));
+    $cars = $manager->executeQuery(
+        $phql,
+        [
+            "name" => "Lamborghini Espada"
+        ]
+    );
 
     $phql = "SELECT * FROM Cars WHERE Cars.name = ?0";
-    $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
+    $cars = $manager->executeQuery(
+        $phql,
+        [
+            0 => "Lamborghini Espada"
+        ]
+    );
 
 Вставка данных
 --------------
@@ -449,12 +487,12 @@ PHQL поддерживает большинство стандартов SQL, �
           . "VALUES (:name:, :brand_id:, :year:, :style)";
     $manager->executeQuery(
         $phql,
-        array(
-            'name'     => 'Lamborghini Espada',
-            'brand_id' => 7,
-            'year'     => 1969,
-            'style'    => 'Grand Tourer',
-        )
+        [
+            "name"     => "Lamborghini Espada",
+            "brand_id" => 7,
+            "year"     => 1969,
+            "style"    => "Grand Tourer",
+        ]
     );
 
 Phalcon не только преобразует PHQL выражения в SQL. Все события и бизнес-правила, определённые в модели будут выполнены, даже если мы создаём отдельные объекты вручную. Добавим правило в модель автомобилей, например, цена не может быть меньше $ 10 000:
@@ -471,7 +509,10 @@ Phalcon не только преобразует PHQL выражения в SQL.
         public function beforeCreate()
         {
             if ($this->price < 10000) {
-                $this->appendMessage(new Message("A car cannot cost less than $ 10,000"));
+                $this->appendMessage(
+                    new Message("A car cannot cost less than $ 10,000")
+                );
+
                 return false;
             }
         }
@@ -483,9 +524,11 @@ Phalcon не только преобразует PHQL выражения в SQL.
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
+    $phql = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
+
     $result = $manager->executeQuery($phql);
-    if ($result->success() == false) {
+
+    if ($result->success() === false) {
         foreach ($result->getMessages() as $message) {
             echo $message->getMessage();
         }
@@ -515,11 +558,11 @@ Phalcon не только преобразует PHQL выражения в SQL.
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
     $manager->executeQuery(
         $phql,
-        array(
+        [
             0 => 7000.00,
             1 => 'Sedan',
-            2 => 5
-        )
+            2 => 5,
+        ]
     );
 
 UPDATE выполняет изменение в два этапа:
@@ -534,10 +577,14 @@ UPDATE выполняет изменение в два этапа:
 
     <?php
 
-    $phql   = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+    $phql = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+
     $result = $manager->executeQuery($phql);
-    if ($result->success() == false) {
-        foreach ($result->getMessages() as $message) {
+
+    if ($result->success() === false) {
+        $messages = $result->getMessages();
+
+        foreach ($messages as $message) {
             echo $message->getMessage();
         }
     }
@@ -550,14 +597,19 @@ UPDATE выполняет изменение в два этапа:
 
     $messages = null;
 
-    $process  = function () use (&$messages) {
-        foreach (Cars::find("id > 101") as $car) {
+    $process = function () use (&$messages) {
+        $cars = Cars::find("id > 101");
+
+        foreach ($cars as $car) {
             $car->price = 15000;
-            if ($car->save() == false) {
+
+            if ($car->save() === false) {
                 $messages = $car->getMessages();
+
                 return false;
             }
         }
+
         return true;
     };
 
@@ -583,10 +635,10 @@ UPDATE выполняет изменение в два этапа:
     $phql = "DELETE FROM Cars WHERE id BETWEEN :initial: AND :final:";
     $manager->executeQuery(
         $phql,
-        array(
-            'initial' => 1,
-            'final'   => 100
-        )
+        [
+            "initial" => 1,
+            "final"   => 100,
+        ]
     );
 
 Операция DELETE выполняется так же в два этапа, как и UPDATE. To check if the deletion produces
@@ -594,11 +646,17 @@ any validation messages you should check the status code returned:
 
 .. code-block:: php
 
+    <?php
+
     // Deleting multiple rows
     $phql = "DELETE FROM Cars WHERE id > 100";
+
     $result = $manager->executeQuery($phql);
-    if ($result->success() == false) {
-        foreach ($result->getMessages() as $message) {
+
+    if ($result->success() === false) {
+        $messages = $result->getMessages();
+
+        foreach ($messages as $message) {
             echo $message->getMessage();
         }
     }
@@ -613,17 +671,17 @@ any validation messages you should check the status code returned:
 
     // Получение целого набора
     $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
-        ->join('RobotsParts')
-        ->order('Robots.name')
+        ->from("Robots")
+        ->join("RobotsParts")
+        ->orderBy("Robots.name")
         ->getQuery()
         ->execute();
 
     // Получение первой записи
     $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
-        ->join('RobotsParts')
-        ->orderBy('Robots.name')
+        ->from("Robots")
+        ->join("RobotsParts")
+        ->orderBy("Robots.name")
         ->getQuery()
         ->getSingleResult();
 
@@ -633,8 +691,8 @@ any validation messages you should check the status code returned:
 
     <?php
 
-    $phql   = "SELECT Robots.* FROM Robots JOIN RobotsParts p
-        ORDER BY Robots.name LIMIT 20";
+    $phql = "SELECT Robots.* FROM Robots JOIN RobotsParts p ORDER BY Robots.name LIMIT 20";
+
     $result = $manager->executeQuery($phql);
 
 Больше примеров использования конструктора:
@@ -644,125 +702,125 @@ any validation messages you should check the status code returned:
     <?php
 
     // 'SELECT Robots.* FROM Robots';
-    $builder->from('Robots');
+    $builder->from("Robots");
 
     // 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts';
     $builder->from(
-        array(
-            'Robots',
-            'RobotsParts'
-        )
+        [
+            "Robots",
+            "RobotsParts",
+        ]
     );
 
     // 'SELECT * FROM Robots';
-    $phql = $builder->columns('*')
-                    ->from('Robots');
+    $phql = $builder->columns("*")
+                    ->from("Robots");
 
     // 'SELECT id FROM Robots';
-    $builder->columns('id')
-            ->from('Robots');
+    $builder->columns("id")
+            ->from("Robots");
 
     // 'SELECT id, name FROM Robots';
-    $builder->columns(array('id', 'name'))
-            ->from('Robots');
+    $builder->columns(["id", "name"])
+            ->from("Robots");
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"';
-    $builder->from('Robots')
-            ->where('Robots.name = "Voltron"');
+    $builder->from("Robots")
+            ->where("Robots.name = 'Voltron'");
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.id = 100';
-    $builder->from('Robots')
+    $builder->from("Robots")
             ->where(100);
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" AND Robots.id > 50';
-    $builder->from('Robots')
-            ->where('type = "virtual"')
-            ->andWhere('id > 50');
+    $builder->from("Robots")
+            ->where("type = 'virtual'")
+            ->andWhere("id > 50");
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" OR Robots.id > 50';
-    $builder->from('Robots')
-            ->where('type = "virtual"')
-            ->orWhere('id > 50');
+    $builder->from("Robots")
+            ->where("type = 'virtual'")
+            ->orWhere("id > 50");
 
     // 'SELECT Robots.* FROM Robots GROUP BY Robots.name';
-    $builder->from('Robots')
-            ->groupBy('Robots.name');
+    $builder->from("Robots")
+            ->groupBy("Robots.name");
 
     // 'SELECT Robots.* FROM Robots GROUP BY Robots.name, Robots.id';
-    $builder->from('Robots')
-            ->groupBy(array('Robots.name', 'Robots.id'));
+    $builder->from("Robots")
+            ->groupBy(["Robots.name", "Robots.id"]);
 
     // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name';
-    $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
-        ->from('Robots')
-        ->groupBy('Robots.name');
+    $builder->columns(["Robots.name", "SUM(Robots.price)"])
+        ->from("Robots")
+        ->groupBy("Robots.name");
 
     // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name HAVING SUM(Robots.price) > 1000';
-    $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
-        ->from('Robots')
-        ->groupBy('Robots.name')
-        ->having('SUM(Robots.price) > 1000');
+    $builder->columns(["Robots.name", "SUM(Robots.price)"])
+        ->from("Robots")
+        ->groupBy("Robots.name")
+        ->having("SUM(Robots.price) > 1000");
 
     // 'SELECT Robots.* FROM Robots JOIN RobotsParts';
-    $builder->from('Robots')
-        ->join('RobotsParts');
+    $builder->from("Robots")
+        ->join("RobotsParts");
 
     // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p';
-    $builder->from('Robots')
-        ->join('RobotsParts', null, 'p');
+    $builder->from("Robots")
+        ->join("RobotsParts", null, "p");
 
     // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p';
-    $builder->from('Robots')
-        ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
+    $builder->from("Robots")
+        ->join("RobotsParts", "Robots.id = RobotsParts.robots_id", "p");
 
     // 'SELECT Robots.* FROM Robots
     // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p
     // JOIN Parts ON Parts.id = RobotsParts.parts_id AS t';
-    $builder->from('Robots')
-        ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
-        ->join('Parts', 'Parts.id = RobotsParts.parts_id', 't');
+    $builder->from("Robots")
+        ->join("RobotsParts", "Robots.id = RobotsParts.robots_id", "p")
+        ->join("Parts", "Parts.id = RobotsParts.parts_id", "t");
 
     // 'SELECT r.* FROM Robots AS r';
-    $builder->addFrom('Robots', 'r');
+    $builder->addFrom("Robots", "r");
 
     // 'SELECT Robots.*, p.* FROM Robots, Parts AS p';
-    $builder->from('Robots')
-        ->addFrom('Parts', 'p');
+    $builder->from("Robots")
+        ->addFrom("Parts", "p");
 
     // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
-    $builder->from(array('r' => 'Robots'))
-            ->addFrom('Parts', 'p');
+    $builder->from(["r" => "Robots"])
+            ->addFrom("Parts", "p");
 
     // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
-    $builder->from(array('r' => 'Robots', 'p' => 'Parts'));
+    $builder->from(["r" => "Robots", "p" => "Parts"]);
 
     // 'SELECT Robots.* FROM Robots LIMIT 10';
-    $builder->from('Robots')
+    $builder->from("Robots")
         ->limit(10);
 
     // 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5';
-    $builder->from('Robots')
+    $builder->from("Robots")
             ->limit(10, 5);
 
     // 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100';
-    $builder->from('Robots')
-            ->betweenWhere('id', 1, 100);
+    $builder->from("Robots")
+            ->betweenWhere("id", 1, 100);
 
     // 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)';
-    $builder->from('Robots')
-            ->inWhere('id', array(1, 2, 3));
+    $builder->from("Robots")
+            ->inWhere("id", [1, 2, 3]);
 
     // 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)';
-    $builder->from('Robots')
-            ->notInWhere('id', array(1, 2, 3));
+    $builder->from("Robots")
+            ->notInWhere("id", [1, 2, 3]);
 
     // 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%';
-    $builder->from('Robots')
-            ->where('name LIKE :name:', array('name' => '%' . $name . '%'));
+    $builder->from("Robots")
+            ->where("name LIKE :name:", ["name" => "%" . $name . "%"]);
 
     // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
     $builder->from(['r' => 'Store\Robots'])
-            ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
+            ->where("r.name LIKE :name:", ["name" => "%" . $name . "%"]);
 
 Связанные параметры
 ^^^^^^^^^^^^^^^^^^^
@@ -774,19 +832,19 @@ any validation messages you should check the status code returned:
 
     // Указываем параметры в формирующих участках
     $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
-        ->where('name = :name:', array('name' => $name))
-        ->andWhere('type = :type:', array('type' => $type))
+        ->from("Robots")
+        ->where("name = :name:", ["name" => $name])
+        ->andWhere("type = :type:", ["type" => $type])
         ->getQuery()
         ->execute();
 
     // Указываем параметры при выполнении запроса
     $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
-        ->where('name = :name:')
-        ->andWhere('type = :type:')
+        ->from("Robots")
+        ->where("name = :name:")
+        ->andWhere("type = :type:")
         ->getQuery()
-        ->execute(array('name' => $name, 'type' => $type));
+        ->execute(["name" => $name, "type" => $type]);
 
 Запрет на константы в PHQL
 --------------------------
@@ -798,8 +856,10 @@ any validation messages you should check the status code returned:
 
     <?php
 
-    $login  = 'voltron';
-    $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
+    $login = 'voltron';
+
+    $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
+
     $result = $manager->executeQuery($phql);
 
 Если значение :code:`$login` заменить на :code:`' OR '' = '`, то получим следующий PHQL:
@@ -818,8 +878,14 @@ any validation messages you should check the status code returned:
 
     <?php
 
-    $phql   = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
-    $result = $manager->executeQuery($phql, array('name' => $name));
+    $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
+
+    $result = $manager->executeQuery(
+        $phql,
+        [
+            "name" => $name,
+        ]
+    );
 
 Запретить константы можно следующим способом:
 
@@ -830,9 +896,9 @@ any validation messages you should check the status code returned:
     use Phalcon\Mvc\Model;
 
     Model::setup(
-        array(
-            'phqlLiterals' => false
-        )
+        [
+            "phqlLiterals" => false
+        ]
     );
 
 Связанные параметры можно использовать, даже если константы разрешены. Запрет на них является еще
@@ -878,13 +944,17 @@ any validation messages you should check the status code returned:
         public static function findByCreateInterval()
         {
             // Выражение на чистом SQL
-            $sql   = "SELECT * FROM robots WHERE id > 0";
+            $sql = "SELECT * FROM robots WHERE id > 0";
 
             // Модель
             $robot = new Robots();
 
             // Выполнение запроса
-            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
+            return new Resultset(
+                null,
+                $robot,
+                $robot->getReadConnection()->query($sql)
+            );
         }
     }
 
@@ -902,13 +972,17 @@ any validation messages you should check the status code returned:
         public static function findByRawSql($conditions, $params = null)
         {
             // Выражение на чистом SQL
-            $sql   = "SELECT * FROM robots WHERE $conditions";
+            $sql = "SELECT * FROM robots WHERE $conditions";
 
             // Модель
             $robot = new Robots();
 
             // Выполнение запроса
-            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql, $params));
+            return new Resultset(
+                null,
+                $robot,
+                $robot->getReadConnection()->query($sql, $params)
+            );
         }
     }
 
@@ -918,7 +992,12 @@ any validation messages you should check the status code returned:
 
     <?php
 
-    $robots = Robots::findByRawSql('id > ?', array(10));
+    $robots = Robots::findByRawSql(
+        "id > ?",
+        [
+            10
+        ]
+    );
 
 Поиск и исправление проблем
 ---------------------------
@@ -927,6 +1006,6 @@ any validation messages you should check the status code returned:
 * Классы регистрозависимы, если класс не определён так, как он определён, то это может привести к неожиданному поведению.
 * Чтобы успешно связывать (bind) параметры, в соединении должна быть определена правильная кодировка.
 * Классы, для которых заданы алиасы не заменяются классами с неймспейсами, поскольку это происходит только в PHP коде, а не внутри строк.
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* Если включено переименование колонок, избегайте использования алиасов с таким же именем, что и колонка, которую вы хотите переименовать. Иначе могут возникнуть проблемы при разрешении имен.
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

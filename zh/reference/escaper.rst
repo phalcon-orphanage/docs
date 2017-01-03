@@ -14,51 +14,88 @@ Phalcon的上下文转义组件基于 OWASP_ 提供的`XSS (Cross Site Scripting
 
     <?php
 
-        // 带有额外的html标签的恶意的文档标题
-        $maliciousTitle = '</title><script>alert(1)</script>';
+    use Phalcon\Escaper;
 
-        // 恶意的css类名
-        $className      = ';`(';
+    // 带有额外的html标签的恶意的文档标题
+    $maliciousTitle = "</title><script>alert(1)</script>";
 
-        // 恶意的css字体名
-        $fontName       = 'Verdana"</style>';
+    // 恶意的css类名
+    $className = ";`(";
 
-        // 恶意的Javascript文本
-        $javascriptText = "';</script>Hello";
+    // 恶意的css字体名
+    $fontName = "Verdana\"</style>";
 
-        // 创建转义实例对象
-        $e              = new Phalcon\Escaper();
+    // 恶意的Javascript文本
+    $javascriptText = "';</script>Hello";
+
+    // 创建转义实例对象
+    $e = new Escaper();
 
     ?>
 
     <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title><?php echo $e->escapeHtml($maliciousTitle); ?></title>
+            <title>
+                <?php echo $e->escapeHtml($maliciousTitle); ?>
+            </title>
 
-        <style type="text/css">
-        .<?php echo $e->escapeCss($className); ?> {
-            font-family: "<?php echo $e->escapeCss($fontName); ?>";
-            color: red;
-        }
-        </style>
+            <style type="text/css">
+                .<?php echo $e->escapeCss($className); ?> {
+                    font-family: "<?php echo $e->escapeCss($fontName); ?>";
+                    color: red;
+                }
+            </style>
 
-    </head>
+        </head>
 
-    <body>
+        <body>
 
-        <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>hello</div>
+            <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>
+                hello
+            </div>
 
-        <script>var some = '<?php echo $e->escapeJs($javascriptText); ?>'</script>
+            <script>
+                var some = '<?php echo $e->escapeJs($javascriptText); ?>';
+            </script>
 
-    </body>
+        </body>
     </html>
 
 结果如下：
 
-.. figure:: ../_static/img/escape.jpeg
-    :align: center
+.. code-block:: html
+
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+            <title>
+                &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+            </title>
+
+            <style type="text/css">
+                .\3c \2f style\3e {
+                    font-family: "Verdana\22 \3c \2f style\3e";
+                    color: red;
+                }
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class='&#x3c &#x2f style&#x3e '>
+                hello
+            </div>
+
+            <script>
+                var some = '\x27\x3b\x3c\2fscript\x3eHello';
+            </script>
+
+        </body>
+    </html>
 
 Phalcon会根据文本所处的上下文进行转义。 恰当的上下文环境对防范XSS攻击来说是非常重要的。
 
@@ -68,19 +105,25 @@ HTML 编码（Escaping HTML）
 
 .. code-block:: html
 
-    <div class="comments"><!-- Escape untrusted data here! --></div>
+    <div class="comments">
+        <!-- Escape untrusted data here! -->
+    </div>
 
 我们可以使用 :code:`escapeHtml` 方法对这些文本进行转义：
 
 .. code-block:: html+php
 
-    <div class="comments"><?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?></div>
+    <div class="comments">
+        <?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?>
+    </div>
 
 结果如下：
 
 .. code-block:: html
 
-    <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
+    <div class="comments">
+        &gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;
+    </div>
 
 HTML 属性编码（Escaping HTML Attributes）
 -----------------------------------------
@@ -88,19 +131,37 @@ HTML 属性编码（Escaping HTML Attributes）
 
 .. code-block:: html
 
-    <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
+    <table width="Escape untrusted data here!">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 我们这里使用 :code:`escapeHtmlAttr` 方法对html属性进行转义：
 
 .. code-block:: html+php
 
-    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>"><tr><td>Hello</td></tr></table>
+    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 结果如下：
 
 .. code-block:: html
 
-    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
+    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table">
+        <tr>
+            <td>
+                Hello
+            </td>
+        </tr>
+    </table>
 
 URL 编码（Escaping URLs）
 -------------------------
@@ -108,19 +169,25 @@ URL 编码（Escaping URLs）
 
 .. code-block:: html
 
-    <a href="Escape untrusted data here!">Some link</a>
+    <a href="Escape untrusted data here!">
+        Some link
+    </a>
 
 我们这里使用 :code:`escapeUrl` 方法进行url的转义：
 
 .. code-block:: html+php
 
-    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
+    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">
+        Some link
+    </a>
 
 结果如下：
 
 .. code-block:: html
 
-    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
+    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">
+        Some link
+    </a>
 
 CSS 编码（Escaping CSS）
 ------------------------
@@ -128,19 +195,25 @@ CSS标识/值也可以进行转义:
 
 .. code-block:: html
 
-    <a style="color: Escape untrusted data here">Some link</a>
+    <a style="color: Escape untrusted data here">
+        Some link
+    </a>
 
 这里我们使用 :code:`escapeCss` 方法进行转义：
 
 .. code-block:: html+php
 
-    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
+    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">
+        Some link
+    </a>
 
 结果：
 
 .. code-block:: html
 
-    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
+    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">
+        Some link
+    </a>
 
 JavaScript 编码（Escaping JavaScript）
 --------------------------------------
@@ -148,17 +221,23 @@ JavaScript 编码（Escaping JavaScript）
 
 .. code-block:: html
 
-    <script>document.title = 'Escape untrusted data here'</script>
+    <script>
+        document.title = 'Escape untrusted data here';
+    </script>
 
 这里我们使用 :code:`escapeJs` 进行转义：
 
 .. code-block:: html+php
 
-    <script>document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>'</script>
+    <script>
+        document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>';
+    </script>
 
 .. code-block:: html
 
-    <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
+    <script>
+        document.title = '\x27; alert(100); var x\x3d\x27';
+    </script>
 
 .. _OWASP: https://www.owasp.org
 .. _XSS: https://www.owasp.org/index.php/XSS

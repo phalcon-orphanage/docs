@@ -38,7 +38,7 @@ Returns the service's name
 
 
 
-public  **setShared** (*unknown* $shared)
+public  **setShared** (*mixed* $shared)
 
 Sets if the service is shared or not
 
@@ -62,25 +62,25 @@ Set the service definition
 
 
 
-public *mixed*  **getDefinition** ()
+public *mixed* **getDefinition** ()
 
 Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *mixed* **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
 
 
-public  **setParameter** (*unknown* $position, *array* $parameter)
+public  **setParameter** (*mixed* $position, *array* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
 
 
-public *array*  **getParameter** (*int* $position)
+public *array* **getParameter** (*int* $position)
 
 Returns a parameter in a specific position
 

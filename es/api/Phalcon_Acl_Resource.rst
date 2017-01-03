@@ -1,6 +1,8 @@
 Class **Phalcon\\Acl\\Resource**
 ================================
 
+*implements* :doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -30,7 +32,7 @@ Resource description
 
 
 
-public  **__construct** (*unknown* $name, [*unknown* $description])
+public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\\Acl\\Resource constructor
 

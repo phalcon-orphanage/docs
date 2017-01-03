@@ -15,7 +15,7 @@
 
     <?php
     if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
-        $_GET['_url'] = $_SERVER['REQUEST_URI'];
+        $_GET['_url'] = explode('?',$_SERVER['REQUEST_URI'])[0];
     }
     return false;
 

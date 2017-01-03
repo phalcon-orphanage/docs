@@ -8,15 +8,15 @@ fast and convenient way to split these sets of data into browsable pages.
 ---------------------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter                                                             | Description                                                                                                                                                                                                               |
-+=====================================================================+===========================================================================================================================================================================================================================+
-| :doc:`NativeArray <../api/Phalcon_Paginator_Adapter_NativeArray>`   | Use a PHP array as source data                                                                                                                                                                                            |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`Model <../api/Phalcon_Paginator_Adapter_Model>`               | Use a :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter                                                                                          | Description                                                                                                                                                                                                               |
++==================================================================================================+===========================================================================================================================================================================================================================+
+| :doc:`Phalcon\\Paginator\\Adapter\\NativeArray <../api/Phalcon_Paginator_Adapter_NativeArray>`   | Use a PHP array as source data                                                                                                                                                                                            |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Paginator\\Adapter\\Model <../api/Phalcon_Paginator_Adapter_Model>`               | Use a :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Paginator\\Adapter\\QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 示例（Examples）
 ----------------
@@ -29,21 +29,21 @@ In the example below, the paginator will use the result of a query from a model 
     use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
     // Current page to show
-    // In a controller this can be:
-    // $this->request->getQuery('page', 'int'); // GET
-    // $this->request->getPost('page', 'int'); // POST
+    // In a controller/component this can be:
+    // $this->request->getQuery("page", "int"); // GET
+    // $this->request->getPost("page", "int"); // POST
     $currentPage = (int) $_GET["page"];
 
     // The data set to paginate
-    $robots      = Robots::find();
+    $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator   = new PaginatorModel(
-        array(
+    $paginator = new PaginatorModel(
+        [
             "data"  => $robots,
             "limit" => 10,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Get the paginated results
@@ -94,41 +94,41 @@ An example of the source data that must be used for each adapter:
 
     // Passing a resultset as data
     $paginator = new PaginatorModel(
-        array(
+        [
             "data"  => Products::find(),
             "limit" => 10,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Passing an array as data
     $paginator = new PaginatorArray(
-        array(
-            "data"  => array(
-                array('id' => 1, 'name' => 'Artichoke'),
-                array('id' => 2, 'name' => 'Carrots'),
-                array('id' => 3, 'name' => 'Beet'),
-                array('id' => 4, 'name' => 'Lettuce'),
-                array('id' => 5, 'name' => '')
-            ),
+        [
+            "data"  => [
+                ["id" => 1, "name" => "Artichoke"],
+                ["id" => 2, "name" => "Carrots"],
+                ["id" => 3, "name" => "Beet"],
+                ["id" => 4, "name" => "Lettuce"],
+                ["id" => 5, "name" => ""],
+            ],
             "limit" => 2,
-            "page"  => $currentPage
-        )
+            "page"  => $currentPage,
+        ]
     );
 
     // Passing a QueryBuilder as data
 
     $builder = $this->modelsManager->createBuilder()
-        ->columns('id, name')
-        ->from('Robots')
-        ->orderBy('name');
+        ->columns("id, name")
+        ->from("Robots")
+        ->orderBy("name");
 
     $paginator = new PaginatorQueryBuilder(
-        array(
+        [
             "builder" => $builder,
             "limit"   => 20,
-            "page"    => 1
-        )
+            "page"    => 1,
+        ]
     );
 
 页面属性（Page Attributes）

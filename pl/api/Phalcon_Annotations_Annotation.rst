@@ -24,19 +24,19 @@ Returns the annotation's name
 
 
 
-public *mixed*  **getExpression** (*array* $expr)
+public *mixed* **getExpression** (*array* $expr)
 
 Resolves an annotation expression
 
 
 
-public *array*  **getExprArguments** ()
+public *array* **getExprArguments** ()
 
 Returns the expression arguments without resolving
 
 
 
-public *array*  **getArguments** ()
+public *array* **getArguments** ()
 
 Returns the expression arguments
 
@@ -48,25 +48,25 @@ Returns the number of arguments that the annotation has
 
 
 
-public *mixed*  **getArgument** (*int|string* $position)
+public *mixed* **getArgument** (*int* | *string* $position)
 
 Returns an argument in a specific position
 
 
 
-public *boolean*  **hasArgument** (*int|string* $position)
+public *boolean* **hasArgument** (*int* | *string* $position)
 
 Returns an argument in a specific position
 
 
 
-public *mixed*  **getNamedArgument** (*unknown* $name)
+public *mixed* **getNamedArgument** (*mixed* $name)
 
 Returns a named argument
 
 
 
-public *mixed*  **getNamedParameter** (*unknown* $name)
+public *mixed* **getNamedParameter** (*mixed* $name)
 
 Returns a named parameter
 

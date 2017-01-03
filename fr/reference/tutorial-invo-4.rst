@@ -40,9 +40,12 @@ cette classe au conteneur de service :
     <?php
 
     // Register a user component
-    $di->set('elements', function () {
-        return new Elements();
-    });
+    $di->set(
+        "elements",
+        function () {
+            return new Elements();
+        }
+    );
 
 Tout comme les contrôleurs, les plugins et les composants à l'intérieur des vues, ce composant à aussi accès aux services requis
 dans le conteneur en accédant juste à l'attribut :
@@ -57,7 +60,9 @@ dans le conteneur en accédant juste à l'attribut :
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+
                 <a class="brand" href="#">INVO</a>
+
                 {{ elements.getMenu() }}
             </div>
         </div>
@@ -65,7 +70,9 @@ dans le conteneur en accédant juste à l'attribut :
 
     <div class="container">
         {{ content() }}
+
         <hr>
+
         <footer>
             <p>&copy; Company 2015</p>
         </footer>
@@ -73,7 +80,7 @@ dans le conteneur en accédant juste à l'attribut :
 
 La partie la plus importante est :
 
-.. code-block:: html+php
+.. code-block:: html+jinja
 
     {{ elements.getMenu() }}
 
@@ -91,7 +98,10 @@ Cela est réalisé dans l'"initializer" de chaque contrôleur :
         public function initialize()
         {
             // Set the document title
-            $this->tag->setTitle('Manage your product types');
+            $this->tag->setTitle(
+                "Manage your product types"
+            );
+
             parent::initialize();
         }
 
@@ -111,7 +121,9 @@ Notez que la méthode :code:`parent::initialize()` est aussi appelée, cela ajou
         protected function initialize()
         {
             // Prepend the application name to the title
-            $this->tag->prependTitle('INVO | ');
+            $this->tag->prependTitle(
+                "INVO | "
+            );
         }
 
         // ...
@@ -126,6 +138,7 @@ Enfin, le titre est affiché dans la vue principale (app/views/index.volt) :
         <head>
             <?php echo $this->tag->getTitle(); ?>
         </head>
+
         <!-- ... -->
     </html>
 

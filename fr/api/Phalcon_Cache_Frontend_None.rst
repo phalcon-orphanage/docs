@@ -66,7 +66,7 @@ Starts output frontend
 
 
 
-public *string*  **getContent** ()
+public *string* **getContent** ()
 
 Returns output cached content
 

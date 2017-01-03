@@ -24,14 +24,12 @@ JavaScript另一为CSS.
         public function index()
         {
             // 添加本地CSS资源
-            $this->assets
-                ->addCss('css/style.css')
-                ->addCss('css/index.css');
+            $this->assets->addCss("css/style.css");
+            $this->assets->addCss("css/index.css");
 
             // 添加本地JavaScript资源
-            $this->assets
-                ->addJs('js/jquery.js')
-                ->addJs('js/bootstrap.min.js');
+            $this->assets->addJs("js/jquery.js");
+            $this->assets->addJs("js/bootstrap.min.js");
         }
     }
 
@@ -42,13 +40,14 @@ JavaScript另一为CSS.
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputCss() ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputCss(); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs() ?>
+            <?php $this->assets->outputJs(); ?>
         </body>
     <html>
 
@@ -59,10 +58,11 @@ Volt语法：
     <html>
         <head>
             <title>Some amazing website</title>
+
             {{ assets.outputCss() }}
         </head>
-        <body>
 
+        <body>
             <!-- ... -->
 
             {{ assets.outputJs() }}
@@ -88,10 +88,9 @@ Volt语法：
     public function indexAction()
     {
         // 添加远程及本地资源
-        $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
-            ->addCss('css/style.css', true)
-            ->addCss('css/extra.css');
+        $this->assets->addCss("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css", false);
+        $this->assets->addCss("css/style.css", true);
+        $this->assets->addCss("css/extra.css");
     }
 
 集合（Collections）
@@ -104,16 +103,16 @@ Volt语法：
     <?php
 
     // HTML 头部的js资源
-    $this->assets
-        ->collection('header')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $headerCollection = $this->assets->collection("header");
+
+    $headerCollection->addJs("js/jquery.js");
+    $headerCollection->addJs("js/bootstrap.min.js");
 
     // HTML尾部的js资源
-    $this->assets
-        ->collection('footer')
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+    $footerCollection = $this->assets->collection("footer");
+
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 然后在视图中如下使用：
 
@@ -122,13 +121,14 @@ Volt语法：
     <html>
         <head>
             <title>Some amazing website</title>
-            <?php $this->assets->outputJs('header') ?>
-        </head>
-        <body>
 
+            <?php $this->assets->outputJs("header"); ?>
+        </head>
+
+        <body>
             <!-- ... -->
 
-            <?php $this->assets->outputJs('footer') ?>
+            <?php $this->assets->outputJs("footer"); ?>
         </body>
     <html>
 
@@ -139,13 +139,14 @@ Volt语法：
     <html>
         <head>
             <title>Some amazing website</title>
-            {{ assets.outputCss('header') }}
-        </head>
-        <body>
 
+            {{ assets.outputCss("header") }}
+        </head>
+
+        <body>
             <!-- ... -->
 
-            {{ assets.outputJs('footer') }}
+            {{ assets.outputJs("footer") }}
         </body>
     <html>
 
@@ -157,16 +158,16 @@ Volt语法：
 
     <?php
 
-    $scripts = $this->assets->collection('footer');
+    $footerCollection = $this->assets->collection("footer");
 
-    if ($config->environment == 'development') {
-        $scripts->setPrefix('/');
+    if ($config->environment === "development") {
+        $footerCollection->setPrefix("/");
     } else {
-        $scripts->setPrefix('http:://cdn.example.com/');
+        $footerCollection->setPrefix("http:://cdn.example.com/");
     }
 
-    $scripts->addJs('js/jquery.js')
-            ->addJs('js/bootstrap.min.js');
+    $footerCollection->addJs("js/jquery.js");
+    $footerCollection->addJs("js/bootstrap.min.js");
 
 我们也可以使用链式语法，如下：
 
@@ -174,12 +175,12 @@ Volt语法：
 
     <?php
 
-    $scripts = $assets
-        ->collection('header')
-        ->setPrefix('http://cdn.example.com/')
+    $headerCollection = $assets
+        ->collection("header")
+        ->setPrefix("http://cdn.example.com/")
         ->setLocal(false)
-        ->addJs('js/jquery.js')
-        ->addJs('js/bootstrap.min.js');
+        ->addJs("js/jquery.js")
+        ->addJs("js/bootstrap.min.js");
 
 压缩与过滤（Minification/Filtering）
 ------------------------------------
@@ -194,29 +195,33 @@ Volt语法：
     $manager
 
         // 这些javascript资源位于html文件的底部
-        ->collection('jsFooter')
+        ->collection("jsFooter")
 
         // 最终输出名
-        ->setTargetPath('final.js')
+        ->setTargetPath("final.js")
 
         // 使用此uri显示资源
-        ->setTargetUri('production/final.js')
+        ->setTargetUri("production/final.js")
 
         // 添加远程资源但不压缩
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
+        ->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false)
 
         // 这些资源必须要压缩
-        ->addJs('common-functions.js')
-        ->addJs('page-functions.js')
+        ->addJs("common-functions.js")
+        ->addJs("page-functions.js")
 
         // 把这些资源放入一个文件内
         ->join(true)
 
         // 使用内置的JsMin过滤器
-        ->addFilter(new Phalcon\Assets\Filters\Jsmin())
+        ->addFilter(
+            new Phalcon\Assets\Filters\Jsmin()
+        )
 
         // 使用自定义过滤器
-        ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+        ->addFilter(
+            new MyApp\Assets\Filters\LicenseStamper()
+        );
 
 开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含JavaScript或CSS资源但不能同时包含两个。一些资源可能位于远程的服务器上，
 这些资源我们可以通过http取得。为了提高性能建议把远程的资源取到本地来，以减少加载远程资源的开销。
@@ -228,15 +233,15 @@ Volt语法：
     <?php
 
     // 这些Javscript文件放在页面的底端
-    $js = $manager->collection('jsFooter');
+    $jsFooterCollection = $manager->collection("jsFooter");
 
     // 添加远程资源但不压缩
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
+    $jsFooterCollection->addJs("code.jquery.com/jquery-1.10.0.min.js", false, false);
 
     // These are local resources that must be filtered
     // 添加本地资源并压缩
-    $js->addJs('common-functions.js');
-    $js->addJs('page-functions.js');
+    $jsFooterCollection->addJs("common-functions.js");
+    $jsFooterCollection->addJs("page-functions.js");
 
 过滤器被注册到集合内，我们可以注册多个过滤器，资源内容被过滤的顺序和过滤器注册的顺序是一样的。
 
@@ -245,13 +250,17 @@ Volt语法：
     <?php
 
     // 使用内置的Jsmin过滤器
-    $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
+    $jsFooterCollection->addFilter(
+        new Phalcon\Assets\Filters\Jsmin()
+    );
 
     // 使用自定义的过滤器
-    $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+    $jsFooterCollection->addFilter(
+        new MyApp\Assets\Filters\LicenseStamper()
+    );
 
 注意：不管是内置的还是自定义的过滤器对集合来说他们都是透明的。最后一步用来确定所有的资源文件写到同一个文件中还是分开保存。如果要让集合中所有的资源文件合成
-一个文件只需要使用join函数.
+一个文件只需要使用:code:`join()`函数.
 
 如果资源被写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用 :code:`setTargetPath()`
 和 :code:`setTargetUri()` 两个函数来配置:
@@ -260,13 +269,13 @@ Volt语法：
 
     <?php
 
-    $js->join(true);
+    $jsFooterCollection->join(true);
 
     // 设置最终输出文件
-    $js->setTargetPath('public/production/final.js');
+    $jsFooterCollection->setTargetPath("public/production/final.js");
 
     // 使用此uri引用js
-    $js->setTargetUri('production/final.js');
+    $jsFooterCollection->setTargetUri("production/final.js");
 
 内置过滤器（Built-In Filters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -305,7 +314,7 @@ Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由
          *
          * @param array $options
          */
-        public function __construct($options)
+        public function __construct(array $options)
         {
             $this->_options = $options;
         }
@@ -314,21 +323,22 @@ Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由
          * 执行过滤
          *
          * @param string $contents
+         *
          * @return string
          */
         public function filter($contents)
         {
             // 保存字符吕内容到临时文件中
-            file_put_contents('temp/my-temp-1.css', $contents);
+            file_put_contents("temp/my-temp-1.css", $contents);
 
             system(
-                $this->_options['java-bin'] .
-                ' -jar ' .
-                $this->_options['yui'] .
-                ' --type css '.
-                'temp/my-temp-file-1.css ' .
-                $this->_options['extra-options'] .
-                ' -o temp/my-temp-file-2.css'
+                $this->_options["java-bin"] .
+                " -jar " .
+                $this->_options["yui"] .
+                " --type css " .
+                "temp/my-temp-file-1.css " .
+                $this->_options["extra-options"] .
+                " -o temp/my-temp-file-2.css"
             );
 
             // 返回文件内容
@@ -343,16 +353,16 @@ Phalcon内置了两个过滤器以分别实现对JavaScript及CSS的压缩，由
     <?php
 
     // 取CSS集合
-    $css = $this->assets->get('head');
+    $css = $this->assets->get("head");
 
     // 添加/启用YUI压缩器
     $css->addFilter(
         new CssYUICompressor(
-            array(
-                'java-bin'      => '/usr/local/bin/java',
-                'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-                'extra-options' => '--charset utf8'
-            )
+            [
+                "java-bin"      => "/usr/local/bin/java",
+                "yui"           => "/some/path/yuicompressor-x.y.z.jar",
+                "extra-options" => "--charset utf8",
+            ]
         )
     );
 
@@ -368,6 +378,7 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
      * Adds a license message to the top of the file
      *
      * @param string $contents
+     *
      * @return string
      */
     class LicenseStamper implements FilterInterface
@@ -396,8 +407,12 @@ In a previous example, we used a custom filter called :code:`LicenseStamper`:
 
     use Phalcon\Tag;
 
-    foreach ($this->assets->collection('js') as $resource) {
-        echo Tag::javascriptInclude($resource->getPath());
+    $jsCollection = $this->assets->collection("js");
+
+    foreach ($jsCollection as $resource) {
+        echo Tag::javascriptInclude(
+            $resource->getPath()
+        );
     }
 
 .. _YUI: http://yui.github.io/yuicompressor/

@@ -70,7 +70,7 @@ Commits the transaction
 
 
 
-public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
+public *boolean* **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
 
 Rollbacks the transaction
 
@@ -82,13 +82,13 @@ Returns the connection related to transaction
 
 
 
-public  **setIsNewTransaction** (*unknown* $isNew)
+public  **setIsNewTransaction** (*mixed* $isNew)
 
 Sets if is a reused transaction or new once
 
 
 
-public  **setRollbackOnAbort** (*unknown* $rollbackOnAbort)
+public  **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
 Sets flag to rollback on abort the HTTP connection
 

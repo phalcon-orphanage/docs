@@ -16,16 +16,20 @@ Pagination using a PHQL query builder as source of data
 
     <?php
 
-      $builder = $this->modelsManager->createBuilder()
-                       ->columns('id, name')
-                       ->from('Robots')
-                       ->orderBy('name');
+     use Phalcon\Paginator\Adapter\QueryBuilder;
     
-      $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
-          "builder" => $builder,
-          "limit"=> 20,
-          "page" => 1
-      ));
+     $builder = $this->modelsManager->createBuilder()
+                     ->columns('id, name')
+                     ->from('Robots')
+                     ->orderBy('name');
+    
+     $paginator = new QueryBuilder(
+         [
+             'builder' => $builder,
+             'limit'   => 20,
+             'page'    => 1,
+         ]
+     );
 
 
 
@@ -62,19 +66,19 @@ Returns a slice of the resultset to show in the pagination
 
 
 
-public  **setCurrentPage** (*unknown* $page) inherited from Phalcon\\Paginator\\Adapter
+public  **setCurrentPage** (*mixed* $page) inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Set the current page number
 
 
 
-public  **setLimit** (*unknown* $limitRows) inherited from Phalcon\\Paginator\\Adapter
+public  **setLimit** (*mixed* $limitRows) inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Set current rows limit
 
 
 
-public  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
+public  **getLimit** () inherited from :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
 Get current rows limit
 

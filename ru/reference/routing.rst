@@ -22,19 +22,19 @@
     // Определение правила маршрутизации
     $router->add(
         "/admin/users/my-profile",
-        array(
+        [
             "controller" => "users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
     // Еще одно правило
     $router->add(
         "/admin/users/change-password",
-        array(
+        [
             "controller" => "users",
-            "action"     => "changePassword"
-        )
+            "action"     => "changePassword",
+        ]
     );
 
     $router->handle();
@@ -59,11 +59,11 @@
     // Определение правила маршрутизации
     $router->add(
         "/admin/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
 В примере, приведенном выше, с помощью подстановочных элементов мы делаем маршрут подходящим для множества ссылок. Например, при получении
@@ -124,14 +124,14 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
     $router->add(
         "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4  // :params
-        )
+            "params"     => 4, // :params
+        ]
     );
 
 В приведенном выше примере, в маршруте не определены части для "контроллера" или "действия". Эти параметры заменяются
@@ -176,10 +176,10 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
 
     $router->add(
         "/documentation/{chapter}/{name}.{type:[a-z]+}",
-        array(
+        [
             "controller" => "documentation",
-            "action"     => "show"
-        )
+            "action"     => "show",
+        ]
     );
 
 Вы можете получить доступ к их значениям так же, как раньше:
@@ -214,17 +214,20 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
     <?php
 
     // Краткий синтаксис
-    $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
+    $router->add(
+        "/posts/{year:[0-9]+}/{title:[a-z\-]+}",
+        "Posts::show"
+    );
 
     // Использование массива
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
-        array(
+        [
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2
-        )
+           "title"      => 2,
+        ]
     );
 
 Совмещение массивов и краткого синтаксиса
@@ -237,11 +240,12 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
     <?php
 
     // В качестве первой позиции выступает параметр 'country'
-    $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
-        array(
-            'section' => 2, // Это уже позиция номер 2
-            'article' => 3
-        )
+    $router->add(
+        "/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])",
+        [
+            "section" => 2, // Это уже позиция номер 2
+            "article" => 3,
+        ]
     );
 
 Маршрутизация модулей
@@ -258,13 +262,13 @@ URL (/admin/users/a/delete/dave/301), маршрутизатор разберё�
     $router = new Router(false);
 
     $router->add(
-        '/:module/:controller/:action/:params',
-        array(
-            'module'     => 1,
-            'controller' => 2,
-            'action'     => 3,
-            'params'     => 4
-        )
+        "/:module/:controller/:action/:params",
+        [
+            "module"     => 1,
+            "controller" => 2,
+            "action"     => 3,
+            "params"     => 4,
+        ]
     );
 
 В этом случае маршрут всегда должен иметь имя модуля в качестве части URL-адреса. Например, в следующем
@@ -288,20 +292,20 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     $router->add(
         "/login",
-        array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "module"     => "backend",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'module'     => 'frontend',
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "module"     => "frontend",
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
 Или привязать к конкретному пространству имен:
@@ -312,11 +316,11 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     $router->add(
         "/:namespace/login",
-        array(
-            'namespace'  => 1,
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => 1,
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 Пространства имён и названия классов должны передаваться раздельно:
@@ -327,11 +331,11 @@ URL: /admin/users/edit/sonny, будут обработан как:
 
     $router->add(
         "/login",
-        array(
-            'namespace'  => 'Backend\Controllers',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => "Backend\\Controllers",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 Разделение по HTTP методам
@@ -344,13 +348,27 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     // Маршрут соответствует только HTTP методу GET
-    $router->addGet("/products/edit/{id}", "Products::edit");
+    $router->addGet(
+        "/products/edit/{id}",
+        "Products::edit"
+    );
 
     // Маршрут соответствует только HTTP методу POST
-    $router->addPost("/products/save", "Products::save");
+    $router->addPost(
+        "/products/save",
+        "Products::save"
+    );
 
     // Маршрут соответствует сразу двум HTTP методам POST и PUT
-    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
+    $router->add(
+        "/products/update",
+        "Products::update"
+    )->via(
+        [
+            "POST",
+            "PUT",
+        ]
+    );
 
 Использование преобразований
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -361,15 +379,21 @@ URL: /admin/users/edit/sonny, будут обработан как:
     <?php
 
     // Название действия разрешает использование "-": /products/new-ipod-nano-4-generation
-    $router
-        ->add('/products/{slug:[a-z\-]+}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('slug', function ($slug) {
+    $route = $router->add(
+        "/products/{slug:[a-z\-]+}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "slug",
+        function ($slug) {
             // Удаляем тире из выбранного параметра
-            return str_replace('-', '', $slug);
-        });
+            return str_replace("-", "", $slug);
+        }
+    );
 
 Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
 
@@ -378,15 +402,21 @@ Another use case for conversors is binding a model into a route. This allows the
     <?php
 
     // This example works off the assumption that the ID is being used as parameter in the url: /products/4
-    $router
-        ->add('/products/{id}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('id', function ($id) {
+    $route = $router->add(
+        "/products/{id}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "id",
+        function ($id) {
             // Fetch the model
             return Product::findFirstById($id);
-        });
+        }
+    );
 
 Группы маршрутов
 ^^^^^^^^^^^^^^^^
@@ -403,38 +433,38 @@ Another use case for conversors is binding a model into a route. This allows the
 
     // Создаётся группа с общим модулем и контроллером
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'index'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "index",
+        ]
     );
 
     // Маршруты начинаются с /blog
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // Добавление маршрута в группу
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // Еще один маршрут
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // Маршрут для действия по умолчанию
     $blog->add(
-        '/blog',
-        array(
-            'controller' => 'blog',
-            'action'     => 'index'
-        )
+        "/blog",
+        [
+            "controller" => "blog",
+            "action"     => "index",
+        ]
     );
 
     // Добавление группы в общие правила маршрутизации
@@ -454,38 +484,38 @@ Another use case for conversors is binding a model into a route. This allows the
         {
             // Параметры по умолчанию
             $this->setPaths(
-                array(
-                    'module'    => 'blog',
-                    'namespace' => 'Blog\Controllers'
-                )
+                [
+                    "module"    => "blog",
+                    "namespace" => "Blog\\Controllers",
+                ]
             );
 
             // Маршруты начинаются с преффикса /blog
-            $this->setPrefix('/blog');
+            $this->setPrefix("/blog");
 
             // Добавляем маршрут
             $this->add(
-                '/save',
-                array(
-                    'action' => 'save'
-                )
+                "/save",
+                [
+                    "action" => "save",
+                ]
             );
 
             // Еще маршрут
             $this->add(
-                '/edit/{id}',
-                array(
-                    'action' => 'edit'
-                )
+                "/edit/{id}",
+                [
+                    "action" => "edit",
+                ]
             );
 
             // Данные для маршрута по умолчанию
             $this->add(
-                '/blog',
-                array(
-                    'controller' => 'blog',
-                    'action'     => 'index'
-                )
+                "/blog",
+                [
+                    "controller" => "blog",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -497,12 +527,14 @@ Another use case for conversors is binding a model into a route. This allows the
     <?php
 
     // Добавляем маршруты в общий маршрутизатор:
-    $router->mount(new BlogRoutes());
+    $router->mount(
+        new BlogRoutes()
+    );
 
 Соответствие маршрутов
 ----------------------
 Текущий URI передаётся маршрутизатору для сопоставления его маршруту. По умолчанию, URI для обработки берется из
-переменной :code:`$_GET['_url']`, полученной с использованием mod_rewrite.
+переменной :code:`$_GET["_url"]`, полученной с использованием mod_rewrite.
 Для Phalcon подходят очень простые правила mod_rewrite:
 
 .. code-block:: apacheconf
@@ -553,13 +585,12 @@ In this configuration, any requests to files or folders that don't exist will be
 
     <?php
 
-    $route = $router->add("/posts/{year}/{title}", "Posts::show");
+    $route = $router->add(
+        "/posts/{year}/{title}",
+        "Posts::show"
+    );
 
     $route->setName("show-posts");
-
-    // или проще
-
-    $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
 Затем, при помощи компонента :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` и названия маршрута можно создать ссылку:
 
@@ -569,11 +600,11 @@ In this configuration, any requests to files or folders that don't exist will be
 
     // возвратит /posts/2012/phalcon-1-0-released
     echo $url->get(
-        array(
+        [
             "for"   => "show-posts",
             "year"  => "2012",
-            "title" => "phalcon-1-0-released"
-        )
+            "title" => "phalcon-1-0-released",
+        ]
     );
 
 Примеры использования
@@ -587,63 +618,63 @@ In this configuration, any requests to files or folders that don't exist will be
     // пример - "/system/admin/a/edit/7001"
     $router->add(
         "/system/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
     // пример - "/es/news"
     $router->add(
         "/([a-z]{2})/:controller",
-        array(
+        [
             "controller" => 2,
             "action"     => "index",
-            "language"   => 1
-        )
+            "language"   => 1,
+        ]
     );
 
     // пример - "/es/news"
     $router->add(
         "/{language:[a-z]{2}}/:controller",
-        array(
+        [
             "controller" => 2,
-            "action"     => "index"
-        )
+            "action"     => "index",
+        ]
     );
 
     // пример - "/admin/posts/edit/100"
     $router->add(
         "/admin/:controller/:action/:int",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "id"         => 3
-        )
+            "id"         => 3,
+        ]
     );
 
     // пример - "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4
-        )
+            "title"      => 4,
+        ]
     );
 
     // пример - "/manual/en/translate.adapter.html"
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
-        array(
+        [
             "controller" => "manual",
             "action"     => "show",
             "language"   => 1,
-            "file"       => 2
-        )
+            "file"       => 2,
+        ]
     );
 
     // пример - /feed/fr/le-robots-hot-news.atom
@@ -654,12 +685,12 @@ In this configuration, any requests to files or folders that don't exist will be
 
     // пример - /api/v1/users/peter.json
     $router->add(
-        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
-        array(
-            'controller' => 'api',
-            'version'    => 1,
-            'format'     => 4
-        )
+        "/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)",
+        [
+            "controller" => "api",
+            "version"    => 1,
+            "format"     => 4,
+        ]
     );
 
 .. highlights::
@@ -704,10 +735,10 @@ In this configuration, any requests to files or folders that don't exist will be
 
     $router->add(
         "/",
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 404 страница
@@ -720,10 +751,10 @@ In this configuration, any requests to files or folders that don't exist will be
 
     // Указание действия для 404 страницы
     $router->notFound(
-        array(
+        [
             "controller" => "index",
-            "action"     => "route404"
-        )
+            "action"     => "route404",
+        ]
     );
 
 This is typically for an Error 404 page.
@@ -738,17 +769,17 @@ This is typically for an Error 404 page.
     <?php
 
     // Установка по умолчанию
-    $router->setDefaultModule('backend');
-    $router->setDefaultNamespace('Backend\Controllers');
-    $router->setDefaultController('index');
-    $router->setDefaultAction('index');
+    $router->setDefaultModule("backend");
+    $router->setDefaultNamespace("Backend\\Controllers");
+    $router->setDefaultController("index");
+    $router->setDefaultAction("index");
 
     // Используя значения массива
     $router->setDefaults(
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 Использование конечного /
@@ -775,11 +806,11 @@ This is typically for an Error 404 page.
 
     // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
-        '/{language:[a-z]{2}}/:controller[/]{0,1}',
-        array(
-            'controller' => 2,
-            'action'     => 'index'
-        )
+        "/{language:[a-z]{2}}/:controller[/]{0,1}",
+        [
+            "controller" => 2,
+            "action"     => "index",
+        ]
     );
 
 Дополнительные условия
@@ -792,17 +823,23 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session'
-    ))->beforeMatch(function ($uri, $route) {
-        // Проверим, что это был Ajax-запрос
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-            return false;
+    $route = $router->add("/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            // Проверим, что это был Ajax-запрос
+            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest") {
+                return false;
+            }
+
+            return true;
         }
-        return true;
-    });
+    );
 
 Вы можете повторно использовать эти дополнительные условия в классах:
 
@@ -814,7 +851,7 @@ This is typically for an Error 404 page.
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+            return $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest";
         }
     }
 
@@ -824,10 +861,49 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->add('/get/info/{id}', array(
-        'controller' => 'products',
-        'action'     => 'info'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+    $route = $router->add(
+        "/get/info/{id}",
+        [
+            "controller" => "products",
+            "action"     => "info",
+        ]
+    );
+
+    $route->beforeMatch(
+        [
+            new AjaxFilter(),
+            "check"
+        ]
+    );
+
+Начиная с Phalcon 3, существует ещё один способ сделать эту проверку:
+
+.. code-block:: php
+
+    <?php
+
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            /**
+             * @var string $uri
+             * @var \Phalcon\Mvc\Router\Route $route
+             * @var \Phalcon\DiInterface $this
+             * @var \Phalcon\Http\Request $request
+             */
+            $request = $this->getShared("request");
+
+            // Проверяет был ли запрос сделан с помощью Ajax
+            return $request->isAjax();
+        }
+    );
 
 Ограничение по имени хоста
 --------------------------
@@ -838,11 +914,16 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('admin.company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("admin.company.com");
 
 Имя хоста так же может быть регулярным выражением:
 
@@ -850,11 +931,16 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('([a-z]+).company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("([a-z]+).company.com");
 
 В группах маршрутов вы можете установить ограничение по имени хоста, которое будет
 применяться к каждому маршруту в группе:
@@ -867,40 +953,40 @@ This is typically for an Error 404 page.
 
     // Создаём группу с общим модулем и контроллером
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'posts'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "posts",
+        ]
     );
 
     // Ограничиваем по имени хоста
-    $blog->setHostName('blog.mycompany.com');
+    $blog->setHostName("blog.mycompany.com");
 
     // Все маршруты начинаются с /blog
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // Маршрут по умолчанию
     $blog->add(
-        '/',
-        array(
-            'action' => 'index'
-        )
+        "/",
+        [
+            "action" => "index",
+        ]
     );
 
     // Добавляем маршрут в группу
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // Добавляем ещё один маршрут в группу
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // Добавляем группу в маршрутизатор
@@ -919,8 +1005,15 @@ This is typically for an Error 404 page.
 
     // ...
 
-    $router->setUriSource(Router::URI_SOURCE_GET_URL); // использование $_GET['_url'] (по умолчанию)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // использование $_SERVER['REQUEST_URI']
+    // использование $_GET["_url"] (по умолчанию)
+    $router->setUriSource(
+        Router::URI_SOURCE_GET_URL
+    );
+
+    // использование $_SERVER["REQUEST_URI"]
+    $router->setUriSource(
+        Router::URI_SOURCE_SERVER_REQUEST_URI
+    );
 
 Или вы можете самостоятельно передавать URI в метод "handle":
 
@@ -928,7 +1021,7 @@ This is typically for an Error 404 page.
 
     <?php
 
-    $router->handle('/some/route/to/handle');
+    $router->handle("/some/route/to/handle");
 
 Тестирование маршрутов
 ----------------------
@@ -941,15 +1034,15 @@ This is typically for an Error 404 page.
     use Phalcon\Mvc\Router;
 
     // Маршруты для проверки
-    $testRoutes = array(
-        '/',
-        '/index',
-        '/index/index',
-        '/index/test',
-        '/products',
-        '/products/index/',
-        '/products/show/101',
-    );
+    $testRoutes = [
+        "/",
+        "/index",
+        "/index/index",
+        "/index/test",
+        "/products",
+        "/products/index/",
+        "/products/show/101",
+    ];
 
     $router = new Router();
 
@@ -958,21 +1051,20 @@ This is typically for an Error 404 page.
 
     // Цикл проверки маршрутов
     foreach ($testRoutes as $testRoute) {
-
         // Обработка маршрута
         $router->handle($testRoute);
 
-        echo 'Тестирование ', $testRoute, '<br>';
+        echo "Тестирование ", $testRoute, "<br>";
 
         // Проверка выбранного маршрута
         if ($router->wasMatched()) {
-            echo 'Контроллер (Controller): ', $router->getControllerName(), '<br>';
-            echo 'Действие (Action): ', $router->getActionName(), '<br>';
+            echo "Контроллер (Controller): ", $router->getControllerName(), "<br>";
+            echo "Действие (Action): ", $router->getActionName(), "<br>";
         } else {
-            echo 'Маршрут не поддерживается<br>';
+            echo "Маршрут не поддерживается<br>";
         }
 
-        echo '<br>';
+        echo "<br>";
     }
 
 Маршруты на аннотациях
@@ -988,13 +1080,12 @@ This is typically for an Error 404 page.
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // Используем маршрутизатор на аннотациях
         $router = new RouterAnnotations(false);
 
         // Чтение аннотаций из контроллера ProductsController для ссылок начинающихся на /api/products
-        $router->addResource('Products', '/api/products');
+        $router->addResource("Products", "/api/products");
 
         return $router;
     };
@@ -1011,7 +1102,9 @@ This is typically for an Error 404 page.
     class ProductsController
     {
         /**
-         * @Get("/")
+         * @Get(
+         *     "/"
+         * )
          */
         public function indexAction()
         {
@@ -1019,7 +1112,10 @@ This is typically for an Error 404 page.
         }
 
         /**
-         * @Get("/edit/{id:[0-9]+}", name="edit-robot")
+         * @Get(
+         *     "/edit/{id:[0-9]+}",
+         *     name="edit-robot"
+         * )
          */
         public function editAction($id)
         {
@@ -1027,7 +1123,11 @@ This is typically for an Error 404 page.
         }
 
         /**
-         * @Route("/save", methods={"POST", "PUT"}, name="save-robot")
+         * @Route(
+         *     "/save",
+         *     methods={"POST", "PUT"},
+         *     name="save-robot"
+         * )
          */
         public function saveAction()
         {
@@ -1035,8 +1135,13 @@ This is typically for an Error 404 page.
         }
 
         /**
-         * @Route("/delete/{id:[0-9]+}", methods="DELETE",
-         *      conversors={id="MyConversors::checkId"})
+         * @Route(
+         *     "/delete/{id:[0-9]+}",
+         *     methods="DELETE",
+         *     conversors={
+         *         id="MyConversors::checkId"
+         *     }
+         * )
          */
         public function deleteAction($id)
         {
@@ -1091,13 +1196,12 @@ This is typically for an Error 404 page.
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // Используем маршрутизатор на аннотациях
         $router = new RouterAnnotations(false);
 
         // Чтение аннотаций из контроллера Backend\Controllers\ProductsController для ссылок начинающихся на /api/products
-        $router->addModuleResource('backend', 'Products', '/api/products');
+        $router->addModuleResource("backend", "Products", "/api/products");
 
         return $router;
     };
@@ -1116,9 +1220,9 @@ You need to add code below in your bootstrap file (for example index.php or app/
      * Add routing capabilities
      */
     $di->set(
-        'router',
+        "router",
         function () {
-            require __DIR__.'/../app/config/routes.php';
+            require __DIR__ . "/../app/config/routes.php";
 
             return $router;
         }
@@ -1136,18 +1240,18 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router->add(
         "/login",
-        array(
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
     return $router;

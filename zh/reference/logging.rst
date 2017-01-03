@@ -9,17 +9,17 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 ------------------
 此组件使用不同的流适配器来保存日信息。 我们可以按需使用适配器。支持的适配器如下：
 
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| 适配器  | 描述                      | 接口                                                                             |
-+=========+===========================+==================================================================================+
-| File    | 保存日志到普通文件        | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Stream  | 保存日志到PHP流           | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Syslog  | 保存到系统日志            | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
-+---------+---------------------------+----------------------------------------------------------------------------------+
-| Firephp | 发送日志到FirePHP         | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
-+---------+---------------------------+----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+-------------------------+
+| 适配器                                                                           | 描述                    |
++==================================================================================+=========================+
+| :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       | 保存日志到普通文件      |
++----------------------------------------------------------------------------------+-------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   | 保存日志到PHP流         |
++----------------------------------------------------------------------------------+-------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   | 保存到系统日志          |
++----------------------------------------------------------------------------------+-------------------------+
+| :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` | 发送日志到FirePHP       |
++----------------------------------------------------------------------------------+-------------------------+
 
 创建日志（Creating a Log）
 --------------------------
@@ -34,21 +34,54 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
 
     $logger = new FileAdapter("app/logs/test.log");
 
+
+
     // These are the different log levels available:
-    $logger->critical("This is a critical message");
-    $logger->emergency("This is an emergency message");
-    $logger->debug("This is a debug message");
-    $logger->error("This is an error message");
-    $logger->info("This is an info message");
-    $logger->notice("This is a notice message");
-    $logger->warning("This is a warning message");
-    $logger->alert("This is an alert message");
+
+    $logger->critical(
+        "This is a critical message"
+    );
+
+    $logger->emergency(
+        "This is an emergency message"
+    );
+
+    $logger->debug(
+        "This is a debug message"
+    );
+
+    $logger->error(
+        "This is an error message"
+    );
+
+    $logger->info(
+        "This is an info message"
+    );
+
+    $logger->notice(
+        "This is a notice message"
+    );
+
+    $logger->warning(
+        "This is a warning message"
+    );
+
+    $logger->alert(
+        "This is an alert message"
+    );
+
+
 
     // You can also use the log() method with a Logger constant:
-    $logger->log("This is another error message", Logger::ERROR);
+    $logger->log(
+        "This is another error message",
+        Logger::ERROR
+    );
 
     // If no constant is given, DEBUG is assumed.
-    $logger->log("This is a message");
+    $logger->log(
+        "This is a message"
+    );
 
 产生的日志信息如下：
 
@@ -69,12 +102,16 @@ You can also set a log level using the :code:`setLogLevel()` method. This method
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
     $logger = new FileAdapter("app/logs/test.log");
 
-    $logger->setLogLevel(Logger::CRITICAL);
+    $logger->setLogLevel(
+        Logger::CRITICAL
+    );
 
 In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
@@ -96,8 +133,14 @@ In the example above, only critical and emergency messages will get saved to the
     $logger->begin();
 
     // 添加消息
-    $logger->alert("This is an alert");
-    $logger->error("This is another error");
+
+    $logger->alert(
+        "This is an alert"
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
     //  保存消息到文件中
     $logger->commit();
@@ -117,12 +160,30 @@ In the example above, only critical and emergency messages will get saved to the
 
     $logger = new MultipleStream();
 
-    $logger->push(new FileAdapter('test.log'));
-    $logger->push(new StreamAdapter('php://stdout'));
 
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+    $logger->push(
+        new FileAdapter("test.log")
+    );
+
+    $logger->push(
+        new StreamAdapter("php://stdout")
+    );
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 信息发送的顺序和处理器（适配器）注册的顺序相同。
 
@@ -130,17 +191,17 @@ In the example above, only critical and emergency messages will get saved to the
 ------------------------------
 此组件使用 formatters 在信息发送前格式化日志信息。 支持下而后格式：
 
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| 适配器  | 描述                                                     | 接口                                                                                 |
-+=========+==========================================================+======================================================================================+
-| Line    | 文本方式格式化信息                                       | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Firephp | Formats the messages so that they can be sent to FirePHP | :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Json    | 使用JSON格式格式化信息                                   | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Syslog  | 使用系统提供的格式格式化信息                             | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   |
-+---------+----------------------------------------------------------+--------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| 适配器                                                                               | 描述                                                     |
++======================================================================================+==========================================================+
+| :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`       | 文本方式格式化信息                                       |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Firephp <../api/Phalcon_Logger_Formatter_Firephp>` | Formats the messages so that they can be sent to FirePHP |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`       | 使用JSON格式格式化信息                                   |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
+| :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>`   | 使用系统提供的格式格式化信息                             |
++--------------------------------------------------------------------------------------+----------------------------------------------------------+
 
 行格式化处理（Line Formatter）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -170,8 +231,9 @@ In the example above, only critical and emergency messages will get saved to the
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    // 修改日志格式
     $formatter = new LineFormatter("%date% - %message%");
+
+    // 修改日志格式
     $logger->setFormatter($formatter);
 
 自定义格式处理（Implementing your own formatters）
@@ -213,9 +275,9 @@ In the example above, only critical and emergency messages will get saved to the
     // 使用写模式打开
     $logger = new FileAdapter(
         "app/logs/test.log",
-        array(
-            'mode' => 'w'
-        )
+        [
+            "mode" => "w",
+        ]
     );
 
 Syslog 日志记录器（Syslog Logger）
@@ -234,10 +296,10 @@ Syslog 日志记录器（Syslog Logger）
     // Setting ident/mode/facility 参数设置
     $logger = new SyslogAdapter(
         "ident-name",
-        array(
-            'option'   => LOG_NDELAY,
-            'facility' => LOG_MAIL
-        )
+        [
+            "option"   => LOG_NDELAY,
+            "facility" => LOG_MAIL,
+        ]
     );
 
 FirePHP 日志记录器（FirePHP Logger）
@@ -253,9 +315,21 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
-    $logger->error("This is another error");
+
+
+
+    $logger->log(
+        "This is a message"
+    );
+
+    $logger->log(
+        "This is an error",
+        Logger::ERROR
+    );
+
+    $logger->error(
+        "This is another error"
+    );
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

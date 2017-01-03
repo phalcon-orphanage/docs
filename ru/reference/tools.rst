@@ -5,8 +5,8 @@
 простыми командами, позволяющими легко разрабатывать приложения с использованием Phalcon.
 
 .. highlights::
-    **ВНИМАНИЕ:** Требуется Phalcon Framework версии 0.5.0 и выше. Так же рекомендуем PHP 5.4 и выше.
-    если вы предпочитаете использовать веб-версию вместо консоли эта `блогозапись`_ содержит больше информации.
+
+    Если вы предпочитаете использовать веб-версию вместо консоли эта `блогозапись`_ содержит больше информации.
 
 Скачать
 -------
@@ -25,23 +25,24 @@
 
 Получение списка команд
 -----------------------
-Для получения списка имеющихся команд введите: phalcon commands
+Для получения списка имеющихся команд введите: :code:`phalcon commands`
 
 .. code-block:: sh
 
-   $ phalcon commands
+    $ phalcon commands
 
-   Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
-   Available commands:
-     commands         (alias of: list, enumerate)
-     controller       (alias of: create-controller)
-     model            (alias of: create-model)
-     all-models       (alias of: create-all-models)
-     project          (alias of: create-project)
-     scaffold         (alias of: create-scaffold)
-     migration        (alias of: create-migration)
-     webtools         (alias of: create-webtools)
+    Available commands:
+      commands         (alias of: list, enumerate)
+      controller       (alias of: create-controller)
+      module           (alias of: create-module)
+      model            (alias of: create-model)
+      all-models       (alias of: create-all-models)
+      project          (alias of: create-project)
+      scaffold         (alias of: create-scaffold)
+      migration        (alias of: create-migration)
+      webtools         (alias of: create-webtools)
 
 Создание скелета проекта
 ------------------------
@@ -50,11 +51,11 @@
 
 .. code-block:: sh
 
-      $ pwd
+    $ pwd
 
-      /Applications/MAMP/htdocs
+    /Applications/MAMP/htdocs
 
-      $ phalcon create-project store
+    $ phalcon create-project store
 
 Проект создастся с полной рекомендованной структурой:
 
@@ -67,7 +68,7 @@
 
     $ phalcon project --help
 
-    Phalcon DevTools (2.0.8)
+    Phalcon DevTools (3.0.0)
 
     Help:
       Creates a project
@@ -98,11 +99,12 @@
 
 Создание контроллеров
 ---------------------
-Команда "create-controller" генерирует заготовку контроллера. Её необходимо выполнять в корне существующего проекта Phalcon:
+Команда "create-controller" генерирует заготовку контроллера. Её необходимо выполнять в корне
+существующего проекта Phalcon:
 
 .. code-block:: sh
 
-         $ phalcon create-controller --name test
+    $ phalcon create-controller --name test
 
 Команда выше сформирует следующий код:
 
@@ -110,7 +112,9 @@
 
     <?php
 
-    class TestController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class TestController extends Controller
     {
         public function indexAction()
         {
@@ -163,11 +167,11 @@ Options:
 
 .. code-block:: sh
 
-         $ phalcon model products
+    $ phalcon model products
 
 .. code-block:: sh
 
-         $ phalcon model --name tablename
+    $ phalcon model --name tablename
 
 Созданная модель содержит публичные атрибуты для прямого доступа.
 
@@ -175,7 +179,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -185,7 +191,7 @@ Options:
         /**
          * @var integer
          */
-        public $types_id;
+        public $typesId;
 
         /**
          * @var string
@@ -215,7 +221,9 @@ Options:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         /**
          * @var integer
@@ -225,7 +233,7 @@ Options:
         /**
          * @var integer
          */
-        protected $types_id;
+        protected $typesId;
 
         /**
          * @var string
@@ -250,6 +258,7 @@ Options:
 
         /**
          * Метод установки значения для поля id
+         *
          * @param integer $id
          */
         public function setId($id)
@@ -258,18 +267,20 @@ Options:
         }
 
         /**
-         * Метод установки значения для поля types_id
-         * @param integer $types_id
+         * Метод установки значения для поля typesId
+         *
+         * @param integer $typesId
          */
-        public function setTypesId($types_id)
+        public function setTypesId($typesId)
         {
-            $this->types_id = $types_id;
+            $this->typesId = $typesId;
         }
 
         // ...
 
         /**
          * Возвращает значение статуса поля
+         *
          * @return string
          */
         public function getStatus()
@@ -279,7 +290,8 @@ Options:
     }
 
 Приятной особенностью генератора моделей является то, что он сохраняет изменения, сделанные разработчиком. Это позволяет
-добавлять или удалять поля и свойства, не беспокоясь о потере изменений, внесенных в модель вручную. Следующий демо-ролик показывает как это работает:
+добавлять или удалять поля и свойства, не беспокоясь о потере изменений, внесенных в модель вручную.
+Следующий демо-ролик показывает как это работает:
 
 .. raw:: html
 
@@ -296,7 +308,7 @@ Scaffolding - это быстрый способ для получения ос�
 
 .. code-block:: sh
 
-         $ phalcon scaffold --table-name products
+    $ phalcon scaffold --table-name products
 
 Генератор создаст несколько файлов в вашем приложении, и каталоги для них. Вот краткий обзор того, что будет сгенерировано:
 
@@ -327,8 +339,7 @@ Scaffolding - это быстрый способ для получения ос�
 .. figure:: ../_static/img/tools-11.png
    :align: center
 
-После выполнения поиска будут выведены результаты с постраничной навигацией. Используйте ссылки меню "Правка" или "Удалить" возле каждого результата
-поиска, для выполнения требуемых действий.
+После выполнения поиска будут выведены результаты с постраничной навигацией. Используйте ссылки меню "Правка" или "Удалить" возле каждого результата поиска, для выполнения требуемых действий.
 
 .. figure:: ../_static/img/tools-12.png
    :align: center

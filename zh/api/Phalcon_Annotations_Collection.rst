@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Collection**
 ==========================================
 
-*implements* Iterator, Traversable, Countable
+*implements* `Iterator <http://php.net/manual/en/class.iterator.php>`_, `Traversable <http://php.net/manual/en/class.traversable.php>`_, `Countable <http://php.net/manual/en/class.countable.php>`_
 
 .. role:: raw-html(raw)
    :format: html
@@ -48,7 +48,7 @@ Rewinds the internal iterator
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **current** ()
+public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` **current** ()
 
 Returns the current annotation in the iterator
 
@@ -78,19 +78,19 @@ Returns the internal annotations as an array
 
 
 
-public  **get** (*unknown* $name)
+public  **get** (*mixed* $name)
 
 Returns the first annotation that match a name
 
 
 
-public  **getAll** (*unknown* $name)
+public  **getAll** (*mixed* $name)
 
 Returns all the annotations that match a name
 
 
 
-public  **has** (*unknown* $name)
+public  **has** (*mixed* $name)
 
 Check if an annotation exists in a collection
 

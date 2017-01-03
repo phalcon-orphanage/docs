@@ -92,7 +92,7 @@ Apache 下配置 Phalcon（Configuring Apache for Phalcon）
 
 .. _Apache: http://httpd.apache.org/
 
->= Apache 2.4:
+如果你使用的Apache版本为2.4或者以上:
 
 .. code-block:: apacheconf
 

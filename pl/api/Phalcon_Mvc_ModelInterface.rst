@@ -24,17 +24,17 @@ abstract public  **getSchema** ()
 ...
 
 
-abstract public  **setConnectionService** (*unknown* $connectionService)
+abstract public  **setConnectionService** (*mixed* $connectionService)
 
 ...
 
 
-abstract public  **setWriteConnectionService** (*unknown* $connectionService)
+abstract public  **setWriteConnectionService** (*mixed* $connectionService)
 
 ...
 
 
-abstract public  **setReadConnectionService** (*unknown* $connectionService)
+abstract public  **setReadConnectionService** (*mixed* $connectionService)
 
 ...
 
@@ -59,7 +59,7 @@ abstract public  **getWriteConnection** ()
 ...
 
 
-abstract public  **setDirtyState** (*unknown* $dirtyState)
+abstract public  **setDirtyState** (*mixed* $dirtyState)
 
 ...
 
@@ -69,32 +69,32 @@ abstract public  **getDirtyState** ()
 ...
 
 
-abstract public  **assign** (*array* $data, [*unknown* $dataColumnMap], [*unknown* $whiteList])
+abstract public  **assign** (*array* $data, [*mixed* $dataColumnMap], [*mixed* $whiteList])
 
 ...
 
 
-abstract public static  **cloneResultMap** (*unknown* $base, *array* $data, *unknown* $columnMap, [*unknown* $dirtyState], [*unknown* $keepSnapshots])
+abstract public static  **cloneResultMap** (*mixed* $base, *array* $data, *mixed* $columnMap, [*mixed* $dirtyState], [*mixed* $keepSnapshots])
 
 ...
 
 
-abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*unknown* $dirtyState])
+abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $data, [*mixed* $dirtyState])
 
 ...
 
 
-abstract public static  **cloneResultMapHydrate** (*array* $data, *unknown* $columnMap, *unknown* $hydrationMode)
+abstract public static  **cloneResultMapHydrate** (*array* $data, *mixed* $columnMap, *mixed* $hydrationMode)
 
 ...
 
 
-abstract public static  **find** ([*unknown* $parameters])
+abstract public static  **find** ([*mixed* $parameters])
 
 ...
 
 
-abstract public static  **findFirst** ([*unknown* $parameters])
+abstract public static  **findFirst** ([*mixed* $parameters])
 
 ...
 
@@ -104,37 +104,37 @@ abstract public static  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterf
 ...
 
 
-abstract public static  **count** ([*unknown* $parameters])
+abstract public static  **count** ([*mixed* $parameters])
 
 ...
 
 
-abstract public static  **sum** ([*unknown* $parameters])
+abstract public static  **sum** ([*mixed* $parameters])
 
 ...
 
 
-abstract public static  **maximum** ([*unknown* $parameters])
+abstract public static  **maximum** ([*mixed* $parameters])
 
 ...
 
 
-abstract public static  **minimum** ([*unknown* $parameters])
+abstract public static  **minimum** ([*mixed* $parameters])
 
 ...
 
 
-abstract public static  **average** ([*unknown* $parameters])
+abstract public static  **average** ([*mixed* $parameters])
 
 ...
 
 
-abstract public  **fireEvent** (*unknown* $eventName)
+abstract public  **fireEvent** (*mixed* $eventName)
 
 ...
 
 
-abstract public  **fireEventCancel** (*unknown* $eventName)
+abstract public  **fireEventCancel** (*mixed* $eventName)
 
 ...
 
@@ -154,17 +154,17 @@ abstract public  **getMessages** ()
 ...
 
 
-abstract public  **save** ([*unknown* $data], [*unknown* $whiteList])
+abstract public  **save** ([*mixed* $data], [*mixed* $whiteList])
 
 ...
 
 
-abstract public  **create** ([*unknown* $data], [*unknown* $whiteList])
+abstract public  **create** ([*mixed* $data], [*mixed* $whiteList])
 
 ...
 
 
-abstract public  **update** ([*unknown* $data], [*unknown* $whiteList])
+abstract public  **update** ([*mixed* $data], [*mixed* $whiteList])
 
 ...
 
@@ -184,17 +184,17 @@ abstract public  **refresh** ()
 ...
 
 
-abstract public  **skipOperation** (*unknown* $skip)
+abstract public  **skipOperation** (*mixed* $skip)
 
 ...
 
 
-abstract public  **getRelated** (*unknown* $alias, [*unknown* $arguments])
+abstract public  **getRelated** (*mixed* $alias, [*mixed* $arguments])
 
 ...
 
 
-abstract public  **setSnapshotData** (*array* $data, [*unknown* $columnMap])
+abstract public  **setSnapshotData** (*array* $data, [*mixed* $columnMap])
 
 ...
 

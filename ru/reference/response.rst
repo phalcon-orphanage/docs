@@ -8,8 +8,10 @@
 
     <?php
 
+    use Phalcon\Http\Response;
+
     // Получение экземпляра Response
-    $response = new \Phalcon\Http\Response();
+    $response = new Response();
 
     // Установка кода статуса
     $response->setStatusCode(404, "Not Found");
@@ -27,17 +29,22 @@
 
     <?php
 
-    class FeedController extends Phalcon\Mvc\Controller
+    use Phalcon\Http\Response;
+    use Phalcon\Mvc\Controller;
+
+    class FeedController extends Controller
     {
         public function getAction()
         {
             // Получение экземпляра Response
-            $response = new \Phalcon\Http\Response();
+            $response = new Response();
 
-            $feed     = // .. тут данные
+            $feed = // .. тут данные
 
             // Установка содержимого ответа
-            $response->setContent($feed->asString());
+            $response->setContent(
+                $feed->asString()
+            );
 
             // Возврат Response ответа
             return $response;
@@ -72,7 +79,7 @@
     $headers = $response->getHeaders();
 
     // Получение заголовка по имени
-    $contentType = $response->getHeaders()->get("Content-Type");
+    $contentType = $headers->get("Content-Type");
 
 Создание перенаправлений (редиректы)
 ------------------------------------
@@ -103,11 +110,11 @@
 
     // Переадресация по именованному правилу роутинга
     return $response->redirect(
-        array(
+        [
             "for"        => "index-lang",
             "lang"       => "jp",
-            "controller" => "index"
-        )
+            "controller" => "index",
+        ]
     );
 
 Обратите внимание, что при создании перенаправления не отключается компонент отображения (Views), так что действие, в котором
@@ -136,10 +143,10 @@ Expires
 
     <?php
 
-    $expireDate = new DateTime();
-    $expireDate->modify('+2 months');
+    $expiryDate = new DateTime();
+    $expiryDate->modify("+2 months");
 
-    $response->setExpires($expireDate);
+    $response->setExpires($expiryDate);
 
 Ответ в компоненте Response автоматически преобразует дату для временной зоны GMT, именно так как ожидается в заголовке Expires.
 
@@ -149,10 +156,10 @@ Expires
 
     <?php
 
-    $expireDate = new DateTime();
-    $expireDate->modify('-10 minutes');
+    $expiryDate = new DateTime();
+    $expiryDate->modify("-10 minutes");
 
-    $response->setExpires($expireDate);
+    $response->setExpires($expiryDate);
 
 Браузеры основываются на системных часах клиента для определения наступления этой даты. Так как часы на клиенте могут быть изменены, то
 срок жизни будет некорректен. Это ограничение такого механизма кэширования.
@@ -167,7 +174,7 @@ Cache-Control
     <?php
 
     // кэшировать на сутки с текущего момента
-    $response->setHeader('Cache-Control', 'max-age=86400');
+    $response->setHeader("Cache-Control", "max-age=86400");
 
 Противоположный эффект (для запрета кэширования страницы) организуется следующим образом:
 
@@ -176,7 +183,7 @@ Cache-Control
     <?php
 
     // Не кэшировать
-    $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
+    $response->setHeader("Cache-Control", "private, max-age=0, must-revalidate");
 
 E-Tag
 ^^^^^
@@ -188,8 +195,13 @@ E-Tag
     <?php
 
     // Формирование значения E-Tag основанное на последнем времени изменения новости
-    $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag       = md5($recentDate);
+    $mostRecentDate = News::maximum(
+        [
+            "column" => "created_at"
+        ]
+    );
+
+    $eTag = md5($mostRecentDate);
 
     // Отправка E-Tag
-    $response->setHeader('E-Tag', $eTag);
+    $response->setHeader("E-Tag", $eTag);

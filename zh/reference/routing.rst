@@ -28,19 +28,19 @@ you can define routes and map them to controllers/actions that you require. A ro
     // Define a route
     $router->add(
         "/admin/users/my-profile",
-        array(
+        [
             "controller" => "users",
-            "action"     => "profile"
-        )
+            "action"     => "profile",
+        ]
     );
 
     // Another route
     $router->add(
         "/admin/users/change-password",
-        array(
+        [
             "controller" => "users",
-            "action"     => "changePassword"
-        )
+            "action"     => "changePassword",
+        ]
     );
 
     $router->handle();
@@ -63,11 +63,11 @@ add() 方法接受一个匹配模式作为第一个参数，一组可选的路�
     // Define a route
     $router->add(
         "/admin/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
 在上面的例子中我们通过使用通配符定义了一个可以匹配多个URI的路由，比如，访问这个URL（/admin/users/a/delete/dave/301），那么：
@@ -128,14 +128,14 @@ one that matches the given URI and processes it, while ignoring the rest.
 
     $router->add(
         "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1, // ([0-9]{4})
             "month"      => 2, // ([0-9]{2})
             "day"        => 3, // ([0-9]{2})
-            "params"     => 4  // :params
-        )
+            "params"     => 4, // :params
+        ]
     );
 
 在上述示例中，路由规则里并没有定义 "controller" 或者 "action" 部分。它们已经被路由替换为("posts" and "show")。
@@ -179,10 +179,10 @@ way to create named parameters as part of the pattern:
 
     $router->add(
         "/documentation/{chapter}/{name}.{type:[a-z]+}",
-        array(
+        [
             "controller" => "documentation",
-            "action"     => "show"
-        )
+            "action"     => "show",
+        ]
     );
 
 You can access their values in the same way as before:
@@ -217,17 +217,20 @@ The following examples produce the same result:
     <?php
 
     // Short form
-    $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
+    $router->add(
+        "/posts/{year:[0-9]+}/{title:[a-z\-]+}",
+        "Posts::show"
+    );
 
     // Array form
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
-        array(
+        [
            "controller" => "posts",
            "action"     => "show",
            "year"       => 1,
-           "title"      => 2
-        )
+           "title"      => 2,
+        ]
     );
 
 混合使用数组和短语法（Mixing Array and Short Syntax）
@@ -241,11 +244,12 @@ are added to the route paths according to the position on which they were define
 
     // First position must be skipped because it is used for
     // the named parameter 'country'
-    $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
-        array(
-            'section' => 2, // Positions start with 2
-            'article' => 3
-        )
+    $router->add(
+        "/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])",
+        [
+            "section" => 2, // Positions start with 2
+            "article" => 3,
+        ]
     );
 
 路由到模块（Routing to Modules）
@@ -261,13 +265,13 @@ are added to the route paths according to the position on which they were define
     $router = new Router(false);
 
     $router->add(
-        '/:module/:controller/:action/:params',
-        array(
-            'module'     => 1,
-            'controller' => 2,
-            'action'     => 3,
-            'params'     => 4
-        )
+        "/:module/:controller/:action/:params",
+        [
+            "module"     => 1,
+            "controller" => 2,
+            "action"     => 3,
+            "params"     => 4,
+        ]
     );
 
 在上述示例中，URL中必须总是含有模块名才能进行路由解析。比如URL: /admin/users/edit/sonny, 将会被路由解析为:
@@ -290,20 +294,20 @@ are added to the route paths according to the position on which they were define
 
     $router->add(
         "/login",
-        array(
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "module"     => "backend",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'module'     => 'frontend',
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "module"     => "frontend",
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
 Or bind them to specific namespaces:
@@ -314,11 +318,11 @@ Or bind them to specific namespaces:
 
     $router->add(
         "/:namespace/login",
-        array(
-            'namespace'  => 1,
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => 1,
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 Namespaces/class names must be passed separated:
@@ -329,11 +333,11 @@ Namespaces/class names must be passed separated:
 
     $router->add(
         "/login",
-        array(
-            'namespace'  => 'Backend\Controllers',
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "namespace"  => "Backend\\Controllers",
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
 限制 HTTP 请求传入方式（HTTP Method Restrictions）
@@ -346,13 +350,27 @@ Namespaces/class names must be passed separated:
     <?php
 
     // This route only will be matched if the HTTP method is GET
-    $router->addGet("/products/edit/{id}", "Products::edit");
+    $router->addGet(
+        "/products/edit/{id}",
+        "Products::edit"
+    );
 
     // This route only will be matched if the HTTP method is POST
-    $router->addPost("/products/save", "Products::save");
+    $router->addPost(
+        "/products/save",
+        "Products::save"
+    );
 
     // This route will be matched if the HTTP method is POST or PUT
-    $router->add("/products/update", "Products::update")->via(array("POST", "PUT"));
+    $router->add(
+        "/products/update",
+        "Products::update"
+    )->via(
+        [
+            "POST",
+            "PUT",
+        ]
+    );
 
 使用转换（Using conversors）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -364,15 +382,21 @@ The following examples show how to use them:
     <?php
 
     // The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
-    $router
-        ->add('/products/{slug:[a-z\-]+}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('slug', function ($slug) {
+    $route = $router->add(
+        "/products/{slug:[a-z\-]+}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "slug",
+        function ($slug) {
             // Transform the slug removing the dashes
-            return str_replace('-', '', $slug);
-        });
+            return str_replace("-", "", $slug);
+        }
+    );
 
 Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
 
@@ -381,15 +405,21 @@ Another use case for conversors is binding a model into a route. This allows the
     <?php
 
     // This example works off the assumption that the ID is being used as parameter in the url: /products/4
-    $router
-        ->add('/products/{id}', array(
-            'controller' => 'products',
-            'action'     => 'show'
-        ))
-        ->convert('id', function ($id) {
+    $route = $router->add(
+        "/products/{id}",
+        [
+            "controller" => "products",
+            "action"     => "show",
+        ]
+    );
+
+    $route->convert(
+        "id",
+        function ($id) {
             // Fetch the model
             return Product::findFirstById($id);
-        });
+        }
+    );
 
 路由分组（Groups of Routes）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -406,38 +436,38 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     // Create a group with a common module and controller
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'index'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "index",
+        ]
     );
 
     // All the routes start with /blog
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // Add a route to the group
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // Add another route to the group
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // This route maps to a controller different than the default
     $blog->add(
-        '/blog',
-        array(
-            'controller' => 'blog',
-            'action'     => 'index'
-        )
+        "/blog",
+        [
+            "controller" => "blog",
+            "action"     => "index",
+        ]
     );
 
     // Add the group to the router
@@ -457,38 +487,38 @@ You can move groups of routes to separate files in order to improve the organiza
         {
             // Default paths
             $this->setPaths(
-                array(
-                    'module'    => 'blog',
-                    'namespace' => 'Blog\Controllers'
-                )
+                [
+                    "module"    => "blog",
+                    "namespace" => "Blog\\Controllers",
+                ]
             );
 
             // All the routes start with /blog
-            $this->setPrefix('/blog');
+            $this->setPrefix("/blog");
 
             // Add a route to the group
             $this->add(
-                '/save',
-                array(
-                    'action' => 'save'
-                )
+                "/save",
+                [
+                    "action" => "save",
+                ]
             );
 
             // Add another route to the group
             $this->add(
-                '/edit/{id}',
-                array(
-                    'action' => 'edit'
-                )
+                "/edit/{id}",
+                [
+                    "action" => "edit",
+                ]
             );
 
             // This route maps to a controller different than the default
             $this->add(
-                '/blog',
-                array(
-                    'controller' => 'blog',
-                    'action'     => 'index'
-                )
+                "/blog",
+                [
+                    "controller" => "blog",
+                    "action"     => "index",
+                ]
             );
         }
     }
@@ -500,12 +530,14 @@ Then mount the group in the router:
     <?php
 
     // Add the group to the router
-    $router->mount(new BlogRoutes());
+    $router->mount(
+        new BlogRoutes()
+    );
 
 匹配路由（Matching Routes）
 ---------------------------
 A valid URI must be passed to the Router so that it can process it and find a matching route.
-By default, the routing URI is taken from the :code:`$_GET['_url']` variable that is created by the rewrite engine
+By default, the routing URI is taken from the :code:`$_GET["_url"]` variable that is created by the rewrite engine
 module. A couple of rewrite rules that work very well with Phalcon are:
 
 .. code-block:: apacheconf
@@ -556,13 +588,12 @@ This is especially useful if you want to create URLs from it.
 
     <?php
 
-    $route = $router->add("/posts/{year}/{title}", "Posts::show");
+    $route = $router->add(
+        "/posts/{year}/{title}",
+        "Posts::show"
+    );
 
     $route->setName("show-posts");
-
-    // Or just
-
-    $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
 Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` we can build routes from its name:
 
@@ -572,11 +603,11 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
 
     // Returns /posts/2012/phalcon-1-0-released
     echo $url->get(
-        array(
+        [
             "for"   => "show-posts",
             "year"  => "2012",
-            "title" => "phalcon-1-0-released"
-        )
+            "title" => "phalcon-1-0-released",
+        ]
     );
 
 范例（Usage Examples）
@@ -590,63 +621,63 @@ The following are examples of custom routes:
     // Matches "/system/admin/a/edit/7001"
     $router->add(
         "/system/:controller/a/:action/:params",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3
-        )
+            "params"     => 3,
+        ]
     );
 
     // Matches "/es/news"
     $router->add(
         "/([a-z]{2})/:controller",
-        array(
+        [
             "controller" => 2,
             "action"     => "index",
-            "language"   => 1
-        )
+            "language"   => 1,
+        ]
     );
 
     // Matches "/es/news"
     $router->add(
         "/{language:[a-z]{2}}/:controller",
-        array(
+        [
             "controller" => 2,
-            "action"     => "index"
-        )
+            "action"     => "index",
+        ]
     );
 
     // Matches "/admin/posts/edit/100"
     $router->add(
         "/admin/:controller/:action/:int",
-        array(
+        [
             "controller" => 1,
             "action"     => 2,
-            "id"         => 3
-        )
+            "id"         => 3,
+        ]
     );
 
     // Matches "/posts/2015/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
-        array(
+        [
             "controller" => "posts",
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4
-        )
+            "title"      => 4,
+        ]
     );
 
     // Matches "/manual/en/translate.adapter.html"
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
-        array(
+        [
             "controller" => "manual",
             "action"     => "show",
             "language"   => 1,
-            "file"       => 2
-        )
+            "file"       => 2,
+        ]
     );
 
     // Matches /feed/fr/le-robots-hot-news.atom
@@ -657,12 +688,12 @@ The following are examples of custom routes:
 
     // Matches /api/v1/users/peter.json
     $router->add(
-        '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
-        array(
-            'controller' => 'api',
-            'version'    => 1,
-            'format'     => 4
-        )
+        "/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)",
+        [
+            "controller" => "api",
+            "version"    => 1,
+            "format"     => 4,
+        ]
     );
 
 .. highlights::
@@ -708,10 +739,10 @@ in your website/application:
 
     $router->add(
         "/",
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 没有找到路径（Not Found Paths）
@@ -724,10 +755,10 @@ If none of the routes specified in the router are matched, you can define a grou
 
     // Set 404 paths
     $router->notFound(
-        array(
+        [
             "controller" => "index",
-            "action"     => "route404"
-        )
+            "action"     => "route404",
+        ]
     );
 
 This is typically for an Error 404 page.
@@ -744,17 +775,17 @@ those paths they can be automatically filled by the router:
     <?php
 
     // Setting a specific default
-    $router->setDefaultModule('backend');
-    $router->setDefaultNamespace('Backend\Controllers');
-    $router->setDefaultController('index');
-    $router->setDefaultAction('index');
+    $router->setDefaultModule("backend");
+    $router->setDefaultNamespace("Backend\\Controllers");
+    $router->setDefaultController("index");
+    $router->setDefaultAction("index");
 
     // Using an array
     $router->setDefaults(
-        array(
-            'controller' => 'index',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "index",
+            "action"     => "index",
+        ]
     );
 
 处理结尾额外的斜杆（Dealing with extra/trailing slashes）
@@ -782,11 +813,11 @@ Or, you can modify specific routes to optionally accept trailing slashes:
 
     // The [/]{0,1} allows this route to have optionally have a trailing slash
     $router->add(
-        '/{language:[a-z]{2}}/:controller[/]{0,1}',
-        array(
-            'controller' => 2,
-            'action'     => 'index'
-        )
+        "/{language:[a-z]{2}}/:controller[/]{0,1}",
+        [
+            "controller" => 2,
+            "action"     => "index",
+        ]
     );
 
 匹配回调函数（Match Callbacks）
@@ -799,17 +830,23 @@ If this function return :code:`false`, the route will be treated as non-matched:
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session'
-    ))->beforeMatch(function ($uri, $route) {
-        // Check if the request was made with Ajax
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-            return false;
+    $route = $router->add("/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            // Check if the request was made with Ajax
+            if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest") {
+                return false;
+            }
+
+            return true;
         }
-        return true;
-    });
+    );
 
 You can re-use these extra conditions in classes:
 
@@ -821,7 +858,7 @@ You can re-use these extra conditions in classes:
     {
         public function check()
         {
-            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+            return $_SERVER["HTTP_X_REQUESTED_WITH"] === "XMLHttpRequest";
         }
     }
 
@@ -831,10 +868,49 @@ And use this class instead of the anonymous function:
 
     <?php
 
-    $router->add('/get/info/{id}', array(
-        'controller' => 'products',
-        'action'     => 'info'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+    $route = $router->add(
+        "/get/info/{id}",
+        [
+            "controller" => "products",
+            "action"     => "info",
+        ]
+    );
+
+    $route->beforeMatch(
+        [
+            new AjaxFilter(),
+            "check"
+        ]
+    );
+
+As of Phalcon 3, there is another way to check this:
+
+.. code-block:: php
+
+    <?php
+
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    );
+
+    $route->beforeMatch(
+        function ($uri, $route) {
+            /**
+             * @var string $uri
+             * @var \Phalcon\Mvc\Router\Route $route
+             * @var \Phalcon\DiInterface $this
+             * @var \Phalcon\Http\Request $request
+             */
+            $request = $this->getShared("request");
+
+            // Check if the request was made with Ajax
+            return $request->isAjax();
+        }
+    );
 
 限制主机名（Hostname Constraints）
 ----------------------------------
@@ -845,11 +921,16 @@ to only match if the route also meets the hostname constraint:
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('admin.company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("admin.company.com");
 
 The hostname can also be passed as a regular expressions:
 
@@ -857,11 +938,16 @@ The hostname can also be passed as a regular expressions:
 
     <?php
 
-    $router->add('/login', array(
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login'
-    ))->setHostName('([a-z]+).company.com');
+    $route = $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+            "action"     => "login",
+        ]
+    );
+
+    $route->setHostName("([a-z]+).company.com");
 
 In groups of routes you can set up a hostname constraint that apply for every route in the group:
 
@@ -873,40 +959,40 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
     // Create a group with a common module and controller
     $blog = new RouterGroup(
-        array(
-            'module'     => 'blog',
-            'controller' => 'posts'
-        )
+        [
+            "module"     => "blog",
+            "controller" => "posts",
+        ]
     );
 
     // Hostname restriction
-    $blog->setHostName('blog.mycompany.com');
+    $blog->setHostName("blog.mycompany.com");
 
     // All the routes start with /blog
-    $blog->setPrefix('/blog');
+    $blog->setPrefix("/blog");
 
     // Default route
     $blog->add(
-        '/',
-        array(
-            'action' => 'index'
-        )
+        "/",
+        [
+            "action" => "index",
+        ]
     );
 
     // Add a route to the group
     $blog->add(
-        '/save',
-        array(
-            'action' => 'save'
-        )
+        "/save",
+        [
+            "action" => "save",
+        ]
     );
 
     // Add another route to the group
     $blog->add(
-        '/edit/{id}',
-        array(
-            'action' => 'edit'
-        )
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
     );
 
     // Add the group to the router
@@ -914,8 +1000,8 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
 URI 来源（URI Sources）
 -----------------------
-By default the URI information is obtained from the :code:`$_GET['_url']` variable, this is passed by the Rewrite-Engine to
-Phalcon, you can also use :code:`$_SERVER['REQUEST_URI']` if required:
+By default the URI information is obtained from the :code:`$_GET["_url"]` variable, this is passed by the Rewrite-Engine to
+Phalcon, you can also use :code:`$_SERVER["REQUEST_URI"]` if required:
 
 .. code-block:: php
 
@@ -925,8 +1011,15 @@ Phalcon, you can also use :code:`$_SERVER['REQUEST_URI']` if required:
 
     // ...
 
-    $router->setUriSource(Router::URI_SOURCE_GET_URL); // Use $_GET['_url'] (default)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // Use $_SERVER['REQUEST_URI']
+    // Use $_GET["_url"] (default)
+    $router->setUriSource(
+        Router::URI_SOURCE_GET_URL
+    );
+
+    // Use $_SERVER["REQUEST_URI"]
+    $router->setUriSource(
+        Router::URI_SOURCE_SERVER_REQUEST_URI
+    );
 
 Or you can manually pass a URI to the :code:`handle()` method:
 
@@ -934,7 +1027,7 @@ Or you can manually pass a URI to the :code:`handle()` method:
 
     <?php
 
-    $router->handle('/some/route/to/handle');
+    $router->handle("/some/route/to/handle");
 
 测试路由（Testing your routes）
 -------------------------------
@@ -947,15 +1040,15 @@ Since this component has no dependencies, you can create a file as shown below t
     use Phalcon\Mvc\Router;
 
     // These routes simulate real URIs
-    $testRoutes = array(
-        '/',
-        '/index',
-        '/index/index',
-        '/index/test',
-        '/products',
-        '/products/index/',
-        '/products/show/101',
-    );
+    $testRoutes = [
+        "/",
+        "/index",
+        "/index/index",
+        "/index/test",
+        "/products",
+        "/products/index/",
+        "/products/show/101",
+    ];
 
     $router = new Router();
 
@@ -964,21 +1057,20 @@ Since this component has no dependencies, you can create a file as shown below t
 
     // Testing each route
     foreach ($testRoutes as $testRoute) {
-
         // Handle the route
         $router->handle($testRoute);
 
-        echo 'Testing ', $testRoute, '<br>';
+        echo "Testing ", $testRoute, "<br>";
 
         // Check if some route was matched
         if ($router->wasMatched()) {
-            echo 'Controller: ', $router->getControllerName(), '<br>';
-            echo 'Action: ', $router->getActionName(), '<br>';
+            echo "Controller: ", $router->getControllerName(), "<br>";
+            echo "Action: ", $router->getActionName(), "<br>";
         } else {
-            echo 'The route wasn\'t matched by any route<br>';
+            echo "The route wasn't matched by any route<br>";
         }
 
-        echo '<br>';
+        echo "<br>";
     }
 
 注解路由（Annotations Router）
@@ -992,13 +1084,12 @@ Since this component has no dependencies, you can create a file as shown below t
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // Use the annotations router. We're passing false as we don't want the router to add its default patterns
         $router = new RouterAnnotations(false);
 
         // Read the annotations from ProductsController if the URI starts with /api/products
-        $router->addResource('Products', '/api/products');
+        $router->addResource("Products", "/api/products");
 
         return $router;
     };
@@ -1015,7 +1106,9 @@ Since this component has no dependencies, you can create a file as shown below t
     class ProductsController
     {
         /**
-         * @Get("/")
+         * @Get(
+         *     "/"
+         * )
          */
         public function indexAction()
         {
@@ -1023,7 +1116,10 @@ Since this component has no dependencies, you can create a file as shown below t
         }
 
         /**
-         * @Get("/edit/{id:[0-9]+}", name="edit-robot")
+         * @Get(
+         *     "/edit/{id:[0-9]+}",
+         *     name="edit-robot"
+         * )
          */
         public function editAction($id)
         {
@@ -1031,7 +1127,11 @@ Since this component has no dependencies, you can create a file as shown below t
         }
 
         /**
-         * @Route("/save", methods={"POST", "PUT"}, name="save-robot")
+         * @Route(
+         *     "/save",
+         *     methods={"POST", "PUT"},
+         *     name="save-robot"
+         * )
          */
         public function saveAction()
         {
@@ -1039,8 +1139,13 @@ Since this component has no dependencies, you can create a file as shown below t
         }
 
         /**
-         * @Route("/delete/{id:[0-9]+}", methods="DELETE",
-         *      conversors={id="MyConversors::checkId"})
+         * @Route(
+         *     "/delete/{id:[0-9]+}",
+         *     methods="DELETE",
+         *     conversors={
+         *         id="MyConversors::checkId"
+         *     }
+         * )
          */
         public function deleteAction($id)
         {
@@ -1095,13 +1200,12 @@ Since this component has no dependencies, you can create a file as shown below t
 
     use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
-    $di['router'] = function () {
-
+    $di["router"] = function () {
         // Use the annotations router
         $router = new RouterAnnotations(false);
 
         // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
-        $router->addModuleResource('backend', 'Products', '/api/products');
+        $router->addModuleResource("backend", "Products", "/api/products");
 
         return $router;
     };
@@ -1120,9 +1224,9 @@ You need to add code below in your bootstrap file (for example index.php or app/
      * Add routing capabilities
      */
     $di->set(
-        'router',
+        "router",
         function () {
-            require __DIR__.'/../app/config/routes.php';
+            require __DIR__ . "/../app/config/routes.php";
 
             return $router;
         }
@@ -1140,18 +1244,18 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router->add(
         "/login",
-        array(
-            'controller' => 'login',
-            'action'     => 'index'
-        )
+        [
+            "controller" => "login",
+            "action"     => "index",
+        ]
     );
 
     $router->add(
         "/products/:action",
-        array(
-            'controller' => 'products',
-            'action'     => 1
-        )
+        [
+            "controller" => "products",
+            "action"     => 1,
+        ]
     );
 
     return $router;

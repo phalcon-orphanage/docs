@@ -27,27 +27,30 @@
             // Start a transaction
             $this->db->begin();
 
-            $robot              = new Robots();
-            $robot->name        = "WALL·E";
-            $robot->created_at  = date("Y-m-d");
+            $robot = new Robots();
 
-            // The model failed to save, so rollback the transaction
-            if ($robot->save() == false) {
+            $robot->name       = "WALL·E";
+            $robot->created_at = date("Y-m-d");
+
+            // Не удалось сохранить модель, поэтому откатываем транзакцию
+            if ($robot->save() === false) {
                 $this->db->rollback();
                 return;
             }
 
-            $robotPart            = new RobotParts();
+            $robotPart = new RobotParts();
+
             $robotPart->robots_id = $robot->id;
             $robotPart->type      = "head";
 
-            // The model failed to save, so rollback the transaction
-            if ($robotPart->save() == false) {
+            // Не удалось сохранить модель, поэтому откатываем транзакцию
+            if ($robotPart->save() === false) {
                 $this->db->rollback();
+
                 return;
             }
 
-            // Commit the transaction
+            // Фиксируем транзакцию
             $this->db->commit();
         }
     }
@@ -61,15 +64,20 @@
 
     <?php
 
-    $robotPart          = new RobotParts();
-    $robotPart->type    = "head";
+    $robotPart = new RobotParts();
 
-    $robot              = new Robots();
-    $robot->name        = "WALL·E";
-    $robot->created_at  = date("Y-m-d");
-    $robot->robotPart   = $robotPart;
+    $robotPart->type = "head";
 
-    $robot->save(); // Создает неявную транзакцию, чтобы сохранить обе записи
+
+
+    $robot = new Robots();
+
+    $robot->name       = "WALL·E";
+    $robot->created_at = date("Y-m-d");
+    $robot->robotPart  = $robotPart;
+
+    // Создает неявную транзакцию, чтобы сохранить обе записи
+    $robot->save();
 
 Изолированные транзакции
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,32 +94,40 @@
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
-        // Create a transaction manager
-        $manager     = new TxManager();
+        // Создаем менеджера транзакций
+        $manager = new TxManager();
 
         // Запрос транзакции
         $transaction = $manager->get();
 
-        $robot              = new Robots();
+        $robot = new Robots();
+
         $robot->setTransaction($transaction);
-        $robot->name        = "WALL·E";
-        $robot->created_at  = date("Y-m-d");
-        if ($robot->save() == false) {
-            $transaction->rollback("Невозможно сохранить робота");
+
+        $robot->name       = "WALL·E";
+        $robot->created_at = date("Y-m-d");
+
+        if ($robot->save() === false) {
+            $transaction->rollback(
+                "Невозможно сохранить робота"
+            );
         }
 
-        $robotPart              = new RobotParts();
+        $robotPart = new RobotParts();
+
         $robotPart->setTransaction($transaction);
-        $robotPart->robots_id   = $robot->id;
-        $robotPart->type        = "head";
-        if ($robotPart->save() == false) {
-            $transaction->rollback("Невозможно сохранить часть робота");
+
+        $robotPart->robots_id = $robot->id;
+        $robotPart->type      = "head";
+
+        if ($robotPart->save() === false) {
+            $transaction->rollback(
+                "Невозможно сохранить часть робота"
+            );
         }
 
         // Все идет хорошо, совершить транзакцию
         $transaction->commit();
-
     } catch (TxFailed $e) {
         echo "Не удалось, причина: ", $e->getMessage();
     }
@@ -126,20 +142,28 @@
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
-
         // Создать менеджер транзакций
-        $manager     = new TxManager();
+        $manager = new TxManager();
 
         // Запрос транзакции
         $transaction = $manager->get();
 
         // Получить роботов для удаления
-        foreach (Robots::find("type = 'mechanical'") as $robot) {
+        $robots = Robots::find(
+            "type = 'mechanical'"
+        );
+
+        foreach ($robots as $robot) {
             $robot->setTransaction($transaction);
-            if ($robot->delete() == false) {
-                // Что-то идет не так, мы должны откатить транзакцию
-                foreach ($robot->getMessages() as $message) {
-                    $transaction->rollback($message->getMessage());
+
+            // Что-то идет не так, мы должны откатить транзакцию
+            if ($robot->delete() === false) {
+                $messages = $robot->getMessages();
+
+                foreach ($messages as $message) {
+                    $transaction->rollback(
+                        $message->getMessage()
+                    );
                 }
             }
         }
@@ -148,13 +172,12 @@
         $transaction->commit();
 
         echo "Роботы успешно удалены!";
-
     } catch (TxFailed $e) {
         echo "Не удалось, причина: ", $e->getMessage();
     }
 
 Транзакция продолжается, независимо от того, где получается объект транзакции.
-Новая транзакция формируется только при выполнении методов commit() или rollback().
+Новая транзакция формируется только при выполнении методов :code:`commit()` или :code:`rollback()`.
 Вы можете воспользоваться di контейнером, чтобы создать общий менеджер транзакций
 для всего приложения:
 
@@ -164,9 +187,12 @@
 
     use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager
 
-    $di->setShared('transactions', function () {
-        return new TransactionManager();
-    });
+    $di->setShared(
+        "transactions",
+        function () {
+            return new TransactionManager();
+        }
+    );
 
 Тогда доступ к нему из контроллера или вида:
 
@@ -181,10 +207,10 @@
         public function saveAction()
         {
             // Получить TransactionsManager из контейнера услуг
-            $manager     = $this->di->getTransactions();
+            $manager = $this->di->getTransactions();
 
             // Или
-            $manager     = $this->transactions;
+            $manager = $this->transactions;
 
             // Запрос транзакции
             $transaction = $manager->get();

@@ -1,7 +1,7 @@
 コントローラの使用
 ==================
 
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
+Actions are methods on a controller that handle requests. By default all
 public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
@@ -63,7 +63,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year = 2015, $postTitle = 'some default title')
+        public function showAction($year = 2015, $postTitle = "some default title")
         {
 
         }
@@ -86,15 +86,15 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year      = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year      = $this->dispatcher->getParam("year");
+            $postTitle = $this->dispatcher->getParam("postTitle");
         }
     }
 
 Dispatch Loop
 -------------
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
-action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
+action was executed. Now we'll see how the :code:`forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding
 execution to a different controller/action.
 
 .. code-block:: php
@@ -112,19 +112,21 @@ execution to a different controller/action.
 
         public function showAction($year, $postTitle)
         {
-            $this->flash->error("You don't have permission to access this area");
+            $this->flash->error(
+                "You don't have permission to access this area"
+            );
 
             // Forward flow to another action
             $this->dispatcher->forward(
-                array(
+                [
                     "controller" => "users",
-                    "action"     => "signin"
-                )
+                    "action"     => "signin",
+                ]
             );
         }
     }
 
-If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action.
+If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
 
 .. code-block:: php
 
@@ -151,8 +153,8 @@ the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Ph
 
 コントローラの初期化
 ------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
-action is executed on a controller. The use of the "__construct" method is not recommended.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the :code:`initialize()` method, which is executed first, before any
+action is executed on a controller. The use of the :code:`__construct()` method is not recommended.
 
 .. code-block:: php
 
@@ -166,14 +168,14 @@ action is executed on a controller. The use of the "__construct" method is not r
 
         public function initialize()
         {
-            $this->settings = array(
-                "mySetting" => "value"
-            );
+            $this->settings = [
+                "mySetting" => "value",
+            ];
         }
 
         public function saveAction()
         {
-            if ($this->settings["mySetting"] == "value") {
+            if ($this->settings["mySetting"] === "value") {
                 // ...
             }
         }
@@ -181,11 +183,11 @@ action is executed on a controller. The use of the "__construct" method is not r
 
 .. highlights::
 
-    Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
+    The :code:`initialize()` method is only called if the 'beforeExecuteRoute' event is executed with success. This avoid
     that application logic in the initializer cannot be executed without authorization.
 
-If you want to execute some initialization logic just after build the controller object you can implement the
-method 'onConstruct':
+If you want to execute some initialization logic just after the controller object is constructed then you can implement the
+:code:`onConstruct()` method:
 
 .. code-block:: php
 
@@ -203,9 +205,9 @@ method 'onConstruct':
 
 .. highlights::
 
-    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
+    Be aware that :code:`onConstruct()` method is executed even if the action to be executed doesn't exist
     in the controller or the user does not have access to it (according to custom control access
-    provided by developer).
+    provided by the developer).
 
 サービスの注入
 ------------------
@@ -220,11 +222,17 @@ container in application. For example, if we have registered a service like this
 
     $di = new Di();
 
-    $di->set('storage', function () {
-        return new Storage('/some/directory');
-    }, true);
+    $di->set(
+        "storage",
+        function () {
+            return new Storage(
+                "/some/directory"
+            );
+        },
+        true
+    );
 
-Then, we can access to that service in several ways:
+Then, we can access that service in several ways:
 
 .. code-block:: php
 
@@ -237,19 +245,19 @@ Then, we can access to that service in several ways:
         public function saveAction()
         {
             // Injecting the service by just accessing the property with the same name
-            $this->storage->save('/some/file');
+            $this->storage->save("/some/file");
 
             // Accessing the service from the DI
-            $this->di->get('storage')->save('/some/file');
+            $this->di->get("storage")->save("/some/file");
 
             // Another way to access the service using the magic getter
-            $this->di->getStorage()->save('/some/file');
+            $this->di->getStorage()->save("/some/file");
 
             // Another way to access the service using the magic getter
-            $this->getDi()->getStorage()->save('/some/file');
+            $this->getDi()->getStorage()->save("/some/file");
 
             // Using the array-syntax
-            $this->di['storage']->save('/some/file');
+            $this->di["storage"]->save("/some/file");
         }
     }
 
@@ -277,7 +285,7 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
         public function saveAction()
         {
             // Check if request has made with POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
                 // Access POST data
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
@@ -312,8 +320,8 @@ Learn more about the HTTP environment in their dedicated articles :doc:`request 
 
 セッションデータ
 ----------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that need to be persistent.
+Sessions help us maintain persistent data between requests. You can access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+from any controller to encapsulate data that needs to be persistent:
 
 .. code-block:: php
 
@@ -344,64 +352,24 @@ any other class registered with its name can easily replace a controller:
     <?php
 
     // Register a controller as a service
-    $di->set('IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "IndexController",
+        function () {
+            $component = new Component();
+
+            return $component;
+        }
+    );
 
     // Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function () {
-        $component = new Component();
-        return $component;
-    });
+    $di->set(
+        "Backend\\Controllers\\IndexController",
+        function () {
+            $component = new Component();
 
-ベース・コントローラの作成
---------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many
-controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
-controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
-the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
-access to the common functionality.
-
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
-e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
-loaded using any autoloader:
-
-.. code-block:: php
-
-    <?php
-
-    require "../app/controllers/ControllerBase.php";
-
-The implementation of common components (actions, methods, properties etc.) resides in this file:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
-    {
-        /**
-         * This action is available for multiple controllers
-         */
-        public function someAction()
-        {
-
+            return $component;
         }
-    }
-
-Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends ControllerBase
-    {
-
-    }
+    );
 
 コントローラのイベント
 ----------------------
@@ -419,15 +387,16 @@ you to implement hook points before/after the actions are executed:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-            if ($dispatcher->getActionName() == 'save') {
-
-                $this->flash->error("You don't have permission to save posts");
+            if ($dispatcher->getActionName() === "save") {
+                $this->flash->error(
+                    "You don't have permission to save posts"
+                );
 
                 $this->dispatcher->forward(
-                    array(
-                        'controller' => 'home',
-                        'action'     => 'index'
-                    )
+                    [
+                        "controller" => "home",
+                        "action"     => "index",
+                    ]
                 );
 
                 return false;

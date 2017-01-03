@@ -17,36 +17,37 @@
     $validation = new Validation();
 
     $validation->add(
-        'name',
+        "name",
         new PresenceOf(
-            array(
-                'message' => 'The name is required'
-            )
+            [
+                "message" => "The name is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new PresenceOf(
-            array(
-                'message' => 'The e-mail is required'
-            )
+            [
+                "message" => "The e-mail is required",
+            ]
         )
     );
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -69,29 +70,29 @@
         public function initialize()
         {
             $this->add(
-                'name',
+                "name",
                 new PresenceOf(
-                    array(
-                        'message' => 'The name is required'
-                    )
+                    [
+                        "message" => "The name is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new PresenceOf(
-                    array(
-                        'message' => 'The e-mail is required'
-                    )
+                    [
+                        "message" => "The e-mail is required",
+                    ]
                 )
             );
 
             $this->add(
-                'email',
+                "email",
                 new Email(
-                    array(
-                        'message' => 'The e-mail is not valid'
-                    )
+                    [
+                        "message" => "The e-mail is not valid",
+                    ]
                 )
             );
         }
@@ -106,9 +107,10 @@ Then initialize and use your own validator:
     $validation = new MyValidation();
 
     $messages = $validation->validate($_POST);
+
     if (count($messages)) {
         foreach ($messages as $message) {
-            echo $message, '<br>';
+            echo $message, "<br>";
         }
     }
 
@@ -116,31 +118,45 @@ Then initialize and use your own validator:
 --------------------
 Phalcon的验证组件中内置了一些验证器：
 
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| 名称         | 解释                                      |  示例                                                             |
-+==============+===========================================+===================================================================+
-| PresenceOf   |  检测字段的值是否为非空                   | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Identical    |  检测字段的值是否和指定的相同             | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Email        |  检测值是否为合法的email地址              | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  |  检测值是否不在列举的范围内               | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  |  检测值是否在列举的范围内                 | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Regex        |  检测值是否匹配正则表达式                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| StringLength |  检测值的字符串长度                       | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Between      |  检测值是否位于两个值之间                 | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Confirmation |  检测两个值是否相等                       | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that field contains a valid URL | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
-| CreditCard   | Validates a credit card number            | :doc:`Example <../api/Phalcon_Validation_Validator_CreditCard>`   |
-+--------------+-------------------------------------------+-------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| Class                                                                                                  | 解释                                      |
++========================================================================================================+===========================================+
+| :doc:`Phalcon\\Validation\\Validator\\Alnum <../api/Phalcon_Validation_Validator_Alnum>`               | Validates that a field's value is only alphanumeric character(s). |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Alpha <../api/Phalcon_Validation_Validator_Alpha>`               | Validates that a field's value is only alphabetic character(s).   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Date <../api/Phalcon_Validation_Validator_Date>`                 | Validates that a field's value is a valid date.                   |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Digit <../api/Phalcon_Validation_Validator_Digit>`               | Validates that a field's value is only numeric character(s).      |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\File <../api/Phalcon_Validation_Validator_File>`                 | Validates that a field's value is a correct file.                 |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Uniqueness <../api/Phalcon_Validation_Validator_Uniqueness>`     | Validates that a field's value is unique in the related model.    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Numericality <../api/Phalcon_Validation_Validator_Numericality>` | Validates that a field's value is a valid numeric value.          |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\PresenceOf <../api/Phalcon_Validation_Validator_PresenceOf>`     | 检测字段的值是否为非空                    |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Identical <../api/Phalcon_Validation_Validator_Identical>`       | 检测字段的值是否和指定的相同              |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Email <../api/Phalcon_Validation_Validator_Email>`               | 检测值是否为合法的email地址               |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\ExclusionIn <../api/Phalcon_Validation_Validator_ExclusionIn>`   | 检测值是否不在列举的范围内                |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\InclusionIn <../api/Phalcon_Validation_Validator_InclusionIn>`   | 检测值是否在列举的范围内                  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Regex <../api/Phalcon_Validation_Validator_Regex>`               | 检测值是否匹配正则表达式                  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\StringLength <../api/Phalcon_Validation_Validator_StringLength>` | 检测值的字符串长度                        |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Between <../api/Phalcon_Validation_Validator_Between>`           | 检测值是否位于两个值之间                  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Confirmation <../api/Phalcon_Validation_Validator_Confirmation>` | 检测两个值是否相等                        |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Url <../api/Phalcon_Validation_Validator_Url>`                   | Validates that field contains a valid URL |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Validates a credit card number            |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------+
 
 下面的例子中展示了如何创建自定义的验证器：
 
@@ -151,9 +167,8 @@ Phalcon的验证组件中内置了一些验证器：
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class IpValidator extends Validator implements ValidatorInterface
+    class IpValidator extends Validator
     {
         /**
          * 执行验证
@@ -167,13 +182,15 @@ Phalcon的验证组件中内置了一些验证器：
             $value = $validator->getValue($attribute);
 
             if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                $message = $this->getOption("message");
 
-                $message = $this->getOption('message');
                 if (!$message) {
-                    $message = 'The IP is not valid';
+                    $message = "The IP is not valid";
                 }
 
-                $validator->appendMessage(new Message($message, $attribute, 'Ip'));
+                $validator->appendMessage(
+                    new Message($message, $attribute, "Ip")
+                );
 
                 return false;
             }
@@ -188,7 +205,7 @@ Phalcon的验证组件中内置了一些验证器：
 -------------------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。
 
-每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用:code:`getMessages()`方法取得。
 每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：
 
 .. code-block:: php
@@ -196,45 +213,16 @@ Phalcon的验证组件中内置了一些验证器：
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
-        foreach ($validation->getMessages() as $message) {
+        foreach ($messages as $message) {
             echo "Message: ", $message->getMessage(), "\n";
             echo "Field: ", $message->getField(), "\n";
             echo "Type: ", $message->getType(), "\n";
         }
     }
 
-当然这里我们也可以对getMessages()方法进行重写， 以取得我们想要的信息：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation;
-
-    class MyValidation extends Validation
-    {
-        public function initialize()
-        {
-            // ...
-        }
-
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
-
-或我们也可以传送一个message参数以覆盖验证器中默认的信息：
+我们也可以传送一个message参数以覆盖验证器中默认的信息：
 
 .. code-block:: php
 
@@ -243,24 +231,27 @@ Phalcon的验证组件中内置了一些验证器：
     use Phalcon\Validation\Validator\Email;
 
     $validation->add(
-        'email',
+        "email",
         new Email(
-            array(
-                'message' => 'The e-mail is not valid'
-            )
+            [
+                "message" => "The e-mail is not valid",
+            ]
         )
     );
 
-默认，getMessages()方法会返回在验证过程中所产生的信息。 我们可以使用filter()方法来过滤我们感兴趣的消息：
+默认，:code:`getMessages()`方法会返回在验证过程中所产生的信息。 我们可以使用:code:`filter()`方法来过滤我们感兴趣的消息：
 
 .. code-block:: php
 
     <?php
 
     $messages = $validation->validate();
+
     if (count($messages)) {
         // Filter only the messages generated for the field 'name'
-        foreach ($validation->getMessages()->filter('name') as $message) {
+        $filteredMessages = $messages->filter("name");
+
+        foreach ($filteredMessages as $message) {
             echo $message;
         }
     }
@@ -277,23 +268,33 @@ Phalcon的验证组件中内置了一些验证器：
 
     $validation = new Validation();
 
-    $validation
-        ->add('name', new PresenceOf(array(
-            'message' => 'The name is required'
-        )))
-        ->add('email', new PresenceOf(array(
-            'message' => 'The email is required'
-        )));
+    $validation->add(
+        "name",
+        new PresenceOf(
+            [
+                "message" => "The name is required",
+            ]
+        )
+    );
+
+    $validation->add(
+        "email",
+        new PresenceOf(
+            [
+                "message" => "The email is required",
+            ]
+        )
+    );
 
     // Filter any extra space
-    $validation->setFilters('name', 'trim');
-    $validation->setFilters('email', 'trim');
+    $validation->setFilters("name", "trim");
+    $validation->setFilters("email", "trim");
 
-这里我们使用 :doc:`filter <filter>`: 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。
+这里我们使用 :doc:`filter <filter>` 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。
 
 验证事件（Validation Events）
 -----------------------------
-当在类中执行验证时， 我们可以在beforeValidation或afterValidation方法（事件）中执行额外的检查，过滤，清理等工作。 如果beforeValidation方法返回了false
+当在类中执行验证时， 我们可以在:code:`beforeValidation()`或:code:`afterValidation()`方法（事件）中执行额外的检查，过滤，清理等工作。 如果:code:`beforeValidation()`方法返回了false
 则验证会被中止：
 
 .. code-block:: php
@@ -319,8 +320,10 @@ Phalcon的验证组件中内置了一些验证器：
          */
         public function beforeValidation($data, $entity, $messages)
         {
-            if ($this->request->getHttpHost() != 'admin.mydomain.com') {
-                $messages->appendMessage(new Message('Only users can log on in the administration domain'));
+            if ($this->request->getHttpHost() !== "admin.mydomain.com") {
+                $messages->appendMessage(
+                    new Message("Only users can log on in the administration domain")
+                );
 
                 return false;
             }
@@ -355,19 +358,35 @@ Phalcon的验证组件中内置了一些验证器：
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new PresenceOf(array(
-            'message'      => 'The telephone is required',
-            'cancelOnFail' => true
-        )))
-        ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )))
-        ->add('telephone', new StringLength(array(
-            'messageMinimum' => 'The telephone is too short',
-            'min'            => 2
-        )));
+    $validation->add(
+        "telephone",
+        new PresenceOf(
+            [
+                "message"      => "The telephone is required",
+                "cancelOnFail" => true,
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message" => "The telephone is required",
+                "pattern" => "/\+44 [0-9]+/",
+            ]
+        )
+    );
+
+    $validation->add(
+        "telephone",
+        new StringLength(
+            [
+                "messageMinimum" => "The telephone is too short",
+                "min"            => 2,
+            ]
+        )
+    );
 
 第一个验证器中 cancelOnFail 参数设置为 true 则表示如果此验证器验证失败则验证链中接下的验证不会被执行。
 
@@ -380,9 +399,8 @@ Phalcon的验证组件中内置了一些验证器：
     use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
 
-    class MyValidator extends Validator implements ValidatorInterface
+    class MyValidator extends Validator
     {
         /**
          * 执行验证
@@ -394,8 +412,8 @@ Phalcon的验证组件中内置了一些验证器：
         public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
-            if ($attribute == 'name') {
-                $validator->setOption('cancelOnFail', true);
+            if ($attribute === "name") {
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...
@@ -415,9 +433,51 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
 
     $validation = new Validation();
 
-    $validation
-        ->add('telephone', new Regex(array(
-            'message'    => 'The telephone is required',
-            'pattern'    => '/\+44 [0-9]+/',
-            'allowEmpty' => true
-        )));
+    $validation->add(
+        "telephone",
+        new Regex(
+            [
+                "message"    => "The telephone is required",
+                "pattern"    => "/\+44 [0-9]+/",
+                "allowEmpty" => true,
+            ]
+        )
+    );
+
+Recursive Validation
+--------------------
+You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+
+    class CompanyValidation extends Validation
+    {
+        /**
+         * @var PhoneValidation
+         */
+        protected $phoneValidation;
+
+
+
+        public function initialize()
+        {
+            $this->phoneValidation = new PhoneValidation();
+        }
+
+
+
+        public function afterValidation($data, $entity, $messages)
+        {
+            $phoneValidationMessages = $this->phoneValidation->validate(
+                $data["phone"]
+            );
+
+            $messages->appendMessages(
+                $phoneValidationMessages
+            );
+        }
+    }

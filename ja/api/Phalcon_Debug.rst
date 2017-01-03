@@ -12,31 +12,31 @@ Provides debug capabilities to Phalcon applications
 Methods
 -------
 
-public  **setUri** (*unknown* $uri)
+public  **setUri** (*mixed* $uri)
 
 Change the base URI for static resources
 
 
 
-public  **setShowBackTrace** (*unknown* $showBackTrace)
+public  **setShowBackTrace** (*mixed* $showBackTrace)
 
 Sets if files the exception's backtrace must be showed
 
 
 
-public  **setShowFiles** (*unknown* $showFiles)
+public  **setShowFiles** (*mixed* $showFiles)
 
 Set if files part of the backtrace must be shown in the output
 
 
 
-public  **setShowFileFragment** (*unknown* $showFileFragment)
+public  **setShowFileFragment** (*mixed* $showFileFragment)
 
 Sets if files must be completely opened and showed in the output or just the fragment related to the exception
 
 
 
-public  **listen** ([*unknown* $exceptions], [*unknown* $lowSeverity])
+public  **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
 Listen for uncaught exceptions and unsilent notices or warnings
 
@@ -60,7 +60,7 @@ Halts the request showing a backtrace
 
 
 
-public  **debugVar** (*unknown* $varz, [*unknown* $key])
+public  **debugVar** (*mixed* $varz, [*mixed* $key])
 
 Adds a variable to the debug output
 
@@ -72,19 +72,19 @@ Clears are variables added previously
 
 
 
-protected  **_escapeString** (*unknown* $value)
+protected  **_escapeString** (*mixed* $value)
 
 Escapes a string with htmlentities
 
 
 
-protected  **_getArrayDump** (*array* $argument, [*unknown* $n])
+protected  **_getArrayDump** (*array* $argument, [*mixed* $n])
 
 Produces a recursive representation of an array
 
 
 
-protected  **_getVarDump** (*unknown* $variable)
+protected  **_getVarDump** (*mixed* $variable)
 
 Produces an string representation of a variable
 
@@ -114,19 +114,19 @@ Returns the javascript sources
 
 
 
-final protected  **showTraceItem** (*unknown* $n, *array* $trace)
+final protected  **showTraceItem** (*mixed* $n, *array* $trace)
 
 Shows a backtrace item
 
 
 
-public  **onUncaughtLowSeverity** (*unknown* $severity, *unknown* $message, *unknown* $file, *unknown* $line)
+public  **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $file, *mixed* $line, *mixed* $context)
 
 Throws an exception when a notice or warning is raised
 
 
 
-public  **onUncaughtException** (*Exception* $exception)
+public  **onUncaughtException** (`Exception <http://php.net/manual/en/class.exception.php>`_ $exception)
 
 Handles uncaught exceptions
 

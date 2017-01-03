@@ -52,19 +52,19 @@ Constants
 Methods
 -------
 
-public  **add** (*unknown* $name, *unknown* $handler)
+public  **add** (*mixed* $name, *mixed* $handler)
 
 Adds a user-defined filter
 
 
 
-public  **sanitize** (*unknown* $value, *unknown* $filters, [*unknown* $noRecursive])
+public  **sanitize** (*mixed* $value, *mixed* $filters, [*mixed* $noRecursive])
 
 Sanitizes a value with a specified single or set of filters
 
 
 
-protected  **_sanitize** (*unknown* $value, *unknown* $filter)
+protected  **_sanitize** (*mixed* $value, *mixed* $filter)
 
 Internal sanitize wrapper to filter_var
 

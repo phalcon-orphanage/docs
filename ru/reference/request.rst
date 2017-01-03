@@ -39,13 +39,13 @@ PHP автоматически заполняет суперглобальные
 
     use Phalcon\Filter;
 
-    // Ручная фильтрация
     $filter = new Filter();
-    $email  = $filter->sanitize($_POST["user_email"], "email");
+
+    // Ручная фильтрация
+    $email = $filter->sanitize($_POST["user_email"], "email");
 
     // Ручная фильтрация значения
-    $filter = new Filter();
-    $email  = $filter->sanitize($request->getPost("user_email"), "email");
+    $email = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Автоматическая фильтрация значения
     $email = $request->getPost("user_email", "email");
@@ -79,11 +79,9 @@ PHP автоматически заполняет суперглобальные
         {
             // Проверка что данные пришли методом POST
             if ($this->request->isPost()) {
-
                 // Получение POST данных
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
-
             }
         }
     }
@@ -105,15 +103,17 @@ PHP автоматически заполняет суперглобальные
         {
             // Проверяем что файл загрузился
             if ($this->request->hasFiles()) {
+                $files = $this->request->getUploadedFiles();
 
                 // Выводим имя и размер файла
-                foreach ($this->request->getUploadedFiles() as $file) {
-
+                foreach ($files as $file) {
                     // Выводим детали
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
                     // Перемещаем в приложение
-                    $file->moveTo('files/' . $file->getName());
+                    $file->moveTo(
+                        "files/" . $file->getName()
+                    );
                 }
             }
         }
@@ -135,7 +135,8 @@ PHP автоматически заполняет суперглобальные
 
     // Получение заголовка Http-X-Requested-With
     $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
-    if ($requestedWith == "XMLHttpRequest") {
+
+    if ($requestedWith === "XMLHttpRequest") {
         echo "Запрос отправлен через Ajax";
     }
 
@@ -145,28 +146,27 @@ PHP автоматически заполняет суперглобальные
     }
 
     // Проверка уровня запроса
-    if ($request->isSecureRequest()) {
+    if ($request->isSecure()) {
         echo "The request was made using a secure layer";
     }
 
     // Получение IP сервера, например 192.168.0.100
-    $ipAddress   = $request->getServerAddress();
+    $ipAddress = $request->getServerAddress();
 
     // Получение IP клиента, например 201.245.53.51
-    $ipAddress   = $request->getClientAddress();
+    $ipAddress = $request->getClientAddress();
 
     // Получение строки User Agent (HTTP_USER_AGENT)
-    $userAgent   = $request->getUserAgent();
+    $userAgent = $request->getUserAgent();
 
     // Получение оптимального типа контента для браузера, например text/xml
     $contentType = $request->getAcceptableContent();
 
     // Получение лучшей кодировки для браузера, например utf-8
-    $charset     = $request->getBestCharset();
+    $charset = $request->getBestCharset();
 
     // Получение лучшего языка на который настроен браузер, например en-us
-    $language    = $request->getBestLanguage();
-
+    $language = $request->getBestLanguage();
 
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
 .. _Cross Site Scripting (XSS): http://en.wikipedia.org/wiki/Cross-site_scripting

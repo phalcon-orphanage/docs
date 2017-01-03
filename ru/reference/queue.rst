@@ -13,6 +13,12 @@
 была вдохновлена Memcache_. Этот клиент прост, легок, и полностью специализируется на работе
 очереди.
 
+.. attention::
+
+    Для работы с некоторыми результатами выполнения методов очередей необходима установка модуля Yaml. Пожалуйста,
+    обратитесь к http://php.net/manual/book.yaml.php для получения подробной информации. Для PHP < 7 подходит Yaml 1.3.0.
+    Для PHP >= 7 вам нужно воспользоваться Yaml >= 2.0.0.
+
 Добавление заданий в очередь
 ----------------------------
 После подключения к Beanstalk, вы можете добавлять столько заданий сколько необходимо. Разработчик
@@ -22,19 +28,21 @@
 
     <?php
 
+    use Phalcon\Queue\Beanstalk;
+
     // Подключение к очереди
-    $queue = new Phalcon\Queue\Beanstalk(
-        array(
-            'host' => '192.168.0.21',
-            'port' => '11300'
-        )
+    $queue = new Beanstalk(
+        [
+            "host" => "192.168.0.21",
+            "port" => "11300",
+        ]
     );
 
     // Добавляем задание
     $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Доступные варианты подключения:
@@ -58,14 +66,14 @@
 
     // Добавление задания с опциями в очереди
     $queue->put(
-        array(
-            'processVideo' => 4871
-        ),
-        array(
-            'priority' => 250,
-            'delay'    => 10,
-            'ttr'      => 3600
-        )
+        [
+            "processVideo" => 4871,
+        ],
+        [
+            "priority" => 250,
+            "delay"    => 10,
+            "ttr"      => 3600,
+        ]
     );
 
 Доступны следующие опции:
@@ -87,9 +95,9 @@
     <?php
 
     $jobId = $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
 Прием сообщений
@@ -102,7 +110,6 @@
     <?php
 
     while (($job = $queue->peekReady()) !== false) {
-
         $message = $job->getBody();
 
         var_dump($message);
@@ -117,8 +124,7 @@
 
     <?php
 
-    while (($job = $queue->reserve())) {
-
+    while (($job = $queue->reserve()) !== false) {
         $message = $job->getBody();
 
         var_dump($message);

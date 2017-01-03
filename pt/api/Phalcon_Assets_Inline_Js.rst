@@ -20,39 +20,39 @@ public  **__construct** (*string* $content, [*boolean* $filter], [*array* $attri
 
 
 
-public  **getType** () inherited from Phalcon\\Assets\\Inline
+public  **getType** () inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 ...
 
 
-public  **getContent** () inherited from Phalcon\\Assets\\Inline
+public  **getContent** () inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 ...
 
 
-public  **getFilter** () inherited from Phalcon\\Assets\\Inline
+public  **getFilter** () inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 ...
 
 
-public  **getAttributes** () inherited from Phalcon\\Assets\\Inline
+public  **getAttributes** () inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 ...
 
 
-public  **setType** (*unknown* $type) inherited from Phalcon\\Assets\\Inline
+public  **setType** (*mixed* $type) inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 Sets the inline's type
 
 
 
-public  **setFilter** (*unknown* $filter) inherited from Phalcon\\Assets\\Inline
+public  **setFilter** (*mixed* $filter) inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 Sets if the resource must be filtered or not
 
 
 
-public  **setAttributes** (*array* $attributes) inherited from Phalcon\\Assets\\Inline
+public  **setAttributes** (*array* $attributes) inherited from :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`
 
 Sets extra HTML attributes
 

@@ -1,72 +1,81 @@
-Queueing
-========
+File d'attente
+==============
 
-Activities like processing videos, resizing images or sending emails aren't suitable to be executed
-online or in real time because it may slow the loading time of pages and severely impact the user experience.
+Les activités comme la manipulation de vidéos, le recadrage d'image ou l'envoi de mails, ne sont pas adaptés pour être réalisées
+en ligne ou bien en temps réel à cause du temps de chargement des pages qui peut avoir un impact sérieux sur l'expérience utilisateur.
 
-The best solution here is to implement background jobs. The web application puts jobs
-into a queue and which will be processed separately.
+La meilleure des solutions serait de mettre en place des tâches de fond. Les applications ajouteraient les tâches à une file et ces tâches seraient traitées indépendamment.
 
-While you can find more sophisticated PHP extensions to address queueing in your applications like RabbitMQ_;
-Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
-It’s simple, lightweight, and completely specialized for job queueing.
+Bien que vous puissiez trouver des extensions PHP plus sophistiquées pour la mise en file d'attente comme RabbitMQ_;
+Phalcon fournit un client pour Beanstalk_, un backend de mise en file d'attente de jobs inspiré de Memcache_.
+Il est simple, léger, et parfaitement spécialisé dans la mise en file d'attente.
 
-Putting Jobs into the Queue
----------------------------
-After connecting to Beanstalk you can insert as many jobs as required. You can define the message
-structure according to the needs of the application:
+
+.. attention::
+
+    Certains retour de méthodes de la queue nécessite la présence du module Yaml. Veuillez 
+    vous référer à http://php.net/manual/book.yaml.php pour plus d'information. Pour PHP < 7, Yaml 1.3.0
+    est acceptable. Pour PHP >= 7 vous devez utiliser Yaml >= 2.0.0.
+    
+Pousser les tâches dans la queue
+--------------------------------
+Après vous être connecté à Beanstalk vous pouvez insérer autant de jobs que nécessaire. Vous pouvez définir la structure
+du message en fonction des besoins de l'application:
 
 .. code-block:: php
 
     <?php
 
-    // Connect to the queue
-    $queue = new Phalcon\Queue\Beanstalk(
-        array(
-            'host' => '192.168.0.21',
-            'port' => '11300'
-        )
+    use Phalcon\Queue\Beanstalk;
+
+    // Connexion à la queue
+    $queue = new Beanstalk(
+        [
+            "host" => "192.168.0.21",
+            "port" => "11300",
+        ]
     );
 
-    // Insert the job in the queue
+    // Ajoute le job dans la queue
     $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
-Available connection options are:
+
+Les options de connexion disponibles sont:
 
 +----------+----------------------------------------------------------+-----------+
 | Option   | Description                                              | Default   |
 +==========+==========================================================+===========+
-| host     | IP where the beanstalk server is located                 | 127.0.0.1 |
+| host     | IP du serveur beanstalk                                  | 127.0.0.1 |
 +----------+----------------------------------------------------------+-----------+
-| port     | Connection port                                          | 11300     |
+| port     | Port de connexion                                        | 11300     |
 +----------+----------------------------------------------------------+-----------+
 
-In the above example we stored a message which will allow a background job to process a video.
-The message is stored in the queue immediately and does not have a certain time to live.
+Dans l'exemple précédent nous stockions un message qui permettait à une tâche de fond de traiter une vidéo.
+Le message est enfilé immédiatement dans la queue et a une durée de vie limitée.
 
-Additional options as time to run, priority and delay can be passed as second parameter:
+Pour les options supplémentaire comme le temps d'exécution, la priorité ou le délai sont passés en second paramètre:
 
 .. code-block:: php
 
     <?php
 
-    // Insert the job in the queue with options
+    // Enfile le job dans la queue avec des options
     $queue->put(
-        array(
-            'processVideo' => 4871
-        ),
-        array(
-            'priority' => 250,
-            'delay'    => 10,
-            'ttr'      => 3600
-        )
+        [
+            "processVideo" => 4871,
+        ],
+        [
+            "priority" => 250,
+            "delay"    => 10,
+            "ttr"      => 3600,
+        ]
     );
 
-The following options are available:
+Les options suivantes sont possibles:
 
 +----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Option   | Description                                                                                                                                                                                 |
@@ -78,29 +87,28 @@ The following options are available:
 | ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
 +----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Every job put into the queue returns a "job id" which you can use to track the status of the job:
+Chaque job enfilé dans la queue retourne un identifiant de job qui permet de suivre l'état du job:
 
 .. code-block:: php
 
     <?php
 
     $jobId = $queue->put(
-        array(
-            'processVideo' => 4871
-        )
+        [
+            "processVideo" => 4871,
+        ]
     );
 
-Retrieving Messages
--------------------
-Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete
-the task:
+Récupération de messages
+------------------------
+Une fois le job placé dans la queue, ces messages sont consommés par un agent en arrière plan qui devrait avoir le temps de réaliser 
+la tâche:
 
 .. code-block:: php
 
     <?php
 
     while (($job = $queue->peekReady()) !== false) {
-
         $message = $job->getBody();
 
         var_dump($message);
@@ -108,15 +116,14 @@ the task:
         $job->delete();
     }
 
-Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented,
-jobs must be "reserved" so other workers don't re-process them while other workers have them reserved:
+Les jobs doivent être défilés de la queue pour éviter d'être traités deux fois. Si plusieurs agents en tâche de fond sont mis en œuvre,
+il faut réserver les jobs pour éviter que les autres agents ne les traitent aussi.
 
 .. code-block:: php
 
     <?php
 
-    while (($job = $queue->reserve())) {
-
+    while (($job = $queue->reserve()) !== false) {
         $message = $job->getBody();
 
         var_dump($message);
@@ -124,8 +131,8 @@ jobs must be "reserved" so other workers don't re-process them while other worke
         $job->delete();
     }
 
-Our client implement a basic set of the features provided by Beanstalkd but enough to allow you to build applications
-implementing queues.
+Notre client exploite un jeu élémentaire de fonctionnalités fournis par Beanstalkd mais suffisamment pour vous permettre 
+de construire des applications qui mettent en œuvre des queues.
 
 .. _RabbitMQ: http://pecl.php.net/package/amqp
 .. _Beanstalk: http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/
