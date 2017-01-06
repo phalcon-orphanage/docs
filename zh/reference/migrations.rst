@@ -170,6 +170,8 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "notNull"       | Column can store null values?                                                                                                              | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "default"       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         | Yes      |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "first"         | Column must be placed at first position in the column order                                                                                | Yes      |

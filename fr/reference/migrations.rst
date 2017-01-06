@@ -170,6 +170,8 @@ Defining Columns
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "notNull"       | Column can store null values?                                                                                                              | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "default"       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         | Oui      |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Oui      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "first"         | Column must be placed at first position in the column order                                                                                | Oui      |

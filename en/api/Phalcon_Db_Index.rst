@@ -43,4 +43,3 @@ public static  **__set_state** (*array* $data)
 Restore a Phalcon\\Db\\Index object from export
 
 
-
