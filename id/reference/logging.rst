@@ -81,6 +81,14 @@ Contoh berikut menunjukkan bagaimana menciptakan sebuah log dan menambah pesan k
         "This is a message"
     );
 
+    // You can also pass context parameters like this
+    $logger->log(
+        "This is a {message}", 
+        [ 
+            'message' => 'parameter' 
+        ]
+    );
+
 Log yang dihasilkan seperti berikut:
 
 .. code-block:: none
@@ -95,6 +103,7 @@ Log yang dihasilkan seperti berikut:
     [Tue, 28 Jul 15 22:09:02 -0500][ALERT] This is an alert message
     [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error message
     [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 
 Anda dapat mengatur level log menggunakan metode :code:`setLogLevel()`. Metode ini membutuhkan Logger constant dan hanya akan menyimpan pesan log yang sama atau lebih penting dari nilai konstan:
 
