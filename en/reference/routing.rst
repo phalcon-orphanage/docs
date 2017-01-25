@@ -666,7 +666,7 @@ The following are examples of custom routes:
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4,
+            "title"      => 3,
         ]
     );
 
