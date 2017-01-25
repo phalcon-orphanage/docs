@@ -72,7 +72,7 @@ Zarządzanie zależnościami
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Bardzo ważnym pojęciem, które musi być zrozumiane podczas pracy z Phalconem jest jego :doc:`dependency injection container <di>`. Może to brzmieć bardzo skomplikowanie, ale jest bardzo proste i praktyczne.
 
-Kontener Zależności jest zbiorem, który globalnie przechowuje wszelkie serwisy, z których nasza aplikacja korzysta w danych funkcjach. Za każdym razem gdy Framework wymaga któregoś komponentu, zapyta Kontener o uzgodnioną nazwę danego serwisu. Od kiedy Phalcon jest wysoce rozłączonym Frameworkiem, Kontener Zależności pełni rolę kleju, który łączy różne komponenty osiągając ich synergię.  
+Kontener Zależności jest zbiorem, który globalnie przechowuje wszelkie serwisy, z których korzysta nasza aplikacja. Za każdym razem gdy Framework wymaga któregoś komponentu, zapyta Kontener o uzgodnioną nazwę danego serwisu. Od kiedy Phalcon jest wysoce rozłączonym Frameworkiem, Kontener Zależności pełni rolę kleju, który łączy różne komponenty osiągając ich synergię.  
 
 .. code-block:: php
 
