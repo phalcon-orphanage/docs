@@ -14,6 +14,8 @@ Models allow you to implement events that will be thrown while performing an ins
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | validation               | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
