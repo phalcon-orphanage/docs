@@ -111,7 +111,7 @@ Serwisy mogą być zarejestrowane na kilka sposobów, ale na potrzeby naszego Tu
         }
     );
 
-Następnie rejestrujemy podstawowy URI, aby wszystkie URI wygenerowane przez Phalcone'a uwzględniały folder "tutorial", który ustawiliśmy wcześniej.
+Następnie rejestrujemy podstawowy URI, aby wszystkie URI wygenerowane przez Phalcona uwzględniały folder "tutorial", który ustawiliśmy wcześniej.
 Okaże się to ważne dopiero później w tym tutorialu, gdy będziemy używać klasę :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`
 do generowania hiperłącza.
 
@@ -253,7 +253,7 @@ Klasy kontrolera muszą zawierać sufiks "Controller" oraz akcje kontrolera wyma
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
 
-Gratulacje, latasz z Phalcone'em!
+Gratulacje, latasz z Phalconem!
 
 Sending output to a view
 ------------------------
