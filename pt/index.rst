@@ -13,7 +13,7 @@ Phalcon não é somente um framework de alta performance, nosso objetivo é faze
 Tabela do Conteúdo
 ------------------
 
-Installation
+Instalação
 ^^^^^^^^^^^^
 
 .. toctree::
@@ -28,7 +28,7 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
+Tutoriais
 ^^^^^^^^^
 
 .. toctree::
@@ -43,7 +43,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+Componentes
 ^^^^^^^^^^
 
 .. toctree::
@@ -102,7 +102,7 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
+Explicações detalhadas / Leituras Futuras
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
@@ -128,7 +128,7 @@ Legal
 
    reference/license
 
-Previous Versions
+Versões anteriores
 -----------------
 
 * `2.0.0 <https://docs.phalconphp.com/pt/2.0.0/>`
