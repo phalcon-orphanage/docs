@@ -1,5 +1,5 @@
 Formulários
-=====
+===========
 
 :code:`Phalcon\Forms` é um componente que ajuda você na criação e manutenção de formulários em aplicações web.
 
@@ -109,7 +109,7 @@ Os atributos HTML também podem ser definidos na definição do elemento:
     );
 
 Inicializando formulários
-------------------
+-------------------------
 Como visto anteriormente, os formulários podem ser inicializados fora da classe do formulário, adicionando elementos a ele. Você pode reutilizar o código ou organizar suas classes de formulário implementando o formulário em um arquivo separado:
 
 .. code-block:: php
@@ -249,7 +249,7 @@ Na instanciação do formulário você deve usar:
     );
 
 Validação
-----------
+---------
 Os formulários Phalcon são integrados com o componente :doc:`validation <validation>` para oferecer validação instantânea. Built-in or
 custom validators could be set to each element:
 
@@ -368,7 +368,7 @@ Um formulário também é capaz de filtrar dados antes de ser validado. Você po
     Saiba mais sobre a filtragem em Phalcon :doc:`Filter documentation <filter>`.
 
 Formulários + Entidades
-----------------
+-----------------------
 Uma entidade como uma instância modelo/collection/plain ou apenas uma classe PHP simples pode ser vinculada ao formulário para definir valores padrão nos elementos do formulário ou atribuir facilmente os valores do formulário à entidade:
 
 .. code-block:: php
@@ -482,7 +482,7 @@ As entidades podem implementar getters, que têm uma precedência maior do que p
     }
 
 Elementos do formulário
--------------
+-----------------------
 Phalcon fornece um conjunto de elementos embutidos para usar em seus formulários, todos esses elementos estão localizados em :doc:`Phalcon\\Forms\\Element <../api/Phalcon_Forms_Element>` namespace:
 
 +----------------------------------------------------------------------------------+-------------------------------------------------------------+
@@ -510,7 +510,7 @@ Phalcon fornece um conjunto de elementos embutidos para usar em seus formulário
 +----------------------------------------------------------------------------------+-------------------------------------------------------------+
 
 Chamadas de Retorno do Evento
----------------
+-----------------------------
 Sempre que os formulários são implementados como classes, os retornos de chamada :code:`beforeValidation()` e :code:`afterValidation()` podem ser implementados na classe do formulário para realizar pré-validações e pós-validações:
 
 .. code-block:: html+php
@@ -528,7 +528,7 @@ Sempre que os formulários são implementados como classes, os retornos de chama
     }
 
 Renderização de Formulários
----------------
+---------------------------
 Você pode processar o formulário com flexibilidade total, o exemplo a seguir mostra como processar cada elemento usando um procedimento padrão:
 
 .. code-block:: html+php
@@ -626,7 +626,7 @@ Na view:
     echo $element->renderDecorated("telephone");
 
 Criando Elementos de Formulário
-----------------------
+-------------------------------
 Além dos elementos de formulário fornecidos pelo Phalcon, você pode criar seus próprios elementos personalizados:
 
 .. code-block:: php
@@ -646,7 +646,7 @@ Além dos elementos de formulário fornecidos pelo Phalcon, você pode criar seu
     }
 
 Gerenciador de formulários
--------------
+--------------------------
 Este componente fornece um gerenciador de formulários que pode ser usado pelo desenvolvedor para registrar formulários e acessá-los através do localizador de serviços:
 
 .. code-block:: php
@@ -681,5 +681,5 @@ Usando o nome exclusivo, os formulários podem ser acessados em qualquer parte d
     echo $loginForm->render();
 
 Recursos externos
-------------------
+-----------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, é um aplicativo de exemplo que usa o construtor de formulários para criar e gerenciar formulários, [`Github <https://github.com/phalcon/vokuro>`_]
