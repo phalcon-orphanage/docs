@@ -14,7 +14,7 @@ Tabela do Conteúdo
 ------------------
 
 Instalação
-^^^^^^^^^^^^
+^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -44,7 +44,7 @@ Tutoriais
    reference/samples
 
 Componentes
-^^^^^^^^^^
+^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -103,7 +103,7 @@ Componentes
    reference/unit-testing
 
 Explicações detalhadas / Leituras Futuras
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
