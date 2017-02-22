@@ -129,7 +129,7 @@ Legal
    reference/license
 
 Versões anteriores
------------------
+------------------
 
 * `2.0.0 <https://docs.phalconphp.com/pt/2.0.0/>`
 
