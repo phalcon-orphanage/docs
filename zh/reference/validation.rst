@@ -421,7 +421,7 @@ Phalcon的验证组件中内置了一些验证器：
     }
 
 避免验证空值（Avoid validate empty values）
----------------------------
+------------------------------------------
 我们可以向所有内建的验证器传入选项 'allowEmpty' 以避免在传入的值为空时执行验证。
 
 .. code-block:: php
@@ -445,7 +445,7 @@ Phalcon的验证组件中内置了一些验证器：
     );
 
 递归验证（Recursive Validation）
---------------------
+-------------------------------
 我们可以通过 :code:`afterValidation()` 方法，在一个验证器中运行另一个验证器。在本例中，CompanyValidation 验证实例会同时执行 PhoneValidation 验证器。
 
 .. code-block:: php
