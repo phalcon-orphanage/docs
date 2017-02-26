@@ -9,7 +9,7 @@ If you don't already have phpunit installed, you can do it by using the followin
 
 .. code-block:: bash
 
-    composer require phpunit/phpunit
+    composer require phpunit/phpunit:^5.0
 
 
 or by manually adding it to composer.json:
@@ -18,7 +18,7 @@ or by manually adding it to composer.json:
 
     {
         "require-dev": {
-            "phpunit/phpunit": "~4.5"
+            "phpunit/phpunit": "^5.0"
         }
     }
 
@@ -94,7 +94,7 @@ or by manually adding it to composer.json:
 
     {
         "require": {
-            "phalcon/incubator": "dev-master"
+            "phalcon/incubator": "^3.0"
         }
     }
 
