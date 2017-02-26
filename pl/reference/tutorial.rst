@@ -255,15 +255,15 @@ Klasy kontrolera muszą zawierać sufiks "Controller" oraz akcje kontrolera wyma
 
 Gratulacje, latasz z Phalconem!
 
-Sending output to a view
+Wysyłanie danych wyjściowych do widoku
 ------------------------
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
+Wysyłanie danych wyjściowych na ekran z kontrolera jest czasami konieczne, ale nie pożądane jako, że większość purystów ze społeczności MVC tego nie zatwierdzi. Wszystko co jest odpowiedzialne za wyświetlanie danych na ekranie musi być przekazane do widoku. Phalcon będzie szukał widoku o takiej samej nazwie jak wykonywana akcja w katalogu nazwanym tak, jak ostatni wykonywany kontroler. W naszym przypadku (app/views/index/index.phtml):
 
 .. code-block:: php
 
     <?php echo "<h1>Hello!</h1>";
 
-Our controller (app/controllers/IndexController.php) now has an empty action definition:
+Nasz kontroler (app/controllers/IndexController.php) obecnie posiada pustą definicję akcji:
 
 .. code-block:: php
 
@@ -279,11 +279,11 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
         }
     }
 
-The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>`.
+Ekran przeglądarki powinien pozostać niezmieniony. Statyczny komponent widoku :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` jest automatycznie stwarzany, gdy wykonywanie akcji zostaje zakończone. Dowiedz się więcej o :doc:`używaniu widoków tutaj <views>`.
 
-Designing a sign up form
+Projektowanie rejestracyjnego formularza
 ------------------------
-Now we will change the index.phtml view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+Teraz zmienimy plik widoku index.phtml, aby dodać odsyłacz do nowego kontrolera o nazwie "signup". Celem jest umożliwienie użytkownikom rejestracji w naszej aplikacji.
 
 .. code-block:: php
 
@@ -300,7 +300,7 @@ Now we will change the index.phtml view file, to add a link to a new controller 
         "Sign Up Here!"
     );
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+Wygenerowany kod HTML wyświetla HTML-owy znacznik odsyłacza ("a"), który wskazuje na nowy kontroler:
 
 .. code-block:: html
 
@@ -308,16 +308,14 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 
     <a href="/tutorial/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows
-us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI
-we use :code:`$this->tag` to access it.
+Do wygenerowania wspomnianego znacznika użyliśmy klasy :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Jest to klasa użyteczności, która pozwala nam budować znaczniki HTML zgodnie z zachowaniem framework'owej konwencji. Jako, że ta klasa jest również serwisem zarejestrowanym w Kontenerze Zależności, aby mieć do niej dostęp używamy :code:`$this->tag`.
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+Bardziej szczegółowy artykuł odnoszący się do generowania znaczników HTML można :doc:`znaleźć tutaj <tags>`.
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
 
-Here is the Signup controller (app/controllers/SignupController.php):
+Tak wygląda kontroler Signup (app/controllers/SignupController.php):
 
 .. code-block:: php
 
@@ -333,7 +331,7 @@ Here is the Signup controller (app/controllers/SignupController.php):
         }
     }
 
-The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
+Pusta akcja index umożliwia czyste przejście do widoku z definicją formularza (app/views/signup/index.phtml):
 
 .. code-block:: html+php
 
@@ -367,21 +365,20 @@ The empty index action gives the clean pass to a view with the form definition (
 
     </form>
 
-Viewing the form in your browser will show something like this:
+Przeglądanie formularza w Twojej przeglądarce wyświetli coś takiego:
 
 .. figure:: ../_static/img/tutorial-3.png
     :align: center
 
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` dostarcza również użytecznych metod do budowania elementów formularza.
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in
-the application.
+Metoda :code:`Phalcon\Tag::form()` odbiera tylko jeden parametr od razu - relatywny URI do kontrolera/akcji w aplikacji.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
+Klikając przycisk "Send", zaobserwujesz wyjątek pochodzący z framework'a, wskazujący, że brakuje nam akcji "register" w kontrolerze "signup". Nasz plik public/index.php wyrzuca taki wyjątek:
 
     Exception: Action "register" was not found on handler "signup"
 
-Implementing that method will remove the exception:
+Implementacja takiej metody usunie wspomniany wyjątek:
 
 .. code-block:: php
 
@@ -402,7 +399,7 @@ Implementing that method will remove the exception:
         }
     }
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Jeżeli klikniesz przycisk "Send" ponownie, zobaczysz pustą stronę. Wprowadzone przez użytkownika imię oraz e-mail powinny być zapisane w bazie danych. Zgodnie z wytycznymi MVC, interakcje bazodanowe muszą odbywać się poprzez modele po to, by zagwarantować przejrzysty obiektowo-zorientowany kod.
 
 Creating a Model
 ----------------
