@@ -9,7 +9,7 @@ PHPUnitをまだインストールしていないなら、以下のcomposerコ�
 
 .. code-block:: bash
 
-  composer require phpunit/phpunit
+  composer require phpunit/phpunit:^5.0
 
 
 あるいは、composer.json に以下の記述を追加します:
@@ -18,7 +18,7 @@ PHPUnitをまだインストールしていないなら、以下のcomposerコ�
 
     {
         "require-dev": {
-            "phpunit/phpunit": "~4.5"
+            "phpunit/phpunit": "^5.0"
         }
     }
 
@@ -93,7 +93,7 @@ incubatorライブラリを使うには以下のcomposerコマンドで追加し
 
     {
         "require": {
-            "phalcon/incubator": "dev-master"
+            "phalcon/incubator": "^3.0"
         }
     }
 

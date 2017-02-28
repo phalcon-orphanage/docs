@@ -9,7 +9,7 @@
 
 .. code-block:: bash
 
-    composer require phpunit/phpunit
+    composer require phpunit/phpunit:^5.0
 
 
 или вручную добавить его в composer.json:
@@ -18,7 +18,7 @@
 
     {
         "require-dev": {
-            "phpunit/phpunit": "~4.5"
+            "phpunit/phpunit": "^5.0"
         }
     }
 
@@ -94,7 +94,7 @@
 
     {
         "require": {
-            "phalcon/incubator": "dev-master"
+            "phalcon/incubator": "^3.0"
         }
     }
 
