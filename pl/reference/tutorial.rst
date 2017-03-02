@@ -257,7 +257,7 @@ Gratulacje, latasz z Phalconem!
 
 Wysyłanie danych wyjściowych do widoku
 ------------------------
-Wysyłanie danych wyjściowych na ekran z kontrolera jest czasami konieczne, ale nie pożądane jako, że większość purystów ze społeczności MVC tego nie zatwierdzi. Wszystko co jest odpowiedzialne za wyświetlanie danych na ekranie musi być przekazane do widoku. Phalcon będzie szukał widoku o takiej samej nazwie jak wykonywana akcja w katalogu nazwanym tak, jak ostatni wykonywany kontroler. W naszym przypadku (app/views/index/index.phtml):
+Wysyłanie danych wyjściowych na ekran z kontrolera jest czasami konieczne, ale niepożądane jako, że większość purystów ze społeczności MVC tego nie zatwierdzi. Wszystko co jest odpowiedzialne za wyświetlanie danych na ekranie musi być przekazane do widoku. Phalcon będzie szukał widoku o takiej samej nazwie jak wykonywana akcja w katalogu nazwanym tak, jak ostatni wykonywany kontroler. W naszym przypadku (app/views/index/index.phtml):
 
 .. code-block:: php
 
@@ -308,7 +308,7 @@ Wygenerowany kod HTML wyświetla HTML-owy znacznik odsyłacza ("a"), który wska
 
     <a href="/tutorial/signup">Sign Up Here!</a>
 
-Do wygenerowania wspomnianego znacznika użyliśmy klasy :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Jest to klasa użyteczności, która pozwala nam budować znaczniki HTML zgodnie z zachowaniem framework'owej konwencji. Jako, że ta klasa jest również serwisem zarejestrowanym w Kontenerze Zależności, aby mieć do niej dostęp używamy :code:`$this->tag`.
+Do wygenerowania wspomnianego znacznika użyliśmy klasy :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`. Jest to klasa użytkowa, która pozwala nam budować znaczniki HTML zgodnie z zachowaniem framework'owej konwencji. Jako, że ta klasa jest również serwisem zarejestrowanym w Kontenerze Zależności, aby mieć do niej dostęp używamy :code:`$this->tag`.
 
 Bardziej szczegółowy artykuł odnoszący się do generowania znaczników HTML można :doc:`znaleźć tutaj <tags>`.
 
