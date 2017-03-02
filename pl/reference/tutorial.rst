@@ -279,7 +279,7 @@ Nasz kontroler (app/controllers/IndexController.php) obecnie posiada pustą defi
         }
     }
 
-Ekran przeglądarki powinien pozostać niezmieniony. Statyczny komponent widoku :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` jest automatycznie stwarzany, gdy wykonywanie akcji zostaje zakończone. Dowiedz się więcej o :doc:`używaniu widoków tutaj <views>`.
+Ekran przeglądarki powinien pozostać niezmieniony. Statyczny komponent widoku :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` jest automatycznie tworzony, gdy wykonywanie akcji zostaje zakończone. Dowiedz się więcej o :doc:`używaniu widoków tutaj <views>`.
 
 Projektowanie rejestracyjnego formularza
 ------------------------
