@@ -1,0 +1,22 @@
+- [General](/en/[[version]]/introduction)
+    - [Release Notes](/en/[[version]]/release-notes)
+    - Upgrade
+    - Sponsors
+- Contributions
+    - [Overview](/en/[[version]]/contributions)
+    - Pull Requests
+    - [NFR](/en/[[version]]/new-feature-request)
+    - Backtrace Generation
+    - Reproducible Tests
+    - Testing guide
+- Getting Started
+    - Installation
+        - Linux
+        - MacOS
+        - Windows
+- Environments
+    - Phalcon Compose
+    - Vagrant
+- Development Tools
+    - Command Line
+    - Web Interface
