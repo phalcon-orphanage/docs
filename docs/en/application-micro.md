@@ -1,5 +1,6 @@
 # Micro Applications
 
+<div class='article-contents' markdown='1'>
 - [Creating a Micro Application](#creating-micro-application)
 - [Routing](#routing)
 - [Handlers](#handlers)
@@ -18,6 +19,7 @@
     - [patch](#verb-patch) 
     - [post](#verb-post) 
     - [put](#verb-put) 
+</div>
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code. 
 

@@ -132,6 +132,7 @@
 
     {{- assets.outputJs('footer_js') -}}
 
-    <script type="text/javascript">prettyPrint();</script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    {#<script type="text/javascript">prettyPrint();</script>#}
 </body>
 </html>

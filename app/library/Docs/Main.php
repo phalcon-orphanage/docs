@@ -27,14 +27,6 @@ use ParsedownExtra as PParseDown;
 use Docs\Locale as DocsLocale;
 use Docs\Utils as DocsUtils;
 
-use Ciconia\Ciconia;
-use Ciconia\Extension\Gfm\FencedCodeBlockExtension;
-use Ciconia\Extension\Gfm\TaskListExtension;
-use Ciconia\Extension\Gfm\InlineStyleExtension;
-use Ciconia\Extension\Gfm\WhiteSpaceExtension;
-use Ciconia\Extension\Gfm\TableExtension;
-use Ciconia\Extension\Gfm\UrlAutoLinkExtension;
-
 /**
  * Main
  *
@@ -285,28 +277,24 @@ class Main
             ->addCss('https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css', false)
             ->addCss('https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', false)
             ->addCss('https://fonts.googleapis.com/css?family=Open+Sans:700,400', false)
-            ->addCss($utils->getAsset('css/prettify-dark.css'))
+            ->addCss('//cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
+//            ->addCss($utils->getAsset('css/prettify-dark.css'))
             //->addCss($utils->getAsset('css/phalcon.css'))
             ->addCss($utils->getAsset('css/style.css'));
+
 
         $assets
             ->collection('footer_js')
             ->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false)
             ->addJs('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false)
-            ->addJs($utils->getAsset('js/prettify.js'));
+            ->addJs('//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false);
+  //          ->addJs($utils->getAsset('js/prettify.js'));
         $diContainer->setShared('assets', $assets);
 
         /**
          * Markdown
          */
-//        $parsedown = new PParseDown();
-        $parsedown = new Ciconia();
-        $parsedown->addExtension(new FencedCodeBlockExtension());
-        $parsedown->addExtension(new TaskListExtension());
-        $parsedown->addExtension(new InlineStyleExtension());
-        $parsedown->addExtension(new WhiteSpaceExtension());
-        $parsedown->addExtension(new TableExtension());
-        $parsedown->addExtension(new UrlAutoLinkExtension());
+        $parsedown = new PParseDown();
         $diContainer->setShared('parsedown', $parsedown);
 
         return $application->handle();

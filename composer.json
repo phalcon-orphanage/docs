@@ -30,7 +30,6 @@
   },
   "autoload": {
     "psr-4": {
-      "Ciconia\\": "app/library/Ciconia",
       "Docs\\": "app/library/Docs",
       "Docs\\Controllers\\": "app/controllers/"
     }
@@ -40,7 +39,9 @@
     "vlucas/phpdotenv": "^2.4",
     "dariuszp/cli-progress-bar": "^1.0",
     "symfony/options-resolver": "^2.8.1",
-    "symfony/console":"^2.8.1"
+    "symfony/console":"^2.8.1",
+    "erusev/parsedown": "^1.6",
+    "erusev/parsedown-extra": "^0.7.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8",
