@@ -114,14 +114,16 @@
     <section>
         <div id="wrapper" class="container">
             <div id="content" class="row">
-                <div class="col-md-3 sidebar">
+                <div class="col-md-2 sidebar">
                     {{ sidebar }}
                 </div>
 
-                <div class="col-md-9 content-body">
-                    <div id="articles">
-                        {{ content }}
-                    </div>
+                <div class="col-md-7" id="articles">
+                    {{ article }}
+                </div>
+
+                <div class="col-md-2 sidebar">
+                    {{ menu }}
                 </div>
             </div>
         </div>

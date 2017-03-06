@@ -41,19 +41,6 @@ h3, h4 {
     border-bottom: 1px solid #c0c0c0;
 }
 
-#wrapper #content .post .title {
-    font-size: 28px;
-    color: #000;
-    display: block;
-    line-height: 32px;
-    margin: 0 0 10px;
-}
-
-#wrapper #content .post .copy {
-    color: #000;
-    font-size: 16px;
-}
-
 #wrapper #articles {
     padding: 10px 20px 15px;
     text-align: left;
@@ -101,13 +88,13 @@ h3, h4 {
     padding-bottom: 5px;
     border-bottom: 1px solid #000000;
 }
-#wrapper li {
-    line-height: 24px;
-}
+/*#wrapper li {*/
+    /*line-height: 24px;*/
+/*}*/
 
-#wrapper ul {
-    margin-top: 15px;
-}
+/*#wrapper ul {*/
+    /*margin-top: 15px;*/
+/*}*/
 
 #wrapper p {
     color: #333;

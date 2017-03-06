@@ -1,38 +1,4 @@
 # Micro Applications
-
-- [Creating a Micro Application](#creating-micro-application)
-- [Routing](#routing)
-    - [Rewrite Rules](#rewrite-rules)
-    - [Handlers](#handlers)
-        - [Definitions](#handlers-definitions)
-            - [Anonymous Function](#handlers-anonymous-function)
-            - [Function](#handlers-function)
-            - [Static Method](#handlers-static-method)
-            - [Method in an Object](#handlers-object-method)
-            - [Controllers](#handlers-controllers)
-        - [Lazy Loading](#handlers-controllers-lazy-loading)
-            - [Use case](#handlers-controllers-lazy-loading-use-case)
-        - [Not Found (404)](#handlers-not-found)
-    - [Methods - Verbs](#verbs)
-        - [delete](#verb-delete) 
-        - [get](#verb-get) 
-        - [head](#verb-head) 
-        - [map](#verb-map) 
-        - [options](#verb-options) 
-        - [patch](#verb-patch) 
-        - [post](#verb-post) 
-        - [put](#verb-put) 
-    - [Parameters](#parameters)
-    - [Redirections](#redirections)
-    - [URLs for Routes](#urls-for-routes)
-- [Dependency Injector](#dependency-injector)
-- [Responses](#responses)
-- [Events](#events)
-- [Middleware](#middleware)
-- [Models](#models)
-- [Views](#views)
-- [Error Handling](#error-handling)
-
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code. 
 
 Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store),  APIs, prototypes etc.

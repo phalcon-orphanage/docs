@@ -43,7 +43,8 @@ class DocsController extends PhController
             [
                 'language' => $language,
                 'sidebar'  => $this->getDocument($language, 'sidebar'),
-                'content'  => $this->getDocument($language, $page),
+                'article'  => $this->getDocument($language, $page),
+                'menu'     => $this->getDocument($language, $page . '-menu'),
             ]
         );
         $this->response->setContent($contents);
@@ -72,15 +73,18 @@ class DocsController extends PhController
                 $fileName
             );
 
-            $data = file_get_contents($fileName);
-            $data = str_replace(
-                '[[version]]',
-                $this->getVersion(),
-                $data
-            );
-            $data = $this->parsedown->text($data);
-//            $data = $this->parsedown->render($data);
-            $this->cacheData->save($key, $data);
+            if (file_exists($fileName)) {
+                $data = file_get_contents($fileName);
+                $data = str_replace(
+                    '[[version]]',
+                    $this->getVersion(),
+                    $data
+                );
+                $data = $this->parsedown->text($data);
+                $this->cacheData->save($key, $data);
+            } else {
+                $data = '';
+            }
 
             return $data;
         }
