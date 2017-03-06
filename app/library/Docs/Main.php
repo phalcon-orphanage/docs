@@ -278,9 +278,7 @@ class Main
             ->addCss('https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', false)
             ->addCss('https://fonts.googleapis.com/css?family=Open+Sans:700,400', false)
             ->addCss('//cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
-//            ->addCss($utils->getAsset('css/prettify-dark.css'))
-            //->addCss($utils->getAsset('css/phalcon.css'))
-            ->addCss($utils->getAsset('css/style.css'));
+            ->addCss($utils->getAsset('css/docs.css'));
 
 
         $assets
@@ -288,7 +286,6 @@ class Main
             ->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false)
             ->addJs('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false)
             ->addJs('//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false);
-  //          ->addJs($utils->getAsset('js/prettify.js'));
         $diContainer->setShared('assets', $assets);
 
         /**
