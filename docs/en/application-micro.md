@@ -2,22 +2,22 @@
 
 - [Creating a Micro Application](#creating-micro-application)
 - [Routing](#routing)
-- [Handlers](#handlers)
-    - [Anonymous Function](#handlers-anonymous-function)
-    - [Function](#handlers-function)
-    - [Static Method](#handlers-static-method)
-    - [Method in an Object](#handlers-object-method)
-    - [Controllers](#handlers-controllers)
-        - [Lazy Loading](#handlers-controllers-lazy-loading)
-- [Methods - Verbs](#verbs)
-    - [delete](#verb-delete) 
-    - [get](#verb-get) 
-    - [head](#verb-head) 
-    - [map](#verb-map) 
-    - [options](#verb-options) 
-    - [patch](#verb-patch) 
-    - [post](#verb-post) 
-    - [put](#verb-put) 
+    - [Handlers](#handlers)
+        - [Anonymous Function](#handlers-anonymous-function)
+        - [Function](#handlers-function)
+        - [Static Method](#handlers-static-method)
+        - [Method in an Object](#handlers-object-method)
+        - [Controllers](#handlers-controllers)
+            - [Lazy Loading](#handlers-controllers-lazy-loading)
+    - [Methods - Verbs](#verbs)
+        - [delete](#verb-delete) 
+        - [get](#verb-get) 
+        - [head](#verb-head) 
+        - [map](#verb-map) 
+        - [options](#verb-options) 
+        - [patch](#verb-patch) 
+        - [post](#verb-post) 
+        - [put](#verb-put) 
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code. 
 
@@ -54,17 +54,26 @@ $app = new Micro();
 
 <a name='routing'></a>
 ## Routing
-After your `Phalcon\Mvc\Micro` application has been created, you will need to define some routes so that your application can understand user requests and send relevant responses back.
+Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+ 
+```text
+   Application -> (method/verb) -> (route url/regex, callable PHP function)
+```
 
-All the routing for our application is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
 
 **Routes must always start with `/`.** 
 
-You can also use a HTTP method constraint, that will allow each request to be matched with its corresponding method. This is also known as the `verb` of the request.
+Routes can be defined as follows:
 
-This is how we define a route matching a `GET` request:
+- Using the `Phalcon\Mvc\Micro` application object:
 
 ```php
+use Phalcon\Mvc\Micro;
+
+$app = new Micro();
+
+// Matches a GET request
 $app->get(
     '/say/hello/{name}',
     function ($name) {
@@ -73,9 +82,27 @@ $app->get(
 );
 ```
 
-Other HTTP methods can be used when defining routes just as easily. In the above example, the `get` method indicates `GET` HTTP method (or verb). 
+or creating a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
 
-The `get` method indicates that the associated HTTP method is GET. The route `/say/hello/{name}` accepts the parameter `{$name}`. It is passed directly to the route handler, which in this case is an anonymous function.
+```php
+use Phalcon\Mvc\Micro;
+use Phalcon\Mvc\Router;
+
+$router = new Router();
+
+$router->add(
+    '/say/hello/{name}',
+    function ($name) {
+        echo "<h1>Hello! {$name}</h1>";
+    }
+);
+
+
+$app = new Micro();
+$app->setService('router', $router, true);
+```
+
+As you can see the first method is much easier but the second method also has its advantages. It all depends on the design and needs of your application.
 
 <a name='handlers'></a>
 ## Handlers
@@ -153,7 +180,7 @@ $app->get(
 
 <a name='handlers-controllers'></a>
 ### Controllers
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications utilize the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
  
 In medium applications you can organize handlers in controllers.  
 
