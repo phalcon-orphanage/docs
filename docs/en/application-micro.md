@@ -2,13 +2,17 @@
 
 - [Creating a Micro Application](#creating-micro-application)
 - [Routing](#routing)
+    - [Rewrite Rules](#rewrite-rules)
     - [Handlers](#handlers)
-        - [Anonymous Function](#handlers-anonymous-function)
-        - [Function](#handlers-function)
-        - [Static Method](#handlers-static-method)
-        - [Method in an Object](#handlers-object-method)
-        - [Controllers](#handlers-controllers)
-            - [Lazy Loading](#handlers-controllers-lazy-loading)
+        - [Definitions](#handlers-definitions)
+            - [Anonymous Function](#handlers-anonymous-function)
+            - [Function](#handlers-function)
+            - [Static Method](#handlers-static-method)
+            - [Method in an Object](#handlers-object-method)
+            - [Controllers](#handlers-controllers)
+        - [Lazy Loading](#handlers-controllers-lazy-loading)
+            - [Use case](#handlers-controllers-lazy-loading-use-case)
+        - [Not Found (404)](#handlers-not-found)
     - [Methods - Verbs](#verbs)
         - [delete](#verb-delete) 
         - [get](#verb-get) 
@@ -18,6 +22,16 @@
         - [patch](#verb-patch) 
         - [post](#verb-post) 
         - [put](#verb-put) 
+    - [Parameters](#parameters)
+    - [Redirections](#redirections)
+    - [URLs for Routes](#urls-for-routes)
+- [Dependency Injector](#dependency-injector)
+- [Responses](#responses)
+- [Events](#events)
+- [Middleware](#middleware)
+- [Models](#models)
+- [Views](#views)
+- [Error Handling](#error-handling)
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code. 
 
@@ -31,9 +45,9 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-    '/say/welcome/{name}',
+    '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Welcome {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 
@@ -64,9 +78,8 @@ Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border f
 
 **Routes must always start with `/`.** 
 
-Routes can be defined as follows:
-
-- Using the `Phalcon\Mvc\Micro` application object:
+### Application object
+Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -75,14 +88,15 @@ $app = new Micro();
 
 // Matches a GET request
 $app->get(
-    '/say/hello/{name}',
+    '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Hello! {$name}</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 ```
 
-or creating a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+### Router object
+You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -90,10 +104,9 @@ use Phalcon\Mvc\Router;
 
 $router = new Router();
 
-$router->add(
-    '/say/hello/{name}',
-    function ($name) {
-        echo "<h1>Hello! {$name}</h1>";
+$router->addGet(
+    '/orders/display/{name}',
+    'OrdersClass::display';
     }
 );
 
@@ -102,84 +115,115 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-As you can see the first method is much easier but the second method also has its advantages. It all depends on the design and needs of your application.
+Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+
+Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+
+<a name='rewrite-rules'></a>
+## Rewrite Rules
+TODO
+The following rules can be used together with Apache to rewrite the URis:
+
+.. code-block:: apacheconf
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+    </IfModule>
 
 <a name='handlers'></a>
 ## Handlers
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
+<a name='handlers-definitions'></a>
+### Definitions
+Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='handlers-anonymous-function'></a>
-### Anonymous Function
+#### Anonymous Function
 Finally we can use an anonymous function (as seen above) to handle the request  
 
 ```php
 $app->get(
-    '/say/hello/{name}',
+    '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Hello! {$name}</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
+    }
+);
+```
+
+Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+
+```php
+$app->get(
+    '/orders/display/{name}',
+    function ($name) use ($app( {
+        $context = "<h1>This is order: {$name}!</h1>";
+        $app->response->setContext($context);
+        $app->response->send();
     }
 );
 ```
 
 <a name='handlers-function'></a>
-### Function
+#### Function
 We can define a function as our handler and attach it to a specific route.  
 
 ```php
 // With a function
-function say_hello($name) {
-    echo "<h1>Hello! {$name}</h1>";
+function order_display($name) {
+    echo "<h1>This is order: {$name}!</h1>";
 }
 
 $app->get(
-    '/say/hello/{name}',
-    'say_hello'
+    '/orders/display/{name}',
+    'orders_display'
 );
 ```
 
 <a name='handlers-static-method'></a>
-### Static Method
+#### Static Method
 We can also use a static method as our handler as follows:  
 
 ```php
-class SomeClass
+class OrdersClass
 {
-    public static function someSayMethod($name) {
-        echo "<h1>Hello! {$name}</h1>";
+    public static function display($name) {
+        echo "<h1>This is order: {$name}!</h1>";
     }
 }
 
 $app->get(
-    '/say/hello/{name}',
-    'SomeClass::someSayMethod'
+    '/orders/display/{name}',
+    'OrdersClass::display'
 );
 ```
 
 <a name='handlers-object-method'></a>
-### Method in an Object
+#### Method in an Object
 We can also use a method in an object:  
 
 ```php
-class SomeClass
+class OrdersClass
 {
-    public function someSayMethod($name) {
-        echo "<h1>Hello! {$name}</h1>";
+    public function display($name) {
+        echo "<h1>This is order: {$name}!</h1>";
     }
 }
 
-$myClass = new SomeClass();
+$orders = new OrdersClass();
 $app->get(
-    '/say/hello/{name}',
+    '/orders/display/{name}',
     [
-        $myClass,
-        'someSayMethod',
+        $orders,
+        'display',
     ]
 );
 ```
 
 <a name='handlers-controllers'></a>
-### Controllers
+#### Controllers
 With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
  
 In medium applications you can organize handlers in controllers.  
@@ -192,50 +236,217 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 $posts = new MicroCollection();
 
 // Set the main handler. ie. a controller instance
-$posts->setHandler(new PostsController());
+$posts->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
-$posts->setPrefix('/posts');
+$posts->setPrefix('/orders');
 
-// Use the method 'index' in PostsController
+// Use the method 'index' in OrdersController
 $posts->get('/', 'index');
 
-// Use the method 'show' in PostsController
-$posts->get('/show/{slug}', 'show');
+// Use the method 'show' in OrdersController
+$posts->get('/display/{slug}', 'show');
 
 $app->mount($posts);
 ```
-The `PostsController` might look like this:
+The `OrdersController` might look like this:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Controller;
 
-class PostsController extends Controller
+class OrdersController extends Controller
 {
     public function index()
     {
         // ...
     }
 
-    public function show($slug)
+    public function show($name)
     {
         // ...
     }
 }
 ```
 
+Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class OrdersController extends Controller
+{
+    public function index()
+    {
+        // ...
+    }
+
+    public function show($name)
+    {
+        $context = "<h1>This is order: {$name}!</h1>";
+        $this->response->setContext($context);
+        
+        return $this->response;
+    }
+}
+```
+
+
 <a name='handlers-controllers-lazy-loading'></a>
-#### Lazy Loading 
+### Lazy Loading 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched. 
 
 Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
 
 ```php
-$posts->setHandler('PostsController', true);
-$posts->setHandler('Blog\Controllers\PostsController', true);
+$posts->setHandler('OrdersController', true);
+$posts->setHandler('Blog\Controllers\OrdersController', true);
 ```
+
+<a name='handlers-controllers-lazy-loading-use-case'></a>
+#### Use case
+We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a coltroller with relevant actions.
+ 
+The controllers that we use as handlers are as follows:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class UsersController extends Controller
+{
+    public function get($id)
+    {
+        // ...
+    }
+    
+    public function add($payload)
+    {
+        // ...
+    }
+}
+
+class OrdersController extends Controller
+{
+    public function get($id)
+    {
+        // ...
+    }
+    
+    public function add($payload)
+    {
+        // ...
+    }
+}
+
+class ProductsController extends Controller
+{
+    public function get($id)
+    {
+        // ...
+    }
+    
+    public function add($payload)
+    {
+        // ...
+    }
+}
+```
+
+We register the handlers:
+
+```php
+<?php
+
+use Phalcon\Mvc\Micro\Collection as MicroCollection;
+
+// Users handler
+$users = new MicroCollection();
+$users->setHandler(new UsersController());
+$users->setPrefix('/users');
+$users->get('/get/{id}', 'get');
+$users->get('/add/{payload}', 'add');
+$app->mount($users);
+
+// Orders handler
+$orders = new MicroCollection();
+$orders->setHandler(new OrdersController());
+$orders->setPrefix('/users');
+$orders->get('/get/{id}', 'get');
+$orders->get('/add/{payload}', 'add');
+$app->mount($orders);
+
+// Products handler
+$products = new MicroCollection();
+$products->setHandler(new ProductsController());
+$products->setPrefix('/products');
+$products->get('/get/{id}', 'get');
+$products->get('/add/{payload}', 'add');
+$app->mount($products);
+```
+
+This implementation loads each handler in turn and mounts it in our application object. The issue with this approach is that each request will result to only one endpoint and therefore one class method executed. The remaining methods/handlers will just remain in memory without being used.
+
+Using lazy loading we reduce the number of objects loaded in memory and as a result our application uses less memory.
+
+The above implementation changes if we want to use lazy loading as follows:
+```php
+<?php
+
+use Phalcon\Mvc\Micro\Collection as MicroCollection;
+
+// Users handler
+$users = new MicroCollection();
+$users->setHandler(new UsersController(), true);
+$users->setPrefix('/users');
+$users->get('/get/{id}', 'get');
+$users->get('/add/{payload}', 'add');
+$app->mount($users);
+
+// Orders handler
+$orders = new MicroCollection();
+$orders->setHandler(new OrdersController(), true);
+$orders->setPrefix('/users');
+$orders->get('/get/{id}', 'get');
+$orders->get('/add/{payload}', 'add');
+$app->mount($orders);
+
+// Products handler
+$products = new MicroCollection();
+$products->setHandler(new ProductsController(), true);
+$products->setPrefix('/products');
+$products->get('/get/{id}', 'get');
+$products->get('/add/{payload}', 'add');
+$app->mount($products);
+```
+
+Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
+
+<a name='handlers-not-found'></a>
+### Not found (404)
+TODO
+Not-Found Handler
+-----------------
+When a user tries to access a route that is not defined, the micro application will try to execute the 'Not-Found' handler.
+An example of that behavior is below:
+
+.. code-block:: php
+
+    <?php
+
+    $app->notFound(
+        function () use ($app) {
+            $app->response->setStatusCode(404, 'Not Found');
+
+            $app->response->sendHeaders();
+
+            echo 'This is crazy, but this page was not found!';
+        }
+    );
 
 <a name='verbs'></a>
 ## Methods - Verbs
@@ -336,27 +547,9 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
     );
 ```
 
- 
-
-
-
-
-To access the HTTP method data :code:`$app` needs to be passed into the closure:
-
-.. code-block:: php
-
-    <?php
-
-    // Matches if the HTTP method is POST
-    $app->post(
-        '/api/products/add',
-        function () use ($app) {
-            echo $app->request->getPost('productID');
-        }
-    );
-
-Routes with Parameters
-^^^^^^^^^^^^^^^^^^^^^^
+<a name='parameters'></a>
+## Parameters
+TODO
 Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
 formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
 
@@ -373,37 +566,142 @@ formatting is also available using regular expressions to ensure consistency of 
         }
     );
 
-Starting Route
-^^^^^^^^^^^^^^
-Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
-This scenario is coded as follows:
+<a name='redirections'></a>
+## Redirections
+TODO
+Redirections could be performed to forward the execution flow to another route:
 
 .. code-block:: php
 
     <?php
 
-    // This is the start route
-    $app->get(
-        '/',
-        function () {
-            echo '<h1>Welcome!</h1>';
+    // This route makes a redirection to another route
+    $app->post('/old/welcome',
+        function () use ($app) {
+            $app->response->redirect('new/welcome');
+
+            $app->response->sendHeaders();
         }
     );
 
-Rewrite Rules
-^^^^^^^^^^^^^
-The following rules can be used together with Apache to rewrite the URis:
+    $app->post('/new/welcome',
+        function () use ($app) {
+            echo 'This is the new Welcome';
+        }
+    );
 
-.. code-block:: apacheconf
+<a name='urls-for-routes'></a>
+## URLs for Routes
+TODO
+:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
+by this way the 'url' service can produce the corresponding URL:
 
-    <IfModule mod_rewrite.c>
-        RewriteEngine On
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-    </IfModule>
+.. code-block:: php
 
-Working with Responses
-----------------------
+    <?php
+
+    // Set a route with the name 'show-post'
+    $app->get(
+        '/blog/{year}/{title}',
+        function ($year, $title) use ($app) {
+            // ... Show the post here
+        }
+    )->setName('show-post');
+
+    // Produce a URL somewhere
+    $app->get(
+        '/',
+        function () use ($app) {
+            echo '<a href='', $app->url->get(
+                [
+                    'for'   => 'show-post',
+                    'title' => 'php-is-a-great-framework',
+                    'year'  => 2015
+                ]
+            ), ''>Show the post</a>';
+        }
+    );
+
+
+<a name='dependency-injector'></a>
+# Dependency Injector
+TODO
+In the micro application, a :doc:`Phalcon\\Di\\FactoryDefault <di>` services container is created implicitly; additionally you
+can create outside the application a container to manipulate its services:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Di\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
+
+    $di = new FactoryDefault();
+
+    $di->set(
+        'config',
+        function () {
+            return new IniConfig('config.ini');
+        }
+    );
+
+    $app = new Micro();
+
+    $app->setDI($di);
+
+    $app->get(
+        '/',
+        function () use ($app) {
+            // Read a setting from the config
+            echo $app->config->app_name;
+        }
+    );
+
+    $app->post(
+        '/contact',
+        function () use ($app) {
+            $app->flash->success('Yes!, the contact was made!');
+        }
+    );
+
+The array-syntax is allowed to easily set/get services in the internal services container:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+
+    $app = new Micro();
+
+    // Setup the database service
+    $app['db'] = function () {
+        return new MysqlAdapter(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'test_db'
+            ]
+        );
+    };
+
+    $app->get(
+        '/blog',
+        function () use ($app) {
+            $news = $app['db']->query('SELECT * FROM news');
+
+            foreach ($news as $new) {
+                echo $new->title;
+            }
+        }
+    );
+
+<a name='responses'></a>
+# Responses
+TODO
 You are free to produce any kind of response in a handler: directly make an output, use a template engine, include a view,
 return a json, etc.:
 
@@ -483,186 +781,39 @@ Or create a response object and return it from the handler:
             return $response;
         }
     );
-
-Making redirections
+    
+Returning Responses
 -------------------
-Redirections could be performed to forward the execution flow to another route:
-
-.. code-block:: php
-
-    <?php
-
-    // This route makes a redirection to another route
-    $app->post('/old/welcome',
-        function () use ($app) {
-            $app->response->redirect('new/welcome');
-
-            $app->response->sendHeaders();
-        }
-    );
-
-    $app->post('/new/welcome',
-        function () use ($app) {
-            echo 'This is the new Welcome';
-        }
-    );
-
-Generating URLs for Routes
---------------------------
-:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
-by this way the 'url' service can produce the corresponding URL:
-
-.. code-block:: php
-
-    <?php
-
-    // Set a route with the name 'show-post'
-    $app->get(
-        '/blog/{year}/{title}',
-        function ($year, $title) use ($app) {
-            // ... Show the post here
-        }
-    )->setName('show-post');
-
-    // Produce a URL somewhere
-    $app->get(
-        '/',
-        function () use ($app) {
-            echo '<a href='', $app->url->get(
-                [
-                    'for'   => 'show-post',
-                    'title' => 'php-is-a-great-framework',
-                    'year'  => 2015
-                ]
-            ), ''>Show the post</a>';
-        }
-    );
-
-Interacting with the Dependency Injector
-----------------------------------------
-In the micro application, a :doc:`Phalcon\\Di\\FactoryDefault <di>` services container is created implicitly; additionally you
-can create outside the application a container to manipulate its services:
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+When responses are returned by handlers they are automatically sent by the application.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Micro;
-    use Phalcon\Di\FactoryDefault;
-    use Phalcon\Config\Adapter\Ini as IniConfig;
-
-    $di = new FactoryDefault();
-
-    $di->set(
-        'config',
-        function () {
-            return new IniConfig('config.ini');
-        }
-    );
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
-    $app->setDI($di);
-
+    // Return a response
     $app->get(
-        '/',
-        function () use ($app) {
-            // Read a setting from the config
-            echo $app->config->app_name;
-        }
-    );
-
-    $app->post(
-        '/contact',
-        function () use ($app) {
-            $app->flash->success('Yes!, the contact was made!');
-        }
-    );
-
-The array-syntax is allowed to easily set/get services in the internal services container:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Micro;
-    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
-
-    $app = new Micro();
-
-    // Setup the database service
-    $app['db'] = function () {
-        return new MysqlAdapter(
-            [
-                'host'     => 'localhost',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'test_db'
-            ]
-        );
-    };
-
-    $app->get(
-        '/blog',
-        function () use ($app) {
-            $news = $app['db']->query('SELECT * FROM news');
-
-            foreach ($news as $new) {
-                echo $new->title;
-            }
-        }
-    );
-
-Not-Found Handler
------------------
-When a user tries to access a route that is not defined, the micro application will try to execute the 'Not-Found' handler.
-An example of that behavior is below:
-
-.. code-block:: php
-
-    <?php
-
-    $app->notFound(
-        function () use ($app) {
-            $app->response->setStatusCode(404, 'Not Found');
-
-            $app->response->sendHeaders();
-
-            echo 'This is crazy, but this page was not found!';
-        }
-    );
-
-Models in Micro Applications
-----------------------------
-:doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
-
-.. code-block:: php
-
-    <?php
-
-    $loader = new \Phalcon\Loader();
-
-    $loader->registerDirs(
-        [
-            __DIR__ . '/models/'
-        ]
-    )->register();
-
-    $app = new \Phalcon\Mvc\Micro();
-
-    $app->get(
-        '/products/find',
+        '/welcome/index',
         function () {
-            $products = Products::find();
+            $response = new Response();
 
-            foreach ($products as $product) {
-                echo $product->name, '<br>';
-            }
+            $response->setStatusCode(401, 'Unauthorized');
+
+            $response->setContent('Access is not authorized');
+
+            return $response;
         }
     );
 
-    $app->handle();
 
+<a name='events'></a>
+# Events
+TODO
 Micro Application Events
 ------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
@@ -716,6 +867,10 @@ In the following example, we explain how to control the application security usi
     // Bind the events manager to the app
     $app->setEventsManager($eventsManager);
 
+
+<a name='middleware'></a>
+# Middleware
+TODO
 Middleware events
 -----------------
 In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
@@ -839,34 +994,44 @@ The following middleware events are available:
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 
-Returning Responses
--------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
-When responses are returned by handlers they are automatically sent by the application.
+<a name='models'></a>
+# Models
+TODO
+Models in Micro Applications
+----------------------------
+:doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Micro;
-    use Phalcon\Http\Response;
+    $loader = new \Phalcon\Loader();
 
-    $app = new Micro();
+    $loader->registerDirs(
+        [
+            __DIR__ . '/models/'
+        ]
+    )->register();
 
-    // Return a response
+    $app = new \Phalcon\Mvc\Micro();
+
     $app->get(
-        '/welcome/index',
+        '/products/find',
         function () {
-            $response = new Response();
+            $products = Products::find();
 
-            $response->setStatusCode(401, 'Unauthorized');
-
-            $response->setContent('Access is not authorized');
-
-            return $response;
+            foreach ($products as $product) {
+                echo $product->name, '<br>';
+            }
         }
     );
 
+    $app->handle();
+
+
+<a name='views'></a>
+# Views
+TODO
 Rendering Views
 ---------------
 :doc:`Phalcon\\Mvc\\View\\Simple <views>` can be used to render views, the following example shows how to do that:
@@ -933,8 +1098,10 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
         }
     );
 
-Error Handling
---------------
+
+<a name='error-handling'></a>
+# Error Handling
+TODO
 A proper response can be generated if an exception is raised in a micro handler:
 
 .. code-block:: php
@@ -957,6 +1124,29 @@ A proper response can be generated if an exception is raised in a micro handler:
     );
 
 If the handler returns 'false' the exception is stopped.
+
+
+
+Starting Route
+^^^^^^^^^^^^^^
+Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
+This scenario is coded as follows:
+
+.. code-block:: php
+
+    <?php
+
+    // This is the start route
+    $app->get(
+        '/',
+        function () {
+            echo '<h1>Welcome!</h1>';
+        }
+    );
+
+
+
+
 
 
 
