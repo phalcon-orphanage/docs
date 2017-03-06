@@ -78,7 +78,8 @@ class DocsController extends PhController
                 $this->getVersion(),
                 $data
             );
-            $data = $this->parsedown->text($data);
+            //$data = $this->parsedown->text($data);
+            $data = $this->parsedown->render($data);
             $this->cacheData->save($key, $data);
 
             return $data;

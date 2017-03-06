@@ -111,19 +111,27 @@
         </nav>
     </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 sidebar">
-                {{ sidebar }}
-            </div>
-            <div class="col-md-9">
-                {{ content }}
+    <section>
+        <div id="wrapper" class="container">
+            <div id="content" class="row">
+                <div class="col-md-3 sidebar">
+                    {{ sidebar }}
+                </div>
+
+                <div class="col-md-9 content-body">
+                    <div id="articles">
+                        {{ content }}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-{%- include "include/footer.volt" -%}
 
-{{- assets.outputJs('footer_js') -}}
+    {%- include "include/footer.volt" -%}
+
+    {{- assets.outputJs('footer_js') -}}
+
+    <script type="text/javascript">prettyPrint();</script>
 </body>
 </html>

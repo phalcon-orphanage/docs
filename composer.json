@@ -30,18 +30,17 @@
   },
   "autoload": {
     "psr-4": {
-      "Docs\\": "app/library/",
-      "Docs\\Cli\\Tasks\\": "app/tasks/",
-      "Docs\\Controllers\\": "app/controllers/",
-      "Docs\\Middleware\\": "app/library/Middleware/"
+      "Ciconia\\": "app/library/Ciconia",
+      "Docs\\": "app/library/Docs",
+      "Docs\\Controllers\\": "app/controllers/"
     }
   },
   "require": {
     "php": ">= 5.6",
     "vlucas/phpdotenv": "^2.4",
     "dariuszp/cli-progress-bar": "^1.0",
-    "erusev/parsedown": "^1.6",
-    "erusev/parsedown-extra": "^0.7.1"
+    "symfony/options-resolver": "^2.8.1",
+    "symfony/console":"^2.8.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8",

@@ -20,3 +20,10 @@
 - Development Tools
     - Command Line
     - Web Interface
+- Core
+    - Application
+        - Full
+        - [Micro](/en/[[version]]/application-micro)
+        - Cli
+    - DI Container
+    

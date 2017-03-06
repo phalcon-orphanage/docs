@@ -7,7 +7,7 @@ if (true !== defined('APP_PATH')) {
 }
 
 try {
-    require_once APP_PATH . '/app/library/Main.php';
+    require_once APP_PATH . '/app/library/Docs/Main.php';
 
     /**
      * We don't want a global scope variable for this
