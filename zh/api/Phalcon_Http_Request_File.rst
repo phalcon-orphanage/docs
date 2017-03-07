@@ -90,6 +90,12 @@ Gets the real mime type of the upload file using finfo
 
 
 
+public  **getExtension** ()
+
+返回上传文件的扩展名
+
+
+
 public  **isUploadedFile** ()
 
 Checks whether the file has been uploaded via Post.

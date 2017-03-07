@@ -89,6 +89,10 @@ public  **getRealType** ()
 Gets the real mime type of the upload file using finfo
 
 
+public  **getExtension** ()
+
+Returns the file extension name of the uploaded file.
+
 
 public  **isUploadedFile** ()
 
