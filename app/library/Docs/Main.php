@@ -274,18 +274,27 @@ class Main
         $assets->collection("header_js");
         $assets
             ->collection('header_css')
-            ->addCss('https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css', false)
-            ->addCss('https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', false)
-            ->addCss('https://fonts.googleapis.com/css?family=Open+Sans:700,400', false)
+            ->addCss('http://fonts.googleapis.com/css?family=Ubuntu:regular,bold,italic', false)
             ->addCss('//cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
+            ->addCss($utils->getAsset('css/toolkit.css'))
+            ->addCss($utils->getAsset('css/application.css'))
             ->addCss($utils->getAsset('css/docs.css'));
-
 
         $assets
             ->collection('footer_js')
-            ->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', false)
-            ->addJs('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false)
-            ->addJs('//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false);
+            ->addJs(
+                'https://code.jquery.com/jquery-3.1.1.min.js',
+                false,
+                null,
+                [
+                    'integrity'   => 'sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=',
+                    'crossorigin' => 'anonymous',
+                ]
+            )
+            ->addJs('//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false)
+            ->addJs($utils->getAsset('js/chart.css'))
+            ->addJs($utils->getAsset('js/toolkit.css'))
+            ->addJs($utils->getAsset('js/application.css'));
         $diContainer->setShared('assets', $assets);
 
         /**
