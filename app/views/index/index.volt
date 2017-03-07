@@ -122,11 +122,8 @@
         <div class="col-md-2 sidebar">
             {{ sidebar }}
         </div>
-        <div class="col-md-9" id="articles">
+        <div class="col-md-10" id="articles">
             {{ article }}
-        </div>
-        <div class="col-md-1">
-            {{ menu }}
         </div>
     </div>
 </div>
