@@ -19,8 +19,8 @@
 </head>
 
 <body class="with-top-navbar">
-<nav class="navbar navbar-inverse navbar-fixed-top app-navbar">
-    <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button"
                     class="navbar-toggle collapsed"
@@ -44,8 +44,8 @@
                        role="button"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        {{ locale.translate(language, 'community') }} <span
-                                class="caret"></span>
+                        {{ locale.translate(language, 'community') }}
+                        <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -117,7 +117,7 @@
         </div>
     </div>
 </nav>
-<div class="container p-t-md">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-2 sidebar">
             {{ sidebar }}

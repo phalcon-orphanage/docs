@@ -282,19 +282,11 @@ class Main
 
         $assets
             ->collection('footer_js')
-            ->addJs(
-                'https://code.jquery.com/jquery-3.1.1.min.js',
-                false,
-                null,
-                [
-                    'integrity'   => 'sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=',
-                    'crossorigin' => 'anonymous',
-                ]
-            )
             ->addJs('//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false)
-            ->addJs($utils->getAsset('js/chart.css'))
-            ->addJs($utils->getAsset('js/toolkit.css'))
-            ->addJs($utils->getAsset('js/application.css'));
+            ->addJs($utils->getAsset('js/jquery.min.js'))
+            ->addJs($utils->getAsset('js/chart.js'))
+            ->addJs($utils->getAsset('js/toolkit.js'))
+            ->addJs($utils->getAsset('js/application.js'));
         $diContainer->setShared('assets', $assets);
 
         /**
