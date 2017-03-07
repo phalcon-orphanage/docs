@@ -46,6 +46,7 @@
         - [after](#middleware-attached-events-after)
         - [finish](#middleware-attached-events-finish)
     - [Implementation](#middleware-implementation)
+    - [Setup](#middleware-setup)
     - [Events in Middleware](#middleware-events)
         - [API example](#middleware-events-api)
             - [Firewall Middleware](#middleware-events-api-firewall)

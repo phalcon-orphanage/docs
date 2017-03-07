@@ -1,22 +1,23 @@
-## Contributing to Phalcon
+# Contributing to Phalcon
 
-Phalcon is an open source project and heavily relies on voluntier efforts. We welcome contributions from everyone!. 
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!. 
 
 Please take a moment to review this document in order to make the contribution process easy and effective all.
 
 Following these guidelines, allows better communication, faster resolution of issues and moves the project forward. 
 
-### Contributions
+## Contributions
 
 Contributions to Phalcon should be made in the form of GitHub pull requests. Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected. 
 
 Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
-### Questions & Support
+## Questions & Support
 
-*We only accept bug reports, new feature requests and pull requests in GitHub*. For questions regarding the usage of the framework or support requests please visit the [official forums][forum].
+##### We only accept bug reports, new feature requests and pull requests in GitHub ##### {.alert .alert-warning} 
+For questions regarding the usage of the framework or support requests please visit the [official forums][forum].
 
-### Bug Report Checklist
+## Bug Report Checklist
 
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 
@@ -26,7 +27,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 - If you're submitting a Segmentation Fault error, we would require a backtrace. Please check [Generating a Backtrace][gb] for more information.
 
-### Pull Request Checklist
+## Pull Request Checklist
 
 - Don't submit your pull requests to the `master` branch. Branch from the required branch and,
   if needed, rebase to the proper branch before submitting your pull request.
@@ -41,17 +42,18 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-### Getting Support
+## Getting Support
 
 If you have a question about how to use Phalcon, please see the [support page][support].
 
-### Requesting Features
+## Requesting Features
 
 If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
 
-Thanks! <br />
+Thanks!
 
-Phalcon Team
+
+<3 Phalcon Team
 
 [forum]: https://phalcon.link/forum
 [srt]: https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test
@@ -59,5 +61,5 @@ Phalcon Team
 [testing]: https://github.com/phalcon/cphalcon/blob/master/tests/README.md
 [zephir]: https://zephir-lang.com/
 [support]: https://phalconphp.com/support
-[nfr]: https://github.com/phalcon/cphalcon/wiki/New-Feature-Request---NFR
-0
+[nfr]: /en/[[version]]/new-feature-request
+

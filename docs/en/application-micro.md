@@ -985,7 +985,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='middleware'></a>
 # Middleware
-Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business logic has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
+Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
 
 The presence of a `Phalcon\Events\Manager` is essential for middleware to operate, so it has to be registered in our Di container.
 
@@ -1063,6 +1063,80 @@ $app->finish(
     }
 );
 ```
+
+<a name='middleware-setup'></a>
+## Setup
+Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+
+```php
+$app->before(
+    function () use ($app) {
+        if (false === $app['session']->get('auth')) {
+            $app['flashSession']->error("The user isn't authenticated");
+
+            $app['response']->redirect('/error');
+
+            // Return false stops the normal execution
+            return false;
+        }
+
+        return true;
+    }
+);
+
+$app->after(
+    function () use ($app) {
+        // This is executed after the route is executed
+        echo json_encode($app->getReturnedValue());
+    }
+);
+```
+
+Attaching middleware to your application as classes and having it listen to events from the events manager can be achieved as follows:
+
+```php
+<?php
+
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Micro;
+
+use Website\Middleware\CacheMiddleware;
+use Website\Middleware\NotFoundMiddleware;
+use Website\Middleware\ResponseMiddleware;
+
+/**
+ * Create a new Events Manager. 
+ */
+$eventsManager = new Manager();
+$application   = new Micro();
+
+/**
+ * Attach the middleware both to the events manager and the application
+ */
+$eventsManager->attach('micro', new CacheMiddleware());
+$application->before(new CacheMiddleware());
+
+$eventsManager->attach('micro', new NotFoundMiddleware());
+$application->before(new NotFoundMiddleware());
+
+/**
+ * This one needs to listen on the `after` event 
+ */
+$eventsManager->attach('micro', new ResponseMiddleware());
+$application->after(new ResponseMiddleware());
+
+/**
+ * Make sure our events manager is in the DI container now 
+ */
+$application->setEventsManager($eventsManager);
+
+```
+
+We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+
+We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
+
+We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
 
 <a name='middleware-implementation'></a>
 ## Implementation

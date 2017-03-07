@@ -14,8 +14,8 @@ body {
 .phalcon-logo {
     display: block;
     width: 200px;
-    height: 90px;
-    background: url(//static.phalconphp.com/www/images/phalcon.png) 0 0/200px 90px no-repeat
+    height: 80px;
+    background: url(//static.phalconphp.com/www/images/phalcon.png) 0 0/200px 80px no-repeat
 }
 
 /** NavBar */
@@ -29,7 +29,7 @@ body {
 }
 
 .with-top-navbar {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 /** Main Container */
