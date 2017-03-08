@@ -7,8 +7,8 @@
 <html lang="{{ language }}" class="no-js">
 <!--<![endif]-->
 <head>
-    {#{%- include "include/meta.volt" -%}#}
-    {#{%- include "include/icons.volt" -%}#}
+    {%- include "include/meta.volt" -%}
+    {%- include "include/icons.volt" -%}
     {%- include "include/analytics.volt" -%}
 
     {{- assets.outputCss('header_css') -}}

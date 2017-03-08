@@ -10,7 +10,7 @@
     - Reproducible Tests
     - Testing guide
 - Getting Started
-    - Installation
+    - [Installation](/en/[[version]]/installation)
         - Linux
         - MacOS
         - Windows
