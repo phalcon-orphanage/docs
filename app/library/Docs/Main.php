@@ -274,8 +274,8 @@ class Main
         $assets->collection("header_js");
         $assets
             ->collection('header_css')
-            ->addCss('http://fonts.googleapis.com/css?family=Ubuntu:regular,bold,italic', false)
-            ->addCss('//cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
+            ->addCss('https://fonts.googleapis.com/css?family=Ubuntu:regular,bold,italic', false)
+            ->addCss('https//cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
             ->addCss($utils->getAsset('css/toolkit.css'))
             ->addCss($utils->getAsset('css/application.css'))
             ->addCss($utils->getAsset('css/docs.css'));
