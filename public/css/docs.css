@@ -1,13 +1,15 @@
 body, html {
-    margin: 0;
+    margin-top: 45px;
     padding: 0;
     height: 100%;
+    font-family: "Proxima Nova", Verdana, Arial, Helvetica, sans-serif;
+    /*font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif*/
 }
 
 body {
     background: #fff;
     color: #000000;
-    font: 16px/24px Ubuntu, sans-serif;
+    /*font: 16px/24px Ubuntu, sans-serif;*/
     min-width: 990px;
 }
 
@@ -28,9 +30,9 @@ body {
     z-index: 100;
 }
 
-.with-top-navbar {
-    margin-top: 30px;
-}
+/*.with-top-navbar {*/
+    /*margin-top: 40px;*/
+/*}*/
 
 /** Main Container */
 .container {
@@ -38,11 +40,11 @@ body {
     margin-right: 0;
 }
 
-/** Articles */
-#articles table th, td {
-    padding-left: 10px;
-    padding-right: 10px;
-}
+/*/** Articles */
+/*#articles table th, td {*/
+/*padding-left: 10px;*/
+/*padding-right: 10px;*/
+/*}*/
 
 /** Footer */
 .footer {
@@ -122,7 +124,7 @@ body {
 
 /** Sidebar */
 .sidebar {
-    font-size: 14px;
+    font-size: 13px;
     border-right: 1px solid #f0f2f1;
     width: 200px;
     float: left;
@@ -147,10 +149,6 @@ body {
     padding: 5px 0 0;
 }
 
-.sidebar a {
-    line-height: 1;
-}
-
 
 /** article menu */
 .article-menu {
@@ -160,8 +158,8 @@ body {
     width: 200px;
     float: right;
     font-size: 13px;
-    border: 1px solid #0a6278;
-    background: #eeeeee;
+    border-left: 1px solid #0a6278;
+    /*background: #eeeeee;*/
 }
 
 .article-menu > ul {
@@ -191,6 +189,7 @@ body {
 .article-menu > ul > li > ul > li > ul > li {
     list-style: none;
 }
+
 .article-menu > ul > li > ul > li > ul > li > ul {
     list-style: none;
     padding-left: 10px;

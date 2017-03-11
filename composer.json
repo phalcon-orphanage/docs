@@ -30,7 +30,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Docs\\": "app/library/Docs",
+      "Docs\\": "app/library",
       "Docs\\Controllers\\": "app/controllers/"
     }
   },
