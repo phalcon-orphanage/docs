@@ -27,6 +27,13 @@
 
 <a name='requirements'></a>
 # Requirements
+Phalcon needs PHP
+* PHP >= 5.5 development resources
+* GCC compiler (Linux/Solaris)
+* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+
+
+
 
 <a name='requirements-hardware'></a>
 ## Hardware
@@ -127,15 +134,33 @@ sudo yum install php70u-phalcon
 
 <a name='installation-windows'></a>
 ## Windows
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][dll-download] page.
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][download-dll] page.
 
-.. code-block:: bash
+To use phalcon on Windows you will need to download a DLL library. Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
-    extension=php_phalcon.dll
+![phpinfo](/img/content/phpinfo-api.png)
+
+The available DLLs are:
+ 
+| Architecture | Version | Type                  |
+| :----------: | :-----: |---------------------- |
+| x64          | 7.x     | Thread safe           |
+| x64          | 7.x     | Non Thread safe (NTS) |
+| x86          | 7.x     | Thread safe           |
+| x86          | 7.x     | Non Thread safe (NTS) |
+| x64          | 5.6     | Thread safe           |
+| x64          | 5.6     | Non Thread safe (NTS) |
+| x86          | 5.6     | Thread safe           |
+| x86          | 5.6     | Non Thread safe (NTS) |
+
+
+Edit your php.ini file and then append at the end:
+
+```ini
+extension=php_phalcon.dll
+```
 
 Restart your webserver.
-
 
 
 --------------------------------------------------------------------------------
@@ -159,32 +184,6 @@ Apache
 nginX
 
 
-Windows
--------
-To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
-
-.. code-block:: bash
-
-    extension=php_phalcon.dll
-
-Restart your webserver.
-
-The following screencast is a step-by-step guide to install Phalcon on Windows:
-
-.. raw:: html
-
-    <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-
-Related Guides
-^^^^^^^^^^^^^^
-.. toctree::
-    :maxdepth: 1
-
-    xampp
-    wamp
-
-Linux/Solaris
--------------
 
 Compile from source
 ^^^^^^^^^^^^^^^^^^^

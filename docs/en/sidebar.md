@@ -1,7 +1,7 @@
 - [General](/en/[[version]]/introduction)
     - [Release Notes](/en/[[version]]/release-notes)
     - Upgrade
-    - Sponsors
+    - [Sponsors](/en/[[version]]/sponsors)
 - Contributions
     - [Overview](/en/[[version]]/contributions)
     - Pull Requests
