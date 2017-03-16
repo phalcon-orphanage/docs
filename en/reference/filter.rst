@@ -18,7 +18,7 @@ The following are the built-in filters provided by this component:
 +-----------+---------------------------------------------------------------------------+
 | Name      | Description                                                               |
 +===========+===========================================================================+
-| string    | Strip tags and encode HTML entities, including single and double quotes. |
+| string    | Strip tags and encode HTML entities, including single and double quotes.  |
 +-----------+---------------------------------------------------------------------------+
 | email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
 +-----------+---------------------------------------------------------------------------+
