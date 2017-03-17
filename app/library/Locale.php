@@ -32,6 +32,7 @@ class Locale extends Component
          */
         $defaultLanguage = $this->config->get('app')->get('lang', 'en');
         $currentLanguage = $arguments[0];
+        $currentLanguage = empty($currentLanguage) ? $defaultLanguage : $currentLanguage;
         array_shift($arguments);
 
         /**
@@ -94,6 +95,7 @@ class Locale extends Component
      */
     private function getCachedLanguage($language)
     {
+        $phrases = [];
         $cacheKey = sprintf('language-%s.cache', $language);
         if ('production' === $this->config->get('app')->get('env') &&
             true === $this->cacheData->exists($cacheKey)) {

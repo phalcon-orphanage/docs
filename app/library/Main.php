@@ -4,24 +4,20 @@ namespace Docs;
 
 use Dotenv\Dotenv;
 
-use Phalcon\Assets\Manager;
+use Phalcon\Assets\Manager as PhAssetManager;
 use Phalcon\Cache\Frontend\Data as PhCacheFrontData;
 use Phalcon\Cache\Frontend\Output as PhCacheFrontOutput;
+use Phalcon\Cli\Console as PhCliConsole;
 use Phalcon\Config as PhConfig;
-use Phalcon\Di as PhDI;
-use Phalcon\Escaper as PhEscaper;
+use Phalcon\Di\FactoryDefault as PhDI;
+use Phalcon\DiInterface;
 use Phalcon\Events\Manager as PhEventsManager;
-use Phalcon\Http\Request as PhRequest;
-use Phalcon\Http\Response as PhResponse;
 use Phalcon\Logger\Adapter\File as PhFileLogger;
 use Phalcon\Logger\Formatter\Line as PhLoggerFormatter;
 use Phalcon\Mvc\Micro as PhMicro;
 use Phalcon\Mvc\Micro\Collection as PhMicroCollection;
-use Phalcon\Mvc\Router as PhRouter;
-use Phalcon\Mvc\Url as PhUrl;
 use Phalcon\Mvc\View\Simple as PhViewSimple;
 use Phalcon\Mvc\View\Engine\Volt as PhVolt;
-use Phalcon\Tag as PhTag;
 
 use ParsedownExtra as PParseDown;
 use Docs\Locale as DocsLocale;
@@ -30,121 +26,155 @@ use Docs\Utils as DocsUtils;
 /**
  * Main
  *
- * @property PhDI $diContainer
+ * @property PhDI $this->diContainer
  */
 class Main
 {
-    public function run()
+    /**
+     * @var null|PhMicro|PhCliConsole
+     */
+    protected $application = null;
+
+    /**
+     * @var null|DiInterface
+     */
+    protected $diContainer = null;
+
+    /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * @var int
+     */
+    private $memory = 0;
+
+    /**
+     * @var int|mixed
+     */
+    private $executionTime = 0;
+
+    /**
+     * @var string
+     */
+    private $mode = 'development';
+
+    public function __construct()
     {
-        /**
+        $this->memory        = memory_get_usage();
+        $this->executionTime = microtime(true);
+    }
+
+    /**
+     * Bootstraps the application
+     *
+     * @param DiInterface $diContainer
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function run(DiInterface $diContainer)
+    {
+        /***********************************************************************
+         * Di Container
+         **********************************************************************/
+        $this->diContainer = $diContainer;
+        $this->diContainer::setDefault($diContainer);
+
+        /***********************************************************************
          * Autoloader
-         */
+         **********************************************************************/
         require_once APP_PATH . '/vendor/autoload.php';
 
-        /**
+        /***********************************************************************
          * .load
-         */
+         **********************************************************************/
         (new Dotenv(APP_PATH))->load();
 
-        /**
-         * Profiling and application mode
-         */
-        $executionTime = microtime(true);
-        $memory        = memory_get_usage();
-        $mode          = getenv('APP_ENV');
-        $mode          = (false !== $mode) ? $mode : 'development';
+        $this->mode = getenv('APP_ENV');
+        $this->mode = (false !== $this->mode) ? $this->mode : 'development';
 
-        /**
+        $this->initApplication();
+
+        /***********************************************************************
          * Config
-         */
+         **********************************************************************/
         $fileName = APP_PATH . '/app/config/config.php';
         if (true !== file_exists($fileName)) {
             throw new \Exception('Configuration file not found');
         }
         $configArray = require_once($fileName);
-
-        /**
-         * Set the Di Container
-         */
-        $diContainer = new PhDI();
-        PhDI::setDefault($diContainer);
-
-        $application = new PhMicro($diContainer);
-
-        /**
-         * Assets
-         */
-        $assets = new Manager();
-        $diContainer->setShared('assets', $assets);
-
-        /**
-         * Config
-         */
         $config = new PhConfig($configArray);
-        $diContainer->setShared('config', $config);
+
+        $this->diContainer->setShared('config', $config);
+        $this->diContainer->setShared('utils', new DocsUtils());
+
+        $this->initServices();
+
+        /***********************************************************************
+         * cacheData
+         **********************************************************************/
+        $lifetime = $config->get('cache')->get('lifetime', 3600);
+        $driver   = $config->get('cache')->get('driver', 'file');
+        $frontEnd = new PhCacheFrontData(['lifetime' => $lifetime]);
+        $backEnd  = ['cacheDir' => APP_PATH . '/storage/cache/data/'];
+        $class    = sprintf('\Phalcon\Cache\Backend\%s', ucfirst($driver));
+        $cache    = new $class($frontEnd, $backEnd);
+        $this->diContainer->setShared('cacheData', $cache);
+
+        /***********************************************************************
+         * Markdown
+         **********************************************************************/
+        $this->diContainer->setShared('parsedown', new PParseDown());
 
         /**
-         * Escaper
+         * Run the application
          */
-        $escaper = new PhEscaper();
-        $diContainer->setShared('escaper', $escaper);
+        return $this->runApplication();
+    }
 
-        /**
-         * Events Manager
-         */
-        $eventsManager = new PhEventsManager();
-        $diContainer->setShared('eventsManager', $eventsManager);
+    /**
+     * Initializes the application
+     */
+    protected function initApplication()
+    {
+        $this->application = new PhMicro($this->diContainer);
+    }
 
-        /**
-         * Request
-         */
-        $request = new PhRequest();
-        $diContainer->setShared('request', $request);
+    protected function initServices()
+    {
+        /** @var \Phalcon\Config $config */
+        $config   = $this->diContainer->getShared('config');
+        /** @var Utils $utils */
+        $utils  = $this->diContainer->getShared('utils');
+        /** @var PhEventsManager $eventsManager */
+        $eventsManager = $this->diContainer->getShared('eventsManager');
 
-        /**
-         * Response
-         */
-        $response = new PhResponse();
-        $diContainer->setShared('response', $response);
+        $this->diContainer->setShared('locale', new DocsLocale());
 
-        /**
-         * Router
-         */
-        $router = new PhRouter();
-        $diContainer->setShared('router', $router);
+        $routes     = $config->get('routes')->toArray();
+        $collection = new PhMicroCollection();
+        $collection->setHandler($routes['class'], true);
+        if (true !== empty($routes['prefix'])) {
+            $collection->setPrefix($routes['prefix']);
+        }
 
-        /**
-         * Url
-         */
-        $url = new PhUrl();
-        $diContainer->setShared('url', $url);
+        foreach ($routes['methods'] as $verb => $methods) {
+            foreach ($methods as $endpoint => $action) {
+                $collection->$verb($endpoint, $action);
+            }
+        }
+        $this->application->mount($collection);
+        $this->application->setEventsManager($eventsManager);
 
-        /**
-         * Tag
-         */
-        $tag = new PhTag();
-        $diContainer->setShared('tag', $tag);
-
-        /**
-         * Locale
-         */
-        $locale = new DocsLocale();
-        $diContainer->setShared('locale', $locale);
-
-        /**
-         * Utils
-         */
-        $utils = new DocsUtils();
-        $diContainer->setShared('utils', $utils);
-
-        /**
+        /***********************************************************************
          * Logger
-         */
-        $fileName = $config->get('logger')
-                           ->get('defaultFilename', 'application');
-        $format   = $config->get('logger')
-                           ->get('format', '[%date%][%type%] %message%');
-
+         **********************************************************************/
+        $fileName  = $config->get('logger')
+                            ->get('defaultFilename', 'application');
+        $format    = $config->get('logger')
+                            ->get('format', '[%date%][%type%] %message%');
         $logFile   = sprintf(
             '%s/storage/logs/%s-%s.log',
             APP_PATH,
@@ -154,35 +184,23 @@ class Main
         $formatter = new PhLoggerFormatter($format);
         $logger    = new PhFileLogger($logFile);
         $logger->setFormatter($formatter);
-        $diContainer->setShared('logger', $logger);
+        $this->diContainer->setShared('logger', $logger);
 
-        /**
+        /***********************************************************************
          * viewCache
-         */
-        /** @var \Phalcon\Config $config */
-        $config   = $diContainer->getShared('config');
+         **********************************************************************/
         $lifetime = $config->get('cache')->get('lifetime', 3600);
         $driver   = $config->get('cache')->get('viewDriver', 'file');
         $frontEnd = new PhCacheFrontOutput(['lifetime' => $lifetime]);
         $backEnd  = ['cacheDir' => APP_PATH . '/storage/cache/view/'];
         $class    = sprintf('\Phalcon\Cache\Backend\%s', ucfirst($driver));
         $cache    = new $class($frontEnd, $backEnd);
-        $diContainer->set('viewCache', $cache);
+        $this->diContainer->set('viewCache', $cache);
 
-        /**
-         * cacheData
-         */
-        $driver   = $config->get('cache')->get('driver', 'file');
-        $frontEnd = new PhCacheFrontData(['lifetime' => $lifetime]);
-        $backEnd  = ['cacheDir' => APP_PATH . '/storage/cache/data/'];
-        $class    = sprintf('\Phalcon\Cache\Backend\%s', ucfirst($driver));
-        $cache    = new $class($frontEnd, $backEnd);
-        $diContainer->setShared('cacheData', $cache);
-
-        /**
+        /***********************************************************************
          * Profiling and Error handling
-         */
-        ini_set('display_errors', boolval('development' === $mode));
+         **********************************************************************/
+        ini_set('display_errors', boolval('development' === $this->mode));
         error_reporting(E_ALL);
 
         set_error_handler(
@@ -210,67 +228,57 @@ class Main
         );
 
         register_shutdown_function(
-            function () use ($logger, $utils, $mode, $executionTime, $memory) {
-                $memory    = memory_get_usage() - $memory;
-                $execution = microtime(true) - $executionTime;
+            function () use ($logger, $utils) {
+                $memory    = round(
+                    (memory_get_usage() - $this->memory) / 1000,
+                    3
+                );
+                $execution = round(
+                    microtime(true) - $this->executionTime,
+                    3
+                );
 
-                if ('development' === $mode) {
+                if ('development' === $this->mode) {
                     $logger->info(
                         sprintf(
-                            'Shutdown completed [%s] - [%s]',
-                            $utils->timeToHuman($execution),
-                            $utils->bytesToHuman($memory)
+                            'Shutdown completed [%s ms] - [%s KB]',
+                            $execution,
+                            $memory
                         )
                     );
                 }
             }
         );
 
-        /**
-         * Routes
-         */
-        $routes     = $config->get('routes')->toArray();
-        $collection = new PhMicroCollection();
-        $collection->setHandler($routes['class'], true);
-        if (true !== empty($routes['prefix'])) {
-            $collection->setPrefix($routes['prefix']);
-        }
-
-        foreach ($routes['methods'] as $verb => $methods) {
-            foreach ($methods as $endpoint => $action) {
-                $collection->$verb($endpoint, $action);
-            }
-        }
-        $application->mount($collection);
-        $application->setEventsManager($eventsManager);
-
-        /**
+        /***********************************************************************
          * View
-         */
+         **********************************************************************/
         $options = [
             'compiledPath'      => APP_PATH . '/storage/cache/volt/',
             'compiledSeparator' => '_',
             'compiledExtension' => '.php',
-            'compileAlways'     => boolval('development' === $mode),
+            'compileAlways'     => boolval('development' === $this->mode),
             'stat'              => true,
         ];
         $view    = new PhViewSimple();
         $view->setViewsDir(APP_PATH . '/app/views/');
         $view->registerEngines(
             [
-                '.volt' => function ($view) use ($options, $diContainer) {
-                    $volt  = new PhVolt($view, $diContainer);
+                '.volt' => function ($view) use ($options) {
+                    $volt  = new PhVolt($view, $this->diContainer);
                     $volt->setOptions($options);
 
                     return $volt;
                 },
             ]
         );
-        $diContainer->setShared('viewSimple', $view);
+        $this->diContainer->setShared('viewSimple', $view);
 
-        /**
+        /***********************************************************************
          * Assets
-         */
+         **********************************************************************/
+        /** @var PhAssetManager $assets */
+        $assets = $this->diContainer->getShared('assets');
         $assets->collection("header_js");
         $assets
             ->collection('header_css')
@@ -283,14 +291,16 @@ class Main
             ->addJs('http://code.jquery.com/jquery-3.1.1.min.js', false)
             ->addJs('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false)
             ->addJs('https://cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false);
-        $diContainer->setShared('assets', $assets);
+        $this->diContainer->setShared('assets', $assets);
+    }
 
-        /**
-         * Markdown
-         */
-        $parsedown = new PParseDown();
-        $diContainer->setShared('parsedown', $parsedown);
-
-        return $application->handle();
+    /**
+     * Runs the main application
+     *
+     * @return PhMicro
+     */
+    protected function runApplication()
+    {
+        return $this->application->handle();
     }
 }

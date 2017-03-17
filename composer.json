@@ -31,6 +31,7 @@
   "autoload": {
     "psr-4": {
       "Docs\\": "app/library",
+      "Docs\\Cli\\Tasks\\": "app/tasks/",
       "Docs\\Controllers\\": "app/controllers/"
     }
   },
