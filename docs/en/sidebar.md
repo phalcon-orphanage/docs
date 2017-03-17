@@ -1,0 +1,29 @@
+- [General](/en/[[version]]/introduction)
+    - [Release Notes](/en/[[version]]/release-notes)
+    - Upgrade
+    - [Sponsors](/en/[[version]]/sponsors)
+- Contributions
+    - [Overview](/en/[[version]]/contributions)
+    - Pull Requests
+    - [NFR](/en/[[version]]/new-feature-request)
+    - Backtrace Generation
+    - Reproducible Tests
+    - Testing guide
+- Getting Started
+    - [Installation](/en/[[version]]/installation)
+        - Linux
+        - MacOS
+        - Windows
+- Environments
+    - Phalcon Compose
+    - Vagrant
+- Development Tools
+    - Command Line
+    - Web Interface
+- Core
+    - Application
+        - Full
+        - [Micro](/en/[[version]]/application-micro)
+        - Cli
+    - DI Container
+    
