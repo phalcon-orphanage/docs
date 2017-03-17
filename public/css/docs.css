@@ -25,7 +25,7 @@ body {
     border: none;
     -webkit-box-shadow: 0 0 3px 0 rgba(37, 82, 95, 0.9);
     box-shadow: 0 0 3px 0 rgba(37, 82, 95, 0.9);
-    background: url(../img/texture.png) repeat-x;
+    background: url(../images/texture.png) repeat-x;
     z-index: 100;
 }
 
@@ -47,7 +47,7 @@ body {
 
 /** Footer */
 .footer {
-    background: url(../img/texture.png) repeat-x;
+    background: url(../images/texture.png) repeat-x;
     padding: 60px 0 80px
 }
 

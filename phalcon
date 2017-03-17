@@ -1,34 +1,21 @@
 #!/usr/bin/env php
 <?php
 
-/*
- +------------------------------------------------------------------------+
- | Phosphorum                                                             |
- +------------------------------------------------------------------------+
- | Copyright (c) 2013-2016 Phalcon Team and contributors                  |
- +------------------------------------------------------------------------+
- | This source file is subject to the New BSD License that is bundled     |
- | with this package in the file LICENSE.txt.                             |
- |                                                                        |
- | If you did not receive a copy of the license and are unable to         |
- | obtain it through the world-wide-web, please send an email             |
- | to license@phalconphp.com so we can send you a copy immediately.       |
- +------------------------------------------------------------------------+
-*/
-
 use Docs\Cli;
+use Phalcon\Di\FactoryDefault\Cli as PhDiCli;
 
 if (true !== defined('APP_PATH')) {
     define('APP_PATH', dirname(__FILE__));
 }
 
 try {
+    require_once APP_PATH . '/app/library/Main.php';
     require_once APP_PATH . '/app/library/Cli.php';
 
     /**
      * We don't want a global scope variable for this
      */
-    (new Cli())->run();
+    (new Cli())->run(new PhDiCli());
 
 } catch (\Exception $e) {
     fwrite(STDERR, PHP_EOL . $e->getMessage() . PHP_EOL);
