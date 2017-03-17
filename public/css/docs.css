@@ -3,7 +3,6 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: "Proxima Nova", Verdana, Arial, Helvetica, sans-serif;
-    /*font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif*/
 }
 
 body {
@@ -40,11 +39,11 @@ body {
     margin-right: 0;
 }
 
-/*/** Articles */
-/*#articles table th, td {*/
-/*padding-left: 10px;*/
-/*padding-right: 10px;*/
-/*}*/
+/** Articles */
+#articles table th, td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 /** Footer */
 .footer {

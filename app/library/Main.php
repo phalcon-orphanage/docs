@@ -276,8 +276,6 @@ class Main
             ->collection('header_css')
             ->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', false)
             ->addCss('https://cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
-//            ->addCss($utils->getAsset('css/toolkit.css'))
-//            ->addCss($utils->getAsset('css/application.css'))
             ->addCss($utils->getAsset('css/docs.css'));
 
         $assets

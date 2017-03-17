@@ -27,19 +27,22 @@
 
 <a name='requirements'></a>
 # Requirements
-Phalcon needs PHP
-* PHP >= 5.5 development resources
-* GCC compiler (Linux/Solaris)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
-
-
-
+Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 ## Hardware
+Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
+Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU. 
+ 
 <a name='requirements-software'></a>
 ## Software
+* PHP >= 5.6
+
+### Optional depending on the needs of your application
+* PDO PHP Extension as well as the relevant RDBMS specific extension (i.e. MySQL, PostgreSql etc.)
+* PHP OpenSSL Extension
+* PHP Mbstring Extension
 
 <a name='installation'></a>
 # Installation
@@ -152,6 +155,7 @@ The available DLLs are:
 | x64          | 5.6     | Non Thread safe (NTS) |
 | x86          | 5.6     | Thread safe           |
 | x86          | 5.6     | Non Thread safe (NTS) |
+
 
 
 Edit your php.ini file and then append at the end:
