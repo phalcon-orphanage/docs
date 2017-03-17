@@ -6,10 +6,10 @@ Class **Phalcon\\Version**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/version.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-このクラスはインストールされたフレームワークのバージョンを参照できます。
+This class allows to get the installed version of the framework
 
 
-定数
+Constants
 ---------
 
 *integer* **VERSION_MAJOR**
@@ -22,53 +22,67 @@ Class **Phalcon\\Version**
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-メソッド
+Methods
 -------
 
 protected static  **_getVersion** ()
 
-バージョン番号を示す。フォーマットは ABBCCDE となる。それぞれ、A はメジャーバージョン、B は 2 桁で中間バージョン、C は 2 桁でマイナーバージョン、D は特別リリース属性を示し、1 は Alpha、2 は Beta、3 は RC、4 は安定板を示す。E は特別リリースのバージョンの番号、例えば RC1 や Beta2 等を示す。
+Area where the version number is set. The format is as follows:
+ABBCCDE
+A - Major version
+B - Med version (two digits)
+C - Min version (two digits)
+D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stable
+E - Special release version i.e. RC1, Beta2 etc.
 
 
 
 final protected static  **_getSpecial** (*mixed* $special)
 
-特別リリースの番号を変換する。特別リリースの番号が 1 の場合、この関数は ALPHA を返す。
+Translates a number to a special release
+If Special release = 1 this function will return ALPHA
 
 
 
 public static  **get** ()
 
-アクティブなバージョンを文字列で返す。
+Returns the active version (string)
 
 .. code-block:: php
 
     <?php
 
-     echo Phalcon\Version::get();
+    echo Phalcon\Version::get();
 
 
 
 
 public static  **getId** ()
 
-アクティブなバージョンを数値で返す。
+Returns the numeric active version
 
 .. code-block:: php
 
     <?php
 
-     echo Phalcon\Version::getId();
+    echo Phalcon\Version::getId();
 
 
 
 
 public static  **getPart** (*mixed* $part)
 
-特定の部分のバージョンを返す。渡されるパラメータが間違っている場合、全てのバージョンを返す。
+Returns a specific part of the version. If the wrong parameter is passed
+it will return the full version
 
 .. code-block:: php
 
     <?php
 
-     echo Phalcon\Version::getPart(Phalcon\Version::VERSION_MAJOR);
+    echo Phalcon\Version::getPart(
+        Phalcon\Version::VERSION_MAJOR
+    );
+
+
+
+

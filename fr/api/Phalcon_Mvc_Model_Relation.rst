@@ -41,7 +41,7 @@ Phalcon\\Mvc\\Model\\Relation constructor
 
 public  **setIntermediateRelation** (*string* | *array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 
-Sets the intermediate model data for has-\*-through relations
+Sets the intermediate model data for has-*-through relations
 
 
 
@@ -77,7 +77,8 @@ Returns the options
 
 public  **getOption** (*mixed* $name)
 
-Returns an option by the specified name If the option doesn't exist null is returned
+Returns an option by the specified name
+If the option doesn't exist null is returned
 
 
 
@@ -113,16 +114,19 @@ Check if records returned by getting belongs-to/has-many are implicitly cached d
 
 public *string* | *array* **getIntermediateFields** ()
 
-Gets the intermediate fields for has-\*-through relations
+Gets the intermediate fields for has-*-through relations
 
 
 
 public  **getIntermediateModel** ()
 
-Gets the intermediate model for has-\*-through relations
+Gets the intermediate model for has-*-through relations
 
 
 
 public *string* | *array* **getIntermediateReferencedFields** ()
 
-Gets the intermediate referenced fields for has-\*-through relations
+Gets the intermediate referenced fields for has-*-through relations
+
+
+

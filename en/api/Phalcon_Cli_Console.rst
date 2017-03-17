@@ -18,18 +18,20 @@ Methods
 
 public  **addModules** (*array* $modules)
 
-Merge modules with the existing ones 
+Merge modules with the existing ones
 
 .. code-block:: php
 
     <?php
 
-    application->addModules(array(
-    	'admin' => array(
-    		'className' => 'Multiple\Admin\Module',
-    		'path' => '../apps/admin/Module.php'
-    	)
-    ));
+    $application->addModules(
+        [
+            "admin" => [
+                "className" => "Multiple\\Admin\\Module",
+                "path"      => "../apps/admin/Module.php",
+            ],
+        ]
+    );
 
 
 
@@ -66,24 +68,24 @@ Returns the internal event manager
 
 public  **registerModules** (*array* $modules, [*mixed* $merge]) inherited from :doc:`Phalcon\\Application <Phalcon_Application>`
 
-Register an array of modules present in the application 
+Register an array of modules present in the application
 
 .. code-block:: php
 
     <?php
 
-     $this->registerModules(
-     	[
-     		'frontend' => [
-     			'className' => 'Multiple\Frontend\Module',
-     			'path'      => '../apps/frontend/Module.php'
-     		],
-     		'backend' => [
-     			'className' => 'Multiple\Backend\Module',
-     			'path'      => '../apps/backend/Module.php'
-     		]
-     	]
-     );
+    $this->registerModules(
+        [
+            "frontend" => [
+                "className" => "Multiple\\Frontend\\Module",
+                "path"      => "../apps/frontend/Module.php",
+            ],
+            "backend" => [
+                "className" => "Multiple\\Backend\\Module",
+                "path"      => "../apps/backend/Module.php",
+            ],
+        ]
+    );
 
 
 

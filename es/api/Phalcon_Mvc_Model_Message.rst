@@ -8,29 +8,29 @@ Class **Phalcon\\Mvc\\Model\\Message**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Encapsulates validation info generated before save/delete records fails  
+Encapsulates validation info generated before save/delete records fails
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Message as Message;
-    
-      class Robots extends \Phalcon\Mvc\Model
-      {
-    
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
         public function beforeSave()
         {
-          if ($this->name == 'Peter') {
-            $text = "A robot cannot be named Peter";
-            $field = "name";
-            $type = "InvalidValue";
-            $message = new Message($text, $field, $type);
-            $this->appendMessage($message);
-         }
-       }
-    
-     }
+            if ($this->name === "Peter") {
+                $text  = "A robot cannot be named Peter";
+                $field = "name";
+                $type  = "InvalidValue";
+
+                $message = new Message($text, $field, $type);
+
+                $this->appendMessage($message);
+            }
+        }
+    }
 
 
 

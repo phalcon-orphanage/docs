@@ -8,23 +8,30 @@ Class **Phalcon\\Mvc\\Model\\Query\\Status**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/query/status.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails  
+This class represents the status returned by a PHQL
+statement like INSERT, UPDATE or DELETE. It offers context
+information and the related messages produced by the
+model which finally executes the operations when it fails
 
 .. code-block:: php
 
     <?php
 
     $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
-    $status = $app->modelsManager->executeQuery($phql, array(
-       'id' => 100,
-       'name' => 'Astroy Boy',
-       'type' => 'mechanical',
-       'year' => 1959
-    ));
-    
-    \//Check if the update was successful
-    if ($status->success() == true) {
-       echo 'OK';
+
+    $status = $app->modelsManager->executeQuery(
+        $phql,
+        [
+            "id"   => 100,
+            "name" => "Astroy Boy",
+            "type" => "mechanical",
+            "year" => 1959,
+        ]
+    );
+
+    // Check if the update was successful
+    if ($status->success() === true) {
+        echo "OK";
     }
 
 

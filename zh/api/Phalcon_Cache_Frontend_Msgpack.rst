@@ -10,43 +10,55 @@ Class **Phalcon\\Cache\\Frontend\\Msgpack**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/msgpack.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.   
+Allows to cache native PHP data in a serialized form using msgpack extension
+This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\File;
-     use Phalcon\Cache\Frontend\Msgpack;
-    
-     // Cache the files for 2 days using Msgpack frontend
-     $frontCache = new Msgpack([
-         'lifetime' => 172800
-     ]);
-    
-     // Create the component that will cache "Msgpack" to a "File" backend
-     // Set the cache file directory - important to keep the "/" at the end of
-     // of the value for the folder
-     $cache = new File($frontCache, [
-         'cacheDir' => '../app/cache/'
-     ]);
-    
-     // Try to get cached records
-     $cacheKey = 'robots_order_id.cache';
-     $robots   = $cache->get($cacheKey);
-     if ($robots === null) {
-         // $robots is null due to cache expiration or data do not exist
-         // Make the database call and populate the variable
-         $robots = Robots::find(['order' => 'id']);
-    
-         // Store it in the cache
-         $cache->save($cacheKey, $robots);
-     }
-    
-     // Use $robots
-     foreach ($robots as $robot) {
-         echo $robot->name, "\n";
-     }
+    use Phalcon\Cache\Backend\File;
+    use Phalcon\Cache\Frontend\Msgpack;
+
+    // Cache the files for 2 days using Msgpack frontend
+    $frontCache = new Msgpack(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    // Create the component that will cache "Msgpack" to a "File" backend
+    // Set the cache file directory - important to keep the "/" at the end of
+    // of the value for the folder
+    $cache = new File(
+        $frontCache,
+        [
+            "cacheDir" => "../app/cache/",
+        ]
+    );
+
+    $cacheKey = "robots_order_id.cache";
+
+    // Try to get cached records
+    $robots = $cache->get($cacheKey);
+
+    if ($robots === null) {
+        // $robots is null due to cache expiration or data do not exist
+        // Make the database call and populate the variable
+        $robots = Robots::find(
+            [
+                "order" => "id",
+            ]
+        );
+
+        // Store it in the cache
+        $cache->save($cacheKey, $robots);
+    }
+
+    // Use $robots
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
 
 
 

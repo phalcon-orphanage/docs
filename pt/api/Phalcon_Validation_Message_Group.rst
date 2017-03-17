@@ -22,78 +22,84 @@ Phalcon\\Validation\\Message\\Group constructor
 
 public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` **offsetGet** (*int* $index)
 
-Gets an attribute a message using the array syntax 
+Gets an attribute a message using the array syntax
 
 .. code-block:: php
 
     <?php
 
-     print_r($messages[0]);
+    print_r(
+        $messages[0]
+    );
 
 
 
 
 public  **offsetSet** (*int* $index, :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
-Sets an attribute using the array-syntax 
+Sets an attribute using the array-syntax
 
 .. code-block:: php
 
     <?php
 
-     $messages[0] = new \Phalcon\Validation\Message('This is a message');
+    $messages[0] = new \Phalcon\Validation\Message("This is a message");
 
 
 
 
 public *boolean* **offsetExists** (*int* $index)
 
-Checks if an index exists 
+Checks if an index exists
 
 .. code-block:: php
 
     <?php
 
-     var_dump(isset($message['database']));
+    var_dump(
+        isset($message["database"])
+    );
 
 
 
 
-public  **offsetUnset** (*string* $index)
+public  **offsetUnset** (*mixed* $index)
 
-Removes a message from the list 
+Removes a message from the list
 
 .. code-block:: php
 
     <?php
 
-     unset($message['database']);
+    unset($message["database"]);
 
 
 
 
 public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
 
-Appends a message to the group 
+Appends a message to the group
 
 .. code-block:: php
 
     <?php
 
-     $messages->appendMessage(new \Phalcon\Validation\Message('This is a message'));
+    $messages->appendMessage(
+        new \Phalcon\Validation\Message("This is a message")
+    );
 
 
 
 
 public  **appendMessages** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>`\ [] $messages)
 
-Appends an array of messages to the group 
+Appends an array of messages to the group
 
 .. code-block:: php
 
     <?php
 
-     $messages->appendMessages($messagesArray);
+    $messages->appendMessages($messagesArray);
 
 
 

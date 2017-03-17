@@ -10,7 +10,10 @@ Class **Phalcon\\Di\\FactoryDefault\\Cli**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/factorydefault/cli.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This is a variant of the standard Phalcon\\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
+This is a variant of the standard Phalcon\\Di. By default it automatically
+registers all the services provided by the framework.
+Thanks to this, the developer does not need to register each service individually.
+This class is specially suitable for CLI applications
 
 
 Methods
@@ -48,13 +51,16 @@ Registers an "always shared" service in the services container
 
 public  **remove** (*mixed* $name) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
-Removes a service in the services container It also removes any shared instance created for the service
+Removes a service in the services container
+It also removes any shared instance created for the service
 
 
 
 public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Attempts to register a service in the services container
+Only is successful if a service hasn't been registered previously
+with the same name
 
 
 
@@ -84,7 +90,8 @@ Resolves the service based on its configuration
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Resolves a service, the resolved service is stored in the DI, subsequent
+requests for this service will return the same instance
 
 
 
@@ -112,9 +119,9 @@ Check if a service is registered using the array syntax
 
 
 
-public *boolean* **offsetSet** (*string* $name, *mixed* $definition) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
+public  **offsetSet** (*mixed* $name, *mixed* $definition) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
-Allows to register a shared service using the array syntax 
+Allows to register a shared service using the array syntax
 
 .. code-block:: php
 
@@ -127,7 +134,7 @@ Allows to register a shared service using the array syntax
 
 public  **offsetGet** (*mixed* $name) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
-Allows to obtain a shared service using the array syntax 
+Allows to obtain a shared service using the array syntax
 
 .. code-block:: php
 
@@ -144,7 +151,7 @@ Removes a service from the services container using the array syntax
 
 
 
-public  **__call** (*string* $method, [*array* $arguments]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
+public  **__call** (*mixed* $method, [*mixed* $arguments]) inherited from :doc:`Phalcon\\Di <Phalcon_Di>`
 
 Magic method to get or set services using setters/getters
 

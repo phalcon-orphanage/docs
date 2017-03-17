@@ -10,28 +10,34 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Regex**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/regex.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows validate if the value of a field matches a regular expression  
+Allows validate if the value of a field matches a regular expression
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\Regex as RegexValidator;
-    
-    class Subscriptors extends \Phalcon\Mvc\Model
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
     {
-    
-      public function validation()
-      {
-          $this->validate(new RegexValidator(array(
-              "field" => 'created_at',
-              'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])/'
-          )));
-          if ($this->validationHasFailed() == true) {
-              return false;
-          }
-      }
-    
+        public function validation()
+        {
+            $this->validate(
+                new RegexValidator(
+                    [
+                        "field"   => "created_at",
+                        "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])/",
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() == true) {
+                return false;
+            }
+        }
     }
 
 

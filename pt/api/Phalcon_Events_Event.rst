@@ -40,31 +40,49 @@ Phalcon\\Events\\Event constructor
 
 public  **setData** ([*mixed* $data])
 
-Sets event data
+Sets event data.
 
 
 
 public  **setType** (*mixed* $type)
 
-Sets event type
+Sets event type.
 
 
 
 public  **stop** ()
 
-Stops the event preventing propagation
+Stops the event preventing propagation.
+
+.. code-block:: php
+
+    <?php
+
+    if ($event->isCancelable()) {
+        $event->stop();
+    }
+
 
 
 
 public  **isStopped** ()
 
-Check whether the event is currently stopped
+Check whether the event is currently stopped.
 
 
 
 public  **isCancelable** ()
 
-Check whether the event is cancelable
+Check whether the event is cancelable.
+
+.. code-block:: php
+
+    <?php
+
+    if ($event->isCancelable()) {
+        $event->stop();
+    }
+
 
 
 

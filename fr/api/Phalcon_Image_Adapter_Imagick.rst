@@ -10,17 +10,19 @@ Class **Phalcon\\Image\\Adapter\\Imagick**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter/imagick.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Image manipulation support. Allows images to be resized, cropped, etc.  
+Image manipulation support. Allows images to be resized, cropped, etc.
 
 .. code-block:: php
 
     <?php
 
-     $image = new Phalcon\Image\Adapter\Imagick("upload/test.jpg");
-     $image->resize(200, 200)->rotate(90)->crop(100, 100);
-     if ($image->save()) {
-         echo 'success';
-     }
+    $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
+
+    $image->resize(200, 200)->rotate(90)->crop(100, 100);
+
+    if ($image->save()) {
+        echo "success";
+    }
 
 
 
@@ -171,7 +173,8 @@ Image height
 
 public  **getType** () inherited from :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
 
-Image type Driver dependent
+Image type
+Driver dependent
 
 
 

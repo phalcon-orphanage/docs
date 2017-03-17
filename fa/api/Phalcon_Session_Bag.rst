@@ -8,13 +8,15 @@ Class **Phalcon\\Session\\Bag**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/bag.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
+This component helps to separate session data into "namespaces". Working by this way
+you can easily create groups of session variables into the application
 
 .. code-block:: php
 
     <?php
 
-    $user = new \Phalcon\Session\Bag('user');
+    $user = new \Phalcon\Session\Bag("user");
+
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
 
@@ -43,136 +45,141 @@ Returns the DependencyInjector container
 
 public  **initialize** ()
 
-Initializes the session bag. This method must not be called directly, the class calls it when its internal data is accessed
+Initializes the session bag. This method must not be called directly, the
+class calls it when its internal data is accessed
 
 
 
 public  **destroy** ()
 
-Destroys the session bag 
+Destroys the session bag
 
 .. code-block:: php
 
     <?php
 
-     $user->destroy();
+    $user->destroy();
 
 
 
 
 public  **set** (*mixed* $property, *mixed* $value)
 
-Sets a value in the session bag 
+Sets a value in the session bag
 
 .. code-block:: php
 
     <?php
 
-     $user->set('name', 'Kimbra');
+    $user->set("name", "Kimbra");
 
 
 
 
 public  **__set** (*mixed* $property, *mixed* $value)
 
-Magic setter to assign values to the session bag 
+Magic setter to assign values to the session bag
 
 .. code-block:: php
 
     <?php
 
-     $user->name = "Kimbra";
+    $user->name = "Kimbra";
 
 
 
 
 public  **get** (*mixed* $property, [*mixed* $defaultValue])
 
-Obtains a value from the session bag optionally setting a default value 
+Obtains a value from the session bag optionally setting a default value
 
 .. code-block:: php
 
     <?php
 
-     echo $user->get('name', 'Kimbra');
+    echo $user->get("name", "Kimbra");
 
 
 
 
 public  **__get** (*mixed* $property)
 
-Magic getter to obtain values from the session bag 
+Magic getter to obtain values from the session bag
 
 .. code-block:: php
 
     <?php
 
-     echo $user->name;
+    echo $user->name;
 
 
 
 
 public  **has** (*mixed* $property)
 
-Check whether a property is defined in the internal bag 
+Check whether a property is defined in the internal bag
 
 .. code-block:: php
 
     <?php
 
-     var_dump($user->has('name'));
+    var_dump(
+        $user->has("name")
+    );
 
 
 
 
 public  **__isset** (*mixed* $property)
 
-Magic isset to check whether a property is defined in the bag 
+Magic isset to check whether a property is defined in the bag
 
 .. code-block:: php
 
     <?php
 
-     var_dump(isset($user['name']));
+    var_dump(
+        isset($user["name"])
+    );
 
 
 
 
 public  **remove** (*mixed* $property)
 
-Removes a property from the internal bag 
+Removes a property from the internal bag
 
 .. code-block:: php
 
     <?php
 
-     $user->remove('name');
+    $user->remove("name");
 
 
 
 
 public  **__unset** (*mixed* $property)
 
-Magic unset to remove items using the array syntax 
+Magic unset to remove items using the array syntax
 
 .. code-block:: php
 
     <?php
 
-     unset($user['name']);
+    unset($user["name"]);
 
 
 
 
 final public  **count** ()
 
-Return length of bag 
+Return length of bag
 
 .. code-block:: php
 
     <?php
 
-     echo $user->count();
+    echo $user->count();
 
 
 

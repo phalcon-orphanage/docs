@@ -8,27 +8,26 @@ Class **Phalcon\\Http\\Request\\File**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Provides OO wrappers to the $_FILES superglobal  
+Provides OO wrappers to the $_FILES superglobal
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Controller;
-    
+
     class PostsController extends Controller
     {
-    
-       public function uploadAction()
-       {
-          // Check if the user has uploaded files
-          if ($this->request->hasFiles() == true) {
-            // Print the real file names and their sizes
-            foreach ($this->request->getUploadedFiles() as $file) {
-                echo $file->getName(), " ", $file->getSize(), "\n";
-            }
+        public function uploadAction()
+        {
+            // Check if the user has uploaded files
+            if ($this->request->hasFiles() == true) {
+                // Print the real file names and their sizes
+                foreach ($this->request->getUploadedFiles() as $file) {
+                    echo $file->getName(), " ", $file->getSize(), "\n";
+                }
+           }
         }
-       }
     }
 
 
@@ -80,7 +79,8 @@ Returns the temporary name of the uploaded file
 
 public  **getType** ()
 
-Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+Returns the mime type reported by the browser
+This mime type is not completely secure, use getRealType() instead
 
 
 

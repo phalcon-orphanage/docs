@@ -10,23 +10,23 @@ Class **Phalcon\\Paginator\\Adapter\\Model**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as a base.  
+This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as a base.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Paginator\Adapter\Model;
-    
-     $paginator = new Model(
-         [
-             'data'  => Robots::find(),
-             'limit' => 25,
-             'page'  => $currentPage
-         ]
-     );
-    
-     $paginate = $paginator->getPaginate();
+    use Phalcon\Paginator\Adapter\Model;
+
+    $paginator = new Model(
+        [
+            "data"  => Robots::find(),
+            "limit" => 25,
+            "page"  => $currentPage,
+        ]
+    );
+
+    $paginate = $paginator->getPaginate();
 
 
 

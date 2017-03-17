@@ -10,28 +10,36 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Inclusionin**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/inclusionin.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\Mvc\\Model\\Validator\\InclusionIn  Check if a value is included into a list of values  
+Phalcon\\Mvc\\Model\\Validator\\InclusionIn
+
+Check if a value is included into a list of values
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\InclusionIn as InclusionInValidator;
-    
-    class Subscriptors extends \Phalcon\Mvc\Model
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
     {
-    
-    	public function validation()
-    	{
-    		$this->validate(new InclusionInValidator(array(
-    			"field" => 'status',
-    			'domain' => array('A', 'I')
-    		)));
-    		if ($this->validationHasFailed() == true) {
-    			return false;
-    		}
-    	}
-    
+        public function validation()
+        {
+            $this->validate(
+                new InclusionInValidator(
+                    [
+                        "field"  => "status",
+                        "domain" => ["A", "I"],
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() === true) {
+                return false;
+            }
+        }
     }
 
 

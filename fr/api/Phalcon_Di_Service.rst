@@ -8,14 +8,18 @@ Class **Phalcon\\Di\\Service**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/service.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Represents individually a service in the services container  
+Represents individually a service in the services container
 
 .. code-block:: php
 
     <?php
 
-     $service = new \Phalcon\Di\Service('request', 'Phalcon\Http\Request');
-     $request = service->resolve();
+    $service = new \Phalcon\Di\Service(
+        "request",
+        "Phalcon\\Http\\Request"
+    );
+
+    $request = service->resolve();
 
 .. code-block:: php
 

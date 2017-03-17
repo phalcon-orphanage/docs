@@ -10,22 +10,26 @@ Class **Phalcon\\Mvc\\Router\\Annotations**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router/annotations.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-A router that reads routes annotations from classes/resources  
+A router that reads routes annotations from classes/resources
 
 .. code-block:: php
 
     <?php
 
-     $di['router'] = function() {
-    
-    	//Use the annotations router
-    	$router = new Annotations(false);
-    
-    	//This will do the same as above but only if the handled uri starts with /robots
-     		$router->addResource('Robots', '/robots');
-    
-     		return $router;
-    };
+    use Phalcon\Mvc\Router\Annotations;
+
+    $di->setShared(
+        "router",
+        function() {
+            // Use the annotations router
+            $router = new Annotations(false);
+
+            // This will do the same as above but only if the handled uri starts with /robots
+            $router->addResource("Robots", "/robots");
+
+            return $router;
+        }
+    );
 
 
 
@@ -45,13 +49,16 @@ Methods
 
 public  **addResource** (*mixed* $handler, [*mixed* $prefix])
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations
+Adds a resource to the annotations handler
+A resource is a class that contains routing annotations
 
 
 
 public  **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
+Adds a resource to the annotations handler
+A resource is a class that contains routing annotations
+The class is located in a module
 
 
 
@@ -123,19 +130,21 @@ Returns the internal event manager
 
 public  **getRewriteUri** () inherited from :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
-Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
+Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
 
 
 
 public  **setUriSource** (*mixed* $uriSource) inherited from :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
-Sets the URI source. One of the URI_SOURCE_* constants 
+Sets the URI source. One of the URI_SOURCE_* constants
 
 .. code-block:: php
 
     <?php
 
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+    $router->setUriSource(
+        Router::URI_SOURCE_SERVER_REQUEST_URI
+    );
 
 
 
@@ -172,16 +181,19 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults) inherited from :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+Sets an array of default paths. If a route is missing a path the router will use the defined here
+This method must not be used to set a 404 route
 
 .. code-block:: php
 
     <?php
 
-     $router->setDefaults([
-         'module' => 'common',
-         'action' => 'index'
-     ]);
+    $router->setDefaults(
+        [
+            "module" => "common",
+            "action" => "index",
+        ]
+    );
 
 
 
@@ -194,17 +206,17 @@ Returns an array of default parameters
 
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
-Adds a route to the router without any HTTP constraint 
+Adds a route to the router without any HTTP constraint
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Mvc\Router;
-    
-     $router->add('/about', 'About::index');
-     $router->add('/about', 'About::index', ['GET', 'POST']);
-     $router->add('/about', 'About::index', ['GET', 'POST'], Router::POSITION_FIRST);
+    use Phalcon\Mvc\Router;
+
+    $router->add("/about", "About::index");
+    $router->add("/about", "About::index", ["GET", "POST"]);
+    $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 
 

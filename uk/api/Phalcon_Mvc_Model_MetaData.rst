@@ -8,14 +8,22 @@ Abstract class **Phalcon\\Mvc\\Model\\MetaData**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
+Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc.
+this component collect them and store for further querying by Phalcon\\Mvc\\Model.
+Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.
+
+A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:
 
 .. code-block:: php
 
     <?php
 
     $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
-    $attributes = $metaData->getAttributes(new Robots());
+
+    $attributes = $metaData->getAttributes(
+        new Robots()
+    );
+
     print_r($attributes);
 
 
@@ -90,319 +98,423 @@ Return the strategy to obtain the meta-data
 
 final public  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Reads the complete meta-data for certain model 
+Reads the complete meta-data for certain model
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->readMetaData(new Robots());
+    print_r(
+        $metaData->readMetaData(
+            new Robots()
+        )
+    );
 
 
 
 
 final public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
-Reads meta-data for certain model 
+Reads meta-data for certain model
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->readMetaDataIndex(new Robots(), 0);
+    print_r(
+        $metaData->readMetaDataIndex(
+            new Robots(),
+            0
+        )
+    );
 
 
 
 
 final public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index, *mixed* $data)
 
-Writes meta-data for certain model using a MODEL_* constant 
+Writes meta-data for certain model using a MODEL_* constant
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->writeColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP, array('leName' => 'name')));
+    print_r(
+        $metaData->writeColumnMapIndex(
+            new Robots(),
+            MetaData::MODELS_REVERSE_COLUMN_MAP,
+            [
+                "leName" => "name",
+            ]
+        )
+    );
 
 
 
 
 final public  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Reads the ordered/reversed column map for certain model 
+Reads the ordered/reversed column map for certain model
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->readColumnMap(new Robots()));
+    print_r(
+        $metaData->readColumnMap(
+            new Robots()
+        )
+    );
 
 
 
 
 final public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $index)
 
-Reads column-map information for certain model using a MODEL_* constant 
+Reads column-map information for certain model using a MODEL_* constant
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->readColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP));
+    print_r(
+        $metaData->readColumnMapIndex(
+            new Robots(),
+            MetaData::MODELS_REVERSE_COLUMN_MAP
+        )
+    );
 
 
 
 
 public  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns table attributes names (fields) 
+Returns table attributes names (fields)
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getAttributes(new Robots()));
+    print_r(
+        $metaData->getAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns an array of fields which are part of the primary key 
+Returns an array of fields which are part of the primary key
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getPrimaryKeyAttributes(new Robots()));
+    print_r(
+        $metaData->getPrimaryKeyAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns an array of fields which are not part of the primary key 
+Returns an array of fields which are not part of the primary key
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getNonPrimaryKeyAttributes(new Robots()));
+    print_r(
+        $metaData->getNonPrimaryKeyAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns an array of not null attributes 
+Returns an array of not null attributes
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getNotNullAttributes(new Robots()));
+    print_r(
+        $metaData->getNotNullAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes and their data types 
+Returns attributes and their data types
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getDataTypes(new Robots()));
+    print_r(
+        $metaData->getDataTypes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes which types are numerical 
+Returns attributes which types are numerical
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getDataTypesNumeric(new Robots()));
+    print_r(
+        $metaData->getDataTypesNumeric(
+            new Robots()
+        )
+    );
 
 
 
 
 public *string* **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns the name of identity field (if one is present) 
+Returns the name of identity field (if one is present)
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getIdentityField(new Robots()));
+    print_r(
+        $metaData->getIdentityField(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes and their bind data types 
+Returns attributes and their bind data types
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getBindTypes(new Robots()));
+    print_r(
+        $metaData->getBindTypes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes that must be ignored from the INSERT SQL generation 
+Returns attributes that must be ignored from the INSERT SQL generation
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getAutomaticCreateAttributes(new Robots()));
+    print_r(
+        $metaData->getAutomaticCreateAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes that must be ignored from the UPDATE SQL generation 
+Returns attributes that must be ignored from the UPDATE SQL generation
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getAutomaticUpdateAttributes(new Robots()));
+    print_r(
+        $metaData->getAutomaticUpdateAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
-Set the attributes that must be ignored from the INSERT SQL generation 
+Set the attributes that must be ignored from the INSERT SQL generation
 
 .. code-block:: php
 
     <?php
 
-    $metaData->setAutomaticCreateAttributes(new Robots(), array('created_at' => true));
+    $metaData->setAutomaticCreateAttributes(
+        new Robots(),
+        [
+            "created_at" => true,
+        ]
+    );
 
 
 
 
 public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
-Set the attributes that must be ignored from the UPDATE SQL generation 
+Set the attributes that must be ignored from the UPDATE SQL generation
 
 .. code-block:: php
 
     <?php
 
-    $metaData->setAutomaticUpdateAttributes(new Robots(), array('modified_at' => true));
+    $metaData->setAutomaticUpdateAttributes(
+        new Robots(),
+        [
+            "modified_at" => true,
+        ]
+    );
 
 
 
 
 public  **setEmptyStringAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
-Set the attributes that allow empty string values 
+Set the attributes that allow empty string values
 
 .. code-block:: php
 
     <?php
 
-    $metaData->setEmptyStringAttributes(new Robots(), array('name' => true));
+    $metaData->setEmptyStringAttributes(
+        new Robots(),
+        [
+            "name" => true,
+        ]
+    );
 
 
 
 
 public  **getEmptyStringAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes allow empty strings 
+Returns attributes allow empty strings
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getEmptyStringAttributes(new Robots()));
+    print_r(
+        $metaData->getEmptyStringAttributes(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getDefaultValues** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns attributes (which have default values) and their default values 
+Returns attributes (which have default values) and their default values
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getDefaultValues(new Robots()));
+    print_r(
+        $metaData->getDefaultValues(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns the column map if any 
+Returns the column map if any
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getColumnMap(new Robots()));
+    print_r(
+        $metaData->getColumnMap(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Returns the reverse column map if any 
+Returns the reverse column map if any
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getReverseColumnMap(new Robots()));
+    print_r(
+        $metaData->getReverseColumnMap(
+            new Robots()
+        )
+    );
 
 
 
 
 public  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $attribute)
 
-Check if a model has certain attribute 
+Check if a model has certain attribute
 
 .. code-block:: php
 
     <?php
 
-    var_dump($metaData->hasAttribute(new Robots(), 'name'));
+    var_dump(
+        $metaData->hasAttribute(
+            new Robots(),
+            "name"
+        )
+    );
 
 
 
 
 public  **isEmpty** ()
 
-Checks if the internal meta-data container is empty 
+Checks if the internal meta-data container is empty
 
 .. code-block:: php
 
     <?php
 
-    var_dump($metaData->isEmpty());
+    var_dump(
+        $metaData->isEmpty()
+    );
 
 
 
 
 public  **reset** ()
 
-Resets internal meta-data in order to regenerate it 
+Resets internal meta-data in order to regenerate it
 
 .. code-block:: php
 

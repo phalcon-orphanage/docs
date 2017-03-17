@@ -8,39 +8,48 @@ Class **Phalcon\\Mvc\\Model\\Transaction\\Manager**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/transaction/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.  This class manages the objects that compose a transaction. A transaction produces a unique connection that is passed to every object part of the transaction.  
+A transaction acts on a single database connection. If you have multiple class-specific
+databases, the transaction will not protect interaction among them.
+
+This class manages the objects that compose a transaction.
+A transaction produces a unique connection that is passed to every
+object part of the transaction.
 
 .. code-block:: php
 
     <?php
 
     try {
-    
-      use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
-    
-      $transactionManager = new TransactionManager();
-    
-      $transaction = $transactionManager->get();
-    
-      $robot = new Robots();
-      $robot->setTransaction($transaction);
-      $robot->name = 'WALL·E';
-      $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
-        $transaction->rollback("Can't save robot");
-      }
-    
-      $robotPart = new RobotParts();
-      $robotPart->setTransaction($transaction);
-      $robotPart->type = 'head';
-      if($robotPart->save()==false){
-        $transaction->rollback("Can't save robot part");
-      }
-    
-      $transaction->commit();
-    
+       use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
+
+       $transactionManager = new TransactionManager();
+
+       $transaction = $transactionManager->get();
+
+       $robot = new Robots();
+
+       $robot->setTransaction($transaction);
+
+       $robot->name       = "WALL·E";
+       $robot->created_at = date("Y-m-d");
+
+       if ($robot->save() === false){
+           $transaction->rollback("Can't save robot");
+       }
+
+       $robotPart = new RobotParts();
+
+       $robotPart->setTransaction($transaction);
+
+       $robotPart->type = "head";
+
+       if ($robotPart->save() === false) {
+           $transaction->rollback("Can't save robot part");
+       }
+
+       $transaction->commit();
     } catch (Phalcon\Mvc\Model\Transaction\Failed $e) {
-      echo 'Failed, reason: ', $e->getMessage();
+       echo "Failed, reason: ", $e->getMessage();
     }
 
 
@@ -98,7 +107,8 @@ Checks whether the manager has an active transaction
 
 public  **get** ([*mixed* $autoBegin])
 
-Returns a new \\Phalcon\\Mvc\\Model\\Transaction or an already created once This method registers a shutdown function to rollback active connections
+Returns a new \\Phalcon\\Mvc\\Model\\Transaction or an already created once
+This method registers a shutdown function to rollback active connections
 
 
 
@@ -122,7 +132,8 @@ Commits active transactions within the manager
 
 public  **rollback** ([*boolean* $collect])
 
-Rollbacks active transactions within the manager Collect will remove the transaction from the manager
+Rollbacks active transactions within the manager
+Collect will remove the transaction from the manager
 
 
 

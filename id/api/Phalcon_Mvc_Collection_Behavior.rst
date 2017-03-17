@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Mvc\\Collection\\Behavior**
 =====================================================
 
+*implements* :doc:`Phalcon\\Mvc\\Collection\\BehaviorInterface <Phalcon_Mvc_Collection_BehaviorInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 

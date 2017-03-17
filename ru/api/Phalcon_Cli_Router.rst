@@ -8,18 +8,25 @@ Class **Phalcon\\Cli\\Router**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\Cli\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
+Phalcon\\Cli\\Router is the standard framework router. Routing is the
+process of taking a command-line arguments and
+decomposing it into parameters to determine which module, task, and
+action of that task should receive the request
 
 .. code-block:: php
 
     <?php
 
     $router = new \Phalcon\Cli\Router();
-    $router->handle(array(
-    	'module' => 'main',
-    	'task' => 'videos',
-    	'action' => 'process'
-    ));
+
+    $router->handle(
+        [
+            "module" => "main",
+            "task"   => "videos",
+            "action" => "process",
+        ]
+    );
+
     echo $router->getTaskName();
 
 
@@ -65,16 +72,19 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults)
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+Sets an array of default paths. If a route is missing a path the router will use the defined here
+This method must not be used to set a 404 route
 
 .. code-block:: php
 
     <?php
 
-     $router->setDefaults(array(
-    	'module' => 'common',
-    	'action' => 'index'
-     ));
+    $router->setDefaults(
+        [
+            "module" => "common",
+            "action" => "index",
+        ]
+    );
 
 
 
@@ -87,26 +97,26 @@ Handles routing information received from command-line arguments
 
 public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **add** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router 
+Adds a route to the router
 
 .. code-block:: php
 
     <?php
 
-     $router->add('/about', 'About::main');
+    $router->add("/about", "About::main");
 
 
 
 
 public  **getModuleName** ()
 
-Returns proccesed module name
+Returns processed module name
 
 
 
 public  **getTaskName** ()
 
-Returns proccesed task name
+Returns processed task name
 
 
 

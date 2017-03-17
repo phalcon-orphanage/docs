@@ -10,15 +10,19 @@ Class **Phalcon\\Logger\\Adapter\\Stream**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapter/stream.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Sends logs to a valid PHP stream  
+Sends logs to a valid PHP stream
 
 .. code-block:: php
 
     <?php
 
-    $logger = new \Phalcon\Logger\Adapter\Stream("php://stderr");
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\Stream;
+
+    $logger = new Stream("php://stderr");
+
     $logger->log("This is a message");
-    $logger->log(\Phalcon\Logger::ERROR, "This is an error");
+    $logger->log(Logger::ERROR, "This is an error");
     $logger->error("This is another error");
 
 

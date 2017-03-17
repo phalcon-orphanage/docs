@@ -8,31 +8,41 @@ Class **Phalcon\\Cache\\Frontend\\Json**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache data converting/deconverting them to JSON.  This adapter uses the json_encode/json_decode PHP's functions  As the data is encoded in JSON other systems accessing the same backend could process them  
+Allows to cache data converting/deconverting them to JSON.
+
+This adapter uses the json_encode/json_decode PHP's functions
+
+As the data is encoded in JSON other systems accessing the same backend could
+process them
 
 .. code-block:: php
 
     <?php
 
     <?php
-    
-     // Cache the data for 2 days
-     $frontCache = new \Phalcon\Cache\Frontend\Json(array(
-        "lifetime" => 172800
-     ));
-    
-     //Create the Cache setting memcached connection options
-     $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-    	'host' => 'localhost',
-    	'port' => 11211,
-      	'persistent' => false
-     ));
-    
-     //Cache arbitrary data
-     $cache->save('my-data', array(1, 2, 3, 4, 5));
-    
-     //Get data
-     $data = $cache->get('my-data');
+
+    // Cache the data for 2 days
+    $frontCache = new \Phalcon\Cache\Frontend\Json(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    // Create the Cache setting memcached connection options
+    $cache = new \Phalcon\Cache\Backend\Memcache(
+        $frontCache,
+        [
+            "host"       => "localhost",
+            "port"       => 11211,
+            "persistent" => false,
+        ]
+    );
+
+    // Cache arbitrary data
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -75,13 +85,13 @@ Stops output frontend
 
 
 
-public *string* **beforeStore** (*mixed* $data)
+public  **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed* **afterRetrieve** (*mixed* $data)
+public  **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

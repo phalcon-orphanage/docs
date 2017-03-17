@@ -10,18 +10,26 @@ Class **Phalcon\\Logger\\Adapter\\Syslog**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapter/syslog.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Sends logs to the system logger  
+Sends logs to the system logger
 
 .. code-block:: php
 
     <?php
 
-    $logger = new \Phalcon\Logger\Adapter\Syslog("ident", array(
-    	'option' => LOG_NDELAY,
-    	'facility' => LOG_MAIL
-    ));
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\Syslog;
+
+    // LOG_USER is the only valid log type under Windows operating systems
+    $logger = new Syslog(
+        "ident",
+        [
+            "option"   => LOG_CONS | LOG_NDELAY | LOG_PID,
+            "facility" => LOG_USER,
+        ]
+    );
+
     $logger->log("This is a message");
-    $logger->log(\Phalcon\Logger::ERROR, "This is an error");
+    $logger->log(Logger::ERROR, "This is an error");
     $logger->error("This is another error");
 
 
@@ -41,7 +49,7 @@ Returns the internal formatter
 
 
 
-public  **logInternal** (*string* $message, *int* $type, *int* $time, *array* $context)
+public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the stream itself
 

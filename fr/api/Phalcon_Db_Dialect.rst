@@ -8,7 +8,8 @@ Abstract class **Phalcon\\Db\\Dialect**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/dialect.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
+This is the base class to each database dialect. This implements
+common methods to transform intermediate code into its RDBMS related syntax
 
 
 Methods
@@ -40,58 +41,63 @@ Escape identifiers
 
 public  **limit** (*mixed* $sqlQuery, *mixed* $number)
 
-Generates the SQL for LIMIT clause 
+Generates the SQL for LIMIT clause
 
 .. code-block:: php
 
     <?php
 
-        $sql = $dialect->limit('SELECT * FROM robots', 10);
-        echo $sql; // SELECT * FROM robots LIMIT 10
-    
-        $sql = $dialect->limit('SELECT * FROM robots', [10, 50]);
-        echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
+    $sql = $dialect->limit("SELECT * FROM robots", 10);
+    echo $sql; // SELECT * FROM robots LIMIT 10
+
+    $sql = $dialect->limit("SELECT * FROM robots", [10, 50]);
+    echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 
 
 
 public  **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause 
+Returns a SQL modified with a FOR UPDATE clause
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->forUpdate('SELECT * FROM robots');
-     echo $sql; // SELECT * FROM robots FOR UPDATE
+    $sql = $dialect->forUpdate("SELECT * FROM robots");
+    echo $sql; // SELECT * FROM robots FOR UPDATE
 
 
 
 
 public  **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause 
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->sharedLock('SELECT * FROM robots');
-     echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+    $sql = $dialect->sharedLock("SELECT * FROM robots");
+    echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 
 
 
 final public  **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Gets a list of columns with escaped identifiers 
+Gets a list of columns with escaped identifiers
 
 .. code-block:: php
 
     <?php
 
-        echo $dialect->getColumnList(array('column1', 'column'));
+    echo $dialect->getColumnList(
+        [
+            "column1",
+            "column",
+        ]
+    );
 
 
 

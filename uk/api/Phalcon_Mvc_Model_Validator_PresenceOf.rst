@@ -10,28 +10,34 @@ Class **Phalcon\\Mvc\\Model\\Validator\\PresenceOf**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to validate if a filed have a value different of null and empty string ("")  
+Allows to validate if a filed have a value different of null and empty string ("")
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\PresenceOf;
-    
-    class Subscriptors extends \Phalcon\Mvc\Model
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
     {
-    
-      public function validation()
-      {
-          $this->validate(new PresenceOf(array(
-              "field" => 'name',
-              "message" => 'The name is required'
-          )));
-          if ($this->validationHasFailed() == true) {
-              return false;
-          }
-      }
-    
+        public function validation()
+        {
+            $this->validate(
+                new PresenceOf(
+                    [
+                        "field"   => "name",
+                        "message" => "The name is required",
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() === true) {
+                return false;
+            }
+        }
     }
 
 

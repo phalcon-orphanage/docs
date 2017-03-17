@@ -6,19 +6,22 @@ Class **Phalcon\\Queue\\Beanstalk**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/queue/beanstalk.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Class to access the beanstalk queue service. Partially implements the protocol version 1.2  
+Class to access the beanstalk queue service.
+Partially implements the protocol version 1.2
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Queue\Beanstalk;
-    
-     $queue = new Beanstalk([
-         'host'       => '127.0.0.1',
-         'port'       => 11300,
-         'persistent' => true,
-     ]);
+    use Phalcon\Queue\Beanstalk;
+
+    $queue = new Beanstalk(
+        [
+            "host"       => "127.0.0.1",
+            "port"       => 11300,
+            "persistent" => true,
+        ]
+    );
 
 
 
@@ -40,7 +43,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*array* $options])
+public  **__construct** ([*array* $parameters])
 
 
 
@@ -162,7 +165,8 @@ Fetch a YAML payload from the Beanstalkd server
 
 public  **read** ([*mixed* $length])
 
-Reads a packet from the socket. Prior to reading from the socket will check for availability of the connection.
+Reads a packet from the socket. Prior to reading from the socket will
+check for availability of the connection.
 
 
 

@@ -115,7 +115,8 @@ Sets the resource's target path
 
 public  **getContent** ([*mixed* $basePath]) inherited from :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Returns the content of the resource as an string
+Optionally a base path where the resource is located can be set
 
 
 
