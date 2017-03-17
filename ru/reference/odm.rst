@@ -561,19 +561,22 @@ The following example shows how to use it:
     <?php
 
     use Phalcon\Mvc\Collection;
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
-    use Phalcon\Mvc\Model\Validator\Numericality;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\InclusionIn;
+    use Phalcon\Validation\Validator\Numericality;
 
     class Robots extends Collection
     {
         public function validation()
         {
-            $this->validate(
+            $validation = new Validation();
+
+            $validation->add(
+                "type",
                 new InclusionIn(
                     [
-                        "field"   => "type",
                         "message" => "Type must be: mechanical or virtual",
-                        "domain"  => [
+                        "domain" => [
                             "Mechanical",
                             "Virtual",
                         ],
@@ -581,124 +584,25 @@ The following example shows how to use it:
                 )
             );
 
-            $this->validate(
+            $validation->add(
+                "price",
                 new Numericality(
                     [
-                        "field"   => "price",
-                        "message" => "Price must be numeric",
+                        "message" => "Price must be numeric"
                     ]
                 )
             );
 
-            return $this->validationHasFailed() !== true;
+            return $this->validate($validation);
         }
     }
 
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
+the value is not included in the method, then the validator will fail and return false.
 
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Name                                                                                                  | Explanation                                                      |
-+=======================================================================================================+==================================================================+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Email <../api/Phalcon_Mvc_Model_Validator_Email>`               | Validates that field contains a valid email format               |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Exclusionin <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   | Validates that a value is not within a list of possible values   |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Inclusionin <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   | Validates that a value is within a list of possible values       |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Numericality <../api/Phalcon_Mvc_Model_Validator_Numericality>` | Validates that a field has a numeric format                      |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Regex <../api/Phalcon_Mvc_Model_Validator_Regex>`               | Validates that the value of a field matches a regular expression |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\StringLength <../api/Phalcon_Mvc_Model_Validator_StringLength>` | Validates the length of a string                                 |
-+-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+.. highlights::
 
-In addition to the built-in validators, you can create your own validators:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Validator as CollectionValidator;
-
-    class UrlValidator extends CollectionValidator
-    {
-        public function validate($model)
-        {
-            $field = $this->getOption("field");
-
-            $value = $model->$field;
-
-            $filtered = filter_var($value, FILTER_VALIDATE_URL);
-
-            if (!$filtered) {
-                $this->appendMessage(
-                    "The URL is invalid",
-                    $field,
-                    "UrlValidator"
-                );
-
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-Adding the validator to a model:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Collection;
-
-    class Customers extends Collection
-    {
-        public function validation()
-        {
-            $this->validate(
-                new UrlValidator(
-                    [
-                        "field"  => "url",
-                    ]
-                )
-            );
-
-            if ($this->validationHasFailed() === true) {
-                return false;
-            }
-        }
-    }
-
-The idea of creating validators is to make them reusable across several models. A validator can also be as simple as:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Collection;
-    use Phalcon\Mvc\Model\Message as ModelMessage;
-
-    class Robots extends Collection
-    {
-        public function validation()
-        {
-            if ($this->type === "Old") {
-                $message = new ModelMessage(
-                    "Sorry, old robots are not allowed anymore",
-                    "type",
-                    "MyType"
-                );
-
-                $this->appendMessage($message);
-
-                return false;
-            }
-
-            return true;
-        }
-    }
+    For more information on validators, see the :doc:`Validation documentation <validation>`.
 
 Deleting Records
 ----------------
