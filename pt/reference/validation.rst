@@ -158,6 +158,8 @@ Phalcon fornece um conjunto de validadores para este componente:
 +--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Valida que o valor de um campo seja um número de cartão de crédito válido |
 +--------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+| :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>`         | Validates using callback function                                  |
++--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 O exemplo abaixo explica como criar um validador adicional para este componente:
 
@@ -201,6 +203,71 @@ O exemplo abaixo explica como criar um validador adicional para este componente:
     }
 
 É importante que os validadores retornem um valor booleano válido indicando se a validação foi bem sucedida ou não.
+
+Callback Validator
+------------------
+By using :doc:`Phalcon\\Validation\Validator\Callback <../api/Phalcon_Validation_Validator_Callback>` you can execute custom
+function which must return boolean or new validator class which will be used to validate the same field. By returning :code:`true`
+validation will be successful, returning :code:`false` will mean validation failed. When executing this validator Phalcon will pass
+data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+
+.. code-block:: php
+
+    <?php
+
+    use \Phalcon\Validation;
+    use \Phalcon\Validation\Validator\Callback;
+    use \Phalcon\Validation\Validator\PresenceOf;
+
+    $validation = new Validation();
+    $validation->add(
+        "amount",
+        new Callback(
+            [
+                "callback" => function($data) {
+                    return $data["amount"] % 2 == 0;
+                },
+                "message" => "Only even number of products are accepted"
+            ]
+        )
+    );
+    $validation->add(
+        "amount",
+        new Callback(
+            [
+                "callback" => function($data) {
+                    if($data["amount"] % 2 == 0) {
+                        return $data["amount"] != 2;
+                    }
+
+                    return true;
+                },
+                "message" => "You can't buy 2 products"
+            ]
+        )
+    );
+    $validation->add(
+        "description",
+        new Callback(
+            [
+                "callback" => function($data) {
+                    if($data["amount"] >= 10) {
+                        return new PresenceOf(
+                            [
+                                "message" => "You must write why you need so big amount."
+                            ]
+                        );
+                    }
+
+                    return true;
+                }
+            ]
+        )
+    );
+
+    $messages = $validation->validate(["amount" => 1]); // will return message from first validator
+    $messages = $validation->validate(["amount" => 2]); // will return message from second validator
+    $messages = $validation->validate(["amount" => 10]); // will return message from validator returned by third validator
 
 Mensagens de Validação
 ----------------------
