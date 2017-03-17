@@ -10,34 +10,41 @@ Class **Phalcon\\Cache\\Backend\\Redis**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a redis backend  This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter  
+Allows to cache output fragments, PHP data or raw data to a redis backend
+
+This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\Redis;
-     use Phalcon\Cache\Frontend\Data as FrontData;
-    
-     // Cache data for 2 days
-     $frontCache = new FrontData([
-         'lifetime' => 172800
-     ]);
-    
-     // Create the Cache setting redis connection options
-     $cache = new Redis($frontCache, [
-         'host' => 'localhost',
-         'port' => 6379,
-         'auth' => 'foobared',
-         'persistent' => false
-         'index' => 0,
-     ]);
-    
-     // Cache arbitrary data
-     $cache->save('my-data', [1, 2, 3, 4, 5]);
-    
-     // Get data
-     $data = $cache->get('my-data');
+    use Phalcon\Cache\Backend\Redis;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
+    // Cache data for 2 days
+    $frontCache = new FrontData(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    // Create the Cache setting redis connection options
+    $cache = new Redis(
+        $frontCache,
+        [
+            "host"       => "localhost",
+            "port"       => 6379,
+            "auth"       => "foobared",
+            "persistent" => false,
+            "index"      => 0,
+        ]
+    );
+
+    // Cache arbitrary data
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -62,9 +69,19 @@ Returns a cached content
 
 
 
-public  **save** ([*int* | *string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("my-key", $data);
+
+    // Save data termlessly
+    $cache->save("my-key", $data, -1);
+
 
 
 
@@ -74,25 +91,35 @@ Deletes a value from the cache by its key
 
 
 
-public  **queryKeys** ([*string* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* $keyName], [*long* $lifetime])
+
+public  **exists** ([*string* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
 
 
 
-public  **increment** ([*string* $keyName], [*long* $value])
+public  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
 
 
-public  **decrement** ([*string* $keyName], [*long* $value])
+public  **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of $keyName by given $value
 

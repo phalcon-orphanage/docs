@@ -10,28 +10,30 @@ Class **Phalcon\\Session\\Adapter\\Memcache**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/adapter/memcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This adapter store sessions in memcache  
+This adapter store sessions in memcache
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Session\Adapter\Memcache;
-    
-     $session = new Memcache([
-         'uniqueId'   => 'my-private-app',
-         'host'       => '127.0.0.1',
-         'port'       => 11211,
-         'persistent' => true,
-         'lifetime'   => 3600,
-         'prefix'     => 'my_'
-     ]);
-    
-     $session->start();
-    
-     $session->set('var', 'some-value');
-    
-     echo $session->get('var');
+    use Phalcon\Session\Adapter\Memcache;
+
+    $session = new Memcache(
+        [
+            "uniqueId"   => "my-private-app",
+            "host"       => "127.0.0.1",
+            "port"       => 11211,
+            "persistent" => true,
+            "lifetime"   => 3600,
+            "prefix"     => "my_",
+        ]
+    );
+
+    $session->start();
+
+    $session->set("var", "some-value");
+
+    echo $session->get("var");
 
 
 
@@ -105,13 +107,17 @@ Starts the session (if headers are already sent the session will not be started)
 
 public  **setOptions** (*array* $options) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Sets session's options 
+Sets session's options
 
 .. code-block:: php
 
     <?php
 
-    $session->setOptions(['uniqueId' => 'my-private-app']);
+    $session->setOptions(
+        [
+            "uniqueId" => "my-private-app",
+        ]
+    );
 
 
 
@@ -142,59 +148,61 @@ public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from :doc:`Phal
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Gets a session variable from an application context 
+Gets a session variable from an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->get('auth', 'yes');
+    $session->get("auth", "yes");
 
 
 
 
 public  **set** (*mixed* $index, *mixed* $value) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Sets a session variable in an application context 
+Sets a session variable in an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->set('auth', 'yes');
+    $session->set("auth", "yes");
 
 
 
 
 public  **has** (*mixed* $index) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Check whether a session variable is set in an application context 
+Check whether a session variable is set in an application context
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->has('auth'));
+    var_dump(
+        $session->has("auth")
+    );
 
 
 
 
 public  **remove** (*mixed* $index) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Removes a session variable from an application context 
+Removes a session variable from an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->remove('auth');
+    $session->remove("auth");
 
 
 
 
 public  **getId** () inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Returns active session id 
+Returns active session id
 
 .. code-block:: php
 
@@ -207,7 +215,7 @@ Returns active session id
 
 public  **setId** (*mixed* $id) inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Set the current session id 
+Set the current session id
 
 .. code-block:: php
 
@@ -220,30 +228,34 @@ Set the current session id
 
 public  **isStarted** () inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Check whether the session has been started 
+Check whether the session has been started
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->isStarted());
+    var_dump(
+        $session->isStarted()
+    );
 
 
 
 
 public  **status** () inherited from :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-Returns the status of the current session. 
+Returns the status of the current session.
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->status());
-    
-      if ($session->status() !== $session::SESSION_ACTIVE) {
-          $session->start();
-      }
+    var_dump(
+        $session->status()
+    );
+
+    if ($session->status() !== $session::SESSION_ACTIVE) {
+        $session->start();
+    }
 
 
 

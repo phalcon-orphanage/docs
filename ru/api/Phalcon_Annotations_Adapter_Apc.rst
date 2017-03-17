@@ -10,13 +10,15 @@ Class **Phalcon\\Annotations\\Adapter\\Apc**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores the parsed annotations in APC. This adapter is suitable for production  
+Stores the parsed annotations in APC. This adapter is suitable for production
 
 .. code-block:: php
 
     <?php
 
-     $annotations = new \Phalcon\Annotations\Adapter\Apc();
+    use Phalcon\Annotations\Adapter\Apc;
+
+    $annotations = new Apc();
 
 
 
@@ -29,7 +31,7 @@ Phalcon\\Annotations\\Adapter\\Apc constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` **read** (*string* $key)
+public  **read** (*mixed* $key)
 
 Reads parsed annotations from APC
 

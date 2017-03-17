@@ -10,34 +10,41 @@ Abstract class **Phalcon\\Mvc\\Controller**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/controller.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every application controller should extend this class that encapsulates all the controller functionality  The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.  
+Every application controller should extend this class that encapsulates all the controller functionality
+
+The controllers provide the “flow” between models and views. Controllers are responsible
+for processing the incoming requests from the web browser, interrogating the models for data,
+and passing that data on to the views for presentation.
 
 .. code-block:: php
 
     <?php
 
     <?php
-    
+
     class PeopleController extends \Phalcon\Mvc\Controller
     {
-    
-      //This action will be executed by default
-      public function indexAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
-      public function saveAction()
-      {
-       //Forwards flow to the index action
-       return $this->dispatcher->forward(array('controller' => 'people', 'action' => 'index'));
-      }
-    
+        // This action will be executed by default
+        public function indexAction()
+        {
+
+        }
+
+        public function findAction()
+        {
+
+        }
+
+        public function saveAction()
+        {
+            // Forwards flow to the index action
+            return $this->dispatcher->forward(
+                [
+                    "controller" => "people",
+                    "action"     => "index",
+                ]
+            );
+        }
     }
 
 

@@ -10,7 +10,8 @@ Class **Phalcon\\Mvc\\Model\\ValidationFailed**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validationfailed.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This exception is generated when a model fails to save a record Phalcon\\Mvc\\Model must be set up to have this behavior
+This exception is generated when a model fails to save a record
+Phalcon\\Mvc\\Model must be set up to have this behavior
 
 
 Methods

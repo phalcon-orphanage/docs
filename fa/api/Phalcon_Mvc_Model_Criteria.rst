@@ -8,19 +8,21 @@ Class **Phalcon\\Mvc\\Model\\Criteria**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/criteria.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This class is used to build the array parameter required by Phalcon\\Mvc\\Model::find() and Phalcon\\Mvc\\Model::findFirst() using an object-oriented interface.  
+This class is used to build the array parameter required by
+Phalcon\\Mvc\\Model::find() and Phalcon\\Mvc\\Model::findFirst()
+using an object-oriented interface.
 
 .. code-block:: php
 
     <?php
 
-     $robots = Robots::query()
-         ->where('type = :type:')
-         ->andWhere('year < 2000')
-         ->bind(['type' => 'mechanical'])
-         ->limit(5, 10)
-         ->orderBy('name')
-         ->execute();
+    $robots = Robots::query()
+        ->where("type = :type:")
+        ->andWhere("year < 2000")
+        ->bind(["type" => "mechanical"])
+        ->limit(5, 10)
+        ->orderBy("name")
+        ->execute();
 
 
 
@@ -53,13 +55,15 @@ Returns an internal model name on which the criteria will be applied
 
 public  **bind** (*array* $bindParams, [*mixed* $merge])
 
-Sets the bound parameters in the criteria This method replaces all previously set bound parameters
+Sets the bound parameters in the criteria
+This method replaces all previously set bound parameters
 
 
 
 public  **bindTypes** (*array* $bindTypes)
 
-Sets the bind types in the criteria This method replaces all previously set bound parameters
+Sets the bind types in the criteria
+This method replaces all previously set bound parameters
 
 
 
@@ -71,70 +75,75 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>` **columns** (*string* | *array* $columns)
 
-Sets the columns to be queried 
+Sets the columns to be queried
 
 .. code-block:: php
 
     <?php
 
-    $criteria->columns(array('id', 'name'));
+    $criteria->columns(
+        [
+            "id",
+            "name",
+        ]
+    );
 
 
 
 
 public  **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
-Adds an INNER join to the query 
+Adds an INNER join to the query
 
 .. code-block:: php
 
     <?php
 
-    $criteria->join('Robots');
-    $criteria->join('Robots', 'r.id = RobotsParts.robots_id');
-    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+    $criteria->join("Robots");
+    $criteria->join("Robots", "r.id = RobotsParts.robots_id");
+    $criteria->join("Robots", "r.id = RobotsParts.robots_id", "r");
+    $criteria->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
 
 
 
 
 public  **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds an INNER join to the query 
+Adds an INNER join to the query
 
 .. code-block:: php
 
     <?php
 
-    $criteria->innerJoin('Robots');
-    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
-    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->innerJoin("Robots");
+    $criteria->innerJoin("Robots", "r.id = RobotsParts.robots_id");
+    $criteria->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 
 
 
 public  **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a LEFT join to the query 
+Adds a LEFT join to the query
 
 .. code-block:: php
 
     <?php
 
-    $criteria->leftJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 
 
 
 public  **rightJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a RIGHT join to the query 
+Adds a RIGHT join to the query
 
 .. code-block:: php
 
     <?php
 
-    $criteria->rightJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 
 
@@ -165,52 +174,52 @@ Appends a condition to the current conditions using an OR operator
 
 public  **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a BETWEEN condition to the current conditions 
+Appends a BETWEEN condition to the current conditions
 
 .. code-block:: php
 
     <?php
 
-    $criteria->betweenWhere('price', 100.25, 200.50);
+    $criteria->betweenWhere("price", 100.25, 200.50);
 
 
 
 
 public  **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a NOT BETWEEN condition to the current conditions 
+Appends a NOT BETWEEN condition to the current conditions
 
 .. code-block:: php
 
     <?php
 
-    $criteria->notBetweenWhere('price', 100.25, 200.50);
+    $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 
 
 
 public  **inWhere** (*mixed* $expr, *array* $values)
 
-Appends an IN condition to the current conditions 
+Appends an IN condition to the current conditions
 
 .. code-block:: php
 
     <?php
 
-         $criteria->inWhere('id', [1, 2, 3]);
+    $criteria->inWhere("id", [1, 2, 3]);
 
 
 
 
 public  **notInWhere** (*mixed* $expr, *array* $values)
 
-Appends a NOT IN condition to the current conditions 
+Appends a NOT IN condition to the current conditions
 
 .. code-block:: php
 
     <?php
 
-    $criteria->notInWhere('id', [1, 2, 3]);
+    $criteria->notInWhere("id", [1, 2, 3]);
 
 
 
@@ -247,7 +256,16 @@ Adds the having clause to the criteria
 
 public  **limit** (*mixed* $limit, [*mixed* $offset])
 
-Adds the limit parameter to the criteria
+Adds the limit parameter to the criteria.
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->limit(100);
+    $criteria->limit(100, 200);
+    $criteria->limit("100", "200");
+
 
 
 
@@ -265,7 +283,8 @@ Adds the "shared_lock" parameter to the criteria
 
 public  **cache** (*array* $cache)
 
-Sets the cache options in the criteria This method replaces all previously set cache options
+Sets the cache options in the criteria
+This method replaces all previously set cache options
 
 
 
@@ -289,7 +308,10 @@ Returns the conditions parameter in the criteria
 
 public *int* | *array* | *null* **getLimit** ()
 
-Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
+Returns the limit parameter in the criteria, which will be
+an integer if limit was set without an offset,
+an array with 'number' and 'offset' keys if an offset was set with the limit,
+or null if limit has not been set.
 
 
 

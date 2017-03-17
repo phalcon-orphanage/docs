@@ -10,45 +10,48 @@ Class **Phalcon\\Mvc\\Application**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.  
+This component encapsulates all the complex operations behind instantiating every component
+needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Mvc\Application;
-    
-     class MyApp extends Application
-     {
-    
-    	/**
-    	 * Register the services here to make them general or register
-    	 * in the ModuleDefinition to make them module-specific
-    	 */
-    	protected function registerServices()
-    	{
-    
-    	}
-    
-    	/**
-    	 * This method registers all the modules in the application
-    	 */
-    	public function main()
-    	{
-    		$this->registerModules(array(
-    			'frontend' => array(
-    				'className' => 'Multiple\Frontend\Module',
-    				'path' => '../apps/frontend/Module.php'
-    			),
-    			'backend' => array(
-    				'className' => 'Multiple\Backend\Module',
-    				'path' => '../apps/backend/Module.php'
-    			)
-    		));
-    	}
+    use Phalcon\Mvc\Application;
+
+    class MyApp extends Application
+    {
+        /**
+         * Register the services here to make them general or register
+         * in the ModuleDefinition to make them module-specific
+         */
+        protected function registerServices()
+        {
+
+        }
+
+        /**
+         * This method registers all the modules in the application
+         */
+        public function main()
+        {
+            $this->registerModules(
+                [
+                    "frontend" => [
+                        "className" => "Multiple\\Frontend\\Module",
+                        "path"      => "../apps/frontend/Module.php",
+                    ],
+                    "backend" => [
+                        "className" => "Multiple\\Backend\\Module",
+                        "path"      => "../apps/backend/Module.php",
+                    ],
+                ]
+            );
+        }
     }
-    
+
     $application = new MyApp();
+
     $application->main();
 
 
@@ -58,7 +61,8 @@ Methods
 
 public  **useImplicitView** (*mixed* $implicitView)
 
-By default. The view is implicitly buffering all the output You can full disable the view component using this method
+By default. The view is implicitly buffering all the output
+You can full disable the view component using this method
 
 
 
@@ -88,24 +92,24 @@ Returns the internal event manager
 
 public  **registerModules** (*array* $modules, [*mixed* $merge]) inherited from :doc:`Phalcon\\Application <Phalcon_Application>`
 
-Register an array of modules present in the application 
+Register an array of modules present in the application
 
 .. code-block:: php
 
     <?php
 
-     $this->registerModules(
-     	[
-     		'frontend' => [
-     			'className' => 'Multiple\Frontend\Module',
-     			'path'      => '../apps/frontend/Module.php'
-     		],
-     		'backend' => [
-     			'className' => 'Multiple\Backend\Module',
-     			'path'      => '../apps/backend/Module.php'
-     		]
-     	]
-     );
+    $this->registerModules(
+        [
+            "frontend" => [
+                "className" => "Multiple\\Frontend\\Module",
+                "path"      => "../apps/frontend/Module.php",
+            ],
+            "backend" => [
+                "className" => "Multiple\\Backend\\Module",
+                "path"      => "../apps/backend/Module.php",
+            ],
+        ]
+    );
 
 
 

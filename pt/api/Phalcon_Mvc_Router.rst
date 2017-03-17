@@ -8,27 +8,30 @@ Class **Phalcon\\Mvc\\Router**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request  
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the
+process of taking a URI endpoint (that part of the URI which comes after the base URL) and
+decomposing it into parameters to determine which module, controller, and
+action of that controller should receive the request
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Mvc\Router;
-    
-     $router = new Router();
-    
-     $router->add(
-         '/documentation/{chapter}/{name}\.{type:[a-z]+}',
-         [
-             'controller' => 'documentation',
-             'action'     => 'show'
-    	)
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
+
+    $router->add(
+        "/documentation/{chapter}/{name}\.{type:[a-z]+}",
+        [
+            "controller" => "documentation",
+            "action"     => "show",
+        ]
     );
-    
-     $router->handle();
-    
-     echo $router->getControllerName();
+
+    $router->handle();
+
+    echo $router->getControllerName();
 
 
 
@@ -78,19 +81,21 @@ Returns the internal event manager
 
 public  **getRewriteUri** ()
 
-Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
+Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
 
 
 
 public  **setUriSource** (*mixed* $uriSource)
 
-Sets the URI source. One of the URI_SOURCE_* constants 
+Sets the URI source. One of the URI_SOURCE_* constants
 
 .. code-block:: php
 
     <?php
 
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+    $router->setUriSource(
+        Router::URI_SOURCE_SERVER_REQUEST_URI
+    );
 
 
 
@@ -127,16 +132,19 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults)
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+Sets an array of default paths. If a route is missing a path the router will use the defined here
+This method must not be used to set a 404 route
 
 .. code-block:: php
 
     <?php
 
-     $router->setDefaults([
-         'module' => 'common',
-         'action' => 'index'
-     ]);
+    $router->setDefaults(
+        [
+            "module" => "common",
+            "action" => "index",
+        ]
+    );
 
 
 
@@ -149,34 +157,34 @@ Returns an array of default parameters
 
 public  **handle** ([*mixed* $uri])
 
-Handles routing information received from the rewrite engine 
+Handles routing information received from the rewrite engine
 
 .. code-block:: php
 
     <?php
 
-     // Read the info from the rewrite engine
-     $router->handle();
-    
-     // Manually passing an URL
-     $router->handle('/posts/edit/1');
+    // Read the info from the rewrite engine
+    $router->handle();
+
+    // Manually passing an URL
+    $router->handle("/posts/edit/1");
 
 
 
 
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
-Adds a route to the router without any HTTP constraint 
+Adds a route to the router without any HTTP constraint
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Mvc\Router;
-    
-     $router->add('/about', 'About::index');
-     $router->add('/about', 'About::index', ['GET', 'POST']);
-     $router->add('/about', 'About::index', ['GET', 'POST'], Router::POSITION_FIRST);
+    use Phalcon\Mvc\Router;
+
+    $router->add("/about", "About::index");
+    $router->add("/about", "About::index", ["GET", "POST"]);
+    $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 
 

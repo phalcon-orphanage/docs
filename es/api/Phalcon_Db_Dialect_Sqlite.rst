@@ -102,14 +102,15 @@ Generates SQL to drop a view
 
 public  **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table 
+Generates SQL checking for the existence of a schema.table
 
 .. code-block:: php
 
     <?php
 
-        echo $dialect->tableExists("posts", "blog");
-        echo $dialect->tableExists("posts");
+    echo $dialect->tableExists("posts", "blog");
+
+    echo $dialect->tableExists("posts");
 
 
 
@@ -122,26 +123,30 @@ Generates SQL checking for the existence of a schema.view
 
 public  **describeColumns** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL describing a table 
+Generates SQL describing a table
 
 .. code-block:: php
 
     <?php
 
-        print_r($dialect->describeColumns("posts"));
+    print_r(
+        $dialect->describeColumns("posts")
+    );
 
 
 
 
 public  **listTables** ([*mixed* $schemaName])
 
-List all tables in database 
+List all tables in database
 
 .. code-block:: php
 
     <?php
 
-         print_r($dialect->listTables("blog"))
+    print_r(
+        $dialect->listTables("blog")
+    );
 
 
 
@@ -154,13 +159,15 @@ Generates the SQL to list all views of a schema or user
 
 public  **listIndexesSql** (*mixed* $table, [*mixed* $schema], [*mixed* $keyName])
 
-Generates the SQL to get query list of indexes 
+Generates the SQL to get query list of indexes
 
 .. code-block:: php
 
     <?php
 
-         print_r($dialect->listIndexesSql("blog"))
+    print_r(
+        $dialect->listIndexesSql("blog")
+    );
 
 
 
@@ -215,58 +222,63 @@ Escape identifiers
 
 public  **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Generates the SQL for LIMIT clause 
+Generates the SQL for LIMIT clause
 
 .. code-block:: php
 
     <?php
 
-        $sql = $dialect->limit('SELECT * FROM robots', 10);
-        echo $sql; // SELECT * FROM robots LIMIT 10
-    
-        $sql = $dialect->limit('SELECT * FROM robots', [10, 50]);
-        echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
+    $sql = $dialect->limit("SELECT * FROM robots", 10);
+    echo $sql; // SELECT * FROM robots LIMIT 10
+
+    $sql = $dialect->limit("SELECT * FROM robots", [10, 50]);
+    echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 
 
 
 public  **forUpdate** (*mixed* $sqlQuery) inherited from :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Returns a SQL modified with a FOR UPDATE clause 
+Returns a SQL modified with a FOR UPDATE clause
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->forUpdate('SELECT * FROM robots');
-     echo $sql; // SELECT * FROM robots FOR UPDATE
+    $sql = $dialect->forUpdate("SELECT * FROM robots");
+    echo $sql; // SELECT * FROM robots FOR UPDATE
 
 
 
 
 public  **sharedLock** (*mixed* $sqlQuery) inherited from :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause 
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->sharedLock('SELECT * FROM robots');
-     echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+    $sql = $dialect->sharedLock("SELECT * FROM robots");
+    echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 
 
 
 final public  **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Gets a list of columns with escaped identifiers 
+Gets a list of columns with escaped identifiers
 
 .. code-block:: php
 
     <?php
 
-        echo $dialect->getColumnList(array('column1', 'column'));
+    echo $dialect->getColumnList(
+        [
+            "column1",
+            "column",
+        ]
+    );
 
 
 

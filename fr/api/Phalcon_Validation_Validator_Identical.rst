@@ -10,29 +10,42 @@ Class **Phalcon\\Validation\\Validator\\Identical**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/identical.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Checks if a value is identical to other  
+Checks if a value is identical to other
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Identical;
-    
-     $validator->add('terms', new Identical([
-         'accepted' => 'yes',
-         'message' => 'Terms and conditions must be accepted'
-     ]));
-    
-     $validator->add(['terms', 'anotherTerms'], new Identical([
-         'accepted' => [
-             'terms' => 'yes',
-             'anotherTerms' => 'yes'
-         ],
-         'message' => [
-             'terms' => 'Terms and conditions must be accepted',
-             'anotherTerms' => 'Another terms  must be accepted'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\Identical;
+
+    $validator->add(
+        "terms",
+        new Identical(
+            [
+                "accepted" => "yes",
+                "message" => "Terms and conditions must be accepted",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "terms",
+            "anotherTerms",
+        ],
+        new Identical(
+            [
+                "accepted" => [
+                    "terms"        => "yes",
+                    "anotherTerms" => "yes",
+                ],
+                "message" => [
+                    "terms"        => "Terms and conditions must be accepted",
+                    "anotherTerms" => "Another terms  must be accepted",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -65,7 +78,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

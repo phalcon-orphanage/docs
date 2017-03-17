@@ -10,15 +10,19 @@ Class **Phalcon\\Annotations\\Adapter\\Files**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/files.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores the parsed annotations in files. This adapter is suitable for production  
+Stores the parsed annotations in files. This adapter is suitable for production
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Annotations\Adapter\Files;
-    
-     $annotations = new Files(['annotationsDir' => 'app/cache/annotations/']);
+    use Phalcon\Annotations\Adapter\Files;
+
+    $annotations = new Files(
+        [
+            "annotationsDir" => "app/cache/annotations/",
+        ]
+    );
 
 
 

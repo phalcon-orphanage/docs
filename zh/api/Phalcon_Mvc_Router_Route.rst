@@ -28,14 +28,20 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public  **via** (*mixed* $httpMethods)
 
-Set one or more HTTP methods that constraint the matching of the route 
+Set one or more HTTP methods that constraint the matching of the route
 
 .. code-block:: php
 
     <?php
 
-     $route->via('GET');
-     $route->via(array('GET', 'POST'));
+    $route->via("GET");
+
+    $route->via(
+        [
+            "GET",
+            "POST",
+        ]
+    );
 
 
 
@@ -66,37 +72,48 @@ Returns the route's name
 
 public  **setName** (*mixed* $name)
 
-Sets the route's name 
+Sets the route's name
 
 .. code-block:: php
 
     <?php
 
-     $router->add('/about', array(
-         'controller' => 'about'
-     ))->setName('about');
+    $router->add(
+        "/about",
+        [
+            "controller" => "about",
+        ]
+    )->setName("about");
 
 
 
 
 public  **beforeMatch** (*mixed* $callback)
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched 
+Sets a callback that is called if the route is matched.
+The developer can implement any arbitrary conditions here
+If the callback returns false the route is treated as not matched
 
 .. code-block:: php
 
     <?php
 
-     $router->add('/login', array(
-      'module'     => 'admin',
-      'controller' => 'session'
-     ))->beforeMatch(function ($uri, $route) {
-       // Check if the request was made with Ajax
-       if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
-          return false;
-       }
-         return true;
-     });
+    $router->add(
+        "/login",
+        [
+            "module"     => "admin",
+            "controller" => "session",
+        ]
+    )->beforeMatch(
+        function ($uri, $route) {
+            // Check if the request was made with Ajax
+            if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
+                return false;
+            }
+
+            return true;
+        }
+    );
 
 
 
@@ -109,15 +126,20 @@ Returns the 'before match' callback if any
 
 public  **match** (*mixed* $callback)
 
-Allows to set a callback to handle the request directly in the route 
+Allows to set a callback to handle the request directly in the route
 
 .. code-block:: php
 
     <?php
 
-    $router->add("/help", array())->match(function () {
-      return $this->getResponse()->redirect('https://support.google.com/', true);
-    });
+    $router->add(
+        "/help",
+        []
+    )->match(
+        function () {
+            return $this->getResponse()->redirect("https://support.google.com/", true);
+        }
+    );
 
 
 
@@ -160,14 +182,14 @@ Returns the paths using positions as keys and names as values
 
 public  **setHttpMethods** (*mixed* $httpMethods)
 
-Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
+Sets a set of HTTP methods that constraint the matching of the route (alias of via)
 
 .. code-block:: php
 
     <?php
 
-     $route->setHttpMethods('GET');
-     $route->setHttpMethods(array('GET', 'POST'));
+    $route->setHttpMethods("GET");
+    $route->setHttpMethods(["GET", "POST"]);
 
 
 
@@ -180,13 +202,13 @@ Returns the HTTP methods that constraint matching the route
 
 public  **setHostname** (*mixed* $hostname)
 
-Sets a hostname restriction to the route 
+Sets a hostname restriction to the route
 
 .. code-block:: php
 
     <?php
 
-     $route->setHostname('localhost');
+    $route->setHostname("localhost");
 
 
 

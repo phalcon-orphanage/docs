@@ -8,22 +8,28 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\Di.  
+This components controls the initialization of models, keeping record of relations
+between the different models of the application.
+
+A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\Di.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Di;
-     use Phalcon\Mvc\Model\Manager as ModelsManager;
-    
-     $di = new Di();
-    
-     $di->set('modelsManager', function() {
-          return new ModelsManager();
-     });
-    
-     $robot = new Robots($di);
+    use Phalcon\Di;
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
+
+    $di = new Di();
+
+    $di->set(
+        "modelsManager",
+        function() {
+            return new ModelsManager();
+        }
+    );
+
+    $robot = new Robots($di);
 
 
 
@@ -98,13 +104,16 @@ Sets the mapped source for a model
 
 final public  **isVisibleModelProperty** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $property)
 
-Check whether a model property is declared as public. 
+Check whether a model property is declared as public.
 
 .. code-block:: php
 
     <?php
 
-     $isPublic = $manager->isVisibleModelProperty(new Robots(), 'name');
+    $isPublic = $manager->isVisibleModelProperty(
+        new Robots(),
+        "name"
+    );
 
 
 
@@ -177,19 +186,23 @@ Returns the connection service name used to write data related to a model
 
 public  **_getConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $connectionServices)
 
-Returns the connection service name used to read or write data related to a model depending on the connection services
+Returns the connection service name used to read or write data related to
+a model depending on the connection services
 
 
 
 public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an events-manager if available
+Notify the behaviors that are listening in the model
 
 
 
 public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
+Dispatch an event to the listeners and behaviors
+This method expects that the endpoint listeners/behaviors returns true
+meaning that a least one was implemented
 
 
 
@@ -327,13 +340,15 @@ Gets belongsTo related records from a model
 
 public  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Gets all the belongsTo relations defined in a model 
+Gets all the belongsTo relations defined in a model
 
 .. code-block:: php
 
     <?php
 
-    $relations = $modelsManager->getBelongsTo(new Robots());
+    $relations = $modelsManager->getBelongsTo(
+        new Robots()
+    );
 
 
 

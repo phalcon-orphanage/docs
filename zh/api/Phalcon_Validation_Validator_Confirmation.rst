@@ -10,29 +10,42 @@ Class **Phalcon\\Validation\\Validator\\Confirmation**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/confirmation.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Checks that two values have the same value  
+Checks that two values have the same value
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Confirmation;
-    
-     $validator->add('password', new Confirmation([
-         'message' => 'Password doesn\'t match confirmation',
-         'with' => 'confirmPassword'
-     ]));
-    
-     $validator->add(['password', 'email'], new Confirmation([
-         'message' => [
-             'password' => 'Password doesn\'t match confirmation',
-             'email' => 'Email  doesn\'t match confirmation'
-         ],
-         'with' => [
-             'password => 'confirmPassword',
-             'email' => 'confirmEmail'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\Confirmation;
+
+    $validator->add(
+        "password",
+        new Confirmation(
+            [
+                "message" => "Password doesn't match confirmation",
+                "with"    => "confirmPassword",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "password",
+            "email",
+        ],
+        new Confirmation(
+            [
+                "message" => [
+                    "password" => "Password doesn't match confirmation",
+                    "email"    => "Email doesn't match confirmation",
+                ],
+                "with" => [
+                    "password" => "confirmPassword",
+                    "email"    => "confirmEmail",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -71,7 +84,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

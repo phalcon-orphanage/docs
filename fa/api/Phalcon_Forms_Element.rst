@@ -82,7 +82,8 @@ Returns the validators registered for the element
 
 public  **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
-Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element parameters
+Returns an array of prepared attributes for Phalcon\\Tag helpers
+according to the element parameters
 
 
 
@@ -154,7 +155,8 @@ Generate the HTML to label the element
 
 public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` **setDefault** (*mixed* $value)
 
-Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
+Sets a default value in case the form does not use an entity
+or there is no value available for the element in _POST
 
 
 
@@ -172,7 +174,8 @@ Returns the element value
 
 public  **getMessages** ()
 
-Returns the messages that belongs to the element The element needs to be attached to a form
+Returns the messages that belongs to the element
+The element needs to be attached to a form
 
 
 

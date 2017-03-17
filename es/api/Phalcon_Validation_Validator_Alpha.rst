@@ -10,24 +10,37 @@ Class **Phalcon\\Validation\\Validator\\Alpha**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/alpha.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Check for alphabetic character(s)  
+Check for alphabetic character(s)
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Alpha as AlphaValidator;
-    
-     $validator->add('username', new AlphaValidator([
-         'message' => ':field must contain only letters'
-     ]));
-    
-     $validator->add(['username', 'name'], new AlphaValidator([
-         'message' => [
-             'username' => 'username must contain only letters',
-             'name' => 'name must contain only letters'
-        ]
-     ]));
+    use Phalcon\Validation\Validator\Alpha as AlphaValidator;
+
+    $validator->add(
+        "username",
+        new AlphaValidator(
+            [
+                "message" => ":field must contain only letters",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "username",
+            "name",
+        ],
+        new AlphaValidator(
+            [
+                "message" => [
+                    "username" => "username must contain only letters",
+                    "name"     => "name must contain only letters",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -60,7 +73,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

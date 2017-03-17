@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Paginator\\Adapter**
 ==============================================
 
+*implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -28,5 +30,10 @@ public  **getLimit** ()
 
 Get current rows limit
 
+
+
+abstract public  **getPaginate** () inherited from :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+
+...
 
 

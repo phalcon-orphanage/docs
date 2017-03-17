@@ -8,41 +8,52 @@ Class **Phalcon\\Mvc\\Router\\Group**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router/group.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Helper class to create a group of routes with common attributes  
+Helper class to create a group of routes with common attributes
 
 .. code-block:: php
 
     <?php
 
-     $router = new \Phalcon\Mvc\Router();
-    
-     //Create a group with a common module and controller
-     $blog = new Group(array(
-     	'module' => 'blog',
-     	'controller' => 'index'
-     ));
-    
-     //All the routes start with /blog
-     $blog->setPrefix('/blog');
-    
-     //Add a route to the group
-     $blog->add('/save', array(
-     	'action' => 'save'
-     ));
-    
-     //Add another route to the group
-     $blog->add('/edit/{id}', array(
-     	'action' => 'edit'
-     ));
-    
-     //This route maps to a controller different than the default
-     $blog->add('/blog', array(
-     	'controller' => 'about',
-     	'action' => 'index'
-     ));
-    
-     //Add the group to the router
-     $router->mount($blog);
+    $router = new \Phalcon\Mvc\Router();
+
+    //Create a group with a common module and controller
+    $blog = new Group(
+        [
+            "module"     => "blog",
+            "controller" => "index",
+        ]
+    );
+
+    //All the routes start with /blog
+    $blog->setPrefix("/blog");
+
+    //Add a route to the group
+    $blog->add(
+        "/save",
+        [
+            "action" => "save",
+        ]
+    );
+
+    //Add another route to the group
+    $blog->add(
+        "/edit/{id}",
+        [
+            "action" => "edit",
+        ]
+    );
+
+    //This route maps to a controller different than the default
+    $blog->add(
+        "/blog",
+        [
+            "controller" => "about",
+            "action"     => "index",
+        ]
+    );
+
+    //Add the group to the router
+    $router->mount($blog);
 
 
 
@@ -81,7 +92,9 @@ Returns the common prefix for all the routes
 
 public  **beforeMatch** (*mixed* $beforeMatch)
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
+Sets a callback that is called if the route is matched.
+The developer can implement any arbitrary conditions here
+If the callback returns false the route is treated as not matched
 
 
 
@@ -111,13 +124,13 @@ Returns the routes added to the group
 
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Adds a route to the router on any HTTP method 
+Adds a route to the router on any HTTP method
 
 .. code-block:: php
 
     <?php
 
-     router->add('/about', 'About::index');
+    $router->add("/about", "About::index");
 
 
 

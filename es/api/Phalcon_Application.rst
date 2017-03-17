@@ -36,24 +36,24 @@ Returns the internal event manager
 
 public  **registerModules** (*array* $modules, [*mixed* $merge])
 
-Register an array of modules present in the application 
+Register an array of modules present in the application
 
 .. code-block:: php
 
     <?php
 
-     $this->registerModules(
-     	[
-     		'frontend' => [
-     			'className' => 'Multiple\Frontend\Module',
-     			'path'      => '../apps/frontend/Module.php'
-     		],
-     		'backend' => [
-     			'className' => 'Multiple\Backend\Module',
-     			'path'      => '../apps/backend/Module.php'
-     		]
-     	]
-     );
+    $this->registerModules(
+        [
+            "frontend" => [
+                "className" => "Multiple\\Frontend\\Module",
+                "path"      => "../apps/frontend/Module.php",
+            ],
+            "backend" => [
+                "className" => "Multiple\\Backend\\Module",
+                "path"      => "../apps/backend/Module.php",
+            ],
+        ]
+    );
 
 
 

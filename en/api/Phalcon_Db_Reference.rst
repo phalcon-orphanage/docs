@@ -8,18 +8,27 @@ Class **Phalcon\\Db\\Reference**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/reference.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to define reference constraints on tables  
+Allows to define reference constraints on tables
 
 .. code-block:: php
 
     <?php
 
-    $reference = new \Phalcon\Db\Reference("field_fk", array(
-    	'referencedSchema' => "invoicing",
-    	'referencedTable' => "products",
-    	'columns' => array("product_type", "product_code"),
-    	'referencedColumns' => array("type", "code")
-    ));
+    $reference = new \Phalcon\Db\Reference(
+        "field_fk",
+        [
+            "referencedSchema"  => "invoicing",
+            "referencedTable"   => "products",
+            "columns"           => [
+                "product_type",
+                "product_code",
+            ],
+            "referencedColumns" => [
+                "type",
+                "code",
+            ],
+        ]
+    );
 
 
 

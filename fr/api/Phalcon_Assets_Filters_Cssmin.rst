@@ -8,7 +8,9 @@ Class **Phalcon\\Assets\\Filters\\Cssmin**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/filters/cssmin.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
+Minify the css - removes comments
+removes newlines and line feeds keeping
+removes last semicolon from last property
 
 
 Methods

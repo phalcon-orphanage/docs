@@ -8,21 +8,23 @@ Class **Phalcon\\Mvc\\Micro\\Collection**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/micro/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Groups Micro-Mvc handlers as controllers  
+Groups Micro-Mvc handlers as controllers
 
 .. code-block:: php
 
     <?php
 
-     $app = new \Phalcon\Mvc\Micro();
-    
-     $collection = new Collection();
-    
-     $collection->setHandler(new PostsController());
-    
-     $collection->get('/posts/edit/{id}', 'edit');
-    
-     $app->mount($collection);
+    $app = new \Phalcon\Mvc\Micro();
+
+    $collection = new Collection();
+
+    $collection->setHandler(
+        new PostsController()
+    );
+
+    $collection->get("/posts/edit/{id}", "edit");
+
+    $app->mount($collection);
 
 
 

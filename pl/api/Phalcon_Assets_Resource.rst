@@ -6,13 +6,13 @@ Class **Phalcon\\Assets\\Resource**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Represents an asset resource  
+Represents an asset resource
 
 .. code-block:: php
 
     <?php
 
-     $resource = new \Phalcon\Assets\Resource('js', 'javascripts/jquery.js');
+    $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 
 
@@ -120,7 +120,8 @@ Sets the resource's target path
 
 public  **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Returns the content of the resource as an string
+Optionally a base path where the resource is located can be set
 
 
 

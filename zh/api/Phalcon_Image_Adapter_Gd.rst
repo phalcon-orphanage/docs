@@ -127,7 +127,8 @@ Image height
 
 public  **getType** () inherited from :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
 
-Image type Driver dependent
+Image type
+Driver dependent
 
 
 
