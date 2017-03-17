@@ -58,6 +58,7 @@
             - [Request Middleware](#middleware-events-api-request)
             - [Response Middleware](#middleware-events-api-response)
 - [Models](#models)
+- [Injecting Model Instances](#model-instances)
 - [Views](#views)
 - [Error Handling](#error-handling)
 
@@ -972,13 +973,14 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 ## Available events
 The following events are supported:
 
-|Event Name         | Triggered                                                       | Can stop operation? |
-|------------------ | --------------------------------------------------------------- | :-----------------: |
-|beforeHandleRoute  | Main method called; Routes have not been checked yet            | Yes                 |
-|beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet | Yes                 |
-|afterExecuteRoute  | Handler just finished running                                   | No                  |
-|beforeNotFound     | Route has not been found                                        | Yes                 |
-|afterHandleRoute   | Route just finished executing                                   | Yes                 |
+|Event Name         | Triggered                                                         | Can stop operation? |
+|------------------ | ----------------------------------------------------------------- | :-----------------: |
+|beforeHandleRoute  | Main method called; Routes have not been checked yet              | Yes                 |
+|beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   | Yes                 |
+|afterExecuteRoute  | Handler just finished running                                     | No                  |
+|beforeNotFound     | Route has not been found                                          | Yes                 |
+|afterHandleRoute   | Route just finished executing                                     | Yes                 |
+|afterBinding       | Triggered after models are bound but before executing the handler | Yes                 |
 
 
 <a name='events-available-events-authentication'></a>
@@ -1611,6 +1613,37 @@ $app->get(
 
 $app->handle();
 ```
+
+<a name='model-instances'></a>
+# Inject model instances
+By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
+
+```php
+<?php
+
+$loader = new \Phalcon\Loader();
+
+$loader->registerDirs(
+    [
+        __DIR__ . '/models/',
+    ]
+)->register();
+
+$app = new \Phalcon\Mvc\Micro();
+$app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
+
+$app->get(
+    "/products/{product:[0-9]+}",
+    function (Products $product) {
+        // do anything with $product object
+    }
+);
+
+$app->handle();
+```
+Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+
+Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
 
 <a name='views'></a>
 # Views

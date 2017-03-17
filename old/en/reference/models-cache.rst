@@ -86,8 +86,8 @@ as an anonymous function. Once the cache setup is properly defined you could cac
     $products = Products::find(
         [
             "cache" => [
-                "key"          => "my-cache",
-                "cacheService" => "cache",
+                "key"     => "my-cache",
+                "service" => "cache",
             ],
         ]
     );
