@@ -1,0 +1,195 @@
+body, html {
+    margin-top: 45px;
+    padding: 0;
+    height: 100%;
+    font-family: "Proxima Nova", Verdana, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #000000;
+    /*font: 16px/24px Ubuntu, sans-serif;*/
+    min-width: 990px;
+}
+
+.phalcon-logo {
+    display: block;
+    width: 200px;
+    height: 80px;
+    background: url(//static.phalconphp.com/www/images/phalcon.png) 0 0/200px 80px no-repeat
+}
+
+/** NavBar */
+.navbar {
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: 0 0 3px 0 rgba(37, 82, 95, 0.9);
+    box-shadow: 0 0 3px 0 rgba(37, 82, 95, 0.9);
+    background: url(../images/texture.png) repeat-x;
+    z-index: 100;
+}
+
+/*.with-top-navbar {*/
+    /*margin-top: 40px;*/
+/*}*/
+
+/** Main Container */
+.container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/** Articles */
+#articles table th, td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/** Footer */
+.footer {
+    background: url(../images/texture.png) repeat-x;
+    padding: 60px 0 80px
+}
+
+.footer h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+}
+
+.footer ul li {
+    padding: 3px 0
+}
+
+.footer ul li a {
+    font-size: 13px;
+    color: #f2f2f2;
+}
+
+.footer ul li a:hover {
+    color: #c0c6cf;
+    border-bottom: 1px dotted #c0c6cf
+}
+
+.footer #license-wrapper {
+    background: url(//static.phalconphp.com/www/images/phalcon3.png) 10px 0/74px 85px no-repeat
+}
+
+.footer #license-spaccer {
+    float: left;
+    height: 50px;
+    width: 100%
+}
+
+.footer .license {
+    padding-left: 90px;
+    background-size: 74px 85px;
+    color: #f2f2f2;
+    font-size: 12px;
+    line-height: 18px
+}
+
+.footer .license a {
+    color: #f2f2f2;
+    border-bottom: 1px dotted #6d7481
+}
+
+.footer .license a:hover {
+    color: #c0c6cf;
+    border-bottom: 1px solid #c0c6cf
+}
+
+.footer .design {
+    padding-left: 90px;
+    margin-top: 30px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #f2f2f2
+}
+
+.footer .design a:hover {
+    opacity: 1
+}
+
+.footer .design a span {
+    display: none
+}
+
+/** Sidebar */
+.sidebar {
+    font-size: 13px;
+    border-right: 1px solid #f0f2f1;
+    width: 200px;
+    float: left;
+}
+
+.sidebar > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar > ul > li {
+    padding: 0 0 5px;
+    margin: 1em 0 0
+}
+
+.sidebar > ul > li > ul {
+    border-top: 1px solid rgba(37, 82, 95, 0.9);
+    display: block;
+    list-style: none;
+    margin: 5px 0 0;
+    padding: 5px 0 0;
+}
+
+
+/** article menu */
+.article-menu {
+    margin-left: 10px;
+    padding-top: 20px;
+    padding-left: 10px;
+    width: 200px;
+    float: right;
+    font-size: 13px;
+    border-left: 1px solid #0a6278;
+    /*background: #eeeeee;*/
+}
+
+.article-menu > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-menu > ul > li {
+    list-style: none;
+}
+
+.article-menu > ul > li > ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.article-menu > ul > li > ul > li {
+    list-style: none;
+}
+
+.article-menu > ul > li > ul > li > ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.article-menu > ul > li > ul > li > ul > li {
+    list-style: none;
+}
+
+.article-menu > ul > li > ul > li > ul > li > ul {
+    list-style: none;
+    padding-left: 10px;
+}
