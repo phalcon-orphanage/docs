@@ -64,6 +64,8 @@
 +----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | afterDispatchLoop    | После завершения цикла диспетчера                                                                                                                                                                            | Нет                 | Listeners             |
 +----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
+| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                        | Yes                  | Listeners/Controllers |
++----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
 В обучающем материале :doc:`INVO <tutorial-invo>` показано, как воспользоваться диспетчером событий для реализации фильтра безопасности :doc:`Acl <acl>`.
 
@@ -505,20 +507,26 @@ before dispatch the action preparing the parameter accordingly:
 The above example has been simplified for academic purposes.
 A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
-From 3.0.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action.
+From 3.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action by using :doc:`Phalcon\\Mvc\\Model\\Binder <../api/Phalcon_Mvc_Model_Binder>`.
 
 .. code-block:: php
 
     use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Model\Binder;
 
     $dispatcher = new Dispatcher();
 
-    $dispatcher->setModelBinding(true);
+    $dispatcher->setModelBinder(new Binder());
 
     return $dispatcher;
 
-It also introduces a new interface :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>` which allows you to define the controllers associated model
-to allow model binding in base controllers.
+.. highlights::
+
+    Since Binder object is using internally Reflection Api which can be heavy there is ability to set cache. This can be done by
+    using second argument in :code:`setModelBinder()` which can also accept service name or just by passing cache instance to :code:`Binder` constructor.
+
+It also introduces a new interface :doc:`Phalcon\\Mvc\\Model\\Binder\\BindableInterface <../api/Phalcon_Mvc_Model_Binder_BindableInterface>`
+which allows you to define the controllers associated models to allow models binding in base controllers.
 
 For example, you have a base CrudController which your PostsController extends from. Your CrudController looks something like this:
 
@@ -540,15 +548,17 @@ For example, you have a base CrudController which your PostsController extends f
         }
     }
 
-In your PostsController you need to define which model the controller is associated with. This is done by implementing the :doc:`Phalcon\\Mvc\\Controller\\BindModelInterface <../api/Phalcon_Mvc_Controller_BindModelInterface>`
-which will add the :code:`getModelName()` method from which you can return the model name.
+In your PostsController you need to define which model the controller is associated with. This is done by implementing the
+:doc:`Phalcon\\Mvc\\Model\\Binder\\BindableInterface <../api/Phalcon_Mvc_Model_Binder_BindableInterface>`
+which will add the :code:`getModelName()` method from which you can return the model name. It can return string with just one model name or associative array
+where key is parameter name.
 
 .. code-block:: php
 
-    use Phalcon\Mvc\Controller\BindModelInterface;
+    use Phalcon\Mvc\Model\Binder\BindableInterface;
     use Models\Posts;
 
-    class PostsController extends CrudController implements BindModelInterface
+    class PostsController extends CrudController implements BindableInterface
     {
         public static function getModelName()
         {
@@ -556,7 +566,7 @@ which will add the :code:`getModelName()` method from which you can return the m
         }
     }
 
-By declaring the model associated with the PostsController the dispatcher can check the controller for the :code:`getModelName()` method before passing
+By declaring the model associated with the PostsController the binder can check the controller for the :code:`getModelName()` method before passing
 the defined model into the parent show action.
 
 If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:
@@ -581,7 +591,7 @@ If your project structure does not use any parent controller you can of course s
 
 .. highlights::
 
-    Currently the dispatchers internal model binding will only use the models primary key to perform a :code:`findFirst()` on.
+    Currently the binder will only use the models primary key to perform a :code:`findFirst()` on.
     An example route for the above would be /posts/show/{1}
 
 Обработка исключений "Не найдено"

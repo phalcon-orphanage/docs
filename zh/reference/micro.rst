@@ -457,6 +457,44 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 
     $app->handle();
 
+Inject model instances
+----------------------
+By using class :doc:`Phalcon\\Mvc\\Model\\Binder <../api/Phalcon_Mvc_Model_Binder>` you can inject model instances into your routes:
+
+.. code-block:: php
+
+     <?php
+
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(
+        [
+            __DIR__ . "/models/"
+        ]
+    )->register();
+
+    $app = new \Phalcon\Mvc\Micro();
+    $app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
+
+    $app->get(
+        "/products/{product:[0-9]+}",
+        function (Products $product) {
+            // do anything with $product object
+        }
+    );
+
+    $app->handle();
+
+.. highlights::
+
+    Since Binder object is using internally Reflection Api which can be heavy there is ability to set cache. This can be done by
+    using second argument in :code:`setModelBinder()` which can also accept service name or just by passing cache instance to :code:`Binder` constructor.
+
+.. highlights::
+
+    Currently the binder will only use the models primary key to perform a :code:`findFirst()` on.
+    An example route for the above would be /products/1
+
 微应用中的事件（Micro Application Events）
 ------------------------------------------
 当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件：
@@ -474,6 +512,8 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 +---------------------+-------------------------------------------------------------------+----------------------+
 | afterHandleRoute    |  处理器执行之后执行                                               | 是                   |
 +---------------------+-------------------------------------------------------------------+----------------------+
+| afterBinding        | Triggered after models are bound but before executing the handler  | 是                  |
++------------------------------------------------------------------------------------------+----------------------+
 
 下面的例子中， 我们阐述了如何使用事件来控制应用的安全性:
 
@@ -629,6 +669,8 @@ Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需
 | after               |  请求处理后执行，可以用来准备回复内容               | No                   |
 +---------------------+-----------------------------------------------------+----------------------+
 | finish              |  发送回复内容后执行， 可以用来执行清理工作          | No                   |
++---------------------+-----------------------------------------------------+----------------------+
+| afterBinding        | After models are bound and before executing the handler.     | Yes                  |
 +---------------------+-----------------------------------------------------+----------------------+
 
 使用控制器处理（Using Controllers as Handlers）
