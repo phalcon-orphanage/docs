@@ -25,6 +25,7 @@ class MainTask extends PhTask
 
         $commands = [
             '  -clear-cache          Clears the cached files',
+            '  -regenerate-api       Regenerates API documentation',
         ];
 
         echo 'Commands:' .  PHP_EOL;

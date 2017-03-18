@@ -124,6 +124,31 @@ class Main
         $this->diContainer->setShared('cacheData', $cache);
 
         /***********************************************************************
+         * View
+         **********************************************************************/
+        $options = [
+            'compiledPath'      => APP_PATH . '/storage/cache/volt/',
+            'compiledSeparator' => '_',
+            'compiledExtension' => '.php',
+            'compileAlways'     => boolval('development' === $this->mode),
+            'stat'              => true,
+        ];
+        $view    = new PhViewSimple();
+        $view->setViewsDir(APP_PATH . '/app/views/');
+        $view->registerEngines(
+            [
+                '.volt' => function ($view) use ($options) {
+                    $volt  = new PhVolt($view, $this->diContainer);
+                    $volt->setOptions($options);
+                    $volt->getCompiler()
+                         ->addFunction('str_repeat', 'str_repeat');
+                    return $volt;
+                },
+            ]
+        );
+        $this->diContainer->setShared('viewSimple', $view);
+
+        /***********************************************************************
          * Markdown
          **********************************************************************/
         $this->diContainer->setShared('parsedown', new PParseDown());
@@ -249,30 +274,6 @@ class Main
                 }
             }
         );
-
-        /***********************************************************************
-         * View
-         **********************************************************************/
-        $options = [
-            'compiledPath'      => APP_PATH . '/storage/cache/volt/',
-            'compiledSeparator' => '_',
-            'compiledExtension' => '.php',
-            'compileAlways'     => boolval('development' === $this->mode),
-            'stat'              => true,
-        ];
-        $view    = new PhViewSimple();
-        $view->setViewsDir(APP_PATH . '/app/views/');
-        $view->registerEngines(
-            [
-                '.volt' => function ($view) use ($options) {
-                    $volt  = new PhVolt($view, $this->diContainer);
-                    $volt->setOptions($options);
-
-                    return $volt;
-                },
-            ]
-        );
-        $this->diContainer->setShared('viewSimple', $view);
 
         /***********************************************************************
          * Assets

@@ -33,10 +33,13 @@ class ClearCacheTask extends PhTask
 
         echo sprintf('Clearing the %s cache', $message) . PHP_EOL;
 
-        $path         = APP_PATH . '/storage/cache/' . $folder;
-        $dir_iterator = new RecursiveDirectoryIterator($path);
-        $iterator     = new RecursiveIteratorIterator(
-            $dir_iterator,
+        $path        = APP_PATH . '/storage/cache/' . $folder;
+        $dirIterator = new RecursiveDirectoryIterator(
+            $path,
+            \FilesystemIterator::SKIP_DOTS
+        );
+        $iterator    = new RecursiveIteratorIterator(
+            $dirIterator,
             RecursiveIteratorIterator::CHILD_FIRST
         );
 
@@ -47,8 +50,6 @@ class ClearCacheTask extends PhTask
             ->display();
         foreach ($iterator as $file) {
             if (true !== $file->isDir() &&
-                '.' !== $file->getFilename() &&
-                '..' !== $file->getFilename() &&
                 ('php' === $file->getExtension() || 'cache' === $file->getExtension())) {
                 $bar->progress();
                 unlink($file->getPathname());
