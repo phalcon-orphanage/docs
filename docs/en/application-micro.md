@@ -88,7 +88,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 ## Creating a Micro Application
-The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
+The [`Phalcon\Mvc\Micro`](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
 ```php
 <?php

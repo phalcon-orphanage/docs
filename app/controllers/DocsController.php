@@ -2,6 +2,7 @@
 
 namespace Docs\Controllers;
 
+use Docs\Cli\Tasks\RegenerateApiTask;
 use Phalcon\Cache\BackendInterface;
 use Phalcon\Mvc\Controller as PhController;
 
@@ -66,15 +67,27 @@ class DocsController extends PhController
             true === $this->cacheData->exists($key)) {
             return $this->cacheData->get($key);
         } else {
-            $fileName = sprintf(
+            $pageName = sprintf(
                 '%s/docs/%s/%s.md',
                 APP_PATH,
                 $language,
                 $fileName
             );
+            $apiFileName = sprintf(
+                '%s/docs/%s/api/%s.md',
+                APP_PATH,
+                $language,
+                $fileName
+            );
 
-            if (file_exists($fileName)) {
-                $data = file_get_contents($fileName);
+            $data = '';
+            if (file_exists($pageName)) {
+                $data = file_get_contents($pageName);
+            } elseif (file_exists($apiFileName)) {
+                $data = file_get_contents($apiFileName);
+            }
+
+            if (!empty($data)) {
                 $data = str_replace(
                     '[[version]]',
                     $this->getVersion(),
@@ -82,8 +95,6 @@ class DocsController extends PhController
                 );
                 $data = $this->parsedown->text($data);
                 $this->cacheData->save($key, $data);
-            } else {
-                $data = '';
             }
 
             return $data;
