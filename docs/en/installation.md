@@ -12,6 +12,7 @@
             - [Phalcon installation](#installation-linux-debian-phalcon)
                 - [PHP 5.7](#installation-linux-debian-phalcon-php5)
                 - [PHP 7](#installation-linux-debian-phalcon-php7)
+            - [Additional PPAs](#installation-linux-debian-other-ppa)
         - [RPM based distributions (CentOS, Fedora, etc.)](#installation-linux-rpm)
             - [Repository installation](#installation-linux-rpm-repository)
                 - [Stable releases](#installation-linux-rpm-repository-stable)
@@ -19,14 +20,16 @@
             - [Phalcon installation](#installation-linux-rpm-phalcon)
                 - [PHP 5.7](#installation-linux-rpm-phalcon-php5)
                 - [PHP 7](#installation-linux-rpm-phalcon-php7)
+            - [Additional RPMs](installation-linux-rpm-other-rpm)
         - [FreeBSD](#installation-freebsd)
         - [Gentoo](#installation-linux-gentoo)
     - [MacOS](#installation-macos)
         - [Brew](#installation-macos-brew)
         - [MacPorts](#installation-macos-macports)
     - [Windows](#installation-windows)
-    - Compile from source
-
+    - [Compile from sources](#installation-sources)
+    - [Advanced Compilation](#installation-sources-advanced)
+    
 </div>
 
 <a name='requirements'></a>
@@ -99,6 +102,25 @@ sudo apt-get update
 sudo apt-get install php7.0-phalcon
 ```
 
+<a name='installation-linux-debian-other-ppa'></a>
+#### Additional PPAs
+#### Ondřej Surý
+If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+
+Installation of the repo:
+```php
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+```
+
+and Phalcon:
+
+```php
+sudo apt-get install php-phalcon
+```
+
+https://launchpad.net/~ondrej/+archive/ubuntu/php/
+
 <a name='installation-linux-rpm'></a>
 ### RPM based distributions (CentOS, Fedora, etc.)
 <a name='installation-linux-rpm-repository'></a>
@@ -138,6 +160,19 @@ sudo yum install php56u-phalcon
 sudo yum update
 sudo yum install php70u-phalcon
 ```
+
+<a name='installation-linux-rpm-other-rpm'></a>
+#### Additional RPMs
+##### Remi
+Remi maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en)
+
+Installing Phalcon after that is as easy as:
+
+```bash
+yum install php56-php-phalcon3
+```
+
+Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
 
 <a name='installation-freebsd'></a>
 ## FreeBSD
