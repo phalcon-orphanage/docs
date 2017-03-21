@@ -88,9 +88,28 @@ class DocsController extends PhController
             }
 
             if (!empty($data)) {
+
+                $namespaces = $this->getNamespaces();
+                $from = array_keys($namespaces);
+                $to   = array_values($namespaces);
+
+                /**
+                 * API links
+                 */
+                $data = str_replace($from, $to, $data);
+
+                /**
+                 * Language and version
+                 */
                 $data = str_replace(
-                    '[[version]]',
-                    $this->getVersion(),
+                    [
+                        '[[language]]',
+                        '[[version]]',
+                    ],
+                    [
+                        $language,
+                        $this->getVersion(),
+                    ],
                     $data
                 );
                 $data = $this->parsedown->text($data);
@@ -122,5 +141,42 @@ class DocsController extends PhController
     private function getVersion()
     {
         return '3.0.4';
+    }
+
+    /**
+     * Gets all the namespaces so that API URLs are generated properly
+     *
+     * @return array|mixed|null
+     */
+    private function getNamespaces()
+    {
+        $key = 'namespaces.cache';
+        if ('production' === $this->config->get('app')->get('env') &&
+            true === $this->cacheData->exists($key)) {
+            return $this->cacheData->get($key);
+        } else {
+            $namespaces = [];
+            $template   = '[%s](/[[language]]/[[version]]/api/%s)';
+
+            $data = get_declared_classes();
+            foreach ($data as $name) {
+                if (substr($name, 0, 8) === 'Phalcon\\') {
+                    $apiName = str_replace('\\', '_', $name);
+                    $namespaces["`$name`"] = sprintf($template, $name, $apiName);
+                }
+            }
+
+            $data = get_declared_interfaces();
+            foreach ($data as $name) {
+                if (substr($name, 0, 8) === 'Phalcon\\') {
+                    $apiName = str_replace('\\', '_', $name);
+                    $namespaces["`$name`"] = sprintf($template, $name, $apiName);
+                }
+            }
+
+            $this->cacheData->save($key, $namespaces);
+
+            return $namespaces;
+        }
     }
 }
