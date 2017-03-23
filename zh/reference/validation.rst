@@ -201,6 +201,10 @@ Phalcon的验证组件中内置了一些验证器：
         }
     }
 
+
+注意：上面的代码中，public function validate(Validation $validator, $attribute) 是Phalcon 2.x的写法，与 Phalcon 1.3系列冲突。
+1.3的正确写法是  public function validate($validator, $attribute)
+
 最重要的一点即是难证器要返回一个布尔值以标识验证是否成功：
 
 Callback Validator
