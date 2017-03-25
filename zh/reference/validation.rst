@@ -205,7 +205,7 @@ Phalcon的验证组件中内置了一些验证器：
 
 Callback Validator
 ------------------
-By using :doc:`Phalcon\\Validation\Validator\Callback <../api/Phalcon_Validation_Validator_Callback>` you can execute custom
+By using :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>` you can execute custom
 function which must return boolean or new validator class which will be used to validate the same field. By returning :code:`true`
 validation will be successful, returning :code:`false` will mean validation failed. When executing this validator Phalcon will pass
 data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
