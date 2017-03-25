@@ -111,6 +111,18 @@ The column map is used in the case to get real column name
 
 
 
+protected  **isUniquenessModel** (*mixed* $record, *array* $field, *array* $values)
+
+Uniqueness method used for model
+
+
+
+protected  **isUniquenessCollection** (*mixed* $record, *array* $field, *array* $values)
+
+Uniqueness method used for collection
+
+
+
 public  **__construct** ([*array* $options]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 Phalcon\\Validation\\Validator constructor

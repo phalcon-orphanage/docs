@@ -1183,7 +1183,20 @@ This only works if the model is keeping data snapshots
 
 public  **getChangedFields** ()
 
-Returns a list of changed values
+Returns a list of changed values.
+
+.. code-block:: php
+
+    <?php
+
+    $robots = Robots::findFirst();
+    print_r($robots->getChangedFields()); // []
+
+    $robots->deleted = 'Y';
+
+    $robots->getChangedFields();
+    print_r($robots->getChangedFields()); // ["deleted"]
+
 
 
 

@@ -218,6 +218,12 @@ Appends a before middleware to be called before execute the route
 
 
 
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>` **afterBinding** (*callable* $handler)
+
+Appends a afterBinding middleware to be called after model binding
+
+
+
 public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>` **after** (*callable* $handler)
 
 Appends an 'after' middleware to be called after execute the route
@@ -233,6 +239,32 @@ Appends a 'finish' middleware to be called when the request is finished
 public  **getHandlers** ()
 
 Returns the internal handlers attached to the application
+
+
+
+public  **getModelBinder** ()
+
+Gets model binder
+
+
+
+public  **setModelBinder** (:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder, [*mixed* $cache])
+
+Sets model binder
+
+.. code-block:: php
+
+    <?php
+
+    $micro = new Micro($di);
+    $micro->setModelBinder(new Binder(), 'cache');
+
+
+
+
+public  **getBoundModels** ()
+
+Returns bound models from binder instance
 
 
 

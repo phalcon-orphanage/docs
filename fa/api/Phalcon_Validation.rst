@@ -16,6 +16,11 @@ Allows to validate data using custom or built-in validators
 Methods
 -------
 
+public  **getData** ()
+
+...
+
+
 public  **setValidators** (*mixed* $validators)
 
 ...

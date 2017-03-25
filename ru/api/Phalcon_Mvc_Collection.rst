@@ -23,6 +23,12 @@ Constants
 
 *integer* **OP_DELETE**
 
+*integer* **DIRTY_STATE_PERSISTENT**
+
+*integer* **DIRTY_STATE_TRANSIENT**
+
+*integer* **DIRTY_STATE_DETACHED**
+
 Methods
 -------
 
@@ -172,7 +178,7 @@ Executes internal events after save a document
 
 
 
-protected  **validate** (:doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>` $validator)
+protected  **validate** (*mixed* $validator)
 
 Executes validators on every validation call
 
@@ -186,6 +192,7 @@ Executes validators on every validation call
     {
         public function validation()
         {
+            // Old, deprecated syntax, use new one below
             $this->validate(
                 new ExclusionIn(
                     [
@@ -198,6 +205,30 @@ Executes validators on every validation call
             if ($this->validationHasFailed() == true) {
                 return false;
             }
+        }
+    }
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\ExclusionIn as ExclusionIn;
+    use Phalcon\Validation;
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
+    {
+        public function validation()
+        {
+            $validator = new Validation();
+            $validator->add("status",
+                new ExclusionIn(
+                    [
+                        "domain" => ["A", "I"]
+                    ]
+                )
+            );
+
+            return $this->validate($validator);
         }
     }
 
@@ -545,6 +576,18 @@ Deletes a model instance. Returning true on success or false otherwise.
         $robot->delete();
     }
 
+
+
+
+public  **setDirtyState** (*mixed* $dirtyState)
+
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+
+
+
+public  **getDirtyState** ()
+
+Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
 
 
