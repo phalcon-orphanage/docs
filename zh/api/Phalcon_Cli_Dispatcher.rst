@@ -259,9 +259,21 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*boolean* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public  **setModelBinding** (*mixed* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Enable/Disable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinding(true, 'cache');
+        return $dispatcher;
+    });
+
 
 
 

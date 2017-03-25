@@ -174,9 +174,21 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*boolean* $value)
+public  **setModelBinding** (*mixed* $value)
 
 Enable/Disable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinding(true, 'cache');
+        return $dispatcher;
+    });
+
 
 
 

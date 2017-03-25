@@ -186,6 +186,7 @@ Executes validators on every validation call
     {
         public function validation()
         {
+            // Old, deprecated syntax, use new one below
             $this->validate(
                 new ExclusionIn(
                     [
@@ -198,6 +199,30 @@ Executes validators on every validation call
             if ($this->validationHasFailed() == true) {
                 return false;
             }
+        }
+    }
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\ExclusionIn as ExclusionIn;
+    use Phalcon\Validation;
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
+    {
+        public function validation()
+        {
+            $validator = new Validation();
+            $validator->add("status",
+                new ExclusionIn(
+                    [
+                        "domain" => ["A", "I"]
+                    ]
+                )
+            );
+
+            return $this->validate($validator);
         }
     }
 
