@@ -11,9 +11,7 @@
     - Testing guide
 - Getting Started
     - [Installation](/en/[[version]]/installation)
-        - Linux
-        - MacOS
-        - Windows
+    - [Webserver Setup](/en/[[version]]/webserver-setup)
 - Environments
     - Phalcon Compose
     - Vagrant
@@ -24,6 +22,6 @@
     - Application
         - Full
         - [Micro](/en/[[version]]/application-micro)
-        - Cli
+        - [Cli](/en/[[version]]/application-cli)
     - DI Container
     
