@@ -174,7 +174,7 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*mixed* $value)
+public  **setModelBinding** (*mixed* $value, [*mixed* $cache])
 
 Enable/Disable model binding during dispatch
 
@@ -189,6 +189,30 @@ Enable/Disable model binding during dispatch
         return $dispatcher;
     });
 
+
+
+
+public  **setModelBinder** (:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder, [*mixed* $cache])
+
+Enable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(new Binder(), 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **getModelBinder** ()
+
+Gets model binder
 
 
 
@@ -238,6 +262,25 @@ Possible class name that will be located to dispatch the request
 public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
 ...
+
+
+public  **getBoundModels** ()
+
+Returns bound models from binder instance
+
+.. code-block:: php
+
+    <?php
+
+    class UserController extends Controller
+    {
+        public function showAction(User $user)
+        {
+            $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        }
+    }
+
+
 
 
 protected  **_resolveEmptyProperties** ()

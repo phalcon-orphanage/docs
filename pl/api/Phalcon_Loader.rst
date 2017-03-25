@@ -117,7 +117,7 @@ Returns the class-map currently registered in the autoloader
 
 
 
-public  **register** ()
+public  **register** ([*mixed* $prepend])
 
 Register the autoload method
 

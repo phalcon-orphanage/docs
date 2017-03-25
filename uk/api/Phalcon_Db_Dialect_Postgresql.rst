@@ -82,6 +82,12 @@ Generates SQL to create a table
 
 
 
+public  **truncateTable** (*mixed* $tableName, *mixed* $schemaName)
+
+Generates SQL to truncate a table
+
+
+
 public  **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 Generates SQL to drop a table

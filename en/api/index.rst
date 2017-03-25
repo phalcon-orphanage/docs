@@ -176,6 +176,7 @@ API Indice
    Phalcon_Mvc_Model_Behavior
    Phalcon_Mvc_Model_Behavior_SoftDelete
    Phalcon_Mvc_Model_Behavior_Timestampable
+   Phalcon_Mvc_Model_Binder
    Phalcon_Mvc_Model_Criteria
    Phalcon_Mvc_Model_Exception
    Phalcon_Mvc_Model_Manager
@@ -274,11 +275,13 @@ API Indice
    Phalcon_Validation_Validator_Alnum
    Phalcon_Validation_Validator_Alpha
    Phalcon_Validation_Validator_Between
+   Phalcon_Validation_Validator_Callback
    Phalcon_Validation_Validator_Confirmation
    Phalcon_Validation_Validator_CreditCard
    Phalcon_Validation_Validator_Date
    Phalcon_Validation_Validator_Digit
    Phalcon_Validation_Validator_Email
+   Phalcon_Validation_Validator_Exception
    Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_File
    Phalcon_Validation_Validator_Identical
@@ -343,6 +346,8 @@ API Indice
    Phalcon_Mvc_Micro_MiddlewareInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_BehaviorInterface
+   Phalcon_Mvc_Model_BinderInterface
+   Phalcon_Mvc_Model_Binder_BindableInterface
    Phalcon_Mvc_Model_CriteriaInterface
    Phalcon_Mvc_Model_ManagerInterface
    Phalcon_Mvc_Model_MessageInterface

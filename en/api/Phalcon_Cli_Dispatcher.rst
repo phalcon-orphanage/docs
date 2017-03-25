@@ -259,7 +259,7 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*mixed* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public  **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Enable/Disable model binding during dispatch
 
@@ -274,6 +274,30 @@ Enable/Disable model binding during dispatch
         return $dispatcher;
     });
 
+
+
+
+public  **setModelBinder** (:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder, [*mixed* $cache]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Enable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(new Binder(), 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **getModelBinder** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Gets model binder
 
 
 
@@ -317,6 +341,25 @@ Check if the current executed action was forwarded by another one
 public  **getHandlerClass** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Possible class name that will be located to dispatch the request
+
+
+
+public  **getBoundModels** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Returns bound models from binder instance
+
+.. code-block:: php
+
+    <?php
+
+    class UserController extends Controller
+    {
+        public function showAction(User $user)
+        {
+            $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        }
+    }
+
 
 
 

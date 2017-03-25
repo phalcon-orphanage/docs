@@ -23,6 +23,12 @@ Constants
 
 *integer* **OP_DELETE**
 
+*integer* **DIRTY_STATE_PERSISTENT**
+
+*integer* **DIRTY_STATE_TRANSIENT**
+
+*integer* **DIRTY_STATE_DETACHED**
+
 Methods
 -------
 
@@ -172,7 +178,7 @@ Executes internal events after save a document
 
 
 
-protected  **validate** (:doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>` $validator)
+protected  **validate** (*mixed* $validator)
 
 Executes validators on every validation call
 
@@ -570,6 +576,18 @@ Deletes a model instance. Returning true on success or false otherwise.
         $robot->delete();
     }
 
+
+
+
+public  **setDirtyState** (*mixed* $dirtyState)
+
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+
+
+
+public  **getDirtyState** ()
+
+Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
 
 
