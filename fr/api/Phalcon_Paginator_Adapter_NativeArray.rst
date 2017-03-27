@@ -10,27 +10,27 @@ Class **Phalcon\\Paginator\\Adapter\\NativeArray**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter/nativearray.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Pagination using a PHP array as source of data  
+Pagination using a PHP array as source of data
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Paginator\Adapter\NativeArray;
-    
-     $paginator = new NativeArray(
-         [
-             'data'  => array(
-                 ['id' => 1, 'name' => 'Artichoke'],
-                 ['id' => 2, 'name' => 'Carrots'],
-                 ['id' => 3, 'name' => 'Beet'],
-                 ['id' => 4, 'name' => 'Lettuce'],
-                 ['id' => 5, 'name' => '']
-             ],
-             'limit' => 2,
-             'page'  => $currentPage,
-         ]
-     );
+    use Phalcon\Paginator\Adapter\NativeArray;
+
+    $paginator = new NativeArray(
+        [
+            "data"  => [
+                ["id" => 1, "name" => "Artichoke"],
+                ["id" => 2, "name" => "Carrots"],
+                ["id" => 3, "name" => "Beet"],
+                ["id" => 4, "name" => "Lettuce"],
+                ["id" => 5, "name" => ""],
+            ],
+            "limit" => 2,
+            "page"  => $currentPage,
+        ]
+    );
 
 
 

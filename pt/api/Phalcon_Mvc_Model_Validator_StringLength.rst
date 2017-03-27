@@ -10,31 +10,37 @@ Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/stringlength.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Simply validates specified string length constraints  
+Simply validates specified string length constraints
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\StringLength as StringLengthValidator;
-    
-    class Subscriptors extends \Phalcon\Mvc\Model
+
+    class Subscriptors extends \Phalcon\Mvc\Collection
     {
-    
-    public function validation()
-    {
-    	$this->validate(new StringLengthValidator(array(
-    		"field" => 'name_last',
-    		'max' => 50,
-    		'min' => 2,
-    		'messageMaximum' => 'We don\'t like really long names',
-    		'messageMinimum' => 'We want more than just their initials'
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
-    
+        public function validation()
+        {
+            $this->validate(
+                new StringLengthValidator(
+                    [
+                        "field"          => "name_last",
+                        "max"            => 50,
+                        "min"            => 2,
+                        "messageMaximum" => "We don't like really long names",
+                        "messageMinimum" => "We want more than just their initials",
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() === true) {
+                return false;
+            }
+        }
     }
 
 

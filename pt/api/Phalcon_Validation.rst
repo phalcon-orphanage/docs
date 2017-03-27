@@ -16,6 +16,11 @@ Allows to validate data using custom or built-in validators
 Methods
 -------
 
+public  **getData** ()
+
+...
+
+
 public  **setValidators** (*mixed* $validators)
 
 ...
@@ -119,7 +124,8 @@ Appends a message to the messages list
 
 public :doc:`Phalcon\\Validation <Phalcon_Validation>` **bind** (*object* $entity, *array* | *object* $data)
 
-Assigns the data to an entity The entity is used to obtain the validation values
+Assigns the data to an entity
+The entity is used to obtain the validation values
 
 
 

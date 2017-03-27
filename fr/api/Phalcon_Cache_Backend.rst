@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Cache\\Backend**
 ==========================================
 
+*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -76,5 +78,30 @@ public *int* **getLifetime** ()
 
 Gets the last lifetime set
 
+
+
+abstract public  **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+...
+
+
+abstract public  **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer]) inherited from :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+...
+
+
+abstract public  **delete** (*mixed* $keyName) inherited from :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+...
+
+
+abstract public  **queryKeys** ([*mixed* $prefix]) inherited from :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+...
+
+
+abstract public  **exists** ([*mixed* $keyName], [*mixed* $lifetime]) inherited from :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+...
 
 

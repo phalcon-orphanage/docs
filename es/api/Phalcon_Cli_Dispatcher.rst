@@ -10,23 +10,25 @@ Class **Phalcon\\Cli\\Dispatcher**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.  
+Dispatching is the process of taking the command-line arguments, extracting the module name,
+task name, action name, and optional parameters contained in it, and then
+instantiating a task and calling an action on it.
 
 .. code-block:: php
 
     <?php
 
     $di = new \Phalcon\Di();
-    
+
     $dispatcher = new \Phalcon\Cli\Dispatcher();
-    
-      $dispatcher->setDi(di);
-    
-    $dispatcher->setTaskName('posts');
-    $dispatcher->setActionName('index');
-    $dispatcher->setParams(array());
-    
-    $handle = dispatcher->dispatch();
+
+    $dispatcher->setDi($di);
+
+    $dispatcher->setTaskName("posts");
+    $dispatcher->setActionName("index");
+    $dispatcher->setParams([]);
+
+    $handle = $dispatcher->dispatch();
 
 
 
@@ -86,7 +88,7 @@ Handles a user exception
 
 public  **getLastTask** ()
 
-Returns the lastest dispatched controller
+Returns the latest dispatched controller
 
 
 
@@ -257,9 +259,45 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*boolean* $value) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+public  **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Enable/Disable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinding(true, 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **setModelBinder** (:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder, [*mixed* $cache]) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Enable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(new Binder(), 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **getModelBinder** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Gets model binder
 
 
 
@@ -277,13 +315,19 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
+Forwards the execution flow to another controller/action
+Dispatchers are unique per module. Forwarding between modules is not allowed
 
 .. code-block:: php
 
     <?php
 
-      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
+    $this->dispatcher->forward(
+        [
+            "controller" => "posts",
+            "action"     => "index",
+        ]
+    );
 
 
 
@@ -297,6 +341,25 @@ Check if the current executed action was forwarded by another one
 public  **getHandlerClass** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 Possible class name that will be located to dispatch the request
+
+
+
+public  **getBoundModels** () inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+
+Returns bound models from binder instance
+
+.. code-block:: php
+
+    <?php
+
+    class UserController extends Controller
+    {
+        public function showAction(User $user)
+        {
+            $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        }
+    }
+
 
 
 

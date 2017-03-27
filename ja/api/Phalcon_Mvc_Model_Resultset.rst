@@ -8,26 +8,44 @@ Abstract class **Phalcon\\Mvc\\Model\\Resultset**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/resultset.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component allows to Phalcon\\Mvc\\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.  
+This component allows to Phalcon\\Mvc\\Model returns large resultsets with the minimum memory consumption
+Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
+it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
+serializing.
 
 .. code-block:: php
 
     <?php
 
-     // Using a standard foreach
-     $robots = Robots::find(["type='virtual'", 'order' => 'name']);
-     foreach ($robots as robot) {
-         echo robot->name, "\n";
-     }
-    
-     // Using a while
-     $robots = Robots::find(["type='virtual'", 'order' => 'name');
-     $robots->rewind();
-     while ($robots->valid()) {
-         $robot = $robots->current();
-         echo $robot->name, "\n";
-         $robots->next();
-     }
+    // Using a standard foreach
+    $robots = Robots::find(
+        [
+            "type = 'virtual'",
+            "order" => "name",
+        ]
+    );
+
+    foreach ($robots as robot) {
+        echo robot->name, "\n";
+    }
+
+    // Using a while
+    $robots = Robots::find(
+        [
+            "type = 'virtual'",
+            "order" => "name",
+        ]
+    );
+
+    $robots->rewind();
+
+    while ($robots->valid()) {
+        $robot = $robots->current();
+
+        echo $robot->name, "\n";
+
+        $robots->next();
+    }
 
 
 
@@ -79,7 +97,8 @@ Rewinds resultset to its beginning
 
 final public  **seek** (*mixed* $position)
 
-Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
+Changes internal pointer to a specific position in the resultset
+Set new position if required and set this->_row
 
 
 
@@ -181,31 +200,34 @@ Deletes every record in the resultset
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`\ [] **filter** (*callback* $filter)
 
-Filters a resultset returning only those the developer requires 
+Filters a resultset returning only those the developer requires
 
 .. code-block:: php
 
     <?php
 
-     $filtered = $robots->filter(function($robot){
-    	if ($robot->id < 3) {
-    		return $robot;
-    	}
-    });
+    $filtered = $robots->filter(
+        function ($robot) {
+            if ($robot->id < 3) {
+                return $robot;
+            }
+        }
+    );
 
 
 
 
 public *array* **jsonSerialize** ()
 
-Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
+Returns serialised model objects as array for json_encode.
+Calls jsonSerialize on each object if present
 
 .. code-block:: php
 
     <?php
 
-     $robots = Robots::find();
-     echo json_encode($robots);
+    $robots = Robots::find();
+    echo json_encode($robots);
 
 
 

@@ -78,8 +78,8 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     $products = Products::find(
         [
             "cache" => [
-                "key"          => "my-cache",
-                "cacheService" => "cache",
+                "key"     => "my-cache",
+                "service" => "cache",
             ],
         ]
     );

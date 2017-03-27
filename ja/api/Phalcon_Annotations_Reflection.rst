@@ -6,24 +6,24 @@ Class **Phalcon\\Annotations\\Reflection**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to manipulate the annotations reflection in an OO manner  
+Allows to manipulate the annotations reflection in an OO manner
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Annotations\Reader;
-     use Phalcon\Annotations\Reflection;
-    
-     // Parse the annotations in a class
-     $reader = new Reader();
-     $parsing = reader->parse('MyComponent');
-    
-     // Create the reflection
-     $reflection = new Reflection($parsing);
-    
-     // Get the annotations in the class docblock
-     $classAnnotations = reflection->getClassAnnotations();
+    use Phalcon\Annotations\Reader;
+    use Phalcon\Annotations\Reflection;
+
+    // Parse the annotations in a class
+    $reader = new Reader();
+    $parsing = $reader->parse("MyComponent");
+
+    // Create the reflection
+    $reflection = new Reflection($parsing);
+
+    // Get the annotations in the class docblock
+    $classAnnotations = $reflection->getClassAnnotations();
 
 
 

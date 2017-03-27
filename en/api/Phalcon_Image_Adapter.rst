@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Image\\Adapter**
 ==========================================
 
+*implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -36,7 +38,8 @@ Image height
 
 public  **getType** ()
 
-Image type Driver dependent
+Image type
+Driver dependent
 
 
 

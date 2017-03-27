@@ -8,39 +8,47 @@ Class **Phalcon\\Cache\\Frontend\\None**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Discards any kind of frontend data input. This frontend does not have expiration time or any other options  
+Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
 .. code-block:: php
 
     <?php
 
     <?php
-    
+
     //Create a None Cache
     $frontCache = new \Phalcon\Cache\Frontend\None();
-    
+
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
-    $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-    	"host" => "localhost",
-    	"port" => "11211"
-    ));
-    
+    $cache = new \Phalcon\Cache\Backend\Memcache(
+        $frontCache,
+        [
+            "host" => "localhost",
+            "port" => "11211",
+        ]
+    );
+
+    $cacheKey = "robots_order_id.cache";
+
     // This Frontend always return the data as it's returned by the backend
-    $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots = $cache->get($cacheKey);
+
     if ($robots === null) {
-    
-    	// This cache doesn't perform any expiration checking, so the data is always expired
-    	// Make the database call and populate the variable
-    	$robots = Robots::find(array("order" => "id"));
-    
-    	$cache->save($cacheKey, $robots);
+        // This cache doesn't perform any expiration checking, so the data is always expired
+        // Make the database call and populate the variable
+        $robots = Robots::find(
+            [
+                "order" => "id",
+            ]
+        );
+
+        $cache->save($cacheKey, $robots);
     }
-    
+
     // Use $robots :)
     foreach ($robots as $robot) {
-    	echo $robot->name, "\n";
+        echo $robot->name, "\n";
     }
 
 

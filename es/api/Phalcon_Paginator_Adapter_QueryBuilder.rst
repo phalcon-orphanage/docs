@@ -10,26 +10,26 @@ Class **Phalcon\\Paginator\\Adapter\\QueryBuilder**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Pagination using a PHQL query builder as source of data  
+Pagination using a PHQL query builder as source of data
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Paginator\Adapter\QueryBuilder;
-    
-     $builder = $this->modelsManager->createBuilder()
-                     ->columns('id, name')
-                     ->from('Robots')
-                     ->orderBy('name');
-    
-     $paginator = new QueryBuilder(
-         [
-             'builder' => $builder,
-             'limit'   => 20,
-             'page'    => 1,
-         ]
-     );
+    use Phalcon\Paginator\Adapter\QueryBuilder;
+
+    $builder = $this->modelsManager->createBuilder()
+                    ->columns("id, name")
+                    ->from("Robots")
+                    ->orderBy("name");
+
+    $paginator = new QueryBuilder(
+        [
+            "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1,
+        ]
+    );
 
 
 

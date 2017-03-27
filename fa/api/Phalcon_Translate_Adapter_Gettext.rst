@@ -10,6 +10,22 @@ Class **Phalcon\\Translate\\Adapter\\Gettext**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/adapter/gettext.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Translate\Adapter\Gettext;
+
+    $adapter = new Gettext(
+        [
+            "locale"        => "de_DE.UTF-8",
+            "defaultDomain" => "translations",
+            "directory"     => "/path/to/application/locales",
+            "category"      => LC_MESSAGES,
+        ]
+    );
+
 Allows translate using gettext
 
 
@@ -46,9 +62,16 @@ Phalcon\\Translate\\Adapter\\Gettext constructor
 
 
 
-public *string* **query** (*string* $index, [*array* $placeholders])
+public  **query** (*mixed* $index, [*mixed* $placeholders])
 
-Returns the translation related to the given key
+Returns the translation related to the given key.
+
+.. code-block:: php
+
+    <?php
+
+    $translator->query("你好 %name%！", ["name" => "Phalcon"]);
+
 
 
 
@@ -60,7 +83,8 @@ Check whether is defined a translation key in the internal array
 
 public  **nquery** (*mixed* $msgid1, *mixed* $msgid2, *mixed* $count, [*mixed* $placeholders], [*mixed* $domain])
 
-The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
+The plural version of gettext().
+Some languages have more than one form for plural messages dependent on the count.
 
 
 
@@ -84,37 +108,39 @@ Sets the domain default to search within when calls are made to gettext()
 
 public  **setDirectory** (*mixed* $directory)
 
-Sets the path for a domain 
+Sets the path for a domain
 
 .. code-block:: php
 
     <?php
 
-     // Set the directory path
-     $gettext->setDirectory('/path/to/the/messages');
-    
-     // Set the domains and directories path
-     $gettext->setDirectory([
-        'messages' => '/path/to/the/messages',
-        'another'  => '/path/to/the/another'
-     ]);
+    // Set the directory path
+    $gettext->setDirectory("/path/to/the/messages");
+
+    // Set the domains and directories path
+    $gettext->setDirectory(
+        [
+            "messages" => "/path/to/the/messages",
+            "another"  => "/path/to/the/another",
+        ]
+    );
 
 
 
 
 public  **setLocale** (*mixed* $category, *mixed* $locale)
 
-Sets locale information 
+Sets locale information
 
 .. code-block:: php
 
     <?php
 
-     // Set locale to Dutch
-     $gettext->setLocale(LC_ALL, 'nl_NL');
-    
-     // Try different possible locale names for german
-     $gettext->setLocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
+    // Set locale to Dutch
+    $gettext->setLocale(LC_ALL, "nl_NL");
+
+    // Try different possible locale names for german
+    $gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
 
 
 

@@ -8,27 +8,31 @@ Class **Phalcon\\Loader**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component helps to load your project classes automatically based on some conventions  
+This component helps to load your project classes automatically based on some conventions
 
 .. code-block:: php
 
     <?php
 
-     //Creates the autoloader
-     $loader = new Loader();
-    
-     //Register some namespaces
-     $loader->registerNamespaces(array(
-       'Example\Base' => 'vendor/example/base/',
-       'Example\Adapter' => 'vendor/example/adapter/',
-       'Example' => 'vendor/example/'
-     ));
-    
-     //register autoloader
-     $loader->register();
-    
-     //Requiring this class will automatically include file vendor/example/adapter/Some.php
-     $adapter = Example\Adapter\Some();
+    use Phalcon\Loader;
+
+    // Creates the autoloader
+    $loader = new Loader();
+
+    // Register some namespaces
+    $loader->registerNamespaces(
+        [
+            "Example\\Base"    => "vendor/example/base/",
+            "Example\\Adapter" => "vendor/example/adapter/",
+            "Example"          => "vendor/example/",
+        ]
+    );
+
+    // Register autoloader
+    $loader->register();
+
+    // Requiring this class will automatically include file vendor/example/adapter/Some.php
+    $adapter = new \Example\Adapter\Some();
 
 
 
@@ -90,7 +94,8 @@ Returns the directories currently registered in the autoloader
 
 public  **registerFiles** (*array* $files, [*mixed* $merge])
 
-Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only
+have functions
 
 
 
@@ -112,7 +117,7 @@ Returns the class-map currently registered in the autoloader
 
 
 
-public  **register** ()
+public  **register** ([*mixed* $prepend])
 
 Register the autoload method
 

@@ -10,7 +10,8 @@ Class **Phalcon\\Mvc\\Collection\\Behavior\\SoftDelete**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/behavior/softdelete.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
+Instead of permanently delete a record it marks the record as
+deleted changing the value of a flag column
 
 
 Methods

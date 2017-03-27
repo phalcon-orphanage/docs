@@ -10,32 +10,40 @@ Class **Phalcon\\Cache\\Backend\\Mongo**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/mongo.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a MongoDb backend  
+Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\Mongo;
-     use Phalcon\Cache\Frontend\Base64;
-    
-     // Cache data for 2 days
-     $frontCache = new Base64([
-         'lifetime' => 172800
-     ]);
-    
-     // Create a MongoDB cache
-     $cache = new Mongo($frontCache, [
-         'server' => "mongodb://localhost",
-         'db' => 'caches',
-         'collection' => 'images'
-     ]);
-    
-     // Cache arbitrary data
-     $cache->save('my-data', file_get_contents('some-image.jpg'));
-    
-     // Get data
-     $data = $cache->get('my-data');
+    use Phalcon\Cache\Backend\Mongo;
+    use Phalcon\Cache\Frontend\Base64;
+
+    // Cache data for 2 days
+    $frontCache = new Base64(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    // Create a MongoDB cache
+    $cache = new Mongo(
+        $frontCache,
+        [
+            "server"     => "mongodb://localhost",
+            "db"         => "caches",
+            "collection" => "images",
+        ]
+    );
+
+    // Cache arbitrary data
+    $cache->save(
+        "my-data",
+        file_get_contents("some-image.jpg")
+    );
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -60,7 +68,7 @@ Returns a cached content
 
 
 
-public  **save** ([*int* | *string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
@@ -72,13 +80,23 @@ Deletes a value from the cache by its key
 
 
 
-public *array* **queryKeys** ([*string* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* $keyName], [*long* $lifetime])
+
+public  **exists** ([*string* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
 
@@ -90,13 +108,13 @@ gc
 
 
 
-public *mixed* **increment** (*int* | *string* $keyName, [*long* $value])
+public  **increment** (*int* | *string* $keyName, [*mixed* $value])
 
 Increment of a given key by $value
 
 
 
-public *mixed* **decrement** (*int* | *string* $keyName, [*long* $value])
+public  **decrement** (*int* | *string* $keyName, [*mixed* $value])
 
 Decrement of a given key by $value
 

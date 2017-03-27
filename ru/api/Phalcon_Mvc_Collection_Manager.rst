@@ -8,19 +8,25 @@ Class **Phalcon\\Mvc\\Collection\\Manager**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\\Di.  
+This components controls the initialization of models, keeping record of relations
+between the different models of the application.
+
+A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\\Di.
 
 .. code-block:: php
 
     <?php
 
-     $di = new \Phalcon\Di();
-    
-     $di->set('collectionManager', function(){
-          return new \Phalcon\Mvc\Collection\Manager();
-     });
-    
-     $robot = new Robots($di);
+    $di = new \Phalcon\Di();
+
+    $di->set(
+        "collectionManager",
+        function () {
+            return new \Phalcon\Mvc\Collection\Manager();
+        }
+    );
+
+    $robot = new Robots($di);
 
 
 
@@ -123,13 +129,16 @@ Returns the connection related to a model
 
 public  **notifyEvent** (*mixed* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
-Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an events-manager if available
+Notify the behaviors that are listening in the model
 
 
 
 public  **missingMethod** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that at least one was implemented
+Dispatch an event to the listeners and behaviors
+This method expects that the endpoint listeners/behaviors returns true
+meaning that at least one was implemented
 
 
 

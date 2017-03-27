@@ -10,40 +10,46 @@ Class **Phalcon\\Cache\\Backend\\Libmemcached**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/libmemcached.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.  
+Allows to cache output fragments, PHP data or raw data to a libmemcached backend.
+Per default persistent memcached connection pools are used.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\Libmemcached;
-     use Phalcon\Cache\Frontend\Data as FrontData;
-    
-     // Cache data for 2 days
-     $frontCache = new FrontData([
-         'lifetime' => 172800
-     ]);
-    
-     // Create the Cache setting memcached connection options
-     $cache = new Libmemcached($frontCache, [
-         'servers' => [
-             [
-                 'host' => 'localhost',
-                 'port' => 11211,
-                 'weight' => 1
-             ],
-         ],
-         'client' => [
-             \Memcached::OPT_HASH => Memcached::HASH_MD5,
-             \Memcached::OPT_PREFIX_KEY => 'prefix.',
-         ]
-     ]);
-    
-     // Cache arbitrary data
-     $cache->save('my-data', [1, 2, 3, 4, 5]);
-    
-     // Get data
-     $data = $cache->get('my-data');
+    use Phalcon\Cache\Backend\Libmemcached;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
+    // Cache data for 2 days
+    $frontCache = new FrontData(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    // Create the Cache setting memcached connection options
+    $cache = new Libmemcached(
+        $frontCache,
+        [
+            "servers" => [
+                [
+                    "host"   => "127.0.0.1",
+                    "port"   => 11211,
+                    "weight" => 1,
+                ],
+            ],
+            "client" => [
+                \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
+                \Memcached::OPT_PREFIX_KEY => "prefix.",
+            ],
+        ]
+    );
+
+    // Cache arbitrary data
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -68,7 +74,7 @@ Returns a cached content
 
 
 
-public  **save** ([*int* | *string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
@@ -80,25 +86,35 @@ Deletes a value from the cache by its key
 
 
 
-public *array* **queryKeys** ([*string* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* $keyName], [*long* $lifetime])
+
+public  **exists** ([*string* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
 
 
 
-public *long* **increment** ([*string* $keyName], [*mixed* $value])
+public  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
 
 
-public *long* **decrement** ([*string* $keyName], [*long* $value])
+public  **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of $keyName by given $value
 
@@ -106,17 +122,25 @@ Decrement of $keyName by given $value
 
 public  **flush** ()
 
-Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact. 
+Immediately invalidates all existing items.
+Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"].
+All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
 
 .. code-block:: php
 
     <?php
 
-     $cache = new \Phalcon\Cache\Backend\Libmemcached($frontCache, ["statsKey" => "_PHCM"]);
-     $cache->save('my-data', array(1, 2, 3, 4, 5));
-    
-     //'my-data' and all other used keys are deleted
-     $cache->flush();
+    $cache = new \Phalcon\Cache\Backend\Libmemcached(
+        $frontCache,
+        [
+            "statsKey" => "_PHCM",
+        ]
+    );
+
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // 'my-data' and all other used keys are deleted
+    $cache->flush();
 
 
 

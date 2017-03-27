@@ -10,18 +10,19 @@ Class **Phalcon\\Logger\\Adapter\\Firephp**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapter/firephp.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Sends logs to FirePHP  
+Sends logs to FirePHP
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Logger\Adapter\Firephp;
-     use Phalcon\Logger;
-    
-     $logger = new Firephp();
-     $logger->log(Logger::ERROR, 'This is an error');
-     $logger->error('This is another error');
+    use Phalcon\Logger\Adapter\Firephp;
+    use Phalcon\Logger;
+
+    $logger = new Firephp();
+
+    $logger->log(Logger::ERROR, "This is an error");
+    $logger->error("This is another error");
 
 
 

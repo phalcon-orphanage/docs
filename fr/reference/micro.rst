@@ -470,6 +470,44 @@ Models in Micro Applications
 
     $app->handle();
 
+Inject model instances
+----------------------
+By using class :doc:`Phalcon\\Mvc\\Model\\Binder <../api/Phalcon_Mvc_Model_Binder>` you can inject model instances into your routes:
+
+.. code-block:: php
+
+     <?php
+
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(
+        [
+            __DIR__ . "/models/"
+        ]
+    )->register();
+
+    $app = new \Phalcon\Mvc\Micro();
+    $app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
+
+    $app->get(
+        "/products/{product:[0-9]+}",
+        function (Products $product) {
+            // do anything with $product object
+        }
+    );
+
+    $app->handle();
+
+.. highlights::
+
+    Since Binder object is using internally Reflection Api which can be heavy there is ability to set cache. This can be done by
+    using second argument in :code:`setModelBinder()` which can also accept service name or just by passing cache instance to :code:`Binder` constructor.
+
+.. highlights::
+
+    Currently the binder will only use the models primary key to perform a :code:`findFirst()` on.
+    An example route for the above would be /products/1
+
 Micro Application Events
 ------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
@@ -487,6 +525,8 @@ Events are triggered using the type "micro". The following events are supported:
 | beforeNotFound      | Triggered when any of the defined routes match the requested URI                                                           | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Oui                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| afterBinding        | Triggered after models are bound but before executing the handler                                                          | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 In the following example, we explain how to control the application security using events:
@@ -643,6 +683,9 @@ The following middleware events are available:
 | after               | Executed after the handler is executed. It can be used to prepare the response                                             | Non                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | Non                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| afterBinding        | After models are bound and before executing the handler.                                                                   | Oui
+        |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 Using Controllers as Handlers

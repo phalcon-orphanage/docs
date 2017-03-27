@@ -39,6 +39,16 @@ abstract public  **getConnection** ()
 ...
 
 
+abstract public  **setDirtyState** (*mixed* $dirtyState)
+
+...
+
+
+abstract public  **getDirtyState** ()
+
+...
+
+
 abstract public static  **cloneResult** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection, *array* $document)
 
 ...

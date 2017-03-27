@@ -38,14 +38,14 @@ Sets if the HTML generated must be directly printed or returned
 
 public  **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a Css resource to the 'css' collection 
+Adds a Css resource to the 'css' collection
 
 .. code-block:: php
 
     <?php
 
-    $assets->addCss('css/bootstrap.css');
-    $assets->addCss('http://bootstrap.my-cdn.com/style.css', false);
+    $assets->addCss("css/bootstrap.css");
+    $assets->addCss("http://bootstrap.my-cdn.com/style.css", false);
 
 
 
@@ -58,14 +58,14 @@ Adds an inline Css to the 'css' collection
 
 public  **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a javascript resource to the 'js' collection 
+Adds a javascript resource to the 'js' collection
 
 .. code-block:: php
 
     <?php
 
-    $assets->addJs('scripts/jquery.js');
-    $assets->addJs('http://jquery.my-cdn.com/jquery.js', false);
+    $assets->addJs("scripts/jquery.js");
+    $assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
 
 
 
@@ -78,13 +78,15 @@ Adds an inline javascript to the 'js' collection
 
 public  **addResourceByType** (*mixed* $type, :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
-Adds a resource by its type 
+Adds a resource by its type
 
 .. code-block:: php
 
     <?php
 
-    $assets->addResourceByType('css', new \Phalcon\Assets\Resource\Css('css/style.css'));
+    $assets->addResourceByType("css",
+        new \Phalcon\Assets\Resource\Css("css/style.css")
+    );
 
 
 
@@ -97,13 +99,15 @@ Adds an inline code by its type
 
 public  **addResource** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
-Adds a raw resource to the manager 
+Adds a raw resource to the manager
 
 .. code-block:: php
 
     <?php
 
-     $assets->addResource(new Phalcon\Assets\Resource('css', 'css/style.css'));
+    $assets->addResource(
+        new Phalcon\Assets\Resource("css", "css/style.css")
+    );
 
 
 
@@ -116,26 +120,26 @@ Adds a raw inline code to the manager
 
 public  **set** (*mixed* $id, :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection)
 
-Sets a collection in the Assets Manager 
+Sets a collection in the Assets Manager
 
 .. code-block:: php
 
     <?php
 
-     $assets->set('js', $collection);
+    $assets->set("js", $collection);
 
 
 
 
 public  **get** (*mixed* $id)
 
-Returns a collection by its id 
+Returns a collection by its id
 
 .. code-block:: php
 
     <?php
 
-     $scripts = $assets->get('js');
+    $scripts = $assets->get("js");
 
 
 

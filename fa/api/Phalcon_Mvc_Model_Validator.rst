@@ -1,12 +1,17 @@
 Abstract class **Phalcon\\Mvc\\Model\\Validator**
 =================================================
 
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This is a base class for Phalcon\\Mvc\\Model validators
+
+This class is only for backward compatibility reasons to use with Phalcon\\Mvc\\Collection.
+Otherwise please use the validators provided by Phalcon\\Validation.
 
 
 Methods
@@ -46,5 +51,10 @@ public  **isSetOption** (*mixed* $option)
 
 Check whether an option has been defined in the validator options
 
+
+
+abstract public  **validate** (:doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>` $record) inherited from :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
+...
 
 

@@ -8,19 +8,19 @@ Class **Phalcon\\Crypt**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Provides encryption facilities to phalcon applications  
+Provides encryption facilities to phalcon applications
 
 .. code-block:: php
 
     <?php
 
     $crypt = new \Phalcon\Crypt();
-    
-    $key = 'le password';
-    $text = 'This is a secret text';
-    
+
+    $key  = "le password";
+    $text = "This is a secret text";
+
     $encrypted = $crypt->encrypt($text, $key);
-    
+
     echo $crypt->decrypt($encrypted, $key);
 
 
@@ -89,7 +89,7 @@ If the function detects that the text was not padded, it will return it unmodifi
 
 public  **encrypt** (*mixed* $text, [*mixed* $key])
 
-Encrypts a text 
+Encrypts a text
 
 .. code-block:: php
 
@@ -102,7 +102,7 @@ Encrypts a text
 
 public  **decrypt** (*mixed* $text, [*mixed* $key])
 
-Decrypts an encrypted text 
+Decrypts an encrypted text
 
 .. code-block:: php
 

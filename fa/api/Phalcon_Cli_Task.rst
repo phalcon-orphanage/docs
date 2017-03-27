@@ -10,7 +10,10 @@ Class **Phalcon\\Cli\\Task**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/task.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method  
+Every command-line task should extend this class that encapsulates all the task functionality
+
+A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want.
+The Task class should at least have a "mainAction" method
 
 .. code-block:: php
 
@@ -18,18 +21,16 @@ Every command-line task should extend this class that encapsulates all the task 
 
     class HelloTask extends \Phalcon\Cli\Task
     {
-    
-      // This action will be executed by default
-      public function mainAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
+        // This action will be executed by default
+        public function mainAction()
+        {
+
+        }
+
+        public function findAction()
+        {
+
+        }
     }
 
 

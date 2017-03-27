@@ -29,3 +29,9 @@ Initializes the internal handler, calling functions on it
 
 
 
+public *mixed* **callMethod** (*string* $method, *array* $arguments, [:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder])
+
+Calling __call method
+
+
+

@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Logger\\Adapter**
 ===========================================
 
+*implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -106,5 +108,15 @@ public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 Logs messages to the internal logger. Appends logs to the logger
 
+
+
+abstract public  **getFormatter** () inherited from :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
+
+...
+
+
+abstract public  **close** () inherited from :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
+
+...
 
 

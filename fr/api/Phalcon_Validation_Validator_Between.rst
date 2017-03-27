@@ -10,34 +10,48 @@ Class **Phalcon\\Validation\\Validator\\Between**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/between.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.  
+Validates that a value is between an inclusive range of two values.
+For a value x, the test is passed if minimum<=x<=maximum.
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Between;
-    
-     $validator->add('price', new Between([
-         'minimum' => 0,
-         'maximum' => 100,
-         'message' => 'The price must be between 0 and 100'
-     ]));
-    
-     $validator->add(['price', 'amount'], new Between([
-         'minimum' => [
-             'price' => 0,
-             'amount' => 0
-         ],
-         'maximum' => [
-             'price' => 100,
-             'amount' => 50
-         ],
-         'message' => [
-             'price' => 'The price must be between 0 and 100',
-             'amount' => 'The amount must be between 0 and 50'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\Between;
+
+    $validator->add(
+        "price",
+        new Between(
+            [
+                "minimum" => 0,
+                "maximum" => 100,
+                "message" => "The price must be between 0 and 100",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "price",
+            "amount",
+        ],
+        new Between(
+            [
+                "minimum" => [
+                    "price"  => 0,
+                    "amount" => 0,
+                ],
+                "maximum" => [
+                    "price"  => 100,
+                    "amount" => 50,
+                ],
+                "message" => [
+                    "price"  => "The price must be between 0 and 100",
+                    "amount" => "The amount must be between 0 and 50",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -70,7 +84,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

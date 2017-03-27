@@ -8,7 +8,8 @@ Abstract class **Phalcon\\Dispatcher**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
+This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher.
+This class can't be instantiated directly, you can use it to create your own dispatchers.
 
 
 Constants
@@ -173,9 +174,45 @@ Returns value returned by the latest dispatched action
 
 
 
-public  **setModelBinding** (*boolean* $value)
+public  **setModelBinding** (*mixed* $value, [*mixed* $cache])
 
 Enable/Disable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinding(true, 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **setModelBinder** (:doc:`Phalcon\\Mvc\\Model\\BinderInterface <Phalcon_Mvc_Model_BinderInterface>` $modelBinder, [*mixed* $cache])
+
+Enable model binding during dispatch
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(new Binder(), 'cache');
+        return $dispatcher;
+    });
+
+
+
+
+public  **getModelBinder** ()
+
+Gets model binder
 
 
 
@@ -193,13 +230,19 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
+Forwards the execution flow to another controller/action
+Dispatchers are unique per module. Forwarding between modules is not allowed
 
 .. code-block:: php
 
     <?php
 
-      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
+    $this->dispatcher->forward(
+        [
+            "controller" => "posts",
+            "action"     => "index",
+        ]
+    );
 
 
 
@@ -219,6 +262,25 @@ Possible class name that will be located to dispatch the request
 public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
 ...
+
+
+public  **getBoundModels** ()
+
+Returns bound models from binder instance
+
+.. code-block:: php
+
+    <?php
+
+    class UserController extends Controller
+    {
+        public function showAction(User $user)
+        {
+            $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        }
+    }
+
+
 
 
 protected  **_resolveEmptyProperties** ()

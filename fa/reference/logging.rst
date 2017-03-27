@@ -82,6 +82,14 @@ The example below shows how to create a log and add messages to it:
         "This is a message"
     );
 
+    // You can also pass context parameters like this
+    $logger->log(
+        "This is a {message}", 
+        [ 
+            'message' => 'parameter' 
+        ]
+    );
+
 The log generated is below:
 
 .. code-block:: none
@@ -96,6 +104,7 @@ The log generated is below:
     [Tue, 28 Jul 15 22:09:02 -0500][ALERT] This is an alert message
     [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error message
     [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 
 You can also set a log level using the :code:`setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
 

@@ -90,65 +90,65 @@ Set an array with CSS classes to format the messages
 
 public  **error** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-Shows a HTML error message 
+Shows a HTML error message
 
 .. code-block:: php
 
     <?php
 
-     $flash->error('This is an error');
+    $flash->error("This is an error");
 
 
 
 
 public  **notice** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-Shows a HTML notice/information message 
+Shows a HTML notice/information message
 
 .. code-block:: php
 
     <?php
 
-     $flash->notice('This is an information');
+    $flash->notice("This is an information");
 
 
 
 
 public  **success** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-Shows a HTML success message 
+Shows a HTML success message
 
 .. code-block:: php
 
     <?php
 
-     $flash->success('The process was finished successfully');
+    $flash->success("The process was finished successfully");
 
 
 
 
 public  **warning** (*mixed* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-Shows a HTML warning message 
+Shows a HTML warning message
 
 .. code-block:: php
 
     <?php
 
-     $flash->warning('Hey, this is important');
+    $flash->warning("Hey, this is important");
 
 
 
 
 public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message) inherited from :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-Outputs a message formatting it with HTML 
+Outputs a message formatting it with HTML
 
 .. code-block:: php
 
     <?php
 
-     $flash->outputMessage('error', message);
+    $flash->outputMessage("error", $message);
 
 
 

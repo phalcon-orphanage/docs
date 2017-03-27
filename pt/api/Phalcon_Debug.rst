@@ -32,7 +32,8 @@ Set if files part of the backtrace must be shown in the output
 
 public  **setShowFileFragment** (*mixed* $showFileFragment)
 
-Sets if files must be completely opened and showed in the output or just the fragment related to the exception
+Sets if files must be completely opened and showed in the output
+or just the fragment related to the exception
 
 
 

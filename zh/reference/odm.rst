@@ -548,19 +548,22 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
     <?php
 
     use Phalcon\Mvc\Collection;
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
-    use Phalcon\Mvc\Model\Validator\Numericality;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\InclusionIn;
+    use Phalcon\Validation\Validator\Numericality;
 
     class Robots extends Collection
     {
         public function validation()
         {
-            $this->validate(
+            $validation = new Validation();
+
+            $validation->add(
+                "type",
                 new InclusionIn(
                     [
-                        "field"   => "type",
                         "message" => "Type must be: mechanical or virtual",
-                        "domain"  => [
+                        "domain" => [
                             "Mechanical",
                             "Virtual",
                         ],
@@ -568,124 +571,24 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
                 )
             );
 
-            $this->validate(
+            $validation->add(
+                "price",
                 new Numericality(
                     [
-                        "field"   => "price",
-                        "message" => "Price must be numeric",
+                        "message" => "Price must be numeric"
                     ]
                 )
             );
 
-            return $this->validationHasFailed() !== true;
+            return $this->validate($validation);
         }
     }
 
 上面的例子使用了内建的"InclusionIn"验证器。这个验证器检查了字段的类型是否在指定的范围内。如果值不在范围内即验证失败会返回false.
-下面支持的内验证器：
 
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| 名称                                                                                                  | 解释                       |
-+=======================================================================================================+============================+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Email <../api/Phalcon_Mvc_Model_Validator_Email>`               | 验证email是否正确          |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Exclusionin <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   | 验证值是否不在指定的范围内 |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Inclusionin <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   | 验证值是否在指定的范围内   |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Numericality <../api/Phalcon_Mvc_Model_Validator_Numericality>` | 检查字段是否为数字型       |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\Regex <../api/Phalcon_Mvc_Model_Validator_Regex>`               | 正则检查                   |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
-| :doc:`Phalcon\\Mvc\\Model\\Validator\\StringLength <../api/Phalcon_Mvc_Model_Validator_StringLength>` | 检查字串长度               |
-+-------------------------------------------------------------------------------------------------------+----------------------------+
+.. highlights::
 
-除了内建的验证器外，我们还可以创建自己的验证器：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Validator as CollectionValidator;
-
-    class UrlValidator extends CollectionValidator
-    {
-        public function validate($model)
-        {
-            $field = $this->getOption("field");
-
-            $value = $model->$field;
-
-            $filtered = filter_var($value, FILTER_VALIDATE_URL);
-
-            if (!$filtered) {
-                $this->appendMessage(
-                    "The URL is invalid",
-                    $field,
-                    "UrlValidator"
-                );
-
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-添加验证器到模型：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Collection;
-
-    class Customers extends Collection
-    {
-        public function validation()
-        {
-            $this->validate(
-                new UrlValidator(
-                    [
-                        "field"  => "url",
-                    ]
-                )
-            );
-
-            if ($this->validationHasFailed() === true) {
-                return false;
-            }
-        }
-    }
-
-创建验证器的目的即是使之在多个模型间重复利用以实现代码重用。验证器可简单如下：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Collection;
-    use Phalcon\Mvc\Model\Message as ModelMessage;
-
-    class Robots extends Collection
-    {
-        public function validation()
-        {
-            if ($this->type === "Old") {
-                $message = new ModelMessage(
-                    "Sorry, old robots are not allowed anymore",
-                    "type",
-                    "MyType"
-                );
-
-                $this->appendMessage($message);
-
-                return false;
-            }
-
-            return true;
-        }
-    }
+    For more information on validators, see the :doc:`Validation documentation <validation>`.
 
 删除记录（Deleting Records）
 ----------------------------
