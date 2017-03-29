@@ -36,6 +36,10 @@ The following are the built-in filters provided by this component:
 +-----------+---------------------------------------------------------------------------+
 | upper     | Applies the strtoupper_ function                                          |
 +-----------+---------------------------------------------------------------------------+
+| url       | Remove all characters except letters, digits and                          |
+|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and         |
+|           | filter type of FILTER_SANITIZE_URL                                        |
++-----------+---------------------------------------------------------------------------+
 
 データのサニタイズ
 ------------------
@@ -61,6 +65,9 @@ By sanitizing input we ensure that application integrity will be intact.
 
     // Returns "100019.01"
     $filter->sanitize("!100a019.01a", "float");
+
+    // Returns "http://example.com"
+    $filter->sanitize("http://example��.co�m", "url");
 
 
 コントローラでのサニタイジング
@@ -219,3 +226,4 @@ replacing the one provided by Phalcon.
 .. _trim: http://www.php.net/manual/en/function.trim.php
 .. _strtolower: http://www.php.net/manual/en/function.strtolower.php
 .. _strtoupper: http://www.php.net/manual/en/function.strtoupper.php
+.. _filter_var: http://php.net/manual/en/function.filter-var.php

@@ -35,6 +35,10 @@ Os seguintes filtros imbutidos estão disponíveis por esse componente:
 +-----------+------------------------------------------------------------------------------+
 | upper     | Aplica a função strtoupper_                                                  |
 +-----------+------------------------------------------------------------------------------+
+| url       | Remove all characters except letters, digits and                             |
+|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and            |
+|           | filter type of FILTER_SANITIZE_URL                                           |
++-----------+------------------------------------------------------------------------------+
 
 Normalizando dados
 ------------------
@@ -60,6 +64,9 @@ Pelas entradas de normalização de dados podemos garantir que a integridade da 
 
     // Returns "100019.01"
     $filter->sanitize("!100a019.01a", "float");
+
+    // Returns "http://example.com"
+    $filter->sanitize("http://example��.co�m", "url");
 
 
 Normalizando a partir de Controladores
@@ -217,3 +224,4 @@ A :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface pre
 .. _trim: http://www.php.net/manual/pt_BR/function.trim.php
 .. _strtolower: http://www.php.net/manual/pt_BR/function.strtolower.php
 .. _strtoupper: http://www.php.net/manual/pt_BR/function.strtoupper.php
+.. _filter_var: http://php.net/manual/en/function.filter-var.php
