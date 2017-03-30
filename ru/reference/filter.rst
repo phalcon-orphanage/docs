@@ -36,6 +36,10 @@ Filtering and Sanitizing
 +-----------+-------------------------------------------------------------------------------------+
 | upper     | Применяет strtoupper_ функцию                                                       |
 +-----------+-------------------------------------------------------------------------------------+
+| url       | Remove all characters except letters, digits and                                    |
+|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and                   |
+|           | filter type of FILTER_SANITIZE_URL                                                  |
++-----------+-------------------------------------------------------------------------------------+
 
 Очистка данных
 --------------
@@ -61,6 +65,9 @@ Filtering and Sanitizing
 
     // возвращает "100019.01"
     $filter->sanitize("!100a019.01a", "float");
+
+    // возвращает "http://example.com"
+    $filter->sanitize("http://example��.co�m", "url");
 
 
 Очистка из контроллеров
@@ -219,3 +226,4 @@ PHP предоставляет отличную фильтрацию, котор
 .. _trim: http://www.php.net/manual/ru/function.trim.php
 .. _strtolower: http://www.php.net/manual/ru/function.strtolower.php
 .. _strtoupper: http://www.php.net/manual/ru/function.strtoupper.php
+.. _filter_var: http://php.net/manual/en/function.filter-var.php

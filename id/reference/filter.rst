@@ -36,6 +36,10 @@ Berikut ini adalah filter bawaan yang disediakan komponen ini:
 +-----------+---------------------------------------------------------------------------+
 | upper     | Terapkan fungsi strtoupper_                                               |
 +-----------+---------------------------------------------------------------------------+
+| url       | Hapus semua karakter kecuali huruf, angka dan                             |
+|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. menggunakan fungsi filter_var_         |
+|           | dan jenis filter FILTER_SANITIZE_URL                                      |
++-----------+---------------------------------------------------------------------------+
 
 Sanitasi data
 -------------
@@ -61,6 +65,9 @@ Dengan sanitasi input kita memastikan integritas aplikasi tetap terjaga.
 
     // Mengembalikan "100019.01"
     $filter->sanitize("!100a019.01a", "float");
+
+    // Mengembalikan "http://example.com"
+    $filter->sanitize("http://example��.co�m", "url");
 
 
 Sanitasi dari Kontroler
@@ -219,3 +226,4 @@ menggantikan yang disediakan Phalcon.
 .. _trim: http://www.php.net/manual/en/function.trim.php
 .. _strtolower: http://www.php.net/manual/en/function.strtolower.php
 .. _strtoupper: http://www.php.net/manual/en/function.strtoupper.php
+.. _filter_var: http://php.net/manual/en/function.filter-var.php
