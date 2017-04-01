@@ -368,7 +368,7 @@ html-атрибуты вторым параметром:
 
 .. highlights::
 
-    Learn more about filtering in Phalcon by reading the :doc:`Filter documentation <filter>`.
+    Подробнее о фильтрации в Phalcon читайте :doc:`Filter documentation <filter>`.
 
 Формы и сущности
 ----------------
