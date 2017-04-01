@@ -133,9 +133,9 @@
     // возвращает "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
-Combining Filters
------------------
-You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
+Объединение фильтров
+--------------------
+Вы также можете запустить несколько фильтров в строке одновременно, передав массив идентификаторов фильтра в качестве второго параметра:
 
 .. code-block:: php
 
