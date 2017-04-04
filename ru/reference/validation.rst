@@ -204,12 +204,15 @@ Then initialize and use your own validator:
 
 Важно помнить, что валидаторы возвращают булево значение, показывающее, прошла валидация успешно, либо нет.
 
-Callback Validator
-------------------
-By using :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>` you can execute custom
-function which must return boolean or new validator class which will be used to validate the same field. By returning :code:`true`
-validation will be successful, returning :code:`false` will mean validation failed. When executing this validator Phalcon will pass
-data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+Проверка через функцию обратного вызова
+---------------------------------------
+С помощью :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>` 
+вы можете выполнить настраиваемую функцию, которая должна возвращать boolean или новый класс валидатора, 
+который будет использоваться для проверки того же поля. По возвращении :code:`true` проверка была успешной, 
+возвращение :code:`false` будет означать, что проверка не прошла. При выполнении этого валидатора 
+Phalcon будет передавать данные в зависимости от того, что это такое - если это объект, то будет передан объект, 
+иначе данные. 
+Например:
 
 .. code-block:: php
 
@@ -494,9 +497,9 @@ data depending what it is - if it's an entity then entity will be passed, otherw
         }
     }
 
-Avoid validate empty values
+Избежание проверки пустых значений
 ---------------------------
-You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+Вы можете передать опцию 'allowEmpty' всем встроенным валидаторам, чтобы избежать проверки, которая будет выполнена, если передано пустое значение:
 
 .. code-block:: php
 
@@ -518,9 +521,9 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
         )
     );
 
-Recursive Validation
+Рекурсивная проверка
 --------------------
-You can also run Validation instances within another via the :code:`afterValidation()` method. In this example, validating the CompanyValidation instance will also check the PhoneValidation instance:
+Вы также можете запускать экземпляры Validation внутри другого с помощью метода :code:`afterValidation()`. В этом примере проверка экземпляра CompanyValidation также проверяет экземпляр PhoneValidation:
 
 .. code-block:: php
 
