@@ -213,7 +213,7 @@ atau, jika anda suka, anda dapat mengimplementasi filter dalam sebuah kelas:
 
 Sanitasi dan Penyaringan Kompleks
 ---------------------------------
-PHP sendiri menyedikan ekstensi filter bagus untuk anda gunakan. Lihat dokumentasinya: `Data Filtering at PHP Documentation`_
+PHP sendiri menyediakan ekstensi filter bagus untuk anda gunakan. Lihat dokumentasinya: `Data Filtering at PHP Documentation`_
 
 Mengimplementasi Filter anda sendiri
 ------------------------------------
