@@ -47,7 +47,7 @@
     - PHQL
     - ODM
     - [Models](/en/[[version]]/models)
-        - [Behaviors](/en/[[version]]/models-advanced)
+        - [Advanced](/en/[[version]]/models-advanced)
         - [Behaviors](/en/[[version]]/models-behaviors)
         - [Cache](/en/[[version]]/models-cache)
         - [Events](/en/[[version]]/models-events)
