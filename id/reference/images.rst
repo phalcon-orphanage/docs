@@ -1,34 +1,34 @@
-Images
-======
+Image
+=====
 
-:doc:`Phalcon\\Image <../api/Phalcon_Image>` is the component that allows you to manipulate image files.
-Multiple operations can be performed on the same image object.
+:doc:`Phalcon\\Image <../api/Phalcon_Image>` adalah komponen yang memungkinkan anda memanipulasi file gambar.
+Beberapa operasi dapat dilakukan pada objek gambar sama.
 
 .. highlights::
 
-    This guide is not intended to be a complete documentation of available methods and their arguments.
-    Please visit the :doc:`API <../api/index>` for a complete reference.
+    Panduan ini tidak dimaksudkan sebagai dokumentasi lengkap metode yang tersedia dan argumennya.
+    Kunjungi :doc:`API <../api/index>` untuk referensi lengkap.
 
-Adapters
---------
-This component makes use of adapters to encapsulate specific image manipulator programs.
-The following image manipulator programs are supported:
+Adapter
+-------
+Kompoen ini menggunakan adapter untuk membungkus program pemanipulasi gambar tertentu.
+Program pemanipulasi gambar berikut didukung:
 
 +--------------------------------------------------------------------------------+--------------------------------------------+
-| Class                                                                          | Description                                |
+| Kelas                                                                          | Keterangann                                |
 +================================================================================+============================================+
-| :doc:`Phalcon\\Image\\Adapter\\Gd <../api/Phalcon_Image_Adapter_Gd>`           | Requires the `GD PHP extension`_.          |
+| :doc:`Phalcon\\Image\\Adapter\\Gd <../api/Phalcon_Image_Adapter_Gd>`           | Butuh `GD PHP extension`_.                 |
 +--------------------------------------------------------------------------------+--------------------------------------------+
-| :doc:`Phalcon\\Image\\Adapter\\Imagick <../api/Phalcon_Image_Adapter_Imagick>` | Requires the `ImageMagick PHP extension`_. |
+| :doc:`Phalcon\\Image\\Adapter\\Imagick <../api/Phalcon_Image_Adapter_Imagick>` | Butuh `ImageMagick PHP extension`_.        |
 +--------------------------------------------------------------------------------+--------------------------------------------+
 
-Implementing your own adapters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Image\\AdapterInterface <../api/Phalcon_Image_AdapterInterface>` interface must be implemented in order to create your own image adapters or extend the existing ones.
+Mengimplementasi adapter anda sendiri
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface :doc:`Phalcon\\Image\\AdapterInterface <../api/Phalcon_Image_AdapterInterface>` harus diimplementasi untuk menciptakan adapter anda sendiri atau menurunkan yang sudah ada.
 
-Saving and rendering images
----------------------------
-Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
+Menyimpan dan menampilkan gambar
+-------------------------------
+Sebelum kita mulai dengan beragam fitur komponen image, harus dipahami bagaimana menyimpan dan menampilkan gambar ini.
 
 .. code-block:: php
 
@@ -38,7 +38,7 @@ Before we begin with the various features of the image component, it's worth und
 
     // ...
 
-    // Overwrite the original image
+    // Timpa gambar asli
     $image->save();
 
 .. code-block:: php
@@ -49,10 +49,10 @@ Before we begin with the various features of the image component, it's worth und
 
     // ...
 
-    // Save to 'new-image.jpg'
+    // Simpan sebagai 'new-image.jpg'
     $image->save("new-image.jpg");
 
-You can also change the format of the image:
+Anda dapat juga mengubah format gambar:
 
 .. code-block:: php
 
@@ -62,10 +62,10 @@ You can also change the format of the image:
 
     // ...
 
-    // Save as a PNG file
+    // Simpan sebagai file PNG
     $image->save("image.png");
 
-When saving as a JPEG, you can also specify the quality as the second parameter:
+Ketika menyimpan sebagai sebuah JPEG, anda dapat pula menentukan kualtias sebagai parameter kedua.
 
 .. code-block:: php
 
@@ -75,12 +75,12 @@ When saving as a JPEG, you can also specify the quality as the second parameter:
 
     // ...
 
-    // Save as a JPEG with 80% quality
+    // Simpan sebagai file JPEG dengan kualitas 80%
     $image->save("image.jpg", 80);
 
-Resizing images
----------------
-There are several modes of resizing:
+Mengubah ukuran gambar
+----------------------
+Ada beberapa mode pengubahan ukuran:
 
 - :code:`\Phalcon\Image::WIDTH`
 - :code:`\Phalcon\Image::HEIGHT`
@@ -92,7 +92,7 @@ There are several modes of resizing:
 
 :code:`\Phalcon\Image::WIDTH`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
+Tinggi akan otomatis dihitung untuk menjaga proporsi sama; Jika anda menentukan tinggi, ia akan diabaikan.
 
 .. code-block:: php
 
@@ -110,7 +110,7 @@ The height will automatically be generated to keep the proportions the same; if 
 
 :code:`\Phalcon\Image::HEIGHT`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
+Lebar otomatis dihitung untuk menjaga proporsi sama; jika anda menentukan lebar, ia akan diabaikan.
 
 .. code-block:: php
 
@@ -128,10 +128,10 @@ The width will automatically be generated to keep the proportions the same; if y
 
 :code:`\Phalcon\Image::NONE`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :code:`NONE` constant ignores the original image's ratio.
-Neither width and height are required.
-If a dimension is not specified, the original dimension will be used.
-If the new proportions differ from the original proportions, the image may be distorted and stretched.
+Konstan :code:`NONE` mengabaikan rasio image asli.
+Lebar dan tinggi tidak diperlukan.
+Jika ukuran tidak ditentukan, ukuran asli akan digunakan.
+Jika proporsi berubah dari proporsi asli, gambar bisa jadi terdistorsi atau molor.
 
 .. code-block:: php
 
@@ -149,9 +149,10 @@ If the new proportions differ from the original proportions, the image may be di
 
 :code:`\Phalcon\Image::TENSILE`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Similar to the :code:`NONE` constant, the :code:`TENSILE` constant ignores the original image's ratio.
-Both width and height are required.
-If the new proportions differ from the original proportions, the image may be distorted and stretched.
+Mirip dengan konstan :code:`NONE` constant, konstan :code:`TENSILE` mengabaikan rasio gambar asli.
+Lebar dan tinggi wajib ada.
+Jika proporsi berubah dari proporsi asli, gambar bisa jadi terdistorsi atau molor.
+
 
 .. code-block:: php
 
@@ -167,9 +168,9 @@ If the new proportions differ from the original proportions, the image may be di
 
     $image->save("resized-image.jpg");
 
-Cropping images
+Memotong gambar
 ---------------
-For example, to get a 100px by 100px square from the centre of the image:
+Contoh, untuk mendapatkan bujur sanglar 100px kali 100 px dari pusat gambar:
 
 .. code-block:: php
 
@@ -186,22 +187,22 @@ For example, to get a 100px by 100px square from the centre of the image:
 
     $image->save("cropped-image.jpg");
 
-Rotating images
----------------
+Memutar gambar
+--------------
 .. code-block:: php
 
     <?php
 
     $image = new \Phalcon\Image\Adapter\Gd("image.jpg");
 
-    // Rotate an image by 90 degrees clockwise
+    // Putar gambar 90 derajat searah jarum jam
     $image->rotate(90);
 
     $image->save("rotated-image.jpg");
 
-Flipping images
+Membalik gambar
 ---------------
-You can flip an image horizontally (using the :code:`\Phalcon\Image::HORIZONTAL` constant) and vertically (using the :code:`\Phalcon\Image::VERTICAL` constant):
+Anda dapat membalik gambar secara horizontal (menggunakan konstan :code:`\Phalcon\Image::HORIZONTAL`) dan secara vertikal (menggunakan konstan :code:`\Phalcon\Image::VERTICAL`):
 
 .. code-block:: php
 
@@ -209,16 +210,16 @@ You can flip an image horizontally (using the :code:`\Phalcon\Image::HORIZONTAL`
 
     $image = new \Phalcon\Image\Adapter\Gd("image.jpg");
 
-    // Flip an image horizontally
+    // Balik gambar secara horizontal
     $image->flip(
         \Phalcon\Image::HORIZONTAL
     );
 
     $image->save("flipped-image.jpg");
 
-Sharpening images
+Menajamkan gambar
 -----------------
-The :code:`sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
+Metode :code:`sharpen()` butuh satu parameter - sebuah nilai integer antara 0 (tanpa efek) dan 100 (sangat tajam):
 
 .. code-block:: php
 
@@ -230,8 +231,8 @@ The :code:`sharpen()` method takes a single parameter - an integer between 0 (no
 
     $image->save("sharpened-image.jpg");
 
-Adding watermarks to images
----------------------------
+Menambah watermark ke gambar
+----------------------------
 
 .. code-block:: php
 
@@ -241,7 +242,7 @@ Adding watermarks to images
 
     $watermark = new \Phalcon\Image\Adapter\Gd("me.jpg");
 
-    // Put the watermark in the top left corner
+    // Letakkan watermark di pojok kiri atas
     $offsetX = 10;
     $offsetY = 10;
 
@@ -256,7 +257,7 @@ Adding watermarks to images
 
     $image->save("watermarked-image.jpg");
 
-Of course, you can also manipulate the watermarked image before applying it to the main image:
+Tentu anda dapat memanipulasi gambar bertanda air sebelum menerapkan ke gambar utama:
 
 .. code-block:: php
 
@@ -270,7 +271,7 @@ Of course, you can also manipulate the watermarked image before applying it to t
     $watermark->rotate(90);
     $watermark->sharpen(5);
 
-    // Put the watermark in the bottom right corner with a 10px margin
+    // Letakkan watermark di pojok kanan bawah dengan margin 10px
     $offsetX = ($image->getWidth() - $watermark->getWidth() - 10);
     $offsetY = ($image->getHeight() - $watermark->getHeight() - 10);
 
@@ -285,9 +286,9 @@ Of course, you can also manipulate the watermarked image before applying it to t
 
     $image->save("watermarked-image.jpg");
 
-Blurring images
----------------
-The :code:`blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
+Mengaburkan gambar
+------------------
+Metode :code:`blur()` butuh satu parameter - sebuah nilai integer antara 0 (tanpa efek) dan 100 (sangat kabur):
 
 .. code-block:: php
 
@@ -299,9 +300,9 @@ The :code:`blur()` method takes a single parameter - an integer between 0 (no ef
 
     $image->save("blurred-image.jpg");
 
-Pixelating images
------------------
-The :code:`pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
+Pikselasi gambar
+----------------
+Metode :code:`pixelate()` single parameter - semakin tinggi nilai integer, semakin bertitik-titik gambar jadinya:
 
 .. code-block:: php
 
