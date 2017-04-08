@@ -1,26 +1,26 @@
-Installation
-============
-PHP extensions require a slightly different installation method to a traditional PHP-based library or framework.
-You can either download a binary package for the system of your choice or build it from the sources.
+Instalasi
+=========
+Ektensi PHP butuh metode instalasi yang sedikit berbeda dibanding framework atau library PHP tradisional.
+Anda bisa download paket binary sistem pilihan anda atau build dari source code.
 
 Windows
 -------
-To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
+Untuk menggunakan Phalcon di Windows anda dapat download_ library DLL. Edit file php.ini anda dan menambahkan diakhir:
 
 .. code-block:: bash
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+Restart webserver anda.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+Screencast berikut adalah panduan langkah demi langkah menginstall Phalcon di Windows:
 
 .. raw:: html
 
     <div align="center"><iframe src="https://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
-^^^^^^^^^^^^^^
+Panduan Terkait
+^^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
 
@@ -32,7 +32,7 @@ Linux/Solaris
 
 Debian / Ubuntu
 ^^^^^^^^^^^^^^^
-To add the repository to your distribution:
+Untuk menambah repositori ke distribusi anda:
 
 .. code-block:: bash
 
@@ -42,9 +42,9 @@ To add the repository to your distribution:
     # Nightly releases
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Ini cukup dilakukan sekali kecuali distribusi anda berubah atau anda ingin beralih dari stable ke nightly build.
 
-To install Phalcon:
+Untuk menginstall Phalcon:
 
 .. code-block:: bash
 
@@ -54,9 +54,10 @@ To install Phalcon:
 
     sudo apt-get install php7.0-phalcon
 
-RPM distributions (i.e. CentOS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To add the repository to our distribution:
+Distribusi RPM (misal CentOS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Untuk menambah repositori ke distribusi anda:
+
 
 .. code-block:: bash
 
@@ -66,9 +67,9 @@ To add the repository to our distribution:
     # Nightly releases
     curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 
-This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+Ini cukup dilakukan sekali kecuali distribusi anda berubah atau anda ingin beralih dari stable ke nightly build.
 
-To install Phalcon:
+Untuk menginstall Phalcon:
 
 .. code-block:: bash
 
@@ -78,17 +79,17 @@ To install Phalcon:
 
     sudo yum install php70u-phalcon
 
-Compile from source
-^^^^^^^^^^^^^^^^^^^
-On a Linux/Solaris system you can easily compile and install the extension from the source code:
+Mengkompile dari source
+^^^^^^^^^^^^^^^^^^^^^^^
+Di sistem Linux/Solaris anda dapat dengan mudah mengkompile dan menginstall ekstensi dari source code:
 
-Prerequisite packages are:
+Paket yang wajib:
 
 * PHP >= 5.5 development resources
 * GCC compiler (Linux/Solaris)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* Git (jika belum terinstall di sistem anda - kecuali anda download paket dari GitHub dan upload ke server lewat FTP/SFTP)
 
-Specific packages for common platforms:
+Paket tertentu dari platform umum:
 
 .. code-block:: bash
 
@@ -104,7 +105,7 @@ Specific packages for common platforms:
     # Solaris
     pkg install gcc-45 php-56 apache-php56
 
-Creating the extension:
+Menciptakan ekstensi:
 
 .. code-block:: bash
 
@@ -114,7 +115,7 @@ Creating the extension:
 
     sudo ./install
 
-Add extension to your PHP configuration:
+Tambahkan ekstensi ke konfigurasi PHP:
 
 .. code-block:: bash
 
@@ -133,15 +134,15 @@ Add extension to your PHP configuration:
     # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
     extension=phalcon.so
 
-Restart the webserver.
+Restart webserver.
 
-If you are running Ubuntu/Debian with php5-fpm, restart it:
+Jika Anda menggunakan Ubuntu/Debian dengan php5-fpm, restart:
 
 .. code-block:: bash
 
     sudo service php5-fpm restart
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon otomatis mendeteksi arsitektur anda, namun, anda dapat memaksa kompilasi untuk arsitekstur tertentu:
 
 .. code-block:: bash
 
@@ -152,7 +153,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+Jika installer otomatis gagal, coba build ekstensi secara manual:
 
 .. code-block:: bash
 
@@ -166,11 +167,11 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+Di sistem Mac OS X anda dapat mengkompile dan menginstall ekstensi dari source code:
 
-Requirements
-^^^^^^^^^^^^
-Prerequisite packages are:
+Kebutuhan
+^^^^^^^^^
+Paket wajib:
 
 * PHP >= 5.5 development resources
 * XCode
@@ -186,17 +187,17 @@ Prerequisite packages are:
     sudo port install php55-phalcon
     sudo port install php56-phalcon
 
-Add extension to your PHP configuration.
+Tambahkan ekstensi ke konfigurasi PHP anda.
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Sebuah port tersedia untuk FreeBSD. Cuma butuh perintah sederhana berikut untuk menginstall:
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+atau
 
 .. code-block:: bash
 
@@ -206,15 +207,15 @@ or
 
     make install clean
 
-Checking your installation
---------------------------
-Check your :code:`phpinfo()` output for a section referencing "Phalcon" or execute the code snippet below:
+Menguji instalasi anda
+----------------------
+Cek output :code:`phpinfo()` untuk bagian yang menyebut "Phalcon" atau jalankan potongan kode berikut:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+Ekstensi Phalcon seharusnya muncul sebagai bagian output:
 
 .. code-block:: php
 
@@ -229,9 +230,9 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Installation Notes
-------------------
-Installation notes for Web Servers:
+Catatan Instalasi
+-----------------
+Catatan instalasi untuk Web Server:
 
 .. toctree::
     :maxdepth: 1
