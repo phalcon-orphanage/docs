@@ -4,45 +4,50 @@ namespace Docs\Controllers;
 
 use Docs\Cli\Tasks\RegenerateApiTask;
 use Phalcon\Cache\BackendInterface;
+use Phalcon\Config;
 use Phalcon\Mvc\Controller as PhController;
+use Phalcon\Mvc\View\Simple;
 
 /**
  * Class DocsController
  *
  * @package Docs\Controllers
  *
+ * @property Config           $config
  * @property BackendInterface $cacheData
  * @property \ParsedownExtra  $parsedown
+ * @property Simple           $viewSimple
  */
 class DocsController extends PhController
 {
     public function redirectAction()
     {
-        return $this->response->redirect('/en/3.0.4');
+        return $this->response->redirect($this->getVersion('/en/'));
     }
 
     public function mainAction($language = null, $version = null, $page = '')
     {
         if (empty($language)) {
-            return $this->response->redirect('/en/3.0.4');
+            return $this->response->redirect($this->getVersion('/en/'));
         }
 
         $language = $this->getLanguage($language);
 
         if (empty($version)) {
             return $this->response->redirect(
-                sprintf('/%s/%s', $language, '3.0.4')
+                $this->getVersion('/' . $language . '/')
             );
         }
 
         $language = (empty($language)) ?: 'en';
-        $version  = ($version)         ?: '3.0.4';
+        $version  = ($version)         ?: $this->getVersion();
         $page     = ($page)            ?: 'introduction';
 
         $contents = $this->viewSimple->render(
             'index/index',
             [
                 'language' => $language,
+                'version'  => $version,
                 'sidebar'  => $this->getDocument($language, 'sidebar'),
                 'article'  => $this->getDocument($language, $page),
                 'menu'     => $this->getDocument($language, $page . '-menu'),
@@ -138,11 +143,6 @@ class DocsController extends PhController
        }
     }
 
-    private function getVersion()
-    {
-        return '3.0.4';
-    }
-
     /**
      * Gets all the namespaces so that API URLs are generated properly
      *
@@ -178,5 +178,17 @@ class DocsController extends PhController
 
             return $namespaces;
         }
+    }
+
+    /**
+     * Returns the current version string with its prefix if applicable
+     *
+     * @param string $stub
+     *
+     * @return string
+     */
+    private function getVersion($stub = '')
+    {
+        return $stub . $this->config->get('app')->get('version');
     }
 }
