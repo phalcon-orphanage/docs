@@ -10,27 +10,33 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Url**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/url.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to validate if a field has a url format  
+Allows to validate if a field has a url format
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\Url as UrlValidator;
-    
-    class Posts extends \Phalcon\Mvc\Model
+
+    class Posts extends \Phalcon\Mvc\Collection
     {
-    
-      public function validation()
-      {
-          $this->validate(new UrlValidator(array(
-              'field' => 'source_url'
-          )));
-          if ($this->validationHasFailed() == true) {
-              return false;
-          }
-      }
-    
+        public function validation()
+        {
+            $this->validate(
+                new UrlValidator(
+                    [
+                        "field" => "source_url",
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() === true) {
+                return false;
+            }
+        }
     }
 
 

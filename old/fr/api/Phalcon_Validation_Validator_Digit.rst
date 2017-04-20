@@ -10,24 +10,37 @@ Class **Phalcon\\Validation\\Validator\\Digit**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/digit.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Check for numeric character(s)  
+Check for numeric character(s)
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Digit as DigitValidator;
-    
-     $validator->add('height', new DigitValidator([
-         'message' => ':field must be numeric'
-     ]));
-    
-     $validator->add(['height', 'width'], new DigitValidator([
-         'message' => [
-             'height' => 'height must be numeric',
-             'width' => 'width must be numeric'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\Digit as DigitValidator;
+
+    $validator->add(
+        "height",
+        new DigitValidator(
+            [
+                "message" => ":field must be numeric",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "height",
+            "width",
+        ],
+        new DigitValidator(
+            [
+                "message" => [
+                    "height" => "height must be numeric",
+                    "width"  => "width must be numeric",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -60,7 +73,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

@@ -10,25 +10,25 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores content in memory. Data is lost when the request is finished  
+Stores content in memory. Data is lost when the request is finished
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\Memory;
-     use Phalcon\Cache\Frontend\Data as FrontData;
-    
-     // Cache data
-     $frontCache = new FrontData();
-    
-     $cache = new Memory($frontCache);
-    
-     // Cache arbitrary data
-     $cache->save('my-data', [1, 2, 3, 4, 5]);
-    
-     // Get data
-     $data = $cache->get('my-data');
+    use Phalcon\Cache\Backend\Memory;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
+    // Cache data
+    $frontCache = new FrontData();
+
+    $cache = new Memory($frontCache);
+
+    // Cache arbitrary data
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -41,7 +41,7 @@ Returns a cached content
 
 
 
-public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the backend and stops the frontend
 
@@ -53,25 +53,35 @@ Deletes a value from the cache by its key
 
 
 
-public *array* **queryKeys** ([*string* | *int* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* | *int* $keyName], [*long* $lifetime])
+
+public  **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *long* **increment** ([*string* $keyName], [*mixed* $value])
+public  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
 
 
-public *long* **decrement** ([*string* $keyName], [*long* $value])
+public  **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of $keyName by given $value
 

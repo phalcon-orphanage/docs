@@ -17,7 +17,7 @@ Os seguintes filtros imbutidos estão disponíveis por esse componente:
 +-----------+------------------------------------------------------------------------------+
 | Nome      | Descrição                                                                    |
 +===========+==============================================================================+
-| string    | Remove tags e escapa entidades HTML, incluindo aspas duplas e simples        |
+| string    | Remove tags e codificar entidades HTML, incluindo aspas duplas e simples.    |
 +-----------+------------------------------------------------------------------------------+
 | email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
 +-----------+------------------------------------------------------------------------------+

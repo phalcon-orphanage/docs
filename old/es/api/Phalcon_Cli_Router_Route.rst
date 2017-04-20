@@ -49,22 +49,27 @@ Returns the route's name
 
 public  **setName** (*mixed* $name)
 
-Sets the route's name 
+Sets the route's name
 
 .. code-block:: php
 
     <?php
 
-     $router->add('/about', array(
-         'controller' => 'about'
-     ))->setName('about');
+    $router->add(
+        "/about",
+        [
+            "controller" => "about",
+        ]
+    )->setName("about");
 
 
 
 
 public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` **beforeMatch** (*callback* $callback)
 
-Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
+Sets a callback that is called if the route is matched.
+The developer can implement any arbitrary conditions here
+If the callback returns false the route is treated as not matched
 
 
 

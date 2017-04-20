@@ -10,13 +10,13 @@ Class **Phalcon\\Annotations\\Adapter\\Xcache**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores the parsed annotations to XCache. This adapter is suitable for production  
+Stores the parsed annotations to XCache. This adapter is suitable for production
 
 .. code-block:: php
 
     <?php
 
-     $annotations = new \Phalcon\Annotations\Adapter\Xcache();
+    $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 
 

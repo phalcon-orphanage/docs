@@ -10,29 +10,42 @@ Class **Phalcon\\Validation\\Validator\\Date**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/date.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Checks if a value is a valid date  
+Checks if a value is a valid date
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\Date as DateValidator;
-    
-     $validator->add('date', new DateValidator([
-         'format' => 'd-m-Y',
-         'message' => 'The date is invalid'
-     ]));
-    
-     $validator->add(['date','anotherDate'], new DateValidator([
-         'format' => [
-             'date' => 'd-m-Y',
-             'anotherDate' => 'Y-m-d'
-         ],
-         'message' => [
-             'date' => 'The date is invalid',
-             'anotherDate' => 'The another date is invalid'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\Date as DateValidator;
+
+    $validator->add(
+        "date",
+        new DateValidator(
+            [
+                "format"  => "d-m-Y",
+                "message" => "The date is invalid",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "date",
+            "anotherDate",
+        ],
+        new DateValidator(
+            [
+                "format" => [
+                    "date"        => "d-m-Y",
+                    "anotherDate" => "Y-m-d",
+                ],
+                "message" => [
+                    "date"        => "The date is invalid",
+                    "anotherDate" => "The another date is invalid",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -70,7 +83,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

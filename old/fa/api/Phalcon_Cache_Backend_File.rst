@@ -10,38 +10,40 @@ Class **Phalcon\\Cache\\Backend\\File**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments using a file backend  
+Allows to cache output fragments using a file backend
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\File;
-     use Phalcon\Cache\Frontend\Output as FrontOutput;
-    
-     // Cache the file for 2 days
-     $frontendOptions = [
-         'lifetime' => 172800
-     ];
-    
-     // Create an output cache
-     $frontCache = FrontOutput($frontOptions);
-    
-     // Set the cache directory
-     $backendOptions = [
-         'cacheDir' => '../app/cache/'
-     ];
-    
-     // Create the File backend
-     $cache = new File($frontCache, $backendOptions);
-    
-     $content = $cache->start('my-cache');
-     if ($content === null) {
-         echo '<h1>', time(), '</h1>';
-         $cache->save();
-     } else {
-         echo $content;
-     }
+    use Phalcon\Cache\Backend\File;
+    use Phalcon\Cache\Frontend\Output as FrontOutput;
+
+    // Cache the file for 2 days
+    $frontendOptions = [
+        "lifetime" => 172800,
+    ];
+
+    // Create an output cache
+    $frontCache = FrontOutput($frontOptions);
+
+    // Set the cache directory
+    $backendOptions = [
+        "cacheDir" => "../app/cache/",
+    ];
+
+    // Create the File backend
+    $cache = new File($frontCache, $backendOptions);
+
+    $content = $cache->start("my-cache");
+
+    if ($content === null) {
+        echo "<h1>", time(), "</h1>";
+
+        $cache->save();
+    } else {
+        echo $content;
+    }
 
 
 
@@ -66,31 +68,41 @@ Stores cached content into the file backend and stops the frontend
 
 
 
-public *boolean* **delete** (*int* | *string* $keyName)
+public  **delete** (*int* | *string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array* **queryKeys** ([*string* | *int* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* | *int* $keyName], [*int* $lifetime])
+
+public  **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
 
 
 
-public *mixed* **increment** ([*string* | *int* $keyName], [*int* $value])
+public  **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
 Increment of a given key, by number $value
 
 
 
-public *mixed* **decrement** ([*string* | *int* $keyName], [*int* $value])
+public  **decrement** ([*string* | *int* $keyName], [*mixed* $value])
 
 Decrement of a given key, by number $value
 

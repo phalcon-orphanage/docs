@@ -6,27 +6,30 @@ Class **Phalcon\\Db\\Profiler**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/profiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.  
+Instances of Phalcon\\Db can generate execution profiles
+on SQL statements sent to the relational database. Profiled
+information includes execution time in milliseconds.
+This helps you to identify bottlenecks in your applications.
 
 .. code-block:: php
 
     <?php
 
     $profiler = new \Phalcon\Db\Profiler();
-    
-    //Set the connection profiler
+
+    // Set the connection profiler
     $connection->setProfiler($profiler);
-    
+
     $sql = "SELECT buyer_name, quantity, product_name
     FROM buyers LEFT JOIN products ON
     buyers.pid=products.id";
-    
-    //Execute a SQL statement
+
+    // Execute a SQL statement
     $connection->query($sql);
-    
-    //Get the last profile in the profiler
+
+    // Get the last profile in the profiler
     $profile = $profiler->getLastProfile();
-    
+
     echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
     echo "Start Time: ", $profile->getInitialTime(), "\n";
     echo "Final Time: ", $profile->getFinalTime(), "\n";

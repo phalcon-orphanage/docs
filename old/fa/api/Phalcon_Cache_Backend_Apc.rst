@@ -10,29 +10,34 @@ Class **Phalcon\\Cache\\Backend\\Apc**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data and raw data using an APC backend  
+Allows to cache output fragments, PHP data and raw data using an APC backend
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Cache\Backend\Apc;
-     use Phalcon\Cache\Frontend\Data as FrontData;
-    
-     // Cache data for 2 days
-     $frontCache = new FrontData([
-         'lifetime' => 172800
-     ]);
-    
-     $cache = new Apc($frontCache, [
-         'prefix' => 'app-data'
-     ]);
-    
-     // Cache arbitrary data
-     $cache->save('my-data', [1, 2, 3, 4, 5]);
-    
-     // Get data
-     $data = $cache->get('my-data');
+    use Phalcon\Cache\Backend\Apc;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
+    // Cache data for 2 days
+    $frontCache = new FrontData(
+        [
+            "lifetime" => 172800,
+        ]
+    );
+
+    $cache = new Apc(
+        $frontCache,
+        [
+            "prefix" => "app-data",
+        ]
+    );
+
+    // Cache arbitrary data
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // Get data
+    $data = $cache->get("my-data");
 
 
 
@@ -45,19 +50,19 @@ Returns a cached content
 
 
 
-public  **save** ([*string* | *long* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the APC backend and stops the frontend
 
 
 
-public *mixed* **increment** ([*string* $keyName], [*long* $value])
+public  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of a given key, by number $value
 
 
 
-public *mixed* **decrement** ([*string* $keyName], [*long* $value])
+public  **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of a given key, by number $value
 
@@ -69,13 +74,23 @@ Deletes a value from the cache by its key
 
 
 
-public *array* **queryKeys** ([*string* $prefix])
+public  **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys
+Query the existing cached keys.
+
+.. code-block:: php
+
+    <?php
+
+    $cache->save("users-ids", [1, 2, 3]);
+    $cache->save("projects-ids", [4, 5, 6]);
+
+    var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 
 
-public *boolean* **exists** ([*string* | *long* $keyName], [*long* $lifetime])
+
+public  **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
@@ -84,6 +99,20 @@ Checks if cache exists and it hasn't expired
 public  **flush** ()
 
 Immediately invalidates all existing items.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Cache\Backend\Apc;
+
+    $cache = new Apc($frontCache, ["prefix" => "app-data"]);
+
+    $cache->save("my-data", [1, 2, 3, 4, 5]);
+
+    // 'my-data' and all other used keys are deleted
+    $cache->flush();
+
 
 
 

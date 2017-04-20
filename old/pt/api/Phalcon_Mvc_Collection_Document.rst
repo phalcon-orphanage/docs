@@ -8,7 +8,8 @@ Class **Phalcon\\Mvc\\Collection\\Document**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/document.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
+This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity.
+This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
 
 Methods
@@ -40,26 +41,26 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name 
+Reads an attribute value by its name
 
 .. code-block:: php
 
     <?php
 
-      echo $robot->readAttribute('name');
+     echo $robot->readAttribute("name");
 
 
 
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name 
+Writes an attribute value by its name
 
 .. code-block:: php
 
     <?php
 
-      $robot->writeAttribute('name', 'Rosey');
+     $robot->writeAttribute("name", "Rosey");
 
 
 

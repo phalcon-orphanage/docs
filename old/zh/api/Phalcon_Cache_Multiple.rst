@@ -6,48 +6,65 @@ Class **Phalcon\\Cache\\Multiple**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to read to chained backend adapters writing to multiple backends  
+Allows to read to chained backend adapters writing to multiple backends
 
 .. code-block:: php
 
     <?php
 
-       use Phalcon\Cache\Frontend\Data as DataFrontend,
-           Phalcon\Cache\Multiple,
-           Phalcon\Cache\Backend\Apc as ApcCache,
-           Phalcon\Cache\Backend\Memcache as MemcacheCache,
-           Phalcon\Cache\Backend\File as FileCache;
-    
-       $ultraFastFrontend = new DataFrontend(array(
-           "lifetime" => 3600
-       ));
-    
-       $fastFrontend = new DataFrontend(array(
-           "lifetime" => 86400
-       ));
-    
-       $slowFrontend = new DataFrontend(array(
-           "lifetime" => 604800
-       ));
-    
-       //Backends are registered from the fastest to the slower
-       $cache = new Multiple(array(
-           new ApcCache($ultraFastFrontend, array(
-               "prefix" => 'cache',
-           )),
-           new MemcacheCache($fastFrontend, array(
-               "prefix" => 'cache',
-               "host" => "localhost",
-               "port" => "11211"
-           )),
-           new FileCache($slowFrontend, array(
-               "prefix" => 'cache',
-               "cacheDir" => "../app/cache/"
-           ))
-       ));
-    
-       //Save, saves in every backend
-       $cache->save('my-key', $data);
+    use Phalcon\Cache\Frontend\Data as DataFrontend;
+    use Phalcon\Cache\Multiple;
+    use Phalcon\Cache\Backend\Apc as ApcCache;
+    use Phalcon\Cache\Backend\Memcache as MemcacheCache;
+    use Phalcon\Cache\Backend\File as FileCache;
+
+    $ultraFastFrontend = new DataFrontend(
+        [
+            "lifetime" => 3600,
+        ]
+    );
+
+    $fastFrontend = new DataFrontend(
+        [
+            "lifetime" => 86400,
+        ]
+    );
+
+    $slowFrontend = new DataFrontend(
+        [
+            "lifetime" => 604800,
+        ]
+    );
+
+    //Backends are registered from the fastest to the slower
+    $cache = new Multiple(
+        [
+            new ApcCache(
+                $ultraFastFrontend,
+                [
+                    "prefix" => "cache",
+                ]
+            ),
+            new MemcacheCache(
+                $fastFrontend,
+                [
+                    "prefix" => "cache",
+                    "host"   => "localhost",
+                    "port"   => "11211",
+                ]
+            ),
+            new FileCache(
+                $slowFrontend,
+                [
+                    "prefix"   => "cache",
+                    "cacheDir" => "../app/cache/",
+                ]
+            ),
+        ]
+    );
+
+    //Save, saves in every backend
+    $cache->save("my-key", $data);
 
 
 
@@ -66,19 +83,19 @@ Adds a backend
 
 
 
-public *mixed* **get** (*string* | *int* $keyName, [*long* $lifetime])
+public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
 
 Returns a cached content reading the internal backends
 
 
 
-public  **start** (*string* | *int* $keyName, [*long* $lifetime])
+public  **start** (*string* | *int* $keyName, [*int* $lifetime])
 
 Starts every backend
 
 
 
-public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into all backends and stops the frontend
 
@@ -90,7 +107,7 @@ Deletes a value from each backend
 
 
 
-public *boolean* **exists** ([*string* | *int* $keyName], [*long* $lifetime])
+public  **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
 Checks if cache exists in at least one backend
 

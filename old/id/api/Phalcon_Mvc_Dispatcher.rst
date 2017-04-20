@@ -10,22 +10,24 @@ Class **Phalcon\\Mvc\\Dispatcher**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.  
+Dispatching is the process of taking the request object, extracting the module name,
+controller name, action name, and optional parameters contained in it, and then
+instantiating a controller and calling an action of that controller.
 
 .. code-block:: php
 
     <?php
 
     $di = new \Phalcon\Di();
-    
+
     $dispatcher = new \Phalcon\Mvc\Dispatcher();
-    
-      $dispatcher->setDI($di);
-    
-    $dispatcher->setControllerName('posts');
-    $dispatcher->setActionName('index');
-    $dispatcher->setParams(array());
-    
+
+    $dispatcher->setDI($di);
+
+    $dispatcher->setControllerName("posts");
+    $dispatcher->setActionName("index");
+    $dispatcher->setParams([]);
+
     $controller = $dispatcher->dispatch();
 
 
@@ -284,13 +286,19 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward) inherited from :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
+Forwards the execution flow to another controller/action
+Dispatchers are unique per module. Forwarding between modules is not allowed
 
 .. code-block:: php
 
     <?php
 
-      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
+    $this->dispatcher->forward(
+        [
+            "controller" => "posts",
+            "action"     => "index",
+        ]
+    );
 
 
 

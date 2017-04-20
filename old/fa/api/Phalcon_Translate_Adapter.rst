@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Translate\\Adapter**
 ==============================================
 
+*implements* :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -62,5 +64,15 @@ protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders
 
 Replaces placeholders by the values passed
 
+
+
+abstract public  **query** (*mixed* $index, [*mixed* $placeholders]) inherited from :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
+
+...
+
+
+abstract public  **exists** (*mixed* $index) inherited from :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
+
+...
 
 

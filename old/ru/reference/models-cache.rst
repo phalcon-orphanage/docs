@@ -82,12 +82,12 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         ]
     );
 
-    // Use the 'cache' service from the DI instead of 'modelsCache'
+    // Мы используем сервис 'cache' из DI вместо 'modelsCache'
     $products = Products::find(
         [
             "cache" => [
-                "key"          => "my-cache",
-                "cacheService" => "cache",
+                "key"     => "my-cache",
+                "service" => "cache",
             ],
         ]
     );

@@ -10,24 +10,37 @@ Class **Phalcon\\Validation\\Validator\\PresenceOf**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Validates that a value is not null or empty string  
+Validates that a value is not null or empty string
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\PresenceOf;
-    
-     $validator->add('name', new PresenceOf([
-         'message' => 'The name is required'
-     ]));
-    
-     $validator->add(['name', 'email'], new PresenceOf([
-         'message' => [
-             'name' => 'The name is required',
-             'email' => 'The email is required'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\PresenceOf;
+
+    $validator->add(
+        "name",
+        new PresenceOf(
+            [
+                "message" => "The name is required",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "name",
+            "email",
+        ],
+        new PresenceOf(
+            [
+                "message" => [
+                    "name"  => "The name is required",
+                    "email" => "The email is required",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -60,7 +73,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

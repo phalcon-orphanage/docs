@@ -37,13 +37,17 @@ Starts the session (if headers are already sent the session will not be started)
 
 public  **setOptions** (*array* $options)
 
-Sets session's options 
+Sets session's options
 
 .. code-block:: php
 
     <?php
 
-    $session->setOptions(['uniqueId' => 'my-private-app']);
+    $session->setOptions(
+        [
+            "uniqueId" => "my-private-app",
+        ]
+    );
 
 
 
@@ -74,59 +78,61 @@ public  **regenerateId** ([*mixed* $deleteOldSession])
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove])
 
-Gets a session variable from an application context 
+Gets a session variable from an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->get('auth', 'yes');
+    $session->get("auth", "yes");
 
 
 
 
 public  **set** (*mixed* $index, *mixed* $value)
 
-Sets a session variable in an application context 
+Sets a session variable in an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->set('auth', 'yes');
+    $session->set("auth", "yes");
 
 
 
 
 public  **has** (*mixed* $index)
 
-Check whether a session variable is set in an application context 
+Check whether a session variable is set in an application context
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->has('auth'));
+    var_dump(
+        $session->has("auth")
+    );
 
 
 
 
 public  **remove** (*mixed* $index)
 
-Removes a session variable from an application context 
+Removes a session variable from an application context
 
 .. code-block:: php
 
     <?php
 
-    $session->remove('auth');
+    $session->remove("auth");
 
 
 
 
 public  **getId** ()
 
-Returns active session id 
+Returns active session id
 
 .. code-block:: php
 
@@ -139,7 +145,7 @@ Returns active session id
 
 public  **setId** (*mixed* $id)
 
-Set the current session id 
+Set the current session id
 
 .. code-block:: php
 
@@ -152,44 +158,53 @@ Set the current session id
 
 public  **isStarted** ()
 
-Check whether the session has been started 
+Check whether the session has been started
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->isStarted());
+    var_dump(
+        $session->isStarted()
+    );
 
 
 
 
 public  **destroy** ([*mixed* $removeData])
 
-Destroys the active session 
+Destroys the active session
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->destroy());
-    var_dump($session->destroy(true));
+    var_dump(
+        $session->destroy()
+    );
+
+    var_dump(
+        $session->destroy(true)
+    );
 
 
 
 
 public  **status** ()
 
-Returns the status of the current session. 
+Returns the status of the current session.
 
 .. code-block:: php
 
     <?php
 
-    var_dump($session->status());
-    
-      if ($session->status() !== $session::SESSION_ACTIVE) {
-          $session->start();
-      }
+    var_dump(
+        $session->status()
+    );
+
+    if ($session->status() !== $session::SESSION_ACTIVE) {
+        $session->start();
+    }
 
 
 

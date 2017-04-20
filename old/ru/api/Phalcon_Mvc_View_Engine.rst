@@ -3,14 +3,15 @@ Abstract class **Phalcon\\Mvc\\View\\Engine**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/engine.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\\Mvc\\View component.
+All the template engine adapters must inherit this class. This provides
+basic interfacing between the engine and the Phalcon\\Mvc\\View component.
 
 
 Methods
@@ -68,5 +69,10 @@ public  **__get** (*mixed* $propertyName) inherited from :doc:`Phalcon\\Di\\Inje
 
 Magic method __get
 
+
+
+abstract public  **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean]) inherited from :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
+
+...
 
 

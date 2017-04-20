@@ -10,24 +10,37 @@ Class **Phalcon\\Validation\\Validator\\CreditCard**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/creditcard.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Checks if a value has a valid credit card number  
+Checks if a value has a valid credit card number
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
-    
-     $validator->add('creditcard', new CreditCardValidator([
-         'message' => 'The credit card number is not valid'
-     ]));
-    
-     $validator->add(['creditcard', 'secondCreditCard'], new CreditCardValidator([
-         'message' => [
-             'creditcard' => 'The credit card number is not valid',
-             'secondCreditCard' => 'The second credit card number is not valid'
-         ]
-     ]));
+    use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
+
+    $validator->add(
+        "creditCard",
+        new CreditCardValidator(
+            [
+                "message" => "The credit card number is not valid",
+            ]
+        )
+    );
+
+    $validator->add(
+        [
+            "creditCard",
+            "secondCreditCard",
+        ],
+        new CreditCardValidator(
+            [
+                "message" => [
+                    "creditCard"       => "The credit card number is not valid",
+                    "secondCreditCard" => "The second credit card number is not valid",
+                ],
+            ]
+        )
+    );
 
 
 
@@ -66,7 +79,8 @@ Checks if an option is defined
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Returns an option in the validator's options
+Returns null if the option hasn't set
 
 
 

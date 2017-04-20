@@ -10,7 +10,8 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/resultset/complex.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
+Complex resultsets may include complete objects and scalar values.
+This class builds every complex row as it is required
 
 
 Constants
@@ -43,7 +44,8 @@ Returns current row in the resultset
 
 public  **toArray** ()
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big number of rows
+it could consume more memory than currently it does.
 
 
 
@@ -85,7 +87,8 @@ Rewinds resultset to its beginning
 
 final public  **seek** (*mixed* $position) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
+Changes internal pointer to a specific position in the resultset
+Set new position if required and set this->_row
 
 
 
@@ -187,31 +190,34 @@ Deletes every record in the resultset
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`\ [] **filter** (*callback* $filter) inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-Filters a resultset returning only those the developer requires 
+Filters a resultset returning only those the developer requires
 
 .. code-block:: php
 
     <?php
 
-     $filtered = $robots->filter(function($robot){
-    	if ($robot->id < 3) {
-    		return $robot;
-    	}
-    });
+    $filtered = $robots->filter(
+        function ($robot) {
+            if ($robot->id < 3) {
+                return $robot;
+            }
+        }
+    );
 
 
 
 
 public *array* **jsonSerialize** () inherited from :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present 
+Returns serialised model objects as array for json_encode.
+Calls jsonSerialize on each object if present
 
 .. code-block:: php
 
     <?php
 
-     $robots = Robots::find();
-     echo json_encode($robots);
+    $robots = Robots::find();
+    echo json_encode($robots);
 
 
 

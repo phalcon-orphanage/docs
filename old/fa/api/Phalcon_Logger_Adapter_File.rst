@@ -10,16 +10,18 @@ Class **Phalcon\\Logger\\Adapter\\File**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapter/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Adapter to store logs in plain text files  
+Adapter to store logs in plain text files
 
 .. code-block:: php
 
     <?php
 
     $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+
     $logger->log("This is a message");
     $logger->log(\Phalcon\Logger::ERROR, "This is an error");
     $logger->error("This is another error");
+
     $logger->close();
 
 

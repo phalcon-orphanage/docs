@@ -8,20 +8,21 @@ Class **Phalcon\\Security**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/security.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This component provides a set of functions to improve the security in Phalcon applications  
+This component provides a set of functions to improve the security in Phalcon applications
 
 .. code-block:: php
 
     <?php
 
-    $login = $this->request->getPost('login');
-    $password = $this->request->getPost('password');
-    
+    $login    = $this->request->getPost("login");
+    $password = $this->request->getPost("password");
+
     $user = Users::findFirstByLogin($login);
+
     if ($user) {
-    	if ($this->security->checkHash($password, $user->password)) {
-    		//The password is valid
-    	}
+        if ($this->security->checkHash($password, $user->password)) {
+            // The password is valid
+        }
     }
 
 
@@ -178,15 +179,16 @@ Testing for LibreSSL
 
 public  **getSslVersionNumber** ()
 
-Getting OpenSSL or LibreSSL version Parse OPENSSL_VERSION_TEXT because OPENSSL_VERSION_NUMBER is no use for LibreSSL. 
+Getting OpenSSL or LibreSSL version
+Parse OPENSSL_VERSION_TEXT because OPENSSL_VERSION_NUMBER is no use for LibreSSL.
 
 .. code-block:: php
 
     <?php
 
-     if ($security->getSslVersionNumber() >= 20105) {
-         // ...
-     }
+    if ($security->getSslVersionNumber() >= 20105) {
+        // ...
+    }
 
 
 

@@ -8,7 +8,7 @@ Class **Phalcon\\Cache\\Frontend\\Output**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments captured with ob_* functions  
+Allows to cache output fragments captured with ob_* functions
 
 .. code-block:: php
 
@@ -20,27 +20,36 @@ Allows to cache output fragments captured with ob_* functions
     * use Phalcon\Cache\Frontend\Output;
     *
     * // Create an Output frontend. Cache the files for 2 days
-    * $frontCache = new Output(['lifetime' => 172800]));
+    * $frontCache = new Output(
+    *     [
+    *         "lifetime" => 172800,
+    *     ]
+    * );
     *
     * // Create the component that will cache from the "Output" to a "File" backend
     * // Set the cache file directory - it's important to keep the "/" at the end of
     * // the value for the folder
-    * $cache = new File($frontCache, ['cacheDir' => '../app/cache/']);
+    * $cache = new File(
+    *     $frontCache,
+    *     [
+    *         "cacheDir" => "../app/cache/",
+    *     ]
+    * );
     *
     * // Get/Set the cache file to ../app/cache/my-cache.html
-    * $content = $cache->start('my-cache.html');
+    * $content = $cache->start("my-cache.html");
     *
     * // If $content is null then the content will be generated for the cache
     * if (null === $content) {
     *     // Print date and time
-    *     echo date('r');
+    *     echo date("r");
     *
     *     // Generate a link to the sign-up action
     *     echo Tag::linkTo(
     *         [
-    *             'user/signup',
-    *             'Sign Up',
-    *             'class' => 'signup-button'
+    *             "user/signup",
+    *             "Sign Up",
+    *             "class" => "signup-button",
     *         ]
     *     );
     *
@@ -93,13 +102,13 @@ Stops output frontend
 
 
 
-public *string* **beforeStore** (*mixed* $data)
+public  **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed* **afterRetrieve** (*mixed* $data)
+public  **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

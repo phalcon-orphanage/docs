@@ -8,24 +8,27 @@ Class **Phalcon\\Mvc\\Model\\Query**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/query.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This class takes a PHQL intermediate representation and executes it.  
+This class takes a PHQL intermediate representation and executes it.
 
 .. code-block:: php
 
     <?php
 
-     $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
-              WHERE b.name = :name: ORDER BY c.name";
-    
-     $result = $manager->executeQuery($phql, array(
-       "name" => "Lamborghini"
-     ));
-    
-     foreach ($result as $row) {
-       echo "Name: ",  $row->cars->name, "\n";
-       echo "Price: ", $row->cars->price, "\n";
-       echo "Taxes: ", $row->taxes, "\n";
-     }
+    $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
+             WHERE b.name = :name: ORDER BY c.name";
+
+    $result = $manager->executeQuery(
+        $phql,
+        [
+            "name" => "Lamborghini",
+        ]
+    );
+
+    foreach ($result as $row) {
+        echo "Name: ",  $row->cars->name, "\n";
+        echo "Price: ", $row->cars->price, "\n";
+        echo "Taxes: ", $row->taxes, "\n";
+    }
 
 
 
@@ -105,7 +108,8 @@ Resolves an expression from its intermediate code into a string
 
 final protected  **_getSelectColumn** (*array* $column)
 
-Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
+Resolves a column from its intermediate representation into an array used to determine
+if the resultset produced is simple or complex
 
 
 
@@ -189,7 +193,8 @@ Analyzes a DELETE intermediate code and produces an array to be executed later
 
 public  **parse** ()
 
-Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
+Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another
+intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 

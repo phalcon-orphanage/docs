@@ -10,28 +10,36 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Uniqueness**
 
 :raw-html:`<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator/uniqueness.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table  
+Validates that a field or a combination of a set of fields are not
+present more than once in the existing records of the related table
+
+This validator is only for use with Phalcon\\Mvc\\Collection. If you are using
+Phalcon\\Mvc\\Model, please use the validators provided by Phalcon\\Validation.
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Collection;
     use Phalcon\Mvc\Model\Validator\Uniqueness;
-    
-    class Subscriptors extends Model
+
+    class Subscriptors extends Collection
     {
-    
-      public function validation()
-      {
-          $this->validate(new Uniqueness(array(
-              "field"   => "email",
-              "message" => "Value of field 'email' is already present in another record"
-          )));
-          if ($this->validationHasFailed() == true) {
-              return false;
-          }
-      }
+        public function validation()
+        {
+            $this->validate(
+                new Uniqueness(
+                    [
+                        "field"   => "email",
+                        "message" => "Value of field 'email' is already present in another record",
+                    ]
+                )
+            );
+
+            if ($this->validationHasFailed() === true) {
+                return false;
+            }
+        }
     }
 
 
