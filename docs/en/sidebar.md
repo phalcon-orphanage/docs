@@ -14,6 +14,7 @@
     - [Webserver Setup](/en/[[version]]/webserver-setup)
 - Environments
     - Phalcon Compose
+    - [Nanobox](/en/[[version]]/environments-nanobox)
     - Vagrant
 - Development Tools
     - Command Line
