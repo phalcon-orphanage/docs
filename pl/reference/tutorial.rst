@@ -401,11 +401,11 @@ Implementacja takiej metody usunie wspomniany wyjątek:
 
 Jeżeli klikniesz przycisk "Send" ponownie, zobaczysz pustą stronę. Wprowadzone przez użytkownika imię oraz e-mail powinny być zapisane w bazie danych. Zgodnie z wytycznymi MVC, interakcje bazodanowe muszą odbywać się poprzez modele po to, by zagwarantować przejrzysty obiektowo-zorientowany kod.
 
-Creating a Model
+Tworzenie Modelu
 ----------------
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon wprowadza pierwsze ORM (mapowanie obiektowo-relacyjne) dla PHP w całości napisane w języku C. Zamiast zwiększenia kompleksowości rozwoju aplikacji, upraszcza ją.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+Zanim utworzymy nasz pierwszy model, potrzebujemy przygotować tabelę bazodanową poza Phalconem, aby zmapować ją z modelem. Prosta tabela do przechowywania zarejestrowanych użytkowników może być zdefiniowana na przykład tak:
 
 .. code-block:: sql
 
@@ -417,7 +417,7 @@ Before creating our first model, we need to create a database table outside of P
         PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory (app/models/Users.php). The model maps to the "users" table:
+Model powienien być położony w katalogu app/models (app/models/Users.php). Poniższy model mapuje do tabeli "users":
 
 .. code-block:: php
 
@@ -434,9 +434,9 @@ A model should be located in the app/models directory (app/models/Users.php). Th
         public $email;
     }
 
-Setting a Database Connection
+Ustawienie połączenia z bazą danych
 -----------------------------
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+W celu umożliwienia używania połączenia z bazą danych i następnie dostępu do danych poprzez nasz model, potrzebujemy określenia połączenia w naszym bootstrapowym procesie. Połączenie z bazą danych to po prostu kolejny serwis, który nasza aplikacja posiada i który może być użyty przez kilka komponentów:
 
 .. code-block:: php
 
@@ -444,7 +444,7 @@ In order to be able to use a database connection and subsequently access data th
 
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-    // Setup the database service
+    // Ustawienie serwisu bazy danych
     $di->set(
         "db",
         function () {
@@ -459,11 +459,11 @@ In order to be able to use a database connection and subsequently access data th
         }
     );
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Z poprawnymi parametrami dostępu do bazy danych, nasze modele są gotowe do pracy i interakcji z resztą aplikacji.
 
-Storing data using models
+Przechowywanie danych używając modeli
 -------------------------
-Receiving data from the form and storing them in the table is the next step.
+Otrzymywanie danych z formularza i gromadzenie ich w tabeli jest następnym krokiem.
 
 .. code-block:: php
 
@@ -482,7 +482,7 @@ Receiving data from the form and storing them in the table is the next step.
         {
             $user = new Users();
 
-            // Store and check for errors
+            // Zachowaj i sprawdź czy nie ma błędów
             $success = $user->save(
                 $this->request->getPost(),
                 [
@@ -507,20 +507,19 @@ Receiving data from the form and storing them in the table is the next step.
         }
     }
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling :code:`save()` will store the data in the database for that record. The :code:`save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+Następnie inicjujemy klasę Users, która odnosi się do rekordu User. Publiczne atrybuty klasy mapują do pól rekordu w tabeli Users. Ustawienie stosownych wartości w nowym rekordzie oraz wywołanie metody :code:`save()` zachowa dane w bazie danych dla tego rekordu. Metoda :code:`save()` zwraca wartość boolean, która wskazuje czy zapis danych był zakończony sukcesem, czy nie.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the :code:`save()` method.
+ORM domyślnie oczyszcza dane wejściowe chroniąc przed wstrzykiwaniem kodu SQL, więc musimy tylko przesłać dane do metody :code:`save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Dodatkowa walidacja działa automatycznie dla pól, które są zdefiniowane jako niepuste (wymagane). Jeżeli nie wprowadzimy dowolnego z wymaganych pól w formularzu rejestracyjnym, nasz ekran będzie wyglądał tak:
 
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
-Conclusion
+Reasumując
 ----------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+To bardzo prosty tutorial i jak możesz zauważyć, nie ma nic trudnego w budowaniu aplikacji używając Phalcona.
+Fakt, że Phalcon jest dodatkiem do Twojego Web Servera nie wpływa na łatwość rozwoju lub dostępne cechy.
+Zapraszamy Cię do kontynuowania czytania podręcznika, abyś mógł/mogła odkryć dodatkowe cechy, które oferuje Phalcon!
 
 .. _anonimowa funkcja: http://php.net/manual/en/functions.anonymous.php
