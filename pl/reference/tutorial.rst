@@ -519,7 +519,7 @@ Dodatkowa walidacja działa automatycznie dla pól, które są zdefiniowane jako
 Reasumując
 ----------
 To bardzo prosty tutorial i jak możesz zauważyć, nie ma nic trudnego w budowaniu aplikacji używając Phalcona.
-Fakt, że Phalcon jest dodatkiem do Twojego Web Servera nie wpływa na łatwość rozwoju lub dostępne cechy.
+Fakt, że Phalcon jest dodatkiem do Twojego Web Servera nie ingeruje w łatwość rozwoju lub dostępne cechy.
 Zapraszamy Cię do kontynuowania czytania podręcznika, abyś mógł/mogła odkryć dodatkowe cechy, które oferuje Phalcon!
 
 .. _anonimowa funkcja: http://php.net/manual/en/functions.anonymous.php
