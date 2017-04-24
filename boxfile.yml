@@ -1,0 +1,18 @@
+run.config:
+  engine: php  
+  engine.config:    
+    runtime: php-7.1    
+    document_root: public    
+    extensions:
+      - curl
+      - dom
+      - json
+      - mbstring
+      - opcache
+      - phalcon
+      - simplexml
+      - tokenizer
+      - xml
+      - xmlwriter
+  extra_steps:
+    - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
