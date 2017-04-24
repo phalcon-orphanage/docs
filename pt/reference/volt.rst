@@ -302,7 +302,7 @@ The following is the list of available built-in filters in Volt:
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`striptags`        | Applies the striptags_ PHP function to the value. Removing HTML tags         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`slashes`          | Applies the slashes_ PHP function to the value. Escaping values              |
+| :code:`slashes`          | Applies the addslashes_ PHP function to the value. Escaping values              |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`stripslashes`     | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
 +--------------------------+------------------------------------------------------------------------------+
