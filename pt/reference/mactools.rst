@@ -46,7 +46,7 @@ Digite o comando "phalcon" e você verá algo como isto:
 Parabéns, agora você tem instalado a Phalcon tools!
 
 Guias Relacionados
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
