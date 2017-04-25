@@ -67,8 +67,8 @@ Congratulations you now have Phalcon tools installed!
 
 Parabéns, você agora têm o Phalcon tools instalado!
 
-Related Guides
-^^^^^^^^^^^^^^
+Guias Relacionados
+^^^^^^^^^^^^^^^^^^
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on OS X <mactools>`
 * :doc:`Installation on Linux <linuxtools>`
