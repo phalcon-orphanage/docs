@@ -5,7 +5,7 @@ Estas medidas irão guiá-lo através do processo de instalação da Phalcon Dev
 
 Pré-requisitos
 --------------
-A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você ainda não tiver instalado, por favor consulte o: doc:`Instalação <install>` seção para obter instruções.
+A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você ainda não tiver instalado, por favor consulte a seção :doc:`Installation <install>` para obter instruções.
 
 Download
 --------
