@@ -22,7 +22,7 @@ Copie e cole os comandos abaixo em seu terminal:
 
     git clone git://github.com/phalcon/phalcon-devtools.git
 
-Em seguida, digite a pasta onde as ferramentas foram clonadas e execute "./phalcon.sh", (não se esqueça do ponto no início do comando):
+Em seguida, digite a pasta onde as ferramentas foram clonadas e execute ". ./phalcon.sh", (não se esqueça do ponto no início do comando):
 
 .. code-block:: bash
 
