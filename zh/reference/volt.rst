@@ -297,7 +297,7 @@ views directory. The following examples show how to change the compilation path 
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`striptags`        | Applies the striptags_ PHP function to the value. Removing HTML tags         |
 +--------------------------+------------------------------------------------------------------------------+
-| :code:`slashes`          | Applies the slashes_ PHP function to the value. Escaping values              |
+| :code:`slashes`          | Applies the addslashes_ PHP function to the value. Escaping values              |
 +--------------------------+------------------------------------------------------------------------------+
 | :code:`stripslashes`     | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
 +--------------------------+------------------------------------------------------------------------------+
