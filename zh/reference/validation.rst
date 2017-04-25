@@ -480,7 +480,7 @@ data depending what it is - if it's an entity then entity will be passed, otherw
         {
             // If the attribute value is name we must stop the chain
             if ($attribute === "name") {
-                $validator->setOption("cancelOnFail", true);
+                $this->setOption("cancelOnFail", true);
             }
 
             // ...

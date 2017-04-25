@@ -487,7 +487,7 @@ Se você está criando validadores próprios você pode parar a cadeia de valida
         {
             // If the attribute value is name we must stop the chain
             if ($attribute === "name") {
-                $validator->setOption("cancelOnFail", true);
+                $this->setOption("cancelOnFail", true);
             }
 
             // ...
