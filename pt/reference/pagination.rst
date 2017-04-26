@@ -1,12 +1,11 @@
-Pagination
-==========
+Paginação
+=========
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. :code:`Phalcon\Paginator` offers a
-fast and convenient way to split these sets of data into browsable pages.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. :code:`Phalcon\Paginator` oferece uma maneira rápida e conveniente de dividir esses conjuntos de dados em páginas navegáveis.
 
-Data Adapters
--------------
-This component makes use of adapters to encapsulate different sources of data:
+Adaptadores de Dados
+--------------------
+Este componente faz uso de adaptadores para encapsular diferentes fontes de dados:
 
 +--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Adapter                                                                                          | Description                                                                                                                                                                                                               |
@@ -18,9 +17,9 @@ This component makes use of adapters to encapsulate different sources of data:
 | :doc:`Phalcon\\Paginator\\Adapter\\QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
 +--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Examples
+Exemplos
 --------
-In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
+No exemplo abaixo, o paginador usará o resultado de uma consulta de um modelo como seus dados de origem e limitará os dados exibidos a 10 registros por página:
 
 .. code-block:: php
 
@@ -49,8 +48,8 @@ In the example below, the paginator will use the result of a query from a model 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-The :code:`$currentPage` variable controls the page to be displayed. The :code:`$paginator->getPaginate()` returns a :code:`$page`
-object that contains the paginated data. It can be used for generating the pagination:
+A variável :code:`$currentPage` controla a página a ser exibida. :code:`$paginator->getPaginate()` retorna um objeto :code:`$page`
+que contém os dados paginados. Ele pode ser usado para gerar a paginação:
 
 .. code-block:: html+php
 
@@ -69,7 +68,7 @@ object that contains the paginated data. It can be used for generating the pagin
         <?php } ?>
     </table>
 
-The :code:`$page` object also contains navigation data:
+O objeto :code:`$page` também contém dados de navegação:
 
 .. code-block:: html+php
 
@@ -80,9 +79,9 @@ The :code:`$page` object also contains navigation data:
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
-Adapters Usage
---------------
-An example of the source data that must be used for each adapter:
+Uso de Adaptadores
+------------------
+Um exemplo dos dados de origem que devem ser usados para cada adaptador:
 
 .. code-block:: php
 
@@ -131,31 +130,31 @@ An example of the source data that must be used for each adapter:
         ]
     );
 
-Page Attributes
----------------
-The :code:`$page` object has the following attributes:
+Atributos de Página
+-------------------
+O objeto :code:`$page` possui os seguintes atributos
 
 +-------------+--------------------------------------------------------+
-| Attribute   | Description                                            |
+| Atributo    | Descrição                                              |
 +=============+========================================================+
-| items       | The set of records to be displayed at the current page |
+| items       | O conjunto de registros a ser exibido na página atual  |
 +-------------+--------------------------------------------------------+
-| current     | The current page                                       |
+| current     | A página atual                                         |
 +-------------+--------------------------------------------------------+
-| before      | The previous page to the current one                   |
+| before      | A página anterior à atual                              |
 +-------------+--------------------------------------------------------+
-| next        | The next page to the current one                       |
+| next        | A próxima página para a atual                          |
 +-------------+--------------------------------------------------------+
-| last        | The last page in the set of records                    |
+| last        | A última página no conjunto de registros               |
 +-------------+--------------------------------------------------------+
-| total_pages | The number of pages                                    |
+| total_pages | O número de páginas                                    |
 +-------------+--------------------------------------------------------+
-| total_items | The number of items in the source data                 |
+| total_items | O número de itens nos dados de origem                  |
 +-------------+--------------------------------------------------------+
 
-Implementing your own adapters
-------------------------------
-The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+Implementando seus próprios adaptadores
+---------------------------------------
+A interface :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` deve ser implementada para criar seus próprios adaptadores, paginadores ou estender os existentes:
 
 .. code-block:: php
 
