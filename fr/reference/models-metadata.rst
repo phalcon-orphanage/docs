@@ -117,7 +117,7 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
         public $id;
 
         /**
-         * @Column(type="string", length=70, nullable=false)
+         * @Column(column="real_name", type="string", length=70, nullable=false, skip_on_update=true, allow_empty_string=true)
          */
         public $name;
 
@@ -127,7 +127,7 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
         public $type;
 
         /**
-         * @Column(type="integer", nullable=false)
+         * @Column(type="integer", nullable=false, skip_on_insert=true)
          */
         public $year;
     }
@@ -149,15 +149,23 @@ The following annotations are supported:
 
 The annotation @Column supports the following parameters:
 
-+----------+-------------------------------------------------------+
-| Name     | Description                                           |
-+==========+=======================================================+
-| type     | The column's type (string, integer, decimal, boolean) |
-+----------+-------------------------------------------------------+
-| length   | The column's length if any                            |
-+----------+-------------------------------------------------------+
-| nullable | Set whether the column accepts null values or not     |
-+----------+-------------------------------------------------------+
++--------------------+-------------------------------------------------------+
+| Name               | Description                                           |
++====================+=======================================================+
+| column             | The column's real name                                |
++--------------------+-------------------------------------------------------+
+| type               | The column's type (string, integer, decimal, boolean) |
++--------------------+-------------------------------------------------------+
+| length             | The column's length if any                            |
++--------------------+-------------------------------------------------------+
+| nullable           | Set whether the column accepts null values or not     |
++--------------------+-------------------------------------------------------+
+| skip_on_insert     | The column will be skipped or not on insert operation |
++--------------------+-------------------------------------------------------+
+| skip_on_update     | The column will be skipped or not on update operation |
++--------------------+-------------------------------------------------------+
+| allow_empty_string | Set whether the column accepts empty string or not    |
++--------------------+-------------------------------------------------------+
 
 The annotations strategy could be set up this way:
 
