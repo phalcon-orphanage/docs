@@ -7,8 +7,8 @@ Essa classe oferece uma simples camada orientada a objetos baseada na biblioteca
 Por padrão, esse componente provê uma encriptação segura usando AES-256.
 
 .. highlights::
-    You must use a key length corresponding to the current algorithm.
-    For the algorithm used by default it is 32 bytes.
+    Você deve usar um comprimento de chave correspondente ao algoritmo atual. 
+    Para o algoritmo usado por padrão é 32 bytes.
 
 Uso Básico
 ----------

@@ -1,28 +1,28 @@
-Phalcon Developer Tools on Mac OS X
+Phalcon Developer Tools no Mac OS X
 ===================================
 
-These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
+Estas medidas irão guiá-lo através do processo de instalação da Phalcon Developer Tools para OS/X.
 
-Prerequisites
--------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
+Pré-requisitos
+--------------
+A extensão Phalcon PHP é necessário para executar Phalcon Tools. Se você ainda não tiver instalado, por favor consulte a seção :doc:`Installation <install>` para obter instruções.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the `Download`_ section. You can also clone it from `Github`_.
+Você pode baixar um pacote da plataforma que contém as ferramentas de desenvolvimento a partir da seção Download_ . Também você pode cloná-lo do Github_.
 
-Open the terminal application:
+Abra o aplicativo de terminal:
 
 .. figure:: ../_static/img/mac-1.png
    :align: center
 
-Copy & Paste the commands below in your terminal:
+Copie e cole os comandos abaixo em seu terminal:
 
 .. code-block:: bash
 
     git clone git://github.com/phalcon/phalcon-devtools.git
 
-Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+Em seguida, digite a pasta onde as ferramentas foram clonadas e execute ". ./phalcon.sh", (não se esqueça do ponto no início do comando):
 
 .. code-block:: bash
 
@@ -30,7 +30,7 @@ Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", 
 
     . ./phalcon.sh
 
-In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
+Na janela do terminal, digite os seguintes comandos para criar um link simbólico para o script phalcon.php:
 
 .. code-block:: bash
 
@@ -38,15 +38,15 @@ In the terminal window, type the following commands to create a symbolic link to
 
     chmod +x ~/phalcon-tools/phalcon
 
-Type the command "phalcon" and you will see something like this:
+Digite o comando "phalcon" e você verá algo como isto:
 
 .. figure:: ../_static/img/mac-5.png
    :align: center
 
-Congratulations you now have Phalcon tools installed!
+Parabéns, agora você tem instalado a Phalcon tools!
 
-Related Guides
-^^^^^^^^^^^^^^
+Guias Relacionados
+^^^^^^^^^^^^^^^^^^
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
