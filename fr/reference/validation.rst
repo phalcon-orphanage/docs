@@ -158,7 +158,7 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Validates a credit card number                                    |
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>`         | Validates using callback function                                  |
+| :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>`         | Validates using callback function                                 |
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
