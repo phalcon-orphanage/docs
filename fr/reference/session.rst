@@ -123,8 +123,8 @@ Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions 
 
 Adding a unique ID is not necessary.
 
-Sac de Session
---------------
+Sac à Session
+-------------
 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` est un composant qui aide à séparer les données de sessions dans des "espaces de noms".
 En travaillant de cette manière on peux facilement créer des groupes de sessions dans l'application. En plaçant les variables dans le "sac", cela stocke
 automatiquement les données dans la session :

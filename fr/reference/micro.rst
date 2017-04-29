@@ -684,8 +684,7 @@ The following middleware events are available:
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | Non                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| afterBinding        | After models are bound and before executing the handler.                                                                   | Oui
-        |
+| afterBinding        | After models are bound and before executing the handler.                                                                   | Oui                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 Using Controllers as Handlers

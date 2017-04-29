@@ -1,18 +1,18 @@
-Unit testing
-============
+Tests unitaires
+===============
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Ecrire de bons tests aide à écrire de meilleurs logiciels. Si vous définissez de bons cas de tests vous pouvez éliminer la plupart des bugs fonctionnels et mieux maintenir votre logiciel.
 
-Integrating PHPunit with phalcon
---------------------------------
-If you don't already have phpunit installed, you can do it by using the following composer command:
+Intégrer PHPunit à phalcon
+--------------------------
+Si vous n'avez pas encore phpunit d'installé, vous pouvez le faire en suivant cette commande composer:
 
 .. code-block:: bash
 
     composer require phpunit/phpunit:^5.0
 
 
-or by manually adding it to composer.json:
+ou bien en l'ajoutant manuellement à composer.json:
 
 .. code-block:: json
 
@@ -22,7 +22,7 @@ or by manually adding it to composer.json:
         }
     }
 
-Once phpunit is installed create a directory called 'tests' in your root directory:
+Une fois phpunit installé, créez un répertoire appelé "tests" depuis le dossier racine du projet:
 
 .. code-block:: bash
 
@@ -30,11 +30,11 @@ Once phpunit is installed create a directory called 'tests' in your root directo
     public/
     tests/
 
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+Ensuite, nous avons besoin d'un fichier "assistant" pour amorcer l'application lors des tests unitaires.
 
-The PHPunit helper file
------------------------
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your tests/ directory as TestHelper.php.
+Le fichier d'assistance de PHPunit
+----------------------------------
+Un fichier d'assistance est nécessaire pour amorcer l'application lors d'exécution de tests. Nous avons préparé un échantillon. Enregistrez le fichier dans votre répertoire tests/ sous le nom de TestHelper.php.
 
 .. code-block:: php
 
@@ -53,11 +53,11 @@ A helper file is required to bootstrap the application for running the tests. We
         ROOT_PATH . PATH_SEPARATOR . get_include_path()
     );
 
-    // Required for phalcon/incubator
+    // Nécessaire pour phalcon/incubator
     include __DIR__ . "/../vendor/autoload.php";
 
-    // Use the application autoloader to autoload the classes
-    // Autoload the dependencies found in composer
+    // Utilise l'autoloader pour charger automatiquement les classes
+    // Charge les dépendances trouvées dans composer
     $loader = new Loader();
 
     $loader->registerDirs(
@@ -72,23 +72,23 @@ A helper file is required to bootstrap the application for running the tests. We
 
     Di::reset();
 
-    // Add any needed services to the DI here
+    // Ajoutez ici au DI les services nécessaires
 
     Di::setDefault($di);
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
+Si vous avez besoin de tester un composant quelconque de votre librairie, ajouter le au chargeur automatique ou bien utilisez le chargeur de votre application principale.
 
-To help you build the unit tests, we made a few abstract classes you can use to bootstrap the unit tests themselves.
-These files exist in the Phalcon incubator @ https://github.com/phalcon/incubator.
+Vous vous aider à construire des tests unitaires, nous avons créé quelques classes abstraites que vous pouvez utiliser pour amorcer les tests.
+Ces fichiers sont disponibles dans l'incubateur @ https://github.com/phalcon/incubator.
 
-You can use the incubator library by adding it as a dependency:
+Vous pouvez utiliser la librairie de l'incubateur en l'ajoutant en tant que dépendance:
 
 .. code-block:: bash
 
     composer require phalcon/incubator
 
 
-or by manually adding it to composer.json:
+ou manuellement en l'ajoutant à composer.json:
 
 .. code-block:: json
 
@@ -98,11 +98,11 @@ or by manually adding it to composer.json:
         }
     }
 
-You can also clone the repository using the repo link above.
+Vous pouvez également cloner le dépôt en suivant le lien précédemment indiqué.
 
-PHPunit.xml file
-----------------
-Now, create a phpunit file:
+Le fichier PHPunit.xml
+----------------------
+Et maintenant, créons le fichier phpunit:
 
 .. code-block:: xml
 
@@ -123,17 +123,17 @@ Now, create a phpunit file:
         </testsuite>
     </phpunit>
 
-Modify the phpunit.xml to fit your needs and save it in tests/.
+Modifiez phpunit.xml selon vos besoins et enregistrez le dans "tests/".
 
-This will run any tests under the tests/ directory.
+Ceci fera que les tests seront exécutés dans le répertoire "tests/".
 
-Sample unit test
-----------------
-To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Exemple de test unitaire
+------------------------
+Pour réaliser un test unitaire vous devez d'abord le définir. Le chargeur automatique se charge de vérifier que les bons fichiers soient chargés. Tous ce que vous avez à faire est de créer les fichiers et phpunit réalisera les tests pour vous.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.
+Cet exemple ne contient pas de fichier de configuration, cependant dans la plupart des cas vous risquez d'en avoir besoin. Vous pouvez l'ajouter au DI afin d'obtenir le fichier UnitTestCase.
 
-First create a base unit test called UnitTestCase.php in your /tests directory:
+Créons tout d'abord une base de test unitaire appelée UnitTestCase.php dans votre dossier /tests:
 
 .. code-block:: php
 
@@ -155,10 +155,10 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
         {
             parent::setUp();
 
-            // Load any additional services that might be required during testing
+            // Chargez d'autres services qui pourraient être nécessaires aux tests
             $di = Di::getDefault();
 
-            // Get any DI components here. If you have a config, be sure to pass it to the parent
+            // Récupèration des composant du DI. Si vous avez une configuration soyez sûr de le transmettre au parent.
 
             $this->setDi($di);
 
@@ -166,7 +166,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
         }
 
         /**
-         * Check if the test case is setup properly
+         * Vérification que le cas de test soit correctement configuré
          *
          * @throws \PHPUnit_Framework_IncompleteTestError;
          */
@@ -180,7 +180,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
         }
     }
 
-It's always a good idea to separate your Unit tests in namespaces. For this test we will create the namespace 'Test'. So create a file called \tests\Test\UnitTest.php:
+C'est une bonne idée que de séparer vos tests unitaires par des espaces de noms. Pour ce test nous créerons l'espace de noms 'Test'. Créons donc un fichier nommé \tests\Test\UnitTest.php:
 
 .. code-block:: php
 
@@ -209,7 +209,7 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
         }
     }
 
-Now when you execute 'phpunit' in your command-line from the \tests directory you will get the following output:
+Maintenant lorsque vous lancez 'phpunit' en ligne de commande depuis le répertoire \tests vous devriez obtenir la sortie suivante:
 
 .. code-block:: bash
 
@@ -236,6 +236,6 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
     FAILURES!
     Tests: 1, Assertions: 2, Failures: 1.
 
-Now you can start building your unit tests. You can view a good guide here (we also recommend reading the PHPunit documentation if you're not familiar with PHPunit):
+Vous êtes maintenant capable de construire vos propres tests unitaires. Vous trouverez un excellent guide en anglais ici (nous recommandons également de lire la documentation de PHPunit si vous n'êtes pas familier avec):
 
 http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/

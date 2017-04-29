@@ -1,12 +1,12 @@
 Tutorial 4: Travailler avec le CRUD
 ===================================
 
-Backends usually provide forms to allow users to manipulate data. Continuing the explanation of
-INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you
-using forms, validations, paginators and more.
+Les backends fournissent d'habitude des formulaires pour que les utilisateurs puissent manipuler les données. En poursuivant l'étude 
+d'INVO, nous allons aborder la création de CRUDs, une tâche très ordinaire que Phalcon vous simplifie avec l'utilisation de formulaires,
+de validation, de paginateurs et plus encore.
 
-La plupart des options qui manipulent des données (companies, products et types de products), ont été développés
-en utilisant un CRUD_ (create/read/update/delete) basique et commun. Chaque CRUD contient les fichiers suivants :
+La plupart des options qui manipulent des données (sociétés, produits et types de produits), ont été développés
+en utilisant un CRUD_ (create/read/update/delete) élémentaire et commun. Chaque CRUD contient les fichiers suivants :
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ Chaque contrôleur a les actions suivantes :
     class ProductsController extends ControllerBase
     {
         /**
-         * The start action, it shows the "search" view
+         * L'action de départ, il sélectionne la vue "search"
          */
         public function indexAction()
         {
@@ -42,8 +42,8 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Execute the "search" based on the criteria sent from the "index"
-         * Returning a paginator for the results
+         * Réalise l'action "search" basée sur les critères envoyés par "index"
+         * Retourne un paginateur pour les résultats
          */
         public function searchAction()
         {
@@ -51,7 +51,7 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Shows the view to create a "new" product
+         * Affiche la vue pour créer un nouveau ("new") produit
          */
         public function newAction()
         {
@@ -59,7 +59,7 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Shows the view to "edit" an existing product
+         * Affiche la vue pour modifier ("edit") un produit existant
          */
         public function editAction()
         {
@@ -67,7 +67,7 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Creates a product based on the data entered in the "new" action
+         * Création d'un produit à partir des données saisies dans l'action "new"
          */
         public function createAction()
         {
@@ -75,7 +75,7 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Updates a product based on the data entered in the "edit" action
+         * Mise à jour d'un produit à partir des données saisies dans l'action "edit"
          */
         public function saveAction()
         {
@@ -83,7 +83,7 @@ Chaque contrôleur a les actions suivantes :
         }
 
         /**
-         * Deletes an existing product
+         * Suppression d'un produit existant
          */
         public function deleteAction($id)
         {
@@ -102,7 +102,7 @@ Dans notre cas, nous avons déjà demandé des enregistrements de cette table, a
     <?php
 
     /**
-     * The start action, it shows the "search" view
+     * L'action de départ, il sélectionne la vue "search"
      */
     public function indexAction()
     {
@@ -111,8 +111,8 @@ Dans notre cas, nous avons déjà demandé des enregistrements de cette table, a
         $this->view->form = new ProductsForm();
     }
 
-An instance of the ProductsForm form (app/forms/ProductsForm.php) is passed to the view.
-This form defines the fields that are visible to the user:
+Une instance du formulaire "ProductsForm" (app/forms/ProductsForm.php) est transmise à la vue.
+Ce formulaire défini les champs qui doivent être visibles par l'utilisateur:
 
 .. code-block:: php
 
@@ -129,7 +129,7 @@ This form defines the fields that are visible to the user:
     class ProductsForm extends Form
     {
         /**
-         * Initialize the products form
+         * Initialise le formulaire "products"
          */
         public function initialize($entity = null, $options = [])
         {
@@ -221,20 +221,20 @@ This form defines the fields that are visible to the user:
         }
     }
 
-The form is declared using an object-oriented scheme based on the elements provided by the :doc:`forms <forms>` component.
-Every element follows almost the same structure:
+Le formulaire est déclaré en utilisant un schéma orienté objet en se basant sur les éléments fournis par le composant  :doc:`forms <forms>`.
+Chaque élément suit presque la même structure:
 
 .. code-block:: php
 
     <?php
 
-    // Create the element
+    // Création de l'élément
     $name = new Text("name");
 
-    // Set its label
+    // Définition de l'étiquette
     $name->setLabel("Name");
 
-    // Before validating the element apply these filters
+    // Applique ces filtres avant la validation de l'élément
     $name->setFilters(
         [
             "striptags",
@@ -242,7 +242,7 @@ Every element follows almost the same structure:
         ]
     );
 
-    // Apply this validators
+    // Applique ces validateurs
     $name->addValidators(
         [
             new PresenceOf(
@@ -253,16 +253,16 @@ Every element follows almost the same structure:
         ]
     );
 
-    // Add the element to the form
+    // Ajoute l'élément au formulaire
     $this->add($name);
 
-Other elements are also used in this form:
+D'autres éléments sont aussi utilisés dans ce formulaire:
 
 .. code-block:: php
 
     <?php
 
-    // Add a hidden input to the form
+    // Ajoute une entrée masquée dans le formulaire
     $this->add(
         new Hidden("id")
     );
@@ -271,8 +271,8 @@ Other elements are also used in this form:
 
     $productTypes = ProductTypes::find();
 
-    // Add a HTML Select (list) to the form
-    // and fill it with data from "product_types"
+    // Ajoute un HTML Select (liste) au formulaire
+    // et l'alimente avec les données de "product_types"
     $type = new Select(
         "profilesId",
         $productTypes,
@@ -287,8 +287,8 @@ Other elements are also used in this form:
         ]
     );
 
-Note that :code:`ProductTypes::find()` contains the data necessary to fill the SELECT tag using :code:`Phalcon\Tag::select()`.
-Once the form is passed to the view, it can be rendered and presented to the user:
+Notez que :code:`ProductTypes::find()` contient les données nécessaire pour alimenter le tag SELECT grâce à :code:`Phalcon\Tag::select()`.
+Une fois que le formulaire est transmis à la vue, il peut être rendu et présenté à l'utilisateur:
 
 .. code-block:: html+jinja
 
@@ -320,7 +320,7 @@ Once the form is passed to the view, it can be rendered and presented to the use
 
     {{ endForm() }}
 
-This produces the following HTML:
+Ce qui produit le code HTML suivant:
 
 .. code-block:: html
 
@@ -378,8 +378,8 @@ This produces the following HTML:
 
     </form>
 
-When the form is submitted, the "search" action is executed in the controller performing the search
-based on the data entered by the user.
+Une fois que le formulaire est soumis, l'action "search" est exécutée dans le contrôleur réalisant ainsi la recherche
+d'après les données saisies par l'utilisateur.
 
 Exécuter une recherche
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -398,9 +398,9 @@ Pour différencier la méthode (GET ou POST), nous utilisons le composant :doc:`
     public function searchAction()
     {
         if ($this->request->isPost()) {
-            // Create the query conditions
+            // Création des conditions de la requête
         } else {
-            // Paginate using the existing conditions
+            // Pagination en exploitant les conditions existantes
         }
 
         // ...
@@ -419,7 +419,7 @@ les conditions de recherche basé sur les types de données envoyé via le formu
         $this->request->getPost()
     );
 
-Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prends en compte pour créer
+Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prend en compte pour créer
 les critères de recherche :
 
 * Si le champs de données est "text" ou similaire (char, varchar, text, etc.). L'opérateur "like" sera utilisé pour filtrer les résultats.
@@ -428,7 +428,7 @@ les critères de recherche :
 De plus, "Criteria" ignore toutes les variables :code:`$_POST` qui ne correspondent à aucun champs de la table.
 Les valeurs seront automatiquement échappées en utilisant les paramètres liés (bond parameters).
 
-Maintenant, on va stoquer les paramètres dans le "sac" de session du contrôleur :
+Maintenant, on va stocker les paramètres dans le "sac" de session du contrôleur :
 
 .. code-block:: php
 
@@ -436,7 +436,7 @@ Maintenant, on va stoquer les paramètres dans le "sac" de session du contrôleu
 
     $this->persistent->searchParams = $query->getParams();
 
-Un sac de session est un attribut particulier dans un contrôleur qui est sauvegardé entre les requêtes.
+Un sac à session est un attribut particulier dans un contrôleur qui est sauvegardé entre les requêtes.
 Quand on y accède, cet attribut injecte un service :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 qui est indépendant de chaque contrôleur.
 
@@ -480,7 +480,7 @@ recherche retourne des résultats, on créé un paginateur pour se déplacer à 
         ]
     );
 
-    // Get active page in the paginator
+    // Récupère la page courante dans le paginateur
     $page = $paginator->getPaginate();
 
 Enfin, on passe la page retournée à la vue:
@@ -562,20 +562,20 @@ le résultat correspondant à la page actuelle :
         No products are recorded
     {% endfor %}
 
-There are many things in the above example that worth detailing. First of all, active items
-in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+Il y a plusieurs choses dans l'exemple du dessus qui méritent d'être détaillées. Tout d'abord, les éléments actifs
+de la page courante sont parcourus en utilisant un "for" de Volt. Volt fournit une syntaxe plus simple que le "foreach" du PHP. 
 
 .. code-block:: html+jinja
 
     {% for product in page.items %}
 
-Which in PHP is the same as:
+Ce qui est similaire en PHP à:
 
 .. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
 
-The whole 'for' block provides the following:
+Tout le bloc "for" est fournit ci-dessous:
 
 .. code-block:: html+jinja
 
@@ -593,8 +593,8 @@ The whole 'for' block provides the following:
         Executed if page.items does not have any products
     {% endfor %}
 
-Now you can go back to the view and find out what every block is doing. Every field
-in "product" is printed accordingly:
+Revenez maintenant à la vue pour découvrir ce que chaque bloc fait. Chaque champ
+dans "product" est imprimé en conséquence:
 
 .. code-block:: html+jinja
 
@@ -628,10 +628,10 @@ in "product" is printed accordingly:
         </td>
     </tr>
 
-As we seen before using :code:`product.id` is the same as in PHP as doing: :code:`$product->id`,
-we made the same with :code:`product.name` and so on. Other fields are rendered differently,
-for instance, let's focus in :code:`product.productTypes.name`. To understand this part,
-we have to check the Products model (app/models/Products.php):
+Comme nous avons vu précédemment, l'utilisation de :code:`product.id` est l'équivalent de :code:`$product->id` en PHP.
+Nous faisons pareil pour :code:`product.name` et ainsi de suite. Les autres champs sont rendus différemments.
+Par exemple, focalisons nous sur :code:`product.productTypes.name`. Pour comprendre cette partie,
+nous devons consulter le modèle Products (app/models/Products.php):
 
 .. code-block:: php
 
@@ -647,7 +647,7 @@ we have to check the Products model (app/models/Products.php):
         // ...
 
         /**
-         * Products initializer
+         * Initialisation de Products
          */
         public function initialize()
         {
@@ -664,9 +664,9 @@ we have to check the Products model (app/models/Products.php):
         // ...
     }
 
-A model can have a method called :code:`initialize()`, this method is called once per request and it serves
-the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
-has a one-to-many relationship to another model called "ProductTypes".
+Un modèle peut avoir une méthode nommée :code:`initialize()`. Cette méthode n'est appelée qu'une fois par requête et
+sert à l'ORM pour initialiser le modèle. Dans ce cas, "Products" est initialisé en indiquant que ce modèle dispose
+d'une relation un-à-plusieurs vers un autre modèle nommé "ProductTypes".
 
 .. code-block:: php
 
@@ -681,33 +681,33 @@ has a one-to-many relationship to another model called "ProductTypes".
         ]
     );
 
-Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
-the "ProductTypes" model in its attribute "id". By defining this relationship we can access the name of
-the product type by using:
+Ceci signifie que l'attribut local "product_types_id" de "Products" a une relation un-à-plusieurs
+vers l'attribut "id" du modèle "ProductTypes". En définissant cette realtion nous pouvons accéder au 
+nom du type de produit en utilisant:
 
 .. code-block:: html+jinja
 
     <td>{{ product.productTypes.name }}</td>
 
-The field "price" is printed by its formatted using a Volt filter:
+Le champ "price" est formaté en utilisant un filtre Volt:
 
 .. code-block:: html+jinja
 
     <td>{{ "%.2f"|format(product.price) }}</td>
 
-In plain PHP, this would be:
+En PHP pur, ce serait:
 
 .. code-block:: php
 
     <?php echo sprintf("%.2f", $product->price) ?>
 
-Printing whether the product is active or not uses a helper implemented in the model:
+L'utilisation d'une méthode d'aide définie dans le modèle nous permet d'indiquer si le produit est actif ou non:
 
 .. code-block:: php
 
     <td>{{ product.getActiveDetail() }}</td>
 
-This method is defined in the model.
+Cette méthode est définie dans le modèle.
 
 Créer et modifier des entrées
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -721,7 +721,7 @@ Dans la page de création, on récupère les données envoyés et on leur assign
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * Création d'un produit basé sur les données fournies à l'action "new"
      */
     public function createAction()
     {
@@ -748,7 +748,7 @@ Dans la page de création, on récupère les données envoyés et on leur assign
     }
 
 Les données sont filtrés avant d'être assignés à l'objet :code:`$product`.
-Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les données en fonction des types des champs:
+Ce filtrage est optionnel, l'ORM échappe les données entrées et convertit les données en fonction des types des champs:
 
 .. code-block:: php
 
@@ -760,7 +760,7 @@ Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les don
 
     $name->setLabel("Name");
 
-    // Filters for name
+    // Filtres pour "name"
     $name->setFilters(
         [
             "striptags",
@@ -768,7 +768,7 @@ Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les don
         ]
     );
 
-    // Validators for name
+    // Validateurs pour "name"
     $name->addValidators(
         [
             new PresenceOf(
@@ -781,8 +781,8 @@ Ce filtrage est optionnel, l'ORM échappe les données entrées et caste les don
 
     $this->add($name);
 
-Quand on sauvegarde, nous saurons si la donnée est conforme aux règles et validations implémentés
-dans le form ProductsForm (app/forms/ProductsForm.php):
+Quand on sauvegarde, nous saurons si la donnée est conforme aux règles et validations mises en œuvre
+dans le formulaire ProductsForm (app/forms/ProductsForm.php):
 
 .. code-block:: php
 
@@ -812,7 +812,7 @@ dans le form ProductsForm (app/forms/ProductsForm.php):
         );
     }
 
-Finally, if the form does not return any validation message we can save the product instance:
+Finalement, si le formulaire ne retourne pas de message de validation, nous pouvons sauvegarder l'instance du produit:
 
 .. code-block:: php
 
@@ -848,14 +848,14 @@ Finally, if the form does not return any validation message we can save the prod
         ]
     );
 
-Maintenant, dans le cas de la modification de produit, on doit présenter les données à éditer à l'utilisateur en pré-remplissant les champs:
+Maintenant, dans le cas de la modification de produit, on doit présenter les données à éditer à l'utilisateur en remplissant au préalable les champs:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Edits a product based on its id
+     * Modification d'un produit d'après son id
      */
     public function editAction($id)
     {
@@ -884,7 +884,7 @@ Maintenant, dans le cas de la modification de produit, on doit présenter les do
         }
     }
 
-L'helper "setDefault" entre les valeurs du produit dans les champs qui portent le même nom comme valeur par défaut. Grace à cela,
+L'aide "setDefault" introduit les valeurs du produit dans les champs qui portent le même nom comme valeur par défaut. Grâce à cela,
 l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifications à la base de données avec l'action "save":
 
 .. code-block:: php
@@ -892,7 +892,7 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Mise à jour d'un produit d'après les données fournies à l'action "edit"
      */
     public function saveAction()
     {
@@ -970,7 +970,7 @@ l'utilisateur peut changer n'importe quelle valeur et ensuite envoyer ses modifi
         );
     }
 
-We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
-In next chapter, we will see how to add custom HTML elements like a menu.
+Nous avons vu comment Phalcon facilite la création de formulaire et les données d'une base d'une façon structurée.
+Dans le chapitre suivant, nous verrons comment ajouter des éléments HTML personnalisés du genre menu par exemple.
 
 .. _CRUD: https://fr.wikipedia.org/wiki/CRUD

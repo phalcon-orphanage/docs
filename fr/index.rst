@@ -30,7 +30,7 @@ Installation
    reference/mactools
    reference/wintools
 
-Tutorials
+Tutoriels
 ^^^^^^^^^
 
 .. toctree::
@@ -45,7 +45,7 @@ Tutorials
    reference/tutorial-rest
    reference/samples
 
-Components
+Composants
 ^^^^^^^^^^
 
 .. toctree::
@@ -104,8 +104,8 @@ Components
    reference/debug
    reference/unit-testing
 
-In Depth Explanations / Further Reading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Approfondissements / Autres lectures
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 3
@@ -122,7 +122,7 @@ API
 
    api/index
 
-Legal
+Légal
 ^^^^^
 
 .. toctree::

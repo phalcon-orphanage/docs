@@ -4,16 +4,16 @@ File d'attente
 Les activités comme la manipulation de vidéos, le recadrage d'image ou l'envoi de mails, ne sont pas adaptés pour être réalisées
 en ligne ou bien en temps réel à cause du temps de chargement des pages qui peut avoir un impact sérieux sur l'expérience utilisateur.
 
-La meilleure des solutions serait de mettre en place des tâches de fond. Les applications ajouteraient les tâches à une file et ces tâches seraient traitées indépendamment.
+La meilleure des solutions serait de mettre en place des tâches de fond. Les applications ajouteraient les tâches à une file 
+et ces tâches seraient traitées indépendamment.
 
 Bien que vous puissiez trouver des extensions PHP plus sophistiquées pour la mise en file d'attente comme RabbitMQ_;
 Phalcon fournit un client pour Beanstalk_, un backend de mise en file d'attente de jobs inspiré de Memcache_.
 Il est simple, léger, et parfaitement spécialisé dans la mise en file d'attente.
 
-
-.. attention::
-
-    Certains retour de méthodes de la queue nécessite la présence du module Yaml. Veuillez 
+.. highlights::
+    
+    Attention: Certains retours de méthodes de la queue nécessite la présence du module Yaml. Veuillez 
     vous référer à http://php.net/manual/book.yaml.php pour plus d'information. Pour PHP < 7, Yaml 1.3.0
     est acceptable. Pour PHP >= 7 vous devez utiliser Yaml >= 2.0.0.
     

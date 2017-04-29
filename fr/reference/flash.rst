@@ -104,7 +104,7 @@ Messages sent to the flash service are automatically formatted with HTML:
 
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As you can see, CSS classes are added automatically to the :code:`<div>`s. These classes allow you to define the graphical presentation
+As you can see, CSS classes are added automatically to the :code:`\<div\>`s. These classes allow you to define the graphical presentation
 of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter Bootstrap, classes can be configured as:
 
 .. code-block:: php
