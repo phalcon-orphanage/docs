@@ -3,9 +3,9 @@ Aplicações de Linha de Comando
 
 Aplicações CLI são executadas pela linha de comando. Elas são usadas para criar tarefas agendadas (Cron Jobs), scripts, comandos úteis e muito mais.
 
-Structure
+Estrutura
 ---------
-A minimal structure of a CLI application will look like this:
+Uma estrutura mínima de um aplicativo CLI será semelhante a esta:
 
 * app/config/config.php
 * app/tasks/MainTask.php
@@ -13,9 +13,9 @@ A minimal structure of a CLI application will look like this:
 
 Criando um Bootstrap
 --------------------
-Como nas aplicações MVC, o bootstrap também é disponível. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Como nas aplicações MVC, o bootstrap também é disponível. Em vez do index.php bootstrapper em aplicações web, usamos um arquivo cli.php para inicializar o aplicativo.
 
-Below is a sample bootstrap that is being used for this example.
+Abaixo está um exemplo de bootstrap que está sendo usado para este exemplo.
 
 .. code-block:: php
 
@@ -92,7 +92,7 @@ Below is a sample bootstrap that is being used for this example.
         exit(255);
     }
 
-This piece of code can be run using:
+Este pedaço de código pode ser executado usando:
 
 .. code-block:: bash
 
@@ -102,9 +102,9 @@ This piece of code can be run using:
 
 Tarefas (Tasks)
 ---------------
-Tarefas são similares aos controladores. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tarefas são similares aos controladores. Qualquer aplicativo CLI precisa de pelo menos um MainTask e um mainAction e cada tarefa precisa ter um mainAction que será executado se nenhuma ação é dada explicitamente.
 
-Below is an example of the app/tasks/MainTask.php file:
+Abaixo está um exemplo do arquivo app/tasks/MainTask.php:
 
 .. code-block:: php
 
@@ -120,11 +120,11 @@ Below is an example of the app/tasks/MainTask.php file:
         }
     }
 
-Processing action parameters
-----------------------------
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Processando parâmetros de ação
+------------------------------
+É possível passar parâmetros para ações, o código para isso já está presente no bootstrap de amostra.
 
-If you run the application with the following parameters and action:
+Se você executar o aplicativo com os seguintes parâmetros e ação:
 
 .. code-block:: php
 
@@ -160,7 +160,7 @@ If you run the application with the following parameters and action:
         }
     }
 
-We can then run the following command:
+Podemos então executar o seguinte comando:
 
 .. code-block:: bash
 
@@ -169,9 +169,9 @@ We can then run the following command:
    hello world
    best regards, universe
 
-Running tasks in a chain
-------------------------
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Executando tarefas em cadeia
+----------------------------
+Também é possível executar tarefas em uma cadeia, se for necessário. Para fazer isso, você deve adicionar o próprio console ao DI:
 
 .. code-block:: php
 
@@ -188,7 +188,7 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
         exit(255);
     }
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Então você pode usar o console dentro de qualquer tarefa. Abaixo está um exemplo de um MainTask.php modificado:
 
 .. code-block:: php
 
@@ -215,5 +215,5 @@ Then you can use the console inside of any task. Below is an example of a modifi
             echo "I will get printed too!" . PHP_EOL;
         }
     }
-
-However, it's a better idea to extend :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` and implement this kind of logic there.
+    
+No entanto, é melhor ter uma extensão :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` e implementar esse tipo de lógica lá.
