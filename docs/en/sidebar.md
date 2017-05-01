@@ -13,9 +13,9 @@
     - [Installation](/en/[[version]]/installation)
     - [Webserver Setup](/en/[[version]]/webserver-setup)
 - Environments
-    - Phalcon Compose
+    - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
-    - Vagrant
+    - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
 - Development Tools
     - Command Line
     - Web Interface
