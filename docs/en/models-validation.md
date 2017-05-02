@@ -1,12 +1,16 @@
 <div class='article-menu' markdown='1'>
 
 - [Validating Models](#overview)
+    - [Validating Data Integrity](#data-integrity)
+    - [Validation Messages](#messages)
+    - [Validation Failed Events](#failed-events)
 
 </div>
 
 <a name='overview'></a>
 # Validating Models
 
+<a name='data-integrity'></a>
 ## Validating Data Integrity
 `Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special 'validation' event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
@@ -91,6 +95,7 @@ class Robots extends Model
 }
 ```
 
+<a name='messages'></a>
 ## Validation Messages
 `Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -156,6 +161,7 @@ class Robots extends Model
 }
 ```
 
+<a name='failed-events'></a>
 ## Validation Failed Events
 Another type of events are available when the data validation process finds any inconsistency:
 

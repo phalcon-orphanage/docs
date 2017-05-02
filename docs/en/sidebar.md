@@ -61,9 +61,9 @@
     - Flash Messenger
     - Forms
     - Tag
-    - View
+    - [View](/en/[[version]]/views)
         - View Simple
-        - Volt
+        - [Volt](/en/[[version]]/volt)
 - Business Logic
     - Access Control Lists
     - Annotations
