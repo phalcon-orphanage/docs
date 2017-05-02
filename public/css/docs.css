@@ -193,32 +193,3 @@ body {
     list-style: none;
     padding-left: 10px;
 }
-
-table {
-    width: 100%;
-    margin-bottom: 20px;
-    border: 1px solid #dddddd;
-    border-collapse: collapse;
-    border-left: 0;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-}
-
-table th,
-table td {
-    padding: 8px;
-    line-height: 20px;
-    text-align: left;
-    vertical-align: top;
-    border-top: 1px solid #dddddd;
-    border-left: 1px solid #dddddd;
-}
-
-table th { font-weight: bold; }
-table thead th { vertical-align: bottom; }
-
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-    border-top: 0;
-}

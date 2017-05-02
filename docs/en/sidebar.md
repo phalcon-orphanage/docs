@@ -65,7 +65,7 @@
         - View Simple
         - [Volt](/en/[[version]]/volt)
 - Business Logic
-    - Access Control Lists
+    - [Access Control Lists](/en/[[version]]/acl)
     - Annotations
     - [Controllers](/en/[[version]]/controllers)
     - Dispatcher
