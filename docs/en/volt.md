@@ -1,6 +1,41 @@
 <div class='article-menu' markdown='1'>
 
 - [Overview](#overview)
+    - [Introduction](#introduction)
+    - [Activating Volt](#setup)
+    - [Basic Usage](#basic-usage)
+    - [Variables](#variables)
+    - [Filters](#filters)
+    - [Comments](#comments)
+    - [List of Control Structures](#control-structures)
+        - [For](#control-structures-for)
+        - [Loop Controls](#control-structures-loops)
+        - [Loop Context](#control-structures-loop)
+            - [Assignments](#assignments)
+            - [Expressions](#expressions)
+        - [Literals](#expressions-literals)
+        - [Arrays](#expressions-arrays)
+        - [Math](#expressions-math)
+        - [Comparisons](#expressions-comparisons)
+        - [Logic](#expressions-logic)
+        - [Other Operators](#expressions-other-operators)
+    - [Tests](#tests)
+    - [Macros](#macros)
+    - [Using Tag Helpers](#tag-helpers)
+    - [Functions](#functions)
+    - [View Integration](#view-integrations)
+        - [Include](#view-integration-include)
+        - [Partial vs Include](#view-integration-partial-vs-include)
+    - [Template Inheritance](#template-inheritance)
+        - [Multiple Inheritance](#template-inheritance-multiple)
+    - [Autoescape mode](#autoescape)
+    - [Extending Volt](#extending)
+        - [Functions](#extending-functions)
+        - [Filters](#extending-filters)
+        - [Extensions](#extending-extensions)
+    - [Caching view fragments](#caching-view-fragments)
+    - [Inject Services into a Template](#services-in-templates)
+    - [Stand-alone component](#stand-alone)
 
 </div>
 
@@ -8,12 +43,12 @@
 # Volt: Template Engine
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
-.. figure:: ../_static/img/volt.jpg
-   :align: center
+![](/images/content/volt.jpg)
 
 Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
-### Introduction
+<a name='introduction'></a>
+## Introduction
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
@@ -31,6 +66,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% endblock %}
 ```
 
+<a name='setup'></a>
 ## Activating Volt
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -112,7 +148,7 @@ use Phalcon\Mvc\View\Engine\Volt;
 $di->set(
     'view',
     function () {
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
@@ -176,6 +212,7 @@ $volt->setOptions(
 );
 ```
 
+<a name='basic-usage'></a>
 ## Basic Usage
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% ... %}` is used to execute statements such as for-loops or assign values and `{{ ... }}`,
 prints the result of an expression to the template.
@@ -242,6 +279,7 @@ class PostsController extends Controller
 }
 ```
 
+<a name='variables'></a>
 ## Variables
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -250,6 +288,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 {{ post['title'] }} {# for $post['title'] #}
 ```
 
+<a name='filters'></a>
 ## Filters
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -350,6 +389,7 @@ Examples:
 {{ 'désolé'|convert_encoding('utf8', 'latin1') }}
 ```
 
+<a name='comments'></a>
 ## Comments
 Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
 
@@ -359,9 +399,11 @@ Comments may also be added to a template using the `{# ... #}` delimiters. All t
 #}
 ```
 
+<a name='control-structures'></a>
 ## List of Control Structures
 Volt provides a set of basic but powerful control structures for use in templates:
 
+<a name='control-structures-for'></a>
 ### For
 Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
@@ -433,6 +475,7 @@ Alternative syntax:
 {% endfor %}
 ```
 
+<a name='control-structures-loops'></a>
 ### Loop Controls
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
@@ -456,6 +499,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% endfor %}
 ```
 
+<a name='control-structures-if'></a>
 ### If
 As PHP, an `if` statement checks if an expression is evaluated as true or false:
 
@@ -497,6 +541,7 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 {% endif %}
 ```
 
+<a name='control-structures-loop'></a>
 ### Loop Context
 A special variable is available inside `for` loops providing you information about
 
@@ -533,6 +578,7 @@ Example:
 {% endfor %}
 ```
 
+<a name='assignments'></a>
 ## Assignments
 Variables may be changed in a template using the instruction 'set':
 
@@ -566,6 +612,7 @@ The following operators are available:
 | `\*=`    | Multiplication assignment |
 | `/=`     | Division assignment       |
 
+<a name='expressions'></a>
 ## Expressions
 Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
 
@@ -579,6 +626,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 {% do (1 + 1) * 2 %}
 ```
 
+<a name='expressions-literals'></a>
 ### Literals
 The following literals are supported:
 
@@ -591,6 +639,7 @@ The following literals are supported:
 | `true`               | Constant 'true' is the boolean true value                          |
 | `null`               | Constant 'null' is the Null value                                  |
 
+<a name='expressions-arrays'></a>
 ### Arrays
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -615,6 +664,7 @@ Curly braces also can be used to define arrays or hashes:
 {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 ```
 
+<a name='expressions-math'></a>
 ### Math
 You may make calculations in templates using the following operators:
 
@@ -626,6 +676,7 @@ You may make calculations in templates using the following operators:
 | `/`      | Perform a division operation `{{ 10 / 2 }}` returns 5                   |
 | `%`      | Calculate the remainder of an integer division `{{ 10 % 3 }}` returns 1 |
 
+<a name='expressions-comparisons'></a>
 ### Comparisons
 The following comparison operators are available:
 
@@ -641,6 +692,7 @@ The following comparison operators are available:
 | `===`    | Check whether both operands are identical                         |
 | `!==`    | Check whether both operands aren't identical                      |
 
+<a name='expressions-logic'></a>
 ### Logic
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -651,6 +703,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 | `not`      | Negates an expression                                             |
 | `( expr )` | Parenthesis groups expressions                                    |
 
+<a name='expressions-other-operators'></a>
 ### Other Operators
 Additional operators seen the following operators are available:
 
@@ -678,6 +731,7 @@ The following example shows how to use operators:
 {% endfor %}
 ```
 
+<a name='tests'></a>
 ## Tests
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -753,6 +807,7 @@ More examples:
 {% endif %}
 ```
 
+<a name='macros'></a>
 ## Macros
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
@@ -817,6 +872,7 @@ And receive optional parameters:
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 ```
 
+<a name='tag-helpers'></a>
 ## Using Tag Helpers
 Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers provided by that component in a Volt template:
 
@@ -880,6 +936,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 | `Phalcon\Tag::textArea`          | `text_area`          |
 | `Phalcon\Tag::textField`         | `text_field`         |
 
+<a name='functions'></a>
 ## Functions
 The following built-in functions are available in Volt:
 
@@ -896,6 +953,7 @@ The following built-in functions are available in Volt:
 | `constant`    | Reads a PHP constant                                        |
 | `url`         | Generate a URL using the 'url' service                      |
 
+<a name='view-integrations'></a>
 ## View Integration
 Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hierarchy and include partials as well:
 
@@ -923,6 +981,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 </div>
 ```
 
+<a name='view-integration-include'></a>
 ### Include
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -933,6 +992,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 </div>
 ```
 
+<a name='view-integration-partial-vs-include'></a>
 ### Partial vs Include
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
@@ -944,6 +1004,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 * `include` only allows to include templates made with Volt
 * `include` requires an existing template at compile time
 
+<a name='template-inheritance'></a>
 ## Template Inheritance
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1008,6 +1069,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 </html>
 ```
 
+<a name='template-inheritance-multiple'></a>
 ### Multiple Inheritance
 Extended templates can extend other templates. The following example illustrates this:
 
@@ -1082,6 +1144,7 @@ Note the call to the function `super()`. With that function it's possible to ren
 
 ##### By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in the parent templates. ##### {.alert .alert-warning}
 
+<a name='autoescape'></a>
 ## Autoescape mode
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
@@ -1096,11 +1159,13 @@ Manually escaped: {{ robot.name|e }}
 {% endautoescape %}
 ```
 
+<a name='extending'></a>
 ## Extending Volt
 Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
 
 The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
 
+<a name='extending-functions'></a>
 ### Functions
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
 
@@ -1180,6 +1245,7 @@ Built-in functions can be overridden adding a function with its name:
 $compiler->addFunction('dump', 'print_r');
 ```
 
+<a name='extending-filters'></a>
 ### Filters
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1210,6 +1276,7 @@ Built-in filters can be overridden adding a function with its name:
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
+<a name='extending-extensions'></a>
 ### Extensions
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1254,6 +1321,7 @@ $compiler->addExtension(
 );
 ```
 
+<a name='caching-view-fragments'></a>
 ## Caching view fragments
 With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
 
@@ -1286,6 +1354,7 @@ Any valid expression can be used as cache key:
 
 The caching is done by the `Phalcon\Cache` component via the view component. Learn more about how this integration works in the section [Caching View Fragments](/en/[[version]]/views#caching-fragments).
 
+<a name='services-in-templates'></a>
 ## Inject Services into a Template
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
 
@@ -1297,6 +1366,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 <input type='hidden' name='token' value='{{ security.getToken() }}'>
 ```
 
+<a name='stand-alone'></a>
 ## Stand-alone component
 Using Volt in a stand-alone mode can be demonstrated below:
 
