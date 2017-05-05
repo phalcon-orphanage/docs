@@ -1,21 +1,37 @@
 <div class='article-menu' markdown='1'>
 
 - [Model Relationships](#overview)
-    
+    - [Relationships between Models](#relationships)
+        - [Unidirectional relationships](#unidirectional)
+        - [Bidirectional relations](#bidirectional)
+        - [Defining relationships](#defining)
+        - [Taking advantage of relationships](#taking-advantage-of)
+        - [Aliasing Relationships](#aliases)
+            - [Magic Getters vs. Explicit methods](#getters-vs-methods)
+    - [Virtual Foreign Keys](#virtual-foreign-keys)
+        - [Cascade/Restrict actions](#cascade-restrict-actions)
+    - [Storing Related Records](#storing-related-records)
+    - [Operations over Resultsets](#operations-over-resultsets)
+        - [Updating related records](#updating-related-records)
+        - [Deleting related records](#deleting-related-records)
+
 </div>
 
 <a name='overview'></a>
 # Model Relationships
-
+<a name='relationships'></a>
 ## Relationships between Models
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
+<a name='unidirectional'></a>
 ### Unidirectional relationships
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
+<a name='bidirectional'></a>
 ### Bidirectional relations
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
+<a name='defining'></a>
 ### Defining relationships
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
@@ -171,6 +187,7 @@ class Robots extends Model
 }
 ```
 
+<a name='taking-advantage-of'></a>
 ### Taking advantage of relationships
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -318,6 +335,7 @@ $robot = Robots::findFirst(2);
 echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 ```
 
+<a name='aliases'></a>
 ### Aliasing Relationships
 To explain better how aliases work, let's check the following example:
 
@@ -427,6 +445,7 @@ $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 ```
 
+<a name='getters-vs-methods'></a>
 #### Magic Getters vs. Explicit methods
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters, instead of use the magic getters you can optionally define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
 
@@ -464,6 +483,7 @@ class Robots extends Model
 }
 ```
 
+<a name='virtual-foreign-keys'></a>
 ## Virtual Foreign Keys
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -564,6 +584,7 @@ class RobotsParts extends Model
 }
 ```
 
+<a name='cascade-restrict-actions'></a>
 ### Cascade/Restrict actions
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -599,6 +620,7 @@ class Robots extends Model
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
+<a name='storing-related-records'></a>
 ## Storing Related Records
 Magic properties can be used to store a record and its related properties:
 
@@ -667,9 +689,11 @@ Note: Adding related entities by overloading the following methods is not possib
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
+<a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
+<a name='updating-related-records'></a>
 ### Updating related records
 Instead of doing this:
 
@@ -730,6 +754,7 @@ $robots->getParts()->update(
 );
 ```
 
+<a name='deleting-related-records'></a>
 ### Deleting related records
 Instead of doing this:
 

@@ -2,7 +2,7 @@
 
 return [
     'app'           => [
-        'version'         => date('YmdHis'), //'3.0.4',
+        'version'         => '3.1.2',
         'timezone'        => getenv('APP_TIMEZONE'),
         'debug'           => getenv('APP_DEBUG'),
         'env'             => getenv('APP_ENV'),

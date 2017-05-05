@@ -1,6 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Models Metadata](#models-metadata)
+- [Models Metadata](#overview)
+    - [Caching Metadata](#caching-metadata)
+    - [Metadata Strategies](#metadata-strategies)
+        - [Database Introspection Strategy](#strategies-database-introspection)
+        - [Annotations Strategy](#strategies-annotations)
+    - [Manual Metadata](#strategies-manual)
     
 </div>
 
@@ -27,6 +32,7 @@ $dataTypes = $metadata->getDataTypes($robot);
 print_r($dataTypes);
 ```
 
+<a name='caching-metadata'></a>
 ## Caching Metadata
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
@@ -58,6 +64,7 @@ $di['modelsMetadata'] = function () {
 };
 ```
 
+<a name='metadata-strategies'></a>
 ## Metadata Strategies
 As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information
 schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
@@ -87,9 +94,11 @@ $di['modelsMetadata'] = function () {
 };
 ```
 
+<a name='strategies-database-introspection'></a>
 ### Database Introspection Strategy
 This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
+<a name='strategies-annotations'></a>
 ### Annotations Strategy
 This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
@@ -169,6 +178,7 @@ $di['modelsMetadata'] = function () {
 };
 ```
 
+<a name='strategies-manual'></a>
 ## Manual Metadata
 Phalcon can obtain the metadata for each model automatically without the developer must set them manually using any of the introspection strategies presented above.
 

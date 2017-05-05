@@ -13,8 +13,9 @@
     - [Installation](/en/[[version]]/installation)
     - [Webserver Setup](/en/[[version]]/webserver-setup)
 - Environments
-    - Phalcon Compose
-    - Vagrant
+    - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
+    - [Nanobox](/en/[[version]]/environments-nanobox)
+    - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
 - Development Tools
     - Command Line
     - Web Interface
@@ -60,11 +61,11 @@
     - Flash Messenger
     - Forms
     - Tag
-    - View
+    - [View](/en/[[version]]/views)
         - View Simple
-        - Volt
+        - [Volt](/en/[[version]]/volt)
 - Business Logic
-    - Access Control Lists
+    - [Access Control Lists](/en/[[version]]/acl)
     - Annotations
     - [Controllers](/en/[[version]]/controllers)
     - Dispatcher

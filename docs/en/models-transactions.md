@@ -1,6 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Models Metadata](#overview)
+- [Model Transactions](#overview)
+    - [Manual Transactions](#manual)
+    - [Implicit Transactions](#implicit)
+    - [Isolated Transactions](#isolated)
     
 </div>
 
@@ -11,8 +14,9 @@ is committed to the database.
 
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
+<a name='manual'></a>
 ## Manual Transactions
-If an application only uses one connection and the transactions aren't very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
+If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
 ```php
 <?php
@@ -55,6 +59,7 @@ class RobotsController extends Controller
 }
 ```
 
+<a name='implicit'></a>
 ## Implicit Transactions
 Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
 
@@ -77,6 +82,7 @@ $robot->robotPart  = $robotPart;
 $robot->save();
 ```
 
+<a name='isolated'></a>
 ## Isolated Transactions
 Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
 

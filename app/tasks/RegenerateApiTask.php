@@ -33,7 +33,7 @@ class RegenerateApiTask extends PhTask
     public function mainAction()
     {
         $language = 'en';
-        $version  = '3.0.4';
+        $version  = $this->config->get('app')->get('version');
 
         $this->scanSources();
 

@@ -1,6 +1,14 @@
 <div class='article-menu' markdown='1'>
 
-- [ORM Caching](#orm-caching)
+- [ORM Caching](#overview)
+    - [Caching Resultsets](#caching-resultsets)
+    - [Forcing Cache](#forcing-cache)
+    - [Caching PHQL Queries](#caching-phql-queries)
+    - [Reusable Related Records](#reusable-related-records)
+    - [Caching Related Records](#caching-related-records)
+    - [Caching Related Records Recursively](#caching-related-records-recursively)
+    - [Caching based on Conditions](#caching-based-on-conditions)
+    - [Caching PHQL execution plan](#caching-phql-execution-plan)
     
 </div>
 
@@ -10,6 +18,7 @@ Every application is different. In most applications though, there is data that 
 
 This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
 
+<a name='caching-resultsets'></a>
 ## Caching Resultsets
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -117,6 +126,7 @@ When a cached resultset needs to be invalidated, you can simply delete it from t
 
 Which resultset to cache and for how long is up to the developer, after having evaluated the needs of the application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly. Additionally caching resultsets consumes processing cycles, therefore the cache that was intended to speed up the application actually slows it down. Resultsets that do not change frequently should be cached to minimize the database interactions. The decision on where to use caching and for how long is dictated by the application needs.
 
+<a name='forcing-cache'></a>
 ## Forcing Cache
 Earlier we saw how `Phalcon\Mvc\Model` integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
@@ -227,6 +237,7 @@ class Robots extends CacheableModel
 }
 ```
 
+<a name='caching-phql-queries'></a>
 ## Caching PHQL Queries
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -251,6 +262,7 @@ $cars = $query->execute(
 );
 ```
 
+<a name='reusable-related-records'></a>
 ## Reusable Related Records
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -311,6 +323,7 @@ class Invoices extends Model
 
 Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
 
+<a name='caching-related-records'></a>
 ## Caching Related Records
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
@@ -351,6 +364,7 @@ class Invoices extends Model
 }
 ```
 
+<a name='caching-related-records-recursively'></a>
 ## Caching Related Records Recursively
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -454,6 +468,7 @@ class Invoices extends Model
 }
 ```
 
+<a name='caching-based-on-conditions'></a>
 ## Caching based on Conditions
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
@@ -582,7 +597,7 @@ class CustomQuery extends ModelQuery
 }
 ```
 
-Implementing a helper (CustomNodeVisitor) that recursively checks the conditions looking for fields that tell us the possible range to be used in the cache:
+Implementing a helper (`CustomNodeVisitor`) that recursively checks the conditions looking for fields that tell us the possible range to be used in the cache:
 
 ```php
 <?php
@@ -685,7 +700,8 @@ class Robots extends Model
 }
 ```
 
-## Caching of PHQL planning
+<a name='caching-phql-execution-plan'></a>
+## Caching PHQL execution plan
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
 ```php
