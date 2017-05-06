@@ -7,6 +7,7 @@
         - [Installing the Vagrant Box](#installation-vagrant-box)
         - [Installing the Phalcon Box](#installation-phalcon-box)
     - [Configuring](#installation-configuration)
+        - [Setting your provider](#installation-configuration-setting-provider)
         - [Memory and CPU](#installation-configuration-memory-cpu)
         - [Shared folders](#installation-configuration-shared-folders)
         - [Nginx sites](#installation-configuration-nginx)
@@ -35,12 +36,13 @@
 # Overview
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
-The first time that you provision a new environment with `vagrant up`, the process will take a lot longer since the box (`phalconphp/xenial64`) will have to be downloaded to your local machine first. Any subsequent environment provisions will be much faster
- 
+The first time that you provision a new environment with `vagrant up`, the process will take a lot longer since the box (`phalconphp/xenial64`) will have to be downloaded to your local machine first. Any subsequent environment provisions will be much faster.
+
 <a name='requirements'></a>
 ## Requirements
-* Operating System: Windows, Linux, or OSX
-* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.0
+* Operating System: Windows, Linux, or macOS
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
+* [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
 * [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9
 
 <a name='packages-included'></a>
@@ -74,13 +76,17 @@ The first time that you provision a new environment with `vagrant up`, the proce
 ## Installation
 <a name='installation-vagrant-box'></a>
 ### Installing the Vagrant Box
-Once VirtualBox and Vagrant have been installed, you should add the `phalconphp/xenial64` box to your Vagrant installation using the following command in your terminal. It will take a few minutes to download the box, depending on your Internet connection speed:
+Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
+
+Once VirtualBox/VMWare and Vagrant have been installed, you should add the `phalconphp/xenial64` box to your Vagrant installation using the following command in your terminal. It will take a few minutes to download the box, depending on your Internet connection speed:
 
 ```bash
 vagrant box add phalconphp/xenial64
 ```
 
 If this command fails, make sure your Vagrant installation is up to date.
+
+##### To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box.  ##### {.alert .alert-warning}
 
 <a name='installation-phalcon-box'></a>
 ### Installing the Phalcon Box
@@ -97,7 +103,7 @@ You can find the latest stable version on the [Github Release Page](https://gith
 
 ```bash
 # Clone the desired release...
-git checkout v2.2.0
+git checkout v2.2.2
 ```
 
 Once you have cloned the Phalcon Box repository, run the install command from the Phalcon Box root directory to create the `settings.yml` configuration file. The `settings.yml` file will be placed in the Phalcon Box directory:
@@ -107,7 +113,7 @@ Once you have cloned the Phalcon Box repository, run the install command from th
 ./install
 ```
 
-```bash
+```cmd
 rem Windows
 install.bat
 ```
@@ -120,6 +126,14 @@ vagrant up
 
 <a name='installation-configuration'></a>
 ## Configuring
+<a name='installation-configuration-setting-provider'></a>
+### Setting your provider
+The provider key in your `settings.yml` file indicates which Vagrant provider should be used: `virtualbox`, `vmware_fusion` or `vmware_workstation`. You may set this to the provider you prefer:
+
+```yaml
+provider: virtualbox
+```
+
 <a name='installation-configuration-memory-cpu'></a>
 ### Memory and CPU
 By default this setup uses 2GB RAM. You can change this in `settings.yml` and simply run `vagrant reload`:
@@ -165,7 +179,7 @@ folders:
             rsync__exclude: ["node_modules"]
 ```
 
-**NOTE:** macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue:
+##### macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue: ##### {.alert .alert-danger}
 
 ```bash
 vagrant plugin install vagrant-bindfs
@@ -203,6 +217,9 @@ Available types:
 * `symfony2`
 * `statamic`
 * `laravel`
+* `zend`
+
+Feel free to suggest a new type of Nginx configuration [through opening a New Feature Request](https://github.com/phalcon/box/issues/new).
 
 ##### If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. ##### {.alert .alert-warning}
 
@@ -220,7 +237,7 @@ Make sure the IP address listed is the one set in your `settings.yml` file. Once
 http://phalcon.local
 ```
 
-**NOTE:** To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin:
+##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: ##### {.alert .alert-danger}
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -254,7 +271,7 @@ function box()
 #### Windows
 Create a `box.bat` batch file anywhere on your machine with the following contents:
 
-```bash
+```cmd
 @echo off
 
 set cwd=%cd%
@@ -277,9 +294,10 @@ But, since you will probably need to SSH into your Phalcon Box machine frequentl
 
 <a name='daily-usage-databases'></a>
 ### Connecting to databases
+
 To connect to your MySQL, Postgres or MongoDB database from your host machine's database client, you should connect to `127.0.0.1` and port `33060` (MySQL), `54320` (Postgres) or `27017` (MongoDB). The username and password for databases is `phalcon` / `secret`.
 
-**NOTE:** You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine.
+##### You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. ##### {.alert .alert-danger}
 
 To access to the interactive db console from Phalcon Box type:
 
@@ -303,13 +321,13 @@ sites:
 
 If Vagrant is not managing your "hosts" file automatically, you may need to add the new site to that file as well:
 
-```bash
+```
 192.168.50.4  phalcon.local
 192.168.50.4  pdffiller.local
 192.168.50.4  blog.local
 ```
 
-**NOTE:** To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin:
+##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: ##### {.alert .alert-danger}
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -328,7 +346,7 @@ By default, the following ports are forwarded to your Phalcon Box environment:
 | **HTTPS**      | `443`       | `44300`     |
 | **MySQL**      | `3306`      | `33060`     |
 | **Postgres**   | `5432`      | `54320`     |
-| **Mailhog**    | `8025`      | `8025`      |
+| **MailHog**    | `8025`      | `8025`      |
 
 <a name='daily-usage-ports-forwarding'></a>
 #### Forwarding additional ports
@@ -430,14 +448,12 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 **Problem:**
 
-```bash
 > An error occurred in the underlying SSH library that Vagrant uses.
-> The error message is shown below. In many cases, errors from this
-> library are caused by ssh-agent issues. Try disabling your SSH
-> agent or removing some keys and try again.
-> If the problem persists, please report a bug to the net-ssh project.
-> timeout during server version negotiating
-```
+  The error message is shown below. In many cases, errors from this
+  library are caused by ssh-agent issues. Try disabling your SSH
+  agent or removing some keys and try again.
+  If the problem persists, please report a bug to the net-ssh project.
+  timeout during server version negotiating
 
 **Solution:**
 
@@ -447,7 +463,6 @@ vagrant plugin install vagrant-vbguest
 
 **Problem:**
 
-```bash
 > Vagrant was unable to mount VirtualBox shared folders. This is usually
   because the filesystem "vboxsf" is not available. This filesystem is
   made available via the VirtualBox Guest Additions and kernel module.
@@ -456,7 +471,6 @@ vagrant plugin install vagrant-vbguest
   Vagrant box. For context, the command attempted was:
 >
 > mount -t vboxsf -o uid=900,gid=900 vagrant /vagrant
-```
 
 **Solution:**
 
@@ -464,3 +478,22 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-vbguest
 ```
 
+**Problem:**
+
+> There was an error while executing `VBoxManage`, a CLI used by Vagrant
+  for controlling VirtualBox. The command and stderr is shown below.
+>
+> Command: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
+>
+> Stderr: VBoxManage.exe: error: VT-x is not available (VERR_VMX_NO_VMX)
+  VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
+
+**Solution:**
+
+```bash
+vagrant plugin install vagrant-vbguest
+```
+
+You need to update your BIOS to enable
+[virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with
+`Intel VT-x`.
