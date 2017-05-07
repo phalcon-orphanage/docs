@@ -494,6 +494,4 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-vbguest
 ```
 
-You need to update your BIOS to enable
-[virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with
-`Intel VT-x`.
+You need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `Intel VT-x`.
