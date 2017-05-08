@@ -14,31 +14,35 @@ Tipos de Filtros imbutidos
 --------------------------
 Os seguintes filtros imbutidos estão disponíveis por esse componente:
 
-+-----------+------------------------------------------------------------------------------+
-| Nome      | Descrição                                                                    |
-+===========+==============================================================================+
-| string    | Remove tags e codificar entidades HTML, incluindo aspas duplas e simples.    |
-+-----------+------------------------------------------------------------------------------+
-| email     | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
-+-----------+------------------------------------------------------------------------------+
-| int       | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
-+-----------+------------------------------------------------------------------------------+
-| float     | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
-+-----------+------------------------------------------------------------------------------+
-| alphanum  | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
-+-----------+------------------------------------------------------------------------------+
-| striptags | Aplica a função strip_tags_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| trim      | Aplica a função trim_                                                        |
-+-----------+------------------------------------------------------------------------------+
-| lower     | Aplica a função strtolower_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| upper     | Aplica a função strtoupper_                                                  |
-+-----------+------------------------------------------------------------------------------+
-| url       | Remove all characters except letters, digits and                             |
-|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and            |
-|           | filter type of FILTER_SANITIZE_URL                                           |
-+-----------+------------------------------------------------------------------------------+
++---------------+------------------------------------------------------------------------------+
+| Nome          | Descrição                                                                    |
++===============+==============================================================================+
+| string        | Remove tags e codificar entidades HTML, incluindo aspas duplas e simples.    |
++---------------+------------------------------------------------------------------------------+
+| email         | Remove todos os caracteres exceto letras, digitos e !#$%&*+-/=?^_`{\|}~@.[]  |
++---------------+------------------------------------------------------------------------------+
+| int           | Remove todos os caracteres exceto digitos, simbolos de mais e menos          |
++---------------+------------------------------------------------------------------------------+
+| float         | Remove todos os caracteres exceto digitos, ponto, simbolos de mais e menos   |
++---------------+------------------------------------------------------------------------------+
+| alphanum      | Remove todos os caracteres exceto [a-zA-Z0-9]                                |
++---------------+------------------------------------------------------------------------------+
+| striptags     | Aplica a função strip_tags_                                                  |
++---------------+------------------------------------------------------------------------------+
+| trim          | Aplica a função trim_                                                        |
++---------------+------------------------------------------------------------------------------+
+| lower         | Aplica a função strtolower_                                                  |
++---------------+------------------------------------------------------------------------------+
+| upper         | Aplica a função strtoupper_                                                  |
++---------------+------------------------------------------------------------------------------+
+| url           | Remove all characters except letters, digits and                             |
+|               | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and            |
+|               | filter type of FILTER_SANITIZE_URL                                           |
++---------------+------------------------------------------------------------------------------+
+| special_chars | Remove special characters such as <> with &#60;&#62;                         |
+|               | using filter_var_ function and                                               |
+|               | filter type of FILTER_SANITIZE_SPECIAL_CHARS                                 |
++---------------+------------------------------------------------------------------------------+
 
 Normalizando dados
 ------------------
@@ -68,6 +72,8 @@ Pelas entradas de normalização de dados podemos garantir que a integridade da 
     // Returns "http://example.com"
     $filter->sanitize("http://example��.co�m", "url");
 
+    // Returns "This is &#60;html&#62; tags"
+    $filter->sanitize("This is <html> tags", "special_chars");
 
 Normalizando a partir de Controladores
 --------------------------------------

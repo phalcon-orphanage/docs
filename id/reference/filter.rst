@@ -15,31 +15,35 @@ Jenis Filter Bawaan
 -------------------
 Berikut ini adalah filter bawaan yang disediakan komponen ini:
 
-+-----------+---------------------------------------------------------------------------+
-| Nama      | Keterangan                                                                |
-+===========+===========================================================================+
-| string    | Melucuti tag dan entiti HTML, termasuk petik tunggal dan ganda.           |
-+-----------+---------------------------------------------------------------------------+
-| email     | Hapus semua karakter kecuali huruf, angka dan !#$%&*+-/=?^_`{\|}~@.[].    |
-+-----------+---------------------------------------------------------------------------+
-| int       | Hapus semua karakter kecuali angka dan tanda plus minus.                  |
-+-----------+---------------------------------------------------------------------------+
-| float     | Hapus semua karakter kecuali angka, titik, dan tanda plus minus.          |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Hapus semua karakter kecuali [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Terapkan fungsi strip_tags_                                               |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Terapkan fungsi trim_                                                     |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Terapkan fungsi strtolower_                                               |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Terapkan fungsi strtoupper_                                               |
-+-----------+---------------------------------------------------------------------------+
-| url       | Hapus semua karakter kecuali huruf, angka dan                             |
-|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. menggunakan fungsi filter_var_         |
-|           | dan jenis filter FILTER_SANITIZE_URL                                      |
-+-----------+---------------------------------------------------------------------------+
++---------------+---------------------------------------------------------------------------+
+| Nama          | Keterangan                                                                |
++===============+===========================================================================+
+| string        | Melucuti tag dan entiti HTML, termasuk petik tunggal dan ganda.           |
++---------------+---------------------------------------------------------------------------+
+| email         | Hapus semua karakter kecuali huruf, angka dan !#$%&*+-/=?^_`{\|}~@.[].    |
++---------------+---------------------------------------------------------------------------+
+| int           | Hapus semua karakter kecuali angka dan tanda plus minus.                  |
++---------------+---------------------------------------------------------------------------+
+| float         | Hapus semua karakter kecuali angka, titik, dan tanda plus minus.          |
++---------------+---------------------------------------------------------------------------+
+| alphanum      | Hapus semua karakter kecuali [a-zA-Z0-9]                                  |
++---------------+---------------------------------------------------------------------------+
+| striptags     | Terapkan fungsi strip_tags_                                               |
++---------------+---------------------------------------------------------------------------+
+| trim          | Terapkan fungsi trim_                                                     |
++---------------+---------------------------------------------------------------------------+
+| lower         | Terapkan fungsi strtolower_                                               |
++---------------+---------------------------------------------------------------------------+
+| upper         | Terapkan fungsi strtoupper_                                               |
++---------------+---------------------------------------------------------------------------+
+| url           | Hapus semua karakter kecuali huruf, angka dan                             |
+|               | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. menggunakan fungsi filter_var_         |
+|               | dan jenis filter FILTER_SANITIZE_URL                                      |
++---------------+---------------------------------------------------------------------------+
+| special_chars | Hapus karakter khusus seperti <> dengan &#60;&#62;                        |
+|               | menggunakan fungsi  filter_var_ dan                                       |
+|               | jenis filter FILTER_SANITIZE_SPECIAL_CHARS                                |
++---------------+---------------------------------------------------------------------------+
 
 Sanitasi data
 -------------
@@ -69,6 +73,8 @@ Dengan sanitasi input kita memastikan integritas aplikasi tetap terjaga.
     // Mengembalikan "http://example.com"
     $filter->sanitize("http://example��.co�m", "url");
 
+    // Mengembalikan "This is &#60;html&#62; tags"
+    $filter->sanitize("This is <html> tags", "special_chars");
 
 Sanitasi dari Kontroler
 -----------------------

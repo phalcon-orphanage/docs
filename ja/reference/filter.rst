@@ -15,31 +15,35 @@ The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of c
 --------------------------
 The following are the built-in filters provided by this component:
 
-+-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
-+===========+===========================================================================+
-| string    | Strip tags and encode HTML entities, including single and double quotes.  |
-+-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
-+-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
-+-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| url       | Remove all characters except letters, digits and                          |
-|           | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and         |
-|           | filter type of FILTER_SANITIZE_URL                                        |
-+-----------+---------------------------------------------------------------------------+
++---------------+---------------------------------------------------------------------------+
+| Name          | Description                                                               |
++===============+===========================================================================+
+| string        | Strip tags and encode HTML entities, including single and double quotes.  |
++---------------+---------------------------------------------------------------------------+
+| email         | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
++---------------+---------------------------------------------------------------------------+
+| int           | Remove all characters except digits, plus and minus sign.                 |
++---------------+---------------------------------------------------------------------------+
+| float         | Remove all characters except digits, dot, plus and minus sign.            |
++---------------+---------------------------------------------------------------------------+
+| alphanum      | Remove all characters except [a-zA-Z0-9]                                  |
++---------------+---------------------------------------------------------------------------+
+| striptags     | Applies the strip_tags_ function                                          |
++---------------+---------------------------------------------------------------------------+
+| trim          | Applies the trim_ function                                                |
++---------------+---------------------------------------------------------------------------+
+| lower         | Applies the strtolower_ function                                          |
++---------------+---------------------------------------------------------------------------+
+| upper         | Applies the strtoupper_ function                                          |
++---------------+---------------------------------------------------------------------------+
+| url           | Remove all characters except letters, digits and                          |
+|               | $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=. using filter_var_ function and         |
+|               | filter type of FILTER_SANITIZE_URL                                        |
++---------------+---------------------------------------------------------------------------+
+| special_chars | Remove special characters such as <> with &#60;&#62;                      |
+|               | using filter_var_ function and                                            |
+|               | filter type of FILTER_SANITIZE_SPECIAL_CHARS                              |
++---------------+---------------------------------------------------------------------------+
 
 データのサニタイズ
 ------------------
@@ -69,6 +73,8 @@ By sanitizing input we ensure that application integrity will be intact.
     // Returns "http://example.com"
     $filter->sanitize("http://example��.co�m", "url");
 
+    // Returns "This is &#60;html&#62; tags"
+    $filter->sanitize("This is <html> tags", "special_chars");
 
 コントローラでのサニタイジング
 ------------------------------
