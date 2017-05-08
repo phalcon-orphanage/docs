@@ -27,11 +27,8 @@
     - [DI Container](/en/[[version]]/di)
     - [MVC](/en/[[version]]/mvc)
 - Services
-    - Cache
-        - Front End
-            - Output
-        - Back End
-            - Data
+    - [Cache](/en/[[version]]/cache)
+    - [Config](/en/[[version]]/config)
     - Escaper
     - Loader
         - Namespaces
@@ -57,7 +54,7 @@
         - [Transactions](/en/[[version]]/models-transactions)
         - [Validators](/en/[[version]]/models-validators)
 - Front End
-    - Assets
+    - [Assets](/en/[[version]]/assets)
     - Flash Messenger
     - Forms
     - Tag
@@ -66,7 +63,7 @@
         - [Volt](/en/[[version]]/volt)
 - Business Logic
     - [Access Control Lists](/en/[[version]]/acl)
-    - Annotations
+    - [Annotations](/en/[[version]]/annotations)
     - [Controllers](/en/[[version]]/controllers)
     - Dispatcher
     - Event Manager
@@ -80,6 +77,6 @@
     - Request
     - Response
 - Security
-    - Crypto
-    - Security
+    - [Crypto](/en/[[version]]/crypt)
+    - [Security](/en/[[version]]/security)
     
