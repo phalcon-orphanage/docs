@@ -52,7 +52,7 @@
 
 ## Создание списков ACL
 
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
+Этот компонент изначально сделан так, чтобы работать непосредственно в памяти. Это предоставляет простое использование и скорость в обращении к любому аспекту ACL. Конструктор `Phalcon\Acl` принимает в качестве первого параметра адаптер, который будет использоваться для получения информации связанной с списком доступа. Ниже приведен пример использования адаптера работающего в памяти:
 
 ```php
 <?php
@@ -69,7 +69,7 @@ By default `Phalcon\Acl` allows access to action on resources that have not yet 
 
 use Phalcon\Acl;
 
-// Default action is deny access
+// Действие по умолчанию: запретить доступ
 $acl->setDefaultAction(
     Acl::DENY
 );
