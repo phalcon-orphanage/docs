@@ -16,7 +16,7 @@
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
-              <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
+              <a href="#installation-linux-debian">DEB дистрибутивы (Debian, Ubuntu, и т.д.)</a> <ul>
                 <li>
                   <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
                     <li>
@@ -113,11 +113,11 @@
 
 # Requirements
 
-Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalcon требует PHP для запуска. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## Аппаратное обеспечение
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -125,9 +125,9 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Software
+## Программное обеспечение
 
-- PHP >= 5.5
+- PHP > = 5.5
 
 ##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 {.alert.alert-danger}
 
@@ -140,7 +140,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='installation'></a>
 
-# Installation
+# Установка
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -152,11 +152,11 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### DEB дистрибутивы (Debian, Ubuntu, и т.д.)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Настройка репозитория
 
 Add the repository to your distribution:
 
