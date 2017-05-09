@@ -62,7 +62,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-By default `Phalcon\Acl` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
+По умолчанию `Phalcon\Acl` разрешает доступ к действию над ресурсом, которое еще не было определенно в ACL. Для повышения уровня безопасности списка доступа к мы можем определить уровень `deny` как уровень доступа по умолчанию.
 
 ```php
 <?php
