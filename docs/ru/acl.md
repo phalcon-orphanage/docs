@@ -79,22 +79,22 @@ $acl->setDefaultAction(
 
 ## Добавление ролей к ACL
 
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+Ролью является объект, который имеет или не имеет доступа к определенному ресурсу в списке доступа. Для примера, мы определим роли людей в организации. Класс `Phalcon\Acl\Role` позволяет создать роли в более структурированной форме. Давайте добавим несколько ролей в наш недавно созданный список:
 
 ```php
 <?php
 
 use Phalcon\Acl\Role;
 
-// Create some roles.
-// The first parameter is the name, the second parameter is an optional description.
+// Создаем роли.
+// Первый параметр это название роли, второй параметр необязателен - это описание роли.
 $roleAdmins = new Role('Administrators', 'Super-User role');
 $roleGuests = new Role('Guests');
 
-// Add 'Guests' role to ACL
+// Добавляем "Guests" в список ACL
 $acl->addRole($roleGuests);
 
-// Add 'Designers' role to ACL without a Phalcon\Acl\Role
+// Добавляем "Designers" без класса Phalcon\Acl\Role
 $acl->addRole('Designers');
 ```
 
@@ -586,4 +586,4 @@ $acl->setEventsManager($eventsManager);
 
 1## Реализация собственных адаптеров
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+Для создания своего адаптера необходимо реализовать интерфейс `Phalcon\Acl\AdapterInterface`, или использовать наследование от существующего адаптера.
