@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Requirements</a> <ul>
+      <a href="#requirements">Требования</a> <ul>
         <li>
-          <a href="#requirements-hardware">Hardware</a>
+          <a href="#requirements-hardware">Аппаратное обеспечение</a>
         </li>
         <li>
-          <a href="#requirements-software">Software</a>
+          <a href="#requirements-software">Программное обеспечение</a>
         </li>
       </ul>
     </li>
     
     <li>
-      <a href="#installation">Installation</a> <ul>
+      <a href="#installation">Установка</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
@@ -111,7 +111,7 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# Требования
 
 Phalcon требует PHP для запуска. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -229,17 +229,17 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='requirements-hardware'></a>
 
-3### RPM based distributions (CentOS, Fedora, etc.)
+3### RPM дистрибутивы (CentOS, Fedora, и т.д.)
 
 <a name='requirements-hardware'></a>
 
-4#### Repository installation
+4#### Настройка репозитория
 
 Add the repository to your distribution:
 
 <a name='requirements-hardware'></a>
 
-5##### Stable releases
+5##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -421,7 +421,7 @@ sudo apt-get install php5-dev libpcre3-dev gcc make
 sudo zypper install php5-devel gcc make
 ```
 
-#### CentOS/Fedora/RHEL
+#### CentOS / Fedora / RHEL
 
 ```bash
 sudo yum install php-devel pcre-devel gcc make
@@ -556,7 +556,7 @@ php -m
 - Docker
 - Homestead Improved
 
-#### Sample applications
+#### Примеры приложений
 
 Hello World Configuration Files
 
