@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview"># Парсер аннотаций</a> <ul>
+      <a href="#overview">Annotations Parser</a> <ul>
         <li>
-          <a href="#reading">Reading Annotations</a>
+          <a href="#reading">Чтение аннотаций</a>
         </li>
         <li>
-          <a href="#types">Types of Annotations</a>
+          <a href="#types">Типы аннотаций</a>
         </li>
         <li>
-          <a href="#usage">Practical Usage</a> <ul>
+          <a href="#usage">Практическое использование</a> <ul>
             <li>
-              <a href="#usage-cache">Cache Enabler with Annotations</a>
+              <a href="#usage-cache">Кэширование с помощью аннотаций</a>
             </li>
             <li>
-              <a href="#usage-access-management">Private/Public areas with Annotations</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#adapters">Annotations Adapters</a> <ul>
-            <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#usage-access-management">Acl и аннотации</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#adapters">Адаптеры аннотаций</a> <ul>
+            <li>
+              <a href="#adapters-custom">Реализация собственных адаптеров</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="#resources">Дополнительная информация</a>
         </li>
       </ul>
     </li>
@@ -126,7 +126,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Чтение аннотаций
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -162,7 +162,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Типы аннотаций
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -221,13 +221,13 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Практическое использование
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Кэширование с помощью аннотаций
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
@@ -342,7 +342,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Контроль доступа и аннотации
 
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
