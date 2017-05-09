@@ -1,17 +1,17 @@
-# Welcome
+# Witaj
 
-Welcome to the documentation for the Phalcon framework.
+Witamy w dokumentacji frameworka Phalcon.
 
-## Mission
+## Misja
 
-Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
+Naszą misją jest oferowanie deweloperom zaawansowanego, bogatego w funkcje narzędzia, którego mogą używać do tworzenia zaawansowanych aplikacji z niskim wykorzystaniem zasobów serwera i o wysokiej wydajności.
 
-## What is Phalcon
+## Czym jest Phalcon
 
-Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalcon jest open source’owym, pełno wartościowym frameworkiem dla PHP, napisanym w C jako rozszerzenie. Phalcon jest zoptymalizowany pod kątem wysokiej wydajności. Jego wyjątkowa architektura pozwala frameworkowi na działanie w pamięci, oferując swoje funkcjonalności kiedykolwiek są potrzebne, bez wymagających operacji odczytu i uprawnień na plikach które posiadają tradycyjne frameworki PHP.
 
-## Usage
+## Wykorzystanie
 
-Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
+Deweloperzy nie muszą znać języka C aby używać Phalcona. Jego funkcjonalności są udostępnione jako gotowe do użycia klasy PHP w przestrzeni nazw `Phalcon`.
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
+Phalcon jest luźno powiązany, pozwalając deweloperom na użycie tylko obiektów których potrzebują jako doklejanych składników w zależności potrzeb ich aplikacji.

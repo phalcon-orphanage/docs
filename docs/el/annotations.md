@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview"># Парсер аннотаций</a> <ul>
+      <a href="#overview"># Annotations Parser</a> <ul>
         <li>
           <a href="#reading">Reading Annotations</a>
         </li>
