@@ -542,7 +542,7 @@ It's recommended to use the Memory adapter during development and use one of the
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name        | Triggered                                               | Can stop operation? |
+| Название события  | Triggered                                               | Can stop operation? |
 | ----------------- | ------------------------------------------------------- |:-------------------:|
 | beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
 | afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
