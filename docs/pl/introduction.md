@@ -14,4 +14,4 @@ Phalcon jest open source’owym, pełno wartościowym frameworkiem dla PHP, napi
 
 Deweloperzy nie muszą znać języka C aby używać Phalcona. Jego funkcjonalności są udostępnione jako gotowe do użycia klasy PHP w przestrzeni nazw `Phalcon`.
 
-Phalcon jest luźno powiązany, pozwalając deweloperom na użycie tylko obiektów których potrzebują jako doklejanych składników w zależności potrzeb ich aplikacji.
+Phalcon jest luźno powiązany, pozwalając deweloperom na użycie tylko tych obiektów których potrzebują jako doklejanych składników w zależności od potrzeb ich aplikacji.
