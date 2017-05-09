@@ -91,30 +91,30 @@ use Phalcon\Acl\Role;
 $roleAdmins = new Role('Administrators', 'Super-User role');
 $roleGuests = new Role('Guests');
 
-// Добавляем "Guests" в список ACL
+// Добавляем 'Guests' в список ACL
 $acl->addRole($roleGuests);
 
-// Добавляем "Designers" без класса Phalcon\Acl\Role
+// Добавляем 'Designers' без класса Phalcon\Acl\Role
 $acl->addRole('Designers');
 ```
 
-As you can see, roles are defined directly without using an instance.
+Как вы можете видеть, роли могут определяются непосредственно, без использования экземпляра класса.
 
 <a name='adding-resources'></a>
 
 ## Добавление ресурсов
 
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon\Acl\Resource` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+Ресурсами являются объекты, доступ к которым контролируется. Обычно в MVC приложениях ресурсы относятся к контроллерам. Хотя это не является обязательным, класс `Phalcon\Acl\Resource` может быть использован при определении любых ресурсов. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
 
 ```php
 <?php
 
 use Phalcon\Acl\Resource;
 
-// Define the 'Customers' resource
+// Определяем ресурс 'Customers'
 $customersResource = new Resource('Customers');
 
-// Add 'customers' resource with a couple of operations
+// Добавим ресурс 'Customers' с несколькими операциями
 
 $acl->addResource(
     $customersResource,
@@ -542,10 +542,10 @@ It's recommended to use the Memory adapter during development and use one of the
 
 `Phalcon\Acl` может отправлять события в `EventsManager` если он существует. События срабатывают используя тип 'acl'. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Название события  | Triggered                                        | Can stop operation? |
-| ----------------- | ------------------------------------------------ |:-------------------:|
-| beforeCheckAccess | Срабатывает перед проверкой доступа роли/ресурса |         Да          |
-| afterCheckAccess  | Срабатывает после проверки доступа роли/ресурса  |         Нет         |
+| Название события  | Срабатывает                                      | Может остановить операцию? |
+| ----------------- | ------------------------------------------------ |:--------------------------:|
+| beforeCheckAccess | Срабатывает перед проверкой доступа роли/ресурса |             Да             |
+| afterCheckAccess  | Срабатывает после проверки доступа роли/ресурса  |            Нет             |
 
 В следующем примере показано, как назначить слушателей к компоненту:
 
