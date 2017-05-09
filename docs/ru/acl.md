@@ -540,14 +540,14 @@ It's recommended to use the Memory adapter during development and use one of the
 
 0## События
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Acl` может отправлять события в `EventsManager` если он существует. События срабатывают используя тип 'acl'. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Название события  | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| Название события  | Triggered                                        | Can stop operation? |
+| ----------------- | ------------------------------------------------ |:-------------------:|
+| beforeCheckAccess | Срабатывает перед проверкой доступа роли/ресурса |         Да          |
+| afterCheckAccess  | Срабатывает после проверки доступа роли/ресурса  |         Нет         |
 
-The following example demonstrates how to attach listeners to this component:
+В следующем примере показано, как назначить слушателей к компоненту:
 
 ```php
 <?php
@@ -558,10 +558,10 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Создаем менеджер событий
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// Назначаем слушателя к типу 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -575,10 +575,10 @@ $eventsManager->attach(
 
 $acl = new AclList();
 
-// Setup the $acl
+// Настраиваем $acl
 // ...
 
-// Bind the eventsManager to the ACL component
+// Присваиваем менеджер событий компоненту ACL
 $acl->setEventsManager($eventsManager);
 ```
 
