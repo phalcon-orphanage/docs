@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Annotations Parser</a> <ul>
+      <a href="#overview">Парсер аннотаций</a> <ul>
         <li>
           <a href="#reading">Чтение аннотаций</a>
         </li>
@@ -14,7 +14,7 @@
               <a href="#usage-cache">Кэширование с помощью аннотаций</a>
             </li>
             <li>
-              <a href="#usage-access-management">Acl и аннотации</a>
+              <a href="#usage-access-management">Контроль доступа и аннотации</a>
             </li>
           </ul>
         </li>
@@ -37,7 +37,7 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Парсер аннотаций
 
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
@@ -406,7 +406,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Адаптеры аннотаций
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -414,12 +414,12 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Реализация собственных адаптеров
 
 The `Phalcon\Annotations\AdapterInterface` interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## External Resources
+## Дополнительная информация
 
 - [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
