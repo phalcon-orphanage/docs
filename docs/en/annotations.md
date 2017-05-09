@@ -1,6 +1,6 @@
 <div class='article-menu' markdown='1'>
 
-- [# Annotations Parser](#overview)
+- [Annotations Parser](#overview)
     - [Reading Annotations](#reading)
     - [Types of Annotations](#types)
     - [Practical Usage](#usage)
