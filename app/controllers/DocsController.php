@@ -39,9 +39,9 @@ class DocsController extends PhController
             );
         }
 
-        $language = (empty($language)) ?: 'en';
-        $version  = ($version)         ?: $this->getVersion();
-        $page     = ($page)            ?: 'introduction';
+        $language = ($language) ?: 'en';
+        $version  = ($version)  ?: $this->getVersion();
+        $page     = ($page)     ?: 'introduction';
 
         $contents = $this->viewSimple->render(
             'index/index',

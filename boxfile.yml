@@ -12,6 +12,7 @@ run.config:
       - phalcon
       - simplexml
       - tokenizer
+      - xdebug
       - xml
       - xmlwriter
   extra_steps:
