@@ -46,6 +46,15 @@ return [
         ],
     ],
     'languages'     => [
+        'cs' => 'Czech',
         'en' => 'English',
+        'fr' => 'French',
+        'el' => 'Greek',
+        'ja' => 'Japanese',
+        'id' => 'Indonesian',
+        'pl' => 'Polish',
+        'ru' => 'Russian',
+        'es' => 'Spanish',
+        'uk' => 'Ukranian',
     ],
 ];
