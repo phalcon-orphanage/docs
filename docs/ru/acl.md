@@ -256,16 +256,16 @@ $acl->isAllowed(
 
 ## Пользовательские классы ролей/ресурсов
 
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+Вы можете использовать свои классы в качестве объектов роли или ресурса и передавать экземпляры объектов в аргументах `roleName` и `resourceName`. Ваши классы должны реализовывать интерфейс `Phalcon\Acl\RoleAware` для `roleName` и `Phalcon\Acl\ResourceAware` для `resourceName`.
 
-Our `UserRole` class
+Пример пользовательского класса `UserRole`:
 
 ```php
 <?php
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// Создадим класс, который будет использоваться как roleName
 class UserRole implements RoleAware
 {
     protected $id;
@@ -283,7 +283,7 @@ class UserRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // Реализуем интерфейс Phalcon\Acl\RoleAware
     public function getRoleName()
     {
         return $this->roleName;
@@ -291,14 +291,14 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+Реализуем ещё один наш класс `ModelResource`:
 
 ```php
 <?php
 
 use Phalcon\Acl\ResourceAware;
 
-// Create our class which will be used as resourceName
+// Создадим класс, который будет использоваться в качестве как resourceName
 class ModelResource implements ResourceAware
 {
     protected $id;
@@ -324,7 +324,7 @@ class ModelResource implements ResourceAware
         return $this->userId;
     }
 
-    // Implemented function from ResourceAware Interface
+    // Реализуем интерфейс Phalcon\Acl\ResourceAware
     public function getResourceName()
     {
         return $this->resourceName;
@@ -332,7 +332,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+Теперь мы можем использовать эти классы в методе `isAllowed()`.
 
 ```php
 <?php
@@ -340,12 +340,12 @@ Then you can use them in `isAllowed()` method.
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources
+// Задаем уровень доступа для ролей на определенный ресурс
 $acl->allow('Guests', 'Customers', 'search');
 $acl->allow('Guests', 'Customers', 'create');
 $acl->deny('Guests', 'Customers', 'update');
 
-// Create our objects providing roleName and resourceName
+// Создадим экземпляры наших классов для roleName и resourceName
 
 $customer = new ModelResource(
     1,
@@ -368,23 +368,24 @@ $anotherGuest = new UserRole(
     'Guests'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Проверяем, имеют ли наши объекты ролей доступ к разным операциям
+// по отношению к ресурсу
 
-// Returns false
+// Вернёт false
 $acl->isAllowed(
     $designer,
     $customer,
     'search'
 );
 
-// Returns true
+// Вернёт true
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns true
+// Вернёт true
 $acl->isAllowed(
     $anotherGuest,
     $customer,
@@ -392,7 +393,7 @@ $acl->isAllowed(
 );
 ```
 
-Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
+Если вы используете пользовательскую функцию в методах `allow()` или `deny()`, то вы можете внутри функции получить доступ к этим объектам — они автоматически связываются на основе типов в определении функции.
 
 ```php
 <?php
@@ -400,12 +401,13 @@ Also you can access those objects in your custom function in `allow()` or `deny(
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources with custom function
+// Установим уровень доступа с пользовательской функцией
 $acl->allow(
     'Guests',
     'Customers',
     'search',
-    function (UserRole $user, ModelResource $model) { // User and Model classes are necessary
+    // Необходимые классы User и Model
+    function (UserRole $user, ModelResource $model) {
         return $user->getId == $model->getUserId();
     }
 );
@@ -422,7 +424,7 @@ $acl->deny(
     'update'
 );
 
-// Create our objects providing roleName and resourceName
+// Создадим экземпляры наших классов для roleName и resourceName
 
 $customer = new ModelResource(
     1,
@@ -445,23 +447,24 @@ $anotherGuest = new UserRole(
     'Guests'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Проверяем, имеют ли наши объекты ролей доступ к разным операциям
+// по отношению к ресурсу
 
-// Returns false
+// Вернёт false
 $acl->isAllowed(
     $designer,
     $customer,
     'search'
 );
 
-// Returns true
+// Вернёт true
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns false
+// Вернёт false
 $acl->isAllowed(
     $anotherGuest,
     $customer,
