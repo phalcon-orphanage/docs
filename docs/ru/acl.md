@@ -159,15 +159,15 @@ $acl->deny('Guests', 'Customers', 'update');
 ```php
 <?php
 
-// Check whether role has access to the operations
+// Проверяем, имеет ли роль доступ к операциям
 
-// Returns 0
+// Возвращает 0
 $acl->isAllowed('Guests', 'Customers', 'edit');
 
-// Returns 1
+// Возвращает 1
 $acl->isAllowed('Guests', 'Customers', 'search');
 
-// Returns 1
+// Возвращает 1
 $acl->isAllowed('Guests', 'Customers', 'create');
 ```
 
@@ -175,7 +175,7 @@ $acl->isAllowed('Guests', 'Customers', 'create');
 
 ## Доступ на основе пользовательских функций
 
-Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+Также, вы можете добавить четвертым параметром, вашу собственную функцию, которая должна возвращать булево значение. Она будет вызываться каждый раз при использовании метода `isAllowed()`. Вы можете передавать в метод `isAllowed()` ассоциативный массив, в качестве четвертого параметра, где ключом является название параметра в пользовательской функции.
 
 ```php
 <?php
