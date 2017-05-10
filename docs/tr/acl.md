@@ -134,7 +134,7 @@ $acl->addResource(
 
 ## Erişim Kontrolleri Tanımlama
 
-Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level `allow` or `deny`.
+Artık roller ve kaynaklara sahibiz, şimdi ACL'yi tanımlama zamanı geldi (yani hangi rollerin hangi kaynaklara erişebileceğini). Bu bölüm, özellikle varsayılan erişim düzeyiniz `izin vermek` veya `reddetmek` olarak dikkate alırsak çok önemlidir.
 
 ```php
 <?php
@@ -154,7 +154,7 @@ The `allow()` method designates that a particular role has granted access to a p
 
 ## ACL Sorgulama
 
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+Liste tamamen tanımlandıktan sonra bir role belirli bir izin verilip verilmediğini kontrol etmek için sorgulayabiliriz.
 
 ```php
 <?php
@@ -175,7 +175,7 @@ $acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'create');
 
 ## Fonksiyona Dayalı Erişim
 
-Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+Ayrıca, 4'üncü parametre olarak boolean değerini döndüren özel işlevinizi ekleyebilirsiniz. `isAllowed()` yöntemini kullandığınızda çağrılır. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
 
 ```php
 <?php
@@ -256,7 +256,7 @@ $acl->isAllowed(
 
 You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
 
-Our `UserRole` class
+`UserRole` sınıfımız
 
 ```php
 <?php
@@ -499,7 +499,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 
 ## ACL Listelerini Seri Hale Getirme
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. Bunu şu şekilde yapabilirsiniz:
 
 ```php
 <?php
@@ -540,12 +540,12 @@ It's recommended to use the Memory adapter during development and use one of the
 
 0## Olaylar
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. Aşağıdaki olaylar desteklenmektedir:
 
 | Olay Adı          | Tetiklendi                                              | İşlemi durdurabilir mi? |
 | ----------------- | ------------------------------------------------------- |:-----------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |           Yes           |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |           No            |
+| beforeCheckAccess | Triggered before checking if a role/resource has access |          Evet           |
+| afterCheckAccess  | Triggered after checking if a role/resource has access  |          Hayır          |
 
 The following example demonstrates how to attach listeners to this component:
 
