@@ -201,7 +201,7 @@ An overlay for installing Phalcon can be found here [https://github.com/smoke/ph
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
 ### Requirements
-* PHP >= 5.5 development resources
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
 
 <a name='installation-macos-brew'></a>
@@ -210,6 +210,8 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 brew tap homebrew/homebrew-php
 brew install php55-phalcon
 brew install php56-phalcon
+brew install php70-phalcon
+brew install php71-phalcon
 ```
 
 <a name='installation-macos-macports'></a>
@@ -262,7 +264,7 @@ Restart your webserver.
 Compiling from source is similar to most environments (Linux/Mac).
 
 ### Requirements
-* PHP 5.5.x/5.6.x/7.0.x development resources
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
 * re2c >= 0.13
 * libpcre-dev
