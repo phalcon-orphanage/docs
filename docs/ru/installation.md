@@ -99,10 +99,10 @@
           <a href="#installation-windows">Windows</a>
         </li>
         <li>
-          <a href="#installation-sources">Compile from sources</a>
+          <a href="#installation-sources">Компиляция из исходников</a>
         </li>
         <li>
-          <a href="#installation-sources-advanced">Advanced Compilation</a>
+          <a href="#installation-sources-advanced">Расширенная компиляция</a>
         </li>
       </ul>
     </li>
@@ -361,7 +361,7 @@ Edit your php.ini file and then append at the end:
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезагрузите веб-сервер.
 
 <a name='requirements-software'></a>
 
@@ -392,11 +392,11 @@ Edit your php.ini file and then append at the end:
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезагрузите веб-сервер.
 
 <a name='requirements-software'></a>
 
-7## Compile from Sources
+7## Компиляция из исходников
 
 Compiling from source is similar to most environments (Linux/Mac).
 
@@ -463,7 +463,7 @@ extension=phalcon.so
 
 <a name='requirements-software'></a>
 
-8## Advanced Compilation
+8## Расширенная компиляция
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
