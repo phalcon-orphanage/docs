@@ -210,7 +210,7 @@ sudo apt-get install php7.0-phalcon
 
 #### Ondřej Surý
 
-If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+Вы всегда можете использовать репозитории [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/), если в не хотите использовать packagecloud.io.
 
 Добавление репозитория:
 
