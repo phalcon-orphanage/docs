@@ -134,12 +134,12 @@ $acl->addResource(
 
 ## Определение контроля доступа
 
-Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level `allow` or `deny`.
+Теперь у нас есть роли и ресурсы. Настало время указать для ACL, какие роли имеют разрешения доступа к ресурсам. Этот этап очень важен, особенно принимая во внимание используемый по умолчанию уровень `allow` или `deny`.
 
 ```php
 <?php
 
-// Set access level for roles into resources
+// Указываем уровень доступа для ролей на определенный ресурс
 
 $acl->allow('Guests', 'Customers', 'search');
 
@@ -148,13 +148,13 @@ $acl->allow('Guests', 'Customers', 'create');
 $acl->deny('Guests', 'Customers', 'update');
 ```
 
-The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
+Метод `allow()` определяет, что данная роль имеет доступ к действию над ресурсом. Метод `deny()` делает обратное.
 
 <a name='querying'></a>
 
 ## Запросы к ACL
 
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+После того, как список был полностью составлен, мы можем запрашивать проверку на права той или иной роли.
 
 ```php
 <?php
