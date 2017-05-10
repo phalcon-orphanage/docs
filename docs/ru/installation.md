@@ -18,12 +18,12 @@
             <li>
               <a href="#installation-linux-debian">DEB дистрибутивы (Debian, Ubuntu, и т.д.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-debian-repository">Настройка репозитория</a> <ul>
                     <li>
-                      <a href="#installation-linux-debian-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-debian-repository-stable">Стабильные релизы</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-debian-repository-nightly">Ночные релизы</a>
                     </li>
                   </ul>
                 </li>
@@ -46,14 +46,14 @@
             </li>
             
             <li>
-              <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
+              <a href="#installation-linux-rpm">RPM дистрибутивы (CentOS, Fedora, и т.д.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Настройка репозитория</a> <ul>
                     <li>
-                      <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-rpm-repository-stable">Стабильные релизы</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-rpm-repository-nightly">Ночные релизы</a>
                     </li>
                   </ul>
                 </li>
@@ -85,7 +85,7 @@
         </li>
         
         <li>
-          <a href="#installation-macos">MacOS</a> <ul>
+          <a href="#installation-macos">macOS</a> <ul>
             <li>
               <a href="#installation-macos-brew">Brew</a>
             </li>
