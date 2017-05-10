@@ -274,7 +274,7 @@ You can install these packages in your system with the relevant package manager.
 sudo apt-get install php5-dev libpcre3-dev gcc make
 ```
 
-#### Suse:
+#### Suse
 ```bash
 sudo zypper install php5-devel gcc make
 ```
