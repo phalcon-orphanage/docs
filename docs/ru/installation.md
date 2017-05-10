@@ -59,7 +59,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Установка Phalcon</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -470,7 +470,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
 ```bash
 cd cphalcon/build
 
-# One of the following:
+# Одна из следующих команд установит Phalcon для нужной архитектуры:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
