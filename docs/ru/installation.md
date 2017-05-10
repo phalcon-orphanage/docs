@@ -70,7 +70,7 @@
                 </li>
                 
                 <li>
-                  <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
+                  <a href="installation-linux-rpm-other-rpm">Сторонние RPM-репозитории</a>
                 </li>
               </ul>
             </li>
@@ -142,7 +142,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 # Установка
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Так как Phalcon распространяется в виде расширения для PHP, его установка отличается от традиционных PHP фреймворков. Phalcon нуждается в установке и загрузке в виде модуля на вашем веб сервере.
 
 <a name='installation-linux'></a>
 
@@ -178,7 +178,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
+##### Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. {.alert.alert-warning}
 
 <a name='installation-linux-debian-phalcon'></a>
 
@@ -206,7 +206,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='requirements-hardware'></a>
 
-2#### Additional PPAs
+2#### Сторонние PPA-репозитории
 
 #### Ondřej Surý
 
@@ -259,9 +259,9 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='requirements-hardware'></a>
 
-7#### Phalcon installation
+7#### Установка Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Чтобы установить Phalcon выполните следующие команды в терминале:
 
 <a name='requirements-hardware'></a>
 
@@ -283,7 +283,7 @@ sudo yum install php70u-phalcon
 
 <a name='requirements-software'></a>
 
-0#### Additional RPMs
+0#### Сторонние RPM-репозитории
 
 ##### Remi
 
@@ -355,7 +355,7 @@ sudo port install php55-phalcon
 sudo port install php56-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+Откройте ваш php.ini и добавьте в конец файла:
 
 ```ini
 extension=php_phalcon.dll
