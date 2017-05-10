@@ -289,14 +289,14 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+Ve bizim `ModelResource` sınıfımız
 
 ```php
 <?php
 
 use Phalcon\Acl\ResourceAware;
 
-// Create our class which will be used as resourceName
+// resourceName olarak kullanılacak sınıfımızı oluştur
 class ModelResource implements ResourceAware
 {
     protected $id;
@@ -322,7 +322,7 @@ class ModelResource implements ResourceAware
         return $this->userId;
     }
 
-    // Implemented function from ResourceAware Interface
+    // ResourceAware Arabiriminden uygulanan fonksiyon
     public function getResourceName()
     {
         return $this->resourceName;
@@ -330,7 +330,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+Sonra onları `isAllowed()` yönteminde kullanabilirsiniz.
 
 ```php
 <?php
@@ -338,51 +338,51 @@ Then you can use them in `isAllowed()` method.
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources
-$acl->allow('Guests', 'Customers', 'search');
-$acl->allow('Guests', 'Customers', 'create');
-$acl->deny('Guests', 'Customers', 'update');
+// Rol için erişim seviyesini kaynaklara ayarlayın
+$acl->allow('Ziyaretçiler', 'Müşteriler', 'search');
+$acl->allow('Ziyaretçiler', 'Müşteriler', 'create');
+$acl->deny('Ziyaretçiler', 'Müşteriler', 'update');
 
-// Create our objects providing roleName and resourceName
+// roleName ve resourceName sağlayarak nesnelerimizi oluştur
 
 $customer = new ModelResource(
     1,
-    'Customers',
+    'Müşteriler',
     2
 );
 
 $designer = new UserRole(
     1,
-    'Designers'
+    'Tasarımcılar'
 );
 
 $guest = new UserRole(
     2,
-    'Guests'
+    'Ziyaretçiler'
 );
 
 $anotherGuest = new UserRole(
     3,
-    'Guests'
+    'Ziyaretçiler'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Kullanıcı nesnelerinizin model nesnesindeki işleme erişimi olup olmadığını kontrol edin
 
-// Returns false
+// Geriye false döner
 $acl->isAllowed(
     $designer,
     $customer,
     'search'
 );
 
-// Returns true
+// Geriye true döner
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns true
+// Geriye true döner
 $acl->isAllowed(
     $anotherGuest,
     $customer,
@@ -398,68 +398,68 @@ Also you can access those objects in your custom function in `allow()` or `deny(
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources with custom function
+// Rol için erişim düzeyini özel fonksiyonla kaynaklara ayarla
 $acl->allow(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'search',
-    function (UserRole $user, ModelResource $model) { // User and Model classes are necessary
+    function (UserRole $user, ModelResource $model) { // Kullanıcı ve Model sınıfları gereklidir
         return $user->getId == $model->getUserId();
     }
 );
 
 $acl->allow(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'create'
 );
 
 $acl->deny(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'update'
 );
 
-// Create our objects providing roleName and resourceName
+// roleName ve resourceName sağlayarak nesnelerimizi oluştur
 
 $customer = new ModelResource(
     1,
-    'Customers',
+    'Müşteriler',
     2
 );
 
 $designer = new UserRole(
     1,
-    'Designers'
+    'Tasarımcılar'
 );
 
 $guest = new UserRole(
     2,
-    'Guests'
+    'Ziyaretçiler'
 );
 
 $anotherGuest = new UserRole(
     3,
-    'Guests'
+    'Ziyaretçiler'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Kullanıcı nesnelerinizin model nesnesindeki işleme erişimi olup olmadığını kontrol edin
 
-// Returns false
+// Geriye false döner
 $acl->isAllowed(
     $designer,
     $customer,
     'search'
 );
 
-// Returns true
+// Geriye true döner
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns false
+// Geriye false döner
 $acl->isAllowed(
     $anotherGuest,
     $customer,
@@ -482,16 +482,16 @@ use Phalcon\Acl\Role;
 
 // ...
 
-// Create some roles
+// Birkaç rol oluştur
 
-$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleAdmins = new Role('Yöneticiler', 'Süper-Kullanıcı rolü');
 
-$roleGuests = new Role('Guests');
+$roleGuests = new Role('Ziyaretçiler');
 
-// Add 'Guests' role to ACL
+// ACL'ye 'Ziyaretçiler' rolü ekle
 $acl->addRole($roleGuests);
 
-// Add 'Administrators' role inheriting from 'Guests' its accesses
+// Erişimlere 'Misafirler' rolünden miras kalan 'Yöneticiler' rolünü ekleyin
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
@@ -508,7 +508,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 // ...
 
-// Check whether ACL data already exist
+// ACL verisinin mevcut olup olmadığını kontrol etme
 if (!is_file('app/security/acl.data')) {
     $acl = new AclList();
 
@@ -542,10 +542,10 @@ It's recommended to use the Memory adapter during development and use one of the
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name        | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| Olay Adı          | Tetiklendi                                              | İşlemi durdurabilir mi? |
+| ----------------- | ------------------------------------------------------- |:-----------------------:|
+| beforeCheckAccess | Triggered before checking if a role/resource has access |           Yes           |
+| afterCheckAccess  | Triggered after checking if a role/resource has access  |           No            |
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -558,10 +558,10 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Bir olay yöneticisi oluşturun
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// 'Acl' türü için bir dinleyici ekleyin
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -575,10 +575,10 @@ $eventsManager->attach(
 
 $acl = new AclList();
 
-// Setup the $acl
+// $acl değişkenini ayarla
 // ...
 
-// Bind the eventsManager to the ACL component
+// eventsManager öğesini ACL bileşenine bağlayın
 $acl->setEventsManager($eventsManager);
 ```
 
@@ -586,4 +586,4 @@ $acl->setEventsManager($eventsManager);
 
 1## Kendi bağdaştırıcılarını uygulama
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+`Phalcon\Acl\AdapterInterface` arabirimi kendi ACL bağdaştırıcıları oluşturmak veya mevcut olanları genişletmek için uygulanması gerekir.
