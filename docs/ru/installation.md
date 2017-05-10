@@ -119,9 +119,9 @@ Phalcon требует PHP для запуска. Его слабо связан
 
 ## Аппаратное обеспечение
 
-Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Хотя мы и тестировали Phalcon на маломощных машинах (например с 256 MB RAM и процессором 500 MHz), оборудование, которое вы будете выбирать, будет зависеть от потребностей приложения.
 
-Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+Наш веб-сайт и блог (а также другие сайты) работают на Amazon VM с 512 MB RAM и 1 vCPU.
 
 <a name='requirements-software'></a>
 
