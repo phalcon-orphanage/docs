@@ -229,7 +229,7 @@ Restart your webserver.
 
 <a name='installation-windows'></a>
 ## Windows
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download][download-dll] page.
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
 
 To use phalcon on Windows you will need to download a DLL library. Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
@@ -412,24 +412,3 @@ php -m
 ```
 
 ##### Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/nginX), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. ##### {.alert .alert-danger}
-
-
-#### Dev environments
-
-- Vagrant
-- Docker
-- Homestead Improved
-
-#### Sample applications
-Hello World
-Configuration Files
-
-#### Web Server Configuration
-Apache
-    .htaccess
-    VirtualHost/Directory
-
-Nginx
-
-
-[download-dll](https://phalconphp.com/en/download/windows)
