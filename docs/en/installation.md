@@ -322,9 +322,9 @@ Phalcon automatically detects your architecture, however, you can force the comp
 cd cphalcon/build
 
 # One of the following:
-sudo ./install 32bits
-sudo ./install 64bits
-sudo ./install safe
+sudo ./install --arch 32bits
+sudo ./install --arch 64bits
+sudo ./install --arch safe
 ```
 
 If the automatic installer fails you can build the extension manually
@@ -340,22 +340,35 @@ cd cphalcon/build/php5/64bits
 # cd cphalcon/build/php7/64bits
 
 make clean
+phpize --clean
 
 export CFLAGS="-O2 --fvisibility=hidden"
+./configure --enable-phalcon
 
-# Example: /opt/php-5.6.15
-export CUSTOM_PHP_INSTALLATION_PATH=/your/php/installation/path
+make
+make install
+```
 
-# Example: /opt/php-5.6.15/bin/phpize --clean
-$CUSTOM_PHP_INSTALLATION_PATH/bin/phpize --clean
+If you have specific php versions running
 
-# Example: /opt/php-5.6.15/bin/phpize
-$CUSTOM_PHP_INSTALLATION_PATH/bin/phpize
+```bash
+git clone https://github.com/phalcon/cphalcon
+# cd cphalcon/build/php5/32bits
+cd cphalcon/build/php5/64bits
 
-# Example: ./configure --with-php-config=/opt/php-5.6.15/bin/php-config
-./configure --with-php-config=$CUSTOM_PHP_INSTALLATION_PATH/bin/php-config --enable-phalcon
+# NOTE: for PHP 7 you have to use
+# cd cphalcon/build/php7/32bits
+# or
+# cd cphalcon/build/php7/64bits
 
-make && sudo make install
+make clean
+/opt/php-5.6.15/bin/phpize --clean
+
+export CFLAGS="-O2 --fvisibility=hidden"
+./configure --with-php-config=/opt/php-5.6.15/bin/php-config --enable-phalcon
+
+make
+make install
 ```
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
