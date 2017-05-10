@@ -400,12 +400,12 @@ extension=php_phalcon.dll
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Requirements
+### Необходимое программное обеспечение
 
-- PHP 5.5.x/5.6.x/7.0.x development resources
-- GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x (php-dev)
+- Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 - re2c >= 0.13
-- libpcre-dev
+- libpcre-dev (libpcre3-dev)
 
 You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
 
@@ -429,13 +429,13 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Компиляция Phalcon
 
-We first need to clone Phalcon from the Github repository
+Для начала необходимо получить Phalcon с официального репозитория на Github
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-and now build the extension
+затем собрать расширение
 
 ```bash
 cd cphalcon/build
