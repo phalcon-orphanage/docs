@@ -39,7 +39,7 @@
 
 # Парсер аннотаций
 
-It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+Изначально компонент парсера аннотаций был написан на языке C для мира PHP. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
