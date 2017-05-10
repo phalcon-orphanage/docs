@@ -309,7 +309,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### Сборка из исходников
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -375,16 +375,16 @@ To use phalcon on Windows you will need to download a DLL library. Identify your
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
+| Архитектура | Версия | Тип                                  |
+|:-----------:|:------:| ------------------------------------ |
+|     x64     |  7.x   | Потокобезопасный                     |
+|     x64     |  7.x   | Не являющийся потокобезопасным (NTS) |
+|     x86     |  7.x   | Потокобезопасный                     |
+|     x86     |  7.x   | Не являющийся потокобезопасным (NTS) |
+|     x64     |  5.6   | Потокобезопасный                     |
+|     x64     |  5.6   | Не являющийся потокобезопасным (NTS) |
+|     x86     |  5.6   | Потокобезопасный                     |
+|     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
 
 Edit your php.ini file and then append at the end:
 
