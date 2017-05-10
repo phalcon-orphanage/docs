@@ -10,7 +10,7 @@
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
-## Structure
+## Структура
 
 A minimal structure of a CLI application will look like this:
 
@@ -22,7 +22,7 @@ A minimal structure of a CLI application will look like this:
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-Below is a sample bootstrap that is being used for this example.
+Ниже приведен образец загрузочного файла, который используется для этого примера.
 
 ```php
 <?php
@@ -86,7 +86,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Эта часть кода может быть запущена с помощью команды:
 
 ```bash
 php app/cli.php
@@ -185,7 +185,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Это задача по умолчанию с действием по умолчанию" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -197,9 +197,9 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Я буду напечатано тоже!" . PHP_EOL;
     }
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий `Phalcon\Cli\Task` и реализовать такую логику там.

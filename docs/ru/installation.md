@@ -29,7 +29,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Установка Phalcon</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.7</a>
                     </li>
@@ -40,7 +40,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
+                  <a href="#installation-linux-debian-other-ppa">Сторонние PPA-репозитории</a>
                 </li>
               </ul>
             </li>
@@ -70,7 +70,7 @@
                 </li>
                 
                 <li>
-                  <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
+                  <a href="installation-linux-rpm-other-rpm">Сторонние RPM-репозитории</a>
                 </li>
               </ul>
             </li>
@@ -99,10 +99,10 @@
           <a href="#installation-windows">Windows</a>
         </li>
         <li>
-          <a href="#installation-sources">Compile from sources</a>
+          <a href="#installation-sources">Компиляция из исходников</a>
         </li>
         <li>
-          <a href="#installation-sources-advanced">Advanced Compilation</a>
+          <a href="#installation-sources-advanced">Расширенная компиляция</a>
         </li>
       </ul>
     </li>
@@ -142,13 +142,13 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 # Установка
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Так как Phalcon распространяется в виде расширения для PHP, его установка отличается от традиционных PHP фреймворков. Phalcon нуждается в установке и загрузке в виде модуля на вашем веб сервере.
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
+Перед установкой Phalcon в Linux, необходимо добавить репозиторий.
 
 <a name='installation-linux-debian'></a>
 
@@ -158,7 +158,7 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 #### Настройка репозитория
 
-Add the repository to your distribution:
+Добавьте репозиторий для вашего дистрибутива:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
@@ -178,13 +178,13 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
+##### Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. {.alert.alert-warning}
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Установка Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Чтобы установить Phalcon выполните следующие команды в терминале:
 
 <a name='requirements-hardware'></a>
 
@@ -206,20 +206,20 @@ sudo apt-get install php7.0-phalcon
 
 <a name='requirements-hardware'></a>
 
-2#### Additional PPAs
+2#### Сторонние PPA-репозитории
 
 #### Ondřej Surý
 
 If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+Добавление репозитория:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+установка Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
@@ -235,7 +235,7 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 4#### Настройка репозитория
 
-Add the repository to your distribution:
+Добавьте репозиторий для вашего дистрибутива:
 
 <a name='requirements-hardware'></a>
 
@@ -255,13 +255,13 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
+##### Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. {.alert.alert-warning}
 
 <a name='requirements-hardware'></a>
 
-7#### Phalcon installation
+7#### Установка Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Чтобы установить Phalcon выполните следующие команды в терминале:
 
 <a name='requirements-hardware'></a>
 
@@ -283,7 +283,7 @@ sudo yum install php70u-phalcon
 
 <a name='requirements-software'></a>
 
-0#### Additional RPMs
+0#### Сторонние RPM-репозитории
 
 ##### Remi
 
@@ -355,13 +355,13 @@ sudo port install php55-phalcon
 sudo port install php56-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+Откройте ваш php.ini и добавьте в конец файла:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезагрузите веб-сервер.
 
 <a name='requirements-software'></a>
 
@@ -386,26 +386,26 @@ The available DLLs are:
 |     x86     |  5.6   | Потокобезопасный                     |
 |     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
 
-Edit your php.ini file and then append at the end:
+Откройте ваш php.ini и добавьте в конец файла:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезагрузите веб-сервер.
 
 <a name='requirements-software'></a>
 
-7## Compile from Sources
+7## Компиляция из исходников
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Requirements
+### Необходимое программное обеспечение
 
-- PHP 5.5.x/5.6.x/7.0.x development resources
-- GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x (php-dev)
+- Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 - re2c >= 0.13
-- libpcre-dev
+- libpcre-dev (libpcre3-dev)
 
 You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
 
@@ -427,43 +427,43 @@ sudo zypper install php5-devel gcc make
 sudo yum install php-devel pcre-devel gcc make
 ```
 
-### Compile Phalcon
+### Компиляция Phalcon
 
-We first need to clone Phalcon from the Github repository
+Для начала необходимо получить Phalcon с официального репозитория на Github
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-and now build the extension
+затем собрать расширение
 
 ```bash
 cd cphalcon/build
 sudo ./install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Вам понадобится добавить `extension=phalcon.so` в ваш php.ini и перезапустить веб-сервер для загрузки расширения.
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+# Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+# Ubuntu/Debian с apache2: создайте файл 30-phalcon.ini в /etc/php5/apache2/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+# Ubuntu/Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+# Ubuntu/Debian с php5-cli: создайте файл 30-phalcon.ini в /etc/php5/cli/conf.d/ со следующим содержимым:
 extension=phalcon.so
 ```
 
 <a name='requirements-software'></a>
 
-8## Advanced Compilation
+8## Расширенная компиляция
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
@@ -521,7 +521,7 @@ phpinfo();
 
 and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
 
-You can also check your installation from the command line:
+Также вы можете проверить вашу установку из командной строки:
 
 ```bash
 php -r 'print_r(get_loaded_extensions())'
@@ -560,7 +560,7 @@ php -m
 
 Hello World Configuration Files
 
-#### Web Server Configuration
+#### Конфигурация веб-сервера
 
 Apache .htaccess VirtualHost/Directory
 
