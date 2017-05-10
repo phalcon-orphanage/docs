@@ -123,7 +123,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| Название          | Файл                          | Описание                                                                                                                                                                                                                 |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -398,14 +398,14 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Константа класса        | Описание                                                                 | Порядок |
+| ----------------------- | ------------------------------------------------------------------------ |:-------:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |         |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |    1    |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |    2    |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |    3    |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |    4    |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |    5    |
 
 <a name='disabling-render-levels'></a>
 
