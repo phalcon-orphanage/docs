@@ -333,7 +333,7 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 
 ### Требования
 
-- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
 
 <a name='requirements-software'></a>
@@ -400,16 +400,16 @@ extension=php_phalcon.dll
 
 7## Компиляция из исходников
 
-Compiling from source is similar to most environments (Linux/Mac).
+Сборка из исходников похожа в большинстве сред (Linux/macOs).
 
 ### Необходимое программное обеспечение
 
-- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 - re2c >= 0.13
 - libpcre-dev (libpcre3-dev)
 
-You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
+Вы можете установить эти пакеты в вашей системе используя соответствующий пакетный менеджер. Инструкции для популярных дистрибутивов приведены ниже:
 
 #### Ubuntu
 
