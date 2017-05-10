@@ -8,21 +8,21 @@
 
 # Creating a Command Line (CLI) Application
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI uygulamaları komut satırından çalıştırılır. Bu uygulamalar özellikle zamanlanmış görevler, betikler ve benzer daha bir çok farklı amaçla kullanılabilir.
 
-## Structure
+## Yapı
 
 A minimal structure of a CLI application will look like this:
 
 * app/config/config.php
 * app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+* app/cli.php <--ana önyükleme dosyası
 
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Normal MVC uygulamalarında olduğu gibi uygulamayı önyüklemek için bir önyükleme (bootstrap) dosyası kullanılır. Web uygulamalarında önyükleyici olarak index.php kullanılırken CLI uygulamalarında önyükleme için cli.php dosyasını kullanırız.
 
-Below is a sample bootstrap that is being used for this example.
+Bu uygulamamızda kullanacağımız önyükleyici örneği şöyledir;
 
 ```php
 <?php
@@ -31,11 +31,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// CLI uygulamamız için servis kapsayıcısı 
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
  */
 $loader = new Loader();
 
@@ -47,7 +47,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Ayar dosyasını yükleyelim (varsa)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -56,13 +56,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// CLI uygulamamızı oluşturalım
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Uygulamamıza parametre olarak gönderilen verileri işleyelim
  */
 $arguments = [];
 
@@ -77,7 +77,7 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Gelen parametreleri okuyalım
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
     echo $e->getMessage();
@@ -86,13 +86,13 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Bu kod parçası şöyle çalıştırılabilir:
 
 ```bash
 php app/cli.php
 ```
 
-## Tasks
+## Görevler
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
