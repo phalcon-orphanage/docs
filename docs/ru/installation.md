@@ -113,13 +113,13 @@
 
 # Требования
 
-Phalcon требует PHP для запуска. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalcon требует PHP для запуска. Его слабо связанный дизайн позволяет разработчикам один раз установив Phalcon, использовать его возможности везде, без дополнительных расширений. Однако некоторые его компоненты зависят от других расширений. Например, использование подключений к базам данных, требует расширения `php_pdo`. Если ваша СУБД MySql/MariaDb или Aurora, вам так же понадобится расширение `php_mysqlnd`. Аналогично, использование базы данных PostgreSql с Phalcon, требует расширения `php_pgsql`.
 
 <a name='requirements-hardware'></a>
 
 ## Аппаратное обеспечение
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
 Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
 
@@ -333,7 +333,7 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 
 ### Требования
 
-- Набор инструментов для разработчика PHP >= 5.5
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
 
 <a name='requirements-software'></a>
@@ -344,6 +344,8 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 brew tap homebrew/homebrew-php
 brew install php55-phalcon
 brew install php56-phalcon
+brew install php70-phalcon
+brew install php71-phalcon
 ```
 
 <a name='requirements-software'></a>
@@ -402,7 +404,7 @@ Compiling from source is similar to most environments (Linux/Mac).
 
 ### Необходимое программное обеспечение
 
-- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x (php-dev)
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 - re2c >= 0.13
 - libpcre-dev (libpcre3-dev)
