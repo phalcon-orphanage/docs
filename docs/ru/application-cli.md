@@ -22,7 +22,7 @@ A minimal structure of a CLI application will look like this:
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-Below is a sample bootstrap that is being used for this example.
+Ниже приведен образец загрузочного файла, который используется для этого примера.
 
 ```php
 <?php
@@ -86,7 +86,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Эта часть кода может быть запущена с помощью команды:
 
 ```bash
 php app/cli.php
