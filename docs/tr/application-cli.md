@@ -1,28 +1,28 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a>
+      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a>
     </li>
   </ul>
 </div>
 
-# Creating a Command Line (CLI) Application
+# Bir Komut Satırı (CLI) Uygulaması Oluşturma
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI uygulamaları komut satırından çalıştırılır. Bu uygulamalar özellikle zamanlanmış görevler, betikler ve benzer daha bir çok farklı amaçla kullanılabilir.
 
-## Structure
+## Yapı
 
-A minimal structure of a CLI application will look like this:
+Bir CLI uygulamasının asgari yapısı şöyle görünecektir:
 
 * app/config/config.php
 * app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+* app/cli.php <--ana önyükleme dosyası
 
-## Creating a Bootstrap
+## Bir Önyükleme Oluşturma
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Normal MVC uygulamalarında olduğu gibi uygulamayı önyüklemek için bir önyükleme (bootstrap) dosyası kullanılır. Web uygulamalarında önyükleyici olarak index.php kullanılırken CLI uygulamalarında önyükleme için cli.php dosyasını kullanırız.
 
-Below is a sample bootstrap that is being used for this example.
+Bu uygulamamızda kullanacağımız önyükleyici örneği şöyledir;
 
 ```php
 <?php
@@ -31,11 +31,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// CLI uygulamamız için servis kapsayıcısı 
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
  */
 $loader = new Loader();
 
@@ -47,7 +47,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Ayar dosyasını yükleyelim (varsa)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -56,13 +56,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// CLI uygulamamızı oluşturalım
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Uygulamamıza parametre olarak gönderilen verileri işleyelim
  */
 $arguments = [];
 
@@ -77,7 +77,7 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Gelen parametreleri okuyalım
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
     echo $e->getMessage();
@@ -86,17 +86,17 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Bu kod parçası şöyle çalıştırılabilir:
 
 ```bash
 php app/cli.php
 ```
 
-## Tasks
+## Görevler
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+Aşağıda `app/tasks/MainTask.php` dosyasına bir örnek verilmiştir:
 
 ```php
 <?php
@@ -107,16 +107,16 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 }
 ```
 
-## Processing action parameters
+## Eylem parametrelerini işlemek
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Örnek önyükleyici dosyasında da göreceğiniz üzere işlemlere parametreler geçirebilirsiniz.
 
-If you run the application with the following parameters and action:
+Uygulamayı aşağıdaki parametreler ve eylemle çalıştırırsanız:
 
 ```php
 <?php
@@ -127,7 +127,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 
     /**
@@ -135,29 +135,29 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf('merhaba %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('best regards, %s', $params[1]);
+        echo sprintf('saygılarımla, %s', $params[1]);
 
         echo PHP_EOL;
     }
 }
 ```
 
-We can then run the following command:
+Daha sonra aşağıdaki komutu çalıştırabiliriz:
 
 ```bash
-php app/cli.php main test world universe
+php app/cli.php main test dünya evren
 
-hello world
-best regards, universe
+merhaba dünya
+saygılarımla, evren
 ```
 
-## Running tasks in a chain
+## Bir zincirde görevleri çalıştırma
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Gerektiğinde görevleri bir zincir içerisinde yürütmek de mümkündür. Bunu başarmak için, konsolun kendisini DI'ye eklemelisiniz:
 
 ```php
 <?php
@@ -165,7 +165,7 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 $di->setShared("console", $console);
 
 try {
-    // Handle incoming arguments
+    // Gelen bağımsız değişkenleri yönet
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
     echo $e->getMessage();
@@ -174,7 +174,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Ardından konsolu herhangi bir görevin içinde kullanabilirsiniz. Aşağıda, değiştirilmiş bir MainTask.php örneği verilmiştir:
 
 ```php
 <?php
@@ -185,7 +185,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Bu varsayılan görev ve varsayılan eylemdir" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -197,9 +197,9 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Ben de ekrana basılmış olacağım!" . PHP_EOL;
     }
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Bununla birlikte, `Phalcon\Cli\Task`'ı genişletmek ve bu tür mantığı orada uygulamak daha iyi bir fikirdir.

@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Web Server Kurulumu</a> <ul>
         <li>
           <a href="#nginx">NGINX</a>
         </li>
@@ -12,7 +12,7 @@
           <a href="#cherokee">Cherokee</a>
         </li>
         <li>
-          <a href="#php-built-in">Built in Webserver</a>
+          <a href="#php-built-in">Yerleşik Web Sunucusu</a>
         </li>
       </ul>
     </li>
@@ -21,15 +21,15 @@
 
 <a name='setup'></a>
 
-# Web server setup
+# Web sunucusu kurulumu
 
-In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
+Phalcon uygulmasını doğru çalıştırabilmek için web sunucunuzun yönlendirme ayarlarının düzgün işleyecek şekilde yapılandırmanız gerekmektedir. Popüler sunucu yazılımları için kurulum yönergeleri:
 
 <a name='nginx'></a>
 
 ## NGINX
 
-[Nginx](http://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, NGINX doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[Nginx](http://wiki.nginx.org/Main) ücretsiz, açık kaynak kodlu, yüksek performanslı bir HTTP sunucusu ve ters proxy dir. Aynı zamanda IMAP/POP3 protokellerini sağlayan bir proxy serverdır. Geleneksel sunucuların aksine, NGINX istekleri işlemek için minik iş parçacıklarına ihtiyaç duymaz. Bunun yerine nesneye dayalı (asenkron) bir mimari kullanır. Bu mimari küçük ama daha önemlisi tahmin edilen bellek miktarından daha azını kullanır. Böylelikle sistem kaynaklarını verimli şekilde kullanarak bunları ölçümleyebilir.
 
 The [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) is usually used to allow NGINX to process PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions. Phalcon with NGINX and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 

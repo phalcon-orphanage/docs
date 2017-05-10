@@ -1,29 +1,29 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Requirements</a> <ul>
+      <a href="#requirements">Требования</a> <ul>
         <li>
-          <a href="#requirements-hardware">Hardware</a>
+          <a href="#requirements-hardware">Аппаратное обеспечение</a>
         </li>
         <li>
-          <a href="#requirements-software">Software</a>
+          <a href="#requirements-software">Программное обеспечение</a>
         </li>
       </ul>
     </li>
     
     <li>
-      <a href="#installation">Installation</a> <ul>
+      <a href="#installation">Установка</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
-              <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
+              <a href="#installation-linux-debian">DEB дистрибутивы (Debian, Ubuntu, и т.д.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-debian-repository">Настройка репозитория</a> <ul>
                     <li>
-                      <a href="#installation-linux-debian-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-debian-repository-stable">Стабильные релизы</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-debian-repository-nightly">Ночные релизы</a>
                     </li>
                   </ul>
                 </li>
@@ -46,14 +46,14 @@
             </li>
             
             <li>
-              <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
+              <a href="#installation-linux-rpm">RPM дистрибутивы (CentOS, Fedora, и т.д.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Настройка репозитория</a> <ul>
                     <li>
-                      <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-rpm-repository-stable">Стабильные релизы</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-rpm-repository-nightly">Ночные релизы</a>
                     </li>
                   </ul>
                 </li>
@@ -85,7 +85,7 @@
         </li>
         
         <li>
-          <a href="#installation-macos">MacOS</a> <ul>
+          <a href="#installation-macos">macOS</a> <ul>
             <li>
               <a href="#installation-macos-brew">Brew</a>
             </li>
@@ -111,13 +111,13 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# Требования
 
-Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalcon требует PHP для запуска. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## Аппаратное обеспечение
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -125,9 +125,9 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Software
+## Программное обеспечение
 
-- PHP >= 5.5
+- PHP > = 5.5
 
 ##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 {.alert.alert-danger}
 
@@ -140,7 +140,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='installation'></a>
 
-# Installation
+# Установка
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -152,27 +152,27 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### DEB дистрибутивы (Debian, Ubuntu, и т.д.)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Настройка репозитория
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+или
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -229,27 +229,27 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='requirements-hardware'></a>
 
-3### RPM based distributions (CentOS, Fedora, etc.)
+3### RPM дистрибутивы (CentOS, Fedora, и т.д.)
 
 <a name='requirements-hardware'></a>
 
-4#### Repository installation
+4#### Настройка репозитория
 
 Add the repository to your distribution:
 
 <a name='requirements-hardware'></a>
 
-5##### Stable releases
+5##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-or
+или
 
 <a name='requirements-hardware'></a>
 
-6##### Nightly releases
+6##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -309,7 +309,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### Сборка из исходников
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -327,11 +327,11 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 <a name='requirements-software'></a>
 
-3## Mac OS X
+3## macOS
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Требования
 
 - PHP >= 5.5 development resources
 - XCode
@@ -375,16 +375,16 @@ To use phalcon on Windows you will need to download a DLL library. Identify your
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
+| Архитектура | Версия | Тип                                  |
+|:-----------:|:------:| ------------------------------------ |
+|     x64     |  7.x   | Потокобезопасный                     |
+|     x64     |  7.x   | Не являющийся потокобезопасным (NTS) |
+|     x86     |  7.x   | Потокобезопасный                     |
+|     x86     |  7.x   | Не являющийся потокобезопасным (NTS) |
+|     x64     |  5.6   | Потокобезопасный                     |
+|     x64     |  5.6   | Не являющийся потокобезопасным (NTS) |
+|     x86     |  5.6   | Потокобезопасный                     |
+|     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -421,7 +421,7 @@ sudo apt-get install php5-dev libpcre3-dev gcc make
 sudo zypper install php5-devel gcc make
 ```
 
-#### CentOS/Fedora/RHEL
+#### CentOS / Fedora / RHEL
 
 ```bash
 sudo yum install php-devel pcre-devel gcc make
@@ -556,7 +556,7 @@ php -m
 - Docker
 - Homestead Improved
 
-#### Sample applications
+#### Примеры приложений
 
 Hello World Configuration Files
 
