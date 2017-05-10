@@ -389,7 +389,7 @@ and load it on your web browser. There should be a section for Phalcon. If there
 You can also check your installation from the command line:
 
 ```bash
-php -r 'print_r(get_loaded_extensions())'
+php -r 'print_r(get_loaded_extensions());'
 ```
 
 This will output something similar to this:
