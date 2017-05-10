@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">Yapılandırmaları Okuma</a> <ul>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">Doğal Diziler</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">Dosya Bağdaştırıcıları</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">INI Dosyaları Okuma</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">Yapılandırmaları Birleştirme</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">Yapılandırma Bağımlılığını Enjekte Etme</a>
         </li>
       </ul>
     </li>
@@ -24,13 +24,13 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Yapılandırmaları Okuma
 
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## Doğal Diziler
 
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
@@ -76,7 +76,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Dosya Bağdaştırıcıları
 
 The adapters available are:
 
@@ -89,7 +89,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## INI Dosyaları Okuma
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -126,7 +126,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Yapılandırmaları Birleştirme
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -182,7 +182,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Yapılandırma Bağımlılığını Enjekte Etme
 
 You can inject configuration dependency to controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, add following code inside your dependency injector script.
 
