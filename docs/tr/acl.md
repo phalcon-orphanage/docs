@@ -44,15 +44,15 @@
 
 # Erişim Kontrol Listeleri (ACL)
 
-`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+`Phalcon\Acl` ACL ve bunlara bağlı izinleri kolay ve hafif bir şekilde yönetmenizi sağlar. [Erişim Kontrol Listeleri](http://en.wikipedia.org/wiki/Access_control_list) (ACL) bir uygulamanın kendi alanlarına ve temel alınan nesneleri isteklerden denetlemesine izin verir. ACL metodolojisi hakkında daha fazla bilgi edinmeniz ve böylece kavramlarıyla aşina olmanız önerilir.
 
-In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
+Özetlemek gerekirse, ACL'lerin rolleri ve kaynakları vardır. Kaynaklar, ACL'ler tarafından tanımlanan izinlere uyan nesnelerdir. Roller, kaynaklara erişim isteyen nesnelerdir ve ACL mekanizması tarafından erişime izin verilebilir veya erişim engellenebilir.
 
 <a name='setup'></a>
 
 ## ACL Oluşturma
 
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
+Bu bileşen başlangıçta bellekte çalışmak üzere tasarlanmıştır. Bu, kullanım kolaylığı sağlar ve listenin her alanına erişirken hızlanır. `Phalcon\Acl` yapılandırıcı, ilk parametresi olarak kontrol listesiyle ilgili bilgileri almak için kullanılan bir bağdaştırıcı alır. Bellek adaptörünü kullanan bir örnek aşağıda verilmiştir:
 
 ```php
 <?php
@@ -62,7 +62,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-By default `Phalcon\Acl` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
+Varsayılan olarak `Phalcon\Acl`, henüz tanımlanmamış kaynaklara erişime izin verir. Erişim listesinin güvenlik seviyesini artırmak için bir `deny` seviyesini varsayılan erişim seviyesi olarak tanımlayabiliriz.
 
 ```php
 <?php
@@ -79,7 +79,7 @@ $acl->setDefaultAction(
 
 ## ACL'ye Rol Ekleme
 
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+Bir rol, erişim listesindeki belirli kaynaklara erişebilen veya erişemeyen bir nesnedir. Örnek olarak, rolleri bir organizasyon içerisindeki gruplar olarak tanımlayacağız. `Phalcon\Acl\Role` sınıfı, daha yapılandırılmış bir şekilde roller oluşturmak için kullanılabilir. Yakın zamanda oluşturulmuş listemize bazı roller ekleyelim:
 
 ```php
 <?php
@@ -104,7 +104,7 @@ Görebildiğiniz gibi, roller bir örnek kullanmadan doğrudan tanımlanır.
 
 ## Kaynakları Ekleme
 
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon\Acl\Resource` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+Kaynaklar, erişimin kontrol edildiği nesnelerdir. Normalde MVC uygulamalarında kaynaklar denetleyicileri gösterir. Bu zorunlu olmasa da, `Phalcon\Acl\Resource` sınıfı kaynakları tanımlamada kullanılabilir. ACL'nin kontrol etmesi gereken şeyi anlaması için bir kaynağa ilgili işlemler veya işlemler eklemek önemlidir.
 
 ```php
 <?php
