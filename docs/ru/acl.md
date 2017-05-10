@@ -213,13 +213,14 @@ $acl->isAllowed(
 );
 ```
 
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
+Следует понимать, если ваша функция принимает аргументы и вы не передаёте какие-либо параметры в метод `isAllowed()`, то поведением по умолчанию является `Acl::ALLOW`. Вы можете изменить это поведение с помощью метода `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
-// Set access level for role into resources with custom function
+// Установим уровень доступа к ресурсу для роли, используя пользовательскую функцию
 $acl->allow(
     'Guests',
     'Customers',
@@ -229,21 +230,21 @@ $acl->allow(
     }
 );
 
-// Check whether role has access to the operation with custom function
+// Теперь проверим, есть ли у роли доступ к операции
 
-// Returns true
+// Вернёт true
 $acl->isAllowed(
     'Guests',
     'Customers',
     'search'
 );
 
-// Change no arguments default action
+// Изменим значение по умолчанию если не переданы аргументы
 $acl->setNoArgumentsDefaultAction(
     Acl::DENY
 );
 
-// Returns false
+// Вернёт false
 $acl->isAllowed(
     'Guests',
     'Customers',
