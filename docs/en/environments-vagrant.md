@@ -11,7 +11,9 @@
         - [Memory and CPU](#installation-configuration-memory-cpu)
         - [Shared folders](#installation-configuration-shared-folders)
         - [Nginx sites](#installation-configuration-nginx)
+            - [Custom Nginx configuration](#installation-configuration-custom-nginx)
             - [Configuring the `hosts` file](#installation-configuration-hosts)
+        - [Install aditional packages](#installation-aditional-packages)
         - [Launching the Phalcon Box](#installation-launching-phalcon-box)
     - [Daily usage](#daily-usage)
         - [Accessing Phalcon Box globally](#daily-usage-accessing-box-globally)
@@ -103,7 +105,7 @@ You can find the latest stable version on the [Github Release Page](https://gith
 
 ```bash
 # Clone the desired release...
-git checkout v2.3.0
+git checkout v2.4.0
 ```
 
 Once you have cloned the Phalcon Box repository, run the install command from the Phalcon Box root directory to create the `settings.yml` configuration file. The `settings.yml` file will be placed in the Phalcon Box directory:
@@ -223,6 +225,36 @@ Feel free to suggest a new type of Nginx configuration [through opening a New Fe
 
 ##### If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. ##### {.alert .alert-warning}
 
+<a name='installation-configuration-custom-nginx'></a>
+#### Custom Nginx configuration
+
+You can also create your own type. To do this take any template from the `provisioning/templates/nginx` folder as a basis and make the necessary changes. You need to place this file into the same folder. After that, you will be able to use your own custom type:
+
+```yaml
+sites:
+    - map:  my-site.local
+      to:   /home/vagrant/workspace/my-site/public
+      # provisioning/templates/nginx/phalcon-advanced.conf.j2
+      type: phalcon-advanced
+```
+
+Do you need a custom _global_ Nginx configuration? Yes, this is possible. Fox example, let's create the autoindex configuration.
+
+File `/home/user/nginx.d/00-autoindex.conf`:
+
+```nginx
+# Processes requests ending with the slash character (‘/’) and produces a directory listing
+autoindex on;
+```
+
+Add the desired settings to your file and then add it to the `copy` section:
+
+```yaml
+copy:
+    - from: /home/user/nginx.d/00-autoindex.conf
+      to: /etc/nginx/conf.d/
+```
+
 <a name='installation-configuration-hosts'></a>
 #### Configuring the `hosts` file
 You must add the "domains" for your Nginx sites to the hosts file on your machine. The hosts file will redirect requests for your Phalcon sites into your Phalcon Box machine. On Mac and Linux, this file is located at `/etc/hosts`. On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`. The lines you add to this file will look like the following:
@@ -241,6 +273,25 @@ http://phalcon.local
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
+```
+
+<a name='installation-aditional-packages'></a>
+### Install aditional packages
+
+We did our best to provide Phalcon Box with all necessary programs and libraries. However, it should be understood that the typical user does not need all possible packages which can be installed. Phalcon Box must be of reasonable size so that it could be used by even those people who are experiencing difficulties with bandwidth of the Internet channel.
+
+Because of these considerations, we allow users to specify which custom packages they need by every provision. To install the necessary packages add their names in the `apt` section:
+
+```yaml
+# Provisioning features
+provision:
+    # do full system update for each full provisoning
+    update: true
+
+    # Install wkhtmltopdf and libffi-dev packages
+    apt:
+        - wkhtmltopdf
+        - libffi-dev
 ```
 
 <a name='installation-launching-phalcon-box'></a>
@@ -489,9 +540,5 @@ vagrant plugin install vagrant-vbguest
   VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
 
 **Solution:**
-
-```bash
-vagrant plugin install vagrant-vbguest
-```
 
 You need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `Intel VT-x`.
