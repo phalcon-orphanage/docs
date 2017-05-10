@@ -222,7 +222,7 @@ sudo port install php56-phalcon
 Edit your php.ini file and then append at the end:
 
 ```ini
-extension=php_phalcon.dll
+extension=php_phalcon.so
 ```
 
 Restart your webserver.
