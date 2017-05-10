@@ -333,7 +333,7 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 
 ### Требования
 
-- PHP >= 5.5 development resources
+- Набор инструментов для разработчика PHP >= 5.5
 - XCode
 
 <a name='requirements-software'></a>
@@ -483,9 +483,10 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# Обратите внимание:
+# Для PHP 7 вам необходимо использовать
 # cd cphalcon/build/php7/32bits
-# or
+# или
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -505,9 +506,10 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# Обратите внимание:
+# Для PHP 7 вам необходимо использовать
 # cd cphalcon/build/php7/32bits
-# or
+# или
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -537,7 +539,7 @@ and load it on your web browser. There should be a section for Phalcon. If there
 You can also check your installation from the command line:
 
 ```bash
-php -r 'print_r(get_loaded_extensions())'
+php -r 'print_r(get_loaded_extensions());'
 ```
 
 This will output something similar to this:
