@@ -184,7 +184,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 #### Установка Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Чтобы установить Phalcon выполните следующие команды в терминале:
 
 <a name='requirements-hardware'></a>
 
@@ -255,7 +255,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
+##### Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. {.alert.alert-warning}
 
 <a name='requirements-hardware'></a>
 
@@ -427,7 +427,7 @@ sudo zypper install php5-devel gcc make
 sudo yum install php-devel pcre-devel gcc make
 ```
 
-### Compile Phalcon
+### Компиляция Phalcon
 
 We first need to clone Phalcon from the Github repository
 
@@ -442,22 +442,22 @@ cd cphalcon/build
 sudo ./install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Вам понадобится добавить `extension=phalcon.so` в ваш php.ini и перезапустить веб-сервер для загрузки расширения.
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+# Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+# Ubuntu/Debian с apache2: создайте файл 30-phalcon.ini в /etc/php5/apache2/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+# Ubuntu/Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+# Ubuntu/Debian с php5-cli: создайте файл 30-phalcon.ini в /etc/php5/cli/conf.d/ со следующим содержимым:
 extension=phalcon.so
 ```
 
