@@ -6,7 +6,7 @@
     <li>
       <a href="#routing">Routing</a> <ul>
         <li>
-          <a href="#routing-setup">Setup</a> <ul>
+          <a href="#routing-setup">Настройка</a> <ul>
             <li>
               <a href="#routing-setup-application">Application object</a>
             </li>
@@ -129,7 +129,7 @@
     </li>
     
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">События</a> <ul>
         <li>
           <a href="#events-available-events">Available events</a> <ul>
             <li>
@@ -195,7 +195,7 @@
     </li>
     
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Модели</a>
     </li>
     <li>
       <a href="#model-instances">Injecting Model Instances</a>
