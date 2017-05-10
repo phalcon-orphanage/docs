@@ -473,7 +473,7 @@ You can still add any custom parameters to function and pass associative array i
 
 ## Rollerin Kalıtımı
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+`Phalcon\Acl\Role` sınıfının sağladığı kalıtımı kullanarak karmaşık rol yapıları oluşturabilirsiniz. Roller diğer rollerden miras kalabilir, böylece üst sınıflara veya kaynak alt kümelerine erişime izin verebilir. Rol kalıtımını kullanmak için, devredilen rolü, listede bu rolü eklerken yöntem çağrısının ikinci parametresi olarak iletmeniz gerekir.
 
 ```php
 <?php
@@ -512,42 +512,42 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 if (!is_file('app/security/acl.data')) {
     $acl = new AclList();
 
-    // ... Define roles, resources, access, etc
+    // ... Rolleri, kaynakları, erişimi vb. tanımlayın
 
-    // Store serialized list into plain file
+    // Seri hale getirilmiş listeyi düz dosyaya kaydedin
     file_put_contents(
         'app/security/acl.data',
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // Sıralı dosyadan ACL nesnesini geri yükle
     $acl = unserialize(
         file_get_contents('app/security/acl.data')
     );
 }
 
-// Use ACL list as needed
-if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
-    echo 'Access granted!';
+// ACL listesini gerektiği gibi kullanın
+if ($acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'edit')) {
+    echo 'Erişim izni verildi!';
 } else {
-    echo 'Access denied :(';
+    echo 'Erişim reddedildi :(';
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+Geliştirme sırasında Memory adaptörünü kullanmanız ve canlı ortamda diğer adaptörlerden birini kullanmanız önerilir.
 
 <a name='setup'></a>
 
 0## Olaylar
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. Aşağıdaki olaylar desteklenmektedir:
+`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Olaylar 'acl' türünü kullanarak tetiklenir. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
-| Olay Adı          | Tetiklendi                                              | İşlemi durdurabilir mi? |
-| ----------------- | ------------------------------------------------------- |:-----------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |          Evet           |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |          Hayır          |
+| Olay Adı          | Tetiklendi                                                               | İşlemi durdurabilir mi? |
+| ----------------- | ------------------------------------------------------------------------ |:-----------------------:|
+| beforeCheckAccess | Bir rol/kaynağa erişim olup olmadığını kontrol etmeden önce tetiklenir   |          Evet           |
+| afterCheckAccess  | Bir rol/kaynağa erişim olup olmadığını kontrol ettikten sonra tetiklenir |          Hayır          |
 
-The following example demonstrates how to attach listeners to this component:
+Aşağıdaki örnek, dinleyicilerin bu bileşene nasıl ekleneceğini göstermektedir:
 
 ```php
 <?php
