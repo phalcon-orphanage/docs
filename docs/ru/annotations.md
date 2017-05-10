@@ -128,7 +128,7 @@ someParameter='the value', false
 
 ## Чтение аннотаций
 
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+Для простого получения аннотаций класса с использованием объектно-ориентированного интерфейса, реализован рефлектор:
 
 ```php
 <?php
@@ -137,26 +137,26 @@ use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
 
 $reader = new MemoryAdapter();
 
-// Reflect the annotations in the class Example
+// Отразить аннотации в классе Example
 $reflector = $reader->get('Example');
 
-// Read the annotations in the class' docblock
+// Прочесть аннотации в блоке документации класса
 $annotations = $reflector->getClassAnnotations();
 
-// Traverse the annotations
+// Произвести обход всех аннотаций
 foreach ($annotations as $annotation) {
-    // Print the annotation name
+    // Вывести название аннотации
     echo $annotation->getName(), PHP_EOL;
 
-    // Print the number of arguments
+    // Вывести количество аргументов
     echo $annotation->numberArguments(), PHP_EOL;
 
-    // Print the arguments
+    // Вывести аргументы
     print_r($annotation->getArguments());
 }
 ```
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+Процесс чтения аннотаций является очень быстрым. Тем не менее, по причинам производительности, мы рекомендуем использовать адаптер для хранения обработанных аннотаций. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
 `Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
 
