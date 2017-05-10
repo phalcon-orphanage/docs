@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Using Views</a> <ul>
+      <a href="#overview">Używanie widoków</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+          <a href="#integrating-views-with-controllers">Integracja widoków z kontrolerami</a>
         </li>
         <li>
           <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
