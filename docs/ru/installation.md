@@ -40,7 +40,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
+                  <a href="#installation-linux-debian-other-ppa">Сторонние PPA-репозитории</a>
                 </li>
               </ul>
             </li>
@@ -386,7 +386,7 @@ The available DLLs are:
 |     x86     |  5.6   | Потокобезопасный                     |
 |     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
 
-Edit your php.ini file and then append at the end:
+Откройте ваш php.ini и добавьте в конец файла:
 
 ```ini
 extension=php_phalcon.dll
