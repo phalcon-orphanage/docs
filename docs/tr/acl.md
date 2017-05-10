@@ -218,34 +218,34 @@ Also if you don't provide any parameters in `isAllowed()` method then default be
 use Phalcon\Acl;
 
 <?php
-// Set access level for role into resources with custom function
+// Rol için erişim düzeyini özel fonksiyonla kaynaklara ayarla
 $acl->allow(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'search',
     function ($a) {
         return $a % 2 === 0;
     }
 );
 
-// Check whether role has access to the operation with custom function
+// Rolün, özel fonksiyonla işleme erişimi olup olmadığını kontrol edin
 
 // Returns true
 $acl->isAllowed(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'search'
 );
 
-// Change no arguments default action
+// Argümanları değiştirme varsayılan eylem
 $acl->setNoArgumentsDefaultAction(
     Acl::DENY
 );
 
-// Returns false
+// Geriye false döner
 $acl->isAllowed(
-    'Guests',
-    'Customers',
+    'Ziyaretçiler',
+    'Müşteriler',
     'search'
 );
 ```
@@ -263,7 +263,7 @@ Our `UserRole` class
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// roleName olarak kullanılacak sınıfı oluştur
 class UserRole implements RoleAware
 {
     protected $id;
@@ -281,7 +281,7 @@ class UserRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // RoleAware arabiriminden uygulanan fonksiyon
     public function getRoleName()
     {
         return $this->roleName;
