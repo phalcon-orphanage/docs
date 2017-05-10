@@ -472,13 +472,13 @@ $acl->isAllowed(
 );
 ```
 
-You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
+Вы по-прежнему можете использовать любые параметры в определении пользовательской функции и передавать ассоциативный массив в метод `isAllowed()`, порядок ключей не имеет значения.
 
 <a name='roles-inheritance'></a>
 
 ## Наследование ролей
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+Вы можете строить сложные структуры ролей используя наследование, которое предоставляет класс `Phalcon\Acl\Role`. Роли могут наследовать доступ других ролей, таким образом предоставляя доступ к надмножествам или подмножествам ресурсов. Чтобы использовать наследование ролей вам необходимо передать в качестве второго параметра другую роль при определении роли.
 
 ```php
 <?php
