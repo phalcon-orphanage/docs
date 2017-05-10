@@ -168,11 +168,11 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+или
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -245,11 +245,11 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-or
+или
 
 <a name='requirements-hardware'></a>
 
-6##### Nightly releases
+6##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -327,11 +327,11 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 <a name='requirements-software'></a>
 
-3## Mac OS X
+3## macOS
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Требования
 
 - PHP >= 5.5 development resources
 - XCode
