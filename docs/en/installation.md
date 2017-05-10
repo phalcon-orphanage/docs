@@ -10,7 +10,7 @@
                 - [Stable releases](#installation-linux-debian-repository-stable)
                 - [Nightly releases](#installation-linux-debian-repository-nightly)
             - [Phalcon installation](#installation-linux-debian-phalcon)
-                - [PHP 5.7](#installation-linux-debian-phalcon-php5)
+                - [PHP 5.x](#installation-linux-debian-phalcon-php5)
                 - [PHP 7](#installation-linux-debian-phalcon-php7)
             - [Additional PPAs](#installation-linux-debian-other-ppa)
         - [RPM based distributions (CentOS, Fedora, etc.)](#installation-linux-rpm)
@@ -18,7 +18,7 @@
                 - [Stable releases](#installation-linux-rpm-repository-stable)
                 - [Nightly releases](#installation-linux-rpm-repository-nightly)
             - [Phalcon installation](#installation-linux-rpm-phalcon)
-                - [PHP 5.7](#installation-linux-rpm-phalcon-php5)
+                - [PHP 5.x](#installation-linux-rpm-phalcon-php5)
                 - [PHP 7](#installation-linux-rpm-phalcon-php7)
             - [Additional RPMs](installation-linux-rpm-other-rpm)
         - [FreeBSD](#installation-freebsd)
@@ -29,7 +29,7 @@
     - [Windows](#installation-windows)
     - [Compile from sources](#installation-sources)
     - [Advanced Compilation](#installation-sources-advanced)
-    
+
 </div>
 
 <a name='requirements'></a>
@@ -40,13 +40,13 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 ## Hardware
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
-Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU. 
- 
+Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+
 <a name='requirements-software'></a>
 ## Software
 * PHP >= 5.5
 
-##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 ##### {.alert .alert-danger} 
+##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 ##### {.alert .alert-danger}
 
 ### Optional depending on the needs of your application
 * [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
@@ -60,7 +60,7 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
 <a name='installation-linux'></a>
 ## Linux
-To install Phalcon on linux, you will need to add our repository in your distribution and then install it. 
+To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
 
 <a name='installation-linux-debian'></a>
 ### DEB based distributions (Debian, Ubuntu, etc.)
@@ -74,7 +74,7 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or 
+or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 ##### Nightly releases
@@ -89,7 +89,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 To install Phalcon you need to issue the following commands in your terminal:
 
 <a name='installation-linux-debian-phalcon-php5'></a>
-##### PHP 5.7
+##### PHP 5.x
 ```bash
 sudo apt-get update
 sudo apt-get install php5-phalcon
@@ -148,7 +148,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 To install Phalcon you need to issue the following commands in your terminal:
 
 <a name='installation-linux-rpm-phalcon-php5'></a>
-##### PHP 5.7
+##### PHP 5.x
 ```bash
 sudo yum update
 sudo yum install php56u-phalcon
@@ -236,7 +236,7 @@ To use phalcon on Windows you will need to download a DLL library. Identify your
 ![phpinfo](/images/content/phpinfo-api.png)
 
 The available DLLs are:
- 
+
 | Architecture | Version | Type                  |
 | :----------: | :-----: |---------------------- |
 | x64          | 7.x     | Thread safe           |
@@ -259,7 +259,7 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 ## Compile from Sources
-Compiling from source is similar to most environments (Linux/Mac). 
+Compiling from source is similar to most environments (Linux/Mac).
 
 ### Requirements
 * PHP 5.5.x/5.6.x/7.0.x development resources
@@ -334,7 +334,7 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use 
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
 # or
 # cd cphalcon/build/php7/64bits
@@ -370,7 +370,7 @@ phpinfo();
 ```
 
 and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
- 
+
 You can also check your installation from the command line:
 
 ```bash
@@ -398,7 +398,7 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-##### Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/nginX), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. ##### {.alert .alert-danger} 
+##### Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/nginX), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. ##### {.alert .alert-danger}
 
 
 #### Dev environments
@@ -416,11 +416,7 @@ Apache
     .htaccess
     VirtualHost/Directory
 
-nginX
-
-
-
-
+Nginx
 
 
 [download-dll](https://phalconphp.com/en/download/windows)
