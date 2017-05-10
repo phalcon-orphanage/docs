@@ -148,7 +148,7 @@ $acl->allow('Ziyaretçiler', 'Müşteriler', 'create');
 $acl->deny('Ziyaretçiler', 'Müşteriler', 'update');
 ```
 
-The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
+`allow()` yöntemi, belirli bir role belirli bir kaynağa erişim izni verdiğini belirtir. `deny()` yöntemi tersini yapar.
 
 <a name='querying'></a>
 
@@ -175,7 +175,7 @@ $acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'create');
 
 ## Fonksiyona Dayalı Erişim
 
-Ayrıca, 4'üncü parametre olarak boolean değerini döndüren özel işlevinizi ekleyebilirsiniz. `isAllowed()` yöntemini kullandığınızda çağrılır. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+Ayrıca, 4'üncü parametre olarak boolean değerini döndüren özel işlevinizi ekleyebilirsiniz. `isAllowed()` yöntemini kullandığınızda çağrılır. Parametreleri ilişkisel dizi olarak `isAllowed()` yöntemine 4. argüman olarak aktarabilirsiniz, burada anahtar tanımlı işlevimizdeki parametre adıdır.
 
 ```php
 <?php
@@ -212,7 +212,7 @@ $acl->isAllowed(
 );
 ```
 
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
+Ayrıca `isAllowed()` yönteminde herhangi bir parametre sağlamazsanız, varsayılan davranış `Acl::ALLOW` olacaktır. Bunu `setNoArgumentsDefaultAction()` yöntemi kullanarak değiştirebilirsiniz.
 
 ```php
 use Phalcon\Acl;
@@ -254,7 +254,7 @@ $acl->isAllowed(
 
 ## Rol adı ve kaynak adı olan nesneler
 
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+Nesneleri `roleName` ve `resourceName` olarak geçirebilirsiniz. `roleName` için `Phalcon\Acl\RoleAware` sınıfı ve `resourceName` için `Phalcon\Acl\ResourceAware` sınıfları uygulanmalıdır.
 
 `UserRole` sınıfımız
 
@@ -390,7 +390,7 @@ $acl->isAllowed(
 );
 ```
 
-Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
+Ayrıca, bu nesnelere özel fonksiyonunuzdaki `allow()` veya `deny()` içinde erişebilirsiniz. Bunlar otomatik olarak fonksiyon türüne göre parametrelere bağlanırlar.
 
 ```php
 <?php
@@ -467,7 +467,7 @@ $acl->isAllowed(
 );
 ```
 
-You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
+Fonksiyon ve ilişkisel diziyi `isAllowed()` yönteminde geçirmek için herhangi bir özel parametre ekleyebilirsiniz. Ayrıca sırası önemli değil.
 
 <a name='roles-inheritance'></a>
 
@@ -499,7 +499,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 
 ## ACL Listelerini Seri Hale Getirme
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. Bunu şu şekilde yapabilirsiniz:
+Performansı artırmak için `Phalcon\Acl` örnekleri APC, oturum, metin dosyaları veya bir veritabanı tablosunda serileştirilebilir ve saklanabilir, böylece tüm listeyi yeniden tanımlamanıza gerek kalmadan yüklenebilirler. Bunu şu şekilde yapabilirsiniz:
 
 ```php
 <?php
@@ -540,7 +540,7 @@ Geliştirme sırasında Memory adaptörünü kullanmanız ve canlı ortamda diğ
 
 0## Olaylar
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Olaylar 'acl' türünü kullanarak tetiklenir. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
+`Phalcon\Acl` varsa olayları `EventsManager`'a gönderebilir. Olaylar 'acl' türünü kullanarak tetiklenir. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
 | Olay Adı          | Tetiklendi                                                               | İşlemi durdurabilir mi? |
 | ----------------- | ------------------------------------------------------------------------ |:-----------------------:|
