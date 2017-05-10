@@ -1,24 +1,46 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a>
+      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a> <ul>
+        <li>
+          <a href="#structure">Structure</a>
+        </li>
+        <li>
+          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+        </li>
+        <li>
+          <a href="#tasks">Tasks</a>
+        </li>
+        <li>
+          <a href="#processing-action-parameters">Processing action parameters</a>
+        </li>
+        <li>
+          <a href="#running-tasks-chain">Running tasks in a chain</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>
 
-# Creating a Command Line (CLI) Application
+<a name='creating-cli-application'></a>
+
+# Bir Komut Satırı (CLI) Uygulaması Oluşturma
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
-## Structure
+<a name='structure'></a>
+
+## Yapı
 
 A minimal structure of a CLI application will look like this:
 
-* app/config/config.php
-* app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+- `app/config/config.php`
+- `app/tasks/MainTask.php`
+- `app/cli.php` <-- main bootstrap file
 
-## Creating a Bootstrap
+<a name='creating-bootstrap'></a>
+
+## Bir Önyükleme Oluşturma
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
@@ -31,11 +53,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// CLI uygulamamız için servis kapsayıcısı 
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
  */
 $loader = new Loader();
 
@@ -47,7 +69,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Ayar dosyasını yükleyelim (varsa)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -80,9 +102,16 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    echo $e->getMessage();
-
-    exit(255);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Throwable $throwable) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -92,7 +121,9 @@ This piece of code can be run using:
 php app/cli.php
 ```
 
-## Tasks
+<a name='tasks'></a>
+
+## Görevler
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -107,12 +138,14 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 }
 ```
 
-## Processing action parameters
+<a name='processing-action-parameters'></a>
+
+## Eylem parametrelerini işlemek
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -127,7 +160,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 
     /**
@@ -135,11 +168,11 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf('merhaba %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('best regards, %s', $params[1]);
+        echo sprintf('saygılarımla, %s', $params[1]);
 
         echo PHP_EOL;
     }
@@ -149,13 +182,15 @@ class MainTask extends Task
 We can then run the following command:
 
 ```bash
-php app/cli.php main test world universe
+php app/cli.php main test dünya evren
 
-hello world
-best regards, universe
+merhaba dünya
+saygılarımla, evren
 ```
 
-## Running tasks in a chain
+<a name='running-tasks-chain'></a>
+
+## Bir zincirde görevleri çalıştırma
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
@@ -168,9 +203,16 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    echo $e->getMessage();
-
-    exit(255);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Throwable $throwable) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -185,7 +227,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Bu varsayılan görev ve varsayılan eylemdir" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -197,7 +239,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Ben de ekrana basılmış olacağım!" . PHP_EOL;
     }
 }
 ```

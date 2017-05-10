@@ -31,7 +31,7 @@
                 <li>
                   <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
                     <li>
-                      <a href="#installation-linux-debian-phalcon-php5">PHP 5.7</a>
+                      <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php7">PHP 7</a>
@@ -61,7 +61,7 @@
                 <li>
                   <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
                     <li>
-                      <a href="#installation-linux-rpm-phalcon-php5">PHP 5.7</a>
+                      <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php7">PHP 7</a>
@@ -188,7 +188,7 @@ To install Phalcon you need to issue the following commands in your terminal:
 
 <a name='requirements-hardware'></a>
 
-0##### PHP 5.7
+0##### PHP 5.x
 
 ```bash
 sudo apt-get update
@@ -265,7 +265,7 @@ To install Phalcon you need to issue the following commands in your terminal:
 
 <a name='requirements-hardware'></a>
 
-8##### PHP 5.7
+8##### PHP 5.x
 
 ```bash
 sudo yum update
@@ -358,7 +358,7 @@ sudo port install php56-phalcon
 Edit your php.ini file and then append at the end:
 
 ```ini
-extension=php_phalcon.dll
+extension=php_phalcon.so
 ```
 
 Restart your webserver.
@@ -367,7 +367,7 @@ Restart your webserver.
 
 6## Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our \[download\]\[download-dll\] page.
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
 
 To use phalcon on Windows you will need to download a DLL library. Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
@@ -415,7 +415,7 @@ You can install these packages in your system with the relevant package manager.
 sudo apt-get install php5-dev libpcre3-dev gcc make
 ```
 
-#### Suse:
+#### Suse
 
 ```bash
 sudo zypper install php5-devel gcc make
@@ -471,9 +471,9 @@ Phalcon automatically detects your architecture, however, you can force the comp
 cd cphalcon/build
 
 # One of the following:
-sudo ./install 32bits
-sudo ./install 64bits
-sudo ./install safe
+sudo ./install --arch 32bits
+sudo ./install --arch 64bits
+sudo ./install --arch safe
 ```
 
 If the automatic installer fails you can build the extension manually
@@ -483,28 +483,41 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use 
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
 # or
 # cd cphalcon/build/php7/64bits
 
 make clean
+phpize --clean
 
 export CFLAGS="-O2 --fvisibility=hidden"
+./configure --enable-phalcon
 
-# Example: /opt/php-5.6.15
-export CUSTOM_PHP_INSTALLATION_PATH=/your/php/installation/path
+make
+make install
+```
 
-# Example: /opt/php-5.6.15/bin/phpize --clean
-$CUSTOM_PHP_INSTALLATION_PATH/bin/phpize --clean
+If you have specific php versions running
 
-# Example: /opt/php-5.6.15/bin/phpize
-$CUSTOM_PHP_INSTALLATION_PATH/bin/phpize
+```bash
+git clone https://github.com/phalcon/cphalcon
+# cd cphalcon/build/php5/32bits
+cd cphalcon/build/php5/64bits
 
-# Example: ./configure --with-php-config=/opt/php-5.6.15/bin/php-config
-./configure --with-php-config=$CUSTOM_PHP_INSTALLATION_PATH/bin/php-config --enable-phalcon
+# NOTE: for PHP 7 you have to use
+# cd cphalcon/build/php7/32bits
+# or
+# cd cphalcon/build/php7/64bits
 
-make && sudo make install
+make clean
+/opt/php-5.6.15/bin/phpize --clean
+
+export CFLAGS="-O2 --fvisibility=hidden"
+./configure --with-php-config=/opt/php-5.6.15/bin/php-config --enable-phalcon
+
+make
+make install
 ```
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
@@ -549,21 +562,3 @@ php -m
 ```
 
 ##### Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/nginX), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. {.alert.alert-danger}
-
-#### Dev environments
-
-- Vagrant
-- Docker
-- Homestead Improved
-
-#### Sample applications
-
-Hello World Configuration Files
-
-#### Web Server Configuration
-
-Apache .htaccess VirtualHost/Directory
-
-nginX
-
-[download-dll](https://phalconphp.com/en/download/windows)
