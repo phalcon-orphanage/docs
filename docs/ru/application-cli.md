@@ -185,7 +185,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Это задача по умолчанию с действием по умолчанию" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -197,9 +197,9 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Я буду напечатано тоже!" . PHP_EOL;
     }
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий `Phalcon\Cli\Task` и реализовать такую логику там.
