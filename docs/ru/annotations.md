@@ -47,7 +47,7 @@
 <?php
 
 /**
- * Это описание класса
+ * Это специальное свойство
  *
  * @AmazingClass(true)
  */
@@ -87,7 +87,7 @@ class Example
 <?php
 
 /**
- * Это свойство с особенностью
+ * Это специальное свойство
  *
  * @SpecialFeature
  *
@@ -97,27 +97,27 @@ class Example
  */
 ```
 
-The parser is highly flexible, the following docblock is valid:
+Парсер является очень гибким инструментом, поэтому следующий блок документации также является правильным:
 
 ```php
 <?php
 
 /**
- * This a property with a special feature @SpecialFeature({
+ * Это специальное свойство @SpecialFeature({
 someParameter='the value', false
 
- })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
+ })  Еще комментарии @AnotherSpecialFeature(true) @MoreAnnotations
  **/
 ```
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+Тем не менее, рекомендуется помещать аннотации в конце блоков документации, чтобы сделать код более понятным и удобным для поддержки:
 
 ```php
 <?php
 
 /**
- * This a property with a special feature
- * More comments
+ * Это специальное свойство
+ * Еще комментарии
  *
  * @SpecialFeature({someParameter='the value', false})
  * @AnotherSpecialFeature(true)
@@ -416,7 +416,7 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 ### Реализация собственных адаптеров
 
-The `Phalcon\Annotations\AdapterInterface` interface must be implemented in order to create your own annotations adapters or extend the existing ones.
+Для создания своего адаптера необходимо реализовать интерфейс `Phalcon\Annotations\AdapterInterface`, или использовать наследование от существующего адаптера.
 
 <a name='resources'></a>
 
