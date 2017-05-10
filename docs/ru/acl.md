@@ -487,16 +487,16 @@ use Phalcon\Acl\Role;
 
 // ...
 
-// Create some roles
+// Создаём некоторые роли
 
 $roleAdmins = new Role('Administrators', 'Super-User role');
 
 $roleGuests = new Role('Guests');
 
-// Add 'Guests' role to ACL
+// Добавляем роль 'Guests' в ACL
 $acl->addRole($roleGuests);
 
-// Add 'Administrators' role inheriting from 'Guests' its accesses
+// Добавляем роль 'Administrators' наследуемую от роли 'Guests'
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
