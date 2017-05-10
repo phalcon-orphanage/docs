@@ -504,7 +504,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 
 ## Сериализация ACL списков
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+Чтобы увеличить производительность, объект `Phalcon\Acl` можно сериализовать для хранения в APC, сессии, текстовых файлах или в базе данных. Таким образом, список доступа возможно повторно использовать, без необходимости переобъявлять его каждый раз. Вы можете сделать это следующим образом:
 
 ```php
 <?php
@@ -513,33 +513,33 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 // ...
 
-// Check whether ACL data already exist
+// Проверяем, существуют ли ACL данные
 if (!is_file('app/security/acl.data')) {
     $acl = new AclList();
 
-    // ... Define roles, resources, access, etc
+    // ... Определяем роли, ресурсы, доступ и т.д.
 
-    // Store serialized list into plain file
+    // Сохраняем сериализованный объект в файл
     file_put_contents(
         'app/security/acl.data',
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // Восстанавливаем ACL объект из текстового файла
     $acl = unserialize(
         file_get_contents('app/security/acl.data')
     );
 }
 
-// Use ACL list as needed
+// Используем ACL
 if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
-    echo 'Access granted!';
+    echo 'Доступ разрешен!';
 } else {
-    echo 'Access denied :(';
+    echo 'Доступ запрещен :(';
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+Рекомендуется использовать адаптер Memory в процессе разработки, но использовать любой другой адаптер в процессе эксплуатации вашего приложения.
 
 <a name='setup'></a>
 
