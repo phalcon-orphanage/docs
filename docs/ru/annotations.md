@@ -411,7 +411,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
 
-| Класс | Описание | |\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---+\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\----| | `Phalcon\Annotations\Adapter\Memory` | Аннотации в этом случае хранятся в памяти до завершения запроса. Аннотации в этом случае хранятся в памяти до завершения запроса. При перезагрузке страницы разбор будет осуществлён заново. This adapter is suitable for a development stage | | `Phalcon\Annotations\Adapter\Files` | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache. | | `Phalcon\Annotations\Adapter\Apc` | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter | | `Phalcon\Annotations\AdapterXcache` | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too |
+| Класс | Описание | |\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---+\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\---\----| | `Phalcon\Annotations\Adapter\Memory` | Аннотации в этом случае хранятся в памяти до завершения запроса. Аннотации в этом случае хранятся в памяти до завершения запроса. При перезагрузке страницы разбор будет осуществлён заново. Идеально для стадии разработки. | `Phalcon\Annotations\Adapter\Files` | Разобранные аннотации хранятся в PHP-файлах, увеличивая производительность без необходимости постоянно анализа. Рекомендуется совместное использование с кэшированием байт-кода. | | `Phalcon\Annotations\Adapter\Apc` | Разобранные аннотации хранятся в APC-кэше. Самый быстрый адаптер. | | `Phalcon\Annotations\AdapterXcache` | Разобранные аннотации хранятся в XCache-кэше. Этот адаптер считается морально устаревшим и оставлен только для обеспечения обратной совместимости.
 
 <a name='adapters-custom'></a>
 
@@ -423,4 +423,4 @@ class SecurityAnnotationsPlugin extends Plugin
 
 ## Дополнительная информация
 
-- [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+- [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
