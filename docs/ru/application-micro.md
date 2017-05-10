@@ -6,7 +6,7 @@
     <li>
       <a href="#routing">Routing</a> <ul>
         <li>
-          <a href="#routing-setup">Setup</a> <ul>
+          <a href="#routing-setup">Настройка</a> <ul>
             <li>
               <a href="#routing-setup-application">Application object</a>
             </li>
@@ -129,7 +129,7 @@
     </li>
     
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">События</a> <ul>
         <li>
           <a href="#events-available-events">Available events</a> <ul>
             <li>
@@ -195,7 +195,7 @@
     </li>
     
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Модели</a>
     </li>
     <li>
       <a href="#model-instances">Injecting Model Instances</a>
@@ -211,9 +211,9 @@
 
 # Micro Applications
 
-Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
+Phalcon предлагает очень «тонкое» приложение, так что можно создавать «Микро» приложения с минимальным PHP-кодом.
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
 
 ```php
 <?php
