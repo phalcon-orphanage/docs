@@ -1,22 +1,44 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a>
+      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+        <li>
+          <a href="#structure">Structure</a>
+        </li>
+        <li>
+          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+        </li>
+        <li>
+          <a href="#tasks">Tasks</a>
+        </li>
+        <li>
+          <a href="#processing-action-parameters">Processing action parameters</a>
+        </li>
+        <li>
+          <a href="#running-tasks-chain">Running tasks in a chain</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>
+
+<a name='creating-cli-application'></a>
 
 # Creating a Command Line (CLI) Application
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
+<a name='structure'></a>
+
 ## Structure
 
 A minimal structure of a CLI application will look like this:
 
-* app/config/config.php
-* app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+- `app/config/config.php`
+- `app/tasks/MainTask.php`
+- `app/cli.php` <-- main bootstrap file
+
+<a name='creating-bootstrap'></a>
 
 ## Creating a Bootstrap
 
@@ -80,9 +102,16 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    echo $e->getMessage();
-
-    exit(255);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Throwable $throwable) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -91,6 +120,8 @@ This piece of code can be run using:
 ```bash
 php app/cli.php
 ```
+
+<a name='tasks'></a>
 
 ## Tasks
 
@@ -111,6 +142,8 @@ class MainTask extends Task
     }
 }
 ```
+
+<a name='processing-action-parameters'></a>
 
 ## Processing action parameters
 
@@ -155,6 +188,8 @@ hello world
 best regards, universe
 ```
 
+<a name='running-tasks-chain'></a>
+
 ## Running tasks in a chain
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
@@ -168,9 +203,16 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    echo $e->getMessage();
-
-    exit(255);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Throwable $throwable) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
