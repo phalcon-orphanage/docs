@@ -94,7 +94,7 @@ php app/cli.php
 
 ## Görevler
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -107,14 +107,14 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 }
 ```
 
-## Processing action parameters
+## Eylem parametrelerini işlemek
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Örnek önyükleyici dosyasında da göreceğiniz üzere işlemlere parametreler geçirebilirsiniz.
 
 If you run the application with the following parameters and action:
 
