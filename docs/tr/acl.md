@@ -18,7 +18,7 @@
           <a href="#querying">ACL Sorgulama</a>
         </li>
         <li>
-          <a href="#function-based-access">Fonksiyona dayalı erişim</a>
+          <a href="#function-based-access">Fonksiyona Dayalı Erişim</a>
         </li>
         <li>
           <a href="#objects">Rol adı ve kaynak adı olan nesneler</a>
@@ -33,7 +33,7 @@
           <a href="#events">Olaylar</a>
         </li>
         <li>
-          <a href="#custom-adapters">Kendi bağdaştırıcılarını uygulama</a>
+          <a href="#custom-adapters">Kendi Bağdaştırıcılarını Uygulama</a>
         </li>
       </ul>
     </li>
@@ -173,7 +173,7 @@ $acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'create');
 
 <a name='function-based-access'></a>
 
-## Fonksiyona dayalı erişim
+## Fonksiyona Dayalı Erişim
 
 Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
 
@@ -584,6 +584,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='setup'></a>
 
-1## Kendi bağdaştırıcılarını uygulama
+1## Kendi Bağdaştırıcılarını Uygulama
 
 `Phalcon\Acl\AdapterInterface` arabirimi kendi ACL bağdaştırıcıları oluşturmak veya mevcut olanları genişletmek için uygulanması gerekir.
