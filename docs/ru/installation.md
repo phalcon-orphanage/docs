@@ -29,7 +29,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Установка Phalcon</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.7</a>
                     </li>
@@ -148,7 +148,7 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
 ## Linux
 
-To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
+Перед установкой Phalcon в Linux, необходимо добавить репозиторий.
 
 <a name='installation-linux-debian'></a>
 
@@ -158,7 +158,7 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 #### Настройка репозитория
 
-Add the repository to your distribution:
+Добавьте репозиторий для вашего дистрибутива:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
@@ -182,7 +182,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Установка Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -212,14 +212,14 @@ sudo apt-get install php7.0-phalcon
 
 If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+Добавление репозитория:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+установка Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
@@ -235,7 +235,7 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 4#### Настройка репозитория
 
-Add the repository to your distribution:
+Добавьте репозиторий для вашего дистрибутива:
 
 <a name='requirements-hardware'></a>
 
@@ -521,7 +521,7 @@ phpinfo();
 
 and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
 
-You can also check your installation from the command line:
+Также вы можете проверить вашу установку из командной строки:
 
 ```bash
 php -r 'print_r(get_loaded_extensions())'
@@ -560,7 +560,7 @@ php -m
 
 Hello World Configuration Files
 
-#### Web Server Configuration
+#### Конфигурация веб-сервера
 
 Apache .htaccess VirtualHost/Directory
 
