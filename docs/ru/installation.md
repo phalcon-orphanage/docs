@@ -375,7 +375,7 @@ To use phalcon on Windows you will need to download a DLL library. Identify your
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-The available DLLs are:
+Доступны следующие DLL:
 
 | Архитектура | Версия | Тип                                  |
 |:-----------:|:------:| ------------------------------------ |
@@ -478,7 +478,7 @@ sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-If the automatic installer fails you can build the extension manually
+Если в результате автоматической установки произошел сбой, вы можете попробовать собрать расширение вручную:
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
