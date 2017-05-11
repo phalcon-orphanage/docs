@@ -369,9 +369,9 @@ extension=php_phalcon.so
 
 6## Windows
 
-Для использования Phalcon в Windows вам понадобится установить phalcon.dll. We have compiled several DLLs depending on the target platform. DLLs могут быть найдены на нашей страничке [загрузок](https://phalconphp.com/en/download/windows).
+Для использования Phalcon в Windows вам понадобится установить phalcon.dll. Мы подготовили различные DLL для большинства целевых платформ. DLL могут быть найдены на нашей страничке [загрузок](https://phalconphp.com/en/download/windows).
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+В первую очередь определите вашу версию PHP, а также архитектуру. Обратите внимание, если вы скачаете неподходящую версию DLL, Phalcon работать не будет. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
