@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Reading Configurations</a> <ul>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">Нативные массивы</a>
         </li>
         <li>
           <a href="#file-adapter">File Adapters</a>
