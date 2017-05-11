@@ -30,7 +30,7 @@
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## Нативные массивы
 
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
@@ -80,7 +80,7 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Class                            | Description                                                                                      |
+| Класс                            | Описание                                                                                         |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
 | `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
@@ -192,7 +192,7 @@ You can inject configuration dependency to controller allowing us to use `Phalco
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создание DI
 $di = new FactoryDefault();
 
 $di->set(
