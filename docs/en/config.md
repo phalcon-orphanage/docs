@@ -5,8 +5,9 @@
     - [File Adapters](#file-adapter)
     - [Reading INI Files](#ini-files)
     - [Merging Configurations](#merging)
+    - [Nested Configuration](#nested-configuration)
     - [Injecting Configuration Dependency](#injecting-into-di)
-    
+
 </div>
 
 <a name='overview'></a>
@@ -157,9 +158,56 @@ Phalcon\Config Object
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
+<a name='nested-configuration'></a>
+## Nested Configuration
+
+Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+   [
+        'phalcon' => [
+            'baseuri' => '/phalcon/'
+        ],
+        'models' => [
+            'metadata' => 'memory'
+        ],
+        'database' => [
+            'adapter'  => 'mysql',
+            'host'     => 'localhost',
+            'username' => 'user',
+            'password' => 'passwd',
+            'name'     => 'demo'
+        ],
+        'test' => [
+            'parent' => [
+                'property' => 1,
+                'property2' => 'yeah'
+            ],
+        ],
+   ]
+);
+
+// Using dot as delimiter
+$config->path('test.parent.property2');    // yeah
+$config->path('database.host', null, '.'); // localhost
+
+$config->path('test.parent'); // Phalcon\Config
+
+// Using slash as delimiter
+$config->path('test/parent/property3', 'no', '/'); // no
+
+Config::setPathDelimiter('/');
+$config->path('test/parent/property2'); // yeah
+```
+
 <a name='injecting-into-di'></a>
 ## Injecting Configuration Dependency
-You can inject configuration dependency to controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, add following code inside your dependency injector script.
+You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
 ```php
 <?php
