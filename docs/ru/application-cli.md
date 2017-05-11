@@ -26,13 +26,13 @@
 
 # Создание консольного приложения
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Консольные приложения выполняются из командной строки.Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
 
 <a name='structure'></a>
 
 ## Структура
 
-A minimal structure of a CLI application will look like this:
+Минимальная структура консольного приложения будет выглядеть следующим образом:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
@@ -42,9 +42,9 @@ A minimal structure of a CLI application will look like this:
 
 ## Создание загрузочного файла
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Однако для начальной загрузки приложения мы будем использовать файл cli.php, вместо загрузочного файла index.php, который используется в классических веб-приложениях.
 
-Below is a sample bootstrap that is being used for this example.
+Ниже приведен образец загрузочного файла, который используется для этого примера.
 
 ```php
 <?php
@@ -53,11 +53,12 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// Использование стандартного CLI контейнера для сервисов
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Регистрируем автозагрузчик и сообщаем ему директорию
+ * для регистрации каталога задач
  */
 $loader = new Loader();
 
@@ -69,7 +70,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Загрузка файла конфигурации (если есть)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -78,13 +79,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// Создание консольного приложения
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Обработка аргументов консоли
  */
 $arguments = [];
 
@@ -99,10 +100,10 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Обработка входящих аргументов
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Связанные с Phalcon вещи указываем здесь
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
