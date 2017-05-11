@@ -6,7 +6,7 @@
           <a href="#using">Denetleyicilerin Kullanımı</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Sevkiyat Döngüsü</a>
+          <a href="#dispatch-loop">Görev Döngüsü</a>
         </li>
         <li>
           <a href="#initializing">Denetleyicileri Başlatma</a>
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Sevkiyat Döngüsü
+## Görev Döngüsü
 
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
