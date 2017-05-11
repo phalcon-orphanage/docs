@@ -544,7 +544,7 @@ You can also check your installation from the command line:
 php -r 'print_r(get_loaded_extensions());'
 ```
 
-This will output something similar to this:
+Это выведет что-то похожее на это:
 
 ```php
 Array
@@ -559,7 +559,7 @@ Array
 )
 ```
 
-You can also see the modules installed using the CLI:
+Также вы можете проверить установку модуля командой:
 
 ```bash
 php -m
