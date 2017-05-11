@@ -190,7 +190,7 @@ saygılarımla, evren
 
 <a name='running-tasks-chain'></a>
 
-## Bir zincirde görevleri çalıştırma
+## Bir zincirdeki görevleri çalıştırma
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
