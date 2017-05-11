@@ -369,7 +369,7 @@ extension=php_phalcon.so
 
 6## Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
+Для использования Phalcon в Windows вам понадобится установить phalcon.dll. We have compiled several DLLs depending on the target platform. DLLs могут быть найдены на нашей страничке [загрузок](https://phalconphp.com/en/download/windows).
 
 Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
@@ -467,7 +467,7 @@ extension=phalcon.so
 
 8## Расширенная компиляция
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Инсталлятор Phalcon способен автоматически обнаружить целевую архитектуру. Однако, вы можете указать архитектуру явно, при запуске:
 
 ```bash
 cd cphalcon/build
@@ -501,7 +501,7 @@ make
 make install
 ```
 
-If you have specific php versions running
+Если у вас не стандартная версия PHP
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -524,11 +524,11 @@ make
 make install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Вам понадобится добавить `extension=phalcon.so` в ваш php.ini и перезапустить веб-сервер для загрузки расширения.
 
 <a name='requirements-software'></a>
 
-9You can create a small script in your web server root that has the following in it:
+9Можно создать небольшой скрипт в корне веб-сервера, следующего содержания:
 
 ```php
 <?php
@@ -536,9 +536,9 @@ You will now need to add `extension=phalcon.so` to your PHP ini and restart your
 phpinfo();
 ```
 
-and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
+и загрузить его в браузере. В появившемся результате, среди прочего, вы должны увидеть секцию Phalcon. Если такой секции нет, убедитесь в том, что модуль был скомпилирован правильно, вы сделали необходимые изменения в файле `php.ini`, а также веб-сервер был перезагружен.
 
-You can also check your installation from the command line:
+Также вы можете проверить вашу установку из командной строки:
 
 ```bash
 php -r 'print_r(get_loaded_extensions());'
