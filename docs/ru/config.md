@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">Чтение конфигураций</a> <ul>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">Нативные массивы</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">Адаптеры файлов</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">Чтение INI-файлов</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">Объединение конфигураций</a>
         </li>
         <li>
           <a href="#injecting-into-di">Injecting Configuration Dependency</a>
@@ -24,7 +24,7 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Чтение конфигураций
 
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -76,7 +76,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Адаптеры файлов
 
 The adapters available are:
 
@@ -89,7 +89,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Чтение INI-файлов
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -126,7 +126,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Объединение конфигураций
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 

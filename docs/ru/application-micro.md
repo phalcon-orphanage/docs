@@ -201,10 +201,10 @@
       <a href="#model-instances">Injecting Model Instances</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">Представления</a>
     </li>
     <li>
-      <a href="#error-handling">Error Handling</a>
+      <a href="#error-handling">Обработка ошибок</a>
     </li>
   </ul>
 </div>
