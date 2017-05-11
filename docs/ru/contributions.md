@@ -29,7 +29,7 @@
 
 # Contributing to Phalcon
 
-Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
+Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
 
 Please take a moment to review this document in order to make the contribution process easy and effective all.
 
@@ -84,4 +84,4 @@ If you have a change or new feature in mind, please fill an [NFR](/en/[[version]
 
 Thanks!
 
-<3 Phalcon Team
+<3 Команда Phalcon
