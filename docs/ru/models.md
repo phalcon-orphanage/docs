@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#working-with">Working with Models</a> <ul>
+      <a href="#working-with">Работа с моделями</a> <ul>
         <li>
-          <a href="#creating">Creating Models</a> <ul>
+          <a href="#creating">Создание моделей</a> <ul>
             <li>
               <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
             </li>
@@ -96,7 +96,7 @@ A model represents the information (data) of the application and the rules to ma
 
 ## Создание моделей
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+Модель — это класс, который унаследован от `Phalcon\Mvc\Model`. Имя класса должно быть в camel case:
 
 ```php
 <?php
