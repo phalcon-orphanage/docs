@@ -6,30 +6,30 @@
           <a href="#dependencies">Зависимости</a>
         </li>
         <li>
-          <a href="#services">Services</a>
+          <a href="#services">Сервисы</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Установка</a> <ul>
             <li>
-              <a href="#installation-composer">With Composer (recommended)</a>
+              <a href="#installation-composer">С помощью Composer (рекомендуется)</a>
             </li>
             <li>
-              <a href="#installation-git">With Git</a>
+              <a href="#installation-git">С помощью Git</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#configuration">Configuration</a>
+          <a href="#configuration">Конфигурация</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#usage">Использование</a>
         </li>
         <li>
-          <a href="#setup">Set up</a>
+          <a href="#setup">Настройка</a>
         </li>
         <li>
-          <a href="#logs">Logs</a>
+          <a href="#logs">Логи</a>
         </li>
         <li>
           <a href="#environment-variables">Environment variables</a> <ul>
@@ -154,7 +154,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 <a name='usage'></a>
 
-## Usage
+## Использование
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
