@@ -131,12 +131,12 @@ Phalcon разработан таким образом, чтобы потреб�
 
 ##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 {.alert.alert-danger}
 
-### Optional depending on the needs of your application
+### Дополнительно, в зависимости от потребностей вашего приложения
 
-- [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-- [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
-- [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
-- [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache.
+- Расширение [PDO](http://php.net/manual/en/book.pdo.php), а также расширение для работы с соответствующей СУБД ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) и т.д.)
+- Расширение [OpenSSL](http://php.net/manual/en/book.openssl.php)
+- Расширение [Mbstring](http://php.net/manual/en/book.mbstring.php)
+- Расширение [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) или любое другое, в зависимости от планируемого драйвера кеша
 
 <a name='installation'></a>
 
@@ -287,21 +287,21 @@ sudo yum install php70u-phalcon
 
 ##### Remi
 
-Remi maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en)
+Remi Collet сопровождает отличный RPM -репозиторий. Вы можете найти инструкции о том, как включить его для вашего дистрибутива [здесь](https://blog.remirepo.net/pages/Config-en)
 
-Installing Phalcon after that is as easy as:
+Установка Phalcon, после того, проста:
 
 ```bash
 yum install php56-php-phalcon3
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
+Доступны версии для архитектур x86/x64 и PHP 5.5/5.6/7.x.
 
 <a name='requirements-software'></a>
 
 1## FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
 
 ### `pkg_add`
 
