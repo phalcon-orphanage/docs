@@ -116,7 +116,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Эта часть кода может быть запущена с помощью команды:
 
 ```bash
 php app/cli.php
@@ -126,9 +126,9 @@ php app/cli.php
 
 ## Задачи
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Принцип работы задач похож на работу контролеров. Любое консольное приложение нуждается по крайней мере в одной задаче, именуемой MainTask. Каждая задача должна иметь по крайней мере одной действие, именуемое mainAction, которое будет запущено, если не указано другое, явно. Эти соглашения являются умолчанием.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+Ниже приведен пример файла `app/tasks/MainTask.php`:
 
 ```php
 <?php
@@ -139,7 +139,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
     }
 }
 ```
