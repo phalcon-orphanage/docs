@@ -90,7 +90,7 @@ class PostsController extends Controller
 
     }
 
-    public function showAction($year = 2015, $postTitle = 'some default title')
+    public function showAction($year = 2015, $postTitle = 'bazı varsayılan başlık')
     {
 
     }
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "You don't have permission to access this area"
+            "Bu alana erişmek için izniniz yok"
         );
 
-        // Forward flow to another action
+        // Akışı başka bir eyleme ilet
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -263,19 +263,19 @@ class FilesController extends Controller
 {
     public function saveAction()
     {
-        // Injecting the service by just accessing the property with the same name
+        // Hizmete sadece aynı isme sahip olan mülkiyete erişerek enjekte etme
         $this->storage->save('/some/file');
 
-        // Accessing the service from the DI
+        // Hizmete DI'den erişim
         $this->di->get('storage')->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Sihirli alıcıyı kullanarak servise erişmenin bir başka yolu
         $this->di->getStorage()->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Sihirli alıcıyı kullanarak servise erişmenin bir başka yolu
         $this->getDi()->getStorage()->save('/some/file');
 
-        // Using the array-syntax
+        // Dizim-sözdizimini kullanma
         $this->di['storage']->save('/some/file');
     }
 }
@@ -303,9 +303,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // POST ile istekte bulunup bulunmadığını kontrol edin
         if ($this->request->isPost()) {
-            // Access POST data
+            // POST verisine erişim
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -329,8 +329,8 @@ class PostsController extends Controller
 
     public function notFoundAction()
     {
-        // Send a HTTP 404 response header
-        $this->response->setStatusCode(404, 'Not Found');
+        // HTTP 404 yanıt üstbilgisi gönderme
+        $this->response->setStatusCode(404, 'Bulunamadı');
     }
 }
 ```
@@ -352,7 +352,7 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $this->persistent->name = 'Michael';
+        $this->persistent->name = 'Mustafa';
     }
 
     public function welcomeAction()
@@ -371,7 +371,7 @@ Services may act as controllers, controllers classes are always requested from t
 ```php
 <?php
 
-// Register a controller as a service
+// Bir denetleyiciyi bir hizmet olarak kaydettirme
 $di->set(
     'IndexController',
     function () {
@@ -381,7 +381,7 @@ $di->set(
     }
 );
 
-// Register a namespaced controller as a service
+// Ad alanlı bir denetleyiciyi bir hizmet olarak kaydettirme
 $di->set(
     'Backend\Controllers\IndexController',
     function () {
@@ -407,10 +407,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Bu, bulunan her eylemden önce yürütülür
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You don't have permission to save posts"
+                "Yazıları kaydetmek için izniniz yok"
             );
 
             $this->dispatcher->forward(
@@ -426,7 +426,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Bulunan her eylemden sonra yürütülür
     }
 }
 ```
