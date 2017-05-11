@@ -59,7 +59,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Установка Phalcon</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -113,15 +113,15 @@
 
 # Требования
 
-Phalcon требует PHP для запуска. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalcon требует PHP для запуска. Его слабо связанный дизайн позволяет разработчикам один раз установив Phalcon, использовать его возможности везде, без дополнительных расширений. Однако некоторые его компоненты зависят от других расширений. Например, использование подключений к базам данных, требует расширения `php_pdo`. Если ваша СУБД MySql/MariaDb или Aurora, вам так же понадобится расширение `php_mysqlnd`. Аналогично, использование базы данных PostgreSql с Phalcon, требует расширения `php_pgsql`.
 
 <a name='requirements-hardware'></a>
 
 ## Аппаратное обеспечение
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Хотя мы и тестировали Phalcon на маломощных машинах (например с 256 MB RAM и процессором 500 MHz), оборудование, которое вы будете выбирать, будет зависеть от потребностей приложения.
 
-Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+Наш веб-сайт и блог (а также другие сайты) работают на Amazon VM с 512 MB RAM и 1 vCPU.
 
 <a name='requirements-software'></a>
 
@@ -129,14 +129,14 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 - PHP > = 5.5
 
-##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 {.alert.alert-danger}
+##### Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. Поддержка PHP 5.x будет прекращена в ближайшее время. Phalcon 4 будет поддерживать только PHP 7. {.alert.alert-danger}
 
-### Optional depending on the needs of your application
+### Дополнительно, в зависимости от потребностей вашего приложения
 
-- [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-- [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
-- [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
-- [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache.
+- Расширение [PDO](http://php.net/manual/en/book.pdo.php), а также расширение для работы с соответствующей СУБД ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) и т.д.)
+- Расширение [OpenSSL](http://php.net/manual/en/book.openssl.php)
+- Расширение [Mbstring](http://php.net/manual/en/book.mbstring.php)
+- Расширение [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) или любое другое, в зависимости от планируемого драйвера кеша
 
 <a name='installation'></a>
 
@@ -210,7 +210,7 @@ sudo apt-get install php7.0-phalcon
 
 #### Ondřej Surý
 
-If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+Вы всегда можете использовать репозитории [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/), если в не хотите использовать packagecloud.io.
 
 Добавление репозитория:
 
@@ -287,21 +287,21 @@ sudo yum install php70u-phalcon
 
 ##### Remi
 
-Remi maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en)
+Remi Collet сопровождает отличный RPM -репозиторий. Вы можете найти инструкции о том, как включить его для вашего дистрибутива [здесь](https://blog.remirepo.net/pages/Config-en)
 
-Installing Phalcon after that is as easy as:
+Установка Phalcon, после того, проста:
 
 ```bash
 yum install php56-php-phalcon3
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
+Доступны версии для архитектур x86/x64 и PHP 5.5/5.6/7.x.
 
 <a name='requirements-software'></a>
 
 1## FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
 
 ### `pkg_add`
 
@@ -323,17 +323,17 @@ make install clean
 
 2## Gentoo
 
-An overlay for installing Phalcon can be found here <https://github.com/smoke/phalcon-gentoo-overlay>
+Оверлей для установки Phalcon может быть найден здесь: <https://github.com/smoke/phalcon-gentoo-overlay>
 
 <a name='requirements-software'></a>
 
 3## macOS
 
-On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
+В macOs вы можете скомпилировать и установить расширение из исходников, либо воспользоваться `brew` или `macports`:
 
 ### Требования
 
-- PHP >= 5.5 development resources
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
 
 <a name='requirements-software'></a>
@@ -344,6 +344,8 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 brew tap homebrew/homebrew-php
 brew install php55-phalcon
 brew install php56-phalcon
+brew install php70-phalcon
+brew install php71-phalcon
 ```
 
 <a name='requirements-software'></a>
@@ -373,7 +375,7 @@ To use phalcon on Windows you will need to download a DLL library. Identify your
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-The available DLLs are:
+Доступны следующие DLL:
 
 | Архитектура | Версия | Тип                                  |
 |:-----------:|:------:| ------------------------------------ |
@@ -398,16 +400,16 @@ extension=php_phalcon.dll
 
 7## Компиляция из исходников
 
-Compiling from source is similar to most environments (Linux/Mac).
+Сборка из исходников похожа в большинстве сред (Linux/macOs).
 
 ### Необходимое программное обеспечение
 
-- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x (php-dev)
+- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
 - re2c >= 0.13
 - libpcre-dev (libpcre3-dev)
 
-You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
+Вы можете установить эти пакеты в вашей системе используя соответствующий пакетный менеджер. Инструкции для популярных дистрибутивов приведены ниже:
 
 #### Ubuntu
 
@@ -470,22 +472,23 @@ Phalcon automatically detects your architecture, however, you can force the comp
 ```bash
 cd cphalcon/build
 
-# One of the following:
+# Одна из следующих команд установит Phalcon для нужной архитектуры:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-If the automatic installer fails you can build the extension manually
+Если в результате автоматической установки произошел сбой, вы можете попробовать собрать расширение вручную:
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# Обратите внимание:
+# Для PHP 7 вам необходимо использовать
 # cd cphalcon/build/php7/32bits
-# or
+# или
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -505,9 +508,10 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# Обратите внимание:
+# Для PHP 7 вам необходимо использовать
 # cd cphalcon/build/php7/32bits
-# or
+# или
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -537,7 +541,7 @@ and load it on your web browser. There should be a section for Phalcon. If there
 You can also check your installation from the command line:
 
 ```bash
-php -r 'print_r(get_loaded_extensions())'
+php -r 'print_r(get_loaded_extensions());'
 ```
 
 This will output something similar to this:

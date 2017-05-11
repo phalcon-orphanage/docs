@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Ustawianie Web serwera</a> <ul>
         <li>
           <a href="#nginx">NGINX</a>
         </li>
@@ -12,7 +12,7 @@
           <a href="#cherokee">Cherokee</a>
         </li>
         <li>
-          <a href="#php-built-in">Built in Webserver</a>
+          <a href="#php-built-in">Wbudowany serwer</a>
         </li>
       </ul>
     </li>
@@ -21,9 +21,9 @@
 
 <a name='setup'></a>
 
-# Web server setup
+# Ustawianie Web serwera
 
-In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
+W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurować nasz web serwer aby przetwarzał przekierowywania prawidłowo. Konfiguracja popularnych web serwerów wygląda następująco:
 
 <a name='nginx'></a>
 

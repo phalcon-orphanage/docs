@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Создание консольного приложения</a> <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">Структура</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#creating-bootstrap">Создание загрузочного файла</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Задачи</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#processing-action-parameters">Обработка параметров</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#running-tasks-chain">Запуск цепочки команд</a>
         </li>
       </ul>
     </li>
@@ -24,7 +24,7 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# Создание консольного приложения
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
@@ -36,11 +36,11 @@ A minimal structure of a CLI application will look like this:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+- `app/cli.php` <-- основной загрузочный файл
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Создание загрузочного файла
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
@@ -123,7 +123,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Задачи
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -145,7 +145,7 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Обработка параметров
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -190,7 +190,7 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Запуск цепочки команд
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
@@ -244,4 +244,4 @@ class MainTask extends Task
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий `Phalcon\Cli\Task` и реализовать такую логику там.

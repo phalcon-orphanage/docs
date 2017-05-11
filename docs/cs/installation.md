@@ -333,7 +333,7 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 
 ### Requirements
 
-- PHP >= 5.5 development resources
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
 
 <a name='requirements-software'></a>
@@ -344,6 +344,8 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 brew tap homebrew/homebrew-php
 brew install php55-phalcon
 brew install php56-phalcon
+brew install php70-phalcon
+brew install php71-phalcon
 ```
 
 <a name='requirements-software'></a>
@@ -402,7 +404,7 @@ Compiling from source is similar to most environments (Linux/Mac).
 
 ### Requirements
 
-- PHP 5.5.x/5.6.x/7.0.x development resources
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
 - re2c >= 0.13
 - libpcre-dev
@@ -537,7 +539,7 @@ and load it on your web browser. There should be a section for Phalcon. If there
 You can also check your installation from the command line:
 
 ```bash
-php -r 'print_r(get_loaded_extensions())'
+php -r 'print_r(get_loaded_extensions());'
 ```
 
 This will output something similar to this:

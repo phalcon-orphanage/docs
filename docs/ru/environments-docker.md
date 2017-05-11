@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#dependencies">Dependencies</a>
+          <a href="#dependencies">Зависимости</a>
         </li>
         <li>
           <a href="#services">Services</a>
@@ -60,7 +60,7 @@
         </li>
         
         <li>
-          <a href="#versions">Versions</a>
+          <a href="#versions">Версии</a>
         </li>
       </ul>
     </li>
@@ -75,17 +75,17 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 <a name='dependencies'></a>
 
-## Dependencies
+## Зависимости
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
-## Services
+## Сервисы
 
 Services included are: 
 
-| Service name  | Description                                                                                        |
+| Service name  | Описание                                                                                           |
 | ------------- | -------------------------------------------------------------------------------------------------- |
 | mongo         | MongoDB server container                                                                           |
 | postgres      | PostgreSQL server container                                                                        |
@@ -100,7 +100,7 @@ Services included are:
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
 <a name='installation-composer'></a>
 
@@ -109,7 +109,7 @@ Services included are:
 Using Composer, you can create a new project as follows:
 
 ```bash
-composer create-project phalcon/compose --prefer-dist <folder name>
+composer create-project phalcon/compose --prefer-dist путь-к-папке-с-проектом
 ```
 
 Your output should be similar to this:
@@ -130,7 +130,7 @@ Generating autoload files
 
 <a name='installation-git'></a>
 
-### With Git
+### С помощью Git
 
 Another way to initialize your project is with Git.
 
@@ -138,13 +138,13 @@ Another way to initialize your project is with Git.
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-##### Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file {.alert.alert-warning}
+##### Убедитесь, что вы скопировали `variables.env.example` `variables.env` и настроили параметры в этом файле {.alert.alert-warning}
 
 Add your Phalcon Application into application folder.
 
 <a name='configuration'></a>
 
-## Configuration
+## Конфигурация
 
 Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
@@ -198,7 +198,7 @@ You can pass multiple environment variables from an external file to a service's
 
 1### Web environment
 
-| Environment variable | Description                                        | Default         |
+| Environment variable | Описание                                           | По умолчанию    |
 | -------------------- | -------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container) | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document                                     | index.php       |
@@ -212,17 +212,17 @@ You can pass multiple environment variables from an external file to a service's
 
 2### phpMyAdmin variables
 
-| Environment variable | Description                                                                                                  | Default |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
-| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1       |
-| `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql   |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if PMA_HOST is empty.      |         |
-| `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306    |
-| `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |         |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if PMA_VERBOSE is empty.        |         |
-| `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon |
-| `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret  |
-| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |         |
+| Environment variable | Описание                                                                                                     | По умолчанию |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
+| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1            |
+| `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql        |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if PMA_HOST is empty.      |              |
+| `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306         |
+| `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |              |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if PMA_VERBOSE is empty.        |              |
+| `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon      |
+| `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret       |
+| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |              |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 

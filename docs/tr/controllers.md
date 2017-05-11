@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Genel Bakış</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Denetleyicilerin Kullanımı</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Dispatch Loop</a>
+          <a href="#dispatch-loop">Görev Döngüsü</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Denetleyicileri Başlatma</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Enjeksiyon Hizmetleri</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">İstek ve Yanıt</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Oturum Verileri</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Hizmetleri Denetleyiciler Olarak Kullanma</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">Denetleyicilerdeki Olaylar</a>
         </li>
       </ul>
     </li>
@@ -33,27 +33,27 @@
 
 <a name='overview'></a>
 
-# Overview
+# Genel Bakış
 
 <a name='using'></a>
 
-## Using Controllers
+## Denetleyicilerin Kullanımı
 
-Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Eylemler, istekleri işleyen bir denetleyicideki yöntemlerdir. Varsayılan olarak, bir denetleyicideki tüm ortak yöntemler eyleme eşlenir ve bir URL tarafından erişilebilir durumdadır. Eylem, isteği yorumlamaktan ve cevabı oluşturmaktan sorumludur. Genellikle yanıtlar işlenmiş görünüm biçimindedir ancak yanıtı oluşturmak için başka yollar da vardır.
 
-For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
+Örneğin, böyle bir URL'ye eriştiğinizde: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon varsayılan olarak her parçayı şöyle bölecektir:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Açıklama           | Rumuz          |
+| ------------------ | -------------- |
+| **Phalcon Dizini** | blog           |
+| **Denetleyici**    | posts          |
+| **Eylem**          | show           |
+| **Parametre**      | 2015           |
+| **Parametre**      | the-post-title |
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+Bu durumda, PostsController bu isteği işleyecektir. Denetleyicileri bir uygulamaya koymak için özel bir yer yoktur; bunlar :doc: `autoloaders <loader>` kullanılarak yüklenebilir, böylece denetleyicilerinizi istediğiniz gibi organize etmen serbesttir.
 
-Controllers must have the suffix 'Controller' while actions the suffix 'Action'. A sample of a controller is as follows:
+Eylemlerin soneki 'Controller' iken denetleyicilerin soneki 'Action' olmalıdır. Denetleyicinin bir örneği aşağıdaki gibidir:
 
 ```php
 <?php
@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
+Ek URI parametreleri, yerel değişkenler kullanılarak kolayca erişilebilmesi için eylem parametreleri olarak tanımlanır. Bir denetleyici isteğe bağlı olarak `Phalcon\Mvc\Controller`'yi genişletebilir. Bunu yaparak, denetleyicinin uygulama servislerine kolay erişimi olabilir.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Varsayılan değer içermeyen parametreler gerektiği gibi işlenir. Parametreler için isteğe bağlı değerleri ayarlamak, PHP'de her zamanki gibi yapılır:
 
 ```php
 <?php
@@ -90,14 +90,14 @@ class PostsController extends Controller
 
     }
 
-    public function showAction($year = 2015, $postTitle = 'some default title')
+    public function showAction($year = 2015, $postTitle = 'bazı varsayılan başlık')
     {
 
     }
 }
 ```
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Parametreler, rotada geçirildikleri sırayla aynı sırayla atanır. Aşağıdaki gibi adından keyfi bir parametre alabilirsiniz:
 
 ```php
 <?php
@@ -121,9 +121,9 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Dispatch Loop
+## Görev Döngüsü
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+Görev döngüsü yürütülecek eylem kalmayana dek Görevlendirici içerisinde yürütülecektir. Önceki örnekte yalnızca bir eylem gerçekleştirildi. Şimdi `forward()` yönteminin, yürütmeyi farklı bir denetleyiciye/eyleme yönlendirerek gönderim döngüsünde daha karmaşık bir işlem akışı sağlayabileceğini göreceğiz.
 
 ```php
 <?php
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "You don't have permission to access this area"
+            "Bu alana erişmek için izniniz yok"
         );
 
-        // Forward flow to another action
+        // Akışı başka bir eyleme ilet
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+Kullanıcıların belirli bir eyleme erişme izni yoksa Users denetleyicisinde 'signin' eylemine yönlendirilirler.
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+Başvurunuzda, başvurunuzun durduğu döngüsel referanslar olmadıkça, "ileriye doğru" sınırlama yoktur. Gönderim döngüsü tarafından gönderilecek başka eylem yoksa, dağıtım programı otomatik olarak `Phalcon\Mvc\View` tarafından yönetilen MVC'nin görüntüleme katmanını çağırır.
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Denetleyicileri Başlatma
 
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+`Phalcon\Mvc\Controller`, bir denetleyicide herhangi bir eylem gerçekleştirilmeden önce önce uygulanan `initialize()` yöntemini sunar. `__construct()` yönteminin kullanılması önerilmez.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-##### The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization. {.alert.alert-warning}
+##### `initialize()` yöntemi yalnızca `beforeExecuteRoute` olayı başarıyla çalıştırılırsa çağrılır. Bu, başlatıcıdaki uygulama mantığının yetkisiz çalıştırılmasını önler. {.alert.alert-warning}
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Denetleyici nesnesinin oluşturulmasından hemen sonra bazı başlatma mantığını yürütmek isterseniz `onConstruct()` yöntemini uygulayabilirsiniz:
 
 ```php
 <?php
@@ -226,13 +226,13 @@ class PostsController extends Controller
 }
 ```
 
-##### Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer). {.alert.alert-warning}
+##### `onConstruct()` yöntemi çalıştırılacak işlem denetleyicide mevcut değilse veya kullanıcının kendisine erişmediği (geliştiricinin sağladığı özel denetim erişimine göre) yürütüldüğünde unutmayın. {.alert.alert-warning}
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Enjeksiyon Hizmetleri
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Bir denetleyici `Phalcon\Mvc\Controller`'ı genişletirse, uygulama sırasında servis kabına kolay erişime sahip olur. Örneğin, böyle bir hizmeti kaydettiyseniz:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Then, we can access that service in several ways:
+Ardından, bu hizmete çeşitli şekillerde erişebiliriz:
 
 ```php
 <?php
@@ -263,31 +263,31 @@ class FilesController extends Controller
 {
     public function saveAction()
     {
-        // Injecting the service by just accessing the property with the same name
+        // Hizmete sadece aynı isme sahip olan mülkiyete erişerek enjekte etme
         $this->storage->save('/some/file');
 
-        // Accessing the service from the DI
+        // Hizmete DI'den erişim
         $this->di->get('storage')->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Sihirli alıcıyı kullanarak servise erişmenin bir başka yolu
         $this->di->getStorage()->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Sihirli alıcıyı kullanarak servise erişmenin bir başka yolu
         $this->getDi()->getStorage()->save('/some/file');
 
-        // Using the array-syntax
+        // Dizim-sözdizimini kullanma
         $this->di['storage']->save('/some/file');
     }
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/en/[[version]]/di) in the framework.
+Phalcon'u tam yığın çerçevesi olarak kullanıyorsanız, çerçevede sunulan [by default](/en/[[version]]/di) hizmetlerini okuyabilirsiniz.
 
 <a name='request-response'></a>
 
-## Request and Response
+## İstek ve Yanıt
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+İskeletin önceden kayıtlı bir dizi hizmet sunduğunu varsayarsak. HTTP ortamıyla nasıl etkileşim kuracağımızı açıklıyoruz. 'İstek' hizmeti bir `Phalcon\Http\Request` örneğini içerir ve 'yanıt', kullanıcıya ne gönderileceğini gösteren bir `Phalcon\Http\Response` içerir.
 
 ```php
 <?php
@@ -303,9 +303,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // POST ile istekte bulunup bulunmadığını kontrol edin
         if ($this->request->isPost()) {
-            // Access POST data
+            // POST verisine erişim
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
+Yanıt nesnesi genellikle doğrudan kullanılmaz, ancak işlemin başlamasından önce oluşturulur, bazen - bir `afterDispatch` olayında olduğu gibi - yanıtın doğrudan erişilmesi yararlı olabilir:
 
 ```php
 <?php
@@ -329,19 +329,19 @@ class PostsController extends Controller
 
     public function notFoundAction()
     {
-        // Send a HTTP 404 response header
-        $this->response->setStatusCode(404, 'Not Found');
+        // HTTP 404 yanıt üstbilgisi gönderme
+        $this->response->setStatusCode(404, 'Bulunamadı');
     }
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/en/[[version]]/request) and [response](/en/[[version]]/response).
+Kendi özel makaleler [istek](/en/[[version]]/request) ve [yanıt](/en/[[version]]/response) HTTP ortamı hakkında daha fazla bilgi edinin.
 
 <a name='session-data'></a>
 
-## Session Data
+## Oturum Verileri
 
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Oturumlar, istekler arasında kalıcı verileri korumamıza yardımcı olur. Kalıcı olması gereken verileri kapsüllemek için herhangi bir denetleyiciden bir `Phalcon\Session\Bag`'e erişebilirsiniz:
 
 ```php
 <?php
@@ -352,7 +352,7 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $this->persistent->name = 'Michael';
+        $this->persistent->name = 'Mustafa';
     }
 
     public function welcomeAction()
@@ -364,14 +364,14 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Hizmetleri Denetleyiciler Olarak Kullanma
 
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
+Hizmetler denetleyiciler gibi davranabilir, denetleyiciler sınıflar her zaman hizmetler kapsayıcısından istenir. Buna göre, adıyla tescillenen diğer sınıflar bir denetleyiciyi kolayca değiştirebilir:
 
 ```php
 <?php
 
-// Register a controller as a service
+// Bir denetleyiciyi bir hizmet olarak kaydettirme
 $di->set(
     'IndexController',
     function () {
@@ -381,7 +381,7 @@ $di->set(
     }
 );
 
-// Register a namespaced controller as a service
+// Ad alanlı bir denetleyiciyi bir hizmet olarak kaydettirme
 $di->set(
     'Backend\Controllers\IndexController',
     function () {
@@ -394,9 +394,9 @@ $di->set(
 
 <a name='events'></a>
 
-## Events in Controllers
+## Denetleyicilerdeki Olaylar
 
-Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Denetleyiciler, [görevlendirici](/en/[[versopm]]/dispatcher) olayları için dinleyiciler olarak otomatik olarak davranır; bu olay adlarıyla yöntemleri uygulamak, eylemler yürütülmeden önce / sonra kanca noktaları uygulamaya izin verir:
 
 ```php
 <?php
@@ -407,10 +407,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Bu, bulunan her eylemden önce yürütülür
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You don't have permission to save posts"
+                "Yazıları kaydetmek için izniniz yok"
             );
 
             $this->dispatcher->forward(
@@ -426,7 +426,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Bulunan her eylemden sonra yürütülür
     }
 }
 ```
