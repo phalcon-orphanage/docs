@@ -323,13 +323,13 @@ make install clean
 
 2## Gentoo
 
-An overlay for installing Phalcon can be found here <https://github.com/smoke/phalcon-gentoo-overlay>
+Оверлей для установки Phalcon может быть найден здесь: <https://github.com/smoke/phalcon-gentoo-overlay>
 
 <a name='requirements-software'></a>
 
 3## macOS
 
-On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
+В macOs вы можете скомпилировать и установить расширение из исходников, либо воспользоваться `brew` или `macports`:
 
 ### Требования
 
