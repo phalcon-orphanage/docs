@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
           <a href="#dependencies">Зависимости</a>
         </li>
@@ -32,23 +32,23 @@
           <a href="#logs">Логи</a>
         </li>
         <li>
-          <a href="#environment-variables">Environment variables</a> <ul>
+          <a href="#environment-variables">Переменные окружения</a> <ul>
             <li>
-              <a href="#environment-variables-web">Web environment</a>
+              <a href="#environment-variables-web">Окружение веб-сервера</a>
             </li>
             <li>
-              <a href="#environment-variables-phpmyadmin">phpMyAdmin variables</a>
+              <a href="#environment-variables-phpmyadmin">Переменные phpMyAdmin</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
+          <a href="#xdebug">Удаленный отладчик Xdebug (PhpStorm)</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a> <ul>
+          <a href="#troubleshooting">Устранение неполадок</a> <ul>
             <li>
-              <a href="#troubleshooting-startup">Startup or linking errors</a>
+              <a href="#troubleshooting-startup">Ошибки запуска или связывания</a>
             </li>
             <li>
               <a href="#troubleshooting-full-reset">Полный сброс</a>
@@ -69,34 +69,34 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
-Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
+Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Его цель заключается в том, чтобы сделать разворачивание Phalcon приложения лёгким, независимо от окружения (development, production).
 
 <a name='dependencies'></a>
 
 ## Зависимости
 
-To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
+Чтобы запустить этот стек на вашей машине, вам нужно по крайней мере: * Операционная система: Windows, Linux или macOs * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
 ## Сервисы
 
-Services included are: 
+Ниже перечислены предоставляемые сервисы: 
 
-| Service name  | Описание                                                                                           |
-| ------------- | -------------------------------------------------------------------------------------------------- |
-| mongo         | MongoDB server container                                                                           |
-| postgres      | PostgreSQL server container                                                                        |
-| mysql         | MySQL database container                                                                           |
-| phpmyadmin    | A web interface for MySQL and MariaDB                                                              |
-| memcached     | Memcached server container                                                                         |
-| queue         | Beanstalk queue container                                                                          |
-| aerospike     | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.      |
-| redis         | Redis database container                                                                           |
-| app           | PHP 7, Apache 2 and Composer container                                                             |
-| elasticsearch | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search |
+| Название сервиса | Описание                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| mongo            | MongoDB server container                                                                           |
+| postgres         | PostgreSQL server container                                                                        |
+| mysql            | MySQL database container                                                                           |
+| phpmyadmin       | A web interface for MySQL and MariaDB                                                              |
+| memcached        | Memcached server container                                                                         |
+| queue            | Beanstalk queue container                                                                          |
+| aerospike        | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.      |
+| redis            | Redis database container                                                                           |
+| app              | PHP 7, Apache 2 and Composer container                                                             |
+| elasticsearch    | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search |
 
 <a name='installation'></a>
 
@@ -104,9 +104,9 @@ Services included are:
 
 <a name='installation-composer'></a>
 
-### With Composer (recommended)
+### С помощью Composer (рекомендуется)
 
-Using Composer, you can create a new project as follows:
+С помощью Composer, можно создать новый проект следующим образом:
 
 ```bash
 composer create-project phalcon/compose --prefer-dist путь-к-папке-с-проектом
@@ -173,7 +173,7 @@ Now you can now launch your application in your browser visiting `http://phalcon
 
 <a name='setup'></a>
 
-## Set up
+## Настройка
 
 If your application uses a file cache or writes logs to files, then edit the application configuration files and set up your cache and log folders as follows:
 
@@ -186,19 +186,19 @@ logs : /project/log
 
 ## Логи
 
-For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
+Для большинства контейнеров можно получить доступ к логам, используя команду `docker logs <имя_контейнера>` на хост системе.
 
 <a name='dependencies'></a>
 
-0## Environment variables
+0## Переменные окружения
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='dependencies'></a>
 
-1### Web environment
+1### Окружение веб-сервера
 
-| Environment variable | Описание                                           | По умолчанию    |
+| Переменная окружения | Описание                                           | По умолчанию    |
 | -------------------- | -------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container) | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document                                     | index.php       |
@@ -210,9 +210,9 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='dependencies'></a>
 
-2### phpMyAdmin variables
+2### Переменные phpMyAdmin
 
-| Environment variable | Описание                                                                                                     | По умолчанию |
+| Переменная окружения | Описание                                                                                                     | По умолчанию |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1            |
 | `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql        |
@@ -228,7 +228,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='dependencies'></a>
 
-3## Xdebug Remote debugger (PhpStorm)
+3## Удаленный отладчик Xdebug (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
@@ -251,11 +251,11 @@ ipconfig
 
 <a name='dependencies'></a>
 
-4## Troubleshooting
+4## Устранение неполадок
 
 <a name='dependencies'></a>
 
-5### Startup or linking errors
+5### Ошибки запуска или связывания
 
 If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
@@ -268,7 +268,7 @@ docker-compose up -d
 
 <a name='dependencies'></a>
 
-6### Full reset
+6### Полный сброс
 
 To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in application/ folder:
 
@@ -281,7 +281,7 @@ docker-compose up -d
 
 <a name='dependencies'></a>
 
-7### Updating dependencies
+7### Обновление зависимостей
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
@@ -314,7 +314,7 @@ make reset
 
 8## Версии
 
-The main tools used are Phalcon, Docker and Docker Compose.
+Основные инструменты: Phalcon, Docker и Docker Compose.
 
 | Приложение      | Версия           |
 | --------------- | ---------------- |
