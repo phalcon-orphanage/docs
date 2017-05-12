@@ -243,9 +243,10 @@ $config->path('test/parent/property2'); // yeah
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создаём DI
 $di = new FactoryDefault();
 
+// Регистрируем сервис "config"
 $di->set(
     'config',
     function () {
