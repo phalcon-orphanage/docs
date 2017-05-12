@@ -161,7 +161,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
     }
 
     /**
@@ -204,7 +204,7 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Связанные с Phalcon вещи указываем здесь
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
