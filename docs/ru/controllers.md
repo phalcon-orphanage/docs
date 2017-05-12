@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Использование контроллеров</a>
         </li>
         <li>
           <a href="#dispatch-loop">Dispatch Loop</a>
@@ -33,11 +33,11 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 <a name='using'></a>
 
-## Using Controllers
+## Использование контроллеров
 
 Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Events in Controllers
+## События в контроллерах
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
@@ -407,10 +407,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Это выполняется перед каждым обнаруженным действием
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You don't have permission to save posts"
+                "У вас нет разрешения на сохранение постов"
             );
 
             $this->dispatcher->forward(
@@ -426,7 +426,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Выполняется после каждого действия
     }
 }
 ```

@@ -15,7 +15,10 @@
           <a href="#merging">Объединение конфигураций</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#nested-configuration">Вложенная конфигурация</a>
+        </li>
+        <li>
+          <a href="#injecting-into-di">Внедрение конфигурации</a>
         </li>
       </ul>
     </li>
@@ -62,7 +65,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+Из соображений более гибкой и универсальной организации структуры проекта, вы можете сохранить конфигурационный массив в отдельный файл и затем считать его.
 
 ```php
 <?php
@@ -78,7 +81,7 @@ $config = new Config($settings);
 
 ## Адаптеры файлов
 
-The adapters available are:
+Доступные адаптеры:
 
 | Класс                            | Описание                                                                                         |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -110,7 +113,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+Вы можете прочитать конфигурационный файл следующим образом:
 
 ```php
 <?php
@@ -161,7 +164,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+Приведенный выше код выводит следующее:
 
 ```bash
 Phalcon\Config Object
@@ -180,11 +183,59 @@ Phalcon\Config Object
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
+<a name='nested-configuration'></a>
+
+## Вложенная конфигурация
+
+Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+   [
+        'phalcon' => [
+            'baseuri' => '/phalcon/'
+        ],
+        'models' => [
+            'metadata' => 'memory'
+        ],
+        'database' => [
+            'adapter'  => 'mysql',
+            'host'     => 'localhost',
+            'username' => 'user',
+            'password' => 'passwd',
+            'name'     => 'demo'
+        ],
+        'test' => [
+            'parent' => [
+                'property' => 1,
+                'property2' => 'yeah'
+            ],
+        ],
+   ]
+);
+
+// Использование точки в качестве разделителя (по умолчанию)
+$config->path('test.parent.property2');    // yeah
+$config->path('database.host', null, '.'); // localhost
+
+$config->path('test.parent'); // Phalcon\Config
+
+// Использование слеша в качестве разделителя
+$config->path('test/parent/property3', 'no', '/'); // no
+
+Config::setPathDelimiter('/');
+$config->path('test/parent/property2'); // yeah
+```
+
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Внедрение конфигурации
 
-You can inject configuration dependency to controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, add following code inside your dependency injector script.
+You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
 ```php
 <?php
@@ -192,7 +243,7 @@ You can inject configuration dependency to controller allowing us to use `Phalco
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Создание DI
+// Create a DI
 $di = new FactoryDefault();
 
 $di->set(

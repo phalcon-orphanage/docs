@@ -77,7 +77,7 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# Повышение производительности с помощью кэша
 
 Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
@@ -369,7 +369,7 @@ if ($robots === null) {
 }
 ```
 
-Setting the lifetime when saving:
+Настройка времени жизни при сохранении:
 
 ```php
 <?php
@@ -456,7 +456,7 @@ $cache->save('my-key', $data);
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-| Adapter                              | Description                                                                                                                                                    |
+| Адаптер                              | Описание                                                                                                                                                       |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Cache\Frontend\Output`   | Read input data from standard PHP output                                                                                                                       |
 | `Phalcon\Cache\Frontend\Data`     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
@@ -499,7 +499,7 @@ The `Phalcon\Cache\BackendInterface` interface must be implemented in order to c
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
-| Option     | Description                                                |
+| Параметр   | Описание                                                   |
 | ---------- | ---------------------------------------------------------- |
 | `prefix`   | A prefix that is automatically prepended to the cache keys |
 | `cacheDir` | A writable directory on which cached files will be placed  |
@@ -510,7 +510,7 @@ This backend will store cached content into files in the local server. The avail
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
-| Option       | Description                                                |
+| Параметр     | Описание                                                   |
 | ------------ | ---------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys |
 | `host`       | memcached host                                             |
@@ -523,7 +523,7 @@ This backend will store cached content on a memcached server. The available opti
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
-| Option   | Description                                                |
+| Параметр | Описание                                                   |
 | -------- | ---------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys |
 
@@ -533,7 +533,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
-| Option       | Description                                                |
+| Параметр     | Описание                                                   |
 | ------------ | ---------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys |
 | `server`     | A MongoDB connection string                                |
