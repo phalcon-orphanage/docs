@@ -3,15 +3,15 @@
     - Upgrade
     - [Sponsors](/en/[[version]]/sponsors)
 - Contributions 
-    - [Overview](/en/[[version]]/contributions)
+    - [Введение](/en/[[version]]/contributions)
     - Pull Requests
     - [NFR](/en/[[version]]/new-feature-request)
     - Backtrace Generation
     - Reproducible Tests
     - Testing guide
-- Getting Started 
-    - [Installation](/en/[[version]]/installation)
-    - [Webserver Setup](/en/[[version]]/webserver-setup)
+- Начало работы 
+    - [Установка](/en/[[version]]/installation)
+    - [Настройка веб-сервера](/en/[[version]]/webserver-setup)
 - Environments 
     - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
@@ -19,24 +19,24 @@
 - Development Tools 
     - Command Line
     - Web Interface
-- Core 
+- Ядро 
     - Application 
         - Full
         - [Micro](/en/[[version]]/application-micro)
-        - [Cli](/en/[[version]]/application-cli)
+        - [CLI](/en/[[version]]/application-cli)
     - [DI Container](/en/[[version]]/di)
     - [MVC](/en/[[version]]/mvc)
 - Services 
     - [Cache](/en/[[version]]/cache)
     - [Config](/en/[[version]]/config)
     - Escaper
-    - Loader 
-        - Namespaces
-    - Logging 
+    - Автозагрузка классов 
+        - Пространства имён
+    - Журналирование 
         - Adapters
     - Queue 
         - Beanstalk
-- Database 
+- База данных 
     - Connectors 
         - MySQL
         - PostgreSql
@@ -44,7 +44,7 @@
         - Mongo
     - PHQL
     - ODM
-    - [Models](/en/[[version]]/models) 
+    - [Модели](/en/[[version]]/models) 
         - [Advanced](/en/[[version]]/models-advanced)
         - [Behaviors](/en/[[version]]/models-behaviors)
         - [Cache](/en/[[version]]/models-cache)
