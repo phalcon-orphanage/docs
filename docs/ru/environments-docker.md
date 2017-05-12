@@ -51,10 +51,10 @@
               <a href="#troubleshooting-startup">Startup or linking errors</a>
             </li>
             <li>
-              <a href="#troubleshooting-full-reset">Full reset</a>
+              <a href="#troubleshooting-full-reset">Полный сброс</a>
             </li>
             <li>
-              <a href="#troubleshooting-dependencies">Updating dependencies</a>
+              <a href="#troubleshooting-dependencies">Обновление зависимостей</a>
             </li>
           </ul>
         </li>
