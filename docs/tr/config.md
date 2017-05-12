@@ -15,7 +15,10 @@
           <a href="#merging">Yapılandırmaları Birleştirme</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Yapılandırma Bağımlılığını Enjekte Etme</a>
+          <a href="#nested-configuration">Nested Configuration</a>
+        </li>
+        <li>
+          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
         </li>
       </ul>
     </li>
@@ -180,11 +183,59 @@ Phalcon\Config Object
 
 [Phalcon Incubator](https://github.com/phalcon/incubator) bileşeninde bunlar için daha fazla bağdaştırıcı bulunmaktadır
 
+<a name='nested-configuration'></a>
+
+## Nested Configuration
+
+Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+   [
+        'phalcon' => [
+            'baseuri' => '/phalcon/'
+        ],
+        'models' => [
+            'metadata' => 'memory'
+        ],
+        'database' => [
+            'adapter'  => 'mysql',
+            'host'     => 'localhost',
+            'username' => 'user',
+            'password' => 'passwd',
+            'name'     => 'demo'
+        ],
+        'test' => [
+            'parent' => [
+                'property' => 1,
+                'property2' => 'yeah'
+            ],
+        ],
+   ]
+);
+
+// Using dot as delimiter
+$config->path('test.parent.property2');    // yeah
+$config->path('database.host', null, '.'); // localhost
+
+$config->path('test.parent'); // Phalcon\Config
+
+// Using slash as delimiter
+$config->path('test/parent/property3', 'no', '/'); // no
+
+Config::setPathDelimiter('/');
+$config->path('test/parent/property2'); // yeah
+```
+
 <a name='injecting-into-di'></a>
 
-## Yapılandırma Bağımlılığını Enjekte Etme
+## Injecting Configuration Dependency
 
-`Phalcon\Mvc\Controller` içinde `Phalcon\Config`'i kullanmamıza izin veren denetleyiciye yapılandırma bağımlılığı enjekte edebilirsiniz. Bunu yapabilmek için, bağımlılık enjektör komut dosyanızın içine aşağıdaki kodu ekleyin.
+You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
 ```php
 <?php
@@ -192,7 +243,7 @@ Phalcon\Config Object
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// DI Oluştur
+// Create a DI
 $di = new FactoryDefault();
 
 $di->set(
@@ -205,7 +256,7 @@ $di->set(
 );
 ```
 
-Şimdi denetleyicinizde aşağıdaki kod gibi `config` adını kullanarak bağımlılık enjeksiyonu özelliğini kullanarak yapılandırmanıza erişebilirsiniz:
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
 ```php
 <?php
