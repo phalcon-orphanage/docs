@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Повышение производительности с помощью кэша</a> <ul>
+      <a href="#overview">Улучшение производительности с помощью кэширования</a> <ul>
         <li>
           <a href="#implementation">When to implement cache?</a>
         </li>
@@ -77,7 +77,7 @@
 
 <a name='overview'></a>
 
-# Повышение производительности с помощью кэша
+# Улучшение производительности с помощью кэширования
 
 Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
@@ -419,7 +419,7 @@ $slowFrontend = new DataFrontend(
     ]
 );
 
-// Backends are registered from the fastest to the slower
+// Бэкенды от самого быстрого до самого медленного
 $cache = new Multiple(
     [
         new ApcCache(
@@ -446,7 +446,7 @@ $cache = new Multiple(
     ]
 );
 
-// Save, saves in every backend
+// Сохраняем, сохраняется сразу во все бэкенды
 $cache->save('my-key', $data);
 ```
 
