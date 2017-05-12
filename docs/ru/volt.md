@@ -485,7 +485,7 @@ Examples:
 
 <a name='comments'></a>
 
-## Comments
+## Комментарии
 
 Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
 
