@@ -822,7 +822,7 @@ $app->mount($orders);
 
 <a name='routing-setup'></a>
 
-6## Parameters
+6## Параметры
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
