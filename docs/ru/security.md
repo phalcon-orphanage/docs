@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Security</a> <ul>
         <li>
-          <a href="#hashing">Password Hashing</a>
+          <a href="#hashing">Хэширование паролей</a>
         </li>
         <li>
           <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>

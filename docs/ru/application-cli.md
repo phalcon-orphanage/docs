@@ -148,9 +148,9 @@ class MainTask extends Task
 
 ## Обработка параметров
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Вы можете передавать параметры в действие, код для этого уже присутствует в примере загрузочного файла.
 
-If you run the application with the following parameters and action:
+Если вы запустите приложение, с задачей, составленной следующим образом:
 
 ```php
 <?php
@@ -161,7 +161,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
     }
 
     /**
@@ -180,7 +180,7 @@ class MainTask extends Task
 }
 ```
 
-We can then run the following command:
+Вы сможете запустить её используя следующую команду:
 
 ```bash
 php app/cli.php main test world universe
@@ -193,7 +193,7 @@ best regards, universe
 
 ## Запуск цепочки команд
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
 
 ```php
 <?php
@@ -204,7 +204,7 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Связанные с Phalcon вещи указываем здесь
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -217,7 +217,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
 
 ```php
 <?php

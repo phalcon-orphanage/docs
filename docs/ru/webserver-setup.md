@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Настройка веб-сервера</a> <ul>
         <li>
           <a href="#nginx">NGINX</a>
         </li>
@@ -21,7 +21,7 @@
 
 <a name='setup'></a>
 
-# Web server setup
+# Настройка веб-сервера
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
@@ -45,7 +45,8 @@ Using `$_GET['_url']` as source of URIs:
 server {
     listen      80;
     server_name localhost.dev;
-    root        /var/www/phalcon/public;  # This is the folder that index.php is in 
+    # Директория содержащая index.php
+    root        /var/www/phalcon/public;
     index       index.php index.html index.htm;
     charset     utf-8;
 
@@ -178,7 +179,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 </IfModule>
 ```
 
-#### Virtual Hosts
+#### Виртуальные хосты
 
 And this second configuration allows you to install a Phalcon application in a virtual host:
 

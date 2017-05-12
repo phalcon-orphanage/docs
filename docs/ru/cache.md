@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> <ul>
+      <a href="#overview">Повышение производительности с помощью кэша</a> <ul>
         <li>
           <a href="#implementation">When to implement cache?</a>
         </li>
@@ -546,9 +546,9 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
-| Option   | Description                                                |
-| -------- | ---------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys |
+| Option   | Description                                              |
+| -------- | -------------------------------------------------------- |
+| `prefix` | Префикс, который автоматически добавляется к ключам кэша |
 
 <a name='caching-behavior'></a>
 

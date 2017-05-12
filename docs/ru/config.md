@@ -26,7 +26,7 @@
 
 # Чтение конфигураций
 
-`Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
+`Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
 
 <a name='native-arrays'></a>
 
