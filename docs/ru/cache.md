@@ -87,9 +87,9 @@ Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently 
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-- You are making complex calculations that every time return the same result (changing infrequently)
+- Вы делаете сложные вычисления, которые каждый раз возвращают один и тот же результат (меняется редко)
 - You are using a lot of helpers and the output generated is almost always the same
-- You are accessing database data constantly and these data rarely change
+- Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
 ##### *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide. {.alert.alert-warning}
 
@@ -97,7 +97,7 @@ Although this component is very fast, implementing it in cases that are not need
 
 ## Caching Behavior
 
-The caching process is divided into 2 parts:
+Процесс кэширования разделена в 2 части:
 
 - **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
 - **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
@@ -477,7 +477,7 @@ The `Phalcon\Cache\FrontendInterface` interface must be implemented in order to 
 
 The backend adapters available to store cache data are:
 
-| Adapter                                 | Description                                    | Info                                      | Required Extensions                                |
+| Адаптер                                 | Описание                                       | Информация                                | Необходимые расширения                             |
 | --------------------------------------- | ---------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
 | `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC) | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\File`         | Stores data to local plain files               |                                           |                                                    |
@@ -556,7 +556,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
-| Option       | Description                                                   |
+| Параметр     | Описание                                                      |
 | ------------ | ------------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys    |
 | `host`       | Redis host                                                    |
