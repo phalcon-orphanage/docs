@@ -112,7 +112,7 @@ Using Composer, you can create a new project as follows:
 composer create-project phalcon/compose --prefer-dist путь-к-папке-с-проектом
 ```
 
-Your output should be similar to this:
+Результат должен быть похож на:
 
 ```php
 Example
@@ -146,7 +146,7 @@ Add your Phalcon Application into application folder.
 
 ## Конфигурация
 
-Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
+Добавьте `phalcon.local` (или имя предпочтительной хоста) в файл `/etc/hosts` как показано ниже:
 
 ```bash
 127.0.0.1 www.phalcon.local phalcon.local
@@ -184,7 +184,7 @@ logs : /project/log
 
 <a name='logs'></a>
 
-## Logs
+## Логи
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
@@ -232,12 +232,12 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-| ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off     |
+| Переменная окружения         | Описание                                                 | По умолчанию |
+| ---------------------------- | -------------------------------------------------------- | ------------ |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |              |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000         |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off          |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off          |
 
 *NOTE* You can find your local IP address as follows:
 
@@ -312,11 +312,11 @@ make reset
 
 <a name='dependencies'></a>
 
-8## Versions
+8## Версии
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
-| Application     | Version          |
+| Приложение      | Версия           |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
