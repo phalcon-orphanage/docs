@@ -35,7 +35,7 @@
 
 ## Нативные массивы
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+Первый пример показывает, как конвертировать нативный массивы в объекты `Phalcon\Config`. Адаптер для нативных массивов более производителен, так как файлы не разбираются при обращении.
 
 ```php
 <?php
@@ -83,18 +83,18 @@ $config = new Config($settings);
 
 Доступные адаптеры:
 
-| Класс                            | Описание                                                                                         |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| Класс                            | Описание                                                                                            |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
+| `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
+| `Phalcon\Config\Adapter\Php`  | Использует многомерные PHP-массивы для хранения конфигурации. Этот адаптер наиболее производителен. |
+| `Phalcon\Config\Adapter\Yaml` | Использует YAML-файлы для хранения конфигурации.                                                    |
 
 <a name='ini-files'></a>
 
 ## Чтение INI-файлов
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini-файлы являются довольно распространённым способом хранения конфигурации. Для чтения таких файлов `Phalcon\Config` использует оптимизированную PHP-функцию `parse_ini_file`. Разделы файла разбиваются в подразделы для более лёгкого доступа.
 
 ```ini
 [database]
