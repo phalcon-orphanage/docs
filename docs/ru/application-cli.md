@@ -148,9 +148,9 @@ class MainTask extends Task
 
 ## Обработка параметров
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Вы можете передавать параметры в действие, код для этого уже присутствует в примере загрузочного файла.
 
-If you run the application with the following parameters and action:
+Если вы запустите приложение, с задачей, составленной следующим образом:
 
 ```php
 <?php
@@ -180,7 +180,7 @@ class MainTask extends Task
 }
 ```
 
-We can then run the following command:
+Вы сможете запустить её используя следующую команду:
 
 ```bash
 php app/cli.php main test world universe
