@@ -193,7 +193,7 @@ best regards, universe
 
 ## Запуск цепочки команд
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
 
 ```php
 <?php
@@ -217,7 +217,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
 
 ```php
 <?php
