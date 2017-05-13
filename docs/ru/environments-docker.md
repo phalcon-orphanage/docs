@@ -162,14 +162,15 @@ Generating autoload files
 docker-compose build
 ```
 
-To start the application and run the containers in the background, use following command inside project root:
+Чтобы запустить приложение и контейнеры в фоновом режиме, используйте следующую команду в корне проекта:
 
 ```bash
-# You can use here your prefered project name with "-p my-app" parameter
+# Вы можете использовать здесь предпочтительное имя проекта,
+# используя опцию "-p", например "-p my-app"
 $ docker-compose up -d
 ```
 
-Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
+Теперь вы можете запустить ваше приложение в браузере по адресу `http://phalcon.local` (или используя адрес, который вы выбрали ранее).
 
 <a name='setup'></a>
 
