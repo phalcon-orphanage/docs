@@ -170,7 +170,7 @@ docker-compose build
 $ docker-compose up -d
 ```
 
-Теперь вы можете запустить ваше приложение в браузере по адресу `http://phalcon.local` (или используя адрес, который вы выбрали ранее).
+Теперь вы можете открыть ваше приложение в браузере по адресу `http://phalcon.local` (или используя адрес, который вы выбрали ранее).
 
 <a name='setup'></a>
 
@@ -240,7 +240,7 @@ For debugging purposes you can setup Xdebug by passing required parameters (see 
 | `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off          |
 | `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off          |
 
-*NOTE* You can find your local IP address as follows:
+*Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
 ```bash
 # Linux/MacOS
