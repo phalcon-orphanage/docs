@@ -12,7 +12,7 @@
           <a href="#cherokee">Cherokee</a>
         </li>
         <li>
-          <a href="#php-built-in">Built in Webserver</a>
+          <a href="#php-built-in">Встроенный веб-сервер</a>
         </li>
       </ul>
     </li>
