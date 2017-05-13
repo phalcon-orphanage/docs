@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Using Views</a> <ul>
+      <a href="#overview">Использование представлений</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+          <a href="#integrating-views-with-controllers">Интеграция представлений с контроллерами</a>
         </li>
         <li>
           <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
@@ -72,7 +72,7 @@
 
 <a name='overview'></a>
 
-# Using Views
+# Использование представлений
 
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
 
@@ -80,7 +80,7 @@ Views represent the user interface of your application. Views are often HTML fil
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Интеграция представлений с контроллерами
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
