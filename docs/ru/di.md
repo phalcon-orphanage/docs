@@ -1212,7 +1212,7 @@ $di = new FactoryDefault();
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| Service Name       | Description                           | Default                                     | Shared |
+| Название сервиса   | Описание                              | По умолчанию                                | Shared |
 | ------------------ | ------------------------------------- | ------------------------------------------- |:------:|
 | assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Yes   |
 | annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |  Yes   |
