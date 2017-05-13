@@ -26,7 +26,7 @@
         - [CLI](/en/[[version]]/application-cli)
     - [DI Container](/en/[[version]]/di)
     - [MVC](/en/[[version]]/mvc)
-- Services 
+- Сервисы 
     - [Cache](/en/[[version]]/cache)
     - [Config](/en/[[version]]/config)
     - Escaper
