@@ -71,7 +71,7 @@
 
 # Введение
 
-Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Его цель заключается в том, чтобы сделать разворачивание Phalcon приложения лёгким, независимо от окружения (development, production).
+Phalcon Compose является средой разработки на общественных началах для Phalcon проектов, которые запускаются в Docker контейнерах. Его цель заключается в том, чтобы сделать разворачивание Phalcon приложения лёгким, независимо от окружения (development, production).
 
 <a name='dependencies'></a>
 
@@ -85,18 +85,18 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 Ниже перечислены предоставляемые сервисы: 
 
-| Название сервиса | Описание                                                                                           |
-| ---------------- | -------------------------------------------------------------------------------------------------- |
-| mongo            | MongoDB сервис контейнер                                                                           |
-| postgres         | PostgreSQL сервис контейнер                                                                        |
-| mysql            | MySQL сервис контейнер                                                                             |
-| phpmyadmin       | A web interface for MySQL and MariaDB                                                              |
-| memcached        | Memcached сервис контейнер                                                                         |
-| queue            | Beanstalk queue container                                                                          |
-| aerospike        | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.      |
-| redis            | Redis database container                                                                           |
-| app              | PHP 7, Apache 2 and Composer container                                                             |
-| elasticsearch    | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search |
+| Название сервиса | Описание                                                                                                                                         |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| mongo            | MongoDB сервис контейнер                                                                                                                         |
+| postgres         | PostgreSQL сервис контейнер                                                                                                                      |
+| mysql            | MySQL сервис контейнер                                                                                                                           |
+| phpmyadmin       | Веб-интерфейс к MariaDB и MySQL                                                                                                                  |
+| memcached        | Memcached сервис контейнер                                                                                                                       |
+| queue            | Сервис контейнер сервера очередей Beanstalk                                                                                                      |
+| aerospike        | Контейнер с Aerospike — надежной, высокопроизводительной, распределенной базой данных, оптимизированной для работы на SSD и в оперативной памяти |
+| redis            | Сервис контейнер базы данных Redis                                                                                                               |
+| app              | Контейнер с PHP 7, Apache 2 и Composer                                                                                                           |
+| elasticsearch    | Контейнер с Elasticsearch — мощным движком для поиска и аналитики                                                                                |
 
 <a name='installation'></a>
 
@@ -132,7 +132,7 @@ Generating autoload files
 
 ### С помощью Git
 
-Another way to initialize your project is with Git.
+Другим способом инициализации проекта является Git.
 
 ```bash
  git clone git@github.com:phalcon/phalcon-compose.git
@@ -140,7 +140,7 @@ Another way to initialize your project is with Git.
 
 ##### Убедитесь, что вы скопировали `variables.env.example` `variables.env` и настроили параметры в этом файле {.alert.alert-warning}
 
-Add your Phalcon Application into application folder.
+Добавьте ваше Phalcon приложение в папку application.
 
 <a name='configuration'></a>
 
@@ -156,7 +156,7 @@ Add your Phalcon Application into application folder.
 
 ## Использование
 
-You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
+Теперь можно создавать, собирать и присоединять контейнеры к окружению вашего приложения. Для того, чтобы собрать контейнеры, используйте следующую команду в корне проекта:
 
 ```php
 docker-compose build
@@ -224,7 +224,7 @@ You can pass multiple environment variables from an external file to a service's
 | `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret       |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |              |
 
-*See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*Смотрите также* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='dependencies'></a>
 
