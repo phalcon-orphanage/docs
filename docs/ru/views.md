@@ -8,7 +8,7 @@
         <li>
           <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
             <li>
-              <a href="#using-templates">Using Templates</a>
+              <a href="#using-templates">Использование шаблонов</a>
             </li>
             <li>
               <a href="#control-rendering-levels">Control Rendering Levels</a>
@@ -227,7 +227,7 @@ class PostsController extends Controller
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blog's title</title>
+        <title>Название блога</title>
     </head>
     <body>
         <?php echo $this->getContent(); ?>
@@ -1112,11 +1112,11 @@ echo $view->render(
 
 | Event Name       | Triggered                                     | Can stop operation? |
 | ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| beforeRender     | Triggered before starting the render process  |         Да          |
+| beforeRenderView | Triggered before rendering an existing view   |         Да          |
+| afterRenderView  | Triggered after rendering an existing view    |         Нет         |
+| afterRender      | Triggered after completing the render process |         Нет         |
+| notFoundView     | Triggered when a view was not found           |         Нет         |
 
 The following example demonstrates how to attach listeners to this component:
 
