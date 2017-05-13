@@ -1,14 +1,14 @@
-- [General](/en/[[version]]/introduction) 
-    - [Release Notes](/en/[[version]]/release-notes)
-    - Upgrade
-    - [Sponsors](/en/[[version]]/sponsors)
-- Contributions 
+- [Основное](/en/[[version]]/introduction) 
+    - [Примечания к выпуску](/en/[[version]]/release-notes)
+    - Обновление
+    - [Спонсоры](/en/[[version]]/sponsors)
+- Вклад 
     - [Введение](/en/[[version]]/contributions)
-    - Pull Requests
-    - [NFR](/en/[[version]]/new-feature-request)
-    - Backtrace Generation
-    - Reproducible Tests
-    - Testing guide
+    - Пулл реквесты
+    - [Запрос новой функции](/en/[[version]]/new-feature-request)
+    - Генерация трассировки выполнения
+    - Воспроизводимые тесты
+    - Руководство по тестированию
 - Начало работы 
     - [Установка](/en/[[version]]/installation)
     - [Настройка веб-сервера](/en/[[version]]/webserver-setup)
@@ -16,19 +16,19 @@
     - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
-- Development Tools 
-    - Command Line
-    - Web Interface
+- Инструменты разработчика 
+    - Командная строка
+    - Веб-интерфейс
 - Ядро 
-    - Application 
-        - Full
-        - [Micro](/en/[[version]]/application-micro)
+    - Приложение 
+        - Полное
+        - [Микро](/en/[[version]]/application-micro)
         - [CLI](/en/[[version]]/application-cli)
-    - [DI Container](/en/[[version]]/di)
+    - [DI контейнер](/en/[[version]]/di)
     - [MVC](/en/[[version]]/mvc)
 - Сервисы 
-    - [Cache](/en/[[version]]/cache)
-    - [Config](/en/[[version]]/config)
+    - [Кэш](/en/[[version]]/cache)
+    - [Конфигурация](/en/[[version]]/config)
     - Escaper
     - Автозагрузка классов 
         - Пространства имён
@@ -52,7 +52,7 @@
         - [Metadata](/en/[[version]]/models-metadata)
         - [Relationships](/en/[[version]]/models-relationships)
         - [Transactions](/en/[[version]]/models-transactions)
-        - [Validators](/en/[[version]]/models-validators)
+        - [Валидаторы](/en/[[version]]/models-validators)
 - Front End 
     - [Assets](/en/[[version]]/assets)
     - Flash Messenger
