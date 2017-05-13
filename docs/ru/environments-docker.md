@@ -87,11 +87,11 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 | Название сервиса | Описание                                                                                           |
 | ---------------- | -------------------------------------------------------------------------------------------------- |
-| mongo            | MongoDB server container                                                                           |
-| postgres         | PostgreSQL server container                                                                        |
-| mysql            | MySQL database container                                                                           |
+| mongo            | MongoDB сервис контейнер                                                                           |
+| postgres         | PostgreSQL сервис контейнер                                                                        |
+| mysql            | MySQL сервис контейнер                                                                             |
 | phpmyadmin       | A web interface for MySQL and MariaDB                                                              |
-| memcached        | Memcached server container                                                                         |
+| memcached        | Memcached сервис контейнер                                                                         |
 | queue            | Beanstalk queue container                                                                          |
 | aerospike        | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.      |
 | redis            | Redis database container                                                                           |
