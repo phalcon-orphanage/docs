@@ -1,33 +1,35 @@
 <div class='article-menu' markdown='1'>
 
-- [Dependency Injection - Service Location](#requirements)
-    - ## DI explained
-    - ## Registering services in the Container
-        - ### Simple Registration
-            - #### String
-            - #### Class instances
-            - #### Closures/Anonymous functions
-        - ### Complex Registration
-            - #### Constructor Injection
-            - #### Setter Injection
-            - #### Properties Injection
-        - ### Array Syntax
-    - ## Resolving Services
-        - ### Events
-    - ## Shared services
-    - ## Manipulating services individually
-    - ## Instantiating classes via the Service Container
-    - ## Automatic Injecting of the DI itself
-    - ## Organizing services in files
-    - ## Accessing the DI in a static way
-    - ## Factory Default DI
-    - ## Service Name Conventions
-    - ## Implementing your own DI
-    
+- [Dependency Injection / Service Location](#di-service-location)
+    - [DI explained](#di-explained)
+    - [Registering services in the Container](#registering-services)
+        - [Simple Registration](#simple-registration)
+            - [String](#simple-registration-string)
+            - [Class instances](#class-instances)
+            - [Closures/Anonymous functions](#closures-anonymous-functions)
+        - [Complex Registration](#complex-registration)
+            - [Constructor Injection](#constructor-injection)
+            - [Setter Injection](#setter-injection)
+            - [Properties Injection](#properties-injection)
+        - [Array Syntax](#array-syntax)
+    - [Resolving Services](#resolving-services)
+        - [Events](#events)
+    - [Shared services](#shared-services)
+    - [Manipulating services individually](#manipulating-services-individually)
+    - [Instantiating classes via the Service Container](#instantiating-classes-service-container)
+    - [Automatic Injecting of the DI itself](#automatic-injecting-di-itself)
+    - [Organizing services in files](#organizing-services-files)
+    - [Accessing the DI in a static way](#accessing-di-static-way)
+    - [Factory Default DI](#factory-default-di)
+    - [Service Name Conventions](#service-name-conventions)
+    - [Implementing your own DI](#implementing-your-own-di)
+
 </div>
 
 <a name='di-service-location'></a>
-# Dependency Injection/Service Location
+# Dependency Injection / Service Location
+
+<a name='di-explained'></a>
 ## DI explained
 The following example is a bit long, but it attempts to explain why Phalcon uses service location and dependency injection. First, let's assume we are developing a component called `SomeComponent`. This performs some task. Our component has a dependency, that is a connection to a database.
 
@@ -173,7 +175,7 @@ class Registry
     /**
      * Creates a connection
      *
-     * @return Connection  
+     * @return Connection
      */
     protected static function createConnection(): Connection
     {
@@ -190,7 +192,7 @@ class Registry
     /**
      * Creates a connection only once and returns it
      *
-     * @return Connection  
+     * @return Connection
      */
     public static function getSharedConnection(): Connection
     {
@@ -204,9 +206,9 @@ class Registry
     /**
      * Always returns a new connection
      *
-     * @return Connection  
+     * @return Connection
      */
-    public static function getNewConnection(): Connection 
+    public static function getNewConnection(): Connection
     {
         return self::createConnection();
     }
@@ -219,7 +221,7 @@ class SomeComponent
     /**
      * Sets the connection externally
      *
-     * @param Connection $connection  
+     * @param Connection $connection
      */
     public function setConnection(Connection $connection)
     {
@@ -239,7 +241,7 @@ class SomeComponent
     /**
      * This method always needs a new connection
      *
-     * @param Connection $connection  
+     * @param Connection $connection
      */
     public function someOtherDbTask(Connection $connection)
     {
@@ -398,6 +400,7 @@ Basically, this component implements the [Inversion of Control](http://en.wikipe
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
+<a name='registering-services'></a>
 ## Registering services in the Container
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
 
@@ -409,9 +412,11 @@ This way of working gives us many advantages:
 
 Services can be registered using several types of definitions:
 
+<a name='simple-registration'></a>
 ### Simple Registration
 As seen before, there are several ways to register services. These we call simple:
 
+<a name='simple-registration-string'></a>
 #### String
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -425,6 +430,7 @@ $di->set(
 );
 ```
 
+<a name='class-instances'></a>
 #### Class instances
 This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
 
@@ -440,6 +446,7 @@ $di->set(
 );
 ```
 
+<a name='closures-anonymous-functions'></a>
 #### Closures/Anonymous functions
 This method offers greater freedom to build the dependency as desired, however, it is difficult to change some of the parameters externally without having to completely change the definition of dependency:
 
@@ -535,7 +542,7 @@ $di->set(
     }
 );
 ```
-
+<a name='complex-registration'></a>
 ### Complex Registration
 If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
 
@@ -591,6 +598,7 @@ $di
 
 In addition by using the array syntax you can use three types of dependency injection:
 
+<a name='constructor-injection'></a>
 #### Constructor Injection
 This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following component:
 
@@ -653,6 +661,7 @@ $di->set(
 The service 'response' (`Phalcon\Http\Response`) is resolved to be passed as the first argument of the constructor,
 while the second is a boolean value (true) that is passed as it is.
 
+<a name='setter-injection'></a>
 #### Setter Injection
 Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
 
@@ -726,6 +735,7 @@ $di->set(
 );
 ```
 
+<a name='properties-injection'></a>
 #### Properties Injection
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
 
@@ -797,6 +807,7 @@ these provide a more robust approach to define and inject services.
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
 according to the application needs.
 
+<a name='array-syntax'></a>
 ### Array Syntax
 The array syntax is also allowed to register services:
 
@@ -834,6 +845,7 @@ Setting a service by a string is simple, but lacks flexibility. Setting services
 
 `Phalcon\Di` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
+<a name='resolving-services'></a>
 ## Resolving Services
 Obtaining a service from the container is a matter of simply calling the 'get' method. A new instance of the service will be returned:
 
@@ -868,6 +880,7 @@ $component = $di->get(
 );
 ```
 
+<a name='envents'></a>
 ### Events
 `Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation.
 The following events are supported:
@@ -878,6 +891,7 @@ The following events are supported:
 | afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. | No                  | Listeners    |
 
 
+<a name='shared-services'></a>
 ## Shared services
 Services can be registered as 'shared' services this means that they always will act as [singletons](http://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -926,6 +940,7 @@ If a service isn't registered as shared and you want to be sure that a shared in
 $request = $di->getShared('request');
 ```
 
+<a name='manipulating-services-individually'></a>
 ## Manipulating services individually
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -954,6 +969,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     $request = $requestService->resolve();
 ```
 
+<a name='instantiating-classes-service-container'></a>
 ## Instantiating classes via the Service Container
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
@@ -988,6 +1004,7 @@ $myComponent = $di->get('MyOtherComponent');
 
 You can take advantage of this, always instantiating your classes via the service container (even if they aren't registered as services). The DI will fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition for it.
 
+<a name='automatic-injecting-di-itself'></a>
 ## Automatic Injecting of the DI itself
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates, to do this, you need to implement the `Phalcon\Di\InjectionAwareInterface` in your classes:
 
@@ -1029,6 +1046,7 @@ $di->set('myClass', 'MyClass');
 $myClass = $di->get('myClass');
 ```
 
+<a name='organizing-services-files'></a>
 ## Organizing services in files
 You can better organize your application by moving the service registration to individual files instead of
 doing everything in the application's bootstrap:
@@ -1056,6 +1074,7 @@ $router->post('/login');
 return $router;
 ```
 
+<a name='accessing-di-static-way'></a>
 ## Accessing the DI in a static way
 If needed you can access the latest DI created in a static function in the following way:
 
@@ -1074,6 +1093,7 @@ class SomeComponent
 }
 ```
 
+<a name='factory-default-di'></a>
 ## Factory Default DI
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack framework. To achieve this, the framework provides a variant of `Phalcon\Di` called `Phalcon\Di\FactoryDefault`. This class automatically registers the appropriate services bundled with the framework to act as full-stack.
 
@@ -1084,6 +1104,8 @@ use Phalcon\Di\FactoryDefault;
 
 $di = new FactoryDefault();
 ```
+
+<a name='service-name-conventions'></a>
 ## Service Name Conventions
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
@@ -1114,6 +1136,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | url                | URL Generator Service                 | `Phalcon\Mvc\Url`                       | Yes    |
 | viewsCache         | Cache backend for views fragments     | None                                    | No     |
 
+<a name='implementing-your-own-di'></a>
 ## Implementing your own DI
 The `Phalcon\DiInterface` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
