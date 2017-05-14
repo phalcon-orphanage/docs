@@ -176,12 +176,12 @@ $ docker-compose up -d
 
 ## Настройка
 
-If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
+Если ваше приложение использует файловый кэш или пишет логи на диск, вы можете настроить эти директории следующим образом:
 
-| Directory | Path             |
-| --------- | ---------------- |
-| Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Директория | Путь             |
+| ---------- | ---------------- |
+| Кэш        | `/project/cache` |
+| Логи       | `/project/log`   |
 
 <a name='logs'></a>
 
@@ -193,7 +193,7 @@ If your application uses a file cache or writes logs to files, you can set up yo
 
 0## Переменные окружения
 
-You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
+Вы можете передавать неограниченное кол-во переменных окружения в сервис контейнер используя файл `variables.env`.
 
 <a name='dependencies'></a>
 
@@ -233,12 +233,12 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-| ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off     |
+| Переменная окружения         | Описание                                                 | По умолчанию |
+| ---------------------------- | -------------------------------------------------------- | ------------ |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |              |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000         |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off          |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off          |
 
 *Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
