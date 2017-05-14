@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Security</a> <ul>
+      <a href="#overview">Безопасность</a> <ul>
         <li>
           <a href="#hashing">Хэширование паролей</a>
         </li>
@@ -24,13 +24,13 @@
 
 <a name='overview'></a>
 
-# Security
+# Безопасность
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## Хэширование паролей
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
 

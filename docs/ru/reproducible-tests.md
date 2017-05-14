@@ -41,7 +41,7 @@ var_dump($_COOKIE);
 
 Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
 
-### Database
+### База данных
 
 Remember to add to the script how you registered the database service:
 
@@ -125,7 +125,7 @@ $app->handle();
 
 ### ORM
 
-You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
+You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Следуйте этой структуры для создания скрипта:
 
 ```php
 <?php

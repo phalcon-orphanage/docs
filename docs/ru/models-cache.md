@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Kэширование ORM</a> <ul>
         <li>
           <a href="#caching-resultsets">Caching Resultsets</a>
         </li>
@@ -24,7 +24,7 @@
           <a href="#caching-based-on-conditions">Caching based on Conditions</a>
         </li>
         <li>
-          <a href="#caching-phql-execution-plan">Caching PHQL execution plan</a>
+          <a href="#caching-phql-execution-plan">Кэширования плана выполнения PHQL</a>
         </li>
       </ul>
     </li>
@@ -33,7 +33,7 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# Kэширование ORM
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -237,17 +237,17 @@ class CacheableModel extends Model
 {
     protected static function _createKey($parameters)
     {
-        // ... Create a cache key based on the parameters
+        // ... Создание ключа кэша на основе параметров
     }
 
     public static function find($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 
     public static function findFirst($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 }
 ```
@@ -359,7 +359,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
+| Тип        | Описание                                                        | Implicit Method |
 | ---------- | --------------------------------------------------------------- | --------------- |
 | Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
 | Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |

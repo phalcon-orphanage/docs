@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">Создание микро приложения</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> <ul>
+      <a href="#routing">Маршрутизация</a> <ul>
         <li>
           <a href="#routing-setup">Настройка</a> <ul>
             <li>
@@ -225,7 +225,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 
@@ -822,7 +822,7 @@ $app->mount($orders);
 
 <a name='routing-setup'></a>
 
-6## Parameters
+6## Параметры
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
@@ -1013,7 +1013,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Setup the database service
+// Настройка сервиса базы данных
 $app['db'] = function () {
     return new MysqlAdapter(
         [

@@ -1,81 +1,81 @@
-- [General](/en/[[version]]/introduction) 
-    - [Release Notes](/en/[[version]]/release-notes)
-    - Upgrade
-    - [Sponsors](/en/[[version]]/sponsors)
-- Contributions 
-    - [Overview](/en/[[version]]/contributions)
-    - Pull Requests
-    - [NFR](/en/[[version]]/new-feature-request)
-    - Backtrace Generation
-    - Reproducible Tests
-    - Testing guide
-- Getting Started 
-    - [Installation](/en/[[version]]/installation)
-    - [Webserver Setup](/en/[[version]]/webserver-setup)
-- Environments 
+- [Основное](/en/[[version]]/introduction) 
+    - [Примечания к выпуску](/en/[[version]]/release-notes)
+    - Обновление
+    - [Спонсоры](/en/[[version]]/sponsors)
+- Вклад 
+    - [Введение](/en/[[version]]/contributions)
+    - Пулл реквесты
+    - [Запрос новой функции](/en/[[version]]/new-feature-request)
+    - Генерация трассировки выполнения
+    - Воспроизводимые тесты
+    - Руководство по тестированию
+- Начало работы 
+    - [Установка](/en/[[version]]/installation)
+    - [Настройка веб-сервера](/en/[[version]]/webserver-setup)
+- Окружение 
     - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
-- Development Tools 
-    - Command Line
-    - Web Interface
-- Core 
-    - Application 
-        - Full
-        - [Micro](/en/[[version]]/application-micro)
-        - [Cli](/en/[[version]]/application-cli)
-    - [DI Container](/en/[[version]]/di)
+- Инструменты разработчика 
+    - Командная строка
+    - Веб-интерфейс
+- Ядро 
+    - Приложение 
+        - Полное
+        - [Микро](/en/[[version]]/application-micro)
+        - [CLI](/en/[[version]]/application-cli)
+    - [DI контейнер](/en/[[version]]/di)
     - [MVC](/en/[[version]]/mvc)
-- Services 
-    - [Cache](/en/[[version]]/cache)
-    - [Config](/en/[[version]]/config)
+- Сервисы 
+    - [Кэш](/en/[[version]]/cache)
+    - [Конфигурация](/en/[[version]]/config)
     - Escaper
-    - Loader 
-        - Namespaces
-    - Logging 
-        - Adapters
-    - Queue 
+    - Автозагрузка классов 
+        - Пространства имён
+    - Журналирование 
+        - Адаптеры
+    - Очередь 
         - Beanstalk
-- Database 
-    - Connectors 
+- База данных 
+    - Драйверы 
         - MySQL
         - PostgreSql
         - SqLite
         - Mongo
     - PHQL
     - ODM
-    - [Models](/en/[[version]]/models) 
-        - [Advanced](/en/[[version]]/models-advanced)
-        - [Behaviors](/en/[[version]]/models-behaviors)
-        - [Cache](/en/[[version]]/models-cache)
-        - [Events](/en/[[version]]/models-events)
-        - [Metadata](/en/[[version]]/models-metadata)
-        - [Relationships](/en/[[version]]/models-relationships)
-        - [Transactions](/en/[[version]]/models-transactions)
-        - [Validators](/en/[[version]]/models-validators)
-- Front End 
-    - [Assets](/en/[[version]]/assets)
-    - Flash Messenger
-    - Forms
-    - Tag
-    - [View](/en/[[version]]/views) 
+    - [Модели](/en/[[version]]/models) 
+        - [Продвинутое использование](/en/[[version]]/models-advanced)
+        - [Поведения](/en/[[version]]/models-behaviors)
+        - [Кэш](/en/[[version]]/models-cache)
+        - [События](/en/[[version]]/models-events)
+        - [Метаданные](/en/[[version]]/models-metadata)
+        - [Отношения](/en/[[version]]/models-relationships)
+        - [Транзакции](/en/[[version]]/models-transactions)
+        - [Валидаторы](/en/[[version]]/models-validators)
+- Фронтенд 
+    - [Медиа-ресурсы](/en/[[version]]/assets)
+    - Всплывающие сообщения
+    - Формы
+    - Теги
+    - [Представления](/en/[[version]]/views) 
         - View Simple
         - [Volt](/en/[[version]]/volt)
-- Business Logic 
-    - [Access Control Lists](/en/[[version]]/acl)
-    - [Annotations](/en/[[version]]/annotations)
-    - [Controllers](/en/[[version]]/controllers)
-    - Dispatcher
-    - Event Manager
-    - Filters
-    - Routing
-    - Sessions
-    - Url
-    - Validators
+- Бизнес-логика 
+    - [Контроль доступа](/en/[[version]]/acl)
+    - [Аннотации](/en/[[version]]/annotations)
+    - [Контроллеры](/en/[[version]]/controllers)
+    - Диспетчер
+    - Управление событиями
+    - Фильтры
+    - Маршрутизация
+    - Сессии
+    - URL
+    - Валидаторы
 - HTTP 
     - Cookies
     - Request
     - Response
-- Security 
-    - [Crypto](/en/[[version]]/crypt)
-    - [Security](/en/[[version]]/security)
+- Безопасность 
+    - [Шифрование](/en/[[version]]/crypt)
+    - [Защита](/en/[[version]]/security)

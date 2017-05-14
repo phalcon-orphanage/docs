@@ -35,7 +35,7 @@
 
 ## Нативные массивы
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+Первый пример показывает, как конвертировать нативный массивы в объекты `Phalcon\Config`. Адаптер для нативных массивов более производителен, так как файлы не разбираются при обращении.
 
 ```php
 <?php
@@ -83,18 +83,18 @@ $config = new Config($settings);
 
 Доступные адаптеры:
 
-| Класс                            | Описание                                                                                         |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| Класс                            | Описание                                                                                            |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
+| `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
+| `Phalcon\Config\Adapter\Php`  | Использует многомерные PHP-массивы для хранения конфигурации. Этот адаптер наиболее производителен. |
+| `Phalcon\Config\Adapter\Yaml` | Использует YAML-файлы для хранения конфигурации.                                                    |
 
 <a name='ini-files'></a>
 
 ## Чтение INI-файлов
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini-файлы являются довольно распространённым способом хранения конфигурации. Для чтения таких файлов `Phalcon\Config` использует оптимизированную PHP-функцию `parse_ini_file`. Разделы файла разбиваются в подразделы для более лёгкого доступа.
 
 ```ini
 [database]
@@ -131,7 +131,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Объединение конфигураций
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` позволяет рекурсивно объединять объекты конфигурации.
 
 ```php
 <?php
@@ -181,13 +181,13 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
 ## Вложенная конфигурация
 
-Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+Также, для получения вложенной конфигурации, вы можете использовать метод `Phalcon\Config::path`. Этот метод позволяет получать вложенную конфигурацию, не заботясь о том, что какие-то части “пути” отсутствуют. Давайте рассмотрим пример:
 
 ```php
 <?php
@@ -235,7 +235,7 @@ $config->path('test/parent/property2'); // yeah
 
 ## Внедрение конфигурации
 
-You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
+Вы можете внедрять конфигурацию в контроллеры, зарегистрировав конфигурацию как сервис. Для реализации этой возможности, добавьте следующий код в ваш скрипт, регистрирующий сервисы в DI:
 
 ```php
 <?php
@@ -243,9 +243,10 @@ You can inject your configuration to the controllers by adding it as a service. 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создаём DI
 $di = new FactoryDefault();
 
+// Регистрируем сервис "config"
 $di->set(
     'config',
     function () {
@@ -256,7 +257,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+Теперь, в ваших контроллерах, вы легко можете получать доступ к конфигурации приложения используя функцию внедрения зависимостей:
 
 ```php
 <?php

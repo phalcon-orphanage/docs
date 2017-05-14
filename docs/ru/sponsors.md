@@ -11,7 +11,7 @@ For those that wish to sponsor our work and further the development of Phalcon, 
 # Sponsors and Supporters
 
 <a href="https://pdffiller.com/" target="_blank">
-    <img src="https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/pdffiller-240x60.png" alt="PDFFiller" />
+    <img src="https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/pdffiller-240x60.png" alt="PDFfiller" />
 </a>
 
 <a href="https://mctekk.com/" target="_blank">
