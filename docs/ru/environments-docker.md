@@ -176,12 +176,12 @@ $ docker-compose up -d
 
 ## Настройка
 
-If your application uses a file cache or writes logs to files, then edit the application configuration files and set up your cache and log folders as follows:
+If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
-```yaml
-cache : /project/cache
-logs : /project/log
-```
+| Directory | Path             |
+| --------- | ---------------- |
+| Cache     | `/project/cache` |
+| Logs      | `/project/log`   |
 
 <a name='logs'></a>
 
@@ -217,10 +217,10 @@ You can pass multiple environment variables from an external file to a service's
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1            |
 | `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql        |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if PMA_HOST is empty.      |              |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |              |
 | `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306         |
 | `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |              |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if PMA_VERBOSE is empty.        |              |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |              |
 | `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon      |
 | `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret       |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |              |
@@ -233,12 +233,12 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Переменная окружения         | Описание                                                 | По умолчанию |
-| ---------------------------- | -------------------------------------------------------- | ------------ |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |              |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000         |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off          |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off          |
+| Environment variable         | Description                                              | Default |
+| ---------------------------- | -------------------------------------------------------- | ------- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |         |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000    |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off     |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off     |
 
 *Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
@@ -317,7 +317,7 @@ make reset
 
 Основные инструменты: Phalcon, Docker и Docker Compose.
 
-| Приложение      | Версия           |
+| Application     | Version          |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
