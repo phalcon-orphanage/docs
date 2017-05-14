@@ -176,12 +176,12 @@ $ docker-compose up -d
 
 ## Настройка
 
-If your application uses a file cache or writes logs to files, then edit the application configuration files and set up your cache and log folders as follows:
+Если ваше приложение использует файловый кэш или пишет логи на диск, вы можете настроить эти директории следующим образом:
 
-```yaml
-cache : /project/cache
-logs : /project/log
-```
+| Директория | Путь             |
+| ---------- | ---------------- |
+| Кэш        | `/project/cache` |
+| Логи       | `/project/log`   |
 
 <a name='logs'></a>
 
@@ -193,7 +193,7 @@ logs : /project/log
 
 0## Переменные окружения
 
-You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
+Вы можете передавать неограниченное кол-во переменных окружения в сервис контейнер используя файл `variables.env`.
 
 <a name='dependencies'></a>
 
@@ -217,10 +217,10 @@ You can pass multiple environment variables from an external file to a service's
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1            |
 | `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql        |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if PMA_HOST is empty.      |              |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |              |
 | `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306         |
 | `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |              |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if PMA_VERBOSE is empty.        |              |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |              |
 | `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon      |
 | `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret       |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |              |
@@ -317,7 +317,7 @@ make reset
 
 Основные инструменты: Phalcon, Docker и Docker Compose.
 
-| Приложение      | Версия           |
+| Application     | Version          |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
