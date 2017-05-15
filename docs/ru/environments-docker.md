@@ -299,7 +299,7 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Linux/MacOS users can use `make` to perform the task:
+Linux/macOs пользователи, вместо этого, могут воспользоваться `make`:
 
 ```bash
 make pull
@@ -307,7 +307,7 @@ make pull
 
 Then you have to reset all containers, delete all data, rebuild services and restart application.
 
-Linux/MacOS users can use `make` to perform the task:
+Linux/macOs пользователи, вместо этого, могут воспользоваться `make`:
 
 ```bash
 make reset
@@ -317,7 +317,7 @@ make reset
 
 8## Версии
 
-The main tools used are Phalcon, Docker and Docker Compose.
+Основные инструменты: Phalcon, Docker и Docker Compose.
 
 | Приложение      | Версия           |
 | --------------- | ---------------- |
