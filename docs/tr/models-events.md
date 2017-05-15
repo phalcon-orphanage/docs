@@ -262,11 +262,7 @@ if ($robot->save() === false) {
 
 As above, the file *app/logs/db.log* will contain something like this:
 
-.. code-block:: irc
-
-    [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
-    (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
-    
+> `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots` `(name, created_at) VALUES ('Robby the Robot', '1956-07-21')`
 
 <a name='profiling-sql-statements'></a>
 
