@@ -213,17 +213,17 @@ $ docker-compose up -d
 
 2### Переменные phpMyAdmin
 
-| Переменная окружения | Описание                                                                                                     | По умолчанию |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
-| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1            |
-| `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql        |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |              |
-| `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306         |
-| `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |              |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |              |
-| `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon      |
-| `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret       |
-| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |              |
+| Переменная окружения | Описание                                                                                        | По умолчанию |
+| -------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
+| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                         | 1            |
+| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                 | mysql        |
+| `PMA_HOSTS`          | Определяет список адресов MySQL серверов. Используется только если переменная `PMA_HOST` пуста. |              |
+| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                  | 3306         |
+| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                   |              |
+| `PMA_VERBOSES`       | Определяет список имен MySQL серверов. Используется только если переменная `PMA_VERBOSE` пуста. |              |
+| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации                                 | phalcon      |
+| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                             | secret       |
+| `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                      |              |
 
 *Смотрите также* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
@@ -258,7 +258,7 @@ ipconfig
 
 5### Ошибки запуска или связывания
 
-If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
+Если у вас возникли проблемы с контейнером приложения, вы можете безопасно пересобрать его, без потери данных:
 
 ```bash
 docker-compose stop
@@ -271,7 +271,7 @@ docker-compose up -d
 
 6### Полный сброс
 
-To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in application/ folder:
+Для сброса всех контейнеров, а также удаления всех данных (mysql, elasticsearch, и т.д.), кроме файлов проекта в директории application, используйте следующий набор команд:
 
 ```bash
 docker-compose stop
