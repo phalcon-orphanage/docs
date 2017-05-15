@@ -85,7 +85,7 @@ Another way to initialize your project is with Git.
 
 ##### Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file ##### {.alert .alert-warning}
 
-Add your Phalcon Application into application folder.
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 ## Configuration
@@ -197,7 +197,7 @@ docker-compose up -d
 
 <a name='troubleshooting-full-reset'></a>
 ### Full reset
-To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in application/ folder:
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop
