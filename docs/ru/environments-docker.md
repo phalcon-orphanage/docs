@@ -231,7 +231,7 @@ $ docker-compose up -d
 
 3## Удаленный отладчик Xdebug (PhpStorm)
 
-For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
+Из соображение отладки приложения, вы можете настроить Xdebug, передав необходимые параметры (см. variables.env).
 
 | Переменная окружения         | Описание                                                      | По умолчанию |
 | ---------------------------- | ------------------------------------------------------------- | ------------ |
@@ -299,7 +299,7 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-For Linux/MacOS users, you can use `make` to perform the task:
+Linux/macOs пользователи, вместо этого, могут использовать команду `make`:
 
 ```bash
 make pull
