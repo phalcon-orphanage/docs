@@ -199,15 +199,15 @@ $ docker-compose up -d
 
 1### Окружение веб-сервера
 
-| Переменная окружения | Описание                                           | По умолчанию    |
-| -------------------- | -------------------------------------------------- | --------------- |
-| `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container) | /project/public |
-| `WEB_DOCUMENT_INDEX` | Index document                                     | index.php       |
-| `WEB_ALIAS_DOMAIN`   | Domain aliases                                     | *.vm            |
-| `WEB_PHP_SOCKET`     | PHP-FPM socket address                             | 127.0.0.1:9000  |
-| `APPLICATION_ENV`    | Application environment                            | development     |
-| `APPLICATION_CACHE`  | Application cache dir (inside the container)       | /project/cache  |
-| `APPLICATION_LOGS`   | Application logs dir (inside the container)        | /project/logs   |
+| Переменная окружения | Описание                                         | По умолчанию    |
+| -------------------- | ------------------------------------------------ | --------------- |
+| `WEB_DOCUMENT_ROOT`  | Корневой каталог веб-сервера (внутри контейнера) | /project/public |
+| `WEB_DOCUMENT_INDEX` | Индексный файл                                   | index.php       |
+| `WEB_ALIAS_DOMAIN`   | Псевдоним домена                                 | *.vm            |
+| `WEB_PHP_SOCKET`     | PHP-FPM сокет                                    | 127.0.0.1:9000  |
+| `APPLICATION_ENV`    | Окружение приложения                             | development     |
+| `APPLICATION_CACHE`  | Директория кэша приложения (внутри контейнера)   | /project/cache  |
+| `APPLICATION_LOGS`   | Директория логов (внутри контейнера)             | /project/logs   |
 
 <a name='dependencies'></a>
 
@@ -231,14 +231,14 @@ $ docker-compose up -d
 
 3## Удаленный отладчик Xdebug (PhpStorm)
 
-For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
+Из соображений отладки приложения, вы можете настроить Xdebug, передав необходимые параметры (см. variables.env).
 
-| Переменная окружения         | Описание                                                 | По умолчанию |
-| ---------------------------- | -------------------------------------------------------- | ------------ |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |              |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000         |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off          |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off          |
+| Переменная окружения         | Описание                                                      | По умолчанию |
+| ---------------------------- | ------------------------------------------------------------- | ------------ |
+| `XDEBUG_REMOTE_HOST`         | Значение `xdebug.remote_host` для `php.ini`. (IP хост ситемы) |              |
+| `XDEBUG_REMOTE_PORT`         | Значение `xdebug.remote_port` для `php.ini`                   | 9000         |
+| `XDEBUG_REMOTE_AUTOSTART`    | Значение `xdebug.remote_autostart` для `php.ini`              | Off          |
+| `XDEBUG_REMOTE_CONNECT_BACK` | Значение `xdebug.remote_connect_back` для `php.ini`           | Off          |
 
 *Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
@@ -299,7 +299,7 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-For Linux/MacOS users, you can use `make` to perform the task:
+Linux/macOs пользователи, вместо этого, могут использовать команду `make`:
 
 ```bash
 make pull
@@ -317,7 +317,7 @@ make reset
 
 Основные инструменты: Phalcon, Docker и Docker Compose.
 
-| Application     | Version          |
+| Приложение      | Версия           |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |

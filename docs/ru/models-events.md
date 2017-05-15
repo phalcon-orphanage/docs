@@ -1,23 +1,23 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Events</a> <ul>
+      <a href="#overview">События модели</a> <ul>
         <li>
-          <a href="#events">Events and Events Manager</a> <ul>
+          <a href="#events">События и управление событиями</a> <ul>
             <li>
-              <a href="#events-in-models">Implementing Events in the Model's class</a>
+              <a href="#events-in-models">Реализация событий в классе модели</a>
             </li>
             <li>
-              <a href="#custom-events-manager">Using a custom Events Manager</a>
+              <a href="#custom-events-manager">Использование пользовательского менеджера событий</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
+          <a href="#logging-sql-statements">Логирование низкоуровневых SQL запросов</a>
         </li>
         <li>
-          <a href="#profiling-sql-statements">Profiling SQL Statements</a>
+          <a href="#profiling-sql-statements">Профилирование SQL запросов</a>
         </li>
       </ul>
     </li>
@@ -26,33 +26,33 @@
 
 <a name='overview'></a>
 
-# Model Events
+# События модели
 
 <a name='events'></a>
 
-## Events and Events Manager
+## События и управление событиями
 
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by `Phalcon\Mvc\Model` and their order of execution:
+Модели позволяют реализовать события, которые будут срабатывать при выполнении вставки/обновления/удаления. Другими словами, события помогают определить бизнес-логику для определенной модели. Ниже приведены события, поддерживаемые `Phalcon\Mvc\Model` и порядок их выполнения:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
-| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
+| Операция           | Название                 | Можно остановить операцию? | Пояснение                                                                                                           |
+| ------------------ | ------------------------ |:--------------------------:| ------------------------------------------------------------------------------------------------------------------- |
+| Вставка/Обновление | beforeValidation         |             ДА             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи                                       |
+| Вставка            | beforeValidationOnCreate |             ДА             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки       |
+| Обновление         | beforeValidationOnUpdate |             ДА             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления    |
+| Вставка/Обновление | onValidationFails        |    ДА (уже остановлена)    | Выполняется после обнаружения нарушения целостности                                                                 |
+| Вставка            | afterValidationOnCreate  |             ДА             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки    |
+| Обновление         | afterValidationOnUpdate  |             ДА             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления |
+| Вставка/Обновление | afterValidation          |             ДА             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи                                    |
+| Вставка/Обновление | beforeSave               |             ДА             | Выполняется до требуемой операции над системой базы данных                                                          |
+| Обновление         | beforeUpdate             |             ДА             | Выполняется до требуемой операции над системой базы данных для операции обновления                                  |
+| Вставка            | beforeCreate             |             ДА             | Выполняется до требуемой операции над системой базы данных для операции вставки                                     |
+| Обновление         | afterUpdate              |            НЕТ             | Выполняется после требуемой операции над системой базы данных для операции обновления                               |
+| Вставка            | afterCreate              |            НЕТ             | Выполняется после требуемой операции над системой базы данных для операции вставки                                  |
+| Вставка/Обновление | afterSave                |            НЕТ             | Выполняется после требуемой операции над системой базы данных                                                       |
 
 <a name='events-in-models'></a>
 
-### Implementing Events in the Model's class
+### Реализация событий в классе модели
 
 The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
@@ -97,7 +97,7 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 
-### Using a custom Events Manager
+### Использование пользовательского менеджера событий
 
 Additionally, this component is integrated with `Phalcon\Events\Manager`, this means we can create listeners that run when an event is triggered.
 
@@ -196,7 +196,7 @@ If a listener returns false that will stop the operation that is executing curre
 
 <a name='logging-sql-statements'></a>
 
-## Logging Low-Level SQL Statements
+## Логирование низкоуровневых SQL запросов
 
 When using high-level abstraction components such as `Phalcon\Mvc\Model` to access a database, it is difficult to understand which statements are finally sent to the database system. `Phalcon\Mvc\Model` is supported internally by `Phalcon\Db`. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
@@ -270,7 +270,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 <a name='profiling-sql-statements'></a>
 
-## Profiling SQL Statements
+## Профилирование SQL запросов
 
 Thanks to `Phalcon\Db`, the underlying component of `Phalcon\Mvc\Model`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
@@ -363,4 +363,4 @@ foreach ($profiles as $profile) {
 }
 ```
 
-Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
+Каждый генерируемый профиль содержит продолжительность выполнения каждого запроса в миллисекундах, а также сами сгенерированные SQL запросы.
