@@ -6,25 +6,25 @@
           <a href="#using">Использование контроллеров</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Dispatch Loop</a>
+          <a href="#dispatch-loop">Цикл работы</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Инициализация контроллеров</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Внедрение сервисов</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Запрос и ответ</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Данные сессий</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Использование сервисов как контроллеров</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">События контроллеров</a>
         </li>
       </ul>
     </li>
@@ -43,7 +43,7 @@ Actions are methods on a controller that handle requests. By default all public 
 
 For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Description           | Slug           |
+| Описание              | Slug           |
 | --------------------- | -------------- |
 | **Phalcon Directory** | blog           |
 | **Controller**        | posts          |
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Dispatch Loop
+## Цикл работы
 
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
@@ -179,7 +179,7 @@ There is no limit on the 'forwards' you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Инициализация контроллеров
 
 `Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
@@ -230,7 +230,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Внедрение сервисов
 
 If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
@@ -285,7 +285,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Request and Response
+## Запрос и ответ
 
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
@@ -339,7 +339,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/en/
 
 <a name='session-data'></a>
 
-## Session Data
+## Данные сессий
 
 Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
@@ -364,7 +364,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Использование сервисов как контроллеров
 
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
