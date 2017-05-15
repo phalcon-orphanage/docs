@@ -229,7 +229,9 @@ Linux/MacOS users can use `make` to perform the task:
 make pull
 ```
 
-You then have to rebuild the containers. Linux/MacOS users can reset all containers, delete all data, rebuild services and restart application as follows:
+Then you have to reset all containers, delete all data, rebuild services and restart application.
+
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make reset
