@@ -87,16 +87,16 @@ Phalcon Compose является средой разработки на обще
 
 | Название сервиса | Описание                                                                                                                                         |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| mongo            | MongoDB сервис контейнер                                                                                                                         |
-| postgres         | PostgreSQL сервис контейнер                                                                                                                      |
-| mysql            | MySQL сервис контейнер                                                                                                                           |
-| phpmyadmin       | Веб-интерфейс к MariaDB и MySQL                                                                                                                  |
-| memcached        | Memcached сервис контейнер                                                                                                                       |
-| queue            | Сервис контейнер сервера очередей Beanstalk                                                                                                      |
+| mongo            | MongoDB server container.                                                                                                                        |
+| postgres         | PostgreSQL server container.                                                                                                                     |
+| mysql            | MySQL database container.                                                                                                                        |
+| phpmyadmin       | A web interface for MySQL and MariaDB.                                                                                                           |
+| memcached        | Memcached server container.                                                                                                                      |
+| queue            | Beanstalk queue container.                                                                                                                       |
 | aerospike        | Контейнер с Aerospike — надежной, высокопроизводительной, распределенной базой данных, оптимизированной для работы на SSD и в оперативной памяти |
-| redis            | Сервис контейнер базы данных Redis                                                                                                               |
-| app              | Контейнер с PHP 7, Apache 2 и Composer                                                                                                           |
-| elasticsearch    | Контейнер с Elasticsearch — мощным движком для поиска и аналитики                                                                                |
+| redis            | Redis database container.                                                                                                                        |
+| app              | PHP 7, Apache 2 and Composer container.                                                                                                          |
+| elasticsearch    | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search.                                              |
 
 <a name='installation'></a>
 
@@ -140,7 +140,7 @@ Generating autoload files
 
 ##### Убедитесь, что вы скопировали `variables.env.example` `variables.env` и настроили параметры в этом файле {.alert.alert-warning}
 
-Добавьте ваше Phalcon приложение в папку application.
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
@@ -199,15 +199,15 @@ $ docker-compose up -d
 
 1### Окружение веб-сервера
 
-| Переменная окружения | Описание                                         | По умолчанию    |
-| -------------------- | ------------------------------------------------ | --------------- |
-| `WEB_DOCUMENT_ROOT`  | Корневой каталог веб-сервера (внутри контейнера) | /project/public |
-| `WEB_DOCUMENT_INDEX` | Индексный файл                                   | index.php       |
-| `WEB_ALIAS_DOMAIN`   | Псевдоним домена                                 | *.vm            |
-| `WEB_PHP_SOCKET`     | PHP-FPM сокет                                    | 127.0.0.1:9000  |
-| `APPLICATION_ENV`    | Окружение приложения                             | development     |
-| `APPLICATION_CACHE`  | Директория кэша приложения (внутри контейнера)   | /project/cache  |
-| `APPLICATION_LOGS`   | Директория логов (внутри контейнера)             | /project/logs   |
+| Переменная окружения | Описание                                            | По умолчанию    |
+| -------------------- | --------------------------------------------------- | --------------- |
+| `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
+| `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
+| `WEB_ALIAS_DOMAIN`   | Domain aliases.                                     | *.vm            |
+| `WEB_PHP_SOCKET`     | PHP-FPM socket address.                             | 127.0.0.1:9000  |
+| `APPLICATION_ENV`    | Application environment.                            | development     |
+| `APPLICATION_CACHE`  | Application cache dir (inside the container).       | /project/cache  |
+| `APPLICATION_LOGS`   | Application logs dir (inside the container).        | /project/logs   |
 
 <a name='dependencies'></a>
 
@@ -215,14 +215,14 @@ $ docker-compose up -d
 
 | Переменная окружения | Описание                                                                                        | По умолчанию |
 | -------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
-| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                         | 1            |
-| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                 | mysql        |
+| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                         | 1            |
+| `PMA_HOST`           | Define address/host name of the MySQL server.                                                   | mysql        |
 | `PMA_HOSTS`          | Определяет список адресов MySQL серверов. Используется только если переменная `PMA_HOST` пуста. |              |
-| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                  | 3306         |
-| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                   |              |
+| `PMA_PORT`           | Define port of the MySQL server.                                                                | 3306         |
+| `PMA_VERBOSE`        | Define verbose name of the MySQL server.                                                        |              |
 | `PMA_VERBOSES`       | Определяет список имен MySQL серверов. Используется только если переменная `PMA_VERBOSE` пуста. |              |
-| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации                                 | phalcon      |
-| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                             | secret       |
+| `PMA_USER`           | Define username to use for config authentication method.                                        | phalcon      |
+| `PMA_PASSWORD`       | Define password to use for config authentication method.                                        | secret       |
 | `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                      |              |
 
 *Смотрите также* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
@@ -233,12 +233,12 @@ $ docker-compose up -d
 
 Из соображений отладки приложения, вы можете настроить Xdebug, передав необходимые параметры (см. variables.env).
 
-| Переменная окружения         | Описание                                                      | По умолчанию |
-| ---------------------------- | ------------------------------------------------------------- | ------------ |
-| `XDEBUG_REMOTE_HOST`         | Значение `xdebug.remote_host` для `php.ini`. (IP хост ситемы) |              |
-| `XDEBUG_REMOTE_PORT`         | Значение `xdebug.remote_port` для `php.ini`                   | 9000         |
-| `XDEBUG_REMOTE_AUTOSTART`    | Значение `xdebug.remote_autostart` для `php.ini`              | Off          |
-| `XDEBUG_REMOTE_CONNECT_BACK` | Значение `xdebug.remote_connect_back` для `php.ini`           | Off          |
+| Переменная окружения         | Описание                                                 | По умолчанию |
+| ---------------------------- | -------------------------------------------------------- | ------------ |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |              |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000         |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off          |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off          |
 
 *Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
@@ -271,7 +271,7 @@ docker-compose up -d
 
 6### Полный сброс
 
-Для сброса всех контейнеров, а также удаления всех данных (mysql, elasticsearch, и т.д.), кроме файлов проекта в директории application, используйте следующий набор команд:
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop

@@ -85,18 +85,18 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 Services included are: 
 
-| Service name  | Description                                                                                        |
-| ------------- | -------------------------------------------------------------------------------------------------- |
-| mongo         | MongoDB server container                                                                           |
-| postgres      | PostgreSQL server container                                                                        |
-| mysql         | MySQL database container                                                                           |
-| phpmyadmin    | A web interface for MySQL and MariaDB                                                              |
-| memcached     | Memcached server container                                                                         |
-| queue         | Beanstalk queue container                                                                          |
-| aerospike     | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.      |
-| redis         | Redis database container                                                                           |
-| app           | PHP 7, Apache 2 and Composer container                                                             |
-| elasticsearch | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search |
+| Service name  | Description                                                                                         |
+| ------------- | --------------------------------------------------------------------------------------------------- |
+| mongo         | MongoDB server container.                                                                           |
+| postgres      | PostgreSQL server container.                                                                        |
+| mysql         | MySQL database container.                                                                           |
+| phpmyadmin    | A web interface for MySQL and MariaDB.                                                              |
+| memcached     | Memcached server container.                                                                         |
+| queue         | Beanstalk queue container.                                                                          |
+| aerospike     | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.       |
+| redis         | Redis database container.                                                                           |
+| app           | PHP 7, Apache 2 and Composer container.                                                             |
+| elasticsearch | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search. |
 
 <a name='installation'></a>
 
@@ -140,7 +140,7 @@ Another way to initialize your project is with Git.
 
 ##### Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file {.alert.alert-warning}
 
-Add your Phalcon Application into application folder.
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
@@ -198,15 +198,15 @@ You can pass multiple environment variables from an external file to a service's
 
 1### Web environment
 
-| Environment variable | Description                                        | Default         |
-| -------------------- | -------------------------------------------------- | --------------- |
-| `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container) | /project/public |
-| `WEB_DOCUMENT_INDEX` | Index document                                     | index.php       |
-| `WEB_ALIAS_DOMAIN`   | Domain aliases                                     | *.vm            |
-| `WEB_PHP_SOCKET`     | PHP-FPM socket address                             | 127.0.0.1:9000  |
-| `APPLICATION_ENV`    | Application environment                            | development     |
-| `APPLICATION_CACHE`  | Application cache dir (inside the container)       | /project/cache  |
-| `APPLICATION_LOGS`   | Application logs dir (inside the container)        | /project/logs   |
+| Environment variable | Description                                         | Default         |
+| -------------------- | --------------------------------------------------- | --------------- |
+| `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
+| `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
+| `WEB_ALIAS_DOMAIN`   | Domain aliases.                                     | *.vm            |
+| `WEB_PHP_SOCKET`     | PHP-FPM socket address.                             | 127.0.0.1:9000  |
+| `APPLICATION_ENV`    | Application environment.                            | development     |
+| `APPLICATION_CACHE`  | Application cache dir (inside the container).       | /project/cache  |
+| `APPLICATION_LOGS`   | Application logs dir (inside the container).        | /project/logs   |
 
 <a name='dependencies'></a>
 
@@ -214,14 +214,14 @@ You can pass multiple environment variables from an external file to a service's
 
 | Environment variable | Description                                                                                                  | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
-| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed                                                       | 1       |
-| `PMA_HOST`           | Define address/host name of the MySQL server                                                                 | mysql   |
+| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
+| `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
 | `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |         |
-| `PMA_PORT`           | Define port of the MySQL server                                                                              | 3306    |
-| `PMA_VERBOSE`        | Define verbose name of the MySQL server                                                                      |         |
+| `PMA_PORT`           | Define port of the MySQL server.                                                                             | 3306    |
+| `PMA_VERBOSE`        | Define verbose name of the MySQL server.                                                                     |         |
 | `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |         |
-| `PMA_USER`           | Define username to use for config authentication method                                                      | phalcon |
-| `PMA_PASSWORD`       | Define password to use for config authentication method                                                      | secret  |
+| `PMA_USER`           | Define username to use for config authentication method.                                                     | phalcon |
+| `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret  |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |         |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
@@ -234,10 +234,10 @@ For debugging purposes you can setup Xdebug by passing required parameters (see 
 
 | Environment variable         | Description                                              | Default |
 | ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`. (your host IP) |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`                 | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`            | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`         | Off     |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off     |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off     |
 
 *NOTE* You can find your local IP address as follows:
 
@@ -270,7 +270,7 @@ docker-compose up -d
 
 6### Full reset
 
-To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in application/ folder:
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop
