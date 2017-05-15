@@ -5,9 +5,9 @@
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#nginx-phalcon-configuration">Konfiguracja Phalcona</a> <ul>
                 <li>
-                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
+                  <a href="#nginx-phalcon-configuration-basic">Podstawowa konfiguracja</a>
                 </li>
               </ul>
             </li>
@@ -17,15 +17,15 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Konfiguracja Phalcona</a> <ul>
                 <li>
-                  <a href="#apache-document-root">Document root</a>
+                  <a href="#apache-document-root">Absolutna ścieżka do witryny</a>
                 </li>
                 <li>
-                  <a href="#apache-apache-configuration">Apache configuration</a>
+                  <a href="#apache-apache-configuration">Konfiguracja Apache</a>
                 </li>
                 <li>
-                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
+                  <a href="#apache-virtual-hosts">Wirtualne hosty</a>
                 </li>
               </ul>
             </li>
@@ -35,7 +35,7 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
+              <a href="#cherokee-phalcon-configuration">Konfiguracja Phalcona</a>
             </li>
           </ul>
         </li>
@@ -43,7 +43,7 @@
         <li>
           <a href="#php-built-in">Wbudowany serwer</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
+              <a href="#php-built-in-phalcon-configuration">Konfiguracja Phalcona</a>
             </li>
           </ul>
         </li>
@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Ustawianie Web serwera
 
 W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurować nasz web serwer aby przetwarzał przekierowywania prawidłowo. Konfiguracja popularnych web serwerów wygląda następująco:
 
@@ -62,21 +62,21 @@ W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurowa�
 
 ## Nginx
 
-[Nginx](http://wiki.nginx.org/Main) jest darmowym, open source’owym, wysoce wydajnym serwerem HTTP i Reverse Proxy, jak jaki również serwerem pośredniczącym IMAP/POP3. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Zamiast tego wykorzystuje on znacznie bardziej skalowalną architekturę sterowaną zdarzeniami (asynchroniczną). Ta architektura używa małą, a co ważniejsze, przewidywalną ilość pamięci pod obciążeniem.
+[Nginx](http://wiki.nginx.org/Main) jest darmowym, open source’owym, wysoce wydajnym serwerem HTTP i Reverse Proxy, jak jaki również serwerem pośredniczącym IMAP/POP3. W przeciwieństwie do tradycyjnych serwerów, Nginx nie korzysta z architektury wielowątkowej do obsługi żądań. Zamiast tego wykorzystuje on znacznie bardziej skalowalną architekturę sterowaną zdarzeniami (asynchroniczną). Ta architektura używa małą, a co ważniejsze, przewidywalną ilość pamięci pod obciążeniem.
 
-The [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) is usually used to allow Nginx to process PHP files. W dzisiejszych czasach, PHP-FPM jest wbudowany w wszystkich dystrybucjach Linuxa posiadających PHP. Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+[PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) jest zazwyczaj używany aby NGINX mógł przetwarzać pliki PHP. W dzisiejszych czasach, PHP-FPM jest wbudowany w wszystkich dystrybucjach Linuxa posiadających PHP. Phalcon wraz z NGINX i PHP-FPM dostarcza potężny zestaw narzędzi, które zapewniają maksymalną wydajności dla aplikacji PHP.
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Konfiguracja Phalcona
 
-The following are potential configurations you can use to setup Nginx with Phalcon:
+Poniżej prezentujemy proponowane konfiguracje, jakich możesz użyć do konfiguracji Nginx'a dla Phalcona:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
 #### Podstawowa konfiguracja
 
-Using `$_GET['_url']` as source of URIs:
+Użycie `$_GET['_url']` jako źródła URI
 
 ```nginx
 server {
@@ -110,7 +110,7 @@ server {
 }
 ```
 
-Using `$_SERVER['REQUEST_URI']` as source of URIs:
+Użycie `$_SERVER['REQUEST_URI']` jako źródła URI:
 
 ```nginx
 server {
@@ -150,13 +150,13 @@ server {
 
 ## Apache
 
-[Apache](http://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](http://httpd.apache.org/) jest popularnym i dobrze znanym serwerem sieci web dostępnym na wielu platformach.
 
 <a name='apache-phalcon-configuration'></a>
 
 ### Konfiguracja Phalcona
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/en/[[version]]/routing). Commonly an application has the following structure:
+Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/en/[[version]]/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -231,7 +231,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 #### Wirtualne hosty
 
-And this second configuration allows you to install a Phalcon application in a virtual host:
+Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wirtualnym hoście:
 
 ```apacheconfig
 <VirtualHost *:80>
