@@ -223,7 +223,7 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-For Linux/MacOS users, you can use `make` to perform the task:
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make pull
