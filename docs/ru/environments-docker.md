@@ -305,7 +305,7 @@ Linux/macOs пользователи, вместо этого, могут вос
 make pull
 ```
 
-Then you have to reset all containers, delete all data, rebuild services and restart application.
+Затем вам необходимо удалить все контейнеры, очистить старые данные, пересобрать сервисы и перезапустить приложение.
 
 Linux/macOs пользователи, вместо этого, могут воспользоваться `make`:
 
