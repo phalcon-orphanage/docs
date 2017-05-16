@@ -74,7 +74,7 @@ Then in a view, these resources can be printed:
 ```php
 <html>
     <head>
-        <title>Some amazing website</title>
+        <title>Мой удивительный веб-сайт</title>
 
         <?php $this->assets->outputCss(); ?>
     </head>

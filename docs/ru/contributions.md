@@ -47,9 +47,9 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Questions & Support
 
-##### We only accept bug reports, new feature requests and pull requests in GitHub {.alert.alert-warning}
+##### Мы принимаем только сообщения об ошибках, новые запросы и пулл реквесты на GitHub. {.alert.alert-warning}
 
-For questions regarding the usage of the framework or support requests please visit the [official forums](https://phalcon.link/forum).
+Для вопросов относительно использования фреймворка или поддержки, пожалуйста, используйте [официальный форум](https://phalcon.link/forum).
 
 <a name='bug-report-checklist'></a>
 
