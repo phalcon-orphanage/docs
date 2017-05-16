@@ -106,7 +106,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 ## Кэширование выходных фрагментов
 
-ыходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. Выходные данные автоматически захватываются из ob_* функции или из выходного потока PHP и сохраняются в кэш. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
+ыходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. The output is automatically captured from the `ob_*` functions or the PHP output so that it can be saved in the cache. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
 
 Реализация этого механизма позволяет нам повысить производительность за счет исключения работы помощника `Phalcon\Tag::linkTo()`, который вызывается каждый раз в этом участке кода.
 
@@ -173,7 +173,7 @@ if ($content === null) {
 
 ### Пример файлового бэкенда
 
-Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром cacheDir, который *должен* содержать завершающий слеш.
+Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $frontCache = new FrontData(
 );
 
 // Create the component that will cache 'Data' to a 'File' backend
-// Set the cache file directory - important to keep the '/' at the end of
+// Set the cache file directory - important to keep the `/` at the end of
 // the value for the folder
 $cache = new BackFile(
     $frontCache,
@@ -351,7 +351,7 @@ if ($cache->exists('someKey')) {
 
 0## Время жизни
 
-A 'lifetime' is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
+A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
 
 Setting the lifetime when retrieving:
 
