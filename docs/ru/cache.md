@@ -79,16 +79,16 @@
 
 # Улучшение производительности с помощью кэширования
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon предоставляет класс `Phalcon\Cache`, дающий быстрый доступ к часто используемым или уже сгенерированным данным. `Phalcon\Cache` написан на языке C, поэтому он предоставляет высокую производительность и пониженный расход ресурсов. Этот класс использует два компонента: frontend и backend. Frontend компонент является входным источником или интерфейсом, в то время как backend предоставляет опции хранения данных.
 
 <a name='implementation'></a>
 
 ## Где применять кэширование?
 
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
+Несмотря на то, что этот компонент очень быстрый, его использование в случаях, где он не нужен, может привести к потери производительности. Мы рекомендуем проверить эти ситуации, прежде, чем использовать кэширование:
 
-- Вы делаете сложные вычисления, которые каждый раз возвращают один и тот же результат (меняется редко)
-- You are using a lot of helpers and the output generated is almost always the same
+- Вы делаете сложные расчеты, которые каждый раз возвращают один и тот же результат (или результат редко изменяется)
+- Вы используете много хелперов и результат генерации почти всегда одинаковый
 - Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
 ##### *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide. {.alert.alert-warning}
