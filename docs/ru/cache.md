@@ -91,7 +91,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 - Вы используете много хелперов и результат генерации почти всегда одинаковый
 - Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
-##### *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide. {.alert.alert-warning}
+##### *Примечание* Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш (hit). Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями. {.alert.alert-warning}
 
 <a name='caching-behavior'></a>
 
@@ -99,8 +99,8 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 Процесс кэширования разделена в 2 части:
 
-- **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
-- **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+- **Frontend**: Эта часть отвечает за проверку времени жизни ключа и выполняет дополнительные преобразования над данными, до операции сохранения или извлечения их из backend
+- **Backend**: Эта часть отвечает за коммуникацию, запись/чтение данных по запросу frontend.
 
 <a name='output-fragments'></a>
 
