@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Przegląd</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Używanie kontrolerów</a>
         </li>
         <li>
           <a href="#dispatch-loop">Dispatch Loop</a>
@@ -33,23 +33,23 @@
 
 <a name='overview'></a>
 
-# Overview
+# Przegląd
 
 <a name='using'></a>
 
-## Using Controllers
+## Używanie kontrolerów
 
-Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Akcje to metody w kontrolerze, które obsługują żądania. By default all public methods on a controller map to actions and are accessible by a URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
 
-For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
+Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Opis                 | Fragment URL   |
+| -------------------- | -------------- |
+| **Katalog Phalcona** | blog           |
+| **Kontroler**        | posts          |
+| **Akcja**            | show           |
+| **Parametr**         | 2015           |
+| **Parametr**         | the-post-title |
 
 In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
 
