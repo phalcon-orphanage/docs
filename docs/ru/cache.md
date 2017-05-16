@@ -117,16 +117,17 @@ use Phalcon\Tag;
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Output as FrontOutput;
 
-// Create an Output frontend. Cache the files for 2 days
+// Создание frontend для выходных данных. Кэшируем файлы на двое суток
 $frontCache = new FrontOutput(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache from the 'Output' to a 'File' backend
-// Set the cache file directory - it's important to keep the '/' at the end of
-// the value for the folder
+// Создаем компонент, который будем кэшировать из "Выходных данных"
+// в файловый бекенд.
+// Устанавливаем папку для кэшируемых файлов - важно указать символ '/'
+// в конце пути
 $cache = new BackFile(
     $frontCache,
     [
@@ -134,15 +135,16 @@ $cache = new BackFile(
     ]
 );
 
-// Get/Set the cache file to ../app/cache/my-cache.html
+// Получить/Создать кэшируемый файл ../app/cache/my-cache.html
 $content = $cache->start('my-cache.html');
 
-// If $content is null then the content will be generated for the cache
+// Если $content является значением NULL,
+// значит данных в кэше нет и их надо сгенерировать
 if ($content === null) {
-    // Print date and time
+    // Выводим дату и время
     echo date('r');
 
-    // Generate a link to the sign-up action
+    // Генерируем ссылку на "регистрацию"
     echo Tag::linkTo(
         [
             'user/signup',
@@ -151,27 +153,27 @@ if ($content === null) {
         ]
     );
 
-    // Store the output into the cache file
+    // Сохраняем вывод в кэш
     $cache->save();
 } else {
-    // Echo the cached output
+    // Ввыводим кэшируемые данные
     echo $content;
 }
 ```
 
-##### *NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations. {.alert.alert-warning}
+##### *Примечание* В этом примере наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций. {.alert.alert-warning}
 
 <a name='arbitrary-data'></a>
 
 ## Кэширование произвольных данных
 
-Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
+Кэширование различных данных, не менее важно для вашего приложения. Кэширование может уменьшить нагрузку базы данных за счет повторного использования сгенерированных данных (но не обновленных), что и увеличивает скорость выполнения вашего приложения.
 
 <a name='backend-file-example'></a>
 
 ### Пример файлового бэкенда
 
-One of the caching adapters is 'File'. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the cacheDir option which *must* have a backslash at the end of it.
+Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. Этот параметр называется cacheDir, в него передается путь к месту хранения. *Важно* добавлять в конце слеш.
 
 ```php
 <?php
