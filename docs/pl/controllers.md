@@ -9,10 +9,10 @@
           <a href="#dispatch-loop">Dispatch Loop</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Inicjowanie kontrolerów</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Wstrzykiwanie serwisów</a>
         </li>
         <li>
           <a href="#request-response">Request and Response</a>
