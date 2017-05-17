@@ -39,7 +39,7 @@
 
 ## Używanie kontrolerów
 
-Akcje to metody w kontrolerze, które obsługują żądania. By default all public methods on a controller map to actions and are accessible by a URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
+Akcje to metody w kontrolerze, które obsługują żądania. Domyślnie wszystkie publiczne metody w kontrolerze mapują do akcji i są dostępne za pomocą adresu URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
 
 Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
 
@@ -51,7 +51,7 @@ Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts
 | **Parametr**         | 2015           |
 | **Parametr**         | the-post-title |
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+W takim przypadku PostsController obsłuży żądanie. Nie ma narzuconej lokalizacji w której należy umieszczać kontrolery w aplikacji, mogą być one dołączane za pomocą :doc:`autoloaders <loader>`, więc masz wolną rękę w organizowaniu kontrolerów według Twoich potrzeb.
 
 Kontrolery muszą mieć sufiks 'Controller' podczas gdy akcje przyrostek 'Action'. Przykładowy kontroler wygląda następująco:
 
@@ -123,7 +123,7 @@ class PostsController extends Controller
 
 ## Dispatch Loop
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. W poprzednim przykładzie wykonano tylko jedną akcję. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
 
 ```php
 <?php
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "You don't have permission to access this area"
+            "Nie masz dostępu do tego zasobu"
         );
 
-        // Forward flow to another action
+        // Przekazanie przepływu operacji do innej akcji
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+Jeżeli użytkownicy nie mają pozwolenia na dostęp do pewnej akcji, zostają wyekspediowani do akcji 'signin' w kontrolerze 'Users'.
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+W Twojej aplikacji nie ma limitu dla 'ekspediowań' tak długo, jak nie prowadzą do odwołań cyklicznych, co skutkuje zatrzymaniem programu. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Inicjowanie kontrolerów
 
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+`Phalcon\Mvc\Controller` oferuje metodę `initialize()`, która jest wykonywana jako pierwsza, przed realizowaniem każdej innej akcji kontrolera. Używanie metody `__construct()` nie jest zalecane.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-##### The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization. {.alert.alert-warning}
+##### Metoda `initialize()` jest wywołana tylko wtedy, gdy zdarzenie `beforeExecuteRoute` zostało wykonane z powodzeniem. To powoduje, że logika aplikacji podczas inicjowania nie może zostać wykonana bez autoryzacji. {.alert.alert-warning}
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Jeżeli chcesz wykonać jakąś logikę podczas inicjowania, zaraz po utworzeniu obiektu kontrolera, możesz zaimplementować metodę `onConstruct()`:
 
 ```php
 <?php
@@ -226,11 +226,11 @@ class PostsController extends Controller
 }
 ```
 
-##### Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer). {.alert.alert-warning}
+##### Zwróć szczególną uwagę na to, że metoda `onConstruct()` jest wykonywana nawet wtedy, gdy akcja do realizacji nie istnieje w kontrolerze lub gdy użytkownik nie ma do niej dostępu (odnosząc się do niestandardowej kontroli dostępu dostarczonej przez Dewelopera). {.alert.alert-warning}
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Wstrzykiwanie serwisów
 
 If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
