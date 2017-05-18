@@ -106,7 +106,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 ## Кэширование выходных фрагментов
 
-ыходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. The output is automatically captured from the `ob_*` functions or the PHP output so that it can be saved in the cache. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
+Выходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. The output is automatically captured from the `ob_*` functions or the PHP output so that it can be saved in the cache. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
 
 Реализация этого механизма позволяет нам повысить производительность за счет исключения работы помощника `Phalcon\Tag::linkTo()`, который вызывается каждый раз в этом участке кода.
 
@@ -173,7 +173,7 @@ if ($content === null) {
 
 ### Пример файлового бэкенда
 
-Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
+Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром `cacheDir`, который *должен* содержать завершающий слеш.
 
 ```php
 <?php
@@ -181,16 +181,16 @@ if ($content === null) {
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache the files for 2 days using a Data frontend
+// Кэшируем данные на двое суток
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'File' backend
-// Set the cache file directory - important to keep the `/` at the end of
-// the value for the folder
+// Создаем компонент, который будем кэшировать из "Выходных данных" в "Файл"
+// Устанавливаем папку для кэшируемых файлов
+// Важно сохранить символ "/" в конце пути
 $cache = new BackFile(
     $frontCache,
     [
@@ -200,23 +200,23 @@ $cache = new BackFile(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// Пробуем получить закэшированные записи
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robots может иметь значение NULL из-за того, что истекло время жизни
+    // или данных просто не существует. Получим данные из БД
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // Сохраняем их в кэше
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// Используем $robots :)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -226,7 +226,7 @@ foreach ($robots as $robot) {
 
 ### Пример использования Memcached бэкенда
 
-The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
+Для этого нам достаточно немного изменить вышестоящий пример. В частности изменится конфигурация.
 
 ```php
 <?php
@@ -234,15 +234,15 @@ The above example changes slightly (especially in terms of configuration) when w
 use Phalcon\Cache\Frontend\Data as FrontData;
 use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
-// Cache data for one hour
+// Кэшируем данные на 1 час
 $frontCache = new FrontData(
     [
         'lifetime' => 3600,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'Memcached' backend
-// Memcached connection settings
+// Создаем компонент, который будет кэшировать данные в Memcache
+// Настройки подключения к Memcache
 $cache = new BackMemCached(
     $frontCache,
     [
@@ -258,23 +258,23 @@ $cache = new BackMemCached(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// Пробуем получить закэшированные записи
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robots может иметь значение NULL из-за того, что истекло время жизни
+    // или данных просто не существует. Получим данные из БД
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // Сохраняем их в кэше
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// Используем $robots :)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -284,7 +284,7 @@ foreach ($robots as $robot) {
 
 ## Запрос данных из кэша
 
-The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does not exist, the get method will return null.
+Все элементы добавляемые в кэш идентифицируются по ключам. В случае с файловым бэкендом, ключом является название файла. Для получения данных из кэша нам необходимо выполнить запрос к кэшу с указанием уникального ключа. Если ключа не существует, метод вернет значение NULL.
 
 ```php
 <?php
