@@ -76,7 +76,7 @@ This tells Nanobox to:
 
 ## Add Phalcon Devtools to your composer.json
 
-Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
+Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
 
 ```json
 {
