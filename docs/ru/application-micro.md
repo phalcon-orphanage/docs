@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Создание микро приложения</a>
+      <a href="#creating-micro-application">Создание микроприложения</a>
     </li>
     <li>
       <a href="#routing">Маршрутизация</a> <ul>
         <li>
           <a href="#routing-setup">Настройка</a> <ul>
             <li>
-              <a href="#routing-setup-application">Application object</a>
+              <a href="#routing-setup-application">Объект приложения</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Router object</a>
+              <a href="#routing-setup-router">Объект Router</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#rewrite-rules">Rewrite Rules</a>
+          <a href="#rewrite-rules">Правила перезаписи</a>
         </li>
         <li>
           <a href="#routing-handlers">Обработчики</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Definitions</a> <ul>
+              <a href="#routing-handlers-definitions">Определения</a> <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                  <a href="#routing-handlers-anonymous-function">Анонимная функция</a>
                 </li>
                 <li>
                   <a href="#routing-handlers-function">Функция</a>
@@ -33,7 +33,7 @@
                   <a href="#routing-handlers-static-method">Статический метод</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                  <a href="#routing-handlers-object-method">Метод в объекте</a>
                 </li>
                 <li>
                   <a href="#routing-handlers-controllers">Контроллеры</a>
@@ -42,21 +42,21 @@
             </li>
             
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
+              <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> <ul>
                 <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Сценарий использования</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#routing-handlers-not-found">Not Found (404)</a>
+              <a href="#routing-handlers-not-found">Не найдено (404)</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#routing-verbs">Methods - Verbs</a> <ul>
+          <a href="#routing-verbs">Методы-глаголы</a> <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -85,25 +85,25 @@
         </li>
         
         <li>
-          <a href="#routing-collections">Collections</a>
+          <a href="#routing-collections">Коллекции</a>
         </li>
         <li>
-          <a href="#routing-parameters">Parameters</a>
+          <a href="#routing-parameters">Параметры</a>
         </li>
         <li>
-          <a href="#routing-redirections">Redirections</a>
+          <a href="#routing-redirections">Перенаправления</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">URLs for Routes</a>
+          <a href="#routing-urls-for-routes">Адреса для маршрутов</a>
         </li>
       </ul>
     </li>
     
     <li>
-      <a href="#dependency-injector">Dependency Injector</a>
+      <a href="#dependency-injector">Внедрение зависимостей</a>
     </li>
     <li>
-      <a href="#responses">Responses</a> <ul>
+      <a href="#responses">Ответы</a> <ul>
         <li>
           <a href="#responses-direct-output">Direct output</a>
         </li>
@@ -131,12 +131,12 @@
     <li>
       <a href="#events">События</a> <ul>
         <li>
-          <a href="#events-available-events">Available events</a> <ul>
+          <a href="#events-available-events">Доступные события</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Authentication example</a>
+              <a href="#events-available-events-authentication">Пример: Аутентификация</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Not found example</a>
+              <a href="#events-available-events-not-found">Пример: Страница не найдена</a>
             </li>
           </ul>
         </li>
@@ -209,9 +209,9 @@
   </ul>
 </div>
 
-# Micro Applications
+# Микроприложения
 
-Phalcon предлагает очень «тонкое» приложение, так что можно создавать «Микро» приложения с минимальным PHP-кодом.
+Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
 
 Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
 
@@ -234,7 +234,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Создание микроприложения
 
 The [`Phalcon\Mvc\Micro`](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -576,7 +576,7 @@ class ProductsController extends Controller
 }
 ```
 
-We register the handlers:
+Мы зарегистрировать обработчики:
 
 ```php
 <?php
