@@ -504,16 +504,16 @@ $cache->save('my-key', $data);
 
 Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
-| Параметр   | Описание                                                        |
-| ---------- | --------------------------------------------------------------- |
-| `prefix`   | Префикс, который будет автоматически добавляться к ключам кэша. |
-| `cacheDir` | A writable directory on which cached files will be placed.      |
+| Параметр   | Описание                                                                 |
+| ---------- | ------------------------------------------------------------------------ |
+| `prefix`   | Префикс, который будет автоматически добавляться к ключам кэша.          |
+| `cacheDir` | Папка с правами на запись, в которую будут сохраняться кэшируемые файлы. |
 
 <a name='implementation'></a>
 
 7### Параметры Libmemcached бэкэнда
 
-This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+Данные будут сохранены на Memcached сервере. По умолчанию используется пулл постоянных соединений. Доступные опции:
 
 **Общие параметры**
 
@@ -580,7 +580,7 @@ $cache = new Libmemcached(
 | `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
 | `host`       | Хост memcached сервера.                                         |
 | `port`       | Порт memcached сервера.                                         |
-| `persistent` | Create a persistent connection to memcached?                    |
+| `persistent` | Использовать постоянное соединение к серверу Memcached.         |
 
 <a name='implementation'></a>
 
@@ -627,7 +627,7 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `host`       | Хост Redis сервера.                                             |
 | `port`       | Порт Redis сервера.                                             |
 | `auth`       | Password to authenticate to a password-protected Redis server.  |
-| `persistent` | Create a persistent connection to Redis.                        |
+| `persistent` | Использовать постоянное соединение к Redis серверу.             |
 | `index`      | The index of the Redis database to use.                         |
 
 Существует еще несколько типов адаптеров, их можно получить в [Phalcon Incubator](https://github.com/phalcon/incubator).
