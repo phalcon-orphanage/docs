@@ -6,7 +6,7 @@
           <a href="#using">Używanie kontrolerów</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Dispatch Loop</a>
+          <a href="#dispatch-loop">Pętla Komunikacyjna (ang. Dispatch Loop)</a>
         </li>
         <li>
           <a href="#initializing">Inicjowanie kontrolerów</a>
@@ -121,9 +121,9 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Dispatch Loop
+## Pętla Komunikacyjna (ang. Dispatch Loop)
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
+Pętla Komunikacyjna (ang. Dispatch Loop) będzie realizowana w ramach Dyspozytora, dopóki nie będzie już żadnych akcji do wykonania. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
 
 ```php
 <?php
@@ -175,7 +175,7 @@ class UsersController extends Controller
 }
 ```
 
-W Twojej aplikacji nie ma limitu dla 'ekspediowań' tak długo, jak nie prowadzą do odwołań cyklicznych, co skutkuje zatrzymaniem programu. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+W Twojej aplikacji nie ma limitu dla 'ekspediowań' tak długo, jak nie prowadzą do odwołań cyklicznych, co skutkuje zatrzymaniem programu. Jeżeli nie ma więcej akcji do wyekspediowania poprzez Pętle Komunikacyjną (ang. Dispatch Loop), Dyspozytor automatycznie wywoła warstwę widoku MVC, która jest zarządzana przez `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
