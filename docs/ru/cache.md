@@ -626,7 +626,7 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
 | `host`       | Хост Redis сервера.                                             |
 | `port`       | Порт Redis сервера.                                             |
-| `auth`       | Password to authenticate to a password-protected Redis server.  |
+| `auth`       | Пароль для аутентификации на защищённом паролем Redis сервере.  |
 | `persistent` | Использовать постоянное соединение к Redis серверу.             |
 | `index`      | Индекс базы данных.                                             |
 
