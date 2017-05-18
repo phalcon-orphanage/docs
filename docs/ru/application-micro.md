@@ -20,23 +20,23 @@
           <a href="#rewrite-rules">Rewrite Rules</a>
         </li>
         <li>
-          <a href="#routing-handlers">Handlers</a> <ul>
+          <a href="#routing-handlers">Обработчики</a> <ul>
             <li>
               <a href="#routing-handlers-definitions">Definitions</a> <ul>
                 <li>
                   <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Function</a>
+                  <a href="#routing-handlers-function">Функция</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Static Method</a>
+                  <a href="#routing-handlers-static-method">Статический метод</a>
                 </li>
                 <li>
                   <a href="#routing-handlers-object-method">Method in an Object</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Controllers</a>
+                  <a href="#routing-handlers-controllers">Контроллеры</a>
                 </li>
               </ul>
             </li>
