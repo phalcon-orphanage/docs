@@ -17,7 +17,7 @@
               <a href="#backend-file-example">Пример файлового бэкэнда</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Пример использования Memcached бэкэнда</a>
+              <a href="#backend-memcached-example">Пример использования бэкэнда Memcache</a>
             </li>
           </ul>
         </li>
@@ -227,7 +227,7 @@ foreach ($robots as $robot) {
 
 <a name='backend-memcached-example'></a>
 
-### Пример использования Memcached бэкэнда
+### Пример использования бэкэнда Memcache
 
 Для этого нам достаточно немного изменить вышестоящий пример. В частности изменится конфигурация.
 
@@ -533,23 +533,23 @@ $cache->save('my-key', $data);
 
 **Параметры клиента**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+Используется для настройки параметров Memcached. За подробной информацией обратитесь к документации по [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php).
 
-**Example**
+**Пример**
 
 ```php
 <?php
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// Кэшируем данные на двое суток
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the Cache setting memcached connection options
+// Инициализация Libmemcached бэкэнда
 $cache = new Libmemcached(
     $frontCache,
     [
@@ -573,7 +573,7 @@ $cache = new Libmemcached(
 
 8### Параметры Memcache бэкэнда
 
-Данные будут сохранены на memcached сервере. Доступные опции:
+Данные будут сохранены на Memcached сервере. Доступные опции:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
@@ -588,9 +588,9 @@ $cache = new Libmemcached(
 
 Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
 
-| Параметр | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Description                                                     |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='caching-behavior'></a>
 
@@ -619,7 +619,7 @@ $cache = new Libmemcached(
 
 2### Параметры Redis бэкэнда
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+Данные будут сохранены на [Redis](http://redis.io/) сервере. Доступные опции:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
