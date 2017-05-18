@@ -315,17 +315,17 @@ $keys = $cache->queryKeys('my-prefix');
 
 ## Удаление данных из кэша
 
-There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
+Могут возникнуть ситуации, когда вам необходимо принудительно инвалидировать данные в кэше. Единственным требованием для этого является знание необходимого ключа по которому хранятся данные.
 
 ```php
 <?php
 
-// Delete an item with a specific key
+// Удаляем элемент по определенному ключу
 $cache->delete('someKey');
 
 $keys = $cache->queryKeys();
 
-// Delete all items from the cache
+// Удаляем все из кэша
 foreach ($keys as $key) {
     $cache->delete($key);
 }
@@ -335,7 +335,7 @@ foreach ($keys as $key) {
 
 ## Проверяем наличие кэша
 
-It is possible to check if a cache already exists with a given key:
+Существует возможность проверить наличие данных в кэше:
 
 ```php
 <?php
@@ -343,7 +343,7 @@ It is possible to check if a cache already exists with a given key:
 if ($cache->exists('someKey')) {
     echo $cache->get('someKey');
 } else {
-    echo 'Cache does not exists!';
+    echo 'Данных в кэше не существует!';
 }
 ```
 
@@ -351,27 +351,27 @@ if ($cache->exists('someKey')) {
 
 0## Время жизни
 
-A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
+`lifetime` — это время, исчисляемое в секундах, которое означает, сколько будут храниться данные в бэкенд кэше. По умолчанию все данные получают “время жизни”, которое было указано при создании фронтенд компонента. Вы можете указать другое значение при сохранении или получении данных из кэша:
 
-Setting the lifetime when retrieving:
+Задаем время жизни при получении:
 
 ```php
 <?php
 
 $cacheKey = 'my.cache';
 
-// Setting the cache when getting a result
+// Получаем кэш и задаем время жизни
 $robots = $cache->get($cacheKey, 3600);
 
 if ($robots === null) {
     $robots = 'some robots';
 
-    // Store it in the cache
+    // Сохраняем в кэше
     $cache->save($cacheKey, $robots);
 }
 ```
 
-Настройка времени жизни при сохранении:
+Задаем время жизни при сохранении:
 
 ```php
 <?php
@@ -383,7 +383,7 @@ $robots = $cache->get($cacheKey);
 if ($robots === null) {
     $robots = 'some robots';
 
-    // Setting the cache when saving data
+    // Задаем время жизни, сохраняя данные
     $cache->save($cacheKey, $robots, 3600);
 }
 ```
@@ -392,7 +392,7 @@ if ($robots === null) {
 
 1## Многоуровневое кэширование
 
-This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
+Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность будет полезна при сохранении кэша в нескольких системах кэширования, с разным временем жизни и последующим поочерёдным чтением из них, начиная с самого быстрого (в порядке регистрации) и заканчивая самым медленным, пока срок жизни во всех них не истечет:
 
 ```php
 <?php
@@ -456,7 +456,7 @@ $cache->save('my-key', $data);
 
 2## Фронтенд адаптеры
 
-The available frontend adapters that are used as interfaces or input sources to the cache are:
+Доступные фронтенд адаптеры приведены в таблице:
 
 | Адаптер                              | Описание                                                                                                                                                       |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
