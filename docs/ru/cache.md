@@ -289,16 +289,16 @@ foreach ($robots as $robot) {
 ```php
 <?php
 
-// Retrieve products by key 'myProducts'
+// Получаем продукты по ключу "myProducts"
 $products = $cache->get('myProducts');
 ```
 
-If you want to know which keys are stored in the cache you could call the queryKeys method:
+Для того чтобы узнать какие ключи сейчас хранятся можно выполнить метод queryKeys:
 
 ```php
 <?php
 
-// Query all keys used in the cache
+// Получаем все ключи, которые хранятся в кэше
 $keys = $cache->queryKeys();
 
 foreach ($keys as $key) {
@@ -307,7 +307,7 @@ foreach ($keys as $key) {
     echo 'Key=', $key, ' Data=', $data;
 }
 
-// Query keys in the cache that begins with 'my-prefix'
+// Получаем все ключи, которые начинаются с префикса "my-prefix"
 $keys = $cache->queryKeys('my-prefix');
 ```
 
