@@ -479,38 +479,38 @@ $cache->save('my-key', $data);
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
-| Адаптер                                 | Описание                                       | Информация                                | Необходимые расширения                             |
-| --------------------------------------- | ---------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
-| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC) | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files               |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcache server               | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis                           | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache                          | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| Адаптер                                 | Описание                                                                     | Информация                                | Необходимые расширения                             |
+| --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
+| `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcache расширения.  | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <a name='implementation'></a>
 
 5### Реализация собственных бэкэнд адаптеров
 
-The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
+Для создания бэкэнд адаптера необходимо реализовать интерфейс `Phalcon\Cache\BackendInterface`.
 
 <a name='implementation'></a>
 
 6### Опции файлового бэкэнда
 
-This backend will store cached content into files in the local server. The available options for this backend are:
+Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
-| Параметр   | Описание                                                   |
-| ---------- | ---------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys |
-| `cacheDir` | A writable directory on which cached files will be placed  |
+| Параметр   | Описание                                                                 |
+| ---------- | ------------------------------------------------------------------------ |
+| `prefix`   | Префикс, который будет автоматически добавляться в кэш ключей.           |
+| `cacheDir` | Папка с правами на запись, в которую будут сохраняться кэшируемые файлы. |
 
 <a name='implementation'></a>
 
 7### Опции Memcached бэкэнда
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+Этот бэкенд сохраняет данные на memcached сервере с использованием memcache расширения. Доступные опции:
 
 | Параметр     | Описание                                                   |
 | ------------ | ---------------------------------------------------------- |
