@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Przegląd</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#using">Używanie kontrolerów</a>
+          <a href="#using">Using Controllers</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Pętla Komunikacyjna (ang. Dispatch Loop)</a>
+          <a href="#dispatch-loop">Dispatch Loop</a>
         </li>
         <li>
-          <a href="#initializing">Inicjowanie kontrolerów</a>
+          <a href="#initializing">Initializing Controllers</a>
         </li>
         <li>
-          <a href="#injecting-services">Wstrzykiwanie serwisów</a>
+          <a href="#injecting-services">Injecting Services</a>
         </li>
         <li>
           <a href="#request-response">Request and Response</a>
@@ -33,27 +33,27 @@
 
 <a name='overview'></a>
 
-# Przegląd
+# Overview
 
 <a name='using'></a>
 
-## Używanie kontrolerów
+## Using Controllers
 
-Akcje to metody w kontrolerze, które obsługują żądania. Domyślnie wszystkie publiczne metody w kontrolerze mapują do akcji i są dostępne za pomocą adresu URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
+Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
+For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Opis                 | Fragment URL   |
-| -------------------- | -------------- |
-| **Katalog Phalcona** | blog           |
-| **Kontroler**        | posts          |
-| **Akcja**            | show           |
-| **Parametr**         | 2015           |
-| **Parametr**         | the-post-title |
+| Description           | Slug           |
+| --------------------- | -------------- |
+| **Phalcon Directory** | blog           |
+| **Controller**        | posts          |
+| **Action**            | show           |
+| **Parameter**         | 2015           |
+| **Parameter**         | the-post-title |
 
-W takim przypadku PostsController obsłuży żądanie. Nie ma narzuconej lokalizacji w której należy umieszczać kontrolery w aplikacji, mogą być one dołączane za pomocą :doc:`autoloaders <loader>`, więc masz wolną rękę w organizowaniu kontrolerów według Twoich potrzeb.
+In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
 
-Kontrolery muszą mieć sufiks 'Controller' podczas gdy akcje przyrostek 'Action'. Przykładowy kontroler wygląda następująco:
+Controllers must have the suffix 'Controller' while actions the suffix 'Action'. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Dodatkowe parametry URI są zdefiniowane jako parametry akcji, więc mogą być łatwo dostępne poprzez użycie lokalnych zmiennych. Kontroler może opcjonalnie rozszerzać `Phalcon\Mvc\Controller`. W ten sposób kontroler może mieć łatwy dostęp do aplikacyjnych serwisów.
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
 
-Parametry bez domyślnej wartości są obsługiwane jako wymagane. Ustawianie opcjonalnych wartości dla parametrów odbywa się tak, jak zazwyczaj w PHP:
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
 ```php
 <?php
@@ -90,14 +90,14 @@ class PostsController extends Controller
 
     }
 
-    public function showAction($year = 2015, $postTitle = 'przykładowy tytuł')
+    public function showAction($year = 2015, $postTitle = 'some default title')
     {
 
     }
 }
 ```
 
-Parametry są przypisane w tej samej kolejności, jak zostały przesłane w ścieżce Url. Możesz pobrać dowolny parametr korzystając z jego nazwy w następujący sposób:
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
 <?php
@@ -121,9 +121,9 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Pętla Komunikacyjna (ang. Dispatch Loop)
+## Dispatch Loop
 
-Pętla Komunikacyjna (ang. Dispatch Loop) będzie realizowana w ramach Dyspozytora, dopóki nie będzie już żadnych akcji do wykonania. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
 ```php
 <?php
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "Nie masz dostępu do tego zasobu"
+            "You don't have permission to access this area"
         );
 
-        // Przekazanie przepływu operacji do innej akcji
+        // Forward flow to another action
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-Jeżeli użytkownicy nie mają pozwolenia na dostęp do pewnej akcji, zostają wyekspediowani do akcji 'signin' w kontrolerze 'Users'.
+If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-W Twojej aplikacji nie ma limitu dla 'ekspediowań' tak długo, jak nie prowadzą do odwołań cyklicznych, co skutkuje zatrzymaniem programu. Jeżeli nie ma więcej akcji do wyekspediowania poprzez Pętle Komunikacyjną (ang. Dispatch Loop), Dyspozytor automatycznie wywoła warstwę widoku MVC, która jest zarządzana przez `Phalcon\Mvc\View`.
+There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
-## Inicjowanie kontrolerów
+## Initializing Controllers
 
-`Phalcon\Mvc\Controller` oferuje metodę `initialize()`, która jest wykonywana jako pierwsza, przed realizowaniem każdej innej akcji kontrolera. Używanie metody `__construct()` nie jest zalecane.
+`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-##### Metoda `initialize()` jest wywołana tylko wtedy, gdy zdarzenie `beforeExecuteRoute` zostało wykonane z powodzeniem. To powoduje, że logika aplikacji podczas inicjowania nie może zostać wykonana bez autoryzacji. {.alert.alert-warning}
+##### The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization. {.alert.alert-warning}
 
-Jeżeli chcesz wykonać jakąś logikę podczas inicjowania, zaraz po utworzeniu obiektu kontrolera, możesz zaimplementować metodę `onConstruct()`:
+If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
 ```php
 <?php
@@ -226,11 +226,11 @@ class PostsController extends Controller
 }
 ```
 
-##### Zwróć szczególną uwagę na to, że metoda `onConstruct()` jest wykonywana nawet wtedy, gdy akcja do realizacji nie istnieje w kontrolerze lub gdy użytkownik nie ma do niej dostępu (odnosząc się do niestandardowej kontroli dostępu dostarczonej przez Dewelopera). {.alert.alert-warning}
+##### Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer). {.alert.alert-warning}
 
 <a name='injecting-services'></a>
 
-## Wstrzykiwanie serwisów
+## Injecting Services
 
 If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
