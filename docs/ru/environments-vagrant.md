@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
-          <a href="#requirements">Requirements</a>
+          <a href="#requirements">Требования</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
