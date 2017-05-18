@@ -33,7 +33,7 @@
                   <a href="#routing-handlers-static-method">Статический метод</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Метод в объекте</a>
+                  <a href="#routing-handlers-object-method">Метод объекта</a>
                 </li>
                 <li>
                   <a href="#routing-handlers-controllers">Контроллеры</a>
@@ -248,7 +248,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Маршрутизация
 
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
 
@@ -258,7 +258,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 <a name='routing-setup'></a>
 
-### Setup
+### Настройка
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
 
@@ -280,7 +280,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### Объект приложения
 
 Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
 
@@ -300,7 +300,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### Объект Router
 
 You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -327,7 +327,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Правила перезаписи
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
@@ -335,19 +335,19 @@ Those changes are outlined in the [rewrite rules](/en/[[version]]/rewrite-rules)
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## Обработчики
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Определения
 
 Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Анонимная функция
 
 Finally we can use an anonymous function (as seen above) to handle the request
 
@@ -375,7 +375,7 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Функция
 
 We can define a function as our handler and attach it to a specific route.
 
@@ -393,7 +393,7 @@ $app->get(
 
 <a name='routing'></a>
 
-0#### Static Method
+0#### Статический метод
 
 We can also use a static method as our handler as follows:
 
@@ -413,7 +413,7 @@ $app->get(
 
 <a name='routing'></a>
 
-1#### Method in an Object
+1#### Метод объекта
 
 We can also use a method in an object:
 
@@ -437,7 +437,7 @@ $app->get(
 
 <a name='routing'></a>
 
-2#### Controllers
+2#### Контроллеры
 
 With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
 
@@ -512,7 +512,7 @@ class OrdersController extends Controller
 
 <a name='routing'></a>
 
-3### Lazy Loading
+3### Загрузка по требованию
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
@@ -525,7 +525,7 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing'></a>
 
-4#### Use case
+4#### Сценарий использования
 
 We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -648,7 +648,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 <a name='routing'></a>
 
-5### Not found (404)
+5### Не найдено (404)
 
 Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
@@ -671,7 +671,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 <a name='routing'></a>
 
-6## Methods - Verbs
+6## Методы-глаголы
 
 The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
 
@@ -788,7 +788,7 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-setup'></a>
 
-5## Collections
+5## Коллекции
 
 Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
 
@@ -860,7 +860,7 @@ Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></
 
 <a name='routing-setup'></a>
 
-7## Redirections
+7## Перенаправления
 
 You can redirect one matched route to another using the `Phalcon\Http\Response` object, just like in a full application.
 
@@ -906,7 +906,7 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 <a name='routing-setup'></a>
 
-8## URLs for Routes
+8## Адреса для маршрутов
 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
@@ -946,7 +946,7 @@ $app->get(
 
 <a name='routing-setup'></a>
 
-9# Dependency Injector
+9# Внедрение зависимостей
 
 When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
 
@@ -1039,7 +1039,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-0# Responses
+0# Ответы
 
 A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
