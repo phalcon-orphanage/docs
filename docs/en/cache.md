@@ -17,7 +17,8 @@
     - [Backend Adapters](#adapters-backend)
         - [Implementing your own Backend adapters](#adapters-backend-custom)
         - [File Backend Options](#adapters-backend-file)
-        - [Memcached Backend Options](#adapters-backend-memcached)
+        - [Libmemcached Backend Options](#adapters-backend-libmemcached)
+        - [Memcache Backend Options](#adapters-backend-memcache)
         - [APC Backend Options](#adapters-backend-apc)
         - [Mongo Backend Options](#adapters-backend-mongo)
         - [XCache Backend Options](#adapters-backend-xcache)
@@ -227,7 +228,7 @@ The elements added to the cache are uniquely identified by a key. In the case of
 $products = $cache->get('myProducts');
 ```
 
-If you want to know which keys are stored in the cache you could call the queryKeys method:
+If you want to know which keys are stored in the cache you could call the `queryKeys` method:
 
 ```php
 <?php
@@ -384,11 +385,11 @@ The available frontend adapters that are used as interfaces or input sources to 
 
 | Adapter                           | Description                                                                                                                                                    |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Phalcon\Cache\Frontend\Output`   | Read input data from standard PHP output                                                                                                                       |
+| `Phalcon\Cache\Frontend\Output`   | Read input data from standard PHP output.                                                                                                                      |
 | `Phalcon\Cache\Frontend\Data`     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
-| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                    |
+| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
 | `Phalcon\Cache\Frontend\Json`     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
-| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using IgBinary before be stored in the backend.                   |
+| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
 | `Phalcon\Cache\Frontend\None`     | It's used to cache any kind of PHP data without serializing them.                                                                                              |
 
 <a name='adapters-frontend-custom'></a>
@@ -401,13 +402,13 @@ The backend adapters available to store cache data are:
 
 | Adapter                              | Description                                    | Info                                      | Required Extensions                                |
 |--------------------------------------|------------------------------------------------|-------------------------------------------|----------------------------------------------------|
-| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC) | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files               |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcache server               | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis                           | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache                          | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC).| [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.              |                                           |                                                    |
+| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.             | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.             | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                 | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                          | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                         | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <a name='adapters-backend-custom'></a>
 ### Implementing your own Backend adapters
@@ -419,19 +420,77 @@ This backend will store cached content into files in the local server. The avail
 
 | Option     | Description                                                 |
 |------------|-------------------------------------------------------------|
-| `prefix`   | A prefix that is automatically prepended to the cache keys  |
-| `cacheDir` | A writable directory on which cached files will be placed   |
+| `prefix`   | A prefix that is automatically prepended to the cache keys. |
+| `cacheDir` | A writable directory on which cached files will be placed.  |
 
-<a name='adapters-backend-memcached'></a>
-### Memcached Backend Options
+<a name='adapters-backend-libmemcached'></a>
+### Libmemcached Backend Options
+This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+
+**General options**
+
+| Option          | Description                                                                                                        |
+|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| `statsKey`      | Used to tracking of cached keys.                                                                                   |
+| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
+| `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
+
+**Servers options**
+
+| Option          | Description                                                                                                        |
+|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| `host`          | The `memcached` host.                                                                                              |
+| `port`          | The `memcached` port.                                                                                              |
+| `weight`        | The weight parameter effects the consistent hashing used to determine which server to read/write keys from.        |
+
+**Client options**
+
+Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+
+**Example**
+
+```php
+<?php
+use Phalcon\Cache\Backend\Libmemcached;
+use Phalcon\Cache\Frontend\Data as FrontData;
+
+// Cache data for 2 days
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
+);
+
+// Create the Cache setting memcached connection options
+$cache = new Libmemcached(
+    $frontCache,
+    [
+        'servers' => [
+            [
+                'host'   => '127.0.0.1',
+                'port'   => 11211,
+                'weight' => 1,
+            ],
+        ],
+        'client' => [
+            \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
+            \Memcached::OPT_PREFIX_KEY => 'prefix.',
+        ],
+        'persistent_id' => 'my_app_cache',
+    ]
+);
+```
+
+<a name='adapters-backend-memcache'></a>
+### Memcache Backend Options
 This backend will store cached content on a memcached server. The available options for this backend are:
 
 | Option       | Description                                                 |
 |--------------|-------------------------------------------------------------|
-| `prefix`     | A prefix that is automatically prepended to the cache keys  |
-| `host`       | memcached host                                              |
-| `port`       | memcached port                                              |
-| `persistent` | create a persistent connection to memcached?                |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `host`       | The memcached host.                                         |
+| `port`       | The memcached port.                                         |
+| `persistent` | Create a persistent connection to memcached?                |
 
 <a name='adapters-backend-apc'></a>
 ### APC Backend Options
@@ -439,7 +498,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
-| `prefix` | A prefix that is automatically prepended to the cache keys  |
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
 
 <a name='adapters-backend-mongo'></a>
 ### Mongo Backend Options
@@ -447,10 +506,10 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 | Option       | Description                                                 |
 |--------------|-------------------------------------------------------------|
-| `prefix`     | A prefix that is automatically prepended to the cache keys  |
-| `server`     | A MongoDB connection string                                 |
-| `db`         | Mongo database name                                         |
-| `collection` | Mongo collection in the database                            |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `server`     | A MongoDB connection string.                                |
+| `db`         | Mongo database name.                                        |
+| `collection` | Mongo collection in the database.                           |
 
 <a name='adapters-backend-xcache'></a>
 ### XCache Backend Options
@@ -458,20 +517,20 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
-| `prefix` | A prefix that is automatically prepended to the cache keys  |
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
 
 <a name='adapters-backend-redis'></a>
 ### Redis Backend Options
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
-| Option       | Description                                                   |
-|--------------|---------------------------------------------------------------|
-| `prefix`     | A prefix that is automatically prepended to the cache keys    |
-| `host`       | Redis host                                                    |
-| `port`       | Redis port                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server |
-| `persistent` | Create a persistent connection to Redis                       |
-| `index`      | The index of the Redis database to use                        |
+| Option       | Description                                                    |
+|--------------|----------------------------------------------------------------|
+| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
+| `host`       | Redis host.                                                    |
+| `port`       | Redis port.                                                    |
+| `auth`       | Password to authenticate to a password-protected Redis server. |
+| `persistent` | Create a persistent connection to Redis.                       |
+| `index`      | The index of the Redis database to use.                        |
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
