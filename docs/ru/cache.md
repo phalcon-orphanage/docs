@@ -54,22 +54,22 @@
               <a href="#adapters-backend-file">Опции файлового бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Опции Libmemcached бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Опции Memcached бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">Опции APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Опции Mongo бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Опции XCache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Опции Redis бэкэнда</a>
             </li>
           </ul>
         </li>
@@ -296,7 +296,7 @@ foreach ($robots as $robot) {
 $products = $cache->get('myProducts');
 ```
 
-If you want to know which keys are stored in the cache you could call the `queryKeys` method:
+Для того чтобы узнать какие ключи сейчас хранятся можно выполнить метод `queryKeys`:
 
 ```php
 <?php
@@ -461,14 +461,14 @@ $cache->save('my-key', $data);
 
 Доступные фронтэнд адаптеры приведены в таблице:
 
-| Адаптер                              | Описание                                                                                                                                          |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Read input data from standard PHP output.                                                                                                         |
-| `Phalcon\Cache\Frontend\Data`     | Используется для кэширования любых данных в PHP (большие массивы, объекты, тексты и т.д.). Прежде чем сохранить данные, адаптер сериализирует их. |
-| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                     |
-| `Phalcon\Cache\Frontend\Json`     | Данные перед кэширование сериализуются в JSON. Можно использовать для обмена данными с другими фреймворками.                                      |
-| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.    |
-| `Phalcon\Cache\Frontend\None`     | Используется для кэширования любых типов данных без сериализации.                                                                                 |
+| Адаптер                              | Описание                                                                                                                                                          |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Cache\Frontend\Output`   | Считывает данные из стандартного PHP вывода.                                                                                                                      |
+| `Phalcon\Cache\Frontend\Data`     | Используется для кэширования любых данных в PHP (большие массивы, объекты, тексты и т.д.). Прежде чем сохранить данные, адаптер сериализирует их.                 |
+| `Phalcon\Cache\Frontend\Base64`   | Используется для кэширования бинарных данных. Данные сериализируется с использованием `base64_encode`.                                                            |
+| `Phalcon\Cache\Frontend\Json`     | Данные перед кэширование сериализуются в JSON. Можно использовать для обмена данными с другими фреймворками.                                                      |
+| `Phalcon\Cache\Frontend\Igbinary` | Он используется для кэширования любых данных PHP (большие массивы, объекты, тексты и т.д.). Данные сериализуются c помощью `Igbinary` перед сохранением в бэкэнд. |
+| `Phalcon\Cache\Frontend\None`     | Используется для кэширования любых типов данных без сериализации.                                                                                                 |
 
 <a name='implementation'></a>
 
