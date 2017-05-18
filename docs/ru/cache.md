@@ -601,9 +601,9 @@ $cache = new Libmemcached(
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
 | `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
-| `server`     | A MongoDB connection string.                                    |
-| `db`         | Mongo database name.                                            |
-| `collection` | Mongo collection in the database.                               |
+| `server`     | Строка подключения к MongoDB.                                   |
+| `db`         | Название базы данных.                                           |
+| `collection` | Коллекция в базе данных.                                        |
 
 <a name='caching-behavior'></a>
 
@@ -628,6 +628,6 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `port`       | Порт Redis сервера.                                             |
 | `auth`       | Password to authenticate to a password-protected Redis server.  |
 | `persistent` | Использовать постоянное соединение к Redis серверу.             |
-| `index`      | The index of the Redis database to use.                         |
+| `index`      | Индекс базы данных.                                             |
 
 Существует еще несколько типов адаптеров, их можно получить в [Phalcon Incubator](https://github.com/phalcon/incubator).
