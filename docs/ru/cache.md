@@ -515,7 +515,7 @@ $cache->save('my-key', $data);
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
-**General options**
+**Общие параметры**
 
 | Параметр        | Описание                                                                                                           |
 | --------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -523,15 +523,15 @@ This backend will store cached content on a memcached server. Per default persis
 | `prefix`        | Префикс, который будет автоматически добавляться к ключам кэша.                                                    |
 | `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
 
-**Servers options**
+**Параметры сервера**
 
 | Параметр | Описание                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `host`   | The `memcached` host.                                                                                       |
-| `port`   | The `memcached` port.                                                                                       |
+| `host`   | Хост memcached сервера.                                                                                     |
+| `port`   | Порт memcached сервера.                                                                                     |
 | `weight` | The weight parameter effects the consistent hashing used to determine which server to read/write keys from. |
 
-**Client options**
+**Параметры клиента**
 
 Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
 
@@ -573,20 +573,20 @@ $cache = new Libmemcached(
 
 8### Параметры Memcache бэкэнда
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+Данные будут сохранены на memcached сервере. Доступные опции:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
 | `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
-| `host`       | The memcached host.                                             |
-| `port`       | The memcached port.                                             |
+| `host`       | Хост memcached сервера.                                         |
+| `port`       | Порт memcached сервера.                                         |
 | `persistent` | Create a persistent connection to memcached?                    |
 
 <a name='implementation'></a>
 
 9### Параметры APC бэкэнда
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
 
 | Параметр | Description                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -596,7 +596,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 0### Параметры Mongo бэкэнда
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+Данные будут сохранены на MongoDB сервере. Доступные опции:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
@@ -609,7 +609,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 1### Параметры XCache бэкэнда
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
 
 | Параметр | Описание                                                        |
 | -------- | --------------------------------------------------------------- |
