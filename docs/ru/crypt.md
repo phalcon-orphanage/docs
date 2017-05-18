@@ -6,7 +6,7 @@
           <a href="#usage">Basic Usage</a>
         </li>
         <li>
-          <a href="#options">Encryption Options</a>
+          <a href="#options">Настройки шифрования</a>
         </li>
         <li>
           <a href="#base64">Base64 Support</a>
@@ -31,7 +31,7 @@ By default, this component provides secure encryption using AES-256-CFB.
 
 <a name='usage'></a>
 
-## Basic Usage
+## Базовое использование
 
 This component is designed to provide a very simple usage:
 
@@ -40,7 +40,7 @@ This component is designed to provide a very simple usage:
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Создание экземпляра
 $crypt = new Crypt();
 
 $key  = 'This is a secret key (32 bytes).';
@@ -58,7 +58,7 @@ You can use the same instance to encrypt/decrypt several times:
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Создание экземпляра
 $crypt = new Crypt();
 
 $texts = [
@@ -67,23 +67,23 @@ $texts = [
 ];
 
 foreach ($texts as $key => $text) {
-    // Perform the encryption
+    // Выполнение шифрования
     $encrypted = $crypt->encrypt($text, $key);
 
-    // Now decrypt
+    // Расшифровка
     echo $crypt->decrypt($encrypted, $key);
 }
 ```
 
 <a name='options'></a>
 
-## Encryption Options
+## Настройки шифрования
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Название | Описание                                                                                                                                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cipher   | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Example:
 
