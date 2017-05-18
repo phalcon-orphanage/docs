@@ -51,25 +51,25 @@
               <a href="#adapters-backend-custom">Реализация собственных бэкэнд адаптеров</a>
             </li>
             <li>
-              <a href="#adapters-backend-file">Опции файлового бэкэнда</a>
+              <a href="#adapters-backend-file">Параметры файлового бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Опции Libmemcached бэкэнда</a>
+              <a href="#adapters-backend-libmemcached">Параметры Libmemcached бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Опции Memcached бэкэнда</a>
+              <a href="#adapters-backend-memcache">Параметры Memcache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">Опции APC бэкэнда</a>
+              <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Опции Mongo бэкэнда</a>
+              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">Опции XCache бэкэнда</a>
+              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Опции Redis бэкэнда</a>
+              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
             </li>
           </ul>
         </li>
@@ -482,15 +482,15 @@ $cache->save('my-key', $data);
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
-| Адаптер                                 | Описание                                        | Информация                                | Необходимые расширения                             |
-| --------------------------------------- | ----------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
-| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC). | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.               |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.              | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                           | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                          | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| Адаптер                                 | Описание                                                                     | Информация                                | Необходимые расширения                             |
+| --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
+| `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcache расширения.  | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <a name='implementation'></a>
 
@@ -500,18 +500,18 @@ $cache->save('my-key', $data);
 
 <a name='implementation'></a>
 
-6### Опции файлового бэкэнда
+6### Параметры файлового бэкэнда
 
 Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
-| Параметр   | Описание                                                    |
-| ---------- | ----------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys. |
-| `cacheDir` | A writable directory on which cached files will be placed.  |
+| Параметр   | Описание                                                        |
+| ---------- | --------------------------------------------------------------- |
+| `prefix`   | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `cacheDir` | A writable directory on which cached files will be placed.      |
 
 <a name='implementation'></a>
 
-7### Libmemcached Backend Options
+7### Параметры Libmemcached бэкэнда
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -520,7 +520,7 @@ This backend will store cached content on a memcached server. Per default persis
 | Параметр        | Описание                                                                                                           |
 | --------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `statsKey`      | Used to tracking of cached keys.                                                                                   |
-| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
+| `prefix`        | Префикс, который будет автоматически добавляться к ключам кэша.                                                    |
 | `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
 
 **Servers options**
@@ -571,20 +571,20 @@ $cache = new Libmemcached(
 
 <a name='implementation'></a>
 
-8### Memcache Backend Options
+8### Параметры Memcache бэкэнда
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
-| Параметр     | Описание                                                    |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | The memcached host.                                         |
-| `port`       | The memcached port.                                         |
-| `persistent` | Create a persistent connection to memcached?                |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `host`       | The memcached host.                                             |
+| `port`       | The memcached port.                                             |
+| `persistent` | Create a persistent connection to memcached?                    |
 
 <a name='implementation'></a>
 
-9### APC Backend Options
+9### Параметры APC бэкэнда
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
@@ -594,40 +594,40 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 <a name='caching-behavior'></a>
 
-0### Mongo Backend Options
+0### Параметры Mongo бэкэнда
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
-| Параметр     | Описание                                                    |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `server`     | A MongoDB connection string.                                    |
+| `db`         | Mongo database name.                                            |
+| `collection` | Mongo collection in the database.                               |
 
 <a name='caching-behavior'></a>
 
-1### XCache Backend Options
+1### Параметры XCache бэкэнда
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='caching-behavior'></a>
 
-2### Redis Backend Options
+2### Параметры Redis бэкэнда
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
-| Option       | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `host`       | Redis host.                                                     |
+| `port`       | Redis port.                                                     |
+| `auth`       | Password to authenticate to a password-protected Redis server.  |
+| `persistent` | Create a persistent connection to Redis.                        |
+| `index`      | The index of the Redis database to use.                         |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Существует еще несколько типов адаптеров, их можно получить в [Phalcon Incubator](https://github.com/phalcon/incubator).
