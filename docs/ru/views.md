@@ -216,7 +216,7 @@ class PostsController extends Controller
     public function lastAction()
     {
         $this->flash->notice(
-            'Последние записи'
+            'Последние статьи'
         );
     }
 }
@@ -227,7 +227,7 @@ class PostsController extends Controller
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Название блога</title>
+        <title>Мой блог</title>
     </head>
     <body>
         <?php echo $this->getContent(); ?>
@@ -239,9 +239,9 @@ class PostsController extends Controller
 <!-- app/views/layouts/common.phtml -->
 
 <ul class='menu'>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/articles'>Articles</a></li>
-    <li><a href='/contact'>Contact us</a></li>
+    <li><a href='/'>Главная</a></li>
+    <li><a href='/articles'>Материалы</a></li>
+    <li><a href='/contact'>Контакты</a></li>
 </ul>
 
 <div class='content'><?php echo $this->getContent(); ?></div>
@@ -250,7 +250,7 @@ class PostsController extends Controller
 ```php
 <!-- app/views/layouts/posts.phtml -->
 
-<h1>Blog Title</h1>
+<h1>Мой блог</h1>
 
 <?php echo $this->getContent(); ?>
 ```
@@ -259,13 +259,13 @@ class PostsController extends Controller
 <!-- app/views/posts/last.phtml -->
 
 <article>
-    <h2>This is a title</h2>
-    <p>This is the post content</p>
+    <h2>Заголовок статьи</h2>
+    <p>Содержимое статьи</p>
 </article>
 
 <article>
-    <h2>This is another title</h2>
-    <p>This is another post content</p>
+    <h2>Ещё один заголовок</h2>
+    <p>Ещё одно содержимое статьи</p>
 </article>
 ```
 
@@ -567,7 +567,7 @@ class UsersController extends Controller
 
 This component allows the developer to have control of when a view is rendered and its location. In addition, this component can leverage of view inheritance available in template engines such as `Volt` and others.
 
-The default component must be replaced in the service container:
+Компонент представлений по-умолчанию должен быть заменён в сервис контейнере:
 
 ```php
 <?php
