@@ -37,17 +37,17 @@
 
 # Управление ресурсами
 
-`Phalcon\Assets` is a component that allows you to manage static resources such as CSS stylesheets or JavaScript libraries in a web application.
+`Phalcon\Assets` — это компонент позволяющий разработчику управлять статичными ресурсами в веб-приложении, такими как каскадные таблицы стилей или скрипты.
 
-`Phalcon\Assets\Manager` is available in the services container, so you can add resources from any part of the application where the container is available.
+`Phalcon\Assets\Manager` доступен в контейнере сервисов и вы можете добавлять ресурсы из любой части приложения, где контейнер доступен.
 
 <a name='add'></a>
 
 ## Добавление ресурсов
 
-Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
+Поддерживаются ресурсы двух типов: CSS и JavaScript. Но при необходимости, можно реализовать поддержку любых других. Внутренний механизм менеджера ресурсов хранит две коллекции, одну для JavaScript, а другую для CSS.
 
-You can easily add resources to these collections like follows:
+Добавить ресурсы в эти коллекции очень просто:
 
 ```php
 <?php
@@ -58,11 +58,11 @@ class IndexController extends Controller
 {
     public function index()
     {
-        // Add some local CSS resources
+        // Добавляем некоторые локальные CSS ресурсы
         $this->assets->addCss('css/style.css');
         $this->assets->addCss('css/index.css');
 
-        // And some local JavaScript resources
+        // А теперь некоторые локальные JavaScript ресурсы
         $this->assets->addJs('js/jquery.js');
         $this->assets->addJs('js/bootstrap.min.js');
     }
