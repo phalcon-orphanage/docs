@@ -69,12 +69,12 @@ class IndexController extends Controller
 }
 ```
 
-Then in a view, these resources can be printed:
+Далее, добавленные ресурсы могут быть отображены в представлениях:
 
 ```php
 <html>
     <head>
-        <title>Мой удивительный веб-сайт</title>
+        <title> Некоторый удивительный веб-сайт</title>
 
         <?php $this->assets->outputCss(); ?>
     </head>
@@ -87,12 +87,12 @@ Then in a view, these resources can be printed:
 <html>
 ```
 
-Volt syntax:
+С использованием синтаксиса Volt:
 
 ```volt
 <html>
     <head>
-        <title>Some amazing website</title>
+        <title>Удивительный сайт</title>
 
         {{ assets.outputCss() }}
     </head>
