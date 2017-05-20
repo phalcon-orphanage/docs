@@ -74,7 +74,7 @@ class IndexController extends Controller
 ```php
 <html>
     <head>
-        <title> Некоторый удивительный веб-сайт</title>
+        <title>Некоторый удивительный веб-сайт</title>
 
         <?php $this->assets->outputCss(); ?>
     </head>
@@ -92,7 +92,7 @@ class IndexController extends Controller
 ```volt
 <html>
     <head>
-        <title>Удивительный сайт</title>
+        <title>Некоторый удивительный веб-сайт</title>
 
         {{ assets.outputCss() }}
     </head>
