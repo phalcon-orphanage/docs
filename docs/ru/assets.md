@@ -105,7 +105,7 @@ class IndexController extends Controller
 <html>
 ```
 
-For better page load performance, it is recommended to place JavaScript at the end of the HTML instead of in the `<head>`.
+В целях достижения лучшей производительности, рекомендуется размещать загрузку JavaScript-скриптов в конце страницы, а не в `<head>`.
 
 <a name='local-remote'></a>
 
