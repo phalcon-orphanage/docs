@@ -15,16 +15,16 @@
           <a href="#injecting-services">Wstrzykiwanie serwisów</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Żądanie i Odpowiedź</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Dane Sesji</a>
         </li>
         <li>
           <a href="#services">Using Services as Controllers</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">Zdarzenia w Kontrolerach</a>
         </li>
       </ul>
     </li>
@@ -232,7 +232,7 @@ class PostsController extends Controller
 
 ## Wstrzykiwanie serwisów
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Jeżeli kontroler rozszerza `Phalcon\Mvc\Controller`, wtedy posiada łatwy dostęp do kontenera serwisów w aplikacji. Na przykład, jeśli zarejestrowaliśmy serwis wyglądający tak:
 
 ```php
 <?php
