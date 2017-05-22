@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Введение</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#requirements">Требования</a>
+          <a href="#requirements">Requirements</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
@@ -11,10 +11,10 @@
         <li>
           <a href="#installation">Installation</a> <ul>
             <li>
-              <a href="#installation-vagrant-box">Установка Vagrant Box</a>
+              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
             </li>
             <li>
-              <a href="#installation-phalcon-box">Установка Phalcon Box</a>
+              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
             </li>
           </ul>
         </li>
@@ -144,7 +144,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 - MySQL
 - Nginx
 - Ngrok
-- Node.js (с Yarn, Bower, Grunt и Gulp)
+- Node.js (with Yarn, Bower, Grunt, and Gulp)
 - PHIVE
 - PHP 7.1
 - PHPMD
@@ -163,7 +163,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation-vagrant-box'></a>
 
-### Установка Vagrant Box
+### Installing the Vagrant Box
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -179,7 +179,7 @@ If this command fails, make sure your Vagrant installation is up to date.
 
 <a name='installation-phalcon-box'></a>
 
-### Установка Phalcon Box
+### Installing the Phalcon Box
 
 You can install Phalcon Box by simply cloning the repository. Consider cloning the repository into a `workspace` folder within your `home` directory, as the Phalcon Box box will serve as the host to all of your Phalcon projects:
 

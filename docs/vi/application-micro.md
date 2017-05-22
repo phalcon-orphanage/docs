@@ -1,62 +1,62 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Создание микроприложения</a>
+      <a href="#creating-micro-application">Creating a Micro Application</a>
     </li>
     <li>
-      <a href="#routing">Маршрутизация</a> <ul>
+      <a href="#routing">Routing</a> <ul>
         <li>
-          <a href="#routing-setup">Настройка</a> <ul>
+          <a href="#routing-setup">Setup</a> <ul>
             <li>
-              <a href="#routing-setup-application">Объект приложения</a>
+              <a href="#routing-setup-application">Application object</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Объект Router</a>
+              <a href="#routing-setup-router">Router object</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#rewrite-rules">Правила перезаписи</a>
+          <a href="#rewrite-rules">Rewrite Rules</a>
         </li>
         <li>
-          <a href="#routing-handlers">Обработчики</a> <ul>
+          <a href="#routing-handlers">Handlers</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Определения</a> <ul>
+              <a href="#routing-handlers-definitions">Definitions</a> <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Анонимная функция</a>
+                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Функция</a>
+                  <a href="#routing-handlers-function">Function</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Статический метод</a>
+                  <a href="#routing-handlers-static-method">Static Method</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Метод объекта</a>
+                  <a href="#routing-handlers-object-method">Method in an Object</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Контроллеры</a>
+                  <a href="#routing-handlers-controllers">Controllers</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> <ul>
+              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
                 <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Сценарий использования</a>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#routing-handlers-not-found">Не найдено (404)</a>
+              <a href="#routing-handlers-not-found">Not Found (404)</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#routing-verbs">Методы-глаголы</a> <ul>
+          <a href="#routing-verbs">Methods - Verbs</a> <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -85,25 +85,25 @@
         </li>
         
         <li>
-          <a href="#routing-collections">Коллекции</a>
+          <a href="#routing-collections">Collections</a>
         </li>
         <li>
-          <a href="#routing-parameters">Параметры</a>
+          <a href="#routing-parameters">Parameters</a>
         </li>
         <li>
-          <a href="#routing-redirections">Перенаправления</a>
+          <a href="#routing-redirections">Redirections</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">Адреса для маршрутов</a>
+          <a href="#routing-urls-for-routes">URLs for Routes</a>
         </li>
       </ul>
     </li>
     
     <li>
-      <a href="#dependency-injector">Внедрение зависимостей</a>
+      <a href="#dependency-injector">Dependency Injector</a>
     </li>
     <li>
-      <a href="#responses">Ответы</a> <ul>
+      <a href="#responses">Responses</a> <ul>
         <li>
           <a href="#responses-direct-output">Direct output</a>
         </li>
@@ -129,14 +129,14 @@
     </li>
     
     <li>
-      <a href="#events">События</a> <ul>
+      <a href="#events">Events</a> <ul>
         <li>
-          <a href="#events-available-events">Доступные события</a> <ul>
+          <a href="#events-available-events">Available events</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Пример: Аутентификация</a>
+              <a href="#events-available-events-authentication">Authentication example</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Пример: Страница не найдена</a>
+              <a href="#events-available-events-not-found">Not found example</a>
             </li>
           </ul>
         </li>
@@ -195,25 +195,25 @@
     </li>
     
     <li>
-      <a href="#models">Модели</a>
+      <a href="#models">Models</a>
     </li>
     <li>
       <a href="#model-instances">Injecting Model Instances</a>
     </li>
     <li>
-      <a href="#views">Представления</a>
+      <a href="#views">Views</a>
     </li>
     <li>
-      <a href="#error-handling">Обработка ошибок</a>
+      <a href="#error-handling">Error Handling</a>
     </li>
   </ul>
 </div>
 
-# Микроприложения
+# Micro Applications
 
-Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
+Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
 
-Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
 
 ```php
 <?php
@@ -225,7 +225,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Это заказ: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 
@@ -234,7 +234,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Создание микроприложения
+## Creating a Micro Application
 
 The [`Phalcon\Mvc\Micro`](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -248,7 +248,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Маршрутизация
+## Routing
 
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
 
@@ -258,7 +258,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 <a name='routing-setup'></a>
 
-### Настройка
+### Setup
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
 
@@ -280,7 +280,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Объект приложения
+### Application object
 
 Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
 
@@ -300,7 +300,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Объект Router
+### Router object
 
 You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -327,7 +327,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 <a name='rewrite-rules'></a>
 
-## Правила перезаписи
+## Rewrite Rules
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
@@ -335,19 +335,19 @@ Those changes are outlined in the [rewrite rules](/en/[[version]]/rewrite-rules)
 
 <a name='routing-handlers'></a>
 
-## Обработчики
+## Handlers
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Определения
+### Definitions
 
 Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Анонимная функция
+#### Anonymous Function
 
 Finally we can use an anonymous function (as seen above) to handle the request
 
@@ -375,7 +375,7 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Функция
+#### Function
 
 We can define a function as our handler and attach it to a specific route.
 
@@ -393,7 +393,7 @@ $app->get(
 
 <a name='routing'></a>
 
-0#### Статический метод
+0#### Static Method
 
 We can also use a static method as our handler as follows:
 
@@ -413,7 +413,7 @@ $app->get(
 
 <a name='routing'></a>
 
-1#### Метод объекта
+1#### Method in an Object
 
 We can also use a method in an object:
 
@@ -437,7 +437,7 @@ $app->get(
 
 <a name='routing'></a>
 
-2#### Контроллеры
+2#### Controllers
 
 With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
 
@@ -512,7 +512,7 @@ class OrdersController extends Controller
 
 <a name='routing'></a>
 
-3### Загрузка по требованию
+3### Lazy Loading
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
@@ -525,7 +525,7 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing'></a>
 
-4#### Сценарий использования
+4#### Use case
 
 We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -576,7 +576,7 @@ class ProductsController extends Controller
 }
 ```
 
-Мы зарегистрировать обработчики:
+We register the handlers:
 
 ```php
 <?php
@@ -648,7 +648,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 <a name='routing'></a>
 
-5### Не найдено (404)
+5### Not found (404)
 
 Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
@@ -671,7 +671,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 <a name='routing'></a>
 
-6## Методы-глаголы
+6## Methods - Verbs
 
 The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
 
@@ -788,7 +788,7 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-setup'></a>
 
-5## Коллекции
+5## Collections
 
 Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
 
@@ -822,7 +822,7 @@ $app->mount($orders);
 
 <a name='routing-setup'></a>
 
-6## Параметры
+6## Parameters
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
@@ -860,7 +860,7 @@ Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></
 
 <a name='routing-setup'></a>
 
-7## Перенаправления
+7## Redirections
 
 You can redirect one matched route to another using the `Phalcon\Http\Response` object, just like in a full application.
 
@@ -906,7 +906,7 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 <a name='routing-setup'></a>
 
-8## Адреса для маршрутов
+8## URLs for Routes
 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
@@ -946,7 +946,7 @@ $app->get(
 
 <a name='routing-setup'></a>
 
-9# Внедрение зависимостей
+9# Dependency Injector
 
 When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
 
@@ -1013,7 +1013,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Настройка сервиса базы данных
+// Setup the database service
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -1039,7 +1039,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-0# Ответы
+0# Responses
 
 A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 

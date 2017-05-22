@@ -60,7 +60,7 @@ class Robots extends Model
             'name',
             new Uniqueness(
                 [
-                    'message' => 'Имя робота должно быть уникальным.',
+                    'message' => 'The robot name must be unique',
                 ]
             )
         );

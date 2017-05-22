@@ -15,16 +15,16 @@
           <a href="#injecting-services">Wstrzykiwanie serwisów</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Żądanie i Odpowiedź</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Dane Sesji</a>
         </li>
         <li>
           <a href="#services">Using Services as Controllers</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">Zdarzenia w Kontrolerach</a>
         </li>
       </ul>
     </li>
@@ -232,7 +232,7 @@ class PostsController extends Controller
 
 ## Wstrzykiwanie serwisów
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Jeżeli kontroler rozszerza `Phalcon\Mvc\Controller`, wtedy posiada łatwy dostęp do kontenera serwisów w aplikacji. Na przykład, jeśli zarejestrowaliśmy serwis wyglądający tak:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Then, we can access that service in several ways:
+Wtedy mamy dostęp do tego serwisu na kilka różnych sposobów:
 
 ```php
 <?php
@@ -263,31 +263,31 @@ class FilesController extends Controller
 {
     public function saveAction()
     {
-        // Injecting the service by just accessing the property with the same name
+        // Wstrzyknięcie serwisu poprzez dostęp do zmiennej o takiej samej nazwie
         $this->storage->save('/some/file');
 
-        // Accessing the service from the DI
+        // Dostęp do serwisu z Kontenera Zależności
         $this->di->get('storage')->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Kolejny sposób na dostęp do serwisu używając magicznego Akcesora
         $this->di->getStorage()->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // I jeszcze inny sposób na dostęp do serwisu używając magicznego Akcesora
         $this->getDi()->getStorage()->save('/some/file');
 
-        // Using the array-syntax
+        // Użycie tablicowej składni
         $this->di['storage']->save('/some/file');
     }
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/en/[[version]]/di) in the framework.
+Jeżeli używasz Phalcona jako pełnowartościowego frameworka, możesz odczytywać serwisy dostarczone [domyślnie](/en/[[version]]/di) w jego ramach.
 
 <a name='request-response'></a>
 
-## Request and Response
+## Żądanie i Odpowiedź
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Przy założeniu, że framework dostarcza zestaw wstępnie zarejestrowanych serwisów, wyjaśnimy jak przeprowadzać interakcję ze środowiskiem HTTP. Serwis 'request' zawiera instancję klasy `Phalcon\Http\Request` oraz usługa 'response' obejmuje instancję klasy `Phalcon\Http\Response` reprezentując to, co ma być zwrócone do klienta.
 
 ```php
 <?php
@@ -303,9 +303,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Sprawdź czy żądanie zostało wykonane za pomocą metody POST
         if ($this->request->isPost()) {
-            // Access POST data
+            // Dostęp do danych z POST
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
+Zwracany obiekt nie jest zazwyczaj używany bezpośrednio, ale jest zbudowany przed wykonaniem akcji, niekiedy jednak, jak w zdarzeniu `afterDispatch` - dostęp do bezpośredniej odpowiedzi może być użyteczny:
 
 ```php
 <?php
@@ -329,17 +329,17 @@ class PostsController extends Controller
 
     public function notFoundAction()
     {
-        // Send a HTTP 404 response header
+        // Wyślij nagłówek odpowiedzi HTTP 404
         $this->response->setStatusCode(404, 'Not Found');
     }
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/en/[[version]]/request) and [response](/en/[[version]]/response).
+Dowiedz się więcej o środowisku HTTP w ich dedykowanych artykułach [request](/en/[[version]]/request) tudzież [response](/en/[[version]]/response).
 
 <a name='session-data'></a>
 
-## Session Data
+## Dane Sesji
 
 Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 

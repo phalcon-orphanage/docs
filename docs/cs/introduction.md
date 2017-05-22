@@ -1,17 +1,17 @@
 # Vítejte
 
-Welcome to the documentation for the Phalcon framework.
+Vítejte v dokumentaci pro Phalcon framework.
 
 ## Mise
 
-Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
+Naším cílem je nabídnout vývojářům pokročilý, na funkce bohatý framework, který mohou používat k vývoji výkonných aplikací s minimálním zatížením serverů.
 
-## What is Phalcon
+## Co je Phalcon framework
 
-Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalcon je open source full stack framework pro PHP, vyvíjen jako rozšíření v jazyce C. Je optimalizován pro maximální výkon. Jeho unikátní architektura dovoluje frameworku být vždy v paměti a to dovoluje jeho funkcionalitu použít kdekoliv je potřeba, bez zbytečných kontrol a načítání souborů jako klasické PHP frameworky.
 
 ## Používání
 
-Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
+Vývojáři nepotřebují znát jazyk C pro používání Phalcon frameworku. Jeho funkcionality jsou dostupné jako PHP třídy ve jmenném prostoru (namespace) `Phalcon`, připraveny k používání.
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
+Komponenty Phalcon frameworku nejsou na sobě pevně závislé a dovoluje použítí pouze objektů, které vývojář potřebuje ve své aplikaci bez nutnosti inicializovat celý framework, či vytvářet komponenty, které nepotřebuje.
