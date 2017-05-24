@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">DevTools on Linux</a> <ul>
         <li>
-          <a href="#prerequisites">Prerequisites</a>
+          <a href="#prerequisites">Požadavky</a>
         </li>
         <li>
           <a href="#installation">Installation</a> <ul>
