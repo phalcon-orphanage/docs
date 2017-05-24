@@ -6,7 +6,7 @@
           <a href="#download">Stažení</a>
         </li>
         <li>
-          <a href="#installation">Installation</a>
+          <a href="#installation">Instalace</a>
         </li>
         <li>
           <a href="#available-commands">Available Commands</a>
@@ -56,7 +56,7 @@ You can download or clone a cross platform package containing the developer tool
 
 <a name='installation'></a>
 
-## Installation
+## Instalace
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
