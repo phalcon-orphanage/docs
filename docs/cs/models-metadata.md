@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Models Metadata</a> <ul>
+      <a href="#overview">Metadata modelů</a> <ul>
         <li>
           <a href="#caching-metadata">Caching Metadata</a>
         </li>
