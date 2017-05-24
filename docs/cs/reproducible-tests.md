@@ -1,4 +1,4 @@
-Pokud jste našli chybu, je důležité přidat relevantní informace pro reprodukování problému a rychlejší opravě. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
+Pokud jste našli chybu, je důležité přidat relevantní informace pro reprodukování problému a rychlejší opravě. If you have the application publicly on Github please submit the repository address along with the issue description. Také můžete použít [Gist](https://gist.github.com/) pro jakýkoliv kód který s námi chcete sdílet.
 
 ## Vytvoření malého skriptu
 
