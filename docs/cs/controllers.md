@@ -18,10 +18,10 @@
           <a href="#request-response">Požadavek a odpověď</a>
         </li>
         <li>
-          <a href="#session-data">Datová relace</a>
+          <a href="#session-data">Relační data (session)</a>
         </li>
         <li>
-          <a href="#services">Používání services jako controllerů</a>
+          <a href="#services">Používání služeb jako controllerů</a>
         </li>
         <li>
           <a href="#events">Události v controllerech</a>
@@ -287,7 +287,7 @@ Pokud používáte Phalcon, můžete přečíst poskytované služby [ve výchoz
 
 ## Požadavek a odpověď
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. Služba "požadavku" obsahuje instanci `Phalcon\Http\Request` a "odpověď" obsahuje `Phalcon\Http\Response`, reprezentující co bude odesláno zpět na klienta.
 
 ```php
 <?php
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
+Objekt odpovědi se nepoužívá obvykle přímo, ale je proveden před spuštění akce, někdy - jako v případě `afterDispatch` - to může být užitečné pro přímý přístup k odpovědi:
 
 ```php
 <?php
@@ -335,13 +335,13 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/en/[[version]]/request) and [response](/en/[[version]]/response).
+Další informace o prostředí HTTP naleznete v samostatných sekcích pro [požadavek](/en/[[version]]/request) a [odpověd](/en/[[version]]/response).
 
 <a name='session-data'></a>
 
-## Session Data
+## Relační data (session)
 
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Relace nám pomáhají udržovat data mezi požadavky. Můžete přistupovat k objektu `Phalcon\Session\Bag` z libovolnému controlleru za účelem zapouzdření dat:
 
 ```php
 <?php
@@ -364,9 +364,9 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Používání služeb jako controllerů
 
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
+Služby mohou jednat jako controllery, třídy controlleru jsou vždy požadovány z kontejneru služeb. Každá jiná třida registrovaná se správným názvem může jednoduše nahradit controller:
 
 ```php
 <?php
