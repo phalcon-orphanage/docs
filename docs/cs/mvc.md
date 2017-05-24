@@ -3,7 +3,7 @@
     <li>
       <a href="#architecture">Architektura</a> <ul>
         <li>
-          <a href="#models">Models</a>
+          <a href="#models">Modely</a>
         </li>
         <li>
           <a href="#views">Views</a>
