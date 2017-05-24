@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#phalcon">Download the right version of Phalcon</a>
+          <a href="#phalcon">Stažení správné verze Phalcon frameworku</a>
         </li>
         <li>
           <a href="#related">Related</a>
