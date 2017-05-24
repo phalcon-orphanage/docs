@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">Šifrování / Dešifrování</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
