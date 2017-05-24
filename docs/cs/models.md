@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#working-with">Working with Models</a> <ul>
+      <a href="#working-with">Práce s modely</a> <ul>
         <li>
           <a href="#creating">Creating Models</a> <ul>
             <li>
