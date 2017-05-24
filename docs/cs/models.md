@@ -3,7 +3,7 @@
     <li>
       <a href="#working-with">Práce s modely</a> <ul>
         <li>
-          <a href="#creating">Creating Models</a> <ul>
+          <a href="#creating">Vytváření modelů</a> <ul>
             <li>
               <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
             </li>
