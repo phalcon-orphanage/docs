@@ -1,6 +1,6 @@
-# New Feature Request
+# Požadavek na funkcionalitu
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand implement it.
+NFR je krátký dokument, který vysvětluje, jak posílat požadavky na novou funkcionalitu, jak může být implementována a jak může pomoci vývojářům frameworku a ostatním porozumnět implementaci.
 
 A NFR contains: * Suggested syntax * Suggested class names and methods * A short documentation * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
 
