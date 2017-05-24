@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Metadata modelů</a> <ul>
         <li>
-          <a href="#caching-metadata">Caching Metadata</a>
+          <a href="#caching-metadata">Cache pro Metadata</a>
         </li>
         <li>
           <a href="#metadata-strategies">Metadata Strategies</a> <ul>
