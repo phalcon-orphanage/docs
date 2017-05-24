@@ -175,7 +175,7 @@ The following options are available in Volt:
 |---------------------|------------------------------------------------------------------------------------------------------------------------------|---------|
 | `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory | `%%`    |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 | `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
 | `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
@@ -319,7 +319,7 @@ The following is the list of available built-in filters in Volt:
 | `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                 |
 | `length`           | Counts the string length or how many items are in an array or object                                                              |
 | `lower`            | Change the case of a string to lowercase                                                                                          |
-| `nl2br`            | Changes newlines `\\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)      |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)      |
 | `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                 |
 | `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                   |
 | `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                        |
@@ -1190,7 +1190,7 @@ Register the function with an anonymous function. This case we use `$resolvedArg
 $compiler->addFunction(
     'widget',
     function ($resolvedArgs, $exprArgs) {
-        return 'MyLibrary\\Widgets::get(' . $resolvedArgs . ')';
+        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
     }
 );
 ```

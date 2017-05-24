@@ -900,7 +900,7 @@ $di->set(
         $view->registerEngines(
             [
                 '.my-html' => 'MyTemplateAdapter',
-                '.phtml'   => 'Phalcon\\Mvc\\View\\Engine\\Php',
+                '.phtml'   => 'Phalcon\Mvc\View\Engine\Php',
             ]
         );
 

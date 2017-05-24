@@ -426,7 +426,7 @@ This type expects the name of a valid class, returning an object of the specifie
 // Return new Phalcon\Http\Request();
 $di->set(
     'request',
-    'Phalcon\\Http\\Request'
+    'Phalcon\Http\Request'
 );
 ```
 
@@ -555,7 +555,7 @@ use Phalcon\Logger\Adapter\File as LoggerFile;
 $di->set(
     'logger',
     [
-        'className' => 'Phalcon\\Logger\\Adapter\\File',
+        'className' => 'Phalcon\Logger\Adapter\File',
         'arguments' => [
             [
                 'type'  => 'parameter',
@@ -636,14 +636,14 @@ The service can be registered this way:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\\Http\\Response'
+        'className' => 'Phalcon\Http\Response'
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\\SomeComponent',
+        'className' => 'SomeApp\SomeComponent',
         'arguments' => [
             [
                 'type' => 'service',
@@ -703,14 +703,14 @@ A service with setter injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\\Http\\Response',
+        'className' => 'Phalcon\Http\Response',
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\\SomeComponent',
+        'className' => 'SomeApp\SomeComponent',
         'calls'     => [
             [
                 'method'    => 'setResponse',
@@ -765,14 +765,14 @@ A service with properties injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\\Http\\Response',
+        'className' => 'Phalcon\Http\Response',
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className'  => 'SomeApp\\SomeComponent',
+        'className'  => 'SomeApp\SomeComponent',
         'properties' => [
             [
                 'name'  => 'response',
@@ -821,7 +821,7 @@ use Phalcon\Http\Request;
 $di = new Di();
 
 // By its class name
-$di['request'] = 'Phalcon\\Http\\Request';
+$di['request'] = 'Phalcon\Http\Request';
 
 // Using an anonymous function, the instance will be lazy loaded
 $di['request'] = function () {
@@ -833,7 +833,7 @@ $di['request'] = new Request();
 
 // Using an array definition
 $di['request'] = [
-    'className' => 'Phalcon\\Http\\Request',
+    'className' => 'Phalcon\Http\Request',
 ];
 ```
 
@@ -950,7 +950,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     use Phalcon\Http\Request;
 
     // Register the 'request' service
-    $di->set('request', 'Phalcon\\Http\\Request');
+    $di->set('request', 'Phalcon\Http\Request');
 
     // Get the service
     $requestService = $di->getService('request');
