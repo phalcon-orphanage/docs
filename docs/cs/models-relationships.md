@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Relace mezi modely</a> <ul>
         <li>
           <a href="#relationships">Relationships between Models</a> <ul>
             <li>
