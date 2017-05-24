@@ -11,14 +11,16 @@
     - Testing guide
 - Getting Started 
     - [Installation](/en/[[version]]/installation)
-    - [Webserver Setup](/en/[[version]]/webserver-setup)
+    - [Webserver Setup](/en/[[version]]/webserver-setup) 
+        - [WAMP](/en/[[version]]/webserver-wamp)
+        - [XAMPP](/en/[[version]]/webserver-xampp)
 - Environments 
     - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
 - Development Tools 
-    - Command Line
-    - Web Interface
+    - [Installation](/en/[[version]]/devtools-installation)
+    - [Usage](/en/[[version]]/devtools-usage)
 - Core 
     - Application 
         - Full
