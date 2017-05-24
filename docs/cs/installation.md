@@ -12,13 +12,13 @@
     </li>
     
     <li>
-      <a href="#installation">Installation</a> <ul>
+      <a href="#installation">Instalace</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
               <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-debian-repository">Instalace z repozitáře</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-repository-stable">Stable releases</a>
                     </li>
@@ -29,7 +29,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Instalace Phalcon frameworku</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -48,7 +48,7 @@
             <li>
               <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Instalace z repozitáře</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
                     </li>
@@ -59,7 +59,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Instalace Phalcon frameworku</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -140,9 +140,9 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='installation'></a>
 
-# Installation
+# Instalace
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Jelikož je Phalcon framework kompilován jako rozšíření pro PHP, jeho instalace je odlišná od ostatních tradičních PHP frameworků. Phalcon framework musí být instalován a načten jako modul pro Váš webserver.
 
 <a name='installation-linux'></a>
 
@@ -156,7 +156,7 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -182,7 +182,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
