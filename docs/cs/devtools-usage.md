@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Phalcon Developer Tools</a> <ul>
         <li>
-          <a href="#download">Download</a>
+          <a href="#download">Stažení</a>
         </li>
         <li>
           <a href="#installation">Installation</a>
