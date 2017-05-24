@@ -11,14 +11,16 @@
     - Руководство по тестированию
 - Начало работы 
     - [Установка](/en/[[version]]/installation)
-    - [Настройка веб-сервера](/en/[[version]]/webserver-setup)
+    - [Настройка веб-сервера](/en/[[version]]/webserver-setup) 
+        - [WAMP](/en/[[version]]/webserver-wamp)
+        - [XAMPP](/en/[[version]]/webserver-xampp)
 - Окружение 
     - [Phalcon Compose (Docker)](/en/[[version]]/environments-docker)
     - [Nanobox](/en/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/en/[[version]]/environments-vagrant)
 - Инструменты разработчика 
-    - Командная строка
-    - Веб-интерфейс
+    - [Installation](/en/[[version]]/devtools-installation)
+    - [Usage](/en/[[version]]/devtools-usage)
 - Ядро 
     - Приложение 
         - Полное
