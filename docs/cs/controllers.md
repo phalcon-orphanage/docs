@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Další parametry URI jsou definovány jako parametry akce, které mohou být snadno přístupné pomocí lokální proměnné. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
+Další parametry URI jsou definovány jako parametry akce, které mohou být snadno přístupné pomocí lokální proměnné. Controller může libovolně rozšířit třídu `Phalcon\Mvc\Controller`. Tímto způsobem může mít Controller snadný přístup k aplikačním službám.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Parametry bez výchozí hodnoty jsou zpracovány podle potřeby. Nastavení hodnot pro parametry se provádí obvykle v PHP:
 
 ```php
 <?php
@@ -97,7 +97,7 @@ class PostsController extends Controller
 }
 ```
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Parametry jsou přiřazeny ve stejném pořadí, jak byly předány v požadavku. Můžete získat libovolný parametr z názvu následujícím způsobem:
 
 ```php
 <?php
@@ -123,7 +123,7 @@ class PostsController extends Controller
 
 ## Dispatch Loop
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+"dispatch loop" bude spuštěn v rámci dispečeru pokud nejsou provedeny žádné další akce. V předchozím příkladu byla provedena pouze jedna akce. V následujícím příkladu můžeme vidět, jak metoda `forward()` může poskytnout "flow of operation" v "dispatch loop", a to předáním jinému controlleru / akci.
 
 ```php
 <?php
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+Pokud uživatelé nemají oprávnění k přístupu k určité akci pak budou předány akci ' signin' v controlleru UsersController.
 
 ```php
 <?php
