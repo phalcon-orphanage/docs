@@ -210,7 +210,7 @@ class PostsController extends Controller
 
 ##### Metoda `initialize()` je volána pouze v případě, že událost `beforeExecuteRoute` proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace. {.alert.alert-warning}
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Pokud chcete provést některé inicializace logiky hned, jak je vytvořen objekt controlleru můžete implementovat metodu `onConstruct()`:
 
 ```php
 <?php
@@ -226,13 +226,13 @@ class PostsController extends Controller
 }
 ```
 
-##### Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer). {.alert.alert-warning}
+##### Uvědome si, že metoda `onConstruct()` je spuštěna i v případě, že akce, která má být provedena, neexistuje v controlleru nebo uživatel k ní nemá přístup (v závislosti na vlastní kontrole od vývojáře). {.alert.alert-warning}
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Aplikace služeb
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Pokud controller rozšiřuje třídu `Phalcon\Mvc\Controller` tak máme snadný přístup do kontejneru služeb v aplikaci. Například, pokud jsme zaregistrovali službu jako následující příklad:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Then, we can access that service in several ways:
+Poté můžeme přístupovat ke službě několika způsoby:
 
 ```php
 <?php
@@ -281,11 +281,11 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/en/[[version]]/di) in the framework.
+Pokud používáte Phalcon, můžete přečíst poskytované služby [ve výchozím nastavení](/en/[[version]]/di) frameworku.
 
 <a name='request-response'></a>
 
-## Request and Response
+## Požadavek a odpověď
 
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
