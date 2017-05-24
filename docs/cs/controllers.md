@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Použití controllerů / řadičů</a>
         </li>
         <li>
           <a href="#dispatch-loop">Dispatch Loop</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Inicializace controllerů</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Aplikace služeb</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Požadavek a odpověď</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Datová relace</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Používání services jako controllerů</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">Události v controllerech</a>
         </li>
       </ul>
     </li>
@@ -33,27 +33,27 @@
 
 <a name='overview'></a>
 
-# Overview
+# Přehled
 
 <a name='using'></a>
 
-## Using Controllers
+## Použití controllerů / řadičů
 
-Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozím nastavení jsou všechny veřejné metody mapované jako akce na controllerech a přístupné pomocí URL adresy. Akce jsou zodpovědné za interpretaci požadavku a vytvoření odpovědi. Odpovědi jsou obvykle ve formě vykreslených šablon, ale existují i jiné způsoby, jak vytvořit odpovědi.
 
-For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
+Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon ve výchozím nastavení rozloží každou část takto:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Popis               | Slug           |
+| ------------------- | -------------- |
+| **Phalcon adresář** | blog           |
+| **Controller**      | posts          |
+| **Akce**            | show           |
+| **Parametr**        | 2015           |
+| **Parametr**        | the-post-title |
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+V tomto případě bude tuto žádost zpracovat PostsController. Neexistuje žádné zvláštní umístění pro controller v aplikaci, controllery mohou být načteny pomocí :doc: `autoloaders <loader>`, takže si můžete organizovat vaše controllery, jak budete potřebovat.
 
-Controllers must have the suffix 'Controller' while actions the suffix 'Action'. A sample of a controller is as follows:
+Controllery musí mít přípony "Controller" zatímco akce musí mít přípony "Action". Příklad controlleru je následující:
 
 ```php
 <?php
@@ -74,7 +74,7 @@ class PostsController extends Controller
 }
 ```
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
+Další parametry URI jsou definovány jako parametry akce, které mohou být snadno přístupné pomocí lokální proměnné. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
 
 Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
