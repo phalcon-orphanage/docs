@@ -7,7 +7,7 @@
     - Pull Requesty
     - [NFR](/en/[[version]]/new-feature-request)
     - Geberování Backtrace
-    - Reprodukovatelné testy
+    - [Reproducible Tests](/en/[[version]]/reproducible-tests)
     - Průvodce testováním
 - Začínáme 
     - [Instalace](/en/[[version]]/installation)
@@ -31,21 +31,19 @@
 - Služby 
     - [Cache](/en/[[version]]/cache)
     - [Konfigurace](/en/[[version]]/config)
-    - Escaper
-    - Loader 
-        - Jmenné prostory
-    - Logování 
-        - Adaptéry
-    - Fronta (Queue) 
-        - Beanstalk
+    - [Escaper](/en/[[version]]/escaper)
+    - [Loader](/en/[[version]]/loader)
+    - [Logging](/en/[[version]]/logging) 
+        - [Adapters](/en/[[version]]/logging#usage)
+    - [Queue](/en/[[version]]/queue)
 - Databáze 
     - Konektory 
         - MySQL
         - PostgreSQL
         - SQLite
         - Mongo
-    - PHQL
-    - ODM
+    - [PHQL](/en/[[version]]/phql)
+    - [ODM](/en/[[version]]/odm)
     - [Modely](/en/[[version]]/models) 
         - [Pokročilé](/en/[[version]]/models-advanced)
         - [Chování (Behaviors)](/en/[[version]]/models-behaviors)
@@ -57,9 +55,9 @@
         - [Validátory](/en/[[version]]/models-validators)
 - Frontend 
     - [Assety](/en/[[version]]/assets)
-    - Flash zprávy
-    - Formuláře
-    - Tagy
+    - [Flash Messenger](/en/[[version]]/flash)
+    - [Forms](/en/[[version]]/forms)
+    - [Tag](/en/[[version]]/tag)
     - [Pohledy (Views)](/en/[[version]]/views) 
         - Simple
         - [Volt](/en/[[version]]/volt)
@@ -67,17 +65,17 @@
     - [Access Controler Lists (ACL)](/en/[[version]]/acl)
     - [Anotace](/en/[[version]]/annotations)
     - [Controller](/en/[[version]]/controllers)
-    - Dispečer
-    - Správce událostí
-    - Filtry
-    - Routování
-    - Session
-    - Url
-    - Validátory
+    - [Dispatcher](/en/[[version]]/dispatcher)
+    - [Event Manager](/en/[[version]]/events)
+    - [Filters](/en/[[version]]/filter)
+    - [Routing](/en/[[version]]/routing)
+    - [Sessions](/en/[[version]]/session)
+    - [Url](/en/[[version]]/url)
+    - [Validation](/en/[[version]]/validation)
 - HTTP 
-    - Cookie
-    - Požadavky (Request)
-    - Odpovědi (Response)
+    - [Cookies](/en/[[version]]/cookies)
+    - [Request](/en/[[version]]/request)
+    - [Response](/en/[[version]]/response)
 - Bezpečnost 
     - [Crypto](/en/[[version]]/crypt)
     - [Zabezpečení](/en/[[version]]/security)
