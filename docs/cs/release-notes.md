@@ -1,4 +1,4 @@
-### 2017-03-25 - [3.1.1](https://github.com/phalcon/cphalcon/releases/tag/v3.1.1)
+### 25.3.2017 - [3.1.1](https://github.com/phalcon/cphalcon/releases/tag/v3.1.1)
 
 - Fixed undefined index warning on existing cached resultsets
 - Fixed `Phalcon\Mvc\Model::_dowLowUpdate` warning first argument is not an array [#12742](https://github.com/phalcon/cphalcon/issues/12742)
