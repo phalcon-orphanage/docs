@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Annotations Parser</a> <ul>
         <li>
-          <a href="#reading">Reading Annotations</a>
+          <a href="#reading">Čtení anotací</a>
         </li>
         <li>
           <a href="#types">Types of Annotations</a>
