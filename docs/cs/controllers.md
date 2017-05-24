@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+Neexistuje žádný limit pro "forwardy", které můžete mít ve své aplikaci, pokud se aplikace nezacyklí. V tom to případě bude vaše aplikace zastavena. Pokud neexistují žádné další akce, které by měly být odeslány, dispečer automaticky vyvolá vrstvu zobrazení MVC, která je spravována například: `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Inicializace controllerů
 
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+`Phalcon\Mvc\Controller` nabízí metodu `initialize()`, která bude vykonána jako první, před provedením jakékoli akce v controlleru. Použití metody `__construct()` se nedoporučuje.
 
 ```php
 <?php
@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-##### The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization. {.alert.alert-warning}
+##### Metoda `initialize()` je volána pouze v případě, že událost `beforeExecuteRoute` proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace. {.alert.alert-warning}
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
