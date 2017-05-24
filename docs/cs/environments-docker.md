@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#dependencies">Dependencies</a>
+          <a href="#dependencies">Závislosti</a>
         </li>
         <li>
           <a href="#services">Services</a>
