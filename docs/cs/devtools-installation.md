@@ -1,12 +1,12 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">DevTools on Linux</a> <ul>
+      <a href="#overview">DevTools v Linuxu</a> <ul>
         <li>
           <a href="#prerequisites">Požadavky</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalace</a> <ul>
             <li>
               <a href="#installation-linux">Linux</a>
             </li>
@@ -37,11 +37,11 @@ These steps will guide you through the process of installing Phalcon Developer T
 
 ## Prerequisites
 
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/en/[[version]]//installation) section for instructions.
+PHP rozšíření pro Phalcon framework je nutné pro spuštění Phalcon Tools. Pokud ho ještě nemáte nainstalované, přejděte prosím do sekce [Instalace](/en/[[version]]//installation) pro instrukce.
 
 <a name='installation'></a>
 
-## Installation
+## Instalace
 
 You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools)
 
