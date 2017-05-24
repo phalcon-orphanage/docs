@@ -3,7 +3,7 @@
     <li>
       <a href="#di-service-location">Dependency Injection / Service Location</a> <ul>
         <li>
-          <a href="#di-explained">DI explained</a>
+          <a href="#di-explained">Vysvětlení DI</a>
         </li>
         <li>
           <a href="#registering-services">Registering services in the Container</a> <ul>

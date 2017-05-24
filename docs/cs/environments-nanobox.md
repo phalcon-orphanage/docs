@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#create-project">Create a New Project</a>
+          <a href="#create-project">Vytvoření nového projektu</a>
         </li>
         <li>
           <a href="#boxfile-yml">Add a boxfile.yml</a>

@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#requirements">Requirements</a>
+          <a href="#requirements">Požadavky</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalace</a> <ul>
             <li>
               <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
             </li>
@@ -159,7 +159,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Installation
+## Instalace
 
 <a name='installation-vagrant-box'></a>
 

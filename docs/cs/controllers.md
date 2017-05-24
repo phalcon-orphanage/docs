@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Použití controllerů / řadičů</a>
         </li>
         <li>
           <a href="#dispatch-loop">Dispatch Loop</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Inicializace controllerů</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Aplikace služeb</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Požadavek a odpověď</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Relační data (session)</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Používání služeb jako controllerů</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">Události v controllerech</a>
         </li>
       </ul>
     </li>
@@ -33,27 +33,27 @@
 
 <a name='overview'></a>
 
-# Overview
+# Přehled
 
 <a name='using'></a>
 
-## Using Controllers
+## Použití controllerů / řadičů
 
-Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozím nastavení jsou všechny veřejné metody mapované jako akce na controllerech a přístupné pomocí URL adresy. Akce jsou zodpovědné za interpretaci požadavku a vytvoření odpovědi. Odpovědi jsou obvykle ve formě vykreslených šablon, ale existují i jiné způsoby, jak vytvořit odpovědi.
 
-For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
+Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon ve výchozím nastavení rozloží každou část takto:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Popis               | Slug           |
+| ------------------- | -------------- |
+| **Phalcon adresář** | blog           |
+| **Controller**      | posts          |
+| **Akce**            | show           |
+| **Parametr**        | 2015           |
+| **Parametr**        | the-post-title |
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+V tomto případě bude tuto žádost zpracovat PostsController. Neexistuje žádné zvláštní umístění pro controller v aplikaci, controllery mohou být načteny pomocí :doc: `autoloaders <loader>`, takže si můžete organizovat vaše controllery, jak budete potřebovat.
 
-Controllers must have the suffix 'Controller' while actions the suffix 'Action'. A sample of a controller is as follows:
+Controllery musí mít přípony "Controller" zatímco akce musí mít přípony "Action". Příklad controlleru je následující:
 
 ```php
 <?php
@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
+Další parametry URI jsou definovány jako parametry akce, které mohou být snadno přístupné pomocí lokální proměnné. Controller může libovolně rozšířit třídu `Phalcon\Mvc\Controller`. Tímto způsobem může mít Controller snadný přístup k aplikačním službám.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Parametry bez výchozí hodnoty jsou zpracovány podle potřeby. Nastavení hodnot pro parametry se provádí obvykle v PHP:
 
 ```php
 <?php
@@ -97,7 +97,7 @@ class PostsController extends Controller
 }
 ```
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Parametry jsou přiřazeny ve stejném pořadí, jak byly předány v požadavku. Můžete získat libovolný parametr z názvu následujícím způsobem:
 
 ```php
 <?php
@@ -123,7 +123,7 @@ class PostsController extends Controller
 
 ## Dispatch Loop
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+"dispatch loop" bude spuštěn v rámci dispečeru pokud nejsou provedeny žádné další akce. V předchozím příkladu byla provedena pouze jedna akce. V následujícím příkladu můžeme vidět, jak metoda `forward()` může poskytnout "flow of operation" v "dispatch loop", a to předáním jinému controlleru / akci.
 
 ```php
 <?php
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+Pokud uživatelé nemají oprávnění k přístupu k určité akci pak budou předány akci ' signin' v controlleru UsersController.
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+Neexistuje žádný limit pro "forwardy", které můžete mít ve své aplikaci, pokud se aplikace nezacyklí. V tom to případě bude vaše aplikace zastavena. Pokud neexistují žádné další akce, které by měly být odeslány, dispečer automaticky vyvolá vrstvu zobrazení MVC, která je spravována například: `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Inicializace controllerů
 
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+`Phalcon\Mvc\Controller` nabízí metodu `initialize()`, která bude vykonána jako první, před provedením jakékoli akce v controlleru. Použití metody `__construct()` se nedoporučuje.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-##### The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization. {.alert.alert-warning}
+##### Metoda `initialize()` je volána pouze v případě, že událost `beforeExecuteRoute` proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace. {.alert.alert-warning}
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Pokud chcete provést některé inicializace logiky hned, jak je vytvořen objekt controlleru můžete implementovat metodu `onConstruct()`:
 
 ```php
 <?php
@@ -226,13 +226,13 @@ class PostsController extends Controller
 }
 ```
 
-##### Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer). {.alert.alert-warning}
+##### Uvědome si, že metoda `onConstruct()` je spuštěna i v případě, že akce, která má být provedena, neexistuje v controlleru nebo uživatel k ní nemá přístup (v závislosti na vlastní kontrole od vývojáře). {.alert.alert-warning}
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Aplikace služeb
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Pokud controller rozšiřuje třídu `Phalcon\Mvc\Controller` tak máme snadný přístup do kontejneru služeb v aplikaci. Například, pokud jsme zaregistrovali službu jako následující příklad:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Then, we can access that service in several ways:
+Poté můžeme přístupovat ke službě několika způsoby:
 
 ```php
 <?php
@@ -281,13 +281,13 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/en/[[version]]/di) in the framework.
+Pokud používáte Phalcon, můžete přečíst poskytované služby [ve výchozím nastavení](/en/[[version]]/di) frameworku.
 
 <a name='request-response'></a>
 
-## Request and Response
+## Požadavek a odpověď
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. Služba "požadavku" obsahuje instanci `Phalcon\Http\Request` a "odpověď" obsahuje `Phalcon\Http\Response`, reprezentující co bude odesláno zpět na klienta.
 
 ```php
 <?php
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
+Objekt odpovědi se nepoužívá obvykle přímo, ale je proveden před spuštění akce, někdy - jako v případě `afterDispatch` - to může být užitečné pro přímý přístup k odpovědi:
 
 ```php
 <?php
@@ -335,13 +335,13 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/en/[[version]]/request) and [response](/en/[[version]]/response).
+Další informace o prostředí HTTP naleznete v samostatných sekcích pro [požadavek](/en/[[version]]/request) a [odpověd](/en/[[version]]/response).
 
 <a name='session-data'></a>
 
-## Session Data
+## Relační data (session)
 
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Relace nám pomáhají udržovat data mezi požadavky. Můžete přistupovat k objektu `Phalcon\Session\Bag` z libovolnému controlleru za účelem zapouzdření dat:
 
 ```php
 <?php
@@ -364,9 +364,9 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Používání služeb jako controllerů
 
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
+Služby mohou jednat jako controllery, třídy controlleru jsou vždy požadovány z kontejneru služeb. Každá jiná třida registrovaná se správným názvem může jednoduše nahradit controller:
 
 ```php
 <?php
@@ -394,9 +394,9 @@ $di->set(
 
 <a name='events'></a>
 
-## Events in Controllers
+## Události v controllerech
 
-Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Controllery automaticky působí jako listenery pro události z [dispečeru](/en/[[versopm]]/dispatcher), implementační metody s těmito názvy eventů umožňují implementovat hooky před nebo po provedení akcí:
 
 ```php
 <?php

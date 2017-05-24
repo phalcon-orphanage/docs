@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Přehled</a> <ul>
         <li>
-          <a href="#dependencies">Dependencies</a>
+          <a href="#dependencies">Závislosti</a>
         </li>
         <li>
           <a href="#services">Services</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalace</a> <ul>
             <li>
               <a href="#installation-composer">With Composer (recommended)</a>
             </li>
@@ -100,7 +100,7 @@ Services included are:
 
 <a name='installation'></a>
 
-## Installation
+## Instalace
 
 <a name='installation-composer'></a>
 

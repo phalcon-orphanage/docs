@@ -3,7 +3,7 @@
     <li>
       <a href="#basic">Tutorial - basic</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">Struktura souborů</a>
         </li>
         <li>
           <a href="#bootstrap">Bootstrap</a> <ul>

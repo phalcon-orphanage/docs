@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">Vytvoření mikro-aplikace</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> <ul>
+      <a href="#routing">Routování</a> <ul>
         <li>
           <a href="#routing-setup">Setup</a> <ul>
             <li>

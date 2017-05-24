@@ -1,9 +1,9 @@
-### 2017-03-25 - [3.1.1](https://github.com/phalcon/cphalcon/releases/tag/v3.1.1)
+### 25.3.2017 - [3.1.1](https://github.com/phalcon/cphalcon/releases/tag/v3.1.1)
 
 - Fixed undefined index warning on existing cached resultsets
 - Fixed `Phalcon\Mvc\Model::_dowLowUpdate` warning first argument is not an array [#12742](https://github.com/phalcon/cphalcon/issues/12742)
 
-### 2017-03-22 - [3.1.0](https://github.com/phalcon/cphalcon/releases/tag/v3.1.0)
+### 22.3.2017 - [3.1.0](https://github.com/phalcon/cphalcon/releases/tag/v3.1.0)
 
 - Added `Phalcon\Validation\Validator\Callback`, `Phalcon\Validation::getData`
 - Added the ability to truncate database tables
