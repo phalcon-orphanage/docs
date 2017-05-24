@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> <ul>
+      <a href="#overview">Zlepšení výkonu pomocí cache</a> <ul>
         <li>
           <a href="#implementation">When to implement cache?</a>
         </li>
