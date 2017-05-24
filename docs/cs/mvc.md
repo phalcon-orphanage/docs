@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">Architecture</a> <ul>
+      <a href="#architecture">Architektura</a> <ul>
         <li>
           <a href="#models">Models</a>
         </li>
