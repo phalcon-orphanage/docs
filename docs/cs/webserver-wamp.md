@@ -33,11 +33,11 @@ Extrahujte knihovnu z archivu a budete mít Phalcon framework jako DLL soubor:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Zkopírujte soubor `php_phalcon.dll` do adresáře kde máte rozšíření pro PHP. Pokud je WAMP instalován do složky `C:\\wamp`, rozšíření zkopírujte do složky `C:\\wamp\\bin\\php5.5.12\\ext` (předpokládáme že máte instalaci WAMP s PHP ve verzi 5.5.12).
+Zkopírujte soubor `php_phalcon.dll` do adresáře kde máte rozšíření pro PHP. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
 
 ![](/images/content/webserver-wamp-1.png)
 
-Upravte soubor `php.ini`, který je umístěn v `C:\\wamp\\bin\\php\\php5.5.12\\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
 
 extension=php_phalcon.dll
 
@@ -45,7 +45,7 @@ extension=php_phalcon.dll
     
     ![](/images/content/webserver-wamp-2.png)
     
-    Také upravte soubor `php.ini`, který je umístěn v `C:\\wamp\\bin\\apache\\apache2.4.9\\bin\\php.ini`. Přidejte následující řádek na konec souboru: 
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Přidejte následující řádek na konec souboru: 
     
     extension=php_phalcon.dll 
     
