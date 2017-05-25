@@ -331,31 +331,31 @@ $app->setService('router', $router, true);
 
 Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
-Those changes are outlined in the [rewrite rules](/en/[[version]]/rewrite-rules).
+Эти изменения описаны в [правилах перезаписи](/en/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
 ## Обработчики
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+Обработчик — это вызываемая часть кода, которая "привязана" к маршруту. При совпадении с маршрутом, его обработчик выполняется с заданными параметрами. Обработчиком может быть любая вызываемая часть кода, которая существует в PHP.
 
 <a name='routing-handlers-definitions'></a>
 
 ### Определения
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon предлагает несколько способов задания обработчика для маршрута. Потребности и дизайн вашего приложения, а также стиль кодирования будут влиять на ваш выбор способа.
 
 <a name='routing-handlers-anonymous-function'></a>
 
 #### Анонимная функция
 
-Finally we can use an anonymous function (as seen above) to handle the request
+Мы можем использовать анонимные функции (как показано ниже) для обработки запроса
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
