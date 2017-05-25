@@ -227,7 +227,7 @@ $headerCollection = $assets
 
 ## Minification/Filtering
 
-`Phalcon\Assets` provides built-in minification of JavaScript and CSS resources. You can create a collection of resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are. In addition to the above, Jsmin by [Douglas Crockford](http://www.crockford.com) is part of the core extension offering minification of JavaScript files for maximum performance. In the CSS land, CSSMin by [Ryan Day](https://github.com/soldair) is also available to minify CSS files:
+`Phalcon\Assets` provides built-in minification of JavaScript and CSS resources. You can create a collection of resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are. In addition to the above, `Jsmin` by [Douglas Crockford](http://www.crockford.com) is part of the core extension offering minification of JavaScript files for maximum performance. In the CSS land, `CSSMin` by [Ryan Day](https://github.com/soldair) is also available to minify CSS files.
 
 The following example shows how to minify a collection of resources:
 
