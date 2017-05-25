@@ -135,30 +135,30 @@ public function indexAction()
 
 ## Коллекции
 
-Collections group resources of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific resources to make it easier to place those resources in the views:
+В коллекциях группируются однотипные ресурсы. Менеджер ресурсов всегда создает две коллекции: `css` и `js`. Для группирования специфичных ресурсов вы можете создавать дополнительные:
 
 ```php
 <?php
 
-// Javascripts in the header
+// JavaScript ресурсы в коллекии header
 $headerCollection = $this->assets->collection('header');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascripts in the footer
+// JavaScript ресурсы в коллекии footer
 $footerCollection = $this->assets->collection('footer');
 
 $footerCollection->addJs('js/jquery.js');
 $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
-Then in the views:
+Затем в представлении:
 
 ```php
 <html>
     <head>
-        <title>Some amazing website</title>
+        <title>Некоторый удивительный веб-сайт</title>
 
         <?php $this->assets->outputJs('header'); ?>
     </head>
@@ -171,12 +171,12 @@ Then in the views:
 <html>
 ```
 
-Volt syntax:
+С использованием синтаксиса Volt:
 
 ```twig
 <html>
     <head>
-        <title>Some amazing website</title>
+        <title>Некоторый удивительный веб-сайт</title>
 
         {{ assets.outputCss('header') }}
     </head>
