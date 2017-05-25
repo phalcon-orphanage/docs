@@ -268,39 +268,39 @@ $manager
 
 Коллекция может содержать либо JavaScript, либо CSS ресурсы, но не оба типа ресурсов сразу. Некоторые ресурсы могут быть удалёнными, то есть, полученными с помощью HTTP-запроса для дальнейшей фильтрации. Рекомендуется преобразовывать внешние ресурсы в локальные, для устранения накладных расходов на их получение.
 
-As seen above, the `addJs()` method is used to add resources to the collection, the second parameter indicates whether the resource is external or not and the third parameter indicates whether the resource should be filtered or left as is:
+Как было замечено выше, метод `addJs()`, использующийся для добавления ресурсов в коллекцию, в качестве второго принимает параметр, указывающий является ли ресурс внешним или нет, а также третий параметр, указывающий, следует ли применять фильтр к ресурсу или оставить как есть:
 
 ```php
 <?php
 
-// These Javascripts are located in the page's bottom
+// Эти JavaScript ресурсы расположены внизу
 $jsFooterCollection = $manager->collection('jsFooter');
 
-// This a remote resource that does not need filtering
+// Это удалённый ресурс, не нуждающийся в фильтрации
 $jsFooterCollection->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
-// These are local resources that must be filtered
+// Это локальные ресурсы, к которым необходимо применить фильтры
 $jsFooterCollection->addJs('common-functions.js');
 $jsFooterCollection->addJs('page-functions.js');
 ```
 
-Filters are registered in the collection, multiple filters are allowed, content in resources are filtered in the same order as filters were registered:
+Фильтры регистрируются в коллекции. Допускается регистрировать несколько фильтров. Ресурсы в наборе фильтруются в том же порядке, в каком были зарегистрированы фильтры:
 
 ```php
 <?php
 
-// Use the built-in Jsmin filter
+// Используем встроенный фильтр Jsmin
 $jsFooterCollection->addFilter(
     new Phalcon\Assets\Filters\Jsmin()
 );
 
-// Use a custom filter
+// Используем пользовательский фильтр
 $jsFooterCollection->addFilter(
     new MyApp\Assets\Filters\LicenseStamper()
 );
 ```
 
-Note that both built-in and custom filters can be transparently applied to collections. The last step is to decide if all the resources in the collection must be joined into a single file or serve each of them individually. To tell the collection that all resources must be joined you can use the `join()` method.
+Обратите внимание, встроенные и пользовательские фильтры могут прозрачно применяться ко всей коллекции ресурсов. Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать метод `join()`.
 
 If resources are going to be joined, we need also to define which file will be used to store the resources and which URI will be used to show it. These settings are set up with `setTargetPath()` and `setTargetUri()`:
 
