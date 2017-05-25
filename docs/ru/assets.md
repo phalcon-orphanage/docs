@@ -193,7 +193,7 @@ $footerCollection->addJs('js/bootstrap.min.js');
 
 ## Префиксы
 
-Collections can be URL-prefixed, this enables you to easily change from one server to another at any moment:
+К коллекциям могут применяться URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:
 
 ```php
 <?php
@@ -210,7 +210,7 @@ $footerCollection->addJs('js/jquery.js');
 $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
-A chainable syntax is available too:
+Также, доступен синтаксис цепочки (Method chaining):
 
 ```php
 <?php
