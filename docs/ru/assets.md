@@ -227,46 +227,46 @@ $headerCollection = $assets
 
 ## Минификация/Фильтрация
 
-`Phalcon\Assets` provides built-in minification of JavaScript and CSS resources. You can create a collection of resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are. In addition to the above, Jsmin by [Douglas Crockford](http://www.crockford.com) is part of the core extension offering minification of JavaScript files for maximum performance. In the CSS land, CSSMin by [Ryan Day](https://github.com/soldair) is also available to minify CSS files:
+`Phalcon\Assets` предоставляет встроенную возможность минимизации JavaScript и CSS. Разработчик может создать коллекцию ресурсов, с указаниями для менеджера ресурсов, к каким ресурсам должны быть применены фильтры, а к каким нет. В дополнении к вышесказанному, Jsmin [Дугласа Крокфорда (Douglas Crockford)](http://www.crockford.com) входит в состав ядра минимизации JavaScript для увеличения производительности. Для минимизации CSS используется CSSMin [Райна Дэйя (Ryan Day)](https://github.com/soldair).
 
-The following example shows how to minify a collection of resources:
+Следующий пример показывает, как минимизировать набор ресурсов:
 
 ```php
 <?php
 
 $manager
 
-    // These JavaScripts are located in the page's bottom
+    // Этот JavaScript расположен внизу страницы
     ->collection('jsFooter')
 
-    // The name of the final output
+    // Название получаемого файла
     ->setTargetPath('final.js')
 
-    // The script tag is generated with this URI
+    // С таким URI генерируется тэг HTML
     ->setTargetUri('production/final.js')
 
-    // This is a remote resource that does not need filtering
+    // Это удалённый ресурс, не нуждающийся в фильтрации
     ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
-    // These are local resources that must be filtered
+    // Это локальные ресурсы, к которым необходимо применить фильтры
     ->addJs('common-functions.js')
     ->addJs('page-functions.js')
 
-    // Join all the resources in a single file
+    // Объединяем все ресурсы в один файл
     ->join(true)
 
-    // Use the built-in Jsmin filter
+    // Используем встроенный фильтр Jsmin
     ->addFilter(
         new Phalcon\Assets\Filters\Jsmin()
     )
 
-    // Use a custom filter
+    // Используем пользовательский фильтр
     ->addFilter(
         new MyApp\Assets\Filters\LicenseStamper()
     );
 ```
 
-A collection can contain JavaScript or CSS resources but not both. Some resources may be remote, that is, they're obtained by HTTP from a remote source for further filtering. It is recommended to convert the external resources to local for better performance.
+Коллекция может содержать либо JavaScript, либо CSS ресурсы, но не оба типа ресурсов сразу. Некоторые ресурсы могут быть удалёнными, то есть, полученными с помощью HTTP-запроса для дальнейшей фильтрации. Рекомендуется преобразовывать внешние ресурсы в локальные, для устранения накладных расходов на их получение.
 
 As seen above, the `addJs()` method is used to add resources to the collection, the second parameter indicates whether the resource is external or not and the third parameter indicates whether the resource should be filtered or left as is:
 
