@@ -108,10 +108,10 @@ try {
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
 } catch (\Throwable $throwable) {
-    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
 } catch (\Exception $exception) {
-    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```

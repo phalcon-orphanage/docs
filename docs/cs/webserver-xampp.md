@@ -36,11 +36,11 @@ Extrahujte knihovnu z archivu a budete mít Phalcon framework jako DLL soubor:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Zkopírujte soubor `php_phalcon.dll` do adresáře kde máte rozšíření pro PHP. Pokud jste nainstalovali XAMPP do složky `C:\\xampp`, rozšíření musí být v `C:\\xampp\\php\\ext`
+Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
 ![](/images/content/webserver-xampp-3.png)
 
-Upravte soubor php.ini, který je umístěn v `C:\\xampp\\php\\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
+Edit the php.ini file, it is located at `C:\xampp\php\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
 
 ```ini
 extension=php_phalcon.dll
