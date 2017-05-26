@@ -302,17 +302,17 @@ $jsFooterCollection->addFilter(
 
 Обратите внимание, встроенные и пользовательские фильтры могут прозрачно применяться ко всей коллекции ресурсов. Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать метод `join()`.
 
-If resources are going to be joined, we need also to define which file will be used to store the resources and which URI will be used to show it. These settings are set up with `setTargetPath()` and `setTargetUri()`:
+Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для хранения ресурсов и по какому URI он будет доступен. Эти параметры настраиваются при помощи методов `setTargetPath()` и `setTargetUri()`:
 
 ```php
 <?php
 
 $jsFooterCollection->join(true);
 
-// The name of the final file path
+// Название получаемого файла
 $jsFooterCollection->setTargetPath('public/production/final.js');
 
-// The script HTML tag is generated with this URI
+// С таким URI генерируется тэг HTML
 $jsFooterCollection->setTargetUri('production/final.js');
 ```
 
