@@ -320,12 +320,12 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 ### Встроенные фильтры
 
-Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide the minimum overhead to perform this task:
+Phalcon предоставляет два встроенных фильтра минимизации JavaScript и CSS ресурсов. Их реализация на языке Си обеспечивает минимальные накладные расходы для решения подобной задачи:
 
-| Filter                             | Description                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Assets\Filters\Jsmin`  | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-| `Phalcon\Assets\Filters\Cssmin` | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
+| Фильтр                             | Описание                                                                                                      |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Assets\Filters\Jsmin`  | Минимизирует JavaScript удаляя не нужны символы, которые игнорируются интерпретатором/компилятором JavaScript |
+| `Phalcon\Assets\Filters\Cssmin` | Минимизирует CSS удаляя ненужные символы, которые игнорируются браузерами                                     |
 
 <a name='custom-filters'></a>
 
