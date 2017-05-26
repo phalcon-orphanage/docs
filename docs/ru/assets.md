@@ -331,7 +331,7 @@ Phalcon предоставляет два встроенных фильтра м
 
 ### Пользовательские фильтры
 
-In addition to the built-in filters, you can create your own filters. These can take advantage of existing and more advanced tools like [YUI](http://yui.github.io/yuicompressor/), [Sass](http://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/), etc.:
+Кроме использования встроенных фильтров, вы можете создавать свои собственные фильтры. Вы можете воспользоваться существующими более продвинутыми инструментами, такими как [YUI](http://yui.github.io/yuicompressor/), [Sass](http://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/) и другие:
 
 ```php
 <?php
@@ -339,7 +339,7 @@ In addition to the built-in filters, you can create your own filters. These can 
 use Phalcon\Assets\FilterInterface;
 
 /**
- * Filters CSS content using YUI
+ * Фильтрация CSS содержимого при помощи YUI
  *
  * @param string $contents
  * @return string
@@ -349,7 +349,7 @@ class CssYUICompressor implements FilterInterface
     protected $options;
 
     /**
-     * CssYUICompressor constructor
+     * Конструктор CssYUICompressor
      *
      * @param array $options
      */
@@ -359,7 +359,7 @@ class CssYUICompressor implements FilterInterface
     }
 
     /**
-     * Do the filtering
+     * Выполнение фильтрации
      *
      * @param string $contents
      *
@@ -367,7 +367,7 @@ class CssYUICompressor implements FilterInterface
      */
     public function filter($contents)
     {
-        // Write the string contents into a temporal file
+        // Запись содержимого во временный файл
         file_put_contents('temp/my-temp-1.css', $contents);
 
         system(
@@ -380,21 +380,21 @@ class CssYUICompressor implements FilterInterface
             ' -o temp/my-temp-file-2.css'
         );
 
-        // Return the contents of file
+        // Возвращаем содержимое файла
         return file_get_contents('temp/my-temp-file-2.css');
     }
 }
 ```
 
-Usage:
+Применение:
 
 ```php
 <?php
 
-// Get some CSS collection
+// Получаем некоторую CSS коллекцию
 $css = $this->assets->get('head');
 
-// Add/Enable the YUI compressor filter in the collection
+// Добавляем (включаем) фильтр YUI-компрессор к коллекции
 $css->addFilter(
     new CssYUICompressor(
         [
@@ -406,7 +406,7 @@ $css->addFilter(
 );
 ```
 
-In a previous example, we used a custom filter called `LicenseStamper`:
+В предыдущем примере мы использовали пользовательский фильтр, который назывался `LicenseStamper`:
 
 ```php
 <?php
@@ -414,7 +414,7 @@ In a previous example, we used a custom filter called `LicenseStamper`:
 use Phalcon\Assets\FilterInterface;
 
 /**
- * Adds a license message to the top of the file
+ * Добавляет лицензионное собщение в начало файла
  *
  * @param string $contents
  *
@@ -423,14 +423,14 @@ use Phalcon\Assets\FilterInterface;
 class LicenseStamper implements FilterInterface
 {
     /**
-     * Do the filtering
+     * Выполнение фильтрации
      *
      * @param string $contents
      * @return string
      */
     public function filter($contents)
     {
-        $license = '/* (c) 2015 Your Name Here */';
+        $license = '/* (c) 2015 Ваше имя здесь */';
 
         return $license . PHP_EOL . PHP_EOL . $contents;
     }
@@ -441,7 +441,7 @@ class LicenseStamper implements FilterInterface
 
 ## Пользовательский вывод
 
-The `outputJs()` and `outputCss()` methods are available to generate the necessary HTML code according to each type of resources. You can override this method or print the resources manually in the following way:
+Методы `outputJs()` и `outputCss()` создают необходимые HTML-тэги в соответствии с каждым типом ресурсов. Однако вы можете переопределить эти методы или выводить ресурсы вручную, используя следующий подход:
 
 ```php
 <?php
