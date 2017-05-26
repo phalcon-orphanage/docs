@@ -53,6 +53,8 @@
         - [Relace](/en/[[version]]/models-relationships)
         - [Transakce](/en/[[version]]/models-transactions)
         - [Validátory](/en/[[version]]/models-validators)
+    - [Migrations](/en/[[version]]/migrations)
+    - [Pagination](/en/[[version]]/pagination)
 - Frontend 
     - [Assety](/en/[[version]]/assets)
     - [Flash Messenger](/en/[[version]]/flash)
@@ -79,3 +81,6 @@
 - Bezpečnost 
     - [Crypto](/en/[[version]]/crypt)
     - [Zabezpečení](/en/[[version]]/security)
+- i18n 
+    - [Internationalization](/en/[[version]]/i18n)
+    - [Translate](/en/[[version]]/translate)
