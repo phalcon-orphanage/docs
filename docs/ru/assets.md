@@ -302,17 +302,17 @@ $jsFooterCollection->addFilter(
 
 Обратите внимание, встроенные и пользовательские фильтры могут прозрачно применяться ко всей коллекции ресурсов. Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать метод `join()`.
 
-If resources are going to be joined, we need also to define which file will be used to store the resources and which URI will be used to show it. These settings are set up with `setTargetPath()` and `setTargetUri()`:
+Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для хранения ресурсов и по какому URI он будет доступен. Эти параметры настраиваются при помощи методов `setTargetPath()` и `setTargetUri()`:
 
 ```php
 <?php
 
 $jsFooterCollection->join(true);
 
-// The name of the final file path
+// Название получаемого файла
 $jsFooterCollection->setTargetPath('public/production/final.js');
 
-// The script HTML tag is generated with this URI
+// С таким URI генерируется тэг HTML
 $jsFooterCollection->setTargetUri('production/final.js');
 ```
 
@@ -320,18 +320,18 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 ### Встроенные фильтры
 
-Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide the minimum overhead to perform this task:
+Phalcon предоставляет два встроенных фильтра минимизации JavaScript и CSS ресурсов. Их реализация на языке Си обеспечивает минимальные накладные расходы для решения подобной задачи:
 
-| Filter                             | Description                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Assets\Filters\Jsmin`  | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-| `Phalcon\Assets\Filters\Cssmin` | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
+| Фильтр                             | Описание                                                                                                      |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Assets\Filters\Jsmin`  | Минимизирует JavaScript удаляя не нужны символы, которые игнорируются интерпретатором/компилятором JavaScript |
+| `Phalcon\Assets\Filters\Cssmin` | Минимизирует CSS удаляя ненужные символы, которые игнорируются браузерами                                     |
 
 <a name='custom-filters'></a>
 
 ### Пользовательские фильтры
 
-In addition to the built-in filters, you can create your own filters. These can take advantage of existing and more advanced tools like [YUI](http://yui.github.io/yuicompressor/), [Sass](http://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/), etc.:
+Кроме использования встроенных фильтров, вы можете создавать свои собственные фильтры. Вы можете воспользоваться существующими более продвинутыми инструментами, такими как [YUI](http://yui.github.io/yuicompressor/), [Sass](http://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/) и другие:
 
 ```php
 <?php
@@ -339,7 +339,7 @@ In addition to the built-in filters, you can create your own filters. These can 
 use Phalcon\Assets\FilterInterface;
 
 /**
- * Filters CSS content using YUI
+ * Фильтрация CSS содержимого при помощи YUI
  *
  * @param string $contents
  * @return string
@@ -349,7 +349,7 @@ class CssYUICompressor implements FilterInterface
     protected $options;
 
     /**
-     * CssYUICompressor constructor
+     * Конструктор CssYUICompressor
      *
      * @param array $options
      */
@@ -359,7 +359,7 @@ class CssYUICompressor implements FilterInterface
     }
 
     /**
-     * Do the filtering
+     * Выполнение фильтрации
      *
      * @param string $contents
      *
@@ -367,7 +367,7 @@ class CssYUICompressor implements FilterInterface
      */
     public function filter($contents)
     {
-        // Write the string contents into a temporal file
+        // Запись содержимого во временный файл
         file_put_contents('temp/my-temp-1.css', $contents);
 
         system(
@@ -380,21 +380,21 @@ class CssYUICompressor implements FilterInterface
             ' -o temp/my-temp-file-2.css'
         );
 
-        // Return the contents of file
+        // Возвращаем содержимое файла
         return file_get_contents('temp/my-temp-file-2.css');
     }
 }
 ```
 
-Usage:
+Применение:
 
 ```php
 <?php
 
-// Get some CSS collection
+// Получаем некоторую CSS коллекцию
 $css = $this->assets->get('head');
 
-// Add/Enable the YUI compressor filter in the collection
+// Добавляем (включаем) фильтр YUI-компрессор к коллекции
 $css->addFilter(
     new CssYUICompressor(
         [
@@ -406,7 +406,7 @@ $css->addFilter(
 );
 ```
 
-In a previous example, we used a custom filter called `LicenseStamper`:
+В предыдущем примере мы использовали пользовательский фильтр, который назывался `LicenseStamper`:
 
 ```php
 <?php
@@ -414,7 +414,7 @@ In a previous example, we used a custom filter called `LicenseStamper`:
 use Phalcon\Assets\FilterInterface;
 
 /**
- * Adds a license message to the top of the file
+ * Добавляет лицензионное собщение в начало файла
  *
  * @param string $contents
  *
@@ -423,14 +423,14 @@ use Phalcon\Assets\FilterInterface;
 class LicenseStamper implements FilterInterface
 {
     /**
-     * Do the filtering
+     * Выполнение фильтрации
      *
      * @param string $contents
      * @return string
      */
     public function filter($contents)
     {
-        $license = '/* (c) 2015 Your Name Here */';
+        $license = '/* (c) 2015 Ваше имя здесь */';
 
         return $license . PHP_EOL . PHP_EOL . $contents;
     }
@@ -441,7 +441,7 @@ class LicenseStamper implements FilterInterface
 
 ## Пользовательский вывод
 
-The `outputJs()` and `outputCss()` methods are available to generate the necessary HTML code according to each type of resources. You can override this method or print the resources manually in the following way:
+Методы `outputJs()` и `outputCss()` создают необходимые HTML-тэги в соответствии с каждым типом ресурсов. Однако вы можете переопределить эти методы или выводить ресурсы вручную, используя следующий подход:
 
 ```php
 <?php
