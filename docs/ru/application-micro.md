@@ -360,13 +360,13 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Доступ к объекту `$app`, внутри анонимной функции может достигаться путем инъекций переменой следующим образом:
 
 ```php
 $app->get(
     '/orders/display/{name}',
-    function ($name) use ($app( {
-        $context = "<h1>This is order: {$name}!</h1>";
+    function ($name) use ($app) {
+        $context = "<h1>Это заказ: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -377,7 +377,7 @@ $app->get(
 
 #### Функция
 
-We can define a function as our handler and attach it to a specific route.
+Мы можем определить функцию как обработчик и прикрепить её к определенному маршруту.
 
 ```php
 // With a function
@@ -516,7 +516,7 @@ class OrdersController extends Controller
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+Отложенная загрузка может быть легко реализована если использовать `Phalcon\Mvc\Micro\Collection` для настройки обработчиков:
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -527,7 +527,7 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 4#### Сценарий использования
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+Предположим мы занимаемся разработкой API для интернет-магазина. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
@@ -673,13 +673,13 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 6## Методы-глаголы
 
-The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
+Объект-приложение `Phalcon\Mvc\Micro` предоставляет следующий перечень методов для связки HTTP-метода с маршрутом.
 
 <a name='routing'></a>
 
 7### delete
 
-Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
+Пример ниже сработает если HTTP-метод будет `DELETE` и маршрут соответствовать `/api/products/delete/{id}`
 
 ```php
     $app->delete(
@@ -692,7 +692,7 @@ Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{i
 
 8### get
 
-Matches if the HTTP method is `GET` and the route is `/api/products`
+Пример ниже сработает если HTTP-метод будет `GET`, а маршрут равен `/api/products`
 
 ```php
     $app->get(
