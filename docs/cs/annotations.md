@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Annotations Parser</a> <ul>
+      <a href="#overview">Parser anotací</a> <ul>
         <li>
           <a href="#reading">Čtení anotací</a>
         </li>
         <li>
-          <a href="#types">Types of Annotations</a>
+          <a href="#types">Typy anotací</a>
         </li>
         <li>
-          <a href="#usage">Practical Usage</a> <ul>
+          <a href="#usage">Praktické využití</a> <ul>
             <li>
-              <a href="#usage-cache">Cache Enabler with Annotations</a>
+              <a href="#usage-cache">Cache povolení pro anotace</a>
             </li>
             <li>
-              <a href="#usage-access-management">Private/Public areas with Annotations</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#adapters">Annotations Adapters</a> <ul>
-            <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#usage-access-management">Soukromé/veřejné oblasti s anotacemi</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#adapters">Anotační adaptéry</a> <ul>
+            <li>
+              <a href="#adapters-custom">Implementace vlastních adaptérů</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="#resources">Externí zdroje</a>
         </li>
       </ul>
     </li>
@@ -37,11 +37,11 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Parser anotací
 
-It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+Je to poprvé, kdy je komponenta parseru anotací napsána v jazyku C pro PHP. `Phalcon\Annotations` je obecná komponenta, která umožňuje snadné analyzování a ukládání anotací do cache v PHP třídách, které jsou požity v aplikaci.
 
-Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
+Anotace jsou čteny z docblocků ve třídách, metodách a vlastnostech. Anotace mohou být umístěny na libovné místo v docblocku:
 
 ```php
 <?php
@@ -72,7 +72,7 @@ class Example
 }
 ```
 
-An annotation has the following syntax:
+Anotace má následující syntaxi:
 
 ```php
 /**
@@ -81,7 +81,7 @@ An annotation has the following syntax:
  */
 ```
 
-Also, an annotation can be placed at any part of a docblock:
+Anotaci také můžeme vložit na kterékoliv místo v docblocku:
 
 ```php
 <?php
@@ -97,7 +97,7 @@ Also, an annotation can be placed at any part of a docblock:
  */
 ```
 
-The parser is highly flexible, the following docblock is valid:
+Parser je vysoce flexibilní, následující docblock je také validní:
 
 ```php
 <?php

@@ -170,7 +170,7 @@ $di->setShared(
             'model:beforeSave',
             function (Event $event, $model) {
                 // Catch events produced by the Robots model
-                if (get_class($model) === 'Store\\Toys\\Robots') {
+                if (get_class($model) === 'Store\Toys\Robots') {
                     if ($model->name === 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
 

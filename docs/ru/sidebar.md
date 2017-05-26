@@ -7,7 +7,7 @@
     - Пулл реквесты
     - [Запрос новой функции](/en/[[version]]/new-feature-request)
     - Генерация трассировки выполнения
-    - Воспроизводимые тесты
+    - [Reproducible Tests](/en/[[version]]/reproducible-tests)
     - Руководство по тестированию
 - Начало работы 
     - [Установка](/en/[[version]]/installation)
@@ -31,21 +31,19 @@
 - Сервисы 
     - [Кэш](/en/[[version]]/cache)
     - [Конфигурация](/en/[[version]]/config)
-    - Escaper
-    - Автозагрузка классов 
-        - Пространства имён
-    - Журналирование 
-        - Адаптеры
-    - Очередь 
-        - Beanstalk
+    - [Escaper](/en/[[version]]/escaper)
+    - [Loader](/en/[[version]]/loader)
+    - [Logging](/en/[[version]]/logging) 
+        - [Adapters](/en/[[version]]/logging#usage)
+    - [Queue](/en/[[version]]/queue)
 - База данных 
     - Драйверы 
         - MySQL
         - PostgreSql
         - SqLite
         - Mongo
-    - PHQL
-    - ODM
+    - [PHQL](/en/[[version]]/phql)
+    - [ODM](/en/[[version]]/odm)
     - [Модели](/en/[[version]]/models) 
         - [Продвинутое использование](/en/[[version]]/models-advanced)
         - [Поведения](/en/[[version]]/models-behaviors)
@@ -57,9 +55,9 @@
         - [Валидаторы](/en/[[version]]/models-validators)
 - Фронтенд 
     - [Медиа-ресурсы](/en/[[version]]/assets)
-    - Всплывающие сообщения
-    - Формы
-    - Теги
+    - [Flash Messenger](/en/[[version]]/flash)
+    - [Forms](/en/[[version]]/forms)
+    - [Tag](/en/[[version]]/tag)
     - [Представления](/en/[[version]]/views) 
         - View Simple
         - [Volt](/en/[[version]]/volt)
@@ -67,17 +65,17 @@
     - [Контроль доступа](/en/[[version]]/acl)
     - [Аннотации](/en/[[version]]/annotations)
     - [Контроллеры](/en/[[version]]/controllers)
-    - Диспетчер
-    - Управление событиями
-    - Фильтры
-    - Маршрутизация
-    - Сессии
-    - URL
-    - Валидаторы
+    - [Dispatcher](/en/[[version]]/dispatcher)
+    - [Event Manager](/en/[[version]]/events)
+    - [Filters](/en/[[version]]/filter)
+    - [Routing](/en/[[version]]/routing)
+    - [Sessions](/en/[[version]]/session)
+    - [Url](/en/[[version]]/url)
+    - [Validation](/en/[[version]]/validation)
 - HTTP 
-    - Cookies
-    - Request
-    - Response
+    - [Cookies](/en/[[version]]/cookies)
+    - [Request](/en/[[version]]/request)
+    - [Response](/en/[[version]]/response)
 - Безопасность 
     - [Шифрование](/en/[[version]]/crypt)
     - [Защита](/en/[[version]]/security)

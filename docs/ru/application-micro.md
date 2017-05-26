@@ -213,7 +213,7 @@
 
 Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
 
-Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, наш [веб-сайт](https://github.com/phalcon/website), этот веб-сайт ([документация](https://github.com/phalcon/docs)), наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
 
 ```php
 <?php
@@ -236,7 +236,7 @@ $app->handle();
 
 ## Создание микроприложения
 
-The [`Phalcon\Mvc\Micro`](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
+Класс [`Phalcon\Mvc\Micro`](api/Phalcon_Mvc_Micro) является базовым при создании микроприложения.
 
 ```php
 <?php
@@ -250,26 +250,26 @@ $app = new Micro();
 
 ## Маршрутизация
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+Указание маршрутов в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+   Приложение -> (метод/глагол) -> (url адрес/регулярное выражение, вызываемая функция PHP)
 ```
 
 <a name='routing-setup'></a>
 
 ### Настройка
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Маршрутизация обрабатывается объектом `Phalcon\Mvc\Router`. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
 
-##### Routes must always start with `/` {.alert.alert-warning}
+##### Маршруты всегда должны начинаться с `/` {.alert.alert-warning}
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+Обычно, `/` является стартовым маршрутом приложения, и в большинстве случаев осуществляется через метод GET протокола HTTP:
 
 ```php
 <?php
 
-// This is the start route
+// Это стартовый маршрут
 $app->get(
     '/',
     function () {
@@ -282,14 +282,14 @@ $app->get(
 
 ### Объект приложения
 
-Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
+Маршруты можно задать используя экземпляр объекта-приложения `Phalcon\Mvc\Micro` следующим образом:
 
 ```php
 use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Matches a GET request
+// Соответствия для GET запроса
 $app->get(
     '/orders/display/{name}',
     function ($name) {
@@ -302,7 +302,7 @@ $app->get(
 
 ### Объект Router
 
-You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+Вы также можете задать маршруты создав экземпляр объекта `Phalcon\Mvc\Router`, настроив с его помощью маршруты, а затем добавив его в контейнер зависимостей (инъекция).
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -321,41 +321,41 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+Настройка ваших маршрутов с помощью методов глаголов (`get`, `post` и т.д.) объекта-приложения `Phalcon\Mvc\Micro` гораздо проще, чем создание объекта маршрутизатора с соответствующими маршрутами и затем инъекцией в приложение.
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Каждый из приведенных методов задания маршрутов имеет свои преимущества и недостатки. Все зависит от дизайна и потребностей вашего приложения.
 
 <a name='rewrite-rules'></a>
 
 ## Правила перезаписи
 
-In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
+Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
-Those changes are outlined in the [rewrite rules](/en/[[version]]/rewrite-rules).
+Эти изменения описаны в [правилах перезаписи](/en/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
 ## Обработчики
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+Обработчик — это вызываемая часть кода, которая "привязана" к маршруту. При совпадении с маршрутом, его обработчик выполняется с заданными параметрами. Обработчиком может быть любая вызываемая часть кода, которая существует в PHP.
 
 <a name='routing-handlers-definitions'></a>
 
 ### Определения
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon предлагает несколько способов задания обработчика для маршрута. Потребности и дизайн вашего приложения, а также стиль кодирования будут влиять на ваш выбор способа.
 
 <a name='routing-handlers-anonymous-function'></a>
 
 #### Анонимная функция
 
-Finally we can use an anonymous function (as seen above) to handle the request
+Мы можем использовать анонимные функции (как показано ниже) для обработки запроса
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
