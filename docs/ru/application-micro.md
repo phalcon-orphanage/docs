@@ -366,7 +366,7 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>Это заказ: {$name}!</h1>";
+        $context = "<h1>This is order: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -1166,7 +1166,7 @@ $app->get(
 
 7## JSON
 
-JSON can be sent back just as easy using the `Phalcon\Http\Response` object
+JSON can be sent back just as easy using the `Phalcon\Http\Response` object:
 
 ```php
 $app->get(
@@ -1411,7 +1411,7 @@ use Website\Middleware\NotFoundMiddleware;
 use Website\Middleware\ResponseMiddleware;
 
 /**
- * Create a new Events Manager. 
+ * Create a new Events Manager.
  */
 $eventsManager = new Manager();
 $application   = new Micro();
@@ -1426,13 +1426,13 @@ $eventsManager->attach('micro', new NotFoundMiddleware());
 $application->before(new NotFoundMiddleware());
 
 /**
- * This one needs to listen on the `after` event 
+ * This one needs to listen on the `after` event
  */
 $eventsManager->attach('micro', new ResponseMiddleware());
 $application->after(new ResponseMiddleware());
 
 /**
- * Make sure our events manager is in the DI container now 
+ * Make sure our events manager is in the DI container now
  */
 $application->setEventsManager($eventsManager);
 
@@ -1467,7 +1467,7 @@ class CacheMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1525,10 +1525,10 @@ class FirewallMiddleware implements MiddlewareInterface
 {
     /**
      * Before anything happens
-     * 
+     *
      * @param Event $event
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function beforeHandleRoute(Event $event, Micro $application)
@@ -1555,7 +1555,7 @@ class FirewallMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1586,7 +1586,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
      * The route has not been found
-     * 
+     *
      * @returns bool
      */
     public function beforeNotFound()
@@ -1601,7 +1601,7 @@ class NotFoundMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1633,10 +1633,10 @@ class RedirectMiddleware implements MiddlewareInterface
 {
     /**
      * Before anything happens
-     * 
+     *
      * @param Event $event
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function beforeHandleRoute(Event $event, Micro $application)
@@ -1655,7 +1655,7 @@ class RedirectMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1687,10 +1687,10 @@ class CORSMiddleware implements MiddlewareInterface
 {
     /**
      * Before anything happens
-     * 
+     *
      * @param Event $event
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function beforeHandleRoute(Event $event, Micro $application)
@@ -1705,12 +1705,12 @@ class CORSMiddleware implements MiddlewareInterface
             ->response
             ->setHeader('Access-Control-Allow-Origin', $origin)
             ->setHeader(
-                'Access-Control-Allow-Methods', 
+                'Access-Control-Allow-Methods',
                 'GET,PUT,POST,DELETE,OPTIONS'
             )
             ->setHeader(
-                'Access-Control-Allow-Headers', 
-                'Origin, X-Requested-With, Content-Range, ' . 
+                'Access-Control-Allow-Headers',
+                'Origin, X-Requested-With, Content-Range, ' .
                 'Content-Disposition, Content-Type, Authorization'
             )
             ->setHeader('Access-Control-Allow-Credentials', 'true');
@@ -1720,7 +1720,7 @@ class CORSMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1752,10 +1752,10 @@ class RequestMiddleware implements MiddlewareInterface
 {
     /**
      * Before the route is executed
-     * 
+     *
      * @param Event $event
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function beforeExecuteRoute(Event $event, Micro $application)
@@ -1776,7 +1776,7 @@ class RequestMiddleware implements MiddlewareInterface
      * Calls the middleware
      *
      * @param Micro $application
-     * 
+     *
      * @returns bool
      */
     public function call(Micro $application)
@@ -1809,9 +1809,9 @@ class ResponseMiddleware implements MiddlewareInterface
 {
      /**
       * Before anything happens
-      * 
+      *
       * @param Micro $application
-      * 
+      *
       * @returns bool
       */
     public function call(Micro $application)
