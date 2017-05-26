@@ -53,6 +53,8 @@
         - [Отношения](/en/[[version]]/models-relationships)
         - [Транзакции](/en/[[version]]/models-transactions)
         - [Валидаторы](/en/[[version]]/models-validators)
+    - [Migrations](/en/[[version]]/migrations)
+    - [Pagination](/en/[[version]]/pagination)
 - Фронтенд 
     - [Медиа-ресурсы](/en/[[version]]/assets)
     - [Flash Messenger](/en/[[version]]/flash)
@@ -79,3 +81,6 @@
 - Безопасность 
     - [Шифрование](/en/[[version]]/crypt)
     - [Защита](/en/[[version]]/security)
+- i18n 
+    - [Internationalization](/en/[[version]]/i18n)
+    - [Translate](/en/[[version]]/translate)
