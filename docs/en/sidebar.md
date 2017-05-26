@@ -81,4 +81,7 @@
 - Security
     - [Crypto](/en/[[version]]/crypt)
     - [Security](/en/[[version]]/security)
+- i18n
+    - [Internationalization](/en/[[version]]/i18n)
+    - [Translate](/en/[[version]]/translate)
     
