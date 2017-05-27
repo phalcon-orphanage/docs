@@ -101,7 +101,7 @@ $app = new Micro();
 <a name='routing'></a>
 ## Routing
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
- 
+
 ```text
    Application -> (method/verb) -> (route url/regex, callable PHP function)
 ```
@@ -1708,7 +1708,7 @@ $app->get(
         );
     }
 );
-````
+```
 
 <a name='error-handling'></a>
 # Error Handling
