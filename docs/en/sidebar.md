@@ -34,6 +34,7 @@
     - [Config](/en/[[version]]/config)
     - [Escaper](/en/[[version]]/escaper)
     - [Loader](/en/[[version]]/loader)
+        - [Namespaces](/en/[[version]]/namespaces)
     - [Logging](/en/[[version]]/logging)
         - [Adapters](/en/[[version]]/logging#usage)
     - [Queue](/en/[[version]]/queue)

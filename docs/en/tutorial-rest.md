@@ -265,7 +265,7 @@ $app->get(
 );
 ```
 
-[PHQL](/en/[[version]]/phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/en/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
 The searching by name handler would look like:
 
@@ -635,4 +635,4 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 ## Conclusion
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/en/[[version]]/application-micro) and [PHQL](/en/[[version]]/phql).
+As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/en/[[version]]/application-micro) and [PHQL](/en/[[version]]/db-phql).
