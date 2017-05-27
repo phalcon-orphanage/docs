@@ -56,6 +56,7 @@
     - [Assets](/en/[[version]]/assets)
     - [Flash Messenger](/en/[[version]]/flash)
     - [Forms](/en/[[version]]/forms)
+    - [Image](/en/[[version]]/image)
     - [Tag](/en/[[version]]/tag)
     - [View](/en/[[version]]/views)
         - [Volt](/en/[[version]]/volt)

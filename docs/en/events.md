@@ -25,7 +25,7 @@ When attaching event listeners to the events manager, you can use 'component' to
 
 <a name='usage'></a>
 ## Usage Example
-In the following example, we will use the EventsManager to listen for the 'afterQuery' event produced in a MySQL connection managed by `Phalcon\Db`:
+In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by `Phalcon\Db`:
 
 ```php
 <?php
