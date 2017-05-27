@@ -8,6 +8,4 @@ V následujících případech bude požadavek na funkcionalitu zamítnut: * Fun
 
 To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
 
-All NFRs should be posted as a new issue on \[Github\]\[github\].
-
-[github-issues]
+All NFRs should be posted as a new issue on [Github](https://github.com/phalcon/cphalcon/issues).

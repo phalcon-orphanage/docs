@@ -45,7 +45,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
-When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called 'modelsCache'. Phalcon offers a [cache](/en/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
+When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/en/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
 
 First, we will need to register the cache component as a service in the DI container.
 
@@ -252,7 +252,7 @@ class CacheableModel extends Model
 }
 ```
 
-Затем используйте этот класс в качестве базового класса для каждой модели Cacheable:
+Затем используйте этот класс в качестве базового класса для каждой модели `Cacheable`:
 
 ```php
 <?php

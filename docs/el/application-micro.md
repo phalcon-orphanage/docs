@@ -1966,10 +1966,12 @@ $app->get(
         );
     }
 );
-````
+```
 
-<a name='error-handling'></a>
-# Error Handling
+<a name='routing-handlers'></a>
+
+0# Error Handling
+
 The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 
 ```php

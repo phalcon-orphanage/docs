@@ -20,7 +20,7 @@
         </li>
         
         <li>
-          <a href="#installation-configuration">Configuring</a> <ul>
+          <a href="#installation-configuration">Настройка</a> <ul>
             <li>
               <a href="#installation-configuration-setting-provider">Setting your provider</a>
             </li>
@@ -73,6 +73,17 @@
               <a href="#daily-usage-additional-sites">Adding additional sites</a>
             </li>
             <li>
+              <a href="#daily-usage-environment-variables">Environment variables</a> <ul>
+                <li>
+                  <a href="#daily-usage-environment-global-variables">Global variables</a>
+                </li>
+                <li>
+                  <a href="#daily-usage-environment-site-variables">Site variables</a>
+                </li>
+              </ul>
+            </li>
+            
+            <li>
               <a href="#daily-usage-ports">Ports</a> <ul>
                 <li>
                   <a href="#daily-usage-ports-forwarding">Forwarding additional ports</a>
@@ -104,7 +115,7 @@
         </li>
         
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
@@ -113,7 +124,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -121,7 +132,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Requirements
+## Требования
 
 - Operating System: Windows, Linux, or macOS
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -217,7 +228,7 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Configuring
+## Настройка
 
 <a name='installation-configuration-setting-provider'></a>
 
@@ -307,7 +318,7 @@ sites:
 
 The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
 
-Available types:
+Доступные типы:
 
 - `phalcon`
 - `slayer`
@@ -502,7 +513,74 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='packages-included'></a>
 
-2### Ports
+2### Environment variables
+
+<a name='packages-included'></a>
+
+3#### Global variables
+
+You can easily register global environment variables. Just add variable and its value to the `variables` section:
+
+```yaml
+variables:
+    - key: TEST_DB_MYSQL_USER
+      value: phalcon
+
+    - key: TEST_DB_MYSQL_PASSWD
+      value: secret
+
+    - key: TEST_DB_MYSQL_DSN
+      value: "mysql:host=127.0.0.1;dbname=phalcon_test"
+```
+
+This way you will be able to use these variables in your applications or scripts. For example when configuring [Codeception](http://codeception.com) in such way:
+
+```yaml
+# File codeception.yml
+params:
+    # Get params from environment
+    - env
+```
+
+you will able to configure Unit suite as follows:
+
+```yaml
+# File tests/unit.suite.yml
+class_name: UnitTester
+modules:
+    enabled:
+        - Db
+    config
+        Db:
+            dsn: %TEST_DB_MYSQL_DSN%
+            user: %TEST_DB_MYSQL_USER%
+            password: %TEST_DB_MYSQL_PASSWD%
+            populate: true
+            cleanup: false
+            dump: tests/_data/schemas/mysql/mysql.dump.sql
+```
+
+<a name='packages-included'></a>
+
+4#### Site variables
+
+Site variables are how you can easily add `fastcgi_param` values to your site host configuration within Phalcon Box. For example, we may add a `APP_ENV` variable with the value `development`:
+
+```yaml
+sites:
+    - map: phalconbox.local
+      to: /var/www/phalconbox/public
+      variables:
+          - key: APP_ENV
+            value: development
+          # Yet another example
+          - key: AMQP_DEBUG
+            value: true
+```
+
+<a name='packages-included'></a>
+
+5### Ports
 
 By default, the following ports are forwarded to your Phalcon Box environment:
 
@@ -517,7 +595,7 @@ By default, the following ports are forwarded to your Phalcon Box environment:
 
 <a name='packages-included'></a>
 
-3#### Forwarding additional ports
+6#### Forwarding additional ports
 
 If you wish, you may forward additional ports to the Phalcon Box, as well as specify their protocol:
 
@@ -532,7 +610,7 @@ ports:
 
 <a name='packages-included'></a>
 
-4### Sharing your environment
+7### Sharing your environment
 
 Sometimes you may wish to share what you're currently working on with coworkers or a client. Vagrant has a built-in way to support this via `vagrant share`; however, this will not work if you have multiple sites configured in your `settings.yml` file.
 
@@ -552,7 +630,7 @@ share blog.local -region=eu -subdomain=phalcongelist
 
 <a name='packages-included'></a>
 
-5### Network interfaces
+8### Network interfaces
 
 The `networks` property of the `settings.yml` configures network interfaces for your Phalcon Box environment. You may configure as many interfaces as necessary:
 
@@ -581,7 +659,7 @@ networks:
 
 <a name='packages-included'></a>
 
-6### Updating Phalcon Box
+9### Updating Phalcon Box
 
 You can update Phalcon Box in two simple steps.
 
@@ -605,13 +683,13 @@ When you run the command `./install` (or `install.bat`) the Phalcon Box creates 
 
 We recommend that you always take backups of those files, and remove them from the project so that the new updated ones can be copied over. You can then compare your own files with the phalcon box ones to apply your personalized changes and take advantage of the new features offered by the update.
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-7### Provider specific settings
+0### Provider specific settings
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-8#### VirtualBox
+1#### VirtualBox
 
 By default, Phalcon Box configures the `natdnshostresolver` setting to `on`. This allows Phalcon Box to use your host operating system's DNS settings. If you would like to override this behavior, add the following lines to your `settings.yml` file:
 
@@ -619,15 +697,15 @@ By default, Phalcon Box configures the `natdnshostresolver` setting to `on`. Thi
 natdnshostresolver: off
 ```
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-9### Mail catcher
+2### Mail catcher
 
 By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com/mailhog/MailHog) (instead of sending them to the outside world). You can access the MailHog UI at `http://localhost:8025/` (or whatever domain you have configured in `settings.yml`).
 
 <a name='installation'></a>
 
-0## Troubleshooting
+3## Устранение неполадок
 
 **Problem:**
 
