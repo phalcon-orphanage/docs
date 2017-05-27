@@ -21,6 +21,7 @@
 - Инструменты разработчика 
     - [Installation](/en/[[version]]/devtools-installation)
     - [Usage](/en/[[version]]/devtools-usage)
+    - [Debug](/en/[[version]]/debug)
 - Ядро 
     - Приложение 
         - Полное
@@ -61,7 +62,6 @@
     - [Forms](/en/[[version]]/forms)
     - [Tag](/en/[[version]]/tag)
     - [Представления](/en/[[version]]/views) 
-        - View Simple
         - [Volt](/en/[[version]]/volt)
 - Бизнес-логика 
     - [Контроль доступа](/en/[[version]]/acl)
@@ -84,3 +84,9 @@
 - i18n 
     - [Internationalization](/en/[[version]]/i18n)
     - [Translate](/en/[[version]]/translate)
+- Tutorials 
+    - [Performance](/en/[[version]]/performance)
+    - [Basic](/en/[[version]]/tutorial-base)
+    - [Invo](/en/[[version]]/tutorial-invo)
+    - [REST](/en/[[version]]/tutorial-rest)
+    - [Vokuro](/en/[[version]]/tutorial-vokuro)
