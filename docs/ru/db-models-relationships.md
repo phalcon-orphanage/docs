@@ -1,25 +1,25 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Отношения модели</a> <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">Отношения между моделями</a> <ul>
             <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
+              <a href="#unidirectional">Однонаправленные отношения</a>
             </li>
             <li>
-              <a href="#bidirectional">Bidirectional relations</a>
+              <a href="#bidirectional">Двунаправленные отношения</a>
             </li>
             <li>
-              <a href="#defining">Defining relationships</a>
+              <a href="#defining">Определение отношений</a>
             </li>
             <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+              <a href="#taking-advantage-of">Преимущества отношений</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> <ul>
+              <a href="#aliases">Синонимы отношений</a> <ul>
                 <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                  <a href="#getters-vs-methods">Магические методы против явных</a>
                 </li>
               </ul>
             </li>
@@ -27,23 +27,23 @@
         </li>
         
         <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
+          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+              <a href="#cascade-restrict-actions">Cascade/Restrict действия </a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#storing-related-records">Storing Related Records</a>
+          <a href="#storing-related-records">Связаное сохранение записей</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
+          <a href="#operations-over-resultsets">Операции над набором результатов</a> <ul>
             <li>
-              <a href="#updating-related-records">Updating related records</a>
+              <a href="#updating-related-records">Обновление связанных записей</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Deleting related records</a>
+              <a href="#deleting-related-records">Удаление связанных записей</a>
             </li>
           </ul>
         </li>
@@ -54,29 +54,29 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# Отношения модели
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## Отношения между моделями
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### Однонаправленные отношения
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### Двунаправленные отношения
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### Defining relationships
+### Определение отношений
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
