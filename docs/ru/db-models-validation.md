@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validating Models</a> <ul>
+      <a href="#overview">Валидация моделей</a> <ul>
         <li>
-          <a href="#data-integrity">Validating Data Integrity</a>
+          <a href="#data-integrity">Проверка целостности данных</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#messages">Собщения об ошибках</a>
         </li>
         <li>
-          <a href="#failed-events">Validation Failed Events</a>
+          <a href="#failed-events">События при ошибках валидации</a>
         </li>
       </ul>
     </li>
@@ -18,15 +18,15 @@
 
 <a name='overview'></a>
 
-# Validating Models
+# Валидация моделей
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Проверка целостности данных
 
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special 'validation' event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+`Phalcon\Mvc\Model` предоставляет некоторые события для проверки данных и реализации бизнес-логики. Специальное событие validation позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
 
-The following example shows how to use it:
+Следующий пример показывает, как это можно использовать:
 
 ```php
 <?php
@@ -110,7 +110,7 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Собщения об ошибках
 
 `Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -178,11 +178,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## События при ошибках валидации
 
-Another type of events are available when the data validation process finds any inconsistency:
+Другой доступный тип событий - когда в процессе проверки данных выявляются какие-либо несоответствия:
 
-| Operation                | Name              | Explanation                                                        |
-| ------------------------ | ----------------- | ------------------------------------------------------------------ |
-| Insert or Update         | notSaved          | Triggered when the INSERT or UPDATE operation fails for any reason |
-| Insert, Delete or Update | onValidationFails | Triggered when any data manipulation operation fails               |
+| Операция                         | Название          | Пояснение                                                          |
+| -------------------------------- | ----------------- | ------------------------------------------------------------------ |
+| Вставка или обновление           | notSaved          | Triggered when the INSERT or UPDATE operation fails for any reason |
+| Вставка, удаление или обновление | onValidationFails | Triggered when any data manipulation operation fails               |
