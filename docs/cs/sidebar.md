@@ -21,9 +21,10 @@
 - Vývojářské nástroje 
     - [Instalace](/en/[[version]]/devtools-installation)
     - [Použití](/en/[[version]]/devtools-usage)
+    - [Debug](/en/[[version]]/debug)
 - Core 
     - Aplikace 
-        - Plnohodnotná
+        - [Full](/en/[[version]]/application)
         - [Micro](/en/[[version]]/application-micro)
         - [Command Line Interface (Cli)](/en/[[version]]/application-cli)
     - [DI kontejner](/en/[[version]]/di)
@@ -37,31 +38,27 @@
         - [Adapters](/en/[[version]]/logging#usage)
     - [Queue](/en/[[version]]/queue)
 - Databáze 
-    - Konektory 
-        - MySQL
-        - PostgreSQL
-        - SQLite
-        - Mongo
-    - [PHQL](/en/[[version]]/phql)
-    - [ODM](/en/[[version]]/odm)
-    - [Modely](/en/[[version]]/models) 
-        - [Pokročilé](/en/[[version]]/models-advanced)
-        - [Chování (Behaviors)](/en/[[version]]/models-behaviors)
-        - [Cache](/en/[[version]]/models-cache)
-        - [Události](/en/[[version]]/models-events)
-        - [Metadata](/en/[[version]]/models-metadata)
-        - [Relace](/en/[[version]]/models-relationships)
-        - [Transakce](/en/[[version]]/models-transactions)
-        - [Validátory](/en/[[version]]/models-validators)
-    - [Migrations](/en/[[version]]/migrations)
-    - [Pagination](/en/[[version]]/pagination)
+    - [Layer](/en/[[version]]/db-layer)
+    - [PHQL](/en/[[version]]/db-phql)
+    - [ODM](/en/[[version]]/db-odm)
+    - [Modely](/en/[[version]]/db-models) 
+        - [Pokročilé](/en/[[version]]/db-models-advanced)
+        - [Chování (Behaviors)](/en/[[version]]/db-models-behaviors)
+        - [Cache](/en/[[version]]/db-models-cache)
+        - [Události](/en/[[version]]/db-models-events)
+        - [Metadata](/en/[[version]]/db-models-metadata)
+        - [Relace](/en/[[version]]/db-models-relationships)
+        - [Transakce](/en/[[version]]/db-models-transactions)
+        - [Validátory](/en/[[version]]/db-models-validators)
+    - [Migrations](/en/[[version]]/db-migrations)
+    - [Pagination](/en/[[version]]/db-pagination)
 - Frontend 
     - [Assety](/en/[[version]]/assets)
     - [Flash Messenger](/en/[[version]]/flash)
     - [Forms](/en/[[version]]/forms)
+    - [Image](/en/[[version]]/image)
     - [Tag](/en/[[version]]/tag)
-    - [Pohledy (Views)](/en/[[version]]/views) 
-        - Simple
+    - [View](/en/[[version]]/views) 
         - [Volt](/en/[[version]]/volt)
 - Aplikační logika 
     - [Access Controler Lists (ACL)](/en/[[version]]/acl)
@@ -84,3 +81,9 @@
 - i18n 
     - [Internationalization](/en/[[version]]/i18n)
     - [Translate](/en/[[version]]/translate)
+- Tutorials 
+    - [Performance](/en/[[version]]/performance)
+    - [Basic](/en/[[version]]/tutorial-base)
+    - [Invo](/en/[[version]]/tutorial-invo)
+    - [REST](/en/[[version]]/tutorial-rest)
+    - [Vokuro](/en/[[version]]/tutorial-vokuro)
