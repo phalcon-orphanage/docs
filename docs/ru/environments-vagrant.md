@@ -20,7 +20,7 @@
         </li>
         
         <li>
-          <a href="#installation-configuration">Configuring</a> <ul>
+          <a href="#installation-configuration">Настройка</a> <ul>
             <li>
               <a href="#installation-configuration-setting-provider">Setting your provider</a>
             </li>
@@ -115,7 +115,7 @@
         </li>
         
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
@@ -124,7 +124,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -132,7 +132,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Requirements
+## Требования
 
 - Operating System: Windows, Linux, or macOS
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -228,7 +228,7 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Configuring
+## Настройка
 
 <a name='installation-configuration-setting-provider'></a>
 
@@ -318,7 +318,7 @@ sites:
 
 The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
 
-Available types:
+Доступные типы:
 
 - `phalcon`
 - `slayer`
@@ -705,7 +705,7 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='installation'></a>
 
-3## Troubleshooting
+3## Устранение неполадок
 
 **Problem:**
 
