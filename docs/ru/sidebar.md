@@ -4,9 +4,9 @@
     - [Спонсоры](/en/[[version]]/sponsors)
 - Вклад 
     - [Введение](/en/[[version]]/contributions)
-    - Пулл реквесты
+    - [Pull Requests](/en/[[version]]/new-pull-request)
     - [Запрос новой функции](/en/[[version]]/new-feature-request)
-    - Генерация трассировки выполнения
+    - [Backtrace Generation](/en/[[version]]/generating-backtrace)
     - [Reproducible Tests](/en/[[version]]/reproducible-tests)
     - Руководство по тестированию
 - Начало работы 

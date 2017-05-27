@@ -4,9 +4,9 @@
     - [Sponsors](/en/[[version]]/sponsors)
 - Contributions 
     - [Overview](/en/[[version]]/contributions)
-    - Pull Requests
+    - [Pull Requests](/en/[[version]]/new-pull-request)
     - [NFR](/en/[[version]]/new-feature-request)
-    - Backtrace Generation
+    - [Backtrace Generation](/en/[[version]]/generating-backtrace)
     - [Reproducible Tests](/en/[[version]]/reproducible-tests)
     - Testing guide
 - Getting Started 
