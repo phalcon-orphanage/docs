@@ -26,6 +26,9 @@
         <li>
           <a href="#custom">Implementing your own EventsManager</a>
         </li>
+        <li>
+          <a href="#list">List of events</a>
+        </li>
       </ul>
     </li>
   </ul>
@@ -49,7 +52,7 @@ When attaching event listeners to the events manager, you can use 'component' to
 
 ## Usage Example
 
-In the following example, we will use the EventsManager to listen for the 'afterQuery' event produced in a MySQL connection managed by `Phalcon\Db`:
+In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by `Phalcon\Db`:
 
 ```php
 <?php
@@ -435,3 +438,98 @@ The above example produces:
 ## Implementing your own EventsManager
 
 The `Phalcon\Events\ManagerInterface` interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
+
+<a name='list'></a>
+
+## List of Events
+
+The events available in Phalcon are:
+
+| Component          | Event                               |
+| ------------------ | ----------------------------------- |
+| ACL                | `acl:afterCheckAccess`              |
+| ACL                | `acl:beforeCheckAccess`             |
+| Application        | `application:afterHandleRequest`    |
+| Application        | `application:afterStartModule`      |
+| Application        | `application:beforeHandleRequest`   |
+| Application        | `application:beforeSendResponse`    |
+| Application        | `application:beforeStartModule`     |
+| Application        | `application:boot`                  |
+| Application        | `application:viewRender`            |
+| CLI                | `dispatch:beforeException`          |
+| Collection         | `afterCreate`                       |
+| Collection         | `afterSave`                         |
+| Collection         | `afterUpdate`                       |
+| Collection         | `afterValidation`                   |
+| Collection         | `afterValidationOnCreate`           |
+| Collection         | `afterValidationOnUpdate`           |
+| Collection         | `beforeCreate`                      |
+| Collection         | `beforeSave`                        |
+| Collection         | `beforeUpdate`                      |
+| Collection         | `beforeValidation`                  |
+| Collection         | `beforeValidationOnCreate`          |
+| Collection         | `beforeValidationOnUpdate`          |
+| Collection         | `notDeleted`                        |
+| Collection         | `notSave`                           |
+| Collection         | `notSaved`                          |
+| Collection         | `onValidationFails`                 |
+| Collection         | `validation`                        |
+| Collection Manager | `collectionManager:afterInitialize` |
+| Console            | `console:afterHandleTask`           |
+| Console            | `console:afterStartModule`          |
+| Console            | `console:beforeHandleTask`          |
+| Console            | `console:beforeStartModule`         |
+| Db                 | `db:afterQuery`                     |
+| Db                 | `db:beforeQuery`                    |
+| Db                 | `db:beginTransaction`               |
+| Db                 | `db:createSavepoint`                |
+| Db                 | `db:commitTransaction`              |
+| Db                 | `db:releaseSavepoint`               |
+| Db                 | `db:rollbackTransaction`            |
+| Db                 | `db:rollbackSavepoint`              |
+| Dispatcher         | `dispatch:afterExecuteRoute`        |
+| Dispatcher         | `dispatch:afterDispatch`            |
+| Dispatcher         | `dispatch:afterDispatchLoop`        |
+| Dispatcher         | `dispatch:afterInitialize`          |
+| Dispatcher         | `dispatch:beforeException`          |
+| Dispatcher         | `dispatch:beforeExecuteRoute`       |
+| Dispatcher         | `dispatch:beforeDispatch`           |
+| Dispatcher         | `dispatch:beforeDispatchLoop`       |
+| Dispatcher         | `dispatch:beforeNotFoundAction`     |
+| Loader             | `loader:afterCheckClass`            |
+| Loader             | `loader:beforeCheckClass`           |
+| Loader             | `loader:beforeCheckPath`            |
+| Loader             | `loader:pathFound`                  |
+| Micro              | `micro:afterHandleRoute`            |
+| Micro              | `micro:afterExecuteRoute`           |
+| Micro              | `micro:beforeExecuteRoute`          |
+| Micro              | `micro:beforeHandleRoute`           |
+| Micro              | `micro:beforeNotFound`              |
+| Model              | `afterDelete`                       |
+| Model              | `afterCreate`                       |
+| Model              | `afterSave`                         |
+| Model              | `afterUpdate`                       |
+| Model              | `afterValidation`                   |
+| Model              | `afterValidationOnCreate`           |
+| Model              | `afterValidationOnUpdate`           |
+| Model              | `beforeDelete`                      |
+| Model              | `notDeleted`                        |
+| Model              | `beforeCreate`                      |
+| Model              | `beforeSave`                        |
+| Model              | `beforeUpdate`                      |
+| Model              | `beforeValidation`                  |
+| Model              | `beforeValidationOnCreate`          |
+| Model              | `beforeValidationOnUpdate`          |
+| Model              | `notSave`                           |
+| Model              | `notSaved`                          |
+| Model              | `onValidationFails`                 |
+| Models Manager     | `modelsManager:afterInitialize`     |
+| View               | `view:afterRender`                  |
+| View               | `view:afterRenderView`              |
+| View               | `view:beforeRender`                 |
+| View               | `view:beforeRenderView`             |
+| View               | `view:notFoundView`                 |
+| Volt               | `compileFilter`                     |
+| Volt               | `compileFunction`                   |
+| Volt               | `compileStatement`                  |
+| Volt               | `resolveExpression`                 |
