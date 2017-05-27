@@ -278,6 +278,30 @@ The available query options are:
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
+<a name='finding-documents-fields'></a>
+## Querying specific fields
+To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
+
+```php
+$myRobots = Robots:find(
+    [
+        'fields' => ['name' => 1]
+    ]
+];
+```
+
+The `find()` above only returns a `name`. It can also be combined with a `condition`:
+
+```php
+$myRobots = Robots:find(
+    [
+        ['type' => 'maid'],
+        'fields' => ['name' => 1]
+    ]
+];
+```
+The example above returns the `name` of the robot with the `type = 'maid'`.
+
 <a name='aggregations'></a>
 ## Aggregations
 A model can return calculations using [aggregation framework](http://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
