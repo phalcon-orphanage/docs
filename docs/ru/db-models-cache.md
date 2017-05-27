@@ -224,9 +224,9 @@ class Robots extends Model
 }
 ```
 
-Accessing the database is several times slower than calculating a cache key. You're free to implement any key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible - meaning that different keys should return unrelated records.
+Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша. Вы вольны в реализации стратегии генерации ключа, которая лучше подходит для ваших задач. Следует отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это означает, что разные ключи возвращают при поиске независимые наборы записей.
 
-This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
+Это дает вам полный контроль над тем, как кэши должны быть реализованы для каждой модели, эта стратегия может быть общей для нескольких моделей, которую можно вынести в отдельный базовый класс для всех подобных классов:
 
 ```php
 <?php
