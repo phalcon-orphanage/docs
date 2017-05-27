@@ -105,22 +105,22 @@
     <li>
       <a href="#responses">Ответы</a> <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">Прямой вывод</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">Подключение внешнего файла</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Прямой вывод JSON-содержимого</a>
+          <a href="#responses-direct-output-json">Возврат JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">Новый объект Response</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">Общий объект Response</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">Объект Response как возвращаемое значение</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
@@ -1047,20 +1047,20 @@ Handlers may return raw responses using plain text, `Phalcon\Http\Response` obje
 
 <a name='routing-setup-application'></a>
 
-1## Direct output
+1## Прямой вывод
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
 
 <a name='routing-setup-application'></a>
 
-2## Including another file
+2## Подключение внешнего файла
 
 ```php
 $app->get(
@@ -1073,7 +1073,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-3## Прямой вывод JSON-содержимого
+3## Возврат JSON
 
 ```php
 $app->get(
