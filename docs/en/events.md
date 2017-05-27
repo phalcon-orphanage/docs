@@ -464,6 +464,12 @@ The events available in Phalcon are:
 | Micro              | `micro:beforeExecuteRoute`          |
 | Micro              | `micro:beforeHandleRoute`           |
 | Micro              | `micro:beforeNotFound`              |
+| Middleware         | `afterBinding`                      |
+| Middleware         | `afterExecuteRoute`                 |
+| Middleware         | `afterHandleRoute`                  |
+| Middleware         | `beforeExecuteRoute`                |
+| Middleware         | `beforeHandleRoute`                 |
+| Middleware         | `beforeNotFound`                    |
 | Model              | `afterDelete`                       |
 | Model              | `afterCreate`                       |
 | Model              | `afterSave`                         |
