@@ -146,7 +146,7 @@
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> <ul>
+          <a href="#middleware-attached-events">Прикрепленные события</a> <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -160,32 +160,32 @@
         </li>
         
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">Реализация</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Настройка</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> <ul>
+          <a href="#middleware-events">События в Middleware</a> <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> <ul>
+              <a href="#middleware-events-api">Пример реализации</a> <ul>
                 <li>
-                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                  <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                  <a href="#middleware-events-api-not-found">Не найдено</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">Перенаправление</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                  <a href="#middleware-events-api-cors">CORS</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">Запрос</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">Ответ</a>
                 </li>
               </ul>
             </li>
@@ -198,7 +198,7 @@
       <a href="#models">Модели</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">Внедрение моделей</a>
     </li>
     <li>
       <a href="#views">Представления</a>
