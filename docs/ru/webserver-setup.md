@@ -5,7 +5,7 @@
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#nginx-phalcon-configuration">Настройка под Phalcon</a> <ul>
                 <li>
                   <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
                 </li>
@@ -17,7 +17,7 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Настройка под Phalcon</a> <ul>
                 <li>
                   <a href="#apache-document-root">Document root</a>
                 </li>
@@ -35,7 +35,7 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
+              <a href="#cherokee-phalcon-configuration">Настройка под Phalcon</a>
             </li>
           </ul>
         </li>
@@ -43,7 +43,7 @@
         <li>
           <a href="#php-built-in">Встроенный веб-сервер</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
+              <a href="#php-built-in-phalcon-configuration">Настройка под Phalcon</a>
             </li>
           </ul>
         </li>
@@ -68,7 +68,7 @@ The [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) is usually used to 
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка под Phalcon
 
 The following are potential configurations you can use to setup Nginx with Phalcon:
 
@@ -154,7 +154,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка под Phalcon
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/en/[[version]]/routing). Commonly an application has the following structure:
 
@@ -259,7 +259,7 @@ And this second configuration allows you to install a Phalcon application in a v
 
 <a name='nginx'></a>
 
-0### Phalcon configuration
+0### Настройка под Phalcon
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='nginx'></a>
 
-2### Phalcon configuration
+2### Настройка под Phalcon
 
 To enable URI rewrites that Phalcon needs, you can use the following router file (`.htrouter.php`):
 
