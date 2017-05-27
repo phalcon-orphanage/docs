@@ -14,7 +14,7 @@
     - [Setting a Database Connection](#database-connection)
     - [Storing data using models](#storing-data)
     - [Conclusion](#conclusion)
-    
+
 </div>
 
 <a name='basic'></a>
@@ -505,8 +505,7 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
 The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
@@ -516,6 +515,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 <a name='conclusion'></a>
 ## Conclusion
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
