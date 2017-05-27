@@ -37,7 +37,7 @@ Following these guidelines, allows better communication, faster resolution of is
 
 <a name='contributions'></a>
 
-## Contributions
+## Вклад
 
 Contributions to Phalcon should be made in the form of GitHub pull requests. Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
@@ -53,7 +53,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='bug-report-checklist'></a>
 
-## Bug Report Checklist
+## Контрольный список отчета об ошибках
 
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test) for more information.
@@ -78,7 +78,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='requesting-features'></a>
 
-## Requesting Features
+## Предложение идей
 
 If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
 
