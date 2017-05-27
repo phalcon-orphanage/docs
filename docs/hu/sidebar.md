@@ -53,6 +53,8 @@
         - [Relationships](/en/[[version]]/models-relationships)
         - [Transactions](/en/[[version]]/models-transactions)
         - [Validators](/en/[[version]]/models-validators)
+    - [Migrations](/en/[[version]]/migrations)
+    - [Pagination](/en/[[version]]/pagination)
 - Front End 
     - [Assets](/en/[[version]]/assets)
     - [Flash Messenger](/en/[[version]]/flash)
@@ -79,3 +81,6 @@
 - Security 
     - [Crypto](/en/[[version]]/crypt)
     - [Security](/en/[[version]]/security)
+- i18n 
+    - [Internationalization](/en/[[version]]/i18n)
+    - [Translate](/en/[[version]]/translate)

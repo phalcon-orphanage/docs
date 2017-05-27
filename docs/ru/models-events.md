@@ -159,17 +159,18 @@ $robot->save();
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Registering the modelsManager service
+// Регистрация сервиса modelsManager
 $di->setShared(
     'modelsManager',
     function () {
         $eventsManager = new EventsManager();
 
-        // Attach an anonymous function as a listener for 'model' events
+        // Добавляем анонимную функцию в качестве
+        // слушателя для событий "model"
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $model) {
-                // Catch events produced by the Robots model
+                // Перехватываем события, производимые моделью Robots
                 if (get_class($model) === 'Store\Toys\Robots') {
                     if ($model->name === 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
@@ -182,7 +183,7 @@ $di->setShared(
             }
         );
 
-        // Setting a default EventsManager
+        // Устанавливаем EventsManager по умолчанию
         $modelsManager = new ModelsManager();
 
         $modelsManager->setEventsManager($eventsManager);
