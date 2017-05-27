@@ -22,6 +22,9 @@
         - [Connecting via SSH](#daily-usage-ssh)
         - [Connecting to databases](#daily-usage-databases)
         - [Adding additional sites](#daily-usage-additional-sites)
+        - [Environment variables](#daily-usage-environment-variables)
+            - [Global variables](#daily-usage-environment-global-variables)
+            - [Site variables](#daily-usage-environment-site-variables)
         - [Ports](#daily-usage-ports)
             - [Forwarding additional ports](#daily-usage-ports-forwarding)
         - [Sharing your environment](#daily-usage-sharing-environment)
@@ -385,6 +388,66 @@ vagrant plugin install vagrant-hostsupdater
 ```
 
 Once the site has been added, run the `vagrant reload --provision` command from your Phalcon Box directory.
+
+<a name='daily-usage-environment-variables'></a>
+### Environment variables
+<a name='daily-usage-environment-global-variables'></a>
+#### Global variables
+You can easily register global environment variables. Just add variable and its value to the `variables` section:
+```yaml
+variables:
+    - key: TEST_DB_MYSQL_USER
+      value: phalcon
+
+    - key: TEST_DB_MYSQL_PASSWD
+      value: secret
+
+    - key: TEST_DB_MYSQL_DSN
+      value: "mysql:host=127.0.0.1;dbname=phalcon_test"
+```
+
+This way you will be able to use these variables in your applications or scripts. For example when configuring [Codeception](http://codeception.com) in such way:
+
+```yaml
+# File codeception.yml
+params:
+    # Get params from environment
+    - env
+```
+
+you will able to configure Unit suite as follows:
+
+```yaml
+# File tests/unit.suite.yml
+class_name: UnitTester
+modules:
+    enabled:
+        - Db
+    config
+        Db:
+            dsn: %TEST_DB_MYSQL_DSN%
+            user: %TEST_DB_MYSQL_USER%
+            password: %TEST_DB_MYSQL_PASSWD%
+            populate: true
+            cleanup: false
+            dump: tests/_data/schemas/mysql/mysql.dump.sql
+```
+
+<a name='daily-usage-environment-site-variables'></a>
+#### Site variables
+Site variables are how you can easily add `fastcgi_param` values to your site host configuration within Phalcon Box. For example, we may add a `APP_ENV` variable with the value `development`:
+
+```yaml
+sites:
+    - map: phalconbox.local
+      to: /var/www/phalconbox/public
+      variables:
+          - key: APP_ENV
+            value: development
+          # Yet another example
+          - key: AMQP_DEBUG
+            value: true
+```
 
 <a name='daily-usage-ports'></a>
 ### Ports
