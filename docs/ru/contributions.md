@@ -6,12 +6,12 @@
           <a href="#contributions">Вклад</a>
         </li>
         <li>
-          <a href="#questions-and-support">Questions and Support</a>
+          <a href="#questions-and-support">Вопросы и ответы</a>
         </li>
         <li>
           <a href="#bug-report-checklist">Контрольный список отчета об ошибках</a> <ul>
             <li>
-              <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
+              <a href="#bug-report-generating-backtrace">Генерация трассировки</a>
             </li>
           </ul>
         </li>
@@ -50,7 +50,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Вопросы и ответы
 
 ##### Мы принимаем только сообщения об ошибках, новые запросы и пулл реквесты на GitHub. {.alert.alert-warning}
 
@@ -67,7 +67,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Генерация трассировки
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
@@ -99,7 +99,7 @@ Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-fea
 
 ## Получение поддержки
 
-If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
+По вопросам использования Phalcon, пожалуйста, используйте [раздел поддержки](https://phalconphp.com/support) на нашем сайте.
 
 <a name='requesting-features'></a>
 
@@ -107,6 +107,6 @@ If you have a question about how to use Phalcon, please see the [support page](h
 
 If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
 
-Thanks!
+Спасибо!
 
-<3 Phalcon Team
+<3 Команда Phalcon
