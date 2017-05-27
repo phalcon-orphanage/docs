@@ -12,7 +12,7 @@
 
 <a name='data-integrity'></a>
 ## Validating Data Integrity
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special 'validation' event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
 The following example shows how to use it:
 
@@ -58,11 +58,9 @@ class Robots extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field 'type' in a domain list. If the value is not included in the method then the validator will fail and return false.
+The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
-.. highlights::
-
-    For more information on validators, see the :doc:`Validation documentation <validation>`.
+##### For more information on validators, see the [Validation documentation](/en/[[version]]/validation) ##### {.alert .alert-warning}
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
@@ -117,13 +115,13 @@ if ($robot->save() === false) {
 
 `Phalcon\Mvc\Model` can generate the following types of validation messages:
 
-| Type                 | Description                                                                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Type                   | Description                                                                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
+| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
+| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -165,7 +163,7 @@ class Robots extends Model
 ## Validation Failed Events
 Another type of events are available when the data validation process finds any inconsistency:
 
-| Operation                | Name               | Explanation                                                        |
-| ------------------------ | ------------------ | ------------------------------------------------------------------ |
-| Insert or Update         | notSaved           | Triggered when the INSERT or UPDATE operation fails for any reason |
-| Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
+| Operation                | Name                 | Explanation                                                            |
+| ------------------------ | -------------------- | ---------------------------------------------------------------------- |
+| Insert or Update         | `notSaved`           | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails`  | Triggered when any data manipulation operation fails                   |
