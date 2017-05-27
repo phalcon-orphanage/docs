@@ -366,7 +366,7 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
+        $context = "<h1>Это заказ: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -380,9 +380,9 @@ $app->get(
 Мы можем определить функцию как обработчик и прикрепить её к определенному маршруту.
 
 ```php
-// With a function
+// Определение функции
 function order_display($name) {
-    echo "<h1>This is order: {$name}!</h1>";
+    echo "<h1>Это заказа: {$name}!</h1>";
 }
 
 $app->get(
@@ -395,13 +395,13 @@ $app->get(
 
 0#### Статический метод
 
-We can also use a static method as our handler as follows:
+Также возможно использовать статический метод класса в качестве обработчика:
 
 ```php
 class OrdersClass
 {
     public static function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
@@ -415,13 +415,13 @@ $app->get(
 
 1#### Метод объекта
 
-We can also use a method in an object:
+Мы также можем использовать метод экземпляра объекта:
 
 ```php
 class OrdersClass
 {
     public function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
