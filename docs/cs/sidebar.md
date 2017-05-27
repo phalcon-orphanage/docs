@@ -4,9 +4,9 @@
     - [Sponzoři](/en/[[version]]/sponsors)
 - Přispěvovatelé 
     - [Přehled](/en/[[version]]/contributions)
-    - Pull Requesty
+    - [Pull Requests](/en/[[version]]/new-pull-request)
     - [NFR](/en/[[version]]/new-feature-request)
-    - Geberování Backtrace
+    - [Backtrace Generation](/en/[[version]]/generating-backtrace)
     - [Reproducible Tests](/en/[[version]]/reproducible-tests)
     - Průvodce testováním
 - Začínáme 

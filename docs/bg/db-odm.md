@@ -327,6 +327,33 @@ The available query options are:
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
+<a name='finding-documents-fields'></a>
+
+## Querying specific fields
+
+To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
+
+```php
+$myRobots = Robots:find(
+    [
+        'fields' => ['name' => 1]
+    ]
+];
+```
+
+The `find()` above only returns a `name`. It can also be combined with a `condition`:
+
+```php
+$myRobots = Robots:find(
+    [
+        ['type' => 'maid'],
+        'fields' => ['name' => 1]
+    ]
+];
+```
+
+The example above returns the `name` of the robot with the `type = 'maid'`.
+
 <a name='aggregations'></a>
 
 ## Aggregations
@@ -419,9 +446,9 @@ if ($robot->save() === false) {
 }
 ```
 
-<a name='events'></a>
+<a name='creating-models'></a>
 
-### Validation Events and Events Manager
+0### Validation Events and Events Manager
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
 
@@ -558,7 +585,7 @@ $di->set(
 
 <a name='creating-models'></a>
 
-0### Implementing a Business Rule
+1### Implementing a Business Rule
 
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
@@ -588,7 +615,7 @@ Some events return false as an indication to stop the current operation. If an e
 
 <a name='creating-models'></a>
 
-1### Validating Data Integrity
+2### Validating Data Integrity
 
 `Phalcon\Mvc\Collection` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
@@ -641,7 +668,7 @@ The example given above performs a validation using the built-in validator `Incl
 
 <a name='creating-models'></a>
 
-2## Deleting Records
+3## Deleting Records
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -702,7 +729,7 @@ The following events are available to define custom business rules that can be e
 
 <a name='creating-models'></a>
 
-3## Validation Failed Events
+4## Validation Failed Events
 
 Another type of events is available when the data validation process finds any inconsistency:
 
@@ -713,7 +740,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='creating-models'></a>
 
-4## Implicit Ids vs. User Primary Keys
+5## Implicit Ids vs. User Primary Keys
 
 By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
@@ -735,7 +762,7 @@ class Robots extends Collection
 
 <a name='creating-models'></a>
 
-5## Setting multiple databases
+6## Setting multiple databases
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
 
@@ -787,7 +814,7 @@ class Robots extends Collection
 
 <a name='creating-models'></a>
 
-6## Injecting services into Models
+7## Injecting services into Models
 
 You may be required to access the application services within a model, the following example explains how to do that:
 
