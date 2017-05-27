@@ -111,7 +111,7 @@
           <a href="#responses-include">Including another file</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">Прямой вывод JSON-содержимого</a>
         </li>
         <li>
           <a href="#responses-new-response-object">New Response object</a>
@@ -439,9 +439,9 @@ $app->get(
 
 2#### Контроллеры
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+С `Phalcon\Mvc\Micro` вы можете создавать как микроприложения, так и средне-сложные приложения. Средне-сложные приложения используют микро-архитектуру, но расширяют её, таким образом являясь компромиссом между микро- и полноценными приложениями.
 
-In medium applications you can organize handlers in controllers.
+В средне-сложных приложениях вы можете организовывать обработчики в контроллеры.
 
 ```php
 <?php
@@ -450,22 +450,22 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Установка главного обработчика, т.е. экземпляра контроллера
 $orders->setHandler(new OrdersController());
 
-// Set a common prefix for all routes
+// Установка основного префикса для всех маршрутов
 $orders->setPrefix('/orders');
 
-// Use the method 'index' in OrdersController
+// Использовать метод 'index' контроллера OrdersController
 $orders->get('/', 'index');
 
-// Use the method 'show' in OrdersController
+// Использовать метод 'show' контроллера OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+Контроллер `OrdersController` может выглядеть следующим образом:
 
 ```php
 <?php
@@ -1073,7 +1073,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-3## Direct output JSON
+3## Прямой вывод JSON-содержимого
 
 ```php
 $app->get(
