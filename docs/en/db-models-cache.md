@@ -9,7 +9,7 @@
     - [Caching Related Records Recursively](#caching-related-records-recursively)
     - [Caching based on Conditions](#caching-based-on-conditions)
     - [Caching PHQL execution plan](#caching-phql-execution-plan)
-    
+
 </div>
 
 <a name='orm-caching'></a>
@@ -22,7 +22,7 @@ This chapter explains the potential areas where it is possible to implement cach
 ## Caching Resultsets
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
-When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called 'modelsCache'. Phalcon offers a [cache](/en/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models. 
+When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/en/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
 
 First, we will need to register the cache component as a service in the DI container.
 ```php
@@ -226,7 +226,7 @@ class CacheableModel extends Model
 }
 ```
 
-Then use this class as base class for each 'Cacheable' model:
+Then use this class as base class for each `Cacheable` model:
 
 ```php
 <?php
