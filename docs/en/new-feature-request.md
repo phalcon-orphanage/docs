@@ -1,6 +1,6 @@
 # New Feature Request
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand implement it. 
+A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand implement it.
 
 A NFR contains:
 * Suggested syntax
@@ -17,12 +17,12 @@ In the following cases a new feature request will be rejected:
 * The original poster doesn't provide feedback/input when requested
 * It's technically impossible to implement
 * It can only be used in the development/testing stages
-* Submitted/proposed classes/components don't follow the [Single Responsibility Principle][SRP] 
+* Submitted/proposed classes/components don't follow the [Single Responsibility Principle][SRP]
 * Static methods aren't allowed
 
-To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it. 
+To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
 
-All NFRs should be posted as a new issue on [Github][github].
+All NFRs should be posted as a new issue on [Github][github-issues].
 
 [SRP]: http://en.wikipedia.org/wiki/Single_responsibility_principle
-[github-issues]
+[github-issues]: https://github.com/phalcon/cphalcon/issues
