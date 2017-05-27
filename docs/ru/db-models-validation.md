@@ -129,13 +129,13 @@ if ($robot->save() === false) {
 
 `Phalcon\Mvc\Model` can generate the following types of validation messages:
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Тип                    | Описание                                                                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `PresenceOf`           | Генерируется, когда поле с атрибутом non-null в базе данных пытается вставить/обновить null значение                                             |
+| `ConstraintViolation`  | Генерируется, когда поле, являющееся частью виртуального внешнего ключа, пытается вставить/обновить значение, не существующее в указанной модели |
+| `InvalidValue`         | Генерируется, когда валидация не удалась из-за недопустимого значения                                                                            |
+| `InvalidCreateAttempt` | Генерируется, когда была предпринята попытка создать запись, которая уже существует                                                              |
+| `InvalidUpdateAttempt` | Генерируется, когда была предпринята попытка обновить запись, которая еще не существует                                                          |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -177,7 +177,7 @@ class Robots extends Model
 
 ## События при ошибках валидации
 
-Another type of events are available when the data validation process finds any inconsistency:
+Другой доступный тип событий - когда в процессе проверки данных выявляются какие-либо несоответствия:
 
 | Операция                         | Название            | Пояснение                                                                              |
 | -------------------------------- | ------------------- | -------------------------------------------------------------------------------------- |
