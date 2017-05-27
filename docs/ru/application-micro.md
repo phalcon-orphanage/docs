@@ -105,22 +105,22 @@
     <li>
       <a href="#responses">Ответы</a> <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">Прямой вывод</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">Подключение внешнего файла</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">Возврат JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">Новый объект Response</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">Общий объект Response</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">Объект Response как возвращаемое значение</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
@@ -146,7 +146,7 @@
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> <ul>
+          <a href="#middleware-attached-events">Прикрепленные события</a> <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -160,32 +160,32 @@
         </li>
         
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">Реализация</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Настройка</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> <ul>
+          <a href="#middleware-events">События в Middleware</a> <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> <ul>
+              <a href="#middleware-events-api">Пример реализации</a> <ul>
                 <li>
-                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                  <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                  <a href="#middleware-events-api-not-found">Не найдено</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">Перенаправление</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                  <a href="#middleware-events-api-cors">CORS</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">Запрос</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">Ответ</a>
                 </li>
               </ul>
             </li>
@@ -198,7 +198,7 @@
       <a href="#models">Модели</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">Внедрение моделей</a>
     </li>
     <li>
       <a href="#views">Представления</a>
@@ -366,7 +366,7 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
+        $context = "<h1>Это заказ: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -380,9 +380,9 @@ $app->get(
 Мы можем определить функцию как обработчик и прикрепить её к определенному маршруту.
 
 ```php
-// With a function
+// Определение функции
 function order_display($name) {
-    echo "<h1>This is order: {$name}!</h1>";
+    echo "<h1>Это заказа: {$name}!</h1>";
 }
 
 $app->get(
@@ -395,13 +395,13 @@ $app->get(
 
 0#### Статический метод
 
-We can also use a static method as our handler as follows:
+Также возможно использовать статический метод класса в качестве обработчика:
 
 ```php
 class OrdersClass
 {
     public static function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
@@ -415,13 +415,13 @@ $app->get(
 
 1#### Метод объекта
 
-We can also use a method in an object:
+Мы также можем использовать метод экземпляра объекта:
 
 ```php
 class OrdersClass
 {
     public function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
@@ -439,9 +439,9 @@ $app->get(
 
 2#### Контроллеры
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+С `Phalcon\Mvc\Micro` вы можете создавать как микроприложения, так и средне-сложные приложения. Средне-сложные приложения используют микро-архитектуру, но расширяют её, таким образом являясь компромиссом между микро- и полноценными приложениями.
 
-In medium applications you can organize handlers in controllers.
+В средне-сложных приложениях вы можете организовывать обработчики в контроллеры.
 
 ```php
 <?php
@@ -450,22 +450,22 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Установка главного обработчика, т.е. экземпляра контроллера
 $orders->setHandler(new OrdersController());
 
-// Set a common prefix for all routes
+// Установка основного префикса для всех маршрутов
 $orders->setPrefix('/orders');
 
-// Use the method 'index' in OrdersController
+// Использовать метод 'index' контроллера OrdersController
 $orders->get('/', 'index');
 
-// Use the method 'show' in OrdersController
+// Использовать метод 'show' контроллера OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+Контроллер `OrdersController` может выглядеть следующим образом:
 
 ```php
 <?php
@@ -514,7 +514,7 @@ class OrdersController extends Controller
 
 3### Загрузка по требованию
 
-In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
+Для повышения производительности, рассмотрите возможность реализации отложенной загрузки для ваших контроллеров (обработчиков). Контроллер будет загружен только для соответствующего маршрута.
 
 Отложенная загрузка может быть легко реализована если использовать `Phalcon\Mvc\Micro\Collection` для настройки обработчиков:
 
@@ -1047,20 +1047,20 @@ Handlers may return raw responses using plain text, `Phalcon\Http\Response` obje
 
 <a name='routing-setup-application'></a>
 
-1## Direct output
+1## Прямой вывод
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
 
 <a name='routing-setup-application'></a>
 
-2## Including another file
+2## Подключение внешнего файла
 
 ```php
 $app->get(
@@ -1073,7 +1073,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-3## Direct output JSON
+3## Возврат JSON
 
 ```php
 $app->get(
@@ -1091,7 +1091,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-4## New Response object
+4## Новый объект Response
 
 You can use the `setContent` method of the response object to return the response back:
 
@@ -1116,7 +1116,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-5## Application Response
+5## Общий объект Response
 
 You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
 
@@ -1136,7 +1136,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-6## Return Application Response
+6## Объект Response как возвращаемое значение
 
 A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
@@ -1189,28 +1189,28 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-8# Events
+8# События
 
 A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 <a name='routing-setup-application'></a>
 
-9## Available events
+9## Доступные события
 
 The following events are supported:
 
-| Event Name         | Triggered                                                         | Can stop operation? |
-| ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| Название события   | Срабатывает                                                       | Можно остановить операцию? |
+| ------------------ | ----------------------------------------------------------------- |:--------------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |            Yes             |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |            Yes             |
+| afterExecuteRoute  | Handler just finished running                                     |             No             |
+| beforeNotFound     | Route has not been found                                          |            Yes             |
+| afterHandleRoute   | Route just finished executing                                     |            Yes             |
+| afterBinding       | Triggered after models are bound but before executing the handler |            Yes             |
 
 <a name='routing-setup-router'></a>
 
-0### Authentication example
+0### Пример: Аутентификация
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1247,7 +1247,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='routing-setup-router'></a>
 
-1### Not found example
+1### Пример: Страница не найдена
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1287,15 +1287,15 @@ The presence of a `Phalcon\Events\Manager` is essential for middleware to operat
 
 <a name='routing-setup-router'></a>
 
-3## Attached events
+3## Прикрепленные события
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | Description                                    |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| Событие | Описание                                       |
+| ------- | ---------------------------------------------- |
+| before  | Before the handler has been executed           |
+| after   | After the handler has been executed            |
+| final   | After the response has been sent to the caller |
 
 ##### You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires. {.alert.alert-warning}
 
@@ -1370,7 +1370,7 @@ $app->finish(
 
 <a name='routing-setup-router'></a>
 
-7## Setup
+7## Настройка
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -1446,7 +1446,7 @@ We then attach the middleware class in our application on one of the three liste
 
 <a name='routing-setup-router'></a>
 
-8## Implementation
+8## Реализация
 
 Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
@@ -1491,13 +1491,13 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='routing-setup-router'></a>
 
-9## Events in Middleware
+9## События в Middleware
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='rewrite-rules'></a>
 
-0### API example
+0### Пример реализации
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1505,7 +1505,7 @@ The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * R
 
 <a name='rewrite-rules'></a>
 
-1#### Firewall Middleware
+1#### Firewall
 
 This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
@@ -1567,7 +1567,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-2#### Not Found Middleware
+2#### Не найдено
 
 When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
@@ -1613,7 +1613,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-3#### Redirect Middleware
+3#### Перенаправление
 
 We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
 
@@ -1667,7 +1667,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-4#### CORS Middleware
+4#### CORS
 
 Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
@@ -1732,7 +1732,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-5#### Request Middleware
+5#### Запрос
 
 This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
@@ -1788,7 +1788,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-6#### Response Middleware
+6#### Ответ
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
@@ -1833,7 +1833,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='rewrite-rules'></a>
 
-7# Models
+7# Модели
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1869,7 +1869,7 @@ $app->handle();
 
 <a name='rewrite-rules'></a>
 
-8# Inject model instances
+8# Внедрение моделей
 
 By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
 
@@ -1903,7 +1903,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='rewrite-rules'></a>
 
-9# Views
+9# Представления
 
 `Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 

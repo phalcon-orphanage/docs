@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">Шифрование и расшифровывание</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Базовое использование</a>
         </li>
         <li>
           <a href="#options">Настройки шифрования</a>
         </li>
         <li>
-          <a href="#base64">Base64 Support</a>
+          <a href="#base64">Поддержка base64</a>
         </li>
         <li>
-          <a href="#service">Setting up an Encryption service</a>
+          <a href="#service">Настройка и сервис шифрования</a>
         </li>
       </ul>
     </li>
@@ -21,7 +21,7 @@
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Шифрование и расшифровывание
 
 Phalcon provides encryption facilities via the :doc:`Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -106,7 +106,7 @@ echo $crypt->encrypt($text, $key);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Поддержка base64
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](http://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -128,7 +128,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## Настройка и сервис шифрования
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
