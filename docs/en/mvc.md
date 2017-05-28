@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Architecture](#architecture)
+- [The MVC Architecture](#architecture)
     - [Models](#models)
     - [Views](#views)
     - [Controllers](#controllers)
-    
+
 </div>
 
 <a name='architecture'></a>
 # The MVC Architecture
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC][wiki-mvc]) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
 MVC benefits include:
 
@@ -31,3 +31,4 @@ Views represent the user interface of your application. Views are often HTML fil
 The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/en/[[version]]/controllers)
 
 
+[wiki-mvc]: https://en.wikipedia.org/wiki/Model–view–controller
