@@ -6,10 +6,10 @@
           <a href="#create-project">Создание нового проекта</a>
         </li>
         <li>
-          <a href="#boxfile-yml">Создание boxfile.yml</a>
+          <a href="#boxfile-yml">Add a <code>boxfile.yml</code></a>
         </li>
         <li>
-          <a href="#add-devtools">Добаление Phalcon Devtools в composer.json</a>
+          <a href="#add-devtools">Add Phalcon Devtools to your <code>composer.json</code></a>
         </li>
         <li>
           <a href="#new-phalcon-app">Start Nanobox and Generate a New Phalcon App</a>
@@ -21,7 +21,7 @@
           <a href="#environment">Check Out the Environment</a>
         </li>
         <li>
-          <a href="#conclusion">Phalcon & Nanobox</a>
+          <a href="#conclusion">Phalcon and Nanobox</a>
         </li>
       </ul>
     </li>
@@ -48,18 +48,18 @@ mkdir nanobox-phalcon && cd nanobox-phalcon
 
 <a name='boxfile-yml'></a>
 
-## Add a boxfile.yml
+## Add a `boxfile.yml`
 
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
 
 ```yaml
 run.config:
-  engine: php  
-  engine.config:    
-    runtime: php-7.1    
-    document_root: public    
+  engine: php
+  engine.config:
+    runtime: php-7.1
+    document_root: public
     extensions:
-      - phalcon  
+      - phalcon
   extra_steps:
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
@@ -74,7 +74,7 @@ This tells Nanobox to:
 
 <a name='add-devtools'></a>
 
-## Добаление Phalcon Devtools в composer.json
+## Add Phalcon Devtools to your `composer.json`
 
 Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
 
@@ -157,7 +157,7 @@ exit
 
 <a name='conclusion'></a>
 
-## Phalcon & Nanobox
+## Phalcon and Nanobox
 
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 
