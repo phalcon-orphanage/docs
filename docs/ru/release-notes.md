@@ -1,3 +1,9 @@
+### 2017-04-05 - [3.1.2](https://github.com/phalcon/cphalcon/releases/tag/v3.1.2)
+
+- Fixed PHP 7.1 issues [#12055](https://github.com/phalcon/cphalcon/issues/12055)
+- Fixed `Imagick::getVersion()` error in some system [#12729](https://github.com/phalcon/cphalcon/pull/12729)
+- Fixed `Phalcon\Mvc\Model::_doLowInsert` to properly set snapshot when having default values and public properties [#12766](https://github.com/phalcon/cphalcon/issues/12766)
+
 ### 2017-03-25 - [3.1.1](https://github.com/phalcon/cphalcon/releases/tag/v3.1.1)
 
 - Fixed undefined index warning on existing cached resultsets
@@ -5,7 +11,7 @@
 
 ### 2017-03-22 - [3.1.0](https://github.com/phalcon/cphalcon/releases/tag/v3.1.0)
 
-- Добавлен `Phalcon\Validation\Validator\Callback`, `Phalcon\Validation::getData`
+- Added `Phalcon\Validation\Validator\Callback`, `Phalcon\Validation::getData`
 - Added the ability to truncate database tables
 - Added `Phalcon\Mvc\Model\Binder`, class used for binding models to parameters in dispatcher, micro, added `Phalcon\Dispatcher::getBoundModels` and `Phalcon\Mvc\Micro::getBoundModels` to getting bound models, added `Phalcon\Mvc\Micro\Collection\LazyLoader::callMethod`
 - Added afterBinding event to `Phalcon\Dispatcher` and `Phalcon\Mvc\Micro`, added `Phalcon\Mvc\Micro::afterBinding`
