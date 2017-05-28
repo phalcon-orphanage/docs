@@ -46,7 +46,7 @@
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-##### If you prefer to use the web version instead of the console, this [blog post](https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem) offers more information. {.alert.alert-danger}
+<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
 
 <a name='download'></a>
 
@@ -374,28 +374,28 @@ After performing a search, a pager component is available to show paged results.
 
 ![](/images/content/devtools-usage-05.png)
 
-<a name='download'></a>
+<a name='web-interface'></a>
 
-0## Web Interface to Tools
+## Web Interface to Tools
 
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
-<a name='download'></a>
+<div align="center">
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
+</div>
 
-1
+<a name='phpstorm-ide'></a>
 
-<a name='download'></a>
-
-2## Integrating Tools with PhpStorm IDE
+## Integrating Tools with PhpStorm IDE
 
 The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
-<a name='download'></a>
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
+</div>
 
-3
+<a name='conclusion'></a>
 
-<a name='download'></a>
-
-4## Conclusion
+## Conclusion
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
