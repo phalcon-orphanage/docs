@@ -91,7 +91,7 @@ $di->set(
 
 ## Generating URIs
 
-If you are using the [Router](/en/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern:
+If you are using the [Router](/[[language]]/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern:
 
 ##### /:controller/:action/:params {.alert.alert-info}
 
