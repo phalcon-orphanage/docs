@@ -107,7 +107,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 ## Routing
 
-INVO uses the standard route that is built-in with the [Router](/en/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
+INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
 The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
 
@@ -131,7 +131,7 @@ $config = new ConfigIni(
 
 ```
 
-[Phalcon Config](/en/[[version]]/config) (`Phalcon\Config`) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/en/[[version]]/config) for other file types as well. The configuration file contains the following settings:
+[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/[[language]]/[[version]]/config) for other file types as well. The configuration file contains the following settings:
 
 ```ini
 [database]
@@ -379,7 +379,7 @@ The following simple form (`app/views/session/index.volt`) requests the login in
 {{ endForm() }}
 ```
 
-Instead of using raw PHP as the previous tutorial, we started to use [Volt](/en/[[version]]/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
+Instead of using raw PHP as the previous tutorial, we started to use [Volt](/[[language]]/[[version]]/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) has the task of validating the data entered in the form including checking for a valid user in the database:
 
@@ -454,7 +454,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/en/[[version]]/security) instead.
+For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/[[language]]/[[version]]/security) instead.
 
 Note that multiple public attributes are accessed in the controller like: `$this->flash`, `$this->request` or `$this->session`. These are services defined in the services container from earlier (`app/config/services.php`). When they're accessed the first time, they are injected as part of the controller. These services are `shared`, which means that we are always accessing the same instance regardless of the place where we invoke them. For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
 
@@ -551,7 +551,7 @@ The backend is a private area where only registered users have access. Therefore
 
 Every time someone attempts to access any controller/action, the application verifies that the current role (in session) has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/en/[[version]]/dispatcher). It is informed about the route found by the [Routing](/en/[[version]]/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/[[language]]/[[version]]/dispatcher). It is informed about the route found by the [Routing](/[[language]]/[[version]]/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification before executing the required action, checking if the user has access to it or not. To achieve this, we have replaced the component by creating a function in the bootstrap:
 
@@ -577,13 +577,13 @@ $di->set(
 );
 ```
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/en/[[version]]/events) allows us to intercept the events produced by a component, routing the events to listeners.
+We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/[[language]]/[[version]]/events) allows us to intercept the events produced by a component, routing the events to listeners.
 
 <a name='structure'></a>
 
 0### Events Management
 
-The [EventsManager](/en/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
+The [EventsManager](/[[language]]/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
 ```php
 <?php
@@ -1029,7 +1029,7 @@ class ProductsForm extends Form
 }
 ```
 
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/en/[[version]]/forms) component. Every element follows almost the same structure:
+The form is declared using an object-oriented scheme based on the elements provided by the [forms](/[[language]]/[[version]]/forms) component. Every element follows almost the same structure:
 
 ```php
 <?php
@@ -1188,7 +1188,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 4## Performing a Search
 
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/en/[[version]]/request) component:
+The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
 
 ```php
 <?php
