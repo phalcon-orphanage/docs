@@ -60,7 +60,7 @@ class Robots extends Model
 
 The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
-##### For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation)</h5>
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 

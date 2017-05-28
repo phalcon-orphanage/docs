@@ -91,7 +91,7 @@ vagrant box add phalconphp/xenial64
 
 If this command fails, make sure your Vagrant installation is up to date.
 
-##### To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box.  ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
 
 <a name='installation-phalcon-box'></a>
 ### Installing the Phalcon Box
@@ -184,7 +184,7 @@ folders:
             rsync__exclude: ["node_modules"]
 ```
 
-##### macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue: ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue: </h5>
 
 ```bash
 vagrant plugin install vagrant-bindfs
@@ -226,7 +226,7 @@ Available types:
 
 Feel free to suggest a new type of Nginx configuration [through opening a New Feature Request](https://github.com/phalcon/box/issues/new).
 
-##### If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. </h5>
 
 <a name='installation-configuration-custom-nginx'></a>
 #### Custom Nginx configuration
@@ -272,7 +272,7 @@ Make sure the IP address listed is the one set in your `settings.yml` file. Once
 http://phalcon.local
 ```
 
-##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: </h5>
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -319,7 +319,7 @@ function box()
 }
 ```
 
-##### Make sure to tweak the `$HOME/workspace` path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like `box up` or `box ssh` from anywhere on your system. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Make sure to tweak the `$HOME/workspace` path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like `box up` or `box ssh` from anywhere on your system. </h5>
 
 <a name='daily-usage-accessing-box-globally-windows'></a>
 #### Windows
@@ -338,7 +338,7 @@ set cwd=
 set box=
 ```
 
-##### Make sure to tweak the example `C:\workspace` path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your `PATH`. You may then run commands like `box up` or `box ssh` from anywhere on your system. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Make sure to tweak the example `C:\workspace` path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your `PATH`. You may then run commands like `box up` or `box ssh` from anywhere on your system. </h5>
 
 <a name='daily-usage-ssh'></a>
 ### Connecting via SSH
@@ -351,7 +351,7 @@ But, since you will probably need to SSH into your Phalcon Box machine frequentl
 
 To connect to your MySQL, Postgres or MongoDB database from your host machine's database client, you should connect to `127.0.0.1` and port `33060` (MySQL), `54320` (Postgres) or `27017` (MongoDB). The username and password for databases is `phalcon` / `secret`.
 
-##### You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. </h5>
 
 To access to the interactive db console from Phalcon Box type:
 
@@ -381,7 +381,7 @@ If Vagrant is not managing your "hosts" file automatically, you may need to add 
 192.168.50.4  blog.local
 ```
 
-##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: </h5>
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -491,7 +491,7 @@ After running the command, you will see an [Ngrok](https://ngrok.com) screen app
 share blog.local -region=eu -subdomain=phalcongelist
 ```
 
-##### Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the `share` command. ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the `share` command. </h5>
 
 <a name='daily-usage-network-interfaces'></a>
 ### Network interfaces

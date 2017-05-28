@@ -205,7 +205,7 @@ The following screencast shows a Xdebug session with Phalcon:
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-##### We highly recommend using the latest version of XDebug for a better compatibility with Phalcon ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>We highly recommend using the latest version of XDebug for a better compatibility with Phalcon </h5>
 
 The following example implements [xdebug_print_function_stack](http://xdebug.org/docs/stack_trace) to stop the execution and generate a backtrace:
 

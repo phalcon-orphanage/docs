@@ -673,7 +673,7 @@ $router->add(
 );
 ```
 
-##### Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)` ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)` </h5>
 
 <a name='default-behavior'></a>
 ## Default Behavior

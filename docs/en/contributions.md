@@ -28,8 +28,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 <a name='questions-and-support'></a>
 ## Questions and Support
 
-##### We only accept bug reports, new feature requests and pull requests in GitHub ##### {.alert .alert-warning}
-For questions regarding the usage of the framework or support requests please visit the [official forums][forum].
+<h5 class='alert alert-warning' markdown='1'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forums][forum].</h5>
 
 <a name='bug-report-checklist'></a>
 ## Bug Report Checklist

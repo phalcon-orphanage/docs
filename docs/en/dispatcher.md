@@ -126,7 +126,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Methods on event listeners accept an `Phalcon\Events\Event` object as their first parameter - methods in controllers do not. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Methods on event listeners accept an `Phalcon\Events\Event` object as their first parameter - methods in controllers do not. </h5>
 
 <a name='forwarding'></a>
 ## Forwarding to other actions
@@ -507,7 +507,7 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-##### Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor. </h5>
 
 It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -568,7 +568,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}` ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}` </h5>
 
 <a name='handling-404'></a>
 ## Handling Not-Found Exceptions
@@ -666,7 +666,7 @@ class ExceptionsPlugin
 }
 ```
 
-##### Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
 
 <a name='custom'></a>
 ## Implementing your own Dispatcher

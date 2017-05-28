@@ -95,5 +95,4 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
     );
 ```
 
-##### Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals. ##### {.alert .alert-danger}
-
+<h5 class='alert alert-danger' markdown='1'>Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.</h5>

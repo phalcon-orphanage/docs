@@ -13,7 +13,7 @@
 # Database Migrations
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-##### Migrations are available in [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) You need at least Phalcon Framework version 0.5.0 to use developer tools. ##### {.alert .alert-danger}
+<h5 class='alert alert-danger' markdown='1'>Migrations are available in [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 

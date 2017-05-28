@@ -39,7 +39,7 @@ Although this component is very fast, implementing it in cases that are not need
 * You are using a lot of helpers and the output generated is almost always the same
 * You are accessing database data constantly and these data rarely change
 
-##### *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>*NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</h5>
 
 <a name='caching-behavior'></a>
 ## Caching Behavior
@@ -104,7 +104,7 @@ if ($content === null) {
 }
 ```
 
-##### *NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>*NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.</h5>
 
 <a name='arbitrary-data'></a>
 ## Caching Arbitrary Data

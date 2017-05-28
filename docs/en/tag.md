@@ -27,7 +27,7 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-##### This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\Tag` page in the API for a complete reference. ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\Tag` page in the API for a complete reference. </h5>
 
 <a name='document-type'></a>
 ## Document Type of Content

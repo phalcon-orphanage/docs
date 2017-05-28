@@ -770,7 +770,7 @@ $di->set(
 );
 ```
 
-#### The frontend must always be `Phalcon\Cache\Frontend\Output` and the service `viewCache` must be registered as always open (not shared) in the services container (DI). ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>The frontend must always be `Phalcon\Cache\Frontend\Output` and the service `viewCache` must be registered as always open (not shared) in the services container (DI). </h5>
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 

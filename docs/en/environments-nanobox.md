@@ -61,7 +61,7 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-##### **NOTE**: The version of Phalcon Devtools depends on which PHP version you're using ##### {.alert .alert-warning}
+<h5 class='alert alert-warning' markdown='1'>**NOTE**: The version of Phalcon Devtools depends on which PHP version you're using </h5>
 
 <a name='new-phalcon-app'></a>
 ## Start Nanobox and Generate a New Phalcon App

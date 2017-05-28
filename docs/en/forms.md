@@ -366,7 +366,7 @@ $email->setFilters(
 $form->add($email);
 ```
 
-##### Learn more about filtering in Phalcon by reading the [Filter documentation](/[[language]]/[[version]]/filter) ##### {.alert .alert-info}
+<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/[[language]]/[[version]]/filter) </h5>
 
 <a name='entities'></a>
 ## Forms + Entities
