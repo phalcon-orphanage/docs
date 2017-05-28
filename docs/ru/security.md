@@ -26,7 +26,7 @@
 
 # Безопасность
 
-Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery (CSRF).
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ((CSRF)[wiki-csrf](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
@@ -157,7 +157,7 @@ Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommen
 
 ## Настройка компонента
 
-This component is automatically registered in the services container as 'security', you can re-register it to setup its options:
+This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
 ```php
 <?php
@@ -203,7 +203,8 @@ $base64     = $random->base64($len);
 // Generate a random URL-safe base64 string of length $len.
 $base64Safe = $random->base64Safe($len);
 
-// Generate a UUID (version 4). See https://en.wikipedia.org/wiki/Universally_unique_identifier
+// Generate a UUID (version 4).
+// See https://en.wikipedia.org/wiki/Universally_unique_identifier
 $uuid       = $random->uuid();
 
 // Generate a random integer between 0 and $n.
