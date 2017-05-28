@@ -156,7 +156,7 @@ server {
 
 ### Konfiguracja Phalcona
 
-Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. Należy zwrócić przede wszystkim uwagę na konfigurację modułu `mod_rewrite` który pozwala na używanie przyjaznych adresów URL i [komponentu routera](/en/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
+Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
 
 ```bash
 test/
