@@ -182,7 +182,7 @@ $di->set(
 
 ## Компонент Random
 
-The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
+Класс `Phalcon\Security\Random` позволяет очень легко генерировать много разных типов случайных данных.
 
 ```php
 <?php
