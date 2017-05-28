@@ -379,7 +379,7 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](/en/[[version]]/filter) component. You can add more filters to this component or use the built-in ones.
+Filtering and sanitizing is performed using the [filter](/[[language]]/[[version]]/filter) component. You can add more filters to this component or use the built-in ones.
 
 <a name='events'></a>
 
