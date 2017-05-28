@@ -161,7 +161,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Methods on event listeners accept an `Phalcon\Events\Event` object as their first parameter - methods in controllers do not. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Methods on event listeners accept an <code>Phalcon\\Events\\Event</code> object as their first parameter - methods in controllers do not. </h5>
 
 <a name='forwarding'></a>
 
@@ -453,9 +453,9 @@ $di->set(
 );
 ```
 
-<a name='preparing-actions-inject-model-instances'></a>
+<a name='dispatch-loop'></a>
 
-### Inject model instances
+0### Inject model instances
 
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
@@ -556,9 +556,9 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-##### Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor. {.alert.alert-warning}
+<a name='dispatch-loop'></a>
 
-It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
+1It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
 
 For example, you have a base `CrudController` which your `PostsController` extends from. Your `CrudController` looks something like this:
 
@@ -617,11 +617,13 @@ class PostsController extends Controller
 }
 ```
 
-##### Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}` {.alert.alert-warning}
+<a name='dispatch-loop'></a>
+
+2
 
 <a name='dispatch-loop'></a>
 
-0## Handling Not-Found Exceptions
+3## Handling Not-Found Exceptions
 
 Using the [EventsManager](/[[language]]/[[version]]/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
@@ -717,10 +719,12 @@ class ExceptionsPlugin
 }
 ```
 
-##### Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. {.alert.alert-danger}
+<a name='dispatch-loop'></a>
+
+4
 
 <a name='dispatch-loop'></a>
 
-1## Implementing your own Dispatcher
+5## Implementing your own Dispatcher
 
 The `Phalcon\Mvc\DispatcherInterface` interface must be implemented to create your own dispatcher replacing the one provided by Phalcon.
