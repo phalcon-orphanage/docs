@@ -301,9 +301,9 @@ Execute the application in a browser:
 
 <a name='nginx'></a>
 
-1## PHP Built In Webserver
+1## Встроенный веб-сервер
 
-You can use PHP's [built in](http://php.net/manual/en/features.commandline.webserver.php) web server for your development. To start the server type:
+Вы можете использовать [встроенный веб-сервер](http://php.net/manual/en/features.commandline.webserver.php) для разработки. Для запуска сервера выполните команду:
 
 ```bash
 php -S localhost:8000 -t /public
@@ -313,7 +313,7 @@ php -S localhost:8000 -t /public
 
 2### Настройка под Phalcon
 
-To enable URI rewrites that Phalcon needs, you can use the following router file (`.htrouter.php`):
+Если вы хотите перенаправлять запросы на файл index.php, добавьте файл `.htrouter.php` со следующим кодом:
 
 ```php
 <?php
@@ -325,10 +325,10 @@ if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
 return false;
 ```
 
-and then start the server from the base project directory with:
+и запустите сервер следующей командой:
 
 ```bash
 php -S localhost:8000 -t /public .htrouter.php
 ```
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Откройте свой браузер и перейдите по адресу http://localhost:8000/, чтобы убедиться, что всё работает.
