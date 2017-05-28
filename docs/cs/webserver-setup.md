@@ -156,7 +156,7 @@ server {
 
 ### Konfigurace Phalcon frameworku
 
-Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. Tyto instrukce jsou primárně zaměřeny na konfiguraci modulu `mod_rewrite`, který doovluje použití hezkých URL a [komponentu Router](/en/[[version]]/routing). Běžně má aplikace následující strukturu:
+Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Běžně má aplikace následující strukturu:
 
 ```bash
 test/
