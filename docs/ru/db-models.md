@@ -418,7 +418,7 @@ $robots = Robots::query()
 
 The static method `query()` returns a `Phalcon\Mvc\Model\Criteria` object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL](/en/[[version]]/phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+All the queries are internally handled as [PHQL](/[[language]]/[[version]]/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
 Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
