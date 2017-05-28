@@ -281,7 +281,7 @@ class FilesController extends Controller
 }
 ```
 
-Jeżeli używasz Phalcona jako pełnowartościowego frameworka, możesz odczytywać serwisy dostarczone [domyślnie](/en/[[version]]/di) w jego ramach.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
 
 <a name='request-response'></a>
 
@@ -335,7 +335,7 @@ class PostsController extends Controller
 }
 ```
 
-Dowiedz się więcej o środowisku HTTP w ich dedykowanych artykułach [request](/en/[[version]]/request) tudzież [response](/en/[[version]]/response).
+Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
