@@ -11,7 +11,7 @@
 
 <a name='overview'></a>
 # Security
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ((CSRF)[wiki-csrf]).
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 <a name='hashing'></a>
 ## Password Hashing
