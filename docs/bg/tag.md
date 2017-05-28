@@ -68,7 +68,7 @@
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the `Phalcon\Tag` component which in turn offers view helpers to generate HTML markup.
 
-This component can be used in a plain HTML+PHP view or in a [Volt](/en/[[version]]/volt) template.
+This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
 ##### This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\Tag` page in the API for a complete reference. {.alert.alert-warning}
 
@@ -213,7 +213,7 @@ Same form generated in Volt:
 {{ endForm() }}
 ```
 
-Phalcon also provides a [form builder](/en/[[version]]/forms) to create forms in an object-oriented manner.
+Phalcon also provides a [form builder](/[[language]]/[[version]]/forms) to create forms in an object-oriented manner.
 
 <a name='helpers-for-form-elements'></a>
 
@@ -264,7 +264,7 @@ Volt syntax:
 
 ## Making Select Boxes
 
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/en/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
 
 ```php
 <?php
@@ -651,7 +651,7 @@ This is my canvas
 
 7## Tag Service
 
-`Phalcon\Tag` is available via the [tag](/en/[[version]]/tag) service, this means you can access it from any part of the application where the services container is located:
+`Phalcon\Tag` is available via the [tag](/[[language]]/[[version]]/tag) service, this means you can access it from any part of the application where the services container is located:
 
 ```php
 <?php echo $this->tag->linkTo('pages/about', 'About') ?>
@@ -682,7 +682,7 @@ class MyTags extends Tag
 }
 ```
 
-Then change the definition of the service [tag](/en/[[version]]/tag):
+Then change the definition of the service [tag](/[[language]]/[[version]]/tag):
 
 ```php
 <?php
@@ -822,4 +822,4 @@ Now you are ready to use your new helper within your views:
 </body>
 ```
 
-You can also check out [Volt](/en/[[version]]/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by `Phalcon\Tag`.
+You can also check out [Volt](/[[language]]/[[version]]/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by `Phalcon\Tag`.
