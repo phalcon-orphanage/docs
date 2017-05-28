@@ -88,7 +88,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 ### Dispatch Loop Events
 
-`Phalcon\Mvc\Dispatcher` is able to send events to an [EventsManager](/en/[[version]]/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+`Phalcon\Mvc\Dispatcher` is able to send events to an [EventsManager](/[[language]]/[[version]]/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------- |
@@ -103,7 +103,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
 
-The [INVO](/en/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/en/[[version]]/acl)
+The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -623,7 +623,7 @@ class PostsController extends Controller
 
 0## Handling Not-Found Exceptions
 
-Using the [EventsManager](/en/[[version]]/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+Using the [EventsManager](/[[language]]/[[version]]/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 ```php
 <?php
