@@ -83,7 +83,7 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 ## Services
 
-Services included are: 
+Services included are:
 
 | Service name  | Description                                                                                         |
 | ------------- | --------------------------------------------------------------------------------------------------- |
