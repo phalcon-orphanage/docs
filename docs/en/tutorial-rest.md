@@ -37,7 +37,7 @@ The API consists of the following methods:
 
 <a name='implementation'></a>
 ## Creating the Application
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/en/[[version]]/application-micro) to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
 
 The following file structure is more than enough:
 
@@ -265,7 +265,7 @@ $app->get(
 );
 ```
 
-[PHQL](/en/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
 The searching by name handler would look like:
 
@@ -635,4 +635,4 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 ## Conclusion
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/en/[[version]]/application-micro) and [PHQL](/en/[[version]]/db-phql).
+As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).

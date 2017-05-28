@@ -33,7 +33,7 @@ if ($request->isPost()) {
 ## Getting Values
 PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](http://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
-`Phalcon\Http\Request` allows you to access the values stored in the `$_REQUEST`, `$_GET` and `$_POST` arrays and sanitize or filter them with the [filter](/en/[[version]]/filter) service, (by default `Phalcon\Filter`). The following examples offer the same behavior:
+`Phalcon\Http\Request` allows you to access the values stored in the `$_REQUEST`, `$_GET` and `$_POST` arrays and sanitize or filter them with the [filter](/[[language]]/[[version]]/filter) service, (by default `Phalcon\Filter`). The following examples offer the same behavior:
 
 ```php
 <?php

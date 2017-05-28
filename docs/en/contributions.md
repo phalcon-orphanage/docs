@@ -58,7 +58,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards][psr]
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -70,7 +70,7 @@ If you have a question about how to use Phalcon, please see the [support page][s
 
 <a name='requesting-features'></a>
 ## Requesting Features
-If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
+If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
 Thanks!
 
@@ -89,5 +89,5 @@ Thanks!
 [zephir]: https://zephir-lang.com/
 [psr]: http://www.php-fig.org/psr/
 [support]: https://phalconphp.com/support
-[nfr]: /en/[[version]]/new-feature-request
+[nfr]: /[[language]]/[[version]]/new-feature-request
 

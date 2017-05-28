@@ -120,7 +120,7 @@ calculated data i.e. `Hello %name%`. These placeholders can be replaced with pas
 ```
 
 Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement
-this by using a [Router](/en/[[version]]/routing).
+this by using a [Router](/[[language]]/[[version]]/routing).
 
 <a name='custom'></a>
 ## Implementing your own adapters

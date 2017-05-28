@@ -433,7 +433,7 @@ try {
 
 <a name='events'></a>
 ## Database Events
-`Phalcon\Db` is able to send events to a [EventsManager](/en/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Event Name            | Triggered                                            | Can stop operation? |
 |-----------------------|------------------------------------------------------|:-------------------:|

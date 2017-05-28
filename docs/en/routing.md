@@ -1033,7 +1033,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='annotations'></a>
 ## Annotations Router
-This component provides a variant that's integrated with the [annotations](/en/[[version]]/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
+This component provides a variant that's integrated with the [annotations](/[[language]]/[[version]]/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
 ```php
 <?php

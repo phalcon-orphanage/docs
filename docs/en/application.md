@@ -531,7 +531,7 @@ When `Phalcon\Mvc\Application` have modules registered, always is necessary that
 
 <a name='events'></a>
 ## Application Events
-`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/en/[[version]]/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Event Name            | Triggered                                                    |
 |-----------------------|--------------------------------------------------------------|

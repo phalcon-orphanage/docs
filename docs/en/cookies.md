@@ -76,7 +76,7 @@ $di->set(
 );
 ```
 
-If you wish to use encryption, a global key must be set in the [crypt](/en/[[version]]/crypt) service:
+If you wish to use encryption, a global key must be set in the [crypt](/[[language]]/[[version]]/crypt) service:
 
 ```php
     <?php

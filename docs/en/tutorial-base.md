@@ -19,7 +19,7 @@
 
 <a name='basic'></a>
 # Tutorial - basic
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/en/[[version]]/developer-tools).
+Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
 
 The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
 
@@ -42,7 +42,7 @@ tutorial/
 ```
 Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/en/[[version]]/installation) and have setup either [nginX](/en/[[version]]/setup#nginx), [Apache](/en/[[version]]/setup#apache) or [Cherokee](/en/[[version]]/setup#cherokee).
+Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 ## Bootstrap

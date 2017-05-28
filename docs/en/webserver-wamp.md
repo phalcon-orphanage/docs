@@ -56,5 +56,5 @@ Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 ## Related Guides
-* [Installation on XAMPP](/en/[[version]]/webserver-xampp)
+* [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
 
