@@ -60,7 +60,7 @@ You can download or clone a cross platform package containing the developer tool
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/en/[[version]]devtools-installation#installation-linux) : [MacOS](/en/[[version]]devtools-installation#installation-macos) : [Windows](/en/[[version]]devtools-installation#installation-windows)
+[Linux](/[[language]]/[[version]]devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
