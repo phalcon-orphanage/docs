@@ -37,7 +37,7 @@ These steps will guide you through the process of installing Phalcon Developer T
 
 ## Prerequisites
 
-PHP rozšíření pro Phalcon framework je nutné pro spuštění Phalcon Tools. Pokud ho ještě nemáte nainstalované, přejděte prosím do sekce [Instalace](/en/[[version]]//installation) pro instrukce.
+The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
 
 <a name='installation'></a>
 
