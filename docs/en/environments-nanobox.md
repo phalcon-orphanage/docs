@@ -2,12 +2,12 @@
 
 - [Overview](#overview)
     - [Create a New Project](#create-project)
-    - [Add a boxfile.yml](#boxfile-yml)
-    - [Add Phalcon Devtools to your composer.json](#add-devtools)
+    - [Add a `boxfile.yml`](#boxfile-yml)
+    - [Add Phalcon Devtools to your `composer.json`](#add-devtools)
     - [Start Nanobox and Generate a New Phalcon App](#new-phalcon-app)
     - [Run the App Locally](#run-app)
     - [Check Out the Environment](#environment)
-    - [Phalcon & Nanobox](#conclusion)
+    - [Phalcon and Nanobox](#conclusion)
 
 </div>
 
@@ -26,17 +26,17 @@ mkdir nanobox-phalcon && cd nanobox-phalcon
 ```
 
 <a name='boxfile-yml'></a>
-## Add a boxfile.yml
+## Add a `boxfile.yml`
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
 
 ```yaml
 run.config:
-  engine: php  
-  engine.config:    
-    runtime: php-7.1    
-    document_root: public    
+  engine: php
+  engine.config:
+    runtime: php-7.1
+    document_root: public
     extensions:
-      - phalcon  
+      - phalcon
   extra_steps:
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
@@ -50,7 +50,7 @@ This tells Nanobox to:
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
 
 <a name='add-devtools'></a>
-## Add Phalcon Devtools to your composer.json
+## Add Phalcon Devtools to your `composer.json`
 Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
 
 ```json
@@ -125,7 +125,7 @@ exit
 ```
 
 <a name='conclusion'></a>
-## Phalcon & Nanobox
+## Phalcon and Nanobox
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 
 Nanobox has a [Phalcon Quickstart](https://github.com/nanobox-quickstarts/nanobox-phalcon) that includes everything covered in this post. They also have as guides for [using Phalcon with Nanobox](https://guides.nanobox.io/php/phalcon/). In future posts, we'd like to cover other aspects of using Phalcon with Nanobox, including adding and connecting to a database, deploying Phalcon into production, etc. If you're interested [let us know on Twitter](http://twitter.com/nanobox_io).
