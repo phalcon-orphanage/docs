@@ -270,7 +270,7 @@ $form = new UsersForm(
 );
 ```
 
-Validation Phalcon forms are integrated with the [validation](/en/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Validation Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -382,7 +382,7 @@ $email->setFilters(
 $form->add($email);
 ```
 
-##### Learn more about filtering in Phalcon by reading the [Filter documentation](/en/[[version]]/filter) {.alert.alert-info}
+<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a> </h5>
 
 <a name='entities'></a>
 
