@@ -36,6 +36,7 @@ To run this stack on your machine, you need at least:
 <a name='services'></a>
 ## Services
 Services included are:
+
 | Service name  | Description                                                                                        |
 |---------------|----------------------------------------------------------------------------------------------------|
 | mongo         | MongoDB server container.                                                                          |
