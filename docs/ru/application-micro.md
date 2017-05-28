@@ -260,7 +260,7 @@ $app = new Micro();
 
 ### Настройка
 
-Маршрутизация обрабатывается объектом `Phalcon\Mvc\Router`. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Маршрутизация обрабатывается объектом `Phalcon\Mvc\Router`. [<i class='fa fa-border fa-info'></i>](/[[language]]/[[version]]/routing)
 
 ##### Маршруты всегда должны начинаться с `/` {.alert.alert-warning}
 
@@ -331,7 +331,7 @@ $app->setService('router', $router, true);
 
 Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
-Эти изменения описаны в [правилах перезаписи](/en/[[version]]/rewrite-rules).
+Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
@@ -856,7 +856,7 @@ $app->get(
 );
 ```
 
-Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></i>](/[[language]]/[[version]]/routing)
 
 <a name='routing-setup'></a>
 
