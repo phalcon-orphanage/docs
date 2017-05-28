@@ -177,7 +177,7 @@ test/
 
 Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři který je v tzv.: Document Root složce. V tomto případě použijeme dva `.htaccess` soubory kde první schová aplikační kód a všechny požadavky přesmeruje do veřejné aplikační složky (v našem případě je to složka `public/`).
 
-##### Pro použití `.htaccess` souborů je nutné aby instalace Apache webserveru měla nastavenou konfigurační hodnotu `AllowOverride All`. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Pro použití <code>.htaccess</code> souborů je nutné aby instalace Apache webserveru měla nastavenou konfigurační hodnotu <code>AllowOverride All</code>. </h5>
 
 ```apacheconfig
 # test/.htaccess
@@ -251,15 +251,15 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 </VirtualHost>
 ```
 
-<a name='cherokee'></a>
+<a name='nginx'></a>
 
-## Cherokee
+0## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) je vysoce výkonný webserver. Je velmi rychlý, flexibilní a jednoduchý na konfiguraci.
 
 <a name='nginx'></a>
 
-0### Konfigurace Phalcon frameworku
+1### Konfigurace Phalcon frameworku
 
 Cherokee nabízí přátelské grafické prostředí pro konfiguraci skoro všech nastavení webserveru přímo v internetovém prohlížeči.
 
@@ -301,7 +301,7 @@ Spusťe aplikaci v prohlížeči:
 
 <a name='nginx'></a>
 
-1## Vestavěný webserver v PHP
+2## Vestavěný webserver v PHP
 
 Můžete použít [vestavěný](http://php.net/manual/en/features.commandline.webserver.php) webserver pro svůj vývoj. Pro spuštění webserveru napište do konzole (Windows: Aplikace Příkazový řádek, Linux, Mac: aplikace Terminal):
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='nginx'></a>
 
-2### Konfigurace Phalcon frameworku
+3### Konfigurace Phalcon frameworku
 
 Pro povolení přepisů URI, které Phalcon framework potřebuje, můžete použít soubor pro router (`.htrouter.php`):
 
