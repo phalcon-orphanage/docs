@@ -82,4 +82,4 @@ Následující video Vás provede krok za krokem instalací Phalcon frameworku p
 
 ## Související průvodci
 
-- [Instalace: WAMP](/cz/[[version]]/webserver-wamp)
+- [Instalace: WAMP](/[[language]]/[[version]]/webserver-wamp)
