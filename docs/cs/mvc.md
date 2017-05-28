@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">Architektura</a> <ul>
+      <a href="#architecture">The MVC Architecture</a> <ul>
         <li>
           <a href="#models">Modely</a>
         </li>
@@ -20,7 +20,7 @@
 
 # The MVC Architecture
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
 MVC benefits include:
 
