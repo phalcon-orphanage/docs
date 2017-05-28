@@ -6,12 +6,12 @@
     - [Setting up the component](#setup)
     - [Random](#random)
     - [External Resources](#resources)
-    
+
 </div>
 
 <a name='overview'></a>
 # Security
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ((CSRF)[wiki-csrf]).
 
 <a name='hashing'></a>
 ## Password Hashing
@@ -136,7 +136,7 @@ Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommen
 
 <a name='setup'></a>
 ## Setting up the component
-This component is automatically registered in the services container as 'security', you can re-register it to setup its options:
+This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
 ```php
 <?php
@@ -180,7 +180,8 @@ $base64     = $random->base64($len);
 // Generate a random URL-safe base64 string of length $len.
 $base64Safe = $random->base64Safe($len);
 
-// Generate a UUID (version 4). See https://en.wikipedia.org/wiki/Universally_unique_identifier
+// Generate a UUID (version 4).
+// See https://en.wikipedia.org/wiki/Universally_unique_identifier
 $uuid       = $random->uuid();
 
 // Generate a random integer between 0 and $n.
@@ -191,3 +192,4 @@ $number     = $random->number($n);
 ## External Resources
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
 
+[wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
