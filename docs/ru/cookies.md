@@ -1,12 +1,12 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Cookies Management</a> <ul>
+      <a href="#overview">Управление куками</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Базовое использование</a>
         </li>
         <li>
-          <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
+          <a href="#encryption-decryption">Шифрование/дешифрование кук</a>
         </li>
       </ul>
     </li>
@@ -15,15 +15,15 @@
 
 <a name='overview'></a>
 
-# Cookies Management
+# Управление куками
 
-[Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
+[Куки](http://en.wikipedia.org/wiki/HTTP_cookie)очень полезный способ хранения маленьких фрагментов данных на стороне клиента, которые могут быть получены, даже если пользователь закроет свой браузер. `Phalcon\Http\Response\Cookies` выступает в качестве глобального хранилища для кук. Куки хранятся в таком хранилище во время выполнения запроса и отправляются автоматически по его окончанию.
 
 <a name='usage'></a>
 
-## Basic Usage
+## Базовое использование
 
-You can set/get cookies by just accessing the 'cookies' service in any part of the application where services can be accessed:
+Вы можете установить или извлечь куки простым обращением к сервису cookies из любого места в приложении:
 
 ```php
 <?php
@@ -34,12 +34,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // Check if the cookie has previously set
+        // Проверяем была ли установлена кука ранее
         if ($this->cookies->has('remember-me')) {
-            // Get the cookie
+            // Извлекаем куку
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // Get the cookie's value
+            // Извлекаем значение из куки
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -48,7 +48,7 @@ class SessionController extends Controller
     {
         $this->cookies->set(
             'remember-me',
-            'some value',
+            'некоторое значение',
             time() + 15 * 86400
         );
     }
@@ -57,7 +57,7 @@ class SessionController extends Controller
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // Delete the cookie
+        // Удаляем куку
         $rememberMeCookie->delete();
     }
 }
@@ -65,11 +65,11 @@ class SessionController extends Controller
 
 <a name='encryption-decryption'></a>
 
-## Encryption/Decryption of Cookies
+## Шифрование/дешифрование кук
 
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
+По умолчанию Куки автоматически шифруются перед отправкой клиенту и расшифровываются при получении. Такая защита не позволяет неавторизированным пользователям видеть содержимое кук на стороне клиента (в браузере). Но несмотря на это, хранить в них конфиденциальные (персональные) данные не следует.
 
-You can disable encryption as follows:
+Вы можете отключить шифрование следующим образом:
 
 ```php
 <?php
@@ -88,7 +88,7 @@ $di->set(
 );
 ```
 
-If you wish to use encryption, a global key must be set in the [crypt](/en/[[version]]/crypt) service:
+При использовании шифрования должен быть установлен глобальный ключ в сервисе [crypt](/en/[[version]]/crypt):
 
 ```php
     <?php
@@ -99,12 +99,12 @@ If you wish to use encryption, a global key must be set in the [crypt](/en/[[ver
         'crypt',
         function () {
             $crypt = new Crypt();
-
-            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
+            // Используйте свой собственный ключ!
+            $crypt->setKey('#1dj8$=dp?.ak//j1V$');
 
             return $crypt;
         }
     );
 ```
 
-##### Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals. {.alert.alert-danger}
+##### Отправка клиентам в куки без шифрования объектов со сложной структурой, наборы результатов, служебную информацию и другую подобную информацию, может раскрыть детали реализации приложения, которыми могут воспользоваться злоумышленники для взлома вашего приложения. Если вы не хотите использовать шифрование, мы настоятельно рекомендуем вам отправлять только очень простые данные, такие как числа и небольшие строки. {.alert.alert-danger}
