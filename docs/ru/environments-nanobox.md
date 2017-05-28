@@ -6,10 +6,10 @@
           <a href="#create-project">Создание нового проекта</a>
         </li>
         <li>
-          <a href="#boxfile-yml">Add a boxfile.yml</a>
+          <a href="#boxfile-yml">Создание boxfile.yml</a>
         </li>
         <li>
-          <a href="#add-devtools">Add Phalcon Devtools to your composer.json</a>
+          <a href="#add-devtools">Добаление Phalcon Devtools в composer.json</a>
         </li>
         <li>
           <a href="#new-phalcon-app">Start Nanobox and Generate a New Phalcon App</a>
@@ -74,7 +74,7 @@ This tells Nanobox to:
 
 <a name='add-devtools'></a>
 
-## Add Phalcon Devtools to your composer.json
+## Добаление Phalcon Devtools в composer.json
 
 Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
 
