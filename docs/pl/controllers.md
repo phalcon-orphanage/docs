@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Metoda `initialize()` jest wywołana tylko wtedy, gdy zdarzenie `beforeExecuteRoute` zostało wykonane z powodzeniem. To powoduje, że logika aplikacji podczas inicjowania nie może zostać wykonana bez autoryzacji. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Metoda <code>initialize()</code> jest wywołana tylko wtedy, gdy zdarzenie <code>beforeExecuteRoute</code> zostało wykonane z powodzeniem. To powoduje, że logika aplikacji podczas inicjowania nie może zostać wykonana bez autoryzacji.</h5>
 
 Jeżeli chcesz wykonać jakąś logikę podczas inicjowania, zaraz po utworzeniu obiektu kontrolera, możesz zaimplementować metodę `onConstruct()`:
 
@@ -226,7 +226,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Zwróć szczególną uwagę na to, że metoda `onConstruct()` jest wykonywana nawet wtedy, gdy akcja do realizacji nie istnieje w kontrolerze lub gdy użytkownik nie ma do niej dostępu (odnosząc się do niestandardowej kontroli dostępu dostarczonej przez Dewelopera). {.alert.alert-warning}
+<h5 class='alert alert-warning'>Zwróć szczególną uwagę na to, że metoda <code>onConstruct()</code> jest wykonywana nawet wtedy, gdy akcja do realizacji nie istnieje w kontrolerze lub gdy użytkownik nie ma do niej dostępu (odnosząc się do niestandardowej kontroli dostępu dostarczonej przez Dewelopera).</h5>
 
 <a name='injecting-services'></a>
 
@@ -392,9 +392,9 @@ $di->set(
 );
 ```
 
-<a name='events'></a>
+<a name='using'></a>
 
-## Events in Controllers
+0## Events in Controllers
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
