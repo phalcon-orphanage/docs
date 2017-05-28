@@ -260,7 +260,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 ### Setup
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Routing is handled by the `Phalcon\Mvc\Router` object. [<i class='fa fa-border fa-info'></i>](/[[language]]/[[version]]/routing)
 
 ##### Routes must always start with `/` {.alert.alert-warning}
 
@@ -331,7 +331,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
-Those changes are outlined in the [rewrite rules](/en/[[version]]/rewrite-rules).
+Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
@@ -856,7 +856,7 @@ $app->get(
 );
 ```
 
-Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></i>](/en/[[version]]/routing)
+Additional information: `Phalcon\Mvc\Router` [<i class='fa fa-border fa-info'></i>](/[[language]]/[[version]]/routing)
 
 <a name='routing-setup'></a>
 
