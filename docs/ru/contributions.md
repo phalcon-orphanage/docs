@@ -89,7 +89,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](http://www.php-fig.org/psr/)
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -105,7 +105,7 @@ Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-fea
 
 ## Предложение идей
 
-If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
+If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
 Спасибо!
 
