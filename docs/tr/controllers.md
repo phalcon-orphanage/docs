@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-##### `initialize()` yöntemi yalnızca `beforeExecuteRoute` olayı başarıyla çalıştırılırsa çağrılır. Bu, başlatıcıdaki uygulama mantığının yetkisiz çalıştırılmasını önler. {.alert.alert-warning}
+<h5 class='alert alert-warning'><code>initialize()</code> yöntemi yalnızca <code>beforeExecuteRoute</code> olayı başarıyla çalıştırılırsa çağrılır. Bu, başlatıcıdaki uygulama mantığının yetkisiz çalıştırılmasını önler.</h5>
 
 Denetleyici nesnesinin oluşturulmasından hemen sonra bazı başlatma mantığını yürütmek isterseniz `onConstruct()` yöntemini uygulayabilirsiniz:
 
@@ -226,7 +226,7 @@ class PostsController extends Controller
 }
 ```
 
-##### `onConstruct()` yöntemi çalıştırılacak işlem denetleyicide mevcut değilse veya kullanıcının kendisine erişmediği (geliştiricinin sağladığı özel denetim erişimine göre) yürütüldüğünde unutmayın. {.alert.alert-warning}
+<h5 class='alert alert-warning'><code>onConstruct()</code> yöntemi çalıştırılacak işlem denetleyicide mevcut değilse veya kullanıcının kendisine erişmediği (geliştiricinin sağladığı özel denetim erişimine göre) yürütüldüğünde unutmayın.</h5>
 
 <a name='injecting-services'></a>
 
@@ -281,7 +281,7 @@ class FilesController extends Controller
 }
 ```
 
-Phalcon'u tam yığın çerçevesi olarak kullanıyorsanız, çerçevede sunulan [by default](/en/[[version]]/di) hizmetlerini okuyabilirsiniz.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
 
 <a name='request-response'></a>
 
@@ -335,7 +335,7 @@ class PostsController extends Controller
 }
 ```
 
-Kendi özel makaleler [istek](/en/[[version]]/request) ve [yanıt](/en/[[version]]/response) HTTP ortamı hakkında daha fazla bilgi edinin.
+Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
@@ -392,9 +392,9 @@ $di->set(
 );
 ```
 
-<a name='events'></a>
+<a name='using'></a>
 
-## Denetleyicilerdeki Olaylar
+0## Denetleyicilerdeki Olaylar
 
 Denetleyiciler, [görevlendirici](/en/[[versopm]]/dispatcher) olayları için dinleyiciler olarak otomatik olarak davranır; bu olay adlarıyla yöntemleri uygulamak, eylemler yürütülmeden önce / sonra kanca noktaları uygulamaya izin verir:
 
