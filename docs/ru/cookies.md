@@ -23,7 +23,7 @@
 
 ## Базовое использование
 
-Вы можете установить или извлечь куки простым обращением к сервису cookies из любого места в приложении:
+You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 
 ```php
 <?php
