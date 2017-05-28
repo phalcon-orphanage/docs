@@ -67,4 +67,4 @@ Congratulations! You are now phlying with Phalcon.
 
 ## Related Guides
 
-- [Installation on XAMPP](/en/[[version]]/webserver-xampp)
+- [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
