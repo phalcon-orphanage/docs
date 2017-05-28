@@ -178,10 +178,10 @@ $ docker-compose up -d
 
 Если ваше приложение использует файловый кэш или пишет логи на диск, вы можете настроить эти директории следующим образом:
 
-| Directory | Path             |
-| --------- | ---------------- |
-| Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Директория | Путь             |
+| ---------- | ---------------- |
+| Кэш        | `/project/cache` |
+| Логи       | `/project/log`   |
 
 <a name='logs'></a>
 
@@ -319,7 +319,7 @@ make reset
 
 Основные инструменты: Phalcon, Docker и Docker Compose.
 
-| Application     | Version          |
+| Приложение      | Версия           |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
