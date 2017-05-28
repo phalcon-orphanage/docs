@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">Архитектура MVC</a> <ul>
+      <a href="#architecture">The MVC Architecture</a> <ul>
         <li>
           <a href="#models">Модели</a>
         </li>
@@ -20,7 +20,7 @@
 
 # Архитектура MVC
 
-Phalcon поддерживает использование парадигмы объектно-ориентированного программирования и поддержку классов, необходимых для разделения на Модель, Представление, Контроллер (Model, View, Controller, кратко [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)). Этот шаблон проектирования активно используется в других веб-фреймворках и обычных приложениях.
+Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. Этот шаблон проектирования активно используется в других веб-фреймворках и обычных приложениях.
 
 Преимущества MVC:
 
