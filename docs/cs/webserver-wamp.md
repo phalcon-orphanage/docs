@@ -66,4 +66,4 @@ Gratulujeme! Nyní je Phalcon framework připraven.
 
 ## Související průvodci
 
-- [Instalace: XAMPP](/cz/[[version]]/webserver-xampp)
+- [Instalace: XAMPP](/[[language]]/[[version]]/webserver-xampp)
