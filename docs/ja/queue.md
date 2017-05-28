@@ -23,7 +23,7 @@ The best solution here is to implement background jobs. The web application puts
 
 While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](http://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](http://memcached.org/). It’s simple, lightweight, and completely specialized for job queueing.
 
-##### Some of the data returned from queue methods require that the module Yaml be installed. Please refer to [this](http://php.net/manual/book.yaml.php) for more information. You will need to use Yaml >= 2.0.0 {.alert.alert-danger}
+<h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
 
 <a name='put-jobs-in-queue'></a>
 
