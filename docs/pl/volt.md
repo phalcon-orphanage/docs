@@ -1283,11 +1283,13 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-##### By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in the parent templates. {.alert.alert-warning}
-
 <a name='setup'></a>
 
-9## Autoescape mode
+9
+
+<a name='basic-usage'></a>
+
+0## Autoescape mode
 
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
@@ -1304,7 +1306,7 @@ Manually escaped: {{ robot.name|e }}
 
 <a name='basic-usage'></a>
 
-0## Extending Volt
+1## Extending Volt
 
 Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
 
@@ -1312,7 +1314,7 @@ The Volt compiler allow you to extend it adding more functions, tests or filters
 
 <a name='basic-usage'></a>
 
-1### Functions
+2### Functions
 
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
 
@@ -1394,7 +1396,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='basic-usage'></a>
 
-2### Filters
+3### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1427,7 +1429,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='basic-usage'></a>
 
-3### Extensions
+4### Extensions
 
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1474,7 +1476,7 @@ $compiler->addExtension(
 
 <a name='basic-usage'></a>
 
-4## Caching view fragments
+5## Caching view fragments
 
 With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
 
@@ -1509,7 +1511,7 @@ The caching is done by the `Phalcon\Cache` component via the view component. Lea
 
 <a name='basic-usage'></a>
 
-5## Inject Services into a Template
+6## Inject Services into a Template
 
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
 
@@ -1523,7 +1525,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 <a name='basic-usage'></a>
 
-6## Stand-alone component
+7## Stand-alone component
 
 Using Volt in a stand-alone mode can be demonstrated below:
 
