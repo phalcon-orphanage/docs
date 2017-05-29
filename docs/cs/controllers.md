@@ -51,9 +51,9 @@ Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/20
 | **Parametr**        | 2015           |
 | **Parametr**        | the-post-title |
 
-V tomto případě bude tuto žádost zpracovat PostsController. Neexistuje žádné zvláštní umístění pro controller v aplikaci, controllery mohou být načteny pomocí :doc: `autoloaders <loader>`, takže si můžete organizovat vaše controllery, jak budete potřebovat.
+In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
-Controllery musí mít přípony "Controller" zatímco akce musí mít přípony "Action". Příklad controlleru je následující:
+Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-Pokud uživatelé nemají oprávnění k přístupu k určité akci pak budou předány akci ' signin' v controlleru UsersController.
+If users don't have permission to access a certain action then they will be forwarded to the `signin` action in the `UsersController`.
 
 ```php
 <?php
@@ -175,7 +175,7 @@ class UsersController extends Controller
 }
 ```
 
-Neexistuje žádný limit pro "forwardy", které můžete mít ve své aplikaci, pokud se aplikace nezacyklí. V tom to případě bude vaše aplikace zastavena. Pokud neexistují žádné další akce, které by měly být odeslány, dispečer automaticky vyvolá vrstvu zobrazení MVC, která je spravována například: `Phalcon\Mvc\View`.
+There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. Pokud neexistují žádné další akce, které by měly být odeslány, dispečer automaticky vyvolá vrstvu zobrazení MVC, která je spravována například: `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
@@ -287,7 +287,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 ## Požadavek a odpověď
 
-Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. Služba "požadavku" obsahuje instanci `Phalcon\Http\Request` a "odpověď" obsahuje `Phalcon\Http\Response`, reprezentující co bude odesláno zpět na klienta.
+Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
 ```php
 <?php
