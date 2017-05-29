@@ -70,7 +70,7 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\\Tag</code> page in the API for a complete reference. </h5>
+<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\\Tag` page in the API for a complete reference. </h5>
 
 <a name='document-type'></a>
 
