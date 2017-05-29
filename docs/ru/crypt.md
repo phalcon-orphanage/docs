@@ -15,7 +15,7 @@
           <a href="#service">Настройка сервиса шифрования</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">Ссылки</a>
         </li>
       </ul>
     </li>
@@ -26,11 +26,11 @@
 
 # Шифрование и расшифровка
 
-Phalcon provides encryption facilities via the `Phalcon\Crypt` component. Этот класс предоставляет простые объектно-ориентированные обертки к PHP библиотеке [openssl](http://www.php.net/manual/en/book.openssl.php).
+Phalcon предоставляет средства шифрования с помощью компонента `Phalcon\Crypt`. Этот класс предоставляет простые объектно-ориентированные обертки к PHP библиотеке [openssl](http://www.php.net/manual/en/book.openssl.php).
 
 По умолчанию данный компонент использует надежный алгоритм шифрования AES-256-CFB.
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<h5 class='alert alert-warning'>Вы должны использовать длину ключа, соответствующую текущему алгоритму. Для алгоритма по-умолчанию она составляет 32 байта.</h5>
 
 <a name='usage'></a>
 
@@ -184,8 +184,8 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Ссылки
 
 - [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-- [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+- [Что такое блочный шифр](https://en.wikipedia.org/wiki/Block_cipher)
+- [Введение в Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
