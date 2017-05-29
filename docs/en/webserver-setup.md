@@ -127,7 +127,7 @@ test/
 #### Document root
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`). 
 
-<h5 class='alert alert-warning' markdown='1'>Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. </h5>
+<h5 class='alert alert-warning'>Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. </h5>
 
 ```apacheconfig
 # test/.htaccess

@@ -35,7 +35,7 @@ A model represents the information (data) of the application and the rules to ma
 CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates
 methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning' markdown='1'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the `Phalcon\Db` component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the `Phalcon\Db` component documentation.</h5>
 
 <a name='creating'></a>
 ## Creating Models
@@ -54,7 +54,7 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
+<h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
 By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
@@ -179,7 +179,7 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-<h5 class='alert alert-warning' markdown='1'>Underscores in property names can be problematic when using getters and setters. </h5>
+<h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
 with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName`
@@ -274,7 +274,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.</h5>
+<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.</h5>
 
 You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
@@ -585,7 +585,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Since the default bind-type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
@@ -611,7 +611,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. </h5>
+<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. </h5>
 
 If you're using 'finders', bound parameters are automatically used:
 
@@ -922,7 +922,7 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
+<h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
 
 You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
@@ -1243,7 +1243,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Never use a `Phalcon\Db\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
+<h5 class='alert alert-warning'>Never use a `Phalcon\Db\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 ## Dynamic Updates

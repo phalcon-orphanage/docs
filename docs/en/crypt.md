@@ -14,7 +14,7 @@ Phalcon provides encryption facilities via the :doc:`Phalcon\Crypt` component. T
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-<h5 class='alert alert-warning' markdown='1'>must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<h5 class='alert alert-warning'>must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
 
 <a name='usage'></a>
 ## Basic Usage

@@ -600,7 +600,7 @@ class Robots extends Collection
 
 The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
+<h5 class='alert alert-warning'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
 
 <a name='deleting-records'></a>
 ## Deleting Records

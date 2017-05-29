@@ -110,7 +110,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 ### Setup
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning' markdown='1'>Routes must always start with `/`</h5>
+<h5 class='alert alert-warning'>Routes must always start with `/`</h5>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
@@ -618,7 +618,7 @@ $orders->get('/delete/{id}', 'deleteAction');
 
 $app->mount($orders);
 ```
-<h5 class='alert alert-warning' markdown='1'>The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.</h5>
+<h5 class='alert alert-warning'>The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.</h5>
 
 <a name='routing-parameters'></a>
 ## Parameters
@@ -1066,7 +1066,7 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | after  | After the handler has been executed            |
 | final  | After the response has been sent to the caller |
 
-<h5 class='alert alert-warning' markdown='1'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
+<h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 
 <a name='middleware-attached-events-before'></a>
 ### before
@@ -1541,7 +1541,7 @@ class RequestMiddleware implements MiddlewareInterface
 #### Response Middleware
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning' markdown='1'>We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<h5 class='alert alert-warning'>We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.</h5>
 
 ```php
 <?php
@@ -1584,7 +1584,7 @@ class ResponseMiddleware implements MiddlewareInterface
 # Models
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-<h5 class='alert alert-warning' markdown='1'>The relevant `db` service must be registered in your Di container.</h5>
+<h5 class='alert alert-warning'>The relevant `db` service must be registered in your Di container.</h5>
 
 ```php
 <?php
@@ -1678,7 +1678,7 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The above example uses the `Phalcon\Mvc\View\Simple` component, which uses relative paths instead of controllers and actions. You can use the `Phalcon\Mvc\View` component instead, but to do so you will need to change the parameters passed to `render()`</h5>
+<h5 class='alert alert-warning'>The above example uses the `Phalcon\Mvc\View\Simple` component, which uses relative paths instead of controllers and actions. You can use the `Phalcon\Mvc\View` component instead, but to do so you will need to change the parameters passed to `render()`</h5>
 
 ```php
 <?php

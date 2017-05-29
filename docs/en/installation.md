@@ -46,7 +46,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 ## Software
 * PHP >= 5.5
 
-<h5 class='alert alert-danger' markdown='1'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
+<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
 ### Optional depending on the needs of your application
 * [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
@@ -82,7 +82,7 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning' markdown='1'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-debian-phalcon'></a>
 #### Phalcon installation
@@ -141,7 +141,7 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning' markdown='1'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-rpm-phalcon'></a>
 #### Phalcon installation
@@ -413,4 +413,4 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. </h5>
+<h5 class='alert alert-danger'>Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. </h5>
