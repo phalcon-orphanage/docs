@@ -52,9 +52,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Вопросы и ответы
 
-##### Мы принимаем только сообщения об ошибках, новые запросы и пулл реквесты на GitHub. {.alert.alert-warning}
-
-Для вопросов относительно использования фреймворка или поддержки, пожалуйста, используйте [официальный форум](https://phalcon.link/forum).
+<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
 
 <a name='bug-report-checklist'></a>
 
@@ -89,7 +87,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](http://www.php-fig.org/psr/)
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -99,14 +97,14 @@ Before submit **new functionality**, please open a [NFR](/en/[[version]]/new-fea
 
 ## Получение поддержки
 
-По вопросам использования Phalcon, пожалуйста, используйте [раздел поддержки](https://phalconphp.com/support) на нашем сайте.
+If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
 ## Предложение идей
 
-If you have a change or new feature in mind, please fill an [NFR](/en/[[version]]/new-feature-request).
+If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
-Спасибо!
+Thanks!
 
-<3 Команда Phalcon
+<3 Phalcon Team

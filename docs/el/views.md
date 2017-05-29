@@ -840,9 +840,9 @@ $di->set(
 );
 ```
 
-#### The frontend must always be `Phalcon\Cache\Frontend\Output` and the service `viewCache` must be registered as always open (not shared) in the services container (DI). {.alert.alert-warning}
+<a name='integrating-views-with-controllers'></a>
 
-When using views, caching can be used to prevent controllers from needing to generate view data on each request.
+2When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 
 To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:
 
@@ -881,7 +881,7 @@ The [PHP alternative site](https://github.com/phalcon/php-site) is an example of
 
 <a name='integrating-views-with-controllers'></a>
 
-2## Template Engines
+3## Template Engines
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. `Phalcon\Mvc\View` allows you to use other template engines instead of plain PHP or Volt.
 
@@ -893,7 +893,7 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 <a name='integrating-views-with-controllers'></a>
 
-3### Creating your own Template Engine Adapter
+4### Creating your own Template Engine Adapter
 
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
@@ -943,7 +943,7 @@ class MyTemplateAdapter extends Engine
 
 <a name='integrating-views-with-controllers'></a>
 
-4### Changing the Template Engine
+5### Changing the Template Engine
 
 You can replace the template engine completely or use more than one template engine at the same time. The method `Phalcon\Mvc\View::registerEngines()` accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
 
@@ -990,7 +990,7 @@ There are adapters available for several template engines on the [Phalcon Incuba
 
 <a name='integrating-views-with-controllers'></a>
 
-5## Injecting services in View
+6## Injecting services in View
 
 Every view executed is included inside a `Phalcon\Di\Injectable` instance, providing easy access to the application's service container.
 
@@ -1011,13 +1011,13 @@ $.ajax({
 
 <a name='integrating-views-with-controllers'></a>
 
-6## Stand-Alone Component
+7## Stand-Alone Component
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
 <a name='integrating-views-with-controllers'></a>
 
-7### Hierarchical Rendering
+8### Hierarchical Rendering
 
 Using `Phalcon\Mvc\View` in a stand-alone mode can be demonstrated below:
 
@@ -1077,7 +1077,7 @@ echo $view->getRender(
 
 <a name='integrating-views-with-controllers'></a>
 
-8### Simple Rendering
+9### Simple Rendering
 
 Using `Phalcon\Mvc\View\Simple` in a stand-alone mode can be demonstrated below:
 
@@ -1104,9 +1104,9 @@ echo $view->render(
 );
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='hierarchical-rendering'></a>
 
-9## View Events
+0## View Events
 
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 

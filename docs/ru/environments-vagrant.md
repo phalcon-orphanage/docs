@@ -186,7 +186,7 @@ vagrant box add phalconphp/xenial64
 
 If this command fails, make sure your Vagrant installation is up to date.
 
-##### To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box. {.alert.alert-warning}
+<h5 class='alert alert-warning'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the <a href="https://www.vagrantup.com/vmware">VMware Vagrant plug-in</a>. Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
 
 <a name='installation-phalcon-box'></a>
 
@@ -256,9 +256,9 @@ You can also use more than one core if you like, simply change this line in the 
 cpus: 4
 ```
 
-<a name='installation-configuration-shared-folders'></a>
+<a name='requirements'></a>
 
-### Shared folders
+0### Shared folders
 
 The `folders` property of the `settings.yml` file lists all of the folders you wish to share with your Phalcon Box environment. As files within these folders are changed, they will be kept in sync between your local machine and the Phalcon Box environment. You may configure as many shared folders as necessary:
 
@@ -289,15 +289,15 @@ folders:
             rsync__exclude: ["node_modules"]
 ```
 
-##### macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue: {.alert.alert-danger}
+<a name='requirements'></a>
 
-```bash
+1```bash
 vagrant plugin install vagrant-bindfs
 ```
 
 <a name='requirements'></a>
 
-0### Nginx sites
+2### Nginx sites
 
 The `sites` property allows you to easily map a "domain" to a folder on your Phalcon Box environment. A sample site configuration is included in the `settings.yml` file. You may add as many sites to your Phalcon Box environment as necessary. Phalcon Box can serve as a convenient, virtualized environment for every Phalcon project you are working on:
 
@@ -333,11 +333,13 @@ The default type is `phalcon`. If the desired type is not allowed or not availab
 
 Feel free to suggest a new type of Nginx configuration [through opening a New Feature Request](https://github.com/phalcon/box/issues/new).
 
-##### If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. {.alert.alert-warning}
+<a name='requirements'></a>
+
+3
 
 <a name='requirements'></a>
 
-1#### Custom Nginx configuration
+4#### Custom Nginx configuration
 
 You can also create your own type. To do this take any template from the `provisioning/templates/nginx` folder as a basis and make the necessary changes. You need to place this file into the same folder. After that, you will be able to use your own custom type:
 
@@ -368,7 +370,7 @@ copy:
 
 <a name='requirements'></a>
 
-2#### Configuring the `hosts` file
+5#### Configuring the `hosts` file
 
 You must add the "domains" for your Nginx sites to the hosts file on your machine. The hosts file will redirect requests for your Phalcon sites into your Phalcon Box machine. On Mac and Linux, this file is located at `/etc/hosts`. On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`. The lines you add to this file will look like the following:
 
@@ -380,15 +382,15 @@ Make sure the IP address listed is the one set in your `settings.yml` file. Once
     http://phalcon.local
     
 
-##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: {.alert.alert-danger}
+<a name='requirements'></a>
 
-```bash
+6```bash
 vagrant plugin install vagrant-hostsupdater
 ```
 
 <a name='requirements'></a>
 
-3### Install aditional packages
+7### Install aditional packages
 
 We did our best to provide Phalcon Box with all necessary programs and libraries. However, it should be understood that the typical user does not need all possible packages which can be installed. Phalcon Box must be of reasonable size so that it could be used by even those people who are experiencing difficulties with bandwidth of the Internet channel.
 
@@ -408,7 +410,7 @@ provision:
 
 <a name='requirements'></a>
 
-4### Launching the Phalcon Box
+8### Launching the Phalcon Box
 
 Once you have edited the `settings.yml` to your liking, run the `vagrant up` command from your Phalcon Box directory (for example `$HOME/workspace`). Vagrant will boot the virtual machine and automatically configure your shared folders and Nginx sites.
 
@@ -416,17 +418,17 @@ To destroy the machine, you may use the `vagrant destroy --force` command.
 
 <a name='requirements'></a>
 
-5## Daily usage
+9## Daily usage
 
-<a name='requirements'></a>
+<a name='packages-included'></a>
 
-6### Accessing Phalcon Box globally
+0### Accessing Phalcon Box globally
 
 Sometimes you may want to `vagrant up` your Phalcon Box machine from anywhere on your filesystem. You can do this on Mac or Linux systems by adding a [Bash function](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) to your Bash profile. On Windows, you may accomplish this by adding a "batch" file to your `PATH`. These scripts will allow you to run any Vagrant command from anywhere on your system and will automatically point that command to your Phalcon Box installation:
 
-<a name='requirements'></a>
+<a name='packages-included'></a>
 
-7#### Mac || Linux
+1#### Mac || Linux
 
 ```bash
 function box()
@@ -435,11 +437,13 @@ function box()
 }
 ```
 
-##### Make sure to tweak the `$HOME/workspace` path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like `box up` or `box ssh` from anywhere on your system. {.alert.alert-warning}
+<a name='packages-included'></a>
 
-<a name='requirements'></a>
+2
 
-8#### Windows
+<a name='packages-included'></a>
+
+3#### Windows
 
 Create a `box.bat` batch file anywhere on your machine with the following contents:
 
@@ -456,11 +460,13 @@ set cwd=
 set box=
 ```
 
-##### Make sure to tweak the example `C:\workspace` path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your `PATH`. You may then run commands like `box up` or `box ssh` from anywhere on your system. {.alert.alert-warning}
+<a name='packages-included'></a>
 
-<a name='requirements'></a>
+4
 
-9### Connecting via SSH
+<a name='packages-included'></a>
+
+5### Connecting via SSH
 
 You can SSH into your virtual machine by issuing the `vagrant ssh` terminal command from your Phalcon Box directory.
 
@@ -468,13 +474,13 @@ But, since you will probably need to SSH into your Phalcon Box machine frequentl
 
 <a name='packages-included'></a>
 
-0### Connecting to databases
+6### Connecting to databases
 
 To connect to your MySQL, Postgres or MongoDB database from your host machine's database client, you should connect to `127.0.0.1` and port `33060` (MySQL), `54320` (Postgres) or `27017` (MongoDB). The username and password for databases is `phalcon` / `secret`.
 
-##### You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. {.alert.alert-danger}
+<a name='packages-included'></a>
 
-To access to the interactive db console from Phalcon Box type:
+7To access to the interactive db console from Phalcon Box type:
 
 - **Postgres:** `psql -U phalcon -h localhost` (password `secret`)
 - **MySQL:** `mysql` (password not needed for CLI tool)
@@ -482,7 +488,7 @@ To access to the interactive db console from Phalcon Box type:
 
 <a name='packages-included'></a>
 
-1### Adding additional sites
+8### Adding additional sites
 
 Once your Phalcon Box environment is provisioned and running, you may want to add additional Nginx sites for your applications. You can run as many Phalcon projects as you wish on a single Phalcon Box environment. To add an additional site, simply add the site to your `settings.yml` file:
 
@@ -503,21 +509,21 @@ If Vagrant is not managing your "hosts" file automatically, you may need to add 
     192.168.50.4  blog.local
     
 
-##### To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: {.alert.alert-danger}
+<a name='packages-included'></a>
 
-```bash
+9```bash
 vagrant plugin install vagrant-hostsupdater
 ```
 
 Once the site has been added, run the `vagrant reload --provision` command from your Phalcon Box directory.
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-2### Environment variables
+0### Environment variables
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-3#### Global variables
+1#### Global variables
 
 You can easily register global environment variables. Just add variable and its value to the `variables` section:
 
@@ -560,9 +566,9 @@ modules:
             dump: tests/_data/schemas/mysql/mysql.dump.sql
 ```
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-4#### Site variables
+2#### Site variables
 
 Site variables are how you can easily add `fastcgi_param` values to your site host configuration within Phalcon Box. For example, we may add a `APP_ENV` variable with the value `development`:
 
@@ -578,9 +584,9 @@ sites:
             value: true
 ```
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-5### Ports
+3### Ports
 
 By default, the following ports are forwarded to your Phalcon Box environment:
 
@@ -593,9 +599,9 @@ By default, the following ports are forwarded to your Phalcon Box environment:
 | **Postgres**   |   `5432`    |   `54320`   |
 | **MailHog**    |   `8025`    |   `8025`    |
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-6#### Forwarding additional ports
+4#### Forwarding additional ports
 
 If you wish, you may forward additional ports to the Phalcon Box, as well as specify their protocol:
 
@@ -608,9 +614,9 @@ ports:
       protocol: udp
 ```
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-7### Sharing your environment
+5### Sharing your environment
 
 Sometimes you may wish to share what you're currently working on with coworkers or a client. Vagrant has a built-in way to support this via `vagrant share`; however, this will not work if you have multiple sites configured in your `settings.yml` file.
 
@@ -626,11 +632,13 @@ After running the command, you will see an [Ngrok](https://ngrok.com) screen app
 share blog.local -region=eu -subdomain=phalcongelist
 ```
 
-##### Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the `share` command. {.alert.alert-danger}
+<a name='installation'></a>
 
-<a name='packages-included'></a>
+6
 
-8### Network interfaces
+<a name='installation'></a>
+
+7### Network interfaces
 
 The `networks` property of the `settings.yml` configures network interfaces for your Phalcon Box environment. You may configure as many interfaces as necessary:
 
@@ -657,9 +665,9 @@ networks:
       bridge: "en1: Wi-Fi (AirPort)"
 ```
 
-<a name='packages-included'></a>
+<a name='installation'></a>
 
-9### Updating Phalcon Box
+8### Updating Phalcon Box
 
 You can update Phalcon Box in two simple steps.
 
@@ -685,11 +693,11 @@ We recommend that you always take backups of those files, and remove them from t
 
 <a name='installation'></a>
 
-0### Provider specific settings
+9### Provider specific settings
 
-<a name='installation'></a>
+<a name='installation-vagrant-box'></a>
 
-1#### VirtualBox
+0#### VirtualBox
 
 By default, Phalcon Box configures the `natdnshostresolver` setting to `on`. This allows Phalcon Box to use your host operating system's DNS settings. If you would like to override this behavior, add the following lines to your `settings.yml` file:
 
@@ -697,15 +705,15 @@ By default, Phalcon Box configures the `natdnshostresolver` setting to `on`. Thi
 natdnshostresolver: off
 ```
 
-<a name='installation'></a>
+<a name='installation-vagrant-box'></a>
 
-2### Mail catcher
+1### Mail catcher
 
 By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com/mailhog/MailHog) (instead of sending them to the outside world). You can access the MailHog UI at `http://localhost:8025/` (or whatever domain you have configured in `settings.yml`).
 
-<a name='installation'></a>
+<a name='installation-vagrant-box'></a>
 
-3## Устранение неполадок
+2## Устранение неполадок
 
 **Problem:**
 

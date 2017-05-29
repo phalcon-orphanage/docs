@@ -61,7 +61,7 @@
 
 # ODM (Object-Document Mapper)
 
-In addition to its ability to [map tables](/en/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
@@ -507,7 +507,7 @@ class Products extends Collection
 }
 ```
 
-Additionally, this component is integrated with the [Phalcon Events Manager](/en/[[version]]/events) (`Phalcon\Events\Manager`), this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with the [Phalcon Events Manager](/[[language]]/[[version]]/events) (`Phalcon\Events\Manager`), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -664,11 +664,13 @@ class Robots extends Collection
 
 The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
 
-##### For more information on validators, see the [Validation documentation](/en/[[version]]/validation) {.alert.alert-warning}
+<a name='creating-models'></a>
+
+3
 
 <a name='creating-models'></a>
 
-3## Deleting Records
+4## Deleting Records
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -729,7 +731,7 @@ The following events are available to define custom business rules that can be e
 
 <a name='creating-models'></a>
 
-4## Validation Failed Events
+5## Validation Failed Events
 
 Another type of events is available when the data validation process finds any inconsistency:
 
@@ -740,7 +742,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='creating-models'></a>
 
-5## Implicit Ids vs. User Primary Keys
+6## Implicit Ids vs. User Primary Keys
 
 By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
@@ -762,7 +764,7 @@ class Robots extends Collection
 
 <a name='creating-models'></a>
 
-6## Setting multiple databases
+7## Setting multiple databases
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
 
@@ -814,7 +816,7 @@ class Robots extends Collection
 
 <a name='creating-models'></a>
 
-7## Injecting services into Models
+8## Injecting services into Models
 
 You may be required to access the application services within a model, the following example explains how to do that:
 

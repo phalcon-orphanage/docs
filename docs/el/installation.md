@@ -129,7 +129,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 - PHP >= 5.5
 
-##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 {.alert.alert-danger}
+<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
 ### Optional depending on the needs of your application
 
@@ -178,17 +178,19 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
+<a name='requirements-hardware'></a>
 
-<a name='installation-linux-debian-phalcon'></a>
+0
 
-#### Phalcon installation
+<a name='requirements-hardware'></a>
+
+1#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
 <a name='requirements-hardware'></a>
 
-0##### PHP 5.x
+2##### PHP 5.x
 
 ```bash
 sudo apt-get update
@@ -197,7 +199,7 @@ sudo apt-get install php5-phalcon
 
 <a name='requirements-hardware'></a>
 
-1##### PHP 7
+3##### PHP 7
 
 ```bash
 sudo apt-get update
@@ -206,7 +208,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='requirements-hardware'></a>
 
-2#### Additional PPAs
+4#### Additional PPAs
 
 #### Ondřej Surý
 
@@ -229,17 +231,17 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='requirements-hardware'></a>
 
-3### RPM based distributions (CentOS, Fedora, etc.)
+5### RPM based distributions (CentOS, Fedora, etc.)
 
 <a name='requirements-hardware'></a>
 
-4#### Repository installation
+6#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='requirements-hardware'></a>
 
-5##### Stable releases
+7##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -249,32 +251,34 @@ or
 
 <a name='requirements-hardware'></a>
 
-6##### Nightly releases
+8##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-##### This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {.alert.alert-warning}
-
 <a name='requirements-hardware'></a>
 
-7#### Phalcon installation
+9
+
+<a name='requirements-software'></a>
+
+0#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
-<a name='requirements-hardware'></a>
+<a name='requirements-software'></a>
 
-8##### PHP 5.x
+1##### PHP 5.x
 
 ```bash
 sudo yum update
 sudo yum install php56u-phalcon
 ```
 
-<a name='requirements-hardware'></a>
+<a name='requirements-software'></a>
 
-9##### PHP 7
+2##### PHP 7
 
 ```bash
 sudo yum update
@@ -283,7 +287,7 @@ sudo yum install php70u-phalcon
 
 <a name='requirements-software'></a>
 
-0#### Additional RPMs
+3#### Additional RPMs
 
 ##### Remi
 
@@ -299,7 +303,7 @@ Additional versions are available both architecture specific (x86/x64) as well a
 
 <a name='requirements-software'></a>
 
-1## FreeBSD
+4## FreeBSD
 
 A port is available for FreeBSD. To install it you will need to issue the following commands:
 
@@ -321,13 +325,13 @@ make install clean
 
 <a name='requirements-software'></a>
 
-2## Gentoo
+5## Gentoo
 
 An overlay for installing Phalcon can be found here <https://github.com/smoke/phalcon-gentoo-overlay>
 
 <a name='requirements-software'></a>
 
-3## Mac OS X
+6## Mac OS X
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
@@ -338,7 +342,7 @@ On a Mac OS X system you can compile and install the extension with `brew`, `mac
 
 <a name='requirements-software'></a>
 
-4### Brew
+7### Brew
 
 ```bash
 brew tap homebrew/homebrew-php
@@ -350,7 +354,7 @@ brew install php71-phalcon
 
 <a name='requirements-software'></a>
 
-5### MacPorts
+8### MacPorts
 
 ```bash
 sudo port install php55-phalcon
@@ -367,7 +371,7 @@ Restart your webserver.
 
 <a name='requirements-software'></a>
 
-6## Windows
+9## Windows
 
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
 
@@ -396,9 +400,9 @@ extension=php_phalcon.dll
 
 Restart your webserver.
 
-<a name='requirements-software'></a>
+<a name='installation-sources'></a>
 
-7## Compile from Sources
+## Compile from Sources
 
 Compiling from source is similar to most environments (Linux/Mac).
 
@@ -463,9 +467,9 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-sources-advanced'></a>
 
-8## Advanced Compilation
+## Advanced Compilation
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
@@ -524,9 +528,8 @@ make install
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
-<a name='requirements-software'></a>
-
-9You can create a small script in your web server root that has the following in it:
+<a name='installation-testing'></a>
+You can create a small script in your web server root that has the following in it:
 
 ```php
 <?php
@@ -563,4 +566,4 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-##### Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. {.alert.alert-danger}
+<h5 class='alert alert-danger'>Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded. </h5>

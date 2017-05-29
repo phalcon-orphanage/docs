@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Metoda `initialize()` je volána pouze v případě, že událost `beforeExecuteRoute` proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Metoda <code>initialize()</code> je volána pouze v případě, že událost <code>beforeExecuteRoute</code> proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace.</h5>
 
 Pokud chcete provést některé inicializace logiky hned, jak je vytvořen objekt controlleru můžete implementovat metodu `onConstruct()`:
 
@@ -226,7 +226,7 @@ class PostsController extends Controller
 }
 ```
 
-##### Uvědome si, že metoda `onConstruct()` je spuštěna i v případě, že akce, která má být provedena, neexistuje v controlleru nebo uživatel k ní nemá přístup (v závislosti na vlastní kontrole od vývojáře). {.alert.alert-warning}
+<h5 class='alert alert-warning'>Uvědome si, že metoda <code>onConstruct()</code> je spuštěna i v případě, že akce, která má být provedena, neexistuje v controlleru nebo uživatel k ní nemá přístup (v závislosti na vlastní kontrole od vývojáře).</h5>
 
 <a name='injecting-services'></a>
 
@@ -281,7 +281,7 @@ class FilesController extends Controller
 }
 ```
 
-Pokud používáte Phalcon, můžete přečíst poskytované služby [ve výchozím nastavení](/en/[[version]]/di) frameworku.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
 
 <a name='request-response'></a>
 
@@ -335,7 +335,7 @@ class PostsController extends Controller
 }
 ```
 
-Další informace o prostředí HTTP naleznete v samostatných sekcích pro [požadavek](/en/[[version]]/request) a [odpověd](/en/[[version]]/response).
+Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
@@ -392,9 +392,9 @@ $di->set(
 );
 ```
 
-<a name='events'></a>
+<a name='using'></a>
 
-## Události v controllerech
+0## Události v controllerech
 
 Controllery automaticky působí jako listenery pro události z [dispečeru](/en/[[versopm]]/dispatcher), implementační metody s těmito názvy eventů umožňují implementovat hooky před nebo po provedení akcí:
 

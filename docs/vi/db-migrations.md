@@ -28,7 +28,7 @@
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-##### Migrations are available in [Phalcon Developer Tools](/en/[[version]]/devtools-usage) You need at least Phalcon Framework version 0.5.0 to use developer tools. {.alert.alert-danger}
+<h5 class='alert alert-danger'>Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -40,7 +40,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 ## Schema Dumping
 
-The [Phalcon Developer Tools](/en/[[version]]/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
+The [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
 
 The available options for generating migrations are:
 
@@ -54,7 +54,7 @@ Each migration has a version identifier associated with it. The version number a
 
 When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
 
-By default [Phalcon Developer Tools](/en/[[version]]/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+By default [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
 
 ![](/images/content/migrations-2.png)
 
@@ -222,7 +222,7 @@ Database migrations support the following database column types:
 
 ## Writing Migrations
 
-Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/en/[[version]]/db).
+Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/[[language]]/[[version]]/db).
 
 ```php
 <?php

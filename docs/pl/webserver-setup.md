@@ -156,7 +156,7 @@ server {
 
 ### Konfiguracja Phalcona
 
-Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. Należy zwrócić przede wszystkim uwagę na konfigurację modułu `mod_rewrite` który pozwala na używanie przyjaznych adresów URL i [komponentu routera](/en/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
+Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
 
 ```bash
 test/
@@ -177,7 +177,7 @@ test/
 
 Najbardziej typowym przypadkiem jest aplikacja zainstalowana w dowolnym folderze znajdującym się w głównym katalogu witryny. W tym przypadku używamy dwóch plików `.htaccess`, pierwszego do ukrycia kodu aplikacjia i przekierowania wszystkich zapytań do głównego katalogu aplikacji (`public/`).
 
-##### Należy zauważyć że używanie plików `.htaccess` wiąże się z koniecznością ustawienia opcji `AllowOverride All` w twojej konfiguracji apache. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Należy zauważyć że używanie plików <code>.htaccess</code> wiąże się z koniecznością ustawienia opcji <code>AllowOverride All</code> w twojej konfiguracji apache. </h5>
 
 ```apacheconfig
 # test/.htaccess
@@ -251,15 +251,15 @@ Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wir
 </VirtualHost>
 ```
 
-<a name='cherokee'></a>
+<a name='nginx'></a>
 
-## Cherokee
+0## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) jest serwerem sieci web o wysokiej wydajności. Jest bardzo szybki, elastyczny i łatwy w konfiguracji.
 
 <a name='nginx'></a>
 
-0### Konfiguracja Phalcona
+1### Konfiguracja Phalcona
 
 Cherokee zapewnia przyjazny interfejs graficzny pozwalający na skonfigurowanie prawie każdej dostępnej opcji w tym serwerze.
 
@@ -301,7 +301,7 @@ Uruchom aplikację w przeglądarce:
 
 <a name='nginx'></a>
 
-1## Wbudowany serwer PHP
+2## Wbudowany serwer PHP
 
 Możesz skorzystać z [wbudowanego w](http://php.net/manual/en/features.commandline.webserver.php) PHP serwera podczas tworzenia aplikacji. Aby uruchomić serwer:
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='nginx'></a>
 
-2### Konfiguracja Phalcona
+3### Konfiguracja Phalcona
 
 Aby włączyć przepisywanie adresów którego Phalcon potrzebuje, możesz użyć następującego pliku routera (`.htrouter.php`):
 

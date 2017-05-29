@@ -91,9 +91,9 @@ $di->set(
 
 ## Generating URIs
 
-If you are using the [Router](/en/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern:
+If you are using the [Router](/[[language]]/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern:
 
-##### /:controller/:action/:params {.alert.alert-info}
+<h5 class='alert alert-info'>/:controller/:action/:params </h5>
 
 Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
 

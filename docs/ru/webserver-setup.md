@@ -156,7 +156,7 @@ server {
 
 ### Настройка под Phalcon
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/en/[[version]]/routing). Commonly an application has the following structure:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -177,7 +177,7 @@ test/
 
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
-##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
+<h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
 
 ```apacheconfig
 # test/.htaccess
@@ -251,15 +251,15 @@ And this second configuration allows you to install a Phalcon application in a v
 </VirtualHost>
 ```
 
-<a name='cherokee'></a>
+<a name='nginx'></a>
 
-## Cherokee
+0## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='nginx'></a>
 
-0### Настройка под Phalcon
+1### Настройка под Phalcon
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
@@ -301,7 +301,7 @@ Execute the application in a browser:
 
 <a name='nginx'></a>
 
-1## Встроенный веб-сервер
+2## Встроенный веб-сервер
 
 Вы можете использовать [встроенный веб-сервер](http://php.net/manual/en/features.commandline.webserver.php) для разработки. Для запуска сервера выполните команду:
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='nginx'></a>
 
-2### Настройка под Phalcon
+3### Настройка под Phalcon
 
 Если вы хотите перенаправлять запросы на файл index.php, добавьте файл `.htrouter.php` со следующим кодом:
 

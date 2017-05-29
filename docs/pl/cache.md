@@ -94,7 +94,7 @@ Although this component is very fast, implementing it in cases that are not need
 - You are using a lot of helpers and the output generated is almost always the same
 - You are accessing database data constantly and these data rarely change
 
-##### *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide. {.alert.alert-warning}
+<h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</h5>
 
 <a name='caching-behavior'></a>
 
@@ -162,7 +162,7 @@ if ($content === null) {
 }
 ```
 
-##### *NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations. {.alert.alert-warning}
+<h5 class='alert alert-warning'><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.</h5>
 
 <a name='arbitrary-data'></a>
 
@@ -312,9 +312,9 @@ foreach ($keys as $key) {
 $keys = $cache->queryKeys('my-prefix');
 ```
 
-<a name='delete'></a>
+<a name='implementation'></a>
 
-## Usuwanie danych z cache
+0## Usuwanie danych z cache
 
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
@@ -332,9 +332,9 @@ foreach ($keys as $key) {
 }
 ```
 
-<a name='exists'></a>
+<a name='implementation'></a>
 
-## Checking cache existence
+1## Checking cache existence
 
 It is possible to check if a cache already exists with a given key:
 
@@ -350,7 +350,7 @@ if ($cache->exists('someKey')) {
 
 <a name='implementation'></a>
 
-0## Lifetime
+2## Lifetime
 
 A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
 
@@ -391,7 +391,7 @@ if ($robots === null) {
 
 <a name='implementation'></a>
 
-1## Multi-Level Cache
+3## Multi-Level Cache
 
 This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
 
@@ -455,7 +455,7 @@ $cache->save('my-key', $data);
 
 <a name='implementation'></a>
 
-2## Frontend Adapters
+4## Frontend Adapters
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
@@ -470,13 +470,13 @@ The available frontend adapters that are used as interfaces or input sources to 
 
 <a name='implementation'></a>
 
-3### Implementing your own Frontend adapters
+5### Implementing your own Frontend adapters
 
 The `Phalcon\Cache\FrontendInterface` interface must be implemented in order to create your own frontend adapters or extend the existing ones.
 
 <a name='implementation'></a>
 
-4## Backend Adapters
+6## Backend Adapters
 
 The backend adapters available to store cache data are:
 
@@ -492,13 +492,13 @@ The backend adapters available to store cache data are:
 
 <a name='implementation'></a>
 
-5### Implementing your own Backend adapters
+7### Implementing your own Backend adapters
 
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
 <a name='implementation'></a>
 
-6### File Backend Options
+8### File Backend Options
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
@@ -509,7 +509,7 @@ This backend will store cached content into files in the local server. The avail
 
 <a name='implementation'></a>
 
-7### Libmemcached Backend Options
+9### Libmemcached Backend Options
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -567,9 +567,9 @@ $cache = new Libmemcached(
 );
 ```
 
-<a name='implementation'></a>
+<a name='adapters-backend-memcache'></a>
 
-8### Memcache Backend Options
+### Memcache Backend Options
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
@@ -580,9 +580,9 @@ This backend will store cached content on a memcached server. The available opti
 | `port`       | The memcached port.                                         |
 | `persistent` | Create a persistent connection to memcached?                |
 
-<a name='implementation'></a>
+<a name='adapters-backend-apc'></a>
 
-9### APC Backend Options
+### APC Backend Options
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
@@ -590,9 +590,9 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
-<a name='caching-behavior'></a>
+<a name='adapters-backend-mongo'></a>
 
-0### Mongo Backend Options
+### Mongo Backend Options
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
@@ -603,9 +603,9 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 | `db`         | Mongo database name.                                        |
 | `collection` | Mongo collection in the database.                           |
 
-<a name='caching-behavior'></a>
+<a name='adapters-backend-xcache'></a>
 
-1### XCache Backend Options
+### XCache Backend Options
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
@@ -613,9 +613,9 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
-<a name='caching-behavior'></a>
+<a name='adapters-backend-redis'></a>
 
-2### Redis Backend Options
+### Redis Backend Options
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 

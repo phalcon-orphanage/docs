@@ -6,10 +6,10 @@
           <a href="#create-project">Создание нового проекта</a>
         </li>
         <li>
-          <a href="#boxfile-yml">Add a <code>boxfile.yml</code></a>
+          <a href="#boxfile-yml">Добавление <code>boxfile.yml</code></a>
         </li>
         <li>
-          <a href="#add-devtools">Add Phalcon Devtools to your <code>composer.json</code></a>
+          <a href="#add-devtools">Добавление Phalcon Devtools в <code>composer.json</code></a>
         </li>
         <li>
           <a href="#new-phalcon-app">Start Nanobox and Generate a New Phalcon App</a>
@@ -21,7 +21,7 @@
           <a href="#environment">Check Out the Environment</a>
         </li>
         <li>
-          <a href="#conclusion">Phalcon and Nanobox</a>
+          <a href="#conclusion">Phalcon и Nanobox</a>
         </li>
       </ul>
     </li>
@@ -48,7 +48,7 @@ mkdir nanobox-phalcon && cd nanobox-phalcon
 
 <a name='boxfile-yml'></a>
 
-## Add a `boxfile.yml`
+## Добавление `boxfile.yml`
 
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
 
@@ -74,7 +74,7 @@ This tells Nanobox to:
 
 <a name='add-devtools'></a>
 
-## Add Phalcon Devtools to your `composer.json`
+## Добавление Phalcon Devtools в `composer.json`
 
 Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
 
@@ -86,7 +86,7 @@ This tells Nanobox to:
 }
 ```
 
-##### **NOTE**: The version of Phalcon Devtools depends on which PHP version you're using {.alert.alert-warning}
+<h5 class='alert alert-warning'><strong>NOTE</strong>: The version of Phalcon Devtools depends on which PHP version you're using </h5>
 
 <a name='new-phalcon-app'></a>
 
@@ -157,7 +157,7 @@ exit
 
 <a name='conclusion'></a>
 
-## Phalcon and Nanobox
+## Phalcon и Nanobox
 
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 

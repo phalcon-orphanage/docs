@@ -52,7 +52,7 @@
 
 # Урок: Основы
 
-В этом примере рассмотрим создание приложения с простой формой регистрации “с нуля”. Также рассмотрим основные аспекты поведения фреймворка. Если вам интересна автоматическая генерация кода, посмотрите [Инструменты разработчика](/en/[[version]]/developer-tools).
+В этом примере рассмотрим создание приложения с простой формой регистрации “с нуля”. Также рассмотрим основные аспекты поведения фреймворка. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
 
 Лучше всего следовать данному руководству шаг за шагом. Полный код можно посмотреть [здесь](https://github.com/phalcon/tutorial).
 
@@ -78,7 +78,7 @@ tutorial/
 
 Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
 
-Перед тем как продолжить, пожалуйста убедитесь, что вы успешно [установили Phalcon](/en/[[version]]/installation) и у вас установлен [Nginx](/en/[[version]]/setup#nginx), [Apache](/en/[[version]]/setup#apache) или [Cherokee](/en/[[version]]/setup#cherokee).
+Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 

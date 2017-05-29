@@ -68,9 +68,9 @@
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the `Phalcon\Tag` component which in turn offers view helpers to generate HTML markup.
 
-This component can be used in a plain HTML+PHP view or in a [Volt](/en/[[version]]/volt) template.
+This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-##### This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\Tag` page in the API for a complete reference. {.alert.alert-warning}
+<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\\Tag</code> page in the API for a complete reference. </h5>
 
 <a name='document-type'></a>
 
@@ -213,7 +213,7 @@ Same form generated in Volt:
 {{ endForm() }}
 ```
 
-Phalcon also provides a [form builder](/en/[[version]]/forms) to create forms in an object-oriented manner.
+Phalcon also provides a [form builder](/[[language]]/[[version]]/forms) to create forms in an object-oriented manner.
 
 <a name='helpers-for-form-elements'></a>
 
@@ -264,7 +264,7 @@ Volt syntax:
 
 ## Making Select Boxes
 
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/en/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
 
 ```php
 <?php
@@ -467,15 +467,15 @@ This will generate the following select tag with the value 'Blue' selected:
 
 A special feature that the `Phalcon\Tag` helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
-<a name='document-type'></a>
+<a name='helper-values-directly'></a>
 
-0### Specifying values directly
+### Specifying values directly
 
 Every form helper supports the parameter 'value'. With it you can specify a value for the helper directly. When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
-<a name='document-type'></a>
+<a name='changing-document-title-dynamically'></a>
 
-1## Changing dynamically the Document Title
+## Changing dynamically the Document Title
 
 `Phalcon\Tag` offers helpers to change dynamically the document title from the controller. The following example demonstrates just that:
 
@@ -524,15 +524,15 @@ The following HTML will generated:
 </html>
 ```
 
-<a name='document-type'></a>
+<a name='static-content-helpers'></a>
 
-2## Static Content Helpers
+## Static Content Helpers
 
 `Phalcon\Tag` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
 
-<a name='document-type'></a>
+<a name='static-content-helpers-images'></a>
 
-3### Images
+### Images
 
 ```php
 <?php
@@ -559,9 +559,9 @@ Volt syntax:
 {{ image('img/hello.gif', 'alt': 'alternative text') }}
 ```
 
-<a name='document-type'></a>
+<a name='static-content-helpers-stylesheets'></a>
 
-4### Stylesheets
+### Stylesheets
 
 ```php
 <?php
@@ -583,9 +583,9 @@ Volt syntax:
 {{ stylesheet_link('css/styles.css') }}
 ```
 
-<a name='document-type'></a>
+<a name='static-content-helpers-javascript'></a>
 
-5### Javascript
+### Javascript
 
 ```php
 <?php
@@ -607,9 +607,9 @@ Volt syntax:
 {{ javascript_include('javascript/jquery.min.js') }}
 ```
 
-<a name='document-type'></a>
+<a name='static-content-helpers-html5'></a>
 
-6### HTML5 elements - generic HTML helper
+### HTML5 elements - generic HTML helper
 
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
@@ -647,11 +647,11 @@ This is my canvas
 {{ tag_html_close('canvas') }}
 ```
 
-<a name='document-type'></a>
+<a name='tag-helpers'></a>
 
-7## Tag Service
+## Tag Service
 
-`Phalcon\Tag` is available via the [tag](/en/[[version]]/tag) service, this means you can access it from any part of the application where the services container is located:
+`Phalcon\Tag` is available via the [tag](/[[language]]/[[version]]/tag) service, this means you can access it from any part of the application where the services container is located:
 
 ```php
 <?php echo $this->tag->linkTo('pages/about', 'About') ?>
@@ -682,7 +682,7 @@ class MyTags extends Tag
 }
 ```
 
-Then change the definition of the service [tag](/en/[[version]]/tag):
+Then change the definition of the service [tag](/[[language]]/[[version]]/tag):
 
 ```php
 <?php
@@ -692,9 +692,9 @@ $di['tag'] = function () {
 };
 ```
 
-<a name='document-type'></a>
+<a name='custom-helpers'></a>
 
-8## Creating your own helpers
+## Creating your own helpers
 
 You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it 'customhelpers'. Next we will create a new file titled `MyTags.php` within this new directory. At this point, we have a structure that looks similar to : `/app/customhelpers/MyTags.php`. In `MyTags.php`, we will extend the `Phalcon\Tag` and implement your own helper. Below is a simple example of a custom helper:
 
@@ -822,4 +822,4 @@ Now you are ready to use your new helper within your views:
 </body>
 ```
 
-You can also check out [Volt](/en/[[version]]/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by `Phalcon\Tag`.
+You can also check out [Volt](/[[language]]/[[version]]/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by `Phalcon\Tag`.

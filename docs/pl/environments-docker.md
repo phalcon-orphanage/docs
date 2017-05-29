@@ -138,7 +138,7 @@ Another way to initialize your project is with Git.
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-##### Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file {.alert.alert-warning}
+<h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
 
 Add your Phalcon Application into `application` folder.
 
@@ -182,21 +182,21 @@ If your application uses a file cache or writes logs to files, you can set up yo
 | Cache     | `/project/cache` |
 | Logs      | `/project/log`   |
 
-<a name='logs'></a>
+<a name='dependencies'></a>
 
-## Logs
+0## Logs
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='dependencies'></a>
 
-0## Environment variables
+1## Environment variables
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='dependencies'></a>
 
-1### Web environment
+2### Web environment
 
 | Environment variable | Description                                         | Default         |
 | -------------------- | --------------------------------------------------- | --------------- |
@@ -210,7 +210,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='dependencies'></a>
 
-2### phpMyAdmin variables
+3### phpMyAdmin variables
 
 | Environment variable | Description                                                                                                  | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
@@ -228,7 +228,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='dependencies'></a>
 
-3## Xdebug Remote debugger (PhpStorm)
+4## Xdebug Remote debugger (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
@@ -251,11 +251,11 @@ ipconfig
 
 <a name='dependencies'></a>
 
-4## Troubleshooting
+5## Troubleshooting
 
 <a name='dependencies'></a>
 
-5### Startup or linking errors
+6### Startup or linking errors
 
 If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
@@ -268,7 +268,7 @@ docker-compose up -d
 
 <a name='dependencies'></a>
 
-6### Full reset
+7### Full reset
 
 To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
@@ -281,7 +281,7 @@ docker-compose up -d
 
 <a name='dependencies'></a>
 
-7### Updating dependencies
+8### Updating dependencies
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
@@ -314,7 +314,7 @@ make reset
 
 <a name='dependencies'></a>
 
-8## Versions
+9## Versions
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
