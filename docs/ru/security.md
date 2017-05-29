@@ -32,11 +32,11 @@
 
 ## Хэширование паролей
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
+Хранение паролей в открытом виде является плохой практикой. Любой, кто имеет доступ к базе данных, мгновенно получит доступ ко всем пользовательским аккаунтам и, таким образом, получает возможность производить неавторизованные действия. Для противостояния этому, многие приложения используют знакомые методы одностороннего хеширования вроде '[md5](http://php.net/manual/en/function.md5.php)' и '[sha1](http://php.net/manual/en/function.sha1.php)'. Однако аппаратное обеспечение развивается с каждым днем, становится быстрее, и эти алгоритмы становятся уязвимы к атакам методом перебора. Данные атаки также известны как [радужные таблицы](http://en.wikipedia.org/wiki/Rainbow_table).
 
-To solve this problem we can use hash algorithms as [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Why bcrypt? Thanks to its '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm we can make the password encryption as 'slow' as we want. Slow algorithms make the process to calculate the real password behind a hash extremely difficult if not impossible. This will protect your for a long time from a possible attack using rainbow tables.
+Для решения этой проблемы, мы можем использовать такие алгоритмы хеширования, как [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Почему bcrypt? Благодаря алгоритму установки ключа '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' мы можем сделать шифрование пароля настолько "медленным", насколько мы этого захотим. Медленные алгоритмы делают процесс вычисления настоящего пароля, скрытого за хешем, крайне сложным, если не невозможным. Это защитит вас на долгое время от возможных атак с использованием радужных таблиц.
 
-This component gives you the ability to use this algorithm in a simple way:
+Этот компонент дает вам возможность простым способом использовать данный алгоритм:
 
 ```php
 <?php
@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         $user->login = $login;
 
-        // Store the password hashed
+        // Сохраняем пароль хэшированным
         $user->password = $this->security->hash($password);
 
         $user->save();
@@ -62,7 +62,7 @@ class UsersController extends Controller
 }
 ```
 
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
+Мы сохранили пароль хешированным с коэффициентом хеширования по-умолчанию. Более высокий коэффициент хеширования сделает пароль менее уязвимым, так как его шифрование будет медленным. Мы можем проверить правильность пароля следующим способом:
 
 ```php
 <?php
@@ -79,10 +79,10 @@ class SessionController extends Controller
         $user = Users::findFirstByLogin($login);
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // The password is valid
+                // Пароль верный
             }
         } else {
-            // To protect against timing attacks. Regardless of whether a user
+            // Защита от атак по времени. Regardless of whether a user
             // exists or not, the script will take roughly the same amount as
             // it will always be computing a hash.
             $this->security->hash(rand());
