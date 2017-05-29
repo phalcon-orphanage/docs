@@ -138,7 +138,7 @@ Generating autoload files
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-<h5 class='alert alert-warning'>Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file </h5>
+<h5 class='alert alert-warning'>Убедитесь, что вы создали `variables.env` используя как образец `variables.env.example` и настроили соответствующим образом окружение используя этот файл. </h5>
 
 Добавьте ваше Phalcon приложение в папку `application`.
 
