@@ -89,13 +89,13 @@ $image->save('image.jpg', 80);
 
 There are several modes of resizing:
 
-- `\Phalcon\Image::WIDTH`
-- `\Phalcon\Image::HEIGHT`
-- `\Phalcon\Image::NONE`
-- `\Phalcon\Image::TENSILE`
-- `\Phalcon\Image::AUTO`
-- `\Phalcon\Image::INVERSE`
-- `\Phalcon\Image::PRECISE`
+* `\Phalcon\Image::WIDTH`
+* `\Phalcon\Image::HEIGHT`
+* `\Phalcon\Image::NONE`
+* `\Phalcon\Image::TENSILE`
+* `\Phalcon\Image::AUTO`
+* `\Phalcon\Image::INVERSE`
+* `\Phalcon\Image::PRECISE`
 
 <a name='resizing-width'></a>
 
@@ -141,10 +141,10 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::NONE`
 
-- The `NONE` constant ignores the original image's ratio.
-- Neither width and height are required.
-- If a dimension is not specified, the original dimension will be used.
-- If the new proportions differ from the original proportions, the image may be distorted and stretched.
+* The `NONE` constant ignores the original image's ratio.
+* Neither width and height are required.
+* If a dimension is not specified, the original dimension will be used.
+* If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
 <?php
@@ -164,9 +164,9 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::TENSILE`
 
-- Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
-- Both width and height are required.
-- If the new proportions differ from the original proportions, the image may be distorted and stretched.
+* Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
+* Both width and height are required.
+* If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
 <?php
