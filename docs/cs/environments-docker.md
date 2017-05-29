@@ -138,7 +138,7 @@ Another way to initialize your project is with Git.
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-<h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
+<h5 class='alert alert-warning'>Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file </h5>
 
 Add your Phalcon Application into `application` folder.
 

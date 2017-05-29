@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'><code>initialize()</code> yöntemi yalnızca <code>beforeExecuteRoute</code> olayı başarıyla çalıştırılırsa çağrılır. Bu, başlatıcıdaki uygulama mantığının yetkisiz çalıştırılmasını önler.</h5>
+<h5 class='alert alert-warning'>The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
 Denetleyici nesnesinin oluşturulmasından hemen sonra bazı başlatma mantığını yürütmek isterseniz `onConstruct()` yöntemini uygulayabilirsiniz:
 
@@ -226,7 +226,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'><code>onConstruct()</code> yöntemi çalıştırılacak işlem denetleyicide mevcut değilse veya kullanıcının kendisine erişmediği (geliştiricinin sağladığı özel denetim erişimine göre) yürütüldüğünde unutmayın.</h5>
+<h5 class='alert alert-warning'>Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 

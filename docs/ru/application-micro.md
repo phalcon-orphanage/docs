@@ -262,7 +262,7 @@ $app = new Micro();
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Маршруты всегда должны начинаться с <code>/</code></h5>
+<h5 class='alert alert-warning'>Routes must always start with `/`</h5>
 
 Обычно, `/` является стартовым маршрутом приложения, и в большинстве случаев осуществляется через метод GET протокола HTTP:
 
