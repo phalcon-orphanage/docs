@@ -5,16 +5,17 @@
     - [Encryption Options](#options)
     - [Base64 Support](#base64)
     - [Setting up an Encryption service](#service)
-    
+    - [Links](#links)
+
 </div>
 
 <a name='overview'></a>
 # Encryption/Decryption
-Phalcon provides encryption facilities via the :doc:`Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-<h5 class='alert alert-warning'>must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
 
 <a name='usage'></a>
 ## Basic Usage
@@ -158,3 +159,8 @@ class SecretsController extends Controller
 }
 ```
 
+<a name='links'></a>
+## Links
+* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
+* [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
