@@ -51,9 +51,9 @@ For instance, when you access a URL like this: `http://localhost/blog/posts/show
 | **Parameter**         | 2015           |
 | **Parameter**         | the-post-title |
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
-Controllers must have the suffix 'Controller' while actions the suffix 'Action'. A sample of a controller is as follows:
+Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the 'signin' action in the Users controller.
+If users don't have permission to access a certain action then they will be forwarded to the `signin` action in the `UsersController`.
 
 ```php
 <?php
@@ -175,7 +175,7 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the 'forwards' you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
@@ -287,7 +287,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 ## Request and Response
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The 'request' service contains an instance of `Phalcon\Http\Request` and the 'response' contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
 ```php
 <?php
