@@ -156,7 +156,7 @@ class DocsController extends PhController
      *
      * @return string
      */
-    private function getLanguage($language): stromg
+    private function getLanguage($language): string
     {
        $languages = $this->config->get('languages', ['en' => 'English']);
 

@@ -20,7 +20,6 @@ use Phalcon\Mvc\View\Simple as PhViewSimple;
 use Phalcon\Mvc\View\Engine\Volt as PhVolt;
 
 use ParsedownExtra as PParseDown;
-use Docs\Locale as DocsLocale;
 use Docs\Utils as DocsUtils;
 
 /**
@@ -175,8 +174,6 @@ class Main
         $utils  = $this->diContainer->getShared('utils');
         /** @var PhEventsManager $eventsManager */
         $eventsManager = $this->diContainer->getShared('eventsManager');
-
-        $this->diContainer->setShared('locale', new DocsLocale());
 
         $routes     = $config->get('routes')->toArray();
         $collection = new PhMicroCollection();
