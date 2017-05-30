@@ -1,5 +1,5 @@
 files:
-  - source: /docs/en/*.md
-    translation: /docs/%two_letters_code%/%original_file_name%
-  - source: /docs/en/api/*.md
-    translation: /docs/%two_letters_code%/api/%original_file_name%
+  - source: /docs/en/3.1.2/*.md
+    translation: /docs/%two_letters_code%/3.1.2/%original_file_name%
+  - source: /docs/en/3.1.2/api/*.md
+    translation: /docs/%two_letters_code%/3.1.2/api/%original_file_name%
