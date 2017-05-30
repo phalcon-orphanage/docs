@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#working-with">Working with Models</a> <ul>
+      <a href="#working-with">Работа с моделями</a> <ul>
         <li>
-          <a href="#creating">Creating Models</a> <ul>
+          <a href="#creating">Создание моделей</a> <ul>
             <li>
               <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
             </li>
@@ -84,7 +84,7 @@
 
 <a name='working-with'></a>
 
-# Working with Models
+# Работа с моделями
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -94,9 +94,9 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## Создание моделей
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+Модель — это класс, который унаследован от `Phalcon\Mvc\Model`. Имя класса должно быть в camel case:
 
 ```php
 <?php
@@ -265,10 +265,10 @@ You could find a certain record by its primary key and then print its name:
 
 use Store\Toys\Robots;
 
-// Find record with id = 3
+// Поиск записи с id = 3
 $robot = Robots::findFirst(3);
 
-// Prints 'Terminator'
+// Вывод 'Terminator'
 echo $robot->name;
 ```
 
@@ -386,7 +386,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter   | Description                                                                                                                                                                                          | Example                                                              |
+| Параметр    | Описание                                                                                                                                                                                             | Пример                                                               |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => 'name LIKE 'steve%''`                            |
 | columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |

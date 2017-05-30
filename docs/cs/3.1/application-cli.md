@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Vytvoření CLI aplikace</a> <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">Struktura</a>
         </li>
         <li>
           <a href="#creating-bootstrap">Creating a Bootstrap</a>

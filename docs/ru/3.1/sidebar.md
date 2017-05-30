@@ -1,70 +1,70 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
-    - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
-- Contributions 
-    - [Overview](/[[language]]/[[version]]/contributions)
+- [Основное](/[[language]]/[[version]]/introduction) 
+    - [Примечания к выпуску](/[[language]]/[[version]]/release-notes)
+    - Обновление
+    - [Спонсоры](/[[language]]/[[version]]/sponsors)
+- Вклад 
+    - [Введение](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
-    - [NFR](/[[language]]/[[version]]/new-feature-request)
+    - [Запрос новой функции](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
-- Getting Started 
-    - [Installation](/[[language]]/[[version]]/installation)
-    - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
+    - Руководство по тестированию
+- Начало работы 
+    - [Установка](/[[language]]/[[version]]/installation)
+    - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Environments 
+- Окружение 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
-- Development Tools 
+- Инструменты разработчика 
     - [Installation](/[[language]]/[[version]]/devtools-installation)
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
-- Core 
-    - Application 
+- Ядро 
+    - Приложение 
         - [Full](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
-        - [Cli](/[[language]]/[[version]]/application-cli)
-    - [DI Container](/[[language]]/[[version]]/di)
+        - [Микро](/[[language]]/[[version]]/application-micro)
+        - [CLI](/[[language]]/[[version]]/application-cli)
+    - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Services 
-    - [Cache](/[[language]]/[[version]]/cache)
-    - [Config](/[[language]]/[[version]]/config)
+- Сервисы 
+    - [Кэш](/[[language]]/[[version]]/cache)
+    - [Конфигурация](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
     - [Loader](/[[language]]/[[version]]/loader) 
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
     - [Queue](/[[language]]/[[version]]/queue)
-- Database 
+- База данных 
     - [Layer](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Models](/[[language]]/[[version]]/db-models) 
-        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
-        - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
-        - [Cache](/[[language]]/[[version]]/db-models-cache)
-        - [Events](/[[language]]/[[version]]/db-models-events)
-        - [Metadata](/[[language]]/[[version]]/db-models-metadata)
-        - [Relationships](/[[language]]/[[version]]/db-models-relationships)
-        - [Transactions](/[[language]]/[[version]]/db-models-transactions)
-        - [Validators](/[[language]]/[[version]]/db-models-validators)
+    - [Модели](/[[language]]/[[version]]/db-models) 
+        - [Продвинутое использование](/[[language]]/[[version]]/db-models-advanced)
+        - [Поведения](/[[language]]/[[version]]/db-models-behaviors)
+        - [Кэш](/[[language]]/[[version]]/db-models-cache)
+        - [События](/[[language]]/[[version]]/db-models-events)
+        - [Метаданные](/[[language]]/[[version]]/db-models-metadata)
+        - [Отношения](/[[language]]/[[version]]/db-models-relationships)
+        - [Транзакции](/[[language]]/[[version]]/db-models-transactions)
+        - [Валидаторы](/[[language]]/[[version]]/db-models-validators)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
-- Front End 
-    - [Assets](/[[language]]/[[version]]/assets)
+- Фронтенд 
+    - [Медиа-ресурсы](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
     - [Forms](/[[language]]/[[version]]/forms)
     - [Image](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
-- Business Logic 
-    - [Access Control Lists](/[[language]]/[[version]]/acl)
-    - [Annotations](/[[language]]/[[version]]/annotations)
-    - [Controllers](/[[language]]/[[version]]/controllers)
+- Бизнес-логика 
+    - [Контроль доступа](/[[language]]/[[version]]/acl)
+    - [Аннотации](/[[language]]/[[version]]/annotations)
+    - [Контроллеры](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [Filters](/[[language]]/[[version]]/filter)
@@ -76,9 +76,9 @@
     - [Cookies](/[[language]]/[[version]]/cookies)
     - [Request](/[[language]]/[[version]]/request)
     - [Response](/[[language]]/[[version]]/response)
-- Security 
-    - [Crypto](/[[language]]/[[version]]/crypt)
-    - [Security](/[[language]]/[[version]]/security)
+- Безопасность 
+    - [Шифрование](/[[language]]/[[version]]/crypt)
+    - [Защита](/[[language]]/[[version]]/security)
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)

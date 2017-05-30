@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a> <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">Yapı</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#creating-bootstrap">Bir Önyükleme Oluşturma</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Görevler</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#processing-action-parameters">Eylem parametrelerini işlemek</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#running-tasks-chain">Bir zincirdeki görevleri çalıştırma</a>
         </li>
       </ul>
     </li>
@@ -24,25 +24,25 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# Bir Komut Satırı (CLI) Uygulaması Oluşturma
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut dosyaları, komut araçları ve daha fazlasını oluşturmak için yararlıdır.
 
 <a name='structure'></a>
 
-## Structure
+## Yapı
 
-A minimal structure of a CLI application will look like this:
+CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+- `app/cli.php` <-- ana önyükleme dosyası
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Bir Önyükleme Oluşturma
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -53,11 +53,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// CLI uygulamamız için servis kapsayıcısı 
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
  */
 $loader = new Loader();
 
@@ -69,7 +69,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Ayar dosyasını yükleyelim (varsa)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -123,7 +123,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Görevler
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -138,14 +138,14 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 }
 ```
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Eylem parametrelerini işlemek
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -160,7 +160,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
     }
 
     /**
@@ -168,29 +168,29 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf('merhaba %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('best regards, %s', $params[1]);
+        echo sprintf('saygılarımla, %s', $params[1]);
 
         echo PHP_EOL;
     }
 }
 ```
 
-We can then run the following command:
+Daha sonra aşağıdaki komutu çalıştırabiliriz:
 
 ```bash
-php app/cli.php main test world universe
+php app/cli.php main test dünya evren
 
-hello world
-best regards, universe
+merhaba dünya
+saygılarımla, evren
 ```
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Bir zincirdeki görevleri çalıştırma
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
@@ -227,7 +227,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Bu varsayılan görev ve varsayılan eylemdir" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -239,7 +239,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Ben de ekrana basılmış olacağım!" . PHP_EOL;
     }
 }
 ```

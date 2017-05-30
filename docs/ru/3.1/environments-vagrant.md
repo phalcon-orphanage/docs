@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
-          <a href="#requirements">Requirements</a>
+          <a href="#requirements">Требования</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
@@ -11,16 +11,16 @@
         <li>
           <a href="#installation">Installation</a> <ul>
             <li>
-              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
+              <a href="#installation-vagrant-box">Установка Vagrant Box</a>
             </li>
             <li>
-              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
+              <a href="#installation-phalcon-box">Установка Phalcon Box</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#installation-configuration">Configuring</a> <ul>
+          <a href="#installation-configuration">Настройка</a> <ul>
             <li>
               <a href="#installation-configuration-setting-provider">Setting your provider</a>
             </li>
@@ -115,7 +115,7 @@
         </li>
         
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
@@ -124,7 +124,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -132,7 +132,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Requirements
+## Требования
 
 - Operating System: Windows, Linux, or macOS
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -155,7 +155,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 - MySQL
 - Nginx
 - Ngrok
-- Node.js (with Yarn, Bower, Grunt, and Gulp)
+- Node.js (с Yarn, Bower, Grunt и Gulp)
 - PHIVE
 - PHP 7.1
 - PHPMD
@@ -174,7 +174,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation-vagrant-box'></a>
 
-### Installing the Vagrant Box
+### Установка Vagrant Box
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -190,7 +190,7 @@ If this command fails, make sure your Vagrant installation is up to date.
 
 <a name='installation-phalcon-box'></a>
 
-### Installing the Phalcon Box
+### Установка Phalcon Box
 
 You can install Phalcon Box by simply cloning the repository. Consider cloning the repository into a `workspace` folder within your `home` directory, as the Phalcon Box box will serve as the host to all of your Phalcon projects:
 
@@ -228,7 +228,7 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Configuring
+## Настройка
 
 <a name='installation-configuration-setting-provider'></a>
 
@@ -318,7 +318,7 @@ sites:
 
 The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
 
-Available types:
+Доступные типы:
 
 - `phalcon`
 - `slayer`
@@ -713,7 +713,7 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='installation-vagrant-box'></a>
 
-2## Troubleshooting
+2## Устранение неполадок
 
 **Problem:**
 

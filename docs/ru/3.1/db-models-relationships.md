@@ -1,25 +1,25 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Отношения модели</a> <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">Отношения между моделями</a> <ul>
             <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
+              <a href="#unidirectional">Однонаправленные отношения</a>
             </li>
             <li>
-              <a href="#bidirectional">Bidirectional relations</a>
+              <a href="#bidirectional">Двунаправленные отношения</a>
             </li>
             <li>
-              <a href="#defining">Defining relationships</a>
+              <a href="#defining">Определение отношений</a>
             </li>
             <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+              <a href="#taking-advantage-of">Преимущества отношений</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> <ul>
+              <a href="#aliases">Синонимы отношений</a> <ul>
                 <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                  <a href="#getters-vs-methods">Магические методы против явных</a>
                 </li>
               </ul>
             </li>
@@ -27,23 +27,23 @@
         </li>
         
         <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
+          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+              <a href="#cascade-restrict-actions">Cascade/Restrict действия </a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#storing-related-records">Storing Related Records</a>
+          <a href="#storing-related-records">Связаное сохранение записей</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
+          <a href="#operations-over-resultsets">Операции над набором результатов</a> <ul>
             <li>
-              <a href="#updating-related-records">Updating related records</a>
+              <a href="#updating-related-records">Обновление связанных записей</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Deleting related records</a>
+              <a href="#deleting-related-records">Удаление связанных записей</a>
             </li>
           </ul>
         </li>
@@ -54,33 +54,33 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# Отношения модели
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## Отношения между моделями
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### Однонаправленные отношения
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### Двунаправленные отношения
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### Defining relationships
+### Определение отношений
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-| Method        | Description                |
+| Метод         | Описание                   |
 | ------------- | -------------------------- |
 | hasMany       | Defines a 1-n relationship |
 | hasOne        | Defines a 1-1 relationship |
@@ -124,7 +124,7 @@ Check the EER diagram to understand better the relations:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-The models with their relations could be implemented as follows:
+Модели с их отношениями могут быть реализованы следующим образом:
 
 ```php
 <?php
@@ -204,7 +204,7 @@ class RobotsParts extends Model
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+Отношение “многие-ко-многим” требуют 3 модели и определение атрибутов, участвующих в отношениях:
 
 ```php
 <?php
@@ -234,7 +234,7 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### Преимущества отношений
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -383,7 +383,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### Синонимы отношений
 
 To explain better how aliases work, let's check the following example:
 
@@ -495,7 +495,7 @@ $similarRobot = $robotsSimilar->similarRobot;
 
 <a name='getters-vs-methods'></a>
 
-#### Magic Getters vs. Explicit methods
+#### Магические методы против явных
 
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters, instead of use the magic getters you can optionally define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
 
@@ -535,7 +535,7 @@ class Robots extends Model
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Виртуальные внешние ключи
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -638,7 +638,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### Cascade/Restrict действия 
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -676,7 +676,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='relationships'></a>
 
-0## Storing Related Records
+0## Связаное сохранение записей
 
 Magic properties can be used to store a record and its related properties:
 
@@ -747,13 +747,13 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='relationships'></a>
 
-1## Operations over Resultsets
+1## Операции над набором результатов
 
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
 <a name='relationships'></a>
 
-2### Updating related records
+2### Обновление связанных записей
 
 Instead of doing this:
 
@@ -816,7 +816,7 @@ $robots->getParts()->update(
 
 <a name='relationships'></a>
 
-3### Deleting related records
+3### Удаление связанных записей
 
 Instead of doing this:
 

@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Assets Management</a> <ul>
+      <a href="#overview">Správa assetů</a> <ul>
         <li>
-          <a href="#add">Adding Resources</a>
+          <a href="#add">Přidávání zdrojů</a>
         </li>
         <li>
           <a href="#resources-local-remote">Local/Remote resources</a>

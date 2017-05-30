@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Events</a> <ul>
+      <a href="#overview">Události modelů</a> <ul>
         <li>
-          <a href="#events">Events and Events Manager</a> <ul>
+          <a href="#events">Události a Správce událostí</a> <ul>
             <li>
               <a href="#events-in-models">Implementing Events in the Model's class</a>
             </li>
