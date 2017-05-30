@@ -42,7 +42,7 @@
             </li>
             
             <li>
-              <a href="#installation-aditional-packages">Install aditional packages</a>
+              <a href="#installation-aditional-packages">Install additional packages</a>
             </li>
             <li>
               <a href="#installation-launching-phalcon-box">Launching the Phalcon Box</a>
@@ -186,7 +186,7 @@ vagrant box add phalconphp/xenial64
 
 If this command fails, make sure your Vagrant installation is up to date.
 
-<h5 class='alert alert-warning'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the <a href="https://www.vagrantup.com/vmware">VMware Vagrant plug-in</a>. Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
+<h5 class='alert alert-warning'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
 
 <a name='installation-phalcon-box'></a>
 
@@ -390,7 +390,7 @@ vagrant plugin install vagrant-hostsupdater
 
 <a name='requirements'></a>
 
-7### Install aditional packages
+7### Install additional packages
 
 We did our best to provide Phalcon Box with all necessary programs and libraries. However, it should be understood that the typical user does not need all possible packages which can be installed. Phalcon Box must be of reasonable size so that it could be used by even those people who are experiencing difficulties with bandwidth of the Internet channel.
 

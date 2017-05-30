@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Metoda <code>initialize()</code> je volána pouze v případě, že událost <code>beforeExecuteRoute</code> proběhne úspěšně. To zabrání, že aplikační logika v inicializaci nemůže být provedna bez autorizace.</h5>
+<h5 class='alert alert-warning'>The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
 Pokud chcete provést některé inicializace logiky hned, jak je vytvořen objekt controlleru můžete implementovat metodu `onConstruct()`:
 
@@ -226,7 +226,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Uvědome si, že metoda <code>onConstruct()</code> je spuštěna i v případě, že akce, která má být provedena, neexistuje v controlleru nebo uživatel k ní nemá přístup (v závislosti na vlastní kontrole od vývojáře).</h5>
+<h5 class='alert alert-warning'>Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 

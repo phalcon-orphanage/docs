@@ -177,7 +177,7 @@ test/
 
 Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři který je v tzv.: Document Root složce. V tomto případě použijeme dva `.htaccess` soubory kde první schová aplikační kód a všechny požadavky přesmeruje do veřejné aplikační složky (v našem případě je to složka `public/`).
 
-<h5 class='alert alert-warning'>Pro použití <code>.htaccess</code> souborů je nutné aby instalace Apache webserveru měla nastavenou konfigurační hodnotu <code>AllowOverride All</code>. </h5>
+<h5 class='alert alert-warning'>Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. </h5>
 
 ```apacheconfig
 # test/.htaccess

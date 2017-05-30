@@ -86,7 +86,7 @@ This tells Nanobox to:
 }
 ```
 
-<h5 class='alert alert-warning'><strong>NOTE</strong>: The version of Phalcon Devtools depends on which PHP version you're using </h5>
+<h5 class='alert alert-warning'>**NOTE**: The version of Phalcon Devtools depends on which PHP version you're using </h5>
 
 <a name='new-phalcon-app'></a>
 

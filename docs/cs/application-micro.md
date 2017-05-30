@@ -262,7 +262,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
+<h5 class='alert alert-warning'>Routes must always start with `/`</h5>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 

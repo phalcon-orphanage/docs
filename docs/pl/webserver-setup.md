@@ -177,7 +177,7 @@ test/
 
 Najbardziej typowym przypadkiem jest aplikacja zainstalowana w dowolnym folderze znajdującym się w głównym katalogu witryny. W tym przypadku używamy dwóch plików `.htaccess`, pierwszego do ukrycia kodu aplikacjia i przekierowania wszystkich zapytań do głównego katalogu aplikacji (`public/`).
 
-<h5 class='alert alert-warning'>Należy zauważyć że używanie plików <code>.htaccess</code> wiąże się z koniecznością ustawienia opcji <code>AllowOverride All</code> w twojej konfiguracji apache. </h5>
+<h5 class='alert alert-warning'>Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. </h5>
 
 ```apacheconfig
 # test/.htaccess

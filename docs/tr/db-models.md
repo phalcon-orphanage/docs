@@ -90,7 +90,7 @@ A model represents the information (data) of the application and the rules to ma
 
 `Phalcon\Mvc\Model` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <code>Phalcon\\Db</code> component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the `Phalcon\\Db` component documentation.</h5>
 
 <a name='creating'></a>
 
@@ -331,7 +331,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
+<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.</h5>
 
 You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
@@ -648,7 +648,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\\Db\\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is `Phalcon\\Db\\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
@@ -674,7 +674,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc. </h5>
+<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. </h5>
 
 If you're using 'finders', bound parameters are automatically used:
 

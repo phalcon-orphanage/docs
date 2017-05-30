@@ -52,7 +52,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Вопросы и ответы
 
-<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
+<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forums][forum].</h5>
 
 <a name='bug-report-checklist'></a>
 
