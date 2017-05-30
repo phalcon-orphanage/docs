@@ -428,9 +428,9 @@ class RegenerateApiTask extends PhTask
     }
 
     /**
-     * @param      $phpdoc
-     * @param      $className
-     * @param null $realClassName
+     * @param string      $phpdoc
+     * @param string      $className
+     * @param null|string $realClassName
      *
      * @return array
      */
