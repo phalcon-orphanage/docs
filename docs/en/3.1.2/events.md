@@ -19,9 +19,9 @@ The purpose of this component is to intercept the execution of most of the other
 
 <a name='naming-convention'></a>
 ## Naming Convention
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as 'component:event'. For example, as `Phalcon\Db` occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as `Phalcon\Db` occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-When attaching event listeners to the events manager, you can use 'component' to catch all events from that component (eg. 'db' to catch all of the `Phalcon\Db` events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the `Phalcon\Db` events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 <a name='usage'></a>
 ## Usage Example
