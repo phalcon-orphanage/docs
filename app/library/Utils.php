@@ -24,7 +24,7 @@ class Utils extends Component
      * @param string       $element
      * @param string       $default
      *
-     * @return string
+     * @return mixed
      */
     public function fetch($data, $element, $default = '')
     {
@@ -38,11 +38,11 @@ class Utils extends Component
     }
 
     /**
-     * @param $lang
+     * @param string $lang
      *
      * @return string
      */
-    public function getDocsUrl($lang)
+    public function getDocsUrl(string $lang): string
     {
         $return    = 'en';
         $languages = $this->config->get('doc_languages')->toArray();
@@ -63,7 +63,7 @@ class Utils extends Component
      *
      * @return string
      */
-    public function getAsset($asset)
+    public function getAsset(string $asset): string
     {
         $cdnUrl    = $this->config->get('app')->get('staticUrl', '/');
         $version   = $this->config->get('app')->get('version', '');
@@ -90,7 +90,7 @@ class Utils extends Component
      *
      * @return string
      */
-    public function getCdnUrl($resource = '')
+    public function getCdnUrl(string $resource = ''): string
     {
         return $this->config->get('app')->get('staticUrl', '/') . $resource;
     }
@@ -100,47 +100,8 @@ class Utils extends Component
      *
      * @return bool
      */
-    public function isCdnLocal()
+    public function isCdnLocal(): bool
     {
         return boolval('/' === $this->getCdnUrl());
-    }
-
-    /**
-     * Converts milliseconds to human readable format
-     *
-     * @param float $microseconds
-     * @param int   $precision
-     *
-     * @return string
-     */
-    public function timeToHuman($microseconds, $precision = 3)
-    {
-        $units = ['μs', 'ns', 'ms', 's'];
-        $micro = max($microseconds, 0);
-        $pow   = 0;
-        if (1000 < $micro) {
-            $pow    = floor(($micro ? log($micro) : 0) / log(1000));
-            $pow    = min($pow, count($units) - 1);
-            $micro /= (1 << (10 * $pow));
-        }
-        return round($micro, $precision) . ' ' . $units[$pow];
-    }
-
-    /**
-     * Converts bytes to a human readable format
-     *
-     * @param int $bytes
-     * @param int $precision
-     *
-     * @return string
-     */
-    public function bytesToHuman($bytes, $precision = 2)
-    {
-        $units  = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
-        $bytes  = max($bytes, 0);
-        $pow    = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow    = min($pow, count($units) - 1);
-        $bytes /= (1 << (10 * $pow));
-        return round($bytes, $precision) . ' ' . $units[$pow];
     }
 }

@@ -5,6 +5,7 @@ namespace Docs\Controllers;
 use Docs\Cli\Tasks\RegenerateApiTask;
 use Phalcon\Cache\BackendInterface;
 use Phalcon\Config;
+use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Controller as PhController;
 use Phalcon\Mvc\View\Simple;
 
@@ -20,12 +21,24 @@ use Phalcon\Mvc\View\Simple;
  */
 class DocsController extends PhController
 {
-    public function redirectAction()
+    /**
+     * Performs necessary redirection
+     *
+     * @return \Phalcon\Http\ResponseInterface
+     */
+    public function redirectAction(): ResponseInterface
     {
         return $this->response->redirect($this->getVersion('/en/'));
     }
 
-    public function mainAction($language = null, $version = null, $page = '')
+    /**
+     * @param null|string $language
+     * @param null|string $version
+     * @param string      $page
+     *
+     * @return \Phalcon\Http\ResponseInterface
+     */
+    public function mainAction(string $language = null, string $version = null, string $page = ''): ResponseInterface
     {
         if (empty($language)) {
             return $this->response->redirect($this->getVersion('/en/'));
@@ -48,9 +61,9 @@ class DocsController extends PhController
             [
                 'language' => $language,
                 'version'  => $version,
-                'sidebar'  => $this->getDocument($language, 'sidebar'),
-                'article'  => $this->getDocument($language, $page),
-                'menu'     => $this->getDocument($language, $page . '-menu'),
+                'sidebar'  => $this->getDocument($language, $version, 'sidebar'),
+                'article'  => $this->getDocument($language, $version, $page),
+                'menu'     => $this->getDocument($language, $version, $page . '-menu'),
             ]
         );
         $this->response->setContent($contents);
@@ -61,27 +74,30 @@ class DocsController extends PhController
 
     /**
      * @param string $language
+     * @param string $version
      * @param string $fileName
      *
      * @return string
      */
-    private function getDocument($language, $fileName)
+    private function getDocument($language, $version, $fileName): string
     {
-        $key = sprintf('%s.%s.cache', $fileName,$language);
+        $key = sprintf('%s.%s.%s.cache', $fileName,$version, $language);
         if ('production' === $this->config->get('app')->get('env') &&
             true === $this->cacheData->exists($key)) {
             return $this->cacheData->get($key);
         } else {
             $pageName = sprintf(
-                '%s/docs/%s/%s.md',
+                '%s/docs/%s/%s/%s.md',
                 APP_PATH,
                 $language,
+                $version,
                 $fileName
             );
             $apiFileName = sprintf(
-                '%s/docs/%s/api/%s.md',
+                '%s/docs/%s/%s/api/%s.md',
                 APP_PATH,
                 $language,
+                $version,
                 $fileName
             );
 
@@ -140,7 +156,7 @@ class DocsController extends PhController
      *
      * @return string
      */
-    private function getLanguage($language)
+    private function getLanguage($language): stromg
     {
        $languages = $this->config->get('languages', ['en' => 'English']);
 
@@ -154,9 +170,9 @@ class DocsController extends PhController
     /**
      * Gets all the namespaces so that API URLs are generated properly
      *
-     * @return array|mixed|null
+     * @return array
      */
-    private function getNamespaces()
+    private function getNamespaces(): array
     {
         $key = 'namespaces.cache';
         if ('production' === $this->config->get('app')->get('env') &&
@@ -195,7 +211,7 @@ class DocsController extends PhController
      *
      * @return string
      */
-    private function getVersion($stub = '')
+    private function getVersion($stub = ''): string
     {
         return $stub . $this->config->get('app')->get('version');
     }

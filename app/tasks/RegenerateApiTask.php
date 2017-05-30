@@ -175,10 +175,12 @@ class RegenerateApiTask extends PhTask
                     $classLink = new ClassLink($interfaceName);
                     $implements[] = $classLink->get();
                 }
-                $implementsString .= PHP_EOL . '*implements* ' . join(', ', $implements) . PHP_EOL;
+                $implementsString .= PHP_EOL . '*implements* '
+                                   . join(', ', $implements) . PHP_EOL;
             }
 
-            $githubLink       = 'https://github.com/phalcon/cphalcon/blob/master/' . str_replace('\\', '/', strtolower($className)) . '.zep';
+            $githubLink       = 'https://github.com/phalcon/cphalcon/blob/master/'
+                              . str_replace('\\', '/', strtolower($className)) . '.zep';
             $classDescription = '';
             if (isset($this->classDocs[$realClassName])) {
                 $ret               = $this->getPhpDoc(
@@ -195,7 +197,9 @@ class RegenerateApiTask extends PhTask
                 $constantsString .= '## Constants' . PHP_EOL;
                 foreach ($constants as $name => $constant) {
                     $type = gettype($constant);
-                    $constantsString .= '*' . $type . '* **' . $name . '**' . PHP_EOL . PHP_EOL;
+                    $constantsString .= '*' . $type
+                                      . '* **' . $name . '**'
+                                      . PHP_EOL . PHP_EOL;
                 }
             }
 
@@ -205,7 +209,11 @@ class RegenerateApiTask extends PhTask
                 $methodsString .= '## Methods' . PHP_EOL;
                 foreach ($methods as $method) {
                     /** @var $method \ReflectionMethod */
-                    $docClassName = str_replace('\\', '_', $method->getDeclaringClass()->name);
+                    $docClassName = str_replace(
+                        '\\',
+                        '_',
+                        $method->getDeclaringClass()->name
+                    );
                     if (isset($this->docs[$docClassName])) {
                         $docMethods = $this->docs[$docClassName];
                     } else {
@@ -340,7 +348,7 @@ class RegenerateApiTask extends PhTask
     /**
      * Parse docs from file
      *
-     * @param $file
+     * @param string $file
      */
     private function parseDocs($file)
     {
@@ -426,7 +434,7 @@ class RegenerateApiTask extends PhTask
      *
      * @return array
      */
-    public function getPhpDoc($phpdoc, $className, $realClassName = null)
+    public function getPhpDoc(string $phpdoc, string $className, string $realClassName = null): array
     {
         $ret         = [];
         $lines       = [];
