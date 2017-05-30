@@ -243,35 +243,6 @@ class Main
             }
         );
 
-        set_exception_handler(
-            function () use ($logger) {
-                $logger->error(json_encode(debug_backtrace()));
-            }
-        );
-
-        register_shutdown_function(
-            function () use ($logger, $utils) {
-                $memory    = round(
-                    (memory_get_usage() - $this->memory) / 1000,
-                    3
-                );
-                $execution = round(
-                    microtime(true) - $this->executionTime,
-                    3
-                );
-
-                if ('development' === $this->mode) {
-                    $logger->info(
-                        sprintf(
-                            'Shutdown completed [%s ms] - [%s KB]',
-                            $execution,
-                            $memory
-                        )
-                    );
-                }
-            }
-        );
-
         /***********************************************************************
          * Assets
          **********************************************************************/

@@ -13,7 +13,7 @@
                 </ul>
             </div>
             <div class="col-xs-4 col-sm-3">
-                <h4>{{ locale.translate(language, 'community') }}</h4>
+                <h4>Community</h4>
                 <ul>
                     <li><a href="https://phalcon.link/forum" class="header-nav-link" target="_blank">Fforum</a></li>
                     <li><a href="https://phalcon.link/github">GitHub</a></li>
@@ -25,7 +25,7 @@
                 </ul>
             </div>
             <div class="col-xs-4 col-sm-2">
-                <h4>{{ locale.translate(language, 'about') }}</h4>
+                <h4>About</h4>
                 <ul>
                     <li><a class="link-black" href="https://phalcon.link/blog">Blog</a></li>
                     <li><a class="link-black" href="https://phalcon.link/about">About</a></li>
