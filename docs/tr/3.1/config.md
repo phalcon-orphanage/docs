@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">Yapılandırmaları Okuma</a> <ul>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">Doğal Diziler</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">Dosya Bağdaştırıcıları</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">INI Dosyaları Okuma</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">Yapılandırmaları Birleştirme</a>
         </li>
         <li>
           <a href="#nested-configuration">Nested Configuration</a>
@@ -27,15 +27,15 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Yapılandırmaları Okuma
 
-`Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
+`Phalcon\Config`, bir uygulamada kullanmak üzere çeşitli biçimlerdeki yapılandırma dosyalarını (bağdaştırıcıları kullanarak) PHP nesnelerine dönüştürmek için kullanılan bir bileşendir.
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## Doğal Diziler
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+Birinci örnek, doğal dizileri `Phalcon\Config` nesnelerine dönüştürmeyi gösterir. Bu seçenek, bu istek sırasında herhangi bir dosya okunmadığından en iyi performansı sunar.
 
 ```php
 <?php
@@ -65,7 +65,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+Projenizi daha iyi organize etmek istiyorsanız, diziyi başka bir dosyaya kaydedebilir ve sonra okuyabilirsiniz.
 
 ```php
 <?php
@@ -79,22 +79,22 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Dosya Bağdaştırıcıları
 
-The adapters available are:
+Mevcut bağdaştırıcılar şunlardır:
 
-| Class                            | Description                                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| Sınıf                            | Description                                                                                                             |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Config\Adapter\Ini`  | INI dosyalarını ayarları depolamak için kullanır. Dahili olarak, adaptör PHP işlevi `parse_ini_file`'yi kullanmaktadır. |
+| `Phalcon\Config\Adapter\Json` | Ayarları saklamak için JSON dosyalarını kullanır.                                                                       |
+| `Phalcon\Config\Adapter\Php`  | Ayarları depolamak için PHP çok boyutlu dizileri kullanır. Bu adaptör en iyi performansı sunar.                         |
+| `Phalcon\Config\Adapter\Yaml` | Ayarları saklamak için YAML dosyalarını kullanır.                                                                       |
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## INI Dosyaları Okuma
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini dosyaları ayarları depolamanın yaygın bir yoludur. `Phalcon\Config`, bu dosyaları okumak için optimize edilmiş PHP işlevi `parse_ini_file` kullanır. Dosya bölümleri, kolay erişim için alt ayarlara ayrıştırılır.
 
 ```ini
 [database]
@@ -113,7 +113,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+Dosyayı aşağıdaki gibi okuyabilirsiniz:
 
 ```php
 <?php
@@ -129,9 +129,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Yapılandırmaları Birleştirme
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config`, bir yapılandırma nesnesinin özelliklerini tekrar tekrar birleştirir. Yeni özellikler eklendi ve mevcut özellikler güncellendi.
 
 ```php
 <?php
@@ -164,7 +164,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+Yukarıdaki kod aşağıdakileri üretir:
 
 ```bash
 Phalcon\Config Object
@@ -181,7 +181,7 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+[Phalcon Incubator](https://github.com/phalcon/incubator) bileşeninde bunlar için daha fazla bağdaştırıcı bulunmaktadır
 
 <a name='nested-configuration'></a>
 
