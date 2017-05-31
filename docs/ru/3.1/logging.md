@@ -12,7 +12,7 @@
           <a href="#creating">Creating a Log</a>
         </li>
         <li>
-          <a href="#transactions">Transactions</a>
+          <a href="#transactions">Транзакции</a>
         </li>
         <li>
           <a href="#multiple-handlers">Logging to Multiple Handlers</a>
@@ -43,7 +43,7 @@
               <a href="#usage-firephp">FirePHP Logger</a>
             </li>
             <li>
-              <a href="#usage-custom">Implementing your own adapters</a>
+              <a href="#usage-custom">Реализация собственных адаптеров</a>
             </li>
           </ul>
         </li>
@@ -64,7 +64,7 @@
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
-| Adapter                             | Description               |
+| Адаптер                             | Описание                  |
 | ----------------------------------- | ------------------------- |
 | `Phalcon\Logger\Adapter\File`    | Logs to a plain text file |
 | `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
@@ -174,7 +174,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## Транзакции
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -251,7 +251,7 @@ The messages are sent to the handlers in the order they were registered.
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
-| Adapter                               | Description                                              |
+| Адаптер                               | Описание                                                 |
 | ------------------------------------- | -------------------------------------------------------- |
 | `Phalcon\Logger\Formatter\Line`    | Formats the messages using a one-line string             |
 | `Phalcon\Logger\Formatter\Firephp` | Formats the messages so that they can be sent to FirePHP |
@@ -270,7 +270,7 @@ Formats the messages using a one-line string. The default logging format is:
 
 You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
-| Variable  | Description                              |
+| Variable  | Описание                                 |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
 | %date%    | Date the message was added               |
@@ -393,6 +393,6 @@ $logger->error(
 
 <a name='adapters'></a>
 
-3### Implementing your own adapters
+3### Реализация собственных адаптеров
 
 The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.
