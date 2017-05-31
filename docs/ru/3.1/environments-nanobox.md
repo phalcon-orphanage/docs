@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
-          <a href="#create-project">Create a New Project</a>
+          <a href="#create-project">Создание нового проекта</a>
         </li>
         <li>
-          <a href="#boxfile-yml">Add a <code>boxfile.yml</code></a>
+          <a href="#boxfile-yml">Добавление <code>boxfile.yml</code></a>
         </li>
         <li>
-          <a href="#add-devtools">Add Phalcon Devtools to your <code>composer.json</code></a>
+          <a href="#add-devtools">Добавление Phalcon Devtools в <code>composer.json</code></a>
         </li>
         <li>
           <a href="#new-phalcon-app">Start Nanobox and Generate a New Phalcon App</a>
@@ -21,7 +21,7 @@
           <a href="#environment">Check Out the Environment</a>
         </li>
         <li>
-          <a href="#conclusion">Phalcon and Nanobox</a>
+          <a href="#conclusion">Phalcon и Nanobox</a>
         </li>
       </ul>
     </li>
@@ -30,7 +30,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -38,7 +38,7 @@ In this post, we'll walk through getting a brand new Phalcon app up and running 
 
 <a name='create-project'></a>
 
-## Create a New Project
+## Создание нового проекта
 
 Create a project folder and `cd` into it:
 
@@ -48,7 +48,7 @@ mkdir nanobox-phalcon && cd nanobox-phalcon
 
 <a name='boxfile-yml'></a>
 
-## Add a `boxfile.yml`
+## Добавление `boxfile.yml`
 
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
 
@@ -74,9 +74,9 @@ This tells Nanobox to:
 
 <a name='add-devtools'></a>
 
-## Add Phalcon Devtools to your `composer.json`
+## Добавление Phalcon Devtools в `composer.json`
 
-Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
+Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
 
 ```json
 {
@@ -157,7 +157,7 @@ exit
 
 <a name='conclusion'></a>
 
-## Phalcon and Nanobox
+## Phalcon и Nanobox
 
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 
