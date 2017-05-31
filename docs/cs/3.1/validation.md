@@ -6,7 +6,7 @@
           <a href="#initializing">Initializing Validation</a>
         </li>
         <li>
-          <a href="#validators">Validators</a>
+          <a href="#validators">Validátory</a>
         </li>
         <li>
           <a href="#callback">Callback Validator</a>
@@ -154,11 +154,11 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## Validátory
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                          | Explanation                                                       |
+| Třída                                          | Explanation                                                       |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
 | `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
 | `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
