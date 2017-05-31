@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Relace mezi modely</a> <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">Relace mezi modely</a> <ul>
             <li>
               <a href="#unidirectional">Unidirectional relationships</a>
             </li>
@@ -54,11 +54,11 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# Relace mezi modely
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## Relace mezi modely
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
