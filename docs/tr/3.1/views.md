@@ -84,12 +84,12 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address | 127.0.0.1 |
+| -------------- | --------- |
+| Phalcon Dizini | blog      |
+| Denetleyici    | posts     |
+| Eylem          | show      |
+| Parametre      | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -1108,17 +1108,17 @@ echo $view->render(
 
 0## View Events
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| Olay Adı         | Tetiklendi                                    | İşlemi durdurabilir mi? |
+| ---------------- | --------------------------------------------- |:-----------------------:|
+| beforeRender     | Triggered before starting the render process  |          Evet           |
+| beforeRenderView | Triggered before rendering an existing view   |          Evet           |
+| afterRenderView  | Triggered after rendering an existing view    |          Hayır          |
+| afterRender      | Triggered after completing the render process |          Hayır          |
+| notFoundView     | Triggered when a view was not found           |          Hayır          |
 
-The following example demonstrates how to attach listeners to this component:
+Aşağıdaki örnek, dinleyicilerin bu bileşene nasıl ekleneceğini göstermektedir:
 
 ```php
 <?php
