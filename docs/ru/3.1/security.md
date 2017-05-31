@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Security</a> <ul>
+      <a href="#overview">Безопасность</a> <ul>
         <li>
-          <a href="#hashing">Password Hashing</a>
+          <a href="#hashing">Хэширование паролей</a>
         </li>
         <li>
-          <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>
+          <a href="#csrf">Защита от Cross-Site Request Forgery (CSRF)</a>
         </li>
         <li>
-          <a href="#setup">Setting up the component</a>
+          <a href="#setup">Настройка компонента</a>
         </li>
         <li>
-          <a href="#random">Random</a>
+          <a href="#random">Компонент Random</a>
         </li>
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#resources">Дополнительная информация</a>
         </li>
       </ul>
     </li>
@@ -24,19 +24,19 @@
 
 <a name='overview'></a>
 
-# Security
+# Безопасность
 
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## Хэширование паролей
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
+Хранение паролей в открытом виде является плохой практикой. Любой, кто имеет доступ к базе данных, мгновенно получит доступ ко всем пользовательским аккаунтам и, таким образом, получает возможность производить неавторизованные действия. Для противостояния этому, многие приложения используют знакомые методы одностороннего хеширования вроде '[md5](http://php.net/manual/en/function.md5.php)' и '[sha1](http://php.net/manual/en/function.sha1.php)'. Однако аппаратное обеспечение развивается с каждым днем, становится быстрее, и эти алгоритмы становятся уязвимы к атакам методом перебора. Данные атаки также известны как [радужные таблицы](http://en.wikipedia.org/wiki/Rainbow_table).
 
-To solve this problem we can use hash algorithms as [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Why bcrypt? Thanks to its '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm we can make the password encryption as 'slow' as we want. Slow algorithms make the process to calculate the real password behind a hash extremely difficult if not impossible. This will protect your for a long time from a possible attack using rainbow tables.
+Для решения этой проблемы, мы можем использовать такие алгоритмы хеширования, как [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Почему bcrypt? Благодаря алгоритму установки ключа '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' мы можем сделать шифрование пароля настолько "медленным", насколько мы этого захотим. Медленные алгоритмы делают процесс вычисления настоящего пароля, скрытого за хешем, крайне сложным, если не невозможным. Это защитит вас на долгое время от возможных атак с использованием радужных таблиц.
 
-This component gives you the ability to use this algorithm in a simple way:
+Этот компонент дает вам возможность простым способом использовать данный алгоритм:
 
 ```php
 <?php
@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         $user->login = $login;
 
-        // Store the password hashed
+        // Сохраняем пароль хэшированным
         $user->password = $this->security->hash($password);
 
         $user->save();
@@ -62,7 +62,7 @@ class UsersController extends Controller
 }
 ```
 
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
+Мы сохранили пароль хешированным с коэффициентом хеширования по-умолчанию. Более высокий коэффициент хеширования сделает пароль менее уязвимым, так как его шифрование будет медленным. Мы можем проверить правильность пароля следующим способом:
 
 ```php
 <?php
@@ -79,10 +79,10 @@ class SessionController extends Controller
         $user = Users::findFirstByLogin($login);
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // The password is valid
+                // Пароль верный
             }
         } else {
-            // To protect against timing attacks. Regardless of whether a user
+            // Защита от атак по времени. Regardless of whether a user
             // exists or not, the script will take roughly the same amount as
             // it will always be computing a hash.
             $this->security->hash(rand());
@@ -97,7 +97,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 <a name='csrf'></a>
 
-## Cross-Site Request Forgery (CSRF) protection
+## Защита от Cross-Site Request Forgery (CSRF)
 
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
@@ -155,7 +155,7 @@ Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommen
 
 <a name='setup'></a>
 
-## Setting up the component
+## Настройка компонента
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -180,9 +180,9 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## Компонент Random
 
-The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
+Класс `Phalcon\Security\Random` позволяет очень легко генерировать много разных типов случайных данных.
 
 ```php
 <?php
@@ -213,6 +213,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## External Resources
+## Дополнительная информация
 
 - [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
