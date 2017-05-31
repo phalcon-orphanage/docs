@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">The MVC Architecture</a> <ul>
+      <a href="#architecture">Архитектура MVC</a> <ul>
         <li>
-          <a href="#models">Models</a>
+          <a href="#models">Модели</a>
         </li>
         <li>
-          <a href="#views">Views</a>
+          <a href="#views">Представления</a>
         </li>
         <li>
-          <a href="#controllers">Controllers</a>
+          <a href="#controllers">Контроллеры</a>
         </li>
       </ul>
     </li>
@@ -18,31 +18,31 @@
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# Архитектура MVC
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon поддерживает использование парадигмы объектно-ориентированного программирования и поддержку классов, необходимых для разделения на Модель, Представление, Контроллер (Model, View, Controller, кратко [MVC](https://en.wikipedia.org/wiki/Model–view–controller)). Этот шаблон проектирования активно используется в других веб-фреймворках и обычных приложениях.
 
-MVC benefits include:
+Преимущества MVC:
 
-- Isolation of business logic from the user interface and the database layer
-- Making it clear where different types of code belong for easier maintenance
+- Отделение бизнес-логики от пользовательского интерфейса и работы с базой данных
+- Позволяет располагать разные части в разных местах, что благоприятно сказывается на поддержке и обслуживании
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
+Если вы выберете MVC, все запросы будут выполнятся согласно MVC архитектуре. Phalcon поддерживает MVC своими классами, написанными на C, что позволяет добиться высокой производительности PHP приложения.
 
 <a name='models'></a>
 
-## Models
+## Модели
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/models)
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Подробнее про модели](/[[language]]/[[version]]/models).
 
 <a name='views'></a>
 
-## Views
+## Представления
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [Learn more](/[[language]]/[[version]]/views)
+Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению. [Подробнее про представления](/[[language]]/[[version]]/views).
 
 <a name='controllers'></a>
 
-## Controllers
+## Контроллеры
 
-The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/[[language]]/[[version]]/controllers)
+Контроллеры предоставляют "клей" между моделью и представлением. Контроллеры ответственны за обработку входящих запросов от веб-браузера, запрашивание данных у модели и передачу этих данных в представление для вывода. [Подробнее про контроллеры](/[[language]]/[[version]]/controllers).
