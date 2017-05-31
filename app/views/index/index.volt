@@ -14,7 +14,7 @@
     {{- assets.outputCss('header_css') -}}
 
     <title>
-        {{ get_title(false) ~ " - " ~ config.get('app').get('name', 'Phalcon Framework') }}
+        Phalcon Documentation - {{ config.get('app').get('name', 'Phalcon Framework') }}
     </title>
 </head>
 
@@ -44,74 +44,69 @@
                        role="button"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        {{ locale.translate(language, 'community') }}
+                        Community
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="https://phalcon.link/forum"
                                target="_blank">
-                                {{ locale.translate(language, 'forum') }}
+                                Forum
                             </a>
                         </li>
                         <li>
                             <a href="https://phalcon.link/blog" target="_blank">
-                                {{ locale.translate(language, 'blog') }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://phalcon.link/api" target="_blank">
-                                {{ locale.translate(language, 'api') }}
+                                Blog
                             </a>
                         </li>
                         <li>
                             <a href="https://phalcon.link/resources"
                                target="_blank">
-                                {{ locale.translate(language, 'resources') }}
+                                Resources
                             </a>
                         </li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="https://phalcon.link/f" target="_blank">
-                                {{ locale.translate(language, 'facebook') }}
+                                Facebook
                             </a>
                         </li>
                         <li>
                             <a href="https://phalcon.link/t" target="_blank">
-                                {{ locale.translate(language, 'twitter') }}
+                                Twitter
                             </a>
                         </li>
                         <li>
                             <a href="https://phalcon.link/g+" target="_blank">
-                                {{ locale.translate(language, 'google_plus') }}
+                                Google+
                             </a>
                         </li>
                         <li>
                             <a href="https://phalcon.link/gab" target="_blank">
-                                {{ locale.translate(language, 'gab') }}
+                                Gab.ai
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/{{ language }}/about" class="header-nav-link">
-                        {{ locale.translate(language, 'contribute') }}
+                    <a href="https://phalcon.link/about" class="header-nav-link">
+                        About
                     </a>
                 </li>
                 <li>
-                    <a href="/{{ language }}/sponsors" class="header-nav-link">
-                        {{ locale.translate(language, 'sponsors') }}
+                    <a href="https://phalcon.link/sponsors" class="header-nav-link">
+                        Sponsors
                     </a>
                 </li>
                 <li>
                     <a href="https://phalcon.link/fund" class="header-nav-link">
-                        {{ locale.translate(language, 'support_us') }}
+                        Support Us
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                <a href="/{{ language }}/about" class="header-nav-link">
-                    {{ locale.translate(language, 'contribute') }}
+                <a href="https://phalcon.link/contribute" class="header-nav-link">
+                    Contribute
                 </a>
             </ul>
         </div>

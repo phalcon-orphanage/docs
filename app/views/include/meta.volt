@@ -13,13 +13,13 @@
 <meta property="og:url" content="{{ config.get('app').get('url', 'https://phalconphp.com') }}">
 <meta property="og:locale" content="{{ language }}">
 <meta property="og:type" content="object">
-<meta property="og:title" content="{{ locale.translate(get_title(false)) ~ " - " ~ config.get('app').get('name', 'Phalcon Framework') }}">
+<meta property="og:title" content="Phalcon Documentation - {{ config.get('app').get('name', 'Phalcon Framework') }}">
 <meta property="og:description" content="{{ config.get('app').get('description', '') }}">
 <meta property="og:site_name" content="Phalcon Website">
 <meta property="og:image" content="{{ config.get('app').get('url', 'https://phalconphp.com') }}/images/logo.png">
 
 <meta name="twitter:image:alt" content="{{ config.get('app').get('name', 'Phalcon Framework') }}">
-<meta name="twitter:title" content="{{ locale.translate(get_title(false)) ~ " - " ~ config.get('app').get('name', 'Phalcon Framework') }}">
+<meta name="twitter:title" content="Phalcon Documentation {{ config.get('app').get('name', 'Phalcon Framework') }}">
 <meta name="twitter:description" content="{{ config.get('app').get('description', '') }}">
 <meta name="twitter:image" content="{{ config.get('app').get('url', 'https://phalconphp.com') }}/images/logo.png">
 <meta name="twitter:card" content="summary">

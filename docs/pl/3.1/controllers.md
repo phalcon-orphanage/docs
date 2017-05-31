@@ -43,7 +43,7 @@ Akcje to metody w kontrolerze, które obsługują żądania. Domyślnie wszystki
 
 Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
 
-| Description          | Fragment URL   |
+| Opis                 | Fragment URL   |
 | -------------------- | -------------- |
 | **Katalog Phalcona** | blog           |
 | **Kontroler**        | posts          |

@@ -13,6 +13,11 @@ class ClassLink
      */
     protected $isArray;
 
+    /**
+     * ClassLink constructor.
+     *
+     * @param $className
+     */
     public function __construct($className)
     {
         $isArray = (preg_match("/^(.*)\[\]$/", $className, $match) === 1);
@@ -25,7 +30,10 @@ class ClassLink
         $this->isArray   = $isArray;
     }
 
-    public function get()
+    /**
+     * @return string
+     */
+    public function get(): string
     {
         $className = preg_replace("/^\\\\/", "", $this->className);
         if (!class_exists($className) && !interface_exists($className)) {

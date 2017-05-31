@@ -535,7 +535,7 @@ $cache->save('my-key', $data);
 
 Используется для настройки параметров Memcached. За подробной информацией обратитесь к документации по [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php).
 
-**Example**
+**Пример**
 
 ```php
 <?php

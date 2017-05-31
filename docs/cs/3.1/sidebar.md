@@ -2,7 +2,7 @@
     - [Poznámky k vydání](/[[language]]/[[version]]/release-notes)
     - Upgrade
     - [Sponzoři](/[[language]]/[[version]]/sponsors)
-- Contributions 
+- Přispěvovatelé 
     - [Přehled](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
@@ -20,7 +20,7 @@
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
 - Vývojářské nástroje 
     - [Instalace](/[[language]]/[[version]]/devtools-installation)
-    - [Usage](/[[language]]/[[version]]/devtools-usage)
+    - [Použití](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Core 
     - Aplikace 
@@ -29,7 +29,7 @@
         - [Command Line Interface (Cli)](/[[language]]/[[version]]/application-cli)
     - [DI kontejner](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Services 
+- Služby 
     - [Cache](/[[language]]/[[version]]/cache)
     - [Konfigurace](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
@@ -38,15 +38,15 @@
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
     - [Queue](/[[language]]/[[version]]/queue)
-- Database 
+- Databáze 
     - [Layer](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Models](/[[language]]/[[version]]/db-models) 
+    - [Modely](/[[language]]/[[version]]/db-models) 
         - [Pokročilé](/[[language]]/[[version]]/db-models-advanced)
         - [Chování (Behaviors)](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
-        - [Events](/[[language]]/[[version]]/db-models-events)
+        - [Události](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relace](/[[language]]/[[version]]/db-models-relationships)
         - [Transakce](/[[language]]/[[version]]/db-models-transactions)
@@ -64,7 +64,7 @@
 - Aplikační logika 
     - [Access Controler Lists (ACL)](/[[language]]/[[version]]/acl)
     - [Anotace](/[[language]]/[[version]]/annotations)
-    - [Controllers](/[[language]]/[[version]]/controllers)
+    - [Controller](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [Filters](/[[language]]/[[version]]/filter)
@@ -76,9 +76,9 @@
     - [Cookies](/[[language]]/[[version]]/cookies)
     - [Request](/[[language]]/[[version]]/request)
     - [Response](/[[language]]/[[version]]/response)
-- Security 
+- Bezpečnost 
     - [Crypto](/[[language]]/[[version]]/crypt)
-    - [Security](/[[language]]/[[version]]/security)
+    - [Zabezpečení](/[[language]]/[[version]]/security)
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)

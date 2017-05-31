@@ -10,7 +10,7 @@ Naším cílem je nabídnout vývojářům pokročilý, na funkce bohatý framew
 
 Phalcon je open source full stack framework pro PHP, vyvíjen jako rozšíření v jazyce C. Je optimalizován pro maximální výkon. Jeho unikátní architektura dovoluje frameworku být vždy v paměti a to dovoluje jeho funkcionalitu použít kdekoliv je potřeba, bez zbytečných kontrol a načítání souborů jako klasické PHP frameworky.
 
-## Usage
+## Používání
 
 Vývojáři nepotřebují znát jazyk C pro používání Phalcon frameworku. Jeho funkcionality jsou dostupné jako PHP třídy ve jmenném prostoru (namespace) `Phalcon`, připraveny k používání.
 
