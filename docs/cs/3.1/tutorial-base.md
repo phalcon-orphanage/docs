@@ -3,7 +3,7 @@
     <li>
       <a href="#basic">Tutorial - basic</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">Struktura souborů</a>
         </li>
         <li>
           <a href="#bootstrap">Bootstrap</a> <ul>
@@ -58,7 +58,7 @@ The best way to use this guide is to follow each step in turn. You can get the c
 
 <a name='file-structure'></a>
 
-## File structure
+## Struktura souborů
 
 Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
