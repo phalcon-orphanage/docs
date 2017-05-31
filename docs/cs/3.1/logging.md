@@ -12,7 +12,7 @@
           <a href="#creating">Creating a Log</a>
         </li>
         <li>
-          <a href="#transactions">Transactions</a>
+          <a href="#transactions">Transakce</a>
         </li>
         <li>
           <a href="#multiple-handlers">Logging to Multiple Handlers</a>
@@ -43,7 +43,7 @@
               <a href="#usage-firephp">FirePHP Logger</a>
             </li>
             <li>
-              <a href="#usage-custom">Implementing your own adapters</a>
+              <a href="#usage-custom">Implementace vlastních adaptérů</a>
             </li>
           </ul>
         </li>
@@ -174,7 +174,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## Transakce
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -393,6 +393,6 @@ $logger->error(
 
 <a name='adapters'></a>
 
-3### Implementing your own adapters
+3### Implementace vlastních adaptérů
 
 The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.
