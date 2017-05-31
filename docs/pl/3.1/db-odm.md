@@ -317,7 +317,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
+| Parametr     | Description                                                                                                                                                                                  | Example                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
