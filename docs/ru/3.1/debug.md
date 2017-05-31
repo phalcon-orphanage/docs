@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">Шифрование и расшифровка</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Базовое использование</a>
         </li>
         <li>
-          <a href="#options">Encryption Options</a>
+          <a href="#options">Настройки шифрования</a>
         </li>
         <li>
-          <a href="#base64">Base64 Support</a>
+          <a href="#base64">Поддержка base64</a>
         </li>
         <li>
-          <a href="#service">Setting up an Encryption service</a>
+          <a href="#service">Настройка сервиса шифрования</a>
         </li>
       </ul>
     </li>
