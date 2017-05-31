@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Cache ORM</a> <ul>
         <li>
-          <a href="#caching-resultsets">Caching Resultsets</a>
+          <a href="#caching-resultsets">Cache pro databázové výsledky (Resultset)</a>
         </li>
         <li>
           <a href="#forcing-cache">Forcing Cache</a>
@@ -33,7 +33,7 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# Cache ORM
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -41,7 +41,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 <a name='caching-resultsets'></a>
 
-## Caching Resultsets
+## Cache pro databázové výsledky (Resultset)
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
