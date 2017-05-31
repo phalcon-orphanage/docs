@@ -15,7 +15,7 @@
           <a href="#random">Random</a>
         </li>
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#resources">Externí zdroje</a>
         </li>
       </ul>
     </li>
@@ -213,6 +213,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## External Resources
+## Externí zdroje
 
 - [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
