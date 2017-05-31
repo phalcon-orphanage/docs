@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Assets Management</a> <ul>
+      <a href="#overview">Správa assetů</a> <ul>
         <li>
-          <a href="#add">Adding Resources</a>
+          <a href="#add">Přidávání zdrojů</a>
         </li>
         <li>
           <a href="#resources-local-remote">Local/Remote resources</a>
@@ -35,7 +35,7 @@
 
 <a name='overview'></a>
 
-# Assets Management
+# Správa assetů
 
 `Phalcon\Assets` is a component that allows you to manage static resources such as CSS stylesheets or JavaScript libraries in a web application.
 
@@ -43,7 +43,7 @@
 
 <a name='add'></a>
 
-## Adding Resources
+## Přidávání zdrojů
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
