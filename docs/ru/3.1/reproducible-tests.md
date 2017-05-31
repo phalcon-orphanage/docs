@@ -41,7 +41,7 @@ var_dump($_COOKIE);
 
 Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
 
-### Database
+### База данных
 
 Remember to add to the script how you registered the database service:
 
