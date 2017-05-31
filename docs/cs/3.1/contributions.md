@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#contributing">Contributing to Phalcon</a> <ul>
+      <a href="#contributing">Přispějte k vývoji Phalcon frameworku</a> <ul>
         <li>
           <a href="#contributions">Contributions</a>
         </li>
@@ -32,7 +32,7 @@
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Přispějte k vývoji Phalcon frameworku
 
 Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
 
