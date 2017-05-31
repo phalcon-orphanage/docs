@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Requirements</a> <ul>
+      <a href="#requirements">Požadavky</a> <ul>
         <li>
           <a href="#requirements-hardware">Hardware</a>
         </li>
@@ -12,13 +12,13 @@
     </li>
     
     <li>
-      <a href="#installation">Installation</a> <ul>
+      <a href="#installation">Instalace</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
               <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-debian-repository">Instalace z repozitáře</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-repository-stable">Stable releases</a>
                     </li>
@@ -29,7 +29,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Instalace Phalcon frameworku</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -48,7 +48,7 @@
             <li>
               <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Instalace z repozitáře</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
                     </li>
@@ -59,7 +59,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Instalace Phalcon frameworku</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -111,7 +111,7 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# Požadavky
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -140,9 +140,9 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='installation'></a>
 
-# Installation
+# Instalace
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Jelikož je Phalcon framework kompilován jako rozšíření pro PHP, jeho instalace je odlišná od ostatních tradičních PHP frameworků. Phalcon framework musí být instalován a načten jako modul pro Váš webserver.
 
 <a name='installation-linux'></a>
 
@@ -156,7 +156,7 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -184,7 +184,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='requirements-hardware'></a>
 
-1#### Phalcon installation
+1#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -235,7 +235,7 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='requirements-hardware'></a>
 
-6#### Repository installation
+6#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -263,7 +263,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='requirements-software'></a>
 
-0#### Phalcon installation
+0#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -335,7 +335,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Požadavky
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
@@ -406,7 +406,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Requirements
+### Požadavky
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
