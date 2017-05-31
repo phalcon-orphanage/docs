@@ -82,7 +82,7 @@
 
 # Improving Performance with Cache
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon dostarcza klasę `Phalcon\Cache`, która umożliwia szybszy dostęp do najczęściej używanych lub już przetworzonych danych. Klasa `Phalcon\Cache` jest napisana w C, dzięki czemu zapewnia wyższą wydajność i mniejsze obciążenie podczas pobierania danych ze źródeł. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 <a name='implementation'></a>
 
