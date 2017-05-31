@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Кэширование в ORM</a> <ul>
         <li>
-          <a href="#caching-resultsets">Caching Resultsets</a>
+          <a href="#caching-resultsets">Кэширование наборов данных</a>
         </li>
         <li>
-          <a href="#forcing-cache">Forcing Cache</a>
+          <a href="#forcing-cache">Форсирование кэша</a>
         </li>
         <li>
-          <a href="#caching-phql-queries">Caching PHQL Queries</a>
+          <a href="#caching-phql-queries">Кэширование PHQL запросов</a>
         </li>
         <li>
-          <a href="#reusable-related-records">Reusable Related Records</a>
+          <a href="#reusable-related-records">Многократное использование связанных записей</a>
         </li>
         <li>
-          <a href="#caching-related-records">Caching Related Records</a>
+          <a href="#caching-related-records">Кэширование связанных записей</a>
         </li>
         <li>
-          <a href="#caching-related-records-recursively">Caching Related Records Recursively</a>
+          <a href="#caching-related-records-recursively">Рекурсивное кэшировоние связанных записей</a>
         </li>
         <li>
-          <a href="#caching-based-on-conditions">Caching based on Conditions</a>
+          <a href="#caching-based-on-conditions">Кэширование на основе условий</a>
         </li>
         <li>
-          <a href="#caching-phql-execution-plan">Caching PHQL execution plan</a>
+          <a href="#caching-phql-execution-plan">Кэширования плана выполнения PHQL</a>
         </li>
       </ul>
     </li>
@@ -33,7 +33,7 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# Кэширование в ORM
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -41,7 +41,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 <a name='caching-resultsets'></a>
 
-## Caching Resultsets
+## Кэширование наборов данных
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -152,7 +152,7 @@ Which resultset to cache and for how long is up to the developer, after having e
 
 <a name='forcing-cache'></a>
 
-## Forcing Cache
+## Форсирование кэша
 
 Earlier we saw how `Phalcon\Mvc\Model` integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
@@ -224,9 +224,9 @@ class Robots extends Model
 }
 ```
 
-Accessing the database is several times slower than calculating a cache key. You're free to implement any key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible - meaning that different keys should return unrelated records.
+Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша. Вы вольны в реализации стратегии генерации ключа, которая лучше подходит для ваших задач. Следует отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это означает, что разные ключи возвращают при поиске независимые наборы записей.
 
-This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
+Это дает вам полный контроль над тем, как кэши должны быть реализованы для каждой модели, эта стратегия может быть общей для нескольких моделей, которую можно вынести в отдельный базовый класс для всех подобных классов:
 
 ```php
 <?php
@@ -237,22 +237,22 @@ class CacheableModel extends Model
 {
     protected static function _createKey($parameters)
     {
-        // ... Create a cache key based on the parameters
+        // ... Создание ключа кэша на основе параметров
     }
 
     public static function find($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 
     public static function findFirst($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 }
 ```
 
-Then use this class as base class for each `Cacheable` model:
+Затем используйте этот класс в качестве базового класса для каждой модели `Cacheable`:
 
 ```php
 <?php
@@ -265,7 +265,7 @@ class Robots extends CacheableModel
 
 <a name='caching-phql-queries'></a>
 
-## Caching PHQL Queries
+## Кэширование PHQL запросов
 
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -292,7 +292,7 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## Reusable Related Records
+## Многократное использование связанных записей
 
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -355,11 +355,11 @@ Note that this type of cache works in memory only, this means that cached data a
 
 <a name='caching-related-records'></a>
 
-## Caching Related Records
+## Кэширование связанных записей
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
+| Type       | Описание                                                        | Implicit Method |
 | ---------- | --------------------------------------------------------------- | --------------- |
 | Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
 | Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
@@ -398,7 +398,7 @@ class Invoices extends Model
 
 <a name='caching-related-records-recursively'></a>
 
-## Caching Related Records Recursively
+## Рекурсивное кэшировоние связанных записей
 
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -504,7 +504,7 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## Caching based on Conditions
+## Кэширование на основе условий
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
@@ -738,7 +738,7 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## Caching PHQL execution plan
+## Кэширования плана выполнения PHQL
 
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
