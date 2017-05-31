@@ -55,7 +55,7 @@
           <a href="#raw-sql">Using Raw SQL</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
@@ -1088,7 +1088,7 @@ $robots = Robots::findByRawSql(
 
 <a name='usage'></a>
 
-7## Troubleshooting
+7## Устранение неполадок
 
 Some things to keep in mind when using PHQL:
 
