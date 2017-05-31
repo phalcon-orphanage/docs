@@ -68,7 +68,7 @@
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [Filters](/[[language]]/[[version]]/filter)
-    - [Routing](/[[language]]/[[version]]/routing)
+    - [Routování](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
     - [Validation](/[[language]]/[[version]]/validation)

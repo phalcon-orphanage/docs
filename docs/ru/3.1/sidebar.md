@@ -19,8 +19,8 @@
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
 - Инструменты разработчика 
-    - [Installation](/[[language]]/[[version]]/devtools-installation)
-    - [Usage](/[[language]]/[[version]]/devtools-usage)
+    - [Установка](/[[language]]/[[version]]/devtools-installation)
+    - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Ядро 
     - Приложение 
@@ -68,7 +68,7 @@
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [Filters](/[[language]]/[[version]]/filter)
-    - [Routing](/[[language]]/[[version]]/routing)
+    - [Маршрутизация](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
     - [Validation](/[[language]]/[[version]]/validation)
@@ -78,7 +78,7 @@
     - [Response](/[[language]]/[[version]]/response)
 - Безопасность 
     - [Шифрование](/[[language]]/[[version]]/crypt)
-    - [Защита](/[[language]]/[[version]]/security)
+    - [Безопасность](/[[language]]/[[version]]/security)
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)

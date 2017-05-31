@@ -26,15 +26,15 @@
 
 <a name='overview'></a>
 
-# Model Events
+# Události modelů
 
 <a name='events'></a>
 
-## Events and Events Manager
+## Události a Správce událostí
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by `Phalcon\Mvc\Model` and their order of execution:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
+| Operation          | Name                     |   Zastaví operaci?    | Explanation                                                                                                                       |
 | ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
 | Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |

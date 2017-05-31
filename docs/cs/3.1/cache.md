@@ -80,13 +80,13 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# Zlepšení výkonu pomocí cache
 
 Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## Kdy implementovat cache?
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
@@ -628,4 +628,4 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `persistent` | Create a persistent connection to Redis.                       |
 | `index`      | The index of the Redis database to use.                        |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Také jsou dostupné další adaptéry for tuto komponentu v repozitáři [Phalcon Incubator](https://github.com/phalcon/incubator)

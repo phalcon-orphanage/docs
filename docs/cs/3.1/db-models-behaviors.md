@@ -21,7 +21,7 @@
 
 <a name='overview'></a>
 
-# Model Behaviors
+# Chování modelů (behaviors)
 
 Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 

@@ -26,7 +26,7 @@
 
 <a name='models-metadata'></a>
 
-# Models Metadata
+# Metadata modelů
 
 To speed up development `Phalcon\Mvc\Model` helps you to query fields and constraints from tables related to models. To achieve this, `Phalcon\Mvc\Model\MetaData` is available to manage and cache table metadata.
 
@@ -51,7 +51,7 @@ print_r($dataTypes);
 
 <a name='caching-metadata'></a>
 
-## Caching Metadata
+## Cache pro Metadata
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 

@@ -27,7 +27,7 @@
           <a href="#events">Autoloading Events</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
@@ -291,15 +291,15 @@ $loader->register();
 
 Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| Название события   | Срабатывает                                                                                                         | Можно остановить операцию? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Да                         |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Нет                        |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Нет                        |
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Устранение неполадок
 
 Some things to keep in mind when using the universal autoloader:
 

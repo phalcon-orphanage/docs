@@ -93,9 +93,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Sprawdź czy żądanie zostało wykonane za pomocą metody POST
         if ($this->request->isPost()) {
-            // Access POST data
+            // Dostęp do danych z POST
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }

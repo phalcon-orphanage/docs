@@ -94,7 +94,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 - Вы используете много хелперов и результат генерации почти всегда одинаковый
 - Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
-<h5 class='alert alert-warning'>*NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
+<h5 class='alert alert-warning'>* Примечание:* Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш (hit). Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
 
 <a name='caching-behavior'></a>
 
@@ -164,7 +164,7 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'>*NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
+<h5 class='alert alert-warning'>*Обратите внимание:* В этом примере, наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
 
 <a name='arbitrary-data'></a>
 
@@ -487,7 +487,7 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcache расширения.  | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
 | `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
@@ -630,4 +630,4 @@ $cache = new Libmemcached(
 | `persistent` | Использовать постоянное соединение к Redis серверу.             |
 | `index`      | Индекс базы данных.                                             |
 
-Существует еще несколько типов адаптеров, их можно получить в [Phalcon Incubator](https://github.com/phalcon/incubator).
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).

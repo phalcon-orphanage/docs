@@ -386,7 +386,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter   | Description                                                                                                                                                                                          | Example                                                              |
+| Parametre   | Description                                                                                                                                                                                          | Example                                                              |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => 'name LIKE 'steve%''`                            |
 | columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
@@ -1100,10 +1100,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
+| Operation | Name         | İşlemi durdurabilir mi? | Explanation                              |
+| --------- | ------------ |:-----------------------:| ---------------------------------------- |
+| Deleting  | beforeDelete |          Evet           | Runs before the delete operation is made |
+| Deleting  | afterDelete  |          Hayır          | Runs after the delete operation was made |
 
 With the above events can also define business rules in the models:
 

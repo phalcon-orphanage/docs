@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Przegląd</a> <ul>
         <li>
           <a href="#introduction">Introduction</a>
         </li>

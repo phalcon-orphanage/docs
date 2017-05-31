@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Requirements</a> <ul>
+      <a href="#requirements">Požadavky</a> <ul>
         <li>
           <a href="#requirements-hardware">Hardware</a>
         </li>
@@ -111,7 +111,7 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# Požadavky
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -235,7 +235,7 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='requirements-hardware'></a>
 
-6#### Repository installation
+6#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -263,7 +263,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='requirements-software'></a>
 
-0#### Phalcon installation
+0#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -335,7 +335,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Požadavky
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
@@ -406,7 +406,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Requirements
+### Požadavky
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)

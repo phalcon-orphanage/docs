@@ -561,9 +561,9 @@ When `Phalcon\Mvc\Application` have modules registered, always is necessary that
 
 ## Application Events
 
-`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. Aşağıdaki olaylar desteklenmektedir:
 
-| Event Name            | Triggered                                                    |
+| Olay Adı              | Tetiklendi                                                   |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -571,7 +571,7 @@ When `Phalcon\Mvc\Application` have modules registered, always is necessary that
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-The following example demonstrates how to attach listeners to this component:
+Aşağıdaki örnek, dinleyicilerin bu bileşene nasıl ekleneceğini göstermektedir:
 
 ```php
 <?php

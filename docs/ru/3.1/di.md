@@ -44,7 +44,7 @@
         <li>
           <a href="#resolving-services">Resolving Services</a> <ul>
             <li>
-              <a href="#events">Events</a>
+              <a href="#events">События</a>
             </li>
           </ul>
         </li>
@@ -878,7 +878,7 @@ Supported parameter types include the following:
     </th>
     
     <th>
-      Description
+      Описание
     </th>
     
     <th>
@@ -1012,14 +1012,14 @@ $component = $di->get(
 
 <a name='di-explained'></a>
 
-3### Events
+3### События
 
-`Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
+| Название события     | Срабатывает                                                                                                     | Можно остановить операцию? | Triggered on |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:--------------------------:|:------------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |            Нет             |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |            Нет             |  Listeners   |
 
 <a name='di-explained'></a>
 
@@ -1256,30 +1256,30 @@ Although you can register services with the names you want, Phalcon has a severa
 
 | Название сервиса   | Описание                              | По умолчанию                                | Shared |
 | ------------------ | ------------------------------------- | ------------------------------------------- |:------:|
-| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Yes   |
-| annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |  Yes   |
-| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |  Yes   |
-| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |  Yes   |
-| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |  Yes   |
-| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |  Yes   |
-| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |  Yes   |
-| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |  Yes   |
-| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |  Yes   |
-| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |  Yes   |
-| filter             | Input Filtering Service               | `Phalcon\Filter`                           |  Yes   |
-| modelsCache        | Cache backend for models cache        | None                                        |   No   |
-| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |  Yes   |
-| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |  Yes   |
-| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |  Yes   |
-| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |  Yes   |
-| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |  Yes   |
-| security           | Security helpers                      | `Phalcon\Security`                         |  Yes   |
-| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |  Yes   |
-| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |  Yes   |
-| tag                | HTML generation helpers               | `Phalcon\Tag`                              |  Yes   |
-| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |  Yes   |
-| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |  Yes   |
-| viewsCache         | Cache backend for views fragments     | None                                        |   No   |
+| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |   Да   |
+| annotations        | Парсер аннотаций                      | `Phalcon\Annotations\Adapter\Memory`     |   Да   |
+| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |   Да   |
+| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |   Да   |
+| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |   Да   |
+| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |   Да   |
+| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |   Да   |
+| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |   Да   |
+| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |   Да   |
+| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |   Да   |
+| filter             | Input Filtering Service               | `Phalcon\Filter`                           |   Да   |
+| modelsCache        | Cache backend for models cache        | None                                        |  Нет   |
+| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |   Да   |
+| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |   Да   |
+| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |   Да   |
+| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |   Да   |
+| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |   Да   |
+| security           | Security helpers                      | `Phalcon\Security`                         |   Да   |
+| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |   Да   |
+| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |   Да   |
+| tag                | HTML generation helpers               | `Phalcon\Tag`                              |   Да   |
+| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |   Да   |
+| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |   Да   |
+| viewsCache         | Cache backend for views fragments     | None                                        |  Нет   |
 
 <a name='registering-services'></a>
 

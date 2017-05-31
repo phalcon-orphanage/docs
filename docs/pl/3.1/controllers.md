@@ -394,7 +394,7 @@ $di->set(
 
 <a name='using'></a>
 
-0## Events in Controllers
+0## Zdarzenia w Kontrolerach
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 

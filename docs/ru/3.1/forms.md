@@ -6,7 +6,7 @@
           <a href="#adapters">Adapters</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#usage">Использование</a>
         </li>
         <li>
           <a href="#printing">Printing Messages</a>
@@ -506,7 +506,7 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                | Description                                                   |
+| Название                            | Описание                                                      |
 | ----------------------------------- | ------------------------------------------------------------- |
 | `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
 | `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |
@@ -696,6 +696,6 @@ $loginForm = $this->forms->get('login');
 echo $loginForm->render();
 ```
 
-## External Resources
+## Дополнительная информация
 
 - [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

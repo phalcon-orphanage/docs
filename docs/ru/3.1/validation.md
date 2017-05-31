@@ -6,13 +6,13 @@
           <a href="#initializing">Initializing Validation</a>
         </li>
         <li>
-          <a href="#validators">Validators</a>
+          <a href="#validators">Валидаторы</a>
         </li>
         <li>
           <a href="#callback">Callback Validator</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#messages">Собщения об ошибках</a>
         </li>
         <li>
           <a href="#filtering">Filtering of Data</a>
@@ -154,11 +154,11 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## Валидаторы
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                          | Explanation                                                       |
+| Класс                                          | Пояснение                                                         |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
 | `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
 | `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
@@ -289,7 +289,7 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 <a name='messages'></a>
 
-## Validation Messages
+## Собщения об ошибках
 
 `Phalcon\Validation` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 

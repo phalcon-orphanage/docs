@@ -32,7 +32,7 @@
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Přispějte k vývoji Phalcon frameworku
 
 Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
 

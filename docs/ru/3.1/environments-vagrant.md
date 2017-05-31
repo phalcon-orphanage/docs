@@ -9,7 +9,7 @@
           <a href="#packages-included">Packages Included</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Установка</a> <ul>
             <li>
               <a href="#installation-vagrant-box">Установка Vagrant Box</a>
             </li>
@@ -73,7 +73,7 @@
               <a href="#daily-usage-additional-sites">Adding additional sites</a>
             </li>
             <li>
-              <a href="#daily-usage-environment-variables">Environment variables</a> <ul>
+              <a href="#daily-usage-environment-variables">Переменные окружения</a> <ul>
                 <li>
                   <a href="#daily-usage-environment-global-variables">Global variables</a>
                 </li>
@@ -170,7 +170,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
 <a name='installation-vagrant-box'></a>
 
@@ -519,7 +519,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='installation'></a>
 
-0### Environment variables
+0### Переменные окружения
 
 <a name='installation'></a>
 

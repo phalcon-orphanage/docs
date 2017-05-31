@@ -362,7 +362,7 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
+| Type             | Описание                                                                                                                   | Implicit Method |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
 | Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |

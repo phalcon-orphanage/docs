@@ -832,7 +832,7 @@ We have briefly seen above how parameters are defined in the routes. Parameters 
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
@@ -1199,16 +1199,16 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 
 1## Доступные события
 
-The following events are supported:
+Поддерживаются следующие типы событий:
 
 | Название события   | Срабатывает                                                       | Можно остановить операцию? |
 | ------------------ | ----------------------------------------------------------------- |:--------------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |            Yes             |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |            Yes             |
-| afterExecuteRoute  | Handler just finished running                                     |             No             |
-| beforeNotFound     | Route has not been found                                          |            Yes             |
-| afterHandleRoute   | Route just finished executing                                     |            Yes             |
-| afterBinding       | Triggered after models are bound but before executing the handler |            Yes             |
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |             Да             |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |             Да             |
+| afterExecuteRoute  | Handler just finished running                                     |            Нет             |
+| beforeNotFound     | Route has not been found                                          |             Да             |
+| afterHandleRoute   | Route just finished executing                                     |             Да             |
+| afterBinding       | Triggered after models are bound but before executing the handler |             Да             |
 
 <a name='routing-setup-application'></a>
 

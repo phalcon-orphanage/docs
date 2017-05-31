@@ -445,17 +445,17 @@ The `Phalcon\Events\ManagerInterface` interface must be implemented to create yo
 
 The events available in Phalcon are:
 
-| Component          | Event                               |
+| Component          | Событие                             |
 | ------------------ | ----------------------------------- |
 | ACL                | `acl:afterCheckAccess`              |
 | ACL                | `acl:beforeCheckAccess`             |
-| Application        | `application:afterHandleRequest`    |
-| Application        | `application:afterStartModule`      |
-| Application        | `application:beforeHandleRequest`   |
-| Application        | `application:beforeSendResponse`    |
-| Application        | `application:beforeStartModule`     |
-| Application        | `application:boot`                  |
-| Application        | `application:viewRender`            |
+| Приложение         | `application:afterHandleRequest`    |
+| Приложение         | `application:afterStartModule`      |
+| Приложение         | `application:beforeHandleRequest`   |
+| Приложение         | `application:beforeSendResponse`    |
+| Приложение         | `application:beforeStartModule`     |
+| Приложение         | `application:boot`                  |
+| Приложение         | `application:viewRender`            |
 | CLI                | `dispatch:beforeException`          |
 | Collection         | `afterCreate`                       |
 | Collection         | `afterSave`                         |
@@ -500,11 +500,11 @@ The events available in Phalcon are:
 | Loader             | `loader:beforeCheckClass`           |
 | Loader             | `loader:beforeCheckPath`            |
 | Loader             | `loader:pathFound`                  |
-| Micro              | `micro:afterHandleRoute`            |
-| Micro              | `micro:afterExecuteRoute`           |
-| Micro              | `micro:beforeExecuteRoute`          |
-| Micro              | `micro:beforeHandleRoute`           |
-| Micro              | `micro:beforeNotFound`              |
+| Микро              | `micro:afterHandleRoute`            |
+| Микро              | `micro:afterExecuteRoute`           |
+| Микро              | `micro:beforeExecuteRoute`          |
+| Микро              | `micro:beforeHandleRoute`           |
+| Микро              | `micro:beforeNotFound`              |
 | Middleware         | `afterBinding`                      |
 | Middleware         | `afterExecuteRoute`                 |
 | Middleware         | `afterHandleRoute`                  |

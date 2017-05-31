@@ -69,13 +69,13 @@
 
 <a name='overview'></a>
 
-# Overview
+# Přehled
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
 <a name='dependencies'></a>
 
-## Dependencies
+## Závislosti
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
@@ -318,7 +318,7 @@ make reset
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
-| Application     | Version          |
+| Aplikace        | Version          |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |

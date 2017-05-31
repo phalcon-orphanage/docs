@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Cookies Management</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Základní použití</a>
         </li>
         <li>
           <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
@@ -21,7 +21,7 @@
 
 <a name='usage'></a>
 
-## Basic Usage
+## Základní použití
 
 You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 

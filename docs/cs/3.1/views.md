@@ -80,16 +80,16 @@ Views represent the user interface of your application. Views are often HTML fil
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Integrace pohledů s controllery
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address  | 127.0.0.1 |
+| --------------- | --------- |
+| Phalcon adresář | blog      |
+| Controller      | posts     |
+| Akce            | show      |
+| Parametr        | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -1108,17 +1108,17 @@ echo $view->render(
 
 0## View Events
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Některé události při vrácení hodnoty false můžou zastavit aktivní operaci. Podporovány jsou následující události:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| Jméno události   | Spuštění                                      | Zastaví operaci? |
+| ---------------- | --------------------------------------------- |:----------------:|
+| beforeRender     | Triggered before starting the render process  |       Ano        |
+| beforeRenderView | Triggered before rendering an existing view   |       Ano        |
+| afterRenderView  | Triggered after rendering an existing view    |        Ne        |
+| afterRender      | Triggered after completing the render process |        Ne        |
+| notFoundView     | Triggered when a view was not found           |        Ne        |
 
-The following example demonstrates how to attach listeners to this component:
+Následující příklad ukazuje, jak připojit listenery k událostem:
 
 ```php
 <?php

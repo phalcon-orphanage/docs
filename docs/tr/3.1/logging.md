@@ -43,7 +43,7 @@
               <a href="#usage-firephp">FirePHP Logger</a>
             </li>
             <li>
-              <a href="#usage-custom">Implementing your own adapters</a>
+              <a href="#usage-custom">Kendi Bağdaştırıcılarını Uygulama</a>
             </li>
           </ul>
         </li>
@@ -393,6 +393,6 @@ $logger->error(
 
 <a name='adapters'></a>
 
-3### Implementing your own adapters
+3### Kendi Bağdaştırıcılarını Uygulama
 
 The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.

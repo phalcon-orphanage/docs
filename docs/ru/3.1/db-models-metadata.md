@@ -55,7 +55,7 @@ print_r($dataTypes);
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| Adapter | Description                                                                                                                                                                                                                                                                                                                                | API                                      |
+| Адаптер | Описание                                                                                                                                                                                                                                                                                                                                   | API                                      |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | Memory  | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the metadata in each request containing the new and/or modified fields. | `Phalcon\Mvc\Model\MetaData\Memory`  |
 | Session | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models.                   | `Phalcon\Mvc\Model\MetaData\Session` |
@@ -161,7 +161,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | Description                                       |
+| Название | Описание                                          |
 | -------- | ------------------------------------------------- |
 | Primary  | Mark the field as part of the table's primary key |
 | Identity | The field is an auto_increment/serial column      |
@@ -169,7 +169,7 @@ The following annotations are supported:
 
 The annotation @Column supports the following parameters:
 
-| Name     | Description                                           |
+| Название | Описание                                              |
 | -------- | ----------------------------------------------------- |
 | type     | The column's type (string, integer, decimal, boolean) |
 | length   | The column's length if any                            |

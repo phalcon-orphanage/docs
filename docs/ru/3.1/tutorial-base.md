@@ -303,7 +303,7 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Отправка результатов в представление
+## Отправка выходных данных в представление
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 

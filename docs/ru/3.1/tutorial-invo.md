@@ -6,13 +6,13 @@
           <a href="#structure">Project Structure</a>
         </li>
         <li>
-          <a href="#routing">Routing</a>
+          <a href="#routing">Маршрутизация</a>
         </li>
         <li>
-          <a href="#configuration">Configuration</a>
+          <a href="#configuration">Конфигурация</a>
         </li>
         <li>
-          <a href="#autoloaders">Autoloaders</a>
+          <a href="#autoloaders">Автозагрузка</a>
         </li>
         <li>
           <a href="#services">Registering services</a>
@@ -105,7 +105,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 <a name='routing'></a>
 
-## Routing
+## Маршрутизация
 
 INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
@@ -113,7 +113,7 @@ The following route `/session/register` executes the controller `SessionControll
 
 <a name='configuration'></a>
 
-## Configuration
+## Конфигурация
 
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 
@@ -154,7 +154,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## Автозагрузка
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 

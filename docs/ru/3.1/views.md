@@ -74,7 +74,7 @@
 
 # Использование представлений
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
 
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are responsible for the managing the view layer of your MVC application.
 
@@ -84,12 +84,12 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address           | 127.0.0.1 |
+| ------------------------ | --------- |
+| Директория с приложением | blog      |
+| Контроллер               | posts     |
+| Действие                 | show      |
+| Параметр                 | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -1108,17 +1108,17 @@ echo $view->render(
 
 0## События компонента представлений
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Да          |
-| beforeRenderView | Triggered before rendering an existing view   |         Да          |
-| afterRenderView  | Triggered after rendering an existing view    |         Нет         |
-| afterRender      | Triggered after completing the render process |         Нет         |
-| notFoundView     | Triggered when a view was not found           |         Нет         |
+| Название события | Срабатывает                                   | Можно остановить операцию? |
+| ---------------- | --------------------------------------------- |:--------------------------:|
+| beforeRender     | Triggered before starting the render process  |             Да             |
+| beforeRenderView | Triggered before rendering an existing view   |             Да             |
+| afterRenderView  | Triggered after rendering an existing view    |            Нет             |
+| afterRender      | Triggered after completing the render process |            Нет             |
+| notFoundView     | Triggered when a view was not found           |            Нет             |
 
-The following example demonstrates how to attach listeners to this component:
+В следующем примере показано, как назначить слушателей к компоненту:
 
 ```php
 <?php
