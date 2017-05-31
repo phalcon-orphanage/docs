@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Создание консольного приложения</a> <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">Структура</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#creating-bootstrap">Создание загрузочного файла</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Задачи</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#processing-action-parameters">Обработка параметров</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#running-tasks-chain">Запуск цепочки команд</a>
         </li>
       </ul>
     </li>
@@ -24,27 +24,27 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# Создание консольного приложения
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Консольные приложения выполняются из командной строки.Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
 
 <a name='structure'></a>
 
-## Structure
+## Структура
 
-A minimal structure of a CLI application will look like this:
+Минимальная структура консольного приложения будет выглядеть следующим образом:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+- `app/cli.php` <-- основной загрузочный файл
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Создание загрузочного файла
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Однако для начальной загрузки приложения мы будем использовать файл cli.php, вместо загрузочного файла index.php, который используется в классических веб-приложениях.
 
-Below is a sample bootstrap that is being used for this example.
+Ниже приведен образец загрузочного файла, который используется для этого примера.
 
 ```php
 <?php
@@ -53,11 +53,12 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// Использование стандартного CLI контейнера для сервисов
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Регистрируем автозагрузчик и сообщаем ему директорию
+ * для регистрации каталога задач
  */
 $loader = new Loader();
 
@@ -69,7 +70,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Загрузка файла конфигурации (если есть)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -78,13 +79,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// Создание консольного приложения
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Обработка аргументов консоли
  */
 $arguments = [];
 
@@ -99,10 +100,10 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Обработка входящих аргументов
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Связанные с Phalcon вещи указываем здесь
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -115,7 +116,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Эта часть кода может быть запущена с помощью команды:
 
 ```bash
 php app/cli.php
@@ -123,11 +124,11 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Задачи
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Принцип работы задач похож на работу контролеров. Любое консольное приложение нуждается по крайней мере в одной задаче, именуемой MainTask. Каждая задача должна иметь по крайней мере одной действие, именуемое mainAction, которое будет запущено, если не указано другое, явно. Эти соглашения являются умолчанием.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+Ниже приведен пример файла `app/tasks/MainTask.php`:
 
 ```php
 <?php
@@ -138,18 +139,18 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
     }
 }
 ```
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Обработка параметров
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Вы можете передавать параметры в действие, код для этого уже присутствует в примере загрузочного файла.
 
-If you run the application with the following parameters and action:
+Если вы запустите приложение, с задачей, составленной следующим образом:
 
 ```php
 <?php
@@ -160,7 +161,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
     }
 
     /**
@@ -179,7 +180,7 @@ class MainTask extends Task
 }
 ```
 
-We can then run the following command:
+Вы сможете запустить её используя следующую команду:
 
 ```bash
 php app/cli.php main test world universe
@@ -190,9 +191,9 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Запуск цепочки команд
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
 
 ```php
 <?php
@@ -203,7 +204,7 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Связанные с Phalcon вещи указываем здесь
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -216,7 +217,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
 
 ```php
 <?php
@@ -227,7 +228,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Это задача по умолчанию с действием по умолчанию" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -239,9 +240,9 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Я буду напечатано тоже!" . PHP_EOL;
     }
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий `Phalcon\Cli\Task` и реализовать такую логику там.
