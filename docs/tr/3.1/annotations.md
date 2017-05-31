@@ -22,7 +22,7 @@
         <li>
           <a href="#adapters">Annotations Adapters</a> <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">Kendi Bağdaştırıcılarını Uygulama</a>
             </li>
           </ul>
         </li>
@@ -410,7 +410,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Class                                   | Description                                                                                                                                                                       |
+| Sınıf                                   | Description                                                                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
@@ -419,7 +419,7 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Kendi Bağdaştırıcılarını Uygulama
 
 The `Phalcon\Annotations\AdapterInterface` interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
