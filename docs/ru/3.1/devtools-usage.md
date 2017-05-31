@@ -6,7 +6,7 @@
           <a href="#download">Download</a>
         </li>
         <li>
-          <a href="#installation">Installation</a>
+          <a href="#installation">Установка</a>
         </li>
         <li>
           <a href="#available-commands">Available Commands</a>
@@ -33,7 +33,7 @@
           <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">Заключение</a>
         </li>
       </ul>
     </li>
@@ -56,7 +56,7 @@ You can download or clone a cross platform package containing the developer tool
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -353,7 +353,7 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
+| Файл                                     | Purpose                        |
 | ---------------------------------------- | ------------------------------ |
 | `app/controllers/ProductsController.php` | The Products controller        |
 | `app/models/Products.php`                | The Products model             |
@@ -396,6 +396,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Заключение
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
