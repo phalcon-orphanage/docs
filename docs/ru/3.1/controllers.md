@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Введение</a> <ul>
         <li>
-          <a href="#using">Using Controllers</a>
+          <a href="#using">Использование контроллеров</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Dispatch Loop</a>
+          <a href="#dispatch-loop">Цикл работы</a>
         </li>
         <li>
-          <a href="#initializing">Initializing Controllers</a>
+          <a href="#initializing">Инициализация контроллеров</a>
         </li>
         <li>
-          <a href="#injecting-services">Injecting Services</a>
+          <a href="#injecting-services">Внедрение сервисов</a>
         </li>
         <li>
-          <a href="#request-response">Request and Response</a>
+          <a href="#request-response">Запрос и ответ</a>
         </li>
         <li>
-          <a href="#session-data">Session Data</a>
+          <a href="#session-data">Данные сессий</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Использование сервисов как контроллеров</a>
         </li>
         <li>
-          <a href="#events">Events in Controllers</a>
+          <a href="#events">События контроллеров</a>
         </li>
       </ul>
     </li>
@@ -33,27 +33,27 @@
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 <a name='using'></a>
 
-## Using Controllers
+## Использование контроллеров
 
-Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+Контроллеры содержат в себе ряд методов, называемых действиями (в англоязычной литературе — actions). Действия контроллеров занимаются непосредственно обработкой запросов. По умолчанию все публичные методы контролеров доступны для доступа по URL. Действия отвечают за разбор запросов (request) и создание ответов (response). Как правило, результаты работы действий используются для представлений, но так же возможно их иное использование.
 
-For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
+Например, при обращении по ссылке: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon разберёт её и получит следующие части:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Описание                     | Часть URL-адреса |
+| ---------------------------- | ---------------- |
+| **Директория с приложением** | blog             |
+| **Контроллер**               | posts            |
+| **Действие**                 | show             |
+| **Параметр**                 | 2015             |
+| **Параметр**                 | the-post-title   |
 
-In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
+Для этого случая запрос будет отправлен для обработки в контроллер `PostsController`. Для контроллеров нет какого-то специального места в приложении, они загружаются с помощью автозагрузки (например `Phalcon\Loader`), поэтому вы можете организовать их так, как вам необходимо.
 
-Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
+Контроллеры должны иметь суффикс `Controller`, а действия, соответственно, `Action`. Пример контроллера:
 
 ```php
 <?php
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Dispatch Loop
+## Цикл работы
 
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
@@ -179,7 +179,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Инициализация контроллеров
 
 `Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
@@ -230,7 +230,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Внедрение сервисов
 
 If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
@@ -285,7 +285,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Request and Response
+## Запрос и ответ
 
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
@@ -339,7 +339,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/[[l
 
 <a name='session-data'></a>
 
-## Session Data
+## Данные сессий
 
 Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
@@ -364,7 +364,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Использование сервисов как контроллеров
 
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='using'></a>
 
-0## Events in Controllers
+0## События контроллеров
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
@@ -407,10 +407,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Это выполняется перед каждым обнаруженным действием
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You don't have permission to save posts"
+                "У вас нет разрешения на сохранение постов"
             );
 
             $this->dispatcher->forward(
@@ -426,7 +426,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Выполняется после каждого действия
     }
 }
 ```
