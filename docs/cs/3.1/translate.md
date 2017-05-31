@@ -9,7 +9,7 @@
           <a href="#usage">Component Usage</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Implementace vlastních adaptérů</a>
         </li>
       </ul>
     </li>
@@ -136,7 +136,7 @@ Some applications implement multilingual on the URL such as `http://www.mozilla.
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Implementace vlastních adaptérů
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
