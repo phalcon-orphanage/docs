@@ -15,7 +15,7 @@
           <a href="#page-attributes">Page Attributes</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Implementace vlastních adaptérů</a>
         </li>
       </ul>
     </li>
@@ -161,10 +161,10 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 | Index        | Description                                                                                                                                 | Optional |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns                                                                                                        |    No    |
-| `indexes`    | An array with a set of table indexes.                                                                                                       |   Yes    |
-| `references` | An array with a set of table references (foreign keys).                                                                                     |   Yes    |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Yes    |
+| `columns`    | An array with a set of table columns                                                                                                        |    Ne    |
+| `indexes`    | An array with a set of table indexes.                                                                                                       |   Ano    |
+| `references` | An array with a set of table references (foreign keys).                                                                                     |   Ano    |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Ano    |
 
 ### Defining Columns
 
@@ -172,15 +172,15 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 | Option          | Description                                                                                                                                | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below)                                                                          |    No    |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Yes    |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Yes    |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below)                                                                          |    Ne    |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Ano    |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Ano    |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Ano    |
+| `notNull`       | Column can store null values?                                                                                                              |   Ano    |
+| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Ano    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Ano    |
+| `first`         | Column must be placed at first position in the column order                                                                                |   Ano    |
+| `after`         | Column must be placed after indicated column                                                                                               |   Ano    |
 
 Database migrations support the following database column types:
 
@@ -213,12 +213,12 @@ Database migrations support the following database column types:
 
 | Index               | Description                                                                                         | Optional | Implemented in   |
 | ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    No    | All              |
-| `columns`           | An array with the name of the columns at the table that have the reference                          |    No    | All              |
-| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    No    | All              |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Yes    | All              |
-| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
-| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    Ne    | All              |
+| `columns`           | An array with the name of the columns at the table that have the reference                          |    Ne    | All              |
+| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    Ne    | All              |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Ano    | All              |
+| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Ano    | MySQL PostgreSQL |
+| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Ano    | MySQL PostgreSQL |
 
 ## Writing Migrations
 
