@@ -129,7 +129,7 @@
     </li>
     
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">Olaylar</a> <ul>
         <li>
           <a href="#events-available-events">Available events</a> <ul>
             <li>
@@ -1191,7 +1191,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-0# Events
+0# Olaylar
 
 A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1199,16 +1199,16 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 
 1## Available events
 
-The following events are supported:
+Aşağıdaki olaylar desteklenmektedir:
 
-| Event Name         | Triggered                                                         | Can stop operation? |
-| ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| Olay Adı           | Tetiklendi                                                        | İşlemi durdurabilir mi? |
+| ------------------ | ----------------------------------------------------------------- |:-----------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |          Evet           |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |          Evet           |
+| afterExecuteRoute  | Handler just finished running                                     |          Hayır          |
+| beforeNotFound     | Route has not been found                                          |          Evet           |
+| afterHandleRoute   | Route just finished executing                                     |          Evet           |
+| afterBinding       | Triggered after models are bound but before executing the handler |          Evet           |
 
 <a name='routing-setup-application'></a>
 
