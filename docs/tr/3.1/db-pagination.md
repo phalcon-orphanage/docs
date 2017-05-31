@@ -15,7 +15,7 @@
           <a href="#page-attributes">Page Attributes</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Kendi Bağdaştırıcılarını Uygulama</a>
         </li>
       </ul>
     </li>
@@ -174,7 +174,7 @@ The `$page` object has the following attributes:
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Kendi Bağdaştırıcılarını Uygulama
 
 The `Phalcon\Paginator\AdapterInterface` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
