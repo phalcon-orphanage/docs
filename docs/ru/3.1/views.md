@@ -1,69 +1,69 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Using Views</a> <ul>
+      <a href="#overview">Использование представлений</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+          <a href="#integrating-views-with-controllers">Интеграция представлений с контроллерами</a>
         </li>
         <li>
-          <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
+          <a href="#hierarchical-rendering">Иерархическая отрисовка</a> <ul>
             <li>
-              <a href="#using-templates">Using Templates</a>
+              <a href="#using-templates">Использование шаблонов</a>
             </li>
             <li>
-              <a href="#control-rendering-levels">Control Rendering Levels</a>
+              <a href="#control-rendering-levels">Управление уровнями отрисовки</a>
             </li>
             <li>
-              <a href="#disabling-render-levels">Disabling render levels</a>
+              <a href="#disabling-render-levels">Отключение уровней отрисовки</a>
             </li>
             <li>
-              <a href="#picking-views">Picking Views</a>
+              <a href="#picking-views">Переопределение представлений</a>
             </li>
             <li>
-              <a href="#disabling-view">Disabling the view</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#simple-rendering">Simple Rendering</a>
-        </li>
-        <li>
-          <a href="#using-partials">Using Partials</a>
-        </li>
-        <li>
-          <a href="#value-transfer">Transfer values from the controller to views</a>
-        </li>
-        <li>
-          <a href="#caching-fragments">Caching View Fragments</a>
-        </li>
-        <li>
-          <a href="#template-engines">Template Engines</a> <ul>
-            <li>
-              <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
-            </li>
-            <li>
-              <a href="#changing-template-engine">Changing the Template Engine</a>
+              <a href="#disabling-view">Отключение представления</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#injecting-services">Injecting services in View</a>
+          <a href="#simple-rendering">Простая отрисовка</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> <ul>
+          <a href="#using-partials">Части шаблонов</a>
+        </li>
+        <li>
+          <a href="#value-transfer">Передача переменных контроллера</a>
+        </li>
+        <li>
+          <a href="#caching-fragments">Кэширование фрагментов представления</a>
+        </li>
+        <li>
+          <a href="#template-engines">Шаблонизаторы</a> <ul>
             <li>
-              <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
+              <a href="#custom-template-engine">Создание собственного адаптера для шаблонизатора</a>
             </li>
             <li>
-              <a href="#stand-alone-simple-rendering">Simple Rendering</a>
+              <a href="#changing-template-engine">Изменение шаблонизатора</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#eventes">View Events</a>
+          <a href="#injecting-services">Внедрение сервисов в представление</a>
+        </li>
+        <li>
+          <a href="#stand-along">Отдельное использование компонента</a> <ul>
+            <li>
+              <a href="#stand-alone-hierarchical-rendering">Иерархическая отрисовка</a>
+            </li>
+            <li>
+              <a href="#stand-alone-simple-rendering">Простая отрисовка</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="#eventes">События компонента представлений</a>
         </li>
       </ul>
     </li>
@@ -72,24 +72,24 @@
 
 <a name='overview'></a>
 
-# Using Views
+# Использование представлений
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
 
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are responsible for the managing the view layer of your MVC application.
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Интеграция представлений с контроллерами
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address           | 127.0.0.1 |
+| ------------------------ | --------- |
+| Директория с приложением | blog      |
+| Контроллер               | posts     |
+| Действие                 | show      |
+| Параметр                 | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -117,13 +117,13 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 <a name='hierarchical-rendering'></a>
 
-## Hierarchical Rendering
+## Иерархическая отрисовка
 
 `Phalcon\Mvc\View` supports a hierarchy of files and is the default component for view rendering in Phalcon. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| Название          | Файл                          | Описание                                                                                                                                                                                                                 |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -195,7 +195,7 @@ The generated HTML by the request will be:
 
 <a name='using-templates'></a>
 
-### Using Templates
+### Использование шаблонов
 
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
@@ -216,7 +216,7 @@ class PostsController extends Controller
     public function lastAction()
     {
         $this->flash->notice(
-            'These are the latest posts'
+            'Последние статьи'
         );
     }
 }
@@ -227,7 +227,7 @@ class PostsController extends Controller
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blog's title</title>
+        <title>Мой блог</title>
     </head>
     <body>
         <?php echo $this->getContent(); ?>
@@ -239,9 +239,9 @@ class PostsController extends Controller
 <!-- app/views/layouts/common.phtml -->
 
 <ul class='menu'>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/articles'>Articles</a></li>
-    <li><a href='/contact'>Contact us</a></li>
+    <li><a href='/'>Главная</a></li>
+    <li><a href='/articles'>Материалы</a></li>
+    <li><a href='/contact'>Контакты</a></li>
 </ul>
 
 <div class='content'><?php echo $this->getContent(); ?></div>
@@ -250,7 +250,7 @@ class PostsController extends Controller
 ```php
 <!-- app/views/layouts/posts.phtml -->
 
-<h1>Blog Title</h1>
+<h1>Мой блог</h1>
 
 <?php echo $this->getContent(); ?>
 ```
@@ -259,13 +259,13 @@ class PostsController extends Controller
 <!-- app/views/posts/last.phtml -->
 
 <article>
-    <h2>This is a title</h2>
-    <p>This is the post content</p>
+    <h2>Заголовок статьи</h2>
+    <p>Содержимое статьи</p>
 </article>
 
 <article>
-    <h2>This is another title</h2>
-    <p>This is another post content</p>
+    <h2>Ещё один заголовок</h2>
+    <p>Ещё одно содержимое статьи</p>
 </article>
 ```
 
@@ -357,7 +357,7 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 
 <a name='control-rendering-levels'></a>
 
-### Control Rendering Levels
+### Управление уровнями отрисовки
 
 As seen above, `Phalcon\Mvc\View` supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
@@ -398,18 +398,18 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Константа класса        | Описание                                                                 | Порядок |
+| ----------------------- | ------------------------------------------------------------------------ |:-------:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |         |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |    1    |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |    2    |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |    3    |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |    4    |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |    5    |
 
 <a name='disabling-render-levels'></a>
 
-### Disabling render levels
+### Отключение уровней отрисовки
 
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
@@ -463,7 +463,7 @@ class PostsController extends Controller
 
 <a name='picking-views'></a>
 
-### Picking Views
+### Переопределение представлений
 
 As mentioned above, when `Phalcon\Mvc\View` is managed by `Phalcon\Mvc\Application` the view rendered is the one related with the last controller and action executed. You could override this by using the `Phalcon\Mvc\View::pick()` method:
 
@@ -498,7 +498,7 @@ class ProductsController extends Controller
 
 <a name='disabling-view'></a>
 
-### Disabling the view
+### Отключение представления
 
 If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
@@ -561,13 +561,13 @@ class UsersController extends Controller
 
 <a name='simple-rendering'></a>
 
-## Simple Rendering
+## Простая отрисовка
 
 `Phalcon\Mvc\View\Simple` is an alternative component to `Phalcon\Mvc\View`. It keeps most of the philosophy of `Phalcon\Mvc\View` but lacks of a hierarchy of files which is, in fact, the main feature of its counterpart.
 
 This component allows the developer to have control of when a view is rendered and its location. In addition, this component can leverage of view inheritance available in template engines such as `Volt` and others.
 
-The default component must be replaced in the service container:
+Компонент представлений по-умолчанию должен быть заменён в сервис контейнере:
 
 ```php
 <?php
@@ -664,7 +664,7 @@ echo $simpleView->render('posts/show', $params);
 
 <a name='using-partials'></a>
 
-## Using Partials
+## Части шаблонов
 
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
@@ -691,7 +691,7 @@ The `partial()` method does accept a second parameter as an array of variables/p
 
 <a name='integrating-views-with-controllers'></a>
 
-0## Transfer values from the controller to views
+0## Передача переменных контроллера
 
 `Phalcon\Mvc\View` is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
 
@@ -751,7 +751,7 @@ A variable with the name of the first parameter of `setVar()` will be created in
 
 <a name='integrating-views-with-controllers'></a>
 
-1## Caching View Fragments
+1## Кэширование фрагментов представления
 
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. `Phalcon\Mvc\View` offers caching a part or the whole rendered output to increase performance.
 
@@ -881,7 +881,7 @@ The [PHP alternative site](https://github.com/phalcon/php-site) is an example of
 
 <a name='integrating-views-with-controllers'></a>
 
-3## Template Engines
+3## Шаблонизаторы
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. `Phalcon\Mvc\View` allows you to use other template engines instead of plain PHP or Volt.
 
@@ -893,7 +893,7 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 <a name='integrating-views-with-controllers'></a>
 
-4### Creating your own Template Engine Adapter
+4### Создание собственного адаптера для шаблонизатора
 
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
@@ -943,7 +943,7 @@ class MyTemplateAdapter extends Engine
 
 <a name='integrating-views-with-controllers'></a>
 
-5### Changing the Template Engine
+5### Изменение шаблонизатора
 
 You can replace the template engine completely or use more than one template engine at the same time. The method `Phalcon\Mvc\View::registerEngines()` accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
 
@@ -990,7 +990,7 @@ There are adapters available for several template engines on the [Phalcon Incuba
 
 <a name='integrating-views-with-controllers'></a>
 
-6## Injecting services in View
+6## Внедрение сервисов в представление
 
 Every view executed is included inside a `Phalcon\Di\Injectable` instance, providing easy access to the application's service container.
 
@@ -1011,13 +1011,13 @@ $.ajax({
 
 <a name='integrating-views-with-controllers'></a>
 
-7## Stand-Alone Component
+7## Отдельное использование компонента
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
 <a name='integrating-views-with-controllers'></a>
 
-8### Hierarchical Rendering
+8### Иерархическая отрисовка
 
 Using `Phalcon\Mvc\View` in a stand-alone mode can be demonstrated below:
 
@@ -1077,7 +1077,7 @@ echo $view->getRender(
 
 <a name='integrating-views-with-controllers'></a>
 
-9### Simple Rendering
+9### Простая отрисовка
 
 Using `Phalcon\Mvc\View\Simple` in a stand-alone mode can be demonstrated below:
 
@@ -1106,19 +1106,19 @@ echo $view->render(
 
 <a name='hierarchical-rendering'></a>
 
-0## View Events
+0## События компонента представлений
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| Название события | Срабатывает                                   | Можно остановить операцию? |
+| ---------------- | --------------------------------------------- |:--------------------------:|
+| beforeRender     | Triggered before starting the render process  |             Да             |
+| beforeRenderView | Triggered before rendering an existing view   |             Да             |
+| afterRenderView  | Triggered after rendering an existing view    |            Нет             |
+| afterRender      | Triggered after completing the render process |            Нет             |
+| notFoundView     | Triggered when a view was not found           |            Нет             |
 
-The following example demonstrates how to attach listeners to this component:
+В следующем примере показано, как назначить слушателей к компоненту:
 
 ```php
 <?php
