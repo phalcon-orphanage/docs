@@ -1,9 +1,9 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
+- [Γενικά](/[[language]]/[[version]]/introduction) 
+    - [Σημειώσεις έκδοσης](/[[language]]/[[version]]/release-notes)
     - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
-- Contributions 
-    - [Overview](/[[language]]/[[version]]/contributions)
+    - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
+- Συνεισφορές 
+    - [Επισκόπηση](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
@@ -46,13 +46,13 @@
         - [Advanced](/[[language]]/[[version]]/db-models-advanced)
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
-        - [Events](/[[language]]/[[version]]/db-models-events)
+        - [Γεγονότα](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relationships](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
         - [Validators](/[[language]]/[[version]]/db-models-validators)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
-    - [Pagination](/[[language]]/[[version]]/db-pagination)
+    - [Σελιδοποίηση](/[[language]]/[[version]]/db-pagination)
 - Front End 
     - [Assets](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
