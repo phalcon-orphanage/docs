@@ -30,7 +30,7 @@
           <a href="#serialization">Serializing ACL lists</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">Γεγονότα</a>
         </li>
         <li>
           <a href="#custom-adapters">Implementing your own adapters</a>
@@ -538,7 +538,7 @@ It's recommended to use the Memory adapter during development and use one of the
 
 <a name='setup'></a>
 
-0## Events
+0## Γεγονότα
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
