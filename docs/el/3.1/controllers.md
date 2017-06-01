@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Επισκόπηση</a> <ul>
         <li>
           <a href="#using">Using Controllers</a>
         </li>
@@ -33,7 +33,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Επισκόπηση
 
 <a name='using'></a>
 

@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Access Control Lists</a> <ul>
         <li>
-          <a href="#setup">Creating an ACL</a>
+          <a href="#setup">Δημιουργώντας Λίστες Ελέγχου Πρόσβασης</a>
         </li>
         <li>
           <a href="#adding-roles">Adding Roles to the ACL</a>
@@ -30,7 +30,7 @@
           <a href="#serialization">Serializing ACL lists</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">Γεγονότα</a>
         </li>
         <li>
           <a href="#custom-adapters">Implementing your own adapters</a>
@@ -42,7 +42,7 @@
 
 <a name='overview'></a>
 
-# Access Control Lists (ACL)
+# Λίστες ελέγχου πρόσβασης (ACL)
 
 `Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
@@ -538,7 +538,7 @@ It's recommended to use the Memory adapter during development and use one of the
 
 <a name='setup'></a>
 
-0## Events
+0## Γεγονότα
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 

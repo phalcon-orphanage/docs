@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#contributing">Contributing to Phalcon</a> <ul>
+      <a href="#contributing">Συμβάλλοντας στο Phalcon</a> <ul>
         <li>
-          <a href="#contributions">Contributions</a>
+          <a href="#contributions">Συνεισφορές</a>
         </li>
         <li>
           <a href="#questions-and-support">Questions and Support</a>
@@ -32,7 +32,7 @@
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Συμβάλλοντας στο Phalcon
 
 Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
 
@@ -42,7 +42,7 @@ Following these guidelines, allows better communication, faster resolution of is
 
 <a name='contributions'></a>
 
-## Contributions
+## Συνεισφορές
 
 Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 

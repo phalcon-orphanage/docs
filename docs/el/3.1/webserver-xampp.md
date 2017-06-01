@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#phalcon">Download the right version of Phalcon</a>
+          <a href="#phalcon">Κατεβάστε την σωστή έκδοση του Phalcon</a>
         </li>
         <li>
           <a href="#screencast">Screencast</a>
@@ -18,13 +18,13 @@
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# Εγκατάσταση σε XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Κατεβάστε την σωστή έκδοση του Phalcon
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
@@ -68,7 +68,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 ## Screencast
 
-The following screencast is a step by step guide to install Phalcon on Windows:
+Το παρακάτω screencast είναι ένας βήμα προς βήμα οδηγός για να εγκαταστήσετε το Phalcon στα Windows:
 
 <div align="center">
   <iframe src="https://player.vimeo.com/video/40265988" 
@@ -82,4 +82,4 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 ## Related Guides
 
-- [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
+- [Εγκατάσταση σε WAMP](/[[language]]/[[version]]/webserver-wamp)

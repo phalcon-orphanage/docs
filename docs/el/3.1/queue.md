@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a> <ul>
+      <a href="#overview">Χρησημοποίηση Ουρών</a> <ul>
         <li>
           <a href="#put-jobs-in-queue">Putting Jobs into the Queue</a>
         </li>
@@ -15,7 +15,7 @@
 
 <a name='overview'></a>
 
-# Queueing
+# Χρησημοποίηση Ουρών
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 

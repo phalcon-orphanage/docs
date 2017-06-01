@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Εγκατάσταση του διακομιστή Web</a> <ul>
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Εγκατάσταση του διακομιστή Web
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
