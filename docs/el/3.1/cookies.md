@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Cookies Management</a> <ul>
+      <a href="#overview">Διαχείριση cookies</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
@@ -15,7 +15,7 @@
 
 <a name='overview'></a>
 
-# Cookies Management
+# Διαχείριση cookies
 
 [Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
