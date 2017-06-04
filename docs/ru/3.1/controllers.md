@@ -341,7 +341,7 @@ class PostsController extends Controller
 
 ## Данные сессий
 
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Сессии позволяют сохранять данные между запросами. Вы можете получить доступ к `Phalcon\Session\Bag` из любого контроллера, чтобы сохранить данные, которые должны быть постоянными:
 
 ```php
 <?php
@@ -352,12 +352,12 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $this->persistent->name = 'Michael';
+        $this->persistent->name = 'Михаил';
     }
 
     public function welcomeAction()
     {
-        echo 'Welcome, ', $this->persistent->name;
+        echo 'Добро пожаловать, ', $this->persistent->name;
     }
 }
 ```
@@ -366,12 +366,12 @@ class UserController extends Controller
 
 ## Использование сервисов как контроллеров
 
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
+Сервисы могут работать в качестве контроллеров, классы контроллеров первым делом запрашиваются у сервиса контейнеров. Соответственно любой класс, зарегистрированный под именем контроллера, легко может его заменить:
 
 ```php
 <?php
 
-// Register a controller as a service
+// Регистрируем контроллер как сервис
 $di->set(
     'IndexController',
     function () {
@@ -381,7 +381,7 @@ $di->set(
     }
 );
 
-// Register a namespaced controller as a service
+// Регистрируем контроллер как сервис с использованием пространства имён
 $di->set(
     'Backend\Controllers\IndexController',
     function () {
@@ -396,7 +396,7 @@ $di->set(
 
 0## События контроллеров
 
-Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Контроллеры автоматически выступают в роли слушателей событий [диспетчера](/en/[[versopm]]/dispatcher), реализация методов с названиями событий позволяет выполнять какой-либо код до или после выполнения действия:
 
 ```php
 <?php
