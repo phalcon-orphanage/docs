@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
+Дополнительные URI-параметры передаются в качестве параметров действия, таким образом, они легко могут быть получены как локальные переменные. Контроллер может наследоваться от `Phalcon\Mvc\Controller`, но это не обязательно. В таком случае он получает доступ к сервисам приложения.
 
-Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+Параметры без значений по умолчанию являются обязательными. Установка значений по умолчанию производится обычным для PHP способом:
 
 ```php
 <?php
@@ -90,14 +90,14 @@ class PostsController extends Controller
 
     }
 
-    public function showAction($year = 2015, $postTitle = 'some default title')
+    public function showAction($year = 2015, $postTitle = 'некоторое значение по умолчанию')
     {
 
     }
 }
 ```
 
-Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+Параметры присваиваются в том же порядке, в каком и были переданы. Получить доступ к произвольному параметру можно следующим образом:
 
 ```php
 <?php
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='using'></a>
 
-0## События в контроллерах
+0## События контроллеров
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
