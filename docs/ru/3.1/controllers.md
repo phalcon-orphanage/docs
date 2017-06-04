@@ -123,7 +123,7 @@ class PostsController extends Controller
 
 ## Цикл работы
 
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+Цикл работы диспетчера выполняется до тех пор, пока не останется действий для обработки. В примере выше выполняется лишь одно действие. Пример ниже показывает, как с использованием метода `forward()` можно обеспечить более сложный процесс диспетчеризации путём перенаправления потока выполнения на другой контроллер/действие.
 
 ```php
 <?php
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "You don't have permission to access this area"
+            "У вас недостаточно прав для выполнения этого действия"
         );
 
-        // Forward flow to another action
+        // еренаправляем на другое действие
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the `signin` action in the `UsersController`.
+Если у пользователя недостаточно прав, он будет перенаправлен в контроллер `UsersController` для выполнения авторизации (действие `signin`).
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+Метод `forwards` может быть вызван неограниченное количество раз, приложение будет выполняться, пока не появится явный сигнал для завершения. Если действия, которые должны быть выполнены, в цикле диспетчера завершены, то диспетчер автоматически вызовет MVC слой отображения (View), управляемый компонентом `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
 ## Инициализация контроллеров
 
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+`Phalcon\Mvc\Controller` предлагает метод `initialize()`, который автоматически выполняется первым, перед любым другим действием контроллера. Использование метода `__construct()` не рекомендуется.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+<h5 class='alert alert-warning'>Метод `initialize()` вызывается только в том случае, если событие `beforeExecuteRoute` было успешно выполнено. Это позволяет избежать выполнения логики приложения без авторизации.</h5>
 
-If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
+Если вы все же хотите выполнить некоторую инициализацию после создания объекта контроллера, то можете реализовать метод `onConstruct()`:
 
 ```php
 <?php
@@ -226,13 +226,13 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
+<h5 class='alert alert-warning'>Имейте в виду, что метод `onConstruct()` выполняется, даже если действие, которое должно быть выполнено, не существует в контроллере, или пользователь не имеет к нему доступа (контроль доступа обеспечивает разработчик).</h5>
 
 <a name='injecting-services'></a>
 
 ## Внедрение сервисов
 
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+Если контроллер наследует `Phalcon\Mvc\Controller`, то он автоматически получает доступ к контейнеру сервисов приложения. Например, если мы зарегистрируем некий сервис следующим образом:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Then, we can access that service in several ways:
+Доступ к этому сервису можно получить несколькими способами:
 
 ```php
 <?php
