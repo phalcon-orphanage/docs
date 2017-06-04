@@ -263,31 +263,31 @@ class FilesController extends Controller
 {
     public function saveAction()
     {
-        // Injecting the service by just accessing the property with the same name
+        // Внедрение сервиса по имени, используя его как свойство
         $this->storage->save('/some/file');
 
-        // Accessing the service from the DI
+        // Доступ к сервису с использованием DI
         $this->di->get('storage')->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Ещё один способ — используя магический метод
         $this->di->getStorage()->save('/some/file');
 
-        // Another way to access the service using the magic getter
+        // Ещё больше магических методов для получения всей цепочки
         $this->getDi()->getStorage()->save('/some/file');
 
-        // Using the array-syntax
+        // Используя синтаксис работы с массивами
         $this->di['storage']->save('/some/file');
     }
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
+Если вы используете все возможности Phalcon, прочитайте о сервисах используемых [по умолчанию](/[[language]]/[[version]]/di).
 
 <a name='request-response'></a>
 
 ## Запрос и ответ
 
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Давайте предположим, что фреймворк предоставляет набор предварительно зарегистрированных сервисов. В этом примере будет показано как работать с HTTP окружением. Сервис `request` содержит экземпляр `Phalcon\Http\Request`, а `response` — экземпляр `Phalcon\Http\Response`, являющийся тем, что должно быть отправлено клиенту.
 
 ```php
 <?php
@@ -303,9 +303,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Проверяем, что данные пришли методом POST
         if ($this->request->isPost()) {
-            // Access POST data
+            // Получаем POST данные
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
+Объект ответа обычно не используется напрямую и создается до выполнения действия, но иногда, например, в событии `afterDispatch` может быть полезно работать с ответом напрямую:
 
 ```php
 <?php
@@ -329,13 +329,13 @@ class PostsController extends Controller
 
     public function notFoundAction()
     {
-        // Send a HTTP 404 response header
+        // Отправляем статус HTTP 404
         $this->response->setStatusCode(404, 'Not Found');
     }
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
+Узнать больше о работе с HTTP окружением можно в соответствующих статьях [request](/[[language]]/[[version]]/request) и [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
