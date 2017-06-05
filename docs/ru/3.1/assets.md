@@ -29,7 +29,7 @@
           <a href="#custom-output">Пользовательский вывод</a>
         </li>
         <li>
-          <a href="#improving-performance">Improving performance</a>
+          <a href="#improving-performance">Повышение производительности</a>
         </li>
       </ul>
     </li>
@@ -462,11 +462,11 @@ foreach ($jsCollection as $resource) {
 
 <a name='improving-performance'></a>
 
-## Improving performance
+## Повышение производительности
 
-There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
+Существует множество способов оптимизации работы со статическими ресурсами. Ниже мы опишем простой метод, который позволит отдавать ресурсы непосредственно через веб-сервер, сокращая тем самым время ответа в целом.
 
-First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
+Для начала нам понадобится настроить менеджер ресурсов. В этом примере будет использоваться некий базовый контроллер, однако вы можете использовать для этого сервис провайдер или любой другой подход:
 
 ```php
 <?php
@@ -479,7 +479,7 @@ use Phalcon\Assets\Filters\Jsmin;
 /**
  * App\Controllers\ControllerBase
  *
- * This is the base controller for all controllers in the application.
+ * Это базовый контроллер для приложения.
  */
 class ControllerBase extends Controller
 {
