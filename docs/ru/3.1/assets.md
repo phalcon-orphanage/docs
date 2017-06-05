@@ -494,13 +494,13 @@ class ControllerBase extends Controller
 }
 ```
 
-Then we have to configure the routing:
+Затем, нам понадобится настроит маршрутизацию:
 
 ```php
 <?php
 /*
- * Define custom routes.
- * This file gets included in the router service definition.
+ * Определяем маршруты.
+ * Этот файл будет подключен при определении сервиса router.
  */
 $router = new Phalcon\Mvc\Router();
 
@@ -512,10 +512,10 @@ $router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
     'extension'  => 3,
 ]);
 
-// Other routes...
+// Другие маршруты...
 ```
 
-Finally, we need to create a controller to handle resource requests:
+Наконец нам нужно создать контроллер для обработки запросов ресурсов:
 
 ```php
 <?php
@@ -525,51 +525,51 @@ namespace App\Controllers;
 use Phalcon\Http\Response;
 
 /**
- * Serve site assets.
+ * Обработчик запросов ресурсов.
  */
 class AssetsController extends ControllerBase
 {
     public function serveAction() : Response
     {
-        // Getting a response instance
+        // Создаём экземпляр Response
         $response = new Response();
 
-        // Prepare output path
+        // Подготавливаем пути
         $collectionName = $this->dispatcher->getParam('collection');
         $extension      = $this->dispatcher->getParam('extension');
         $type           = $this->dispatcher->getParam('type');
         $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
 
-        // Setting up the content type
+        // Настраиваем тип ответа
         $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
         $response->setContentType($contentType, 'UTF-8');
 
-        // Check collection existence
+        // Проверяем на коллекцию на существование
         if (!$this->assets->exists($collectionName)) {
             return $response->setStatusCode(404, 'Not Found');
         }
 
-        // Setting up the Assets Collection
+        // Настраиваем коллекцию ресурсов
         $collection = $this->assets
             ->collection($collectionName)
             ->setTargetUri($targetPath)
             ->setTargetPath($targetPath);
 
-        // Store content to the disk and return fully qualified file path
+        // Сохраняем содержимое на диск и возвращаем полный путь к сохранённому файлу
         $contentPath = $this->assets->output($collection, function (array $parameters) {
             return BASE_PATH . '/public/' . $parameters[0];
         }, $type);
 
-        // Set the content of the response
+        // Устанавливаем содержимое ответа
         $response->setContent(file_get_contents($contentPath));
 
-        // Return the response
+        // Возвращаем объект Response
         return $response;
     }
 }
 ```
 
-If precompiled resources exist in the file system they must be served directly by web server. So to get the benefit of static resources we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
+Если обработанные ресурсы существуют на диске, они должны быть возвращены непосредственно веб-сервером. Таким образом, чтобы получить выгоду от работы со статикой, мы должны обновить конфигурацию веб-сервера. В примере ниже мы будем использовать конфигурацию для Nginx. Настройка других веб-серверов, например Apache, будет немного отличаться:
 
 ```nginx
 location ~ ^/assets/ {
@@ -577,8 +577,8 @@ location ~ ^/assets/ {
     add_header Cache-Control public;
     add_header ETag "";
 
-    # If the file exists as a static file serve it directly without
-    # running all the other rewrite tests on it
+    # Если статический ресур существует, обработать его веб-сервером,
+    # без запуска PHP-приложения
     try_files $uri $uri/ @phalcon;
 }
 
@@ -589,8 +589,6 @@ location / {
 location @phalcon {
     rewrite ^(.*)$ /index.php?_url=$1;
 }
-
-# Other configuration
 ```
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
