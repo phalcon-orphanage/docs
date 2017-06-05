@@ -3,7 +3,7 @@
     <li>
       <a href="#architecture">The MVC Architecture</a> <ul>
         <li>
-          <a href="#models">Modely</a>
+          <a href="#models">Models</a>
         </li>
         <li>
           <a href="#views">Views</a>
