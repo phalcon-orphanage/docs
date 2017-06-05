@@ -15,7 +15,7 @@
           <a href="#variables">Variables</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">Фильтры</a>
         </li>
         <li>
           <a href="#comments">Comments</a>
@@ -100,7 +100,7 @@
               <a href="#extending-functions">Functions</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">Фильтры</a>
             </li>
             <li>
               <a href="#extending-extensions">Extensions</a>
@@ -382,7 +382,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## Фильтры
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -485,7 +485,7 @@ Examples:
 
 <a name='comments'></a>
 
-## Комментарии
+## Comments
 
 Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
 
@@ -1396,7 +1396,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='basic-usage'></a>
 
-3### Filters
+3### Фильтры
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
