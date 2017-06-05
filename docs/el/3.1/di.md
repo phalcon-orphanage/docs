@@ -44,7 +44,7 @@
         <li>
           <a href="#resolving-services">Resolving Services</a> <ul>
             <li>
-              <a href="#events">Events</a>
+              <a href="#events">Γεγονότα</a>
             </li>
           </ul>
         </li>
@@ -1012,7 +1012,7 @@ $component = $di->get(
 
 <a name='di-explained'></a>
 
-3### Events
+3### Γεγονότα
 
 `Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
