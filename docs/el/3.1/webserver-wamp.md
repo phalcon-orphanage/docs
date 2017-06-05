@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Επισκόπηση</a> <ul>
         <li>
           <a href="#phalcon">Download the right version of Phalcon</a>
         </li>
