@@ -43,7 +43,7 @@ Eylemler, istekleri işleyen bir denetleyicideki yöntemlerdir. Varsayılan olar
 
 Örneğin, böyle bir URL'ye eriştiğinizde: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon varsayılan olarak her parçayı şöyle bölecektir:
 
-| Açıklama           | Rumuz          |
+| Description        | Rumuz          |
 | ------------------ | -------------- |
 | **Phalcon Dizini** | blog           |
 | **Denetleyici**    | posts          |
