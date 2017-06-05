@@ -33,17 +33,17 @@
 
 <a name='overview'></a>
 
-# Przegląd
+# Overview
 
 <a name='using'></a>
 
-## Używanie kontrolerów
+## Using Controllers
 
 Akcje to metody w kontrolerze, które obsługują żądania. Domyślnie wszystkie publiczne metody w kontrolerze mapują do akcji i są dostępne za pomocą adresu URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
 
 Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
 
-| Opis                 | Fragment URL   |
+| Description          | Fragment URL   |
 | -------------------- | -------------- |
 | **Katalog Phalcona** | blog           |
 | **Kontroler**        | posts          |

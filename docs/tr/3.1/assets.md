@@ -28,6 +28,9 @@
         <li>
           <a href="#custom-output">Custom Output</a>
         </li>
+        <li>
+          <a href="#improving-performance">Improving performance</a>
+        </li>
       </ul>
     </li>
   </ul>
@@ -456,3 +459,143 @@ foreach ($jsCollection as $resource) {
     );
 }
 ```
+
+<a name='improving-performance'></a>
+
+## Improving performance
+
+There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
+
+First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Phalcon\Mvc\Controller;
+use Phalcon\Assets\Filters\Jsmin;
+
+/**
+ * App\Controllers\ControllerBase
+ *
+ * This is the base controller for all controllers in the application.
+ */
+class ControllerBase extends Controller
+{
+    public function onConstruct()
+    {
+        $this->assets
+            ->useImplicitOutput(false)
+            ->collection('global')
+            ->addJs('https://code.jquery.com/jquery-3.2.1.js', false, true)
+            ->addFilter(new Jsmin());
+    }
+}
+```
+
+Then we have to configure the routing:
+
+```php
+<?php
+/*
+ * Define custom routes.
+ * This file gets included in the router service definition.
+ */
+$router = new Phalcon\Mvc\Router();
+
+$router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
+    'controller' => 'assets',
+    'action'     => 'serve',
+    'type'       => 1,
+    'collection' => 2,
+    'extension'  => 3,
+]);
+
+// Other routes...
+```
+
+Finally, we need to create a controller to handle resource requests:
+
+    <?php
+    
+    namespace App\Controllers;
+    
+    use Phalcon\Http\Response;
+    
+    /**
+     * Serve site assets.
+     */
+    class AssetsController extends ControllerBase
+    {
+        public function serveAction() : Response
+        {
+            // Getting a response instance
+            $response = new Response();
+    
+            // Prepare output path
+            $collectionName = $this->dispatcher->getParam('collection');
+            $extension      = $this->dispatcher->getParam('extension');
+            $type           = $this->dispatcher->getParam('type');
+            $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
+    
+            // Setting up the content type
+            $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
+            $response->setContentType($contentType, 'UTF-8');
+    
+            // Check collection existence
+            if (!$this->assets->exists($collectionName)) {
+                return $response->setStatusCode(404, 'Not Found');
+            }
+    
+            // Setting up the Assets Collection
+            $collection = $this->assets
+                ->collection($collectionName)
+                ->setTargetUri($targetPath)
+                ->setTargetPath($targetPath);
+    
+            // Store content to the disk and return fully qualified file path
+            $contentPath = $this->assets->output($collection, function (array $parameters) {
+                return BASE_PATH . '/public/' . $parameters[0];
+            }, $type);
+    
+            // Set the content of the response
+            $response->setContent(file_get_contents($contentPath));
+    
+            // Return the response
+            return $response;
+        }
+    }
+    
+
+If precompiled resources exist in the file system they must be served directly by web server. So to get the benefit of static resources we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
+
+```nginx
+location ~ ^/assets/ {
+    expires 1y;
+    add_header Cache-Control public;
+    add_header ETag "";
+
+    # If the file exists as a static file serve it directly without
+    # running all the other rewrite tests on it
+    try_files $uri $uri/ @phalcon;
+}
+
+location / {
+    try_files $uri $uri/ @phalcon;
+}
+
+location @phalcon {
+    rewrite ^(.*)$ /index.php?_url=$1$is_args$args;
+}
+
+# Other configuration
+```
+
+We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
+
+Every time when the user requests resources using address of type `/assets/js/filename.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
+
+It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
+
+Learn more about the Web Server Setup and Routing in their dedicated articles [Web Server Setup](/[[language]]/[[version]]/webserver-setup) and [Routing](/[[language]]/[[version]]/routing).

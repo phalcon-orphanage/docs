@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validation</a> <ul>
+      <a href="#overview">Валидация</a> <ul>
         <li>
           <a href="#initializing">Initializing Validation</a>
         </li>
@@ -36,7 +36,7 @@
 
 <a name='overview'></a>
 
-# Validation
+# Валидация
 
 `Phalcon\Validation` is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 

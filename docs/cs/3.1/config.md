@@ -83,8 +83,8 @@ $config = new Config($settings);
 
 Dostupné adaptéry jsou:
 
-| Třída                         | Popis                                                                                                   |
-|-------------------------------|---------------------------------------------------------------------------------------------------------|
+| Třída                            | Description                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | Použivá INI soubory jako úložiště nastavení. Tento adaptér interně využívá PHP funkci `parse_ini_file`. |
 | `Phalcon\Config\Adapter\Json` | Používá JSON soubory jako úložiště nastavení.                                                           |
 | `Phalcon\Config\Adapter\Php`  | Používá vícerozměrné PHP pole jako úložiště nastavení. Tento adaptér nabízí nejlepší výkon.             |

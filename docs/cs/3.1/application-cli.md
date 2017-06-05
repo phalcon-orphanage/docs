@@ -3,7 +3,7 @@
     <li>
       <a href="#creating-cli-application">Vytvoření CLI aplikace</a> <ul>
         <li>
-          <a href="#structure">Struktura</a>
+          <a href="#structure">Structure</a>
         </li>
         <li>
           <a href="#creating-bootstrap">Creating a Bootstrap</a>
