@@ -444,7 +444,7 @@ class ControllerBase extends Controller
     {
         $this->assets
             ->useImplicitOutput(false)
-            ->collection('js')
+            ->collection('global')
             ->addJs('https://code.jquery.com/jquery-3.2.1.js', false, true)
             ->addFilter(new Jsmin());
     }
@@ -461,9 +461,12 @@ Then we have to configure the routing:
  */
 $router = new Phalcon\Mvc\Router();
 
-$router->addGet('/assets/{collection:(css|js)}/{file:([\w.-]+\.(css|js))}', [
+$router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
     'controller' => 'assets',
-    'action'     => 1,
+    'action'     => 'serve',
+    'type'       => 1,
+    'collection' => 2,
+    'extension'  => 3,
 ]);
 
 // Other routes...
@@ -483,31 +486,39 @@ use Phalcon\Http\Response;
  */
 class AssetsController extends ControllerBase
 {
-    public function jsAction($collection, $file) : Response
+    public function serveAction() : Response
     {
         // Getting a response instance
         $response = new Response();
 
+        // Prepare output path
+        $collectionName = $this->dispatcher->getParam('collection');
+        $extension      = $this->dispatcher->getParam('extension');
+        $type           = $this->dispatcher->getParam('type');
+        $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
+
+        // Setting up the content type
+        $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
+        $response->setContentType($contentType, 'UTF-8');
+
         // Check collection existence
-        if (!$this->assets->exists($collection)) {
+        if (!$this->assets->exists($collectionName)) {
             return $response->setStatusCode(404, 'Not Found');
         }
 
-        $targetPath = BASE_PATH . "/public/assets/js/{$file}";
-
         // Setting up the Assets Collection
-        $this->assets
-            ->collection($collection)
+        $collection = $this->assets
+            ->collection($collectionName)
+            ->setTargetUri($targetPath)
             ->setTargetPath($targetPath);
 
-        // Store content to the disk
-        $this->assets->outputJs($collection);
-
-        // Set content type
-        $response->setContentType('application/javascript', 'UTF-8');
+        // Store content to the disk and return fully qualified file path
+        $contentPath = $this->assets->output($collection, function (array $parameters) {
+            return BASE_PATH . '/public/' . $parameters[0];
+        }, $type);
 
         // Set the content of the response
-        $response->setContent(file_get_contents($targetPath));
+        $response->setContent(file_get_contents($contentPath));
 
         // Return the response
         return $response;
@@ -539,7 +550,7 @@ location @phalcon {
 # Other configuration
 ```
 
-We need to create `assets/js` directory in the document root of the application (eg. `public`).
+We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
 Every time when the user requests resources using address of type `/assets/js/filename.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
 
