@@ -80,13 +80,13 @@
 
 <a name='overview'></a>
 
-# Poprawa wydajności przy użyciu Cache
+# Improving Performance with Cache
 
 Phalcon dostarcza klasę `Phalcon\Cache`, która umożliwia szybszy dostęp do najczęściej używanych lub już przetworzonych danych. Klasa `Phalcon\Cache` jest napisana w C, dzięki czemu zapewnia wyższą wydajność i mniejsze obciążenie podczas pobierania danych ze źródeł. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 <a name='implementation'></a>
 
-## Kiedy korzystać z cache?
+## When to implement cache?
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
@@ -314,7 +314,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='implementation'></a>
 
-0## Usuwanie danych z cache
+0## Deleting data from the cache
 
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
