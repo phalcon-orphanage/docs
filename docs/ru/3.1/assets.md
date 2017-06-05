@@ -591,10 +591,10 @@ location @phalcon {
 }
 ```
 
-We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
+Нам понадобится создать директории `assets/js` и `assets/css` в корне приложения (например в `public`).
 
-Every time when the user requests resources using address of type `/assets/js/global.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
+Каждый раз, когда пользователь запрашивает статический ресурс вида `/assets/js/global.js`, запрос будет послан на обработку контроллером `AssetsController`, если файла ещё нет в файловой системе. В противном случае, ресурс будет возвращён веб-сервером.
 
-It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
+Мы рассмотрели не самый лучший пример. Однако, он отражает суть: грамотная конфигурация веб-сервера и приложения может повысить производительность вашего приложения многократно.
 
-Learn more about the Web Server Setup and Routing in their dedicated articles [Web Server Setup](/[[language]]/[[version]]/webserver-setup) and [Routing](/[[language]]/[[version]]/routing).
+Узнать больше о конфигурировании веб-сервера и маршрутизации можно в соответствующих статьях [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) и [Маршрутизация](/[[language]]/[[version]]/routing).
