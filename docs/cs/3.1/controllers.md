@@ -43,7 +43,7 @@ Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozí
 
 Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon ve výchozím nastavení rozloží každou část takto:
 
-| Popis               | Slug           |
+| Description         | Slug           |
 | ------------------- | -------------- |
 | **Phalcon adresář** | blog           |
 | **Controller**      | posts          |
