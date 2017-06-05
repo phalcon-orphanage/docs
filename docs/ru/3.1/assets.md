@@ -517,56 +517,57 @@ $router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
 
 Finally, we need to create a controller to handle resource requests:
 
-    <?php
-    
-    namespace App\Controllers;
-    
-    use Phalcon\Http\Response;
-    
-    /**
-     * Serve site assets.
-     */
-    class AssetsController extends ControllerBase
+```php
+<?php
+
+namespace App\Controllers;
+
+use Phalcon\Http\Response;
+
+/**
+ * Serve site assets.
+ */
+class AssetsController extends ControllerBase
+{
+    public function serveAction() : Response
     {
-        public function serveAction() : Response
-        {
-            // Getting a response instance
-            $response = new Response();
-    
-            // Prepare output path
-            $collectionName = $this->dispatcher->getParam('collection');
-            $extension      = $this->dispatcher->getParam('extension');
-            $type           = $this->dispatcher->getParam('type');
-            $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
-    
-            // Setting up the content type
-            $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
-            $response->setContentType($contentType, 'UTF-8');
-    
-            // Check collection existence
-            if (!$this->assets->exists($collectionName)) {
-                return $response->setStatusCode(404, 'Not Found');
-            }
-    
-            // Setting up the Assets Collection
-            $collection = $this->assets
-                ->collection($collectionName)
-                ->setTargetUri($targetPath)
-                ->setTargetPath($targetPath);
-    
-            // Store content to the disk and return fully qualified file path
-            $contentPath = $this->assets->output($collection, function (array $parameters) {
-                return BASE_PATH . '/public/' . $parameters[0];
-            }, $type);
-    
-            // Set the content of the response
-            $response->setContent(file_get_contents($contentPath));
-    
-            // Return the response
-            return $response;
+        // Getting a response instance
+        $response = new Response();
+
+        // Prepare output path
+        $collectionName = $this->dispatcher->getParam('collection');
+        $extension      = $this->dispatcher->getParam('extension');
+        $type           = $this->dispatcher->getParam('type');
+        $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
+
+        // Setting up the content type
+        $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
+        $response->setContentType($contentType, 'UTF-8');
+
+        // Check collection existence
+        if (!$this->assets->exists($collectionName)) {
+            return $response->setStatusCode(404, 'Not Found');
         }
+
+        // Setting up the Assets Collection
+        $collection = $this->assets
+            ->collection($collectionName)
+            ->setTargetUri($targetPath)
+            ->setTargetPath($targetPath);
+
+        // Store content to the disk and return fully qualified file path
+        $contentPath = $this->assets->output($collection, function (array $parameters) {
+            return BASE_PATH . '/public/' . $parameters[0];
+        }, $type);
+
+        // Set the content of the response
+        $response->setContent(file_get_contents($contentPath));
+
+        // Return the response
+        return $response;
     }
-    
+}
+```
 
 If precompiled resources exist in the file system they must be served directly by web server. So to get the benefit of static resources we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
 
@@ -586,7 +587,7 @@ location / {
 }
 
 location @phalcon {
-    rewrite ^(.*)$ /index.php?_url=$1$is_args$args;
+    rewrite ^(.*)$ /index.php?_url=$1;
 }
 
 # Other configuration
@@ -594,7 +595,7 @@ location @phalcon {
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
-Every time when the user requests resources using address of type `/assets/js/filename.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
+Every time when the user requests resources using address of type `/assets/js/global.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
 
 It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
 
