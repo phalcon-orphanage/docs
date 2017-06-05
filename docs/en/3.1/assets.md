@@ -474,7 +474,7 @@ $router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
 
 Finally, we need to create a controller to handle resource requests:
 
-```
+```php
 <?php
 
 namespace App\Controllers;
@@ -544,7 +544,7 @@ location / {
 }
 
 location @phalcon {
-    rewrite ^(.*)$ /index.php?_url=$1$is_args$args;
+    rewrite ^(.*)$ /index.php?_url=$1;
 }
 
 # Other configuration
@@ -552,7 +552,7 @@ location @phalcon {
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
-Every time when the user requests resources using address of type `/assets/js/filename.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
+Every time when the user requests resources using address of type `/assets/js/global.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
 
 It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
 
