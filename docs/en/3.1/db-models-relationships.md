@@ -447,7 +447,7 @@ $similarRobot = $robotsSimilar->similarRobot;
 
 <a name='getters-vs-methods'></a>
 #### Magic Getters vs. Explicit methods
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters, instead of use the magic getters you can optionally define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
+Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
 ```php
 <?php
@@ -456,6 +456,12 @@ namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
+/**
+ * Model class for the robots table.
+ * @property Simple|RobotsParts[] $robotsParts
+ * @method   Simple|RobotsParts[] getRobotsParts($parameters = null)
+ * @method   integer              countRobotsParts()
+ */
 class Robots extends Model
 {
     public $id;
@@ -474,7 +480,8 @@ class Robots extends Model
     /**
      * Return the related 'robots parts'
      *
-     * @return \RobotsParts[]
+     * @param  array|null $parameters 
+     * @return RobotsParts[]
      */
     public function getRobotsParts($parameters = null)
     {
