@@ -639,7 +639,7 @@ Enfin, la suppresion de robots :
 
 Conclusion
 ----------
-Comme nous l'abons vu, développer une API RESTful avec Phalcon est simple. Plus loin dans la documentation, nous expliqueront en détail comment
+Comme nous l'avons vu, développer une API RESTful avec Phalcon est simple. Plus loin dans la documentation, nous expliqueront en détail comment
 utiliser une micro application et nous aborderont aussi le langage :doc:`PHQL <phql>` plus en détail.
 
 .. _curl: http://fr.wikipedia.org/wiki/CURL
