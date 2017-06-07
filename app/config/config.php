@@ -2,7 +2,7 @@
 
 return [
     'app'           => [
-        'version'         => '3.1.2',
+        'version'         => '3.1',
         'timezone'        => getenv('APP_TIMEZONE'),
         'debug'           => getenv('APP_DEBUG'),
         'env'             => getenv('APP_ENV'),
@@ -46,15 +46,21 @@ return [
         ],
     ],
     'languages'     => [
+        'bg' => 'Bosnian',
+        'bs' => 'Bulgarian',
         'cs' => 'Czech',
-        'en' => 'English',
-        'fr' => 'French',
+        'de' => 'German',
         'el' => 'Greek',
-        'ja' => 'Japanese',
+        'en' => 'English',
+        'es' => 'Spanish',
+        'fr' => 'French',
+        'hu' => 'Hungarian',
         'id' => 'Indonesian',
+        'ja' => 'Japanese',
         'pl' => 'Polish',
         'ru' => 'Russian',
-        'es' => 'Spanish',
+        'tr' => 'Turkish',
         'uk' => 'Ukranian',
+        'vi' => 'Vietnamese',
     ],
 ];

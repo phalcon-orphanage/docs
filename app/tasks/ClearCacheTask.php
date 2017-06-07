@@ -28,7 +28,7 @@ class ClearCacheTask extends PhTask
      * @param string $message
      * @param string $folder
      */
-    private function clearFolder($message, $folder)
+    private function clearFolder(string $message, string $folder)
     {
 
         echo sprintf('Clearing the %s cache', $message) . PHP_EOL;
