@@ -29,7 +29,7 @@
           <a href="#custom-output">Пользовательский вывод</a>
         </li>
         <li>
-          <a href="#improving-performance">Improving performance</a>
+          <a href="#improving-performance">Повышение производительности</a>
         </li>
       </ul>
     </li>
@@ -462,11 +462,11 @@ foreach ($jsCollection as $resource) {
 
 <a name='improving-performance'></a>
 
-## Improving performance
+## Повышение производительности
 
-There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
+Существует множество способов оптимизации работы со статическими ресурсами. Ниже мы опишем простой метод, который позволит отдавать ресурсы непосредственно через веб-сервер, сокращая тем самым время ответа в целом.
 
-First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
+Для начала нам понадобится настроить менеджер ресурсов. В этом примере будет использоваться некий базовый контроллер, однако вы можете использовать для этого сервис провайдер или любой другой подход:
 
 ```php
 <?php
@@ -479,7 +479,7 @@ use Phalcon\Assets\Filters\Jsmin;
 /**
  * App\Controllers\ControllerBase
  *
- * This is the base controller for all controllers in the application.
+ * Это базовый контроллер для приложения.
  */
 class ControllerBase extends Controller
 {
@@ -494,13 +494,13 @@ class ControllerBase extends Controller
 }
 ```
 
-Then we have to configure the routing:
+Затем, нам понадобится настроит маршрутизацию:
 
 ```php
 <?php
 /*
- * Define custom routes.
- * This file gets included in the router service definition.
+ * Определяем маршруты.
+ * Этот файл будет подключен при определении сервиса router.
  */
 $router = new Phalcon\Mvc\Router();
 
@@ -512,63 +512,64 @@ $router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
     'extension'  => 3,
 ]);
 
-// Other routes...
+// Другие маршруты...
 ```
 
-Finally, we need to create a controller to handle resource requests:
+Наконец нам нужно создать контроллер для обработки запросов ресурсов:
 
-    <?php
-    
-    namespace App\Controllers;
-    
-    use Phalcon\Http\Response;
-    
-    /**
-     * Serve site assets.
-     */
-    class AssetsController extends ControllerBase
+```php
+<?php
+
+namespace App\Controllers;
+
+use Phalcon\Http\Response;
+
+/**
+ * Обработчик запросов ресурсов.
+ */
+class AssetsController extends ControllerBase
+{
+    public function serveAction() : Response
     {
-        public function serveAction() : Response
-        {
-            // Getting a response instance
-            $response = new Response();
-    
-            // Prepare output path
-            $collectionName = $this->dispatcher->getParam('collection');
-            $extension      = $this->dispatcher->getParam('extension');
-            $type           = $this->dispatcher->getParam('type');
-            $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
-    
-            // Setting up the content type
-            $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
-            $response->setContentType($contentType, 'UTF-8');
-    
-            // Check collection existence
-            if (!$this->assets->exists($collectionName)) {
-                return $response->setStatusCode(404, 'Not Found');
-            }
-    
-            // Setting up the Assets Collection
-            $collection = $this->assets
-                ->collection($collectionName)
-                ->setTargetUri($targetPath)
-                ->setTargetPath($targetPath);
-    
-            // Store content to the disk and return fully qualified file path
-            $contentPath = $this->assets->output($collection, function (array $parameters) {
-                return BASE_PATH . '/public/' . $parameters[0];
-            }, $type);
-    
-            // Set the content of the response
-            $response->setContent(file_get_contents($contentPath));
-    
-            // Return the response
-            return $response;
-        }
-    }
-    
+        // Создаём экземпляр Response
+        $response = new Response();
 
-If precompiled resources exist in the file system they must be served directly by web server. So to get the benefit of static resources we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
+        // Подготавливаем пути
+        $collectionName = $this->dispatcher->getParam('collection');
+        $extension      = $this->dispatcher->getParam('extension');
+        $type           = $this->dispatcher->getParam('type');
+        $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
+
+        // Настраиваем тип ответа
+        $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
+        $response->setContentType($contentType, 'UTF-8');
+
+        // Проверяем на коллекцию на существование
+        if (!$this->assets->exists($collectionName)) {
+            return $response->setStatusCode(404, 'Not Found');
+        }
+
+        // Настраиваем коллекцию ресурсов
+        $collection = $this->assets
+            ->collection($collectionName)
+            ->setTargetUri($targetPath)
+            ->setTargetPath($targetPath);
+
+        // Сохраняем содержимое на диск и возвращаем полный путь к сохранённому файлу
+        $contentPath = $this->assets->output($collection, function (array $parameters) {
+            return BASE_PATH . '/public/' . $parameters[0];
+        }, $type);
+
+        // Устанавливаем содержимое ответа
+        $response->setContent(file_get_contents($contentPath));
+
+        // Возвращаем объект Response
+        return $response;
+    }
+}
+```
+
+Если обработанные ресурсы существуют на диске, они должны быть возвращены непосредственно веб-сервером. Таким образом, чтобы получить выгоду от работы со статикой, мы должны обновить конфигурацию веб-сервера. В примере ниже мы будем использовать конфигурацию для Nginx. Настройка других веб-серверов, например Apache, будет немного отличаться:
 
 ```nginx
 location ~ ^/assets/ {
@@ -576,8 +577,8 @@ location ~ ^/assets/ {
     add_header Cache-Control public;
     add_header ETag "";
 
-    # If the file exists as a static file serve it directly without
-    # running all the other rewrite tests on it
+    # Если статический ресур существует, обработать его веб-сервером,
+    # без запуска PHP-приложения
     try_files $uri $uri/ @phalcon;
 }
 
@@ -586,16 +587,14 @@ location / {
 }
 
 location @phalcon {
-    rewrite ^(.*)$ /index.php?_url=$1$is_args$args;
+    rewrite ^(.*)$ /index.php?_url=$1;
 }
-
-# Other configuration
 ```
 
-We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
+Нам понадобится создать директории `assets/js` и `assets/css` в корне приложения (например в `public`).
 
-Every time when the user requests resources using address of type `/assets/js/filename.js` the request will be redirected to `AssetsController` in case this file is absent in the filesystem. Otherwise the resource will be handled by the web server.
+Каждый раз, когда пользователь запрашивает статический ресурс вида `/assets/js/global.js`, запрос будет послан на обработку контроллером `AssetsController`, если файла ещё нет в файловой системе. В противном случае, ресурс будет возвращён веб-сервером.
 
-It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
+Мы рассмотрели не самый лучший пример. Однако, он отражает суть: грамотная конфигурация веб-сервера и приложения может повысить производительность вашего приложения многократно.
 
-Learn more about the Web Server Setup and Routing in their dedicated articles [Web Server Setup](/[[language]]/[[version]]/webserver-setup) and [Routing](/[[language]]/[[version]]/routing).
+Узнать больше о конфигурировании веб-сервера и маршрутизации можно в соответствующих статьях [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) и [Маршрутизация](/[[language]]/[[version]]/routing).
