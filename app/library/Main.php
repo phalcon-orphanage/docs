@@ -20,7 +20,6 @@ use Phalcon\Mvc\View\Simple as PhViewSimple;
 use Phalcon\Mvc\View\Engine\Volt as PhVolt;
 
 use ParsedownExtra as PParseDown;
-use Docs\Locale as DocsLocale;
 use Docs\Utils as DocsUtils;
 
 /**
@@ -176,8 +175,6 @@ class Main
         /** @var PhEventsManager $eventsManager */
         $eventsManager = $this->diContainer->getShared('eventsManager');
 
-        $this->diContainer->setShared('locale', new DocsLocale());
-
         $routes     = $config->get('routes')->toArray();
         $collection = new PhMicroCollection();
         $collection->setHandler($routes['class'], true);
@@ -246,35 +243,6 @@ class Main
             }
         );
 
-        set_exception_handler(
-            function () use ($logger) {
-                $logger->error(json_encode(debug_backtrace()));
-            }
-        );
-
-        register_shutdown_function(
-            function () use ($logger, $utils) {
-                $memory    = round(
-                    (memory_get_usage() - $this->memory) / 1000,
-                    3
-                );
-                $execution = round(
-                    microtime(true) - $this->executionTime,
-                    3
-                );
-
-                if ('development' === $this->mode) {
-                    $logger->info(
-                        sprintf(
-                            'Shutdown completed [%s ms] - [%s KB]',
-                            $execution,
-                            $memory
-                        )
-                    );
-                }
-            }
-        );
-
         /***********************************************************************
          * Assets
          **********************************************************************/
@@ -283,9 +251,10 @@ class Main
         $assets->collection("header_js");
         $assets
             ->collection('header_css')
+            ->addCss('https://fonts.googleapis.com/css?family=Lato', false)
             ->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', false)
             ->addCss('https://cdn.jsdelivr.net/highlight.js/9.9.0/styles/darcula.min.css', false)
-            ->addCss($utils->getAsset('css/docs.css'));
+            ->addCss($utils->getAsset('css/docs.css?v=' . time()));
 
         $assets
             ->collection('footer_js')
