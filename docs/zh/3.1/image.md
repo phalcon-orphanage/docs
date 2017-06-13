@@ -203,9 +203,9 @@ $image->crop($width, $height, $offsetX, $offsetY);
 $image->save('cropped-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='rotating'></a>
 
-0## Rotating images
+## Rotating images
 
 ```php
 <?php
@@ -218,9 +218,9 @@ $image->rotate(90);
 $image->save('rotated-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='flipping'></a>
 
-1## Flipping images
+## Flipping images
 
 You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
 
@@ -237,9 +237,9 @@ $image->flip(
 $image->save('flipped-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='sharpening'></a>
 
-2## Sharpening images
+## Sharpening images
 
 The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
 
@@ -253,9 +253,9 @@ $image->sharpen(50);
 $image->save('sharpened-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='watermarks'></a>
 
-3## Adding watermarks to images
+## Adding watermarks to images
 
 ```php
 <?php
@@ -309,9 +309,9 @@ $image->watermark(
 $image->save('watermarked-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='blurring'></a>
 
-4## Blurring images
+## Blurring images
 
 The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
 
@@ -325,9 +325,9 @@ $image->blur(50);
 $image->save('blurred-image.jpg');
 ```
 
-<a name='adapters'></a>
+<a name='pixelating'></a>
 
-5## Pixelating images
+## Pixelating images
 
 The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
 
