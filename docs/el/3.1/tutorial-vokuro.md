@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: Vökuró</a> <ul>
+      <a href="#overview">Σεμινάριο: Vökuró</a> <ul>
         <li>
           <a href="#structure">Project Structure</a>
         </li>
@@ -18,7 +18,7 @@
 
 <a name='overview'></a>
 
-# Tutorial: Vökuró
+# Σεμινάριο: Vökuró
 
 Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
 

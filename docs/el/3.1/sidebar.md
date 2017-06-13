@@ -47,10 +47,10 @@
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Γεγονότα](/[[language]]/[[version]]/db-models-events)
-        - [Metadata](/[[language]]/[[version]]/db-models-metadata)
+        - [Μεταδεδομένα](/[[language]]/[[version]]/db-models-metadata)
         - [Relationships](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
-        - [Validators](/[[language]]/[[version]]/db-models-validators)
+        - [Επικυρωτές](/[[language]]/[[version]]/db-models-validators)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Σελιδοποίηση](/[[language]]/[[version]]/db-pagination)
 - Front End 
