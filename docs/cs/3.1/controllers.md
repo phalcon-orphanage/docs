@@ -392,9 +392,9 @@ $di->set(
 );
 ```
 
-<a name='using'></a>
+<a name='events'></a>
 
-0## Události v controllerech
+## Události v controllerech
 
 Controllery automaticky působí jako listenery pro události z [dispečeru](/en/[[versopm]]/dispatcher), implementační metody s těmito názvy eventů umožňují implementovat hooky před nebo po provedení akcí:
 
