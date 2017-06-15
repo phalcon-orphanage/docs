@@ -251,15 +251,15 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 </VirtualHost>
 ```
 
-<a name='nginx'></a>
+<a name='cherokee'></a>
 
-0## Cherokee
+## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) je vysoce výkonný webserver. Je velmi rychlý, flexibilní a jednoduchý na konfiguraci.
 
-<a name='nginx'></a>
+<a name='cherokee-phalcon-configuration'></a>
 
-1### Konfigurace Phalcon frameworku
+### Konfigurace Phalcon frameworku
 
 Cherokee nabízí přátelské grafické prostředí pro konfiguraci skoro všech nastavení webserveru přímo v internetovém prohlížeči.
 
@@ -299,9 +299,9 @@ Spusťe aplikaci v prohlížeči:
 
 ![](/images/content/webserver-cherokee-9.jpg)
 
-<a name='nginx'></a>
+<a name='php-built-in'></a>
 
-2## Vestavěný webserver v PHP
+## Vestavěný webserver v PHP
 
 Můžete použít [vestavěný](http://php.net/manual/en/features.commandline.webserver.php) webserver pro svůj vývoj. Pro spuštění webserveru napište do konzole (Windows: Aplikace Příkazový řádek, Linux, Mac: aplikace Terminal):
 
@@ -309,9 +309,9 @@ Můžete použít [vestavěný](http://php.net/manual/en/features.commandline.we
 php -S localhost:8000 -t /public
 ```
 
-<a name='nginx'></a>
+<a name='php-built-in-phalcon-configuration'></a>
 
-3### Konfigurace Phalcon frameworku
+### Konfigurace Phalcon frameworku
 
 Pro povolení přepisů URI, které Phalcon framework potřebuje, můžete použít soubor pro router (`.htrouter.php`):
 
