@@ -1127,9 +1127,11 @@ class Robots extends Model
         return true;
     }
 }
-```<a name='creating'></a>
+```
 
-0## Hydration Modes
+<a name='hydration-modes'></a>
+
+## Hydration Modes
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1203,9 +1205,11 @@ $robots = Robots::find(
 foreach ($robots as $robot) {
     echo $robot['year'], PHP_EOL;
 }
-```<a name='creating'></a>
+```
 
-1## Auto-generated identity columns
+<a name='identity-columns'></a>
+
+## Auto-generated identity columns
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1235,9 +1239,11 @@ class Robots extends Model
         return 'robots_sequence_name';
     }
 }
-```<a name='creating'></a>
+```
 
-2## Skipping Columns
+<a name='skipping-columns'></a>
+
+## Skipping Columns
 
 To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1314,11 +1320,13 @@ class Robots extends Model
         }
     }
 }
-```<a name='creating'></a>
+```
 
-3<a name='creating'></a>
+<h5 class='alert alert-warning'>Never use a `Phalcon\\Db\\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
-4## Dynamic Updates
+<a name='dynamic-updates'></a>
+
+## Dynamic Updates
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1338,9 +1346,11 @@ class Robots extends Model
         $this->useDynamicUpdate(true);
     }
 }
-```<a name='creating'></a>
+```
 
-5## Independent Column Mapping
+<a name='column-mapping'></a>
+
+## Independent Column Mapping
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1420,9 +1430,11 @@ The independent column map allows you to:
 
 - Write applications using your own conventions
 - Eliminate vendor prefixes/suffixes in your code
-- Change column names without change your application code<a name='creating'></a>
+- Change column names without change your application code
 
-6## Record Snapshots
+<a name='record-snapshots'></a>
+
+## Record Snapshots
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1460,9 +1472,11 @@ var_dump($robot->getChangedFields()); // ['name']
 var_dump($robot->hasChanged('name')); // true
 
 var_dump($robot->hasChanged('type')); // false
-```<a name='creating'></a>
+```
 
-7## Pointing to a different schema
+<a name='different-schemas'></a>
+
+## Pointing to a different schema
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1480,9 +1494,11 @@ class Robots extends Model
         $this->setSchema('toys');
     }
 }
-```<a name='creating'></a>
+```
 
-8## Setting multiple databases
+<a name='multiple-databases'></a>
+
+## Setting multiple databases
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Model` needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1613,9 +1629,11 @@ The `selectReadConnection()` method is called to choose the right connection, th
 use Store\Toys\Robots;
 
 $robot = Robots::findFirst('id = 101');
-```<a name='creating'></a>
+```
 
-9## Injecting services into Models
+<a name='injecting-services-into-models'></a>
+
+## Injecting services into Models
 
 You may be required to access the application services within a model, the following example explains how to do that:
 
