@@ -6,7 +6,7 @@
           <a href="#initializing">Initializing Validation</a>
         </li>
         <li>
-          <a href="#validators">Validators</a>
+          <a href="#validators">Επικυρωτές</a>
         </li>
         <li>
           <a href="#callback">Callback Validator</a>
@@ -154,7 +154,7 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## Επικυρωτές
 
 Phalcon exposes a set of built-in validators for this component:
 
