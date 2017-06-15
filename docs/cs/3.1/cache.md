@@ -281,6 +281,8 @@ foreach ($robots as $robot) {
 }
 ```
 
+<h5 class='alert alert-warning'>*NOTE* Calling `save()` will return a boolean, indicating success (`true`) or failure (`false`). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+
 <a name='read'></a>
 
 ## Querying the cache
@@ -480,15 +482,16 @@ The `Phalcon\Cache\FrontendInterface` interface must be implemented in order to 
 
 The backend adapters available to store cache data are:
 
-| Adapter                                 | Description                                     | Info                                      | Required Extensions                                |
-| --------------------------------------- | ----------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
-| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC). | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.               |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.              | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                           | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                          | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| Adapter                                 | Description                                          | Info                                      | Required Extensions                                |
+| --------------------------------------- | ---------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC).      | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching) | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
+| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.                    |                                           |                                                    |
+| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.                   | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.                   | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                       | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <a name='adapters-backend-custom'></a>
 
