@@ -217,6 +217,8 @@ foreach ($robots as $robot) {
 }
 ```
 
+<h5 class='alert alert-warning'>*NOTE* Calling `save()` will return a boolean, indicating success (`true`) or failure (`false`). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+
 <a name='read'></a>
 ## Querying the cache
 The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does not exist, the get method will return null.
