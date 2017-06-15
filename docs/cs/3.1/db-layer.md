@@ -435,9 +435,9 @@ $success = $connection->delete(
 );
 ```
 
-<a name='adapters'></a>
+<a name='transactions'></a>
 
-0## Transactions and Nested Transactions
+## Transactions and Nested Transactions
 
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
@@ -499,9 +499,9 @@ try {
 }
 ```
 
-<a name='adapters'></a>
+<a name='events'></a>
 
-1## Database Events
+## Database Events
 
 `Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Některé události při vrácení hodnoty false můžou zastavit aktivní operaci. Podporovány jsou následující události:
 
@@ -566,9 +566,9 @@ $eventsManager->attach(
 );
 ```
 
-<a name='adapters'></a>
+<a name='profiling'></a>
 
-2## Profiling SQL Statements
+## Profiling SQL Statements
 
 `Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -660,9 +660,9 @@ $dbProfiler = new DbProfiler();
 $eventsManager->attach('db', $dbProfiler);
 ```
 
-<a name='adapters'></a>
+<a name='logging-statements'></a>
 
-3## Logging SQL Statements
+## Logging SQL Statements
 
 Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
 
@@ -711,15 +711,15 @@ As above, the file `app/logs/db.log` will contain something like this:
 (name, price) VALUES ('Hot pepper', 3.50)
 ```
 
-<a name='adapters'></a>
+<a name='logger-custom'></a>
 
-4## Implementing your own Logger
+## Implementing your own Logger
 
 You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
-<a name='adapters'></a>
+<a name='describing-tables'></a>
 
-5## Describing Tables/Views
+## Describing Tables/Views
 
 `Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
 
@@ -774,15 +774,15 @@ $tables = $connection->listViews('test_db');
 $exists = $connection->viewExists('robots');
 ```
 
-<a name='adapters'></a>
+<a name='tables'></a>
 
-6## Creating/Altering/Dropping Tables
+## Creating/Altering/Dropping Tables
 
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
-<a name='adapters'></a>
+<a name='tables-create'></a>
 
-7### Creating Tables
+### Creating Tables
 
 The following example shows how to create a table:
 
@@ -862,9 +862,9 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 | `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Ano    |
 | `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Ano    |
 
-<a name='adapters'></a>
+<a name='tables-altering'></a>
 
-8### Altering Tables
+### Altering Tables
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
 
@@ -910,9 +910,9 @@ $connection->dropColumn(
 );
 ```
 
-<a name='adapters'></a>
+<a name='tables-dropping'></a>
 
-9### Dropping Tables
+### Dropping Tables
 
 Examples on dropping tables:
 
