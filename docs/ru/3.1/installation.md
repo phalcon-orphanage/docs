@@ -178,37 +178,35 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<a name='requirements-hardware'></a>
+<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
 
-0
+<a name='installation-linux-debian-phalcon'></a>
 
-<a name='requirements-hardware'></a>
-
-1#### Установка Phalcon
+#### Установка Phalcon
 
 Чтобы установить Phalcon выполните следующие команды в терминале:
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-debian-phalcon-php5'></a>
 
-2##### PHP 5.x
+##### PHP 5.x
 
 ```bash
 sudo apt-get update
 sudo apt-get install php5-phalcon
 ```
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-debian-phalcon-php7'></a>
 
-3##### PHP 7
+##### PHP 7
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.0-phalcon
 ```
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-debian-other-ppa'></a>
 
-4#### Сторонние PPA-репозитории
+#### Сторонние PPA-репозитории
 
 #### Ondřej Surý
 
@@ -229,19 +227,19 @@ sudo apt-get install php-phalcon
 
 https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm'></a>
 
-5### RPM дистрибутивы (CentOS, Fedora, и т.д.)
+### RPM дистрибутивы (CentOS, Fedora, и т.д.)
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository'></a>
 
-6#### Настройка репозитория
+#### Настройка репозитория
 
 Добавьте репозиторий для вашего дистрибутива:
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository-stable'></a>
 
-7##### Стабильные релизы
+##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -249,45 +247,43 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 
 или
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository-nightly'></a>
 
-8##### Ночные релизы
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<a name='requirements-hardware'></a>
+<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
 
-9
+<a name='installation-linux-rpm-phalcon'></a>
 
-<a name='requirements-software'></a>
-
-0#### Установка Phalcon
+#### Установка Phalcon
 
 Чтобы установить Phalcon выполните следующие команды в терминале:
 
-<a name='requirements-software'></a>
+<a name='installation-linux-rpm-phalcon-php5'></a>
 
-1##### PHP 5.x
+##### PHP 5.x
 
 ```bash
 sudo yum update
 sudo yum install php56u-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-linux-rpm-phalcon-php7'></a>
 
-2##### PHP 7
+##### PHP 7
 
 ```bash
 sudo yum update
 sudo yum install php70u-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-linux-rpm-other-rpm'></a>
 
-3#### Сторонние RPM-репозитории
+#### Сторонние RPM-репозитории
 
 ##### Remi
 
@@ -301,9 +297,9 @@ yum install php56-php-phalcon3
 
 Доступны версии для архитектур x86/x64 и PHP 5.5/5.6/7.x.
 
-<a name='requirements-software'></a>
+<a name='installation-freebsd'></a>
 
-4## FreeBSD
+## FreeBSD
 
 Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
 
@@ -323,15 +319,15 @@ cd /usr/ports/www/phalcon
 make install clean
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-gentoo'></a>
 
-5## Gentoo
+## Gentoo
 
 Оверлей для установки Phalcon может быть найден здесь: <https://github.com/smoke/phalcon-gentoo-overlay>
 
-<a name='requirements-software'></a>
+<a name='installation-macos'></a>
 
-6## macOS
+## macOS
 
 В macOs вы можете скомпилировать и установить расширение из исходников, либо воспользоваться `brew` или `macports`:
 
@@ -340,9 +336,9 @@ make install clean
 - Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
 
-<a name='requirements-software'></a>
+<a name='installation-macos-brew'></a>
 
-7### Brew
+### Brew
 
 ```bash
 brew tap homebrew/homebrew-php
@@ -352,9 +348,9 @@ brew install php70-phalcon
 brew install php71-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-macos-macports'></a>
 
-8### MacPorts
+### MacPorts
 
 ```bash
 sudo port install php55-phalcon
@@ -369,9 +365,9 @@ extension=php_phalcon.so
 
 Перезагрузите веб-сервер.
 
-<a name='requirements-software'></a>
+<a name='installation-windows'></a>
 
-9## Windows
+## Windows
 
 Для использования Phalcon в Windows вам понадобится установить phalcon.dll. Мы подготовили различные DLL для большинства целевых платформ. DLL могут быть найдены на нашей страничке [загрузок](https://phalconphp.com/en/download/windows).
 
