@@ -451,9 +451,9 @@ class SignupController extends Controller
 
 If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
-<a name='file-structure'></a>
+<a name='model'></a>
 
-0## Создание модели
+## Создание модели
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -486,9 +486,9 @@ class Users extends Model
 }
 ```
 
-<a name='file-structure'></a>
+<a name='database-connection'></a>
 
-1## Настройка соединения с базой данных
+## Настройка соединения с базой данных
 
 In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
@@ -515,9 +515,9 @@ $di->set(
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
-<a name='file-structure'></a>
+<a name='storing-data'></a>
 
-2## Сохранение данных при работе с моделями
+## Сохранение данных при работе с моделями
 
 Receiving data from the form and storing them in the table is the next step.
 
@@ -571,8 +571,8 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ![](/images/content/tutorial-basic-4.png)
 
-<a name='file-structure'></a>
+<a name='conclusion'></a>
 
-3## Заключение
+## Заключение
 
 На этом очень простом руководстве можно увидеть, как легко начать создавать приложения с помощью Phalcon. То, что Phalcon является расширением, никак не влияет на сложность разработки и доступные возможности. Мы приглашаем вас продолжить читать данное руководство для изучения дополнительных возможностей, которые предоставляет Phalcon!

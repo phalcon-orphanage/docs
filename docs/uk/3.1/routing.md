@@ -630,9 +630,9 @@ echo $router->getActionName();
 $route = $router->getMatchedRoute();
 ```
 
-<a name='defining'></a>
+<a name='naming'></a>
 
-0## Naming Routes
+## Naming Routes
 
 Each route that is added to the router is stored internally as a `Phalcon\Mvc\Router\Route` object. That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application. This is especially useful if you want to create URLs from it.
 
@@ -662,9 +662,9 @@ echo $url->get(
 );
 ```
 
-<a name='defining'></a>
+<a name='usage'></a>
 
-1## Usage Examples
+## Usage Examples
 
 The following are examples of custom routes:
 
@@ -750,13 +750,11 @@ $router->add(
 );
 ```
 
-<a name='defining'></a>
+<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\\\_\\-]+)` </h5>
 
-2
+<a name='default-behavior'></a>
 
-<a name='defining'></a>
-
-3## Default Behavior
+## Default Behavior
 
 `Phalcon\Mvc\Router` has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
 
@@ -777,9 +775,9 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 ```
 
-<a name='defining'></a>
+<a name='default-route'></a>
 
-4## Setting the default route
+## Setting the default route
 
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
 
@@ -795,9 +793,9 @@ $router->add(
 );
 ```
 
-<a name='defining'></a>
+<a name='not-found-paths'></a>
 
-5## Not Found Paths
+## Not Found Paths
 
 If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
 
@@ -815,9 +813,9 @@ $router->notFound(
 
 This is typically for an Error 404 page.
 
-<a name='defining'></a>
+<a name='default-paths'></a>
 
-6## Setting default paths
+## Setting default paths
 
 It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:
 
@@ -839,9 +837,9 @@ $router->setDefaults(
 );
 ```
 
-<a name='defining'></a>
+<a name='extra-slashes'></a>
 
-7## Dealing with extra/trailing slashes
+## Dealing with extra/trailing slashes
 
 Sometimes a route could be accessed with extra/trailing slashes. Those extra slashes would lead to produce a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
 
@@ -871,9 +869,9 @@ $router->add(
 );
 ```
 
-<a name='defining'></a>
+<a name='callbacks'></a>
 
-8## Match Callbacks
+## Match Callbacks
 
 Sometimes, routes should only be matched if they meet specific conditions. You can add arbitrary conditions to routes using the `beforeMatch()` callback. If this function return `false`, the route will be treated as non-matched:
 
@@ -963,9 +961,9 @@ $route->beforeMatch(
 );
 ```
 
-<a name='defining'></a>
+<a name='hostname-constraints'></a>
 
-9## Hostname Constraints
+## Hostname Constraints
 
 The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted to only match if the route also meets the hostname constraint:
 
@@ -1050,9 +1048,9 @@ $blog->add(
 $router->mount($blog);
 ```
 
-<a name='defining-named-parameters'></a>
+<a name='uri-sources'></a>
 
-0## URI Sources
+## URI Sources
 
 By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
 
@@ -1082,9 +1080,9 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<a name='defining-named-parameters'></a>
+<a name='testing'></a>
 
-1## Testing your routes
+## Testing your routes
 
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
@@ -1128,9 +1126,9 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-<a name='defining-named-parameters'></a>
+<a name='annotations'></a>
 
-2## Annotations Router
+## Annotations Router
 
 This component provides a variant that's integrated with the [annotations](/[[language]]/[[version]]/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
@@ -1253,9 +1251,9 @@ $di['router'] = function () {
 };
 ```
 
-<a name='defining-named-parameters'></a>
+<a name='registration'></a>
 
-3## Registering Router instance
+## Registering Router instance
 
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
@@ -1305,8 +1303,8 @@ $router->add(
 return $router;
 ```
 
-<a name='defining-named-parameters'></a>
+<a name='custom'></a>
 
-4## Implementing your own Router
+## Implementing your own Router
 
 The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.

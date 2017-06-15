@@ -26,7 +26,7 @@ body > *:last-child {
 
 a {
     color: #4183C4;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a.absent {
@@ -59,7 +59,7 @@ h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-ch
 }
 
 h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 h1 tt, h1 code {

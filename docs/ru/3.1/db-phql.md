@@ -696,9 +696,9 @@ $process = function () use (&$messages) {
 $success = $process();
 ```
 
-<a name='usage'></a>
+<a name='deleting-data'></a>
 
-0## Deleting Data
+## Deleting Data
 
 When a record is deleted the events related to the delete operation will be executed for each row:
 
@@ -743,9 +743,9 @@ if ($result->success() === false) {
 }
 ```
 
-<a name='usage'></a>
+<a name='query-builder'></a>
 
-1## Creating queries using the Query Builder
+## Creating queries using the Query Builder
 
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
@@ -906,9 +906,9 @@ $builder->from(['r' => 'Store\Robots'])
         ->where('r.name LIKE :name:', ['name' => '%' . $name . '%']);
 ```
 
-<a name='usage'></a>
+<a name='query-builder-parameters'></a>
 
-2### Bound Parameters
+### Bound Parameters
 
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
@@ -932,9 +932,9 @@ $robots = $this->modelsManager->createBuilder()
     ->execute(['name' => $name, 'type' => $type]);
 ```
 
-<a name='usage'></a>
+<a name='disallow-literals'></a>
 
-3## Disallow literals in PHQL
+## Disallow literals in PHQL
 
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
 
@@ -985,9 +985,9 @@ Model::setup(
 
 Bound parameters can be used even if literals are allowed or not. Disallowing them is just another security decision a developer could take in web applications.
 
-<a name='usage'></a>
+<a name='escaping-reserved-words'></a>
 
-4## Escaping Reserved Words
+## Escaping Reserved Words
 
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
 
@@ -1003,9 +1003,9 @@ $result = $manager->executeQuery($phql);
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
-<a name='usage'></a>
+<a name='lifecycle'></a>
 
-5## PHQL Lifecycle
+## PHQL Lifecycle
 
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
@@ -1013,9 +1013,9 @@ Being a high-level language, PHQL gives developers the ability to personalize an
 - The IR is converted to valid SQL according to the database system associated to the model
 - PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
-<a name='usage'></a>
+<a name='raw-sql'></a>
 
-6## Using Raw SQL
+## Using Raw SQL
 
 A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
@@ -1086,9 +1086,9 @@ $robots = Robots::findByRawSql(
 );
 ```
 
-<a name='usage'></a>
+<a name='troubleshooting'></a>
 
-7## Устранение неполадок
+## Устранение неполадок
 
 Some things to keep in mind when using PHQL:
 

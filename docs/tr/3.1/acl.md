@@ -536,9 +536,9 @@ if ($acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'edit')) {
 
 Geliştirme sırasında Memory adaptörünü kullanmanız ve canlı ortamda diğer adaptörlerden birini kullanmanız önerilir.
 
-<a name='setup'></a>
+<a name='events'></a>
 
-0## Olaylar
+## Olaylar
 
 `Phalcon\Acl` varsa olayları `EventsManager`'a gönderebilir. Olaylar 'acl' türünü kullanarak tetiklenir. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
@@ -582,8 +582,8 @@ $acl = new AclList();
 $acl->setEventsManager($eventsManager);
 ```
 
-<a name='setup'></a>
+<a name='custom-adapters'></a>
 
-1## Kendi Bağdaştırıcılarını Uygulama
+## Kendi Bağdaştırıcılarını Uygulama
 
 `Phalcon\Acl\AdapterInterface` arabirimi kendi ACL bağdaştırıcıları oluşturmak veya mevcut olanları genişletmek için uygulanması gerekir.

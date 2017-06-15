@@ -105,7 +105,7 @@ These placeholders help writing regular expressions that are more readable for d
 |----------------|-----------------------|--------------------------------------------------------------------------------------------------------|
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
-| `/:action`     | `/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
+| `/:action`     | `/([a-zA-Z0-9_-]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
 | `/:params`     | `(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
 | `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
 | `/:int`        | `/([0-9]+)`           | Matches an integer parameter                                                                           |
@@ -673,7 +673,7 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)` </h5>
+<h5 class='alert alert-warning' markdown='1'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)` </h5>
 
 <a name='default-behavior'></a>
 ## Default Behavior

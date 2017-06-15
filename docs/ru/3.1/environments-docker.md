@@ -183,21 +183,21 @@ $ docker-compose up -d
 | Кэш        | `/project/cache` |
 | Логи       | `/project/log`   |
 
-<a name='dependencies'></a>
+<a name='logs'></a>
 
-0## Логи
+## Логи
 
 Для большинства контейнеров можно получить доступ к логам, используя команду `docker logs <имя_контейнера>` на хост системе.
 
-<a name='dependencies'></a>
+<a name='environment-variables'></a>
 
-1## Переменные окружения
+## Переменные окружения
 
 Вы можете передавать неограниченное кол-во переменных окружения в сервис контейнер используя файл `variables.env`.
 
-<a name='dependencies'></a>
+<a name='environment-variables-web'></a>
 
-2### Окружение веб-сервера
+### Окружение веб-сервера
 
 | Переменная окружения | Описание                                          | По умолчанию    |
 | -------------------- | ------------------------------------------------- | --------------- |
@@ -209,9 +209,9 @@ $ docker-compose up -d
 | `APPLICATION_CACHE`  | Директория кэша приложения (внутри контейнера).   | /project/cache  |
 | `APPLICATION_LOGS`   | Директория логов (внутри контейнера).             | /project/logs   |
 
-<a name='dependencies'></a>
+<a name='environment-variables-phpmyadmin'></a>
 
-3### Переменные phpMyAdmin
+### Переменные phpMyAdmin
 
 | Переменная окружения | Описание                                                                                        | По умолчанию |
 | -------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
@@ -227,9 +227,9 @@ $ docker-compose up -d
 
 *Смотрите также* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
-<a name='dependencies'></a>
+<a name='xdebug'></a>
 
-4## Удаленный отладчик Xdebug (PhpStorm)
+## Удаленный отладчик Xdebug (PhpStorm)
 
 Из соображений отладки приложения, вы можете настроить Xdebug, передав необходимые параметры (см. variables.env).
 
@@ -250,13 +250,13 @@ ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .
 ipconfig
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting'></a>
 
-5## Устранение неполадок
+## Устранение неполадок
 
-<a name='dependencies'></a>
+<a name='troubleshooting-startup'></a>
 
-6### Ошибки запуска или связывания
+### Ошибки запуска или связывания
 
 Если у вас возникли проблемы с контейнером приложения, вы можете безопасно пересобрать его, без потери данных:
 
@@ -267,9 +267,9 @@ docker-compose build --no-cache app
 docker-compose up -d
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting-full-reset'></a>
 
-7### Полный сброс
+### Полный сброс
 
 Для сброса всех контейнеров, а также удаления всех данных (mysql, elasticsearch, и т.д.), кроме файлов проекта в директории `application`, используйте следующий набор команд:
 
@@ -280,9 +280,9 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting-dependencies'></a>
 
-8### Обновление зависимостей
+### Обновление зависимостей
 
 Иногда базовые образы (например `phalconphp/php-apache:ubuntu-16.04`) обновляются. Phalcon Compose зависит от этих образов. Мы рекомендуем вам следить за актуальностью этих образов. В любом случае, это хорошая идея — держать самые свежие версии этих образов. Это позволит вам всегда быть уверенными в том, что вам доступны самые последние функциональные возможности. Вам необходимо будет также пересобрать все зависимые контейнеры:
 
@@ -313,9 +313,9 @@ Linux/macOs пользователи, вместо этого, могут вос
 make reset
 ```
 
-<a name='dependencies'></a>
+<a name='versions'></a>
 
-9## Версии
+## Версии
 
 Основные инструменты: Phalcon, Docker и Docker Compose.
 

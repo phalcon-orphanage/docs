@@ -20,6 +20,8 @@
 
 </div>
 
+<h5 class='alert alert-info' markdown='1'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
+
 <a name='overview'></a>
 # ODM (Object-Document Mapper)
 In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
@@ -600,7 +602,7 @@ class Robots extends Collection
 
 The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
+<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
 
 <a name='deleting-records'></a>
 ## Deleting Records

@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: Creating a Simple REST API</a> <ul>
+      <a href="#overview">Βοήθημα: Δημιουργώντας ένα απλό REST API</a> <ul>
         <li>
           <a href="#definitions">Defining the API</a>
         </li>
@@ -36,7 +36,7 @@
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# Βοήθημα: Δημιουργώντας ένα απλό REST API
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
@@ -86,7 +86,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the URI
 </IfModule>
 ```
 
-Then, in the `index.php` file we create the following:
+The bulk of our code will be placed in `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -168,7 +168,7 @@ When a defined route matches the requested URI then the application executes the
 
 ## Creating a Model
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application:
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php
@@ -223,7 +223,7 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app:
+Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
 
 ```php
 <?php
@@ -269,7 +269,7 @@ $app = new Micro($di);
 
 ## Retrieving Data
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON:
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
 ```php
 <?php
@@ -298,7 +298,7 @@ $app->get(
 
 [PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-The searching by name handler would look like:
+The searching by name handler would look like [File: `index.php`]:
 
 ```php
 <?php
@@ -330,7 +330,7 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
 
 ```php
 <?php
@@ -382,7 +382,7 @@ $app->get(
 
 ## Inserting Data
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
 ```php
 <?php
@@ -450,7 +450,7 @@ $app->post(
 
 ## Updating Data
 
-The data update is similar to insertion. The 'id' passed as parameter indicates what robot must be updated:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
 ```php
 <?php
@@ -512,7 +512,7 @@ $app->put(
 
 ## Deleting Data
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
 ```php
 <?php

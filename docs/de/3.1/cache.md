@@ -312,9 +312,9 @@ foreach ($keys as $key) {
 $keys = $cache->queryKeys('my-prefix');
 ```
 
-<a name='implementation'></a>
+<a name='delete'></a>
 
-0## Deleting data from the cache
+## Deleting data from the cache
 
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
@@ -332,9 +332,9 @@ foreach ($keys as $key) {
 }
 ```
 
-<a name='implementation'></a>
+<a name='exists'></a>
 
-1## Checking cache existence
+## Checking cache existence
 
 It is possible to check if a cache already exists with a given key:
 
@@ -348,9 +348,9 @@ if ($cache->exists('someKey')) {
 }
 ```
 
-<a name='implementation'></a>
+<a name='lifetime'></a>
 
-2## Lifetime
+## Lifetime
 
 A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
 
@@ -389,9 +389,9 @@ if ($robots === null) {
 }
 ```
 
-<a name='implementation'></a>
+<a name='multi-level'></a>
 
-3## Multi-Level Cache
+## Multi-Level Cache
 
 This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
 
@@ -453,9 +453,9 @@ $cache = new Multiple(
 $cache->save('my-key', $data);
 ```
 
-<a name='implementation'></a>
+<a name='adapters-frontend'></a>
 
-4## Frontend Adapters
+## Frontend Adapters
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
@@ -468,15 +468,15 @@ The available frontend adapters that are used as interfaces or input sources to 
 | `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
 | `Phalcon\Cache\Frontend\None`     | It's used to cache any kind of PHP data without serializing them.                                                                                              |
 
-<a name='implementation'></a>
+<a name='adapters-frontend-custom'></a>
 
-5### Implementing your own Frontend adapters
+### Implementing your own Frontend adapters
 
 The `Phalcon\Cache\FrontendInterface` interface must be implemented in order to create your own frontend adapters or extend the existing ones.
 
-<a name='implementation'></a>
+<a name='adapters-backend'></a>
 
-6## Backend Adapters
+## Backend Adapters
 
 The backend adapters available to store cache data are:
 
@@ -490,15 +490,15 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                           | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                          | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<a name='implementation'></a>
+<a name='adapters-backend-custom'></a>
 
-7### Implementing your own Backend adapters
+### Implementing your own Backend adapters
 
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
-<a name='implementation'></a>
+<a name='adapters-backend-file'></a>
 
-8### File Backend Options
+### File Backend Options
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
@@ -507,9 +507,9 @@ This backend will store cached content into files in the local server. The avail
 | `prefix`   | A prefix that is automatically prepended to the cache keys. |
 | `cacheDir` | A writable directory on which cached files will be placed.  |
 
-<a name='implementation'></a>
+<a name='adapters-backend-libmemcached'></a>
 
-9### Libmemcached Backend Options
+### Libmemcached Backend Options
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 

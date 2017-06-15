@@ -392,9 +392,9 @@ $di->set(
 );
 ```
 
-<a name='using'></a>
+<a name='events'></a>
 
-0## Denetleyicilerdeki Olaylar
+## Denetleyicilerdeki Olaylar
 
 Denetleyiciler, [görevlendirici](/en/[[versopm]]/dispatcher) olayları için dinleyiciler olarak otomatik olarak davranır; bu olay adlarıyla yöntemleri uygulamak, eylemler yürütülmeden önce / sonra kanca noktaları uygulamaya izin verir:
 

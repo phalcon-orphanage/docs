@@ -166,9 +166,9 @@ PHP is faster every day, using the latest version improves the performance of yo
 apc.enabled = On
 ```
 
-<a name='profiling-server'></a>
+<a name='background-tasks'></a>
 
-0## Do blocking work in the background
+## Do blocking work in the background
 
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
@@ -179,8 +179,8 @@ Process a video, send e-mails, compress a file or an image, etc., are slow tasks
 - [Gearman](http://gearman.org/)
 - [ZeroMQ](http://www.zeromq.org/)
 
-<a name='profiling-server'></a>
+<a name='page-speed'></a>
 
-1## Google Page Speed
+## Google Page Speed
 
 [mod_pagespeed](https://developers.google.com/speed/pagespeed/mod) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx as [ngx_pagespeed](https://developers.google.com/speed/pagespeed/ngx)) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.

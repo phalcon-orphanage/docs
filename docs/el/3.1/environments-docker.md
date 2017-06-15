@@ -182,21 +182,21 @@ If your application uses a file cache or writes logs to files, you can set up yo
 | Cache     | `/project/cache` |
 | Logs      | `/project/log`   |
 
-<a name='dependencies'></a>
+<a name='logs'></a>
 
-0## Logs
+## Logs
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
-<a name='dependencies'></a>
+<a name='environment-variables'></a>
 
-1## Environment variables
+## Environment variables
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
-<a name='dependencies'></a>
+<a name='environment-variables-web'></a>
 
-2### Web environment
+### Web environment
 
 | Environment variable | Description                                         | Default         |
 | -------------------- | --------------------------------------------------- | --------------- |
@@ -208,9 +208,9 @@ You can pass multiple environment variables from an external file to a service's
 | `APPLICATION_CACHE`  | Application cache dir (inside the container).       | /project/cache  |
 | `APPLICATION_LOGS`   | Application logs dir (inside the container).        | /project/logs   |
 
-<a name='dependencies'></a>
+<a name='environment-variables-phpmyadmin'></a>
 
-3### phpMyAdmin variables
+### phpMyAdmin variables
 
 | Environment variable | Description                                                                                                  | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
@@ -226,9 +226,9 @@ You can pass multiple environment variables from an external file to a service's
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
-<a name='dependencies'></a>
+<a name='xdebug'></a>
 
-4## Xdebug Remote debugger (PhpStorm)
+## Xdebug Remote debugger (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
@@ -249,13 +249,13 @@ ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .
 ipconfig
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting'></a>
 
-5## Troubleshooting
+## Troubleshooting
 
-<a name='dependencies'></a>
+<a name='troubleshooting-startup'></a>
 
-6### Startup or linking errors
+### Startup or linking errors
 
 If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
@@ -266,9 +266,9 @@ docker-compose build --no-cache app
 docker-compose up -d
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting-full-reset'></a>
 
-7### Full reset
+### Full reset
 
 To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
@@ -279,9 +279,9 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-<a name='dependencies'></a>
+<a name='troubleshooting-dependencies'></a>
 
-8### Updating dependencies
+### Updating dependencies
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
@@ -312,9 +312,9 @@ Linux/MacOS users can use `make` to perform the task:
 make reset
 ```
 
-<a name='dependencies'></a>
+<a name='versions'></a>
 
-9## Versions
+## Versions
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
