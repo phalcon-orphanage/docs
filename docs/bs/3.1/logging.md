@@ -319,9 +319,9 @@ $logger = new StreamAdapter('compress.zlib://week.log.gz');
 $logger = new StreamAdapter('php://stderr');
 ```
 
-<a name='adapters'></a>
+<a name='usage-file'></a>
 
-0### File Logger
+### File Logger
 
 This logger uses plain files to log any kind of data. By default all logger files are opened using append mode which opens the files for writing only; placing the file pointer at the end of the file. If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:
 
@@ -339,9 +339,9 @@ $logger = new FileAdapter(
 );
 ```
 
-<a name='adapters'></a>
+<a name='usage-syslog'></a>
 
-1### Syslog Logger
+### Syslog Logger
 
 This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
 
@@ -363,9 +363,9 @@ $logger = new SyslogAdapter(
 );
 ```
 
-<a name='adapters'></a>
+<a name='usage-firephp'></a>
 
-2### FirePHP Logger
+### FirePHP Logger
 
 This logger sends messages in HTTP response headers that are displayed by [FirePHP](http://www.firephp.org/), a [Firebug](http://getfirebug.com/) extension for Firefox.
 
@@ -391,8 +391,8 @@ $logger->error(
 );
 ```
 
-<a name='adapters'></a>
+<a name='usage-custom'></a>
 
-3### Implementing your own adapters
+### Implementing your own adapters
 
 The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.

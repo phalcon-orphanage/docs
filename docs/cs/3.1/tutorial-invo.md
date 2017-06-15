@@ -579,9 +579,9 @@ $di->set(
 
 We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/[[language]]/[[version]]/events) allows us to intercept the events produced by a component, routing the events to listeners.
 
-<a name='structure'></a>
+<a name='events-manager'></a>
 
-0### Events Management
+### Events Management
 
 The [EventsManager](/[[language]]/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
@@ -724,9 +724,9 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-<a name='structure'></a>
+<a name='acl'></a>
 
-1### Getting the ACL list
+### Getting the ACL list
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
@@ -829,9 +829,9 @@ foreach ($privateResources as $resource => $actions) {
 }
 ```
 
-<a name='structure'></a>
+<a name='working-with-crud'></a>
 
-2## Working with the CRUD
+## Working with the CRUD
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
@@ -920,9 +920,9 @@ class ProductsController extends ControllerBase
 }
 ```
 
-<a name='structure'></a>
+<a name='search-form'></a>
 
-3## The Search Form
+## The Search Form
 
 Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
@@ -1184,9 +1184,9 @@ This produces the following HTML:
 
 When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
 
-<a name='structure'></a>
+<a name='performing-searches'></a>
 
-4## Performing a Search
+## Performing a Search
 
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
 
@@ -1496,9 +1496,9 @@ Printing whether the product is active or not uses a helper implemented in the m
 
 This method is defined in the model.
 
-<a name='structure'></a>
+<a name='creating-updating-records'></a>
 
-5## Creating and Updating Records
+## Creating and Updating Records
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
 
@@ -1755,9 +1755,9 @@ public function saveAction()
 }
 ```
 
-<a name='structure'></a>
+<a name='user-components'></a>
 
-6## User Components
+## User Components
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
@@ -1832,9 +1832,9 @@ The important part is:
 {{ elements.getMenu() }}
 ```
 
-<a name='structure'></a>
+<a name='dynamic-titles'></a>
 
-7## Changing the Title Dynamically
+## Changing the Title Dynamically
 
 When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
 

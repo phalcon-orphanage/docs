@@ -251,15 +251,15 @@ Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wir
 </VirtualHost>
 ```
 
-<a name='nginx'></a>
+<a name='cherokee'></a>
 
-0## Cherokee
+## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) jest serwerem sieci web o wysokiej wydajności. Jest bardzo szybki, elastyczny i łatwy w konfiguracji.
 
-<a name='nginx'></a>
+<a name='cherokee-phalcon-configuration'></a>
 
-1### Konfiguracja Phalcona
+### Konfiguracja Phalcona
 
 Cherokee zapewnia przyjazny interfejs graficzny pozwalający na skonfigurowanie prawie każdej dostępnej opcji w tym serwerze.
 
@@ -299,9 +299,9 @@ Uruchom aplikację w przeglądarce:
 
 ![](/images/content/webserver-cherokee-9.jpg)
 
-<a name='nginx'></a>
+<a name='php-built-in'></a>
 
-2## Wbudowany serwer PHP
+## Wbudowany serwer PHP
 
 Możesz skorzystać z [wbudowanego w](http://php.net/manual/en/features.commandline.webserver.php) PHP serwera podczas tworzenia aplikacji. Aby uruchomić serwer:
 
@@ -309,9 +309,9 @@ Możesz skorzystać z [wbudowanego w](http://php.net/manual/en/features.commandl
 php -S localhost:8000 -t /public
 ```
 
-<a name='nginx'></a>
+<a name='php-built-in-phalcon-configuration'></a>
 
-3### Konfiguracja Phalcona
+### Konfiguracja Phalcona
 
 Aby włączyć przepisywanie adresów którego Phalcon potrzebuje, możesz użyć następującego pliku routera (`.htrouter.php`):
 

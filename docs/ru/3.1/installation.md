@@ -131,24 +131,36 @@ Phalcon разработан таким образом, чтобы потреб�
 
 <h5 class='alert alert-danger'>Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. Поддержка PHP 5.x будет прекращена в ближайшее время. Phalcon 4 будет поддерживать только PHP 7. </h5>
 
+Phalcon need the following extensions to run (minimal):
+
+- `curl`
+- `gettext`
+- `gd2` (for the Image class)
+- `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
+- `json`
+- `mbstring`
+- `pdo_*`
+- `fileinfo`
+- `openssl`
+
 ### Дополнительно, в зависимости от потребностей вашего приложения
 
-- Расширение [PDO](http://php.net/manual/en/book.pdo.php), а также расширение для работы с соответствующей СУБД ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) и т.д.)
-- Расширение [OpenSSL](http://php.net/manual/en/book.openssl.php)
-- Расширение [Mbstring](http://php.net/manual/en/book.mbstring.php)
-- Расширение [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) или любое другое, в зависимости от планируемого драйвера кеша
+- [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
+- [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
+- [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
+- [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache.
 
 <a name='installation'></a>
 
 # Установка
 
-Так как Phalcon распространяется в виде расширения для PHP, его установка отличается от традиционных PHP фреймворков. Phalcon нуждается в установке и загрузке в виде модуля на вашем веб сервере.
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-Перед установкой Phalcon в Linux, необходимо добавить репозиторий.
+To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
 
 <a name='installation-linux-debian'></a>
 
@@ -158,7 +170,7 @@ Phalcon разработан таким образом, чтобы потреб�
 
 #### Настройка репозитория
 
-Добавьте репозиторий для вашего дистрибутива:
+Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
@@ -178,50 +190,48 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<a name='requirements-hardware'></a>
+<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
 
-0
+<a name='installation-linux-debian-phalcon'></a>
 
-<a name='requirements-hardware'></a>
+#### Установка Phalcon
 
-1#### Установка Phalcon
+To install Phalcon you need to issue the following commands in your terminal:
 
-Чтобы установить Phalcon выполните следующие команды в терминале:
+<a name='installation-linux-debian-phalcon-php5'></a>
 
-<a name='requirements-hardware'></a>
-
-2##### PHP 5.x
+##### PHP 5.x
 
 ```bash
 sudo apt-get update
 sudo apt-get install php5-phalcon
 ```
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-debian-phalcon-php7'></a>
 
-3##### PHP 7
+##### PHP 7
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.0-phalcon
 ```
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-debian-other-ppa'></a>
 
-4#### Сторонние PPA-репозитории
+#### Сторонние PPA-репозитории
 
 #### Ondřej Surý
 
-Вы всегда можете использовать репозитории [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/), если в не хотите использовать packagecloud.io.
+If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Добавление репозитория:
+Installation of the repo:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-установка Phalcon:
+and Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
@@ -229,19 +239,19 @@ sudo apt-get install php-phalcon
 
 https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm'></a>
 
-5### RPM дистрибутивы (CentOS, Fedora, и т.д.)
+### RPM дистрибутивы (CentOS, Fedora, и т.д.)
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository'></a>
 
-6#### Настройка репозитория
+#### Настройка репозитория
 
-Добавьте репозиторий для вашего дистрибутива:
+Add the repository to your distribution:
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository-stable'></a>
 
-7##### Стабильные релизы
+##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -249,63 +259,61 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 
 или
 
-<a name='requirements-hardware'></a>
+<a name='installation-linux-rpm-repository-nightly'></a>
 
-8##### Ночные релизы
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<a name='requirements-hardware'></a>
+<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
 
-9
+<a name='installation-linux-rpm-phalcon'></a>
 
-<a name='requirements-software'></a>
+#### Установка Phalcon
 
-0#### Установка Phalcon
+To install Phalcon you need to issue the following commands in your terminal:
 
-Чтобы установить Phalcon выполните следующие команды в терминале:
+<a name='installation-linux-rpm-phalcon-php5'></a>
 
-<a name='requirements-software'></a>
-
-1##### PHP 5.x
+##### PHP 5.x
 
 ```bash
 sudo yum update
 sudo yum install php56u-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-linux-rpm-phalcon-php7'></a>
 
-2##### PHP 7
+##### PHP 7
 
 ```bash
 sudo yum update
 sudo yum install php70u-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-linux-rpm-other-rpm'></a>
 
-3#### Сторонние RPM-репозитории
+#### Сторонние RPM-репозитории
 
 ##### Remi
 
-Remi Collet сопровождает отличный RPM -репозиторий. Вы можете найти инструкции о том, как включить его для вашего дистрибутива [здесь](https://blog.remirepo.net/pages/Config-en)
+Remi maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en)
 
-Установка Phalcon, после того, проста:
+Installing Phalcon after that is as easy as:
 
 ```bash
 yum install php56-php-phalcon3
 ```
 
-Доступны версии для архитектур x86/x64 и PHP 5.5/5.6/7.x.
+Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
 
-<a name='requirements-software'></a>
+<a name='installation-freebsd'></a>
 
-4## FreeBSD
+## FreeBSD
 
-Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
+A port is available for FreeBSD. To install it you will need to issue the following commands:
 
 ### `pkg_add`
 
@@ -323,26 +331,26 @@ cd /usr/ports/www/phalcon
 make install clean
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-gentoo'></a>
 
-5## Gentoo
+## Gentoo
 
-Оверлей для установки Phalcon может быть найден здесь: <https://github.com/smoke/phalcon-gentoo-overlay>
+An overlay for installing Phalcon can be found here <https://github.com/smoke/phalcon-gentoo-overlay>
 
-<a name='requirements-software'></a>
+<a name='installation-macos'></a>
 
-6## macOS
+## macOS
 
-В macOs вы можете скомпилировать и установить расширение из исходников, либо воспользоваться `brew` или `macports`:
+On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
 ### Требования
 
 - Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
 
-<a name='requirements-software'></a>
+<a name='installation-macos-brew'></a>
 
-7### Brew
+### Brew
 
 ```bash
 brew tap homebrew/homebrew-php
@@ -352,34 +360,34 @@ brew install php70-phalcon
 brew install php71-phalcon
 ```
 
-<a name='requirements-software'></a>
+<a name='installation-macos-macports'></a>
 
-8### MacPorts
+### MacPorts
 
 ```bash
 sudo port install php55-phalcon
 sudo port install php56-phalcon
 ```
 
-Откройте ваш php.ini и добавьте в конец файла:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Перезагрузите веб-сервер.
+Restart your webserver.
 
-<a name='requirements-software'></a>
+<a name='installation-windows'></a>
 
-9## Windows
+## Windows
 
-Для использования Phalcon в Windows вам понадобится установить phalcon.dll. Мы подготовили различные DLL для большинства целевых платформ. DLL могут быть найдены на нашей страничке [загрузок](https://phalconphp.com/en/download/windows).
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
 
-В первую очередь определите вашу версию PHP, а также архитектуру. Обратите внимание, если вы скачаете неподходящую версию DLL, Phalcon работать не будет. Вам может помочь функция `phpinfo()`, которая выводит соответствующую информацию. В приведенном ниже примере, нам понадобится NTS версия DLL:
+Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-Доступны следующие DLL:
+The available DLLs are:
 
 | Архитектура | Версия | Type                                 |
 |:-----------:|:------:| ------------------------------------ |
@@ -392,28 +400,28 @@ extension=php_phalcon.so
 |     x86     |  5.6   | Потокобезопасный                     |
 |     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
 
-Откройте ваш php.ini и добавьте в конец файла:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Перезагрузите веб-сервер.
+Restart your webserver.
 
 <a name='installation-sources'></a>
 
 ## Компиляция из исходников
 
-Сборка из исходников похожа в большинстве сред (Linux/macOs).
+Compiling from source is similar to most environments (Linux/Mac).
 
 ### Требования
 
 - Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
-- Компилятор GCC (Linux/Solaris/FreeBSD) или Xcode (macOS)
+- GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
 - re2c >= 0.13
-- libpcre-dev (libpcre3-dev)
+- libpcre-dev
 
-Вы можете установить эти пакеты в вашей системе используя соответствующий пакетный менеджер. Инструкции для популярных дистрибутивов приведены ниже:
+You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
 
 #### Ubuntu
 
@@ -435,20 +443,20 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Компиляция Phalcon
 
-Для начала необходимо получить Phalcon с официального репозитория на Github
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-затем собрать расширение
+and now build the extension
 
 ```bash
 cd cphalcon/build
 sudo ./install
 ```
 
-Вам понадобится добавить `extension=phalcon.so` в ваш php.ini и перезапустить веб-сервер для загрузки расширения.
+You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
 # Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
@@ -471,7 +479,7 @@ extension=phalcon.so
 
 ## Расширенная компиляция
 
-Инсталлятор Phalcon способен автоматически обнаружить целевую архитектуру. Однако, вы можете указать архитектуру явно, при запуске:
+Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
 ```bash
 cd cphalcon/build
@@ -482,7 +490,7 @@ sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-Если в результате автоматической установки произошел сбой, вы можете попробовать собрать расширение вручную:
+If the automatic installer fails you can build the extension manually
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -505,7 +513,7 @@ make
 make install
 ```
 
-Если у вас не стандартная версия PHP
+If you have specific php versions running
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -528,10 +536,10 @@ make
 make install
 ```
 
-Вам понадобится добавить `extension=phalcon.so` в ваш php.ini и перезапустить веб-сервер для загрузки расширения.
+You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 <a name='installation-testing'></a>
-Можно создать небольшой скрипт в корне веб-сервера, следующего содержания:
+You can create a small script in your web server root that has the following in it:
 
 ```php
 <?php
@@ -539,15 +547,15 @@ make install
 phpinfo();
 ```
 
-и загрузить его в браузере. В появившемся результате, среди прочего, вы должны увидеть секцию Phalcon. Если такой секции нет, убедитесь в том, что модуль был скомпилирован правильно, вы сделали необходимые изменения в файле `php.ini`, а также веб-сервер был перезагружен.
+and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
 
-Также вы можете проверить вашу установку из командной строки:
+You can also check your installation from the command line:
 
 ```bash
 php -r 'print_r(get_loaded_extensions());'
 ```
 
-Это выведет что-то похожее на это:
+This will output something similar to this:
 
 ```php
 Array
@@ -562,7 +570,7 @@ Array
 )
 ```
 
-Также вы можете проверить установку модуля командой:
+You can also see the modules installed using the CLI:
 
 ```bash
 php -m

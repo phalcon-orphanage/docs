@@ -301,11 +301,11 @@ use Store\Toys\Robots;
 
 // How many robots are there?
 $robots = Robots::find();
-echo 'There are ', count($robots), '\n';
+echo 'There are ', count($robots), "\n";
 
 // How many mechanical robots are there?
 $robots = Robots::find("type = 'mechanical'");
-echo 'There are ', count($robots), '\n';
+echo 'There are ', count($robots), "\n";
 
 // Get and print virtual robots ordered by name
 $robots = Robots::find(
@@ -315,7 +315,7 @@ $robots = Robots::find(
     ]
 );
 foreach ($robots as $robot) {
-    echo $robot->name, '\n';
+    echo $robot->name, "\n";
 }
 
 // Get first 100 virtual robots ordered by name
@@ -327,7 +327,7 @@ $robots = Robots::find(
     ]
 );
 foreach ($robots as $robot) {
-   echo $robot->name, '\n';
+   echo $robot->name, "\n";
 }
 ```
 
@@ -342,11 +342,11 @@ use Store\Toys\Robots;
 
 // What's the first robot in robots table?
 $robot = Robots::findFirst();
-echo 'The robot name is ', $robot->name, '\n';
+echo 'The robot name is ', $robot->name, "\n";
 
 // What's the first mechanical robot in robots table?
 $robot = Robots::findFirst("type = 'mechanical'");
-echo 'The first mechanical robot name is ', $robot->name, '\n';
+echo 'The first mechanical robot name is ', $robot->name, "\n";
 
 // Get first virtual robot ordered by name
 $robot = Robots::findFirst(
@@ -356,7 +356,7 @@ $robot = Robots::findFirst(
     ]
 );
 
-echo 'The first virtual robot name is ', $robot->name, '\n';
+echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
 Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
@@ -386,20 +386,20 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter   | Description                                                                                                                                                                                          | Example                                                              |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => 'name LIKE 'steve%''`                            |
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                           | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                           | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                           | `'order' => 'name DESC, status'`                                  |
-| limit       | Limit the results of the query to results to certain range                                                                                                                                           | `'limit' => 10`                                                   |
-| offset      | Offset the results of the query by a certain amount                                                                                                                                                  | `'offset' => 5`                                                   |
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                          | `'group' => 'name, status'`                                       |
-| for_update  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| shared_lock | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                         | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                          | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                           | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                           | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                           | `'order' => 'name DESC, status'`                                  |
+| `limit`       | Limit the results of the query to results to certain range                                                                                                                                           | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                  | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                          | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
+| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                         | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                          | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
@@ -477,7 +477,7 @@ $robots = Robots::find();
 
 // Traversing with a foreach
 foreach ($robots as $robot) {
-    echo $robot->name, '\n';
+    echo $robot->name, "\n";
 }
 
 // Traversing with a while
@@ -486,7 +486,7 @@ $robots->rewind();
 while ($robots->valid()) {
     $robot = $robots->current();
 
-    echo $robot->name, '\n';
+    echo $robot->name, "\n";
 
     $robots->next();
 }
@@ -544,6 +544,75 @@ $parts = unserialize(
 foreach ($parts as $part) {
     echo $part->id;
 }
+```
+
+<a name='custom-resultsets'></a>
+
+### Custom Resultsets
+
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
+
+With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default `Phalcon\Mvc\Model\Resultset`, but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+
+First we need to define the resultset class:
+
+```php
+<?php
+
+namespace Application\Mvc\Model\Resultset;
+
+use \Phalcon\Mvc\Model\Resultset\Simple;
+
+class Custom extends Simple
+{
+    public function getSomeData() {
+        /** CODE */
+    }
+}
+```
+
+In the model, we set the class in the `getResultsetClass()` as follows:
+
+```php
+<?php
+
+namespace Phalcon\Test\Models\Statistics;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public function getSource()
+    {
+        return 'robots';
+    }
+
+    public function getResultsetClass()
+    {
+    return 'Application\Mvc\Model\Resultset\Custom';
+    }
+}
+```
+
+and finally in your code you will have something like this:
+
+```php
+<?php
+
+/**
+ * Find the robots 
+ */
+$robots = Robots::find(
+    [
+        'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
+        'order'      => 'date'
+    ]
+);
+
+/**
+ * Pass the data to the view
+ */
+$this->view->mydata = $robots->getSomeData();
 ```
 
 <a name='filters'></a>
@@ -954,7 +1023,7 @@ if ($robot->save() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo $message, '\n';
+        echo $message, "\n";
     }
 } else {
     echo 'Great, a new robot was saved successfully!';
@@ -1035,7 +1104,7 @@ if ($robot->create() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo $message, '\n';
+        echo $message, "\n";
     }
 } else {
     echo 'Great, a new robot was created successfully!';
@@ -1064,7 +1133,7 @@ if ($robot !== false) {
         $messages = $robot->getMessages();
 
         foreach ($messages as $message) {
-            echo $message, '\n';
+            echo $message, "\n";
         }
     } else {
         echo 'The robot was deleted successfully!';
@@ -1090,7 +1159,7 @@ foreach ($robots as $robot) {
         $messages = $robot->getMessages();
 
         foreach ($messages as $message) {
-            echo $message, '\n';
+            echo $message, "\n";
         }
     } else {
         echo 'The robot was deleted successfully!';
@@ -1127,9 +1196,11 @@ class Robots extends Model
         return true;
     }
 }
-```<a name='creating'></a>
+```
 
-0## Hydration Modes
+<a name='hydration-modes'></a>
+
+## Hydration Modes
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1203,9 +1274,11 @@ $robots = Robots::find(
 foreach ($robots as $robot) {
     echo $robot['year'], PHP_EOL;
 }
-```<a name='creating'></a>
+```
 
-1## Auto-generated identity columns
+<a name='identity-columns'></a>
+
+## Auto-generated identity columns
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1235,9 +1308,11 @@ class Robots extends Model
         return 'robots_sequence_name';
     }
 }
-```<a name='creating'></a>
+```
 
-2## Skipping Columns
+<a name='skipping-columns'></a>
+
+## Skipping Columns
 
 To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1314,11 +1389,13 @@ class Robots extends Model
         }
     }
 }
-```<a name='creating'></a>
+```
 
-3<a name='creating'></a>
+<h5 class='alert alert-warning'>Never use a `Phalcon\\Db\\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
-4## Dynamic Updates
+<a name='dynamic-updates'></a>
+
+## Dynamic Updates
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1338,9 +1415,11 @@ class Robots extends Model
         $this->useDynamicUpdate(true);
     }
 }
-```<a name='creating'></a>
+```
 
-5## Independent Column Mapping
+<a name='column-mapping'></a>
+
+## Independent Column Mapping
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1420,9 +1499,11 @@ The independent column map allows you to:
 
 - Write applications using your own conventions
 - Eliminate vendor prefixes/suffixes in your code
-- Change column names without change your application code<a name='creating'></a>
+- Change column names without change your application code
 
-6## Record Snapshots
+<a name='record-snapshots'></a>
+
+## Record Snapshots
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1460,9 +1541,11 @@ var_dump($robot->getChangedFields()); // ['name']
 var_dump($robot->hasChanged('name')); // true
 
 var_dump($robot->hasChanged('type')); // false
-```<a name='creating'></a>
+```
 
-7## Pointing to a different schema
+<a name='different-schemas'></a>
+
+## Pointing to a different schema
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1480,9 +1563,11 @@ class Robots extends Model
         $this->setSchema('toys');
     }
 }
-```<a name='creating'></a>
+```
 
-8## Setting multiple databases
+<a name='multiple-databases'></a>
+
+## Setting multiple databases
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Model` needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1613,9 +1698,11 @@ The `selectReadConnection()` method is called to choose the right connection, th
 use Store\Toys\Robots;
 
 $robot = Robots::findFirst('id = 101');
-```<a name='creating'></a>
+```
 
-9## Injecting services into Models
+<a name='injecting-services-into-models'></a>
+
+## Injecting services into Models
 
 You may be required to access the application services within a model, the following example explains how to do that:
 

@@ -681,9 +681,9 @@ class Robots extends Model
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
-<a name='relationships'></a>
+<a name='storing-related-records'></a>
 
-0## Storing Related Records
+## Storing Related Records
 
 Magic properties can be used to store a record and its related properties:
 
@@ -752,15 +752,15 @@ Note: Adding related entities by overloading the following methods is not possib
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
-<a name='relationships'></a>
+<a name='operations-over-resultsets'></a>
 
-1## Operations over Resultsets
+## Operations over Resultsets
 
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
-<a name='relationships'></a>
+<a name='updating-related-records'></a>
 
-2### Updating related records
+### Updating related records
 
 Instead of doing this:
 
@@ -821,9 +821,9 @@ $robots->getParts()->update(
 );
 ```
 
-<a name='relationships'></a>
+<a name='deleting-related-records'></a>
 
-3### Deleting related records
+### Deleting related records
 
 Instead of doing this:
 

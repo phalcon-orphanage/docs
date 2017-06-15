@@ -689,9 +689,9 @@ The `partial()` method does accept a second parameter as an array of variables/p
 <?php $this->partial('shared/ad_banner', ['id' => $site->id, 'size' => 'big']); ?>
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='value-transfer'></a>
 
-0## Transfer values from the controller to views
+## Transfer values from the controller to views
 
 `Phalcon\Mvc\View` is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
 
@@ -749,9 +749,9 @@ A variable with the name of the first parameter of `setVar()` will be created in
 </div>
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='caching-fragments'></a>
 
-1## Caching View Fragments
+## Caching View Fragments
 
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. `Phalcon\Mvc\View` offers caching a part or the whole rendered output to increase performance.
 
@@ -840,9 +840,9 @@ $di->set(
 );
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<h5 class='alert alert-warning'>The frontend must always be `Phalcon\\Cache\\Frontend\\Output` and the service `viewCache` must be registered as always open (not shared) in the services container (DI). </h5>
 
-2When using views, caching can be used to prevent controllers from needing to generate view data on each request.
+When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 
 To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:
 
@@ -879,9 +879,9 @@ class DownloadController extends Controller
 
 The [PHP alternative site](https://github.com/phalcon/php-site) is an example of implementing the caching of fragments.
 
-<a name='integrating-views-with-controllers'></a>
+<a name='template-engines'></a>
 
-3## Template Engines
+## Template Engines
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. `Phalcon\Mvc\View` allows you to use other template engines instead of plain PHP or Volt.
 
@@ -891,9 +891,9 @@ If an external template engine is used, `Phalcon\Mvc\View` provides exactly the 
 
 This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
 
-<a name='integrating-views-with-controllers'></a>
+<a name='custom-template-engine'></a>
 
-4### Creating your own Template Engine Adapter
+### Creating your own Template Engine Adapter
 
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
@@ -941,9 +941,9 @@ class MyTemplateAdapter extends Engine
 }
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='changing-template-engine'></a>
 
-5### Changing the Template Engine
+### Changing the Template Engine
 
 You can replace the template engine completely or use more than one template engine at the same time. The method `Phalcon\Mvc\View::registerEngines()` accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
 
@@ -988,9 +988,9 @@ $di->set(
 
 There are adapters available for several template engines on the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine)
 
-<a name='integrating-views-with-controllers'></a>
+<a name='injecting-services'></a>
 
-6## Injecting services in View
+## Injecting services in View
 
 Every view executed is included inside a `Phalcon\Di\Injectable` instance, providing easy access to the application's service container.
 
@@ -1009,15 +1009,15 @@ $.ajax({
 </script>
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='stand-along'></a>
 
-7## Stand-Alone Component
+## Stand-Alone Component
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
-<a name='integrating-views-with-controllers'></a>
+<a name='stand-alone-hierarchical-rendering'></a>
 
-8### Hierarchical Rendering
+### Hierarchical Rendering
 
 Using `Phalcon\Mvc\View` in a stand-alone mode can be demonstrated below:
 
@@ -1075,9 +1075,9 @@ echo $view->getRender(
 );
 ```
 
-<a name='integrating-views-with-controllers'></a>
+<a name='stand-alone-simple-rendering'></a>
 
-9### Simple Rendering
+### Simple Rendering
 
 Using `Phalcon\Mvc\View\Simple` in a stand-alone mode can be demonstrated below:
 
@@ -1104,9 +1104,9 @@ echo $view->render(
 );
 ```
 
-<a name='hierarchical-rendering'></a>
+<a name='eventes'></a>
 
-0## View Events
+## View Events
 
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Některé události při vrácení hodnoty false můžou zastavit aktivní operaci. Podporovány jsou následující události:
 

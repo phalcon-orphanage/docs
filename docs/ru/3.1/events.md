@@ -439,9 +439,9 @@ The above example produces:
 
 The `Phalcon\Events\ManagerInterface` interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
-<a name='naming-convention'></a>
+<a name='list'></a>
 
-0## List of Events
+## List of Events
 
 The events available in Phalcon are:
 
