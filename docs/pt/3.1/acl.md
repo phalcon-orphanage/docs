@@ -536,9 +536,9 @@ if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
 
 It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
-<a name='setup'></a>
+<a name='events'></a>
 
-0## Events
+## Events
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
@@ -582,8 +582,8 @@ $acl = new AclList();
 $acl->setEventsManager($eventsManager);
 ```
 
-<a name='setup'></a>
+<a name='custom-adapters'></a>
 
-1## Implementing your own adapters
+## Implementing your own adapters
 
 The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
