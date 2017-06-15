@@ -131,6 +131,18 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
+Phalcon need the following extensions to run (minimal):
+
+- `curl`
+- `gettext`
+- `gd2` (for the Image class)
+- `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
+- `json`
+- `mbstring`
+- `pdo_*`
+- `fileinfo`
+- `openssl`
+
 ### Optional depending on the needs of your application
 
 - [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
@@ -142,7 +154,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 # Instalace
 
-Jelikož je Phalcon framework kompilován jako rozšíření pro PHP, jeho instalace je odlišná od ostatních tradičních PHP frameworků. Phalcon framework musí být instalován a načten jako modul pro Váš webserver.
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
 <a name='installation-linux'></a>
 
