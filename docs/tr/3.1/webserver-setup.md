@@ -251,15 +251,15 @@ And this second configuration allows you to install a Phalcon application in a v
 </VirtualHost>
 ```
 
-<a name='nginx'></a>
+<a name='cherokee'></a>
 
-0## Cherokee
+## Cherokee
 
 [Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
-<a name='nginx'></a>
+<a name='cherokee-phalcon-configuration'></a>
 
-1### Phalcon configuration
+### Phalcon configuration
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
@@ -299,9 +299,9 @@ Execute the application in a browser:
 
 ![](/images/content/webserver-cherokee-9.jpg)
 
-<a name='nginx'></a>
+<a name='php-built-in'></a>
 
-2## PHP Built In Webserver
+## PHP Built In Webserver
 
 You can use PHP's [built in](http://php.net/manual/en/features.commandline.webserver.php) web server for your development. To start the server type:
 
@@ -309,9 +309,9 @@ You can use PHP's [built in](http://php.net/manual/en/features.commandline.webse
 php -S localhost:8000 -t /public
 ```
 
-<a name='nginx'></a>
+<a name='php-built-in-phalcon-configuration'></a>
 
-3### Phalcon configuration
+### Phalcon configuration
 
 To enable URI rewrites that Phalcon needs, you can use the following router file (`.htrouter.php`):
 
