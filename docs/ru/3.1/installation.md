@@ -576,4 +576,4 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-<h5 class='alert alert-danger'>Обратите внимание, в большинстве Linux систем вы должны изменить два файла `php.ini`. Один для веб-сервера (Apache/Nginx), другой — для CLI. Если вы столкнетесь с тем, что Phalcon загружается только для веб-сервера, вам нужно будет найти `php.ini` относящийся к CLI и внести в него необходимые изменения, для загрузки модуля в консольном режиме. </h5>
+<h5 class='alert alert-danger'>Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded. </h5>
