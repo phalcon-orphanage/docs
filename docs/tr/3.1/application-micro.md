@@ -262,7 +262,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Routes must always start with `/`</h5>
+<h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
@@ -818,7 +818,7 @@ $orders->get('/delete/{id}', 'deleteAction');
 $app->mount($orders);
 ```
 
-<h5 class='alert alert-warning'>The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.</h5>
+<h5 class='alert alert-warning'>The name that we bind each route has a suffix of <code>Action</code>. This is not necessary, your method can be called anything you like.</h5>
 
 <a name='routing-parameters'></a>
 
@@ -1792,7 +1792,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning'>We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<h5 class='alert alert-warning'>We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
 
 ```php
 <?php
@@ -1837,7 +1837,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-<h5 class='alert alert-warning'>The relevant `db` service must be registered in your Di container.</h5>
+<h5 class='alert alert-warning'>The relevant <code>db</code> service must be registered in your Di container.</h5>
 
 ```php
 <?php
@@ -1936,7 +1936,7 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning'>The above example uses the `Phalcon\\Mvc\\View\\Simple` component, which uses relative paths instead of controllers and actions. You can use the `Phalcon\\Mvc\\View` component instead, but to do so you will need to change the parameters passed to `render()`</h5>
+<h5 class='alert alert-warning'>The above example uses the <code>Phalcon\\Mvc\\View\\Simple</code> component, which uses relative paths instead of controllers and actions. You can use the <code>Phalcon\\Mvc\\View</code> component instead, but to do so you will need to change the parameters passed to <code>render()</code></h5>
 
 ```php
 <?php
