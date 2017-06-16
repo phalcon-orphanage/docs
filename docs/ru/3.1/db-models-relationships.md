@@ -526,17 +526,6 @@ class Robots extends Model
             'robots_id'
         );
     }
-
-    /**
-     * Return the related 'robots parts'
-     *
-     * @param  array|null $parameters 
-     * @return RobotsParts[]
-     */
-    public function getRobotsParts($parameters = null)
-    {
-        return $this->getRelated('RobotsParts', $parameters);
-    }
 }
 ```
 
