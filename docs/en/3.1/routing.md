@@ -987,6 +987,8 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
+<h5 class='alert alert-danger' markdown='1'>Please note that using `Router::URI_SOURCE_GET_URL` automatically decodes the Uri, because it is based on the `$_REQUEST` superglobal. However, for the time being, using `Router::URI_SOURCE_SERVER_REQUEST_URI` will not automatically decode the Uri for you. This will change in the next major release.</h5>
+
 <a name='testing'></a>
 ## Testing your routes
 Since this component has no dependencies, you can create a file as shown below to test your routes:
