@@ -94,7 +94,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 - Вы используете много хелперов и результат генерации почти всегда одинаковый
 - Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
-<h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
+<h5 class='alert alert-warning'><em>Примечание</em> Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш (hit). Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
 
 <a name='caching-behavior'></a>
 
@@ -164,7 +164,7 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
+<h5 class='alert alert-warning'><em>Примечание</em> В этом примере наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
 
 <a name='arbitrary-data'></a>
 
@@ -283,7 +283,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+<h5 class='alert alert-warning'><em>Примечание</em> Вызов <code>save()</code> возвращает логическое значение, указывающее, успех (<code>true</code>) или сбой (<code>false</code>). В зависимости от бэкэнда, который вы используете, вам понадобится обратится к соответствующим логам, для выявления сбоев.</h5>
 
 <a name='read'></a>
 
@@ -487,13 +487,13 @@ $cache->save('my-key', $data);
 | Адаптер                                 | Описание                                                                     | Информация                                | Необходимые расширения                             |
 | --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
 | `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching)                         | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.                                            |                                           |                                                    |
+| `Phalcon\Cache\Backend\Apcu`         | Сохраняет данные в APCu (APC без кеширования опкода).                        | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
+| `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                                               | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                                        | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                                                       | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcache расширения.  | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <a name='adapters-backend-custom'></a>
 
