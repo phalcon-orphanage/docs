@@ -5,6 +5,8 @@ If you have found a bug it is important to add relevant reproducibility informat
 A small single-file script is usually the best way to reproduce a problem:
 
 ```php
+<?php
+
 $di = new Phalcon\DI\FactoryDefault();
 
 //Register your custom services
@@ -46,6 +48,8 @@ Depending on your application, you can use these skeletons in order to create yo
 Remember to add to the script how you registered the database service:
 
 ```php
+<?php
+
 $di = new Phalcon\DI\FactoryDefault();
 
 $di->setShared('db', function () {
@@ -67,6 +71,8 @@ $result = $di['db']->query('SELECT * FROM customers');
 Remember to add to the script how you are creating the Phalcon\Mvc\Application instance:
 
 ```php
+<?php
+
 $di  = new \Phalcon\DI\FactoryDefault();
 
 //other services
@@ -83,6 +89,8 @@ echo $app->handle->getContent()
 Include models and controllers as part of the test:
 
 ```php
+<?php
+
 $di  = new \Phalcon\DI\FactoryDefault();
 
 //other services
