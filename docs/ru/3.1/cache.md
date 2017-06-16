@@ -94,7 +94,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 - Вы используете много хелперов и результат генерации почти всегда одинаковый
 - Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
-<h5 class='alert alert-warning'>* Примечание:* Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш (hit). Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
+<h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
 
 <a name='caching-behavior'></a>
 
@@ -164,7 +164,7 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'>*Обратите внимание:* В этом примере, наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
+<h5 class='alert alert-warning'><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
 
 <a name='arbitrary-data'></a>
 
@@ -283,7 +283,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>*NOTE* Calling `save()` will return a boolean, indicating success (`true`) or failure (`false`). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+<h5 class='alert alert-warning'><em>NOTE</em> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
 
 <a name='read'></a>
 
