@@ -58,7 +58,7 @@ composer require phpunit/phpunit:^5.0
 
 ## PHPUnit хелпер
 
-Хелпер необходим для подготовки приложения к запуску тестов. Мы подготовили образец файла. Поместите файл `TestHelper.php` в `tests/`.
+Хелпер необходим для подготовки приложения к запуску тестов. Мы подготовили образец файла. Поместите файл `TestHelper.php` в директорию `tests`.
 
 ```php
 <?php
@@ -76,16 +76,15 @@ define("ROOT_PATH", __DIR__);
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Required for phalcon/incubator
+// Необходим для phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
-// Autoload the dependencies found in composer
+// Используем автозагрузчик приложений для автозагрузки классов.
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        ROOT_PATH,
+        ROOT_PATH, 
     ]
 );
 
@@ -95,7 +94,7 @@ $di = new FactoryDefault();
 
 Di::reset();
 
-// Add any needed services to the DI here
+// Здесь можно добавить любые необходимые сервисы в контейнер зависимостей
 
 Di::setDefault($di);
 ```
