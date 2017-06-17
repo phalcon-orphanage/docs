@@ -119,13 +119,13 @@ composer require phalcon/incubator
 }
 ```
 
-You can also clone the repository using the repo link above.
+Вы также можете склонировать репозиторий, используя ссылку: https://github.com/phalcon/incubator.
 
 <a name='phpunit-config'></a>
 
 ## Файл `phpunit.xml`
 
-Now, create a `phpunit.xml` file as follows:
+Теперь создайте файл `phpunit.xml` как показано ниже:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -148,7 +148,7 @@ Now, create a `phpunit.xml` file as follows:
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+Измените `phpunit.xml` в соответствии с вашими потребностями и сохраните его в `tests`. Это будет запускать любые тесты из из директории `tests`.
 
 <a name='sample'></a>
 
