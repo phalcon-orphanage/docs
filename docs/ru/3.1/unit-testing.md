@@ -23,19 +23,19 @@
 
 # Введение
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Написание правильного теста может помочь в создании создании более качественного програмного обеспечения. Покрытие тестами надлежащих случаев помогает устранить большинство функциональных ошибок и лучше поддерживать программное обеспечение.
 
 <a name='integration'></a>
 
 ## Интеграция PHPUnit с Phalcon
 
-If you don't already have phpunit installed, you can do it by using the following composer command:
+Если вы еще не установили PHPUnit, вы можете сделать это с помощью следующей команды:
 
 ```bash
 composer require phpunit/phpunit:^5.0
 ```
 
-or by manually adding it to `composer.json`:
+или вручную добавить его в `composer.json`:
 
 ```json
 <br />{
@@ -45,20 +45,20 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed create a directory called `tests` in project root directory:
+После установки PHPUnit ​​создайте директорию `tests` в корне проекта:
 
     app/
     public/
     tests/
     
 
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+Далее, нам понадобится “хелпер” для подготовки приложения к модульному тестированию.
 
 <a name='unit-helper'></a>
 
 ## PHPUnit хелпер
 
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
+Хелпер необходим для подготовки приложения к запуску тестов. Мы подготовили образец файла. Поместите файл `TestHelper.php` в `tests/`.
 
 ```php
 <?php
@@ -72,7 +72,7 @@ error_reporting(E_ALL);
 
 define("ROOT_PATH", __DIR__);
 
-set_include_path(
+ set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
@@ -110,7 +110,7 @@ You can use the Incubator library by adding it as a dependency:
 composer require phalcon/incubator
 ```
 
-or by manually adding it to `composer.json`:
+или вручную добавить его в `composer.json`:
 
 ```json
 {
