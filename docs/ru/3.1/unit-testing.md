@@ -99,22 +99,22 @@ Di::reset();
 Di::setDefault($di);
 ```
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
+Если вам необходимо протестировать какой-либо компонент из вашей библиотеки компонентов, добавьте его в автозагрузчик или используйте автозагрузчик вашего основного приложения.
 
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+Для облегчения написания модульных тестов, мы создали несколько абстрактных классов, которые вы можете использовать для настройки самих тестов. Вы можете получить их из [Инкубатора](https://github.com/phalcon/incubator).
 
-You can use the Incubator library by adding it as a dependency:
+Вы можете использовать Инкубатор, добавив его в качестве зависимости:
 
 ```bash
 composer require phalcon/incubator
 ```
 
-или вручную добавить его в `composer.json`:
+или вручную, добавить его в `composer.json`:
 
 ```json
 {
     "require": {
-        "phalcon/incubator": "^3.0"
+        "phalcon/incubator": "^3.2"
     }
 }
 ```
