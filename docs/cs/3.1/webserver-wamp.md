@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#phalcon">Stažení správné verze Phalcon frameworku</a>
         </li>
@@ -21,7 +21,7 @@
 
 <a name='phalcon'></a>
 
-## Stažení správné verze Phalcon frameworku
+## Download the right version of Phalcon
 
 WAMP podporuje jak 32bitové tak 64bitové verze. Ze sekce "Stažení" můžete stáhnout DLL knihovnu Phalcon frameworku která vyhovuje Vaší WAMP instalaci.
 
@@ -50,7 +50,7 @@ extension=php_phalcon.dll
     extension=php_phalcon.dll 
     
 
-a uložte soubor.
+and save it.
 
 Restartuje webserver Apache. Jednou klikněte na ikonu WampServer v systémové liště. Vyberte `Restartovat všechny služby` (angl.: Restart All Services) z menu které se ukázalo. Zkontrolujte že ikonka v systémové liště bude opět zelená.
 
