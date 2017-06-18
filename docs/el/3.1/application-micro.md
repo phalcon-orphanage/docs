@@ -129,7 +129,7 @@
     </li>
     
     <li>
-      <a href="#events">Γεγονότα</a> <ul>
+      <a href="#events">Events</a> <ul>
         <li>
           <a href="#events-available-events">Available events</a> <ul>
             <li>
@@ -1189,7 +1189,7 @@ $app->get(
 
 <a name='events'></a>
 
-# Γεγονότα
+# Events
 
 A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
