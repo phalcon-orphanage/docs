@@ -177,7 +177,7 @@ test/
 
 Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
 
-<h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
+<h5 class='alert alert-warning'>Обратите внимание, для полного разрешения использования директив в <code>.htaccess</code> файле, в главном конфигурационном файле Apache необходимо установить параметр <code>AllowOverride All</code>. </h5>
 
 ```apacheconfig
 # test/.htaccess
