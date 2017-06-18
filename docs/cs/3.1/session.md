@@ -21,7 +21,7 @@
           <a href="#data-persistency">Persistent Data in Components</a>
         </li>
         <li>
-          <a href="#custom-adapters">Implementace vlastních adaptérů</a>
+          <a href="#custom-adapters">Implementing your own adapters</a>
         </li>
       </ul>
     </li>
@@ -226,7 +226,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Implementace vlastních adaptérů
+## Implementing your own adapters
 
 The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
 
