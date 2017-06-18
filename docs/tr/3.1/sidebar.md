@@ -3,7 +3,7 @@
     - Upgrade
     - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions 
-    - [Genel Bakış](/[[language]]/[[version]]/contributions)
+    - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
@@ -46,7 +46,7 @@
         - [Advanced](/[[language]]/[[version]]/db-models-advanced)
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
-        - [Olaylar](/[[language]]/[[version]]/db-models-events)
+        - [Events](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relationships](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
@@ -62,7 +62,7 @@
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
 - Business Logic 
-    - [Erişim Kontrol Listeleri](/[[language]]/[[version]]/acl)
+    - [Access Control Lists](/[[language]]/[[version]]/acl)
     - [Annotations](/[[language]]/[[version]]/annotations)
     - [Controllers](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
