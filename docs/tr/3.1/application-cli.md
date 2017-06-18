@@ -30,7 +30,7 @@ CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut 
 
 <a name='structure'></a>
 
-## Yapı
+## Structure
 
 CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
@@ -40,7 +40,7 @@ CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
 <a name='creating-bootstrap'></a>
 
-## Bir Önyükleme Oluşturma
+## Creating a Bootstrap
 
 Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
 
@@ -123,7 +123,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Görevler
+## Tasks
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -145,7 +145,7 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Eylem parametrelerini işlemek
+## Processing action parameters
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -190,7 +190,7 @@ saygılarımla, evren
 
 <a name='running-tasks-chain'></a>
 
-## Bir zincirdeki görevleri çalıştırma
+## Running tasks in a chain
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
