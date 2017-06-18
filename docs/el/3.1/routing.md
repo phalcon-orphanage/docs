@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Χρησημοποίηση Ουρών</a>
+      <a href="#overview">Queueing</a>
     </li>
     <li>
       <a href="$overview">Routing</a> <ul>
