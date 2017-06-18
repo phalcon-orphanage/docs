@@ -27,13 +27,13 @@
 
 <a name='overview'></a>
 
-# Čtení konfigurace
+# Reading Configurations
 
 Komponenta `Phalcon\Config` se používá pro konvertování různých formátů konfiguračních souborů (s použitím adaptérů) do PHP objektů pro pouřití v aplikaci.
 
 <a name='native-arrays'></a>
 
-## Nativní pole (Array)
+## Native Arrays
 
 Na prvnímpříkladu si ukážeme jak zkonvertovat klasické Php pole do `Phalcon\Config` objektů. Tato možnost nabízí nejlepší výkon protože nenačítá žádné soubory v průběhu požadavku.
 
@@ -79,7 +79,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## Adaptéry pro soubory
+## File Adapters
 
 Dostupné adaptéry jsou:
 
@@ -92,7 +92,7 @@ Dostupné adaptéry jsou:
 
 <a name='ini-files'></a>
 
-## Čtení INI souborů
+## Reading INI Files
 
 Ini soubory jsou běžný způsob pro ulkádání konfiguračních hodnot. `Phalcon\Config` používá optimalizovanou PHP funkci `parse_ini_file` pro čtení těchto souborů. Sekce v Ini souborech (uzavřené do hranatých závorek) jsou parsovány jako vnořený objekt pro snadný přístup.
 
@@ -129,7 +129,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Slučování konfigurace
+## Merging Configurations
 
 `Phalcon\Config` umožňuje rekurzivní slučování atributů a hodnot z jednoho konfiguračního objektu do jiného. Nové atributy jsou přidány a existující jsou aktualizovány.
 
@@ -181,11 +181,11 @@ Phalcon\Config Object
 )
 ```
 
-Také jsou dostupné další adaptéry for tuto komponentu v repozitáři [Phalcon Incubator](https://github.com/phalcon/incubator)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 
-## Vnořené konfigurace
+## Nested Configuration
 
 Pro přístup k vnořeným nastavením můžete také použít metodu `Phalcon\Config::path`. Tato metoda dovoluje získat vnořené konfigurace bez očetřování zda li některé části cesty chybí. Podívejte se na příklad:
 
@@ -233,7 +233,7 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## Konfigurace jako služba
+## Injecting Configuration Dependency
 
 V controllerech se může konfigurace použít jako služba. Aby tak mohlo být, přidejte následující kód k definici Di kontejneru.
 
