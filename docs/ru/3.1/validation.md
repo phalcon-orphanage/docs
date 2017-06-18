@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Валидация</a> <ul>
+      <a href="#overview">Validation</a> <ul>
         <li>
           <a href="#initializing">Initializing Validation</a>
         </li>
         <li>
-          <a href="#validators">Валидаторы</a>
+          <a href="#validators">Validators</a>
         </li>
         <li>
           <a href="#callback">Callback Validator</a>
         </li>
         <li>
-          <a href="#messages">Собщения об ошибках</a>
+          <a href="#messages">Validation Messages</a>
         </li>
         <li>
           <a href="#filtering">Filtering of Data</a>
@@ -36,7 +36,7 @@
 
 <a name='overview'></a>
 
-# Валидация
+# Validation
 
 `Phalcon\Validation` is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -154,11 +154,11 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Валидаторы
+## Validators
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Класс                                          | Пояснение                                                         |
+| Class                                          | Explanation                                                       |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
 | `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
 | `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
@@ -289,7 +289,7 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 <a name='messages'></a>
 
-## Собщения об ошибках
+## Validation Messages
 
 `Phalcon\Validation` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
