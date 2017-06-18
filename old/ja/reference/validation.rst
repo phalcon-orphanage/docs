@@ -487,7 +487,7 @@ If you are creating custom validators you can dynamically stop the validation ch
         {
             // If the attribute value is name we must stop the chain
             if ($attribute === "name") {
-                $this->setOption("cancelOnFail", true);
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...

@@ -479,7 +479,7 @@ Si creas validators personalizados puedes parar dinámicamente la ejecución con
         {
             // If the attribute value is name we must stop the chain
             if ($attribute === "name") {
-                $this->setOption("cancelOnFail", true);
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...
