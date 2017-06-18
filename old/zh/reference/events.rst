@@ -159,14 +159,14 @@ Attaching an event listener to the events manager is as simple as:
 
     <?php
 
-    use Phalcon\Events\ManagerInterface;
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager(ManagerInterface $eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }

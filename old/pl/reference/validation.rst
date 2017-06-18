@@ -158,7 +158,7 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | :doc:`Phalcon\\Validation\\Validator\\CreditCard <../api/Phalcon_Validation_Validator_CreditCard>`     | Validates a credit card number                                    |
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>`         | Validates using callback function                                 |
+| :doc:`Phalcon\\Validation\\Validator\\Callback <../api/Phalcon_Validation_Validator_Callback>`         | Validates using callback function                                  |
 +--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
@@ -487,7 +487,7 @@ If you are creating custom validators you can dynamically stop the validation ch
         {
             // If the attribute value is name we must stop the chain
             if ($attribute === "name") {
-                $this->setOption("cancelOnFail", true);
+                $validator->setOption("cancelOnFail", true);
             }
 
             // ...

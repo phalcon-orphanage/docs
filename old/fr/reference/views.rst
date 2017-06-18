@@ -1,32 +1,32 @@
-Utilisation des Vues
-====================
+Using Views
+===========
 
-Les vues représentent la partie interface de votre application. Les vues sont souvent des fichiers HTML encapsulant du code PHP qui réalise des tâches
-uniquement dédiées à la présentation des données. Les vues sont chargées de fournir les données au navigateur web ou tout autres outils qui est
-utilisé pour soumettre des requêtes à votre application.
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks
+related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
+is used to make requests from your application.
 
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` et :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
-sont responsables de gérer la couche vue de votre application MVC.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
+are responsible for the managing the view layer of your MVC application.
 
-Intégration des Vues aux Contrrôleurs
--------------------------------------
-Phalcon transmet l'exécution automatiquement au composant vue aussitôt que le contrôleur a terminé son cycle. Le composant vue recherche dans le 
-dossier des vues s'il existe un dossier du même nom que le dernier contrôleur exécuté et recherche ensuite un fichier du même nom que la dernière actions
-exécutée. Par exemple, si une requête est faite avec l'URL *http://127.0.0.1/blog/posts/show/301* Phalcon décompose l'URL comme suit:
+Integrating Views with Controllers
+----------------------------------
+Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
+will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
+executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-+--------------------+-----------+
-| Adresse du serveur | 127.0.0.1 |
-+--------------------+-----------+
-| Répertoire Phalcon | blog      |
-+--------------------+-----------+
-| Contrôleur         | posts     |
-+--------------------+-----------+
-| Action             | show      |
-+--------------------+-----------+
-| Paramètre          | 301       |
-+--------------------+-----------+
++-------------------+-----------+
+| Server Address    | 127.0.0.1 |
++-------------------+-----------+
+| Phalcon Directory | blog      |
++-------------------+-----------+
+| Controller        | posts     |
++-------------------+-----------+
+| Action            | show      |
++-------------------+-----------+
+| Parameter         | 301       |
++-------------------+-----------+
 
-Le répartiteur recherche une classe "PostsController" et une action "showAction". Voici un échantillon de contrôleur pour cet example:
+The dispatcher will look for a "PostsController" and its action "showAction". A simple controller file for this example:
 
 .. code-block:: php
 
@@ -43,34 +43,34 @@ Le répartiteur recherche une classe "PostsController" et une action "showAction
 
         public function showAction($postId)
         {
-            // Transmet le paramètre $postId à la vue
+            // Pass the $postId parameter to the view
             $this->view->postId = $postId;
         }
     }
 
-La méthode :code:`setVar()` nous permet de créer de variables pour les vues qui peuvent être utilisées dans les gabarits de vue. L'exemple précédent démontre
-comment transmettre le paramètre :code:`$postId` au gabarit de vue respectif.
+The :code:`setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
+how to pass the :code:`$postId` parameter to the respective view template.
 
-Hiérarchie de Rendu
--------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supporte une hiérarchie de fichiers. Il est le composant par défaut pour le rendu de vues dans Phalcon.
-Cette hiérarchie permet des espaces de mise en page communs (vues couramment utilisées), ainsi que des dossiers nommés par le contrôleur contenant des gabarits de vue respectifs. 
+Hierarchical Rendering
+----------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
+This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
-Ce composant utilise lui-même PHP comme moteur de gabarit, cependant les vues doivent avoir l'extension .phtml.
-Si le répertoire des vues est *app/views* alors le composant vue trouvera automatiquement ces trois fichiers vue.
+This component uses by default PHP itself as the template engine, therefore views should have the .phtml extension.
+If the views directory is  *app/views* then view component will find automatically for these 3 view files.
 
-+---------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Nom                       | Fichier                       | Description                                                                                                                                                                                                          |
-+===========================+===============================+======================================================================================================================================================================================================================+
-| Vue d'action              | app/views/posts/show.phtml    | Cette vue est relative à l'action. Elle sera affichée uniquement si l'action "show" est exécutée.                                                                                                                    |
-+---------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Disposition du contrôleur | app/views/layouts/posts.phtml | Cette vue est relative au contrôleur. Elle sera affichée pour chaque action du contrôleur "posts" que sera exécutée. Tout le code écrit dans la disposition est réutilisé pour toutes les actions dans ce contrôleur |
-+---------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Disposition principale    | app/views/index.phtml         | Ceci est la vue principale qui sera affichée pour n'importe que action ou contrôleur exécuté au sein de l'application.                                                                                               |
-+---------------------------+-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Name              | File                          | Description                                                                                                                                                                                                              |
++===================+===============================+==========================================================================================================================================================================================================================+
+| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                       |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Vous n'êtes pas obligé de créer tout les fichiers précédemment mentionnés. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` se déplace simplement au
-prochain niveau de vue dans la hiérarchie de fichiers. Si les trois fichiers sont présents, ils seront exécutés dans l'ordre suivant:
+You are not required to implement all of the files mentioned above. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` will simply move to the
+next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
 .. code-block:: html+php
 
@@ -104,13 +104,13 @@ prochain niveau de vue dans la hiérarchie de fichiers. Si les trois fichiers so
         </body>
     </html>
 
-Notez les appels à la méhode :code:`$this->getContent()`. Cette méthode indique à :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-où il faut injecter le contenu de la précédente vue exécutée dans la hiérarchie. Pour l'exemple précédent, la sortie devrait être du style:
+Note the lines where the method :code:`$this->getContent()` was called. This method instructs :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
+on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
 
 .. figure:: ../_static/img/views-1.png
    :align: center
 
-Le code HTML généré par la requête sera:
+The generated HTML by the request will be:
 
 .. code-block:: html+php
 
@@ -136,11 +136,11 @@ Le code HTML généré par la requête sera:
         </body>
     </html>
 
-Utilisation de Gabarits
-^^^^^^^^^^^^^^^^^^^^^^^
-Les gabarits sont des vues qui peuvent utilisées pour partager du code de vue commun. Ils agissent comme les dispositions des contrôleurs, donc il faut les placer dans le dossier des dispositions.
+Using Templates
+^^^^^^^^^^^^^^^
+Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
-Les gabarits peuvent être rendus avant les dispositions (avec :code:`$this->view->setTemplateBefore()`) ou bien après (avec :code:`this->view->setTemplateAfter()`). Dans l'exemple qui suit, le gabarit (layouts/common.phtml) est rendu après la disposition principale (layouts/posts.phtml):
+Templates can be rendered before the layout (using :code:`$this->view->setTemplateBefore()`) or they can be rendered after the layout (using :code:`this->view->setTemplateAfter()`). In the following example the template (layouts/common.phtml) is rendered after the main layout (layouts/posts.phtml):
 
 .. code-block:: php
 
@@ -210,7 +210,7 @@ Les gabarits peuvent être rendus avant les dispositions (avec :code:`$this->vie
         <p>This is another post content</p>
     </article>
 
-Le rendu final sera:
+The final output will be the following:
 
 .. code-block:: html+php
 
@@ -253,7 +253,7 @@ Le rendu final sera:
         </body>
     </html>
 
-Si nous avions utilisé :code:`$this->view->setTemplateBefore("common")`, le rendu final aurait pu être:
+If we had used :code:`$this->view->setTemplateBefore("common")`, this would be the final output:
 
 .. code-block:: html+php
 
@@ -296,12 +296,12 @@ Si nous avions utilisé :code:`$this->view->setTemplateBefore("common")`, le ren
         </body>
     </html>
 
-Contrôler les Niveaux de Rendu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Comme vu précédemment :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supporte une hiérarchie de vue. Vous pourriez avoir besoin de contrôler le niveau de rendu
-produit par le composant vue. La méthode :code:`Phalcon\Mvc\View::setRenderLevel()` offre cette fonctionnalité.
+Control Rendering Levels
+^^^^^^^^^^^^^^^^^^^^^^^^
+As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
+produced by the view component. The method :code:`Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
-Cette méthode peut être invoquée depuis le contrôleur ou depuis une vue supérieure pour interférer avec le processus de rendu.
+This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
 
 .. code-block:: php
 
@@ -319,7 +319,7 @@ Cette méthode peut être invoquée depuis le contrôleur ou depuis une vue sup�
 
         public function findAction()
         {
-            // Ceci est une réponse Ajax et donc ne génère aucune vue
+            // This is an Ajax response so it doesn't generate any kind of view
             $this->view->setRenderLevel(
                 View::LEVEL_NO_RENDER
             );
@@ -329,34 +329,34 @@ Cette méthode peut être invoquée depuis le contrôleur ou depuis une vue sup�
 
         public function showAction($postId)
         {
-            // Affiche seulement la vue relative à l'action
+            // Shows only the view related to the action
             $this->view->setRenderLevel(
                 View::LEVEL_ACTION_VIEW
             );
         }
     }
 
-Les différents niveaux de rendus possibles sont:
+The available render levels are:
 
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| Constante de classe   | Description                                                                    | Ordre |
-+=======================+================================================================================+=======+
-| LEVEL_NO_RENDER       | Indique qu'il ne faut générer aucune présentation.                             |       |
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| LEVEL_ACTION_VIEW     | Génère la présentation de la vue associée à l'action.                          | 1     |
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| LEVEL_BEFORE_TEMPLATE | Génère la présentation du gabarit qui précède la disposition du contrôleur.    | 2     |
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| LEVEL_LAYOUT          | Génère la présentation de la disposition du contrôleur.                        | 3     |
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| LEVEL_AFTER_TEMPLATE  | Génère la présentation du gabarit qui suit la disposition du contrôleur.       | 4     |
-+-----------------------+--------------------------------------------------------------------------------+-------+
-| LEVEL_MAIN_LAYOUT     | Génère la présentation de la disposition principale. Fichier views/index.phtml | 5     |
-+-----------------------+--------------------------------------------------------------------------------+-------+
++-----------------------+--------------------------------------------------------------------------+-------+
+| Class Constant        | Description                                                              | Order |
++=======================+==========================================================================+=======+
+| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  |       |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         | 1     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         | 2     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     | 3     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. | 4     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
++-----------------------+--------------------------------------------------------------------------+-------+
 
-Désactiver des niveaux de rendu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Vous pouvez désactiver de façon permanente ou temporaire des niveaux de rendu. Un niveau peut être désactivé de façon permanente s'il n'est pas du tout utilisé au sein de l'application:
+Disabling render levels
+^^^^^^^^^^^^^^^^^^^^^^^
+You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
 .. code-block:: php
 
@@ -369,7 +369,7 @@ Vous pouvez désactiver de façon permanente ou temporaire des niveaux de rendu.
         function () {
             $view = new View();
 
-            // Désactive plusieurs niveaux
+            // Disable several levels
             $view->disableLevel(
                 [
                     View::LEVEL_LAYOUT      => true,
@@ -382,7 +382,7 @@ Vous pouvez désactiver de façon permanente ou temporaire des niveaux de rendu.
         true
     );
 
-Ou désactivé temporairement quelque part dans l'application:
+Or disable temporarily in some part of the application:
 
 .. code-block:: php
 
@@ -406,10 +406,10 @@ Ou désactivé temporairement quelque part dans l'application:
         }
     }
 
-Sélection de vues
-^^^^^^^^^^^^^^^^^
-Comme mentionné précédemment, lorsque :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` est gérée par :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
-la vue rendue est celle qui correspond à la dernière action du dernier contrôleur exécuté. Pour pouvez surcharger ceci en utilisant la méthode :code:`Phalcon\Mvc\View::pick()`:
+Picking Views
+^^^^^^^^^^^^^
+As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
+the view rendered is the one related with the last controller and action executed. You could override this by using the :code:`Phalcon\Mvc\View::pick()` method:
 
 .. code-block:: php
 
@@ -421,17 +421,17 @@ la vue rendue est celle qui correspond à la dernière action du dernier contrô
     {
         public function listAction()
         {
-            // Prend "views-dir/products/search" comme vue à rendre
+            // Pick "views-dir/products/search" as view to render
             $this->view->pick("products/search");
 
-            // Prend "views-dir/books/list" comme vue à rendre
+            // Pick "views-dir/books/list" as view to render
             $this->view->pick(
                 [
                     "books",
                 ]
             );
 
-            // Prend "views-dir/products/search" comme vue à rendre
+            // Pick "views-dir/products/search" as view to render
             $this->view->pick(
                 [
                     1 => "search",
@@ -440,9 +440,9 @@ la vue rendue est celle qui correspond à la dernière action du dernier contrô
         }
     }
 
-Désactiver la vue
-^^^^^^^^^^^^^^^^^
-Si votre contrôleur ne doit produire aucune sortie dans la vue (ou n'en a pas) vous pouvez désactiver le composant vue évitant ainsi un traitement inutile:
+Disabling the view
+^^^^^^^^^^^^^^^^^^
+If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
 .. code-block:: php
 
@@ -454,15 +454,15 @@ Si votre contrôleur ne doit produire aucune sortie dans la vue (ou n'en a pas) 
     {
         public function closeSessionAction()
         {
-            // Fermeture de session
+            // Close session
             // ...
 
-            // Désactive la vue pour éviter le rendu
+            // Disable the view to avoid rendering
             $this->view->disable();
         }
     }
 
-Autrement vous pouvez retourner :code:`false` pour produire le même effet:
+Alternatively, you can return :code:`false` to produce the same effect:
 
 .. code-block:: php
 
@@ -476,12 +476,12 @@ Autrement vous pouvez retourner :code:`false` pour produire le même effet:
         {
             // ...
 
-            // Désactive la vue pour éviter le rendu
+            // Disable the view to avoid rendering
             return false;
         }
     }
 
-Vous pouvez retourner un objet "response" pour éviter de désactiver la vue manuellement:
+You can return a 'response' object to avoid disable the view manually:
 
 .. code-block:: php
 
@@ -493,25 +493,25 @@ Vous pouvez retourner un objet "response" pour éviter de désactiver la vue man
     {
         public function closeSessionAction()
         {
-            // Fermeture de session
+            // Close session
             // ...
 
-            // Une redirection HTTP
+            // A HTTP Redirect
             return $this->response->redirect("index/index");
         }
     }
 
-Rendu simple
-------------
-:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` est une alternative à :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
-Il conserve l'essentiel de la philosophie de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` à l'exclusion de la hiérarchie de fichier, 
-qui en réalité est la principale fonctionnalité de sa contrepartie.
+Simple Rendering
+----------------
+:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
+the main feature of its counterpart.
 
-Ce composant permet au développeur de garder le contrôle quand la vue est rendue et son emplacement.
-Ce plus, ce composant peut influencer sur l'héritage de vue disponible dans les moteurs de gabarit
-comme :doc:`Volt <volt>` et autres.
+This component allows the developer to have control of when a view is rendered and its location.
+In addition, this component can leverage of view inheritance available in template engines such
+as :doc:`Volt <volt>` and others.
 
-Le composant par défaut doit être remplacé dans le conteneur de services:
+The default component must be replaced in the service container:
 
 .. code-block:: php
 
@@ -531,7 +531,7 @@ Le composant par défaut doit être remplacé dans le conteneur de services:
         true
     );
 
-Le rendu automatique doit être désactivé dans :doc:`Phalcon\\Mvc\\Application <applications>` (si nécessaire):
+Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applications>` (if needed):
 
 .. code-block:: php
 
@@ -552,7 +552,7 @@ Le rendu automatique doit être désactivé dans :doc:`Phalcon\\Mvc\\Application
         echo $e->getMessage();
     }
 
-Pour rendre une vue il est nécessaire d'appeler la méthode de rendu explicitement en indiquant le chemin relatif à la vue que vous souhaitez afficher:
+To render a view it's necessary to call the render method explicitly indicating the relative path to the view you want to display:
 
 .. code-block:: php
 
@@ -564,13 +564,13 @@ Pour rendre une vue il est nécessaire d'appeler la méthode de rendu explicitem
     {
         public function indexAction()
         {
-            // Rendu de 'views-dir/index.phtml'
+            // Render 'views-dir/index.phtml'
             echo $this->view->render("index");
 
-            // Rendu de 'views-dir/posts/show.phtml'
+            // Render 'views-dir/posts/show.phtml'
             echo $this->view->render("posts/show");
 
-            // Rendu de 'views-dir/index.phtml' en passant des variables
+            // Render 'views-dir/index.phtml' passing variables
             echo $this->view->render(
                 "index",
                 [
@@ -578,7 +578,7 @@ Pour rendre une vue il est nécessaire d'appeler la méthode de rendu explicitem
                 ]
             );
 
-            // Rendu de 'views-dir/posts/show.phtml' en passant des variables
+            // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render(
                 "posts/show",
                 [
@@ -588,7 +588,7 @@ Pour rendre une vue il est nécessaire d'appeler la méthode de rendu explicitem
         }
     }
 
-Ceci est différent de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` dont la méthode :code:`render()` utilise des contrôleurs et des actions en paramètre:
+This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :code:`render()` method uses controllers and actions as parameters:
 
 .. code-block:: php
 
@@ -606,12 +606,12 @@ Ceci est différent de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` dont 
     $simpleView = new \Phalcon\Mvc\View\Simple();
     echo $simpleView->render("posts/show", $params);
 
-Utilisation de Portions (partials)
-----------------------------------
-Les portions (partials) de gabarit sont une autre façon de décomposer le processus de rendu en morceaux plus simple et plus gérables qui peuvent être réutilisés
-dans différentes parties de l'application. Avec un fragment vous pouvez déplacer le code de rendu d'un morceau particulier vers son propre fichier.
+Using Partials
+--------------
+Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
+parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
-Une manière d'utiliser les portions est de les considérer comme des routines: comme si on déplaçait les détails hors de la vue pour rendre le code plus facilement compréhensible. Prenons par exemple une vue qui ressemble à cellle-ci:
+One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code can be more easily understood. For example, you might have a view that looks like this:
 
 .. code-block:: html+php
 
@@ -626,16 +626,16 @@ Une manière d'utiliser les portions est de les considérer comme des routines: 
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-La méthode :code:`partial()` accepte en second paramètre un tableau de variables qui n'existent que dans portée du fragment:
+The :code:`partial()` method does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
 
 .. code-block:: html+php
 
     <?php $this->partial("shared/ad_banner", ["id" => $site->id, "size" => "big"]); ?>
 
-Transfert de valeurs depuis le contrôleur vers les vues
--------------------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` est disponible pour chaque contrôleur en utilisant la propriété view (:code:`$this->view`). Vous
-pouvez utiliser cet objet pour définir directement des variables pour la vue depuis une action de contrôleur en exploitant la méthode :code:`setVar()`.
+Transfer values from the controller to views
+--------------------------------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable (:code:`$this->view`). You can
+use that object to set variables directly to the view from a controller action by using the :code:`setVar()` method.
 
 .. code-block:: php
 
@@ -655,15 +655,15 @@ pouvez utiliser cet objet pour définir directement des variables pour la vue de
             $user  = Users::findFirst();
             $posts = $user->getPosts();
 
-            // Transmet "username" et "posts" à la vue 
+            // Pass all the username and the posts to the views
             $this->view->setVar("username", $user->username);
             $this->view->setVar("posts",    $posts;
 
-            // Avec des mutateurs magiques
+            // Using the magic setter
             $this->view->username = $user->username;
             $this->view->posts    = $posts;
 
-            // Transmission de plus d'une variable à la fois
+            // Passing more than one variable at the same time
             $this->view->setVars(
                 [
                     "username" => $user->username,
@@ -673,8 +673,8 @@ pouvez utiliser cet objet pour définir directement des variables pour la vue de
         }
     }
 
-Une variable avec le nom du premier paramètre de :code:`setVar()` sera créé dans la vue, prête à l'emploi. La variable peut être de n'importe quel type,
-en allant de simples chaînes de caractères, des entiers, etc. vers des structures plus complexes comme des tableaux, des collections, etc. 
+A variable with the name of the first parameter of :code:`setVar()` will be created in the view, ready to be used. The variable can be of any type,
+from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
 
 .. code-block:: html+php
 
@@ -692,14 +692,14 @@ en allant de simples chaînes de caractères, des entiers, etc. vers des structu
     ?>
     </div>
 
-Mise en cache des portions de vue
----------------------------------
-Il arrive que lorsque vous développez des sites web dynamiques et que certaines parties ne soient pas très souvent mises à jour et que la sortie
-soit la même pour chaque requête. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offre une mise en cache d'une partie ou de tout un rendu
-pour améliorer les performances.
+Caching View Fragments
+----------------------
+Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
+the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
+rendered output to increase performance.
 
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` s'intègre avec :doc:`Phalcon\\Cache <cache>` pour fournir un moyen facile
-de mettre en cache des extraits de sortie. Vous pouvez définir un gestionnaire de cache ou bien fournir un gestionnaire global:
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
+to cache output fragments. You could manually set the cache handler or set a global handler:
 
 .. code-block:: php
 
@@ -711,13 +711,13 @@ de mettre en cache des extraits de sortie. Vous pouvez définir un gestionnaire 
     {
         public function showAction()
         {
-            // Mise en cache de la vue avec les paramètres par défaut
+            // Cache the view using the default settings
             $this->view->cache(true);
         }
 
         public function showArticleAction()
         {
-            // Mise en cache de la vue pour 1 heure
+            // Cache this view for 1 hour
             $this->view->cache(
                 [
                     "lifetime" => 3600,
@@ -727,7 +727,7 @@ de mettre en cache des extraits de sortie. Vous pouvez définir un gestionnaire 
 
         public function resumeAction()
         {
-            // Mise en cache pour 1 jour avec la clé "resume-cache"
+            // Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
                 [
                     "lifetime" => 86400,
@@ -738,7 +738,7 @@ de mettre en cache des extraits de sortie. Vous pouvez définir un gestionnaire 
 
         public function downloadAction()
         {
-            // Transmission d'un service personnalisé
+            // Passing a custom service
             $this->view->cache(
                 [
                     "service"  => "myCache",
@@ -749,11 +749,11 @@ de mettre en cache des extraits de sortie. Vous pouvez définir un gestionnaire 
         }
     }
 
-Si nous ne définissons pas une clé pour le cache, le composant en crée une automatiquement en réalisant un hash MD5_ des noms du contrôleur et de la vue en cours de rendu avec le format "contrôleur/vue".
-C'est une bonne habitude que de définir une clé pour chaque action ainsi vous pouvez facilement identifier le cache associé à chaque vue.
+When we do not define a key to the cache, the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
+It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
 
-Lorsque que le composant "View" à besoin de mettre en cache quelque chose, il interroge un service de cache depuis de conteneur de services.
-La convention de nom pour ce service est "viewCache":
+When the View component needs to cache something it will request a cache service from the services container.
+The service name convention for this service is "viewCache":
 
 .. code-block:: php
 
@@ -766,7 +766,7 @@ La convention de nom pour ce service est "viewCache":
     $di->set(
         "viewCache",
         function () {
-            // Mise en cache pour un jour par défaut
+            // Cache data for one day by default
             $frontCache = new OutputFrontend(
                 [
                     "lifetime" => 86400,
@@ -787,13 +787,13 @@ La convention de nom pour ce service est "viewCache":
     );
 
 .. highlights::
-    Le frontend doit toujours être :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` et le service "viewCache" doit être inscrit comme
-    toujours ouvert (non partagé) dans le conteneur de services (DI).
+    The frontend must always be :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` and the service 'viewCache' must be registered as
+    always open (not shared) in the services container (DI).
 
-Lors de l'utilisation de vues, le cache doit être utilisé pour prévenir que le contrôleur ne génère les données de la vue à chaque requête.
+When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 
-Pour réaliser ceci, nous devons identifier de façon unique chaque cache avec une clé. On vérifie d'abord que le cache n'existe pas ou bien 
-a expiré avant de réaliser les calculs ou requêtes pour afficher les données dans la vue:
+To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has
+expired to make the calculations/queries to display data in the view:
 
 .. code-block:: html+php
 
@@ -805,9 +805,9 @@ a expiré avant de réaliser les calculs ou requêtes pour afficher les données
     {
         public function indexAction()
         {
-            // Vérifie que le cache avec la clé "douwnloads" existe ou a expiré
+            // Check whether the cache with key "downloads" exists or has expired
             if ($this->view->getCache()->exists("downloads")) {
-                // Interroge le dernier "download"
+                // Query the latest downloads
                 $latest = Downloads::find(
                     [
                         "order" => "created_at DESC",
@@ -817,7 +817,7 @@ a expiré avant de réaliser les calculs ou requêtes pour afficher les données
                 $this->view->latest = $latest;
             }
 
-            // Défini le cache avec la même clé "downloads"
+            // Enable the cache with the same key "downloads"
             $this->view->cache(
                 [
                     "key" => "downloads",
@@ -826,33 +826,33 @@ a expiré avant de réaliser les calculs ou requêtes pour afficher les données
         }
     }
 
-Consultez `PHP alternative site`_ pour avoir un exemple d'implémentation de cache de portions.
+The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
-Moteurs de Gabarit
-------------------
-Les moteurs de gabarit aide les concepteurs à créer des vues sans avoir à utiliser une syntaxe compliquée. Phalcon inclut un moteur de gabarits puissant et rapide 
-appelé :doc:`Volt <volt>`.
+Template Engines
+----------------
+Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine
+called :doc:`Volt <volt>`.
 
-De plus, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` vous permet d'utiliser un moteur de gabarit autre que le PHP ou Volt.
+Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
 
-L'utilisation d'un moteur de gabarit différent nécessite habituellement l'analyse de texte complexe en utilisant des librairies PHP externes afin de générer la sortie finale
-pour l'utilisateur. Ceci augmente généralement le nombre de ressources nécessaires à l'application.
+Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
+for the user. This usually increases the number of resources that your application will use.
 
-Si une moteur de gabarits externe est utilisé, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` fournit exactement la même hiérarchie de vue et il est 
-toujours possible d'accéder à l'API depuis ces gabarits avec peu d'effort.
+If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
+still possible to access the API inside these templates with a little more effort.
 
-Ce composant utilise des adaptateurs, ce qui aide Phalcon à dialoguer avec ces moteurs de gabarit d'une manière uniforme. Voyons maintenant comment réaliser cette intégration.  
+This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
 
-Création de votre propre Adaptateur de Moteur de Gabarit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Il existe de nombreux moteurs de gabarits que vous pourriez avoir envie d'intégrer ou bien de créer le votre. La première étape pour commencer à intégrer un moteur de gabarit externe est de créer un adaptateur pour celui-ci.
+Creating your own Template Engine Adapter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
-Un adaptateur de moteur de gabarit est une classe qui fait le pont entre :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` et le moteur lui-même.
-Normalement, seules deux méthodes doivent être mises en œuvre: :code:`__construct()` and :code:`render()`. La première reçoit l'instance de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-qui crée l'adaptateur du moteur et le conteneur DI utilisés par l'application.
+A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
+Usually it only needs two methods implemented: :code:`__construct()` and :code:`render()`. The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
+instance that creates the engine adapter and the DI container used by the application.
 
-La méthode :code:`render()` accepte un chemin absolu vers un fichier vue et les paramètres de la vue sont définis avec :code:`$this->view->setVar()`. Vous pouvez lire ou l'interroger
-lorsque c'est nécessaire.
+The method :code:`render()` accepts an absolute path to the view file and the view parameters set using :code:`$this->view->setVar()`. You could read or require it
+when it's necessary.
 
 .. code-block:: php
 
@@ -864,46 +864,46 @@ lorsque c'est nécessaire.
     class MyTemplateAdapter extends Engine
     {
         /**
-         * Constructeur de l'adaptateur
+         * Adapter constructor
          *
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\Di $di
          */
         public function __construct($view, DiInterface $di)
         {
-            // Initialisez ici l'adaptateur
+            // Initialize here the adapter
             parent::__construct($view, $di);
         }
 
         /**
-         * Rendu de la vue en utilisant un moteur de gabarit
+         * Renders a view using the template engine
          *
          * @param string $path
          * @param array $params
          */
         public function render($path, $params)
         {
-            // Accès à la vue
+            // Access view
             $view = $this->_view;
 
             // Access options
             $options = $this->_options;
 
-            // Rendu de la vue
+            // Render the view
             // ...
         }
     }
 
-Changement de Moteur de Gabarit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Vous pouvez remplacer complètement le moteur de gabarit ou bien en utiliser plus d'un en même temps. La méthode :code:`Phalcon\Mvc\View::registerEngines()`
-accepte un tableau qui contient la définition du moteur de gabarit. La clé de chaque moteur est une extension qui aide à les distinguer entre eux.
-Les fichiers gabarits rattachés à un moteur de gabarit doivent avoir la même extension.
+Changing the Template Engine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can replace the template engine completely or use more than one template engine at the same time. The method :code:`Phalcon\Mvc\View::registerEngines()`
+accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
+Template files related to the particular engine must have those extensions.
 
-L'ordre dans lequel chaque moteur de gabarit est défini avec :code:`Phalcon\Mvc\View::registerEngines()` défini la priorité d'exécution. 
-Si :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` trouve deux fichiers vue avec le même nom mais une extension différente, seul le premier sera rendu.
+The order that the template engines are defined with :code:`Phalcon\Mvc\View::registerEngines()` defines the relevance of execution. If
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
 
-Si vous souhaitez inscrire un moteur de gabarit ou plusieurs pour chaque requête de l'application, vous devez le faire lors de la création du service "view": 
+If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
 
 .. code-block:: php
 
@@ -911,23 +911,23 @@ Si vous souhaitez inscrire un moteur de gabarit ou plusieurs pour chaque requêt
 
     use Phalcon\Mvc\View;
 
-    // Définition du composant vue
+    // Setting up the view component
     $di->set(
         "view",
         function () {
             $view = new View();
 
-            // Un séparateur de répertoire terminal est requis
+            // A trailing directory separator is required
             $view->setViewsDir("../app/views/");
 
-            // Définit le moteur
+            // Set the engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
                 ]
             );
 
-            // Utilisation de plusieurs moteurs de gabarit
+            // Using more than one template engine
             $view->registerEngines(
                 [
                     ".my-html" => "MyTemplateAdapter",
@@ -940,15 +940,15 @@ Si vous souhaitez inscrire un moteur de gabarit ou plusieurs pour chaque requêt
         true
     );
 
-Il existe plusieurs adaptateurs pour des moteurs de gabarit sur le `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
+There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
 
-Injection de service dans les vues
-----------------------------------
-Chaque vue exécutée est une instance :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>`, facilitant l'accès au conteneur
-de services de l'application.
+Injecting services in View
+--------------------------
+Every view executed is included inside a :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` instance, providing easy access
+to the application's service container.
 
-L'exemple qui suit montre comment écrire une `requête Ajax`_ en utilisant une URL selon les conventions du framework.
-Le service "url" (normalement :doc:`Phalcon\\Mvc\\Url <url>`) est injecté dans la vue en utilisant une propriété du même nom:
+The following example shows how to write a jQuery `ajax request`_ using a URL with the framework conventions.
+The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
 
 .. code-block:: html+php
 
@@ -963,13 +963,13 @@ Le service "url" (normalement :doc:`Phalcon\\Mvc\\Url <url>`) est injecté dans 
 
     </script>
 
-Composant autonome
-------------------
-Tous les composants dans Phalcon peuvent être utilisés comme composant *colle* individuellement parce qu'ils sont faiblement couplés entre eux:
+Stand-Alone Component
+---------------------
+All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
-Rendu Hiérarchique
-^^^^^^^^^^^^^^^^^^
-L'utilisation de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` en autonome peut être démontré en dessous:
+Hierarchical Rendering
+^^^^^^^^^^^^^^^^^^^^^^
+Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
 
@@ -979,17 +979,17 @@ L'utilisation de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` en autonome
 
     $view = new View();
 
-    // Un séparateur final de répertoires est requis
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
-    // Transmission de variables aux vues, celles-ci étant créées comme des variables locales
+    // Passing variables to the views, these will be created as local variables
     $view->setVar("someProducts",       $products);
     $view->setVar("someFeatureEnabled", true);
 
-    // Début de la sortie bufferisée
+    // Start the output buffering
     $view->start();
 
-    // Rendu de toute la hiérarchie de vues relatives à products/list.phtml
+    // Render all the view hierarchy related to the view products/list.phtml
     $view->render("products", "list");
 
     // Finish the output buffering
@@ -997,7 +997,7 @@ L'utilisation de :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` en autonome
 
     echo $view->getContent();
 
-Une syntaxe abrégée est également disponible:
+A short syntax is also available:
 
 .. code-block:: php
 
@@ -1015,7 +1015,7 @@ Une syntaxe abrégée est également disponible:
             "someFeatureEnabled" => true,
         ],
         function ($view) {
-            // Définition d'options supplémentaires
+            // Set any extra options here
 
             $view->setViewsDir("../app/views/");
 
@@ -1025,9 +1025,9 @@ Une syntaxe abrégée est également disponible:
         }
     );
 
-Rendu simple
-^^^^^^^^^^^^
-L'utilisation de :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` dans un mode autonome est démontré ci-dessous:
+Simple Rendering
+^^^^^^^^^^^^^^^^
+Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
 
@@ -1037,13 +1037,13 @@ L'utilisation de :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simpl
 
     $view = new SimpleView();
 
-    // Un séparateur de répertoire final est nécessaire
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
-    // Rendu d'une vue et retour du contenu dans une chaîne de caractères
+    // Render a view and return its contents as a string
     echo $view->render("templates/welcomeMail");
 
-    // Rendu d'une vue en transmettant les paramètres
+    // Render a view passing parameters
     echo $view->render(
         "templates/welcomeMail",
         [
@@ -1052,25 +1052,25 @@ L'utilisation de :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simpl
         ]
     );
 
-Evénements de vues
-------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` et :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` sont capables d'envoyer des événements à :doc:`EventsManager <events>` s'il existe. Les événements sont déclenchés en utilisant le type "view". Certains événements peuvent stopper l'opération courante en retournant "faux". Les événements qui suivent sont supportés:
+View Events
+-----------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` are able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +----------------------+------------------------------------------------------------+---------------------+
-| Nom d'évt            | Déclenchement                                              | Opération stoppée ? |
+| Nom d'évt            | Triggered                                                  | Opération stoppée ? |
 +======================+============================================================+=====================+
-| beforeRender         | Déclenché avant le début du processus de rendu             | Oui                 |
+| beforeRender         | Triggered before starting the render process               | Oui                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Déclenché avant le rendu d'une vue existante               | Oui                 |
+| beforeRenderView     | Triggered before rendering an existing view                | Oui                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Déclenché après le rendu d'une vue existante               | Non                 |
+| afterRenderView      | Triggered after rendering an existing view                 | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Déclenché après le processus complet de rendu              | Non                 |
+| afterRender          | Triggered after completing the render process              | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| notFoundView         | Déclenché si une vue n'est pas trouvée                     | Non                 |
+| notFoundView         | Triggered when a view was not found                        | Non                 |
 +----------------------+------------------------------------------------------------+---------------------+
 
-L'exemple suivant démontre comment attacher des écouteurs à ce composant.
+The following example demonstrates how to attach listeners to this component:
 
 .. code-block:: php
 
@@ -1083,10 +1083,10 @@ L'exemple suivant démontre comment attacher des écouteurs à ce composant.
     $di->set(
         "view",
         function () {
-            // Création d'un gestionnaire d'événement
+            // Create an events manager
             $eventsManager = new EventsManager();
 
-            // Attache un écouteur pour le type "view"
+            // Attach a listener for type "view"
             $eventsManager->attach(
                 "view",
                 function (Event $event, $view) {
@@ -1098,7 +1098,7 @@ L'exemple suivant démontre comment attacher des écouteurs à ce composant.
 
             $view->setViewsDir("../app/views/");
 
-            // Liaison du eventsManager au composant vue
+            // Bind the eventsManager to the view component
             $view->setEventsManager($eventsManager);
 
             return $view;
@@ -1106,7 +1106,7 @@ L'exemple suivant démontre comment attacher des écouteurs à ce composant.
         true
     );
 
-L'exemple qui suit montre comment créer un plugin qui nettoie et répare le code HTML produit par le processus de rendu réalisé par Tidy_:
+The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
 
 .. code-block:: php
 
@@ -1139,14 +1139,14 @@ L'exemple qui suit montre comment créer un plugin qui nettoie et répare le cod
         }
     }
 
-    // Attache le plugin comme écouteur
+    // Attach the plugin as a listener
     $eventsManager->attach(
         "view:afterRender",
         new TidyPlugin()
     );
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php
-.. _requête Ajax: http://api.jquery.com/jQuery.ajax/
+.. _ajax request: http://api.jquery.com/jQuery.ajax/
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php
 .. _md5: http://php.net/manual/en/function.md5.php
 .. _PHP alternative site: https://github.com/phalcon/php-site

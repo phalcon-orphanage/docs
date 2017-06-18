@@ -5,23 +5,19 @@
 специальных "ключевых точек". Эти ключевые точки позволяют разработчику получить информацию о состоянии, манипулировать данными и изменять
 процесс работы компонента.
 
-Соглашение об именах
---------------------
-
-События Phalcon используют пространства имен, чтобы избежать конфликтов имен. 
-Каждый компонент в Phalcon занимает другое пространство имен событий, и вы можете создавать свои собственные, 
-как считаете нужным. Имена событий форматируются как «компонент: событие». 
-Например, как :doc:`Phalcon\\Db <../api/Phalcon_Db>` занимает пространство имен "db", 
-то  полное имя "afterQuery"  - "db:afterQuery".
+Naming Convention
+-----------------
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create
+your own as you see fit. Event names are formatted as "component:event". For example, as :doc:`Phalcon\\Db <../api/Phalcon_Db>` occupies the "db"
+namespace, its "afterQuery" event's full name is "db:afterQuery".
 
 When attaching event listeners to the events manager, you can use "component" to catch all events from that component (eg. "db" to catch all of the
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` events) or "component:event" to target a specific event (eg. "db:afterQuery").
 
-При подключении прослушивателей событий к диспетчеру событий вы можете использовать "компонент", чтобы поймать все события из этого компонента (например, "db", чтобы перехватить все события :doc:`Phalcon\\Db <../api/Phalcon_Db>`) или "компонент: событие" для таргетинга на конкретное событие (например, "db:afterQuery").
-
 Пример использования
 --------------------
-В следующем примере мы будем использовать EventManager для прослушивания события "afterQuery", созданного в соединении MySQL, определяемом в :doc:`Phalcon\\Db <../api/Phalcon_Db>`:
+In the following example, we will use the EventsManager to listen for the "afterQuery" event produced in a MySQL connection managed by
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`:
 
 .. code-block:: php
 
@@ -57,15 +53,15 @@ When attaching event listeners to the events manager, you can use "component" to
         "SELECT * FROM products p WHERE p.status = 1"
     );
 
-Теперь каждый раз, когда выполняется запрос, выражение SQL будет выведено на экран.
+Now every time a query is executed, the SQL statement will be echoed out.
 Первый передаваемый слушателю параметр содержит контекстную информацию о текущем событии, второй параметр - само соединение.
-Также может быть указан третий параметр, который будет содержать произвольные данные, специфичные для события.
+A third parameter may also be specified which will contain arbitrary data specific to the event.
 
 .. highlights::
 
-    Вы должны явно установить диспетчер событий в компонент с помощью метода: :code:`setEventsManager()`, чтобы этот компонент мог инициировать события. Вы можете создать новый экземпляр Event Manager для каждого компонента или установить один и тот же диспетчер событий на несколько компонентов, поскольку соглашение об именах позволит избежать конфликтов.
+    You must explicitly set the Events Manager to a component using the :code:`setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
 
-Вместо использования лямбда-функций вы можете использовать классы прослушивания событий. Слушатели событий также позволяют вам слушать несколько событий.
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events.
 В рамках этого примера, мы будем также использовать профайлер :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` для обнаружения SQL-запросов с длительным временем выполнения:
 
 .. code-block:: php
@@ -121,7 +117,7 @@ When attaching event listeners to the events manager, you can use "component" to
         }
     }
 
-Присоединение прослушивателя событий к менеджеру событий так же просто, как:
+Attaching an event listener to the events manager is as simple as:
 
 .. code-block:: php
 
@@ -164,14 +160,14 @@ When attaching event listeners to the events manager, you can use "component" to
 
     <?php
 
-    use Phalcon\Events\ManagerInterface;
     use Phalcon\Events\EventsAwareInterface;
+    use Phalcon\Events\Manager as EventsManager;
 
     class MyComponent implements EventsAwareInterface
     {
         protected $_eventsManager;
 
-        public function setEventsManager(ManagerInterface $eventsManager)
+        public function setEventsManager(EventsManager $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
@@ -192,7 +188,7 @@ When attaching event listeners to the events manager, you can use "component" to
         }
     }
 
-Обратите внимание: в этом примере мы используем пространство имен "my-component".
+Notice that in this example, we're using the "my-component" event namespace.
 Теперь давайте создадим слушателя для нашего компонента:
 
 .. code-block:: php
@@ -280,9 +276,9 @@ When attaching event listeners to the events manager, you can use "component" to
         }
     );
 
-Использование служб из DI
+Using Services From The DI
 --------------------------
-Расширяя :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, вы можете обращаться к службам из DI, как и в контроллере:
+By extending :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>`, you can access services from the DI, just like you would in a controller:
 
 .. code-block:: php
 

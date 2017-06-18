@@ -37,7 +37,7 @@ Cette option offre les meilleures performances vu qu'il n'y a pas de fichiers lu
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-Si vous voulez mieux organiser votre projet vous pouvez sauvegarder le tableau dans un autre fichier pour ensuite le lire.
+Si vous voulez mieux organiser votre projet vous pouvez sauvegarder l'array dans un autre fichier pour ensuite le lire.
 
 .. code-block:: php
 
@@ -53,21 +53,23 @@ Adaptateur de fichier
 ---------------------
 Les adaptateurs disponibles sont :
 
-+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| File Type                                                                  | Description                                                                                                                    |
-+============================================================================+================================================================================================================================+
-| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Utilise des fichiers INI pour conserver la configuration. L'adaptateur utilise la fonction PHP parse_ini_files                 |
-+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Utilise des fichiers JSON pour conserver la configuration.                                                                     |
-+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Utilise des tableaux PHP multidimensionnels Pour conserver la configuration. Cet adaptateur offre les meilleures performances. |
-+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Utilise YAML pour conserver la configuration.                                                                                  |
-+----------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| File Type                                                                  | Description                                                                                                |
++============================================================================+============================================================================================================+
+| :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>`   | Utilise des fichiers INI pour stoquer des paramètres. L'adaptateur utilise la fonction PHP parse_ini_files |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Json <../api/Phalcon_Config_Adapter_Json>` | Uses JSON files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Php <../api/Phalcon_Config_Adapter_Php>`   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.              |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| :doc:`Phalcon\\Config\\Adapter\\Yaml <../api/Phalcon_Config_Adapter_Yaml>` | Uses YAML files to store settings.                                                                         |
++----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 Lire les fichiers INI
 ---------------------
-Il est habituel d'utiliser les fichiers INI pour conserver la configuration. :doc:`Phalcon\\Config <../api/Phalcon_Config>` exploite la fonction parse_ini_file qui est optimisée pour lire ces fichiers. Pour simplifier l'accès les sections sont décomposées en sous-paramètres.
+Les fichiers INI sont un moyen habituel pour stoquer des paramètres.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` utilise la fonction parse_ini_file optimisé pour lire ces fichiers.
+Les sections sont parsé en sous-paramètres pour un accès simplifié.
 
 .. code-block:: ini
 
@@ -86,7 +88,7 @@ Il est habituel d'utiliser les fichiers INI pour conserver la configuration. :do
     [models]
     metadata.adapter  = "Memory"
 
-Vous pouvez lire le fichier comme ceci :
+Vous pouvez lire le fichier comme cela :
 
 .. code-block:: php
 
@@ -100,10 +102,9 @@ Vous pouvez lire le fichier comme ceci :
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Fusion de Configurations
-------------------------
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` permet de fusionner récursivement un objet configuration avec un autre.
-Les nouvelles propriétés sont ajoutées et celles déjà existantes sont mises à jour.
+Configuration de fusion
+-----------------------
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` permet de fusionner une configuration objet en un autre de manière récursif :
 
 .. code-block:: php
 
@@ -136,7 +137,7 @@ Les nouvelles propriétés sont ajoutées et celles déjà existantes sont mises
 
     print_r($config);
 
-Le code précédent produit le résultat suivant :
+Le code fournit le résultat suivant :
 
 .. code-block:: html
 
@@ -153,11 +154,12 @@ Le code précédent produit le résultat suivant :
         [logging] => 1
     )
 
-Vous trouverez d'autres adaptateurs pour ce composant dans l' `Incubateur Phalcon <https://github.com/phalcon/incubator>`_
+Il y a plus d'adaptateurs disponible pour ce composant dans l'
+There are more adapters available for this components in the `Incubateur Phalcon <https://github.com/phalcon/incubator>`_
 
-Injection de Dépendance de Configuration
-----------------------------------------
-Vous pouvez injecter la dépendances de configuration au contrôleur en utilisant :doc:`Phalcon\\Config <../api/Phalcon_Config>` à l'intérieur de :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. Pour pouvoir le faire, ajoutez le code qui suit dans votre script d'injecteur de dépendance.
+Injecting Configuration Dependency
+----------------------------------
+You can inject configuration dependency to controller allowing us to use :doc:`Phalcon\\Config <../api/Phalcon_Config>` inside :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. To be able to do that, add following code inside your dependency injector script.
 
 .. code-block:: php
 
@@ -166,7 +168,7 @@ Vous pouvez injecter la dépendances de configuration au contrôleur en utilisan
     use Phalcon\Di\FactoryDefault;
     use Phalcon\Config;
 
-    // Création d'un DI
+    // Create a DI
     $di = new FactoryDefault();
 
     $di->set(
@@ -178,7 +180,7 @@ Vous pouvez injecter la dépendances de configuration au contrôleur en utilisan
         }
     );
 
-Maintenant, dans votre contrôleur vous pouvez accéder à votre configuration en utilisant l'attribut "config" de l'injection de dépendance comme dans le code suivant:
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
 .. code-block:: php
 
