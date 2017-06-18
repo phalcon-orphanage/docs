@@ -84,7 +84,7 @@
 
 <a name='working-with'></a>
 
-# Работа с моделями
+# Working with Models
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -94,7 +94,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Создание моделей
+## Creating Models
 
 Модель — это класс, который унаследован от `Phalcon\Mvc\Model`. Имя класса должно быть в camel case:
 
@@ -386,7 +386,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Параметр      | Описание                                                                                                                                                                                             | Example                                                              |
+| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
@@ -1169,10 +1169,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Операция | Название     | Можно остановить операцию? | Пояснение                                |
-| -------- | ------------ |:--------------------------:| ---------------------------------------- |
-| Deleting | beforeDelete |             Да             | Runs before the delete operation is made |
-| Deleting | afterDelete  |            Нет             | Runs after the delete operation was made |
+| Operation | Name         | Can stop operation? | Explanation                              |
+| --------- | ------------ |:-------------------:| ---------------------------------------- |
+| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
 
 With the above events can also define business rules in the models:
 
@@ -1753,7 +1753,7 @@ Model::setup(
 
 The available options are:
 
-| Параметр           | Описание                                                                                  | По умолчанию |
+| Option             | Description                                                                               | По умолчанию |
 | ------------------ | ----------------------------------------------------------------------------------------- |:------------:|
 | events             | Enables/Disables callbacks, hooks and event notifications from all the models             |    `true`    |
 | columnRenaming     | Enables/Disables the column renaming                                                      |    `true`    |
