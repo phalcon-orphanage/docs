@@ -3,6 +3,7 @@
 - [Improving Performance with Cache](#overview)
     - [When to implement cache?](#implementation)
     - [Caching Behavior](#caching-behavior)
+    - [Factory](#factory)
     - [Caching Output Fragments](#output-fragments)
     - [Caching Arbitrary Data](#arbitrary-data)
         - [File Backend Example](#backend-file-example)
@@ -47,6 +48,62 @@ The caching process is divided into 2 parts:
 
 * **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
 * **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+
+<a name='factory'></a>
+## Factory
+Instantiating frontend or backend adapters can be achieved by two ways:
+
+* Traditional way
+```php
+<?php
+
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Data as FrontData;
+
+// Create an Output frontend. Cache the files for 2 days
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
+);
+
+// Create the component that will cache from the 'Output' to a 'File' backend
+// Set the cache file directory - it's important to keep the '/' at the end of
+// the value for the folder
+$cache = new BackFile(
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
+);
+```
+
+or using the Factory object as follows:
+
+```php
+<?php
+
+use Phalcon\Cache\Frontend\Factory as FFactory;
+use Phalcon\Cache\Backend\Factory as BFactory;
+ 
+ $options = [
+     'lifetime' => 172800,
+     'adapter'  => 'data',
+ ];
+ $frontendCache = FFactory::load($options);
+ 
+ 
+$options = [
+    'cacheDir' => '../app/cache/',
+    'prefix'   => 'app-data',
+    'frontend' => $frontendCache,
+    'adapter'  => 'file',
+];
+
+$backendCache = BFactory::load($options);
+```
+
+If the options 
 
 <a name='output-fragments'></a>
 ## Caching Output Fragments

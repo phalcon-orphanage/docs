@@ -1,6 +1,7 @@
 <div class='article-menu' markdown='1'>
 
 - [Annotations Parser](#overview)
+    - [Factory](#factory)
     - [Reading Annotations](#reading)
     - [Types of Annotations](#types)
     - [Practical Usage](#usage)
@@ -99,6 +100,39 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
+<a name='factory'></a>
+## Factory
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
+```
+
+However you can also utilize the factory method to achieve the same thing:
+
+```php
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
+```
+
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files. 
+
 <a name='reading'></a>
 ## Reading Annotations
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
@@ -129,8 +163,7 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter.
-Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
 `Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
 
