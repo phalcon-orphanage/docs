@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Улучшение производительности с помощью кэширования</a>
+      <a href="#overview">Improving Performance with Cache</a>
     </li>
   </ul>
 </div>
@@ -18,14 +18,14 @@
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| Класс                              | Описание                                                                            |
+| Class                              | Description                                                                         |
 | ---------------------------------- | ----------------------------------------------------------------------------------- |
 | `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
 | `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
 
 <a name='adapters-custom'></a>
 
-### Реализация собственных адаптеров
+### Implementing your own adapters
 
 The `Phalcon\Image\AdapterInterface` interface must be implemented in order to create your own image adapters or extend the existing ones.
 
