@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#create-project">Vytvoření nového projektu</a>
         </li>
@@ -30,7 +30,7 @@
 
 <a name='overview'></a>
 
-# Přehled
+# Overview
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -38,7 +38,7 @@ In this post, we'll walk through getting a brand new Phalcon app up and running 
 
 <a name='create-project'></a>
 
-## Vytvoření nového projektu
+## Create a New Project
 
 Create a project folder and `cd` into it:
 
