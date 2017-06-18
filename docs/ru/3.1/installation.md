@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Требования</a> <ul>
+      <a href="#requirements">Requirements</a> <ul>
         <li>
           <a href="#requirements-hardware">Аппаратное обеспечение</a>
         </li>
@@ -12,7 +12,7 @@
     </li>
     
     <li>
-      <a href="#installation">Установка</a> <ul>
+      <a href="#installation">Installation</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
@@ -48,18 +48,18 @@
             <li>
               <a href="#installation-linux-rpm">RPM дистрибутивы (CentOS, Fedora, и т.д.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Настройка репозитория</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
                     <li>
-                      <a href="#installation-linux-rpm-repository-stable">Стабильные релизы</a>
+                      <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-rpm-repository-nightly">Ночные релизы</a>
+                      <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
                     </li>
                   </ul>
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Установка Phalcon</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -85,7 +85,7 @@
         </li>
         
         <li>
-          <a href="#installation-macos">macOS</a> <ul>
+          <a href="#installation-macos">MacOS</a> <ul>
             <li>
               <a href="#installation-macos-brew">Brew</a>
             </li>
@@ -111,13 +111,13 @@
 
 <a name='requirements'></a>
 
-# Требования
+# Requirements
 
 Phalcon требует PHP для запуска. Его слабо связанный дизайн позволяет разработчикам один раз установив Phalcon, использовать его возможности везде, без дополнительных расширений. Однако некоторые его компоненты зависят от других расширений. Например, использование подключений к базам данных, требует расширения `php_pdo`. Если ваша СУБД MySql/MariaDb или Aurora, вам так же понадобится расширение `php_mysqlnd`. Аналогично, использование базы данных PostgreSql с Phalcon, требует расширения `php_pgsql`.
 
 <a name='requirements-hardware'></a>
 
-## Аппаратное обеспечение
+## Hardware
 
 Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Хотя мы и тестировали Phalcon на маломощных машинах (например с 256 MB RAM и процессором 500 MHz), оборудование, которое вы будете выбирать, будет зависеть от потребностей приложения.
 
@@ -125,7 +125,7 @@ Phalcon разработан таким образом, чтобы потреб�
 
 <a name='requirements-software'></a>
 
-## Программное обеспечение
+## Software
 
 - PHP > = 5.5
 
@@ -152,7 +152,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Установка
+# Installation
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -164,27 +164,27 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB дистрибутивы (Debian, Ubuntu, и т.д.)
+### DEB based distributions (Debian, Ubuntu, etc.)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Настройка репозитория
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Стабильные релизы
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-или
+or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Ночные релизы
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -194,7 +194,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Установка Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -218,7 +218,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Сторонние PPA-репозитории
+#### Additional PPAs
 
 #### Ondřej Surý
 
@@ -241,37 +241,37 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='installation-linux-rpm'></a>
 
-### RPM дистрибутивы (CentOS, Fedora, и т.д.)
+### RPM based distributions (CentOS, Fedora, etc.)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Настройка репозитория
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Стабильные релизы
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-или
+or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Ночные релизы
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Установка Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -295,7 +295,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Сторонние RPM-репозитории
+#### Additional RPMs
 
 ##### Remi
 
@@ -343,7 +343,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Требования
+### Requirements
 
 - Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
@@ -389,16 +389,16 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Архитектура | Версия | Type                                 |
-|:-----------:|:------:| ------------------------------------ |
-|     x64     |  7.x   | Потокобезопасный                     |
-|     x64     |  7.x   | Не являющийся потокобезопасным (NTS) |
-|     x86     |  7.x   | Потокобезопасный                     |
-|     x86     |  7.x   | Не являющийся потокобезопасным (NTS) |
-|     x64     |  5.6   | Потокобезопасный                     |
-|     x64     |  5.6   | Не являющийся потокобезопасным (NTS) |
-|     x86     |  5.6   | Потокобезопасный                     |
-|     x86     |  5.6   | Не являющийся потокобезопасным (NTS) |
+| Архитектура | Version | Type                                 |
+|:-----------:|:-------:| ------------------------------------ |
+|     x64     |   7.x   | Потокобезопасный                     |
+|     x64     |   7.x   | Не являющийся потокобезопасным (NTS) |
+|     x86     |   7.x   | Thread safe                          |
+|     x86     |   7.x   | Non Thread safe (NTS)                |
+|     x64     |   5.6   | Thread safe                          |
+|     x64     |   5.6   | Non Thread safe (NTS)                |
+|     x86     |   5.6   | Thread safe                          |
+|     x86     |   5.6   | Non Thread safe (NTS)                |
 
 Edit your php.ini file and then append at the end:
 
@@ -414,9 +414,9 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Требования
+### Requirements
 
-- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
 - re2c >= 0.13
 - libpcre-dev
@@ -477,7 +477,7 @@ extension=phalcon.so
 
 <a name='installation-sources-advanced'></a>
 
-## Расширенная компиляция
+## Advanced Compilation
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
