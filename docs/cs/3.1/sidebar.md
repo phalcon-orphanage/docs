@@ -3,14 +3,14 @@
     - Upgrade
     - [Sponzoři](/[[language]]/[[version]]/sponsors)
 - Contributions 
-    - [Přehled](/[[language]]/[[version]]/contributions)
+    - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
     - Průvodce testováním
 - Začínáme 
-    - [Instalace](/[[language]]/[[version]]/installation)
+    - [Installation](/[[language]]/[[version]]/installation)
     - [Instalace webserveru](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
@@ -19,11 +19,11 @@
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
 - Vývojářské nástroje 
-    - [Instalace](/[[language]]/[[version]]/devtools-installation)
+    - [Installation](/[[language]]/[[version]]/devtools-installation)
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Core 
-    - Aplikace 
+    - Application 
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Command Line Interface (Cli)](/[[language]]/[[version]]/application-cli)
@@ -49,7 +49,7 @@
         - [Events](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relace](/[[language]]/[[version]]/db-models-relationships)
-        - [Transakce](/[[language]]/[[version]]/db-models-transactions)
+        - [Transactions](/[[language]]/[[version]]/db-models-transactions)
         - [Validátory](/[[language]]/[[version]]/db-models-validators)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
@@ -62,13 +62,13 @@
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
 - Aplikační logika 
-    - [Access Controler Lists (ACL)](/[[language]]/[[version]]/acl)
+    - [Access Control Lists](/[[language]]/[[version]]/acl)
     - [Anotace](/[[language]]/[[version]]/annotations)
     - [Controllers](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [Filters](/[[language]]/[[version]]/filter)
-    - [Routování](/[[language]]/[[version]]/routing)
+    - [Routing](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
     - [Validation](/[[language]]/[[version]]/validation)

@@ -6,7 +6,7 @@
           <a href="#download">Stažení</a>
         </li>
         <li>
-          <a href="#installation">Instalace</a>
+          <a href="#installation">Installation</a>
         </li>
         <li>
           <a href="#available-commands">Available Commands</a>
@@ -50,13 +50,13 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <a name='download'></a>
 
-## Stažení
+## Download
 
 You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Instalace
+## Installation
 
 These are detailed instructions on how to install the developer tools on different platforms:
 

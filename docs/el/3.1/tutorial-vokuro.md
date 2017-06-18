@@ -18,7 +18,7 @@
 
 <a name='overview'></a>
 
-# Σεμινάριο: Vökuró
+# Tutorial: Vökuró
 
 Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
 

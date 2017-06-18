@@ -3,7 +3,7 @@
     - Upgrade
     - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions 
-    - [Przegląd](/[[language]]/[[version]]/contributions)
+    - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)

@@ -88,24 +88,24 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 ### Dispatch Loop Events
 
-`Phalcon\Mvc\Dispatcher` is able to send events to an [EventsManager](/[[language]]/[[version]]/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Aşağıdaki olaylar desteklenmektedir:
+`Phalcon\Mvc\Dispatcher` is able to send events to an [EventsManager](/[[language]]/[[version]]/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Olay Adı             | Tetiklendi                                                                                                                                                                                                     | İşlemi durdurabilir mi? | Triggered on          |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------- |
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Evet                    | Listeners             |
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Evet                    | Listeners             |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Evet                    | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | Hayır                   | Controllers           |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Hayır                   | Listeners/Controllers |
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Evet                    | Listeners             |
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Evet                    | Listeners             |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Evet                    | Listeners             |
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | Hayır                   | Listeners             |
-| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Evet                    | Listeners/Controllers |
+| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------- |
+| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
+| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 | Listeners             |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Yes                 | Listeners/Controllers |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Controllers           |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
+| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Yes                 | Listeners             |
+| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Yes                 | Listeners             |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Yes                 | Listeners             |
+| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
+| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
 
 The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
 
-Aşağıdaki örnek, dinleyicilerin bu bileşene nasıl ekleneceğini göstermektedir:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -222,7 +222,7 @@ $this->dispatcher->forward(
 
 A forward action accepts the following parameters:
 
-| Parametre  | Tetiklendi                                             |
+| Parameter  | Triggered                                              |
 | ---------- | ------------------------------------------------------ |
 | controller | A valid controller name to forward to.                 |
 | action     | A valid action name to forward to.                     |

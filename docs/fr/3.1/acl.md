@@ -50,7 +50,7 @@ In summary, ACLs have roles and resources. Resources are objects which abide by 
 
 <a name='setup'></a>
 
-## Création d’une ACL
+## Creating an ACL
 
 This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
 
@@ -77,7 +77,7 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## Ajout de rôles à l’ACL
+## Adding Roles to the ACL
 
 A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
 
@@ -152,7 +152,7 @@ The `allow()` method designates that a particular role has granted access to a p
 
 <a name='querying'></a>
 
-## Interroger une ACL
+## Querying an ACL
 
 Once the list has been completely defined. We can query it to check if a role has a given permission or not.
 

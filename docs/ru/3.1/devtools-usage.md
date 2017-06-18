@@ -6,7 +6,7 @@
           <a href="#download">Download</a>
         </li>
         <li>
-          <a href="#installation">Установка</a>
+          <a href="#installation">Installation</a>
         </li>
         <li>
           <a href="#available-commands">Available Commands</a>
@@ -56,7 +56,7 @@ You can download or clone a cross platform package containing the developer tool
 
 <a name='installation'></a>
 
-## Установка
+## Installation
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -396,6 +396,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Заключение
+## Conclusion
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.

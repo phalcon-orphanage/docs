@@ -27,13 +27,13 @@
 
 <a name='overview'></a>
 
-# Yapılandırmaları Okuma
+# Reading Configurations
 
 `Phalcon\Config`, bir uygulamada kullanmak üzere çeşitli biçimlerdeki yapılandırma dosyalarını (bağdaştırıcıları kullanarak) PHP nesnelerine dönüştürmek için kullanılan bir bileşendir.
 
 <a name='native-arrays'></a>
 
-## Doğal Diziler
+## Native Arrays
 
 Birinci örnek, doğal dizileri `Phalcon\Config` nesnelerine dönüştürmeyi gösterir. Bu seçenek, bu istek sırasında herhangi bir dosya okunmadığından en iyi performansı sunar.
 
@@ -79,7 +79,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## Dosya Bağdaştırıcıları
+## File Adapters
 
 Mevcut bağdaştırıcılar şunlardır:
 
@@ -92,7 +92,7 @@ Mevcut bağdaştırıcılar şunlardır:
 
 <a name='ini-files'></a>
 
-## INI Dosyaları Okuma
+## Reading INI Files
 
 Ini dosyaları ayarları depolamanın yaygın bir yoludur. `Phalcon\Config`, bu dosyaları okumak için optimize edilmiş PHP işlevi `parse_ini_file` kullanır. Dosya bölümleri, kolay erişim için alt ayarlara ayrıştırılır.
 
@@ -129,7 +129,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Yapılandırmaları Birleştirme
+## Merging Configurations
 
 `Phalcon\Config`, bir yapılandırma nesnesinin özelliklerini tekrar tekrar birleştirir. Yeni özellikler eklendi ve mevcut özellikler güncellendi.
 
@@ -181,7 +181,7 @@ Phalcon\Config Object
 )
 ```
 
-[Phalcon Incubator](https://github.com/phalcon/incubator) bileşeninde bunlar için daha fazla bağdaştırıcı bulunmaktadır
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 

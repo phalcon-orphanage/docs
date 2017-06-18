@@ -41,7 +41,7 @@ The Phalcon PHP extension is required to run Phalcon Tools. If you haven't insta
 
 <a name='installation'></a>
 
-## Установка
+## Installation
 
 You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools)
 
@@ -75,7 +75,7 @@ chmod ugo+x /usr/bin/phalcon
 
 <a name='installation-mac'></a>
 
-### macOS
+### MacOS
 
 Open a terminal and type the command below:
 

@@ -1014,12 +1014,12 @@ $component = $di->get(
 
 ### Events
 
-`Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Některé události při vrácení hodnoty false můžou zastavit aktivní operaci. Podporovány jsou následující události:
+`Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Jméno události       | Spuštění                                                                                                        | Zastaví operaci? | Triggered on |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:----------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |        Ne        |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |        Ne        |  Listeners   |
+| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
 
 <a name='shared-services'></a>
 
@@ -1256,30 +1256,30 @@ Although you can register services with the names you want, Phalcon has a severa
 
 | Service Name       | Description                           | Default                                     | Shared |
 | ------------------ | ------------------------------------- | ------------------------------------------- |:------:|
-| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Ano   |
-| annotations        | Parser anotací                        | `Phalcon\Annotations\Adapter\Memory`     |  Ano   |
-| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |  Ano   |
-| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |  Ano   |
-| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |  Ano   |
-| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |  Ano   |
-| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |  Ano   |
-| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |  Ano   |
-| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |  Ano   |
-| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |  Ano   |
-| filter             | Input Filtering Service               | `Phalcon\Filter`                           |  Ano   |
-| modelsCache        | Cache backend for models cache        | None                                        |   Ne   |
-| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |  Ano   |
-| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |  Ano   |
-| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |  Ano   |
-| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |  Ano   |
-| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |  Ano   |
-| security           | Security helpers                      | `Phalcon\Security`                         |  Ano   |
-| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |  Ano   |
-| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |  Ano   |
-| tag                | HTML generation helpers               | `Phalcon\Tag`                              |  Ano   |
-| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |  Ano   |
-| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |  Ano   |
-| viewsCache         | Cache backend for views fragments     | None                                        |   Ne   |
+| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Yes   |
+| annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |  Yes   |
+| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |  Yes   |
+| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |  Yes   |
+| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |  Yes   |
+| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |  Yes   |
+| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |  Yes   |
+| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |  Yes   |
+| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |  Yes   |
+| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |  Yes   |
+| filter             | Input Filtering Service               | `Phalcon\Filter`                           |  Yes   |
+| modelsCache        | Cache backend for models cache        | None                                        |   No   |
+| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |  Yes   |
+| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |  Yes   |
+| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |  Yes   |
+| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |  Yes   |
+| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |  Yes   |
+| security           | Security helpers                      | `Phalcon\Security`                         |  Yes   |
+| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |  Yes   |
+| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |  Yes   |
+| tag                | HTML generation helpers               | `Phalcon\Tag`                              |  Yes   |
+| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |  Yes   |
+| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |  Yes   |
+| viewsCache         | Cache backend for views fragments     | None                                        |   No   |
 
 <a name='implementing-your-own-di'></a>
 

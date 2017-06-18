@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Genel Bakış</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#introduction">Introduction</a>
         </li>

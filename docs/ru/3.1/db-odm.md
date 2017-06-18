@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">ODM (Object-Document Mapper)</a> <ul>
         <li>
-          <a href="#creating-models">Создание моделей</a>
+          <a href="#creating-models">Creating Models</a>
         </li>
         <li>
           <a href="#documents-to-objects">Understanding Documents To Objects</a>
@@ -23,7 +23,7 @@
         <li>
           <a href="#creating-updating">Creating Updating/Records</a> <ul>
             <li>
-              <a href="#validation-messages">Собщения об ошибках</a>
+              <a href="#validation-messages">Validation Messages</a>
             </li>
             <li>
               <a href="#events">Validation Events and Events Manager</a>
@@ -32,7 +32,7 @@
               <a href="#business-rules">Implementing a Business Rule</a>
             </li>
             <li>
-              <a href="#data-integrity">Проверка целостности данных</a>
+              <a href="#data-integrity">Validating Data Integrity</a>
             </li>
           </ul>
         </li>
@@ -41,7 +41,7 @@
           <a href="#deleting-records">Deleting Records</a>
         </li>
         <li>
-          <a href="#validation-failed-events">События при ошибках валидации</a>
+          <a href="#validation-failed-events">Validation Failed Events</a>
         </li>
         <li>
           <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
@@ -69,13 +69,13 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Название                           | Описание                                                             |
+| Name                               | Description                                                          |
 | ---------------------------------- | -------------------------------------------------------------------- |
 | [MongoDB](http://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
 <a name='creating-models'></a>
 
-## Создание моделей
+## Creating Models
 
 A model is a class that extends from `Phalcon\Mvc\Collection`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -319,7 +319,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Параметр     | Описание                                                                                                                                                                                     | Example                                                 |
+| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -428,7 +428,7 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Собщения об ошибках
+### Validation Messages
 
 `Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -454,21 +454,21 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
 
-| Операция           | Название                   | Можно остановить операцию? | Пояснение                                                                                                          |
-| ------------------ | -------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Вставка/Обновление | `beforeValidation`         | ДА                         | Is executed before the validation process and the final insert/update to the database                              |
-| Вставка            | `beforeValidationOnCreate` | ДА                         | Is executed before the validation process only when an insertion operation is being made                           |
-| Обновление         | `beforeValidationOnUpdate` | ДА                         | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Вставка/Обновление | `onValidationFails`        | ДА (уже остановлена)       | Is executed before the validation process only when an insertion operation is being made                           |
-| Вставка            | `afterValidationOnCreate`  | ДА                         | Is executed after the validation process when an insertion operation is being made                                 |
-| Обновление         | `afterValidationOnUpdate`  | ДА                         | Is executed after the validation process when an updating operation is being made                                  |
-| Вставка/Обновление | `afterValidation`          | ДА                         | Is executed after the validation process                                                                           |
-| Вставка/Обновление | `beforeSave`               | ДА                         | Выполняется до требуемой операции над системой базы данных                                                         |
-| Обновление         | `beforeUpdate`             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции обновления                                 |
-| Вставка            | `beforeCreate`             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции вставки                                    |
-| Обновление         | `afterUpdate`              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции обновления                              |
-| Вставка            | `afterCreate`              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции вставки                                 |
-| Вставка/Обновление | `afterSave`                | НЕТ                        | Выполняется после требуемой операции над системой базы данных                                                      |
+| Operation          | Name                       | Can stop operation?  | Explanation                                                                                                        |
+| ------------------ | -------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Inserting/Updating | `beforeValidation`         | YES                  | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting          | `beforeValidationOnCreate` | YES                  | Is executed before the validation process only when an insertion operation is being made                           |
+| Updating           | `beforeValidationOnUpdate` | YES                  | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| Inserting/Updating | `onValidationFails`        | ДА (уже остановлена) | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting          | `afterValidationOnCreate`  | YES                  | Is executed after the validation process when an insertion operation is being made                                 |
+| Updating           | `afterValidationOnUpdate`  | YES                  | Is executed after the validation process when an updating operation is being made                                  |
+| Inserting/Updating | `afterValidation`          | YES                  | Is executed after the validation process                                                                           |
+| Inserting/Updating | `beforeSave`               | YES                  | Выполняется до требуемой операции над системой базы данных                                                         |
+| Updating           | `beforeUpdate`             | YES                  | Выполняется до требуемой операции над системой базы данных для операции обновления                                 |
+| Inserting          | `beforeCreate`             | YES                  | Выполняется до требуемой операции над системой базы данных для операции вставки                                    |
+| Updating           | `afterUpdate`              | NO                   | Выполняется после требуемой операции над системой базы данных для операции обновления                              |
+| Inserting          | `afterCreate`              | NO                   | Runs after the required operation over the database system only when an inserting operation is being made          |
+| Inserting/Updating | `afterSave`                | NO                   | Выполняется после требуемой операции над системой базы данных                                                      |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -617,11 +617,11 @@ Some events return false as an indication to stop the current operation. If an e
 
 <a name='data-integrity'></a>
 
-### Проверка целостности данных
+### Validating Data Integrity
 
-`Phalcon\Mvc\Collection` provides several events to validate data and implement business rules. Специальное событие `validation` позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
+`Phalcon\Mvc\Collection` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
-Следующий пример показывает, как это можно использовать:
+The following example shows how to use it:
 
 ```php
 <?php
@@ -724,21 +724,21 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Операция | Название       | Можно остановить операцию? | Пояснение                                |
-| -------- | -------------- | -------------------------- | ---------------------------------------- |
-| Deleting | `beforeDelete` | ДА                         | Runs before the delete operation is made |
-| Deleting | `afterDelete`  | НЕТ                        | Runs after the delete operation was made |
+| Operation | Name           | Can stop operation? | Explanation                              |
+| --------- | -------------- | ------------------- | ---------------------------------------- |
+| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
-## События при ошибках валидации
+## Validation Failed Events
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Операция                         | Название            | Пояснение                                                              |
-| -------------------------------- | ------------------- | ---------------------------------------------------------------------- |
-| Вставка или обновление           | `notSave`           | Triggered when the insert/update operation fails for any reason        |
-| Вставка, удаление или обновление | `onValidationFails` | Срабатывает, когда не выполняется какая-либо операция обработки данных |
+| Operation                | Name                | Explanation                                                     |
+| ------------------------ | ------------------- | --------------------------------------------------------------- |
+| Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
 
 <a name='ids-vs-primary-keys'></a>
 

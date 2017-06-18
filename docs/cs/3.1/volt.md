@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#introduction">Introduction</a>
         </li>
@@ -9,7 +9,7 @@
           <a href="#setup">Activating Volt</a>
         </li>
         <li>
-          <a href="#basic-usage">Základní použití</a>
+          <a href="#basic-usage">Basic Usage</a>
         </li>
         <li>
           <a href="#variables">Variables</a>
@@ -303,7 +303,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Základní použití
+## Basic Usage
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% ... %}` is used to execute statements such as for-loops or assign values and `{{ ... }}`, prints the result of an expression to the template.
 
@@ -1562,7 +1562,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Externí zdroje
+## External Resources
 
 - A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 - [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)

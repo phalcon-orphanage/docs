@@ -17,7 +17,7 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Konfigurace Phalcon frameworku</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
                   <a href="#apache-document-root">Document root</a>
                 </li>
@@ -35,7 +35,7 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Konfigurace Phalcon frameworku</a>
+              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -43,7 +43,7 @@
         <li>
           <a href="#php-built-in">Vestavěný webserver v PHP</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Konfigurace Phalcon frameworku</a>
+              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Nastavení webserveru
+# Web Server Setup
 
 Aby routování v aplikaci postavené na Phalcon frameworku fungovalo správně, musíte nastavit Vaš webserver aby správně zpracovával přesměrování a požadavky. Instrukce pro oblíbené webservery jsou:
 
@@ -68,13 +68,13 @@ Pro zpracování PHP souborů se Nginx obvykle používá v kombinaci s [PHP-FMP
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Konfigurace Phalcon frameworku
+### Phalcon configuration
 
 Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Nginx a Phalcon frameworku:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
-#### Základní konfigurace
+#### Basic configuration
 
 Použítí `$_GET['_url']` jako zdroj URI:
 
@@ -154,7 +154,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Konfigurace Phalcon frameworku
+### Phalcon configuration
 
 Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Běžně má aplikace následující strukturu:
 
@@ -204,7 +204,7 @@ Druhý `.htaccess` soubor je umístěn ve složce `public/`, kde přesměruje v�
 
 <a name='apache-apache-configuration'></a>
 
-#### Konfigurace Apache webserveru
+#### Apache configuration
 
 V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete vše nastavit v hlavním konfiguračním souboru webserveru Apache:
 
@@ -229,7 +229,7 @@ V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete 
 
 <a name='apache-virtual-hosts'></a>
 
-#### Virtuální domény (VirtualHost)
+#### Virtual Hosts
 
 Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuální doménu (virtuální doména nemusí ani existovat ani být registrována ale na serveru, kde takto nakonfigurujeme Apache bude fungovat):
 
@@ -259,7 +259,7 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Konfigurace Phalcon frameworku
+### Phalcon configuration
 
 Cherokee nabízí přátelské grafické prostředí pro konfiguraci skoro všech nastavení webserveru přímo v internetovém prohlížeči.
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Konfigurace Phalcon frameworku
+### Phalcon configuration
 
 Pro povolení přepisů URI, které Phalcon framework potřebuje, můžete použít soubor pro router (`.htrouter.php`):
 

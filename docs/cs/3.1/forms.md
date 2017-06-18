@@ -696,6 +696,6 @@ $loginForm = $this->forms->get('login');
 echo $loginForm->render();
 ```
 
-## Externí zdroje
+## External Resources
 
 - [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

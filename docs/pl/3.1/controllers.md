@@ -49,7 +49,7 @@ Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts
 | **Kontroler**        | posts          |
 | **Akcja**            | show           |
 | **Parametr**         | 2015           |
-| **Parametr**         | the-post-title |
+| **Parameter**        | the-post-title |
 
 In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Pętla Komunikacyjna (ang. Dispatch Loop)
+## Dispatch Loop
 
 Pętla Komunikacyjna (ang. Dispatch Loop) będzie realizowana w ramach Dyspozytora, dopóki nie będzie już żadnych akcji do wykonania. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
 
@@ -179,7 +179,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Inicjowanie kontrolerów
+## Initializing Controllers
 
 `Phalcon\Mvc\Controller` oferuje metodę `initialize()`, która jest wykonywana jako pierwsza, przed realizowaniem każdej innej akcji kontrolera. Używanie metody `__construct()` nie jest zalecane.
 
@@ -230,7 +230,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Wstrzykiwanie serwisów
+## Injecting Services
 
 Jeżeli kontroler rozszerza `Phalcon\Mvc\Controller`, wtedy posiada łatwy dostęp do kontenera serwisów w aplikacji. Na przykład, jeśli zarejestrowaliśmy serwis wyglądający tak:
 
@@ -285,7 +285,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Żądanie i Odpowiedź
+## Request and Response
 
 Przy założeniu, że framework dostarcza zestaw wstępnie zarejestrowanych serwisów, wyjaśnimy jak przeprowadzać interakcję ze środowiskiem HTTP. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
@@ -339,7 +339,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/[[l
 
 <a name='session-data'></a>
 
-## Dane Sesji
+## Session Data
 
 Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Zdarzenia w Kontrolerach
+## Events in Controllers
 
 Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 

@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#phalcon">Stažení správné verze Phalcon frameworku</a>
+          <a href="#phalcon">Download the right version of Phalcon</a>
         </li>
         <li>
           <a href="#screencast">Video</a>
         </li>
         <li>
-          <a href="#related">Související průvodci</a>
+          <a href="#related">Related</a>
         </li>
       </ul>
     </li>
@@ -18,21 +18,21 @@
 
 <a name='overview'></a>
 
-# Instalace: XAMPP
+# Installation on XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) je jednoduše instalovatelná distribuce Apache web serveru obsahující MySQL, PHP a Perl. Jakmile stáhnete XAMPP, jediné co je potřeba udělat před používáním je extrahovat archív a spustit. Níže jsou podrobné informace jak nainstalovat Phalcon framework pro XAMPP pro Windows. Použití nejnovější verze XAMPP je vysoce doporučeno.
 
 <a name='phalcon'></a>
 
-## Stažení správné verze Phalcon frameworku
+## Download the right version of Phalcon
 
 XAMPP je vždy vydáván jako 32bitová verze Apache a PHP. Musíte tedy stáhnout x86 verzi Phalcon frameworku pro Windows ze sekce "Stažení".
 
-Po stažení knihovny Phalcon frameworku budete mít ZIP soubor podobný ukázanému níže:
+After downloading the Phalcon library you will have a zip file like the one shown below:
 
 ![](/images/content/webserver-xampp-1.png)
 
-Extrahujte knihovnu z archivu a budete mít Phalcon framework jako DLL soubor:
+Extract the library from the archive to get the Phalcon DLL:
 
 ![](/images/content/webserver-xampp-2.png)
 
@@ -40,13 +40,13 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/images/content/webserver-xampp-3.png)
 
-Edit the php.ini file, it is located at `C:\xampp\php\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
+Edit the php.ini file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-a uložte soubor.
+and save it.
 
 ![](/images/content/webserver-xampp-4.png)
 
@@ -66,7 +66,7 @@ Pokud vidíte verzi Phalcon frameworku ve výstupu `phpinfo()`, gratulujeme. Nyn
 
 <a name='screencast'></a>
 
-## Video
+## Screencast
 
 Následující video Vás provede krok za krokem instalací Phalcon frameworku pro Windows:
 
@@ -80,6 +80,6 @@ Následující video Vás provede krok za krokem instalací Phalcon frameworku p
 
 <a name='related'></a>
 
-## Související průvodci
+## Related Guides
 
-- [Instalace: WAMP](/[[language]]/[[version]]/webserver-wamp)
+- [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)

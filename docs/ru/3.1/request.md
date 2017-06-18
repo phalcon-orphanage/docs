@@ -93,9 +93,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Проверяем, что данные пришли методом POST
+        // Check if request has made with POST
         if ($this->request->isPost()) {
-            // Получаем POST данные
+            // Access POST data
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -177,9 +177,9 @@ $userAgent = $request->getUserAgent();
 // Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. т.е. utf-8
+// Get the best charset accepted by the browser. ie. utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. т.е. en-us
+// Get the best language accepted configured in the browser. ie. en-us
 $language = $request->getBestLanguage();
 ```

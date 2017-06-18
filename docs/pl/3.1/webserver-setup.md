@@ -17,7 +17,7 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Konfiguracja Phalcona</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
                   <a href="#apache-document-root">Absolutna ścieżka do witryny</a>
                 </li>
@@ -35,7 +35,7 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Konfiguracja Phalcona</a>
+              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -43,7 +43,7 @@
         <li>
           <a href="#php-built-in">Wbudowany serwer</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Konfiguracja Phalcona</a>
+              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Ustawianie Web serwera
+# Web Server Setup
 
 W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurować nasz web serwer aby przetwarzał przekierowywania prawidłowo. Konfiguracja popularnych web serwerów wygląda następująco:
 
@@ -68,13 +68,13 @@ W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurowa�
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Konfiguracja Phalcona
+### Phalcon configuration
 
 Poniżej prezentujemy proponowane konfiguracje, jakich możesz użyć do konfiguracji Nginx'a dla Phalcona:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
-#### Podstawowa konfiguracja
+#### Basic configuration
 
 Użycie `$_GET['_url']` jako źródła URI
 
@@ -154,7 +154,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Konfiguracja Phalcona
+### Phalcon configuration
 
 Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
 
@@ -173,7 +173,7 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Absolutna ścieżka do witryny
+#### Document root
 
 Najbardziej typowym przypadkiem jest aplikacja zainstalowana w dowolnym folderze znajdującym się w głównym katalogu witryny. W tym przypadku używamy dwóch plików `.htaccess`, pierwszego do ukrycia kodu aplikacjia i przekierowania wszystkich zapytań do głównego katalogu aplikacji (`public/`).
 
@@ -204,7 +204,7 @@ Drugi plik `.htaccess` zlokalizowany jest w folderze `public/`, przekierowuje on
 
 <a name='apache-apache-configuration'></a>
 
-#### Konfiguracja Apache
+#### Apache configuration
 
 Jeśli nie chcesz używać plików `.htaccess` możesz przenieść te konfiguracje do głównego pliku konfiguracyjnego apache’a
 
@@ -229,7 +229,7 @@ Jeśli nie chcesz używać plików `.htaccess` możesz przenieść te konfigurac
 
 <a name='apache-virtual-hosts'></a>
 
-#### Wirtualne hosty
+#### Virtual Hosts
 
 Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wirtualnym hoście:
 
@@ -259,7 +259,7 @@ Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wir
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Konfiguracja Phalcona
+### Phalcon configuration
 
 Cherokee zapewnia przyjazny interfejs graficzny pozwalający na skonfigurowanie prawie każdej dostępnej opcji w tym serwerze.
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Konfiguracja Phalcona
+### Phalcon configuration
 
 Aby włączyć przepisywanie adresów którego Phalcon potrzebuje, możesz użyć następującego pliku routera (`.htrouter.php`):
 

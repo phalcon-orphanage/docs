@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Web Server Kurulumu
+# Web Server Setup
 
 Phalcon uygulmasını doğru çalıştırabilmek için web sunucunuzun yönlendirme ayarlarının düzgün işleyecek şekilde yapılandırmanız gerekmektedir. Popüler sunucu yazılımları için kurulum yönergeleri:
 

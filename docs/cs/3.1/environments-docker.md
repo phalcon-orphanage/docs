@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#dependencies">Závislosti</a>
         </li>
@@ -9,7 +9,7 @@
           <a href="#services">Services</a>
         </li>
         <li>
-          <a href="#installation">Instalace</a> <ul>
+          <a href="#installation">Installation</a> <ul>
             <li>
               <a href="#installation-composer">With Composer (recommended)</a>
             </li>
@@ -69,13 +69,13 @@
 
 <a name='overview'></a>
 
-# Přehled
+# Overview
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
 <a name='dependencies'></a>
 
-## Závislosti
+## Dependencies
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
@@ -100,7 +100,7 @@ Services included are:
 
 <a name='installation'></a>
 
-## Instalace
+## Installation
 
 <a name='installation-composer'></a>
 

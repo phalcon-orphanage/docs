@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Šifrování / Dešifrování</a> <ul>
         <li>
-          <a href="#usage">Základní použití</a>
+          <a href="#usage">Basic Usage</a>
         </li>
         <li>
           <a href="#options">Encryption Options</a>
@@ -24,7 +24,7 @@
 
 <a name='overview'></a>
 
-# Šifrování / Dešifrování
+# Encryption/Decryption
 
 Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -34,7 +34,7 @@ By default, this component provides secure encryption using AES-256-CFB.
 
 <a name='usage'></a>
 
-## Základní použití
+## Basic Usage
 
 This component is designed to provide a very simple usage:
 

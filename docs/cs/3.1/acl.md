@@ -50,7 +50,7 @@ Ve výsledku ACL obsahují role a zdroje. Zdroje jsou objekty, které řídí op
 
 <a name='setup'></a>
 
-## Vytvoření ACL
+## Creating an ACL
 
 Tato komponenta je navržena tak, aby od začátku fungovala v paměti. To umožňuje snadné používání a rychlý přístup ke všem vlastnostem seznamu. `Phalcon\Acl` konstruktor přebírá jako svůj první parametr adaptér sloužící k načtení informace vztahující se k seznamu. Příklad použití memory adaptéru je následující:
 
@@ -77,7 +77,7 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## Přidání rolí do ACL
+## Adding Roles to the ACL
 
 Role je objekt, který může nebo nemůže získat přístup k určitým prostředkům v seznamu. Jako příklad definujeme role jako skupiny lidí v rámci organizace. `Phalcon\Acl\Role` třída je k dispozici pro vytváření rolí více strukturovaným způsobem. Přidejme k našemu nedávno vytvořenému seznamu nějaké role:
 
@@ -102,7 +102,7 @@ Jak vidíte, role jsou definovány přímo bez použití instance.
 
 <a name='adding-resources'></a>
 
-## Přidávání zdrojů
+## Adding Resources
 
 Zdroje jsou objekty, kde se kontroluje přístup. Obvykle v MVC aplikacích zdroje odkazují na controllery. Ačkoli to není povinné, lze použít třídu `Phalcon\Acl\Resource` pro definování zdroje. Důležité je přidat související akce nebo operace k prostředkům, aby seznam ACL pochopil, co by měl kontrolovat.
 
@@ -132,7 +132,7 @@ $acl->addResource(
 
 <a name='access-controls'></a>
 
-## Definování oprávnění
+## Defining Access Controls
 
 Nyní, když máme role a zdroje, je na čase definovat ACL (tzn. které role mohou přistupovat k jakým zdrojům). Tato část je velmi důležitá, zejména vezmeme-li v úvahu vaše výchozí nastavení úrovně přístupu `allow` nebo `deny`.
 
@@ -152,7 +152,7 @@ Metoda `allow()` určuje, že určitá role má udělený přístup ke konkrétn
 
 <a name='querying'></a>
 
-## Dotazování na ACL
+## Querying an ACL
 
 Jakmile je seznam definován, můžeme kontrolovat, zda role má dané oprávnění nebo ne.
 
@@ -173,7 +173,7 @@ $acl->isAllowed('Guests', 'Customers', 'create');
 
 <a name='function-based-access'></a>
 
-## Funkcí řízený přístup
+## Function based access
 
 Také můžete přidat jako 4. parametr vaší vlastní funkci, která musí vrátit boolean hodnotu. Tato funkce bude volána při použití metody `isAllowed()`. Parametry můžete předávat jako asociativní pole metody `isAllowed()` jako 4. argument, kde klíč je název parametru v naší definované funkci.
 
@@ -252,7 +252,7 @@ $acl->isAllowed(
 
 <a name='objects'></a>
 
-## Objekty jako jméno role a jméno zdroje
+## Objects as role name and resource name
 
 Můžete předávat objekty jako `roleName` a `resourceName`. Vaše třídy musí implementovat `Phalcon\Acl\RoleAware` pro `roleName` a `Phalcon\Acl\ResourceAware` pro `resourceName`.
 
@@ -471,7 +471,7 @@ Stále můžete přidat vlastní parametry do funkce a předat asociativní pole
 
 <a name='roles-inheritance'></a>
 
-## Dědění rolí
+## Roles Inheritance
 
 Můžete vytvářet komplexní strukturu rolí pomocí dědičnosti, kterou poskytuje `Phalcon\Acl\Role`. Role můžou dědit z jiných rolí, což umožňuje přístup ke zdrojům rodiče. Chcete-li použít dědičnost rolí, je třeba předat zděděnou roli jako druhý parametr volání metody, při přidání této role v seznamu.
 
@@ -497,7 +497,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 
 <a name='serialization'></a>
 
-## Serializace ACL
+## Serializing ACL lists
 
 Chcete-li zlepšit výkon `Phalcon\Acl`, instanci lze serializovat a uložit v APC, session, textové soubory nebo databázové tabulky tak, aby mohla být načtena bez nutnosti předefinovat celý seznam. Můžete to udělat takto:
 
@@ -584,6 +584,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Implementace vlastních adaptérů
+## Implementing your own adapters
 
 Chcete-li vytvořit vlastní adaptér ACL nebo rozšířit existující, musíte implementovat rozhraní `Phalcon\Acl\AdapterInterface`.

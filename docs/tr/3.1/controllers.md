@@ -33,11 +33,11 @@
 
 <a name='overview'></a>
 
-# Genel Bakış
+# Overview
 
 <a name='using'></a>
 
-## Denetleyicilerin Kullanımı
+## Using Controllers
 
 Eylemler, istekleri işleyen bir denetleyicideki yöntemlerdir. Varsayılan olarak, bir denetleyicideki tüm ortak yöntemler eyleme eşlenir ve bir URL tarafından erişilebilir durumdadır. Eylem, isteği yorumlamaktan ve cevabı oluşturmaktan sorumludur. Genellikle yanıtlar işlenmiş görünüm biçimindedir ancak yanıtı oluşturmak için başka yollar da vardır.
 
@@ -49,7 +49,7 @@ Eylemler, istekleri işleyen bir denetleyicideki yöntemlerdir. Varsayılan olar
 | **Denetleyici**    | posts          |
 | **Eylem**          | show           |
 | **Parametre**      | 2015           |
-| **Parametre**      | the-post-title |
+| **Parameter**      | the-post-title |
 
 In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Görev Döngüsü
+## Dispatch Loop
 
 Görev döngüsü yürütülecek eylem kalmayana dek Görevlendirici içerisinde yürütülecektir. Önceki örnekte yalnızca bir eylem gerçekleştirildi. Şimdi `forward()` yönteminin, yürütmeyi farklı bir denetleyiciye/eyleme yönlendirerek gönderim döngüsünde daha karmaşık bir işlem akışı sağlayabileceğini göreceğiz.
 
@@ -179,7 +179,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Denetleyicileri Başlatma
+## Initializing Controllers
 
 `Phalcon\Mvc\Controller`, bir denetleyicide herhangi bir eylem gerçekleştirilmeden önce önce uygulanan `initialize()` yöntemini sunar. `__construct()` yönteminin kullanılması önerilmez.
 
@@ -230,7 +230,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Enjeksiyon Hizmetleri
+## Injecting Services
 
 Bir denetleyici `Phalcon\Mvc\Controller`'ı genişletirse, uygulama sırasında servis kabına kolay erişime sahip olur. Örneğin, böyle bir hizmeti kaydettiyseniz:
 
@@ -285,7 +285,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## İstek ve Yanıt
+## Request and Response
 
 İskeletin önceden kayıtlı bir dizi hizmet sunduğunu varsayarsak. HTTP ortamıyla nasıl etkileşim kuracağımızı açıklıyoruz. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
@@ -339,7 +339,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/[[l
 
 <a name='session-data'></a>
 
-## Oturum Verileri
+## Session Data
 
 Oturumlar, istekler arasında kalıcı verileri korumamıza yardımcı olur. Kalıcı olması gereken verileri kapsüllemek için herhangi bir denetleyiciden bir `Phalcon\Session\Bag`'e erişebilirsiniz:
 
@@ -364,7 +364,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Hizmetleri Denetleyiciler Olarak Kullanma
+## Using Services as Controllers
 
 Hizmetler denetleyiciler gibi davranabilir, denetleyiciler sınıflar her zaman hizmetler kapsayıcısından istenir. Buna göre, adıyla tescillenen diğer sınıflar bir denetleyiciyi kolayca değiştirebilir:
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Denetleyicilerdeki Olaylar
+## Events in Controllers
 
 Denetleyiciler, [görevlendirici](/en/[[versopm]]/dispatcher) olayları için dinleyiciler olarak otomatik olarak davranır; bu olay adlarıyla yöntemleri uygulamak, eylemler yürütülmeden önce / sonra kanca noktaları uygulamaya izin verir:
 

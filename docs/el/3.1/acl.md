@@ -538,7 +538,7 @@ It's recommended to use the Memory adapter during development and use one of the
 
 <a name='events'></a>
 
-## Γεγονότα
+## Events
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 

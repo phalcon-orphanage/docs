@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Přehled</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#integration">Integrating PHPUnit with Phalcon</a>
         </li>
@@ -21,7 +21,7 @@
 
 <a name='overview'></a>
 
-# Přehled
+# Overview
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 

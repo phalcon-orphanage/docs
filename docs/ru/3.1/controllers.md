@@ -33,23 +33,23 @@
 
 <a name='overview'></a>
 
-# Введение
+# Overview
 
 <a name='using'></a>
 
-## Использование контроллеров
+## Using Controllers
 
 Контроллеры содержат в себе ряд методов, называемых действиями (в англоязычной литературе — actions). Действия контроллеров занимаются непосредственно обработкой запросов. По умолчанию все публичные методы контролеров доступны для доступа по URL. Действия отвечают за разбор запросов (request) и создание ответов (response). Как правило, результаты работы действий используются для представлений, но так же возможно их иное использование.
 
 Например, при обращении по ссылке: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon разберёт её и получит следующие части:
 
-| Описание                     | Часть URL-адреса |
+| Description                  | Часть URL-адреса |
 | ---------------------------- | ---------------- |
 | **Директория с приложением** | blog             |
 | **Контроллер**               | posts            |
 | **Действие**                 | show             |
 | **Параметр**                 | 2015             |
-| **Параметр**                 | the-post-title   |
+| **Parameter**                | the-post-title   |
 
 Для этого случая запрос будет отправлен для обработки в контроллер `PostsController`. Для контроллеров нет какого-то специального места в приложении, они загружаются с помощью автозагрузки (например `Phalcon\Loader`), поэтому вы можете организовать их так, как вам необходимо.
 
@@ -121,7 +121,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Цикл работы
+## Dispatch Loop
 
 Цикл работы диспетчера выполняется до тех пор, пока не останется действий для обработки. В примере выше выполняется лишь одно действие. Пример ниже показывает, как с использованием метода `forward()` можно обеспечить более сложный процесс диспетчеризации путём перенаправления потока выполнения на другой контроллер/действие.
 
@@ -179,7 +179,7 @@ class UsersController extends Controller
 
 <a name='initializing'></a>
 
-## Инициализация контроллеров
+## Initializing Controllers
 
 `Phalcon\Mvc\Controller` предлагает метод `initialize()`, который автоматически выполняется первым, перед любым другим действием контроллера. Использование метода `__construct()` не рекомендуется.
 
@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+<h5 class='alert alert-warning'>Метод <code>initialize()</code> вызывается только в том случае, если событие <code>beforeExecuteRoute</code> выполнено успешно. Это позволяет избежать ситуации, когда логика приложения в инициализаторе не может быть выполнена без авторизации.</h5>
 
 Если вы все же хотите выполнить некоторую инициализацию после создания объекта контроллера, то можете реализовать метод `onConstruct()`:
 
@@ -226,11 +226,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
+<h5 class='alert alert-warning'>Имейте в виду, что метод <code>onConstruct()</code> выполняется, даже если действие, которое должно быть выполнено, не существует в контроллере, или пользователь не имеет к нему доступа (контроль доступа обеспечивает разработчик).</h5>
 
 <a name='injecting-services'></a>
 
-## Внедрение сервисов
+## Injecting Services
 
 Если контроллер наследует `Phalcon\Mvc\Controller`, то он автоматически получает доступ к контейнеру сервисов приложения. Например, если мы зарегистрируем некий сервис следующим образом:
 
@@ -285,7 +285,7 @@ class FilesController extends Controller
 
 <a name='request-response'></a>
 
-## Запрос и ответ
+## Request and Response
 
 Давайте предположим, что фреймворк предоставляет набор предварительно зарегистрированных сервисов. В этом примере будет показано как работать с HTTP окружением. Сервис `request` содержит экземпляр `Phalcon\Http\Request`, а `response` — экземпляр `Phalcon\Http\Response`, являющийся тем, что должно быть отправлено клиенту.
 
@@ -339,7 +339,7 @@ class PostsController extends Controller
 
 <a name='session-data'></a>
 
-## Данные сессий
+## Session Data
 
 Сессии позволяют сохранять данные между запросами. Вы можете получить доступ к `Phalcon\Session\Bag` из любого контроллера, чтобы сохранить данные, которые должны быть постоянными:
 
@@ -364,7 +364,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Использование сервисов как контроллеров
+## Using Services as Controllers
 
 Сервисы могут работать в качестве контроллеров, классы контроллеров первым делом запрашиваются у сервиса контейнеров. Соответственно любой класс, зарегистрированный под именем контроллера, легко может его заменить:
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='events'></a>
 
-## События контроллеров
+## Events in Controllers
 
 Контроллеры автоматически выступают в роли слушателей событий [диспетчера](/en/[[versopm]]/dispatcher), реализация методов с названиями событий позволяет выполнять какой-либо код до или после выполнения действия:
 

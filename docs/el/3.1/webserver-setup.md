@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Εγκατάσταση του διακομιστή Web
+# Web Server Setup
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 

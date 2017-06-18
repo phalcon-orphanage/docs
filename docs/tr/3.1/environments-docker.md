@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Genel Bakış</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#dependencies">Dependencies</a>
         </li>
@@ -69,7 +69,7 @@
 
 <a name='overview'></a>
 
-# Genel Bakış
+# Overview
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 

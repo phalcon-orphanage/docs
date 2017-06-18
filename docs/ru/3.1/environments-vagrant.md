@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Введение</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#requirements">Требования</a>
         </li>
@@ -9,7 +9,7 @@
           <a href="#packages-included">Packages Included</a>
         </li>
         <li>
-          <a href="#installation">Установка</a> <ul>
+          <a href="#installation">Installation</a> <ul>
             <li>
               <a href="#installation-vagrant-box">Установка Vagrant Box</a>
             </li>
@@ -73,7 +73,7 @@
               <a href="#daily-usage-additional-sites">Adding additional sites</a>
             </li>
             <li>
-              <a href="#daily-usage-environment-variables">Переменные окружения</a> <ul>
+              <a href="#daily-usage-environment-variables">Environment variables</a> <ul>
                 <li>
                   <a href="#daily-usage-environment-global-variables">Global variables</a>
                 </li>
@@ -115,7 +115,7 @@
         </li>
         
         <li>
-          <a href="#troubleshooting">Устранение неполадок</a>
+          <a href="#troubleshooting">Troubleshooting</a>
         </li>
       </ul>
     </li>
@@ -124,7 +124,7 @@
 
 <a name='overview'></a>
 
-# Введение
+# Overview
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -132,7 +132,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Требования
+## Requirements
 
 - Operating System: Windows, Linux, or macOS
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -170,11 +170,11 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Установка
+## Installation
 
 <a name='installation-vagrant-box'></a>
 
-### Установка Vagrant Box
+### Installing the Vagrant Box
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -190,7 +190,7 @@ If this command fails, make sure your Vagrant installation is up to date.
 
 <a name='installation-phalcon-box'></a>
 
-### Установка Phalcon Box
+### Installing the Phalcon Box
 
 You can install Phalcon Box by simply cloning the repository. Consider cloning the repository into a `workspace` folder within your `home` directory, as the Phalcon Box box will serve as the host to all of your Phalcon projects:
 
@@ -228,7 +228,7 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Настройка
+## Configuring
 
 <a name='installation-configuration-setting-provider'></a>
 
@@ -513,7 +513,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='daily-usage-environment-variables'></a>
 
-### Переменные окружения
+### Environment variables
 
 <a name='daily-usage-environment-global-variables'></a>
 
@@ -705,7 +705,7 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='troubleshooting'></a>
 
-## Устранение неполадок
+## Troubleshooting
 
 **Problem:**
 

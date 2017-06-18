@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">ODM (Object-Document Mapper)</a> <ul>
         <li>
-          <a href="#creating-models">Vytváření modelů</a>
+          <a href="#creating-models">Creating Models</a>
         </li>
         <li>
           <a href="#documents-to-objects">Understanding Documents To Objects</a>
@@ -75,7 +75,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Vytváření modelů
+## Creating Models
 
 A model is a class that extends from `Phalcon\Mvc\Collection`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -319,7 +319,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parametr     | Description                                                                                                                                                                                  | Example                                                 |
+| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -454,7 +454,7 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
 
-| Operation          | Name                       | Zastaví operaci?      | Explanation                                                                                                        |
+| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
 | ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
 | Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
@@ -724,10 +724,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name           | Zastaví operaci? | Explanation                              |
-| --------- | -------------- | ---------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES              | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO               | Runs after the delete operation was made |
+| Operation | Name           | Can stop operation? | Explanation                              |
+| --------- | -------------- | ------------------- | ---------------------------------------- |
+| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 

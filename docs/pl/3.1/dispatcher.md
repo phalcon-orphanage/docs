@@ -222,7 +222,7 @@ $this->dispatcher->forward(
 
 A forward action accepts the following parameters:
 
-| Parametr   | Triggered                                              |
+| Parameter  | Triggered                                              |
 | ---------- | ------------------------------------------------------ |
 | controller | A valid controller name to forward to.                 |
 | action     | A valid action name to forward to.                     |
