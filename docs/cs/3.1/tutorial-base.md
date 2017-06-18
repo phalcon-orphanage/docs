@@ -58,7 +58,7 @@ The best way to use this guide is to follow each step in turn. You can get the c
 
 <a name='file-structure'></a>
 
-## Struktura souborů
+## File structure
 
 Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
