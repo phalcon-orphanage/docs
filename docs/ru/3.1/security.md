@@ -15,7 +15,7 @@
           <a href="#random">Компонент Random</a>
         </li>
         <li>
-          <a href="#resources">Дополнительная информация</a>
+          <a href="#resources">External Resources</a>
         </li>
       </ul>
     </li>
@@ -24,13 +24,13 @@
 
 <a name='overview'></a>
 
-# Безопасность
+# Security
 
 Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Хэширование паролей
+## Password Hashing
 
 Хранение паролей в открытом виде является плохой практикой. Любой, кто имеет доступ к базе данных, мгновенно получит доступ ко всем пользовательским аккаунтам и, таким образом, получает возможность производить неавторизованные действия. Для противостояния этому, многие приложения используют знакомые методы одностороннего хеширования вроде '[md5](http://php.net/manual/en/function.md5.php)' и '[sha1](http://php.net/manual/en/function.sha1.php)'. Однако аппаратное обеспечение развивается с каждым днем, становится быстрее, и эти алгоритмы становятся уязвимы к атакам методом перебора. Данные атаки также известны как [радужные таблицы](http://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -97,7 +97,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 <a name='csrf'></a>
 
-## Защита от Cross-Site Request Forgery (CSRF)
+## Cross-Site Request Forgery (CSRF) protection
 
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
@@ -155,7 +155,7 @@ Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommen
 
 <a name='setup'></a>
 
-## Настройка компонента
+## Setting up the component
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -180,7 +180,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Компонент Random
+## Random
 
 Класс `Phalcon\Security\Random` позволяет очень легко генерировать много разных типов случайных данных.
 
@@ -213,6 +213,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## Дополнительная информация
+## External Resources
 
 - [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
