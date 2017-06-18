@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+use Docs\Cli;
+use Phalcon\Di\FactoryDefault\Cli as PhDiCli;
+
+if (true !== defined('APP_PATH')) {
+    define('APP_PATH', dirname(__FILE__));
+}
+
+try {
+    require_once APP_PATH . '/app/library/Main.php';
+    require_once APP_PATH . '/app/library/Cli.php';
+
+    /**
+     * We don't want a global scope variable for this
+     */
+    (new Cli())->run(new PhDiCli());
+
+} catch (\Exception $e) {
+    fwrite(STDERR, PHP_EOL . $e->getMessage() . PHP_EOL);
+    fwrite(STDERR, PHP_EOL . $e->getTraceAsString() . PHP_EOL . PHP_EOL);
+    exit(1);
+}

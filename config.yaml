@@ -1,0 +1,9 @@
+---
+  name: phalcon2-site-dev
+  hostname: phalcon.local
+  box: ubuntu/trusty64
+  provider: virtualbox
+  gui: false
+  ram: 512
+  cpus: 1
+  ip: 10.10.10.223
