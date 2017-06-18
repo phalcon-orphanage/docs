@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Метод <code>initialize()</code> вызывается только в том случае, если событие <code>beforeExecuteRoute</code> выполнено успешно. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+<h5 class='alert alert-warning'>Метод <code>initialize()</code> вызывается только в том случае, если событие <code>beforeExecuteRoute</code> выполнено успешно. Это позволяет избежать ситуации, когда логика приложения в инициализаторе не может быть выполнена без авторизации.</h5>
 
 Если вы все же хотите выполнить некоторую инициализацию после создания объекта контроллера, то можете реализовать метод `onConstruct()`:
 
