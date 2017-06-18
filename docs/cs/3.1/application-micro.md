@@ -234,7 +234,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Vytvoření mikro-aplikace
+## Creating a Micro Application
 
 The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
 
@@ -248,7 +248,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routování
+## Routing
 
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
 
@@ -1197,16 +1197,16 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 
 ## Available events
 
-Podporovány jsou následující události:
+The following events are supported:
 
-| Jméno události     | Spuštění                                                          | Zastaví operaci? |
-| ------------------ | ----------------------------------------------------------------- |:----------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |       Ano        |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |       Ano        |
-| afterExecuteRoute  | Handler just finished running                                     |        Ne        |
-| beforeNotFound     | Route has not been found                                          |       Ano        |
-| afterHandleRoute   | Route just finished executing                                     |       Ano        |
-| afterBinding       | Triggered after models are bound but before executing the handler |       Ano        |
+| Event Name         | Triggered                                                         | Can stop operation? |
+| ------------------ | ----------------------------------------------------------------- |:-------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
+| afterExecuteRoute  | Handler just finished running                                     |         No          |
+| beforeNotFound     | Route has not been found                                          |         Yes         |
+| afterHandleRoute   | Route just finished executing                                     |         Yes         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
 
 <a name='events-available-events-authentication'></a>
 
