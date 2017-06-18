@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Введение</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
           <a href="#integration">Интеграция PHPUnit с Phalcon</a>
         </li>
@@ -21,7 +21,7 @@
 
 <a name='overview'></a>
 
-# Введение
+# Overview
 
 Написание правильного теста может помочь в создании создании более качественного програмного обеспечения. Покрытие тестами надлежащих случаев помогает устранить большинство функциональных ошибок и лучше поддерживать программное обеспечение.
 
@@ -56,7 +56,7 @@ composer require phpunit/phpunit:^5.0
 
 <a name='unit-helper'></a>
 
-## PHPUnit хелпер
+## The PHPUnit helper file
 
 Хелпер необходим для подготовки приложения к запуску тестов. Мы подготовили образец файла. Поместите файл `TestHelper.php` в директорию `tests`.
 
@@ -123,7 +123,7 @@ composer require phalcon/incubator
 
 <a name='phpunit-config'></a>
 
-## Файл `phpunit.xml`
+## The `phpunit.xml` file
 
 Теперь создайте файл `phpunit.xml` как показано ниже:
 
@@ -152,7 +152,7 @@ composer require phalcon/incubator
 
 <a name='sample'></a>
 
-## Пример модульного теста
+## Sample Unit Test
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
