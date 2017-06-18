@@ -258,7 +258,7 @@ class Main
 
         $assets
             ->collection('footer_js')
-            ->addJs('http://code.jquery.com/jquery-3.1.1.min.js', false)
+            ->addJs('https://code.jquery.com/jquery-3.1.1.min.js', false)
             ->addJs('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false)
             ->addJs('https://cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js', false);
         $this->diContainer->setShared('assets', $assets);
