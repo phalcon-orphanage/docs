@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Požadavky</a> <ul>
+      <a href="#requirements">Requirements</a> <ul>
         <li>
           <a href="#requirements-hardware">Hardware</a>
         </li>
@@ -12,7 +12,7 @@
     </li>
     
     <li>
-      <a href="#installation">Instalace</a> <ul>
+      <a href="#installation">Installation</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
@@ -48,7 +48,7 @@
             <li>
               <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Instalace z repozitáře</a> <ul>
+                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
                     </li>
@@ -59,7 +59,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Instalace Phalcon frameworku</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -111,7 +111,7 @@
 
 <a name='requirements'></a>
 
-# Požadavky
+# Requirements
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -152,7 +152,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Instalace
+# Installation
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -168,7 +168,7 @@ To install Phalcon on linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Instalace z repozitáře
+#### Repository installation
 
 Add the repository to your distribution:
 
@@ -194,7 +194,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Instalace Phalcon frameworku
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -245,7 +245,7 @@ https://launchpad.net/~ondrej/+archive/ubuntu/php/
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Instalace z repozitáře
+#### Repository installation
 
 Add the repository to your distribution:
 
@@ -271,7 +271,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Instalace Phalcon frameworku
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -343,7 +343,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Požadavky
+### Requirements
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
@@ -414,7 +414,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/Mac).
 
-### Požadavky
+### Requirements
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
