@@ -32,7 +32,7 @@
 
 <a name='contributing'></a>
 
-# Вклад в Phalcon
+# Contributing to Phalcon
 
 Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
 
@@ -42,7 +42,7 @@ Following these guidelines, allows better communication, faster resolution of is
 
 <a name='contributions'></a>
 
-## Вклад
+## Contributions
 
 Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
@@ -50,13 +50,13 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='questions-and-support'></a>
 
-## Вопросы и ответы
+## Questions and Support
 
 <h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
 
 <a name='bug-report-checklist'></a>
 
-## Контрольный список отчета об ошибках
+## Bug Report Checklist
 
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test) for more information.
@@ -65,7 +65,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Генерация трассировки
+### Generating a backtrace
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
@@ -78,7 +78,7 @@ Please follow this guides to understand how to generate the backtrace:
 
 <a name='pull-request-checklist'></a>
 
-## Контрольный список пулл реквеста
+## Pull Request Checklist
 
 - Don't submit your pull requests to the `master` branch. Branch from the required branch and, if needed, rebase to the proper branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes
 - Don't put submodule updates, `composer.lock`, etc in your pull request unless they are to merged commits
@@ -95,13 +95,13 @@ Before submit **new functionality**, please open a [NFR](/[[language]]/[[version
 
 <a name='getting-support'></a>
 
-## Получение поддержки
+## Getting Support
 
 If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
-## Предложение идей
+## Requesting Features
 
 If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
