@@ -50,7 +50,7 @@
 
 <a name='setup'></a>
 
-## ACL Oluşturma
+## Creating an ACL
 
 Bu bileşen başlangıçta bellekte çalışmak üzere tasarlanmıştır. Bu, kullanım kolaylığı sağlar ve listenin her alanına erişirken hızlanır. `Phalcon\Acl` yapılandırıcı, ilk parametresi olarak kontrol listesiyle ilgili bilgileri almak için kullanılan bir bağdaştırıcı alır. Bellek adaptörünü kullanan bir örnek aşağıda verilmiştir:
 
@@ -77,7 +77,7 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## ACL'ye Rol Ekleme
+## Adding Roles to the ACL
 
 Bir rol, erişim listesindeki belirli kaynaklara erişebilen veya erişemeyen bir nesnedir. Örnek olarak, rolleri bir organizasyon içerisindeki gruplar olarak tanımlayacağız. `Phalcon\Acl\Role` sınıfı, daha yapılandırılmış bir şekilde roller oluşturmak için kullanılabilir. Yakın zamanda oluşturulmuş listemize bazı roller ekleyelim:
 
@@ -102,7 +102,7 @@ Görebildiğiniz gibi, roller bir örnek kullanmadan doğrudan tanımlanır.
 
 <a name='adding-resources'></a>
 
-## Kaynakları Ekleme
+## Adding Resources
 
 Kaynaklar, erişimin kontrol edildiği nesnelerdir. Normalde MVC uygulamalarında kaynaklar denetleyicileri gösterir. Bu zorunlu olmasa da, `Phalcon\Acl\Resource` sınıfı kaynakları tanımlamada kullanılabilir. ACL'nin kontrol etmesi gereken şeyi anlaması için bir kaynağa ilgili işlemler veya işlemler eklemek önemlidir.
 
@@ -132,7 +132,7 @@ $acl->addResource(
 
 <a name='access-controls'></a>
 
-## Erişim Kontrolleri Tanımlama
+## Defining Access Controls
 
 Artık roller ve kaynaklara sahibiz, şimdi ACL'yi tanımlama zamanı geldi (yani hangi rollerin hangi kaynaklara erişebileceğini). Bu bölüm, özellikle varsayılan erişim düzeyiniz `izin vermek` veya `reddetmek` olarak dikkate alırsak çok önemlidir.
 
@@ -152,7 +152,7 @@ $acl->deny('Ziyaretçiler', 'Müşteriler', 'update');
 
 <a name='querying'></a>
 
-## ACL Sorgulama
+## Querying an ACL
 
 Liste tamamen tanımlandıktan sonra bir role belirli bir izin verilip verilmediğini kontrol etmek için sorgulayabiliriz.
 
@@ -173,7 +173,7 @@ $acl->isAllowed('Ziyaretçiler', 'Müşteriler', 'create');
 
 <a name='function-based-access'></a>
 
-## Fonksiyona Dayalı Erişim
+## Function based access
 
 Ayrıca, 4'üncü parametre olarak boolean değerini döndüren özel işlevinizi ekleyebilirsiniz. `isAllowed()` yöntemini kullandığınızda çağrılır. Parametreleri ilişkisel dizi olarak `isAllowed()` yöntemine 4. argüman olarak aktarabilirsiniz, burada anahtar tanımlı işlevimizdeki parametre adıdır.
 
@@ -252,7 +252,7 @@ $acl->isAllowed(
 
 <a name='objects'></a>
 
-## Rol adı ve kaynak adı olan nesneler
+## Objects as role name and resource name
 
 Nesneleri `roleName` ve `resourceName` olarak geçirebilirsiniz. `roleName` için `Phalcon\Acl\RoleAware` sınıfı ve `resourceName` için `Phalcon\Acl\ResourceAware` sınıfları uygulanmalıdır.
 
@@ -471,7 +471,7 @@ Fonksiyon ve ilişkisel diziyi `isAllowed()` yönteminde geçirmek için herhang
 
 <a name='roles-inheritance'></a>
 
-## Rollerin Kalıtımı
+## Roles Inheritance
 
 `Phalcon\Acl\Role` sınıfının sağladığı kalıtımı kullanarak karmaşık rol yapıları oluşturabilirsiniz. Roller diğer rollerden miras kalabilir, böylece üst sınıflara veya kaynak alt kümelerine erişime izin verebilir. Rol kalıtımını kullanmak için, devredilen rolü, listede bu rolü eklerken yöntem çağrısının ikinci parametresi olarak iletmeniz gerekir.
 
@@ -497,7 +497,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 
 <a name='serialization'></a>
 
-## ACL Listelerini Seri Hale Getirme
+## Serializing ACL lists
 
 Performansı artırmak için `Phalcon\Acl` örnekleri APC, oturum, metin dosyaları veya bir veritabanı tablosunda serileştirilebilir ve saklanabilir, böylece tüm listeyi yeniden tanımlamanıza gerek kalmadan yüklenebilirler. Bunu şu şekilde yapabilirsiniz:
 
@@ -538,7 +538,7 @@ Geliştirme sırasında Memory adaptörünü kullanmanız ve canlı ortamda diğ
 
 <a name='events'></a>
 
-## Olaylar
+## Events
 
 `Phalcon\Acl` varsa olayları `EventsManager`'a gönderebilir. Olaylar 'acl' türünü kullanarak tetiklenir. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
@@ -584,6 +584,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Kendi Bağdaştırıcılarını Uygulama
+## Implementing your own adapters
 
 `Phalcon\Acl\AdapterInterface` arabirimi kendi ACL bağdaştırıcıları oluşturmak veya mevcut olanları genişletmek için uygulanması gerekir.
