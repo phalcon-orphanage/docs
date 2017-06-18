@@ -1088,7 +1088,7 @@ $robots = Robots::findByRawSql(
 
 <a name='troubleshooting'></a>
 
-## Устранение неполадок
+## Troubleshooting
 
 Some things to keep in mind when using PHQL:
 
