@@ -33,11 +33,11 @@
 
 <a name='overview'></a>
 
-# Přehled
+# Overview
 
 <a name='using'></a>
 
-## Použití controllerů / řadičů
+## Using Controllers
 
 Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozím nastavení jsou všechny veřejné metody mapované jako akce na controllerech a přístupné pomocí URL adresy. Akce jsou zodpovědné za interpretaci požadavku a vytvoření odpovědi. Odpovědi jsou obvykle ve formě vykreslených šablon, ale existují i jiné způsoby, jak vytvořit odpovědi.
 
@@ -49,7 +49,7 @@ Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/20
 | **Controller**      | posts          |
 | **Akce**            | show           |
 | **Parametr**        | 2015           |
-| **Parametr**        | the-post-title |
+| **Parameter**       | the-post-title |
 
 In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
@@ -179,7 +179,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Inicializace controllerů
+## Initializing Controllers
 
 `Phalcon\Mvc\Controller` nabízí metodu `initialize()`, která bude vykonána jako první, před provedením jakékoli akce v controlleru. Použití metody `__construct()` se nedoporučuje.
 
@@ -230,7 +230,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Aplikace služeb
+## Injecting Services
 
 Pokud controller rozšiřuje třídu `Phalcon\Mvc\Controller` tak máme snadný přístup do kontejneru služeb v aplikaci. Například, pokud jsme zaregistrovali službu jako následující příklad:
 
@@ -285,7 +285,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Požadavek a odpověď
+## Request and Response
 
 Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
@@ -339,7 +339,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/[[l
 
 <a name='session-data'></a>
 
-## Relační data (session)
+## Session Data
 
 Relace nám pomáhají udržovat data mezi požadavky. Můžete přistupovat k objektu `Phalcon\Session\Bag` z libovolnému controlleru za účelem zapouzdření dat:
 
@@ -364,7 +364,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Používání služeb jako controllerů
+## Using Services as Controllers
 
 Služby mohou jednat jako controllery, třídy controlleru jsou vždy požadovány z kontejneru služeb. Každá jiná třida registrovaná se správným názvem může jednoduše nahradit controller:
 
@@ -394,7 +394,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Události v controllerech
+## Events in Controllers
 
 Controllery automaticky působí jako listenery pro události z [dispečeru](/en/[[versopm]]/dispatcher), implementační metody s těmito názvy eventů umožňují implementovat hooky před nebo po provedení akcí:
 
