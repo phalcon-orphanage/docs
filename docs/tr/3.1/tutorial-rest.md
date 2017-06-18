@@ -51,7 +51,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 The API consists of the following methods:
 
-| Method   | URL                      | Eylem                                          |
+| Method   | URL                      | Action                                         |
 | -------- | ------------------------ | ---------------------------------------------- |
 | `GET`    | /api/robots              | Retrieves all robots                           |
 | `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
