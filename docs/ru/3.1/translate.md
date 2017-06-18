@@ -9,7 +9,7 @@
           <a href="#usage">Component Usage</a>
         </li>
         <li>
-          <a href="#custom">Реализация собственных адаптеров</a>
+          <a href="#custom">Implementing your own adapters</a>
         </li>
       </ul>
     </li>
@@ -28,7 +28,7 @@ The component `Phalcon\\Translate` aids in creating multilingual applications. A
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Адаптер                                    | Описание                                                                                |
+| Adapter                                    | Description                                                                             |
 | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
@@ -136,7 +136,7 @@ Some applications implement multilingual on the URL such as `http://www.mozilla.
 
 <a name='custom'></a>
 
-## Реализация собственных адаптеров
+## Implementing your own adapters
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
