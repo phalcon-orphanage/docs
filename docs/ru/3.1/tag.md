@@ -123,7 +123,7 @@ The following HTML will be produced.
 </html>
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```twig
 {{ get_doctype() }}
@@ -248,7 +248,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```twig
 {{ text_field('username') }}
@@ -549,7 +549,7 @@ echo $this->tag->image(
 );
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```twig
 {# Generate <img src='/your-app/img/hello.gif'> #}
@@ -573,7 +573,7 @@ echo $this->tag->stylesheetLink('http://fonts.googleapis.com/css?family=Rosario'
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```twig
 {# Generate <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'> #}
@@ -597,7 +597,7 @@ echo $this->tag->javascriptInclude('http://localhost/javascript/jquery.min.js', 
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```twig
 {# Generate <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script> #}
@@ -635,7 +635,7 @@ echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-С использованием синтаксиса Volt:
+Volt syntax:
 
 ```php
 {# Generate
