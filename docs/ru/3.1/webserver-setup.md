@@ -17,7 +17,7 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Настройка под Phalcon</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
                   <a href="#apache-document-root">Корневой каталог</a>
                 </li>
@@ -35,7 +35,7 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Настройка под Phalcon</a>
+              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -43,7 +43,7 @@
         <li>
           <a href="#php-built-in">Встроенный веб-сервер</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Настройка под Phalcon</a>
+              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -54,7 +54,7 @@
 
 <a name='setup'></a>
 
-# Настройка веб-сервера
+# Web Server Setup
 
 Чтобы работала маршрутизация (анг. routing) в Phalcon, вам понадобится настроить должным образом веб-сервер, научив его правильно обрабатывать перенаправления. Ниже рассматриваются типичные конфигурации для популярных веб-серверов:
 
@@ -68,13 +68,13 @@
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Настройка под Phalcon
+### Phalcon configuration
 
 Конфигурации ниже позволят настроить Nginx для работы с Phalcon:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
-#### Базовая конфигурация
+#### Basic configuration
 
 Использование переменной `$_GET['_url']` для URI:
 
@@ -154,7 +154,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Настройка под Phalcon
+### Phalcon configuration
 
 Следующие инструкции позволят настроить Apache для корректной работы с Phalcon. В основном они сводятся к настройке поведения модуля `mod_rewrite`, позволяющего использовать человеко-понятные URL (ЧПУ) и [компонента маршрутизации](/[[language]]/[[version]]/routing). Типичное приложение имеет следующую структуру:
 
@@ -173,7 +173,7 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Корневой каталог
+#### Document root
 
 Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
 
@@ -204,7 +204,7 @@ test/
 
 <a name='apache-apache-configuration'></a>
 
-#### Конфигурация Apache
+#### Apache configuration
 
 Если нет желания или возможности использовать файлы `.htaccess`, то параметры также можно прописать в главном файле конфигурации Apache:
 
@@ -229,7 +229,7 @@ test/
 
 <a name='apache-virtual-hosts'></a>
 
-#### Виртуальные хосты
+#### Virtual Hosts
 
 В этом заключительном примере конфигурации, мы разрешаем установку Phalcon-приложения в виртуальный хост:
 
@@ -259,7 +259,7 @@ test/
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Настройка под Phalcon
+### Phalcon configuration
 
 Cherokee имеет удобный графический интерфейс для настройки практически всех параметров, доступных в веб-сервере.
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Настройка под Phalcon
+### Phalcon configuration
 
 Если вы хотите перенаправлять запросы на файл index.php, добавьте файл `.htrouter.php` со следующим кодом:
 
