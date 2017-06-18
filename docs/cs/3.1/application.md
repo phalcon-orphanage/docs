@@ -20,7 +20,7 @@
           <a href="#events">Application Events</a>
         </li>
         <li>
-          <a href="#resources">Externí zdroje</a>
+          <a href="#resources">External Resources</a>
         </li>
       </ul>
     </li>
@@ -561,9 +561,9 @@ When `Phalcon\Mvc\Application` have modules registered, always is necessary that
 
 ## Application Events
 
-`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. Podporovány jsou následující události:
+`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Jméno události        | Spuštění                                                     |
+| Event Name            | Triggered                                                    |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -571,7 +571,7 @@ When `Phalcon\Mvc\Application` have modules registered, always is necessary that
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-Následující příklad ukazuje, jak připojit listenery k událostem:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -593,6 +593,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Externí zdroje
+## External Resources
 
 - [MVC examples on Github](https://github.com/phalcon/mvc)
