@@ -50,7 +50,7 @@
         - [Μεταδεδομένα](/[[language]]/[[version]]/db-models-metadata)
         - [Σχέσεις](/[[language]]/[[version]]/db-models-relationships)
         - [Συναλλαγές](/[[language]]/[[version]]/db-models-transactions)
-        - [Επικυρωτές](/[[language]]/[[version]]/db-models-validators)
+        - [Επικυρωτές](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
 - Front End 

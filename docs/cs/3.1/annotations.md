@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Parser anotací</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#reading">Čtení anotací</a>
         </li>
         <li>
@@ -124,9 +127,44 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
+<a name='factory'></a>
+
+## Factory
+
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
+```
+
+However you can also utilize the factory method to achieve the same thing:
+
+```php
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
+```
+
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+
 <a name='reading'></a>
 
-## Reading Annotations
+## Čtení anotací
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -162,7 +200,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Typy anotací
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -221,7 +259,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktické využití
 
 Next we will explain some practical examples of annotations in PHP applications:
 
@@ -406,7 +444,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Anotační adaptéry
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -425,6 +463,6 @@ The `Phalcon\Annotations\AdapterInterface` interface must be implemented in orde
 
 <a name='resources'></a>
 
-## External Resources
+## Externí zdroje
 
 - [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
