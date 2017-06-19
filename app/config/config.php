@@ -45,6 +45,20 @@ return [
             ],
         ],
     ],
+    'middleware'    => [
+        [
+            'event' => 'before',
+            'class' => Docs\Middleware\EnvironmentMiddleware::class,
+        ],
+        [
+            'event' => 'before',
+            'class' => Docs\Middleware\RedirectMiddleware::class,
+        ],
+        [
+            'event' => 'before',
+            'class' => Docs\Middleware\NotFoundMiddleware::class,
+        ],
+    ],
     'languages'     => [
         'bg' => 'Bosnian',
         'bs' => 'Bulgarian',

@@ -21,6 +21,7 @@ use Phalcon\Mvc\View\Engine\Volt as PhVolt;
 
 use ParsedownExtra as PParseDown;
 use Docs\Utils as DocsUtils;
+use Phalcon\Registry;
 
 /**
  * Main
@@ -108,6 +109,7 @@ class Main
 
         $this->diContainer->setShared('config', $config);
         $this->diContainer->setShared('utils', new DocsUtils());
+        $this->diContainer->setShared('registry', new Registry());
 
         $this->initServices();
 
@@ -176,6 +178,7 @@ class Main
         $eventsManager = $this->diContainer->getShared('eventsManager');
 
         $routes     = $config->get('routes')->toArray();
+        $middleware = $config->get('middleware')->toArray();
         $collection = new PhMicroCollection();
         $collection->setHandler($routes['class'], true);
         if (true !== empty($routes['prefix'])) {
@@ -188,6 +191,14 @@ class Main
             }
         }
         $this->application->mount($collection);
+
+        foreach ($middleware as $element) {
+            $class = $element['class'];
+            $event = $element['event'];
+            $eventsManager->attach('micro', new $class());
+            $this->application->$event(new $class());
+        }
+
         $this->application->setEventsManager($eventsManager);
 
         /***********************************************************************
