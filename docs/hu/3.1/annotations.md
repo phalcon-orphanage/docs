@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Annotations Parser</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#reading">Reading Annotations</a>
         </li>
         <li>
@@ -123,6 +126,41 @@ However, to make the code more maintainable and understandable it is recommended
  * @AnotherSpecialFeature(true)
  */
 ```
+
+<a name='factory'></a>
+
+## Factory
+
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
+```
+
+However you can also utilize the factory method to achieve the same thing:
+
+```php
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
+```
+
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 
