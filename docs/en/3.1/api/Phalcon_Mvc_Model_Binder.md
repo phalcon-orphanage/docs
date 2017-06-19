@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Binder**
 
-*implements* [Phalcon\Mvc\Model\BinderInterface](/en/3.1.2/api/Phalcon_Mvc_Model_BinderInterface)
+*implements* [Phalcon\Mvc\Model\BinderInterface](/en/3.1/api/Phalcon_Mvc_Model_BinderInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -22,13 +22,13 @@ Array for original values
 
 
 
-public  **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.1.2/api/Phalcon_Cache_BackendInterface) $cache])
+public  **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.1/api/Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\\Mvc\\Model\\Binder constructor
 
 
 
-public  **setCache** ([Phalcon\Cache\BackendInterface](/en/3.1.2/api/Phalcon_Cache_BackendInterface) $cache)
+public  **setCache** ([Phalcon\Cache\BackendInterface](/en/3.1/api/Phalcon_Cache_BackendInterface) $cache)
 
 Gets cache instance
 
@@ -43,6 +43,12 @@ Sets cache instance
 public  **bindToHandler** (*mixed* $handler, *array* $params, *mixed* $cacheKey, [*mixed* $methodName])
 
 Bind models into params in proper handler
+
+
+
+protected  **findBoundModel** (*mixed* $paramValue, *mixed* $className)
+
+Find the model by param value.
 
 
 

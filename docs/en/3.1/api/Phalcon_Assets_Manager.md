@@ -70,7 +70,7 @@ Adds an inline javascript to the 'js' collection
 
 
 
-public  **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](/en/3.1.2/api/Phalcon_Assets_Resource) $resource)
+public  **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](/en/3.1/api/Phalcon_Assets_Resource) $resource)
 
 Adds a resource by its type
 
@@ -85,13 +85,13 @@ $assets->addResourceByType("css",
 
 
 
-public  **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](/en/3.1.2/api/Phalcon_Assets_Inline) $code)
+public  **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](/en/3.1/api/Phalcon_Assets_Inline) $code)
 
 Adds an inline code by its type
 
 
 
-public  **addResource** ([Phalcon\Assets\Resource](/en/3.1.2/api/Phalcon_Assets_Resource) $resource)
+public  **addResource** ([Phalcon\Assets\Resource](/en/3.1/api/Phalcon_Assets_Resource) $resource)
 
 Adds a raw resource to the manager
 
@@ -106,13 +106,13 @@ $assets->addResource(
 
 
 
-public  **addInlineCode** ([Phalcon\Assets\Inline](/en/3.1.2/api/Phalcon_Assets_Inline) $code)
+public  **addInlineCode** ([Phalcon\Assets\Inline](/en/3.1/api/Phalcon_Assets_Inline) $code)
 
 Adds a raw inline code to the manager
 
 
 
-public  **set** (*mixed* $id, [Phalcon\Assets\Collection](/en/3.1.2/api/Phalcon_Assets_Collection) $collection)
+public  **set** (*mixed* $id, [Phalcon\Assets\Collection](/en/3.1/api/Phalcon_Assets_Collection) $collection)
 
 Sets a collection in the Assets Manager
 
@@ -127,7 +127,7 @@ $assets->set("js", $collection);
 
 public  **get** (*mixed* $id)
 
-Returns a collection by its id
+Returns a collection by its id.
 
 ```php
 <?php
@@ -156,13 +156,13 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** ([Phalcon\Assets\Collection](/en/3.1.2/api/Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
+public  **output** ([Phalcon\Assets\Collection](/en/3.1/api/Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
 Traverses a collection calling the callback to generate its HTML
 
 
 
-public  **outputInline** ([Phalcon\Assets\Collection](/en/3.1.2/api/Phalcon_Assets_Collection) $collection, *string* $type)
+public  **outputInline** ([Phalcon\Assets\Collection](/en/3.1/api/Phalcon_Assets_Collection) $collection, *string* $type)
 
 Traverses a collection and generate its HTML
 
@@ -200,7 +200,17 @@ Returns existing collections in the manager
 
 public  **exists** (*mixed* $id)
 
-Returns true or false if collection exists
+Returns true or false if collection exists.
+
+```php
+<?php
+
+if ($assets->exists("jsHeader")) {
+    // \Phalcon\Assets\Collection
+    $collection = $assets->get("jsHeader");
+}
+
+```
 
 
 

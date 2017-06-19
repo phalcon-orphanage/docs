@@ -31,6 +31,9 @@ $config = new \Phalcon\Config(
 ```
 
 
+## Constants
+*string* **DEFAULT_PATH_DELIMITER**
+
 ## Methods
 public  **__construct** ([*array* $arrayConfig])
 
@@ -48,6 +51,19 @@ Allows to check whether an attribute is defined using the array-syntax
 var_dump(
     isset($config["database"])
 );
+
+```
+
+
+
+public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
+
+Returns a value from current config using a dot separated path.
+
+```php
+<?php
+
+echo $config->path("unknown.path", "default", ".");
 
 ```
 
@@ -110,7 +126,7 @@ unset($config["database"]);
 
 
 
-public  **merge** ([Phalcon\Config](/en/3.1.2/api/Phalcon_Config) $config)
+public  **merge** ([Phalcon\Config](/en/3.1/api/Phalcon_Config) $config)
 
 Merges a configuration into the current one
 
@@ -170,6 +186,18 @@ print $config->count();
 public static  **__set_state** (*array* $data)
 
 Restores the state of a Phalcon\\Config object
+
+
+
+public static  **setPathDelimiter** ([*mixed* $delimiter])
+
+Sets the default path delimiter
+
+
+
+public static  **getPathDelimiter** ()
+
+Gets the default path delimiter
 
 
 

@@ -1,6 +1,6 @@
 # Class **Phalcon\\Di\\Service**
 
-*implements* [Phalcon\Di\ServiceInterface](/en/3.1.2/api/Phalcon_Di_ServiceInterface)
+*implements* [Phalcon\Di\ServiceInterface](/en/3.1/api/Phalcon_Di_ServiceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/service.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -64,7 +64,7 @@ Returns the service definition
 
 
 
-public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector])
+public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](/en/3.1/api/Phalcon_DiInterface) $dependencyInjector])
 
 Resolves the service
 
