@@ -50,7 +50,7 @@
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relace](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
-        - [Validátory](/[[language]]/[[version]]/db-models-validators)
+        - [Validátory](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
 - Frontend 
