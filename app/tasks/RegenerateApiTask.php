@@ -282,9 +282,10 @@ class RegenerateApiTask extends PhTask
             }
 
             $fileName = sprintf(
-                '%s/docs/%s/api/%s.md',
+                '%s/docs/%s/%s/api/%s.md',
                 APP_PATH,
                 'en',
+                $version,
                 $simpleClassName
             );
 
