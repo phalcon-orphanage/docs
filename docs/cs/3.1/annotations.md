@@ -6,7 +6,7 @@
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#reading">Reading Annotations</a>
+          <a href="#reading">Čtení anotací</a>
         </li>
         <li>
           <a href="#types">Types of Annotations</a>
@@ -164,7 +164,7 @@ The Factory loader provides more flexibility when dealing with instantiating ann
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Čtení anotací
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -200,7 +200,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Typy anotací
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -259,7 +259,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktické využití
 
 Next we will explain some practical examples of annotations in PHP applications:
 
@@ -444,7 +444,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Anotační adaptéry
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -463,6 +463,6 @@ The `Phalcon\Annotations\AdapterInterface` interface must be implemented in orde
 
 <a name='resources'></a>
 
-## External Resources
+## Externí zdroje
 
 - [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
