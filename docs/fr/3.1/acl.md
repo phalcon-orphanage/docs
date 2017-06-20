@@ -3,10 +3,10 @@
     <li>
       <a href="#overview">Access Control Lists</a> <ul>
         <li>
-          <a href="#setup">Création d’une ACL</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
-          <a href="#adding-roles">Ajout de rôles à l’ACL</a>
+          <a href="#adding-roles">Adding Roles to the ACL</a>
         </li>
         <li>
           <a href="#adding-resources">Adding Resources</a>
@@ -15,7 +15,7 @@
           <a href="#access-controls">Defining Access Controls</a>
         </li>
         <li>
-          <a href="#querying">Interroger une ACL</a>
+          <a href="#querying">Querying an ACL</a>
         </li>
         <li>
           <a href="#function-based-access">Function based access</a>
@@ -42,9 +42,9 @@
 
 <a name='overview'></a>
 
-# Listes de contrôle d'accès (Access Control Lists)
+# Access Control Lists (ACL)
 
-`Phalcon\Acl` fournit une gestion simple et légère des ACLs ainsi que les autorisations qui leur sont associées. Les listes de contrôle d'accès [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) permettent à une application de contrôler l'accès à ses zones et aux objets sous-jacents à partir des requêtes. Nous vous encourageons à lire davantage sur la méthodologie ACL afin de connaître ses concepts.
+`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
