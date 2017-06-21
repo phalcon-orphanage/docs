@@ -9,6 +9,9 @@
           <a href="#caching-behavior">Поведение системы кэширования</a>
         </li>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#output-fragments">Кэширование выходных фрагментов</a>
         </li>
         <li>
@@ -105,9 +108,68 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 - **Frontend**: Эта часть отвечает за проверку времени жизни ключа и выполняет дополнительные преобразования над данными, до операции сохранения или извлечения их из backend
 - **Backend**: Эта часть отвечает за коммуникацию, запись/чтение данных по запросу frontend.
 
+<a name='factory'></a>
+
+## Factory
+
+Instantiating frontend or backend adapters can be achieved by two ways:
+
+- Traditional way
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Data as FrontData;
+
+// Create an Output frontend. Cache the files for 2 days
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
+);
+
+// Create the component that will cache from the 'Output' to a 'File' backend
+// Set the cache file directory - it's important to keep the '/' at the end of
+// the value for the folder
+$cache = new BackFile(
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
+);
+```
+
+or using the Factory object as follows:
+
+```php
+<?php
+
+use Phalcon\Cache\Frontend\Factory as FFactory;
+use Phalcon\Cache\Backend\Factory as BFactory;
+
+ $options = [
+     'lifetime' => 172800,
+     'adapter'  => 'data',
+ ];
+ $frontendCache = FFactory::load($options);
+
+
+$options = [
+    'cacheDir' => '../app/cache/',
+    'prefix'   => 'app-data',
+    'frontend' => $frontendCache,
+    'adapter'  => 'file',
+];
+
+$backendCache = BFactory::load($options);
+```
+
+If the options
+
 <a name='output-fragments'></a>
 
-## Caching Output Fragments
+## Кэширование выходных фрагментов
 
 Выходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. Выходные данные автоматически захватываются из `ob_*` функции или из выходного потока PHP и сохраняются в кэш. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
 
@@ -287,7 +349,7 @@ foreach ($robots as $robot) {
 
 <a name='read'></a>
 
-## Querying the cache
+## Запрос данных из кэша
 
 Все элементы добавляемые в кэш идентифицируются по ключам. В случае с файловым бэкэндом, ключом является название файла. Для получения данных из кэша нам необходимо выполнить запрос к кэшу с указанием уникального ключа. Если ключа не существует, метод вернет значение NULL.
 
@@ -318,7 +380,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='delete'></a>
 
-## Deleting data from the cache
+## Удаление данных из кэша
 
 Могут возникнуть ситуации, когда вам необходимо принудительно инвалидировать данные в кэше. Единственным требованием для этого является знание необходимого ключа по которому хранятся данные.
 
@@ -338,7 +400,7 @@ foreach ($keys as $key) {
 
 <a name='exists'></a>
 
-## Checking cache existence
+## Проверяем наличие кэша
 
 Существует возможность проверить наличие данных в кэше:
 
@@ -354,7 +416,7 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Lifetime
+## Время жизни
 
 `lifetime` — это время, исчисляемое в секундах, которое означает, сколько будут храниться данные в бэкэнде. По умолчанию все данные получают “время жизни”, которое было указано при создании фронтэнд компонента. Вы можете указать другое значение при сохранении или получении данных из кэша:
 
@@ -395,7 +457,7 @@ if ($robots === null) {
 
 <a name='multi-level'></a>
 
-## Multi-Level Cache
+## Многоуровневое кэширование
 
 Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность будет полезна при сохранении кэша в нескольких системах кэширования, с разным временем жизни и последующим поочерёдным чтением из них, начиная с самого быстрого (в порядке регистрации) и заканчивая самым медленным, пока срок жизни во всех них не истечет:
 
@@ -459,7 +521,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-frontend'></a>
 
-## Frontend Adapters
+## Фронтэнд адаптеры
 
 Доступные фронтэнд адаптеры приведены в таблице:
 
@@ -480,7 +542,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-backend'></a>
 
-## Backend Adapters
+## Бэкэнд адаптеры
 
 Доступные бэкэнд адаптеры приведены в таблице:
 

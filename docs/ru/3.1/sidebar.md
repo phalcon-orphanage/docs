@@ -50,7 +50,7 @@
         - [Метаданные](/[[language]]/[[version]]/db-models-metadata)
         - [Отношения](/[[language]]/[[version]]/db-models-relationships)
         - [Транзакции](/[[language]]/[[version]]/db-models-transactions)
-        - [Валидаторы](/[[language]]/[[version]]/db-models-validators)
+        - [Валидаторы](/[[language]]/[[version]]/db-models-validation)
     - [Миграции](/[[language]]/[[version]]/db-migrations)
     - [Разбивка на страницы](/[[language]]/[[version]]/db-pagination)
 - Фронтенд 

@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Access Control Lists</a> <ul>
         <li>
-          <a href="#setup">Δημιουργώντας Λίστες Ελέγχου Πρόσβασης</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">Adding Roles to the ACL</a>
@@ -30,7 +30,7 @@
           <a href="#serialization">Serializing ACL lists</a>
         </li>
         <li>
-          <a href="#events">Γεγονότα</a>
+          <a href="#events">Events</a>
         </li>
         <li>
           <a href="#custom-adapters">Implementing your own adapters</a>
@@ -42,7 +42,7 @@
 
 <a name='overview'></a>
 
-# Λίστες ελέγχου πρόσβασης (ACL)
+# Access Control Lists (ACL)
 
 `Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 

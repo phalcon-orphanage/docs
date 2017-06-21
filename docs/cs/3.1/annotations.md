@@ -1,26 +1,29 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Parser anotací</a> <ul>
+      <a href="#overview">Annotations Parser</a> <ul>
+        <li>
+          <a href="#factory">Factory</a>
+        </li>
         <li>
           <a href="#reading">Čtení anotací</a>
         </li>
         <li>
-          <a href="#types">Typy anotací</a>
+          <a href="#types">Types of Annotations</a>
         </li>
         <li>
-          <a href="#usage">Praktické využití</a> <ul>
+          <a href="#usage">Practical Usage</a> <ul>
             <li>
-              <a href="#usage-cache">Cache povolení pro anotace</a>
+              <a href="#usage-cache">Cache Enabler with Annotations</a>
             </li>
             <li>
-              <a href="#usage-access-management">Soukromé/veřejné oblasti s anotacemi</a>
+              <a href="#usage-access-management">Private/Public areas with Annotations</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#adapters">Anotační adaptéry</a> <ul>
+          <a href="#adapters">Annotations Adapters</a> <ul>
             <li>
               <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
@@ -28,7 +31,7 @@
         </li>
         
         <li>
-          <a href="#resources">Externí zdroje</a>
+          <a href="#resources">External Resources</a>
         </li>
       </ul>
     </li>
@@ -39,9 +42,9 @@
 
 # Annotations Parser
 
-Je to poprvé, kdy je komponenta parseru anotací napsána v jazyku C pro PHP. `Phalcon\Annotations` je obecná komponenta, která umožňuje snadné analyzování a ukládání anotací do cache v PHP třídách, které jsou požity v aplikaci.
+It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
-Anotace jsou čteny z docblocků ve třídách, metodách a vlastnostech. Anotace mohou být umístěny na libovné místo v docblocku:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -72,7 +75,7 @@ class Example
 }
 ```
 
-Anotace má následující syntaxi:
+An annotation has the following syntax:
 
 ```php
 /**
@@ -81,7 +84,7 @@ Anotace má následující syntaxi:
  */
 ```
 
-Anotaci také můžeme vložit na kterékoliv místo v docblocku:
+Also, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
@@ -97,7 +100,7 @@ Anotaci také můžeme vložit na kterékoliv místo v docblocku:
  */
 ```
 
-Parser je vysoce flexibilní, následující docblock je také validní:
+The parser is highly flexible, the following docblock is valid:
 
 ```php
 <?php
@@ -124,9 +127,44 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
+<a name='factory'></a>
+
+## Factory
+
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
+```
+
+However you can also utilize the factory method to achieve the same thing:
+
+```php
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
+```
+
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+
 <a name='reading'></a>
 
-## Reading Annotations
+## Čtení anotací
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -162,7 +200,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Typy anotací
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -221,7 +259,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktické využití
 
 Next we will explain some practical examples of annotations in PHP applications:
 
@@ -406,7 +444,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Anotační adaptéry
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -425,6 +463,6 @@ The `Phalcon\Annotations\AdapterInterface` interface must be implemented in orde
 
 <a name='resources'></a>
 
-## External Resources
+## Externí zdroje
 
 - [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

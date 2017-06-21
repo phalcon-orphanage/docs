@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Парсер аннотаций</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#reading">Чтение аннотаций</a>
         </li>
         <li>
@@ -124,9 +127,44 @@ someParameter='the value', false
  */
 ```
 
+<a name='factory'></a>
+
+## Factory
+
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
+```
+
+However you can also utilize the factory method to achieve the same thing:
+
+```php
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
+```
+
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+
 <a name='reading'></a>
 
-## Reading Annotations
+## Чтение аннотаций
 
 Для простого получения аннотаций класса с использованием объектно-ориентированного интерфейса, реализован рефлектор:
 
@@ -162,7 +200,7 @@ foreach ($annotations as $annotation) {
 
 <a name='types'></a>
 
-## Types of Annotations
+## Типы аннотаций
 
 Аннотации могут иметь или не иметь параметров. Параметры могут быть простыми литералам (строкой, числом, булевым типом, null), массивом, хешированным списком или другими аннотациями:
 
@@ -221,7 +259,7 @@ foreach ($annotations as $annotation) {
 
 <a name='usage'></a>
 
-## Practical Usage
+## Практическое использование
 
 Далее мы разберем несколько примеров по использованию аннотаций в PHP приложениях:
 
@@ -407,7 +445,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Адаптеры аннотаций
 
 Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
 
@@ -426,6 +464,6 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='resources'></a>
 
-## External Resources
+## Дополнительная информация
 
 - [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
