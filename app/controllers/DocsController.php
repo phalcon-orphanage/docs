@@ -52,8 +52,12 @@ class DocsController extends PhController
             );
         }
 
+        if (empty($version) || strtolower($version) === 'latest') {
+            $version  = $this->getVersion();
+        }
+
         $language = ($language) ?: 'en';
-        $version  = ($version)  ?: $this->getVersion();
+
         $page     = ($page)     ?: 'introduction';
 
         $contents = $this->viewSimple->render(
